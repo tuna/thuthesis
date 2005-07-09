@@ -1,4 +1,3 @@
-
 % \iffalse
 %  Local Variables: 
 %  mode: doctex
@@ -49,9 +48,8 @@
 %</driver>
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
-%<*cls>
+%<cfg>\ProvidesFile{thuthesis.cpx}
 [2005/07/06 0.1 Tsinghua University Thesis Template for Doctor and Master]
-%</cls>
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -75,6 +73,7 @@
 %
 % \DoNotIndex{\begin}
 %
+% \MakeShortVerb{\|}
 % \title{The \textsf{hpackagei} class\thanks{This document
 % corresponds to \textsf{hpackagei}~\fileversion,
 % dated \filedate.}}
@@ -103,16 +102,16 @@
 % \section{Implementation}
 %
 % 定义论文类型
+%<*cls>
 \newif\ifthu@master
 \newif\ifthu@doctor
 \DeclareOption{master}{\thu@mastertrue\thu@doctorfalse}
 \DeclareOption{doctor}{\thu@doctortrue\thu@masterfalse}
-
+% 
 % 是否使用dvips
-\newif\ifthu@dvips \thu@dvipstrue
-\DeclareOption{dvips}{\thu@dvipstrue}
-\DeclareOption{dvipdfm}{\thu@dvipsfalse}
-
+\DeclareOption{dvips}{\PassOptionsToPackage{dvips}{hyperref}}
+\DeclareOption{dvipdfm}{\PassOptionsToPackage{dvipdfm}{hyperref}}
+%
 % 如果需要使用arial字体，请打开[arial]选项
 \newif\ifthu@arial
 % 目录中英文是否用arial
@@ -123,29 +122,32 @@
 \DeclareOption{arialtoc}{\thu@arialtoctrue}
 \DeclareOption{arialtitle}{\thu@arialtitletrue}
 
+%
+% 将选项传递给 book 类
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{book}}
+% 默认打开 arialtoc 和 arialtitle
+\ExecuteOptions{arialtoc, arialtitle}
 \ProcessOptions
+\LoadClass[12pt, a4paper]{book}
+%</cls>
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+%<*cls>
 % 引用的宏包和相应的定义
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \RequirePackage{ifthen}
 \RequirePackage{calc}
-
 % arial 字体需要单独安装，请参见
 % http://www.agh.edu.pl/pub/tex/fonts/psfonts/monotype/arial/
-% 如果不使用arial字体，可以用Times宏包的helet字体\textsf模拟。据网友介绍二者基本
+% 如果不使用arial字体，可以用Times宏包的helet字体|\textsf|模拟。据网友介绍二者基本
 % 没有差别。如果不想安装arial，可以不用它。
-\ifarial
-\RequirePackage{arial}
+\ifthu@arial
+  \RequirePackage{arial}
 \fi
 \RequirePackage{times}
+% TODO: what?
+% ^^A \RequirePackage{helvet}
 % GOOD Package!
 % Times + Helvetica + Courier + Times Math
 \RequirePackage{mathptmx} 
-
 
 % 图形支持宏包 为了使用pdftex 需要作相应判断
 %定义一个新判断命令
@@ -242,6 +244,7 @@
 % for newcommand
 \RequirePackage{xspace}
 
+
 % 更好的控制list:
 % itemize{label}
 % enumerate{A,a,I,i,1}
@@ -259,7 +262,6 @@
 % 控制目录的宏包
 \RequirePackage{titletoc}
 
-
 % 可将浮动对象放置到文件的最后
 % ^^A \RequirePackage{endfloat}
 
@@ -267,12 +269,11 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{fancyref}
 
-
 %浮动图形和表格标题样式
 \RequirePackage{caption2}
 
 % 定制表格和图形的多行标题行距
-\RequirePackage{setspace}
+% ^^A \RequirePackage{setspace}
 
 % 打印当前页面格式的宏包
 % ^^A \RequirePackage{layouts}
@@ -288,14 +289,10 @@
 \RequirePackage[super,square,comma,sort&compress]{natbib}
 
 % 生成有书签的pdf及其开关，结合gbk2uni避免书签乱码
- \ifthu@dvips
-   \RequirePackage[dvips]{hyperref}
- \else
-   \RequirePackage[dvipdfm]{hyperref}
- \fi
- \AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
-\hypersetup{             
-             CJKbookmarks=true,
+% TODO: check for dvips or dvipdfm
+\RequirePackage{hyperref}
+\AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
+\hypersetup{ CJKbookmarks=true,
              bookmarksnumbered=true,
              bookmarksopen=true,
              colorlinks=true,
@@ -303,24 +300,21 @@
              linkcolor=black,
              anchorcolor=black,
              urlcolor=black}
- \setboolean{hyperrefloaded}{true}
 
 % ^^A \RequirePackage{checklab}
 % Xue: hypernat should be loaded after hyperref and natbib, see its doc
 \RequirePackage{hypernat}
+% 宏包调用部分结束
+%</cls>
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %
 % 主文档 格式定义
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%<*cls>
 % 公式的精调
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %^^A \setlength{\mathindent}{4.7 em}     %左对齐公式缩进量
 
 % |\eqnarray| 如果很长，影响分栏、换行和分页（整块挪动，造成页面空白），
@@ -349,71 +343,53 @@
 \belowdisplayskip=\abovedisplayskip
 \belowdisplayshortskip=\abovedisplayshortskip
 
+% 公式改成(1-1)的形式
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
+% 使公式编号随着每开始新的一节而重新开始。
+% ^^A \@addtoreset{eqation}{section}
+%</cls>
+
+%<*cls>
 % 设置浮动对象和文字之间的距离
 \setlength{\intextsep}{10pt plus2pt minus2pt}
 \setlength{\textfloatsep}{15pt plus2pt minus2pt}
 
-
-
-% 公式改成(1-1)的形式
-\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
-
-
-% 下面这组命令可以使公式编号随着每开始新的一节而重新开始。
-% ^^A \@addtoreset{eqation}{section}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度
 % 对象占据过多的文本页面，也可以防止在很大空白的浮动页上放置
 % 很小的图形。
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
 
-
+% TODO: 这个附加高度会使横线出现间隔，不好
 % 来自array包，调整表格高度
 % 或者参考booktabs宏包
 \setlength{\extrarowheight}{6pt}
+%</cls>
 
-
-% Xue:
-% 避免hyperref没完没了的warning
-% or |\usepackage{checklab}|
-\@tempcnta=128
-\loop \catcode\@tempcnta=13 \ifnum\@tempcnta<255 \advance \@tempcnta \@ne
-\repeat
 
 
 % XUE: this is what you really want to 
 %      add the blank page after each chapter
+%<*cls>
 \let\origdoublepage\cleardoublepage
 \newcommand{\clearemptydoublepage}{%
   \clearpage
-  {\pagestyle{empty}\origdoublepage}%
-}
+  {\pagestyle{empty}\origdoublepage}}
 \let\cleardoublepage\clearemptydoublepage
+%</cls>
 
-
-%
+%<*cls>
 % 重定义字体命令
-%
-% 注意win2000,没有 simsun,　最好到网上找一个
-% 一些字体是office2000 带的
-%
 \newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows自带simsun.ttf)
 \newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体 (Windows自带simfs.ttf)
 \newcommand{\kai}{\CJKfamily{kai}}      % 楷体   (Windows自带simkai.ttf)
 \newcommand{\hei}{\CJKfamily{hei}}      % 黑体   (Windows自带simhei.ttf)
 \newcommand{\li}{\CJKfamily{li}}        % 隶书   (Windows自带simli.ttf)
 
-%
 % 重定义字号命令
 %
-% Xue: these two piceses of info may be helpful.All from TeX@SMTH
-
 % Ref 1:
 % 参考科学出版社编写的《著译编辑手册》(1994年)
 % 七号      5.25pt        1.845mm
@@ -427,12 +403,11 @@
 % 一号      27.5pt        9.48mm
 % 小初号    36pt            12.65mm
 % 初号      42pt            14.76mm
-
+%
 % 这里的 pt 对应的是 1/72.27 inch，也就是 TeX 中的标准 pt
 
 % Ref 2:
 % WORD 中的字号对应该关系如下:
-
 % 初号 = 42bp = 14.82mm = 42.1575pt
 % 小初 = 36bp = 12.70mm = 36.135 pt
 % 一号 = 26bp = 9.17mm = 26.0975pt
@@ -449,28 +424,11 @@
 % 小六 = 6.5bp = 2.29mm
 % 七号 = 5.5bp = 1.94mm
 % 八号 = 5bp = 1.76mm
-
+%
 % 1bp = 72.27/72 pt
 
-% XUE: 采用新的字体命令格式，避免了字号选择和行距的紧耦合
+% 采用新的字体命令格式，避免了字号选择和行距的紧耦合
 % 所有字号定义时为单倍行距，并提供选项指定行距倍数。
-
-% \newcommand{\yihao}{\fontsize{26bp}{32.5bp}\selectfont}    % 一号, 1.25倍行距
-% \newcommand{\xiaoyi}{\fontsize{24bp}{30bp}\selectfont}    % 小一, 1.25倍行距
-% \newcommand{\erhao}{\fontsize{22bp}{27.5bp}\selectfont}    % 二号, 1.25倍行距
-% \newcommand{\xiaoer}{\fontsize{18bp}{18bp}\selectfont}    % 小二, 单倍行距
-% \newcommand{\sanhao}{\fontsize{16bp}{24bp}\selectfont}    % 三号, 1.5倍行距
-% \newcommand{\xiaosan}{\fontsize{15bp}{22.5bp}\selectfont}    % 小三, 1.5倍行距
-% \newcommand{\sihao}{\fontsize{14bp}{21bp}\selectfont}    % 四号, 1.5倍行距
-% \newcommand{\banxiaosi}{\fontsize{13bp}{19.5bp}\selectfont}    % 半小四, 1.5倍行距
-% \newcommand{\xiaosi}{\fontsize{12bp}{18bp}\selectfont}    % 小四, 1.5倍行距
-% \newcommand{\dawu}{\fontsize{11bp}{11bp}\selectfont}    % 大五号, 单倍行距
-% \newcommand{\wuhao}{\fontsize{10.5bp}{10.5bp}\selectfont}    % 五号, 单倍行距
-% \newcommand{\xiaowu}{\fontsize{9bp}{9bp}\selectfont}      %小五，单倍行距
-% \newcommand{\liuhao}{\fontsize{7.5bp}{7.5bp}\selectfont} %六号，单倍行距
-% \newcommand{\xiaoliu}{\fontsize{6.5bp}{6.5bp}\selectfont} %小六，单倍行距
-%\newcommand{\qihao}{\fontsize{5.5bp}{5.5bp}\selectfont}  %七号，单倍行距
-
 \newlength{\mylinespace}
 \newcommand{\choosefont}[2]{\setlength{\mylinespace}{#2*\real{#1}}\fontsize{#2}{\mylinespace}\selectfont}
 \newcommand{\yihao}[1][\baselinestretch]{\choosefont{#1}{26bp}} 
@@ -488,62 +446,103 @@
 \newcommand{\liuhao}[1][\baselinestretch]{\choosefont{#1}{7.5bp}} 
 \newcommand{\xiaoliu}[1][\baselinestretch]{\choosefont{#1}{6.5bp}}
 \newcommand{\qihao}[1][\baselinestretch]{\choosefont{#1}{5.5bp}}  
-%end xue
 
 % 定义行距
 % 正文小四号（12pt）字，行距为固定值20磅，大约是20/12=1.6667倍行间
-\def\defaultfont{\fontsize{12bp}{20bp}\selectfont}
+% TODO: maybe normalsize normalfont
+\newcommand\defaultfont{\fontsize{12bp}{20bp}\selectfont}
 
-\CJKcaption{gb_452}
-\CJKindent
-\CJKtilde
-\sloppy
+% 用于中文段落缩进 和正文版式
+\newlength \CJKtwospaces
+\def\CJKindent{
+  \settowidth\CJKtwospaces{\CJKchar{"0A1}{"0A1}\CJKchar{"0A1}{"0A1}}%
+  \parindent\CJKtwospaces
+}
+% 段落之间的竖直距离
+\setlength{\parskip}{0pt plus1pt minus0pt}
+%</cls>
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%<*cls>
 % 重定义一些正文相关标题
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % “定理”字样使用黑体，正文使用宋体，冒号隔开
 \theoremstyle{plain} 
 \theorembodyfont{\song\rmfamily}
 \theoremheaderfont{\hei\rmfamily} 
-\theoremseparator{：}
+\theoremstyle{nonumberplain}
+\theoremsymbol{$\blacksquare$}
+\theoremsymbol{$\square$}
+%</cls>
 
+%<*cfg>
+\theoremseparator{：}
 \newtheorem{definition}{定义}[chapter]
 \newtheorem{proposition}[definition]{命题}
 \newtheorem{lemma}[definition]{引理}
 \newtheorem{theorem}{定理}[chapter]
 \newtheorem{axiom}{公理}
 \newtheorem{corollary}[definition]{推论}
-\newtheorem{exercise}[definition]{}
-
-\theoremstyle{nonumberplain}
-\theoremsymbol{$\blacksquare$}
+\newtheorem{exercise}[definition]{练习}
 \newtheorem{proof}{证明}
-
-\theoremsymbol{$\square$}
 \newtheorem{example}{例}
 
+%
+\@ifundefined{CJKnumber}
+  {\def\CJKnumber#1{\ifcase#1\or
+                    一\or二\or三\or四\or五\or
+                    六\or七\or八\or九\or十\or十一\fi}}{}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 用于中文段落缩进 和正文版式
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\contentsname{目\hspace{2em}录}
+\renewcommand\listfigurename{插图}
+\renewcommand\listtablename{表格}
 
-\newlength \CJKtwospaces
-\def\CJKindent{
-  \settowidth\CJKtwospaces{\CJKchar{"0A1}{"0A1}\CJKchar{"0A1}{"0A1}}%
-  \parindent\CJKtwospaces
-}
+\@ifundefined{chapter}
+  {\renewcommand\refname{参考文献}}
+  {\renewcommand\bibname{参考文献}}
+
+\renewcommand\indexname{索引}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\newcommand\CJKprepartname{第}
+\newcommand\CJKpartname{部分}
+\newcommand\CJKthepart{\CJKnumber{\@arabic\c@part}}
+
+\@ifundefined{chapter}{}{
+  \newcommand\CJKprechaptername{第}
+  \newcommand\CJKchaptername{章}
+  \newcommand\CJKthechapter{~\@arabic\c@chapter~}}
+
+\renewcommand\appendixname{附录~\@Alph\c@chapter}
+
+\@ifundefined{mainmatter}
+  {\renewcommand\abstractname{摘要}}{}
+
+%% \renewcommand\ccname{}                     %   ?
+%% \renewcommand\enclname{附件}
+%% \newcommand\prepagename{}                  %   ?
+%% \newcommand\postpagename{}                 %   ?
+%% \renewcommand\headtoname{}                 %   ?
+%% \renewcommand\seename{}                    %   ?
+
+\let\CJK@todaysave=\today
+\def\CJK@todaysmall{~\the\year~年~\the\month~月~\the\day~日}
+\def\CJK@todaybig{\CJKdigits{\the\year}年\CJKnumber{\the\month}月\CJKnumber{\the\day}日}
+\def\CJK@today{\CJK@todaysmall}
+\renewcommand\today{\CJK@today}
+\newcommand\CJKtoday[1][1]{%
+  \ifcase#1\def\CJK@today{\CJK@todaysave}
+  \or\def\CJK@today{\CJK@todaysmall}
+  \or\def\CJK@today{\CJK@todaybig}
+  \fi}
+%</cfg>
 
 
-\renewcommand\contentsname{目~~~~录}
+%<*cls>
+% 重新定义章节名称
 \renewcommand\chaptername{\CJKprechaptername\CJKthechapter\CJKchaptername}
 % xue: titlesec recommend to use chaptertitlename
 \renewcommand\chaptertitlename{\CJKprechaptername\CJKthechapter\CJKchaptername}
 
 % 目录的内容采用小四号字，行距为固定值20磅
-\makeatletter
 \renewcommand\tableofcontents{%
   \defaultfont
     \if@twocolumn
@@ -558,12 +557,11 @@
     \if@restonecol\twocolumn\fi
     \defaultfont %TODO: what? xue
     }
-\makeatother
+%</cls>
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%定义段落章节的标题和目录项的格式
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%<*cls>
+% 定义段落章节的标题和目录项的格式
+%
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
 
@@ -580,20 +578,17 @@
 
 
 % Modified By Xue Ruini
-%% \titleformat is used to define the format, before and after options are used
-%% to define the codes running before and after the command. While \titlespacing
-%% redefines the spaces before, after, left and right of the command. So do not
-%% mix them up by the same options such as before. 2005.4.22
-%% format:
-%%      \titleformat{command}[shape]{format}{label}{sep}{before code}{after code}
-%%      \titlespace{command}{left}{before}{after}{right}
-
-% Modified By Lei Wang BaconChina
-% THU Version
+% |\titleformat| is used to define the format, before and after options are used
+% to define the codes running before and after the command. While |\titlespacing|
+% redefines the spaces before, after, left and right of the command. So do not
+% mix them up by the same options such as before. 2005.4.22
+% format:
+%      |\titleformat|{command}[shape]{format}{label}{sep}{before code}{after code}
+%      |\titlespace|{command}{left}{before}{after}{right}
 
 % XUE: 如果章节题目中的英文要使用arial，那么就加上sffamily
 \let\mytitle=\relax % relax means "do nothing"
-\ifarialtitle
+\ifthu@arialtitle
 \let\mytitle=\sffamily
 \fi
 
@@ -647,16 +642,14 @@
 \titlespacing{\subsubsection}%
     {0bp}{16bp}{6bp} % TODO: 不知道为什么这里12磅显得要比word小一些
 
+% TODO: what?
+% 去掉中间对齐的sectionformat，这样就把节的标题左对齐了。
+% |\renewcommand \sectionformat{}|
+%</cls>
 
-%去掉中间对齐的sectionformat，这样就把节的标题左对齐了。
-%\renewcommand \sectionformat{}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% 目录部分
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%<*cls>
+% 目录部分
+%
 % 按清华标准, 缩小目录中各级标题之间的缩进
 %
 % TODO: 每章标题行前空6磅，后空0磅
@@ -665,26 +658,26 @@
 % 为了方便控制，使用titlecontents取代dottedcontents命令。
 
 % 命令说明： 
-% \dottedcontents[<section>][<left>]{<above}{<label width>}{<leader width>}
-% \dottedcontents{chapter}[0.0em]{\hei\vspace{6bp}}{0bp}{5pt}
-% \dottedcontents{section}[1.16cm]{}{1.8em}{5pt}
-% \dottedcontents{subsection}[1.50cm]{}{2.7em}{5pt}
-% \dottedcontents{subsubsection}[2.36cm]{}{3.4em}{5pt}
-
+% |\dottedcontents|[<section>][<left>]{<above}{<label width>}{<leader width>}
+% |\dottedcontents|{chapter}[0.0em]{\hei\vspace{6bp}}{0bp}{5pt}
+% |\dottedcontents|{section}[1.16cm]{}{1.8em}{5pt}
+% |\dottedcontents|{subsection}[1.50cm]{}{2.7em}{5pt}
+% |\dottedcontents|{subsubsection}[2.36cm]{}{3.4em}{5pt}
 
 % 命令说明：
-% \titlecontents{section}[left]{above}
+% |\titlecontents|{section}[left]{above}
 % {before with label}{before without label}
 % {filler and page}[after]
 
-% 对于filler可以参考\titlerule*[1pc]{.}灵活调节
+% 对于filler可以参考|\titlerule|*[1pc]{.}灵活调节
 % contentslabel即是2.3等标号的宽度。
 
 % XUE: 如果使用目录项中英文要使用arial，那么就加上sffamily
 \let\mytoc=\relax % relax means "do nothing"
-\ifarialtoc 
+\ifthu@arialtoc 
 \let\mytoc=\sffamily
 \fi
+
 \titlecontents{chapter}
               [0.0em]
               {\hei\vspace{6bp minus6bp}}
@@ -712,61 +705,39 @@
               {\mytoc\contentslabel{3.4em}}
               {}
               {\dotfill\textrm{\contentspage}}
+%</cls>
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%<*cls>
 % 定义页眉和页脚 使用fancyhdr 宏包
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 
+% TODO:
 \newcommand{\makeheadrule}{%
     \makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{0.8pt}}%
-% 1 Line Modified by Lei Wang BaconChina
-% XJTU Version
-%    \rule[.6\baselineskip]{\headwidth}{0.4pt}\vskip-.8\baselineskip}
-% THU Version
     \vskip-.8\baselineskip}
-
-\makeatletter
 \renewcommand{\headrule}{%
     {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
      \makeheadrule}}
-\makeatother
-
-%% Xue: I think this is a useful command
-%% However, I turn to booktabs for it works with longtable, while hlinewd does not
-\makeatletter
-\def\hlinewd#1{%
-  \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet
-    \reserved@a\@xhline}
-\makeatother
 
 \pagestyle{fancyplain}
 
-%去掉章节标题中的数字
+% 去掉章节标题中的数字
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername \ ~~#1}{}}
 
- \fancyhf{}
+\fancyhf{}
 
-%在book文件类别下,\leftmark自动存录各章之章名,\rightmark记录节标题
+% 在book文件类别下,\leftmark自动存录各章之章名,\rightmark记录节标题
 
-% Modified by Lei Wang BaconChina
-% XJTU Version
-% \fancyhead[RO]{\CJKfamily{song}\leftmark}
-% \fancyhead[LE]{\CJKfamily{song}西安交通大学博士学位论文}
-% \fancyfoot[C,C]{--~\thepage~--}
-% THU Version
- \fancyhead[CO]{\CJKfamily{song}\wuhao\leftmark}
- \fancyhead[CE]{\CJKfamily{song}\wuhao\leftmark}
- \fancyfoot[C,C]{\wuhao \thepage}
-
+\fancyhead[CO]{\CJKfamily{song}\wuhao\leftmark}
+\fancyhead[CE]{\CJKfamily{song}\wuhao\leftmark}
+\fancyfoot[C,C]{\wuhao \thepage}
 
 % TODO:
 % 标号在正文中是上标，在脚注中为正体
-\makeatletter
 \renewcommand\@makefntext[1]{\indent\makebox[1.8em][r]{\@thefnmark.\,}#1}
-\makeatother
+%</cls>
 
-
+%<*cls>
 % 脚注：
 % 采用小五号字，单倍行距，段前段后均空0磅，序号采用"①，……，⑩
 % 可以采用这三种方式的任何一种,ding, text, cjk
@@ -778,58 +749,25 @@
 \DefineFNsymbols{text}{{\mycircle{1}}{\mycircle{2}}{\mycircle{3}}{\mycircle{4}}{
 \mycircle{5}}{\mycircle{6}}{\mycircle{7}}{\mycircle{8}}{\mycircle{9}}{\mycircle{
 10}}}
-%
+%</cls>
+
+%<*cfg>
+% 这部分不得不暂时放到配置文件中，因为带圈的cjk汉字不能现在使用
 \DefineFNsymbols{cjk}{{\mbox{①}}{\mbox{②}}{\mbox{③}}{\mbox{④}}{\mbox{⑤
 }}{\mbox{⑥}}{\mbox{⑦}}{\mbox{⑧}}{\mbox{⑨}}{\mbox{⑩}}}
 
 \setfnsymbol{cjk}
+%</cfg>
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 设置行距和段落间垂直距离
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% 段落之间的竖直距离
-\setlength{\parskip}{0pt plus1pt minus0pt}
-
-
-%% Xue:
-%% Use package paralist!
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 调整列表环境的垂直间距
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \let\orig@Itemize =\itemize
-% \let\orig@Enumerate =\enumerate
-% \let\orig@Description =\description
-
-% \def\Myspacing{\itemsep=1.5ex \topsep=-0.5ex \partopsep=0pt \parskip=0pt \parsep=0.5ex}
-
-% \def\newitemsep{
-% \renewenvironment{itemize}{\orig@Itemize\Myspacing}{\endlist}
-% \renewenvironment{enumerate}{\orig@Enumerate\Myspacing}{\endlist}
-% \renewenvironment{description}{\orig@Description\Myspacing}{\endlist}
-% }
-% \newitemsep
-
-
-% \def\olditemsep{
-% \renewenvironment{itemize}{\orig@Itemize}{\endlist}
-% \renewenvironment{enumerate}{\orig@Enumerate}{\endlist}
-% \renewenvironment{description}{\orig@Description}{\endlist}
-% }
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%<*cls>
 % 修改引用的格式，
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % 第一行在引用处数字两边加方框
 % 第二行去除参考文献里数字两边的方框
-%\makeatletter
-%\def\@cite#1{\mbox{$\m@th^{\hbox{\@ove@rcfont[#1]}}$}}
-%\renewcommand\@biblabel[1]{#1}
-%\makeatother
+% |\def\@cite#1{\mbox{$\m@th^{\hbox{\@ove@rcfont[#1]}}$}}|
+% |\renewcommand\@biblabel[1]{#1}|
+
 
 % TODO: 如何复原比如“文[3]中...”，这时就不能再用上标了
 %\newcommand{\ucite}[1]{${\mbox{\cite{#1}}}$}
@@ -838,10 +776,9 @@
 % 参考文献的正文部分用五号字
 % 行距采用固定值16磅，段前空3磅，段后空0磅
 % 让参考条目中间任何位置都不容易被分页断开
-\makeatletter
 \renewenvironment{thebibliography}[1]
-     {\phantomsection 
-     \addcontentsline{toc}{chapter}{参考文献}%
+     {\phantomsection % make sure the hyperlink is correct
+     \addcontentsline{toc}{chapter}{\bibname}%
      \chapter*{\bibname}%
       \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
       \wuhao[1.5]  
@@ -865,14 +802,10 @@
      {\def\@noitemerr
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
-\makeatother
+%</cls>
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+%<*cls>
 % 定制浮动图形和表格标题样式
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TODO:
 % 图：caption在下，段前空6磅，段后空12磅
@@ -890,208 +823,212 @@
 
 % 按清华标准, 图表标题字体为11pt, 这里写作大五号
 \renewcommand{\captionfont}{\dawu}
+%</cls>
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 定义题头格言的格式
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%<*cls>
+% 封面、摘要、版权、致谢格式定义 
 %
-% 用法 \begin{Aphorism}{author}
-%         aphorism
-%      \end{Aphorism}
 
-\newsavebox{\AphorismAuthor}
-\newenvironment{Aphorism}[1]
-{\vspace{0.5cm}\begin{sloppypar} \slshape
-\sbox{\AphorismAuthor}{#1}
-\begin{quote}\small\itshape }
-{\\ \hspace*{\fill}------\hspace{0.2cm} \usebox{\AphorismAuthor}
-\end{quote}
-\end{sloppypar}\vspace{0.5cm}}
+\def\ctitle#1{\def\thu@ctitle{#1}}\def\thu@ctitle{}
+\def\cdegree#1{\def\thu@cdegree{#1}}\def\thu@cdegree{}
+\def\caffil#1{\def\thu@caffil{#1}}\def\thu@caffil{}
+\def\csubject#1{\def\thu@csubject{#1}}\def\thu@csubject{}
+\def\cauthor#1{\def\thu@cauthor{#1}}\def\thu@cauthor{}
+\def\csupervisor#1{\def\thu@csupervisor{#1}}\def\thu@csupervisor{}
+\def\cassosupervisor#1{\def\thu@cassosupervisor{#1}}\def\thu@cassosupervisor{}
+\def\ccosupervisor#1{\def\thu@ccosupervisor{#1}}\def\thu@ccosupervisor{}
+\def\cdate#1{\def\thu@cdate{#1}}\def\thu@cdate{}
+\long\def\cabstract#1{\long\def\thu@cabstract{#1}}\long\def\thu@cabstract{}
+\def\ckeywords#1{\def\thu@ckeywords{#1}}\def\thu@ckeywords{}
+\def\etitle#1{\def\thu@etitle{#1}}\def\thu@etitle{}
+\def\edegree#1{\def\thu@edegree{#1}}\def\thu@edegree{}
+\def\eaffil#1{\def\thu@eaffil{#1}}\def\thu@eaffil{}
+\def\esubject#1{\def\thu@esubject{#1}}\def\thu@esubject{}
+\def\eauthor#1{\def\thu@eauthor{#1}}\def\thu@eauthor{}
+\def\esupervisor#1{\def\thu@esupervisor{#1}}\def\thu@esupervisor{}
+\def\eassosupervisor#1{\def\thu@eassosupervisor{Associate Supervisor: & #1\\}}\def\thu@eassosupervisor{}
+\def\ecosupervisor#1{\def\thu@ecosupervisor{~ & #1\\}}\def\thu@ecosupervisor{}
+\def\edate#1{\def\thu@edate{#1}}\def\thu@edate{}
+\long\def\eabstract#1{\long\def\thu@eabstract{#1}}\long\def\thu@eabstract{}
+\def\ekeywords#1{\def\thu@ekeywords{#1}}\def\thu@ekeywords{}
+%</cls>
 
+%<*cfg>
+\newcommand{\thu@apply}{（申请清华大学\thu@cdegree学位论文）}
+\newcommand{\thu@caffiltitle}{培\hfill养\hfill单\hfill位}
+\newcommand{\thu@csubjecttitle}{学\hfill科}
+\newcommand{\thu@cauthortitle}{研\hfill究\hfill生}
+\newcommand{\thu@csupervisortitle}{指\hfill导\hfill教\hfill师}
+\newcommand{\thu@cassosupertitle}{副指导教师}
+\newcommand{\thu@ccosupertitle}{联\hfill合\hfill导\hfill师}
+%</cfg>
 
-%XUE
-%\begin{CJK*}{GBK}{song}
-%  \def\@n@thing{}
-%\end{CJK*}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 封面、摘要、版权、致谢格式定义 --- by Feng Hua & Lei Wang
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\makeatletter
-\def\ctitle#1{\def\@ctitle{#1}}\def\@ctitle{}
-\def\cdegree#1{\def\@cdegree{#1}}\def\@cdegree{}
-\def\caffil#1{\def\@caffil{#1}}\def\@caffil{}
-\def\csubject#1{\def\@csubject{#1}}\def\@csubject{}
-\def\cauthor#1{\def\@cauthor{#1}}\def\@cauthor{}
-\def\csupervisor#1{\def\@csupervisor{#1}}\def\@csupervisor{}
-\def\cassosupervisor#1{\def\@cassosupervisor{#1}}\def\@cassosupervisor{}
-\def\ccosupervisor#1{\def\@ccosupervisor{#1}}\def\@ccosupervisor{}
-\def\cdate#1{\def\@cdate{#1}}\def\@cdate{}
-\long\def\cabstract#1{\long\def\@cabstract{#1}}\long\def\@cabstract{}
-\def\ckeywords#1{\def\@ckeywords{#1}}\def\@ckeywords{}
-\def\etitle#1{\def\@etitle{#1}}\def\@etitle{}
-\def\edegree#1{\def\@edegree{#1}}\def\@edegree{}
-\def\eaffil#1{\def\@eaffil{#1}}\def\@eaffil{}
-\def\esubject#1{\def\@esubject{#1}}\def\@esubject{}
-\def\eauthor#1{\def\@eauthor{#1}}\def\@eauthor{}
-\def\esupervisor#1{\def\@esupervisor{#1}}\def\@esupervisor{}
-\def\eassosupervisor#1{\def\@eassosupervisor{Associate Supervisor: & #1\\}}\def\@eassosupervisor{}
-\def\ecosupervisor#1{\def\@ecosupervisor{~ & #1\\}}\def\@ecosupervisor{}
-\def\edate#1{\def\@edate{#1}}\def\@edate{}
-\long\def\eabstract#1{\long\def\@eabstract{#1}}\long\def\@eabstract{}
-\def\ekeywords#1{\def\@ekeywords{#1}}\def\@ekeywords{}
-
-% xue: I insert some explanations.
+%<*cls>
 \newcommand{\makecover}{
-    \frontmatter        %将页码更换为罗马数字
+    \frontmatter        % TODO: where to put frontmatter 页码更换为罗马数字
     {\renewcommand{\baselinestretch}{1.5}
     \pagenumbering{Roman}
     \begin{titlepage}
     \begin{center}
-
-    % 题名使用一号黑体字，一行写不下时可分两行写，并采用1.25倍行距
-    % 申请学位的学科门类: 小二号宋体字
-    % 中文封面页边距：
-    %  上-6.0厘米，下-5.5厘米，左-4.0厘米，右-4.0厘米，装订线0厘米；
-    % 
-
-
+% 题名使用一号黑体字，一行写不下时可分两行写，并采用1.25倍行距
+% 申请学位的学科门类: 小二号宋体字
+% 中文封面页边距：
+%  上-6.0厘米，下-5.5厘米，左-4.0厘米，右-4.0厘米，装订线0厘米；
     \vspace*{0.5cm}
 
     \parbox[t][9cm][t]{\paperwidth-8cm}{
     \begin{center}
-    \yihao[1.1] {\hei \@ctitle}  \\
-    \erhao[1.1] \textbf{\@etitle} \\[5bp]
-     \xiaoer[1] \textrm{（申请清华大学\@cdegree学位论文）}
+    \yihao[1.1] {\hei \thu@ctitle}  \\
+    \erhao[1.1] \textbf{\thu@etitle} \\[5bp]
+     \xiaoer[1] \textrm{\thu@apply}
     \end{center}}
 
-
-    % 作者及导师信息部分使用三号仿宋字
+% 作者及导师信息部分使用三号仿宋字
     \parbox[t][8cm][t]{\textwidth}{{\sanhao
     \begin{center} \fs
-\setlength{\extrarowheight}{-5pt}
+    \setlength{\extrarowheight}{-5pt}
     \begin{tabular}{p{5em}r@{\extracolsep{4pt}}l}
-    培\hfill养\hfill单\hfill位 & ：& \@caffil\\
-    学\hfill科 & ：& \@csubject\\
-    研\hfill究\hfill生 & ：& \@cauthor\\
-    指\hfill导\hfill教\hfill师 & ：& \@csupervisor\\
-    \ifx\@cassosupervisor\@empty \else
-            副指导教师 & ：& \@cassosupervisor\\\fi
-    \ifx\@ccosupervisor\@empty \else
-            联\hfill合\hfill导\hfill师 & ：& \@ccosupervisor\fi
+    \thu@caffiltitle & ：& \thu@caffil\\
+    \thu@csubjecttitle & ：& \thu@csubject\\
+    \thu@cauthortitle & ：& \thu@cauthor\\
+    \thu@csupervisortitle & ：& \thu@csupervisor\\
+    \ifx\thu@cassosupervisor\@empty \else
+            \thu@cassosupertitle & ：& \thu@cassosupervisor\\\fi
+    \ifx\thu@ccosupervisor\@empty \else
+            \thu@ccosupertitle & ：& \thu@ccosupervisor\fi
     \end{tabular} 
     \end{center}}}
 
-    % 论文成文打印的日期，用三号宋体汉字，不用阿拉伯数字
+% 论文成文打印的日期，用三号宋体汉字，不用阿拉伯数字
     \parbox[t][3cm][t]{\textwidth}{
     \begin{center} 
-     {\sanhao \song \@cdate} 
+     {\sanhao \song \thu@cdate} 
     \end{center} }
     \end{center}
 
     \end{titlepage}
     
-		\cleardoublepage
+   \cleardoublepage
+%</cls>
 
-    %Authorization%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
+%<*cfg>
+\newcommand{\thu@authtitle}{关于学位论文使用授权的说明}
+\newcommand{\thu@authorization}{
+  \hspace*{2em}本人完全了解清华大学有关保留、使用学位论文的规定，即：\\
+  \hspace*{2em}清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：（1）
+  已获学位的研究生必须按学校规定提交学位论文，学校可以采用影印、缩印或其他复制手
+  段保存研究生上交的学位论文；（2）为教学和科研目的，学校可以将公开的学位论文作为
+  资料在图书馆、资料室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容。\\
+  \hspace*{2em}本人保证遵守上述规定。}
+\newcommand{\thu@secret}{（保密的论文在解密后应遵守此规定）}
+\newcommand{\thu@authorsig}{作者签名：}
+\newcommand{\thu@teachersig}{导师签名：}
+\newcommand{\thu@frontdate}{日\hspace{2em}期：}
+\newcommand{\thu@keywords}{关键词：}
+%</cfg>
+
+%<*cls>
+% Authorization
     \thispagestyle{empty}
     \vspace*{-0.6cm}
 
     \begin{center}
 
-    %Xue: these are the format of parbox and minipage
-    %\parbox[对齐方式][高度][內文位置]{宽度}{文字內容}
-    % 对齐方式是与当前行基线的对齐位置
-    % t: 方框上沿对齐基线
-    % b, c 类推
+% Xue: these are the format of parbox and minipage
+% \parbox[对齐方式][高度][內文位置]{宽度}{文字內容}
+% 对齐方式是与当前行基线的对齐位置
+% t: 方框上沿对齐基线
+% b, c 类推
 
-    %\begin{minipage}[对齐方式][高度][內文位置]{宽度}
-    %  段落內容
-    %\end{minipage}
+% |\begin{minipage}|[对齐方式][高度][內文位置]{宽度}
+%  段落內容
+% |\end{minipage}|
 
     \parbox[t]{\textwidth}{{\erhao \hei \centerline
-    {关于学位论文使用授权的说明}}}
+    {\thu@authtitle}}}
 
     \vspace{2cm}
 
-    \parbox[t]{\textwidth}{\sihao[1.4]
-    \hspace*{2em}本人完全了解清华大学有关保留、使用学位论文的规定，即：\\
-    \hspace*{2em}清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：（1）
-    已获学位的研究生必须按学校规定提交学位论文，学校可以采用影印、缩
-    印或其他复制手段保存研究生上交的学位论文；（2）为教学和科研目的，学
-    校可以将公开的学位论文作为资料在图书馆、资料室等场所供校内师生阅
-    读，或在校园网上供校内师生浏览部分内容。\\
-    \hspace*{2em}本人保证遵守上述规定。}
+    \parbox[t]{\textwidth}{\sihao[1.4]\thu@authorization}
 
     \vspace{0.6cm}
 
     \parbox[t]{\textwidth}{\sihao
-    \hspace*{2em}\textbf{（保密的论文在解密后应遵守此规定）}}
+    \hspace*{2em}\textbf{\thu@secret}}
 
     \vspace{1.9cm}
 
     \parbox[t]{\textwidth}{\xiaosi
-    \hspace*{2cm}作者签名：\hrulefill \hfill 导师签名：\hrulefill \hspace{1cm}\\[3pt]
-    \hspace*{2cm}日\hspace{2em}期：\hrulefill \hfill 日\hspace{2em}期：\hrulefill \hspace{1cm}}
+    \hspace*{2cm}\thu@authorsig\hrulefill \hfill \thu@teachersig\hrulefill \hspace{1cm}\\[3pt]
+    \hspace*{2cm}\thu@frontdate\hrulefill \hfill \thu@frontdate\hrulefill \hspace{1cm}}
 
     \end{center}
     }% XUE: 这部分需要控制行距为1.5，后面的打开defaultfont自动为1.5
 		
 
-    %Abstract and keywords%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract and keywords
     \defaultfont
 
-    % 中文摘要部分的标题为"摘要"，用黑体三号字
-    % xue: top space should be enlarged!
+% 中文摘要部分的标题为"摘要"，用黑体三号字
+% xue: top space should be enlarged!
 
-    \chapter*{摘~~~~要}
-    %Xue: this is deleted in the new template!! what shit they are!
+    \chapter*{\abstractname}
     %\addcontentsline{toc}{chapter}{摘~~~~要}
-    \markboth{摘~~~~要}{摘~~~~要}
+    \markboth{\abstractname}{\abstractname}
 
     \setcounter{page}{1}
 
-    % 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用Times New Roman体，
-    % 标点符号一律用中文输入状态下的标点符号
-    \@cabstract
+% 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用Times New Roman体，
+% 标点符号一律用中文输入状态下的标点符号
+    \thu@cabstract
 
     \vfill
 
-    % xue:
-    % 每个关键词之间空两个汉字符宽度, 且为悬挂缩进
+% 每个关键词之间空两个汉字符宽度, 且为悬挂缩进
     \noindent\begin{tabular}{@{}lp{12cm}}
-    {\hei 关键词：} & \@ckeywords \\
+    {\hei \thu@keywords} & \thu@ckeywords \\
     \end{tabular}
-
-
     \defaultfont
 
-    % 英文摘要部分的标题为"Abstract"，用Arial体三号字，
+% 英文摘要部分的标题为"Abstract"，用Arial体三号字，
     \chapter*{{\sffamily Abstract}}
-    %Xue: this is deleted in the new template!! what shit they are!
     %\addcontentsline{toc}{chapter}{\hei Abstract}
     \markboth{Abstract}{Abstract}
-    % 摘要内容用小四号Times New
-    % Roman体字书写
-    \@eabstract
+% 摘要内容用小四号Times New Roman体字书写
+    \thu@eabstract
 
     \vfill
 
-    % 每个关键词之间空四个英文字符宽度
+% 每个关键词之间空四个英文字符宽度
     \noindent\begin{tabular}{@{}lp{12cm}}
-    {\textbf{Key Words:}} & \@ekeywords\\
+    {\textbf{Key Words:}} & \thu@ekeywords\\
     \end{tabular}
 }
+%</cls>
 
+%<*cfg>
+% 必须定义这些东西
+\newcommand{\thu@ackshortname}{致谢}
+\newcommand{\thu@ackname}{致\hspace{2em}谢}
+\newcommand{\thu@acklongname}{致谢及声明}
+\newcommand{\thu@declare}{声明}
+\newcommand{\thu@declaretext}{本人郑重声明：所呈交的学位论文，是本人在导师指导下，独
+    立进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容外，本
+    学位论文的研究成果不包含任何他人享有著作权的内容。对本论文所涉及的研
+    究工作做出贡献的其他个人和集体，均已在文中以明确方式标明。}
+\newcommand{\thu@signature}{签\hspace{1em}名：}
+\newcommand{\thu@backdate}{日\hspace{1em}期：}
+%</cfg>
+
+%<*cls>
+% 定义致谢
 \long\def\acknowledge#1{
     \defaultfont
     \phantomsection 
-    \addcontentsline{toc}{chapter}{致谢及声明}
-    \chapter*{致~~~~谢}
-    \markboth{致谢及声明}{致谢及声明}
+    \addcontentsline{toc}{chapter}{\thu@acklongname}
+    \chapter*[\thu@ackshortname]{\thu@ackname}
+    \markboth{\thu@acklongname}{\thu@acklongname}
 
     \begin{center}
     \parbox[t][8cm][t]{\textwidth}{{\hspace{2em}#1}}
@@ -1115,25 +1052,20 @@
 
     \vspace{-1cm}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % 声明
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 声明
     \begin{center}
     \parbox[t][4cm][c]{\textwidth}{{\sanhao \hei \centerline{声~~~~明}}}
 
-    \parbox[t][3cm][c]{\textwidth}{ {\xiaosi
-    \hspace{2em}本人郑重声明：所呈交的学位论文，是本人在导师指导下，独
-    立进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容外，本
-    学位论文的研究成果不包含任何他人享有著作权的内容。对本论文所涉及的研
-    究工作做出贡献的其他个人和集体，均已在文中以明确方式标明。}}
+    \parbox[t][3cm][c]{\textwidth}{{\xiaosi\hspace{2em}\thu@declaretext}}
 
     \parbox[t][3cm][b]{\textwidth}{\xiaosi\hspace{5cm}
-    签\hspace{1em}名：\hrulefill 日\hspace{1em}期：\hrulefill}
+    \thu@signature \hrulefill \thu@backdate \hrulefill}
     \end{center}
 }
+%</cls>
 
-
-%% 为了生成书脊使用竖排
+%<*cls>
+% 为了生成书脊使用竖排
 \newcommand{\verticle}{%
     \renewcommand{\CJKsymbol}[1]{%
 	\setbox0=\hbox{\symbol{##1}}%
@@ -1153,28 +1085,33 @@
 	\savebox{\saverotate}{\parbox[t]{#1}{\verticle #2}}
 	\hfill\rotatebox[origin=lt]{-90}{\usebox{\saverotate}}}
 
-
-\newcommand{\shuji}[1][\@ctitle]{
+% 单独使用书脊命令会在新的一页产生竖排书脊
+\newcommand{\shuji}[1][\thu@ctitle]{
 \newpage
 \thispagestyle{empty}
 \vspace*{1cm}
-\shupai[\textheight-2cm]{\fs\xiaosan
-#1\hfill\@cauthor}}
-\makeatother
+\shupai[\textheight-2cm]{\fs\xiaosan #1\hfill\thu@cauthor}}
+%</cls>
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
+%<*cls>
+% Xue: I think this is a useful command
+% However, I turn to booktabs for it works with longtable, while hlinewd does not
+\def\hlinewd#1{%
+  \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet
+    \reserved@a\@xhline}
+%</cls>
+
+%<*cls>
 % Some commands for helping with INDEX creation
 %
 \newcommand{\bs}{\symbol{'134}}%Print backslash
-%\newcommand{\bs}{\ensuremath{\mathtt{\backslash}}}%Print backslash
-% Index entry for a command (\cih for hidden command index
+ % \newcommand{\bs}{\ensuremath{\mathtt{\backslash}}}%Print backslash
+ % Index entry for a command (\cih for hidden command index
 \newcommand{\cih}[1]{%
 \index{commands!#1@\texttt{\bs#1}}%
 \index{#1@\texttt{\hspace*{-1.2ex}\bs #1}}}
 \newcommand{\ci}[1]{\cih{#1}\texttt{\bs#1}}
-%Package
+ % Package
 \newcommand{\pai}[1]{%
 \index{packages!#1@\textsf{#1}}%
 \index{#1@\textsf{#1}}%
@@ -1187,21 +1124,37 @@
 % Indexentry for a word (Word inserted into the text)
 \newcommand{\wi}[1]{\index{#1}#1}
 \newenvironment{code}{\begin{quote}}{\end{quote}}
+%</cls>
 
+%<*cls>
+% 定义题头格言的格式
 
-% By xue:
+%
+% 用法 |\begin{Aphorism}{author}|
+%         aphorism
+%      |\end{Aphorism}|
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newsavebox{\AphorismAuthor}
+\newenvironment{Aphorism}[1]
+{\vspace{0.5cm}\begin{sloppypar} \slshape
+\sbox{\AphorismAuthor}{#1}
+\begin{quote}\small\itshape }
+{\\ \hspace*{\fill}------\hspace{0.2cm} \usebox{\AphorismAuthor}
+\end{quote}
+\end{sloppypar}\vspace{0.5cm}}
+%</cls>
+
+%<*cls>
 % 自定义项目列表标签及格式
 % !!!如果定义命令中有默认参数，那么使用的时候这个参数要用[]而不是{}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 \newcounter{mynumlist} %自定义新计数器
 \newenvironment{numlist}[2][]{% arg1：label 前缀，arg2: label 后缀
 \begin{list}{#1\arabic{mynumlist}#2} %%标签格式
     {
     \usecounter{mynumlist}
-%     \setlength{\labelwidth}{22pt} %标签盒子宽度
-%     \setlength{\labelsep}{11pt} %标签与列表文本距离
+ %     \setlength{\labelwidth}{22pt} %标签盒子宽度
+ %     \setlength{\labelsep}{11pt} %标签与列表文本距离
      \setlength{\leftmargin}{60pt} %左右边界
      \setlength{\rightmargin}{0cm}
      \setlength{\parsep}{0ex} %段落间距
@@ -1230,56 +1183,75 @@
 % change itemsep for list* like environments conveniently
 \newcommand{\mylength}[1][0pt]{\setlength{\itemsep}{#1}}
 
-% abbrevations
-\newcommand{\charm}{ChaRM4\-MPI\xspace}
-%% I want to resize picture with \resizebox, which works well with psfrag.
+% I want to resize picture with \resizebox, which works well with psfrag.
 \newcommand{\equalbox}[2]{\resizebox{#1\height}{#1\width}{#2}}
 
-\ifthenelse{\boolean{hyperrefloaded}}{}{\newcommand{\url}[1]{\blue{#1}}}
+% TODO: package loaded
+%\ifthenelse{\boolean{hyperrefloaded}}{}{\newcommand{\url}[1]{\blue{#1}}}
 \urlstyle{same}
 
+% 关键字之间的间隔
 \newcommand{\keyspace}{\hspace{2em}}
 
-%%%%
+% abbrevations
+\newcommand{\charm}{ChaRM4\-MPI\xspace}
+%</cls>
+
+
+%<*cls>
 %
 % General defer codes
 %
-%%%%%
 
+% \tolerance is often a good method for adjusting spacing; Plain TeX and LaTeX
+% both set its value to 200. LaTeX's \sloppy command sets it to 9999, as does
+% the sloppypar environment. This value is the largest available, this side of
+% infinity, and can allow pretty poor-looking breaks
+\sloppy
 
-\AtBeginDocument{\begin{CJK*}{GBK}{song}}
-
-
+% 这段代码很厉害，如果放在导言区有两个作用：
+% \begin{itemize}
+% \item 导言区中用中文
+% \item 据说可以避免hyperref没完没了的warning
+% \end{itemize} 
+% 所以我要把它放到package load之后
+\AtEndOfPackage{\@tempcnta=128%
+ \loop \catcode\@tempcnta=13 \ifnum\@tempcnta<255 \advance \@tempcnta \@ne\repeat}
+\AtBeginDocument{\begin{CJK*}{GBK}{song}\CJKindent\CJKtilde\CJKcaption{thuthesis}}
 \AtEndDocument{\clearpage\end{CJK*}}
-
+%</cls>
 
 %    \begin{macrocode}
 %<*cls>
-\newif\ifthuthesis@typeinfo \thuthesis@typeinfotrue
-\DeclareOption{notypeinfo}{\thuthesis@typeinfofalse}
+%\newif\ifthuthesis@typeinfo \thuthesis@typeinfotrue
+%\DeclareOption{notypeinfo}{\thuthesis@typeinfofalse}
 %</cls>
 %    \end{macrocode}
 % \begin{macro}{\YOURMACRO}
 % Put explanation of |\YOURMACRO|’s implementation here.
 %    \begin{macrocode}
-\newcommand{\YOURMACRO}{}
+%\newcommand{\YOURMACRO}{}
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{environment}{YOURENV}
 % Put explanation of |YOURENV|’s implementation here.
 %    \begin{macrocode}
-\newenvironment{YOURENV}{}{}
+%\newenvironment{YOURENV}{}{}
 %    \end{macrocode}
 % \end{environment}
 %
 % 脚注
-\renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}
+%\renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}
 
-\usepackage{pifont}
+%\RequirePackage{pifont}
 
-\addtocounter{footnote}{171}
-\renewcommand{\thefootnote}{\ding{\value{footnote}}}
+%\addtocounter{footnote}{171}
+%\renewcommand{\thefootnote}{\ding{\value{footnote}}}
 %
+% TODO:
+% 中文不能直接使用，我考虑把所有涉及中文的定义都转移到gb.cap中，然后在begin
+% document之后load进来。有一些不大方便转移，那就定义命令，这个命令对应的中文在
+% gb.cap中定义，这是暂时想到的办法。如果网上一直每人回答，就用这个笨办法。
 % \Finale
 \endinput
