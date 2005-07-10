@@ -66,7 +66,8 @@
 % \fi
 %
 
-%
+% \changes{0.2}{2005/07/10}{Split template into two files: thuthesis.cls and
+% thuthesis.cpx}
 %
 % \changes{v0.1}{2005/07/06}{Initial version}
 % \GetFileInfo{thuthesis.cls}
@@ -353,7 +354,6 @@
 % 设置浮动对象和文字之间的距离
 \setlength{\intextsep}{10pt plus2pt minus2pt}
 \setlength{\textfloatsep}{15pt plus2pt minus2pt}
-
 % 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度
 % 对象占据过多的文本页面，也可以防止在很大空白的浮动页上放置
 % 很小的图形。
@@ -361,14 +361,11 @@
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
-
 % TODO: 这个附加高度会使横线出现间隔，不好
 % 来自array包，调整表格高度
 % 或者参考booktabs宏包
 \setlength{\extrarowheight}{6pt}
 %</cls>
-
-
 
 % XUE: this is what you really want to 
 %      add the blank page after each chapter
@@ -487,7 +484,7 @@
 
 %
 \@ifundefined{CJKnumber}
-  {\def\CJKnumber#1{\ifcase#1\or
+  {\def\CJKnumber#1{\ifcase#1零\or
                     一\or二\or三\or四\or五\or
                     六\or七\or八\or九\or十\or十一\fi}}{}
 
@@ -513,8 +510,8 @@
 
 \renewcommand\appendixname{附录~\@Alph\c@chapter}
 
-\@ifundefined{mainmatter}
-  {\renewcommand\abstractname{摘要}}{}
+\newcommand{\abstractshortname}{摘要}
+\newcommand{\abstractname}{摘\hspace{2em}要}
 
 %% \renewcommand\ccname{}                     %   ?
 %% \renewcommand\enclname{附件}
@@ -972,11 +969,9 @@
 
 % 中文摘要部分的标题为"摘要"，用黑体三号字
 % xue: top space should be enlarged!
-
     \chapter*{\abstractname}
     %\addcontentsline{toc}{chapter}{摘~~~~要}
-    \markboth{\abstractname}{\abstractname}
-
+    \markboth{\abstractshortname}{\abstractshortname}
     \setcounter{page}{1}
 
 % 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用Times New Roman体，
