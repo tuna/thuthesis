@@ -22,7 +22,7 @@
 % $Id$
 % \fi
 
-% \CheckSum{0}
+% \CheckSum{1283}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -150,17 +150,18 @@
 % 上面是最笨的方法，如果有~make 就方便多了。
 % \begin{verbatim}
 % $ make clean 
-% $ make       % 生成~thuthesis.cls 和~thuthesis.cpx
-% $ make doc   % 生成说明文档~thuthesis.dvi
+% $ make         % 生成~thuthesis.cls 和~thuthesis.cpx
+% $ make doc     % 生成说明文档~thuthesis.dvi
+% $ make example % 查看示例文档
 % \end{verbatim}
 %
 % 得到的模板文件都在当前目录，没有安装到系统~|TDS|，主要是考虑到方便，修改，更新
 % 容易一些。只有自己用没必要全局安装。
 
-% 除了模板源文件（thuthesis.ins 和~thuthesis.dtx），我还附上了修改过的
-% ~natbib.sty，CJKpunct.sty 和~thubib.bst。如果你的系统缺少模板中用到的其它宏包，
-% 请自行下载安装\footnote{如果你确定自己用不到这个包，当然可以自己修改模板文件，
-%   出于兼容性的考虑，不推荐这种方法}。
+% 除了模板源文件（thuthesis.ins 和~thuthesis.dtx），我还附上了~ccmap.sty，
+% ~CJKpunct.sty，thubib.bst 以及修改过的~ntheorem.sty。如果你的系统缺少模板中用到的其它宏包，请
+% 自行下载安装\footnote{如果你确定自己用不到这个包，当然可以自己修改模板文件，出
+%   于兼容性的考虑，不推荐这种方法}。
 
 
 % 本模板作为一个~class 出现，而不是“报盘版”的~package。所以在使用方法上有一些
