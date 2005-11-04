@@ -22,7 +22,7 @@
 % $Id$
 % \fi
 
-% \CheckSum{1283}
+% \CheckSum{1291}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -59,11 +59,9 @@
 \setlength{\parskip}{7pt plus1pt minus0pt}
 \setlength{\parindent}{22pt}
 \EnableCrossrefs
- %\DisableCrossrefs % Say \DisableCrossrefs if index is ready
 \CodelineIndex
 \RecordChanges      % Gather update information
  %\OnlyDescription  % comment out for implementation details
- %\OldMakeindex     % use if your MakeIndex is pre-v2.9
 \begin{document}
 \begin{CJK*}{GBK}{song}
 \DocInput{thuthesis.dtx}
@@ -71,14 +69,25 @@
 \end{document}
 %</driver>
 % \fi
+% \GetFileInfo{thuthesis.dtx}
 %
-
-% \changes{v1.1}{2005/11/3}{Initial version, migrate from the old ``Bao--Pan''
-% version. Make the template a class instead of package.}
+% \def\thupackage{Thu\-Thesis}
+% \def\filedate{2005/11/04}
+% \def\fileversion{1.2}
 %
 % \changes{v1.0-}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 %
-% \GetFileInfo{thuthesis.dtx}
+% \changes{v1.1}{2005/11/03}{Initial version, migrate from the old ``Bao--Pan''
+% version. Make the template a class instead of package.}
+%
+% \changes{v1.2}{2005/11/04}{Remove |fancyref|; Remove |ucite| and implemente
+% |onlinecite|; use package arial or helvet selectively.}
+%
+% \IndexPrologue{\section*{索引}%
+%    \addcontentsline{toc}{section}{索~~~~引}}
+% \GlossaryPrologue{\section*{ChangeLog}
+%    \addcontentsline{toc}{section}{ChangeLog}}
+%
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
 % \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
@@ -94,16 +103,14 @@
 % \DoNotIndex{\@@par} 
 %
 % \MakeShortVerb{\|}
-% \def\thupackage{Thu\-Thesis}
-% \def\thuversion{v1.1}
 % 
-% \title{\textsf{\thupackage}：清华大学论文模板\thuversion \thanks{Nice!}}
+% \title{\textsf{\thupackage}：清华大学论文模板\thanks{This file
+%        has version number \fileversion, last revised \filedate.}}
 % \author{薛瑞尼 \\ \texttt{xueruini@gmail.com}}
-%
+% \date{\filedate}
 % \maketitle
 % \renewcommand{\abstractname}{摘~~要}
 % \renewcommand{\contentsname}{目~~录}
-% \renewcommand{\indexname}{索~~引}
 %
 % \begin{abstract}
 %   此宏包旨在建立一个简单易用的清华大学论文模板，包括本科综合论文训练、硕士论文
@@ -121,12 +128,12 @@
 % 的结构不好，很多都是将就的写法。当时自己就准备抽时间重写（更准确的说是重新整理
 % ）这个模板，争取在~2005 年底前放出来，能让冬天毕业的同学用上。由于个人原因一拖
 % 再拖，直到今天觉得这件事必须有个结果，所以就把其它事情放开，专心的搞这个模板。
-
-
+%
+%
 % 由于个人水平有限，虽然现在的这个版本基本上满足了学校的大部分要求，但还存在许多
 % 不足之处。而且还有好几种论文格式没有支持，工作量不小，所以再次呼唤感兴趣的同学
 % 一起来做这件事情。
-
+%
 %
 % \section{使用方法}
 
@@ -158,10 +165,10 @@
 % 得到的模板文件都在当前目录，没有安装到系统~|TDS|，主要是考虑到方便，修改，更新
 % 容易一些。只有自己用没必要全局安装。
 
-% 除了模板源文件（thuthesis.ins 和~thuthesis.dtx），我还附上了~ccmap.sty，
-% ~CJKpunct.sty，thubib.bst 以及修改过的~ntheorem.sty。如果你的系统缺少模板中用到的其它宏包，请
-% 自行下载安装\footnote{如果你确定自己用不到这个包，当然可以自己修改模板文件，出
-%   于兼容性的考虑，不推荐这种方法}。
+% 除了模板源文件（thuthesis.ins 和~thuthesis.dtx），我还附上了一些其它相关文件，
+% 如~ccmap.sty，qqqCJKpunct.sty，thubib.bst 以及修改过的~ntheorem.sty。如果你的
+% 系统缺少模板中用到的其它宏包，请自行下载安装\footnote{如果你确定自己用不到这个
+%   包，当然可以自己修改模板文件，出于兼容性的考虑，不推荐这种方法}。
 
 
 % 本模板作为一个~class 出现，而不是“报盘版”的~package。所以在使用方法上有一些
@@ -241,10 +248,7 @@
 %
 % \DescribeMacro{arialtitle}
 % 章节标题中英文是否用~arial 字体（默认打开）。
-
-% \StopEventually{\PrintIndex}
 %
-
 % \subsection{命令}
 % \label{sec:command}
 % 这些命令很多大家都一直在用，列出来以便参考：
@@ -264,10 +268,10 @@
 % \DescribeMacro{\li}
 % 切换隶书字。
 %
-% \DescribeMacro{\ucite}
-% 参考文献引用默认为正文模式，学校要求为上标模式，现在没想到好的办法，只能先用
-% ~|\ucite{key}| 来生成上标引用，用~|\cite{key}| 生成正常引用\footnote{哪位有好
-% 的解决办法快点给我反馈，谢谢！}。
+% \DescribeMacro{\onlinecite}
+% 学校要求的参考文献引用有两种模式：1）上标模式。比如“同样的工作有很多$^{[1,2]}$\ldots”
+% 。2）正文模式。比如“文[3]中详细说明了\ldots”。其中上标模式使用远比正文模式频
+% 繁，所以为了符合使用习惯，上标模式仍然用常规的~|\cite{key}|，而~|\onlinecite{key}| 则用来生成正文模式。
 %
 % \DescribeMacro{\shuji}
 % 生成装订的书脊，为竖排格式，默认参数为论文中文题目。如果中文题目中没有英文字母
@@ -314,7 +318,9 @@
 % 这两个环境只是提供一种方便，其实~|paralist| 提供了很多很好的环境，比默认的列表
 % 环境要好用的多，可参考其文档。
 % 
-
+%
+% \StopEventually{\PrintIndex\PrintChanges}
+%
 % \section{实现细节}
 %
 % \subsection{定义选项}
@@ -343,6 +349,7 @@
 \newif\ifthu@arial
 \DeclareOption{arial}{\thu@arialtrue}
 %    \end{macrocode}
+
 % 目录中英文是否用~arial
 %    \begin{macrocode}
 \newif\ifthu@arialtoc 
@@ -359,7 +366,8 @@
 %    \begin{macrocode}
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{book}}
 %    \end{macrocode}
-% 默认打开 arialtoc。\textbf{ExecuteOPtions} 的参数之间用逗号分割，必须不能有空
+
+% 默认打开~arialtoc。\textbf{ExecuteOPtions} 的参数之间用逗号分割，必须不能有空
 % 格。开始不知道，折腾了老半天。
 %    \begin{macrocode}
 \ExecuteOptions{arial,arialtoc}
@@ -383,7 +391,7 @@
 % 果不想安装~arial，也没有关系。
 %    \begin{macrocode}
 \ifthu@arial
- \IfFileExists{arial}{\RequirePackage{arial}}%
+ \IfFileExists{arial.sty}{\RequirePackage{arial}}%
                      {\RequirePackage[scaled=.92]{helvet}} 
 \fi
 %    \end{macrocode}
@@ -505,8 +513,7 @@
 \RequirePackage{longtable}
 %    \end{macrocode}
 
-% 使用三线表： |\toprule|， |\midrule|， |\bottomrule|
-% also you can use |\hwline{wd}|
+% 使用三线表： |\toprule|， |\midrule|， |\bottomrule|。当然简单的可以用~|\hwline{wd}|
 %    \begin{macrocode}
 \RequirePackage{booktabs}
 %    \end{macrocode}
@@ -545,7 +552,6 @@
 % fancyhdr 宏包，页眉和页脚的相关定义
 %    \begin{macrocode}
 \RequirePackage{fancyhdr}
-\RequirePackage{fancyref}
 %    \end{macrocode}
 
 % 浮动图形和表格标题样式
@@ -563,27 +569,22 @@
 % \RequirePackage{wrapfig}
 %    \end{macrocode}
 
-
-% 参考文献引用宏包。默认情况为上标，如~|\cite{paper1}|；
-% TODO: 如果正文为“文[3]中...”，这时就不能再用上标了，但现在还没有一个较好的办
-% 法来解决引用上下标切换的问题。如果向以前那样定义一个~|\ucite| 来表示上标引用，
-% 而~|\cite| 表示正常引用。实际上上标引用的更频繁，正常引用很少见。所以让不熟悉
-% 的~ucite 频繁出现，而熟悉的~cite 很少用是不符合习惯的。这是一个待解决的问题。
+% 参考文献引用宏包。
 % \iffalse
 %    \begin{macrocode}
 % \RequirePackage[sort,compress]{cite}
 %    \end{macrocode}
 % \fi
-
-% 支持引用缩写的宏包。现在暂时使用修改过的~natbib。
 %    \begin{macrocode}
-\RequirePackage[numbers,square,comma,sort&compress]{natbib}
-\newcommand{\ucite}[1]{\textsuperscript{\cite{#1}}}
+\RequirePackage[numbers,square,sort&compress]{natbib}
+\DeclareRobustCommand\onlinecite{\@onlinecite}
+\def\@onlinecite#1{[\begingroup\let\@cite\NAT@citenum\citealp{#1}\endgroup]}
+\let\thu@cite=\cite
+\renewcommand{\cite}[1]{\textsuperscript{\thu@cite{#1}}}
 %    \end{macrocode}
 
 % 生成有书签的~pdf 及其开关，请结合~gbk2uni 避免书签乱码。
 %    \begin{macrocode}
-
 \ifx\pdfoutput\undefined % We're not running pdftex
   \ifthu@dvips
     \RequirePackage[dvips]{hyperref}
@@ -606,6 +607,11 @@
              plainpages=false,
              pdfstartview=FitH}
 %    \end{macrocode}
+% \iffalse
+% 我还不知道这个包究竟是干什么用的 
+% \RequirePackage{fancyref}
+% \fi
+
 
 % ^^A \RequirePackage{checklab}
 % hypernat 可以在引用和参考文件之间建立关系。应该在~natbib 和~hyperref 之后~load，参看其文档。
@@ -917,11 +923,13 @@
 %    \begin{macrocode}
 \renewcommand\chaptername{\CJKprechaptername\CJKthechapter\CJKchaptername}
 %    \end{macrocode}
-
-% titlesec recommend to use chaptertitlename
+% \iffalse
+% titlesec 提供了~chaptertitlename 可以根据当前环境自动选择~chaptername 还是
+% ~appendixname。
 %    \begin{macrocode}
-\renewcommand\chaptertitlename{\CJKprechaptername\CJKthechapter\CJKchaptername}
+% \renewcommand\chaptertitlename{\CJKprechaptername\CJKthechapter\CJKchaptername}
 %    \end{macrocode}
+% \fi
 
 %
 % 由于学校的格式环境默认为~Microsoft Word，所以很多样式定义，比如段前段后的磅数
@@ -1063,14 +1071,14 @@
               {\dotfill\textrm{\contentspage}}
 
 \titlecontents{subsection}
-              [4.8em]
+              [4.6em]
               {}
               {\mytoc\contentslabel{2.7em}}
               {}
               {\dotfill\textrm{\contentspage}}
 
 \titlecontents{subsubsection}
-              [6.5em]
+              [6.1em]
               {}
               {\mytoc\contentslabel{3.4em}}
               {}
@@ -1140,7 +1148,7 @@
 \renewcommand\@makefntext[1]{\indent\makebox[1.8em][r]{\@thefnmark.\,}#1}
 %    \end{macrocode}
 
-% 脚注：采用小五号字，单倍行距，段前段后均空0磅，序号采用"①，……，⑩。
+% 脚注：采用小五号字，单倍行距，段前段后均空~0 磅，序号采用“①，……，⑩”。
 % 可以采用这三种方式的任何一种：ding，text，cjk。其中~ding，cjk 方式只能到~10。
 %    \begin{macrocode}
 \DefineFNsymbols{ding}{%
@@ -1331,10 +1339,7 @@
 \newcommand{\thu@authtitle}{关于学位论文使用授权的说明}
 \newcommand{\thu@authorization}{
   \hspace*{2em}本人完全了解清华大学有关保留、使用学位论文的规定，即：\\
-  \hspace*{2em}清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：（1）
-  已获学位的研究生必须按学校规定提交学位论文，学校可以采用影印、缩印或其他复制手
-  段保存研究生上交的学位论文；（2）为教学和科研目的，学校可以将公开的学位论文作为
-  资料在图书馆、资料室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容。\\
+  \hspace*{2em}清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：（1）已获学位的研究生必须按学校规定提交学位论文，学校可以采用影印、缩印或其他复制手段保存研究生上交的学位论文；（2）为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容。\\
   \hspace*{2em}本人保证遵守上述规定。}
 \newcommand{\thu@secret}{（保密的论文在解密后应遵守此规定）}
 \newcommand{\thu@authorsig}{作者签名：}
