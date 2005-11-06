@@ -22,7 +22,7 @@
 % $Id$
 % \fi
 
-% \CheckSum{1291}
+% \CheckSum{0}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -576,11 +576,13 @@
 %    \end{macrocode}
 % \fi
 %    \begin{macrocode}
-\RequirePackage[numbers,square,sort&compress]{natbib}
+\RequirePackage[numbers,super,sort&compress]{natbib}
+\bibpunct{[}{]}{,}{s}{}{,}
+\renewcommand\NAT@citesuper[3]{\ifNAT@swa
+\unskip\kern\p@\textsuperscript{\NAT@@open #1\NAT@@close}%
+   \if*#3*\else\ (#3)\fi\else #1\fi\endgroup}
 \DeclareRobustCommand\onlinecite{\@onlinecite}
-\def\@onlinecite#1{[\begingroup\let\@cite\NAT@citenum\citealp{#1}\endgroup]}
-\let\thu@cite=\cite
-\renewcommand{\cite}[1]{\textsuperscript{\thu@cite{#1}}}
+\def\@onlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup} 
 %    \end{macrocode}
 
 % 生成有书签的~pdf 及其开关，请结合~gbk2uni 避免书签乱码。
@@ -1078,7 +1080,7 @@
               {\dotfill\textrm{\contentspage}}
 
 \titlecontents{subsubsection}
-              [6.1em]
+              [6em]
               {}
               {\mytoc\contentslabel{3.4em}}
               {}
