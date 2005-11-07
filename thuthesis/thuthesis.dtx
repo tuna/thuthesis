@@ -22,7 +22,7 @@
 % $Id$
 % \fi
 
-% \CheckSum{0}
+% \CheckSum{1289}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -384,6 +384,7 @@
 %    \begin{macrocode}
 \RequirePackage{ifthen}
 \RequirePackage{calc}
+\RequirePackage{ifpdf}
 %    \end{macrocode}
 
 % arial 字体需要单独安装，请参见~\url{http://www.agh.edu.pl/pub/tex/fonts/psfonts/monotype/arial/}
@@ -446,10 +447,10 @@
 
 % 可拷贝的~pdf （需要进一步测试）
 %    \begin{macrocode}
-\ifx\pdfoutput\undefined % We're not running pdftex
- %  \RequirePackage{cmap}
+\ifpdf % We're not running pdftex
+  \RequirePackage{ccmap} % 用 pdflatex 编译 
 \else
-   \RequirePackage{ccmap} % 用 pdflatex 编译
+  % \RequirePackage{cmap} 
 \fi
 %    \end{macrocode}
 
@@ -587,15 +588,15 @@
 
 % 生成有书签的~pdf 及其开关，请结合~gbk2uni 避免书签乱码。
 %    \begin{macrocode}
-\ifx\pdfoutput\undefined % We're not running pdftex
+\ifpdf
+  \RequirePackage[pdftex]{hyperref}
+\else
   \ifthu@dvips
     \RequirePackage[dvips]{hyperref}
   \else
     \RequirePackage[dvipdfm]{hyperref}
   \fi
   \AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
-\else
-  \RequirePackage[pdftex]{hyperref}
 \fi 
 
 \hypersetup{ CJKbookmarks=true,
@@ -1187,7 +1188,6 @@
 %    \begin{macrocode}
 \DefineFNsymbols{cjk}{{\mbox{①}}{\mbox{②}}{\mbox{③}}{\mbox{④}}{\mbox{⑤
 }}{\mbox{⑥}}{\mbox{⑦}}{\mbox{⑧}}{\mbox{⑨}}{\mbox{⑩}}}
-
 \setfnsymbol{cjk} % 默认采用~CJK 模式
 %</cfg>
 %    \end{macrocode}
@@ -1662,16 +1662,7 @@
 \sloppy
 %    \end{macrocode}
 
-% 这段代码很厉害，如果放在导言区有两个作用：
-% \begin{itemize}
-% \item 导言区中用中文（这个对模板来说没用）
-% \item 据说可以避免~hyperref 没完没了的~warning（时而成功时而失败）
-% \end{itemize} 
-%    \begin{macrocode}
-\AtEndOfPackage{\@tempcnta=128%
- \loop \catcode\@tempcnta=13 \ifnum\@tempcnta<255 \advance \@tempcnta \@ne\repeat}
-%    \end{macrocode}
-
+%
 % 自动开启~CJK，并读入配置文件
 %    \begin{macrocode}
 \AtBeginDocument{\begin{CJK*}{GBK}{song}\CJKindent\CJKtilde\CJKcaption{thuthesis}}
@@ -1679,5 +1670,12 @@
 %</cls>
 %    \end{macrocode}
 
+% \section{TODO}
+% 还有几个问题需要解决：
+% \begin{itemize}
+% \item 加入对本科论文、博士论文的支持；
+% \item thubib.bst 不能自动处理中文期刊等文献；
+% \item 引用警告无法去除（似乎是~CJK 的~bug），现在甚至没有好的~workaround。
+% \end{itemize}
 % \Finale
 \endinput
