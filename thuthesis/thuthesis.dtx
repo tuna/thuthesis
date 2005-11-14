@@ -22,7 +22,7 @@
 % $Id$
 % \fi
 
-% \CheckSum{1289}
+% \CheckSum{1292}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -49,7 +49,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cpx}
-[2005/11/07 1.2 Tsinghua University Thesis Template]
+[2005/11/14 1.3 Tsinghua University Thesis Template]
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -72,8 +72,8 @@
 % \GetFileInfo{thuthesis.dtx}
 %
 % \def\thupackage{Thu\-Thesis}
-% \def\filedate{2005/11/07}
-% \def\fileversion{1.2}
+% \def\filedate{2005/11/14}
+% \def\fileversion{1.3}
 %
 % \changes{v1.0-}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 %
@@ -82,6 +82,9 @@
 %
 % \changes{v1.2}{2005/11/04}{Remove |fancyref|; Remove |ucite| and implemente
 % |onlinecite|; use package arial or helvet selectively.}
+%
+% \changes{v1.3}{2005/11/14}{replace subfigure with subfig, replace caption2
+% with caption, add details about using figure in the example.}
 %
 % \IndexPrologue{\section*{索引}%
 %    \addcontentsline{toc}{section}{索~~~~引}}
@@ -168,7 +171,6 @@
 %
 % 得到的模板文件都在当前目录，没有安装到系统~|TDS|，主要是考虑到方便，修改，更新
 % 容易一些。只有自己用没必要全局安装。
-%
 %
 %
 % 本模板作为一个~class 出现，而不是“报盘版”的~package。所以在使用方法上有一些
@@ -404,12 +406,12 @@
 
 % 图形支持宏包 
 %    \begin{macrocode}
-  \RequirePackage[dvips]{graphicx}
+  \RequirePackage{graphicx}
 %    \end{macrocode}
 
-% 并排图形
+% 并排图形。subfigure 已经不再推荐，用新的~subfig。
 %    \begin{macrocode}
-\RequirePackage{subfigure}
+\RequirePackage{subfig}
 %    \end{macrocode}
 
 % 支持彩色
@@ -482,13 +484,13 @@
 
 % 定理类环境宏包，其中~amsmath 选项用来兼容~AMS LaTeX 的宏包
 %    \begin{macrocode}
-\RequirePackage[amsmath,thmmarks]{ntheorem}
+\RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 %    \end{macrocode}
 
 % 因为图形可浮动到当前页的顶部，所以它可能会出现
 % 在它所在文本的前面. 要防止这种情况，可使用~flafter 宏包
 %    \begin{macrocode}
-% \RequirePackage{flafter}
+ % \RequirePackage{flafter}
 %    \end{macrocode}
 
 % 确定浮动对象的位置，可以使用~H，强制将浮动对象放到这里（可能效果很差）
@@ -501,10 +503,9 @@
 % 该宏包提供处理浮动对象的~|\FloatBarrier| 命令，使所有未处
 % 理的浮动图形立即被处理。这三个宏包仅供参考，未必使用：
 %    \begin{macrocode}
-% \RequirePackage[below]{placeins}
-% 
-% \RequirePackage{floatflt} % 图文混排用宏包
-% \RequirePackage{rotating} % 图形和表格的控制旋转
+ % \RequirePackage[below]{placeins}
+ % \RequirePackage{floatflt} % 图文混排用宏包
+ % \RequirePackage{rotating} % 图形和表格的控制旋转
 %    \end{macrocode}
 
 % 表格控制
@@ -546,7 +547,7 @@
 
 % 可将浮动对象放置到文件的最后
 %    \begin{macrocode}
-% \RequirePackage{endfloat}
+  % \RequirePackage{endfloat}
 %    \end{macrocode}
 
 
@@ -555,19 +556,20 @@
 \RequirePackage{fancyhdr}
 %    \end{macrocode}
 
-% 浮动图形和表格标题样式
+% 浮动图形和表格标题样式。caption2 已经不推荐使用，采用新的~caption。它会自动被
+% ~subfig 装载进来。所以可以在后面看到~|captionsetup| 的命令。否则，强制装载。
 %    \begin{macrocode}
-\RequirePackage{caption2}
+\@ifpackageloaded{caption}{}{\RequirePackage{caption}}
 %    \end{macrocode}
 
 % 定制表格和图形的多行标题行距
 %    \begin{macrocode}
-% \RequirePackage{setspace}  
+  % \RequirePackage{setspace}  
 %    \end{macrocode}
 
 % 适用图文混排宏包
 %    \begin{macrocode}
-% \RequirePackage{wrapfig}
+  % \RequirePackage{wrapfig}
 %    \end{macrocode}
 
 % 参考文献引用宏包。
@@ -610,6 +612,7 @@
              plainpages=false,
              pdfstartview=FitH}
 %    \end{macrocode}
+
 % \iffalse
 % 我还不知道这个包究竟是干什么用的 
 % \RequirePackage{fancyref}
@@ -693,27 +696,23 @@
 
 % 定制浮动图形和表格标题样式
 % \begin{itemize}
+% \item 图表标题字体为~11pt， 这里写作大五号
+% \item 去掉图表号后面的冒号。图序与图名文字之间空一个汉字符宽度。
 % \item  图：caption 在下，段前空~6 磅，段后空~12 磅
 % \item  表：caption 在上，段前空~12 磅，段后空~6 磅
 %\end{itemize}
 %    \begin{macrocode}
-\setlength{\abovecaptionskip}{12bp}
-\setlength{\belowcaptionskip}{6bp}
+\DeclareCaptionLabelFormat{thu}{{\dawu\song #1~\rmfamily #2}}
+\DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
+\DeclareCaptionFont{thu}{\dawu}
 
-\renewcommand{\captionfont}{\CJKfamily{song}\rmfamily}
-\renewcommand{\captionlabelfont}{\CJKfamily{song}\rmfamily}
-%    \end{macrocode}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
 
-% 按清华标准， 去掉图表号后面的冒号。
-% 图序与图名文字之间空一个汉字符宽度。
-% TODO: 这个办法比较怪，还有标准的命令~|\captionlabelsep|
-%    \begin{macrocode}
-\renewcommand{\captionlabeldelim}{\hspace{1em}}
-%    \end{macrocode}
-
-% 按清华标准， 图表标题字体为~11pt， 这里写作大五号
-%    \begin{macrocode}
-\renewcommand{\captionfont}{\dawu}
+\captionsetup{aboveskip=12bp,belowskip=6bp}
+\captionsetup{format=hang,labelformat=thu,labelsep=thu,font=thu}
+ %\renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
+ % \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
 
 % 简单的表格使用三线表推荐用~|\hlinewd|。如果表格比较复杂还是用~|booktabs| 的命
@@ -843,9 +842,8 @@
 \theoremstyle{plain} 
 \theorembodyfont{\song\rmfamily}
 \theoremheaderfont{\hei\rmfamily} 
-\theoremstyle{nonumberplain}
-\theoremsymbol{$\blacksquare$}
-\theoremsymbol{$\square$}
+\theoremsymbol{\ensuremath{\blacksquare}}
+ % \theoremsymbol{\ensuremath{\square}}
 %</cls>
 %    \end{macrocode}
 
@@ -854,14 +852,15 @@
 %<*cfg>
 \theoremseparator{：}
 \newtheorem{definition}{定义}[chapter]
-\newtheorem{proposition}[definition]{命题}
-\newtheorem{lemma}[definition]{引理}
+\newtheorem{proposition}{命题}[chapter]
+\newtheorem{lemma}{引理}[chapter]
 \newtheorem{theorem}{定理}[chapter]
-\newtheorem{axiom}{公理}
-\newtheorem{corollary}[definition]{推论}
-\newtheorem{exercise}[definition]{练习}
+\newtheorem{axiom}{公理}[chapter]
+\newtheorem{corollary}{推论}[chapter]
+\newtheorem{exercise}{练习}[chapter]
+\newtheorem{example}{例}[chapter]
+\theoremstyle{nonumberplain}
 \newtheorem{proof}{证明}
-\newtheorem{example}{例}
 
 \@ifundefined{CJKnumber}
   {\def\CJKnumber#1{\ifcase#1零\or
@@ -1022,10 +1021,6 @@
 \setcounter{tocdepth}{4}
 %    \end{macrocode}
 
-% 按清华标准， 缩小目录中各级标题之间的缩进
-%
-% TODO: 每章标题行前空6磅，后空0磅
-
 % \iffalse
 % 为了方便控制，使用titlecontents取代dottedcontents命令。
 
@@ -1047,6 +1042,7 @@
 % contentslabel 即是~2.3 等标号的宽度。
 % \fi
 
+% TODO: 每章标题行前空6磅，后空0磅
 % 如果使用目录项中英文要使用~arial，那么就加上~sffamily
 %    \begin{macrocode}
 \let\mytoc=\relax 
@@ -1144,8 +1140,7 @@
 \fancyfoot[C,C]{\wuhao \thepage}
 %    \end{macrocode}
 
-% TODO:
-% 标号在正文中是上标，在脚注中为正体
+% TODO:  标号在正文中是上标，在脚注中为正体
 %    \begin{macrocode}
 \renewcommand\@makefntext[1]{\indent\makebox[1.8em][r]{\@thefnmark.\,}#1}
 %    \end{macrocode}
