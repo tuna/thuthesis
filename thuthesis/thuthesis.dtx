@@ -22,7 +22,7 @@
 % $Id$
 % \fi
 
-% \CheckSum{1292}
+% \CheckSum{1293}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -49,7 +49,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cpx}
-[2005/11/14 1.3 Tsinghua University Thesis Template]
+[2005/11/20 1.3r1 Tsinghua University Thesis Template]
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -72,8 +72,8 @@
 % \GetFileInfo{thuthesis.dtx}
 %
 % \def\thupackage{Thu\-Thesis}
-% \def\filedate{2005/11/14}
-% \def\fileversion{1.3}
+% \def\filedate{2005/11/20}
+% \def\fileversion{1.3r1}
 %
 % \changes{v1.0-}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 %
@@ -86,6 +86,10 @@
 % \changes{v1.3}{2005/11/14}{replace subfigure with subfig, replace caption2
 % with caption, add details about using figure in the example.}
 %
+% \changes{v1.3r1}{2005/11/20}{I do not why |\textbf{thu@secret}| does not work
+% now for v1.3, while it's fine in v1.2. Temporarily, I remove the directive
+% :(. There might be nicer solution. Other changes: add |config| option to
+% subfig to be compatible with subfigure. add |courier| package for tt font.}
 % \IndexPrologue{\section*{索引}%
 %    \addcontentsline{toc}{section}{索~~~~引}}
 % \GlossaryPrologue{\section*{ChangeLog}
@@ -389,32 +393,35 @@
 \RequirePackage{ifpdf}
 %    \end{macrocode}
 
+% 用~mathptmx 替换~times 宏包，它可以使公式中也用~times 字体。tt 字体用我们熟悉
+% 的~courier。
+%    \begin{macrocode}
+\RequirePackage{mathptmx} 
+\RequirePackage{courier}
+%    \end{macrocode}
+
 % arial 字体需要单独安装，请参见~\url{http://www.agh.edu.pl/pub/tex/fonts/psfonts/monotype/arial/}
 % 如果不使用~arial 字体，可以用~helvet 字体~|\textsf| 模拟。二者基本没有差别。如
 % 果不想安装~arial，也没有关系。
 %    \begin{macrocode}
 \ifthu@arial
- \IfFileExists{arial.sty}{\RequirePackage{arial}}%
+  \IfFileExists{arial.sty}{\RequirePackage{arial}}%
                      {\RequirePackage[scaled=.92]{helvet}} 
 \fi
 %    \end{macrocode}
 
-% 用~mathptmx 替换~times 宏包，它可以使公式中也用~times 字体。
-%    \begin{macrocode}
-\RequirePackage{mathptmx} 
-%    \end{macrocode}
-
-% 图形支持宏包 
+% 图形支持宏包。
 %    \begin{macrocode}
   \RequirePackage{graphicx}
 %    \end{macrocode}
 
-% 并排图形。subfigure 已经不再推荐，用新的~subfig。
+% 并排图形。subfigure 已经不再推荐，用新的~subfig。加入~|config| 选项以便兼容
+% ~|subfigure| 的命令。
 %    \begin{macrocode}
-\RequirePackage{subfig}
+\RequirePackage[config]{subfig}
 %    \end{macrocode}
 
-% 支持彩色
+% 支持彩色。恐怕我们并不需要。
 %    \begin{macrocode}
 \RequirePackage{color}
 %    \end{macrocode}
@@ -661,8 +668,8 @@
 %   value 7pt plus 3pt minus 4pt).
 % \end{itemize}
 %    \begin{macrocode}
-\abovedisplayskip=12bp plus 0.0bp minus 3.0bp	    	    
-\abovedisplayshortskip=9bp minus 3.0bp
+\abovedisplayskip=8bp plus 2bp minus 2bp	    	    
+\abovedisplayshortskip=8bp plus 2bp minus 2bp
 \belowdisplayskip=\abovedisplayskip
 \belowdisplayshortskip=\abovedisplayshortskip
 %    \end{macrocode}
@@ -1377,7 +1384,8 @@
     \vspace{0.6cm}
 
     \parbox[t]{\textwidth}{\sihao
-    \hspace*{2em}\textbf{\thu@secret}}
+    \hspace*{2em}{\thu@secret}} % TODO: why \textbf cause error in 1.3
+                                % while it works fine in 1.2?
 
     \vspace{1.9cm}
 
