@@ -22,7 +22,7 @@
 % $Id$
 % \fi
 
-% \CheckSum{1293}
+% \CheckSum{0}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -153,7 +153,8 @@
 % （main.tex，data/ 和~ref/）和~utils/\footnote{其中附带了一些可能用到的文件，
 %   如~ccmap.sty，CJKpunct.sty，thubib.bst，hypernat.sty 以及修改过
 %   的~ntheorem.sty。如果不想安装到系统目录，就把它们拷贝到论文的主目录。如果你的
-%   系统缺少模板中用到的其它宏包，请自行下载安装}。在使用之前需要先生成模板文件和配置文件：
+%   系统缺少模板中用到的其它宏包，请自行下载安装}。在使用之前需要先生成模板文件
+%   和配置文件（可以参考~|Readme| 和~|Makefile|）：
 % 
 % \begin{verbatim}
 % $ cd thuthesis
@@ -233,27 +234,30 @@
 % \label{sec:option}
 % 本模板提供了一些选项以方便使用：
 %
-% \DescribeMacro{bachelor}
-% 如果写本科论文只要把~bachelor 选项打开就可以。（尚不支持）
+% \DescribeMacro{bachelor} 
+%  如果写本科论文只要把~bachelor 选项打开就可以。（尚不支持） 
 %
-% \DescribeMacro{master}
-% 如果写硕士论文只要把~master 选项打开就可以。
+% \DescribeMacro{master}  
+%  如果写硕士论文只要把~master 选项打开就可以。
 %
 % \DescribeMacro{doctor}
-% 如果写硕士论文只要把~doctor 选项打开就可以。（尚不支持）
+%  如果写硕士论文只要把~doctor 选项打开就可以。（尚不支持）
 %
 % \DescribeMacro{dvips}
 % 打开~dvips 支持，否则为~dvipdfm，如果运行~pdflatex，则二者皆不用。
 %
-% \DescribeMacro{arial}
-% 使用真正的~arial 字体（默认打开）。此选项会装载~arial 字体宏包，如果此宏包不存在，就装载~Helvet
-% 。arialtoc 和~arialtitle 不受~arial 的影响。
-% 
-% \DescribeMacro{arialtoc}
-% 目录项中的英文是否用~arial 字体（默认打开）。
+% \DescribeMacro{arial} 
+%  使用真正的~arial 字体。此选项会装载~arial 字体宏包，如果此宏包不存在，就
+%   装载~Helvet。arialtoc 和~arialtitle 不受~arial 的影响。因为一般的~\TeX{} 发
+%   行都没有~arial 字体，所以我们默认采用~helvet。
+%
+% \DescribeMacro{arialtoc}  
+%  目录项中的英文是否用~arial 字体（默认打开）。
 %
 % \DescribeMacro{arialtitle}
-% 章节标题中英文是否用~arial 字体（默认打开）。
+%  章节标题中英文是否用~arial 字体。
+% 
+%
 %
 % \subsection{命令}
 % \label{sec:command}
@@ -376,7 +380,7 @@
 % 默认打开~arialtoc。\textbf{ExecuteOPtions} 的参数之间用逗号分割，必须不能有空
 % 格。开始不知道，折腾了老半天。
 %    \begin{macrocode}
-\ExecuteOptions{arial,arialtoc}
+\ExecuteOptions{arialtoc}
 \ProcessOptions
 \LoadClass[12pt, a4paper, openright]{book}
 %    \end{macrocode}
@@ -407,6 +411,8 @@
 \ifthu@arial
   \IfFileExists{arial.sty}{\RequirePackage{arial}}%
                      {\RequirePackage[scaled=.92]{helvet}} 
+\else
+  \RequirePackage[scaled=0.92]{helvet}
 \fi
 %    \end{macrocode}
 
@@ -668,8 +674,8 @@
 %   value 7pt plus 3pt minus 4pt).
 % \end{itemize}
 %    \begin{macrocode}
-\abovedisplayskip=8bp plus 2bp minus 2bp	    	    
-\abovedisplayshortskip=8bp plus 2bp minus 2bp
+\abovedisplayskip=9bp plus 2bp minus 2bp	    	    
+\abovedisplayshortskip=9bp plus 2bp minus 2bp
 \belowdisplayskip=\abovedisplayskip
 \belowdisplayshortskip=\abovedisplayshortskip
 %    \end{macrocode}
