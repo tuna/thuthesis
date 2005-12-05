@@ -22,7 +22,7 @@
 % $Id$
 % \fi
 
-% \CheckSum{0}
+% \CheckSum{1331}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -45,13 +45,6 @@
 % \iffalse
 %<*driver>
 \ProvidesFile{thuthesis.dtx}
-%</driver>
-%<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<cls>\ProvidesClass{thuthesis}
-%<cfg>\ProvidesFile{thuthesis.cpx}
-[2005/11/20 1.3r1 Tsinghua University Thesis Template]
-%
-%<*driver>
 \documentclass{ltxdoc}
 \usepackage{CJK}
 \usepackage{indentfirst}
@@ -68,12 +61,18 @@
 \end{CJK*}
 \end{document}
 %</driver>
+%<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<cls>\ProvidesClass{thuthesis}
+%<cfg>\ProvidesFile{thuthesis.cpx}
+[2005/12/05 1.3r2 Tsinghua University Thesis Template]
+%
 % \fi
 % \GetFileInfo{thuthesis.dtx}
+% \MakeShortVerb{\|}
 %
 % \def\thupackage{Thu\-Thesis}
-% \def\filedate{2005/11/20}
-% \def\fileversion{1.3r1}
+% \def\filedate{2005/12/05}
+% \def\fileversion{1.3r2}
 %
 % \changes{v1.0-}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 %
@@ -90,6 +89,11 @@
 % now for v1.3, while it's fine in v1.2. Temporarily, I remove the directive
 % :(. There might be nicer solution. Other changes: add |config| option to
 % subfig to be compatible with subfigure. add |courier| package for tt font.}
+%
+% \changes{v1.3r2}{2005/12/05}{Fix the problem of |\textbf{chinese}|, that is
+% because both CJK and everysel redefined the |\selectfont|. So, a not so good
+% workaround is merge them up. Add |shuji| example. Add |pozhehao| command.}
+%
 % \IndexPrologue{\section*{索引}%
 %    \addcontentsline{toc}{section}{索~~~~引}}
 % \GlossaryPrologue{\section*{ChangeLog}
@@ -109,7 +113,6 @@
 % \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
 % \DoNotIndex{\@@par} 
 %
-% \MakeShortVerb{\|}
 % 
 % \title{\textsf{\thupackage}：清华大学论文模板\thanks{This file
 %        has version number \fileversion, last revised \filedate.}}
@@ -146,7 +149,7 @@
 
 % \subsection{安装}
 % \label{sec:install}
-% 如果你习惯“报盘版”那个模板的使用方式，请到我的主页\footnote{\url{http://learn.tsinghua.edu.cn/homepage/2003214890}}上去下载，里面有具体的使用说明。
+% 如果你习惯“报盘版”那个模板的使用方式，请到我的主页\footnote{\url{http://learn.tsinghua.edu.cn:8080/2003214890}}上去下载，里面有具体的使用说明。
 
 % 使用本模板也先去下载~thuthesis.tgz，然后解压缩，所有的东西都在~thuthesis 文件夹
 % 中：模板源文件（thuthesis.ins 和~thuthesis.dtx），示例文档
@@ -158,12 +161,12 @@
 % 
 % \begin{verbatim}
 % $ cd thuthesis
-% $ latex thuthesis.ins  % 生成~thuthesis.cls 和~thuthesis.cpx
+% $ latex thuthesis.ins  % 生成 thuthesis.cls 和 thuthesis.cpx
 %
 % $ latex thuthesis.dtx
 % $ makeindex -s gind.ist thuthesis
 % $ makeindex -s gglo.ist -o thuthesis.gls thuthesis.glo 
-% $ latex thuthesis.dtx  % 生成说明文档~thuthesis.dvi
+% $ latex thuthesis.dtx  % 生成说明文档 thuthesis.dvi
 % \end{verbatim}
 
 % 上面是最笨的方法，如果有~make 就方便多了。
@@ -171,7 +174,7 @@
 % $ make clean 
 % $ make         % 生成~thuthesis.cls 和~thuthesis.cpx
 % $ make doc     % 生成说明文档~thuthesis.dvi
-% $ make example % 查看示例文档
+% $ make example % 查看示例文档，生成 main.pdf 和 shuji.pdf。
 % \end{verbatim}
 %
 % 得到的模板文件都在当前目录，没有安装到系统~|TDS|，主要是考虑到方便，修改，更新
@@ -183,7 +186,7 @@
 
 % \noindent\hrulefill
 % \begin{verbatim}
-% \documentclass[master]{thuthesis}
+% \documentclass[master,dvips]{thuthesis}
 
 % \begin{document}
 
@@ -224,8 +227,6 @@
 % \let\cleardoublepage\relax
 % \include{data/publications}
 
-% % 生成书脊（最好在独立的文件中生成）
-% \shuji[清华大学~\hspace{0.1em}\raisebox{2pt}{\LaTeX}\hspace{-0.25em} 论文模板~\hspace{0.1em}\raisebox{2pt}{v\version}\hspace{-0.25em} 样例]
 % \end{document}
 % \end{verbatim}
 % \noindent\hrulefill
@@ -285,8 +286,25 @@
 %
 % \DescribeMacro{\shuji}
 % 生成装订的书脊，为竖排格式，默认参数为论文中文题目。如果中文题目中没有英文字母
-% ，那么直接调用此命令即可。否则，就要像例子里面那样做一些微调。其实这个命令单独
-% 生成更好一些，不要和论文混在一起。
+% ，那么直接调用此命令即可。否则，就要像例子里面那样做一些微调。其实这个命令在独
+% 立的文件生成更好一些，不要和论文混在一起。下面是一个列子：
+% \begin{verbatim}
+% \documentclass{thuthesis}
+%
+% \begin{document}
+% \ctitle{论文中文题目}
+% \cauthor{中文姓名}
+% % |\shuji| 命令需要上面两个变量
+% \shuji
+%
+% % 如果你的中文标题中有英文，那可以指定：
+% \shuji[清华大学~\hspace{0.1em}\raisebox{2pt}{\LaTeX}\hspace{-0.25em} 论文模板~\hspace{0.1em}\raisebox{2pt}{v\version}\hspace{-0.25em} 样例]
+% \end{document}
+% \end{verbatim}
+%
+% \DescribeMacro{\pozehao} 中文破则号在~\TeX{} 里没有很好的处理，我们平时输入的都
+% 是两个小短线，比如这样，{\CJKfamily{hei} 中国——中华人民共和国}。这不符合中文习惯。所以这
+% 里定义了一个命令生成更好看的破则号，不过这似乎不是一个好的解决办法。
 %
 % 下面这两个命令用处不大：
 %
@@ -298,6 +316,7 @@
 % 参数，第一个是放缩比例，第二个是图形文件。
 %
 % 还有几个自定义环境：
+% 
 % \DescribeEnv{Aphorism}
 % 这是王磊模板里面的一个小东西，可以放置一段名言之类的东西，觉得挺有意思，就留下
 % 来吧。具体格式：
@@ -855,8 +874,8 @@
 \theoremstyle{plain} 
 \theorembodyfont{\song\rmfamily}
 \theoremheaderfont{\hei\rmfamily} 
-\theoremsymbol{\ensuremath{\blacksquare}}
- % \theoremsymbol{\ensuremath{\square}}
+ % \theoremsymbol{\ensuremath{\blacksquare}}
+\theoremsymbol{}
 %</cls>
 %    \end{macrocode}
 
@@ -872,6 +891,7 @@
 \newtheorem{corollary}{推论}[chapter]
 \newtheorem{exercise}{练习}[chapter]
 \newtheorem{example}{例}[chapter]
+\theoremsymbol{\ensuremath{\square}}
 \theoremstyle{nonumberplain}
 \newtheorem{proof}{证明}
 
@@ -1390,8 +1410,7 @@
     \vspace{0.6cm}
 
     \parbox[t]{\textwidth}{\sihao
-    \hspace*{2em}{\thu@secret}} % TODO: why \textbf cause error in 1.3
-                                % while it works fine in 1.2?
+    \hspace*{2em}\textbf{\thu@secret}}
 
     \vspace{1.9cm}
 
@@ -1582,7 +1601,12 @@
 
 % \subsubsection{自定义命令和环境}
 % \label{sec:userdefine}
-%
+% 定义破则号。两个字宽，ex 差不多是当前字体的一半高度，所以通过~|\rule| 可以简单
+% 的完成破则号绘制。
+%    \begin{macrocode}
+\newcommand{\pozehao}{~\rule[0.95ex]{2em}{0.1ex}~}
+%    \end{macrocode}
+% 
 % 定义题头格言的格式
 %    \begin{macrocode}
 \newsavebox{\AphorismAuthor}
@@ -1663,18 +1687,45 @@
 % General defer codes
 %
 
+% \iffalse
 % |\tolerance| is often a good method for adjusting spacing; Plain \TeX{} and
 % \LaTeX{} both set its value to 200. LaTeX's |\sloppy| command sets it to 9999,
 % as does the sloppypar environment. This value is the largest available, this
 % side of infinity, and can allow pretty poor-looking breaks
 %    \begin{macrocode}
-\sloppy
+%    \end{macrocode}
+% \fi
+%
+%
+% caption 宏包会调用~ragged2e，ragged2e 又调用~everysel。而~everysel 宏包和~CJK
+% 宏包都要修改~|\selectfont|，一个是给~|\selectfont| 加~hook，一个是让
+% ~|\selectfont| 支持~|\CJKbold|。幸好两者本质上并不冲突，把他们源文件中对
+% ~|\selectfont| 重定义的部分合并一下就可以了。
+%    \begin{macrocode}
+\def\fixselectfont{%
+  \DeclareRobustCommand{\selectfont}{%
+       \ifx\f@linespread\baselinestretch \else
+          \set@fontsize\baselinestretch\f@size\f@baselineskip \fi
+       \xdef\font@name{%
+          \csname\curr@fontshape/\f@size\endcsname}%
+       \pickup@font
+       \font@name
+   % CJK addition:
+       \CJK@bold@false
+       \csname \curr@fontshape\endcsname
+   % everysel addition:
+       \@EverySelectfont@EveryHook
+       \@EverySelectfont@AtNextHook
+       \gdef\@EverySelectfont@AtNextHook{}%
+   % end additions
+       \size@update
+       \enc@update}
+}
 %    \end{macrocode}
 
-%
 % 自动开启~CJK，并读入配置文件
 %    \begin{macrocode}
-\AtBeginDocument{\begin{CJK*}{GBK}{song}\CJKindent\CJKtilde\CJKcaption{thuthesis}}
+\AtBeginDocument{\fixselectfont\begin{CJK*}{GBK}{song}\sloppy\CJKindent\CJKtilde\CJKcaption{thuthesis}}
 \AtEndDocument{\clearpage\end{CJK*}}
 %</cls>
 %    \end{macrocode}
