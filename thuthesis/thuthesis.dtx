@@ -22,8 +22,7 @@
 % $Id$
 % \fi
 
-% \CheckSum{1331}
-%
+% \CheckSum{1338}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -39,7 +38,6 @@
 %   Right bracket \]     Circumflex    \^     Underscore    \_
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
-%
 
 %
 % \iffalse
@@ -53,51 +51,55 @@
 \setlength{\parindent}{22pt}
 \EnableCrossrefs
 \CodelineIndex
-\RecordChanges      % Gather update information
- %\OnlyDescription  % comment out for implementation details
+\RecordChanges      
+ %\OnlyDescription  
 \begin{document}
 \begin{CJK*}{GBK}{song}
 \DocInput{thuthesis.dtx}
 \end{CJK*}
 \end{document}
 %</driver>
+%
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cpx}
-[2005/12/05 1.3r2 Tsinghua University Thesis Template]
+%<cls|cfg>[2005/12/14 1.4rc1 Tsinghua University Thesis Template]
 %
 % \fi
+%
 % \GetFileInfo{thuthesis.dtx}
 % \MakeShortVerb{\|}
 %
+%
 % \def\thupackage{Thu\-Thesis}
-% \def\filedate{2005/12/05}
-% \def\fileversion{1.3r2}
+% \def\filedate{2005/12/14}
+% \def\fileversion{1.4rc1}
 %
 % \changes{v1.0-}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 %
 % \changes{v1.1}{2005/11/03}{Initial version, migrate from the old ``Bao--Pan''
 % version. Make the template a class instead of package.}
 %
-% \changes{v1.2}{2005/11/04}{Remove |fancyref|; Remove |ucite| and implemente
-% |onlinecite|; use package arial or helvet selectively.}
+% \changes{v1.2}{2005/11/04}{Remove \textbf{fancyref}; Remove \textbf{ucite} and implemente
+% \textbf{onlinecite}; use package arial or helvet selectively.}
 %
 % \changes{v1.3}{2005/11/14}{replace subfigure with subfig, replace caption2
 % with caption, add details about using figure in the example.}
 %
-% \changes{v1.3r1}{2005/11/20}{I do not why |\textbf{thu@secret}| does not work
+% \changes{v1.3rc1}{2005/11/20}{I do not why \textbf{thu@secret} does not work
 % now for v1.3, while it's fine in v1.2. Temporarily, I remove the directive
-% :(. There might be nicer solution. Other changes: add |config| option to
-% subfig to be compatible with subfigure. add |courier| package for tt font.}
+% :(. There might be nicer solution. Other changes: add \textsf{config} option to
+% subfig to be compatible with subfigure. add \textbf{courier} package for tt font.}
 %
-% \changes{v1.3r2}{2005/12/05}{Fix the problem of |\textbf{chinese}|, that is
-% because both CJK and everysel redefined the |\selectfont|. So, a not so good
-% workaround is merge them up. Add |shuji| example. Add |pozhehao| command.}
+% \changes{v1.4}{2005/12/05}{Fix the problem of \textbf{chinese}, that is
+% because both CJK and everysel redefined the \textbf{selectfont}. So, a not so good
+% workaround is merge them up. Add \textbf{shuji} example. Add \textbf{pozhehao} command.}
+%
 %
 % \IndexPrologue{\section*{索引}%
 %    \addcontentsline{toc}{section}{索~~~~引}}
-% \GlossaryPrologue{\section*{ChangeLog}
-%    \addcontentsline{toc}{section}{ChangeLog}}
+% \GlossaryPrologue{\section*{修改记录}
+%    \addcontentsline{toc}{section}{修改记录}}
 %
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
@@ -111,7 +113,8 @@
 % \DoNotIndex{\centering,\raggedright}
 % \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
 % \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
-% \DoNotIndex{\@@par} 
+% \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass} 
+% \DoNotIndex{\AtBeginDocument,\AtEndDocument}
 %
 % 
 % \title{\textsf{\thupackage}：清华大学论文模板\thanks{This file
@@ -162,10 +165,10 @@
 % \begin{verbatim}
 % $ cd thuthesis
 % $ latex thuthesis.ins  % 生成 thuthesis.cls 和 thuthesis.cpx
-%
 % $ latex thuthesis.dtx
-% $ makeindex -s gind.ist thuthesis
-% $ makeindex -s gglo.ist -o thuthesis.gls thuthesis.glo 
+% $ makeindex -s gind -o thuthesis.ind thuthesis.idx
+% $ makeindex -s gglo -o thuthesis.gls thuthesis.glo 
+% $ latex thuthesis.dtx
 % $ latex thuthesis.dtx  % 生成说明文档 thuthesis.dvi
 % \end{verbatim}
 
@@ -348,7 +351,7 @@
 % 环境要好用的多，可参考其文档。
 % 
 %
-% \StopEventually{\PrintIndex\PrintChanges}
+% \StopEventually{\PrintChanges\PrintIndex}
 %
 % \section{实现细节}
 %
@@ -765,7 +768,7 @@
 % \subsubsection{字体}
 % \label{sec:font}
 %
-%
+% \begin{macro}{\song etc.}
 % 重定义字体命令
 %    \begin{macrocode}
 \newcommand{\song}{\CJKfamily{song}}    % 宋体   
@@ -774,6 +777,7 @@
 \newcommand{\hei}{\CJKfamily{hei}}      % 黑体   
 \newcommand{\li}{\CJKfamily{li}}        % 隶书   
 %    \end{macrocode}
+% \end{macro}
 
 % 重定义字号命令
 %
@@ -818,6 +822,7 @@
 % 1bp = 72.27/72 pt
 %\end{verbatim}
 
+% \begin{macro}{\yihao etc.}
 % 采用新的字体命令格式，避免了字号选择和行距的紧耦合。
 % 所有字号定义时为单倍行距，并提供选项指定行距倍数。
 %    \begin{macrocode}
@@ -841,6 +846,7 @@
 \newcommand{\xiaoliu}[1][\baselinestretch]{\choosefont{#1}{6.5bp}}
 \newcommand{\qihao}[1][\baselinestretch]{\choosefont{#1}{5.5bp}}  
 %    \end{macrocode}
+% \end{macro}
 
 % 定义行距
 % 正文小四号（12pt）字，行距为固定值20磅，大约是20/12=1.6667倍行间
@@ -1306,6 +1312,8 @@
 %</cfg>
 %    \end{macrocode}
 
+
+% \begin{macro}{\makecover}
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\makecover}{
@@ -1314,6 +1322,7 @@
     \begin{titlepage}
     \begin{center}
 %    \end{macrocode}
+% \end{macro}
 
 % 题名使用一号黑体字，一行写不下时可分两行写，并采用~1.25 倍行距。
 % 申请学位的学科门类: 小二号宋体字。
@@ -1329,21 +1338,34 @@
      \xiaoer[1] \textrm{\thu@apply}
     \end{center}}
 %    \end{macrocode}
+%</cls>
 
+%<*cfg>
+% \changes{v1.4rc1}{2005/12/14}{I have to put all chinese chars into cfg,
+% otherwise they would not appear.}
+% \begin{macro}{\thu@title@sep}
+% 中文符号只能出现在配置文件中。
+%    \begin{macrocode}
+\newcommand{\thu@title@sep}{：}
+%    \end{macrocode}
+% \end{macro}
+%</cfg>
+
+%<*cls>
 % 作者及导师信息部分使用三号仿宋字
 %    \begin{macrocode}
     \parbox[t][8cm][t]{\textwidth}{{\sanhao[1.5]
     \begin{center} \fs
     \setlength{\extrarowheight}{-2pt}
     \begin{tabular}{p{5em}r@{\extracolsep{4pt}}l}
-    \thu@caffiltitle & ：& \thu@caffil\\
-    \thu@csubjecttitle & ：& \thu@csubject\\
-    \thu@cauthortitle & ：& \thu@cauthor\\
-    \thu@csupervisortitle & ：& \thu@csupervisor\\
+    \thu@caffiltitle & \thu@title@sep & \thu@caffil\\
+    \thu@csubjecttitle & \thu@title@sep & \thu@csubject\\
+    \thu@cauthortitle & \thu@title@sep & \thu@cauthor\\
+    \thu@csupervisortitle & \thu@title@sep & \thu@csupervisor\\
     \ifx\thu@cassosupervisor\@empty \else
-            \thu@cassosupertitle & ：& \thu@cassosupervisor\\\fi
+            \thu@cassosupertitle & \thu@title@sep & \thu@cassosupervisor\\\fi
     \ifx\thu@ccosupervisor\@empty \else
-            \thu@ccosupertitle & ：& \thu@ccosupervisor\fi
+            \thu@ccosupertitle & \thu@title@sep & \thu@ccosupervisor\fi
     \end{tabular} 
     \end{center}}}
 %    \end{macrocode}
@@ -1486,6 +1508,7 @@
 %</cfg>
 %    \end{macrocode}
 
+% \begin{macro}{\acknowledge}
 % 定义致谢
 %    \begin{macrocode}
 %<*cls>
@@ -1535,7 +1558,7 @@
     \end{center}
 }
 %    \end{macrocode}
-
+% \end{macro}
 
 % \subsubsection{书脊}
 % \label{sec:shuji}
@@ -1562,6 +1585,7 @@
 	\hfill\rotatebox[origin=lt]{-90}{\usebox{\saverotate}}}
 %    \end{macrocode}
 
+% \begin{macro}{\shuji}
 % 单独使用书脊命令会在新的一页产生竖排书脊
 %    \begin{macrocode}
 \newcommand{\shuji}[1][\thu@ctitle]{
@@ -1570,18 +1594,20 @@
 \vspace*{1cm}
 \shupai[\textheight-2cm]{\fs\xiaosan #1\hfill\thu@cauthor}}
 %    \end{macrocode}
-
+% \end{macro}
 
 % \subsubsection{索引命令}
 %
 % 生成索引的一些命令，虽然我们暂时还用不到。
 %    \begin{macrocode}
+\iffalse
 \newcommand{\bs}{\symbol{'134}}%Print backslash
  % \newcommand{\bs}{\ensuremath{\mathtt{\backslash}}}%Print backslash
  % Index entry for a command (\cih for hidden command index
 \newcommand{\cih}[1]{%
 \index{commands!#1@\texttt{\bs#1}}%
-\index{#1@\texttt{\hspace*{-1.2ex}\bs #1}}}
+\index{#1@\texttt{\hspace*{-1.2ex}\bs #1}}
+}
 \newcommand{\ci}[1]{\cih{#1}\texttt{\bs#1}}
  % Package
 \newcommand{\pai}[1]{%
@@ -1595,18 +1621,21 @@
 \texttt{#1}}
  % Indexentry for a word (Word inserted into the text)
 \newcommand{\wi}[1]{\index{#1}#1}
-\newenvironment{code}{\begin{quote}}{\end{quote}}
+\fi
 %    \end{macrocode}
-
 
 % \subsubsection{自定义命令和环境}
 % \label{sec:userdefine}
+%
+% \begin{macro}{\pozehao}
 % 定义破则号。两个字宽，ex 差不多是当前字体的一半高度，所以通过~|\rule| 可以简单
 % 的完成破则号绘制。
 %    \begin{macrocode}
-\newcommand{\pozehao}{~\rule[0.95ex]{2em}{0.1ex}~}
+\newcommand{\pozehao}{~\rule[0.8ex]{2em}{0.1ex}~}
 %    \end{macrocode}
+% \end{macro}
 % 
+% \begin{environment}{Aphorism}
 % 定义题头格言的格式
 %    \begin{macrocode}
 \newsavebox{\AphorismAuthor}
@@ -1618,7 +1647,9 @@
 \end{quote}
 \end{sloppypar}\vspace{0.5cm}}
 %    \end{macrocode}
+% \end{environment}
 
+% \begin{environment}{thunumlist}
 % 自定义项目列表标签及格式
 % !!!如果定义命令中有默认参数，那么使用的时候这个参数要用~[] 而不是~|{}|
 %
@@ -1639,7 +1670,11 @@
      \setlength{\topsep}{5pt} %标签与上文的间距
     }}
 {\end{list}}%%%%%
+%    \end{macrocode}
+% \end{environment}
 
+% \begin{environment}{symblist}
+%    \begin{macrocode}
 \newenvironment{symblist}[1][$\triangleright$]{% arg1：列表标记符号
 \begin{list}{#1} %%标签格式
     {
@@ -1655,14 +1690,20 @@
     }}
 {\end{list}}
 %    \end{macrocode}
+% \end{environment}
 
+% \begin{macro}{\mylength}
 % 方便的修改列表间距，推荐使用~paralist 的环境。
 %    \begin{macrocode}
 \newcommand{\mylength}[1][0pt]{\addtolength{\itemsep}{#1}}
 %    \end{macrocode}
+% \end{macro}
 
+% \begin{macro}{\equalbox}
 % 用~|\resizebox| 放缩图的时候一般是等比例的，为了方便定义~|\equalbox|
 % |\newcommand{\equalbox}[2]{\resizebox{#1\height}{#1\width}{#2}}|
+% \end{macro}
+
 
 %  设置~url 样式，与上下文一致
 % ^^A|\ifthenelse{\boolean{hyperrefloaded}}{}{\newcommand{\url}[1]{\blue{#1}}}|
@@ -1670,16 +1711,19 @@
 \urlstyle{same}
 %    \end{macrocode}
 
+% \begin{macro}{\keyspace}
 % 关键字之间的间隔
 %    \begin{macrocode}
 \newcommand{\keyspace}{\hspace{2em}}
 %    \end{macrocode}
+% \end{macro}
 
+% \begin{macro}{\china}
 % 定义自己常用的东西
 %    \begin{macrocode}
 \newcommand{\china}{中华人民共和国\xspace}
 %    \end{macrocode}
-
+% \end{macro}
 
 % \subsubsection{其它}
 % \label{sec:other}
@@ -1696,7 +1740,7 @@
 %    \end{macrocode}
 % \fi
 %
-%
+% \begin{macro}{\fixselectfont}
 % caption 宏包会调用~ragged2e，ragged2e 又调用~everysel。而~everysel 宏包和~CJK
 % 宏包都要修改~|\selectfont|，一个是给~|\selectfont| 加~hook，一个是让
 % ~|\selectfont| 支持~|\CJKbold|。幸好两者本质上并不冲突，把他们源文件中对
@@ -1722,10 +1766,14 @@
        \enc@update}
 }
 %    \end{macrocode}
+% \end{macro}
 
 % 自动开启~CJK，并读入配置文件
 %    \begin{macrocode}
-\AtBeginDocument{\fixselectfont\begin{CJK*}{GBK}{song}\sloppy\CJKindent\CJKtilde\CJKcaption{thuthesis}}
+\AtBeginDocument{\fixselectfont%
+   \begin{CJK*}{GBK}{song}%
+   \sloppy\CJKindent\CJKtilde%
+   \CJKcaption{thuthesis}}
 \AtEndDocument{\clearpage\end{CJK*}}
 %</cls>
 %    \end{macrocode}
@@ -1736,6 +1784,8 @@
 % \item 加入对本科论文、博士论文的支持；
 % \item thubib.bst 不能自动处理中文期刊等文献；
 % \item 引用警告无法去除（似乎是~CJK 的~bug），现在甚至没有好的~workaround。
+% \item 里面很多宏包都用不到，以后准备去掉，用户自己加吧。
 % \end{itemize}
+%
 % \Finale
 \endinput
