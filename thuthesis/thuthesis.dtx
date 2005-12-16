@@ -22,7 +22,7 @@
 % $Id$
 % \fi
 
-% \CheckSum{1338}
+% \CheckSum{1359}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -63,7 +63,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cpx}
-%<cls|cfg>[2005/12/14 1.4rc1 Tsinghua University Thesis Template]
+%<cls|cfg>[2005/12/16 1.5 Tsinghua University Thesis Template]
 %
 % \fi
 %
@@ -72,8 +72,8 @@
 %
 %
 % \def\thupackage{Thu\-Thesis}
-% \def\filedate{2005/12/14}
-% \def\fileversion{1.4rc1}
+% \def\filedate{2005/12/16}
+% \def\fileversion{1.5}
 %
 % \changes{v1.0-}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 %
@@ -222,13 +222,12 @@
 
 % % 附录
 % % \begin{appendix}
-% %    \renewcommand{\chaptername}{附录\Alph{chapter}}
+% %    \renewcommand{\chaptername}{附录~\Alph{chapter}}
 % %    \input{appendix/chap01a}
 % % \end{appendix}
 
-% % 发表的文章列表
-% \let\cleardoublepage\relax
-% \include{data/publications}
+% % 个人简历和发表的文章
+% \include{data/resume}
 
 % \end{document}
 % \end{verbatim}
@@ -286,6 +285,10 @@
 % 学校要求的参考文献引用有两种模式：1）上标模式。比如“同样的工作有很多$^{[1,2]}$\ldots”
 % 。2）正文模式。比如“文[3]中详细说明了\ldots”。其中上标模式使用远比正文模式频
 % 繁，所以为了符合使用习惯，上标模式仍然用常规的~|\cite{key}|，而~|\onlinecite{key}| 则用来生成正文模式。
+%
+% \DescribeMacro{\resume}
+% 开启个人简历章节，包括发表文章列表等。其实就是一个~chapter，把相应的命令调节融
+% 合进来，避免像以前那样手动写很多页眉和目录项的代码。
 %
 % \DescribeMacro{\shuji}
 % 生成装订的书脊，为竖排格式，默认参数为论文中文题目。如果中文题目中没有英文字母
@@ -565,7 +568,7 @@
 \RequirePackage[newitem,newenum]{paralist}
 %    \end{macrocode}
 
-% tex1cm 宏包，控制字体的大小
+% 控制字体的大小
 %    \begin{macrocode}
 \RequirePackage{type1cm}
 %    \end{macrocode}
@@ -696,8 +699,8 @@
 %   value 7pt plus 3pt minus 4pt).
 % \end{itemize}
 %    \begin{macrocode}
-\abovedisplayskip=9bp plus 2bp minus 2bp	    	    
-\abovedisplayshortskip=9bp plus 2bp minus 2bp
+\abovedisplayskip=10bp plus 2bp minus 2bp	    	    
+\abovedisplayshortskip=10bp plus 2bp minus 2bp
 \belowdisplayskip=\abovedisplayskip
 \belowdisplayshortskip=\abovedisplayshortskip
 %    \end{macrocode}
@@ -1238,8 +1241,9 @@
 % 行距采用固定值~16 磅，段前空~3 磅，段后空~0 磅。
 % 让参考条目中间任何位置都不容易被分页断开。
 %    \begin{macrocode}
-\renewenvironment{thebibliography}[1]
-     {\phantomsection % make sure the hyperlink is correct
+\renewenvironment{thebibliography}[1]{
+     \cleardoublepage
+     \phantomsection % make sure the hyperlink is correct
      \addcontentsline{toc}{chapter}{\bibname}%
      \chapter*{\bibname}%
       \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
@@ -1451,8 +1455,10 @@
 % 中文摘要部分的标题为"摘要"，用黑体三号字。
 %    \begin{macrocode}
     \normalsize
-    \chapter*{\abstractname}
+	%\cleardoublepage
+	%\phantomsection
     %\addcontentsline{toc}{chapter}{摘~~~~要}
+    \chapter*{\abstractname}
     \markboth{\abstractshortname}{\abstractshortname}
     \setcounter{page}{1}
 %    \end{macrocode}
@@ -1474,8 +1480,10 @@
 
 % 英文摘要部分的标题为"Abstract"，用~Arial 体三号字，
 %    \begin{macrocode}
+    %\cleardoublepage
+	%\phantomsection
+    %\addcontentsline{toc}{chapter}{Abstract}
     \chapter*{{\sffamily Abstract}}
-    %\addcontentsline{toc}{chapter}{\hei Abstract}
     \markboth{Abstract}{Abstract}
 %    \end{macrocode}
 %
@@ -1508,14 +1516,18 @@
 %</cfg>
 %    \end{macrocode}
 
+
 % \begin{macro}{\acknowledge}
-% 定义致谢
+% 定义致谢。\changes{1.5a}{2005/12/16}{在那些不显示编号的章节前面先执行一次
+% ~cleardoublepage，使新开章节的页码到达正确的状态。否则会因为~addcontentsline
+% 在~chapter 之前而导致目录页码错误。}
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\acknowledge}[1]{
-    \normalsize
+	\cleardoublepage
     \phantomsection 
     \addcontentsline{toc}{chapter}{\thu@acklongname}
+    \normalsize
     \chapter*{\thu@ackname}
     \markboth{\thu@acklongname}{\thu@acklongname}
 
@@ -1557,6 +1569,30 @@
     \thu@signature \hrulefill \thu@backdate \hrulefill}
     \end{center}
 }
+%    \end{macrocode}
+% \end{macro}
+%</cls>
+
+%<*cfg>
+% \changes{1.5b}{2005/12/16}{增加个人简历章节的命令，去掉主文件中需要重新
+% 定义~cleardoublepage 和自己写~markboth，addcontentsline 的部分。}
+% 定义个人简历章节标题
+%    \begin{macrocode}
+\newcommand{\thu@resume@title}{个人简历、在学期间的研究成果及发表的论文}
+%    \end{macrocode}
+%</cfg>
+
+%<*cls>
+% \begin{macro}{\resume}
+% 个人简历发表文章等。
+%    \begin{macrocode}
+\newcommand{\resume}{
+   \let\cleardoublepage\relax
+   \cleardoublepage
+   \phantomsection
+   \addcontentsline{toc}{chapter}{\thu@resume@title}
+   \chapter*{\thu@resume@title}
+   \markboth{\thu@resume@title}{\thu@resume@title}}
 %    \end{macrocode}
 % \end{macro}
 
