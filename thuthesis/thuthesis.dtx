@@ -7,17 +7,17 @@
 
 % \iffalse meta-comment
 %
-% Copyright (C) 2005 by Xue Ruini <xueruini@gmail.com>
+% Copyright (C) 2005-2006 by Xue Ruini <xueruini@gmail.com>
 %
 % This file may be distributed and/or modified under the
-% conditions of the LaTeX Project Public License, either version 1.3
+% conditions of the LaTeX Project Public License, either version 1.3a
 % of this license or (at your option) any later version.
 % The latest version of this license is in:
 %
 % http://www.latex-project.org/lppl.txt
 %
-% and version 1.3 or later is part of all distributions of LaTeX
-% version 2003/12/01 or later.
+% and version 1.3a or later is part of all distributions of LaTeX
+% version 2004/10/01 or later.
 %
 % $Id$
 % \fi
@@ -74,8 +74,8 @@
 %
 %
 % \def\thupackage{Thu\-Thesis}
-% \def\filedate{2005/12/21}
-% \def\fileversion{2.0}
+% \def\filedate{2006/01/12}
+% \def\fileversion{2.1}
 %
 % \changes{v1.0-}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 %
@@ -146,36 +146,55 @@
 % 用标准的~docstrip 组织，在内容上尽量融合所有论文要求，中文支持采
 % 用~CJK\footnote{对~CCT 不熟悉，所以没有专门花时间去看。}。
 %
-% 在整理这个模板的过程中，我得到不少同学热情的支持，在此不一一列出，感谢他们提供的每一份帮助！
-% 特别需要感谢的是{\CJKfamily{kai}姜苍华}同学，他热心和认真的测试，为模板的快速进展发挥了重要作用！
-% 由于个人水平有限，虽然现在的这个版本基本上满足了学校的大部分要求，但还存在许多不足之
-% 处。而且还有好几种论文格式没有支持，工作量不小，所以再次呼唤感兴趣的同学一起来
-% 做这件事情。
+% 在整理这个模板的过程中，我得到不少同学热情的支持，在此不一一列出，感谢他们提供
+% 的每一份帮助！特别需要感谢的是{\CJKfamily{kai}姜苍华}同学，他热心和认真的测试，
+% 为模板的快速进展发挥了重要作用！
+
+% 由于个人水平有限，虽然现在的这个版本基本上满足了学校的大部分要求，但还存在许多
+% 不足之处。而且还有好几种论文格式没有支持，工作量不小，所以再次呼唤感兴趣的同学
+% 一起来做这件事情。
 %
 % 本文档将尽量简单的介绍模板的使用方法，如有不清楚可以参考示例文档或者直接给我写
 % 信。同时欢迎大家能积极反馈，将模板的~bug 通知我，不胜感激。
 %
 %
 % \section{使用方法}
-
+% \subsection{准备}
+% \label{sec:prepare}
+% 本模板用到以下宏包：
+%
+% \begin{tabular}{llll}
+%   ifthen & clac & ifpdf  & \\
+%   CJK & CJKnumb & CJKpunct &  \\
+%   array & booktabs & footmisc & \\
+%   amsmath & amssymb & \textbf{ntheorem} &  \\
+%   mathptmx & helvet & courier  & pifont \\   
+%   graphicx & subfig & caption  & fancyhdr \\
+%   indentfirst & geometry & titlesec & titletoc \\
+%   \textbf{thubib.bst} & natbib & hyperref & hypernat \\
+% \end{tabular}
+%
+% 绝大多数宏包在各~\TeX~系统都有，除了~thubib.bst 和~ntheorem。
+%
 % \subsection{安装}
 % \label{sec:install}
-% 如果你习惯“报盘版”那个模板的使用方式，请到我的主
-% 页\footnote{\url{http://learn.tsinghua.edu.cn:8080/2003214890}}上去下载，里面有
-% 具体的使用说明。报盘版不再维护，里面存在的问题也不会改正了，建议大家用最新的版本。
+% 如果你习惯“报盘版”那个模板的使用方式，请
+% 到~ThuThesis 主页\footnote{\url{http://thuthesis.sourceforge.net}} 去下载，里面
+% 有具体的使用说明。报盘版不再维护，里面存在的问题也不会改正了，建议大家用最新的
+% 版本。
 %
-% 使用本模板也先去下载~thuthesis.tgz，然后解压缩，所有的东西都在~thuthesis 文件夹
-% 中：模板源文件（thuthesis.ins 和~thuthesis.dtx），参考文献样式~thubib.bst，示例文档
+% 将模板包解压缩，所有的东西都在~thuthesis-VERSION 文件夹中：模板源文件
+% （thuthesis.ins 和~thuthesis.dtx），参考文献样式~thubib.bst，示例文档
 % （main.tex，shuji.tex，thutils.sty\footnote{我把所有可能用到但不一定用到的包以
 %   及一些命令定义都放在这里面，以免主~thuthesis.cls 过分臃肿
 %   。}，data/，figures/ 和~ref/）和~utils/\footnote{其中附带了一些可能用到的文件
-%   ，如~ccmap.sty，CJKpunct.sty，hypernat.sty 以及修改过
-%   的~ntheorem.sty。如果不想安装到系统目录，就把它们拷贝到论文的主目录。如果你的
-%   系统缺少模板中用到的其它宏包，请自行下载安装}。在使用之前需要先生成模板文件和
-% 配置文件（可以参考~|Readme| 和~|Makefile|）：
+%   ，如~ccmap.sty，CJKpunct.sty，hypernat.sty 以及修改过的~ntheorem.sty。如果不
+%   想安装到系统目录，就把它们拷贝到论文的主目录。如果你的系统缺少模板中用到的其
+%   它宏包，请自行下载安装}。在使用之前需要先生成模板文件和配置文件（可以参
+% 考~|Readme| 和~|Makefile|）：
 %
 % \begin{verbatim}
-% $ cd thuthesis
+% $ cd thuthesis-VERSION
 % $ latex thuthesis.ins  % 生成 thuthesis.cls 和 thuthesis.cpx
 % $ latex thuthesis.dtx
 % $ makeindex -s gind.ist -o thuthesis.ind thuthesis.idx
@@ -183,7 +202,14 @@
 % $ latex thuthesis.dtx
 % $ latex thuthesis.dtx  % 生成说明文档 thuthesis.dvi
 % \end{verbatim}
-
+%
+% 如果使用~Windows 平台，可以试一试：
+% \begin{verbatim}
+% your_path > msbuild.bat   % 生成一切
+% your_path > msclean.bat   % 清除一切
+% \end{verbatim}
+%
+%
 % 如果你的系统有~make 那就方便多了。
 % \begin{verbatim}
 % $ make clean
@@ -195,7 +221,8 @@
 % 得到的模板文件都在当前目录，没有安装到系统~|TDS|，主要是考虑到方便，修改，更新
 % 容易一些。只有自己用没必要全局安装。
 %
-%
+% \subsection{用法}
+% \label{sec:usage}
 % 本模板作为一个~class 出现，而不是“报盘版”的~package。所以在使用方法上有一些
 % 差别。下面是一个简单的例子，具体内容可以参考模板附带的~main.tex 文件。
 
@@ -323,10 +350,10 @@
 % \end{document}
 % \end{verbatim}
 %
-% \DescribeMacro{\pozehao}  
-% 中文破则号在~\TeX{} 里没有很好的处理，我们平时输入的都是两个小短线，比如这样
+% \DescribeMacro{\pozhehao}  
+% 中文破折号在~\TeX{} 里没有很好的处理，我们平时输入的都是两个小短线，比如这样
 % ，{\CJKfamily{hei} 中国——中华人民共和国}。这不符合中文习惯。所以这里定义了一
-% 个命令生成更好看的破则号，不过这似乎不是一个好的解决办法。
+% 个命令生成更好看的破折号，不过这似乎不是一个好的解决办法。
 %
 %\subsection{环境}
 %\label{sec:environment}
@@ -350,10 +377,10 @@
 %
 % \subsection{基本信息}
 %    \begin{macrocode}
-%<cls>\NeedsTeXFormat{LaTeX2e}[2099/12/01]
+%<cls>\NeedsTeXFormat{LaTeX2e}
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cpx}
-%<cls|cfg>[2005/12/20 2.0 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/01/12 2.1 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1699,15 +1726,14 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\pozehao}
-% 定义破则号。两个字宽，ex 差不多是当前字体的一半高度，所以通过~|\rule| 可以简单
-% 的完成破则号绘制。
+% \begin{macro}{\pozhehao}
+% 定义破折号。两个字宽，ex 差不多是当前字体的一半高度，所以通过~|\rule| 可以简单
+% 的完成破折号绘制。
+% \changes{2.1}{2006/01/12}{稍微加宽一点。同时把名字改为“破折号”：pozhehao}
 %    \begin{macrocode}
-\newcommand{\pozehao}{\rule[0.8ex]{4ex}{0.08ex}}
+\newcommand{\pozhehao}{\rule[0.8ex]{4ex}{0.1ex}}
 %    \end{macrocode}
 % \end{macro}
-%
-% 其它命令都转移到~thutils.sty 中了，因为用处不大。
 %
 % \begin{macro}{\keyspace}
 % 关键字之间的间隔
@@ -1716,7 +1742,9 @@
 %</cls>
 %    \end{macrocode}
 % \end{macro}
-
+%
+% 其它命令都转移到~thutils.sty 中了，因为用处不大。
+%
 % \subsubsection{其它}
 % \label{sec:other}
 %
