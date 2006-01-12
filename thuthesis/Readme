@@ -1,0 +1,48 @@
+
+For Windows Users:
+------------------
+
+我写了两个简单的批处理文件：msbuild.bat 和 msclean.bat，一个用来
+生成文档，一个用来清除。使用如下：
+
+1. 生成everything（包括模板、文档、示例）
+   msbuild.bat
+
+2. 清除everything
+   msclean.bat
+   
+
+
+Simple Howto:
+-------------
+
+1. 生成class和配置文件
+
+   # latex thuthesis.ins
+  
+   此时会得到 thuthesis.cls 和 thuthesis.cpx 两个文件。
+
+
+2. 获取帮助文档
+
+   # latex thuthesis.dtx
+
+   得到 thuthesis.dvi，帮助文档，里面有详细的说明。
+
+   关于说明文档生成的完整命令请参看 Makefile
+
+
+3. 查看示例文档 (请参看 Makefile)
+   
+   latex mian
+   bibtex main
+   latex main
+   gbk2uni main
+   latex main
+   dvips -ta4 -Ppdf -G0 main.dvi
+   ps2pdf main.ps
+
+4. 书脊示例   
+
+   pdflatex shuji
+

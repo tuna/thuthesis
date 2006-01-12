@@ -1,0 +1,134 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{带~English 的标题}
+\label{cha:intro}
+
+小老鼠偷吃热凉粉；短长虫环绕矮高粱\footnote{韩愈(768─824)，字退之，河南河阳(今河南孟县)人，自称郡望昌黎，世称韩昌黎。幼孤贫刻苦好学，德宗贞元八年进士。曾任监察御史，因上疏请免关中赋役，贬为阳山县令。后随宰相裴度平定淮西迁刑部侍郎，又因上表谏迎佛骨，贬潮州刺史。做过吏部侍郎，死谥文公，故世称韩吏部、韩文公。是唐代古文运动领袖，与柳宗元合称韩柳。诗力求险怪新奇，雄浑重气势。
+}。
+
+\section{封面相关}
+封面的例子请参看~cover.tex。主要符号表参看~denation.tex，附录和个人简历分别参看~appendix01.tex
+和~resume.tex。里面的命令都非常简单，一看即会。
+
+\section{一级标题}
+\label{sec:first}
+
+\subsection{表格样本}
+\label{chap1:sample:table} 模板中关于表格的宏包有两个：~booktabs
+和~array，命令有一个~hlinewd。三线表可以用~booktabs
+提供的~\verb|toprule|、\verb|midrule|
+和~\verb|bottomrule|。它们与~longtable
+能很好的配合使用。如果表格比较简单的话可以直接用命令~\verb|hlinewd{xpt}|
+控制。
+
+\begin{table}[htb]
+  \centering
+  \caption{模板文件。}
+  \label{tab:template-files}
+  \begin{tabular}{ll}
+\hlinewd{1.5pt}
+{\hei 文件名} & {\hei 描述} \\\midrule[1pt]
+thuthesis.ins & \LaTeX{} 安装文件，docstrip \\
+thuthesis.dtx & 所有的一切都在这里面。\\
+thubib.bst    & 参考文献~Bibtex 样式文件。\\
+thutils.sty   & 常用的包和命令写在这里，减轻主文件的负担。\\
+ntheorem.sty  & 修改后的~ntheorem.sty，解决了小黑块乱跑的问题。\\
+CJKpunct.sty  & 中文标点符号美化处理。那些~\verb|*.tbl| 也要用，否则此包不起作用。 \\
+\bottomrule[1.5pt]
+  \end{tabular}
+\end{table}
+
+
+\subsection{定理环境}
+\label{sec:theorem}
+
+给大家演示一下各种和证明有关的环境：
+
+
+\begin{definition}
+子曰：「道千乘之国，敬事而信，节用而爱人，使民以时。」
+\end{definition}
+
+\begin{proposition}
+ 曾子曰：「吾日三省吾身 \pozehao 为人谋而不忠乎？与朋友交而不信乎？传不习乎？」
+\end{proposition}
+
+\begin{lemma}
+《猫和老鼠》是我最爱看的动画片。
+\end{lemma}
+
+\begin{theorem}\label{the:theorem1}
+犯我强汉者，虽远必诛\hfill \pozehao{} 陈汤（汉）
+\end{theorem}
+
+\begin{proof}
+燕赵古称多感慨悲歌之士。董生举进士，连不得志于有司，怀抱利器，郁郁适兹土，吾
+知其必有合也。董生勉乎哉？
+
+夫以子之不遇时，苟慕义强仁者，皆爱惜焉，矧燕、赵之士出乎其性者哉！然吾尝闻
+风俗与化移易，吾恶知其今不异于古所云邪？聊以吾子之行卜之也。董生勉乎哉？
+
+吾因子有所感矣。为我吊望诸君之墓，而观于其市，复有昔时屠狗者乎？为我谢
+曰：“明天子在上，可以出而仕矣！” \hfill\pozehao{}韩愈《送董邵南序》
+\end{proof}
+
+\begin{corollary}
+  四川话配音的《猫和老鼠》是世界上最好看最好听最有趣的动画片。
+\end{corollary}
+
+\begin{example}
+  大家来看这个例子
+\end{example}
+
+\begin{exercise}
+  清列出~Andrew S. Tanenbaum 和~W. Richard Stevens 的所有著作。
+\end{exercise}
+
+如何引用定理~\ref{the:theorem1} 呢？加上~\verb|label| 使用~\verb|ref| 即可。
+
+\subsection{参考文献}
+\label{sec:bib}
+当然参考文献可以直接写~bibitem，虽然费点功夫，但是好控制，各种格式可以自己随意改写。
+
+本模板默认使用~mynewid@SMTH 改写的~unsrt，我增加了~url 支持。看看这个例子
+\cite{BEZOS02}，关于杂志的\cite{ELIDRISSI94, MELLINGER96}，硕士论文
+\cite{shaheshang}，会议论文\cite{DPMG}，技术报告\cite{NPB2}。其中硕士和博士论
+文参考文献要给~bib 文件响应的项目中增加~type 字段，表明论文类型。另外，这个~bst
+目前只能处理英文文献，对于中文文献的诸如“第×卷”、“第×期”需要手动修改~bbl
+文件。（下一步会改进）
+
+有时候不想要上标，那么可以这样~\onlinecite{shaheshang}。
+
+\subsection{公式}
+\label{sec:equation}
+贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中~$p(y|\mathbf{x})$ 为后验；$p(\mathbf{x})$ 为先验；分母~$p(\mathbf{x})$ 为归一化因子。
+\begin{equation}
+ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
+\frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})} \label{equ:chap1:bayes}
+\end{equation}
+
+论文里面公式越多，\TeX{} 就越~happy。再看一个公式：
+\begin{equation}
+E=mc^2
+\label{equ:chap1:albert1}
+\end{equation}
+
+需要注意的是，源文件中公式前不要有空行，否则会生成一个空段落，导致公式前后间距不一致。
+
+\subsection{破则号}
+\label{sec:pozehao}
+
+中文破则号为一个两个字宽垂直居中的直线，输入法直接得到的破则号是两个断开的小短线
+（——），这看起来不舒服。所以我定义了一个破则号的命令~\verb|pozehao|，请看几个
+例子：
+\begin{itemize}
+	\item 这是一个 \pozehao 破则号
+	\item {\sanhao 这是一个 \pozehao 破则号}
+	\item {\erhao 这是一个 \pozehao 破则号}
+\end{itemize}
+
+本文其它地方也还有例子。
