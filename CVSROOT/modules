@@ -24,7 +24,8 @@
 # character to interpose another module into the current module.  This
 # can be useful for creating a module that consists of many directories
 # spread out over the entire source repository.
-core	-d .	thuthesis.ins thuthesis.dtx thubib.bst thutils.sty
-example	-d .	main.tex shuji.tex data figures ref
-aux		-d .	Makefile msbuild.bat msclean.bat Readme
+core	-a 	thuthesis/thuthesis.ins thuthesis/thuthesis.dtx thuthesis/thubib.bst thuthesis/thutils.sty
+example	-a 	thuthesis/main.tex thuthesis/shuji.tex thuthesis/data thuthesis/figures thuthesis/ref
+aux		-a 	thuthesis/Makefile thuthesis/msbuild.bat thuthesis/msclean.bat thuthesis/Readme
+
 
