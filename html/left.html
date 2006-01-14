@@ -23,6 +23,12 @@
 		  PADDING: 5pt 0px 5px 15px;
 		}
 
+		.footdate {		
+		  padding-left: 5pt;
+		  FONT: 9pt Verdana,  Arial, Times New Roman, Courier New, Helvetica;
+		  color: #8f8f8f;
+		}
+
 		A {
   		TEXT-DECORATION: none;
 		color: #292970;
@@ -90,8 +96,8 @@ function DocDate()
 	return dateStr;
 }
 
-document.write("<font size=small color=#8585cc>&nbsp; Last Update: ");
-document.writeln(DocDate(), "</font>");
+document.write("<span class='footdate'>&nbsp; Last Update: ");
+document.writeln(DocDate(), "</span>");
 // -->
 </script>
 </body>
