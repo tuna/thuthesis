@@ -64,4 +64,5 @@ dist:
 	tar zcf $(RE_DIR)-$(VERSION).tar.gz $(RE_DIR)-$(VERSION)
 
 help:
+	@make VERSION=<num> dist
 	@echo -e "\033[1;32mJust Read me, its simple!\n\033[0m"

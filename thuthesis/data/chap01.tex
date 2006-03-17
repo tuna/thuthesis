@@ -7,8 +7,10 @@
 \chapter{带~English 的标题}
 \label{cha:intro}
 
-小老鼠偷吃热凉粉；短长虫环绕矮高粱\footnote{韩愈(768─824)，字退之，河南河阳(今河南孟县)人，自称郡望昌黎，世称韩昌黎。幼孤贫刻苦好学，德宗贞元八年进士。曾任监察御史，因上疏请免关中赋役，贬为阳山县令。后随宰相裴度平定淮西迁刑部侍郎，又因上表谏迎佛骨，贬潮州刺史。做过吏部侍郎，死谥文公，故世称韩吏部、韩文公。是唐代古文运动领袖，与柳宗元合称韩柳。诗力求险怪新奇，雄浑重气势。
+小老鼠偷吃热凉粉；短长虫环绕矮高粱\footnote{韩愈（768-824），字退之，河南河阳(今河南孟县)人，自称郡望昌黎，世称韩昌黎。幼孤贫刻苦好学，德宗贞元八年进士。曾任监察御史，因上疏请免关中赋役，贬为阳山县令。后随宰相裴度平定淮西迁刑部侍郎，又因上表谏迎佛骨，贬潮州刺史。做过吏部侍郎，死谥文公，故世称韩吏部、韩文公。是唐代古文运动领袖，与柳宗元合称韩柳。诗力求险怪新奇，雄浑重气势。
 }。
+
+本人完全了解清华大学有关保留、使用学位论文的规定，即：学校有权保留学位论文的复印件，允许该论文被查阅和借阅；学校可以公布该论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存该论文。涉密的学位论文在解密后应遵守此规定。
 
 \section{封面相关}
 封面的例子请参看~cover.tex。主要符号表参看~denation.tex，附录和个人简历分别参看~appendix01.tex
@@ -17,8 +19,26 @@
 \section{一级标题}
 \label{sec:first}
 
+苏轼（1037-1101）：北宋文学家、书画家。字子瞻，号东坡居士，眉
+州眉山（今属四川）人。苏洵子。嘉佑进士。神宗时曾任祠部员外郎，因反对王
+安石新法而求外职，任杭州通判，知密州、徐州、湖州。后以作诗“谤讪朝廷”
+罪贬黄州。哲宗时任翰林学士，曾出知杭州、颖州等，官至礼部尚书。后又贬谪
+惠州、儋州。北还后第二年病死常州。南宋时追谥文忠。与父洵弟辙，合称“三
+苏”。在政治上属于旧党，但也有改革弊政的要求。其文汪洋恣肆，明白畅达，
+为“唐宋八大家”之一。其诗清新豪健，善用夸张比喻，在艺术表现方面独具风
+格。少数诗篇也能反映民间疾苦，指责统治者的奢侈骄纵。词开豪放一派，对后
+代很有影响。《念奴娇·赤壁怀古》、《水调歌头·丙辰中秋》传诵甚广。擅长
+行书、楷书，取法李邕、徐浩、颜真卿、杨凝式，而能自创新意。用笔丰腴跌宕
+，有天真烂漫之趣。与蔡襄、黄庭坚、米芾并称“宋四家”。能画竹，学文同，
+也喜作枯木怪石。论画主张“神似”，认为“论画以形似，见与儿童邻”；高度
+评价“诗中有画，画中有诗”的艺术造诣。诗文有《东坡七集》等。存世书迹有
+《答谢民师论文帖》、《祭黄几道文》、《前赤壁赋》、《黄州寒食诗帖》等。
+画迹有《枯木怪石图》、《竹石图》等。
+
 \subsection{表格样本}
-\label{chap1:sample:table} 模板中关于表格的宏包有两个：~booktabs
+\label{chap1:sample:table} 
+
+模板中关于表格的宏包有两个：~booktabs
 和~array，命令有一个~hlinewd。三线表可以用~booktabs
 提供的~\verb|toprule|、\verb|midrule|
 和~\verb|bottomrule|。它们与~longtable
@@ -29,15 +49,14 @@
   \centering
   \caption{模板文件。}
   \label{tab:template-files}
-  \begin{tabular}{ll}
+  \begin{tabular}{lp{10cm}}
 \hlinewd{1.5pt}
 {\hei 文件名} & {\hei 描述} \\\midrule[1pt]
 thuthesis.ins & \LaTeX{} 安装文件，docstrip \\
 thuthesis.dtx & 所有的一切都在这里面。\\
-thubib.bst    & 参考文献~Bibtex 样式文件。\\
+chinesebst.bst    & 参考文献~Bibtex 样式文件。\\
 thutils.sty   & 常用的包和命令写在这里，减轻主文件的负担。\\
-ntheorem.sty  & 修改后的~ntheorem.sty，解决了小黑块乱跑的问题。\\
-CJKpunct.sty  & 中文标点符号美化处理。那些~\verb|*.tbl| 也要用，否则此包不起作用。 \\
+CJKpunct.sty  & 中文标点符号美化处理。那些~\verb|*.tbl| 也要用，否则此包不起作用。\\
 \bottomrule[1.5pt]
   \end{tabular}
 \end{table}
@@ -48,22 +67,36 @@ CJKpunct.sty  & 中文标点符号美化处理。那些~\verb|*.tbl| 也要用，否则此包不起作用
 
 给大家演示一下各种和证明有关的环境：
 
-
 \begin{definition}
 子曰：「道千乘之国，敬事而信，节用而爱人，使民以时。」
 \end{definition}
 
+千古第一定义！问世间、情为何物，只教生死相许？天南地北双飞客，老翅几回寒暑。欢乐趣，离别苦，就中更有痴儿女。
+君应有语，渺万里层云，千山暮雪，只影向谁去？
+
+横汾路，寂寞当年箫鼓，荒烟依旧平楚。招魂楚些何嗟及，山鬼暗谛风雨。天也妒，未信与，莺儿燕子俱黄土。
+千秋万古，为留待骚人，狂歌痛饮，来访雁丘处。
+
 \begin{proposition}
- 曾子曰：「吾日三省吾身 \pozehao 为人谋而不忠乎？与朋友交而不信乎？传不习乎？」
+ 曾子曰：「吾日三省吾身 \pozhehao 为人谋而不忠乎？与朋友交而不信乎？传不习乎？」
 \end{proposition}
 
+多么凄美的命题啊！其日牛马嘶，新妇入青庐，奄奄黄昏后，寂寂人定初，我命绝今日，
+魂去尸长留，揽裙脱丝履，举身赴清池，府吏闻此事，心知长别离，徘徊庭树下，自挂东南枝。
+　　
 \begin{lemma}
 《猫和老鼠》是我最爱看的动画片。
 \end{lemma}
 
+是引理就得有新意。行行重行行，与君生别离。相去万余里，各在天一涯。道路阻且长，会
+面安可知。胡马依北风，越鸟巢南枝。相去日已远，衣带日已缓。浮云蔽白日，游子不顾返。思君令人老，岁月忽已晚。
+弃捐勿复道，努力加餐饭。
+
 \begin{theorem}\label{the:theorem1}
-犯我强汉者，虽远必诛\hfill \pozehao{} 陈汤（汉）
+犯我强汉者，虽远必诛\hfill \pozhehao 陈汤（汉）
 \end{theorem}
+
+定理者不可违也，抗者必狂“扁”之！林暗草惊风，将军夜引弓。平明寻白羽，没在石棱中。
 
 \begin{proof}
 燕赵古称多感慨悲歌之士。董生举进士，连不得志于有司，怀抱利器，郁郁适兹土，吾
@@ -73,15 +106,29 @@ CJKpunct.sty  & 中文标点符号美化处理。那些~\verb|*.tbl| 也要用，否则此包不起作用
 风俗与化移易，吾恶知其今不异于古所云邪？聊以吾子之行卜之也。董生勉乎哉？
 
 吾因子有所感矣。为我吊望诸君之墓，而观于其市，复有昔时屠狗者乎？为我谢
-曰：“明天子在上，可以出而仕矣！” \hfill\pozehao{}韩愈《送董邵南序》
+曰：“明天子在上，可以出而仕矣！” \hfill\pozhehao 韩愈《送董邵南序》
 \end{proof}
 
 \begin{corollary}
   四川话配音的《猫和老鼠》是世界上最好看最好听最有趣的动画片。
 \end{corollary}
 
+推陈出新。迢迢牵牛星，皎皎河汉女。
+纤纤擢素手，札札弄机杼。
+终日不成章，泣涕零如雨。
+河汉清且浅，相去复几许。
+盈盈一水间，脉脉不得语。
+
 \begin{example}
-  大家来看这个例子
+  大家来看这个例子。
+\begin{equation}
+\label{ktc}
+\left\{\begin{array}{l}
+\nabla f({\mbox{\boldmath $x$}}^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j({\mbox{\boldmath $x$}}^*)=0\\[0.3cm]
+\lambda_jg_j({\mbox{\boldmath $x$}}^*)=0,\quad j=1,2,\cdots,p\\[0.2cm]
+\lambda_j\ge 0,\quad j=1,2,\cdots,p.
+\end{array}\right.
+\end{equation}
 \end{example}
 
 \begin{exercise}
@@ -90,16 +137,25 @@ CJKpunct.sty  & 中文标点符号美化处理。那些~\verb|*.tbl| 也要用，否则此包不起作用
 
 如何引用定理~\ref{the:theorem1} 呢？加上~\verb|label| 使用~\verb|ref| 即可。
 
+
+柳宗元，字子厚（773-819），河东（今永济县）人，是唐代杰出的文学家，哲学
+家，同时也是一位政治改革家。与韩愈共同倡导唐代古文运动，并称韩柳。唐朝
+安史之乱\footnote{一场战争。}后，宦官专权，藩镇割据，土地兼并日渐严重，社会生产破坏严重，民
+不聊生。柳宗元对这种社会现实极为不满，他积极参加了王叔文领导的“永济革
+新”，并成为这一运动的中坚人物。他们革除弊政，打击权奸，触犯了宦官和官
+僚贵族利益，在他们的联合反扑下，改革失败了，柳宗元被贬为永州司马\footnote{从此寓情山水。}。
+
 \subsection{参考文献}
 \label{sec:bib}
 当然参考文献可以直接写~bibitem，虽然费点功夫，但是好控制，各种格式可以自己随意改写。
 
-本模板默认使用~mynewid@SMTH 改写的~unsrt，我增加了~url 支持。看看这个例子
+本模板默认使用~chinesebst.bst，支持国内，也就是学校要求的参考文献格式。看看这个例子
 \cite{BEZOS02}，关于杂志的\cite{ELIDRISSI94, MELLINGER96}，硕士论文
 \cite{shaheshang}，会议论文\cite{DPMG}，技术报告\cite{NPB2}。其中硕士和博士论
 文参考文献要给~bib 文件响应的项目中增加~type 字段，表明论文类型。另外，这个~bst
 目前只能处理英文文献，对于中文文献的诸如“第×卷”、“第×期”需要手动修改~bbl
-文件。（下一步会改进）
+文件。{\hei 我没有对这个格式文件做全面的测试，如果有问题，大家可以直接修改~bbl
+  文件。}
 
 有时候不想要上标，那么可以这样~\onlinecite{shaheshang}。
 
@@ -111,24 +167,42 @@ CJKpunct.sty  & 中文标点符号美化处理。那些~\verb|*.tbl| 也要用，否则此包不起作用
 \frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})} \label{equ:chap1:bayes}
 \end{equation}
 
-论文里面公式越多，\TeX{} 就越~happy。再看一个公式：
-\begin{equation}
-E=mc^2
-\label{equ:chap1:albert1}
-\end{equation}
+论文里面公式越多，\TeX{} 就越~happy。再看一个~\textsf{amsmath} 的例子：
+\newcommand{\envert}[1]{\left\lvert#1\right\rvert} 
+\begin{equation}\label{detK2}
+\det\mathbf{K}(t=1,t_1,\dots,t_n)=\sum_{I\in\mathbf{n}}(-1)^{\envert{I}}
+\prod_{i\in I}t_i\prod_{j\in I}(D_j+\lambda_jt_j)\det\mathbf{A}
+^{(\lambda)}(\overline{I}|\overline{I})=0.
+\end{equation} 
 
-需要注意的是，源文件中公式前不要有空行，否则会生成一个空段落，导致公式前后间距不一致。
+其实还可以看看这个多级规划：
+\def \x{{\mbox{\boldmath $x$}}}
+\def \y{{\mbox{\boldmath $y$}}}
+\begin{equation}\label{bilevel}
+\left\{\begin{array}{l}
+\max\limits_{{\mbox{\footnotesize\boldmath $x$}}} F(\x,\y_1^*,\y_2^*,\cdots,\y_m^*)\\[0.2cm]
+\mbox{subject to:}\\[0.1cm]
+\qquad G(\x)\le 0\\[0.1cm]
+\qquad(\y_1^*,\y_2^*,\cdots,\y_m^*)\mbox{ solves problems }(i=1,2,\cdots,m)\\[0.1cm]
+\qquad\left\{\begin{array}{l}
+    \max\limits_{{\mbox{\footnotesize\boldmath $y_i$}}}f_i(\x,\y_1,\y_2,\cdots,\y_m)\\[0.2cm]
+    \mbox{subject to:}\\[0.1cm]
+    \qquad g_i(\x,\y_1,\y_2,\cdots,\y_m)\le 0.
+    \end{array}\right.
+\end{array}\right.
+\end{equation}
+这些跟规划相关的公式都来自于刘宝碇老师《不确定规划》的课件。
 
 \subsection{破则号}
-\label{sec:pozehao}
+\label{sec:pozhehao}
 
 中文破则号为一个两个字宽垂直居中的直线，输入法直接得到的破则号是两个断开的小短线
-（——），这看起来不舒服。所以我定义了一个破则号的命令~\verb|pozehao|，请看几个
+（——），这看起来不舒服。所以我定义了一个破则号的命令~\verb|pozhehao|，请看几个
 例子：
 \begin{itemize}
-	\item 这是一个 \pozehao 破则号
-	\item {\sanhao 这是一个 \pozehao 破则号}
-	\item {\erhao 这是一个 \pozehao 破则号}
+\item 这是一个 \pozhehao 破则号
+\item {\sanhao 这是一个 \pozhehao 破则号}
+\item {\erhao 这是一个 \pozhehao 破则号}
 \end{itemize}
 
 本文其它地方也还有例子。

@@ -8,3 +8,163 @@
 \frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})} \label{equ:app1:bayes}
 \end{equation}
 \section{说明}
+
+
+\chapter{本科论文翻译资料原文}
+As one of the most widely used techniques in operations research, {\em mathematical programming}\label{:mp} is defined
+as a means of maximizing a quantity known as {\em objective function},\label{:of} subject to a set of constraints
+represented by equations and inequalities. Some known subtopics of mathematical programming are linear programming,
+nonlinear programming, multiobjective programming, goal programming, dynamic programming, and multilevel programming.
+
+It is impossible to cover in a single chapter every concept of mathematical programming. This chapter
+introduces only the basic concepts and techniques of mathematical programming such that readers
+gain an understanding of them throughout the book.
+
+
+\section{Single-Objective Programming}
+The general form of single-objective programming (SOP) is written
+as follows,
+\begin{equation}
+\label{nlp}
+\left\{\begin{array}{l}
+\max \,\,f(\x)\\[0.1 cm]
+\mbox{subject to:} \\ [0.1 cm]
+\qquad g_j(\x)\le 0,\quad j=1,2,\cdots,p
+\end{array}\right.
+\end{equation}
+which maximizes a real-valued function $f$ of
+$\x=(x_1,x_2,\cdots,x_n)$ subject to a set of constraints.
+
+\newtheorem{mpdef}{Definition}[chapter]
+\begin{mpdef}
+In SOP, we call $\x$ a decision vector\label{:dv}, and
+$x_1,x_2,\cdots,x_n$ decision variables\label{:dva}. The function
+$f$ is called the objective function. The set
+\begin{equation}
+S=\left\{\x\in\Re^n\bigm|g_j(\x)\le 0,\,j=1,2,\cdots,p\right\}
+\end{equation}
+is called the feasible set. An element $\x$ in $S$ is called a
+feasible solution.
+\end{mpdef}
+
+\newtheorem{mpdefop}[mpdef]{Definition}
+\begin{mpdefop}
+A feasible solution $\x^*$ is called the optimal
+solution\label{:os} of SOP if and only if
+\begin{equation}
+f(\x^*)\ge f(\x)
+\end{equation}
+for any feasible solution $\x$.
+\end{mpdefop}
+
+One of the outstanding contributions to mathematical programming
+was known as the Kuhn-Tucker conditions\label{:ktc}. In order to
+introduce them, let us give some definitions. An inequality
+constraint $g_j(\x)\le 0$ is said to be active at a point $\x^*$
+if $g_j(\x^*)=0$. A point $\x^*$ satisfying $g_j(\x^*)\le 0$ is
+said to be regular if the gradient vectors $\nabla g_j(\x)$ of all
+active constraints are linearly independent.
+
+Let $\x^*$ be a regular point of the constraints of SOP and assume that all the
+functions $f(\x)$ and $g_j(\x),j=1,2,\cdots,p$ are differentiable. If $\x^*$ is
+a local optimal solution, then there exist Lagrange multipliers
+$\lambda_j,j=1,2,\cdots,p$ such that the following Kuhn-Tucker conditions hold,
+\begin{equation}
+\label{ktc}
+\left\{\begin{array}{l}
+\nabla f(\x^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j(\x^*)=0\\[0.3cm]
+\lambda_jg_j(\x^*)=0,\quad j=1,2,\cdots,p\\[0.2cm]
+\lambda_j\ge 0,\quad j=1,2,\cdots,p.
+\end{array}\right.
+\end{equation}
+If all the functions $f(\x)$ and $g_j(\x),j=1,2,\cdots,p$ are
+convex and differentiable, and the point $\x^*$ satisfies the
+Kuhn-Tucker conditions (\ref{ktc}), then it has been proved that
+the point $\x^*$ is a global optimal solution of SOP.
+
+\subsection{Linear Programming} \label{:lp}
+
+If the functions $f(\x),g_j(\x),j=1,2,\cdots,p$ are all linear,
+then SOP is called a {\em linear programming}.
+
+The feasible set of linear is always convex. A point $\x$ is
+called an extreme point\label{:ep} of convex set $S$ if $\x\in S$
+and $\x$ cannot be expressed as a convex combination of two points
+in $S$. It has been shown that the optimal solution to linear
+programming corresponds to an extreme point of its feasible set
+provided that the feasible set $S$ is bounded. This fact is the
+basis of the {\em simplex algorithm}\label{:sa} which was
+developed by Dantzig \cite{dantzig63} as a very efficient method
+for solving linear programming.
+
+Roughly speaking, the simplex algorithm examines only the extreme
+points of the feasible set, rather than all feasible points. At
+first, the simplex algorithm selects an extreme point as the
+initial point. The successive extreme point is selected so as to
+improve the objective function value. The procedure is repeated
+until no improvement in objective function value can be made. The
+last extreme point is the optimal solution.
+
+\subsection{Nonlinear Programming}
+\label{:nlp}
+
+If at least one of the functions $f(\x),g_j(\x),j=1,2,\cdots,p$ is
+nonlinear, then SOP is called a {\em nonlinear
+programming}.
+
+A large number of classical optimization methods have been
+developed to treat special-structural nonlinear programming based
+on the mathematical theory concerned with analyzing the structure
+of problems.
+
+Now we consider a nonlinear programming which is confronted solely
+with maximizing a real-valued function with domain $\Re^n$.
+Whether derivatives are available or not, the usual strategy is
+first to select a point in $\Re^n$ which is thought to be the most
+likely place where the maximum exists. If there is no information
+available on which to base such a selection, a point is chosen at
+random. From this first point an attempt is made to construct a
+sequence of points, each of which yields an improved objective
+function value over its predecessor. The next point to be added to
+the sequence is chosen by analyzing the behavior of the function
+at the previous points. This construction continues until some
+termination criterion is met. Methods based upon this strategy are
+called {\em ascent methods}\label{:am}, which can be classified as
+{\em direct methods}\label{:dm}, {\em gradient methods}, and {\em
+Hessian methods}\label{:hp} according to the information about the
+behavior of objective function $f$. Direct methods require only
+that the function can be evaluated at each point. Gradient methods
+require the evaluation of first derivatives of $f$. Hessian
+methods require the evaluation of second derivatives. In fact,
+there is no superior method for all problems. The efficiency of a
+method is very much dependent upon the objective function.
+
+\subsection{Integer Programming}
+
+{\em Integer programming}\label{:ip1} is a special mathematical
+programming in which all of the variables are assumed to be only
+integer values. When there are not only integer variables but also
+conventional continuous variables, we call it {\em mixed integer
+programming}. If all the variables are assumed either 0 or 1, then
+the problem is termed a {\em zero-one
+programming}\label{:zero_one}. Although integer programming can be
+solved by an {\em exhaustive enumeration}\label{:ee}
+theoretically, it is impractical to solve realistically sized
+integer programming problems. The most successful algorithm so far
+found to solve integer programming is called the {\em
+branch-and-bound enumeration}\label{:bbe} developed by Balas
+(1965) and Dakin (1965). The other technique to integer
+programming is the {\em cutting plane method}\label{:cpm}
+developed by Gomory (1959).
+
+\hfill\textit{Uncertain Programming\/}\quad(\textsl{BaoDing Liu, 2006.2})
+
+\chapter{本科论文资料翻译结果}
+西北有高楼，上与浮云齐。
+交疏结绮窗，阿阁三重阶。
+上有弦歌声，音响一何悲！
+谁能为此曲，无乃杞梁妻。
+清商随风发，中曲正徘徊。
+一弹再三叹，慷慨有余哀。
+不惜歌者苦，但伤知音稀。
+愿为双鸿鹄，奋翅起高飞。

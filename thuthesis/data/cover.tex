@@ -5,15 +5,19 @@
 %%% End:
 \secretlevel{绝密} \secretyear{2100}
 
-\ctitle{清华大学~\LaTeX\ 论文模板样例}
+\ctitle{清华大学学位论文~\LaTeX\ 模板使用示例文档}
 % 根据自己的情况选，不用这样复杂
 \makeatletter
+\ifthu@bachelor
+
+\else
 \ifthu@doctor
   \cdegree{工学博士}
 \else
   \ifthu@master
     \cdegree{工学硕士}
   \fi
+\fi
 \fi
 \makeatother
 
@@ -27,10 +31,12 @@
 % 日期自动生成，如果你要自己写就改这个cdate
 %\cdate{\CJKdigits{\the\year}年\CJKnumber{\the\month}月}
 
-\etitle{An Introduction to \LaTeX{} Thesis Template of Tsinghua
-University} \edegree{Doctor of Science} \esubject{Computer Science
-and Technology} \eauthor{Xue Ruini} \esupervisor{Professor Zheng
-Weimin} \eassosupervisor{Chen Wenguang} 
+\etitle{An Introduction to \LaTeX{} Thesis Template of Tsinghua University} 
+\edegree{Doctor of Science} 
+\esubject{Computer Science and Technology} 
+\eauthor{Xue Ruini} 
+\esupervisor{Professor Zheng Weimin} 
+\eassosupervisor{Chen Wenguang} 
 % 这个日期也会自动生成，你要改么？
 % \edate{December, 2005}
 
@@ -38,15 +44,19 @@ Weimin} \eassosupervisor{Chen Wenguang}
 \cabstract{
     本文介绍清华大学论文~\LaTeX + CJK
     模板的使用方法。本模板基本符合学校的博士、硕士
-  论文格式要求。硕士论文为关键字之间为~2 个汉字字符，这需要作者自己添加，博士论文关键词之间为分号。窃以为这是一个极其~BT 的规定。具体使用方法请参看
-  本文源文件。}
+  论文格式要求。本科论文关键字用逗号分子，硕士论文为关键字之间为~2 个汉字字符，博士论
+  文关键词之间为分号，你说麻烦不麻烦。大家在用的时候多多注意。具体使用方法请参看本文源文件。}
 
 %根据你的情况，选择一个即可，这里只是作为示例。
 \makeatletter
-\ifthu@master
-  \ckeywords{\TeX\keyspace \LaTeX\keyspace CJK\keyspace 模板\keyspace 排版\keyspace 论文}
+\ifthu@bachelor
+  \ckeywords{\TeX，\LaTeX，CJK，模板，排版，论文}
 \else
-  \ckeywords{\TeX；\LaTeX；CJK；模板；排版；论文}
+  \ifthu@master
+    \ckeywords{\TeX\keyspace \LaTeX\keyspace CJK\keyspace 模板\keyspace 排版\keyspace 论文}
+  \else
+    \ckeywords{\TeX；\LaTeX；CJK；模板；排版；论文}
+  \fi
 \fi
 \makeatother
 
@@ -64,9 +74,13 @@ Weimin} \eassosupervisor{Chen Wenguang}
 
 % 这里也是
 \makeatletter
-\ifthu@master
-  \ekeywords{\TeX\keyspace \LaTeX\keyspace CJK\keyspace template\keyspace  typesetting\keyspace thesis}
+\ifthu@bachelor
+   \ekeywords{\TeX，\LaTeX，CJK，template，typesetting，thesis}
 \else
-  \ekeywords{\TeX; \LaTeX; CJK; template;  typesetting; thesis}
+  \ifthu@master
+    \ekeywords{\TeX\keyspace \LaTeX\keyspace CJK\keyspace template\keyspace  typesetting\keyspace thesis}
+  \else
+    \ekeywords{\TeX; \LaTeX; CJK; template;  typesetting; thesis}
+  \fi
 \fi
 \makeatother
