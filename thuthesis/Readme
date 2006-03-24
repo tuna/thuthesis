@@ -1,48 +1,135 @@
-
-For Windows Users:
-------------------
-
-我写了两个简单的批处理文件：msbuild.bat 和 msclean.bat，一个用来
-生成文档，一个用来清除。使用如下：
-
-1. 生成everything（包括模板、文档、示例）
-   msbuild.bat
-
-2. 清除everything
-   msclean.bat
-   
-
-
 Simple Howto:
 -------------
 
-1. 生成class和配置文件
+1. 获取帮助文档
 
-   # latex thuthesis.ins
-  
-   此时会得到 thuthesis.cls 和 thuthesis.cpx 两个文件。
+   make doc
 
+   得到 thuthesis.pdf，帮助文档，里面有详细的说明。
 
-2. 获取帮助文档
-
-   # latex thuthesis.dtx
-
-   得到 thuthesis.dvi，帮助文档，里面有详细的说明。
-
-   关于说明文档生成的完整命令请参看 Makefile
+   关于说明文档生成的完整命令请参看 doc.mak
 
 
-3. 查看示例文档 (请参看 Makefile)
+2. 查看示例文档
+
+   make thesis
    
-   latex mian
-   bibtex main
-   latex main
-   gbk2uni main
-   latex main
-   dvips -ta4 -Ppdf -G0 main.dvi
-   ps2pdf main.ps
+   关于示例文档生成的完整命令请参看 thesis.mak
 
-4. 书脊示例   
 
-   pdflatex shuji
+3. 书脊示例   
 
+   make shuji
+
+   关于书脊生成的完整命令请参看 shuji.mak
+
+
+附录：
+
+A. Makefile 命令详解：
+
+Makefile：
+
+    使用方法：
+
+        make [{all|thesis|shuji|doc|clean|distclean}] \
+            [METHOD={ps2pdf|dvipdfm}] \
+            [TEXI2DVI=<tex2dvi>]
+
+    参数说明：
+
+        make all 等于 make thesis && make shuji && make doc；
+
+        make thesis 生成论文，相当于 make -f thesis.mak；
+
+        make shuji 生成书脊，相当于 make -f shuji.mak；
+
+        make doc 生成使用说明书，相当于 make -f doc.mak；
+
+        make clean 表示清除除了 pdf 外的所有中间文件和目标文件；
+
+        make distclean 表示清除包括 pdf 在内的所有中间文件和目标文件。
+
+        METHOD 参数用来指定生成 pdf 的方式，
+
+        METHOD=ps2pdf 表示使用 texi2dvi -> dvips ->ps2pdf 的方式生成 pdf；
+
+        METHOD=dvipdfm 表示使用 texi2dvi -> dvipdfm 的方式生成 pdf；
+
+        如果缺省，则采用 ps2pdf 方式。
+
+        TEXI2DVI 表示 texi2dvi 实用工具的文件名，该工具的作用是自动重复运行
+        latex 若干遍，直至所有交叉引用都正确为止。在有的发行版中该工具的文件名
+        不叫 texi2dvi，譬如 CTeX 下的这个工具就叫 texify。遇到这种情况你可以在
+        命令行通过 TEXI2DVI=texify 命令指定使用其它的 texi2dvi 工具。
+
+
+thesis.mak
+
+    使用方法：
+
+        make -f thesis.mak [{all|cls|dvi|ps|pdf}] \
+            [METHOD={ps2pdf|dvipdfm}] \
+            [TEXI2DVI=<tex2dvi>]
+
+    参数说明：
+
+        make -f thesis.mak all 等价于 make pdf；
+
+        make -f thesis.mak cls 生成 cls 文件，为正式编译做好准备；
+
+        make -f thesis.mak dvi 生成 dvi 文件；
+
+        make -f thesis.mak ps 生成 ps 文件；
+
+        make -f thesis.mak pdf 生成 pdf 文件。
+
+        METHOD 参数和 TEXI2DVI 参数同前。
+
+shuji.mak
+
+    使用方法：
+
+        make -f shuji.mak [{all|cls|dvi|ps|pdf}] \
+            [METHOD={ps2pdf|dvipdfm}] \
+            [TEXI2DVI=<tex2dvi>]
+
+    参数说明：
+
+        make -f shuji.mak all 等价于 make pdf；
+
+        make -f shuji.mak cls 生成 cls 文件，为正式编译做好准备；
+
+        make -f shuji.mak dvi 生成 dvi 文件；
+
+        make -f shuji.mak ps 生成 ps 文件；
+
+        make -f shuji.mak pdf 生成 pdf 文件。
+
+        METHOD 参数和 TEXI2DVI 参数同前。
+
+
+doc.mak
+
+    使用方法：
+
+        make -f doc.mak [{all|cls|dvi|ps|pdf}] \
+            [METHOD={ps2pdf|dvipdfm}] \
+            [TEXI2DVI=<tex2dvi>]
+
+    参数说明：
+
+        make -f doc.mak all 等价于 make pdf；
+
+        make -f doc.mak cls 生成 cls 文件，为正式编译做好准备；
+
+        make -f doc.mak dvi 生成 dvi 文件；
+
+        make -f doc.mak ps 生成 ps 文件；
+
+        make -f doc.mak pdf 生成 pdf 文件。
+
+        METHOD 参数和 TEXI2DVI 参数同前。
+
+
+# $Id$
