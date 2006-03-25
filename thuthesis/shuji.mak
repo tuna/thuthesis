@@ -33,7 +33,7 @@ $(PACKAGE).cls: $(SOURCES)
 	latex $(PACKAGE).ins
 
 $(MAIN).dvi: $(PACKAGE).cls $(CONTENTS)
-	$(TEXI2DVI) $(MAIN).tex
+	latex $(MAIN).tex
 
 ifeq ($(METHOD),dvipdfm)
 $(MAIN).pdf: $(MAIN).dvi
@@ -42,7 +42,7 @@ $(MAIN).pdf: $(MAIN).dvi
 	dvipdfm $(MAIN).dvi
 else
 $(MAIN).pdf: $(MAIN).ps
-	ps2pdf -sPAPERSIZE=a4 $(MAIN).ps
+	ps2pdf  $(MAIN).ps
 endif
 
 $(MAIN).ps: $(MAIN).dvi

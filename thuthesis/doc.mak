@@ -32,7 +32,7 @@ $(MAIN).dvi: $(PACKAGE).cls $(MAIN).dtx
 	latex $(PACKAGE).dtx
 
 $(MAIN).pdf: $(MAIN).ps
-	ps2pdf -sPAPERSIZE=a4 $(MAIN).ps
+	ps2pdf  $(MAIN).ps
 
 $(MAIN).ps: $(MAIN).dvi
 	gbk2uni $(MAIN)

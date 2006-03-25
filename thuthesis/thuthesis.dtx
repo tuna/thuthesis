@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2052}
+% \CheckSum{2123}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,12 +43,12 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/03/04 2.1 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/03/27 2.2 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{fancybox}
 \usepackage{url}
-\usepackage{fourier}
+\IfFileExists{fourier.sty}{\usepackage{fourier}}{}
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{CJK}
@@ -125,7 +125,7 @@
 % \MakeShortVerb{\|}
 %
 %
-% \def\thupackage{T\textsc{hu}\-T\textsc{hesis}}
+% \def\thuthesis{T\textsc{hu}\-T\textsc{hesis}}
 % 
 %
 % \changes{v1.0-}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
@@ -155,8 +155,11 @@
 % \changes{v2.1}{2006/03/02}{Merge the modification of |ntheorem|.}
 % \changes{v2.1}{2006/03/02}{Remove |footmisc| and refine the document.}
 % \changes{v2.1}{2006/03/03}{Work very hard on the document.}
-% \changes{v2.1}{2006/03/03}{Add |checklab| code to reduce ``unresolved labels''
-% warning.}
+% \changes{v2.1}{2006/03/03}{Add |checklab| code to reduce ``unresolved labels'' warning}
+% \changes{v2.2}{2006/03/27}{Adjust margins. How bad it is to simulate MS WORD!.}
+% \changes{v2.2}{2006/03/27}{Add bachelor training overview details supporting.}
+% \changes{v2.2}{2006/03/27}{CJK support in preamble.}
+% 
 %
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
@@ -183,7 +186,7 @@
 % \renewcommand{\contentsname}{目~~录}
 %
 %
-% \title{\thupackage：清华大学学位论文模板\thanks{Tsinghua University \LaTeX{}
+% \title{\thuthesis：清华大学学位论文模板\thanks{Tsinghua University \LaTeX{}
 % Thesis Template.}
 % \author{薛瑞尼\thanks{清华大学计算机系，高性能所，东主楼。} \\ \texttt{xueruini@gmail.com}}}
 % \date{v\fileversion\ (\filedate)}
@@ -207,44 +210,47 @@
 % {\hfill\fs工欲善其事，必先利其器}
 %\newpage
 % \section{模板介绍}
-% 2005 年夏天我把自己写硕士论文的模板稍加整理做了一个所谓的“清华硕士论
-% 文~\LaTeX\ 模板报盘版”。此模板基于王磊编写、王垠整理的博士论文模板，借鉴
-% 了~mynewid@SMTH 的参考文献~bst 工作，并根据清华大学~2005 年研究生院硕士论文最新
-% 模板要求修改而成。其时大家的论文基本上都写完了，所以用的人不是很多。而且那个模
-% 板的结构不好，很多都是将就的写法。
+% 2005 年夏天我把自己写硕士论文的模板稍加整理做了一个所谓的“清华硕士论文
+% ~\LaTeX\ 模板报盘版”。此模板基于王磊编写、王垠整理的博士论文模板，借鉴了
+% ~mynewid@SMTH 的参考文献~bst 工作，并根据清华大学~2005 年研究生院硕士论文最新模
+% 板要求修改而成。其时大家的论文基本上都写完了，所以用的人不是很多。而且那个模板
+% 的结构不好，很多都是将就的写法。
 %
 % 为了给想用~\LaTeX\ 写论文的同学提供方便，我在报盘版的基础上重新整理，在结构上采
-% 用标准的~docstrip 组织，中文支持采用~CJK\footnote{对~CCT 不熟悉，所以没有专门
-% 花时间去看。}，在内容上尽量融合所有论文格式要求，同时更名为
-% ~\thupackage，即~\textbf{T}sing\textbf{hu}a \textbf{Thesis}，并在
+% 用标准的~docstrip 组织，中文支持采用~CJK\footnote{对~CCT 不熟悉，所以没有专门花
+%   时间去看。}，在内容上尽量融合所有论文格式要求，同时更名为~\thuthesis，即
+% ~\textbf{T}sing\textbf{hu}a \textbf{Thesis}，并在
 % ~\href{http://thuthesis.sourceforge.net}{sourceforge.net} 上安了家，随后在
-% ~\href{http://gforge.oss.org.cn/projects/thuthesis}{gforge.oss.org.cn} 建立了
-% 镜像，偶尔还会在\href{http://{learn.tsinghua.edu.cn:8080/2003214890}}{个人主页
-% }上进行更新。由于个人精力有限，不能保证三者完全同步。
+% ~\href{http://gforge.oss.org.cn/projects/thuthesis}{gforge.oss.org.cn} 建立了镜
+% 像，偶尔还会在\href{http://{learn.tsinghua.edu.cn:8080/2003214890}}{个人主页}上
+% 进行更新。由于个人精力有限，不能保证三者完全同步。
 %
-% 2005 年圣诞节前，\thupackage-2.0 发布，成为第一个同时支持硕士、博士论文格
-% 式的模板，后直到~2006 年~3 月初才加入本科论文格式支持，即现在看到的
-% ~\thupackage-2.1。这个版本的除了增加本科论文格式支持，同时去掉了很多
-% 不必要的宏包，改由基本~\TeX{} 和~\LaTeX{} 命令实现。虽然~\thupackage\
-% 已经帮助很多同学顺利的提交了论文，但还需要花费相当的时间维护整理。如果没有特殊
-% 情况，模板的开发进度会稍微慢下来，暂时不会进行大规模的修改和优化。
+% 2005 年圣诞节前，\thuthesis-2.0 发布，成为第一个同时支持硕士、博士论文格式的模
+% 板，后直到~2006 年~3 月初才加入本科论文格式支持，即~\thuthesis-2.1。这个版本
+% 的除了增加本科论文格式支持，同时去掉了很多不必要的宏包，改由基本~\TeX{} 和
+% ~\LaTeX{} 命令实现。虽然~\thuthesis\ 已经帮助很多同学顺利的提交了论文，但还需要
+% 花费相当的时间维护整理。如果没有特殊情况，模板的开发进度会稍微慢下来，暂时不会
+% 进行大规模的修改和优化。
 %
 % 在整理这个模板的过程中，我得到不少同学热情的支持，在此不一一列出，感谢他们提供
-% 的每一份帮助！特别需要感谢的是{\CJKfamily{kai}姜苍华}同学，他热心和认真的测试，
-% 为模板的快速进展发挥了重要作用！
+% 的每一份帮助！让人感到欣喜的事很多同学都开始为~\thuthesis{} 添砖加瓦，目前包括
+% ~edyfox 同学的~Makefile，oseen 同学准备增加~UTF-8 的支持，并制作~debian
+% package。
 %
 % 本文档将尽量简单的介绍模板的使用方法，如有不清楚可以参考示例文档或者直接给我写
 % 信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现在的这个版本基
 % 本上满足了学校的大部分要求，但难免还存在不足之处，欢迎大家能积极反馈。
 %
+% \thuthesis{} 正在跟教务处进行合作，试图完善成为一个为学校所认可的模板，大家继
+% 续加油！
 %
 % \section{使用方法}
 % \subsection{下载}
-% \thupackage{} 的主页是：
+% \thuthesis{} 的主页是：
 % \href{http://thuthesis.sourceforge.net}{http://thuthesis.sourceforge.net}。
 %
-% 但由于各种各样的原因，这个主页访问起来并不顺利，下面提供其它两个链接，按照
-% 维护的优先级排序：
+% 但由于各种各样的原因，这个主页访问起来并不顺利，下面提供其它两个链接，按照维护
+% 的优先级排序：
 % \begin{itemize}
 % \item \href{http://gforge.oss.org.cn/projects/thuthesis}{http://gforge.oss.org.cn/projects/thuthesis}
 % \item \href{http://learn.tsinghua.edu.cn:8080/2003214890}{\url{http://learn.tsinghua.edu.cn:8080/2003214890}}
@@ -258,10 +264,10 @@
 %   ifthen & clac & ifpdf  & CJK & CJKnumb & CJKpunct   \\
 %   array & booktabs & indentfirst  &  amsmath & amssymb & ntheorem   \\
 %   mathptmx & helvet & courier    &   graphicx & subfig & caption    \\
-%   titlesec & titletoc &  natbib & hyperref & hypernat & \textbf{chinesebst.bst}\\\hline
+%   titlesec & titletoc &  natbib & hyperref & hypernat & \textbf{thubib.bst}\\\hline
 % \end{tabular}
 %
-% 除了~chinesebst.bst，其它宏包在各~\TeX~系统基本都有，如果缺少请自行下载安装。
+% 除了~thubib.bst，其它宏包在各~\TeX~系统基本都有，如果缺少请自行下载安装。
 % 
 %
 % \subsection{安装}
@@ -270,7 +276,7 @@
 % 的使用说明。{\hei 不过报盘版不再维护，里面存在的问题也不会改正了，建议大家用最新的版本。}
 %
 % 模板解压缩后生成文件夹~thuthesis-VERSION\footnote{VERSION 为版本号。} ，其中包
-% 括：模板源文件（thuthesis.ins 和~thuthesis.dtx），参考文献样式~chinesebst.bst，示例文档
+% 括：模板源文件（thuthesis.ins 和~thuthesis.dtx），参考文献样式~thubib.bst，示例文档
 % （main.tex，shuji.tex，thutils.sty\footnote{我把所有可能用到但不一定用到的包以
 %   及一些命令定义都放在这里面，以免主~thuthesis.cls 过分臃肿。}，\linebreak[4]data/ 和~figures/ 和~ref/）。在使用之前需要先生成模板文件和
 % 配置文件（具体命令细节请参考~|Readme| 和~|Makefile|）：
@@ -286,8 +292,12 @@
 % $ latex thuthesis.dtx  #\% 生成说明文档 thuthesis.dvi#
 % \end{shell}
 %
-% 如果使用~Windows 平台，可以试一试（这个批处理仅供参考，实际用的时候不必执行那
-% 么多命令，请酌情处理。）：
+% 如果使用~Windows 平台，可以试一试\footnote{这个批处理仅供参考，实际用的时候不必
+%   执行那么多命令，请酌情处理。很多用户对~\LaTeX{} 命令执行的次数不太清楚，一个
+%   基本的原则就是如果有引用，如~ref 和~cite 那么至少需要执行~3 次。第一次发现引
+%   用，后两次解决引用。另外，我不会写~Windows 的批处理文件，哪位熟悉这个帮忙写
+%   个类似于~Makefile 之类的批处理吧，我这两个例子杀伤力比较强，不清楚运行机制的
+%   用户会很苦恼。}）：
 %
 % \begin{shell}
 % your_path $ msbuild.bat   #\% 生成一切#
@@ -299,15 +309,17 @@
 %
 % \begin{shell}
 % $ make clean
-% $ make         #\% 生成~thuthesis.cls 和~thuthesis.cpx#
-% $ make doc     #\% 生成说明文档~thuthesis.dvi#
-% $ make docpdf  #\% 生成说明文档~thuthesis.pdf#
-% $ make example #\% 查看示例文档，生成~main.pdf 和~shuji.pdf#
+% $ make -f thesis.mak cls #\% 生成~thuthesis.cls 和~thuthesis.cfg#
+% $ make doc     #\% 生成说明文档~thuthesis.pdf#
+% $ make thesis  #\% 生成示例文档~main.pdf#
+% $ make shuji   #\% 生成书脊~shuji.pdf#
 % \end{shell}
 % 
-%
-% 得到的模板文件都在当前目录，没有安装到系统~|TDS|，主要是考虑到方便，修改，更新
-% 容易一些。只有自己用没必要全局安装。
+% edyfox 整理的~Makefile 非常细致，稍微有这方面知识的用户会感到非常~happy。如果
+% 你不知道怎么用，最好学习学习。
+% 
+% 经过上面的操作得到的模板文件都在当前目录，没有安装到系统~|TDS|，主要是考虑到方
+% 便，修改，更新容易一些。只有自己用没必要全局安装。
 %
 %
 % 本模板作为一个~class 出现，而不是“报盘版”的~package。所以在使用方法上有一些
@@ -342,7 +354,7 @@
 % %\include{data/conclusion}
 %
 % #\fs\% 参考文献#
-% \bibliographystyle{chinesebst}
+% \bibliographystyle{thubib}
 % \bibliography{reference/refs}
 %
 % #\fs\% 致谢与声明#
@@ -384,7 +396,10 @@
 % \item[arial]
 %  使用真正的~arial 字体。此选项会装载~arial 字体宏包，如果此宏包不存在，就
 %   装载~Helvet。arialtoc 和~arialtitle 不受~arial 的影响。因为一般的~\TeX{} 发
-%   行都没有~arial 字体，所以默认采用~helvet，因为二者效果非常相似。
+%   行都没有~arial 字体，所以默认采用~helvet，因为二者效果非常相似。如果你执着的
+%   要用~arial 字体，请参看：
+%   \href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial 字
+%   体}。
 %
 % \item[arialtoc]
 %  目录项中的英文是否用~arial 字体（默认打开）。
@@ -563,16 +578,20 @@
 % \DescribeMacro{\mainrequirements}
 % 
 % \paragraph{本科论文中{\hei 主要参考文献}}
-% \DescribeMacro{\mainrefs}
+% \DescribeMacro{\mainreferences}
 % 
-%
-%
-%
 %\subsection{其它}
 %\label{sec:othercmd}
 %
 % 实际上模板中定义了很多内部命令，由于设计过多繁琐的实现细节，此处将其略去。感兴
 % 趣的同学可以参看源代码，重新定义以适合自己的需要。
+%
+%
+%
+%\section{致谢}
+%\label{sec:thanks}
+%
+% 感谢~edyfox！
 %
 % {\color{red} Are you sure you will go on?}
 %
@@ -795,7 +814,7 @@
 %\subsubsection{页面设置}
 %\label{sec:layout}
 % 
-% 本来这部分应该是最容易设置的，但根据格式规定出来的结果跟学校的样例相差很大，所
+% 本来这部分应该是最容易设置的，但根据格式规定出来的结果跟学校的~WORD 样例相差很大，所
 % 以只能微调。
 %    \begin{macrocode}
 \setlength{\textwidth}{\paperwidth}
@@ -806,18 +825,18 @@
 \setlength{\oddsidemargin}{3.2cm-1in}
 \setlength{\evensidemargin}{\oddsidemargin}
 \setlength{\headheight}{20pt}
-\ifthu@bachelor
-  \setlength{\topmargin}{2.8cm-1in} 
-  \setlength{\headsep}{1.2cm}
-  \addtolength{\textheight}{-7.2cm}  
-\else
-  \setlength{\topmargin}{3cm-1in} 
-  \setlength{\headsep}{0.5cm} 
-  \addtolength{\textheight}{-8.5cm}
-\fi
-\setlength{\footskip}{1.5cm}
 \setlength{\topskip}{0pt}
 \setlength{\skip\footins}{15pt} 
+\setlength{\footskip}{1cm}
+\ifthu@bachelor
+  \setlength{\topmargin}{2.8cm-1in}
+  \setlength{\headsep}{0.6cm}
+  \addtolength{\textheight}{-7.8cm}  
+\else
+  \setlength{\topmargin}{2.8cm-1in} 
+  \setlength{\headsep}{0.5cm}
+  \addtolength{\textheight}{-7.8cm}
+\fi
 %    \end{macrocode} 
 %
 %\subsubsection{公式}
@@ -1486,10 +1505,11 @@
 \def\ctitle#1{\def\thu@ctitle{#1}}\def\thu@ctitle{}
 \def\cdegree#1{\def\thu@cdegree{#1}}\def\thu@cdegree{}
 \def\caffil#1{\def\thu@caffil{#1}}\def\thu@caffil{}
+\def\caffilshort#1{\def\thu@caffil@short{#1}}\def\thu@caffil@short{}
 \def\csubject#1{\def\thu@csubject{#1}}\def\thu@csubject{}
 \def\cauthor#1{\def\thu@cauthor{#1}}\def\thu@cauthor{}
-\def\studentid#1{\gdef\thu@studentID{#1}}\def\thu@studentID{}
-\def\classid#1{\gdef\thu@classID{#1}}\def\thu@classID{}
+\def\studentid#1{\gdef\thu@studentid{#1}}\def\thu@studentid{}
+\def\classid#1{\gdef\thu@classid{#1}}\def\thu@classid{}
 \def\groupmemebers#1{\gdef\thu@groupmembers{#1}}\def\thu@groupmembers{}
 \def\csupervisor#1{\def\thu@csupervisor{#1}}\def\thu@csupervisor{}
 \def\cassosupervisor#1{\def\thu@cassosupervisor{#1}}\def\thu@cassosupervisor{}
@@ -1532,7 +1552,7 @@
 % \begin{macro}{ekeywords}
 % \begin{macro}{contentsandpregress}
 % \begin{macro}{mainrequirements}
-% \begin{macro}{mainrefs}
+% \begin{macro}{mainreferences}
 %    \begin{macrocode}
 \def\esupervisor#1{\def\thu@esupervisor{#1}}\def\thu@esupervisor{}
 \def\eassosupervisor#1{\def\thu@eassosupervisor{#1}}\def\thu@eassosupervisor{}
@@ -1540,12 +1560,12 @@
 \def\edate#1{\def\thu@edate{#1}}\def\thu@edate{}
 \long\def\eabstract#1{\long\def\thu@eabstract{#1}}\long\def\thu@eabstract{}
 \def\ekeywords#1{\def\thu@ekeywords{#1}}\def\thu@ekeywords{}
-\newcommand\contentsandprogress[1]{\renewcommand\thu@contentsandprogress[1]{#1}}
-\newcommand\thu@contentsandprogress[1]{}
-\newcommand\mainrequirements[1]{\renewcommand\thu@mainrequirements[1]{#1}}
-\newcommand\thu@mainrequirements[1]{}
-\newcommand\mainrefs[1]{\renewcommand\thu@mainrefs[1]{#1}}
-\newcommand\thu@mainrefs[1]{}
+\newcommand\contentsandprogress[1]{\renewcommand\thu@contentsandprogress[1][]{#1}}
+\newcommand\thu@contentsandprogress[1][]{}
+\newcommand\mainrequirements[1]{\renewcommand\thu@mainrequirements[1][]{#1}}
+\newcommand\thu@mainrequirements[1][]{}
+\newcommand\mainreferences[1]{\renewcommand\thu@mainreferences[1][]{#1}}
+\newcommand\thu@mainreferences[1][]{}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -1571,13 +1591,13 @@
 \def\thu@bachelor@affiltitle{系\hfill别}
 \def\thu@bachelor@subjecttitle{专\hfill业}
 \def\thu@bachelor@authortitle{姓\hfill名}
-\def\thu@bachelor@studentIDtitle{学号}
+\def\thu@bachelor@studentidtitle{学号}
 \def\thu@bachelor@classtitle{班号}
 \def\thu@bachelor@groupmember{同组姓名}
 \def\thu@bachelor@projecttitle{一、课题名称：}
-\def\thu@bachelor@maincontents{二、论文主要内容及进度安排：}
-\def\thu@bachelor@requirements{三、论文主要要求（如主要指标）：}
-\def\thu@bachelor@mainref{四、主要参考文献：}
+\def\thu@bachelor@maincontents@title{二、论文主要内容及进度安排：}
+\def\thu@bachelor@requirements@title{三、论文主要要求（如主要指标）：}
+\def\thu@bachelor@mainreference@title{四、主要参考文献：}
 \def\thu@bachelor@supervisor@comments{指导教师评语：}
 \def\thu@bachelor@supervisor@sig{指导教师（签字）}
 \def\thu@bachelor@revise@comments{评阅教师评语：}
@@ -1651,6 +1671,7 @@
        \ifthu@secret\hfill{\sihao\thu@secret@title}\else\hfill\rule{1cm}{0cm}\fi}
 
 \ifthu@bachelor
+    \vskip0.5cm
     {\ziju{10bp}\yihao\li\thu@schoolename}
     \par\vskip0.9cm
     {\ziju{18bp}\xiaochu\hei\thu@bachelor@subtitle}
@@ -1728,13 +1749,13 @@
 % \begin{macro}{thu@bachelor@comments}
 % 本科论文封面“评语”部分。
 %    \begin{macrocode}
-\newcommand{\thu@bachelor@comments}{
-  \thu@revisebox\thu@bachelor@supervisor@comments\thu@bachelor@supervisor@sig\par
-  \thu@revisebox\thu@bachelor@revise@comments\thu@bachelor@revise@sig\par
-  \thu@revisebox\thu@bachelor@defense@comments\thu@bachelor@defense@sig\par
-  \vskip1cm\hskip3cm{\bf\sihao\thu@bachelor@score\thu@reviserule[1pt]}\par
-  \hfill{\xiaosi\thu@bachelor@teaching@sig\thu@reviserule}\par
-  \vskip0.5cm\hfill{\xiaosi\thu@bachelor@cdate\hskip3em}
+\newcommand{\thu@bachelor@comments}{%
+  \thu@revisebox\thu@bachelor@supervisor@comments\thu@bachelor@supervisor@sig\par%
+  \thu@revisebox\thu@bachelor@revise@comments\thu@bachelor@revise@sig\par%
+  \thu@revisebox\thu@bachelor@defense@comments\thu@bachelor@defense@sig\par%
+  \vskip1cm\hskip3cm{\bf\sihao\thu@bachelor@score\thu@reviserule[1.2pt]}\par%
+  \hfill{\xiaosi\thu@bachelor@teaching@sig\thu@reviserule}\par%
+  \vskip0.5cm\hfill{\xiaosi\thu@bachelor@cdate\hskip3em}%
   \newpage\thispagestyle{empty}\thu@bachelor@overview}
 %    \end{macrocode}
 % \end{macro}
@@ -1742,25 +1763,30 @@
 % \begin{macro}{thu@bachelor@overview}
 % 本科封面的“综合论文训练任务书”部分。
 %    \begin{macrocode}
-\newcommand\thu@reviserule[1][0.4pt]{\rule[-1pt]{6em}{#1}}
+\newcommand\thu@reviserule[1][0.4pt]{\rule[-1.5pt]{6em}{#1}}
 \def\thu@revisebox#1#2{\noindent\textbf{\sihao #1}\par%
              \vfill\hfill\makebox[8em][l]{\xiaosi #2}\thu@reviserule}
-\newcommand\thu@anotherrule[1][6em]{\hskip1pt\rule[-0.4pt]{#1}{0.5pt}\hskip3pt}
-\newcommand\thu@bachelor@overview{
-   {\xiaochu\hei\centerline{\thu@bachelor@overviewtitle}}\vskip3cm%
-   \sihao\fs\makebox[2em][l]{\thu@bachelor@authortitle}\thu@anotherrule%
-   \thu@bachelor@studentIDtitle\thu@anotherrule%
-   \thu@bachelor@classtitle\thu@anotherrule\par\vskip0.5cm%
-   \makebox[2em][l]{\thu@bachelor@affiltitle}\thu@anotherrule[5em]%
-   \thu@bachelor@groupmember\thu@anotherrule[4em]%
-   \makebox[4em][l]{\thu@csupervisortitle}\thu@anotherrule[5em]\par
-   \vskip2.5cm\hei\xiaosan
-   \thu@bachelor@projecttitle\vskip3cm
-   \thu@bachelor@maincontents\vfill
-   \newpage\thispagestyle{empty}
-   \thu@bachelor@requirements\vskip6.5cm
-   \thu@bachelor@mainref\vfill\sihao
-   \hfill\thu@bachelor@teaching@sig\thu@reviserule[1pt]\par\vskip0.5cm
+\newcommand\thu@anotherrule[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newcommand\thu@bachelor@overview{%
+   {\xiaochu\hei\centerline{\thu@bachelor@overviewtitle}}\vskip3.5cm%
+   \noindent\sihao\fs\makebox[2em][l]{\thu@bachelor@authortitle}\thu@anotherrule[7em]\thu@cauthor%
+   \thu@bachelor@studentidtitle\thu@anotherrule[7em]\thu@studentid%
+   \thu@bachelor@classtitle\thu@anotherrule[7em]\thu@classid\par\vskip0.5cm%
+   \noindent\makebox[2em][l]{\thu@bachelor@affiltitle}\thu@anotherrule{%
+     \ifx\thu@caffil@short\relax\thu@caffil\else\thu@caffil@short\fi}%
+   \thu@bachelor@groupmember\thu@anotherrule[5em]\thu@groupmembers%
+   \makebox[4em][l]{\thu@csupervisortitle}\thu@anotherrule[6em]\thu@csupervisor\par%
+   \vskip2.2cm\hei\xiaosan%
+   \noindent\thu@bachelor@projecttitle\vskip0.5cm%
+     \parbox[t][3cm][t]{\textwidth}{\song\xiaosi\thu@ctitle}
+   \noindent\thu@bachelor@maincontents@title\vskip0.5cm%
+     {\song\xiaosi\thu@contentsandprogress\vfill}
+   \newpage\thispagestyle{empty}\vspace*{-1cm}%
+   \noindent\thu@bachelor@requirements@title\vskip0.5cm%
+     \parbox[t][6.5cm][t]{\textwidth}{\song\xiaosi\thu@mainrequirements}
+   \noindent\thu@bachelor@mainreference@title\vskip0.5cm%
+     {\song\xiaosi\thu@mainreferences}\par\vfill%
+   \sihao\hfill\thu@bachelor@teaching@sig\thu@reviserule[1pt]\par\vskip0.5cm%
    \hfill\thu@bachelor@cdate}
 %    \end{macrocode}
 % \end{macro}
@@ -1834,8 +1860,8 @@
 
     \vspace{1.9cm}
 \ifthu@bachelor
-    \xiaosi\thu@authorsig\thu@anotherrule%
-           \thu@teachersig\thu@anotherrule\thu@frontdate\thu@anotherrule
+    \xiaosi\thu@authorsig\thu@anotherrule\relax%
+           \thu@teachersig\thu@anotherrule\relax\thu@frontdate\thu@anotherrule\relax
 \else
     \parbox[t]{\textwidth}{\xiaosi
     \hspace*{2cm}\thu@authorsig\hrulefill \hfill \thu@teachersig%
@@ -1864,7 +1890,7 @@
 % 本科论文有评语页面
 %    \begin{macrocode}
 \ifthu@bachelor
-  \newpage\thispagestyle{empty}\thu@bachelor@comments
+  \newpage\thispagestyle{empty}\vspace*{-1cm}\thu@bachelor@comments
 \fi
 %    \end{macrocode}
 %
@@ -2230,6 +2256,23 @@
 %    \begin{macrocode}
 %    \end{macrocode}
 % \fi
+% \begin{macro}{thu@active@cjk}
+% 在导言区支持中文。
+%    \begin{macrocode}
+\def\thu@active@cjk{
+    % Activate all >128 characters.
+    \count@=127
+    \@whilenum\count@<255 \do{%
+      \advance\count@ by 1
+      \lccode`\~=\count@
+      \catcode\count@=\active
+      \lowercase{\def~{\kern1ex}}}}  
+%    \end{macrocode}
+% \end{macro}
+%
+%    \begin{macrocode}
+\AtEndOfClass{\thu@active@cjk}
+%    \end{macrocode}
 %
 % \begin{macro}{\thu@fixselectfont}
 % caption 宏包会调用~ragged2e，ragged2e 又调用~everysel。而~everysel 宏包和~CJK
@@ -2300,7 +2343,7 @@
 % \begin{itemize}
 % \item 有时间把~|titlesec| 和~|titletoc| 去掉
 % \item 文档继续完善
-% \item 本科封面内容自动填充
+% \item 重新定义~small, large 等命令以适合~equation skip。
 % \end{itemize}
 %
 % \Finale
