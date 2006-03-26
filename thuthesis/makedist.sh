@@ -11,28 +11,28 @@ if [ $0 != ./makedist.sh ]; then
     exit 1
 fi
 
-daysold=`daysold`
+version=2.2
 
 for dir in $dirs
 do
-    mkdir -p example-$daysold/thuthesis/$dir
-    mkdir -p template-$daysold/thuthesis/$dir
+    mkdir -p example-$version/thuthesis/$dir
+    mkdir -p template-$version/thuthesis/$dir
 done
 
 for file in $list_example
 do
-    cp -f $file example-$daysold/thuthesis/$file
+    cp -f $file example-$version/thuthesis/$file
 done
 
 for file in $list_template
 do
-    cp -f $file template-$daysold/thuthesis/$file
+    cp -f $file template-$version/thuthesis/$file
 done
 
-pushd example-$daysold
-tar jcvf ../example-$daysold.tar.bz2 ./
+pushd example-$version
+tar jcvf ../example-$version.tar.bz2 ./
 popd
 
-pushd template-$daysold
-tar jcvf ../template-$daysold.tar.bz2 ./
+pushd template-$version
+tar jcvf ../template-$version.tar.bz2 ./
 popd
