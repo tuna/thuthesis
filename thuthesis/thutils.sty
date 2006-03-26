@@ -1,202 +1,42 @@
-\ProvidesPackage{thutils}[2005/12/18 v1.6 any packages you would
+\ProvidesPackage{thutils}[2006/03/27 2.2 any packages you would
 like to use]
 
-% \RequirePackage{checklab}
-% 支持彩色。恐怕我们并不需要。
-%    \begin{macrocode}
-\RequirePackage{color}
-%    \end{macrocode}
-
-
 % 处理数学公式中的黑斜体的宏包
-%    \begin{macrocode}
-\RequirePackage{bm}
-%    \end{macrocode}
+%\RequirePackage{bm}
+
 
 % 不同于~|\mathcal| or |\mathfrak| 之类的英文花体字体
-%    \begin{macrocode}
-\RequirePackage{mathrsfs}
-%    \end{macrocode}
+%\RequirePackage{mathrsfs}
 
-% 因为图形可浮动到当前页的顶部，所以它可能会出现
-% 在它所在文本的前面. 要防止这种情况，可使用~flafter 宏包
-%    \begin{macrocode}
- % \RequirePackage{flafter}
-%    \end{macrocode}
 
 % 确定浮动对象的位置，可以使用~H，强制将浮动对象放到这里（可能效果很差）
-%    \begin{macrocode}
-\RequirePackage{float}
-%    \end{macrocode}
+%\RequirePackage{float}
+
 
 % 浮动图形控制宏包。
 % 允许上一个~section 的浮动图形出现在下一个~section 的开始部分
 % 该宏包提供处理浮动对象的~|\FloatBarrier| 命令，使所有未处
 % 理的浮动图形立即被处理。这三个宏包仅供参考，未必使用：
-%    \begin{macrocode}
  % \RequirePackage[below]{placeins}
  % \RequirePackage{floatflt} % 图文混排用宏包
  % \RequirePackage{rotating} % 图形和表格的控制旋转
-%    \end{macrocode}
 
-%    \begin{macrocode}
-\RequirePackage{multirow}
-\RequirePackage{longtable}
-%    \end{macrocode}
+
+% 表格
+%\RequirePackage{multirow}
+%\RequirePackage{longtable}
+
 
 
 % 给自定义的宏后面自动加空白
-%    \begin{macrocode}
-\RequirePackage{xspace}
-%    \end{macrocode}
+% \RequirePackage{xspace}
+
 
 % 更好的控制~list:（强烈推荐）
-%    \begin{macrocode}
 \RequirePackage[newitem,newenum]{paralist}
-%    \end{macrocode}
 
-% 控制字体的大小
-%    \begin{macrocode}
-%\RequirePackage{type1cm}
-%    \end{macrocode}
 
-% 可将浮动对象放置到文件的最后
-%    \begin{macrocode}
-  % \RequirePackage{endfloat}
-%    \end{macrocode}
-
-% 定制表格和图形的多行标题行距
-%    \begin{macrocode}
-  % \RequirePackage{setspace}
-%    \end{macrocode}
-
-% 适用图文混排宏包
-%    \begin{macrocode}
-  % \RequirePackage{wrapfig}
-%    \end{macrocode}
-
-% \iffalse
-% 我还不知道这个包究竟是干什么用的
-% \RequirePackage{fancyref}
-% \fi
-
-% \begin{environment}{Aphorism}
-% 定义题头格言的格式
-%    \begin{macrocode}
-\newsavebox{\AphorismAuthor}
-\newenvironment{Aphorism}[1]
-{\vspace{0.5cm}\begin{sloppypar} \slshape
-\sbox{\AphorismAuthor}{#1}
-\begin{quote}\small\itshape }
-{\\ \hspace*{\fill}------\hspace{0.2cm} \usebox{\AphorismAuthor}
-\end{quote}
-\end{sloppypar}\vspace{0.5cm}}
-%    \end{macrocode}
-% \end{environment}
-
-% \begin{environment}{thunumlist}
-% 自定义项目列表标签及格式
-% !!!如果定义命令中有默认参数，那么使用的时候这个参数要用~[] 而不是~|{}|
-%
-%    \begin{macrocode}
-\newcounter{thunumlist} %自定义新计数器
-\newenvironment{thunumlist}[2][]{% arg1：label 前缀，arg2: label 后缀
-\begin{list}{#1\arabic{thunumlist}#2} %%标签格式
-    {
-    \usecounter{thunumlist}
- %     \setlength{\labelwidth}{22pt} %标签盒子宽度
- %     \setlength{\labelsep}{11pt} %标签与列表文本距离
-     \setlength{\leftmargin}{60pt} %左右边界
-     \setlength{\rightmargin}{0cm}
-     \setlength{\parsep}{0ex} %段落间距
-     \setlength{\itemsep}{0ex} %标签间距
-     \setlength{\itemindent}{0pt} %标签缩进量
-     \setlength{\listparindent}{22pt} %段落缩进量
-     \setlength{\topsep}{5pt} %标签与上文的间距
-    }}
-{\end{list}}%%%%%
-%    \end{macrocode}
-% \end{environment}
-
-% \begin{environment}{symblist}
-%    \begin{macrocode}
-\newenvironment{symblist}[1][$\triangleright$]{% arg1：列表标记符号
-\begin{list}{#1} %%标签格式
-    {
-     \setlength{\labelwidth}{22pt} %标签盒子宽度
-     \setlength{\labelsep}{11pt} %标签与列表文本距离
-     \setlength{\itemindent}{0pt} %标签缩进量
-     \setlength{\leftmargin}{42pt} %左右边界
-     \setlength{\rightmargin}{0cm}
-     \setlength{\parsep}{0ex} %段落间距
-     \setlength{\itemsep}{0ex} %标签间距
-     \setlength{\listparindent}{22pt} %段落缩进量
-     \setlength{\topsep}{5pt} %标签与上文的间距
-    }}
-{\end{list}}
-%    \end{macrocode}
-% \end{environment}
-
-% \begin{macro}{\mylength}
-% 方便的修改列表间距，推荐使用~paralist 的环境。
-%    \begin{macrocode}
-\newcommand{\mylength}[1][0pt]{\addtolength{\itemsep}{#1}}
-%    \end{macrocode}
-% \end{macro}
-
-% \begin{macro}{\equalbox}
-% 用~|\resizebox| 放缩图的时候一般是等比例的，为了方便定义~|\equalbox|
-% |\newcommand{\equalbox}[2]{\resizebox{#1\height}{#1\width}{#2}}|
-% \end{macro}
-
-% \begin{macro}{\china}
 % 定义自己常用的东西
-%    \begin{macrocode}
-\newcommand{\china}{中华人民共和国\xspace}
-%    \end{macrocode}
-% \end{macro}
+\newcommand{\china}{中华人民共和国}
 
-% 把这部分说明从主文件里扣出来，说不定有用。 
-%
-% \iffalse
-% 下面这两个命令用处不大：
-% \DescribeMacro{\mylength}
-% 方便的修改列表间距，推荐使用~paralist 的环境。
-%
-% \DescribeMacro{\equalbox}
-% 用~|\resizebox| 放缩图的时候一般是等比例的，为了方便定义~|\equalbox|。它要两个
-% 参数，第一个是放缩比例，第二个是图形文件。
-%
-% 还有几个自定义环境：
-%
-% \DescribeEnv{Aphorism}
-% 这是王磊模板里面的一个小东西，可以放置一段名言之类的东西，觉得挺有意思，就留下
-% 来吧。具体格式：
-% \begin{verbatim}
-% \begin{Aphorism}{author}
-%         aphorism
-% \end{Aphorism}
-% \end{verbatim}
-%
-% \DescribeEnv{thunumlist}
-% 使用列表时，前面的标签常常需要更改，比如写成：1)，[1]，|thunumlist| 可以定制自
-% 己的前后缀。使用格式：
-% \begin{verbatim}
-%   \begin{thunumlist}{prefix}{postfix}
-%   \item prefix 是位于标号前面的符号；默认为空。
-%   \item postfix 是位于标号后面的符号。
-%   \end{thunumlist}
-% \end{verbatim}
-%
-% \DescribeEnv{symblist}
-% 对应于编号的~|thunumlist|，|symblist|是可以定制标记的无编号列表。使用格式：
-% \begin{verbatim}
-%   \begin{symblist}{symbol}
-%     \item symbol 就是列表项的标记。
-%   \end{symblist}
-% \end{verbatim}
-%
-% 这两个环境只是提供一种方便，其实~|paralist| 提供了很多很好的环境，比默认的列表
-% 环境要好用的多，可参考其文档。
-% \fi
 \endinput

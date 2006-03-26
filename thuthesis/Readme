@@ -40,6 +40,8 @@ Makefile：
 
         make all 等于 make thesis && make shuji && make doc；
 
+	make cls 生成模板文件，相当于 make -f thesis.mak cls；
+
         make thesis 生成论文，相当于 make -f thesis.mak；
 
         make shuji 生成书脊，相当于 make -f shuji.mak；

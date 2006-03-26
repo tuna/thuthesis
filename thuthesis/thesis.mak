@@ -34,7 +34,7 @@ $(PACKAGE).cls: $(SOURCES)
 	latex $(PACKAGE).ins
 
 $(MAIN).dvi: $(PACKAGE).cls $(CONTENTS) $(MAIN).bbl
-	latex $(MAIN).tex
+	$(TEXI2DVI) $(MAIN).tex
 
 ifeq ($(METHOD),dvipdfm)
 $(MAIN).pdf: $(MAIN).dvi

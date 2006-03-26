@@ -34,6 +34,9 @@ clean:
 distclean: clean
 	-@rm -f *.pdf
 
+cls:
+	$(MAKE) -f thesis.mak cls
+
 thesis:
 	$(MAKE) -f thesis.mak
 

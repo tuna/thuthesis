@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2123}
+% \CheckSum{2127}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,18 +43,17 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/03/27 2.2 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/03/26 2.2 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{fancybox}
+\usepackage{fancyvrb}
 \usepackage{url}
 \IfFileExists{fourier.sty}{\usepackage{fourier}}{}
 \usepackage{xcolor}
-\usepackage{listings}
 \usepackage{CJK}
 \usepackage[CJKbookmarks=true, bookmarksnumbered=true, 
-            colorlinks=true, linkcolor=blue,
-            dvips]{hyperref}
+            colorlinks=true, linkcolor=blue, dvips]{hyperref}
 \usepackage{indentfirst}
 \setlength{\parskip}{4pt plus1pt minus0pt}
 \setlength{\parindent}{20pt}
@@ -67,25 +66,22 @@
 \renewcommand{\baselinestretch}{1.3}
 \setlength{\shadowsize}{3pt}
 \renewenvironment{description}
-               {\list{}{\setlength\labelwidth{2cm}
-                        \setlength\labelsep{3pt}
-                        \setlength\leftmargin{\labelwidth+\labelsep}
-                        \addtolength{\itemsep}{3pt}
-                        \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}}}}
-               {\endlist}
- %\renewcommand\descriptionlabel[1]{\fcolorbox{black}{red!20}{\texttt#1}}
- %\renewcommand\descriptionlabel[1]{\fcolorbox{white!100}{blue}{\texttt#1}}
+    {\list{}{\setlength\labelwidth{2cm}
+             \setlength\labelsep{3pt}
+             \setlength\leftmargin{\labelwidth+\labelsep}
+             \addtolength{\itemsep}{3pt}
+             \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}}}}
+    {\endlist}
 
-\lstnewenvironment{example}[1][]{%
-  \renewcommand{\baselinestretch}{1.0}
-  \lstset{basicstyle=\small\ttfamily,columns=flexible,frame=single,%
-    backgroundcolor=\color{yellow!20},xleftmargin=\fboxsep,%
-    xrightmargin=\fboxsep,gobble=1,escapechar=\#,commentstyle=\ttfamily,%
-    language=[LaTeX]TeX,keywordstyle=\color{blue}}\lstset{#1}}{}
-\lstnewenvironment{shell}[1][]{%
-  \lstset{language=sh,escapechar=\#,gobble=2,basicstyle=\small\ttfamily,%
-    columns=flexible,frame=single,backgroundcolor=\color{green!20},keywordstyle=\color{blue},%
-    morekeywords={latex,makeindex,make,msbuild.bat,msclean.bat}}\lstset{#1}}{}
+\DefineVerbatimEnvironment{example}{Verbatim}%
+ {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue}, 
+  fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1,
+  fontsize=\small, gobble=1}
+
+\DefineVerbatimEnvironment{shell}{Verbatim}%
+ {frame=single, framerule=0.3mm, rulecolor=\color{red!85!green!60}, 
+  fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small, gobble=1}
+
 \newcounter{FAQ}
 \def\question{%
   \stepcounter{FAQ}%
@@ -156,9 +152,12 @@
 % \changes{v2.1}{2006/03/02}{Remove |footmisc| and refine the document.}
 % \changes{v2.1}{2006/03/03}{Work very hard on the document.}
 % \changes{v2.1}{2006/03/03}{Add |checklab| code to reduce ``unresolved labels'' warning}
-% \changes{v2.2}{2006/03/27}{Adjust margins. How bad it is to simulate MS WORD!.}
-% \changes{v2.2}{2006/03/27}{Add bachelor training overview details supporting.}
-% \changes{v2.2}{2006/03/27}{CJK support in preamble.}
+% \changes{v2.2}{2006/03/26}{Adjust margins. How bad it is to simulate MS WORD!.}
+% \changes{v2.2}{2006/03/26}{Add bachelor training overview details supporting.}
+% \changes{v2.2}{2006/03/26}{CJK support in preamble.}
+% ^^A \changes{v2.2}{2006/03/26}{Prepend papersize to dvi.} I do not know why it
+% ^^A does not work
+% \changes{v2.2}{2006/03/26}{Adjust hyperref to avoid boxes around links.}
 % 
 %
 %
@@ -196,7 +195,7 @@
 % \begin{abstract}\noindent
 %   此宏包旨在建立一个简单易用的清华大学学位论文模板，包括本科综合论文训练、硕士论文
 %   、博士论文以及博士哲学论文。现在已经只支持本科、硕士和博士论文格式，对其它格式的
-%   支持会陆续加入。欢迎感兴趣的同学一起来做这件有意义的事情。
+%   支持会陆续加入。
 % \end{abstract}
 %
 % 
@@ -226,8 +225,8 @@
 % 进行更新。由于个人精力有限，不能保证三者完全同步。
 %
 % 2005 年圣诞节前，\thuthesis-2.0 发布，成为第一个同时支持硕士、博士论文格式的模
-% 板，后直到~2006 年~3 月初才加入本科论文格式支持，即~\thuthesis-2.1。这个版本
-% 的除了增加本科论文格式支持，同时去掉了很多不必要的宏包，改由基本~\TeX{} 和
+% 板，后直到~2006 年~3 月初才加入本科论文格式支持，即~\thuthesis-2.1。这个版本除
+% 了增加本科论文格式支持，同时去掉了很多不必要的宏包，改由基本~\TeX{} 和
 % ~\LaTeX{} 命令实现。虽然~\thuthesis\ 已经帮助很多同学顺利的提交了论文，但还需要
 % 花费相当的时间维护整理。如果没有特殊情况，模板的开发进度会稍微慢下来，暂时不会
 % 进行大规模的修改和优化。
@@ -256,6 +255,11 @@
 % \item \href{http://learn.tsinghua.edu.cn:8080/2003214890}{\url{http://learn.tsinghua.edu.cn:8080/2003214890}}
 % \end{itemize}
 %
+% \thuthesis{} 的开发版本同样可以在~sourceforge 上获得：
+% \begin{shell}
+% $ svn co https://svn.sourceforge.net/svnroot/thuthesis/trunk thuthesis 
+% \end{shell}
+%
 %\subsection{准备}
 %\label{sec:prepare}
 % 本模板用到以下宏包：
@@ -275,44 +279,108 @@
 % 如果你习惯“报盘版”那个模板的使用方式，请到~ThuThesis 主页上去下载，里面有具体
 % 的使用说明。{\hei 不过报盘版不再维护，里面存在的问题也不会改正了，建议大家用最新的版本。}
 %
-% 模板解压缩后生成文件夹~thuthesis-VERSION\footnote{VERSION 为版本号。} ，其中包
-% 括：模板源文件（thuthesis.ins 和~thuthesis.dtx），参考文献样式~thubib.bst，示例文档
-% （main.tex，shuji.tex，thutils.sty\footnote{我把所有可能用到但不一定用到的包以
-%   及一些命令定义都放在这里面，以免主~thuthesis.cls 过分臃肿。}，\linebreak[4]data/ 和~figures/ 和~ref/）。在使用之前需要先生成模板文件和
-% 配置文件（具体命令细节请参考~|Readme| 和~|Makefile|）：
-% \begin{lstlisting}[gobble=1]
-% \end{lstlisting}
+% 模板解压缩后生成文件夹~thuthesis-VERSION\footnote{VERSION 为版本号。}，其中包括
+% ：模板源文件（thuthesis.ins 和~thuthesis.dtx），参考文献样式~thubib.bst，示例文
+% 档（main.tex，shuji.tex，thutils.sty\footnote{我把所有可能用到但不一定用到的包
+%   以及一些命令定义都放在这里面，以免主~thuthesis.cls 过分臃肿。}，
+% \linebreak[4]data/ 和~figures/ 和~ref/）。在使用之前需要先生成模板文件和配置文
+% 件（具体命令细节请参考~|Readme| 和~|Makefile|）：
+% 
 % \begin{shell}
 % $ cd thuthesis-VERSION
-% $ latex thuthesis.ins  #\% 生成~thuthesis.cls 和~thuthesis.cpx#
+% # 生成~thuthesis.cls 和~thuthesis.cpx，必须执行
+% $ latex thuthesis.ins  
+%
+% # 下面的命令用来生成用户手册，可以不执行
 % $ latex thuthesis.dtx
 % $ makeindex -s gind.ist -o thuthesis.ind thuthesis.idx
 % $ makeindex -s gglo.ist -o thuthesis.gls thuthesis.glo
 % $ latex thuthesis.dtx
-% $ latex thuthesis.dtx  #\% 生成说明文档 thuthesis.dvi#
+% $ latex thuthesis.dtx  % 生成说明文档 thuthesis.dvi
 % \end{shell}
 %
+% \thuthesis{} 发布的时候已经自带了编译好的文档，如果你对文档如何生成并不关心，
+% 那么上面只需要执行~\texttt{latex thuthesis.ins} 即可。
+%
+%\subsubsection{dvi$\rightarrow$ps$\rightarrow$pdf}
+%\label{sec:dvipspdf}
+%
+%
+% 很多用户对~\LaTeX{} 命令执行的次数不太清楚，一个基本的原则就是如果有引用，如
+% ~ref 和~cite，那么至少需要执行~3 次。第一次发现引用，后两次解决引用。下面给出
+% 生成示例文档的详细过程（\# 开头的行为注释），首先来看经典的
+% ~\texttt{dvi$\rightarrow$ps$\rightarrow$pdf} 方式：
+% \begin{shell}
+% # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
+% $ latex main  
+%
+% # 2. 编译参考文件源文件，生成 bbl 文件
+% $ bibtex main
+%
+% # 3. 下面两次解决引用
+% $ latex main
+% $ latex main   # 此时生成完整的 dvi 文件
+%
+% # 4. 生成 ps，切记指定纸型参数 -ta4
+% $ dvips -ta4 -Ppdf -G0 main.dvi
+% 
+% # 5. 生成 pdf
+% $ ps2pdf main.ps
+% \end{shell}
+%
+%\subsubsection{dvipdfm(x)}
+%\label{sec:dvipdfmx}
+%
+% 如果使用~dvipdfm(x)，那么在生成完整的~dvi 文件之后（参见上面的例子），可以直接的到~pdf：
+% \begin{shell}% 
+% $ dvipdfm -p a4 main.dvi  
+% $ dvipdfmx -p a4 main.dvi  
+% \end{shell}
+% 这两个命令执行其中一个就可以。
+%
+%
+%\subsubsection{pdflatex}
+%\label{sec:pdflatex}
+%
+% 如果使用~pdflatex，那么上面的步骤就可以大大简化：
+% \begin{shell}
+% # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
+% $ pdflatex main  
+%
+% # 2. 编译参考文件源文件，生成 bbl 文件
+% $ bibtex main
+%
+% # 3. 下面两次解决引用
+% $ pdflatex main
+% $ pdflatex main   # 此时生成完整的 pdf 文件
+% \end{shell}
+% 需要注意的是~pdflatex 不能处理常见的~eps 图形，如果要用需要先将~eps 转化成~pdf
+% 。但增加了对~png，jpg，tiff 等标量图形的支持，比较方便。
+%
+%\subsubsection{自动化过程}
+%\label{sec:automation}
+%
+% 上面的例子只是给出一般情况下的使用方法，可以发现虽然命令很简单，但是每次都输入
+% 的话还是非常罗嗦的，所以~\thuthesis{} 还提供了一些自动处理的文件。
+%
 % 如果使用~Windows 平台，可以试一试\footnote{这个批处理仅供参考，实际用的时候不必
-%   执行那么多命令，请酌情处理。很多用户对~\LaTeX{} 命令执行的次数不太清楚，一个
-%   基本的原则就是如果有引用，如~ref 和~cite 那么至少需要执行~3 次。第一次发现引
-%   用，后两次解决引用。另外，我不会写~Windows 的批处理文件，哪位熟悉这个帮忙写
-%   个类似于~Makefile 之类的批处理吧，我这两个例子杀伤力比较强，不清楚运行机制的
-%   用户会很苦恼。}）：
+%   执行那么多命令，请酌情处理。另外，我不会写~Windows 的批处理文件，哪位熟悉这个
+%   帮忙写个类似于~Makefile 之类的批处理吧，我这两个例子杀伤力比较强，不清楚运行
+%   机制的用户会很苦恼。}：
 %
 % \begin{shell}
-% your_path $ msbuild.bat   #\% 生成一切#
-% your_path $ msclean.bat   #\% 清除一切#
+% your_path $ msbuild.bat   % 生成一切
+% your_path $ msclean.bat   % 清除一切
 % \end{shell}
 % 
 %
 % 如果你的系统有~make 那就方便多了： 
-%
 % \begin{shell}
 % $ make clean
-% $ make -f thesis.mak cls #\% 生成~thuthesis.cls 和~thuthesis.cfg#
-% $ make doc     #\% 生成说明文档~thuthesis.pdf#
-% $ make thesis  #\% 生成示例文档~main.pdf#
-% $ make shuji   #\% 生成书脊~shuji.pdf#
+% $ make cls       % 生成~thuthesis.cls 和~thuthesis.cpx
+% $ make doc       % 生成说明文档~thuthesis.pdf
+% $ make thesis    % 生成示例文档~main.pdf
+% $ make shuji     % 生成书脊~shuji.pdf
 % \end{shell}
 % 
 % edyfox 整理的~Makefile 非常细致，稍微有这方面知识的用户会感到非常~happy。如果
@@ -332,40 +400,40 @@
 %
 % \begin{document}
 %
-% #\fs\% 定义所有图片文件在~figures 子目录下#
+% % 定义所有图片文件在~figures 子目录下
 % \graphicspath{{figures/}}
 %
 % \frontmatter
-% #\fs\% 生成封面，版权页，摘要#
+% % 生成封面，版权页，摘要
 % \input{data/cover}
 % \makecover
 %
-% #\fs\% 目录#
+% % 目录
 % \tableofcontents
 %
-% #\fs\% 对照表#
+% % 对照表
 % \include{data/denotation}
 %
 % \mainmatter
 % \include{data/chap01}
 % \include{data/chap02}
 %
-% #\fs\% 结论#
+% % 结论
 % %\include{data/conclusion}
 %
-% #\fs\% 参考文献#
+% % 参考文献
 % \bibliographystyle{thubib}
 % \bibliography{reference/refs}
 %
-% #\fs\% 致谢与声明#
+% % 致谢与声明
 % \include{data/ack}
 %
-% #\fs\% 附录#
+% % 附录
 % \begin{appendix}
 %    \input{data/appendix01}
 % \end{appendix}
 %
-% #\fs\% 个人简历和发表的文章#
+% % 个人简历和发表的文章
 % \include{data/resume}
 %
 % \end{document}
@@ -470,15 +538,15 @@
 % \begin{example}
 % \documentclass{thuthesis}
 % \begin{document}
-% \ctitle{#论文中文题目#}
-% \cauthor{#中文姓名#}
-% #\% |\shuji| 命令需要上面两个变量#
+% \ctitle{论文中文题目}
+% \cauthor{中文姓名}
+% % |\shuji| 命令需要上面两个变量
 % \shuji
 %
-% #\% 如果你的中文标题中有英文，那可以指定：#
-% \shuji[#清华大学#~\hspace{0.1em}\raisebox{2pt}{\LaTeX}%
-% \hspace{-0.25em} #论文模板#~\hspace{0.1em}\raisebox{2pt}%
-% {v\version}\hspace{-0.25em}#样例#]
+% % 如果你的中文标题中有英文，那可以指定：
+% \shuji[清华大学~\hspace{0.1em}\raisebox{2pt}{\LaTeX}%
+% \hspace{-0.25em} 论文模板~\hspace{0.1em}\raisebox{2pt}%
+% {v\version}\hspace{-0.25em}样例]
 % \end{document}
 % \end{example}
 %
@@ -528,6 +596,9 @@
 % \paragraph{院系名称}
 % \DescribeMacro{\caffil}
 % \DescribeMacro{\eaffil}
+% \cs{caffil}\oarg{精简}\marg{详细}，主要针对本科生的“综合论文训练”部分，因为
+% 需要填写的空间有限，最好给出一个详细和精简院系名称，如“计算机科学与技术”和“
+% 计算机”。
 %
 % \paragraph{专业名称}
 % \DescribeMacro{\csubject}
@@ -580,6 +651,28 @@
 % \paragraph{本科论文中{\hei 主要参考文献}}
 % \DescribeMacro{\mainreferences}
 % 
+%
+%\subsection{数学环境}
+%\label{sec:math}
+%\thuthesis{} 定义了常用的数学环境：\\[10pt]
+%
+% \begin{tabular}{lllll}\hline
+%   axiom & theorem & definition & proposition & lemma \\
+%   公理 & 定理 & 定义 & 命题 & 引理 \\\hline
+%   proof & corollary & example & exercise &\\
+%   证明 & 推论 & 例子& 练习 &\\\hline
+% \end{tabular}
+%
+% 比如：
+%\begin{example}
+% \begin{definition}
+% 道千乘之国，敬事而信，节用而爱人，使民以时。
+% \end{definition}
+% \end{example}
+%
+% 产生（编号自动）：\\[5pt]
+% \fbox{{\hei 定义~1.1~~~} {道千乘之国，敬事而信，节用而爱人，使民以时。}}
+%
 %\subsection{其它}
 %\label{sec:othercmd}
 %
@@ -787,20 +880,23 @@
   \AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
 \fi
 
-\hypersetup{CJKbookmarks=true,
-            bookmarksnumbered=true,
-            bookmarksopen=true,
-            colorlinks=false,
-            citecolor=black,
-            linkcolor=black,
-            anchorcolor=black,
-            urlcolor=black,
-            plainpages=false,
-            pdfstartview=FitH}
+\hypersetup{%
+  CJKbookmarks=true,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  breaklinks=true,          
+  colorlinks=true, % avoid boxes
+  citecolor=black,
+  linkcolor=black,
+  anchorcolor=black,
+  filecolor=black,
+  menucolor=black,
+  pagecolor=black,
+  urlcolor=black,
+  plainpages=false,
+  pdfstartview=FitH}
 %    \end{macrocode}
 %
-%
-% ^^A \RequirePackage{checklab}
 % hypernat 可以在引用和参考文件之间建立关系。应该在~natbib 和~hyperref 之后~load，参看其文档。
 %    \begin{macrocode}
 \RequirePackage{hypernat}
@@ -815,8 +911,10 @@
 %\label{sec:layout}
 % 
 % 本来这部分应该是最容易设置的，但根据格式规定出来的结果跟学校的~WORD 样例相差很大，所
-% 以只能微调。
-%    \begin{macrocode}
+% 以只能微调。把页面尺寸写入~dvi，避免有的用户通过~dvips 不指定页面类型而得到古
+% 怪的结果。
+%    \begin{macrocode} 
+ %\AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
 \setlength{\textwidth}{\paperwidth}
 \setlength{\textheight}{\paperheight}
 \setlength\marginparwidth{0cm} 
@@ -1504,8 +1602,9 @@
 \def\secretyear#1{\def\thu@secretyear{#1}}
 \def\ctitle#1{\def\thu@ctitle{#1}}\def\thu@ctitle{}
 \def\cdegree#1{\def\thu@cdegree{#1}}\def\thu@cdegree{}
-\def\caffil#1{\def\thu@caffil{#1}}\def\thu@caffil{}
-\def\caffilshort#1{\def\thu@caffil@short{#1}}\def\thu@caffil@short{}
+\newcommand\caffil[2][]{\def\thu@caffil@short{#1}\def\thu@caffil{#2}}
+\def\thu@caffil{}
+\def\thu@caffil@short{}
 \def\csubject#1{\def\thu@csubject{#1}}\def\thu@csubject{}
 \def\cauthor#1{\def\thu@cauthor{#1}}\def\thu@cauthor{}
 \def\studentid#1{\gdef\thu@studentid{#1}}\def\thu@studentid{}
@@ -1753,7 +1852,7 @@
   \thu@revisebox\thu@bachelor@supervisor@comments\thu@bachelor@supervisor@sig\par%
   \thu@revisebox\thu@bachelor@revise@comments\thu@bachelor@revise@sig\par%
   \thu@revisebox\thu@bachelor@defense@comments\thu@bachelor@defense@sig\par%
-  \vskip1cm\hskip3cm{\bf\sihao\thu@bachelor@score\thu@reviserule[1.2pt]}\par%
+  \vskip1cm\hskip3cm{\bf\sihao\thu@bachelor@score\thu@reviserule[1pt]}\par%
   \hfill{\xiaosi\thu@bachelor@teaching@sig\thu@reviserule}\par%
   \vskip0.5cm\hfill{\xiaosi\thu@bachelor@cdate\hskip3em}%
   \newpage\thispagestyle{empty}\thu@bachelor@overview}
