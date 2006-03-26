@@ -36,3 +36,5 @@ popd
 pushd template-$version
 tar jcvf ../template-$version.tar.bz2 ./
 popd
+
+rm -rf example-$version template-$version

@@ -32,7 +32,7 @@ clean:
 		data/*.aux
 
 distclean: clean
-	-@rm -f *.pdf
+	-@rm -f *.pdf *.bz2
 
 cls:
 	$(MAKE) -f thesis.mak cls
