@@ -1895,7 +1895,7 @@
   \parbox[t][2cm][b]{\textwidth}{\hskip3cm{\bf\sihao\thu@bachelor@score\thu@reviserule[1pt]}\par%
   \hfill{\xiaosi\thu@bachelor@teaching@sig\thu@reviserule}\par%
   \vskip0.5cm\hfill{\xiaosi\thu@bachelor@cdate\hskip3em}}%
-  \if@openright\cleardoublepage\else\clearpage\fi\vspace*{0.2cm}\thu@bachelor@overview}
+  \cleardoublepage\vspace*{0.2cm}\thu@bachelor@overview}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2032,13 +2032,13 @@
 % 博士论文需要增加英文封面
 %    \begin{macrocode}
 \ifthu@doctor
-  \if@openright\cleardoublepage\else\clearpage\fi\thu@doctor@engcover
+  \cleardoublepage\thu@doctor@engcover
 \fi
 %    \end{macrocode}
 %
 % 授权说明
 %    \begin{macrocode}
-\if@openright\cleardoublepage\else\clearpage\fi\thu@authorization@mk
+\cleardoublepage\thu@authorization@mk
     \end{titlepage}
 %    \end{macrocode}
 %
