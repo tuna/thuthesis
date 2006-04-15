@@ -14,6 +14,7 @@ ENTRY
     institution
     journal
     key
+    lang
     month
     note
     number
@@ -281,6 +282,16 @@ INTEGERS { nameptr namesleft numnames }
 FUNCTION {bbl.etal}
 { "et~al." }
 
+FUNCTION {bbl.cn.etal}
+{ "等." }
+
+FUNCTION {format.lang}
+{ lang empty$
+    'skip$
+    'skip$
+  if$
+ }
+
 FUNCTION {format.names}
 { 's :=
   #1 'nameptr :=
@@ -316,9 +327,25 @@ FUNCTION {format.names}
               if$
               t "others" =
                 {
-                  " " * bbl.etal *
+                  lang empty$
+                    { " " * bbl.etal * }
+                    { lang "chinese" =
+                       { " " * bbl.cn.etal * }
+                       'skip$
+                      if$
+                    }
+                  if$
                 }
-                { " and " * t * }
+                {
+                  lang empty$
+                    { " and " * t * }
+                    { lang "chinese" =
+                       { ", " * t * }
+                       'skip$                   
+                     if$
+                    }
+                  if$
+                } 
               if$
             }
           if$
@@ -353,7 +380,7 @@ FUNCTION {format.editors}
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title "t" change.case$ }
+    { title }
   if$
 }
 
@@ -393,7 +420,7 @@ FUNCTION {format.date}
     }
     { month empty$
     'year
-    { month " " * year * }
+    { month ", " * year * }
       if$
     }
   if$
@@ -545,11 +572,15 @@ FUNCTION {format.in.ed.booktitle}
 { booktitle empty$
     { "" }
     { editor empty$
-    { %"In " booktitle emphasize * 
-        "In: Proceedings of " booktitle * 
+    { lang empty$
+        { "Proceedings of " booktitle * }
+        { " " booktitle * }
+      if$
     }
-    { %"In " format.editors * ", " * booktitle emphasize * 
-        "In: Proceedings of " format.editors * ", " * booktitle *
+    { lang empty$
+        { "In: " format.editors * ", Proceedings of " * booktitle * }
+        { " " booktitle * }
+      if$
     }
       if$
     }
@@ -702,18 +733,18 @@ FUNCTION {format.address.school}
 }
 
 
-FUNCTION {format.title:type}
+FUNCTION {format.title.type}
 { title empty$
     { type empty$
-    { "" }
-    { "there's a type but no title in " cite$ * warning$
-      type
-    }
+        { "" }
+        { "there's a type but no title in " cite$ * warning$
+          type
+        }
       if$
     }
     { type empty$
-    'title
-    { title "~: " * type * }
+        'title
+        { title ": " * type * }
       if$
     }
   if$
@@ -922,13 +953,18 @@ FUNCTION {manual}
   fin.entry
 }
 
+FUNCTION {masterthesis.type}
+{ lang empty$
+    { "[Master Thesis]" }
+    { "[硕士学位论文]" }
+  if$
+}
+
 FUNCTION {mastersthesis}
 { output.bibitem
-  format.authors "author" output.check
-  %new.block
-  format.title:type output
-  %format.title "title" output.check  
-  %"[硕士学位论文]" format.thesis.type output.nonnull  %Master's thesis
+  format.authors "author" add.period$ output.check
+  new.block
+  format.title remove.dots ": " * masterthesis.type * output
   new.block
   format.address.school output
   %format.madd "address" output.check
@@ -954,13 +990,18 @@ FUNCTION {misc}
   empty.misc.check
 }
 
+FUNCTION {phdthesis.type}
+{ lang empty$
+    { "[PhD Thesis]" }
+    { "[博士学位论文]" }
+  if$ 
+}
+
 FUNCTION {phdthesis}
 { output.bibitem
-  format.authors "author" output.check
-  %new.block
-  format.title:type output
-  %format.btitle "title" output.check  
-  %"[博士学位论文]" format.thesis.type output.nonnull   %PhD thesis
+  format.authors "author" add.period$ output.check
+  new.block
+  format.title remove.dots ": " * phdthesis.type * output
   new.block
   format.address.school output
   %address output

@@ -37,4 +37,4 @@ $(MAIN).pdf: $(MAIN).ps
 $(MAIN).ps: $(MAIN).dvi
 	gbk2uni $(MAIN)
 	latex $(MAIN).dtx
-	dvips -Ppdf -G0 -ta4 $(MAIN).dvi
+	dvips -Ppdf -G0 $(MAIN).dvi
