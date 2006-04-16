@@ -338,7 +338,7 @@ FUNCTION {format.names}
                 }
                 {
                   lang empty$
-                    { " and " * t * }
+                    { ", " * t * }
                     { lang "chinese" =
                        { ", " * t * }
                        'skip$                   
