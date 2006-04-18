@@ -242,43 +242,6 @@ FUNCTION {emphasize}
 
 INTEGERS { nameptr namesleft numnames }
 
-%FUNCTION {format.names}
-%{ 's :=
-%  #1 'nameptr :=
-%  s num.names$ 'numnames :=
-%  numnames 'namesleft :=
-%    { namesleft #0 > }
-%    { s nameptr "{ff~}{vv~}{ll}{, jj}" format.name$ 't :=
-%      nameptr #1 >
-%    {  nameptr #3
-%          #1 + =
-%          numnames #3
-%          > and
-%            { "others" 't :=
-%              #1 'namesleft := }
-%            'skip$
-%          if$
-%         namesleft #1 >
-%        { ", " * t * }
-%        { numnames #2 >
-%        { "," * }
-%        'skip$
-%          if$
-%          t "others" =
-%        { " et~al." * }
-%        { " and " * t * }
-%          if$
-%        }
-%      if$
-%    }
-%    't
-%      if$
-%      nameptr #1 + 'nameptr :=
-%      namesleft #1 - 'namesleft :=
-%    }
-%  while$
-%}
-
 FUNCTION {bbl.etal}
 { "et~al." }
 
@@ -299,8 +262,7 @@ FUNCTION {format.names}
   numnames 'namesleft :=
     { namesleft #0 > }
     { s nameptr
-      "{vv~}{ll}{ f{~}}{, jj}"
-      %"{ff~}{vv~}{ll}{, jj}"
+      "{ll}{ f{~}}"
       format.name$
       %remove.dots
       %bibinfo bibinfo.check
@@ -318,7 +280,7 @@ FUNCTION {format.names}
           namesleft #1 >
             { ", " * t * }
             { numnames #2 >
-              { "," * }
+              { "" * }
               'skip$
               if$
               s nameptr "{ll}" format.name$ duplicate$ "others" =
@@ -328,9 +290,9 @@ FUNCTION {format.names}
               t "others" =
                 {
                   lang empty$
-                    { " " * bbl.etal * }
+                    { ", " * bbl.etal * }
                     { lang "chinese" =
-                       { " " * bbl.cn.etal * }
+                       { ", " * bbl.cn.etal * }
                        'skip$
                       if$
                     }
@@ -632,15 +594,15 @@ FUNCTION {format.article.crossref}
 }
 
 FUNCTION {format.crossref.editor}
-{ editor #1 "{vv~}{ll}" format.name$
+{ editor #1 "{ll }{f{~}}" format.name$
   editor num.names$ duplicate$
   #2 >
     { pop$ " et~al." * }
     { #2 <
     'skip$
-    { editor #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
+    { editor #2 "{ll }{f{~}}" format.name$ "others" =
         { " et~al." * }
-        { " and " * editor #2 "{vv~}{ll}" format.name$ * }
+        { " and " * editor #2 "{ll }{f{~}}" format.name$ * }
       if$
     }
       if$
