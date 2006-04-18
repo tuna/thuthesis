@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/04/15 2.4 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/04/17 2.4.1 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{fancybox}
@@ -65,12 +65,14 @@
 \newcommand\fs{\CJKfamily{fs}}
 \renewcommand{\baselinestretch}{1.3}
 \setlength{\shadowsize}{3pt}
+\def\DescribeOption#1{\SpecialOptionIndex{#1}}
+\def\SpecialOptionIndex#1{\index{#1\actualchar\textbf{#1}}}
 \renewenvironment{description}
     {\list{}{\setlength\labelwidth{2cm}
              \setlength\labelsep{3pt}
              \setlength\leftmargin{\labelwidth+\labelsep}
              \addtolength{\itemsep}{3pt}
-             \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}\SpecialUsageIndex{##1}}
+             \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}
             }
     }{\endlist}
 
@@ -170,6 +172,8 @@
 % \changes{v2.4}{2006/04/14}{学位论文不在需要~type~字段。}
 % \changes{v2.4}{2006/04/14}{为摘要等条目增加书签。}
 % \changes{v2.4}{2006/04/14}{章节的编号用黑体，也就是自动打开~arialtitle~选项。}
+% \changes{v2.4.1}{2006/04/17}{2.4 忘了把关键词的tabular改成thu@tabular。}
+% \changes{v2.4.1}{2006/04/17}{参考文献最后一个作者前是逗号而不是~and。}
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
 % \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
@@ -178,13 +182,12 @@
 % \DoNotIndex{\Huge,\huge,\LARGE,\Large,\large,\normalsize}
 % \DoNotIndex{\small,\footnotesize,\scriptsize,\tiny}
 % \DoNotIndex{\normalfont,\bfseries,\slshape,\interlinepenalty}
-% \DoNotIndex{\hfil,\par,\vskip,\vspace,\quad}
+% \DoNotIndex{\hfil,\par,\hskip,\vskip,\vspace,\quad}
 % \DoNotIndex{\centering,\raggedright}
 % \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
 % \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
 % \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass}
 % \DoNotIndex{\AtBeginDocument,\AtEndDocument}
-%
 %
 % \IndexPrologue{\section*{索引}%
 %    \addcontentsline{toc}{section}{索~~~~引}}
@@ -242,8 +245,7 @@
 %
 % 在整理这个模板的过程中，我得到不少同学热情的支持，在此不一一列出，感谢他们提供
 % 的每一份帮助！让人感到欣喜的事很多同学都开始为~\thuthesis{} 添砖加瓦，目前包括
-% ~edyfox 同学的~Makefile，oseen 同学准备移植到~UTF-8，并制作~debian
-% package。
+% ~edyfox~的~Makefile，oseen~UTF-8~包合~debian package。
 %
 % 本文档将尽量简单的介绍模板的使用方法，如有不清楚可以参考示例文档或者直接给我写
 % 信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现在的这个版本基
@@ -734,7 +736,7 @@
 %\section{致谢}
 %\label{sec:thanks}
 %
-% 感谢~edyfox~的~Makefile！
+% 感谢~edyfox~的~Makefile！感谢~oseen~的~utf-8~移植工作和~debian package。
 %
 %
 % \StopEventually{\PrintChanges\PrintIndex}

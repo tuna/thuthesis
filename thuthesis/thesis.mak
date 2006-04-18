@@ -49,7 +49,7 @@ endif
 $(MAIN).ps: $(MAIN).dvi
 	gbk2uni $(MAIN)
 	latex $(MAIN).tex
-	dvips -Ppdf -G0 -ta4 $(MAIN).dvi
+	dvips -Ppdf -G0 $(MAIN).dvi
 
 $(MAIN).bbl: $(BIBFILE)
 	$(TEXI2DVI) $(MAIN).tex
