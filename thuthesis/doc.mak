@@ -23,6 +23,7 @@ dvi: $(MAIN).dvi
 ps: $(MAIN).ps
 
 $(PACKAGE).cls: $(SOURCES)
+	rm -f $(PACKAGE).cls $(PACKAGE).cpx
 	latex $(PACKAGE).ins
 
 $(MAIN).dvi: $(PACKAGE).cls $(MAIN).dtx
