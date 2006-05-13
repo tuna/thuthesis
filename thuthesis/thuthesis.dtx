@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2232}
+% \CheckSum{0}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/04/18 2.4.2 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/05/13 2.5 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{fancybox}
@@ -87,9 +87,9 @@
 
 \makeatletter
 \def\paragraph{\@startsection{paragraph}{4}{-3em}%
-                                    {2ex \@plus1ex \@minus.2ex}%
-                                    {0.1pt}%
-                                    {\raggedright\normalfont\normalsize\bfseries\hei}}
+              {2ex \@plus1ex \@minus.2ex}%
+              {0.1pt}%
+              {\raggedright\normalfont\normalsize\bfseries\hei}}
 \def\tableofcontents{\renewcommand{\baselinestretch}{1.0}\@starttoc{toc}}
 \def\DescribeMacro{\Describe@Macro}
 \def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
@@ -175,6 +175,7 @@
 % \changes{v2.4.1}{2006/04/17}{2.4 忘了把关键词的tabular改成thu@tabular。}
 % \changes{v2.4.1}{2006/04/17}{参考文献最后一个作者前是逗号而不是~and。}
 % \changes{v2.4.2}{2006/04/18}{去掉参考文献第二个作者后面烦人的逗号。}
+%
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
 % \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
@@ -278,7 +279,7 @@
 %   ifthen & clac & ifpdf  & CJK & CJKnumb & \textbf{CJKpunct}   \\
 %   array & booktabs & indentfirst  &  amsmath & amssymb & ntheorem   \\
 %   mathptmx & helvet & courier    &   graphicx & subfig & caption    \\
-%   titlesec & titletoc &  natbib & hyperref & hypernat & \textbf{thubib.bst}\\\hline
+%   paralist & natbib & hyperref & hypernat & \textbf{thubib.bst}& \\\hline
 % \end{tabular}
 %
 % CJKpunct~可以到~\href{http://www.ctex.org}{C\TeX}~去下载，thubib.bst~为模板自
@@ -835,7 +836,7 @@
 %    \begin{macrocode}
 \ifthu@arial
   \IfFileExists{arial.sty}{\RequirePackage{arial}}%
-                     {\RequirePackage[scaled=.92]{helvet}}
+                          {\RequirePackage[scaled=.92]{helvet}}
 \else
   \RequirePackage[scaled=0.92]{helvet}
 \fi
@@ -897,16 +898,6 @@
 \RequirePackage{booktabs}
 %    \end{macrocode}
 %
-% 控制标题的宏包
-%    \begin{macrocode}
-\RequirePackage{titlesec}
-%    \end{macrocode}
-%
-% 控制目录的宏包
-%    \begin{macrocode}
-\RequirePackage{titletoc}
-%    \end{macrocode}
-%
 %
 % 浮动图形和表格标题样式。caption2 已经不推荐使用，采用新的~caption。它会自动被
 % ~subfig 装载进来。所以可以在后面看到~|captionsetup| 的命令。否则，强制装载。
@@ -947,7 +938,7 @@
   colorlinks=false, 
   plainpages=false,
   pdfborder=0 0 0,
-  pdfstartview=FitH}
+  pdfpagelabels=true}
 %    \end{macrocode}
 %
 % hypernat 可以在引用和参考文件之间建立关系。应该在~natbib 和~hyperref 之后~load，参看其文档。
@@ -1028,29 +1019,7 @@
 \allowdisplaybreaks[4]
 %    \end{macrocode}
 %
-% 公式距前后文的距离由以下~4 个参数控制：
-% \begin{itemize}
-% \item |\abovedisplayskip| This specifies the extra space left above a long displayed
-%   formula, except with the option fleqn, where |\topsep| is used. A long formula
-%   is one that lies closer to the left margin than does the end of the preceding
-%   line (default value 12pt plus 3pt minus 9pt).
-% \item |\belowdisplayskip| This specifies the extra space left below a long displayed
-%   formula, except with the option fleqn, where |\topsep| is used (default value
-%   12pt plus 3pt minus 9pt).
-% \item |\abovedisplayshortskip| This specifies the extra space left above a short displayed
-%   formula, except with the option fleqn, where |\topsep| is used. A
-%   short formula is one which starts to the right of where the preceding line
-%   ends (default value 0pt plus 3pt).
-% \item |\belowdisplayshortskip| This specifies the extra space left below a short displayed
-%   formula, except with the option fleqn, where |\topsep| is used (default
-%   value 7pt plus 3pt minus 4pt).
-% \end{itemize}
-%    \begin{macrocode}
-\abovedisplayskip=10bp plus 2bp minus 2bp
-\abovedisplayshortskip=10bp plus 2bp minus 2bp
-\belowdisplayskip=\abovedisplayskip
-\belowdisplayshortskip=\abovedisplayshortskip
-%    \end{macrocode}
+% 公式距前后文的距离由~4 个参数控制，参见~\cs{normalsize} 的定义。
 %
 % 公式改成(1-1)的形式
 %    \begin{macrocode}
@@ -1065,8 +1034,8 @@
 %
 % 设置浮动对象和文字之间的距离
 %    \begin{macrocode}
-\setlength{\intextsep}{10pt plus2pt minus2pt}
-\setlength{\textfloatsep}{15pt plus2pt minus2pt}
+\setlength{\intextsep}{12bp plus2pt minus1pt}
+\setlength{\textfloatsep}{12bp plus2pt minus1pt}
 %    \end{macrocode}
 %
 % 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度
@@ -1088,6 +1057,7 @@
 % \end{itemize}
 % \changes{v2.4}{2006/04/14}{表格内容为~11~磅。}
 % \changes{v2.4}{2006/04/14}{图表标题左对齐，取消原先漂亮的~hang~模式。}
+% \changes{v2.5}{2006/05/13}{标题上下间距重调，以前没有考虑~intextsep~的影响。}
 %    \begin{macrocode}
 \let\thu@tabular\tabular
 \renewcommand\tabular{\dawu[1.4]\thu@tabular}
@@ -1095,9 +1065,8 @@
 \DeclareCaptionLabelFormat{thu}{{\dawu\song #1~\rmfamily #2}}
 \DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
 \DeclareCaptionFont{thu}{\dawu}
-\captionsetup[table]{position=top}
-\captionsetup[figure]{position=bottom}
-\captionsetup{aboveskip=12bp,belowskip=6bp}
+\captionsetup[table]{position=top,aboveskip=12bp-\intextsep,belowskip=6bp}
+\captionsetup[figure]{position=bottom,aboveskip=6bp,belowskip=12bp-\intextsep}
 \captionsetup{margin=10pt,labelformat=thu,labelsep=thu,font=thu}
  %\renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
  % \renewcommand{\p@subfigure}{:}
@@ -1257,7 +1226,12 @@
 % 定义行距
 % 正文小四号（12pt）字，行距为固定值20磅，大约是20/12=1.6667倍行间
 %    \begin{macrocode}
-\renewcommand\normalsize{\fontsize{12bp}{20bp}\selectfont}
+\renewcommand\normalsize{%
+  \@setfontsize\normalsize{12bp}{20bp}
+  \abovedisplayskip=10bp plus 2bp minus 2bp
+  \abovedisplayshortskip=10bp plus 2bp minus 2bp
+  \belowdisplayskip=\abovedisplayskip
+  \belowdisplayshortskip=\abovedisplayshortskip}
 %    \end{macrocode}
 %
 %
@@ -1376,84 +1350,65 @@
 % \subsubsection{章节标题}
 % \label{sec:titleandtoc}
 %
-% \iffalse
-% titlesec 提供了~chaptertitlename 可以根据当前环境自动选择~chaptername 还是
-% ~appendixname。其实就是~|\@chapapp|
-% \fi
-%
-% \iffalse
-% |\titleformat| is used to define the format, before and after options are used
-% to define the codes running before and after the command. While |\titlespacing|
-% redefines the spaces before, after, left and right of the command. So do not
-% mix them up by the same options such as before. 2005.4.22
-% format:
-%      |\titleformat|{command}[shape]{format}{label}{sep}{before code}{after code}
-%      |\titlespace|{command}{left}{before}{after}{right}
-% \fi
-%
 % 如果章节题目中的英文要使用~arial，那么就加上~sffamily
 %    \begin{macrocode}
 %<*cls>
-\let\mytitle=\relax % relax means "do nothing"
+\let\thu@title@font=\relax
 \ifthu@arialtitle
-  \let\mytitle=\sffamily
+  \let\thu@title@font=\sffamily
 \fi
 %    \end{macrocode}
 %
+% \changes{v2.5}{2006/05/13}{取消~titlesec~宏包，用基本~\LaTeX{}命令格式化标题。}
 % 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段前空~24 磅，段
 % 后空~18 磅。
 %    \begin{macrocode}
-\titleformat{\chapter}%
-    [hang]%shape
-    {\filcenter\hei\mytitle\ifthu@bachelor\xiaosan\else\sanhao[1]\fi}%format
-    {\@chapapp}%label
-    {1em}
-    {}%code before
-\titlespacing{\chapter}%
-    {0bp}{20bp}{24bp} % 这里用18bp显得小一些
+\def\@makechapterhead#1{%
+  \vspace*{20bp}%
+  {\parindent \z@ \centering
+    \hei\thu@title@font\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
+    \ifnum \c@secnumdepth >\m@ne
+        \@chapapp\hskip1em
+    \fi
+    #1\par\nobreak
+    \vskip 24bp
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{20bp}%
+  {\parindent \z@ \centering
+    \hei\thu@title@font\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
+    \interlinepenalty\@M
+    #1\par\nobreak
+    \vskip 24bp
+  }}
 %    \end{macrocode}
 %
 % 一级节标题，例如：2.1  实验装置与实验方法
 % 节标题序号与标题名之间空一个汉字符（下同）。
 % 采用黑体四号（14pt）字居左书写，行距为固定值~20 磅，段前空~24 磅，段后空~6 磅。
 %    \begin{macrocode}
-\titleformat{\section}%
-    [hang]%
-    {\hei\mytitle\sihao[1.429]}%
-    {\thesection}%
-    {1em}%
-    {}%
-    {}%
-\titlespacing{\section}%
-    {0bp}{24bp}{6bp}
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                     {-24bp \@plus -1ex \@minus -.2ex}%
+                     {6bp \@plus .2ex}%
+                     {\hei\thu@title@font\sihao[1.429]}}
 %    \end{macrocode}
 %
 % 二级节标题，例如：2.1.1  实验装置
 % 采用黑体~13pt 字居左书写，行距为固定值~20 磅，段前空~12 磅，段后空~6 磅。
 %    \begin{macrocode}
-\titleformat{\subsection}%
-    [hang]%
-    {\hei\mytitle\banxiaosi[1.538]}%
-    {\thesubsection}%
-    {1em}%
-    {}%
-    {}%
-\titlespacing{\subsection}%
-    {0bp}{16bp}{6bp}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                        {-16bp \@plus -1ex \@minus -.2ex}%
+                        {6bp \@plus .2ex}%
+                        {\hei\thu@title@font\banxiaosi[1.538]}}
 %    \end{macrocode}
 %
 % 三级节标题，例如：2.1.2.1  归纳法
 % 采用黑体小四号（12pt）字居左书写，行距为固定值~20 磅，段前空~12 磅，段后空~6 磅。
 %    \begin{macrocode}
-\titleformat{\subsubsection}%
-    [hang]%
-    {\hei\mytitle\xiaosi[1.667]}%
-    {\thesubsubsection}%
-    {1em}%
-    {}%
-    {}%
-\titlespacing{\subsubsection}%
-    {0bp}{16bp}{6bp} 
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                           {-16bp \@plus -1ex \@minus -.2ex}%
+                           {6bp \@plus .2ex}%
+                           {\hei\thu@title@font\xiaosi[1.667]}}
 %    \end{macrocode}
 %
 %
@@ -1468,46 +1423,85 @@
 \setcounter{tocdepth}{3}
 %    \end{macrocode}
 %
-% \iffalse
-% 为了方便控制，使用titlecontents取代dottedcontents命令。
-%
-% 命令说明：
-% \begin{verbatim}
-% \dottedcontents[<section>][<left>]{<above}{<label width>}{<leader width>}
-% \dottedcontents{chapter}[0.0em]{\hei\vspace{6bp}}{0bp}{5pt}
-% \dottedcontents{section}[1.16cm]{}{1.8em}{5pt}
-% \dottedcontents{subsection}[1.50cm]{}{2.7em}{5pt}
-% \dottedcontents{subsubsection}[2.36cm]{}{3.4em}{5pt}
-% \end{verbatim}
-% 命令说明：
-% \begin{verbatim}
-% \titlecontents{section}[left]{above}
-% {before with label}{before without label}
-% {filler and page}[after]
-% \end{verbatim}
-% 对于filler可以参考~|\titlerule*[1pc]{.}| 灵活调节。
-% contentslabel 即是~2.3 等标号的宽度。
-% \fi
 %
 % 每章标题行前空6磅，后空0磅。
 % 如果使用目录项中英文要使用~arial，那么就加上~sffamily
 % \changes{v2.0}{2005/12/18}{附录的目录项需要调整一下。以及公式编号方式等等。}
+% \changes{v2.5}{2006/05/13}{取消~titletoc~宏包，用~dottedtocline~调整目录。}
 %    \begin{macrocode}
-\let\mytoc=\relax
+\let\thu@tableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \if@openright\cleardoublepage\else\clearpage\fi
+ \phantomsection
+ \pdfbookmark[0]{\contentsname}{contents}
+ \thu@tableofcontents
+}
+\let\thu@toc@font=\relax
 \ifthu@arialtoc
-  \let\mytoc=\sffamily
+  \let\thu@toc@font=\sffamily
 \fi
+\def\@pnumwidth{2em}
+\def\@tocrmarg{2em}
+\def\@dottedtocline#1#2#3#4#5{%
+ \ifnum #1>\c@tocdepth \else
+ \vskip \z@ \@plus.2\p@
+ {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+ \parindent #2\relax\@afterindenttrue
+ \interlinepenalty\@M
+ \leavevmode
+ \@tempdima #3\relax
+ \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+ {\thu@toc@font #4}\nobreak
+ \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
+ \nobreak
+ \hb@xt@\@pnumwidth{\hfil\normalfont \normalcolor #5}%
+ \par}%
+\fi}
 
-\def\thu@chaptername{\CJKprechaptername~\thecontentslabel~\CJKchaptername} % 
-\titlecontents{chapter}
-              [0.0em]
-              {\hei\addvspace{6bp minus6bp}}
+\def\@chapter[#1]#2{%
+ \ifnum \c@secnumdepth >\m@ne
+  \if@mainmatter
+   \refstepcounter{chapter}%
+   \typeout{\@chapapp\space\thechapter.}%
+   \addcontentsline{toc}{chapter}%
+              {\protect\numberline{\@chapapp}#1}%
+  \else
+     \addcontentsline{toc}{chapter}{#1}%
+  \fi
+ \else
+   \addcontentsline{toc}{chapter}{#1}%
+ \fi
+ \chaptermark{#1}%
+ \addtocontents{lof}{\protect\addvspace{10\p@}}%
+ \addtocontents{lot}{\protect\addvspace{10\p@}}%
+ \if@twocolumn
+   \@topnewpage[\@makechapterhead{#2}]%
+ \else
+   \@makechapterhead{#2}%
+ \@afterheading
+ \fi}
+
+\renewcommand*\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 4bp \@plus\p@
+    \setlength\@tempdima{4em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode 
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      {\hei\thu@toc@font #1}%numberline is called here, and it use @tempdima
+      \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
+      \nobreak
+      \hb@xt@\@pnumwidth{\hfil\normalfont \normalcolor #2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
 %    \end{macrocode}
 % 章节名中英文用~arial 字体，页码仍用~times
 %    \begin{macrocode}
-              {\mytoc\thu@chaptername\hspace{1em}}
-              {}
-              {\dotfill\textrm{\contentspage}}
 \let\thu@appendix\appendix
 \renewenvironment{appendix}{%
   \thu@appendix
@@ -1515,33 +1509,12 @@
   \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi \@arabic\c@equation}
   %if you do not like the appendix sections appear in toc, do usepackage tocvsec2
   %\settocdepth{chapter}
-  \titlecontents{chapter}
-              [0.0em]
-              {\hei\addvspace{6bp minus6bp}}
-              {\mytoc\appendixname~\thecontentslabel\hspace{1em}}
-              {}
-              {\dotfill\textrm{\contentspage}}}{}
+}
+{\gdef\@chapapp{\CJKprechaptername~\CJKthechapter~\CJKchaptername}}
 
-\titlecontents{section}
-              [3em]
-              {}
-              {\mytoc\contentslabel{1.8em}}
-              {}
-              {\dotfill\textrm{\contentspage}}
-
-\titlecontents{subsection}
-              [4.6em]
-              {}
-              {\mytoc\contentslabel{2.7em}}
-              {}
-              {\dotfill\textrm{\contentspage}}
-
-\titlecontents{subsubsection}
-              [6em]
-              {}
-              {\mytoc\contentslabel{3.4em}}
-              {}
-              {\dotfill\textrm{\contentspage}}
+\renewcommand*\l@section{\@dottedtocline{1}{1.2em}{2.1em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{2.1em}{3em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{3.5em}{3.8em}}
 %    \end{macrocode}
 %
 % \subsubsection{页眉页脚}
@@ -1559,15 +1532,19 @@
 % 定义页眉和页脚。chapter 自动调用~thispagestyle{plain}，所以要重新定义~plain。
 % \changes{v2.0}{2005/12/18}{以前的太乱了，重新整理过清晰多了。}
 % \changes{v2.1}{2006/03/01}{彻底放弃~fancyhdr，定义自己的样式。}
+% \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
 %    \begin{macrocode}
 \def\ps@plain{% 
     \def\@oddhead{%
       \vbox to\headheight{%
+        \hb@xt@\textwidth{\hfill\wuhao\song\leftmark\hfill}%
+        \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}%
+    \def\@evenhead{
+      \vbox to\headheight{%
         \hb@xt@\textwidth{\hfill\wuhao%
         \ifthu@bachelor\hei\thu@schoolename\thu@bachelor@subtitle%
          \else\song\leftmark\fi\hfill}%
-        \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}%
-    \let\@evenhead=\@oddhead   
+        \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
     \def\@oddfoot{\hfil\wuhao\thepage\hfil}
     \let\@evenfoot=\@oddfoot}
 \pagestyle{plain}
@@ -1610,6 +1587,7 @@
 % 正体。默认情况下~|\@makefnmark| 显示为上标，同时为脚标和正文所用，所以如果要区
 % 分，必须分别定义脚注的标号和正文的标号。
 % \changes{v2.1}{2006/03/01}{让脚注它悬挂起来，而且中文中用上标，脚注中用正体。}
+% \changes{v2.5}{2006/05/13}{修正~minipage~中的脚注。}
 %    \begin{macrocode}
 %<*cls>
 \def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@} 
@@ -1617,7 +1595,8 @@
 \renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.3]} % 单倍行距太丑了，还是用1.3吧
 \let\thu@fnsymbol\@fnsymbol
 \renewcommand{\thefootnote}{\thu@fnsymbol\c@footnote}
-\def\@makefnmark{\textsuperscript{\hbox{\normalfont\thu@fnsymbol\c@footnote}}}
+\renewcommand{\thempfootnote}{\thu@fnsymbol\c@mpfootnote}
+\def\@makefnmark{\textsuperscript{\hbox{\normalfont\@thefnmark}}}
 \long\def\@makefntext#1{
     \bgroup
       \setbox\@tempboxa\hbox{%
@@ -2276,6 +2255,7 @@
 % 修改默认的~thebibliography 环境，增加一些调整代码。
 % \changes{v2.4}{2006/04/15}{参考文献间距调小一点，label~长度增加一点，以便让超过
 % ~100~的参考文献更好地对齐。}
+% \changes{v2.5}{2006/05/13}{参考文献序号靠左，而不是靠右。}
 %    \begin{macrocode}
 \renewenvironment{thebibliography}[1]{%    
      \phantomsection % make sure the hyperlink is correct
@@ -2284,11 +2264,11 @@
       \markboth{\bibname}{\bibname}%
       \wuhao[1.5]
       \list{\@biblabel{\@arabic\c@enumiv}}%
-           {\settowidth\labelwidth{1.5cm}%\@biblabel{#1}
-            \setlength{\labelsep}{1.5em}
+           {\renewcommand{\makelabel}[1]{##1\hfill}
+            \settowidth\labelwidth{1cm}
+            \setlength{\labelsep}{1em}
             \setlength{\itemindent}{0pt}
-            \leftmargin\labelwidth
-            \advance\leftmargin\labelsep
+            \setlength{\leftmargin}{\labelwidth+\labelsep}
             \addtolength{\itemsep}{-0.7em}
             \usecounter{enumiv}%
             \let\p@enumiv\@empty
@@ -2375,7 +2355,7 @@
 % 单独使用书脊命令会在新的一页产生竖排书脊
 %    \begin{macrocode}
 \newcommand{\shuji}[1][\thu@ctitle]{
-  \newpage
+  \newpage%
   \thispagestyle{empty}
   \vspace*{1cm}
  \shupai[\textheight-2cm]{\fs\xiaosan #1\hfill\thu@cauthor}}
@@ -2472,8 +2452,11 @@
 %    \end{macrocode}
 % \end{macro}
 %
+% 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改，否则
+% 必须在~document~开始后才能，感觉不好。
+% \changes{v2.5}{2006/05/13}{不用~CJKcaption，在导言区直接引入配置文件。}
 %    \begin{macrocode}
-\AtEndOfClass{\thu@active@cjk}
+\AtEndOfClass{\thu@active@cjk\input{thuthesis.cfg}}%
 %</cls>
 %    \end{macrocode}
 %
@@ -2564,8 +2547,7 @@
 \AtBeginDocument{\thu@fixselectfont%
    \begin{CJK*}{GBK}{song}%
    \sloppy\CJKindent\CJKtilde%
-   \CJKcaption{thuthesis}%
-   \thu@item@space}
+   \thu@item@space\thu@setup@pdfinfo}
 \AtEndDocument{\clearpage\end{CJK*}}
 %</cls>
 %    \end{macrocode}

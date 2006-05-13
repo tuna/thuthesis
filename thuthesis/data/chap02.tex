@@ -13,7 +13,8 @@
 \subsection{绘图}
 \label{sec:draw}
 
-本模板不再预先装载任何绘图包（如~pstricks等），完全由你自己来决定。
+本模板不再预先装载任何绘图包（如~pstricks等），完全由你自己来决定。强烈推荐《
+\LaTeX2$_{\epsilon}$ 插图指南》！
 
 \subsection{插图}
 \label{sec:graphs}
@@ -46,7 +47,9 @@
 如果多个图形相互独立，并不共用一个图形计数器，那么用~\verb|minipage| 或者
 ~\verb|parbox| 就可以。否则，请参看例子。
 
-\begin{figure}
+图~\ref{fig:big1} 包含两个小图，分别是图~\ref{fig:subfig1} 和图
+~\ref{fig:subfig2}。
+\begin{figure}[h]
   \centering
   \subfloat[第一个小图形]{%
     \label{fig:subfig1}
@@ -57,10 +60,6 @@
   \caption{包含子图形的大图形。}
   \label{fig:big1}
 \end{figure}
-
-图~\ref{fig:big1} 包含两个小图，分别是图~\ref{fig:subfig1} 和图
-~\ref{fig:subfig2}。
-
 
 古之学者必有师。师者，所以传道受业解惑也。人非生而知之者，孰能无惑？惑而不从
 师，  其为惑也，终不解矣。生乎吾前，其闻道也固先乎吾，吾从而师之；生乎吾後，其闻
