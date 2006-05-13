@@ -51,11 +51,11 @@
 控制。
 
 \begin{table}[htb]
+  \centering
   \caption{模板文件。}
   \label{tab:template-files}
-  \begin{minipage}[t]{\linewidth} % 如果想在表格中使用脚注，minipage是个不错的办法
-  \centering
-  \begin{tabular}{lp{10cm}}
+  \begin{minipage}[t]{0.8\linewidth} % 如果想在表格中使用脚注，minipage是个不错的办法
+  \begin{tabular*}{\linewidth}{lp{10cm}}
 \hlinewd{1.5pt}
 {\hei 文件名} & {\hei 描述} \\\midrule[1pt]
 thuthesis.ins & \LaTeX{} 安装文件，docstrip\footnote{表格中的脚注} \\
@@ -65,7 +65,7 @@ thuthesis.cfg & 模板配置文。cls 和~cfg 由前两个文件生成。\\
 thubib.bst    & 参考文献~Bibtex 样式文件。\\
 thutils.sty   & 常用的包和命令写在这里，减轻主文件的负担。\\
 \bottomrule[1.5pt]
-  \end{tabular}
+  \end{tabular*}
   \end{minipage}
 \end{table}
 
