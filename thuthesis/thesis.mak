@@ -31,7 +31,7 @@ dvi: $(MAIN).dvi
 ps: $(MAIN).ps
 
 $(PACKAGE).cls: $(SOURCES)
-	rm -f $(PACKAGE).cls $(PACKAGE).cpx
+	rm -f $(PACKAGE).cls $(PACKAGE).cfg
 	latex $(PACKAGE).ins
 
 $(MAIN).dvi: $(PACKAGE).cls $(CONTENTS) $(MAIN).bbl

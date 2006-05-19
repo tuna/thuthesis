@@ -16,7 +16,7 @@ clean:
 		*.bbl \
 		*.blg \
 		*.cls \
-		*.cpx \
+		*.cfg \
 		*.dvi \
 		*.glo \
 		*.gls \
@@ -29,6 +29,9 @@ clean:
 		*.ps \
 		*.thm \
 		*.toc \
+		*.lof \
+		*.lot \
+		*.loe \
 		data/*.aux
 
 distclean: clean
