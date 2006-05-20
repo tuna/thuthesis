@@ -13,18 +13,19 @@
 \subsection{绘图}
 \label{sec:draw}
 
-本模板不再预先装载任何绘图包（如~pstricks等），完全由你自己来决定。强烈推荐《
-\LaTeX2$_{\epsilon}$ 插图指南》！
+本模板不再预先装载任何绘图包（如~pstricks等），完全由你自己来决定。
 
 \subsection{插图}
 \label{sec:graphs}
 
-使用细节请参看~\textbf{subfig} 的说明文档。
+强烈推荐《\LaTeX2$_{\epsilon}$ 插图指南》！关于子图形的使用细节请参看~\textbf{subfig} 的说明文档。
 
 \subsubsection{一个图形}
 \label{sec:onefig}
-看看图~\ref{fig:xfig1} 觉得怎么样。
-
+一般图形都是处在浮动环境中。之所以称为浮动是指最终排版效果图形的位置不一定与源文
+件中的位置对应\footnote{This is a feature of \LaTeX, but not a bug!}，这也是刚使
+用~\LaTeX{} 同学遇到的问题。如果要强制固定浮动图形的位置，请使用~\texttt{float}
+宏包，它提供了~\texttt{[H]} 参数，比如图~\ref{fig:xfig1}。
 \begin{figure}[H] % use float package if you want it here
   \centering
   \includegraphics{hello.eps}
@@ -54,7 +55,7 @@
   \subfloat[第一个小图形]{%
     \label{fig:subfig1}
     \includegraphics{hello.eps}}
-  \subfloat[第二个小图形。如果标题很长的话，它会自动换行，并且采用一种~hang 模式，这个~caption 就是这样的例子。]{%
+  \subfloat[第二个小图形。如果标题很长的话，它会自动换行，这个~caption 就是这样的例子。]{%
     \label{fig:subfig2}
     \includegraphics{hello.eps}}
   \caption{包含子图形的大图形。}
@@ -65,6 +66,20 @@
 师，  其为惑也，终不解矣。生乎吾前，其闻道也固先乎吾，吾从而师之；生乎吾後，其闻
 道也亦先乎吾，吾从而师之。吾师道也，夫庸知其年之先後生於吾乎！是故无贵无贱无长无
 少，道之所存，师之所存也。
+
+如果要把编号的两个图形并排，那么小页就非常有用了：
+\begin{figure}[hb]
+\begin{minipage}{0.45\textwidth}
+  \includegraphics{hello.eps}
+  \caption{并排第一个图。}
+  \label{fig:parallel1}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+    \includegraphics{hello.eps}
+  \caption{并排第二个图。}
+  \label{fig:parallel2}
+\end{minipage}
+\end{figure}
 
 嗟乎！师道之不传也久矣，欲人之无惑也难矣。古之圣人，其出人也远矣，犹且从师而问
 焉；今之众人，其下圣人也亦远矣，而耻学於师。是故圣益圣，愚益愚。圣人之所以为

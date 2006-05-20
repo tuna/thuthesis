@@ -1,14 +1,20 @@
-Simple Howto:
--------------
+What's it?
+--------------
+
+ThuThesis is a LaTeX thesis template package for Tsinghua University in order to
+make it easy to write thesises for either bachelor, master or doctor.  ThuThesis
+是清华大学学位论文LaTeX模板，支持本科、硕士、博士论文格式。
+
+
+
+Makefile Howto (by edyfox):
+---------------
 
 1. 获取帮助文档
 
-   make doc
-
-   得到 thuthesis.pdf，帮助文档，里面有详细的说明。
+   make doc   得到 thuthesis.pdf，帮助文档，里面有详细的说明。
 
    关于说明文档生成的完整命令请参看 doc.mak
-
 
 2. 查看示例文档
 
@@ -16,13 +22,11 @@ Simple Howto:
    
    关于示例文档生成的完整命令请参看 thesis.mak
 
-
 3. 书脊示例   
 
    make shuji
 
    关于书脊生成的完整命令请参看 shuji.mak
-
 
 附录：
 
@@ -38,24 +42,17 @@ Makefile：
 
     参数说明：
 
-        make all 等于 make thesis && make shuji && make doc；
-
-	make cls 生成模板文件，相当于 make -f thesis.mak cls；
-
-        make thesis 生成论文，相当于 make -f thesis.mak；
-
-        make shuji 生成书脊，相当于 make -f shuji.mak；
-
-        make doc 生成使用说明书，相当于 make -f doc.mak；
-
-        make clean 表示清除除了 pdf 外的所有中间文件和目标文件；
-
+        make all       等于 make thesis && make shuji && make doc；
+        make cls       生成模板文件，相当于 make -f thesis.mak cls；
+        make thesis    生成论文，相当于 make -f thesis.mak；
+        make shuji     生成书脊，相当于 make -f shuji.mak；
+        make doc       生成使用说明书，相当于 make -f doc.mak；
+        make clean     表示清除除了 pdf 外的所有中间文件和目标文件；
         make distclean 表示清除包括 pdf 在内的所有中间文件和目标文件。
 
         METHOD 参数用来指定生成 pdf 的方式，
 
-        METHOD=ps2pdf 表示使用 texi2dvi -> dvips ->ps2pdf 的方式生成 pdf；
-
+        METHOD=ps2pdf  表示使用 texi2dvi -> dvips ->ps2pdf 的方式生成 pdf；
         METHOD=dvipdfm 表示使用 texi2dvi -> dvipdfm 的方式生成 pdf；
 
         如果缺省，则采用 ps2pdf 方式。
@@ -77,16 +74,13 @@ thesis.mak
     参数说明：
 
         make -f thesis.mak all 等价于 make pdf；
-
         make -f thesis.mak cls 生成 cls 文件，为正式编译做好准备；
-
         make -f thesis.mak dvi 生成 dvi 文件；
-
         make -f thesis.mak ps 生成 ps 文件；
-
         make -f thesis.mak pdf 生成 pdf 文件。
 
         METHOD 参数和 TEXI2DVI 参数同前。
+
 
 shuji.mak
 
@@ -99,13 +93,9 @@ shuji.mak
     参数说明：
 
         make -f shuji.mak all 等价于 make pdf；
-
         make -f shuji.mak cls 生成 cls 文件，为正式编译做好准备；
-
         make -f shuji.mak dvi 生成 dvi 文件；
-
         make -f shuji.mak ps 生成 ps 文件；
-
         make -f shuji.mak pdf 生成 pdf 文件。
 
         METHOD 参数和 TEXI2DVI 参数同前。
@@ -120,18 +110,53 @@ doc.mak
             [TEXI2DVI=<tex2dvi>]
 
     参数说明：
-
         make -f doc.mak all 等价于 make pdf；
-
         make -f doc.mak cls 生成 cls 文件，为正式编译做好准备；
-
         make -f doc.mak dvi 生成 dvi 文件；
-
         make -f doc.mak ps 生成 ps 文件；
-
         make -f doc.mak pdf 生成 pdf 文件。
 
         METHOD 参数和 TEXI2DVI 参数同前。
 
+
+msmake.cmd Howto (by Truel):
+-----------------
+1.配置thuthesis宏包
+
+    msbuild setup
+   　　在当前目录下生成thuthesis宏包及说明文档thuthesis.pdf
+
+2.生成示例文档
+  
+    msbuild [shuji|main|all|other]
+　　
+    在当前目录下生成示例文档，或其中的一部分，或其他用户指定文档
+如果当前目录下无thuthesis.cls，将自动根据thuthesis.ins生成。
+　　- shuji 仅生成书脊
+　　- main  仅生成main.pdf
+　　- all  生成书脊和main.pdf，默认选项
+　　- other 用户指定的tex文件名，由该tex文件产生pdf文档
+
+3.清理目录
+
+    msbuild clean [other]
+
+　　清理当前目录下由thuthesis宏包生成的文件，具体包括
+    - 宏包及其说明文档thuthesis.{cls,cfg,dvi,ps,pdf}
+    - 示例文档shuji.pdf, main.{dvi,ps,pdf,aux,etc.}
+    - 其它临时文件 *.log *.aux *.glo *.idx *.ilg *.ind *.out *.thm *.toc *.lot *.loe *.out.bak
+    - 如果用户指定其他文件名，不删除main.*，而删除 other.{dvi,ps,pdf,lo?,aux,bbl,blg,out* toc thm}
+
+4.辅助图形图像文件格式转换命令：
+
+   msbuild epspdf [param]
+
+     @rem  将当前目录下所有eps文件用epstopdf转为pdf格式
+
+   msbuild bmpeps [param]
+
+     @rem  将当前目录下所有bmp,jpg,png文件用bmeps转为eps格式
+
+   以上两个命令中，param可以由用户指定转换程序所用的参数。
 
 # $Id$

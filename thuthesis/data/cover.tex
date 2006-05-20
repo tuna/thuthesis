@@ -8,22 +8,20 @@
 \ctitle{清华大学学位论文~\LaTeX\ 模板使用示例文档}
 % 根据自己的情况选，不用这样复杂
 \makeatletter
-\ifthu@bachelor
-
-\else
-\ifthu@doctor
-  \cdegree{工学博士}
-\else
-  \ifthu@master
-    \cdegree{工学硕士}
+\ifthu@bachelor\relax\else
+  \ifthu@doctor
+    \cdegree{工学博士}
+  \else
+    \ifthu@master
+      \cdegree{工学硕士}
+    \fi
   \fi
-\fi
 \fi
 \makeatother
 
 
-\caffil[计算机]{计算机科学与技术系}
-\csubject{计算机科学与技术}
+\cdepartment[计算机]{计算机科学与技术系}
+\cmajor{计算机科学与技术}
 \cauthor{薛瑞尼} 
 \studentid{2005310432}
 \classid{计研~2}
@@ -37,7 +35,7 @@
 
 \etitle{An Introduction to \LaTeX{} Thesis Template of Tsinghua University} 
 \edegree{Doctor of Science} 
-\esubject{Computer Science and Technology} 
+\emajor{Computer Science and Technology} 
 \eauthor{Xue Ruini} 
 \esupervisor{Professor Zheng Weimin} 
 \eassosupervisor{Chen Wenguang} 
@@ -93,7 +91,8 @@
 \contentsandprogress{这是主要进度}
 \mainrequirements{这是主要要求（指标）}
 \mainreferences{这是主要参考文献}
+
 \bachelorcommentsfig{hello.eps}
-\bachelorauthfig{hello.eps}
-\bacheloroverviewfig{hello.eps}
-\bachelordeclarefig{hello.eps}
+\bachelorauthfig[scale=2]{hello.eps}
+\bacheloroverviewfig[width=0.5\textwidth]{hello.eps}
+\bachelordeclarefig[height=4cm]{hello.eps}
