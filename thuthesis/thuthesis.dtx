@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2819}
+% \CheckSum{2785}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -884,7 +884,7 @@
 %
 % 定义论文类型以及是否涉密
 % \changes{v2.4}{2006/04/14}{添加模板名称命令。}
-% \changes{v2.5}{2005/05/19}{增加本科论文的提交选项~submit。}
+% \changes{v2.5}{2006/05/19}{增加本科论文的提交选项~submit。}
 %    \begin{macrocode}
 %<*cls>
 \def\thuthesis{T\textsc{hu}\-T\textsc{hesis}}
@@ -1473,13 +1473,23 @@
 % 分，必须分别定义脚注的标号和正文的标号。
 % \changes{v2.1}{2006/03/01}{让脚注它悬挂起来，而且中文中用上标，脚注中用正体。}
 % \changes{v2.5}{2006/05/13}{修正~minipage~中的脚注。}
+% \changes{v2.5.1}{2006/05/21}{脚注编号使用~textcircled 命令，每页允许至多~99 个
+% 脚注条目。}
+% \begin{macro}{\thu@textcircled}
+% 生成带圈的脚注数字。最多处理到~99，当然这个很容易扩展了。
 %    \begin{macrocode}
+\def\thu@textcircled#1{%
+  \ifnum \value{#1} <10 \textcircled{\xiaoliu\arabic{#1}}
+  \else\ifnum \value{#1} <100 \textcircled{\qihao\arabic{#1}}\fi
+  \fi}
+%    \end{macrocode}
+% \end{macro}
+%    \begin{macrocode}
+\renewcommand{\thefootnote}{\thu@textcircled{footnote}}
+\renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
 \def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@} 
 \let\thu@footnotesize\footnotesize
 \renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.3]} % 单倍行距太丑了，还是用1.3吧
-\let\thu@fnsymbol\@fnsymbol
-\renewcommand{\thefootnote}{\thu@fnsymbol\c@footnote}
-\renewcommand{\thempfootnote}{\thu@fnsymbol\c@mpfootnote}
 \def\@makefnmark{\textsuperscript{\hbox{\normalfont\@thefnmark}}}
 \long\def\@makefntext#1{
     \bgroup
@@ -1498,27 +1508,6 @@
     \par\egroup}
 %</cls>
 %    \end{macrocode}
-%
-% 脚注序号采用“①，……，⑩”。由于带圈的~CJK 数字只有~10 个，每页可用的脚注数使有限的。
-% \begin{macro}{\thu@fnsymbol}
-%   很简单的编号，输入~i，输出为带圈的~i。
-%    \begin{macrocode}
-%<*cfg>
-\def\thu@i{①}
-\def\thu@ii{②}
-\def\thu@iii{③}
-\def\thu@iv{④}
-\def\thu@v{⑤}
-\def\thu@vi{⑥}
-\def\thu@vii{⑦}
-\def\thu@viii{⑧}
-\def\thu@ix{⑨}
-\def\thu@x{⑩}
-\renewcommand\thu@fnsymbol[1]{\ifcase#1\or\thu@i\or\thu@ii\or\thu@iii%
- \or\thu@iv\or\thu@v\or\thu@vi\or\thu@vii\or\thu@viii\or\thu@ix\or\thu@x\else\@ctrerr\fi}
-%</cfg>
-%    \end{macrocode}
-% \end{macro}
 %
 %
 %\subsubsection{数学相关}
@@ -1649,7 +1638,7 @@
 % \subsubsection{中文标题定义}
 % \label{sec:theor}
 %
-% \changes{v2.5}{2005/05/19}{增加索引名称定义。}
+% \changes{v2.5}{2006/05/19}{增加索引名称定义。}
 %    \begin{macrocode}
 %<*cfg>
 \renewcommand\contentsname{目\hspace{1em}录}
@@ -1868,7 +1857,7 @@
   \fi}
 
 \renewcommand*\l@section{\@dottedtocline{1}{1.2em}{2.1em}}
-\renewcommand*\l@subsection{\@dottedtocline{2}{2.1em}{3em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{2em}{3em}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{3.5em}{3.8em}}
 %</cls>
 %    \end{macrocode}
@@ -1905,7 +1894,7 @@
 % \begin{macro}{\emajor}
 % \begin{macro}{\esubject}
 % \begin{macro}{\eauthor}
-% \changes{v2.5}{2005/05/20}{院系和专业分别改名用~department 和~major，代替原来
+% \changes{v2.5}{2006/05/20}{院系和专业分别改名用~department 和~major，代替原来
 % 的~affil 和~subject。}
 %    \begin{macrocode}
 %<*cls>
@@ -2081,6 +2070,8 @@
 % 申请学位的学科门类: 小二号宋体字。
 % 中文封面页边距：
 %  上-~6.0 厘米，下-~5.5 厘米，左-~4.0 厘米，右-~4.0 厘米，装订线~0 厘米；
+% \changes{v2.5.1}{2006/05/21}{本科封面标题调整微小的空隙。}
+% \changes{v2.5.1}{2006/05/21}{本科封面标题第二行的横线上移一点。}
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\thu@first@titlepage}{
@@ -2100,10 +2091,9 @@
        \begin{picture}(0,0)(0,0)
          \setlength\unitlength{1cm}
          \linethickness{1.3pt}
-         \put(0,-0.21){\line(1,0){10}}
-         \put(0,-1.7){\line(1,0){10}}
-       \end{picture}
-       \yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
+         \put(0,-0.25){\line(1,0){10}}
+         \put(0,-1.68){\line(1,0){10}}
+       \end{picture}\ignorespaces\yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
     \vskip1.55cm
 \else
     \parbox[t][9cm][t]{\paperwidth-8cm}{
@@ -2199,8 +2189,8 @@
 \newcommand{\thu@bachelor@comments}{%
   \thu@revisebox{4.7cm}\thu@bachelor@supervisor@comments\thu@bachelor@supervisor@sig\par%
   \thu@revisebox{5.3cm}\thu@bachelor@revise@comments\thu@bachelor@revise@sig\par%
-  \thu@revisebox{5cm}\thu@bachelor@defense@comments\thu@bachelor@defense@sig\vskip0.2cm%
-  \hspace*{3cm}{\bf\sihao\thu@bachelor@score\thu@reviserule[1pt]}\\[2pt]%
+  \thu@revisebox{5cm}\thu@bachelor@defense@comments\thu@bachelor@defense@sig\vskip0.15cm%
+  \hspace*{3cm}{\bf\sihao\thu@bachelor@score\thu@reviserule[1pt]}\\[4pt]\nopagebreak
   \hbox{}\hfill{\xiaosi\makebox[8em][l]{\thu@bachelor@teaching@sig}\thu@reviserule}%
   \nopagebreak\vskip0.3cm\hfill{\xiaosi\thu@bachelor@cdate}}
 %    \end{macrocode}
@@ -2520,7 +2510,7 @@
 % ~cleardoublepage，使新开章节的页码到达正确的状态。否则会因为~addcontentsline
 % 在~chapter 之前而导致目录页码错误。}
 % 定义致谢与声明环境。
-% \changes{v2.5}{2005/05/16}{ft，本科论文要求致谢声明分页，但是研究生的不分！}
+% \changes{v2.5}{2006/05/16}{ft，本科论文要求致谢声明分页，但是研究生的不分！}
 %    \begin{macrocode}
 %<*cls>
 \newenvironment{ack}{%

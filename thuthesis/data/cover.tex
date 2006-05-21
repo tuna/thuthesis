@@ -43,11 +43,10 @@
 % \edate{December, 2005}
 
 %定义中英文摘要和关键字
-\cabstract{
-    本文介绍清华大学论文~\LaTeX + CJK
-    模板的使用方法。本模板基本符合学校的博士、硕士
-  论文格式要求。本科论文关键字用逗号分子，硕士论文为关键字之间为~2 个汉字字符，博士论
-  文关键词之间为分号，你说麻烦不麻烦。大家在用的时候多多注意。具体使用方法请参看本文源文件。}
+\cabstract{ 本文介绍清华大学论文模板~\thuthesis{} 的使用方法。本模板基本符合学校
+  的本科、硕士、博士论文格式要求。本科论文关键字用逗号分隔，硕士论文关键字之间为~2 个
+  汉字字符，博士论文关键词之间为分号，你说麻烦不麻烦。大家在用的时候多多注意。具
+  体使用方法请参看本文源文件。}
 
 %根据你的情况，选择一个即可，这里只是作为示例。
 \makeatletter
@@ -62,17 +61,16 @@
 \fi
 \makeatother
 
- \eabstract{
-  This article presents the \LaTeX + CJK template for Master Thesis of Tsinghua University, and briefly
-  introduces the usage.
+\eabstract{ This article presents \thuthesis, the thesis template
+  for Tsinghua University, and briefly introduces the usage.
 
-  The template has been verified by the Graduate School of Tsinghua
-  University. It fulfils the corresponding format requirements. This document is
-  generated according to the format of Master Thesis.  You possibly need to make
-  some modification for Master Thesis.
+  The template has been verified by the academic administration of Tsinghua
+  University. It fulfils the corresponding format requirements, and can generate
+  either bachelor, master or doctor thesis easily. You can simply insert your
+  information and main text into the right places in this example.
 
   Generally, the abstract and the key words should be consistent with the
-  Chinese version. The space between them is four english characters.  }
+  Chinese version. }
 
 % 这里也是
 \makeatletter
@@ -87,11 +85,12 @@
 \fi
 \makeatother
 
-
+% 本科综合论文训练中的条目
 \contentsandprogress{这是主要进度}
 \mainrequirements{这是主要要求（指标）}
 \mainreferences{这是主要参考文献}
 
+% 本科最终提交的时候需要给出各签名图片
 \bachelorcommentsfig{hello.eps}
 \bachelorauthfig[scale=2]{hello.eps}
 \bacheloroverviewfig[width=0.5\textwidth]{hello.eps}
