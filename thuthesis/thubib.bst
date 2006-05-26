@@ -82,6 +82,17 @@ FUNCTION {output.nonnull}
   s
 }
 
+FUNCTION {output.year}
+{ 't :=
+  number empty$
+  volume empty$
+  and
+    { add.period$ write$ }
+    { ", " * write$ }
+  if$
+  t
+}
+
 STRINGS {z}
 FUNCTION {remove.dots}
 { 'z :=
@@ -486,8 +497,8 @@ FUNCTION {format.pages}
 { pages empty$
     { "" }
     { pages multi.page.check
-    { "pages" pages n.dashify tie.or.space.connect }
-    { "page" pages tie.or.space.connect }
+    { "" pages n.dashify tie.or.space.connect }
+    { "" pages tie.or.space.connect }
       if$
     }
   if$
@@ -754,7 +765,7 @@ FUNCTION {article}
       %format.date "year" output.check
       %new.block
       year output
-      format.vol.num.pages output      
+      format.vol.num.pages output.year
     }
     { format.article.crossref output.nonnull
       format.pages output
@@ -808,6 +819,7 @@ FUNCTION {inbook}
   if$
   format.edition output
   format.date "year" output.check
+  format.pages output
   new.block
   note output
   fin.entry

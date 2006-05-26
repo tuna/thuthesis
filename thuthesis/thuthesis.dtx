@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2785}
+% \CheckSum{2853}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,9 +43,10 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/05/20 2.5 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/05/26 2.5.1 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
+\usepackage{array}
 \usepackage{fancybox}
 \usepackage{fancyvrb}
 \usepackage{url}
@@ -79,7 +80,7 @@
 
 \DefineVerbatimEnvironment{example}{Verbatim}%
  {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue}, 
-  fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1,
+  fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1.2,
   fontsize=\small, gobble=1}
 
 \DefineVerbatimEnvironment{shell}{Verbatim}%
@@ -95,7 +96,9 @@
 
 \def\ps@headings{%
   \let\@oddfoot\@empty
-  \def\@oddhead{\vbox{\hbox to\textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}\vskip-0.7pt\hrulefill}}%  
+  \def\@oddhead{\vbox{\hbox
+      to\textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}\vskip-0.7pt
+        \hbox to \textwidth{\hrulefill}}}%  
   \let\@mkboth\markboth
   \def\sectionmark##1{%
     \markright{\ifnum \c@secnumdepth >\m@ne
@@ -197,6 +200,9 @@
 % \changes{v2.5}{2006/05/19}{对本科论文进行大幅度的重写，因为教务处修改了格式要
 % 求。}
 % \changes{v2.5}{2006/05/19}{重新整理代码，使其布局更易读。}
+% \changes{v2.5.1}{2006/05/24}{根据教务处的新要求调整附录部分。}
+% \changes{v2.5.1}{2006/05/25}{参考文献中杂志文章如果没有卷号，那么页码直接跟在
+% 年份后面，并用句点分割。在~thubib.bst 中增加~output.year 函数。}
 %
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
@@ -278,12 +284,8 @@
 % 本上满足了学校的大部分要求，但难免还存在不足之处，欢迎大家能积极反馈。
 %
 %
-% \section{使用方法}
-%
-% \subsection{\thuthesis{} 使用向导}
-% \label{sec:userguide}
-% 网上有一个模板使用向导幻灯片，要比这份文档更加简练易懂，推荐新用户先看那个。下
-% 面列出的几个网址都有，也可以到~\TeX@newsmth 置底~ftp 下载。
+% \section{安装}
+% \label{sec:installation}
 %
 % \subsection{下载}
 % \thuthesis{} 的主页是：
@@ -301,7 +303,40 @@
 % $ svn co https://svn.sourceforge.net/svnroot/thuthesis/trunk thuthesis 
 % \end{shell}
 %
-% \subsection{准备}
+% \subsection{模板的组成部分}
+% 下表列出了~\thuthesis{} 的主要文件及其功能介绍：
+%
+% \begin{center}
+%   \begin{tabular}{l|p{10cm}}
+% \hline
+% {\hei 文件（夹）} & {\hei 功能描述}\\\hline\hline
+% thuthesis.ins & 模板驱动文件 \\
+% thuthesis.dtx & 模板文档代码的混合文件\\
+% thuthesis.cls & 模板类文件\\
+% thuthesis.cfg & 模板配置文件\\
+% thubib.bst & 参考文献样式文件\\
+% main.tex & 示例文档主文件\\
+% shuji.tex & 书脊示例文档\\
+% ref/ & 示例文档参考文献目录\\
+% data/ & 示例文档章节具体内容\\
+% figures/ & 示例文档图片路径\\
+% thutils.sty & 为示例文档加载其它宏包\\
+% Makefile & self-explanation (依赖于~thesis.mak，doc.mak 和~shuji.mak)\\
+% msmake.cmd & Windows 批处理工具\\
+% Readme & self-explanation\\
+% thuthesis.pdf & 用户手册（本文档）\\\hline
+%   \end{tabular}
+% \end{center}
+%
+% 需要说明几点：1）thuthesis.cls 和~thuthesis.cfg 可以由~thuthesis.ins 和
+% ~thuthesis.dtx 生成，但为了降低新手用户的使用难度，特将~cls 和~cfg 也一起发布
+% 。2）学习一个新东西最好的办法就是读它的文档。请时刻记住~RTFM，不要滥用你提问的
+% 权力。
+%
+% 如果对上面表格中的文件及其解释还存在疑问，没有关系，继续往下看，一会儿就会天开
+% 云散了。
+%
+% \subsection{准备工作}
 % \label{sec:prepare}
 % 本模板用到以下宏包：
 %
@@ -318,12 +353,8 @@
 % 带，所有其它宏包在各~\TeX~系统基本都有，如果缺少请自行下载安装。
 % 
 %
-% \subsection{安装}
+% \subsection{开始安装}
 % \label{sec:install}
-% 如果你习惯“报盘版”那个模板的使用方式，请到~\thuthesis\ 主页上去下载，里面有具体
-% 的使用说明。{\hei 不过报盘版不再维护，里面存在的问题也不会改正了，请大家忘掉它
-% 吧！}
-%
 % 模板解压缩后生成文件夹~thuthesis-VERSION\footnote{VERSION 为版本号。}，其中包括
 % ：模板源文件（thuthesis.ins 和~thuthesis.dtx），参考文献样式~thubib.bst，示例文
 % 档（main.tex，shuji.tex，thutils.sty\footnote{我把所有可能用到但不一定用到的包
@@ -333,7 +364,7 @@
 % 
 % \begin{shell}
 % $ cd thuthesis-VERSION
-% # 生成~thuthesis.cls 和~thuthesis.cpx，必须执行
+% # 生成 thuthesis.cls 和 thuthesis.cfg
 % $ latex thuthesis.ins  
 %
 % # 下面的命令用来生成用户手册，可以不执行
@@ -346,7 +377,7 @@
 %
 % \thuthesis{} 发布的时候已经自带了编译好的文档，如果你对文档如何生成并不关心，
 % 那么上面只需要执行~\texttt{latex thuthesis.ins} 即可。为了进一步简化模板的使用
-% ，\thuthesis{} 以后的发布中都会自带生成的~thuthesis.cls~和~thuthesis.cpx，这样上
+% ，\thuthesis{} 以后的发布中都会自带生成的~thuthesis.cls~和~thuthesis.cfg，这样上
 % 面的命令一条都不必执行。
 %
 %\subsubsection{dvi$\rightarrow$ps$\rightarrow$pdf}
@@ -418,7 +449,8 @@
 % 上面的例子只是给出一般情况下的使用方法，可以发现虽然命令很简单，但是每次都输入
 % 的话还是非常罗嗦的，所以~\thuthesis{} 还提供了一些自动处理的文件。
 %
-% 如果使用~Windows 平台，可以试一试~Truel 编写的批处理脚本~msmake.cmd：
+% 如果使用~Windows 平台，可以试一试~Truel 编写的批处理脚本~msmake.cmd\footnote{
+% 目前尚不完善，需要进一步测试。}：
 %
 % \begin{shell}
 % your_path $ msmake setup   % 生成宏包文件和说明文档
@@ -431,7 +463,7 @@
 % 如果你的系统有~make 那就方便多了： 
 % \begin{shell}
 % $ make clean
-% $ make cls       % 生成~thuthesis.cls 和~thuthesis.cpx
+% $ make cls       % 生成 thuthesis.cls 和 thuthesis.cfg
 % $ make doc       % 生成说明文档~thuthesis.pdf
 % $ make thesis    % 生成示例文档~main.pdf
 % $ make shuji     % 生成书脊~shuji.pdf
@@ -446,8 +478,35 @@
 % 便，修改，更新容易一些。只有自己用没必要全局安装。
 %
 %
-% 本模板作为一个~class 出现，而不是“报盘版”的~package。所以在使用方法上有一些
-% 差别。下面是一个简单的例子，具体内容可以参考模板附带的示例文档~main.tex 和~data/。
+% \subsection{升级}
+% \label{sec:updgrade}
+% \thuthesis{} 升级非常简单，只要下载最新的版本，将~thuthesis.ins，thuthesis.dtx
+% 和~thubib.bst 拷贝至你的工作目录覆盖相应的文件，然后运行一次：
+% \begin{shell}
+%  latex thuthesis.ins 
+% \end{shell}
+% 
+% 生成新的类文件和配置文件即可。当然也可以直接拷贝~thuthesis.cls、
+% thuthesis.cfg 和~thubib.bst，免去上面命令的执行。只要明白它的工作原理，这个很容
+% 易。
+%
+%
+% \section{使用说明}
+% \label{sec:usage}
+% 本手册假定用户已经能处理一般的~\LaTeX{} 文档，并对~BIB\TeX{} 有一定了解。如果你
+% 从来没有接触过~\TeX 和~\LaTeX，建议先学习相关的基础知识。磨刀不误砍柴工！
+%
+% \subsection{\thuthesis{} 使用向导}
+% \label{sec:userguide}
+% 推荐新用户先看网上的《\thuthesis{} 使用向导》幻灯片，那份讲稿比这份文档简练易懂
+% 。由于版本的差异，里面几个命令稍有改动。但模板向下兼容，旧的命令同样支持。下面
+% 列出的几个网址都有这个幻灯片，推荐到~\TeX@newsmth 置底~ftp 下载。
+%
+% \subsection{\thuthesis{} 示例文件}
+% \label{sec:userguide}
+% 对于新用户推荐从模板自带的示例文档入手，里面包括了模板定义的所有命令的使用方法
+% 。对于不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于
+% 示例文档，具体内容可以参考模板附带的~main.tex 和~data/。
 %
 % \begin{example}
 % \documentclass[bachelor,dvips]{thuthesis}
@@ -456,25 +515,27 @@
 %
 % \begin{document}
 %
-% % 定义所有图片文件在~figures 子目录下
+% % 定义所有图片文件在 figures 子目录下
 % \graphicspath{{figures/}}
 %
+% %%% 封面部分
 % \frontmatter
-% % 生成封面，版权页，摘要
 % \input{data/cover}
 % \makecover
 %
 % % 目录
 % \tableofcontents
 %
-% % 对照表
+% % 符号对照表
 % \include{data/denotation}
 %
-% % 论文主要内容
+% %%% 正文部分
 % \mainmatter
 % \include{data/chap01}
 % \include{data/chap02}
 %
+% %%% 其它部分
+% \backmatter
 % % 加入插图、表格和公式索引
 % \listoffigures
 % \listoftables
@@ -487,13 +548,12 @@
 % % 致谢与声明
 % \include{data/ack}
 %
-% \backmatter
 % % 附录
 % \begin{appendix}
 %    \input{data/appendix01}
 % \end{appendix}
 %
-% % 个人简历和发表的文章
+% % 个人简历
 % \include{data/resume}
 %
 % \end{document}
@@ -504,44 +564,46 @@
 % 本模板提供了一些选项以方便使用：
 % \begin{description}
 % \item[bachelor]
-%  如果写本科论文将此选项打开。
+%   如果写本科论文将此选项打开。
 %
 % \item[master]
-%  如果写硕士论文将此选项打开。
+%   如果写硕士论文将此选项打开。
 %
 % \item[doctor]
-%  如果写博士论文将此选项打开。
+%   如果写博士论文将此选项打开。
 %
 % \item[secret]
-% 涉秘论文开关。配合另外两个命令~|\secretlevel| 和~|\secretyear| 分别用来指定保密级别和时间。
-% 二者默认分别为“秘密”和当前年份。可以通过：
-% \cs{secretlevel}|{|绝密|}| 和~\cs{secretyear}|{|10|}| 年独立修改。
+%   涉秘论文开关。配合另外两个命令~|\secretlevel| 和~|\secretyear| 分别用来指定保
+%   密级别和时间。  二者默认分别为“秘密”和当前年份。可以通过：
+%   \cs{secretlevel}|{|绝密|}| 和~\cs{secretyear}|{|10|}| 年独立修改。
 % 
-% \item[submit] 论文中签字部分在最终提交时需要有老师的亲笔签字，这样我们只能通过
-% 扫描图片的方法完成。此选项默认关闭，也就是我们写论文一直到打印都是未提交状态。
-% 一旦要提交了，那么请将此选项打开，同时提供必要的扫描图片，模板会自动将图片放在
-% 适当的签名位置，最后生成的文档就可以提交了。({\color{red} 只有本科需要这个选项！})
+% \item[submit] 
+%   论文中签字部分在最终提交时需要有老师的亲笔签字，这样我们只能通过扫描图片的方
+%   法完成。此选项默认关闭，也就是我们写论文一直到打印都是未提交状态。  一旦要提
+%   交了，那么请将此选项打开，同时提供必要的扫描图片，模板会自动将图片放在适当的
+%   签名位置，最后生成的文档就可以提交了。({\color{red} 只有本科需要这个选项！})
 %
-% \item[openany, openright] 
-% 正规出版物的章节出现在奇数页，也就是右手边的页面，这就是~\texttt{openright}，
-% 也是~\thuthesis~的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么模
-% 板会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎更倾向于页面连续，那就是通常所说
-% 的~\texttt{openany}。
+% \item[openany, openright]  
+%   正规出版物的章节出现在奇数页，也就是右手边的页面，这就是~\texttt{openright}，
+%   也是~\thuthesis~的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么
+%   模板会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎
+%   更倾向于页面连续，那就是通常所说的~\texttt{openany}。{\fs 目前教务处明确规定
+%     本科论文采用~openright，但硕士和博士的格式要求正文前的部分和第一章右开，随后内容
+%     反倒不要求。}
 %
 % \item[dvips]
-% 打开~dvips 支持，否则为~dvipdfm，如果运行~pdflatex，则二者皆不用。如果用
-% ~pdflatex~编译，请务必去掉此选项。
+%   打开~dvips 支持，否则为~dvipdfm，如果运行~pdflatex，则二者皆不用。如果用
+%   ~pdflatex~编译，请务必去掉此选项，否则模板会报错。
 %
 % \item[arial]
-%  使用真正的~arial 字体。此选项会装载~arial 字体宏包，如果此宏包不存在，就
-%   装载~Helvet。arialtoc 和~arialtitle 不受~arial 的影响。因为一般的~\TeX{} 发
-%   行都没有~arial 字体，所以默认采用~helvet，因为二者效果非常相似。如果你执着的
-%   要用~arial 字体，请参看：
-%   \href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial 字
-%   体}。
+%   使用真正的~arial 字体。此选项会装载~arial 字体宏包，如果此宏包不存在，就装载
+%   ~Helvet。arialtoc 和~arialtitle 不受~arial 的影响。因为一般的~\TeX{} 发行都没
+%   有~arial 字体，所以默认采用~helvet，因为二者效果非常相似。如果你执着的要用
+%   ~arial 字体，请参看：
+%   \href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial 字体}。
 %
 % \item[arialtoc]
-%  目录项中的英文是否用~arial 字体（默认打开）。
+%  目录项中的英文是否用~arial 字体（本科默认打开）。
 %
 % \item[arialtitle]
 %  章节标题中英文是否用~arial 字体（默认打开）。
@@ -589,8 +651,9 @@
 % \end{tabular}
 % \end{center}
 %
-% 使用方法为：\cs{command}\oarg{num}，其中~|command| 为字号命令，|num| 为行距。比如
-% ~|\xiaosi[1.5]| 表示选择小四字体，行距~1.5 倍。
+% 使用方法为：\cs{command}\oarg{num}，其中~|command| 为字号命令，|num| 为行距。比
+% 如~|\xiaosi[1.5]| 表示选择小四字体，行距~1.5 倍。表格中的字体是~\cs{dawu}，如果
+% 你不使用类~tabular 环境，那么就需要自己调整其中的字号。
 %
 % \myentry{字距}
 % \DescribeMacro{\ziju}
@@ -636,7 +699,7 @@
 % ，那么直接调用此命令即可。否则，就要像例子里面那样做一些微调。其实这个命令在独
 % 立的文件生成更好一些，不要和论文混在一起。下面是一个列子：
 % \begin{example}
-% \documentclass{thuthesis}
+% \documentclass[bachelor]{thuthesis}
 % \begin{document}
 % \ctitle{论文中文题目}
 % \cauthor{中文姓名}
@@ -654,7 +717,7 @@
 % \DescribeMacro{\pozhehao}  
 % 中文破折号在~CJK-\LaTeX\ 里没有很好的处理，我们平时输入的都是两个小短线，比如这样
 % ，{\hei 中国——中华人民共和国}。这不符合中文习惯。所以这里定义了一个命令生成
-% 更好看的破折号，不过这似乎不是一个好的解决办法。{\color{red}\hei 有同学说不能用在~|\section| 等
+% 更好看的破折号，不过这似乎不是一个好的解决办法。{\color{red} 有同学说不能用在~|\section| 等
 % 命令中使用，我暂时没有找到解决的办法，大家暂时先避免这种情况。}
 %
 % \subsubsection{封面命令}
@@ -687,7 +750,7 @@
 % 个详细和精简院系名称，如“计算机科学与技术”和“计算机”。
 %
 % \myentry{专业名称}
-% \DescribeMacro{\cmajor} 旧版本中为~\DescribeMacro{\csubject}\ignorespaces；
+% \DescribeMacro{\cmajor} 旧版本中为~\DescribeMacro{\csubject}；
 % \DescribeMacro{\emajor} 旧版本中为~\DescribeMacro{\esubject}
 %
 % \myentry{导师姓名}
@@ -797,8 +860,8 @@
 % \DescribeMacro{\mainreferences} 综合论文训练中主要参考文献，可用列表环境。
 % 
 % \myentry{最终提交}
-% 本科论文在最终提交的时候签名页面需要扫描并以图片的形式替换对应页面。此时需要打
-% 开~\texttt{submit} 选项。论文中主要有~4 处签名，分别是：
+% 本科论文在最终提交的时候签名页面需要扫描并以图片的形式替换对应页面，此时需要打
+% 开~\texttt{submit} 选项，同时提供论文中~4 处签名的扫描图片，分别是：
 %
 % \begin{center}
 % \begin{tabular}{ll}
@@ -838,7 +901,7 @@
 % \end{center}
 %
 % 比如：
-%\begin{example}
+% \begin{example}
 % \begin{definition}
 % 道千乘之国，敬事而信，节用而爱人，使民以时。
 % \end{definition}
@@ -846,10 +909,14 @@
 % 产生（自动编号）：\\[5pt]
 % \fbox{{\hei 定义~1.1~~~} {道千乘之国，敬事而信，节用而爱人，使民以时。}}
 %
-%\subsection{其它}
-%\label{sec:othercmd}
+% 
+% \subsection{自定义以及其它}
+% \label{sec:othercmd}
 %
-% 实际上模板中定义了很多内部命令，由于设计过多繁琐的实现细节，此处将其略去。感兴
+% 模板的配置文件~thuthesis.cfg 中定义了很多“固定”词汇，一般无须修改。如果你有
+% 特殊需求，推荐在导言区使用~\cs{renewcommand}。当然，导言区里可以直接使用中文。
+%
+% 此外，模板中定义了很多内部命令，由于设计过多繁琐的实现细节，此处将其略去。感兴
 % 趣的同学可以参看源代码，重新定义以适合自己的需要。
 %
 %
@@ -859,16 +926,15 @@
 % 感谢~edyfox~的~Makefile，感谢~Truel 的~msmake.cmd，感谢~oseen~的~utf-8~移植工作
 % 和~debian package，感谢~EricH 制作的~gentoo ebuild！
 %
-% 感谢我自己能把这件事坚持下来，模板制作期间颇多感慨，不断的遇到问题，不断的摸索
-% 解决问题。其中的酸甜苦辣恐怕只有自己能体会得到！经过跟教务处得协商，自己的劳动
-% 终于修成正果，被学校所接受，在本科生中间推广使用。研究生院仍然没有音信，我希望
-% 明天，或者后天，或者不久的将来他们能够意识到这样一个模板存在的必要性。
+% 感谢我自己能把这件事坚持下来，模板制作期间颇多感慨，不断遇到问题，不断摸索解决
+% 。其中的酸甜苦辣恐怕只有自己能体会得到！
 %
 % 虽然今天模板已经能勉强为大家服务，我对它还是不太满意，代码质量不高，结构组
 % 织不好，文档内容不足。很多很多的后续工作等待着大家一起来把它做好！
 %
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
+%
 % \section{实现细节}
 %
 % \subsection{基本信息}
@@ -876,7 +942,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/05/20 2.5 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/05/26 2.5.1 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -885,6 +951,8 @@
 % 定义论文类型以及是否涉密
 % \changes{v2.4}{2006/04/14}{添加模板名称命令。}
 % \changes{v2.5}{2006/05/19}{增加本科论文的提交选项~submit。}
+% \changes{v2.5.1}{2006/05/24}{如果没有设置格式选项，报错。}
+% \changes{v2.5.1}{2006/05/26}{submit 只能由本科用。}
 %    \begin{macrocode}
 %<*cls>
 \def\thuthesis{T\textsc{hu}\-T\textsc{hesis}}
@@ -894,17 +962,34 @@
 \newif\ifthu@secret\thu@secretfalse
 \newif\ifthu@submit\thu@submitfalse
 \DeclareOption{bachelor}{\thu@bachelortrue}
-\DeclareOption{master}{\thu@mastertrue}
-\DeclareOption{doctor}{\thu@doctortrue}
+\DeclareOption{master}{\thu@mastertrue\thu@submitfalse}
+\DeclareOption{doctor}{\thu@doctortrue\thu@submitfalse}
 \DeclareOption{secret}{\thu@secrettrue}
-\DeclareOption{submit}{\thu@submittrue\thu@bachelortrue\thu@masterfalse\thu@doctorfalse}
+\DeclareOption{submit}{\thu@submittrue\thu@bachelortrur\thu@masterfalse\thu@doctorfalse}
+\AtEndOfClass{%
+  \ifthu@bachelor\relax\else
+    \ifthu@master\relax\else
+      \ifthu@doctor\relax\else
+        \ClassError{thuthesis}%
+                   {You have to specify one of thesis options: bachelor, master or doctor.}{}
+      \fi
+    \fi
+  \fi}
 %    \end{macrocode}
 %
 % 使用~dvips，dvipdfm 还是~pdflatex
+% \changes{v2.5.1}{2006/05/24}{如果选项设置了~dvips，但是用~pdflatex 编译，报错。}
 %    \begin{macrocode}
 \newif\ifthu@dvips
 \DeclareOption{dvips}{\thu@dvipstrue}
 \DeclareOption{dvipdfm}{\thu@dvipsfalse}
+\AtEndOfClass{%
+  \ifpdf
+    \ifthu@dvips
+      \ClassError{thuthesis} %
+                 {Please remove `dvips' if you run pdflatex.}{}
+    \fi
+  \fi}
 %    \end{macrocode}
 %
 % 如果需要使用~arial 字体，请打开~[arial] 选项
@@ -930,12 +1015,18 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 %    \end{macrocode}
 %
-% 默认打开~arialtoc。\textbf{ExecuteOPtions} 的参数之间用逗号分割，必须不能有空
+% 本科默认打开~arialtoc。\textbf{ExecuteOPtions} 的参数之间用逗号分割，必须不能有空
 % 格。开始不知道，折腾了老半天。
+% \changes{v2.5.1}{2006/05/24}{ft，研究生院目录要~times，而教务处要~arial。}
+% \changes{v2.5.1}{2006/05/26}{本科~openright，研究生~openany。}
 %    \begin{macrocode}
-\ExecuteOptions{arialtoc,arialtitle}
+\ExecuteOptions{arialtitle}
 \ProcessOptions
-\LoadClass[12pt, a4paper]{book}
+\ifthu@bachelor
+  \LoadClass[12pt, a4paper]{book}
+\else
+  \LoadClass[12pt, a4paper, openany]{book}
+\fi
 %    \end{macrocode}
 %
 %
@@ -976,7 +1067,7 @@
 %
 % 图形支持宏包。
 %    \begin{macrocode}
-  \RequirePackage{graphicx}
+\RequirePackage{graphicx}
 %    \end{macrocode}
 %
 % 并排图形。subfigure 已经不再推荐，用新的~subfig。加入~|config| 选项以便兼容
@@ -1047,7 +1138,6 @@
   \else
     \RequirePackage[dvipdfm]{hyperref}
   \fi
-  %\AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
 \fi
 
 \hypersetup{%
@@ -1080,6 +1170,7 @@
 %
 % \subsubsection{Three matters}
 % 我们的单面和双面模式与常规的不太一样。
+% \changes{v2.5.1}{2006/05/23}{本科正文之后页码即用罗马数字，研究生不变。}
 %    \begin{macrocode}
 %<*cls>
 \renewcommand\frontmatter{%
@@ -1107,7 +1198,7 @@
     \clearpage
   \fi
   %\@mainmatterfalse
-  \ifthu@bachelor\pagenumbering{Roman}\fi}
+  \ifthu@bachelor\pagenumbering{Roman}\setcounter{page}{1}\fi}
 %</cls>
 %    \end{macrocode}
 %
@@ -1215,8 +1306,8 @@
 %    \begin{macrocode}
 \newlength\thu@linespace
 \newcommand{\thu@choosefont}[2]{%
-      \setlength{\thu@linespace}{#2*\real{#1}}%
-      \fontsize{#2}{\thu@linespace}\selectfont}
+   \setlength{\thu@linespace}{#2*\real{#1}}%
+   \fontsize{#2}{\thu@linespace}\selectfont}
 \newcommand{\chuhao}[1][\baselinestretch]{\thu@choosefont{#1}{42bp}}
 \newcommand{\xiaochu}[1][\baselinestretch]{\thu@choosefont{#1}{36bp}}
 \newcommand{\yihao}[1][\baselinestretch]{\thu@choosefont{#1}{26bp}}
@@ -1326,35 +1417,34 @@
 % \end{itemize}
 %    \begin{macrocode}
 \def\ps@thu@empty{%
-    \let\@oddhead\@empty%
-    \let\@evenhead\@empty%
-    \let\@oddfoot\@empty%
-    \let\@evenfoot\@empty}
+  \let\@oddhead\@empty%
+  \let\@evenhead\@empty%
+  \let\@oddfoot\@empty%
+  \let\@evenfoot\@empty}
 \def\ps@thu@plain{% 
-    \let\@oddhead\@empty%
-    \let\@evenhead\@empty%
-    \def\@oddfoot{\hfil\wuhao\thepage\hfil}%
-    \let\@evenfoot=\@oddfoot}
+  \let\@oddhead\@empty%
+  \let\@evenhead\@empty%
+  \def\@oddfoot{\hfil\wuhao\thepage\hfil}%
+  \let\@evenfoot=\@oddfoot}
 \def\ps@thu@headings{% 
-    \def\@oddhead{\vbox to\headheight{%
-        \hb@xt@\textwidth{\hfill\wuhao\song\leftmark\ifthu@bachelor\relax\else\hfill\fi}%
-        \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
-    \def\@evenhead{\vbox to\headheight{%
-        \hb@xt@\textwidth{\wuhao\song%
-        \ifthu@bachelor\thu@schoolename\thu@bachelor@subtitle%
-         \else\hfill\leftmark\fi\hfill}%
-        \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
-    \def\@oddfoot{\hfil\wuhao\thepage\hfil}
-    \let\@evenfoot=\@oddfoot}
+  \def\@oddhead{\vbox to\headheight{%
+      \hb@xt@\textwidth{\hfill\wuhao\song\leftmark\ifthu@bachelor\relax\else\hfill\fi}%
+      \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
+  \def\@evenhead{\vbox to\headheight{%
+      \hb@xt@\textwidth{\wuhao\song%
+      \ifthu@bachelor\thu@schoolename\thu@bachelor@subtitle%
+       \else\hfill\leftmark\fi\hfill}%
+      \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
+  \def\@oddfoot{\hfil\wuhao\thepage\hfil}
+  \let\@evenfoot=\@oddfoot}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
 % \end{macro}
 %
-% 去掉页眉章节标题中的数字: 这里统一定义chaptermark, sectionmark更好! chapter*并不自动执行mark命令，所以需要手动写进去。
-% 一种可能就是重定义chapter*。反正它只有两个参数。
+% 其实可以直接写到~\cs{chapter} 的定理里面。
 %    \begin{macrocode} 
-  \renewcommand{\chaptermark}[1]{\markboth{\@chapapp \ ~~#1}{}}
+\renewcommand{\chaptermark}[1]{\@mkboth{\@chapapp \ ~~#1}{}}
 %</cls>
 %    \end{macrocode}
 %
@@ -1442,8 +1532,8 @@
 %    \end{macrocode}
 %
 %
-%\subsubsection{脚注}
-%\label{sec:footnote}
+% \subsubsection{脚注}
+% \label{sec:footnote}
 %
 % \begin{macro}{\MakePerPage}
 %   从~perpage.sty 中抽取的代码，使~footnote 按页编号。不再用臃肿的~footmisc。
@@ -1521,9 +1611,33 @@
 %
 % 公式距前后文的距离由~4 个参数控制，参见~\cs{normalsize} 的定义。
 %
-% 公式改成~(1-1) 的形式
+% 公式改成~(1-1) 的形式，本科还要在前面加上公式二字，我不知道他们是怎么想的，这
+% 忒不好看了。
+% \changes{v2.5.1}{2006/05/24}{本科公式编号前添加“公式”二字。ft，这个需要修改
+% ~amsmath 极其深入的一个命令，而且要把~equation 与~chapter 脱离关系。}
+% \changes{v2.5.1}{2006/05/24}{我靠，教务处居然要公式全文编号！}
+% \begin{macro}{\@removefromreset}
+%   equation 在~book 类中是被~@addtoreset 到~chapter 的，所以必须先它去除。
 %    \begin{macrocode} 
-\renewcommand{\theequation}{\@arabic\c@chapter-\@arabic\c@equation}
+\def\@removefromreset#1#2{\let\@tempb\@elt
+   \expandafter\let\expandafter\@tempa\csname c@#1\endcsname
+   \def\@elt##1{\expandafter\ifx\csname c@##1\endcsname\@tempa\else
+         \noexpand\@elt{##1}\fi}%
+   \expandafter\edef\csname cl@#2\endcsname{\csname cl@#2\endcsname}%
+   \let\@elt\@tempb} 
+\@removefromreset{equation}{chapter} 
+%    \end{macrocode} 
+% \end{macro}
+% 本科的公式编号太变态了，我不得不修改~amsmath 中很深的一个命令。
+%    \begin{macrocode} 
+\ifthu@bachelor
+  \renewcommand{\theequation}{\@arabic\c@equation}
+  \renewcommand{\eqref}[1]{\textup{\ref{#1}}} % TODO: redefinitation of tagform
+                                % broken eqref!
+  \def\tagform@#1{\maketag@@@{(\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)}}
+\else
+  \renewcommand{\theequation}{\@arabic\c@chapter-\@arabic\c@equation}
+\fi
 %    \end{macrocode}
 % ^^A 使公式编号随着每开始新的一节而重新开始。
 % ^^A \@addtoreset{eqation}{section}
@@ -1602,18 +1716,21 @@
 % \end{itemize}
 % \changes{v2.4}{2006/04/14}{表格内容为~11~磅。}
 % \changes{v2.4}{2006/04/14}{图表标题左对齐，取消原先漂亮的~hang~模式。}
-% \changes{v2.5}{2006/05/13}{标题上下间距重调，以前没有考虑~\cs{intextsep} 的影响。}
+% \changes{v2.5}{2006/05/13}{标题上下间距重调，以前没有考虑~\cs{intextsep} 的影
+% 响。}
+% \changes{v2.5.1}{2006/05/23}{增加~subfigure 和~subtable 的~caption 配置。}
+% \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
 %    \begin{macrocode}
-\let\thu@tabular\tabular
-\renewcommand\tabular{\dawu[1.4]\thu@tabular}
-\let\endthu@tabular\endtabular
+\let\old@tabular\@tabular
+\def\thu@tabular{\dawu[1.5]\old@tabular}
 \DeclareCaptionLabelFormat{thu}{{\dawu\song #1~\rmfamily #2}}
 \DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
 \DeclareCaptionFont{thu}{\dawu[1.3]}
-\captionsetup{margin=10pt,labelformat=thu,labelsep=thu,font=thu}
-\captionsetup[table]{position=top,aboveskip={12bp-\intextsep},belowskip=6bp}
-\captionsetup[figure]{position=bottom,aboveskip=6bp,belowskip={12bp-\intextsep}}
-\captionsetup[subfloat]{font=thu}
+\captionsetup{margin=10pt, labelformat=thu, labelsep=thu, font=thu}
+\captionsetup[table]{position=top, aboveskip={12bp-\intextsep}, belowskip=6bp}
+\captionsetup[subtable]{position=top, font=thu}
+\captionsetup[figure]{position=bottom, aboveskip=6bp, belowskip={12bp-\intextsep}}
+\captionsetup[subfigure]{position=bottom, font=thu}
  %\renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
  % \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
@@ -1625,14 +1742,9 @@
 \def\hlinewd#1{%
   \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet
     \reserved@a\@xhline}
-%    \end{macrocode}
-% \end{macro}
-%
-% 增加表格行距
-%    \begin{macrocode}
-\renewcommand{\arraystretch}{1.1}
 %</cls>
 %    \end{macrocode}
+% \end{macro}
 %
 %
 % \subsubsection{中文标题定义}
@@ -1646,7 +1758,6 @@
 \renewcommand\listtablename{表格索引}
 \newcommand\listequationname{公式索引}
 \newcommand\equationname{公式}
-
 \renewcommand\bibname{参考文献}
 \renewcommand\indexname{索引}
 \renewcommand\figurename{图}
@@ -1654,26 +1765,27 @@
 \newcommand\CJKprepartname{第}
 \newcommand\CJKpartname{部分}
 \newcommand\CJKthepart{\CJKnumber{\@arabic\c@part}}
-
-\def\thu@CJKnumber#1{\ifcase#1零\or%TODO: ft!
+\def\thu@CJKnumber#1{\ifcase#1零\or %TODO: ft!
                     一\or二\or三\or四\or五\or%
                     六\or七\or八\or九\or十\or%
                     十一\or十二\or十三\or十四\or十五\or
                     十六\or十七\or十八\or十九\or二十\fi}
-
 \newcommand\CJKprechaptername{第}
 \newcommand\CJKchaptername{章}
 \ifthu@bachelor
- \newcommand\CJKthechapter{\thu@CJKnumber{\@arabic\c@chapter}}
+  \newcommand\CJKthechapter{\thu@CJKnumber{\@arabic\c@chapter}}
 \else
- \newcommand\CJKthechapter{\@arabic\c@chapter}
+  \newcommand\CJKthechapter{\@arabic\c@chapter}
 \fi
 \renewcommand\chaptername{\CJKprechaptername~\CJKthechapter~\CJKchaptername}
-
 \renewcommand\appendixname{附录}
-\newcommand{\abstractshortname}{摘\hspace{1em}要}
-\newcommand{\abstractname}{摘\hspace{1em}要}
-
+\ifthu@bachelor
+  \newcommand{\cabstractname}{中文摘要}
+  \newcommand{\eabstractname}{ABSTRACT}
+\else
+  \newcommand{\cabstractname}{摘\hspace{1em}要}
+  \newcommand{\eabstractname}{Abstract}
+\fi
 \let\CJK@todaysave=\today
 \def\CJK@todaysmall{~\the\year~年~\the\month~月~\the\day~日}
 \def\CJK@todaybig{\CJKdigits{\the\year}年\CJKnumber{\the\month}月\CJKnumber{\the\day}日}
@@ -1699,7 +1811,9 @@
 \fi
 %    \end{macrocode}
 %
-% \changes{v2.5}{2006/05/13}{取消~titlesec 宏包，用基本~\LaTeX{} 命令格式化标题。}
+% \changes{v2.5}{2006/05/13}{取消~titlesec 宏包，用基本~\LaTeX{} 命令格式化标题
+% 。}
+% \changes{v2.5.1}{2006/05/23}{让~\cs{chapter*} 自动~markboth。}
 % \begin{macro}{\chapter}
 % 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段前空~24 磅，段
 % 后空~18 磅。   
@@ -1722,8 +1836,6 @@
    \addcontentsline{toc}{chapter}{#1}%
  \fi
  \chaptermark{#1}%
- %\addtocontents{lof}{\protect\addvspace{10\p@}}%
- %\addtocontents{lot}{\protect\addvspace{10\p@}}%
  \@makechapterhead{#2}}
 \def\@makechapterhead#1{%
   \vspace*{20bp}%
@@ -1736,6 +1848,7 @@
     \vskip 24bp
   }}
 \def\@schapter#1{%
+ \@mkboth{#1}{#1}
  \addcontentsline{toc}{chapter}{#1}
  \@makeschapterhead{#1}
  \@afterheading}
@@ -1803,12 +1916,14 @@
 % 如果使用目录项中英文要使用~arial，那么就加上~sffamily
 % 章节名中英文用~arial 字体，页码仍用~times
 % \changes{v2.0}{2005/12/18}{附录的目录项需要调整一下。以及公式编号方式等等。}
-% \changes{v2.5}{2006/05/13}{取消~titletoc~宏包，用~\cs{dottedtocline} 调整目录。}
+% \changes{v2.5}{2006/05/13}{取消~titletoc~宏包，用~\cs{dottedtocline} 调整目录
+% 。}
+% \changes{v2.5.1}{2006/05/23}{减小目录项中的导引小点跟页码之间的留白。}
 % \begin{macro}{\tableofcontents}
-%   
+%   目录生成命令。目录自身不应该出现在目录中，我觉得。
 %    \begin{macrocode}
 \renewcommand\tableofcontents{
-  \if@openright\cleardoublepage\else\clearpage\fi
+  \cleardoublepage
   \phantomsection
   \pdfbookmark[0]{\contentsname}{contents}
   \ifthu@bachelor\thispagestyle{thu@plain}\fi
@@ -1819,8 +1934,9 @@
 \ifthu@arialtoc
   \def\thu@toc@font{\sffamily}
 \fi
-\def\@pnumwidth{2em}
+\def\@pnumwidth{2em} % 这个参数没用了
 \def\@tocrmarg{2em}
+\def\@dotsep{3}
 \def\@dottedtocline#1#2#3#4#5{%
  \ifnum #1>\c@tocdepth \else
  \vskip \z@ \@plus.2\p@
@@ -1832,11 +1948,9 @@
  \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
  {\csname thu@toc@font\endcsname #4}\nobreak
  \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
- \nobreak
- \hb@xt@\@pnumwidth{\hfil\normalfont \normalcolor #5}%
+ \nobreak{\normalfont \normalcolor #5}%
  \par}%
 \fi}
-
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
@@ -1850,12 +1964,10 @@
       \hskip -\leftskip
       {\hei\csname thu@toc@font\endcsname #1}%numberline is called here, and it use @tempdima
       \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
-      \nobreak
-      \hb@xt@\@pnumwidth{\hfil\normalfont \normalcolor #2}\par
+      \nobreak{\normalfont \normalcolor #2}\par
       \penalty\@highpenalty
     \endgroup
   \fi}
-
 \renewcommand*\l@section{\@dottedtocline{1}{1.2em}{2.1em}}
 \renewcommand*\l@subsection{\@dottedtocline{2}{2em}{3em}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{3.5em}{3.8em}}
@@ -1987,9 +2099,10 @@
 %
 % \changes{v1.4rc1}{2005/12/14}{I have to put all chinese chars into cfg,
 % otherwise they would not appear.} TODO: 去掉里面的hfill，用ziju调节
+% \changes{v2.5.1}{2006/05/25}{硕士封面的冒号前居然有点小距离！}
 %    \begin{macrocode}
 %<*cfg>
-\def\thu@title@sep{：}
+\def\thu@title@sep{\ifthu@master\hskip0.3em\fi ：}
 \def\thu@secretlevel{秘密}
 \def\thu@secretyear{\the\year}
 \def\thu@schoolename{清华大学}
@@ -2025,9 +2138,9 @@
 \def\thu@cauthortitle{研\hfill究\hfill生}
 \def\thu@csupervisortitle{指\hfill导\hfill教\hfill师}
 \ifthu@bachelor
-    \def\thu@cassosupertitle{辅\hfill导\hfill教\hfill师}
+  \def\thu@cassosupertitle{辅\hfill导\hfill教\hfill师}
 \else
-    \def\thu@cassosupertitle{副\hfill指\hfill导\hfill教\hfill师}
+  \def\thu@cassosupertitle{副\hfill指\hfill导\hfill教\hfill师}
 \fi
 \def\thu@ccosupertitle%
   {\ifthu@doctor 联\hfill合\hfill导\hfill师\else \ifthu@master 联合指导教师 \fi\fi}
@@ -2075,7 +2188,7 @@
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\thu@first@titlepage}{
-   \begin{center}
+  \begin{center}
     \vspace*{-1.3cm}
     \parbox[b][2.4cm][t]{\textwidth}{%
        \ifthu@secret\hfill{\sihao\thu@secret@title}\else\rule{1cm}{0cm}\fi}
@@ -2119,16 +2232,16 @@
     \parbox[t][7.8cm][t]{\textwidth}{{\sanhao[1.5]
     \begin{center}\fs
 \ifthu@bachelor
-    \setlength{\extrarowheight}{4pt}
-    \begin{thu@tabular}{p{5em}@{\extracolsep{4pt}}l}
+    \setlength{\extrarowheight}{6pt}
+    \begin{tabular}{p{5em}@{\extracolsep{4pt}}l}
     \thu@bachelor@affiltitle \thu@title@sep & \thu@caffil\\
     \thu@bachelor@subjecttitle \thu@title@sep & \thu@csubject\\
     \thu@bachelor@authortitle \thu@title@sep & \thu@cauthor \\
     \thu@csupervisortitle \thu@title@sep & \thu@csupervisor\\
     \thu@cassosupertitle \thu@title@sep & \thu@cassosupervisor\\
 \else
-    \setlength{\extrarowheight}{2pt}
-    \begin{thu@tabular}{p{7em}@{\extracolsep{4pt}}l}
+    \setlength{\extrarowheight}{4pt}
+    \begin{tabular}{p{7em}@{\extracolsep{4pt}}l}
     \thu@caffiltitle\thu@title@sep & {\ziju{3bp}\thu@caffil}\\
     \thu@csubjecttitle\thu@title@sep & {\ziju{3bp}\thu@csubject}\\
     \thu@cauthortitle\thu@title@sep & {\ziju{11bp}\thu@cauthor}\\
@@ -2140,7 +2253,7 @@
         \thu@ccosupertitle\thu@title@sep & {\ziju{11bp}\thu@ccosupervisor}
     \fi
 \fi
-    \end{thu@tabular}
+    \end{tabular}
     \end{center}}}
 %    \end{macrocode}
 %
@@ -2223,8 +2336,8 @@
    \newpage
    \ifthu@submit
      \ifx\thu@bachelor@overview@fig\@empty
-       \PackageError{thuthesis}
-                    {You have to assgin the figure for overview by \bacheloroverviewfig!}
+       \ClassError{thuthesis}%
+                  {You have to assgin the figure for overview by \string\bacheloroverviewfig!}{}
      \else\thu@bachelor@overview@fig\fi
    \else\vspace*{-1.3cm}%
    \noindent{\hei\xiaosan\thu@bachelor@requirements@title}\vskip0.5cm%
@@ -2269,12 +2382,12 @@
     \vspace*{0.9cm}
     \parbox[t][2.1cm][t]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.2}\xiaosan\centering
-      \begin{thu@tabular}{rl}
+      \begin{tabular}{rl}
         Dissertation Supervisor : & \thu@esupervisor\\
         \ifx\thu@eassosupervisor\@empty 
          \else Associate Supervisor : & \thu@eassosupervisor\\
         \fi
-      \end{thu@tabular}}
+      \end{tabular}}
 
     \parbox[t][2cm][b]{\paperwidth-7.2cm}{
     \begin{center}
@@ -2347,8 +2460,8 @@
  \newpage
  \ifthu@submit
    \ifx\thu@bachelor@comments@fig\@empty
-     \PackageError{thuthesis}
-                  {You have to assgin the figure for comments by \bachelorcommentsfig!}
+     \ClassError{thuthesis}%
+                {You have to assgin the figure for comments by \string\bachelorcommentsfig!}{}
    \else\thu@bachelor@comments@fig\fi
  \else\vspace*{-1.5cm}\thu@bachelor@comments\fi
 \fi
@@ -2366,8 +2479,8 @@
 \cleardoublepage
  \ifthu@submit
    \ifx\thu@bachelor@auth@fig\@empty
-     \PackageError{thuthesis}
-                  {You have to assgin the figure for authorization by \bachelorauthfig!}
+     \ClassError{thuthesis}{\string\bachelorauthfig is missing!}
+                {You have to assgin the figure for authorization by \string\bachelorauthfig!}
    \else\thu@bachelor@auth@fig\fi
  \else\thu@authorization@mk\fi
     \end{titlepage}
@@ -2385,6 +2498,7 @@
 % 中英文摘要
 %    \begin{macrocode}
 \thu@makeabstract
+\let\@tabular\thu@tabular
 }
 %</cls>
 %    \end{macrocode}
@@ -2395,48 +2509,49 @@
 %
 % \begin{macro}{\thu@makeabstract}
 % 中文摘要部分的标题为"摘要"，用黑体三号字。
+% \changes{v2.5.1}{2006/05/24}{我靠，教务处有不要正文前的页眉了，ft！}
+% \changes{v2.5.1}{2006/05/24}{不管是哪种论文格式，摘要都要右开。}
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\thu@makeabstract}{%
-    \normalsize
-    \chapter*{\abstractname}
-    \@mkboth{\abstractshortname}{\abstractshortname}
-    \pagestyle{thu@headings}
-    \pagenumbering{Roman}
-    \setcounter{page}{1}
+  \cleardoublepage\normalsize
+  \chapter*{\cabstractname}
+  \ifthu@bachelor\relax\else\pagestyle{thu@headings}\fi
+  \pagenumbering{Roman}
+  \setcounter{page}{1}
 %    \end{macrocode}
 %
 % 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用~Times New Roman 体，
 % 标点符号一律用中文输入状态下的标点符号
 %    \begin{macrocode}
-    \thu@cabstract
-    \vfill
+  \thu@cabstract
+  \ifthu@bachelor\newline\par\else\vfill\fi
 %    \end{macrocode}
 % 每个关键词之间空两个汉字符宽度， 且为悬挂缩进
 %    \begin{macrocode}
-    \noindent\begin{thu@tabular}{@{}lp{12cm}}
-    {\hei \thu@keywords} & \thu@ckeywords \\
-    \end{thu@tabular}
+  \noindent\begin{tabular}{@{}lp{12cm}}
+  {\hei \thu@keywords} & \thu@ckeywords \\
+  \end{tabular}
 %    \end{macrocode}
 %
 % 英文摘要部分的标题为"Abstract"，用~Arial 体三号字，
 %    \begin{macrocode}
-    \chapter*{{\sffamily Abstract}}
-    \@mkboth{Abstract}{Abstract}
+  \cleardoublepage
+  \chapter*{\eabstractname}
 %    \end{macrocode}
 %
 % 摘要内容用小四号~Times New Roman 体字书写
 %    \begin{macrocode}
-    \thu@eabstract
-    \vfill
+  \thu@eabstract
+  \ifthu@bachelor\newline\par\else\vfill\fi
 %    \end{macrocode}
 %
 % 每个关键词之间空四个英文字符宽度
 % \changes{v2.4}{2006/04/14}{It is \textbf{Key words}, but not \textbf{Key Words}}
 %    \begin{macrocode}
-    \noindent\begin{thu@tabular}{@{}lp{12cm}}
-    {\textbf{Key words:}} & \thu@ekeywords\\
-    \end{thu@tabular}}
+  \noindent\begin{tabular}{@{}lp{12cm}}
+  {\textbf{Key words:}} & \thu@ekeywords\\
+  \end{tabular}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2452,22 +2567,21 @@
 %</cfg>
 %<*cls>
 \newenvironment{denotation}[1][2.5cm]{
-    \chapter*{\thu@denotation@name}
-    \@mkboth{\thu@denotation@name}{\thu@denotation@name}
-    \noindent\begin{list}{}%
-               {\vskip-30bp\xiaosi[1.6]
-                \renewcommand\makelabel[1]{##1\hfil}
-                \setlength{\labelwidth}{#1} %标签盒子宽度
-                \setlength{\labelsep}{0.5cm} %标签与列表文本距离
-                \setlength{\itemindent}{0cm} %标签缩进量
-                \setlength{\leftmargin}{\labelwidth+\labelsep} %左边界
-                \setlength{\rightmargin}{0cm}
-                \setlength{\parsep}{0cm} %段落间距
-                \setlength{\itemsep}{0cm} %标签间距
-                \setlength{\listparindent}{0cm} %段落缩进量
-                \setlength{\topsep}{0pt} %标签与上文的间距
-    }}
-    {\end{list}}
+  \cleardoublepage
+  \chapter*{\thu@denotation@name}
+  \noindent\begin{list}{}%
+    {\vskip-30bp\xiaosi[1.6]
+     \renewcommand\makelabel[1]{##1\hfil}
+     \setlength{\labelwidth}{#1} %标签盒子宽度
+     \setlength{\labelsep}{0.5cm} %标签与列表文本距离
+     \setlength{\itemindent}{0cm} %标签缩进量
+     \setlength{\leftmargin}{\labelwidth+\labelsep} %左边界
+     \setlength{\rightmargin}{0cm}
+     \setlength{\parsep}{0cm} %段落间距
+     \setlength{\itemsep}{0cm} %标签间距
+    \setlength{\listparindent}{0cm} %段落缩进量
+    \setlength{\topsep}{0pt} %标签与上文的间距
+   }}{\end{list}}
 %</cls>
 %    \end{macrocode}
 % \end{environment}
@@ -2514,14 +2628,12 @@
 %    \begin{macrocode}
 %<*cls>
 \newenvironment{ack}{%
-   \ifthu@bachelor
+  \ifthu@bachelor
     \chapter*{\thu@ackname}
-    \@mkboth{\thu@ackname}{\thu@ackname}
-   \else
+  \else
     \chapter*{\thu@acklongname}
-    \@mkboth{\thu@acklongname}{\thu@acklongname}
-   \fi}
-   {%
+  \fi}
+  {%
    \ifthu@bachelor\relax\else %TAG 1
     \par\vfill%
     \noindent
@@ -2536,8 +2648,8 @@
 %    \begin{macrocode}
    \ifthu@submit % TAG 2
      \ifx\thu@bachelor@declare@fig\@empty
-       \PackageError{thuthesis}
-                    {You have to assgin the figure for declare by \bachelordeclarefig!}
+       \ClassError{thuthesis}%
+                  {You have to assgin the figure for declare by \string\bachelordeclarefig!}{}
      \else
        \cleardoublepage\thispagestyle{empty}\phantomsection
        \addcontentsline{toc}{chapter}{\thu@declarename}
@@ -2546,7 +2658,6 @@
    \else
      \ifthu@bachelor
        \chapter*{\thu@declarename}
-       \@mkboth{\thu@declarename}{\thu@declarename}
      \else     
        \parbox[t][4cm][c]{\textwidth}{{\sanhao\hei\centerline{\thu@declarename}}}
      \fi
@@ -2579,16 +2690,12 @@
  \normalsize
  \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
  \endgroup}
-
 \renewcommand\listoffigures{%
    \chapter*{\listfigurename}%
-    \@mkboth{\listfigurename}{\listfigurename}%
     \@starttoc{lof}}
 \renewcommand*\l@figure{\@dottedtocline{1}{0em}{4em}}
-
 \renewcommand\listoftables{%
    \chapter*{\listtablename}%
-    \@mkboth{\listtablename}{\listtablename}
     \@starttoc{lot}}
 \let\l@table\l@figure
 %    \end{macrocode}
@@ -2609,14 +2716,18 @@
 % \end{macro}
 %
 % \begin{macro}{\listofequations}
-% \LaTeX{}默认没有公式列表，此处定义自己的~\cs{listofequations}。
-% \changes{v2.5}{2006/05/19}{增加公式列表命令。}
+% \LaTeX{}默认没有公式索引，此处定义自己的~\cs{listofequations}。
+% \changes{v2.5}{2006/05/19}{增加公式索引命令。}
+% \changes{v2.5.1}{2006/05/26}{公式索引项~numwidth 增加。}
 %    \begin{macrocode}
 \newcommand\listofequations{%
    \chapter*{\listequationname}%
-    \@mkboth{\listequationname}{\listequationname}%
     \@starttoc{loe}} 
-\let\l@equation\l@figure
+\ifthu@bachelor
+  \newcommand*\l@equation{\@dottedtocline{1}{0em}{4em}}
+\else
+  \newcommand*\l@equation{\@dottedtocline{1}{0em}{4.2em}}
+\fi
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2647,28 +2758,27 @@
 % \changes{v2.5}{2006/05/13}{参考文献序号靠左，而不是靠右。}
 %    \begin{macrocode}
 \renewenvironment{thebibliography}[1]{%    
-     \chapter*{\bibname}%
-      \@mkboth{\bibname}{\bibname}%
-      \wuhao[1.5]
-      \list{\@biblabel{\@arabic\c@enumiv}}%
-           {\renewcommand{\makelabel}[1]{##1\hfill}
-            \settowidth\labelwidth{1cm}
-            \setlength{\labelsep}{1em}
-            \setlength{\itemindent}{0pt}
-            \setlength{\leftmargin}{\labelwidth+\labelsep}
-            \addtolength{\itemsep}{-0.7em}
-            \usecounter{enumiv}%
-            \let\p@enumiv\@empty
-            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-      \sloppy
-      \clubpenalty4000
-      \@clubpenalty \clubpenalty
-      \widowpenalty4000%
-      \interlinepenalty4000%
-      \sfcode`\.\@m}
-     {\def\@noitemerr
-       {\@latex@warning{Empty `thebibliography' environment}}%
-      \endlist}
+   \chapter*{\bibname}%
+   \wuhao[1.5]
+   \list{\@biblabel{\@arabic\c@enumiv}}%
+        {\renewcommand{\makelabel}[1]{##1\hfill}
+         \settowidth\labelwidth{1cm}
+         \setlength{\labelsep}{1em}
+         \setlength{\itemindent}{0pt}
+         \setlength{\leftmargin}{\labelwidth+\labelsep}
+         \addtolength{\itemsep}{-0.7em}
+         \usecounter{enumiv}%
+         \let\p@enumiv\@empty
+         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+    \sloppy
+    \clubpenalty4000
+    \@clubpenalty \clubpenalty
+    \widowpenalty4000%
+    \interlinepenalty4000%
+    \sfcode`\.\@m}
+   {\def\@noitemerr
+     {\@latex@warning{Empty `thebibliography' environment}}%
+    \endlist}
 %</cls>
 %    \end{macrocode}
 % \end{environment}
@@ -2684,9 +2794,9 @@
 \renewenvironment{appendix}{%
   \thu@appendix
   \gdef\@chapapp{\appendixname~\thechapter}
-  \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi \@arabic\c@equation}
-  \ifthu@bachelor\pagenumbering{Roman}\setcounter{page}{1}\fi
-}{\gdef\@chapapp{\CJKprechaptername~\CJKthechapter~\CJKchaptername}}
+  \ifthu@bachelor\relax\else
+    \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
+  \fi}{}
 %</cls>
 %    \end{macrocode}
 %\end{environment}
@@ -2704,17 +2814,21 @@
 %    \begin{macrocode}
 %<*cls>
 \newenvironment{resume}{%
-   \chapter*{\thu@resume@title}
-   \@mkboth{\thu@resume@title}{\thu@resume@title}}{}
+   \chapter*{\thu@resume@title}}{}
 %</cls>
 %    \end{macrocode}
 % \end{environment}
 %
 % \begin{macro}{\resumeitem}
 % 个人简历里面会出现的以发表文章，在投文章等。
+% \changes{v2.5.1}{2006/05/23}{ft，教务处和研究生院非要搞的不一样！}
 %    \begin{macrocode}
 %<*cfg>
-\newcommand{\thu@resume@title}{个人简历、在学期间发表的学术论文与研究成果}
+\ifthu@bachelor
+  \newcommand{\thu@resume@title}{在学期间参加课题的研究成果}
+\else
+  \newcommand{\thu@resume@title}{个人简历、在学期间发表的学术论文与研究成果}
+\fi
 %</cfg>
 %<*cls>
 \newcommand{\resumeitem}[1]{\vspace{2.5em}{\sihao \hei \centerline{#1}}\par}
@@ -2729,23 +2843,22 @@
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\thu@verticle}{%
-    \renewcommand{\CJKsymbol}[1]{%
-    \setbox0=\hbox{\symbol{##1}}%
-    \newcommand{\POS}{}%
-    \ifthenelse{\lengthtest{\ht0<.39\wd0}}%
-                {\renewcommand{\POS}{c}}{\renewcommand{\POS}{r}}%
-    \makebox[1.3\wd0][\POS]{\rotatebox[origin=lB]{90}{\symbol{##1}}}%
-    \ifCJK@bold@%
-    \hbox to \CJKboldshift{\hss\makebox[1.3\wd0][\POS]{%
-        \rotatebox[origin=lB]{90}{\symbol{##1}}}}%
-    \hbox to \CJKboldshift{\hss\makebox[1.3\wd0][\POS]{%
-        \rotatebox[origin=lB]{90}{\symbol{##1}}}}%
-    \fi}}
-
+  \renewcommand{\CJKsymbol}[1]{%
+  \setbox0=\hbox{\symbol{##1}}%
+  \newcommand{\POS}{}%
+  \ifthenelse{\lengthtest{\ht0<.39\wd0}}%
+             {\renewcommand{\POS}{c}}{\renewcommand{\POS}{r}}%
+  \makebox[1.3\wd0][\POS]{\rotatebox[origin=lB]{90}{\symbol{##1}}}%
+  \ifCJK@bold@%
+  \hbox to \CJKboldshift{\hss\makebox[1.3\wd0][\POS]{%
+      \rotatebox[origin=lB]{90}{\symbol{##1}}}}%
+  \hbox to \CJKboldshift{\hss\makebox[1.3\wd0][\POS]{%
+      \rotatebox[origin=lB]{90}{\symbol{##1}}}}%
+  \fi}}
 \newsavebox{\thu@saverotate}%
 \newcommand{\shupai}[2][\textheight]{%
-    \savebox{\thu@saverotate}{\parbox[t]{#1}{\thu@verticle #2}}
-    \hfill\rotatebox[origin=lt]{-90}{\usebox{\thu@saverotate}}}
+  \savebox{\thu@saverotate}{\parbox[t]{#1}{\thu@verticle #2}}
+  \hfill\rotatebox[origin=lt]{-90}{\usebox{\thu@saverotate}}}
 %    \end{macrocode}
 %
 % \begin{macro}{\shuji}
@@ -2755,7 +2868,7 @@
   \newpage%
   \thispagestyle{empty}
   \vspace*{1cm}
- \shupai[\textheight-2cm]{\fs\xiaosan #1\hfill\thu@cauthor}}
+  \shupai[\textheight-2cm]{\fs\xiaosan #1\hfill\thu@cauthor}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2827,13 +2940,13 @@
 %    \begin{macrocode}
 %<*cls>
 \def\thu@active@cjk{
-    % Activate all >128 characters.
-    \count@=127
-    \@whilenum\count@<255 \do{%
-      \advance\count@ by 1
-      \lccode`\~=\count@
-      \catcode\count@=\active
-      \lowercase{\def~{\kern1ex}}}}  
+  % Activate all >128 characters.
+  \count@=127
+  \@whilenum\count@<255 \do{%
+    \advance\count@ by 1
+    \lccode`\~=\count@
+    \catcode\count@=\active
+    \lowercase{\def~{\kern1ex}}}}  
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2867,8 +2980,7 @@
        \gdef\@EverySelectfont@AtNextHook{}%
    % end additions
        \size@update
-       \enc@update}
-}
+       \enc@update}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2893,8 +3005,7 @@
         \reserved@z\endcsname\space
       \fi
       now #3}%
-  \fi
-}
+  \fi}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2902,12 +3013,12 @@
 % 设置一些~pdf~文档信息，依赖于~hyperref~宏包。
 %    \begin{macrocode}
 \def\thu@setup@pdfinfo{%
-   \hypersetup{%
-     pdftitle={\thu@ctitle},
-     pdfauthor={\thu@cauthor},
-     pdfsubject={\thu@cdegree},
-     pdfkeywords={\thu@ckeywords},
-     pdfcreator={\thu@cauthor},
+  \hypersetup{%
+    pdftitle={\thu@ctitle},
+    pdfauthor={\thu@cauthor},
+    pdfsubject={\thu@cdegree},
+    pdfkeywords={\thu@ckeywords},
+    pdfcreator={\thu@cauthor},
     pdfproducer={\thuthesis}}}
 %    \end{macrocode}
 % \end{macro}

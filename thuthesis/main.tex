@@ -3,10 +3,11 @@
 %%% TeX-master: t
 %%% End:
 
-\documentclass[bachelor,dvips]{thuthesis}
-%\documentclass[doctor,master,dvips,secret,openany]{thuthesis}
-% 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。这样做
-% 主要是为了避免class文件过于臃肿。
+\documentclass[bachelor,dvips,arialtoc]{thuthesis}
+% \documentclass[bachelor|master|doctor,dvips,secret,openany|openright,arialtoc,arialtitle]{thuthesis}
+% 研究生去掉 arialtoc 选项
+
+% 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
 \usepackage{thutils}
 
 % 你可以在这里修改配置文件中的定义，导言区可以使用中文。
@@ -14,48 +15,51 @@
 
 \begin{document}
 
-%定义所有的eps文件在 figures 子目录下
+% 定义所有的eps文件在 figures 子目录下
 \graphicspath{{figures/}}
 
-% 生成封面，版权页，摘要
 
+%%% 封面部分
 \frontmatter
 \input{data/cover}
 \makecover
 
-%目录
+% 目录
 \tableofcontents
 
-% 对照表
+% 符号对照表
 \input{data/denotation}
 
+
+%%% 正文部分
 \mainmatter
 \include{data/chap01}
 \include{data/chap02}
+
+
+%%% 其它部分
+\backmatter
+% 插图索引
 \listoffigures
+% 表格索引
 \listoftables
+% 公式索引
 \listofequations
 
 
-%%% 结论
-%\include{data/conclusion}
-
-
-%%% 参考文献
+% 参考文献
 \bibliographystyle{thubib}
 \bibliography{ref/refs}
 
 
-%%% 致谢
+% 致谢
 \include{data/ack}
 
-\backmatter
-%%% 附录
+% 附录
 \begin{appendix}
 \input{data/appendix01}
 \end{appendix}
 
-
-%%% 个人简历
+% 个人简历
 \include{data/resume}
 \end{document}

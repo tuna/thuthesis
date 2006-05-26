@@ -4,6 +4,12 @@
 %%% TeX-master: t
 %%% End:
 
+% 有一种格式定义叫做变态：研究生院说只要第一章右开就可以，以后的无所谓。肚子有点疼。
+% 本科不用在乎下面这句~dirty 的设置。
+\makeatletter
+\ifthu@bachelor\relax\else\cleardoublepage\fi
+\makeatother
+
 \chapter{带~English 的标题}
 \label{cha:intro}
 
@@ -83,7 +89,7 @@
   \label{tab:template-files}
   \begin{minipage}[t]{0.8\linewidth} % 如果想在表格中使用脚注，minipage是个不错的办法
     \begin{tabular*}{\linewidth}{lp{10cm}}
-      \hlinewd{1.5pt}
+      \toprule[1.5pt]
       {\hei 文件名} & {\hei 描述} \\\midrule[1pt]
       thuthesis.ins & \LaTeX{} 安装文件，docstrip\footnote{表格中的脚注} \\
       thuthesis.dtx & 所有的一切都在这里面\footnote{再来一个}。\\
@@ -103,24 +109,28 @@
   \centering
   \caption{复杂表格示例~1。}
   \label{tab:tabexamp1}
-  \begin{minipage}[t]{0.567\textwidth} 
-    \begin{tabular*}{\linewidth}{|r|c|c|c|c|}
+  \begin{minipage}[t]{0.8\textwidth} 
+    \begin{tabularx}{\linewidth}{|l|X|X|X|X|}
       \hline
-      & \multicolumn{2}{c|}{First Half} & \multicolumn{2}{c|}{Second Half}\\\cline{2-5}
+ \multirow{2}*{\backslashbox{x}{y}}     & \multicolumn{2}{c|}{First Half} & \multicolumn{2}{c|}{Second Half}\\\cline{2-5}
       & 1st Qtr &2nd Qtr&3rd Qtr&4th Qtr \\ \hline
       East$^{*}$ &   20.4&   27.4&   90&     20.4 \\
       West$^{**}$ &   30.6 &   38.6 &   34.6 &  31.6 \\ \hline
-    \end{tabular*}\\[2pt]
-    \dawu[1.3] 注：数据来源《\thuthesis{} 使用手册》。\\
+    \end{tabularx}\\[2pt]
+    \footnotesize 注：数据来源《\thuthesis{} 使用手册》。\\
     *：东部\\
     **：西部
   \end{minipage}
 \end{table}
 
-虽然~\LaTeX{} 的表格功能没有想象中的那么强大，只要你足够认真，足够细致，那么同样
-可以排出来非常复杂非常漂亮的表格。请参看表~\ref{tab:tabexamp2}（未用三线表）。
+此外，表~\ref{tab:tabexamp1} 同时还演示了另外两个功能：1）通过~\texttt{tabularx} 的
+~\texttt{|X|} 扩展实现表格自动放大；2）通过命令~\texttt{backslashbox} 在表头部分
+插入反斜线。
+
+不可否认~\LaTeX{} 的表格功能没有想象中的那么强大，只要你足够认真，足够细致，那么
+同样可以排出来非常复杂非常漂亮的表格。请参看表~\ref{tab:tabexamp2}。
 \begin{table}[h]
-  \centering
+  \centering\dawu[1.3]
   \caption{复杂表格示例~2。}
   \label{tab:tabexamp2}
   \begin{tabular}[c]{|c|m{0.8in}|c|c|c|c|c|}\hline
@@ -137,7 +147,7 @@
 \end{tabular}
 \end{table}
 
-如果您要排版的表格超过一页，那么推荐使用~\texttt{longtable} 或者
+如果您要排版的表格长度超过一页，那么推荐使用~\texttt{longtable} 或者
 ~\texttt{supertabular} 宏包，此处不一一示例。
 
 虽然大家不一定会独立使用小页，但是关于小页中的脚注还是有必要提一下。请看下面的例
@@ -263,7 +273,7 @@
 写。
 
 本模板推荐使用~BIB\TeX，样式文件为~thubib.bst，基本符合学校的参考文献格式（如专利等引用未加详细测试）。看看这个例
-子\cite{BEZOS02}，关于杂志的\cite{ELIDRISSI94, MELLINGER96}，硕士论文
+子\cite{BEZOS02}，关于杂志的\cite{ELIDRISSI94, MELLINGER96, SHELL02}，硕士论文
 \cite{zhubajie, metamori2004}，博士论文\cite{shaheshang, FistSystem01}，会议论文\cite{DPMG}，技术报告\cite{NPB2}。中文参考文献
 \cite{cnarticle}应增加~\texttt{lang=``chinese''}~字段，以便进行相应处理。另外，这
 个~bst~对中文文献\cite{cnproceed}的支持并不是十全十美，如果有不如意的地方，请手
@@ -275,8 +285,9 @@
 \label{sec:equation}
 贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中~$p(y|\mathbf{x})$ 为后验；$p(\mathbf{x})$ 为先验；分母~$p(\mathbf{x})$ 为归一化因子。
 \begin{equation}
- p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
-\frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})} \label{equ:chap1:bayes}
+\label{equ:chap1:bayes}
+p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
+\frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})} 
 \end{equation}
 
 论文里面公式越多，\TeX{} 就越~happy。再看一个~\textsf{amsmath} 的例子：
@@ -288,8 +299,8 @@
 \end{equation} 
 
 其实还可以看看这个多级规划：
-\def \x{{\mbox{\boldmath $x$}}}
-\def \y{{\mbox{\boldmath $y$}}}
+\def\x{{\mbox{\boldmath $x$}}}
+\def\y{{\mbox{\boldmath $y$}}}
 \begin{equation}\label{bilevel}
 \left\{\begin{array}{l}
 \max\limits_{{\mbox{\footnotesize\boldmath $x$}}} F(\x,\y_1^*,\y_2^*,\cdots,\y_m^*)\\[0.2cm]
