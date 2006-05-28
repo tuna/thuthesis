@@ -26,7 +26,7 @@ $(PACKAGE).cls: $(SOURCES)
 	rm -f $(PACKAGE).cls $(PACKAGE).cfg
 	latex $(PACKAGE).ins
 
-$(MAIN).dvi: $(PACKAGE).cls $(MAIN).dtx
+$(MAIN).dvi: $(MAIN).ins $(MAIN).dtx
 	latex $(MAIN).dtx
 	makeindex -s gind.ist -o $(MAIN).ind $(MAIN).idx
 	makeindex -s gglo.ist -o $(MAIN).gls $(MAIN).glo

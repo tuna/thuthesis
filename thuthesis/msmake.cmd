@@ -45,8 +45,8 @@
 @rem ----------------------------------------------------------------------
 @rem CHANGE LOG
 @rem ----------------------------------------------------------------------
-@rem Last-Updated: 2006-05-20 16:57:04(+0800) [by Fred Qi@lab]
-@rem     Update #: 308
+@rem Last-Updated: 2006-05-26 11:47:40(+0800) [by Fred Qi@lab]
+@rem     Update #: 312
 @rem ----------------------------------------------------------------------
 @rem 2006-05-20 16:53:38(+0800)    Fred Qi@lab
 @rem    msbuild.cmd initial. prepaired for thuthesis 2.5
@@ -126,7 +126,7 @@ IF ERRORLEVEL 1 (goto presetup) else goto choose
 @rem NOT used code block end.
 @rem -----------------------------
 :presetup
-del /f /q %tmpfile%.*
+@rem del /f /q %tmpfile%.*
 echo 您没有安装或配置好thuthesis宏包，
 echo 本程序试图重新生成并配置thuthesis宏包...
 :setup
@@ -202,17 +202,17 @@ goto latex
 :all
 :shuji
 set targ=shuji
-set errmsg=latex
-%ltx% shuji.tex
+set errmsg=pdflatex
+call pdflatex shuji.tex
 if errorlevel 1 goto error
-set errmsg=dvipdfmx
-dvipdfmx shuji.dvi
-if errorlevel 1 goto error
+@rem set errmsg=dvipdfmx
+@rem dvipdfmx shuji.dvi
+@rem if errorlevel 1 goto error
 del /f /q %targ%.aux
 del /f /q %targ%.log
-del /f /q %targ%.dvi
 del /f /q %targ%.out
 del /f /q %targ%.thm
+@rem del /f /q %targ%.dvi
 if /i {%1}=={shuji} goto end
 :main
 set targ=main

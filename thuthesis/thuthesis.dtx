@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2853}
+% \CheckSum{2852}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/05/26 2.5.1 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/05/28 2.5.1 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -942,7 +942,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/05/26 2.5.1 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/05/28 2.5.1 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -2534,9 +2534,10 @@
   \end{tabular}
 %    \end{macrocode}
 %
-% 英文摘要部分的标题为"Abstract"，用~Arial 体三号字，
+% 英文摘要部分的标题为"Abstract"，用~Arial 体三号字。研究生的英文摘要要求非常怪
+% 异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连续。
+% \changes{v.2.5.1}{2006/05/28}{研究生封面英文摘要连续。}
 %    \begin{macrocode}
-  \cleardoublepage
   \chapter*{\eabstractname}
 %    \end{macrocode}
 %

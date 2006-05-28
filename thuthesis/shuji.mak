@@ -33,7 +33,7 @@ $(PACKAGE).cls: $(SOURCES)
 	rm -f $(PACKAGE).cls $(PACKAGE).cfg
 	latex $(PACKAGE).ins
 
-$(MAIN).dvi: $(PACKAGE).cls $(CONTENTS)
+$(MAIN).dvi: $(PACKAGE).cls $(PACKAGE).cfg $(CONTENTS)
 	$(TEXI2DVI) $(MAIN).tex
 
 ifeq ($(METHOD),dvipdfm)
@@ -41,9 +41,12 @@ $(MAIN).pdf: $(MAIN).dvi
 	gbk2uni $(MAIN)
 	latex $(MAIN).tex
 	dvipdfm $(MAIN).dvi
-else
+elifeq ($(METHOD),ps2pdf)
 $(MAIN).pdf: $(MAIN).ps
 	ps2pdf  $(MAIN).ps
+else
+$(MAIN).pdf: $(PACKAGE).cls $(PACKAGE).cfg $(CONTENTS)
+	pdflatex $(MAIN)
 endif
 
 $(MAIN).ps: $(MAIN).dvi
