@@ -151,11 +151,11 @@ msmake.cmd Howto (by Truel):
 
    msbuild epspdf [param]
 
-     @rem  将当前目录下所有eps文件用epstopdf转为pdf格式
+     将当前目录下所有eps文件用epstopdf转为pdf格式
 
    msbuild bmpeps [param]
 
-     @rem  将当前目录下所有bmp,jpg,png文件用bmeps转为eps格式
+     将当前目录下所有bmp,jpg,png文件用bmeps转为eps格式
 
    以上两个命令中，param可以由用户指定转换程序所用的参数。
 
