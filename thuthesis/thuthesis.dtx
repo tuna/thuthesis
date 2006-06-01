@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2852}
+% \CheckSum{2725}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/05/28 2.5.1 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/06/01 2.5.2 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -133,9 +133,7 @@
 % \GetFileInfo{thuthesis.dtx}
 % \MakeShortVerb{\|}
 %
-%
 % \def\thuthesis{T\textsc{hu}\-T\textsc{hesis}}
-% 
 %
 % \changes{v1.0-}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 %
@@ -603,7 +601,7 @@
 %   \href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial 字体}。
 %
 % \item[arialtoc]
-%  目录项中的英文是否用~arial 字体（本科默认打开）。
+%  目录项中的英文是否用~arial 字体。
 %
 % \item[arialtitle]
 %  章节标题中英文是否用~arial 字体（默认打开）。
@@ -942,7 +940,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/05/28 2.5.1 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/06/01 2.5.2 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1081,6 +1079,10 @@
 \RequirePackage{indentfirst}
 %    \end{macrocode}
 %
+% 更好的列表环境。
+%    \begin{macrocode}
+\RequirePackage[newitem,newenum]{paralist}
+%    \end{macrocode}
 %
 % 中文支持宏包
 %    \begin{macrocode}
@@ -1174,29 +1176,17 @@
 %    \begin{macrocode}
 %<*cls>
 \renewcommand\frontmatter{%
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
+  \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmatterfalse
   \pagenumbering{Roman}
   \pagestyle{thu@empty}}
 \renewcommand\mainmatter{%
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
+  \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue
   \pagenumbering{arabic}
   \pagestyle{thu@headings}}
 \renewcommand\backmatter{%
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
+  \if@openright\cleardoublepage\else\clearpage\fi
   %\@mainmatterfalse
   \ifthu@bachelor\pagenumbering{Roman}\setcounter{page}{1}\fi}
 %</cls>
@@ -1467,69 +1457,19 @@
 %    \end{macrocode}
 %
 % 调整默认列表环境间的距离，以符合中文习惯。
-% \changes{v2.5}{2006/05/19}{更改默认列表距离。}
+% \changes{v2.5.2}{2006/06/01}{更改默认列表距离。}
+% \begin{macro}{thu@item@space}
 %    \begin{macrocode}
-\setlength\partopsep{0pt}
-\renewcommand\@listI{\leftmargin\leftmargini
-            \parsep 0pt
-            \topsep \parsep
-            \itemsep \parsep}
-\@listI
-\renewcommand\@listii {\leftmargin\leftmarginii
-              \labelwidth\leftmarginii
-              \advance\labelwidth-\labelsep
-              \parsep    \z@ \@plus\z@  \@minus\z@
-              \topsep    \parsep
-              \itemsep   \parsep}
-\renewcommand\@listiii{\leftmargin\leftmarginiii
-              \labelwidth\leftmarginiii
-              \advance\labelwidth-\labelsep
-              \parsep    \z@ \@plus\z@  \@minus\z@
-              \topsep    \parsep
-              \itemsep   \parsep}
-\renewcommand\@listiv{\leftmargin\leftmarginiv
-              \labelwidth\leftmarginiv
-              \advance\labelwidth-\labelsep
-              \parsep    \z@ \@plus\z@  \@minus\z@
-              \topsep    \parsep
-              \itemsep   \parsep}
-\renewcommand\@listv{\leftmargin\leftmarginv
-              \labelwidth\leftmarginv
-              \advance\labelwidth-\labelsep
-              \parsep    \z@ \@plus\z@  \@minus\z@
-              \topsep    \parsep
-              \itemsep   \parsep}
-\renewcommand\@listvi{\leftmargin\leftmarginvi
-              \labelwidth\leftmarginvi
-              \advance\labelwidth-\labelsep
-              \parsep    \z@ \@plus\z@  \@minus\z@
-              \topsep    \parsep
-              \itemsep   \parsep}
- % Change default margins for \list environments
-\setlength\leftmargini   {2\parindent}
-\setlength\leftmarginii  {\leftmargini}
-\setlength\leftmarginiii {\leftmargini}
-\setlength\leftmarginiv  {\leftmargini}
-\setlength\leftmarginv   {\parindent}
-\setlength\leftmarginvi  {\parindent}
-\setlength\leftmargin    {\leftmargini}
-\setlength\labelsep      {.5\parindent}
-\setlength\labelwidth    {\leftmargini}
-
-\setlength\listparindent{\parindent}
-\renewcommand\list[2]{\ifnum \@listdepth >5\relax \@toodeep
-     \else \global\advance\@listdepth\@ne \fi
-  \rightmargin \z@ \listparindent\parindent \itemindent \z@
-  \csname @list\romannumeral\the\@listdepth\endcsname
-  \def\@itemlabel{#1}\let\makelabel\@mklab \@nmbrlistfalse #2\relax
-  \@trivlist
-  \parskip\parsep \parindent\listparindent
-  \advance\linewidth -\rightmargin \advance\linewidth -\leftmargin
-  \advance\@totalleftmargin \leftmargin
-  \parshape \@ne \@totalleftmargin \linewidth
-  \ignorespaces}
+\def\thu@item@space{%
+  \let\itemize\compactitem
+  \let\enditemize\endcompactitem
+  \let\enumerate\compactenum
+  \let\endenumerate\endcompactenum
+  \let\description\compactdesc
+  \let\enddescription\endcompactdesc}
 %</cls>
 %    \end{macrocode}
+% \end{macro}
 %
 %
 % \subsubsection{脚注}
@@ -1615,7 +1555,8 @@
 % 忒不好看了。
 % \changes{v2.5.1}{2006/05/24}{本科公式编号前添加“公式”二字。ft，这个需要修改
 % ~amsmath 极其深入的一个命令，而且要把~equation 与~chapter 脱离关系。}
-% \changes{v2.5.1}{2006/05/24}{我靠，教务处居然要公式全文编号！}
+% \changes{v2.5.1}{2006/05/24}{教务处居然要本科论文公式全文编号！}
+% \changes{v2.5.2}{2006/05/29}{上一个版本忘了把研究生的公式编号排除。}
 % \begin{macro}{\@removefromreset}
 %   equation 在~book 类中是被~@addtoreset 到~chapter 的，所以必须先它去除。
 %    \begin{macrocode} 
@@ -1625,7 +1566,7 @@
          \noexpand\@elt{##1}\fi}%
    \expandafter\edef\csname cl@#2\endcsname{\csname cl@#2\endcsname}%
    \let\@elt\@tempb} 
-\@removefromreset{equation}{chapter} 
+\ifthu@bachelor\@removefromreset{equation}{chapter}\fi
 %    \end{macrocode} 
 % \end{macro}
 % 本科的公式编号太变态了，我不得不修改~amsmath 中很深的一个命令。
@@ -1680,7 +1621,7 @@
 \newtheorem{corollary}{推论}[chapter]
 \newtheorem{exercise}{练习}[chapter]
 \newtheorem{example}{例}[chapter]
-\newtheorem{remark}{例}[chapter]
+\newtheorem{remark}{注释}[chapter]
 \theoremsymbol{\ensuremath{\square}}
 \theoremstyle{nonumberplain}
 \newtheorem{proof}{证明}
@@ -1818,16 +1759,15 @@
 % 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段前空~24 磅，段
 % 后空~18 磅。   
 %    \begin{macrocode}
-\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi \phantomsection
-                    \ifthu@bachelor\thispagestyle{thu@plain}\else\thispagestyle{thu@headings}\fi
-                    \global\@topnum\z@
-                    \@afterindenttrue
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi\phantomsection%
+                    \ifthu@bachelor\thispagestyle{thu@plain}\else\thispagestyle{thu@headings}\fi%
+                    \global\@topnum\z@%
+                    \@afterindenttrue%
                     \secdef\@chapter\@schapter}
 \def\@chapter[#1]#2{%
  \ifnum \c@secnumdepth >\m@ne
   \if@mainmatter
    \refstepcounter{chapter}%
-   \typeout{\@chapapp.}%
    \addcontentsline{toc}{chapter}{\protect\numberline{\@chapapp}#1}%TODO: shit
   \else
      \addcontentsline{toc}{chapter}{#1}%
@@ -1842,27 +1782,63 @@
   {\parindent \z@ \centering
     \hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
     \ifnum \c@secnumdepth >\m@ne
-        \@chapapp\hskip1em
+      \@chapapp\hskip1em
     \fi
     #1\par\nobreak
-    \vskip 24bp
-  }}
+    \vskip 24bp}}
 \def\@schapter#1{%
- \@mkboth{#1}{#1}
- \addcontentsline{toc}{chapter}{#1}
- \@makeschapterhead{#1}
- \@afterheading}
+  \@makeschapterhead{#1}
+  \@afterheading}
 \def\@makeschapterhead#1{%
   \vspace*{20bp}%
   {\parindent \z@ \centering
-    \hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
-    \interlinepenalty\@M
-    #1\par\nobreak
-    \vskip 24bp
-  }}
+   \hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
+   \interlinepenalty\@M
+   #1\par\nobreak
+   \vskip 24bp}}
 %    \end{macrocode}
 % \end{macro}
 %
+% \begin{macro}{\thu@chapter*}
+% \changes{v2.5.2}{2006/05/29}{定义自己的~\cs{thu@chapter*}。}
+% 默认的~\cs{chapter*} 很难同时满足研究生院和本科生的论文要求。本科论文要求所有
+% 的章都出现在目录里，比如摘要、Abstract、主要符号表等，所以可以简单的扩展默认
+% ~\cs{chapter*} 实现这个目的。但是研究生又不要这些出现在目录中，而且致谢和声明
+% 部分的章名、页眉和目录都不同，所以我想定义一个功能强悍的~\cs{thu@chapter*} 专
+% 门处理他们的变态要求。
+%
+% \cs{thu@chapter*}\oarg{tocline}\marg{title}\oarg{header}: tocline 是出现在目录
+% 中的条目，如果为空则此~chapter 不出现在目录中，如果省略表示目录出现~title；
+% title 是章标题；header 是页眉出现的标题，如果忽略则取~title。通过这个宏我才真
+% 正体会到~\TeX{} macro 的力量！
+%    \begin{macrocode}
+\def\thu@chapter*{%
+  \@ifnextchar [ % ]
+    {\thu@@chapter}
+    {\thu@@chapter@}}
+\def\thu@@chapter@#1{\thu@@chapter[#1]{#1}}
+\def\thu@@chapter[#1]#2{%
+  \@ifnextchar [ % ]
+    {\thu@@@chapter[#1]{#2}}
+    {\thu@@@chapter[#1]{#2}[]}}
+\def\thu@@@chapter[#1]#2[#3]{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \phantomsection
+  \def\@tmpa{#1}
+  \def\@tmpb{#3}
+  \ifx\@tmpa\@empty
+    \pdfbookmark[0]{#2}{\expandafter\@gobble\string#2}
+  \else
+    \addcontentsline{toc}{chapter}{#1}
+  \fi
+  \chapter*{#2}
+  \ifx\@tmpb\@empty
+    \@mkboth{#2}{#2}
+  \else
+    \@mkboth{#3}{#3}
+  \fi}
+%    \end{macrocode}
+% \end{macro}
 % \begin{macro}{\section}
 % 一级节标题，例如：2.1  实验装置与实验方法
 % 节标题序号与标题名之间空一个汉字符（下同）。
@@ -1919,18 +1895,13 @@
 % \changes{v2.5}{2006/05/13}{取消~titletoc~宏包，用~\cs{dottedtocline} 调整目录
 % 。}
 % \changes{v2.5.1}{2006/05/23}{减小目录项中的导引小点跟页码之间的留白。}
+% \changes{v2.5.2}{2006/05/29}{用~\cs{thu@chapter*} 改写目录命令。}
 % \begin{macro}{\tableofcontents}
 %   目录生成命令。目录自身不应该出现在目录中，我觉得。
 %    \begin{macrocode}
-\renewcommand\tableofcontents{
-  \cleardoublepage
-  \phantomsection
-  \pdfbookmark[0]{\contentsname}{contents}
-  \ifthu@bachelor\thispagestyle{thu@plain}\fi
-  \vspace*{20bp}{\sanhao\hei\centerline{\contentsname}}\vskip24bp
-  \@mkboth{\contentsname}{\contentsname}\normalsize
-  \@starttoc{toc}}
-
+\renewcommand\tableofcontents{%
+  \cleardoublepage\thu@chapter*[]{\contentsname}
+  \normalsize\@starttoc{toc}}
 \ifthu@arialtoc
   \def\thu@toc@font{\sffamily}
 \fi
@@ -2102,7 +2073,7 @@
 % \changes{v2.5.1}{2006/05/25}{硕士封面的冒号前居然有点小距离！}
 %    \begin{macrocode}
 %<*cfg>
-\def\thu@title@sep{\ifthu@master\hskip0.3em\fi ：}
+\def\thu@title@sep{：}
 \def\thu@secretlevel{秘密}
 \def\thu@secretyear{\the\year}
 \def\thu@schoolename{清华大学}
@@ -2185,44 +2156,44 @@
 %  上-~6.0 厘米，下-~5.5 厘米，左-~4.0 厘米，右-~4.0 厘米，装订线~0 厘米；
 % \changes{v2.5.1}{2006/05/21}{本科封面标题调整微小的空隙。}
 % \changes{v2.5.1}{2006/05/21}{本科封面标题第二行的横线上移一点。}
+% \changes{v2.5.2}{2006/05/29}{研究生论文标题中英文用~arial 字体。}
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\thu@first@titlepage}{
   \begin{center}
     \vspace*{-1.3cm}
     \parbox[b][2.4cm][t]{\textwidth}{%
-       \ifthu@secret\hfill{\sihao\thu@secret@title}\else\rule{1cm}{0cm}\fi}
+      \ifthu@secret\hfill{\sihao\thu@secret@title}\else\rule{1cm}{0cm}\fi}
 
-\ifthu@bachelor
-    \vskip0.2cm
-    {\ziju{10bp}\yihao\li\thu@schoolename}
-    \par\vskip1.2cm
-    {\ziju{18bp}\xiaochu\hei\thu@bachelor@subtitle}
-    \vskip2.5cm
-    \noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
-    \parbox[t]{10cm}{%
-       \begin{picture}(0,0)(0,0)
-         \setlength\unitlength{1cm}
-         \linethickness{1.3pt}
-         \put(0,-0.25){\line(1,0){10}}
-         \put(0,-1.68){\line(1,0){10}}
-       \end{picture}\ignorespaces\yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
-    \vskip1.55cm
-\else
-    \parbox[t][9cm][t]{\paperwidth-8cm}{
-    \renewcommand{\baselinestretch}{1.5}
-    \begin{center}
-    \yihao[1.2] {\hei \thu@ctitle}\par
-    \ifthu@master
-      \erhao[1.1] \textbf{\sffamily\thu@etitle}\par\vskip 5bp
-    \else 
-       \ifthu@doctor
-         \par\vskip 20bp
-       \fi	
+    \ifthu@bachelor
+      \vskip0.2cm
+      {\ziju{10bp}\yihao\li\thu@schoolename}
+      \par\vskip1.2cm
+      {\ziju{18bp}\xiaochu\hei\thu@bachelor@subtitle}
+      \vskip2.5cm
+      \noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
+      \parbox[t]{10cm}{%
+         \begin{picture}(0,0)(0,0)
+           \setlength\unitlength{1cm}
+           \linethickness{1.3pt}
+           \put(0,-0.25){\line(1,0){10}}
+           \put(0,-1.68){\line(1,0){10}}
+         \end{picture}%
+         \ignorespaces\yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
+      \vskip1.55cm
+    \else
+      \parbox[t][9cm][t]{\paperwidth-8cm}{
+      \renewcommand{\baselinestretch}{1.5}
+      \begin{center}
+      \yihao[1.2]{\hei\sffamily\thu@ctitle}\par
+      \ifthu@master
+        \erhao[1.1] \textbf{\sffamily\thu@etitle}\par\vskip 5bp
+      \else % must be doctor
+        \par\vskip 20bp
+      \fi
+      \xiaoer[1] \textrm{\thu@apply}
+      \end{center}}
     \fi
-    \xiaoer[1] \textrm{\thu@apply}
-    \end{center}}
-\fi
 %    \end{macrocode}
 %
 % 作者及导师信息部分使用三号仿宋字
@@ -2241,16 +2212,16 @@
     \thu@cassosupertitle \thu@title@sep & \thu@cassosupervisor\\
 \else
     \setlength{\extrarowheight}{4pt}
-    \begin{tabular}{p{7em}@{\extracolsep{4pt}}l}
-    \thu@caffiltitle\thu@title@sep & {\ziju{3bp}\thu@caffil}\\
-    \thu@csubjecttitle\thu@title@sep & {\ziju{3bp}\thu@csubject}\\
-    \thu@cauthortitle\thu@title@sep & {\ziju{11bp}\thu@cauthor}\\
-    \thu@csupervisortitle\thu@title@sep & {\ziju{11bp}\thu@csupervisor}\\
+    \begin{tabular}{p{6em}c@{\extracolsep{4pt}}l}
+    \thu@caffiltitle &\thu@title@sep & {\ziju{3bp}\thu@caffil}\\
+    \thu@csubjecttitle &\thu@title@sep & {\ziju{3bp}\thu@csubject}\\
+    \thu@cauthortitle &\thu@title@sep & {\ziju{11bp}\thu@cauthor}\\
+    \thu@csupervisortitle &\thu@title@sep & {\ziju{11bp}\thu@csupervisor}\\
     \ifx\thu@cassosupervisor\@empty \else
-        \thu@cassosupertitle\thu@title@sep & {\ziju{11bp}\thu@cassosupervisor}\\
+        \thu@cassosupertitle &\thu@title@sep & {\ziju{11bp}\thu@cassosupervisor}\\
     \fi
     \ifx\thu@ccosupervisor\@empty \else
-        \thu@ccosupertitle\thu@title@sep & {\ziju{11bp}\thu@ccosupervisor}
+        \thu@ccosupertitle &\thu@title@sep & {\ziju{11bp}\thu@ccosupervisor}
     \fi
 \fi
     \end{tabular}
@@ -2272,7 +2243,8 @@
 %    \begin{macrocode}
 \def\thu@signature@fig#1{%
   \expandafter\gdef\csname bachelor#1fig\endcsname{%
-    \@ifnextchar[{\csname thu@bachelor@#1@fig@i\endcsname}{\csname thu@bachelor@#1@fig@ii\endcsname}}
+    \@ifnextchar[ % ]
+      {\csname thu@bachelor@#1@fig@i\endcsname}{\csname thu@bachelor@#1@fig@ii\endcsname}}
   \expandafter\gdef\csname thu@bachelor@#1@fig@i\endcsname[##1]##2{%
     \expandafter\gdef\csname thu@bachelor@#1@fig\endcsname{\includegraphics[##1]{##2}}
     }
@@ -2497,9 +2469,9 @@
 %
 % 中英文摘要
 %    \begin{macrocode}
+\normalsize
 \thu@makeabstract
-\let\@tabular\thu@tabular
-}
+\let\@tabular\thu@tabular}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2511,12 +2483,17 @@
 % 中文摘要部分的标题为"摘要"，用黑体三号字。
 % \changes{v2.5.1}{2006/05/24}{我靠，教务处有不要正文前的页眉了，ft！}
 % \changes{v2.5.1}{2006/05/24}{不管是哪种论文格式，摘要都要右开。}
+% \changes{v2.5.2}{2006/05/29}{在研究生论文中，摘要不出现在目录中，但是要在书签中出现。}
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\thu@makeabstract}{%
-  \cleardoublepage\normalsize
-  \chapter*{\cabstractname}
-  \ifthu@bachelor\relax\else\pagestyle{thu@headings}\fi
+  \ifthu@bachelor
+    \thu@chapter*{\cabstractname}
+  \else
+    \cleardoublepage
+    \thu@chapter*[]{\cabstractname} % no tocline
+    \pagestyle{thu@headings}
+  \fi
   \pagenumbering{Roman}
   \setcounter{page}{1}
 %    \end{macrocode}
@@ -2538,7 +2515,11 @@
 % 异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连续。
 % \changes{v.2.5.1}{2006/05/28}{研究生封面英文摘要连续。}
 %    \begin{macrocode}
-  \chapter*{\eabstractname}
+  \ifthu@bachelor
+    \thu@chapter*{\eabstractname}
+  \else
+    \thu@chapter*[]{\eabstractname} % no tocline
+  \fi
 %    \end{macrocode}
 %
 % 摘要内容用小四号~Times New Roman 体字书写
@@ -2568,8 +2549,11 @@
 %</cfg>
 %<*cls>
 \newenvironment{denotation}[1][2.5cm]{
-  \cleardoublepage
-  \chapter*{\thu@denotation@name}
+\ifthu@bachelor
+  \thu@chapter*{\thu@denotation@name}
+\else
+  \thu@chapter*[]{\thu@denotation@name} % no tocline
+\fi
   \noindent\begin{list}{}%
     {\vskip-30bp\xiaosi[1.6]
      \renewcommand\makelabel[1]{##1\hfil}
@@ -2626,13 +2610,16 @@
 % 在~chapter 之前而导致目录页码错误。}
 % 定义致谢与声明环境。
 % \changes{v2.5}{2006/05/16}{ft，本科论文要求致谢声明分页，但是研究生的不分！}
+% \changes{v2.5.2}{2006/05/29}{研究生致谢右开。}
+% \changes{v2.5.2}{2006/05/30}{研究生致谢题目是致谢，目录是致谢与声明。}
 %    \begin{macrocode}
 %<*cls>
 \newenvironment{ack}{%
   \ifthu@bachelor
-    \chapter*{\thu@ackname}
-  \else
-    \chapter*{\thu@acklongname}
+    \thu@chapter*{\thu@ackname}
+  \else  
+    \cleardoublepage
+    \thu@chapter*[\thu@acklongname]{\thu@ackname}[\thu@acklongname]
   \fi}
   {%
    \ifthu@bachelor\relax\else %TAG 1
@@ -2658,7 +2645,7 @@
      \fi
    \else
      \ifthu@bachelor
-       \chapter*{\thu@declarename}
+       \thu@chapter*{\thu@declarename}
      \else     
        \parbox[t][4cm][c]{\textwidth}{{\sanhao\hei\centerline{\thu@declarename}}}
      \fi
@@ -2692,12 +2679,12 @@
  \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
  \endgroup}
 \renewcommand\listoffigures{%
-   \chapter*{\listfigurename}%
-    \@starttoc{lof}}
+  \thu@chapter*{\listfigurename}%
+  \@starttoc{lof}}
 \renewcommand*\l@figure{\@dottedtocline{1}{0em}{4em}}
 \renewcommand\listoftables{%
-   \chapter*{\listtablename}%
-    \@starttoc{lot}}
+  \thu@chapter*{\listtablename}%
+  \@starttoc{lot}}
 \let\l@table\l@figure
 %    \end{macrocode}
 % \end{macro}
@@ -2722,8 +2709,8 @@
 % \changes{v2.5.1}{2006/05/26}{公式索引项~numwidth 增加。}
 %    \begin{macrocode}
 \newcommand\listofequations{%
-   \chapter*{\listequationname}%
-    \@starttoc{loe}} 
+  \thu@chapter*{\listequationname}%
+  \@starttoc{loe}} 
 \ifthu@bachelor
   \newcommand*\l@equation{\@dottedtocline{1}{0em}{4em}}
 \else
@@ -2759,7 +2746,7 @@
 % \changes{v2.5}{2006/05/13}{参考文献序号靠左，而不是靠右。}
 %    \begin{macrocode}
 \renewenvironment{thebibliography}[1]{%    
-   \chapter*{\bibname}%
+   \thu@chapter*{\bibname}%
    \wuhao[1.5]
    \list{\@biblabel{\@arabic\c@enumiv}}%
         {\renewcommand{\makelabel}[1]{##1\hfill}
@@ -2812,10 +2799,12 @@
 % 个人简历发表文章等。
 % \changes{v2.0}{2005/12/18}{最后决定将~resume 定义为环境。这样与前面的主要符号
 % 表、致谢等对应。}
+% \changes{v2.5.2}{2006/05/29}{研究生的个人介绍要右开。}
 %    \begin{macrocode}
 %<*cls>
 \newenvironment{resume}{%
-   \chapter*{\thu@resume@title}}{}
+  \cleardoublepage
+  \thu@chapter*{\thu@resume@title}}{}
 %</cls>
 %    \end{macrocode}
 % \end{environment}
@@ -3030,7 +3019,7 @@
 \AtBeginDocument{\thu@fixselectfont%
    \begin{CJK*}{GBK}{song}%
    \sloppy\CJKindent\CJKtilde%
-   \thu@setup@pdfinfo}
+   \thu@setup@pdfinfo\thu@item@space}
 \AtEndDocument{\clearpage\end{CJK*}}
 %</cls>
 %    \end{macrocode}
