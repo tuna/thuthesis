@@ -2,39 +2,46 @@
 # $Id: makedist.sh 47 2006-03-20 03:47:47Z edyfox $
 
 dirs="data figures ref"
-list_example="data/* figures/* main.pdf main.tex ref/* shuji.pdf shuji.tex"
-list_template="*.mak *.tbl CJKpunct.sty Makefile Readme chinesebst.bst extended.chx thubib.bst thuthesis.dtx thuthesis.ins thuthesis.pdf thutils.sty"
+list_example="data/*.tex figures/* ref/*.bib main.tex shuji.tex main.pdf  shuji.pdf"
+list_template="thuthesis.ins thuthesis.dtx thubib.bst Readme thuthesis.pdf *.mak Makefile msmake.cmd thutils.sty"
+list_all="$list_example $list_template"
 
 if [ $0 != ./makedist.sh ]; then
     echo "This script can only be run in the same directory of the script."
     echo "Using relative path to call as './makedist.sh'."
+    echo "Usage: ./makedist.sh <version#>"
     exit 1
 fi
 
-version=2.2
+# $1 should be the version number
+if [ $# -lt 1 ]; then
+    echo "Forget the version number?"
+    echo "Usage: ./makedist.sh <version#>"
+    exit 2
+fi
 
+version=$1
+templatedir="thuthesis-$version/"
+templatetar="thuthesis-$version.tar.gz"
+
+CP="cp -f --parents"
+
+echo "Create dirs...."
 for dir in $dirs
 do
-    mkdir -p example-$version/thuthesis/$dir
-    mkdir -p template-$version/thuthesis/$dir
+    mkdir -p $templatedir/$dir
 done
 
-for file in $list_example
+echo "Copy files ...."
+for file in $list_all
 do
-    cp -f $file example-$version/thuthesis/$file
+    $CP $file $templatedir
 done
 
-for file in $list_template
-do
-    cp -f $file template-$version/thuthesis/$file
-done
+echo "Create tarball...."
+rm -f $templatetar
+tar zcvf $templatetar $templatedir
+rm -rf $templatedir
 
-pushd example-$version
-tar jcvf ../example-$version.tar.bz2 ./
-popd
-
-pushd template-$version
-tar jcvf ../template-$version.tar.bz2 ./
-popd
-
-rm -rf example-$version template-$version
+echo ""
+echo "$templatetar is created."

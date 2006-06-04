@@ -21,69 +21,69 @@ as follows,
 \begin{equation}
 \label{nlp}
 \left\{\begin{array}{l}
-\max \,\,f(\x)\\[0.1 cm]
+\max \,\,f(x)\\[0.1 cm]
 \mbox{subject to:} \\ [0.1 cm]
-\qquad g_j(\x)\le 0,\quad j=1,2,\cdots,p
+\qquad g_j(x)\le 0,\quad j=1,2,\cdots,p
 \end{array}\right.
 \end{equation}
 which maximizes a real-valued function $f$ of
-$\x=(x_1,x_2,\cdots,x_n)$ subject to a set of constraints.
+$x=(x_1,x_2,\cdots,x_n)$ subject to a set of constraints.
 
 \newtheorem{mpdef}{Definition}[chapter]
 \begin{mpdef}
-In SOP, we call $\x$ a decision vector\label{:dv}, and
+In SOP, we call $x$ a decision vector\label{:dv}, and
 $x_1,x_2,\cdots,x_n$ decision variables\label{:dva}. The function
 $f$ is called the objective function. The set
 \begin{equation}
-S=\left\{\x\in\Re^n\bigm|g_j(\x)\le 0,\,j=1,2,\cdots,p\right\}
+S=\left\{x\in\Re^n\bigm|g_j(x)\le 0,\,j=1,2,\cdots,p\right\}
 \end{equation}
-is called the feasible set. An element $\x$ in $S$ is called a
+is called the feasible set. An element $x$ in $S$ is called a
 feasible solution.
 \end{mpdef}
 
 \newtheorem{mpdefop}[mpdef]{Definition}
 \begin{mpdefop}
-A feasible solution $\x^*$ is called the optimal
+A feasible solution $x^*$ is called the optimal
 solution\label{:os} of SOP if and only if
 \begin{equation}
-f(\x^*)\ge f(\x)
+f(x^*)\ge f(x)
 \end{equation}
-for any feasible solution $\x$.
+for any feasible solution $x$.
 \end{mpdefop}
 
 One of the outstanding contributions to mathematical programming
 was known as the Kuhn-Tucker conditions\label{:ktc}. In order to
 introduce them, let us give some definitions. An inequality
-constraint $g_j(\x)\le 0$ is said to be active at a point $\x^*$
-if $g_j(\x^*)=0$. A point $\x^*$ satisfying $g_j(\x^*)\le 0$ is
-said to be regular if the gradient vectors $\nabla g_j(\x)$ of all
+constraint $g_j(x)\le 0$ is said to be active at a point $x^*$
+if $g_j(x^*)=0$. A point $x^*$ satisfying $g_j(x^*)\le 0$ is
+said to be regular if the gradient vectors $\nabla g_j(x)$ of all
 active constraints are linearly independent.
 
-Let $\x^*$ be a regular point of the constraints of SOP and assume that all the
-functions $f(\x)$ and $g_j(\x),j=1,2,\cdots,p$ are differentiable. If $\x^*$ is
+Let $x^*$ be a regular point of the constraints of SOP and assume that all the
+functions $f(x)$ and $g_j(x),j=1,2,\cdots,p$ are differentiable. If $x^*$ is
 a local optimal solution, then there exist Lagrange multipliers
 $\lambda_j,j=1,2,\cdots,p$ such that the following Kuhn-Tucker conditions hold,
 \begin{equation}
 \label{ktc}
 \left\{\begin{array}{l}
-\nabla f(\x^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j(\x^*)=0\\[0.3cm]
-\lambda_jg_j(\x^*)=0,\quad j=1,2,\cdots,p\\[0.2cm]
+\nabla f(x^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j(x^*)=0\\[0.3cm]
+\lambda_jg_j(x^*)=0,\quad j=1,2,\cdots,p\\[0.2cm]
 \lambda_j\ge 0,\quad j=1,2,\cdots,p.
 \end{array}\right.
 \end{equation}
-If all the functions $f(\x)$ and $g_j(\x),j=1,2,\cdots,p$ are
-convex and differentiable, and the point $\x^*$ satisfies the
+If all the functions $f(x)$ and $g_j(x),j=1,2,\cdots,p$ are
+convex and differentiable, and the point $x^*$ satisfies the
 Kuhn-Tucker conditions (\ref{ktc}), then it has been proved that
-the point $\x^*$ is a global optimal solution of SOP.
+the point $x^*$ is a global optimal solution of SOP.
 
 \subsection{Linear Programming} \label{:lp}
 
-If the functions $f(\x),g_j(\x),j=1,2,\cdots,p$ are all linear,
+If the functions $f(x),g_j(x),j=1,2,\cdots,p$ are all linear,
 then SOP is called a {\em linear programming}.
 
-The feasible set of linear is always convex. A point $\x$ is
-called an extreme point\label{:ep} of convex set $S$ if $\x\in S$
-and $\x$ cannot be expressed as a convex combination of two points
+The feasible set of linear is always convex. A point $x$ is
+called an extreme point\label{:ep} of convex set $S$ if $x\in S$
+and $x$ cannot be expressed as a convex combination of two points
 in $S$. It has been shown that the optimal solution to linear
 programming corresponds to an extreme point of its feasible set
 provided that the feasible set $S$ is bounded. This fact is the
@@ -102,7 +102,7 @@ last extreme point is the optimal solution.
 \subsection{Nonlinear Programming}
 \label{:nlp}
 
-If at least one of the functions $f(\x),g_j(\x),j=1,2,\cdots,p$ is
+If at least one of the functions $f(x),g_j(x),j=1,2,\cdots,p$ is
 nonlinear, then SOP is called a {\em nonlinear
 programming}.
 

@@ -85,7 +85,9 @@
 而且最好将表格的宽度设置为小页的宽度，这样脚注看起来才更美观。
 \begin{table}[htb]
   \centering
-  \caption{模板文件。}
+  \caption[模板文件。]{模板文件。如果表格的标题很长，那么在表格所以中就会很不美
+    观，所以要像~chapter 那样在前面用中括号写一个间断的标题。这个标题会出现在索
+    引中。}
   \label{tab:template-files}
   \begin{minipage}[t]{0.8\linewidth} % 如果想在表格中使用脚注，minipage是个不错的办法
     \begin{tabular*}{\linewidth}{lp{10cm}}
@@ -299,18 +301,16 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 \end{equation} 
 
 其实还可以看看这个多级规划：
-\def\x{{\mbox{\boldmath $x$}}}
-\def\y{{\mbox{\boldmath $y$}}}
 \begin{equation}\label{bilevel}
 \left\{\begin{array}{l}
-\max\limits_{{\mbox{\footnotesize\boldmath $x$}}} F(\x,\y_1^*,\y_2^*,\cdots,\y_m^*)\\[0.2cm]
+\max\limits_{{\mbox{\footnotesize\boldmath $x$}}} F(x,y_1^*,y_2^*,\cdots,y_m^*)\\[0.2cm]
 \mbox{subject to:}\\[0.1cm]
-\qquad G(\x)\le 0\\[0.1cm]
-\qquad(\y_1^*,\y_2^*,\cdots,\y_m^*)\mbox{ solves problems }(i=1,2,\cdots,m)\\[0.1cm]
+\qquad G(x)\le 0\\[0.1cm]
+\qquad(y_1^*,y_2^*,\cdots,y_m^*)\mbox{ solves problems }(i=1,2,\cdots,m)\\[0.1cm]
 \qquad\left\{\begin{array}{l}
-    \max\limits_{{\mbox{\footnotesize\boldmath $y_i$}}}f_i(\x,\y_1,\y_2,\cdots,\y_m)\\[0.2cm]
+    \max\limits_{{\mbox{\footnotesize\boldmath $y_i$}}}f_i(x,y_1,y_2,\cdots,y_m)\\[0.2cm]
     \mbox{subject to:}\\[0.1cm]
-    \qquad g_i(\x,\y_1,\y_2,\cdots,\y_m)\le 0.
+    \qquad g_i(x,y_1,y_2,\cdots,y_m)\le 0.
     \end{array}\right.
 \end{array}\right.
 \end{equation}

@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2725}
+% \CheckSum{0}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/06/01 2.5.2 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/06/03 2.5.3 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -808,7 +808,7 @@
 % 公式索引为本模板扩展，默认记录~\texttt{equation} 环境中的公式。由于
 % ~\texttt{amsmath} 提供的其它环境也能对公式计数，模板没有~hack 这些环境（太多了
 % ，而且这样做移植性不好），而是提供了一个简单的命令~\cs{equcaption}，表示
-% ~equation caption。这个命令附带一个参数，默认为空。因为公式与图表不同，我们很
+% ~equation caption。这个命令没有参数，因为公式与图表不同，我们很
 % 少给一个公式附加一个标题。这个命令的作用完全就是为了生成公式列表。
 %
 % 使用方法如下。假如有一个非~equation 数学环境~mymath，只要在其中写一句
@@ -940,7 +940,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/06/01 2.5.2 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/06/02 2.5.3 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -951,6 +951,7 @@
 % \changes{v2.5}{2006/05/19}{增加本科论文的提交选项~submit。}
 % \changes{v2.5.1}{2006/05/24}{如果没有设置格式选项，报错。}
 % \changes{v2.5.1}{2006/05/26}{submit 只能由本科用。}
+% \changes{v2.5.3}{2006/06/03}{submit 选项的一个笔误。}
 %    \begin{macrocode}
 %<*cls>
 \def\thuthesis{T\textsc{hu}\-T\textsc{hesis}}
@@ -963,7 +964,7 @@
 \DeclareOption{master}{\thu@mastertrue\thu@submitfalse}
 \DeclareOption{doctor}{\thu@doctortrue\thu@submitfalse}
 \DeclareOption{secret}{\thu@secrettrue}
-\DeclareOption{submit}{\thu@submittrue\thu@bachelortrur\thu@masterfalse\thu@doctorfalse}
+\DeclareOption{submit}{\thu@submittrue\thu@bachelortrue\thu@masterfalse\thu@doctorfalse}
 \AtEndOfClass{%
   \ifthu@bachelor\relax\else
     \ifthu@master\relax\else
@@ -1173,6 +1174,7 @@
 % \subsubsection{Three matters}
 % 我们的单面和双面模式与常规的不太一样。
 % \changes{v2.5.1}{2006/05/23}{本科正文之后页码即用罗马数字，研究生不变。}
+% \changes{v2.5.3}{2006/06/03}{第一章永远右开。}
 %    \begin{macrocode}
 %<*cls>
 \renewcommand\frontmatter{%
@@ -1181,14 +1183,14 @@
   \pagenumbering{Roman}
   \pagestyle{thu@empty}}
 \renewcommand\mainmatter{%
-  \if@openright\cleardoublepage\else\clearpage\fi
+  \cleardoublepage
   \@mainmattertrue
   \pagenumbering{arabic}
   \pagestyle{thu@headings}}
 \renewcommand\backmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
   %\@mainmatterfalse
-  \ifthu@bachelor\pagenumbering{Roman}\setcounter{page}{1}\fi}
+  \ifthu@bachelor\pagenumbering{Roman}\fi}
 %</cls>
 %    \end{macrocode}
 %
@@ -2290,6 +2292,8 @@
 % \end{macro}
 % \begin{macro}{\thu@bachelor@overview}
 % 本科封面的“综合论文训练任务书”部分。
+% \changes{v2.5.3}{2006/06/03}{填充内容部分行距放大。}
+% \changes{v2.5.3}{2006/06/03}{取消~\cs{parbox} 改用~\cs{vtop}。}
 %    \begin{macrocode}
 \newcommand\thu@bachelor@overview{%
    {\xiaochu\hei\centerline{\thu@bachelor@overviewtitle}}\vskip3cm%
@@ -2302,9 +2306,9 @@
    \makebox[4em][l]{\thu@csupervisortitle}\thu@underline[6em]\thu@csupervisor\song\par%
    \vskip2.2cm%
    \noindent{\hei\xiaosan\thu@bachelor@projecttitle}\vskip0.5cm%
-     \parbox[t][2.3cm][t]{\textwidth}{\xiaosi\thu@ctitle}
+     \vtop to 2.3cm{\xiaosi[1.5]\thu@ctitle}
    \noindent{\hei\xiaosan\thu@bachelor@maincontents@title}\vskip0.5cm%
-     {\xiaosi\thu@contentsandprogress\vfill}
+     {\xiaosi[1.5]\thu@contentsandprogress\vfill}
    \newpage
    \ifthu@submit
      \ifx\thu@bachelor@overview@fig\@empty
@@ -2313,9 +2317,9 @@
      \else\thu@bachelor@overview@fig\fi
    \else\vspace*{-1.3cm}%
    \noindent{\hei\xiaosan\thu@bachelor@requirements@title}\vskip0.5cm%
-     \parbox[t][6.5cm][t]{\textwidth}{\xiaosi\thu@mainrequirements}
+     \vtop to 6.5cm{\xiaosi[1.5]\thu@mainrequirements}
    \noindent{\hei\xiaosan\thu@bachelor@mainreference@title}\vskip0.5cm%
-     {\xiaosi\thu@mainreferences}\vfill%
+     {\xiaosi[1.5]\thu@mainreferences\vfill}%
    \vspace*{-1.8cm}\sihao\hfill{\hei\thu@bachelor@teaching@sig}\thu@reviserule[0.8pt]\par%
    \vskip0.5cm\hfill{\hei\thu@bachelor@cdate}\fi}
 %    \end{macrocode}
@@ -2483,7 +2487,9 @@
 % 中文摘要部分的标题为"摘要"，用黑体三号字。
 % \changes{v2.5.1}{2006/05/24}{我靠，教务处有不要正文前的页眉了，ft！}
 % \changes{v2.5.1}{2006/05/24}{不管是哪种论文格式，摘要都要右开。}
-% \changes{v2.5.2}{2006/05/29}{在研究生论文中，摘要不出现在目录中，但是要在书签中出现。}
+% \changes{v2.5.2}{2006/05/29}{在研究生论文中，摘要不出现在目录中，但是要在书签
+% 中出现。}
+% \changes{v2.5.3}{2006/06/03}{\cs{pagenumber} 会自动设置页码为~1。}
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\thu@makeabstract}{%
@@ -2495,7 +2501,6 @@
     \pagestyle{thu@headings}
   \fi
   \pagenumbering{Roman}
-  \setcounter{page}{1}
 %    \end{macrocode}
 %
 % 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用~Times New Roman 体，
@@ -2694,10 +2699,11 @@
 %   本命令只是为了生成公式列表，所以这个~caption~是假的。如果要编号最好用
 %   ~equation 环境，如果是其它编号环境，请手动添加添加~\cs{equcaption}。
 % \changes{v2.5}{2006/05/19}{将公式编号写入临时文件以便生成公式列表。}
+% \changes{v2.5.3}{2006/06/03}{TODO: equcaption 的参数}
 %    \begin{macrocode}
-\newcommand{\equcaption}[1][]{
+\def\equcaption{%
   \addcontentsline{loe}{equation}%
-                  {\protect\numberline{\equationname\hskip0.5em\csname theequation\endcsname}#1}}
+                  {\protect\numberline{\equationname\hskip0.5em\csname theequation\endcsname}}}
 \let\thu@equation\equation
 \def\equation{\thu@equation\equcaption}
 %    \end{macrocode}
