@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/06/03 2.5.3 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/06/07 2.5.3 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -327,9 +327,10 @@
 % \end{center}
 %
 % 需要说明几点：1）thuthesis.cls 和~thuthesis.cfg 可以由~thuthesis.ins 和
-% ~thuthesis.dtx 生成，但为了降低新手用户的使用难度，特将~cls 和~cfg 也一起发布
-% 。2）学习一个新东西最好的办法就是读它的文档。请时刻记住~RTFM，不要滥用你提问的
-% 权力。
+% ~thuthesis.dtx 生成，但为了降低新手用户的使用难度，特将~cls 和~cfg 也一起发布。
+% 2）学习一个新东西最好的办法就是读它的文档。请时刻记住~RTFM\footnote{Read The
+%   Fuck Manual}，不要滥用你提问的权力，不要抱怨没人帮助你。因为任何人都有权利不
+% 回答你的问题。
 %
 % 如果对上面表格中的文件及其解释还存在疑问，没有关系，继续往下看，一会儿就会天开
 % 云散了。
@@ -341,9 +342,9 @@
 % \begin{center} 
 % \begin{tabular}{llllll}\hline
 %   ifthen & clac & ifpdf  & CJK & CJKnumb & \textbf{CJKpunct}   \\
-%   array & booktabs & indentfirst  &  amsmath & amssymb & ntheorem   \\
+%   array & booktabs & longtable  &  amsmath & amssymb & ntheorem   \\
 %   mathptmx & helvet & courier    &   graphicx & subfig & caption    \\
-%   natbib & hyperref & hypernat & \textbf{thubib.bst}& &\\\hline
+%   indentfirst & paralist & natbib & hyperref & hypernat & \textbf{thubib.bst} \\\hline
 % \end{tabular}
 % \end{center}
 %
@@ -590,8 +591,10 @@
 %     反倒不要求。}
 %
 % \item[dvips]
-%   打开~dvips 支持，否则为~dvipdfm，如果运行~pdflatex，则二者皆不用。如果用
-%   ~pdflatex~编译，请务必去掉此选项，否则模板会报错。
+%   打开~dvips 支持。如果用~pdflatex~编译，请务必去掉此选项，否则模板会报错。
+%
+% \item[dvipdfm]
+%  打开~dvipdfm 支持，本选项和~dvips 主要是为了~hyperref 能正确生成书签和链接。
 %
 % \item[arial]
 %   使用真正的~arial 字体。此选项会装载~arial 字体宏包，如果此宏包不存在，就装载
@@ -940,7 +943,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/06/02 2.5.3 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/06/07 2.5.3 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -980,13 +983,18 @@
 % \changes{v2.5.1}{2006/05/24}{如果选项设置了~dvips，但是用~pdflatex 编译，报错。}
 %    \begin{macrocode}
 \newif\ifthu@dvips
+\newif\ifthu@dvipdfm
 \DeclareOption{dvips}{\thu@dvipstrue}
-\DeclareOption{dvipdfm}{\thu@dvipsfalse}
+\DeclareOption{dvipdfm}{\thu@dvipdfmtrue}
 \AtEndOfClass{%
   \ifpdf
     \ifthu@dvips
       \ClassError{thuthesis} %
                  {Please remove `dvips' if you run pdflatex.}{}
+    \fi
+    \ifthu@dvipdfm
+      \ClassError{thuthesis} %
+                 {Please remove `dvipdfm' if you run pdflatex.}{}
     \fi
   \fi}
 %    \end{macrocode}
@@ -1071,6 +1079,8 @@
 %
 % 并排图形。subfigure 已经不再推荐，用新的~subfig。加入~|config| 选项以便兼容
 % ~|subfigure| 的命令。
+% 浮动图形和表格标题样式。caption2 已经不推荐使用，采用新的~caption。它会自动被
+% ~subfig 装载进来。所以可以在后面看到~|captionsetup| 的命令。
 %    \begin{macrocode}
 \RequirePackage[config]{subfig}
 %    \end{macrocode}
@@ -1112,6 +1122,7 @@
 % 表格控制
 %    \begin{macrocode}
 \RequirePackage{array}
+\RequirePackage{longtable}
 %    \end{macrocode}
 %
 % 使用三线表： |\toprule|， |\midrule|， |\bottomrule|。当然简单的可以用~|\hwline{wd}|
@@ -1120,12 +1131,6 @@
 %    \end{macrocode}
 %
 %
-% 浮动图形和表格标题样式。caption2 已经不推荐使用，采用新的~caption。它会自动被
-% ~subfig 装载进来。所以可以在后面看到~|captionsetup| 的命令。否则，强制装载。
-%    \begin{macrocode}
-\@ifpackageloaded{caption}{}{\RequirePackage{caption}}
-%    \end{macrocode}
-%
 % 参考文献引用宏包。
 %    \begin{macrocode}
 \RequirePackage[numbers,super,sort&compress]{natbib}
@@ -1133,16 +1138,7 @@
 %
 % 生成有书签的~pdf 及其开关，请结合~gbk2uni 避免书签乱码。
 %    \begin{macrocode}
-\ifpdf
-  \RequirePackage[pdftex]{hyperref}
-\else
-  \ifthu@dvips
-    \RequirePackage[dvips]{hyperref}
-  \else
-    \RequirePackage[dvipdfm]{hyperref}
-  \fi
-\fi
-
+\RequirePackage{hyperref}
 \hypersetup{%
   unicode=true,
   CJKbookmarks=true,
@@ -1152,8 +1148,7 @@
   breaklinks=true,          
   colorlinks=false, 
   plainpages=false,
-  pdfborder=0 0 0,
-  pdfpagelabels=true}
+  pdfborder=0 0 0}
 %    \end{macrocode}
 %  设置~url 样式，与上下文一致
 %    \begin{macrocode}
@@ -1521,7 +1516,7 @@
 \renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
 \def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@} 
 \let\thu@footnotesize\footnotesize
-\renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.3]} % 单倍行距太丑了，还是用1.3吧
+\renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.5]} % 单倍行距太丑了，还是用1.3吧
 \def\@makefnmark{\textsuperscript{\hbox{\normalfont\@thefnmark}}}
 \long\def\@makefntext#1{
     \bgroup
@@ -1636,8 +1631,12 @@
 % 设置浮动对象和文字之间的距离
 %    \begin{macrocode}
 %<*cls>
+\setlength{\floatsep}{12bp plus2pt minus1pt}
 \setlength{\intextsep}{12bp plus2pt minus1pt}
 \setlength{\textfloatsep}{12bp plus2pt minus1pt}
+\setlength{\@fptop}{0bp plus1.0fil}
+\setlength{\@fpsep}{12bp plus2.0fil}
+\setlength{\@fpbot}{0bp plus1.0fil}
 %    \end{macrocode}
 %
 % 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度
@@ -1663,19 +1662,49 @@
 % 响。}
 % \changes{v2.5.1}{2006/05/23}{增加~subfigure 和~subtable 的~caption 配置。}
 % \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
+% \changes{v2.5.3}{2006/06/07}{不管~caption 出现在什么位置，aboveskip 总是出现在标题和浮动体之间的距离。}
+% TODO: refer to subfig.pdf:p42
 %    \begin{macrocode}
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
-\DeclareCaptionLabelFormat{thu}{{\dawu\song #1~\rmfamily #2}}
+\DeclareCaptionLabelFormat{thu}{{\dawu[1.5]\song #1~\rmfamily #2}}
 \DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
-\DeclareCaptionFont{thu}{\dawu[1.3]}
-\captionsetup{margin=10pt, labelformat=thu, labelsep=thu, font=thu}
-\captionsetup[table]{position=top, aboveskip={12bp-\intextsep}, belowskip=6bp}
-\captionsetup[subtable]{position=top, font=thu}
-\captionsetup[figure]{position=bottom, aboveskip=6bp, belowskip={12bp-\intextsep}}
-\captionsetup[subfigure]{position=bottom, font=thu}
+\DeclareCaptionFont{thu}{\dawu[1.5]}
+\captionsetup{labelformat=thu,labelsep=thu,font=thu}
+\captionsetup[table]{position=top,belowskip={12bp-\intextsep}, aboveskip=3bp} 
+\captionsetup[subtable]{position=top,font=thu,captionskip=6bp,nearskip=0bp,farskip=6bp,topadjust=0bp}
+\captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=-2bp}
+\captionsetup[subfigure]{position=bottom,font=thu,captionskip=6bp,nearskip=6bp,farskip=0bp} 
  %\renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
  % \renewcommand{\p@subfigure}{:}
+%    \end{macrocode}
+% 我们采用~\texttt{longtable} 来处理跨页的表格。默认有两个不足：插图索引部分缺少
+% 图名；\texttt{caption} 包对标题下方的距离控制不当。同样我们需要设置其默认字体
+% 为五号。
+% \changes{v2.5.3}{2006/06/08}{增加对~\texttt{longtable} 的处理。}
+%    \begin{macrocode}
+\def\LT@c@ption#1[#2]#3{%
+  \LT@makecaption#1\fnum@table{#3}%
+  \def\@tempa{#2}%
+  \ifx\@tempa\@empty\else
+    {\let\\\space
+    \addcontentsline{lot}{table}{\protect\numberline{\tablename\hskip0.5em\thetable}{#2}}}%
+  \fi}
+\AtBeginDocument{% has to be here and after what caption package did!
+\def\LT@makecaption#1#2#3{%
+   \LT@mcol\LT@cols c{\hbox to\z@{\hss\parbox[t]\linewidth{%
+     \caption@letfloattype{longtable}%
+       \caption@begin{table}%
+         \ifdim\LTcapwidth=4in \else
+            \caption@setwidth\LTcapwidth
+         \fi
+           \caption@startrue#1\caption@starfalse
+           \caption@@make{#2}{#3}%
+           \endgraf\vskip4bp % caption does wrong here
+         \caption@end}%
+       \hss}}}}%
+\let\thu@LT@array\LT@array
+\def\LT@array{\dawu[1.5]\thu@LT@array} % set default font size
 %    \end{macrocode}
 %
 % \begin{macro}{\hlinewd}
@@ -2675,7 +2704,7 @@
  \addcontentsline{\csname ext@#1\endcsname}{#1}%
                  {\protect\numberline{\csname #1name\endcsname\hskip0.5em\csname the#1\endcsname}%
                  {\ignorespaces #2}}%
-  \begingroup
+ \begingroup
  \@parboxrestore
  \if@minipage
  \@setminipage
@@ -2699,7 +2728,7 @@
 %   本命令只是为了生成公式列表，所以这个~caption~是假的。如果要编号最好用
 %   ~equation 环境，如果是其它编号环境，请手动添加添加~\cs{equcaption}。
 % \changes{v2.5}{2006/05/19}{将公式编号写入临时文件以便生成公式列表。}
-% \changes{v2.5.3}{2006/06/03}{TODO: equcaption 的参数}
+% \changes{v2.5.3}{2006/06/03}{取消~\cs{equcaption} 的参数}
 %    \begin{macrocode}
 \def\equcaption{%
   \addcontentsline{loe}{equation}%

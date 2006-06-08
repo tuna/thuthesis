@@ -49,7 +49,7 @@
 ~\verb|parbox| 就可以。否则，请参看图~\ref{fig:big1}，它包含两个小图，分别是图
 ~\ref{fig:subfig1} 和图~\ref{fig:subfig2}。推荐使用~subfloat，不要再用~subfigure
 和~subtable。
-\begin{figure}[h]
+\begin{figure}[hb]
   \centering
   \subfloat[第一个小图形]{%
     \label{fig:subfig1}
@@ -61,14 +61,13 @@
   \label{fig:big1}
 \end{figure}
 
-
 古之学者必有师。师者，所以传道受业解惑也。人非生而知之者，孰能无惑？惑而不从
 师，  其为惑也，终不解矣。生乎吾前，其闻道也固先乎吾，吾从而师之；生乎吾後，其闻
 道也亦先乎吾，吾从而师之。吾师道也，夫庸知其年之先後生於吾乎！是故无贵无贱无长无
 少，道之所存，师之所存也。
 
 如果要把编号的两个图形并排，那么小页就非常有用了：
-\begin{figure}[hb]
+\begin{figure}
 \begin{minipage}{0.45\textwidth}
   \includegraphics{hello.eps}
   \caption{并排第一个图。}

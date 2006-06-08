@@ -4,12 +4,6 @@
 %%% TeX-master: t
 %%% End:
 
-% 有一种格式定义叫做变态：研究生院说只要第一章右开就可以，以后的无所谓。肚子有点疼。
-% 本科不用在乎下面这句~dirty 的设置。
-\makeatletter
-\ifthu@bachelor\relax\else\cleardoublepage\fi
-\makeatother
-
 \chapter{带~English 的标题}
 \label{cha:intro}
 
@@ -85,11 +79,11 @@
 而且最好将表格的宽度设置为小页的宽度，这样脚注看起来才更美观。
 \begin{table}[htb]
   \centering
+  \begin{minipage}[t]{0.8\linewidth} % 如果想在表格中使用脚注，minipage是个不错的办法
   \caption[模板文件。]{模板文件。如果表格的标题很长，那么在表格所以中就会很不美
-    观，所以要像~chapter 那样在前面用中括号写一个间断的标题。这个标题会出现在索
+    观，所以要像~chapter 那样在前面用中括号写一个简短的标题。这个标题会出现在索
     引中。}
   \label{tab:template-files}
-  \begin{minipage}[t]{0.8\linewidth} % 如果想在表格中使用脚注，minipage是个不错的办法
     \begin{tabular*}{\linewidth}{lp{10cm}}
       \toprule[1.5pt]
       {\hei 文件名} & {\hei 描述} \\\midrule[1pt]
@@ -129,9 +123,53 @@
 ~\texttt{|X|} 扩展实现表格自动放大；2）通过命令~\texttt{backslashbox} 在表头部分
 插入反斜线。
 
+
+浮动体的并排放置一般有两种情况：1）二者没有关系，为两个独立的浮动体；2）二者隶书于同一个浮动体。对表格来说并排表格既可以
+像图~\ref{tab:parallel1}、图~\ref{tab:parallel2} 使用小页环境，也可以如图~\ref{tab:subtable} 使用子表格来做。图的例子参见
+第~\ref{sec:multifig} 节。
+\begin{table}
+\noindent\begin{minipage}{0.5\textwidth}
+\centering
+\caption{第一个并排子表格。}
+\label{tab:parallel1}
+\begin{tabular}{p{2cm}p{2cm}}
+\toprule[1.5pt]
+111 & 222 \\\midrule[1pt]
+222 & 333 \\\bottomrule[1.5pt]
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\centering
+\caption{第二个并排子表格。}
+\label{tab:parallel2}
+\begin{tabular}{p{2cm}p{2cm}}
+\toprule[1.5pt]
+111 & 222 \\\midrule[1pt]
+222 & 333 \\\bottomrule[1.5pt]
+\end{tabular}
+\end{minipage}
+\end{table}
+\begin{table}
+\centering
+\caption{并排子表格。}
+\label{tab:subtable}
+\subfloat[第一个子表格。]{
+\begin{tabular}{p{2cm}p{2cm}}
+\toprule[1.5pt]
+111 & 222 \\\midrule[1pt]
+222 & 333 \\\bottomrule[1.5pt]
+\end{tabular}}\hskip2cm
+\subfloat[第二个子表格]{
+\begin{tabular}{p{2cm}p{2cm}}
+\toprule[1.5pt]
+111 & 222 \\\midrule[1pt]
+222 & 333 \\\bottomrule[1.5pt]
+\end{tabular}}
+\end{table}
+
 不可否认~\LaTeX{} 的表格功能没有想象中的那么强大，只要你足够认真，足够细致，那么
 同样可以排出来非常复杂非常漂亮的表格。请参看表~\ref{tab:tabexamp2}。
-\begin{table}[h]
+\begin{table}[hb]
   \centering\dawu[1.3]
   \caption{复杂表格示例~2。}
   \label{tab:tabexamp2}
@@ -150,7 +188,50 @@
 \end{table}
 
 如果您要排版的表格长度超过一页，那么推荐使用~\texttt{longtable} 或者
-~\texttt{supertabular} 宏包，此处不一一示例。
+~\texttt{supertabular} 宏包，模板对\texttt{longtable} 进行了相应的设置，所以用起
+来可能简单一些。表~\ref{tab:performance} 就是~\texttt{longtable} 的简单示例。
+\begin{longtable}[c]{crrrrrr}
+\caption{实验数据。}\label{tab:performance}\\
+\endfirsthead
+\multicolumn{7}{c}{续表~\thetable\hskip1em 标题}\\
+\hline
+\endhead
+\hline
+\multicolumn{7}{r}{续下页}
+\endfoot
+\endlastfoot
+\toprule[1.5pt]
+ 测试程序 & \multicolumn{1}{c}{正常运行} & \multicolumn{1}{c}{同步} & \multicolumn{1}{c}{检查点} & \multicolumn{1}{c}{卷回恢复}
+& \multicolumn{1}{c}{进程迁移} & \multicolumn{1}{c}{检查点} \\
+& \multicolumn{1}{c}{时间~(s)}& \multicolumn{1}{c}{时间~(s)}&
+\multicolumn{1}{c}{时间~(s)}& \multicolumn{1}{c}{时间~(s)}& \multicolumn{1}{c}{
+  时间~(s)}&  文件（KB）\\\midrule[1pt]
+CG.A.2 & 23.05 & 0.002 & 0.116 & 0.035 & 0.589 & 32491 \\
+CG.A.4 & 15.06 & 0.003 & 0.067 & 0.021 & 0.351 & 18211 \\
+CG.A.8 & 13.38 & 0.004 & 0.072 & 0.023 & 0.210 & 9890 \\
+CG.B.2 & 867.45 & 0.002 & 0.864 & 0.232 & 3.256 & 228562 \\
+CG.B.4 & 501.61 & 0.003 & 0.438 & 0.136 & 2.075 & 123862 \\
+CG.B.8 & 384.65 & 0.004 & 0.457 & 0.108 & 1.235 & 63777 \\
+MG.A.2 & 112.27 & 0.002 & 0.846 & 0.237 & 3.930 & 236473 \\
+MG.A.4 & 59.84 & 0.003 & 0.442 & 0.128 & 2.070 & 123875 \\
+MG.A.8 & 31.38 & 0.003 & 0.476 & 0.114 & 1.041 & 60627 \\
+MG.B.2 & 526.28 & 0.002 & 0.821 & 0.238 & 4.176 & 236635 \\
+MG.B.4 & 280.11 & 0.003 & 0.432 & 0.130 & 1.706 & 123793 \\
+MG.B.8 & 148.29 & 0.003 & 0.442 & 0.116 & 0.893 & 60600 \\
+LU.A.2 & 2116.54 & 0.002 & 0.110 & 0.030 & 0.532 & 28754 \\
+LU.A.4 & 1102.50 & 0.002 & 0.069 & 0.017 & 0.255 & 14915 \\
+LU.A.8 & 574.47 & 0.003 & 0.067 & 0.016 & 0.192 & 8655 \\
+LU.B.2 & 9712.87 & 0.002 & 0.357 & 0.104 & 1.734 & 101975 \\
+LU.B.4 & 4757.80 & 0.003 & 0.190 & 0.056 & 0.808 & 53522 \\
+LU.B.8 & 2444.05 & 0.004 & 0.222 & 0.057 & 0.548 & 30134 \\
+EP.A.2 & 123.81 & 0.002 & 0.010 & 0.003 & 0.074 & 1834 \\
+EP.A.4 & 61.92 & 0.003 & 0.011 & 0.004 & 0.073 & 1743 \\
+EP.A.8 & 31.06 & 0.004 & 0.017 & 0.005 & 0.073 & 1661 \\
+EP.B.2 & 495.49 & 0.001 & 0.009 & 0.003 & 0.196 & 2011 \\
+EP.B.4 & 247.69 & 0.002 & 0.012 & 0.004 & 0.122 & 1663 \\
+EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
+\bottomrule[1.5pt]
+\end{longtable}
 
 虽然大家不一定会独立使用小页，但是关于小页中的脚注还是有必要提一下。请看下面的例
 子。
@@ -335,3 +416,4 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 默认的列表环境上下间距很大，模板将其重定义为~paralist 中的压缩环境，看起来要好一
 些。如果还是不满意，自己也可以调~itemsep 的。而且我们还可以方便的指定标签的样式
 。
+
