@@ -188,7 +188,7 @@
 \end{table}
 
 如果您要排版的表格长度超过一页，那么推荐使用~\texttt{longtable} 或者
-~\texttt{supertabular} 宏包，模板对\texttt{longtable} 进行了相应的设置，所以用起
+~\texttt{supertabular} 宏包，模板对~\texttt{longtable} 进行了相应的设置，所以用起
 来可能简单一些。表~\ref{tab:performance} 就是~\texttt{longtable} 的简单示例。
 \begin{longtable}[c]{crrrrrr}
 \caption{实验数据。}\label{tab:performance}\\
@@ -236,16 +236,16 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 虽然大家不一定会独立使用小页，但是关于小页中的脚注还是有必要提一下。请看下面的例
 子。
 
-\noindent 小页（minipage）中的脚注自是别有一番风味！
+\begin{minipage}[t]{\linewidth-2\parindent}
+  柳宗元，字子厚（773-819），河东（今永济县）人\footnote{山西永济水饺。}，是唐代
+  杰出的文学家，哲学家，同时也是一位政治改革家。与韩愈共同倡导唐代古文运动，并称
+  韩柳\footnote{唐宋八大家之首二位。}。
+\end{minipage}\\[-5pt]
 
-\begin{minipage}[t]{\linewidth-\parindent}
-  柳宗元，字子厚（773-819），河东（今永济县）人，是唐代杰出的文学家，哲学家，同时
-  也是一位政治改革家。与韩愈共同倡导唐代古文运动，并称韩柳。唐朝安史之乱
-  \footnote{一场战争。}后，宦官专权，藩镇割据，土地兼并日渐严重，社会生产破坏严重
-  ，民不聊生。柳宗元对这种社会现实极为不满，他积极参加了王叔文领导的“永济革新”
-  ，并成为这一运动的中坚人物。他们革除弊政，打击权奸，触犯了宦官和官僚贵族利益，
-  在他们的联合反扑下，改革失败了，柳宗元被贬为永州司马\footnote{从此寓情山水。}。
-\end{minipage}
+唐朝安史之乱后，宦官专权，藩镇割据，土地兼并日渐严重，社会生产破坏严重，民不聊生
+。柳宗元对这种社会现实极为不满，他积极参加了王叔文领导的“永济革新”，并成为这一
+运动的中坚人物。他们革除弊政，打击权奸，触犯了宦官和官僚贵族利益，在他们的联合反
+扑下，改革失败了，柳宗元被贬为永州司马。
 
 \subsection{定理环境}
 \label{sec:theorem}
@@ -277,6 +277,10 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 魂去尸长留，揽裙脱丝履，举身赴清池，府吏闻此事，心知长别离，徘徊庭树下，自挂东南
 枝。
 
+\begin{remark}
+天不言自高，水不言自流。
+\end{remark}
+
 天尊地卑，乾坤定矣。卑高以陈，贵贱位矣。 动静有常，刚柔断矣。方以类聚，物以群分，
 吉凶生矣。在天成象，在地成形，变化见矣。鼓之以雷霆，润之以风雨，日月运行，一寒一
 暑，乾道成男，坤道成女。乾知大始，坤作成物。乾以易知，坤以简能。易则易知，简则易
@@ -293,6 +297,7 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 《象曰》：天行健，君子以自强不息。潜龙勿用，阳在下也。见龙再田，德施普也。终日乾乾，
 反复道也。或跃在渊，进无咎也。飞龙在天，大人造也。亢龙有悔，盈不可久也。用九，天
 德不可为首也。 　　
+
 \begin{lemma}
 《猫和老鼠》是我最爱看的动画片。
 \end{lemma}
@@ -355,18 +360,20 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 当然参考文献可以直接写~bibitem，虽然费点功夫，但是好控制，各种格式可以自己随意改
 写。
 
-本模板推荐使用~BIB\TeX，样式文件为~thubib.bst，基本符合学校的参考文献格式（如专利等引用未加详细测试）。看看这个例
-子\cite{BEZOS02}，关于杂志的\cite{ELIDRISSI94, MELLINGER96, SHELL02}，硕士论文
-\cite{zhubajie, metamori2004}，博士论文\cite{shaheshang, FistSystem01}，会议论文\cite{DPMG}，技术报告\cite{NPB2}。中文参考文献
-\cite{cnarticle}应增加~\texttt{lang=``chinese''}~字段，以便进行相应处理。另外，这
-个~bst~对中文文献\cite{cnproceed}的支持并不是十全十美，如果有不如意的地方，请手
-动修改~bbl 文件。
+本模板推荐使用~BIB\TeX，样式文件为~thubib.bst，基本符合学校的参考文献格式（如专利
+等引用未加详细测试）。看看这个例子\cite{BEZOS02}，关于杂志的\cite{ELIDRISSI94,
+  MELLINGER96, SHELL02}，硕士论文\cite{zhubajie, metamori2004}，博士论文
+\cite{shaheshang, FistSystem01}，会议论文\cite{DPMG}，技术报告\cite{NPB2}。中文参
+考文献\cite{cnarticle}应增加~\texttt{lang=``chinese''}~字段，以便进行相应处理。另
+外，这个~bst~对中文文献\cite{cnproceed}的支持并不是十全十美，如果有不如意的地方，
+请手动修改~bbl 文件。
 
 有时候不想要上标，那么可以这样~\onlinecite{shaheshang}，这个非常重要。
 
 \subsection{公式}
 \label{sec:equation}
-贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中~$p(y|\mathbf{x})$ 为后验；$p(\mathbf{x})$ 为先验；分母~$p(\mathbf{x})$ 为归一化因子。
+贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中~$p(y|\mathbf{x})$ 为后验；
+$p(\mathbf{x})$ 为先验；分母~$p(\mathbf{x})$ 为归一化因子。
 \begin{equation}
 \label{equ:chap1:bayes}
 p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=

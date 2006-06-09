@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{0}
+% \CheckSum{2776}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/06/07 2.5.3 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/06/09 2.6 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -269,17 +269,21 @@
 % 2005 年圣诞节前，\thuthesis-2.0 发布，成为第一个同时支持硕士、博士论文格式的模
 % 板，后直到~2006 年~3 月初才加入本科论文格式支持，即~\thuthesis-2.1。这个版本除
 % 了增加本科论文格式支持，同时去掉了很多不必要的宏包，改由基本~\TeX{} 和
-% ~\LaTeX{} 命令实现。虽然~\thuthesis\ 已经帮助很多同学顺利的提交了论文，但还需要
-% 花费相当的时间维护整理。
+% ~\LaTeX{} 命令实现。在随后的几个月时间里，由于教务处的督促以及同学们的积极反馈
+% ，模板进入了一个“高速”发展的阶段，其间的确发现并排除了不少问题。但有句话我是
+% 一定要讲出来的：{\hei 拜托研究生院把硕士和博士论文格式要求写清楚一些，不要含糊
+%   其词，不要随机规定。}现在搞的各个系都有自己的一套论文格式规范，这样的话模板怎
+% 么做！我浪费了好多好多时间帮助那些来自不同系的研究生如何让他们的论文适应他们
+% 系里的要求。
 %
 % 在整理这个模板的过程中，我得到不少同学热情的支持，在此不一一列出，感谢他们提供
 % 的每一份帮助！让人感到欣喜的事很多同学都开始为~\thuthesis{} 添砖加瓦，目前包括
 % ~edyfox~的~Makefile，Truel 的~msmake.cmd，oseen~将其移植到~utf-8 并制作了
 % ~debian package，EricH 制作了~gentoo ebuild。
 %
-% 本文档将尽量简单的介绍模板的使用方法，如有不清楚可以参考示例文档或者直接给我写
-% 信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现在的这个版本基
-% 本上满足了学校的大部分要求，但难免还存在不足之处，欢迎大家能积极反馈。
+% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者直接给
+% 我写信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现在的这个版
+% 本基本上满足了学校的大部分要求，但难免还存在不足之处，欢迎大家能积极反馈。
 %
 %
 % \section{安装}
@@ -322,7 +326,7 @@
 % Makefile & self-explanation (依赖于~thesis.mak，doc.mak 和~shuji.mak)\\
 % msmake.cmd & Windows 批处理工具\\\hline
 % Readme & self-explanation\\
-% thuthesis.pdf & 用户手册（本文档）\\\hline
+% \textbf{thuthesis.pdf} & 用户手册（本文档）\\\hline
 %   \end{tabular}
 % \end{center}
 %
@@ -509,52 +513,63 @@
 %
 % \begin{example}
 % \documentclass[bachelor,dvips]{thuthesis}
-% % \documentclass[master,doctor,secret,submit]{thuthesis}
+% % \documentclass[master|doctor,dvipdfm,secret,arialtoc]{thuthesis}
+% 
+% % 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
 % \usepackage{thutils}
-%
+% 
+% % 你可以在这里修改配置文件中的定义，导言区可以使用中文。
+% % \def\myname{薛瑞尼}
+% 
 % \begin{document}
-%
-% % 定义所有图片文件在 figures 子目录下
+% 
+% % 定义所有的eps文件在 figures 子目录下
 % \graphicspath{{figures/}}
-%
+% 
+% 
 % %%% 封面部分
 % \frontmatter
 % \input{data/cover}
 % \makecover
-%
+% 
 % % 目录
 % \tableofcontents
-%
+% 
 % % 符号对照表
-% \include{data/denotation}
-%
+% \input{data/denotation}
+% 
+% 
 % %%% 正文部分
 % \mainmatter
 % \include{data/chap01}
 % \include{data/chap02}
-%
+% 
+% 
 % %%% 其它部分
 % \backmatter
-% % 加入插图、表格和公式索引
+% % 插图索引
 % \listoffigures
+% % 表格索引
 % \listoftables
+% % 公式索引
 % \listofequations
-%
+% 
+% 
 % % 参考文献
 % \bibliographystyle{thubib}
-% \bibliography{reference/refs}
-%
-% % 致谢与声明
+% \bibliography{ref/refs}
+% 
+% 
+% % 致谢
 % \include{data/ack}
-%
+% 
 % % 附录
 % \begin{appendix}
-%    \input{data/appendix01}
+% \input{data/appendix01}
 % \end{appendix}
-%
+% 
 % % 个人简历
 % \include{data/resume}
-%
 % \end{document}
 % \end{example}
 %
@@ -604,7 +619,7 @@
 %   \href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial 字体}。
 %
 % \item[arialtoc]
-%  目录项中的英文是否用~arial 字体。
+%  目录项中的英文是否用~arial 字体（本科默认打开）。
 %
 % \item[arialtitle]
 %  章节标题中英文是否用~arial 字体（默认打开）。
@@ -671,7 +686,8 @@
 % 。2）正文模式。比如“文[3]中详细说明了\ldots”。其中上标模式使用远比正文模式频
 % 繁，所以为了符合使用习惯，上标模式仍然用常规的~|\cite{key}|，而~|\onlinecite{key}| 则用来生成正文模式。
 %
-% 关于参考文献模板推荐使用~BIB\TeX，关于中文参考文献需要额外增加一个~Entry：lang。用来指示此参考文献为中文，以便~thubib.bst~处理。如：
+% 关于参考文献模板推荐使用~BIB\TeX，关于中文参考文献需要额外增加一个~Entry：lang
+% 。用来指示此参考文献为中文，以便~thubib.bst~处理。如：
 % \begin{example}   
 % @INPROCEEDINGS{cnproceed,
 %   author    = {王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝},
@@ -837,6 +853,13 @@
 % \changes{2.0}{2005/12/19}{把~acknowledge 改为~ack，简单而已。}
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！
 %
+% \myentry{列表环境}
+% \DescribeEnv{itemize}
+% \DescribeEnv{enumerate}
+% \DescribeEnv{description}
+% 为了适合中文喜欢，模板将这三个常用的列表环境用~paralist 对应的压缩环境替换。一
+% 方面满足了多余空间的清楚，另一方面可以自己指定标签的样式和符号。细节请参看
+% ~paralist 文档，此处不再赘述。
 %
 % \subsubsection{本科论文专用命令}
 % \label{sec:bachelorspec}
@@ -930,8 +953,12 @@
 % 感谢我自己能把这件事坚持下来，模板制作期间颇多感慨，不断遇到问题，不断摸索解决
 % 。其中的酸甜苦辣恐怕只有自己能体会得到！
 %
-% 虽然今天模板已经能勉强为大家服务，我对它还是不太满意，代码质量不高，结构组
-% 织不好，文档内容不足。很多很多的后续工作等待着大家一起来把它做好！
+% 很多同学用~\thuthesis{} 提交论文之后都会给我写一封感谢信，有的还会把打印出来的
+% 论文送给我一份：每当这个时候我都有说不出的欣慰。大家的认可才是~\thuthesis{} 最
+% 大的动力。与此同时我也感觉到更大的压力，因为模板的维护还需要花费相当的精力。同
+% 时我对模板还不太满意，代码质量不高，结构组织不好，文档内容不足。我呼唤感兴趣的
+% 同学能出手相助，给模板的开发和维护注入新的活力，让我们一起把~\thuthesis{} 做得
+% 更好！
 %
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
@@ -943,7 +970,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/06/07 2.5.3 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/06/09 2.6 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -981,6 +1008,7 @@
 %
 % 使用~dvips，dvipdfm 还是~pdflatex
 % \changes{v2.5.1}{2006/05/24}{如果选项设置了~dvips，但是用~pdflatex 编译，报错。}
+% \changes{v2.6}{2006/06/09}{增加~dvipdfm 选项。}
 %    \begin{macrocode}
 \newif\ifthu@dvips
 \newif\ifthu@dvipdfm
@@ -1030,6 +1058,7 @@
 \ExecuteOptions{arialtitle}
 \ProcessOptions
 \ifthu@bachelor
+  \thu@arialtoctrue % hard code
   \LoadClass[12pt, a4paper]{book}
 \else
   \LoadClass[12pt, a4paper, openany]{book}
@@ -1120,6 +1149,7 @@
 %    \end{macrocode}
 %
 % 表格控制
+% \changes{v2.6}{2006/06/09}{增加~longtable。}
 %    \begin{macrocode}
 \RequirePackage{array}
 \RequirePackage{longtable}
@@ -1137,6 +1167,7 @@
 %    \end{macrocode}
 %
 % 生成有书签的~pdf 及其开关，请结合~gbk2uni 避免书签乱码。
+% \changes{v2.6}{2006/06/09}{去除~hyperref 选项，等待全局传递。}
 %    \begin{macrocode}
 \RequirePackage{hyperref}
 \hypersetup{%
@@ -1511,12 +1542,13 @@
   \fi}
 %    \end{macrocode}
 % \end{macro}
+% \changes{v2.6}{2006/06/09}{脚注改成~1.5 倍行距，漂亮。}
 %    \begin{macrocode}
 \renewcommand{\thefootnote}{\thu@textcircled{footnote}}
 \renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
 \def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@} 
 \let\thu@footnotesize\footnotesize
-\renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.5]} % 单倍行距太丑了，还是用1.3吧
+\renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.5]}
 \def\@makefnmark{\textsuperscript{\hbox{\normalfont\@thefnmark}}}
 \long\def\@makefntext#1{
     \bgroup
@@ -1570,8 +1602,8 @@
 %    \begin{macrocode} 
 \ifthu@bachelor
   \renewcommand{\theequation}{\@arabic\c@equation}
-  \renewcommand{\eqref}[1]{\textup{\ref{#1}}} % TODO: redefinitation of tagform
-                                % broken eqref!
+  % TODO: redefinitation of tagform broken eqref!
+  \renewcommand{\eqref}[1]{\textup{\ref{#1}}} 
   \def\tagform@#1{\maketag@@@{(\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)}}
 \else
   \renewcommand{\theequation}{\@arabic\c@chapter-\@arabic\c@equation}
@@ -1629,6 +1661,8 @@
 % \label{sec:float}
 %
 % 设置浮动对象和文字之间的距离
+% \changes{v2.6}{2006/06/09}{增加~\cs{floatsep}，\cs{@fptop}，\cs{@fpsep} 和
+% ~\cs{@fpbot}。}
 %    \begin{macrocode}
 %<*cls>
 \setlength{\floatsep}{12bp plus2pt minus1pt}
@@ -1663,7 +1697,6 @@
 % \changes{v2.5.1}{2006/05/23}{增加~subfigure 和~subtable 的~caption 配置。}
 % \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
 % \changes{v2.5.3}{2006/06/07}{不管~caption 出现在什么位置，aboveskip 总是出现在标题和浮动体之间的距离。}
-% TODO: refer to subfig.pdf:p42
 %    \begin{macrocode}
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
@@ -1673,7 +1706,7 @@
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
 \captionsetup[table]{position=top,belowskip={12bp-\intextsep}, aboveskip=3bp} 
 \captionsetup[subtable]{position=top,font=thu,captionskip=6bp,nearskip=0bp,farskip=6bp,topadjust=0bp}
-\captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=-2bp}
+\captionsetup[figure]{position=bottom,belowskip={8bp-\intextsep},aboveskip=-2bp}
 \captionsetup[subfigure]{position=bottom,font=thu,captionskip=6bp,nearskip=6bp,farskip=0bp} 
  %\renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
  % \renewcommand{\p@subfigure}{:}
@@ -1691,7 +1724,7 @@
     \addcontentsline{lot}{table}{\protect\numberline{\tablename\hskip0.5em\thetable}{#2}}}%
   \fi}
 \AtBeginDocument{% has to be here and after what caption package did!
-\def\LT@makecaption#1#2#3{%
+ \def\LT@makecaption#1#2#3{%
    \LT@mcol\LT@cols c{\hbox to\z@{\hss\parbox[t]\linewidth{%
      \caption@letfloattype{longtable}%
        \caption@begin{table}%
@@ -2188,6 +2221,7 @@
 % \changes{v2.5.1}{2006/05/21}{本科封面标题调整微小的空隙。}
 % \changes{v2.5.1}{2006/05/21}{本科封面标题第二行的横线上移一点。}
 % \changes{v2.5.2}{2006/05/29}{研究生论文标题中英文用~arial 字体。}
+% \changes{v2.6}{2006/06/09}{本科生题目加长，最多~24 个字。}
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\thu@first@titlepage}{
@@ -2202,13 +2236,13 @@
       \par\vskip1.2cm
       {\ziju{18bp}\xiaochu\hei\thu@bachelor@subtitle}
       \vskip2.5cm
-      \noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
-      \parbox[t]{10cm}{%
+      \hspace*{-0.3cm}\noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
+      \parbox[t]{12cm}{%
          \begin{picture}(0,0)(0,0)
            \setlength\unitlength{1cm}
            \linethickness{1.3pt}
-           \put(0,-0.25){\line(1,0){10}}
-           \put(0,-1.68){\line(1,0){10}}
+           \put(0,-0.25){\line(1,0){12}}
+           \put(0,-1.68){\line(1,0){12}}
          \end{picture}%
          \ignorespaces\yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
       \vskip1.55cm
@@ -2277,12 +2311,9 @@
     \@ifnextchar[ % ]
       {\csname thu@bachelor@#1@fig@i\endcsname}{\csname thu@bachelor@#1@fig@ii\endcsname}}
   \expandafter\gdef\csname thu@bachelor@#1@fig@i\endcsname[##1]##2{%
-    \expandafter\gdef\csname thu@bachelor@#1@fig\endcsname{\includegraphics[##1]{##2}}
-    }
+    \expandafter\gdef\csname thu@bachelor@#1@fig\endcsname{\includegraphics[##1]{##2}}}
   \expandafter\gdef\csname thu@bachelor@#1@fig@ii\endcsname##1{%
-    \expandafter\gdef\csname thu@bachelor@#1@fig\endcsname{\includegraphics{##1}}
-    }
-  }
+    \expandafter\gdef\csname thu@bachelor@#1@fig\endcsname{\includegraphics{##1}}}}
 %    \end{macrocode}
 % \end{macro}
 %
