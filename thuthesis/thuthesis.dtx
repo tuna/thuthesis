@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2776}
+% \CheckSum{2754}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,16 +43,16 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/06/09 2.6 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/06/16 2.6.1 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
 \usepackage{fancybox}
 \usepackage{fancyvrb}
 \usepackage{url}
- %\usepackage{fourier}
+\IfFileExists{lucidabr.sty}{\usepackage{lucidabr}}{}
 \usepackage{xcolor}
-\usepackage{CJK, CJKpunct}
+\usepackage{CJK,CJKpunct}
 \usepackage[CJKbookmarks=true, bookmarksnumbered=true, 
             colorlinks=true, linkcolor=blue, dvips]{hyperref}
 \usepackage{indentfirst}
@@ -77,23 +77,19 @@
              \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}
             }
     }{\endlist}
-
 \DefineVerbatimEnvironment{example}{Verbatim}%
  {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue}, 
   fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1.2,
   fontsize=\small, gobble=1}
-
 \DefineVerbatimEnvironment{shell}{Verbatim}%
  {frame=single, framerule=0.3mm, rulecolor=\color{red!85!green!60}, 
   fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small, gobble=1}
-
 \makeatletter
 \long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fs #1}}\marginpar{\strut}\hskip\parindent}
 \def\tableofcontents{\renewcommand{\baselinestretch}{1.0}\@starttoc{toc}}
 \def\DescribeMacro{\Describe@Macro}
 \def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
 \def\PrintDescribeMacro#1{{\color{-red!75!green!50!blue!55}\MacroFont \string #1\hskip1em }}
-
 \def\ps@headings{%
   \let\@oddfoot\@empty
   \def\@oddhead{\vbox{\hbox
@@ -201,6 +197,7 @@
 % \changes{v2.5.1}{2006/05/24}{根据教务处的新要求调整附录部分。}
 % \changes{v2.5.1}{2006/05/25}{参考文献中杂志文章如果没有卷号，那么页码直接跟在
 % 年份后面，并用句点分割。在~thubib.bst 中增加~output.year 函数。}
+% \changes{v2.6.1}{2006/06/16}{取消~thubib.bst 中~inbook 类~volume 后的页码。}
 %
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
@@ -323,7 +320,7 @@
 % data/ & 示例文档章节具体内容\\
 % figures/ & 示例文档图片路径\\
 % thutils.sty & 为示例文档加载其它宏包\\\hline
-% Makefile & self-explanation (依赖于~thesis.mak，doc.mak 和~shuji.mak)\\
+% Makefile & self-explanation \\
 % msmake.cmd & Windows 批处理工具\\\hline
 % Readme & self-explanation\\
 % \textbf{thuthesis.pdf} & 用户手册（本文档）\\\hline
@@ -344,12 +341,15 @@
 % 本模板用到以下宏包：
 %
 % \begin{center} 
+% \begin{minipage}{1.0\linewidth}  
 % \begin{tabular}{llllll}\hline
 %   ifthen & clac & ifpdf  & CJK & CJKnumb & \textbf{CJKpunct}   \\
 %   array & booktabs & longtable  &  amsmath & amssymb & ntheorem   \\
-%   mathptmx & helvet & courier    &   graphicx & subfig & caption    \\
+%   mathptmx & helvet & courier    &   graphicx & \textbf{subfig}\footnote{版本
+%   要求：2005/06/28 ver: 1.3} &  \textbf{caption}\footnote{版本要求：2006/03/21 v3.0j}   \\
 %   indentfirst & paralist & natbib & hyperref & hypernat & \textbf{thubib.bst} \\\hline
 % \end{tabular}
+% \end{minipage}
 % \end{center}
 %
 % CJKpunct~可以到~\href{http://www.ctex.org}{C\TeX}~去下载，thubib.bst~为模板自
@@ -467,13 +467,13 @@
 % \begin{shell}
 % $ make clean
 % $ make cls       % 生成 thuthesis.cls 和 thuthesis.cfg
-% $ make doc       % 生成说明文档~thuthesis.pdf
-% $ make thesis    % 生成示例文档~main.pdf
-% $ make shuji     % 生成书脊~shuji.pdf
+% $ make doc       % 生成说明文档 thuthesis.pdf
+% $ make thesis    % 生成示例文档 main.pdf
+% $ make shuji     % 生成书脊 shuji.pdf
 % \end{shell}
 % 
-% edyfox 整理的~Makefile 非常细致，稍微有这方面知识的用户会感到非常~happy。如果
-% 你不知道怎么用，最好学习学习。
+% edyfox 整理的~Makefile 非常细致（我将他给的四个文件合成一个大~Makefile），稍微有
+% 这方面知识的用户会感到非常~happy。如果你不知道怎么用，最好学习学习。
 % 
 % 关于~msmake 以及~Makefile 的用法请参见~Readme，此处不再详述。
 %
@@ -970,7 +970,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/06/09 2.6 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/06/16 2.6.1 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1716,26 +1716,13 @@
 % 为五号。
 % \changes{v2.5.3}{2006/06/08}{增加对~\texttt{longtable} 的处理。}
 %    \begin{macrocode}
-\def\LT@c@ption#1[#2]#3{%
+\def\LT@c@ption#1[#2]#3{% change code from longtable.sty
   \LT@makecaption#1\fnum@table{#3}%
   \def\@tempa{#2}%
   \ifx\@tempa\@empty\else
     {\let\\\space
     \addcontentsline{lot}{table}{\protect\numberline{\tablename\hskip0.5em\thetable}{#2}}}%
   \fi}
-\AtBeginDocument{% has to be here and after what caption package did!
- \def\LT@makecaption#1#2#3{%
-   \LT@mcol\LT@cols c{\hbox to\z@{\hss\parbox[t]\linewidth{%
-     \caption@letfloattype{longtable}%
-       \caption@begin{table}%
-         \ifdim\LTcapwidth=4in \else
-            \caption@setwidth\LTcapwidth
-         \fi
-           \caption@startrue#1\caption@starfalse
-           \caption@@make{#2}{#3}%
-           \endgraf\vskip4bp % caption does wrong here
-         \caption@end}%
-       \hss}}}}%
 \let\thu@LT@array\LT@array
 \def\LT@array{\dawu[1.5]\thu@LT@array} % set default font size
 %    \end{macrocode}
@@ -2354,6 +2341,7 @@
 % 本科封面的“综合论文训练任务书”部分。
 % \changes{v2.5.3}{2006/06/03}{填充内容部分行距放大。}
 % \changes{v2.5.3}{2006/06/03}{取消~\cs{parbox} 改用~\cs{vtop}。}
+% \changes{v2.6.1}{2006/06/16}{\cs{vtop} 中增加\cs{vfill}。}
 %    \begin{macrocode}
 \newcommand\thu@bachelor@overview{%
    {\xiaochu\hei\centerline{\thu@bachelor@overviewtitle}}\vskip3cm%
@@ -2366,7 +2354,7 @@
    \makebox[4em][l]{\thu@csupervisortitle}\thu@underline[6em]\thu@csupervisor\song\par%
    \vskip2.2cm%
    \noindent{\hei\xiaosan\thu@bachelor@projecttitle}\vskip0.5cm%
-     \vtop to 2.3cm{\xiaosi[1.5]\thu@ctitle}
+     \vtop to 2.3cm{\xiaosi[1.5]\thu@ctitle\vfill}
    \noindent{\hei\xiaosan\thu@bachelor@maincontents@title}\vskip0.5cm%
      {\xiaosi[1.5]\thu@contentsandprogress\vfill}
    \newpage
@@ -2377,7 +2365,7 @@
      \else\thu@bachelor@overview@fig\fi
    \else\vspace*{-1.3cm}%
    \noindent{\hei\xiaosan\thu@bachelor@requirements@title}\vskip0.5cm%
-     \vtop to 6.5cm{\xiaosi[1.5]\thu@mainrequirements}
+     \vtop to 6.5cm{\xiaosi[1.5]\thu@mainrequirements\vfill}
    \noindent{\hei\xiaosan\thu@bachelor@mainreference@title}\vskip0.5cm%
      {\xiaosi[1.5]\thu@mainreferences\vfill}%
    \vspace*{-1.8cm}\sihao\hfill{\hei\thu@bachelor@teaching@sig}\thu@reviserule[0.8pt]\par%
@@ -2481,6 +2469,7 @@
 \newcommand{\makecover}{
   \phantomsection
   \pdfbookmark[-1]{\thu@ctitle}{ctitle}
+  \normalsize%
   \begin{titlepage}
 %    \end{macrocode}
 %

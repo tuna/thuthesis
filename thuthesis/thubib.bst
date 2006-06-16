@@ -527,16 +527,16 @@ FUNCTION {format.vol.num.pages}
 
 FUNCTION {format.chapter.pages}
 { chapter empty$
-    'format.pages
+    { "" }
     { type empty$
-    { "chapter" }
-    { type "l" change.case$ }
-      if$
-      chapter tie.or.space.connect
-      pages empty$
-    'skip$
-    { ", " * format.pages * }
-      if$
+      { "chapter" }
+      { type "l" change.case$ }
+    if$
+    chapter tie.or.space.connect
+    pages empty$
+      'skip$
+      { ", " * format.pages * }
+    if$
     }
   if$
 }
@@ -805,7 +805,7 @@ FUNCTION {inbook}
   format.btitle "title" output.check
   crossref missing$
     { format.bvolume output
-      format.chapter.pages "chapter and pages" output.check
+      %format.chapter.pages "chapter and pages" output.check
       new.block
       format.number.series output
       new.sentence
@@ -818,10 +818,9 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
-  format.date "year" output.check
-  format.pages output
+  format.date output 
   new.block
-  note output
+  format.pages output
   fin.entry
 }
 

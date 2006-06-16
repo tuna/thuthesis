@@ -1,5 +1,5 @@
 What's it?
---------------
+----------
 
 ThuThesis is a LaTeX thesis template package for Tsinghua University in order to
 make it easy to write thesises for either bachelor, master or doctor.  ThuThesis
@@ -7,30 +7,22 @@ make it easy to write thesises for either bachelor, master or doctor.  ThuThesis
 
 
 
-Makefile Howto (by edyfox):
----------------
+Makefile Howto (by edyfox & littleleo):
+---------------------------------------
 
 1. 获取帮助文档
 
    make doc   得到 thuthesis.pdf，帮助文档，里面有详细的说明。
 
-   关于说明文档生成的完整命令请参看 doc.mak
-
-2. 查看示例文档
+2. 生成示例文档
 
    make thesis
-   
-   关于示例文档生成的完整命令请参看 thesis.mak
 
-3. 书脊示例   
+3. 生成书脊示例   
 
    make shuji
 
-   关于书脊生成的完整命令请参看 shuji.mak
-
-附录：
-
-A. Makefile 命令详解：
+附录： Makefile 命令详解：
 
 Makefile：
 
@@ -63,64 +55,9 @@ Makefile：
         命令行通过 TEXI2DVI=texify 命令指定使用其它的 texi2dvi 工具。
 
 
-thesis.mak
-
-    使用方法：
-
-        make -f thesis.mak [{all|cls|dvi|ps|pdf}] \
-            [METHOD={ps2pdf|dvipdfm}] \
-            [TEXI2DVI=<tex2dvi>]
-
-    参数说明：
-
-        make -f thesis.mak all 等价于 make pdf；
-        make -f thesis.mak cls 生成 cls 文件，为正式编译做好准备；
-        make -f thesis.mak dvi 生成 dvi 文件；
-        make -f thesis.mak ps 生成 ps 文件；
-        make -f thesis.mak pdf 生成 pdf 文件。
-
-        METHOD 参数和 TEXI2DVI 参数同前。
-
-
-shuji.mak
-
-    使用方法：
-
-        make -f shuji.mak [{all|cls|dvi|ps|pdf}] \
-            [METHOD={ps2pdf|dvipdfm}] \
-            [TEXI2DVI=<tex2dvi>]
-
-    参数说明：
-
-        make -f shuji.mak all 等价于 make pdf；
-        make -f shuji.mak cls 生成 cls 文件，为正式编译做好准备；
-        make -f shuji.mak dvi 生成 dvi 文件；
-        make -f shuji.mak ps 生成 ps 文件；
-        make -f shuji.mak pdf 生成 pdf 文件。
-
-        METHOD 参数和 TEXI2DVI 参数同前。
-
-
-doc.mak
-
-    使用方法：
-
-        make -f doc.mak [{all|cls|dvi|ps|pdf}] \
-            [METHOD={ps2pdf|dvipdfm}] \
-            [TEXI2DVI=<tex2dvi>]
-
-    参数说明：
-        make -f doc.mak all 等价于 make pdf；
-        make -f doc.mak cls 生成 cls 文件，为正式编译做好准备；
-        make -f doc.mak dvi 生成 dvi 文件；
-        make -f doc.mak ps 生成 ps 文件；
-        make -f doc.mak pdf 生成 pdf 文件。
-
-        METHOD 参数和 TEXI2DVI 参数同前。
-
 
 msmake.cmd Howto (by Truel):
------------------
+----------------------------
 1.配置thuthesis宏包
 
     msbuild setup
@@ -131,7 +68,7 @@ msmake.cmd Howto (by Truel):
     msbuild [shuji|main|all|other]
 　　
     在当前目录下生成示例文档，或其中的一部分，或其他用户指定文档
-如果当前目录下无thuthesis.cls，将自动根据thuthesis.ins生成。
+    如果当前目录下无thuthesis.cls，将自动根据thuthesis.ins生成。
 　　- shuji 仅生成书脊
 　　- main  仅生成main.pdf
 　　- all  生成书脊和main.pdf，默认选项
