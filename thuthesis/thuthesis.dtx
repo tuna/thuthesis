@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/06/16 2.6.1 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/06/18 2.6.2 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -1207,7 +1207,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/06/16 2.6.1 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/06/18 2.6.2 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -2273,13 +2273,20 @@
 % \label{sec:cover}
 % \begin{macro}{\thu@define@term}
 % \changes{v2.6.2}{2006/06/18}{引入~\cs{thu@define@term} 定义封面命令。}
-%   方便的定义封面的一些替换命令。
+%   方便的定义封面的一些替换命令。因为有些命令需要指定为~\cs{long}，所以~\cs{thu@define@term} 
+%   有点古怪，只要第一个参数不为空就指定~\cs{long}。大家不要随便用这个。
 %    \begin{macrocode}
 %<*cls>
-\def\thu@define@term#1{%
-  \long\expandafter\gdef\csname #1\endcsname##1{%
-    \long\expandafter\gdef\csname thu@#1\endcsname{##1}}%
-  \csname #1\endcsname\relax}
+\newcommand\thu@define@term[2][]{%
+  \def\@tempa{#1}
+  \ifx\@tempa\@empty
+     \expandafter\gdef\csname #2\endcsname##1{%
+      \expandafter\gdef\csname thu@#2\endcsname{##1}}
+  \else
+     \long\expandafter\gdef\csname #2\endcsname##1{%
+      \long\expandafter\gdef\csname thu@#2\endcsname{##1}}
+  \fi
+  \csname #2\endcsname{}}
 %    \end{macrocode}
 % \end{macro}
 % 封面、摘要、版权、致谢格式定义
@@ -2331,7 +2338,7 @@
 \thu@define@term{cassosupervisor}
 \thu@define@term{ccosupervisor}
 \thu@define@term{cdate}
-\thu@define@term{cabstract}
+\thu@define@term[long]{cabstract}
 \thu@define@term{ckeywords}
 \thu@define@term{etitle}
 \thu@define@term{edegree}
@@ -2380,11 +2387,11 @@
 \thu@define@term{eassosupervisor}
 \thu@define@term{ecosupervisor}
 \thu@define@term{edate}
-\thu@define@term{eabstract}
+\thu@define@term[long]{eabstract}
 \thu@define@term{ekeywords}
-\thu@define@term{contentsandprogress}
-\thu@define@term{mainrequirements}
-\thu@define@term{mainreferences}
+\thu@define@term[long]{contentsandprogress}
+\thu@define@term[long]{mainrequirements}
+\thu@define@term[long]{mainreferences}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2540,7 +2547,7 @@
     \thu@bachelor@majortitle \thu@title@sep & \thu@cmajor\\
     \thu@bachelor@authortitle \thu@title@sep & \thu@cauthor \\
     \thu@csupervisortitle \thu@title@sep & \thu@csupervisor\\
-    \ifx\thu@cassosupervisor\@empty \else
+    \ifx\thu@cassosupervisor\@empty\else
       \thu@cassosupertitle \thu@title@sep & \thu@cassosupervisor\\
     \fi
 \else
@@ -2550,10 +2557,10 @@
     \thu@cmajortitle &\thu@title@sep & {\ziju{3bp}\thu@cmajor}\\
     \thu@cauthortitle &\thu@title@sep & {\ziju{11bp}\thu@cauthor}\\
     \thu@csupervisortitle &\thu@title@sep & {\ziju{11bp}\thu@csupervisor}\\
-    \ifx\thu@cassosupervisor\@empty \else
+    \ifx\thu@cassosupervisor\@empty\else
         \thu@cassosupertitle &\thu@title@sep & {\ziju{11bp}\thu@cassosupervisor}\\
     \fi
-    \ifx\thu@ccosupervisor\@empty \else
+    \ifx\thu@ccosupervisor\@empty\else
         \thu@ccosupertitle &\thu@title@sep & {\ziju{11bp}\thu@ccosupervisor}
     \fi
 \fi
