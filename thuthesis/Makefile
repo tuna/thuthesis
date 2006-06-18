@@ -30,7 +30,7 @@ all: cls doc thesis shuji
 
 ###### generate cls/cfg
 cls: $(PACKAGE).cls
-	
+
 $(PACKAGE).cls:	$(SOURCES)
 	rm -f $(PACKAGE).cls $(PACKAGE).cfg
 	latex $(PACKAGE).ins
@@ -65,11 +65,11 @@ $(PACKAGE).ps: $(PACKAGE).dvi
 thesis: thesis-pdf
 
 thesis-pdf: $(THESISMAIN).pdf
- 
+
 thesis-dvi: $(THESISMAIN).dvi
- 
+
 thesis-ps: $(THESISMAIN).ps
- 
+
 $(THESISMAIN).dvi: cls $(THESISCONTENTS) $(THESISMAIN).bbl
 	$(TEXI2DVI) $(THESISMAIN).tex
 
@@ -82,12 +82,12 @@ else
 $(THESISMAIN).pdf: $(THESISMAIN).ps
 	ps2pdf $(THESISMAIN).ps
 endif
- 
+
 $(THESISMAIN).ps: $(THESISMAIN).dvi
 	gbk2uni $(THESISMAIN)
 	latex $(THESISMAIN).tex
 	dvips -Ppdf -G0 $(THESISMAIN).dvi
- 
+
 $(THESISMAIN).bbl: $(BIBFILE)
 	$(TEXI2DVI) $(THESISMAIN).tex
 	-bibtex $(THESISMAIN)
