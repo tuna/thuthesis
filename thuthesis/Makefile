@@ -57,7 +57,7 @@ $(PACKAGE).pdf: $(PACKAGE).ps
 $(PACKAGE).ps: $(PACKAGE).dvi
 	gbk2uni $(PACKAGE)
 	latex $(PACKAGE).dtx
-	dvips -Ppdf -G0 -t a4 $(PACKAGE).dvi
+	dvips -Ppdf -G0 -t letter $(PACKAGE).dvi
 
 
 ###### for thesis

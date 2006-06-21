@@ -5,21 +5,24 @@
 
 \chapter{外文资料原文}
 \label{cha:engorg}
-As one of the most widely used techniques in operations research, {\em mathematical programming} is defined
-as a means of maximizing a quantity known as {\em objective function}, subject to a set of constraints
-represented by equations and inequalities. Some known subtopics of mathematical programming are linear programming,
-nonlinear programming, multiobjective programming, goal programming, dynamic programming, and multilevel programming.
+As one of the most widely used techniques in operations research, {\em
+  mathematical programming} is defined as a means of maximizing a quantity known
+as {\em objective function}, subject to a set of constraints represented by
+equations and inequalities. Some known subtopics of mathematical programming are
+linear programming, nonlinear programming, multiobjective programming, goal
+programming, dynamic programming, and multilevel programming.
 
-It is impossible to cover in a single chapter every concept of mathematical programming. This chapter
-introduces only the basic concepts and techniques of mathematical programming such that readers
-gain an understanding of them throughout the book.
+It is impossible to cover in a single chapter every concept of mathematical
+programming. This chapter introduces only the basic concepts and techniques of
+mathematical programming such that readers gain an understanding of them
+throughout the book.
 
 
 \section{Single-Objective Programming}
 The general form of single-objective programming (SOP) is written
 as follows,
-\begin{equation}
-\label{nlp}
+\begin{equation}\tag*{(123)} % 如果附录中的公式不想让它出现在公式索引中，那就请
+                             % 用 \tag*{xxxx}
 \left\{\begin{array}{l}
 \max \,\,f(x)\\[0.1 cm]
 \mbox{subject to:} \\ [0.1 cm]
@@ -34,7 +37,7 @@ $x=(x_1,x_2,\cdots,x_n)$ subject to a set of constraints.
 In SOP, we call $x$ a decision vector, and
 $x_1,x_2,\cdots,x_n$ decision variables. The function
 $f$ is called the objective function. The set
-\begin{equation}
+\begin{equation}\tag*{(456)} % 这里同理，其它不再一一指定。
 S=\left\{x\in\Re^n\bigm|g_j(x)\le 0,\,j=1,2,\cdots,p\right\}
 \end{equation}
 is called the feasible set. An element $x$ in $S$ is called a
@@ -116,7 +119,6 @@ repeated until no improvement in objective function value can be made. The last
 extreme point is the optimal solution.
 
 \subsection{Nonlinear Programming}
-\label{:nlp}
 
 If at least one of the functions $f(x),g_j(x),j=1,2,\cdots,p$ is nonlinear, then
 SOP is called a {\em nonlinear programming}.
@@ -173,9 +175,9 @@ the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
 \section{单目标规划}
 北冥有鱼，其名为鲲。鲲之大，不知其几千里也。化而为鸟，其名为鹏。鹏之背，不知其几
 千里也。怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。 
-\begin{equation}
+\begin{equation}\tag*{(123)}
  p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
-\frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})} \label{equ:app1:bayes}
+\frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})}
 \end{equation}
 
 吾生也有涯，而知也无涯。以有涯随无涯，殆已！已而为知者，殆而已矣！为善无近名，为
@@ -227,7 +229,6 @@ the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
   \label{tab:badfigure3}    
 \end{figure}
 
-
 柳下季曰：“先生言为人父者必能诏其子，为人兄者必能教其弟，若子不听父之诏，弟不受
 兄之教，虽今先生之辩，将奈之何哉？且跖之为人也，心如涌泉，意如飘风，强足以距敌，
 辩足以饰非。顺其心则喜，逆其心则怒，易辱人以言。先生必无往。”
@@ -244,4 +245,4 @@ the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
 
 \chapter{其它附录}
 前面两个附录主要是给本科生做例子。其它附录的内容可以放到这里，当然如果你愿意，可
-以把这部分也放到独立的文件中，然后将其~input 到主文件中。
+以把这部分也放到独立的文件中，然后将其~\verb|\input| 到主文件中。

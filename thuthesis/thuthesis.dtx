@@ -43,12 +43,13 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/06/18 2.6.2 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/06/21 2.6.2 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
 \usepackage{fancybox}
 \usepackage{fancyvrb}
+\usepackage{shapepar}
 \usepackage{url}
 \IfFileExists{lucidabr.sty}{\usepackage{lucidabr}}{}
 \usepackage{xcolor}
@@ -155,6 +156,7 @@
 % \MakeShortVerb{\|}
 %
 % \def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
+% \def\pkg#1{\texttt{#1}}
 %
 % \changes{v1.0-}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 %
@@ -261,17 +263,34 @@
 %   格式的支持会陆续加入。
 % \end{abstract}
 %
-% 
+% \vskip2cm
+% \def\abstractname{免责声明} ^^A so dirty
+% \begin{abstract} 
+% 本模板的发布遵守~\LaTeX{} Project Public License，主要供清华大学毕业
+% 生撰写学位论文使用。
+% \begin{enumerate}
+% \item 本模板已经通过清华大学教务处审核，故本科生由于使用此模板撰写综合论文训练
+%   而产生的问题请与教务处协商，与本模板维护者无关；
+% \item 清华大学研究生院尚未指定本模板为毕业论文模板，故清华大学研究生因使用本模
+%   板撰写学位论文而产生的问题与本模板维护者无关；
+% \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
+%   守~\LaTeX{} Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
+%   本模板维护者无关。
+% \end{enumerate}
+% \end{abstract}
+%
+%
+% \clearpage
 % \begin{multicols}{2}[
 % \section*{\contentsname}
 % \setlength{\columnseprule}{.4pt}
 % \setlength{\columnsep}{18pt}]
 %  \tableofcontents
 % \end{multicols}
-% \vfill
-% {\hfill\fs工欲善其事，必先利其器}
-% \newpage\pagestyle{headings}
-%
+% 
+% \clearpage
+% \pagenumbering{arabic}
+% \pagestyle{headings}
 % \section{模板介绍}
 % 2005 年夏天我把自己写硕士论文的模板稍加整理做了一个所谓的“清华硕士论文
 % ~\LaTeX\ 模板报盘版”。此模板基于王磊编写、王垠整理的博士论文模板，借鉴了
@@ -289,25 +308,31 @@
 % 进行更新。由于个人精力有限，不能保证三者完全同步。现在~\thuthesis{} 也提交到了
 % ~\href{http://www.ctan.org/macros/latex/contrib/thuthesis}{ctan} 上，更新一下你
 % 的~\TeX{} 就能得到最新的~\thuthesis{} 了。
-%
+% 
 % 2005 年圣诞节前，\thuthesis-2.0 发布，成为第一个同时支持硕士、博士论文格式的模
 % 板，后直到~2006 年~3 月初才加入本科论文格式支持，即~\thuthesis-2.1。这个版本除
 % 了增加本科论文格式支持，同时去掉了很多不必要的宏包，改由基本~\TeX{} 和
 % ~\LaTeX{} 命令实现。在随后的几个月时间里，由于教务处的督促以及同学们的积极反馈
-% ，模板进入了一个“高速”发展的阶段，其间的确发现并排除了不少问题。但有句话我是
-% 一定要讲出来的：{\hei 请研究生院把硕士和博士论文格式要求写清楚一些，不要含糊其
-%   词，不要随机规定。}现在搞的各个系都有自己的一套论文格式规范，这样的话模板怎么
-% 做！我浪费了好多好多时间帮助那些来自不同系的研究生如何让他们的论文适应他们系里
-% 的要求。
+% ，模板进入了一个“高速”发展的阶段，其间增加了许多有用的功能，同时发现并排除了
+% 不少问题，使得~\thuthesis{} 日臻完善。今天的~\thuthesis{} 不仅在结构上跟报盘版
+% 相去甚远，而且在功能上也更加丰富，最重要的是~\thuthesis{}  是符合学校最新规定的。
+% 但有句话我是一定要讲出来的：  {\hei 请研究生院把硕士和博士论文格式要求写清楚
+%   一些，不要含糊其词，不要随机规定。}现在搞的各个系都有自己的一套研究生论文格式
+% 规范，这样的话模板怎么做！我浪费了好多好多时间帮助那些来自不同系的研究生如何让
+% 他们的论文适应他们系里的要求。 
 %
 % 在整理这个模板的过程中，我得到不少同学热情的支持，在此不一一列出，感谢他们提供
-% 的每一份帮助！让人感到欣喜的事很多同学都开始为~\thuthesis{} 添砖加瓦，目前包括
+% 的每一份帮助！让人感到欣喜的是很多同学都开始为~\thuthesis{} 添砖加瓦，目前包括
 % ~edyfox~的~Makefile，Truel 的~msmake.cmd，oseen~将其移植到~utf-8 并制作了
 % ~debian package，EricH 制作了~gentoo ebuild。
 %
 % 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者直接给
 % 我写信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现在的这个版
-% 本基本上满足了学校的大部分要求，但难免还存在不足之处，欢迎大家能积极反馈。
+% 本基本上满足了学校的大部分要求，但难免还存在不足之处，欢迎大家积极反馈。
+%
+% 最后补充一点：{\color{blue}\fs 模板的作用在于减轻论文写作过程中格式调整的时间，其前提就是遵
+% 守模板的规定，否则即使使用了~\thuthesis{} 也难以保证输出的论文是符合学校规范
+% 的。}
 %
 %
 % \section{安装}
@@ -357,8 +382,8 @@
 % 需要说明几点：1）thuthesis.cls 和~thuthesis.cfg 可以由~thuthesis.ins 和
 % ~thuthesis.dtx 生成，但为了降低新手用户的使用难度，特将~cls 和~cfg 也一起发布。
 % 2）学习一个新东西最好的办法就是读它的文档。请时刻记住~RTFM\footnote{Read The
-%   Fuck Manual}，不要滥用你提问的权力，不要抱怨没人帮助你：任何人都有权利不回答
-% 你的问题。
+%   Fucking Manual} 和~STFW\footnote{Search The Fucking Web}，不要滥用你提问的权
+% 力，不要抱怨没人帮助你：任何人都有权利不回答你的问题。
 %
 % 如果对上面表格中的文件及其解释还存在疑问，没有关系，继续往下看，一会儿就会天开
 % 云散了。
@@ -368,7 +393,7 @@
 % 本模板用到以下宏包：
 %
 % \begin{center} 
-% \begin{minipage}{1.0\linewidth}  
+% \begin{minipage}{1.0\linewidth}\centering
 % \begin{tabular}{llllll}\hline
 %   ifthen & clac & ifpdf  & CJK & CJKnumb & \textbf{CJKpunct}   \\
 %   array & booktabs & longtable  &  amsmath & amssymb & ntheorem   \\
@@ -380,8 +405,8 @@
 % \end{center}
 %
 % 不要害怕，绝大多数包你的~\TeX{} 系统已经都有了，如果没有请到
-% ~\url{www.ctan.org} 去下载。需要个别指出的是：\texttt{subfig} 和
-% ~\texttt{caption} 最好使用指定的版本。中文标点优化的~CJKpunct~可能需要到
+% ~\url{www.ctan.org} 去下载。需要个别指出的是：\pkg{subfig} 和
+% ~\pkg{caption} 最好使用指定的版本。中文标点优化的~CJKpunct~可能需要到
 % ~\url{www.ctex.org}~去下载，如果你用~C\TeX{} 中文套装的话，那么~CJKpunct 也已经
 % 有了。参考文献样式~thubib.bst~为模板自带，不必操心。
 % 
@@ -532,30 +557,28 @@
 % \subsection{关于提问}
 % \label{sec:howtoask}
 % 提问之前先问自己几个问题：
-%
-% \noindent\hrulefill
 % \begin{enumerate}\addtolength{\itemsep}{-5pt}
 % \item 我是不是认真地学习了~\LaTeX{} 基础知识
 % \item 我是不是认真地阅读了相关的文档
-% \item 我是不是~google 了
-% \end{enumerate}\vskip-10pt
-% \noindent\hrulefill
+% \item 我是不是~Google 了
+% \end{enumerate}
 %
 % 如果你确保自己做到了上面的“三大步”，那么就可以到以下两个推荐的地方提问：
-%
-% \noindent\hrulefill
 % \begin{itemize}\addtolength{\itemsep}{-5pt}
 % \item \url{http://groups.google.com/group/thuthesis} \\
 % 直接给~thuthesis@googlegroups.com 写信就可以
 % \item \TeX@newsmth
-% \end{itemize}\vskip-10pt
-% \noindent\hrulefill
+% \end{itemize}
+%
+% 考虑到不能将所有的问题堆积到~\TeX@newsmth 版（或许可以申请一个附属版面，但是除
+% 非毕业前夕，这个版面必然十分荒凉，故暂不可行）；邮件列表又不易维护~FAQ，所以我
+% 为~\thuthesis{} 建了一个~wiki：\url{http://thuthesis.sf.net/wiki}。大家可以一起
+% 贡献力量把这个~wiki 弄好，这样以后的同学就不至于有了问题不知该如何求救。
 %
 % \subsection{\thuthesis{} 使用向导}
 % \label{sec:userguide}
 % 推荐新用户先看网上的《\thuthesis{} 使用向导》幻灯片，那份讲稿比这份文档简练易懂
-% 。由于版本的差异，里面几个命令稍有改动。但模板向下兼容，旧的命令同样支持。下面
-% 列出的几个网址都有这个幻灯片，推荐到~\TeX@newsmth 置底~ftp 下载。
+% 。前面列出的几个网址都有这个幻灯片。
 %
 % \subsection{\thuthesis{} 示例文件}
 % \label{sec:userguide1}
@@ -811,15 +834,12 @@
 % } 
 % \end{example}
 %
-% 如果你坚持自己写~\cs{bibitem}，我也没有办法，祝你好运！（由于调整某篇文献的引用
+% 如果你坚持自己写~\cs{bibitem}，我也没有办法，祝你好运！(由于调整某篇文献的引用
 % 顺序而导致其后所有文献引用序号统统发生变化而带来的繁重的而且极容易出错的体力劳动
-% 谁也帮不了你。）
+% 谁也帮不了你。)
 %
 % \myentry{书脊}
 % \DescribeMacro{\shuji}
-% 很多同学居然问我书脊是干什么的，怎么用！真是不在其位，不谋其政啊。请到打印社问问
-% 那里的小弟弟或者小妹妹。
-%
 % 生成装订的书脊，为竖排格式，默认参数为论文中文题目。如果中文题目中没有英文字母
 % ，那么直接调用此命令即可。否则，就要像例子里面那样做一些微调。其实这个命令在独
 % 立的文件生成更好一些，不要和论文混在一起（看到模板自带的~shuji.tex 了么？）。下面是一个列子：
@@ -847,8 +867,8 @@
 % \subsubsection{封面命令}
 % \label{sec:titlepage}
 %
-% 下面是内容替换命令，其中以~|c| 开头的命令跟中文相关，|e| 开头则为对应的英文。目前有一些本科
-% 论文相关的命令没有实现，主要集中在“综合论文训练任务书”，这部分可能需要手写。
+% 下面是内容替换命令，其中以~|c| 开头的命令跟中文相关，|e| 开头则为对应的英文。
+% 这部分的命令数目比较多，但实际上都相当简单，套用即可。
 %
 % 大多数命令的使用方法都是： \cs{command}\marg{arg}，例外者将具体指出。这些命令都
 % 在示例文档的~data/cover.tex 中。
@@ -957,16 +977,16 @@
 % \myentry{符号对照表}
 % \DescribeEnv{denotation}
 % 主要符号表环境。简单定义的一个~list，跟~description 非常类似，使用方法参见示例
-% 文件。带一个可选参数，用来指定符号列的宽度。
+% 文件。带一个可选参数，用来指定符号列的宽度（默认为~2.5cm）。
 % \begin{example}
-% \begin{denotation}
+% \begin{denotation} 
 %   \item[E] 能量
 %   \item[m] 质量
 %   \item[c] 光速
 % \end{denotation} 
 % \end{example}
 %
-% 如果你觉得符号列的宽度，不满意，那可以这样来调整：
+% 如果你觉得符号列的宽度不满意，那可以这样来调整：
 % \begin{example}
 % \begin{denotation}[1.5cm] % 设置为 1.5cm
 %   \item[E] 能量
@@ -991,12 +1011,12 @@
 % \LaTeX{} 默认支持插图和表格索引，是通过~\cs{caption} 命令完成的，因此它们必须出现在浮动环境中
 % ，否则不被计数。
 %
-% 有的同学不想让某个表格或者图片出现在索引里面，那么请使用命令~\verb|\caption*{}|，
-% 这个命令不会给表格编号，也就是出来的只有标题文字而没有“表~XX”，“图~XX”，否则
+% 有的同学不想让某个表格或者图片出现在索引里面，那么请使用命令~\cs{caption*}，
+% 这个命令不会给表格编号，也就是出来的只有标题文字而没有“表~xx”，“图~xx”，否则
 % 索引里面序号不连续就显得不伦不类，这也是~\LaTeX{} 里星号命令默认的规则。
 % 
 % 有这种需求的多是本科同学的英文资料翻译部分，如果你觉得附录中英文原文中的表格和
-% 图片显示成“  表”和“图”很不协调的话，一个很好的办法就是用~\verb|caption*|，
+% 图片显示成“  表”和“图”很不协调的话，一个很好的办法还是用~\cs{caption*}，
 % 参数随便自己写，具体用法请参看示例文档。
 % 
 % 如果你的确想让它编号，但又不想让它出现在索引中的话，那就自己改一改模板的代码吧
@@ -1005,20 +1025,29 @@
 %   模版不断要向学校难看的规定妥协！”是啊，除此之外，我又能怎样做呢？提点建议人
 %   家都不愿意听。}。
 % 
-% 公式索引为本模板扩展，默认记录~\texttt{equation} 环境中的公式。由于
-% ~\texttt{amsmath} 提供的其它环境也能对公式计数，模板没有~hack 这些环境（太多了
-% ，而且这样做移植性不好），而是提供了一个简单的命令~\cs{equcaption}，表示
-% ~equation caption。这个命令没有参数，因为公式与图表不同，我们很
-% 少给一个公式附加一个标题。这个命令的作用完全就是为了生成公式列表。
+% 公式索引为本模板扩展，模板巧妙地扩展了~\pkg{amsmath} 几个内部命令，使得公式编号
+% 样式和自动索引功能非常方便。一般来说，你用到的所有数学环境编号都没问题了，  这
+% 个可以参看示例文档。如果你有个非常特殊的数学环境需要加入公式索引，那么请使用
+% ~\cs{equcaption}\marg{编号}。此命令表示~equation caption，带一个参数，即显示在
+% 索引中的编号。因为公式与图表不同，我们很少给一个公式附加一个标题，之所以起这么
+% 个名字是因为图表就是通过~\cs{caption} 加入索引的，\cs{equcaption} 完全就是为了
+% 生成公式列表，不产生什么标题。
 %
 % 使用方法如下。假如有一个非~equation 数学环境~mymath，只要在其中写一句
 % ~\cs{equcaption} 就可以将它加入公式列表。
 % \begin{example}
 % \begin{mymath} 
-%   \label{eq:emc2}\equcaption
+%   \label{eq:emc2}\equcaption{\ref{eq:emc2}}
 %   E=mc^2
 % \end{mymath}
 % \end{example}
+%
+% 当然~mymath 正文中公式的编号需要你自己来做。如果连~\pkg{amsmath} 都不能满足他（
+% 她）的需求，那这个人一定是跟~Audrey Tang 同等级的吧！
+%
+% 同图表一样，附录中的公式有时候也不希望它跟全文统一编号，而且不希望它出现在公式
+% 索引中，目前的解决办法就是利用~\cs{tag*}\marg{公式编号}来解决。用法很简单，此
+% 处不再罗嗦，实例请参看示例文档附录~A 的前两个公式。
 %
 % \myentry{简历}
 % \DescribeEnv{resume}\DescribeMacro{\resumeitem}
@@ -1030,21 +1059,32 @@
 % \DescribeEnv{appendix}
 % 所有的附录都插到这里来。因为附录会更改默认的~chapter 属性，而后面的
 % {\hei 个人简历}又需要恢复，所以实现为环境可以保证全局的属性不受影响。
+% \begin{example}
+% \begin{appendix}
+%  \input{data/appendix01}
+%  \input{data/appendix02}
+% \end{appendix}
+% \end{example}
 %
 % \myentry{致谢声明}
 % \DescribeEnv{ack}
 % \changes{2.0}{2005/12/19}{把~acknowledge 改为~ack，简单而已。}
-% 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！
-%
-% {\color{blue} 如果你能在致谢里面把~\thuthesis{} 和我的名字写在最后，那你可真是个大好人！}
+% 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！下面是数学系一位同
+% 学致谢里的话，拿过来做个广告，多希望每个人都能写这么一句啊！
+% \begin{example}
+% \begin{ack}
+%   ……
+%   还要特别感谢计算机系薛瑞尼同学在论文格式和~\LaTeX{} 编译等方面给我的很多帮助！
+% \end{ack}  
+% \end{example}
 %
 % \myentry{列表环境}
 % \DescribeEnv{itemize}
 % \DescribeEnv{enumerate}
 % \DescribeEnv{description}
-% 为了适合中文喜欢，模板将这三个常用的列表环境用~paralist 对应的压缩环境替换。一
+% 为了适合中文喜欢，模板将这三个常用的列表环境用~\pkg{paralist} 对应的压缩环境替换。一
 % 方面满足了多余空间的清楚，另一方面可以自己指定标签的样式和符号。细节请参看
-% ~paralist 文档，此处不再赘述。
+% ~\pkg{paralist} 文档，此处不再赘述。
 %
 % \subsubsection{本科论文专用命令}
 % \label{sec:bachelorspec}
@@ -1197,6 +1237,20 @@
 % 同学能出手相助，给模板的开发和维护注入新的活力，让我们一起把~\thuthesis{} 做得
 % 更好！
 %
+% \bigskip
+% \heartpar{\textbf{\thuthesis} is a \LaTeX{} package aiming to facilitate the
+%   thesis writing for bachelors, masters and doctors of Tsinghua University.
+%   By now, \thuthesis\  has been widely used among lots of \TeX\ zealots who do
+%   not want to format their several years' hard work with the infamous  MS
+%   WORD. I created \thuthesis\ in the summer of 2005, and made it more useful
+%   and stable in the spring of 2006. To be frank, \thuthesis\ is not going to
+%   fight with MS WORD, because in my opinion, ``the best tool depends on
+%   you''. It is hard to persuade all students to give up MS WORD and turn to
+%   \TeX, but I'd like to encourage them through my efforts. Actually,
+%   \thuthesis\ is in its initial step now, as an infant, \thuthesis\ needs your
+%   help very much, and it is very kind of you to contribute and promote
+%   it. \textsf{Xue Ruini}}
+% 
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
 %
@@ -1207,7 +1261,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/06/18 2.6.2 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/06/21 2.6.2 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1862,16 +1916,33 @@
 \ifthu@bachelor\@removefromreset{equation}{chapter}\fi
 %    \end{macrocode} 
 % \end{macro}
-% 本科的公式编号太变态了，我不得不修改~amsmath 中很深的一个命令。
+% 本科的公式编号太变态了，我不得不修改~amsmath 中很深的一个命令~\cs{tagform@}。
+%\changes{v2.6.2}{2006/06/19}{根据不同论文格式显示不同公式编号，并自动加入索引。}
+% 同时为了让~\pkg{amsmath} 的~\cs{tag*} 命令得到正确的格式，我们必须修改这些代
+% 码。\cs{make@df@tag} 是定义~\cs{tag*} 和~\cs{tag} 内部命令的。
+% \cs{make@df@tag@@} 处理~\cs{tag*}，我们就改它！
+% \begin{verbatim}
+% \def\make@df@tag{\@ifstar\make@df@tag@@\make@df@tag@@@}
+% \def\make@df@tag@@#1{%
+%   \gdef\df@tag{\maketag@@@{#1}\def\@currentlabel{#1}}} 
+% \end{verbatim}
 %    \begin{macrocode} 
+\def\make@df@tag{\@ifstar\thu@make@df@tag@@\make@df@tag@@@}
+\def\thu@make@df@tag@@#1{%
+   \gdef\df@tag{\thu@maketag{#1}\def\@currentlabel{#1}}}
+% redefinitation of tagform broken eqref!
+\renewcommand{\eqref}[1]{\textup{\ref{#1}}}
 \ifthu@bachelor
   \renewcommand{\theequation}{\@arabic\c@equation}
-  % TODO: redefinitation of tagform broken eqref!
-  \renewcommand{\eqref}[1]{\textup{\ref{#1}}} 
-  \def\tagform@#1{\maketag@@@{%
+  \def\thu@maketag#1{\maketag@@@{%
     (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)}}
+  \def\tagform@#1{\maketag@@@{%
+    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)\equcaption{#1}}}
 \else
   \renewcommand{\theequation}{\@arabic\c@chapter-\@arabic\c@equation}
+  \def\thu@maketag#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)}}
+  \def\tagform@#1{\maketag@@@{%
+    (\ignorespaces #1\unskip\@@italiccorr)\equcaption{#1}}}
 \fi
 %    \end{macrocode}
 % ^^A 使公式编号随着每开始新的一节而重新开始。
@@ -1981,9 +2052,9 @@
  %\renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
  % \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
-% 我们采用~\texttt{longtable} 来处理跨页的表格。默认有个不足：插图索引部分缺少图
+% 我们采用~\pkg{longtable} 来处理跨页的表格。默认有个不足：插图索引部分缺少图
 % 名。同样我们需要设置其默认字体为五号。  
-% \changes{v2.5.3}{2006/06/08}{增加对~\texttt{longtable} 的处理。}
+% \changes{v2.5.3}{2006/06/08}{增加对~\pkg{longtable} 的处理。}
 %    \begin{macrocode}
 \def\LT@c@ption#1[#2]#3{% change code from longtable.sty
   \LT@makecaption#1\fnum@table{#3}%
@@ -2316,6 +2387,12 @@
 % \begin{macro}{\emajor}
 % \begin{macro}{\esubject}
 % \begin{macro}{\eauthor}
+% \begin{macro}{\esupervisor}
+% \begin{macro}{\eassosupervisor}
+% \begin{macro}{\ecosupervisor}
+% \begin{macro}{\edate}
+% \begin{macro}{\eabstract}
+% \begin{macro}{\ekeywords}
 % \changes{v2.5}{2006/05/20}{院系和专业分别改名用~department 和~major，代替原来
 % 的~affil 和~subject。}
 % \changes{v2.6.2}{2006/06/18}{改正~groupmembers 的拼写错误。}
@@ -2347,6 +2424,12 @@
 \thu@define@term{emajor}
 \def\esubject{\emajor} % for compability
 \thu@define@term{eauthor}
+\thu@define@term{esupervisor}
+\thu@define@term{eassosupervisor}
+\thu@define@term{ecosupervisor}
+\thu@define@term{edate}
+\thu@define@term[long]{eabstract}
+\thu@define@term{ekeywords}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -2373,22 +2456,17 @@
 % \end{macro}
 % \end{macro}
 % \end{macro}
-% \begin{macro}{\esupervisor}
-% \begin{macro}{\eassosupervisor}
-% \begin{macro}{\ecosupervisor}
-% \begin{macro}{\edate}
-% \begin{macro}{\eabstract}
-% \begin{macro}{\ekeywords}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
 % \begin{macro}{\contentsandpregress}
 % \begin{macro}{\mainrequirements}
 % \begin{macro}{\mainreferences}
+% 本科综合论文训练上的：主要内容和进度安排，主要指标，主要参考文献
 %    \begin{macrocode}
-\thu@define@term{esupervisor}
-\thu@define@term{eassosupervisor}
-\thu@define@term{ecosupervisor}
-\thu@define@term{edate}
-\thu@define@term[long]{eabstract}
-\thu@define@term{ekeywords}
 \thu@define@term[long]{contentsandprogress}
 \thu@define@term[long]{mainrequirements}
 \thu@define@term[long]{mainreferences}
@@ -2397,15 +2475,9 @@
 % \end{macro}
 % \end{macro}
 % \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
 %
 % \changes{v1.4rc1}{2005/12/14}{I have to put all chinese chars into cfg,
-% otherwise they would not appear.} TODO: 去掉里面的hfill，用ziju调节
+% otherwise they would not appear.}
 % \changes{v2.5.1}{2006/05/25}{硕士封面的冒号前居然有点小距离！}
 %    \begin{macrocode}
 %<*cfg>
@@ -2845,10 +2917,11 @@
 %    \end{macrocode}
 % 每个关键词之间空两个汉字符宽度， 且为悬挂缩进
 % \changes{v2.6.2}{2006/06/17}{取消最后一列的空白。}
+% \changes{v2.6.2}{2006/06/20}{取消~tabular 环境，用~\cs{hangindent} 实现关键词
+% 悬挂缩进，英文摘要同。}
 %    \begin{macrocode}
-  \noindent\begin{tabular}{@{}lp{12.5cm}@{}}
-  {\hei \thu@keywords} & \thu@ckeywords \\
-  \end{tabular}
+  \setbox0=\hbox{{\hei \thu@keywords}}
+  \noindent\hangindent\wd0\hangafter1\box0\thu@ckeywords
 %    \end{macrocode}
 %
 % 英文摘要部分的标题为"Abstract"，用~Arial 体三号字。研究生的英文摘要要求非常怪
@@ -2873,9 +2946,8 @@
 % Words}}
 % \changes{v2.6.2}{2006/06/17}{取消最后一列的空白。}
 %    \begin{macrocode}
-  \noindent\begin{tabular}{@{}lp{12cm}@{}}
-  {\textbf{Key words:}} & \thu@ekeywords\\
-  \end{tabular}}
+  \setbox0=\hbox{\textbf{Key words:\enskip}}
+  \noindent\hangindent\wd0\hangafter1\box0\thu@ekeywords}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -3034,16 +3106,24 @@
 % \end{macro}
 %
 % \begin{macro}{\equcaption}
+% \changes{v2.6.2}{2006/06/19}{此命令配合~\pkg{amsmath} 命令基本可以满足所有
+% 公式需要。}
 %   本命令只是为了生成公式列表，所以这个~caption~是假的。如果要编号最好用
 %   ~equation 环境，如果是其它编号环境，请手动添加添加~\cs{equcaption}。
+% 用法如下：
+%
+% \cs{equcaption}\marg{counter}
+%
+% \marg{counter} 指定出现在索引中的编号，一般取~\cs{theequation}，如果你是用
+% ~\pkg{amsmath} 的~\cs{tag}，那么默认是~\cs{tag} 的参数；除此之外可能需要你
+% 手工指定。
+%
 % \changes{v2.5}{2006/05/19}{将公式编号写入临时文件以便生成公式列表。}
 % \changes{v2.5.3}{2006/06/03}{取消~\cs{equcaption} 的参数}
 %    \begin{macrocode}
-\def\equcaption{%
+\def\equcaption#1{%
   \addcontentsline{loe}{equation}%
-                  {\protect\numberline{\equationname\hskip0.5em\csname theequation\endcsname}}}
-\let\thu@equation\equation
-\def\equation{\thu@equation\equcaption}
+                  {\protect\numberline{\equationname\hskip0.5em #1}}}
 %    \end{macrocode}
 % \end{macro}
 %
