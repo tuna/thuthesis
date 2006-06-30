@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2628}
+% \CheckSum{2633}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/06/21 2.6.2 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/06/30 2.6.3 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -686,7 +686,7 @@
 %   交了，那么请将此选项打开，同时提供必要的扫描图片，模板会自动将图片放在适当的
 %   签名位置，最后生成的文档就可以提交了。({\color{red} 只有本科需要这个选项！})
 %   \begin{example}
-% \documentclass[bachelor, submmit]{thuthesis}
+% \documentclass[bachelor, submit]{thuthesis}
 %   \end{example}
 %
 %  一旦设置此选项，你需要同时提供签名扫描图片，参见第~\ref{sec:bachelorspec} 的
@@ -1261,7 +1261,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/06/21 2.6.2 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/06/30 2.6.3 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -2706,29 +2706,31 @@
 % \changes{v2.5.3}{2006/06/03}{填充内容部分行距放大。}
 % \changes{v2.5.3}{2006/06/03}{取消~\cs{parbox} 改用~\cs{vtop}。}
 % \changes{v2.6.1}{2006/06/16}{\cs{vtop} 中增加\cs{vfill}。}
+% \changes{v2.6.3}{2006/06/30}{扩充导师信息宽度。}
+% \changes{v2.6.3}{2006/06/30}{签名图片取消~\cs{parindent}。}
 %    \begin{macrocode}
 \newcommand\thu@bachelor@overview{%
    {\xiaochu\hei\centerline{\thu@bachelor@overviewtitle}}\vskip3cm%
    \noindent\sihao\kai\makebox[2em][l]{\thu@bachelor@authortitle}%
      \thu@underline[7em]\thu@cauthor%
    \thu@bachelor@studentidtitle\thu@underline[7em]\thu@studentid%
-   \thu@bachelor@classtitle\thu@underline[7em]\thu@classid\par\vskip0.5cm%
+   \thu@bachelor@classtitle\thu@underline[8em]\thu@classid\par\vskip0.5cm%
    \noindent\makebox[2em][l]{\thu@bachelor@departmenttitle}\thu@underline{%
      \ifx\thu@cdepartment@short\relax\thu@cdepartment\else\thu@cdepartment@short\fi}%
    \thu@bachelor@groupmember\thu@underline[5em]\thu@groupmembers%
-   \makebox[4em][l]{\thu@csupervisortitle}\thu@underline[6em]\thu@csupervisor\song\par%
+   \makebox[4em][l]{\thu@csupervisortitle}\thu@underline[7em]\thu@csupervisor\song\par%
    \vskip2.2cm%
    \noindent{\hei\xiaosan\thu@bachelor@projecttitle}\vskip0.5cm%
      \vtop to 2.3cm{\xiaosi[1.5]\thu@ctitle\vfill}
    \noindent{\hei\xiaosan\thu@bachelor@maincontents@title}\vskip0.5cm%
      {\xiaosi[1.5]\thu@contentsandprogress\vfill}
-   \newpage
+   \newpage\vspace*{-1.3cm}%
    \ifthu@submit
      \ifx\thu@bachelor@overview@fig\@empty
        \ClassError{thuthesis}%
                   {You have to assgin the figure for overview by \string\bacheloroverviewfig!}{}
-     \else\thu@bachelor@overview@fig\fi
-   \else\vspace*{-1.3cm}%
+     \else\noindent\thu@bachelor@overview@fig\fi
+   \else%
    \noindent{\hei\xiaosan\thu@bachelor@requirements@title}\vskip0.5cm%
      \vtop to 6.5cm{\xiaosi[1.5]\thu@mainrequirements\vfill}
    \noindent{\hei\xiaosan\thu@bachelor@mainreference@title}\vskip0.5cm%
@@ -2838,13 +2840,13 @@
 % 本科论文有评语页面
 %    \begin{macrocode}
 \ifthu@bachelor
- \newpage
+ \newpage\vspace*{-1.5cm}
  \ifthu@submit
    \ifx\thu@bachelor@comments@fig\@empty
      \ClassError{thuthesis}%
                 {You have to assgin the figure for comments by \string\bachelorcommentsfig!}{}
-   \else\thu@bachelor@comments@fig\fi
- \else\vspace*{-1.5cm}\thu@bachelor@comments\fi
+   \else\noindent\thu@bachelor@comments@fig\fi
+ \else\thu@bachelor@comments\fi
 \fi
 %    \end{macrocode}
 %
@@ -2862,7 +2864,7 @@
    \ifx\thu@bachelor@auth@fig\@empty
      \ClassError{thuthesis}{\string\bachelorauthfig is missing!}
                 {You have to assgin the figure for authorization by \string\bachelorauthfig!}
-   \else\thu@bachelor@auth@fig\fi
+   \else\noindent\thu@bachelor@auth@fig\fi
  \else\thu@authorization@mk\fi
     \end{titlepage}
 %    \end{macrocode}
@@ -2896,11 +2898,13 @@
 % \changes{v2.5.2}{2006/05/29}{在研究生论文中，摘要不出现在目录中，但是要在书签
 % 中出现。}
 % \changes{v2.5.3}{2006/06/03}{\cs{pagenumber} 会自动设置页码为~1。}
+% \changes{v2.6.3}{2006/06/30}{为本科正确设置目录及以后的页码。}
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\thu@makeabstract}{%
   \ifthu@bachelor
     \thu@chapter*{\cabstractname}
+    \pagestyle{thu@plain}
   \else
     \cleardoublepage
     \thu@chapter*[]{\cabstractname} % no tocline
@@ -3055,7 +3059,7 @@
      \else
        \cleardoublepage\thispagestyle{empty}\phantomsection
        \addcontentsline{toc}{chapter}{\thu@declarename}
-       \thu@bachelor@declare@fig
+       \noindent\thu@bachelor@declare@fig
      \fi
    \else
      \ifthu@bachelor
