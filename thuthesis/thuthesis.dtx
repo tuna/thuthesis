@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2633}
+% \CheckSum{2634}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/06/30 2.6.3 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/07/01 2.6.3 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -169,7 +169,7 @@
 % \changes{v1.3}{2005/11/14}{replace subfigure with subfig, replace caption2
 % with caption, add details about using figure in the example.}
 %
-% \changes{v1.3rc1}{2005/11/20}{I do not why \textbf{thu@authorizationaddon} does not work
+% \changes{v1.4rc1}{2005/11/20}{I do not why \textbf{thu@authorizationaddon} does not work
 % now for v1.3, while it's fine in v1.2. Temporarily, I remove the directive
 % :(. There might be nicer solution. Other changes: add \textsf{config} option to
 % subfig to be compatible with subfigure. add \textbf{courier} package for tt font.}
@@ -351,7 +351,7 @@
 %
 % \thuthesis{} 的开发版本同样可以在~sourceforge 上获得：
 % \begin{shell}
-% $ svn co https://svn.sourceforge.net/svnroot/thuthesis/trunk thuthesis 
+% $ svn co https://svn.sourceforge.net/svnroot/thuthesis/trunk/thuthesis 
 % \end{shell}
 %
 % \subsection{模板的组成部分}
@@ -1261,7 +1261,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2006/06/30 2.6.3 Tsinghua University Thesis Template]
+%<cls|cfg>[2006/07/01 2.6.3 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1276,6 +1276,7 @@
 %    \begin{macrocode}
 %<*cls>
 \def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
+\def\version{2.6.3}
 \newif\ifthu@bachelor\thu@bachelorfalse
 \newif\ifthu@master\thu@masterfalse
 \newif\ifthu@doctor\thu@doctorfalse
@@ -1308,11 +1309,11 @@
 \AtEndOfClass{%
   \ifpdf
     \ifthu@dvips
-      \ClassError{thuthesis} %
+      \ClassError{thuthesis}%
                  {Please remove `dvips' if you run pdflatex.}{}
     \fi
     \ifthu@dvipdfm
-      \ClassError{thuthesis} %
+      \ClassError{thuthesis}%
                  {Please remove `dvipdfm' if you run pdflatex.}{}
     \fi
   \fi}
@@ -1368,7 +1369,7 @@
 \RequirePackage{ifpdf}
 %    \end{macrocode}
 %
-% 用~mathptmx 替换~times 宏包，它可以使公式中也用~times 字体。tt 字体用我们熟悉
+% 用~\pkg{mathptmx} 替换~\pkg{times} 宏包，它可以使公式中也用~\pkg{times} 字体。tt 字体用我们熟悉
 % 的~courier。
 %    \begin{macrocode}
 \RequirePackage{mathptmx}
@@ -1387,7 +1388,7 @@
 \fi
 %    \end{macrocode}
 %
-% AMSLaTeX 宏包，用来排出更加漂亮的公式
+% AMS\LaTeX{} 宏包，用来排出更加漂亮的公式
 %    \begin{macrocode}
 \RequirePackage{amsmath, amssymb}
 %    \end{macrocode}
@@ -1397,10 +1398,10 @@
 \RequirePackage{graphicx}
 %    \end{macrocode}
 %
-% 并排图形。subfigure 已经不再推荐，用新的~subfig。加入~|config| 选项以便兼容
-% ~|subfigure| 的命令。
-% 浮动图形和表格标题样式。caption2 已经不推荐使用，采用新的~caption。它会自动被
-% ~subfig 装载进来。所以可以在后面看到~|captionsetup| 的命令。
+% 并排图形。\pkg{subfigure} 已经不再推荐，用新的~\pkg{subfig}。加入~|config| 选项以便兼容
+% ~\pkg{subfigure} 的命令。
+% 浮动图形和表格标题样式。\pkg{caption2} 已经不推荐使用，采用新的~\pkg{caption}。它会自动被
+% ~\pkg{subfig} 装载进来。所以可以在后面看到~\cs{captionsetup} 的命令。
 %    \begin{macrocode}
 \RequirePackage[config]{subfig}
 %    \end{macrocode}
@@ -1411,7 +1412,7 @@
 %    \end{macrocode}
 %
 % 更好的列表环境。
-% \changes{v2.6.2}{2006/06/18}{去掉~paralist 的~newitem 和~newenum 选项，因为默
+% \changes{v2.6.2}{2006/06/18}{去掉~\pkg{paralist} 的~newitem 和~newenum 选项，因为默
 % 认是打开的。}
 %    \begin{macrocode}
 \RequirePackage{paralist}
@@ -1436,19 +1437,19 @@
 \fi
 %    \end{macrocode}
 %
-% 定理类环境宏包，其中~amsmath 选项用来兼容~AMS LaTeX 的宏包
+% 定理类环境宏包，其中~\pkg{amsmath} 选项用来兼容~AMS \LaTeX 的宏包
 %    \begin{macrocode}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 %    \end{macrocode}
 %
 % 表格控制
-% \changes{v2.6}{2006/06/09}{增加~longtable。}
+% \changes{v2.6}{2006/06/09}{增加~\pkg{longtable}。}
 %    \begin{macrocode}
 \RequirePackage{array}
 \RequirePackage{longtable}
 %    \end{macrocode}
 %
-% 使用三线表： |\toprule|， |\midrule|， |\bottomrule|。当然简单的可以用~|\hwline{wd}|
+% 使用三线表： \cs{toprule}， \cs{midrule}， \cs{bottomrule}。当然简单的可以用~\cs{hwline}\marg{wd}。
 %    \begin{macrocode}
 \RequirePackage{booktabs}
 %    \end{macrocode}
@@ -1472,6 +1473,7 @@
   breaklinks=true,          
   colorlinks=false, 
   plainpages=false,
+  pdfpagelabels,
   pdfborder=0 0 0}
 %    \end{macrocode}
 %  设置~url 样式，与上下文一致
@@ -1479,7 +1481,7 @@
 \urlstyle{same}
 %    \end{macrocode}
 %
-% hypernat 让~hyperref 和~natbib 协调的工作。应该在~natbib 和~hyperref 之后~load，参看其文档。
+% \pkg{hypernat} 让~\pkg{hyperref} 和~\pkg{natbib} 协调的工作。应该在~\pkg{natbib} 和~\pkg{hyperref} 之后加载，参看其文档。
 %    \begin{macrocode}
 \RequirePackage{hypernat}
 %</cls>
@@ -1840,7 +1842,7 @@
     \string\new@pagectr{#1}{\arabic{pcabs@#1}}{\noexpand\thepage}}%
   \protected@write\@auxout{}{\next}%
   \endgroup\global\z@}
-\MakePerPage{footnote}   
+\MakePerPage{footnote}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -1901,7 +1903,7 @@
 % 公式改成~(1-1) 的形式，本科还要在前面加上公式二字，我不知道他们是怎么想的，这
 % 忒不好看了。
 % \changes{v2.5.1}{2006/05/24}{本科公式编号前添加“公式”二字。ft，这个需要修改
-% ~amsmath 极其深入的一个命令，而且要把~equation 与~chapter 脱离关系。}
+% ~\pkg{amsmath} 极其深入的一个命令，而且要把~equation 与~chapter 脱离关系。}
 % \changes{v2.5.1}{2006/05/24}{教务处居然要本科论文公式全文编号！}
 % \changes{v2.5.2}{2006/05/29}{上一个版本忘了把研究生的公式编号排除。}
 % \begin{macro}{\@removefromreset}
@@ -1916,7 +1918,7 @@
 \ifthu@bachelor\@removefromreset{equation}{chapter}\fi
 %    \end{macrocode} 
 % \end{macro}
-% 本科的公式编号太变态了，我不得不修改~amsmath 中很深的一个命令~\cs{tagform@}。
+% 本科的公式编号太变态了，我不得不修改~\pkg{amsmath} 中很深的一个命令~\cs{tagform@}。
 %\changes{v2.6.2}{2006/06/19}{根据不同论文格式显示不同公式编号，并自动加入索引。}
 % 同时为了让~\pkg{amsmath} 的~\cs{tag*} 命令得到正确的格式，我们必须修改这些代
 % 码。\cs{make@df@tag} 是定义~\cs{tag*} 和~\cs{tag} 内部命令的。
@@ -2004,9 +2006,9 @@
 % ~\cs{@fpbot}。}
 %    \begin{macrocode}
 %<*cls>
-\setlength{\floatsep}{12bp \@plus2pt \@minus1pt}
-\setlength{\intextsep}{12bp \@plus2pt \@minus1pt}
-\setlength{\textfloatsep}{12bp \@plus2pt \@minus1pt}
+\setlength{\floatsep}{12bp \@plus4pt \@minus1pt}
+\setlength{\intextsep}{12bp \@plus4pt \@minus2pt}
+\setlength{\textfloatsep}{12bp \@plus4pt \@minus2pt}
 \setlength{\@fptop}{0bp \@plus1.0fil}
 \setlength{\@fpsep}{12bp \@plus2.0fil}
 \setlength{\@fpbot}{0bp \@plus1.0fil}
@@ -2033,9 +2035,9 @@
 % \changes{v2.4}{2006/04/14}{图表标题左对齐，取消原先漂亮的~hang~模式。}
 % \changes{v2.5}{2006/05/13}{标题上下间距重调，以前没有考虑~\cs{intextsep} 的影
 % 响。}
-% \changes{v2.5.1}{2006/05/23}{增加~subfigure 和~subtable 的~caption 配置。}
+% \changes{v2.5.1}{2006/05/23}{增加~\pkg{subfigure} 和~\pkg{subtable} 的~caption 配置。}
 % \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
-% \changes{v2.5.3}{2006/06/07}{不管~caption 出现在什么位置，aboveskip 总是出现在标题和浮动体之间的距离。}
+% \changes{v2.5.3}{2006/06/07}{不管~caption 出现在什么位置，\cs{aboveskip} 总是出现在标题和浮动体之间的距离。}
 %    \begin{macrocode}
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
@@ -2044,11 +2046,8 @@
 \DeclareCaptionFont{thu}{\dawu[1.5]}
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
 \captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=3bp} 
-\captionsetup[subtable]{position=top,font=thu,captionskip=6bp,%
-                        nearskip=0bp,farskip=6bp,topadjust=0bp}
-\captionsetup[figure]{position=bottom,belowskip={8bp-\intextsep},aboveskip=-2bp}
-\captionsetup[subfigure]{position=bottom,font=thu,captionskip=6bp,%
-                         nearskip=6bp,farskip=0bp}
+\captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=-2bp}
+\captionsetup[subfloat]{font=thu,captionskip=6bp,nearskip=6bp,farskip=0bp,topadjust=0bp}
  %\renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
  % \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
@@ -2069,7 +2068,7 @@
 %    \end{macrocode}
 %
 % \begin{macro}{\hlinewd}
-% 简单的表格使用三线表推荐用~|\hlinewd|。如果表格比较复杂还是用~|booktabs| 的命
+% 简单的表格使用三线表推荐用~\cs{hlinewd}。如果表格比较复杂还是用~\pkg{booktabs} 的命
 % 令好一些。
 %    \begin{macrocode}
 \def\hlinewd#1{%
@@ -2144,9 +2143,9 @@
 \fi
 %    \end{macrocode}
 %
-% \changes{v2.5}{2006/05/13}{取消~titlesec 宏包，用基本~\LaTeX{} 命令格式化标题
+% \changes{v2.5}{2006/05/13}{取消~\pkg{titlesec} 宏包，用基本~\LaTeX{} 命令格式化标题
 % 。}
-% \changes{v2.5.1}{2006/05/23}{让~\cs{chapter*} 自动~markboth。}
+% \changes{v2.5.1}{2006/05/23}{让~\cs{chapter*} 自动~\cs{markboth}。}
 % \begin{macro}{\chapter}
 % 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段前空~24 磅，段
 % 后空~18 磅。   
@@ -2282,11 +2281,10 @@
 %
 %
 % 每章标题行前空6磅，后空0磅。
-% 如果使用目录项中英文要使用~arial，那么就加上~sffamily
+% 如果使用目录项中英文要使用~arial，那么就加上~\cs{sffamily}。
 % 章节名中英文用~arial 字体，页码仍用~times
 % \changes{v2.0}{2005/12/18}{附录的目录项需要调整一下。以及公式编号方式等等。}
-% \changes{v2.5}{2006/05/13}{取消~titletoc~宏包，用~\cs{dottedtocline} 调整目录
-% 。}
+% \changes{v2.5}{2006/05/13}{取消~\pkg{titletoc}~宏包，用~\cs{dottedtocline} 调整目录。}
 % \changes{v2.5.1}{2006/05/23}{减小目录项中的导引小点跟页码之间的留白。}
 % \changes{v2.5.2}{2006/05/29}{用~\cs{thu@chapter*} 改写目录命令。}
 % \begin{macro}{\tableofcontents}
@@ -2351,12 +2349,12 @@
 \newcommand\thu@define@term[2][]{%
   \def\@tempa{#1}
   \ifx\@tempa\@empty
-     \expandafter\gdef\csname #2\endcsname##1{%
-      \expandafter\gdef\csname thu@#2\endcsname{##1}}
+    \def\thu@def{\expandafter\gdef}
   \else
-     \long\expandafter\gdef\csname #2\endcsname##1{%
-      \long\expandafter\gdef\csname thu@#2\endcsname{##1}}
+    \def\thu@def{\long\expandafter\gdef}
   \fi
+  \thu@def\csname #2\endcsname##1{%
+    \thu@def\csname thu@#2\endcsname{##1}}
   \csname #2\endcsname{}}
 %    \end{macrocode}
 % \end{macro}
@@ -2551,7 +2549,7 @@
 \newcommand{\thu@authorsig}{\ifthu@bachelor 签\hskip2em名：\else作者签名：\fi}
 \newcommand{\thu@teachersig}{导师签名：}
 \newcommand{\thu@frontdate}{日\hspace{2em}期：}
-\newcommand{\thu@keywords}{关键词：}
+\newcommand{\thu@ckeywords@title}{关键词：}
 %</cfg>
 %    \end{macrocode}
 %
@@ -2924,11 +2922,11 @@
 % \changes{v2.6.2}{2006/06/20}{取消~tabular 环境，用~\cs{hangindent} 实现关键词
 % 悬挂缩进，英文摘要同。}
 %    \begin{macrocode}
-  \setbox0=\hbox{{\hei \thu@keywords}}
+  \setbox0=\hbox{{\hei \thu@ckeywords@title}}
   \noindent\hangindent\wd0\hangafter1\box0\thu@ckeywords
 %    \end{macrocode}
 %
-% 英文摘要部分的标题为"Abstract"，用~Arial 体三号字。研究生的英文摘要要求非常怪
+% 英文摘要部分的标题为“Abstract”，用~Arial 体三号字。研究生的英文摘要要求非常怪
 % 异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连续。
 % \changes{v.2.5.1}{2006/05/28}{研究生封面英文摘要连续。}
 %    \begin{macrocode}
@@ -3030,6 +3028,7 @@
 % \changes{v2.5}{2006/05/16}{ft，本科论文要求致谢声明分页，但是研究生的不分！}
 % \changes{v2.5.2}{2006/05/29}{研究生致谢右开。}
 % \changes{v2.5.2}{2006/05/30}{研究生致谢题目是致谢，目录是致谢与声明。}
+% \changes{v2.6.3}{2006/07/01}{重画双虚线，自适应页面宽度。}
 %    \begin{macrocode}
 %<*cls>
 \newenvironment{ack}{%
@@ -3043,10 +3042,10 @@
    \ifthu@bachelor\relax\else %TAG 1
     \par\vfill%
     \noindent
-    {\setlength{\unitlength}{1mm}
-      \begin{picture}(148, 3)
-        \multiput(0,0)(14.8, 0){10}{\rule{11mm}{1.2pt}}
-        \multiput(0,1.25)(14.8, 0){10}{\rule{11mm}{1.2pt}}
+    {\setlength{\unitlength}{0.1\textwidth}
+      \begin{picture}(10, 0.1)
+        \multiput(0,0)(1, 0){10}{\rule{0.8\unitlength}{1.2pt}}
+        \multiput(0,0.08)(1, 0){10}{\rule{0.8\unitlength}{1.2pt}}
       \end{picture}}
    \fi % END TAG 1
 %    \end{macrocode}
@@ -3152,7 +3151,7 @@
 % \label{sec:ref}
 %
 % \begin{macro}{\onlinecite}
-% 正文引用模式。依赖于~natbib~宏包，修改其中的命令。
+% 正文引用模式。依赖于~\pkg{natbib}~宏包，修改其中的命令。
 %    \begin{macrocode}
 %<*cls>
 \bibpunct{[}{]}{,}{s}{}{,}
@@ -3220,7 +3219,7 @@
 % \subsubsection{个人简历}
 %
 % \changes{v1.5}{2005/12/16}{增加个人简历章节的命令，去掉主文件中需要重新
-% 定义~cleardoublepage 和自己写~markboth，addcontentsline 的部分。}
+% 定义~\cs{cleardoublepage} 和自己写~\cs{markboth}，\cs{addcontentsline} 的部分。}
 % 定义个人简历章节标题
 %
 % \begin{environment}{resume}
@@ -3326,7 +3325,7 @@
 %
 % \begin{macro}{\ziju}
 % 改变字距。参数为距离
-% \changes{v2.0}{2005/12/20}{字距改变，重定义~CJKglue 即可。}
+% \changes{v2.0}{2005/12/20}{字距改变，重定义~\cs{CJKglue} 即可。}
 %    \begin{macrocode}
 %<*cls>
 \newcommand*{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
@@ -3334,7 +3333,7 @@
 % \end{macro}
 %
 % \begin{macro}{\pozhehao}
-% 定义破则号。两个字宽，ex 差不多是当前字体的一半高度，所以通过~|\rule| 可以简单
+% 定义破则号。两个字宽，ex 差不多是当前字体的一半高度，所以通过~\cs{rule} 可以简单
 % 的完成破则号绘制。
 % \changes{v2.1}{2006/01/12}{稍微加宽一点。同时把名字改为“破折号”：pozhehao}
 %    \begin{macrocode}
@@ -3370,16 +3369,16 @@
 %
 % 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改，否则
 % 必须在~document~开始后才能，感觉不好。
-% \changes{v2.5}{2006/05/13}{不用~CJKcaption，在导言区直接引入配置文件。}
+% \changes{v2.5}{2006/05/13}{不用~\cs{CJKcaption}，在导言区直接引入配置文件。}
 %    \begin{macrocode}
 \AtEndOfClass{\thu@active@cjk\input{thuthesis.cfg}}%
 %    \end{macrocode}
 %
 % \begin{macro}{\thu@fixselectfont}
-% caption 宏包会调用~ragged2e，ragged2e 又调用~everysel。而~everysel 宏包和~CJK
-% 宏包都要修改~|\selectfont|，一个是给~|\selectfont| 加~hook，一个是让
-% ~|\selectfont| 支持~|\CJKbold|。幸好两者本质上并不冲突，把他们源文件中对
-% ~|\selectfont| 重定义的部分合并一下就可以了。
+% \pkg{caption} 宏包会调用~\pkg{ragged2e}，\pkg{ragged2e} 又调用~\pkg{everysel}。而~\pkg{everysel} 宏包和~\pkg{CJK}
+% 宏包都要修改~\cs{selectfont}，一个是给~\cs{selectfont} 加~hook，一个是让
+% ~\cs{selectfont} 支持~\cs{CJKbold}。幸好两者本质上并不冲突，把他们源文件中对
+% ~\cs{selectfont} 重定义的部分合并一下就可以了。
 %    \begin{macrocode}
 \def\thu@fixselectfont{%
   \DeclareRobustCommand{\selectfont}{%
@@ -3404,7 +3403,7 @@
 %
 %
 % \begin{macro}{\thu@setup@pdfinfo}
-% 设置一些~pdf~文档信息，依赖于~hyperref~宏包。
+% 设置一些~pdf~文档信息，依赖于~\pkg{hyperref}~宏包。
 %    \begin{macrocode}
 \def\thu@setup@pdfinfo{%
   \hypersetup{%
