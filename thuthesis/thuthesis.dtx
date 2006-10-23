@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2634}
+% \CheckSum{2638}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2006/07/01 2.6.3 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2006/10/23 2.6.4 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -73,20 +73,20 @@
 \def\DescribeOption#1{\SpecialOptionIndex{#1}}
 \def\SpecialOptionIndex#1{\index{#1\actualchar\textbf{#1}}}
 \renewenvironment{description}
-    {\list{}{\setlength\labelwidth{2cm}
-             \setlength\labelsep{3pt}
-             \setlength\leftmargin{\labelwidth+\labelsep}
-             \addtolength{\itemsep}{3pt}
-             \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}
-            }
-    }{\endlist}
+  {\list{}{\setlength\labelwidth{2cm}
+           \setlength\labelsep{3pt}
+           \setlength\leftmargin{\labelwidth+\labelsep}
+           \addtolength{\itemsep}{3pt}
+           \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}
+          }
+  }{\endlist}
 \DefineVerbatimEnvironment{example}{Verbatim}%
- {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue}, 
-  fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1.2,
-  fontsize=\small, gobble=1}
+  {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue}, 
+   fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1.2,
+   fontsize=\small, gobble=1}
 \DefineVerbatimEnvironment{shell}{Verbatim}%
- {frame=single, framerule=0.3mm, rulecolor=\color{red!85!green!60}, 
-  fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small, gobble=1}
+  {frame=single, framerule=0.3mm, rulecolor=\color{red!85!green!60}, 
+   fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small, gobble=1}
 \makeatletter
 \long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fs #1}}\marginpar{\strut}\hskip\parindent}
 \def\tableofcontents{\renewcommand{\baselinestretch}{1.0}\@starttoc{toc}}
@@ -96,24 +96,24 @@
 \def\ps@headings{%
   \let\@oddfoot\@empty
   \def\@oddhead{\vbox{\hbox
-      to\textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}\vskip-0.7pt
-        \hbox to \textwidth{\hrulefill}}}%
+    to\textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}\vskip-0.7pt
+      \hbox to \textwidth{\hrulefill}}}%
   \let\@evenfoot\@oddfoot
   \let\@evenhead\@oddhead
   \let\@mkboth\markboth
   \def\sectionmark##1{%
     \markright{\ifnum \c@secnumdepth >\m@ne
-        \thesection\quad
+      \thesection\quad
       \fi
       ##1}}
   \def\subsectionmark##1{%
     \markright{\ifnum \c@secnumdepth >\m@ne
-        \thesubsection\quad
+      \thesubsection\quad
       \fi
       ##1}}
   \def\subsubsectionmark##1{%
     \markright{\ifnum \c@secnumdepth >\m@ne
-        \thesubsubsection\quad
+      \thesubsubsection\quad
       \fi
       ##1}}}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
@@ -996,15 +996,19 @@
 % \end{example}
 %
 % \myentry{索引}
-% 插图、表格和公式三个索引命令分别如下，将其插入到期望的位置即可：
+% 插图、表格和公式三个索引命令分别如下，将其插入到期望的位置即可（带星号的命令表
+% 示对应的索引表不会出现在目录中）：
 %
 % \begin{center}
 % \begin{tabular}{ll}
 % \hline
 %   {\hei 命令} & {\hei 说明} \\\hline
 % \cs{listoffigures} & 插图索引\\
+% \cs{listoffigures*} & \\\hline
 % \cs{listoftables} & 表格索引\\
-% \cs{listofequations} & 公式索引\\\hline
+% \cs{listoftables*} & \\\hline
+% \cs{listofequations} & 公式索引\\
+% \cs{listofequations*} & \\\hline
 % \end{tabular}
 % \end{center}
 % 
@@ -1414,8 +1418,9 @@
 % 更好的列表环境。
 % \changes{v2.6.2}{2006/06/18}{去掉~\pkg{paralist} 的~newitem 和~newenum 选项，因为默
 % 认是打开的。}
+% \changes{v2.6.4}{2006/10/23}{增加~\texttt{neverdecrease} 选项。}
 %    \begin{macrocode}
-\RequirePackage{paralist}
+\RequirePackage[neverdecrease]{paralist}
 %    \end{macrocode}
 %
 % 中文支持宏包
@@ -1873,7 +1878,7 @@
 \long\def\@makefntext#1{
     \bgroup
       \setbox\@tempboxa\hbox{%
-          \hb@xt@ 2em{\@thefnmark\hss}}
+        \hb@xt@ 2em{\@thefnmark\hss}}
       \leftmargin\wd\@tempboxa
       \rightmargin\z@
       \linewidth \columnwidth
@@ -1912,7 +1917,7 @@
 \def\@removefromreset#1#2{\let\@tempb\@elt
    \expandafter\let\expandafter\@tempa\csname c@#1\endcsname
    \def\@elt##1{\expandafter\ifx\csname c@##1\endcsname\@tempa\else
-         \noexpand\@elt{##1}\fi}%
+       \noexpand\@elt{##1}\fi}%
    \expandafter\edef\csname cl@#2\endcsname{\csname cl@#2\endcsname}%
    \let\@elt\@tempb} 
 \ifthu@bachelor\@removefromreset{equation}{chapter}\fi
@@ -2300,19 +2305,19 @@
 \def\@tocrmarg{2em}
 \def\@dotsep{3}
 \def\@dottedtocline#1#2#3#4#5{%
- \ifnum #1>\c@tocdepth \else
- \vskip \z@ \@plus.2\p@
- {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
- \parindent #2\relax\@afterindenttrue
- \interlinepenalty\@M
- \leavevmode
- \@tempdima #3\relax
- \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
- {\csname thu@toc@font\endcsname #4}\nobreak
- \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
- \nobreak{\normalfont \normalcolor #5}%
- \par}%
-\fi}
+  \ifnum #1>\c@tocdepth \else
+    \vskip \z@ \@plus.2\p@
+    {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+    \parindent #2\relax\@afterindenttrue
+    \interlinepenalty\@M
+    \leavevmode
+    \@tempdima #3\relax
+    \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+    {\csname thu@toc@font\endcsname #4}\nobreak
+    \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
+    \nobreak{\normalfont \normalcolor #5}%
+    \par}%
+  \fi}
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
@@ -2947,8 +2952,9 @@
 % \changes{v2.4}{2006/04/14}{It is \textbf{Key words}, but not \textbf{Key
 % Words}}
 % \changes{v2.6.2}{2006/06/17}{取消最后一列的空白。}
+% \changes{v2.6.4}{2006/10/23}{\textbf{Keywords} but not \textbf{Key words}}
 %    \begin{macrocode}
-  \setbox0=\hbox{\textbf{Key words:\enskip}}
+  \setbox0=\hbox{\textbf{Keywords:\enskip}}
   \noindent\hangindent\wd0\hangafter1\box0\thu@ekeywords}
 %</cls>
 %    \end{macrocode}
@@ -3079,32 +3085,37 @@
 % \changes{v2.5}{2006/05/18}{增加插图、表格和公式索引。}
 % \changes{v2.5}{2006/05/19}{为了让索引中能出现“图 xxx”，我不得不修改~\LaTeX 
 %	内部命令~\cs{@caption}。}
+% \changes{v2.6.4}{2006/10/23}{增加~\cs{listoffigures*}，\cs{listoftables*}}
 % \begin{macro}{\listoffigures}
+% \begin{macro}{\listoffigures*}
 % \begin{macro}{\listoftables}
+% \begin{macro}{\listoftables*}
 %    \begin{macrocode}
 %<*cls>
 \long\def\@caption#1[#2]#3{%
- \par
- \addcontentsline{\csname ext@#1\endcsname}{#1}%
-                 {\protect\numberline{\csname #1name\endcsname\hskip0.5em\csname the#1\endcsname}%
-                 {\ignorespaces #2}}%
- \begingroup
- \@parboxrestore
- \if@minipage
- \@setminipage
- \fi
- \normalsize
- \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
- \endgroup}
-\renewcommand\listoffigures{%
-  \thu@chapter*{\listfigurename}%
-  \@starttoc{lof}}
+  \par
+  \addcontentsline{\csname ext@#1\endcsname}{#1}%
+                  {\protect\numberline{\csname #1name\endcsname\hskip0.5em\csname the#1\endcsname}%
+                  {\ignorespaces #2}}%
+  \begingroup
+  \@parboxrestore
+  \if@minipage
+  \@setminipage
+  \fi
+  \normalsize
+  \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+  \endgroup}
+\def\thu@listof#1#2{%
+  \@ifstar
+  {\thu@chapter*[]{#1}\@starttoc{#2}}
+  {\thu@chapter*{#1}\@starttoc{#2}}}
+\renewcommand\listoffigures{\thu@listof{\listfigurename}{lof}}
 \renewcommand*\l@figure{\@dottedtocline{1}{0em}{4em}}
-\renewcommand\listoftables{%
-  \thu@chapter*{\listtablename}%
-  \@starttoc{lot}}
+\renewcommand\listoftables{\thu@listof{\listtablename}{lof}}
 \let\l@table\l@figure
 %    \end{macrocode}
+% \end{macro}
+% \end{macro}
 % \end{macro}
 % \end{macro}
 %
@@ -3131,13 +3142,13 @@
 % \end{macro}
 %
 % \begin{macro}{\listofequations}
+% \begin{macro}{\listofequations*}
 % \LaTeX{}默认没有公式索引，此处定义自己的~\cs{listofequations}。
 % \changes{v2.5}{2006/05/19}{增加公式索引命令。}
 % \changes{v2.5.1}{2006/05/26}{公式索引项~numwidth 增加。}
+% \changes{v2.6.4}{2006/10/23}{增加~\cs{listofequations*}。}
 %    \begin{macrocode}
-\newcommand\listofequations{%
-  \thu@chapter*{\listequationname}%
-  \@starttoc{loe}} 
+\newcommand\listofequations{\thu@listof{\listequationname}{loe}}
 \ifthu@bachelor
   \newcommand*\l@equation{\@dottedtocline{1}{0em}{4em}}
 \else
@@ -3146,6 +3157,8 @@
 %</cls>
 %    \end{macrocode}
 % \end{macro}
+% \end{macro}
+%
 %
 % \subsubsection{参考文献}
 % \label{sec:ref}
@@ -3171,14 +3184,15 @@
 % \changes{v2.4}{2006/04/15}{参考文献间距调小一点，label~长度增加一点，以便让超过
 % ~100~的参考文献更好地对齐。}
 % \changes{v2.5}{2006/05/13}{参考文献序号靠左，而不是靠右。}
+% \changes{v2.6.4}{2006/10/23}{调整参考文献标签宽度，使得条目增多时仍能对齐。}
 %    \begin{macrocode}
 \renewenvironment{thebibliography}[1]{%    
    \thu@chapter*{\bibname}%
    \wuhao[1.5]
    \list{\@biblabel{\@arabic\c@enumiv}}%
         {\renewcommand{\makelabel}[1]{##1\hfill}
-         \settowidth\labelwidth{1cm}
-         \setlength{\labelsep}{1em}
+         \settowidth\labelwidth{1.1cm}
+         \setlength{\labelsep}{0.6em}
          \setlength{\itemindent}{0pt}
          \setlength{\leftmargin}{\labelwidth+\labelsep}
          \addtolength{\itemsep}{-0.7em}
