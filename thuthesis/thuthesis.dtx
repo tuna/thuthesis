@@ -3028,7 +3028,7 @@
 % \changes{v2.0}{2005/12/19}{将致谢定义为一个环境更合适，里面也不用像以前段首需
 % 要自己缩进。}
 % \changes{v1.5}{2005/12/16}{在那些不显示编号的章节前面先执行一次
-% ~cleardoublepage，使新开章节的页码到达正确的状态。否则会因为~addcontentsline
+% ~\cs{cleardoublepage}，使新开章节的页码到达正确的状态。否则会因为~\cs{addcontentsline}
 % 在~chapter 之前而导致目录页码错误。}
 % 定义致谢与声明环境。
 % \changes{v2.5}{2006/05/16}{ft，本科论文要求致谢声明分页，但是研究生的不分！}
@@ -3041,7 +3041,7 @@
   \ifthu@bachelor
     \thu@chapter*{\thu@ackname}
   \else  
-    \cleardoublepage
+    % \cleardoublepage
     \thu@chapter*[\thu@acklongname]{\thu@ackname}[\thu@acklongname]
   \fi}
   {%
@@ -3244,7 +3244,7 @@
 %    \begin{macrocode}
 %<*cls>
 \newenvironment{resume}{%
-  \cleardoublepage
+  % \cleardoublepage
   \thu@chapter*{\thu@resume@title}}{}
 %</cls>
 %    \end{macrocode}
