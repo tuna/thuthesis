@@ -23,7 +23,7 @@ fi
 
 version=$1
 templatedir="thuthesis-$version/"
-templatetar="thuthesis-$version.tar.gz"
+templatetar="thuthesis-$version.tgz"
 
 CP="cp -f --parents"
 
