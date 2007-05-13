@@ -171,20 +171,20 @@ FUNCTION {output.bibitem}
   before.all 'output.state :=
 }
 
-%FUNCTION {fin.entry}
-%{ add.period$   
-%  write$
-%  %remove.dots
-%  newline$
-%}
-
 FUNCTION {fin.entry}
-{ duplicate$ empty$
-    'pop$
-    'write$
-  if$
+{ add.period$   
+  write$
+  %remove.dots
   newline$
 }
+
+% FUNCTION {fin.entry}
+% { duplicate$ empty$
+%     'pop$
+%     'write$
+%   if$
+%   newline$
+% }
 
 FUNCTION {new.block}
 { output.state before.all =
@@ -273,7 +273,8 @@ FUNCTION {format.names}
   numnames 'namesleft :=
     { namesleft #0 > }
     { s nameptr
-      "{ll}{ f{~}}"
+      %"{ff }{ll}"
+      "{ll }{f}"    
       format.name$
       %remove.dots
       %bibinfo bibinfo.check
@@ -302,7 +303,7 @@ FUNCTION {format.names}
                 {
                   lang empty$
                     { ", " * bbl.etal * }
-                    { lang "chinese" =
+                    { lang "zh" =
                        { ", " * bbl.cn.etal * }
                        'skip$
                       if$
@@ -312,7 +313,7 @@ FUNCTION {format.names}
                 {
                   lang empty$
                     { ", " * t * }
-                    { lang "chinese" =
+                    { lang "zh" =
                        { ", " * t * }
                        'skip$                   
                      if$
@@ -818,9 +819,10 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
-  format.date output 
-  new.block
-  format.pages output
+%  format.date output 
+%  new.block
+%  format.pages output
+  format.date ":" * format.pages * output
   fin.entry
 }
 
