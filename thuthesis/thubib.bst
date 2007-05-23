@@ -274,7 +274,7 @@ FUNCTION {format.names}
     { namesleft #0 > }
     { s nameptr
       %"{ff }{ll}"
-      "{ll }{f}"    
+      "{ll }{f{~}}"    
       format.name$
       %remove.dots
       %bibinfo bibinfo.check
@@ -339,14 +339,23 @@ FUNCTION {format.authors}
   if$
 }
 
+FUNCTION {editors.names}
+{ lang empty$
+    { ", (eds.)" }
+    { ", ±à" }
+  if$
+}
+
+
 FUNCTION {format.editors}
 { editor empty$
     { "" }
     { editor format.names
-      editor num.names$ #1 >
-    { ", editors" * }
-    { ", editor" * }
-      if$
+    %  editor num.names$ #1 >
+    %{ ", editors" * }
+    %{ ", editor" * }
+    %  if$
+     editors.names *
     }
   if$
 }
@@ -542,6 +551,13 @@ FUNCTION {format.chapter.pages}
   if$
 }
 
+FUNCTION {collection.in}
+{ lang empty$
+    { "In: " }
+    { "¼û: " }
+  if$
+}
+
 FUNCTION {format.in.ed.booktitle}
 { booktitle empty$
     { "" }
@@ -552,8 +568,8 @@ FUNCTION {format.in.ed.booktitle}
       if$
     }
     { lang empty$
-        { "In: " format.editors * ", Proceedings of " * booktitle * }
-        { " " booktitle * }
+        { collection.in format.editors * ". Proceedings of " * booktitle * }
+        { collection.in format.editors * ". " * booktitle * }
       if$
     }
       if$
@@ -724,7 +740,8 @@ FUNCTION {format.title.type}
   if$
 }
 
-FUNCTION {book} { output.bibitem
+FUNCTION {book} 
+{ output.bibitem
   author empty$
     { format.editors "author and editor" output.check }
     { format.authors output.nonnull
@@ -740,17 +757,17 @@ FUNCTION {book} { output.bibitem
     { format.bvolume output
       new.block
       format.number.series output
-      new.sentence
-      format.address.publisher output
+      %new.sentence
+      %format.address.publisher output
     }
     { new.block
       format.book.crossref output.nonnull
     }
   if$
-  format.edition output
+  %format.edition output
+  format.address.publisher output
   format.date "year" output.check
-  new.block
-  note output
+  format.pages output
   fin.entry
 }
 
@@ -819,9 +836,6 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
-%  format.date output 
-%  new.block
-%  format.pages output
   format.date ":" * format.pages * output
   fin.entry
 }
@@ -834,21 +848,23 @@ FUNCTION {incollection}
   new.block
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
-      format.bvolume output
+      %format.bvolume output
       format.number.series output
       format.chapter.pages output
       new.sentence
-      publisher "publisher" output.check
-      address output
-      format.edition output
-      format.date "year" output.check
+      format.address.publisher output
+      %address output
+      %publisher "publisher" output.check
+      %format.edition output
+      % format.date "year" output.check
+      format.date ". " * format.pages * output
     }
     { format.incoll.inproc.crossref output.nonnull
       format.chapter.pages output
     }
   if$
-  new.block
-  note output
+  % new.block
+  % note output
   fin.entry
 }
 
@@ -939,7 +955,8 @@ FUNCTION {mastersthesis}
 { output.bibitem
   format.authors "author" add.period$ output.check
   new.block
-  format.title remove.dots ": " * masterthesis.type * output
+  % format.title remove.dots ": " * masterthesis.type * output
+  format.title remove.dots masterthesis.type * output
   new.block
   format.address.school output
   %format.madd "address" output.check
@@ -976,7 +993,8 @@ FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" add.period$ output.check
   new.block
-  format.title remove.dots ": " * phdthesis.type * output
+  % format.title remove.dots ": " * phdthesis.type * output
+  format.title remove.dots phdthesis.type * output
   new.block
   format.address.school output
   %address output
