@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2263}
+% \CheckSum{0}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -51,7 +51,8 @@
 \usepackage{fancyvrb}
 \usepackage{shapepar}
 \usepackage{url}
-\IfFileExists{lucidabr.sty}{\usepackage{lucidabr}}{}
+%\IfFileExists{lucidabr.sty}{\usepackage{lucidabr}}{}
+\usepackage{txfonts}
 \usepackage{xcolor}
 \usepackage{CJK,CJKpunct}
 \usepackage[CJKbookmarks=true, bookmarksnumbered=true, 
@@ -393,12 +394,12 @@
 %
 % \begin{center} 
 % \begin{minipage}{1.0\linewidth}\centering
-% \begin{tabular}{llllll}\hline
+% \begin{tabular}{*{6}{l}}\hline
 %   ifthen & clac & ifpdf  & CJK & CJKnumb & \textbf{CJKpunct}   \\
 %   array & booktabs & longtable  &  amsmath & amssymb & ntheorem   \\
-%   mathptmx & helvet & courier    &   graphicx & \textbf{subfig}\footnote{版本
-%   要求：$\geq$2005/06/28 ver: 1.3} &  \textbf{caption}\footnote{版本要求：$\geq$2006/03/21 v3.0j} \\
-%   indentfirst & paralist & natbib & hyperref & hypernat & \textbf{thubib.bst} \\\hline
+%   indentfirst & paralist & txfonts  natbib & hyperref & hypernat \\
+%   graphicx & \textbf{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &  \textbf{caption}\footnote{版本要求：$\geq$2006/03/21 v3.0j} 
+%   & \textbf{thubib.bst} & &\\\hline
 % \end{tabular}
 % \end{minipage}
 % \end{center}
@@ -943,20 +944,25 @@
 % \end{example}
 %
 % \myentry{摘要}
-% \DescribeMacro{\cabstract}
-% \DescribeMacro{\eabstract}
+% \DescribeEnv{cabstract}
+% \DescribeEnv{eabstract}
 % \begin{example}
-% \cabstract{您的摘要请写在这里}
-% \eabstract{here comes English abstract}  
+% \begin{cabstract}
+%  您的摘要请写在这里
+% \end{cabstract}
+% \begin{eabstract}
+%  here comes English abstract}
+% \end{eabstract}
 % \end{example}
 %
 % \myentry{关键词}
 % \DescribeMacro{\ckeywords}
 % \DescribeMacro{\ekeywords}
-% 不同论文格式对关键词的间距和分隔符的要求是不一样的，希望大家使用时注意。
+% 关键词用英文逗号分割写入相应的命令中，模板会解析各关键词并生成符合不同论文格式
+% 要求的关键词格式。
 % \begin{example}
-% \ckeywords{关键词填在这里}  
-% \ekeywords{keywords come here}
+% \ckeywords{关键词, 填在这里}  
+% \ekeywords{keywords, come here}
 % \end{example}
 %
 % \subsubsection{其它部分}
@@ -1268,36 +1274,34 @@
 % \label{sec:loadpackage}
 %
 %
-% 引用的宏包和相应的定义
+% 引用的宏包和相应的定义。
 %    \begin{macrocode}
 \RequirePackage{ifthen}
 \RequirePackage{calc}
 \RequirePackage{ifpdf}
 %    \end{macrocode}
 %
-% 用~\pkg{mathptmx} 替换~\pkg{times} 宏包，它可以使公式中也用~\pkg{times} 字体。tt 字体用我们熟悉
-% 的~courier。
-%    \begin{macrocode}
-\RequirePackage{mathptmx}
-\RequirePackage{courier}
-%    \end{macrocode}
-%
-% arial 字体需要单独安装，
-% 如果不使用~arial 字体，可以用~helvet 字体~|\textsf| 模拟。二者基本没有差别。如
-% 果不想安装~arial，也没有关系。
-%    \begin{macrocode}
-\ifthu@arial
-  \IfFileExists{arial.sty}{\RequirePackage{arial}}%
-                          {\RequirePackage[scaled=.92]{helvet}}
-\else
-  \RequirePackage[scaled=0.92]{helvet}
-\fi
-%    \end{macrocode}
-%
-% AMS\LaTeX{} 宏包，用来排出更加漂亮的公式
+% \AmSTeX{} 宏包，用来排出更加漂亮的公式。
 %    \begin{macrocode}
 \RequirePackage{amsmath, amssymb}
 %    \end{macrocode}
+%
+% 用很爽的~\pkg{txfonts} 替换~\pkg{mathptmx} 宏包，同时用它自带的~typewriter 字
+% 体替换~courier。必须出现在~\AmSTeX{} 之后。
+% \changes{v3.1}{2007/06/16}{replace mathptmx with txfonts.}
+%    \begin{macrocode}
+\RequirePackage{txfonts}
+%    \end{macrocode}
+%
+% arial 字体需要单独安装，如果不使用~arial 字体，可以用~helvet 字体~|\textsf|
+% 模拟，二者基本没有差别。
+%    \begin{macrocode}
+\ifthu@arial
+  \IfFileExists{arial.sty}{\RequirePackage{arial}}%
+                          {\ClassWarning{thuthesis}{no arial.sty availiable!}}
+\fi
+%    \end{macrocode}
+%
 %
 % 图形支持宏包。
 %    \begin{macrocode}
@@ -1923,8 +1927,8 @@
 % \begin{itemize}
 %   \item 图表标题字体为~11pt， 这里写作大五号
 %   \item 去掉图表号后面的冒号。图序与图名文字之间空一个汉字符宽度。
-%   \item  图：caption 在下，段前空~6 磅，段后空~12 磅
-%   \item  表：caption 在上，段前空~12 磅，段后空~6 磅
+%   \item 图：caption 在下，段前空~6 磅，段后空~12 磅
+%   \item 表：caption 在上，段前空~12 磅，段后空~6 磅
 % \end{itemize}
 % \changes{v2.4}{2006/04/14}{表格内容为~11~磅。}
 % \changes{v2.4}{2006/04/14}{图表标题左对齐，取消原先漂亮的~hang~模式。}
@@ -1955,7 +1959,7 @@
   \def\@tempa{#2}%
   \ifx\@tempa\@empty\else
     {\let\\\space
-    \addcontentsline{lot}{table}%
+    \addcontentsline{\csname ext@table\endcsname}{table}%
                     {\protect\numberline{\tablename\hskip0.5em\thetable}{#2}}}%
   \fi}
 \let\thu@LT@array\LT@array
@@ -2029,12 +2033,12 @@
 \fi
 %    \end{macrocode}
 %
-% \changes{v2.5}{2006/05/13}{取消~\pkg{titlesec} 宏包，用基本~\LaTeX{} 命令格式化标题
-% 。}
-% \changes{v2.5.1}{2006/05/23}{让~\cs{chapter*} 自动~\cs{markboth}。}
 % \begin{macro}{\chapter}
 % 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段前空~24 磅，段
 % 后空~18 磅。   
+% \changes{v2.5}{2006/05/13}{取消~\pkg{titlesec} 宏包，用基本~\LaTeX{} 命令格式化标题。}
+% \changes{v2.5.1}{2006/05/23}{让~\cs{chapter*} 自动~\cs{markboth}。}
+% \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化，ft!}
 %    \begin{macrocode}
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi\phantomsection%
                     \ifthu@bachelor\thispagestyle{thu@plain}%
@@ -2070,7 +2074,12 @@
 \def\@makeschapterhead#1{%
   \vspace*{20bp}%
   {\parindent \z@ \centering
-   \hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
+   \hei\csname thu@title@font\endcsname\sanhao[1]
+   \ifthu@bachelor\xiaosan\else
+     \def\@tempa{#1}
+     \def\@tempb{\eabstractname}
+     \ifx\@tempa\@tempb\bfseries\fi
+   \fi
    \interlinepenalty\@M
    #1\par\nobreak
    \vskip 24bp}}
@@ -2228,21 +2237,15 @@
 % \subsubsection{封面和封底}
 % \label{sec:cover}
 % \begin{macro}{\thu@define@term}
-% \changes{v2.6.2}{2006/06/18}{引入~\cs{thu@define@term} 定义封面命令。}
-%   方便的定义封面的一些替换命令。因为有些命令需要指定为~\cs{long}，所以~\cs{thu@define@term} 
-%   有点古怪，只要第一个参数不为空就指定~\cs{long}。大家不要随便用这个。
+% 方便的定义封面的一些替换命令。
+% \changes{v2.6.2}{2006/06/18}{引入~\cs{thu@define@term} 定义封面命令。} 
+% \changes{v3.1}{2006/06/16}{重新定义摘要为环境，long 选项不需要了。}
 %    \begin{macrocode}
 %<*cls>
-\newcommand\thu@define@term[2][]{%
-  \def\@tempa{#1}
-  \ifx\@tempa\@empty
-    \def\thu@def{\expandafter\gdef}
-  \else
-    \def\thu@def{\long\expandafter\gdef}
-  \fi
-  \thu@def\csname #2\endcsname##1{%
-    \thu@def\csname thu@#2\endcsname{##1}}
-  \csname #2\endcsname{}}
+\def\thu@define@term#1{
+  \expandafter\gdef\csname #1\endcsname##1{%
+    \expandafter\gdef\csname thu@#1\endcsname{##1}}
+  \csname #1\endcsname{}}
 %    \end{macrocode}
 % \end{macro}
 % 封面、摘要、版权、致谢格式定义
@@ -2260,8 +2263,6 @@
 % \begin{macro}{\cassosupervisor}
 % \begin{macro}{\ccosupervisor}
 % \begin{macro}{\cdate}
-% \begin{macro}{\cabstract}
-% \begin{macro}{\ckeywords}
 % \begin{macro}{\etitle}
 % \begin{macro}{\edegree}
 % \begin{macro}{\edepartment}
@@ -2273,11 +2274,9 @@
 % \begin{macro}{\eassosupervisor}
 % \begin{macro}{\ecosupervisor}
 % \begin{macro}{\edate}
-% \begin{macro}{\eabstract}
-% \begin{macro}{\ekeywords}
-% \changes{v2.5}{2006/05/20}{院系和专业分别改名用~department 和~major，代替原来
-% 的~affil 和~subject。}
-% \changes{v2.6.2}{2006/06/18}{改正~groupmembers 的拼写错误。}
+%   \changes{v2.5}{2006/05/20}{院系和专业分别改名用~department 和~major，代替原来
+%     的~affil 和~subject。} \changes{v2.6.2}{2006/06/18}{改正~groupmembers 的拼
+%     写错误。}
 %    \begin{macrocode}
 \thu@define@term{secretlevel}
 \thu@define@term{secretyear}
@@ -2294,27 +2293,18 @@
 \thu@define@term{cassosupervisor}
 \thu@define@term{ccosupervisor}
 \thu@define@term{cdate}
-\thu@define@term[long]{cabstract}
-\thu@define@term{ckeywords}
 \thu@define@term{etitle}
 \thu@define@term{edegree}
 \thu@define@term{edepartment}
-\def\eaffil{\edepartment} % for compability
+\def\eaffil{\edepartment} % todo: for compability
 \thu@define@term{emajor}
-\def\esubject{\emajor} % for compability
+\def\esubject{\emajor} % todo: for compability
 \thu@define@term{eauthor}
 \thu@define@term{esupervisor}
 \thu@define@term{eassosupervisor}
 \thu@define@term{ecosupervisor}
 \thu@define@term{edate}
-\thu@define@term[long]{eabstract}
-\thu@define@term{ekeywords}
-%</cls>
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -2340,11 +2330,77 @@
 % \end{macro}
 % \end{macro}
 %
+% \begin{macro}{\thu@parse@abstract}
+% 摘要最好以环境的形式出现（否则命令的形式会导致开始结束的括号举例太远，我不喜
+% 欢），这就必须让环境能够自己保存内容留待以后使用。ctt 上找到两种方法：1）使用
+% ~\pkg{amsmath} 中的~\cs{collect@body}，但是此宏没有定义为~long，不能直接用，
+% 如果修改~\pkg{amsmath} 中的定义又太~dirty。2）利用~\LaTeX{} 中环境和对应命令
+% 间的命名关系以及参数分隔符的特点非常巧妙地实现了这个功能，其不足是不能嵌套环
+% 境。当然对于我们的应用来说这就算不上不足了，所以我们用这种方法。
+% \changes{v3.1}{2006/06/16}{重新定义摘要成为环境，Great!}
+%    \begin{macrocode}
+\def\thu@parse@abstract#1{
+  \long\expandafter\gdef\csname #1\endcsname##1\end{%
+    \long\expandafter\gdef\csname thu@#1\endcsname{##1}\end}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{environment}{cabstract}
+% \begin{environment}{eabstract}
+%    \begin{macrocode}
+\thu@parse@abstract{cabstract}
+\thu@parse@abstract{eabstract}
+%    \end{macrocode}
+% \end{environment}
+% \end{environment}
+%
+% \begin{macro}{\thu@parse@keywords}
+%   不同论文格式关键词之间的分割不太相同，我们用~\cs{ckeywords} 和
+%   ~\cs{ekeywords} 来收集关键词列表，然后用本命令来生成符合要求的格式。
+%   \cs{expandafter} 都快把我整晕了。
+%    \begin{macrocode}
+\def\thu@parse@keywords#1{
+  \expandafter\gdef\csname thu@#1\endcsname{} % todo: need or not?
+  \expandafter\gdef\csname #1\endcsname##1{
+    \@for\reserved@a:=##1\do{
+      \expandafter\ifx\csname thu@#1\endcsname\@empty\else
+        \expandafter\g@addto@macro\csname thu@#1\endcsname{\ignorespaces\csname thu@#1@separator\endcsname}
+      \fi
+      \expandafter\expandafter\expandafter\g@addto@macro%
+        \expandafter\csname thu@#1\expandafter\endcsname\expandafter{\reserved@a}
+    }
+  }
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\ckeywords}
+% \begin{macro}{\ekeywords}
+% 利用~\cs{thu@parse@keywords} 来定义，内部通过~\cs{thu@ckeywords} 来引用。
+% \changes{v3.1}{2007/06/16}{增强的关键词命令。}
+%    \begin{macrocode}
+\thu@parse@keywords{ckeywords}
+\thu@parse@keywords{ekeywords}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
 % \changes{v1.4rc1}{2005/12/14}{I have to put all chinese chars into cfg,
 % otherwise they would not appear.}
 % \changes{v2.5.1}{2006/05/25}{硕士封面的冒号前居然有点小距离！}
 %    \begin{macrocode}
 %<*cfg>
+\def\thu@ckeywords@separator{
+  \ifthu@bachelor，%todo: 
+  \else
+    \ifthu@master\hspace{2em}\else；\fi
+  \fi}
+\def\thu@ekeywords@separator{
+  \ifthu@bachelor,%todo: 
+  \else
+    \ifthu@master\hspace{2em}\else;\fi
+  \fi}
 \def\thu@title@sep{：}
 \def\thu@secretlevel{秘密}
 \def\thu@secretyear{\the\year}
@@ -2639,16 +2695,17 @@
 %    \end{macrocode}
 %
 % 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用~Times New Roman 体，
-% 标点符号一律用中文输入状态下的标点符号
+% 标点符号一律用中文输入状态下的标点符号。
+% \changes{v3.1}{2007/06/16}{研究生关键词不再沉底。}
 %    \begin{macrocode}
-  \thu@cabstract
-  \ifthu@bachelor\newline\par\else\vfill\fi
+  \thu@cabstract  
 %    \end{macrocode}
 % 每个关键词之间空两个汉字符宽度， 且为悬挂缩进
 % \changes{v2.6.2}{2006/06/17}{取消最后一列的空白。}
 % \changes{v2.6.2}{2006/06/20}{取消~tabular 环境，用~\cs{hangindent} 实现关键词
 % 悬挂缩进，英文摘要同。}
 %    \begin{macrocode}
+  \newline\par
   \setbox0=\hbox{{\hei \thu@ckeywords@title}}
   \noindent\hangindent\wd0\hangafter1\box0\thu@ckeywords
 %    \end{macrocode}
@@ -2660,10 +2717,9 @@
   \thu@chapter*[]{\eabstractname} % no tocline
 %    \end{macrocode}
 %
-% 摘要内容用小四号~Times New Roman
+% 摘要内容用小四号~Times New Roman。
 %    \begin{macrocode}
   \thu@eabstract
-  \ifthu@bachelor\newline\par\else\vfill\fi
 %    \end{macrocode}
 %
 % 每个关键词之间空四个英文字符宽度
@@ -2674,6 +2730,7 @@
 % \changes{v3.0}{2007/05/13}{\textbf{Key words} but not
 % \textbf{Keywords}. What are you doing?}
 %    \begin{macrocode}
+  \newline\par
   \setbox0=\hbox{\textbf{Key words:\enskip}}
   \noindent\hangindent\wd0\hangafter1\box0\thu@ekeywords}
 %</cls>
@@ -3048,16 +3105,10 @@
 % \changes{v2.1}{2006/01/12}{稍微加宽一点。同时把名字改为“破折号”：pozhehao}
 %    \begin{macrocode}
 \newcommand{\pozhehao}{\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\keyspace}
-% 关键字之间的间隔，其实没什么用。
-%    \begin{macrocode}
-\newcommand{\keyspace}{\hspace{2em}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
+%
 %
 % \subsubsection{其它}
 % \label{sec:other}

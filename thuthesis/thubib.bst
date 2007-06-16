@@ -767,6 +767,7 @@ FUNCTION {book}
   %format.edition output
   format.address.publisher output
   format.date "year" output.check
+  new.sentence
   format.pages output
   fin.entry
 }

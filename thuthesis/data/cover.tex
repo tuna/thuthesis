@@ -40,26 +40,18 @@
 % \edate{December, 2005}
 
 %定义中英文摘要和关键字
-\cabstract{ 本文介绍清华大学论文模板~\thuthesis{} 的使用方法。本模板基本符合学校
-  的本科、硕士、博士论文格式要求。本科论文关键字用逗号分隔，硕士论文关键字之间为~2 个
-  汉字字符，博士论文关键词之间为分号，你说麻烦不麻烦。大家在用的时候多多注意。具
-  体使用方法请参看本文源文件。}
+\begin{cabstract}
+  本文介绍清华大学论文模板~\thuthesis{} 的使用方法。本模板基本符合学校的本科、硕
+  士、博士论文格式要求。本科论文关键字用逗号分隔，硕士论文关键字之间为~2 个汉字字
+  符，博士论文关键词之间为分号，你说麻烦不麻烦。大家在用的时候多多注意。具体使用
+  方法请参看本文源文件。
+\end{cabstract}
 
-%根据你的情况，选择一个即可，这里只是作为示例。
-\makeatletter
-\ifthu@bachelor
-  \ckeywords{\TeX，\LaTeX，CJK，模板，排版，论文}
-\else
-  \ifthu@master
-    \ckeywords{\TeX\keyspace \LaTeX\keyspace CJK\keyspace 模板\keyspace 排版\keyspace 论文}
-  \else
-    \ckeywords{\TeX；\LaTeX；CJK；模板；排版；论文}
-  \fi
-\fi
-\makeatother
+\ckeywords{\TeX, \LaTeX, CJK, 模板, 排版, 论文}
 
-\eabstract{ This article presents \thuthesis, the thesis template
-  for Tsinghua University, and briefly introduces the usage.
+\begin{eabstract} 
+  This article presents \thuthesis, the thesis template for Tsinghua University,
+  and briefly introduces the usage.
 
   The template has been verified by the academic administration of Tsinghua
   University. It fulfils the corresponding format requirements, and can generate
@@ -67,17 +59,7 @@
   information and main text into the right places in this example.
 
   Generally, the abstract and the key words should be consistent with the
-  Chinese version. }
+  Chinese version.
+\end{eabstract}
 
-% 这里也是
-\makeatletter
-\ifthu@bachelor
-   \ekeywords{\TeX，\LaTeX，CJK，template，typesetting，thesis}
-\else
-  \ifthu@master
-    \ekeywords{\TeX\keyspace \LaTeX\keyspace CJK\keyspace template\keyspace  typesetting\keyspace thesis}
-  \else
-    \ekeywords{\TeX; \LaTeX; CJK; template;  typesetting; thesis}
-  \fi
-\fi
-\makeatother
+\ekeywords{\TeX, \LaTeX, CJK, template, typesetting, thesis}
