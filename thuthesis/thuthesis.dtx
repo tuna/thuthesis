@@ -2330,27 +2330,33 @@
 % \end{macro}
 % \end{macro}
 %
-% \begin{macro}{\thu@parse@abstract}
-% 摘要最好以环境的形式出现（否则命令的形式会导致开始结束的括号举例太远，我不喜
-% 欢），这就必须让环境能够自己保存内容留待以后使用。ctt 上找到两种方法：1）使用
-% ~\pkg{amsmath} 中的~\cs{collect@body}，但是此宏没有定义为~long，不能直接用，
-% 如果修改~\pkg{amsmath} 中的定义又太~dirty。2）利用~\LaTeX{} 中环境和对应命令
-% 间的命名关系以及参数分隔符的特点非常巧妙地实现了这个功能，其不足是不能嵌套环
-% 境。当然对于我们的应用来说这就算不上不足了，所以我们用这种方法。
-% \changes{v3.1}{2006/06/16}{重新定义摘要成为环境，Great!}
-%    \begin{macrocode}
-\def\thu@parse@abstract#1{
-  \long\expandafter\gdef\csname #1\endcsname##1\end{%
-    \long\expandafter\gdef\csname thu@#1\endcsname{##1}\end}
-}
-%    \end{macrocode}
-% \end{macro}
-%
 % \begin{environment}{cabstract}
 % \begin{environment}{eabstract}
+% 摘要最好以环境的形式出现（否则命令的形式会导致开始结束的括号举例太远，我不喜
+% 欢），这就必须让环境能够自己保存内容留待以后使用。ctt 上找到两种方法：1）使用
+% ~\pkg{amsmath} 中的~\cs{collect@body}，但是此宏没有定义为~long，不能直接用。
+% 2）利用~\LaTeX{} 中环境和对应命令间的命名关系以及参数分隔符的特点非常巧妙地实
+% 现了这个功能，其不足是不能嵌套环境。由于摘要部分经常会用到诸如~itemize 类似
+% 的环境，所以我们不得不选择第一种负责的方法。以下是修改~\pkg{amsmath} 代码部分：
+% \changes{v3.1}{2006/06/17}{重新定义摘要成为环境，Great!}
 %    \begin{macrocode}
-\thu@parse@abstract{cabstract}
-\thu@parse@abstract{eabstract}
+\long\@xp\def\@xp\collect@@body\@xp#\@xp1\@xp\end\@xp#\@xp2\@xp{%
+  \collect@@body{#1}\end{#2}%
+}
+\long\@xp\def\@xp\push@begins\@xp#\@xp1\@xp\begin\@xp#\@xp2\@xp{%
+  \push@begins{#1}\begin{#2}%
+}
+\long\@xp\def\@xp\addto@envbody\@xp#\@xp1\@xp{%
+  \addto@envbody{#1}%
+} 
+%    \end{macrocode}
+%
+% 使用~\cs{collect@body} 来构建摘要环境。
+%    \begin{macrocode}
+\newcommand{\thu@@cabstract}[1]{\long\gdef\thu@cabstract{#1}}
+\newenvironment{cabstract}{\collect@body\thu@@cabstract}{}
+\newcommand{\thu@@eabstract}[1]{\long\gdef\thu@eabstract{#1}}
+\newenvironment{eabstract}{\collect@body\thu@@eabstract}{}
 %    \end{macrocode}
 % \end{environment}
 % \end{environment}
@@ -2442,7 +2448,7 @@
 
 清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：（1）已获学位的研究生
 必须按学校规定提交学位论文，学校可以采用影印、缩印或其他复制手段保存研究生上交的
-学位论文；（2）为教学和科研目的，  学校可以将公开的学位论文作为资料在图书馆、资料
+学位论文；（2）为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料
 室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容\ifthu@master 。\else
 ；（3）根据《中华人民共和国学位条例暂行实施办法》，向国家图书馆报送可以公开的学位
 论文。\fi
@@ -2705,7 +2711,7 @@
 % \changes{v2.6.2}{2006/06/20}{取消~tabular 环境，用~\cs{hangindent} 实现关键词
 % 悬挂缩进，英文摘要同。}
 %    \begin{macrocode}
-  \newline\par
+  \vskip12bp
   \setbox0=\hbox{{\hei \thu@ckeywords@title}}
   \noindent\hangindent\wd0\hangafter1\box0\thu@ckeywords
 %    \end{macrocode}
@@ -2730,7 +2736,7 @@
 % \changes{v3.0}{2007/05/13}{\textbf{Key words} but not
 % \textbf{Keywords}. What are you doing?}
 %    \begin{macrocode}
-  \newline\par
+  \vskip12bp
   \setbox0=\hbox{\textbf{Key words:\enskip}}
   \noindent\hangindent\wd0\hangafter1\box0\thu@ekeywords}
 %</cls>
