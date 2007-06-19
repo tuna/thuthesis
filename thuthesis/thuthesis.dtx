@@ -2939,6 +2939,15 @@
 % 参考文献的正文部分用五号字。
 % 行距采用固定值~16 磅，段前空~3 磅，段后空~0 磅。
 %
+% \begin{macro}{\thudot}
+% 研究生参考文献条目最后加点，而本科有不要。只好定义一个东西来拙劣地处理了，
+% 本来这个命令通过~\texttt{@preamble} 命令放到~bib 文件中是最省事的，但是那
+% 样的话很多人肯定不知道该怎么做了。
+% \changes{v3.1}{2007/06/19}{引入~cs{thudot} 来自动完成参考文献最后的点。}
+%    \begin{macrocode}
+\def\thudot{\ifthu@bachelor\else\unskip.\fi}
+%    \end{macrocode}
+% \end{macro}
 % \begin{environment}{thebibliography}
 % 修改默认的~thebibliography 环境，增加一些调整代码。
 % \changes{v2.4}{2006/04/15}{参考文献间距调小一点，label~长度增加一点，以便让超过

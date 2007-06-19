@@ -172,11 +172,21 @@ FUNCTION {output.bibitem}
 }
 
 FUNCTION {fin.entry}
-{ add.period$   
-  write$
-  %remove.dots
+{ duplicate$ empty$
+    'pop$
+    'write$
+  if$
+  newline$
+  "\thudot" write$
   newline$
 }
+
+% FUNCTION {fin.entry}
+% { add.period$   
+%   write$
+%   %remove.dots
+%   newline$
+% }
 
 % FUNCTION {fin.entry}
 % { duplicate$ empty$
