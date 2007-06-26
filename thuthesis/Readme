@@ -1,15 +1,43 @@
+==========
 What's it?
-----------
-
+==========
 ThuThesis is a LaTeX thesis template package for Tsinghua University in order to
 make it easy to write thesises for either bachelor, master or doctor.  ThuThesis
 是清华大学学位论文LaTeX模板，支持本科、硕士、博士论文格式。
 
 
+========
+使用方法
+========
+1. 编译示例文档
+   latex main
+   bibtex main
+   latex main
+   gbk2uni main  # 可选
+   latex main
+   dvips main.dvi
+   ps2pdf main.ps
 
-Makefile Howto (by edyfox & littleleo):
----------------------------------------
+   说明：也可以使用pdflatex或dvipdfm(x)生成文档。
 
+2. 编写自己的论文
+   参考示例文档：
+     main.tex   主控文档
+     data/      论文具体内容
+     ref/       参考文献目录
+     figures/   图片目录
+   
+
+========
+如何升级
+========
+1. 下载新模板并解压缩
+2. 将thuthesis.cls, thuthesis.cfg, thubib.bst作相应替换即可。
+
+
+======================================
+Makefile Howto (by edyfox & littleleo)
+======================================
 1. 获取帮助文档
 
    make doc   得到 thuthesis.pdf，帮助文档，里面有详细的说明。
@@ -56,8 +84,9 @@ Makefile：
 
 
 
-msmake.cmd Howto (by Truel):
-----------------------------
+===========================
+msmake.cmd Howto (by Truel)
+===========================
 1.配置thuthesis宏包
 
     msmake setup

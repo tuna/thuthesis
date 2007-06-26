@@ -117,7 +117,7 @@
       \thesubsubsection\quad
       \fi
       ##1}}}
-\renewcommand\section{\@startsection {section}{1}{\z@}%
+\renewcommand\section{\@startsection{section}{1}{\z@}%
                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
                                    {2.3ex \@plus.2ex}%
                                    {\normalfont\Large\bfseries\hei}}
@@ -143,7 +143,7 @@
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
- %\OnlyDescription
+%\OnlyDescription
 
 \begin{document}
 \begin{CJK*}{GBK}{song}
@@ -1871,10 +1871,17 @@
 % “定理”字样使用黑体，正文使用宋体，冒号隔开
 % \changes{v2.6.2}{2006/06/17}{增加问题和猜想两个数学环境。}
 %    \begin{macrocode}
-\theoremstyle{plain}
 \theorembodyfont{\song\rmfamily}
 \theoremheaderfont{\hei\rmfamily}
  % \theoremsymbol{\ensuremath{\blacksquare}}
+\theoremsymbol{\ensuremath{\square}}
+\theoremstyle{nonumberplain}
+%</cls>
+%<*cfg>
+\newtheorem{proof}{证明}
+%</cfg>
+%<*cls>
+\theoremstyle{plain}
 \theoremsymbol{}
 %</cls>
 %<*cfg>
@@ -1891,9 +1898,6 @@
 \newtheorem{remark}{注释}[chapter]
 \newtheorem{problem}{问题}[chapter]
 \newtheorem{conjecture}{猜想}[chapter]
-\theoremsymbol{\ensuremath{\square}}
-\theoremstyle{nonumberplain}
-\newtheorem{proof}{证明}
 %</cfg>
 %    \end{macrocode}
 % 
@@ -2341,14 +2345,11 @@
 % \changes{v3.1}{2006/06/17}{重新定义摘要成为环境，Great!}
 %    \begin{macrocode}
 \long\@xp\def\@xp\collect@@body\@xp#\@xp1\@xp\end\@xp#\@xp2\@xp{%
-  \collect@@body{#1}\end{#2}%
-}
+  \collect@@body{#1}\end{#2}}
 \long\@xp\def\@xp\push@begins\@xp#\@xp1\@xp\begin\@xp#\@xp2\@xp{%
-  \push@begins{#1}\begin{#2}%
-}
+  \push@begins{#1}\begin{#2}}
 \long\@xp\def\@xp\addto@envbody\@xp#\@xp1\@xp{%
-  \addto@envbody{#1}%
-} 
+  \addto@envbody{#1}} 
 %    \end{macrocode}
 %
 % 使用~\cs{collect@body} 来构建摘要环境。
@@ -2374,10 +2375,7 @@
         \expandafter\g@addto@macro\csname thu@#1\endcsname{\ignorespaces\csname thu@#1@separator\endcsname}
       \fi
       \expandafter\expandafter\expandafter\g@addto@macro%
-        \expandafter\csname thu@#1\expandafter\endcsname\expandafter{\reserved@a}
-    }
-  }
-}
+        \expandafter\csname thu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\ckeywords}
@@ -2610,24 +2608,25 @@
 \newcommand{\thu@authorization@mk}{%
     \vspace*{-0.6cm}
     \begin{center}
-      \parbox[t]{\textwidth}{{\erhao \hei \centerline{\thu@authtitle}}}
-      \par\vspace{2cm}
-      \renewcommand{\baselinestretch}{1.5}
-      \parbox[t]{\textwidth}{\sihao[1.4]\parindent2em\thu@authorization}
-      \par\vspace{0.6cm}
-      \parbox[t]{\textwidth}{\sihao\hspace*{2em}\textbf{\thu@authorizationaddon}}
-      \par\vspace{1.9cm}
+      \erhao\hei\thu@authtitle
+    \end{center}
+      \vskip\baselineskip
+      %\renewcommand{\baselinestretch}{1.5}
+      \par\thu@authorization\par
+      \textbf{\thu@authorizationaddon}\par
+      \vskip1.9cm
       \ifthu@bachelor
         \xiaosi\thu@authorsig\thu@underline\relax%
                \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax
       \else
-        \parbox[t]{\textwidth}{\xiaosi %TODO: bad codes!
+        \begingroup
+        \xiaosi\noindent
         \hspace*{1.5cm}\thu@authorsig\thu@underline[7em]\relax\hfill%
                      \thu@teachersig\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]
         \hspace*{1.5cm}\thu@frontdate\thu@underline[7em]\relax\hfill%
-                     \thu@frontdate\thu@underline[7em]\relax\hspace*{1cm}}
-      \fi
-    \end{center}}
+                     \thu@frontdate\thu@underline[7em]\relax\hspace*{1cm}
+        \endgroup
+      \fi}
 %    \end{macrocode}
 % \end{macro}
 %
