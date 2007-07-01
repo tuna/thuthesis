@@ -4,8 +4,7 @@
 dirs="data figures ref"
 list_example="data/*.tex figures/* ref/*.bib main.tex shuji.tex main.pdf  shuji.pdf"
 list_template="thuthesis.ins thuthesis.dtx thubib.bst Readme thuthesis.pdf Makefile msmake.cmd thutils.sty"
-list_extra="thuthesis.cls thuthesis.cfg"
-list_all="$list_example $list_template $list_extra"
+list_all="$list_example $list_template"
 
 if [ $0 != ./makedist.sh ]; then
     echo "This script can only be run in the same directory of the script."
