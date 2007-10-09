@@ -41,9 +41,9 @@ doc: doc-pdf
 
 doc-pdf: $(PACKAGE).pdf
 
-doc-dvi: $(PACKAGE).dvi
-
 doc-ps: $(PACKAGE).ps
+
+doc-dvi: $(PACKAGE).dvi
 
 $(PACKAGE).dvi: cls
 	latex $(PACKAGE).dtx
@@ -51,14 +51,13 @@ $(PACKAGE).dvi: cls
 	makeindex -s gglo.ist -o $(PACKAGE).gls $(PACKAGE).glo
 	latex $(PACKAGE).dtx
 
-$(PACKAGE).pdf: $(PACKAGE).ps
-	ps2pdf  $(PACKAGE).ps
-
 $(PACKAGE).ps: $(PACKAGE).dvi
 	gbk2uni $(PACKAGE)
 	latex $(PACKAGE).dtx
 	dvips -Ppdf -G0 -t letter $(PACKAGE).dvi
 
+$(PACKAGE).pdf: $(PACKAGE).ps
+	ps2pdf  $(PACKAGE).ps
 
 ###### for thesis
 

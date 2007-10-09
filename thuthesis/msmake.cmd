@@ -3,7 +3,7 @@
 @rem START OF FILE
 @rem ----------------------------------------------------------------------
 @rem 
-@rem Filename: msbuild.cmd
+@rem Filename: msmake.cmd
 @rem Author: Fred Qi
 @rem Created: 2006-05-20 14:09:57(+0800)
 @rem Version: 
@@ -15,11 +15,11 @@
 @rem 使用说明：
 @rem
 @rem 1.配置thuthesis宏包
-@rem msbuild setup
+@rem msmake setup
 @rem 　　在当前目录下生成thuthesis宏包及说明文档thuthesis.pdf
 @rem
 @rem 2.生成示例文档
-@rem msbuild [shuji|main|all|other]
+@rem msmake [shuji|main|all|other]
 @rem 　　在当前目录下生成示例文档，或其中的一部分，或其他用户指定文档
 @rem 如果当前目录下无thuthesis.cls，将自动根据thuthesis.ins生成。
 @rem 　　- shuji	仅生成书脊
@@ -28,7 +28,7 @@
 @rem 　　- other	用户指定的tex文件名，由该tex文件产生pdf文档
 @rem
 @rem 3.清理目录
-@rem msbuild clean [other]
+@rem msmake clean [other]
 @rem 　　清理当前目录下由thuthesis宏包生成的文件，具体包括
 @rem 宏包及其说明文档thuthesis.{cls,cfg,dvi,ps,pdf}
 @rem 示例文档shuji.pdf, main.{dvi,ps,pdf,aux,etc.}
@@ -36,9 +36,9 @@
 @rem other.{dvi,ps,pdf,lo?,aux,bbl,blg,out* toc thm}
 @rem
 @rem 4.辅助图形图像文件格式转换命令：
-@rem msbuild epspdf [param] 
+@rem msmake epspdf [param] 
 @rem	 将当前目录下所有eps文件用epstopdf转为pdf格式
-@rem msbuild bmpeps [param]
+@rem msmake bmpeps [param]
 @rem	 将当前目录下所有bmp,jpg,png文件用bmeps转为eps格式
 @rem 以上两个命令中，[param]可以由用户指定转换程序所用的参数。
 @rem 
@@ -49,7 +49,7 @@
 @rem     Update #: 312
 @rem ----------------------------------------------------------------------
 @rem 2006-05-20 16:53:38(+0800)    Fred Qi@lab
-@rem    msbuild.cmd initial. prepaired for thuthesis 2.5
+@rem    msmake.cmd initial. prepaired for thuthesis 2.5
 @rem 
 @rem 
 @rem 
