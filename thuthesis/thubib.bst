@@ -475,8 +475,8 @@ FUNCTION {format.edition}
 { edition empty$
     { "" }
     { output.state mid.sentence =
-    { edition "l" change.case$ " edition" * }
-    { edition "t" change.case$ " edition" * }
+    { edition "l" change.case$ " ed." * }
+    { edition "t" change.case$ " ed." * }
       if$
     }
   if$
@@ -774,7 +774,7 @@ FUNCTION {book}
       format.book.crossref output.nonnull
     }
   if$
-  %format.edition output
+  format.edition output
   format.address.publisher output
   format.date "year" output.check
   new.sentence
@@ -847,7 +847,8 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
-  format.date ":" * format.pages * output
+  % format.date ":" * format.pages * output
+  format.date "." * format.pages * output
   fin.entry
 }
 
@@ -957,7 +958,7 @@ FUNCTION {manual}
 
 FUNCTION {masterthesis.type}
 { lang empty$
-    { "[Master Thesis]" }
+    { "\thumasterbib" }
     { "[硕士学位论文]" }
   if$
 }
@@ -995,7 +996,7 @@ FUNCTION {misc}
 
 FUNCTION {phdthesis.type}
 { lang empty$
-    { "[PhD Thesis]" }
+    { "\thuphdbib" }
     { "[博士学位论文]" }
   if$ 
 }
