@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2363}
+% \CheckSum{2387}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2007/10/09 3.1 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2007/11/08 4.0 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -272,8 +272,8 @@
 % \item 本模板为作者根据清华大学教务处颁发的《综合论文训练写作指南》和清华大学研
 %   究生院颁发的《研究生学位论文写作指南》编写而成，旨在供清华大学毕业生撰写学位
 %   论文使用。
-% \item 此模板尚未得到清华大学教务处和研究生院的“认证”，任何由于使用本模板而引
-%   起的论文格式审查问题均与本模板作者无关。
+% \item 此模板已经得到清华大学教务处和研究生院的“认证”，但不保证格式审查老师不
+%   提意见，任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
 % \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
 %   守~\LaTeX{} Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
 %   本模板作者无关。
@@ -305,8 +305,9 @@
 % ~\textbf{T}sing\textbf{hu}a \textbf{Thesis}，并在
 % ~\href{http://thuthesis.sourceforge.net}{sourceforge.net} 上安了家，随后在
 % ~\href{http://gforge.oss.org.cn/projects/thuthesis}{gforge.oss.org.cn} 建立了镜
-% 像，近来准备将其迁移到~\href{http://thuthesis.googlecode.com}{code.google.com}。由于个人精力有限
-% ，不能保证三者完全同步。现在~\thuthesis{} 也提交到了
+% 像，近来准备将其迁移到~\href{http://thuthesis.googlecode.com}{code.google.com}。
+%
+% 由于个人精力有限，不能保证三者完全同步。现在~\thuthesis{} 也提交到了%
 % ~\href{http://www.ctan.org/macros/latex/contrib/thuthesis}{CTAN} 上，更新一下你
 % 的~\TeX{} 就能得到最新的~\thuthesis。
 %
@@ -317,18 +318,19 @@
 % ，模板进入了一个“高速”发展的阶段，其间增加了许多有用的功能，同时发现并排除了
 % 不少问题，使得~\thuthesis{} 日臻完善。现在的~\thuthesis{} 不仅在结构上跟报盘版
 % 相去甚远，而且在功能上也更加丰富，最重要的是~\thuthesis{} 符合学校的最新规范。
-% 但有句话我是一定要讲出来的：{\hei 请教务处和研究生院把论文格式要求写清楚，不要
-%   含糊其词，更要写规范，不能想当然。排版是一门技术更是一门艺术，有很多约定需要
-%   遵循。不要让清华大学的学位论文因为格式而贻笑大方！}
+%
+% 2007 年~11 月~8 日，研究生院同意将~\thuthesis{} 作为官方模板。至此，教务处和研
+% 究生院都认可了~\thuthesis，所有的毕业生都可以放心地使用~\thuthesis{} 来准备论
+% 文，而不必像以前那样犹豫不决，提心吊胆。
 %
 % 在整理这个模板的过程中，我得到不少同学热情的支持，在此不一一列出，感谢他们提供
-% 的每一份帮助！让人感到欣喜的是很多同学都开始为~\thuthesis{} 添砖加瓦，目前包括
-% ~edyfox~的~Makefile，Truel 的~msmake.cmd，oseen~将其移植到~utf-8 并制作了
+% 的每一份帮助！让人感到欣喜的是很多同学都开始为~\thuthesis{} 添砖加瓦，目前包括%
+% ~edyfox~的~Makefile，Truel 的~msmake.cmd，oseen~将其移植到~UTF-8 并制作了%
 % ~Debian package，EricH 制作了~Gentoo ebuild。
 %
-% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者直接给
-% 我写信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现在的这个版
-% 本基本上满足了学校的大部分要求，但难免还存在不足之处，欢迎大家积极反馈。
+% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者给邮件
+% 列表（见后）写信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现
+% 在的这个版本基本上满足了学校的要求，但难免还存在不足之处，欢迎大家积极反馈。
 %
 % 最后补充一点：{\color{blue}\fs 模板的作用在于减轻论文写作过程中格式调整的时间，
 %   其前提就是遵守模板的规定，否则即使使用了~\thuthesis{} 也难以保证输出的论文符
@@ -379,7 +381,7 @@
 %   \end{tabular}
 % \end{center}
 %
-% 需要说明几点：1) thuthesis.cls 和~thuthesis.cfg 可以由~thuthesis.ins 和
+% 需要说明几点：1) thuthesis.cls 和~thuthesis.cfg 可以由~thuthesis.ins 和%
 % ~thuthesis.dtx 生成，但为了降低新手用户的使用难度，特将~cls 和~cfg 也一起发布。
 % 2) 学习一个新东西最好的办法就是读它的文档。请时刻记住~RTFM\footnote{Read The
 %   Fucking Manual} 和~STFW\footnote{Search The Fucking Web}，不要滥用你提问的权
@@ -398,23 +400,23 @@
 %   ifthen & clac & ifpdf  & CJK & CJKnumb & \textbf{CJKpunct}   \\
 %   array & booktabs & longtable  &  amsmath & amssymb & ntheorem   \\
 %   indentfirst & paralist & txfonts & natbib & hyperref & hypernat \\
-%   graphicx & \textbf{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &  \textbf{caption}\footnote{版本要求：$\geq$2006/03/21 v3.0j} 
-%   & \textbf{thubib.bst} & &\\\hline
+%   graphicx & \textbf{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &  
+%   \textbf{caption}\footnote{版本要求：$\geq$2006/03/21 v3.0j} & 
+%   \textbf{thubib.bst} & &\\\hline
 % \end{tabular}
 % \end{minipage}
 % \end{center}
 %
-% 不要害怕，绝大多数包你的~\TeX{} 系统已经都有了，如果没有请到
-% ~\url{www.ctan.org} 去下载。需要个别指出的是：\pkg{subfig} 和
-% ~\pkg{caption} 最好使用指定的版本。中文标点优化的~\pkg{CJKpunct}~可能需要到
-% ~\url{www.ctex.org}~去下载，如果你用~C\TeX{} 中文套装的话，那么~\pkg{CJKpunct} 也已经
-% 有了。参考文献样式~thubib.bst~为模板自带，不必操心。
+% 不要害怕，绝大多数包你的~\TeX{} 系统已经都有了，如果没有请到~\url{www.ctan.org} 
+% 去下载。中文标点优化的~\pkg{CJKpunct}~可能需要到~\url{www.ctex.org} 去下载，如
+% 果你用~C\TeX{} 中文套装的话，那么~\pkg{CJKpunct} 也已经有了。参考文献
+% 样式~thubib.bst 为模板自带，不必操心。
 %
 %
 % \subsection{开始安装}
 % \label{sec:install}
-% 模板解压缩后生成文件夹~thuthesis-VERSION\footnote{VERSION 为版本号。}，其中包括
-% ：模板源文件（thuthesis.ins 和~thuthesis.dtx），参考文献样式~thubib.bst，示例文
+% 模板解压缩后生成文件夹~thuthesis-VERSION\footnote{VERSION 为版本号。}，其中包
+% 括：模板源文件（thuthesis.ins 和~thuthesis.dtx），参考文献样式~thubib.bst，示例文
 % 档（main.tex，shuji.tex，thutils.sty\footnote{我把所有可能用到但不一定用到的包
 %   以及一些命令定义都放在这里面，以免主~thuthesis.cls 过分臃肿。}，
 % \linebreak[4]data/ 和~figures/ 和~ref/）。在使用之前需要先生成模板文件和配置文
@@ -709,8 +711,8 @@
 %   \href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial 字体}。
 %
 % \item[arialtoc]
-%  目录项中的英文是否用~arial 字体（本科默认打开）。本选项和下一个
-%  ~\textsl{arialtitle} 都不用用户操心，模板都自动设置好了。
+%  目录项中的英文是否用~arial 字体。本选项和下一个~\textsl{arialtitle} 都不用用户
+%  操心，模板都自动设置好了。
 %
 % \item[arialtitle]
 %  章节标题中英文是否用~arial 字体（默认打开）。
@@ -1175,7 +1177,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2007/10/09 3.1 Tsinghua University Thesis Template]
+%<cls|cfg>[2007/11/08 4.0 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1192,7 +1194,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{3.1}
+\def\version{4.0}
 \newif\ifthu@bachelor\thu@bachelorfalse
 \newif\ifthu@master\thu@masterfalse
 \newif\ifthu@doctor\thu@doctorfalse
@@ -2192,12 +2194,13 @@
 % \changes{v2.5.1}{2006/05/23}{减小目录项中的导引小点跟页码之间的留白。}
 % \changes{v2.5.2}{2006/05/29}{用~\cs{thu@chapter*} 改写目录命令。}
 % \changes{v3.0}{2007/05/12}{缩小目录中标题与页码之间“点”之间的距离。}
+% \changes{v4.0}{2007/11/08}{本科研究生目录字号行距都不同。}
 % \begin{macro}{\tableofcontents}
 %   目录生成命令。
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
   \thu@chapter*[]{\contentsname}
-  \wuhao[1.8]\@starttoc{toc}\normalsize}
+  \ifthu@bachelor\wuhao[1.8]\else\xiaosi[1.5]\fi\@starttoc{toc}\normalsize}
 \ifthu@arialtoc
   \def\thu@toc@font{\sffamily}
 \fi
@@ -2400,6 +2403,7 @@
 % \changes{v2.5.1}{2006/05/25}{硕士封面的冒号前居然有点小距离！}
 % \changes{v3.1}{2007/10/09}{去掉配置文件中的~\cs{hfill}。}
 % \changes{v3.1}{2007/10/09}{“内部”密级前面要五角星了。}
+% \changes{v4.0}{2007/11/08}{“内部”密级前面终究还是不要五角星了。}
 %    \begin{macrocode}
 %<*cfg>
 \def\thu@ckeywords@separator{
@@ -2423,7 +2427,8 @@
 \def\thu@bachelor@authortitle{姓名}
 \def\thu@secretlevel@inner{内部}
 \def\thu@secret@title{%
-  \thu@secretlevel★ \hspace{2em}\thu@secretyear\hspace{1em}年}
+  \thu@secretlevel\ifx\thu@secretlevel\thu@secretlevel@inner\else★\fi%
+  \hspace{2em}\thu@secretyear\hspace{1em}年}
 \def\thu@apply{（申请清华大学\thu@cdegree学位论文）}
 \def\thu@cdepartmenttitle{培养单位}
 \def\thu@cmajortitle{学科}
@@ -2440,7 +2445,7 @@
        \else\CJKdigits{\the\year}年\CJKnumber{\the\month}月\fi}
 \edate{\ifcase \month \or January\or February\or March\or April\or May%
        \or June\or July \or August\or September\or October\or November
-       \or December\fi,\ \ \the\year}
+       \or December\fi\unskip,\ \ \the\year}
 \newcommand{\thu@authtitle}{关于学位论文使用授权的说明}
 \newcommand{\thu@authorization}{%
 \ifthu@bachelor
@@ -2572,28 +2577,27 @@
 % 博士论文英文封面部分。
 %    \begin{macrocode}
 \newcommand{\thu@doctor@engcover}{%
-    \begin{center}
+  \begin{center}
     \vspace*{0.2cm}
     \parbox[t][5.2cm][t]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.5}
       \begin{center}
-        \erhao[1.1] \textbf{\textsf{\thu@etitle}}
+        \erhao[1.1]\bfseries\sffamily\thu@etitle
       \end{center}}
     \parbox[t][5.8cm][t]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.3}
       \begin{center}
         \sanhao Dissertation Submitted to\\
-         \textbf{Tsinghua University}\\
-         in partial fulfillment of the requirement\\
-         for the degree of\\
-         \textbf{\textsf{\thu@edegree}}
-     \end{center}}
+        {\bfseries Tsinghua University}\\
+        in partial fulfillment of the requirement\\
+        for the degree of\\
+        {\bfseries\sffamily\thu@edegree}
+      \end{center}}
     \parbox[t][3.6cm][b]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.3}
-      \begin{center}{
-        \sanhao \textsf{by\\[3bp]
-        \textbf{\thu@eauthor\\
-        (~\thu@emajor~)}}}
+      \begin{center}
+        \sanhao\sffamily by\\[3bp]
+        \bfseries\thu@eauthor\\(~\thu@emajor~)
       \end{center}}
     \par\vspace{0.9cm}
     \parbox[t][2.1cm][t]{\paperwidth-7.2cm}{
@@ -2601,42 +2605,40 @@
       \begin{tabular}{rl}
         Dissertation Supervisor : & \thu@esupervisor\\
         \ifx\thu@eassosupervisor\@empty
-         \else Associate Supervisor : & \thu@eassosupervisor\\
-        \fi
+          \else Associate Supervisor : & \thu@eassosupervisor\\\fi
       \end{tabular}}
     \parbox[t][2cm][b]{\paperwidth-7.2cm}{
     \begin{center}
-      \sanhao \textbf{\textsf{\thu@edate}}
+      \sanhao\bfseries\sffamily\thu@edate
     \end{center}}
-    \end{center}}
+  \end{center}}
 %    \end{macrocode}
 % \end{macro}
-%
+% \changes{4.0}{2007/11/08}{研究生的授权部分调整了一下，不知道老师为什么总爱修改
+% 那些无关紧要的格式，郁闷。感谢~PMHT@newsmth 的认真比对。}
 % \begin{macro}{\thu@authorization@mk}
 % 封面中论文授权部分。
 %    \begin{macrocode}
 \newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \newcommand{\thu@authorization@mk}{%
-    \vspace*{-0.6cm}
-    \begin{center}
-      \erhao\hei\thu@authtitle
-    \end{center}
-      \vskip\baselineskip
-      \par\thu@authorization\par
-      \textbf{\thu@authorizationaddon}\par
-      \vskip1.9cm
-      \ifthu@bachelor
-        \noindent\thu@authorsig\thu@underline\relax%
-        \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax
-      \else
-        \begingroup
-        \noindent
-        \hspace*{1.5cm}\thu@authorsig\thu@underline[7em]\relax\hfill%
+  \ifthu@bachelor\vspace*{-0.6cm}\else\vspace*{-0.1cm}\fi % shit code!
+  \begin{center}\erhao\hei\thu@authtitle\end{center}
+  \ifthu@bachelor\vskip\baselineskip\else\vskip18pt\sihao[2.03]\fi\par
+  \thu@authorization\par
+  \textbf{\thu@authorizationaddon}\par
+  \ifthu@bachelor\vskip2.54cm\else\vskip1.9cm\fi
+  \ifthu@bachelor
+    \noindent\thu@authorsig\thu@underline\relax%
+    \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax
+  \else
+    \begingroup
+      \parindent0pt\xiaosi
+      \hspace*{1.5cm}\thu@authorsig\thu@underline[7em]\relax\hfill%
                      \thu@teachersig\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]
-        \hspace*{1.5cm}\thu@frontdate\thu@underline[7em]\relax\hfill%
+      \hspace*{1.5cm}\thu@frontdate\thu@underline[7em]\relax\hfill%
                      \thu@frontdate\thu@underline[7em]\relax\hspace*{1cm}
-        \endgroup
-      \fi}
+    \endgroup
+  \fi}
 %    \end{macrocode}
 % \end{macro}
 %

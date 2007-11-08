@@ -23,7 +23,7 @@ BIBFILE=ref/refs.bib
 SHUJIMAIN=shuji
 SHUJICONTENTS=$(SHUJIMAIN).tex
 
-.PHONY: all clean distclean all thesis shuji doc cls cfg dvi ps pdf
+.PHONY: all clean distclean dist all thesis shuji doc cls cfg dvi ps pdf
 
 all: cls doc thesis shuji
 
