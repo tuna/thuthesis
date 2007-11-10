@@ -776,9 +776,13 @@ FUNCTION {book}
   if$
   format.edition output
   format.address.publisher output
-  format.date "year" output.check
-  new.sentence
-  format.pages output
+  pages empty$
+    { format.date "year" output.check 
+      % new.sentence
+      % format.pages output
+    }
+    { format.date ":" * format.pages * output }
+  if$  
   fin.entry
 }
 
@@ -847,8 +851,8 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
-  % format.date ":" * format.pages * output
-  format.date "." * format.pages * output
+  format.date ":" * format.pages * output
+  % format.date "." * format.pages * output
   fin.entry
 }
 
@@ -869,7 +873,8 @@ FUNCTION {incollection}
       %publisher "publisher" output.check
       %format.edition output
       % format.date "year" output.check
-      format.date ". " * format.pages * output
+      % format.date ". " * format.pages * output
+      format.date ":" * format.pages * output
     }
     { format.incoll.inproc.crossref output.nonnull
       format.chapter.pages output
