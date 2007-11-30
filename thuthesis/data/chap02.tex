@@ -21,9 +21,10 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 \subsection{绘图}
 \label{sec:draw}
 
-本模板不再预先装载任何绘图包（如~\textsf{pstricks，pgf} 等），完全由你自己来决定。个人
-觉得~\textsf{pgf} 不错，不依赖于~ps。此外还有很多针对~\LaTeX{}  的~GUI 作图工具，
-如~XFig(jFig)，WinFig，Tpx，Ipe，Dia，Inkscape，LaTeXPiX，jPicEdt，jaxdraw 等等。
+本模板不再预先装载任何绘图包（如~\textsf{pstricks，pgf} 等），完全由你自己来决定
+。个人觉得~\textsf{pgf} 不错，不依赖于~Postscript。此外还有很多针对~\LaTeX{} 的
+~GUI 作图工具，如~XFig(jFig)，WinFig，Tpx，Ipe，Dia，Inkscape，LaTeXPiX，
+jPicEdt，jaxdraw 等等。
 
 \subsection{插图}
 \label{sec:graphs}
@@ -65,10 +66,10 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
   \centering%
   \subfloat[第一个小图形]{%
     \label{fig:subfig1}
-    \includegraphics{hello.eps}}%
+    \includegraphics[height=2cm]{thu-fig-logo.eps}}\hspace{4em}%
   \subfloat[第二个小图形。如果标题很长的话，它会自动换行，这个~caption 就是这样的例子]{%
     \label{fig:subfig2}
-    \includegraphics{hello.eps}}
+    \includegraphics[height=2cm]{thu-text-logo.eps}}
   \caption{包含子图形的大图形}
   \label{fig:big1}
 \end{figure}
@@ -91,13 +92,15 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 
 如果要把编号的两个图形并排，那么小页就非常有用了：
 \begin{figure}
-\begin{minipage}{0.45\textwidth}
-  \includegraphics{hello.eps}
+\begin{minipage}{0.48\textwidth}
+  \centering
+  \includegraphics[height=2cm]{thu-whole-logo.eps}
   \caption{并排第一个图}
   \label{fig:parallel1}
 \end{minipage}\hfill
-\begin{minipage}{0.45\textwidth}
-    \includegraphics{hello.eps}
+\begin{minipage}{0.48\textwidth}
+  \centering
+  \includegraphics[height=2cm]{thu-whole-logo.eps}
   \caption{并排第二个图}
   \label{fig:parallel2}
 \end{minipage}
