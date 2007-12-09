@@ -443,19 +443,18 @@
 %\subsubsection{dvi$\rightarrow$ps$\rightarrow$pdf}
 %\label{sec:dvipspdf}
 %
-% 很多用户对~\LaTeX{} 命令执行的次数不太清楚，一个基本的原则就是如果有引用，如
-% ~ref 和~cite，那么至少需要执行~3 次。第一次发现引用，后两次解决引用。下面给出
-% 生成示例文档的详细过程（\# 开头的行为注释），首先来看经典的
-% ~\texttt{dvi$\rightarrow$ps$\rightarrow$pdf} 方式：
+% 很多用户对~\LaTeX{} 命令执行的次数不太清楚，一个基本的原则在没有重复标签和丢失
+% 标签的前提下运行~\texttt{latex} 命令直到不出现警告为止。下面给出生成示例文档的
+% 详细过程（\# 开头的行为注释），首先来看经典的~\texttt{dvi$\rightarrow$ps$\rightarrow$pdf} 方式：
 % \begin{shell}
 % # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
 % $ latex main
 %
 % # 2. 编译参考文件源文件，生成 bbl 文件
 % $ bibtex main
-%
-% # 3. 下面两次解决引用
 % $ latex main
+%
+% # 3. 下面解决引用
 % $ gbk2uni main # 防止书签乱码
 % $ latex main   # 此时生成完整的 dvi 文件
 %
@@ -491,15 +490,15 @@
 %
 % # 2. 编译参考文件源文件，生成 bbl 文件
 % $ bibtex main
-%
-% # 3. 下面两次解决引用
 % $ pdflatex main
+%
+% # 3. 下面解决引用
 % $ gbk2uni main    # 防止书签乱码
 % $ pdflatex main   # 此时生成完整的 pdf 文件
 % \end{shell}
 %
 % 需要注意的是~pdflatex 不能处理常见的~eps 图形，如果要用需要先将~eps 转化成~pdf。
-% 但增加了对~png，jpg~等标量图形的支持，比较方便。另外需要注意的是很多同学使用
+% 但增加了对~png，jpg 等标量图形的支持，比较方便。另外需要注意的是很多同学使用
 % 默认的示例文件写论文，但用~pdflatex 编译，这时务必将~\textbf{dvips} 和 ~\textbf{dvipdfm} 选项去掉。
 %
 % \subsubsection{自动化过程}
@@ -1083,7 +1082,7 @@
 % \DescribeEnv{itemize}
 % \DescribeEnv{enumerate}
 % \DescribeEnv{description}
-% 为了适合中文喜欢，模板将这三个常用的列表环境用~\pkg{paralist} 对应的压缩环境替换。一
+% 为了适合中文习惯，模板将这三个常用的列表环境用~\pkg{paralist} 对应的压缩环境替换。一
 % 方面满足了多余空间的清楚，另一方面可以自己指定标签的样式和符号。细节请参看
 % ~\pkg{paralist} 文档，此处不再赘述。
 %
