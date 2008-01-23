@@ -7,7 +7,7 @@
 %
 % \iffalse meta-comment
 %
-% Copyright (C) 2005, 2006, 2007 by Xue Ruini <xueruini@gmail.com>
+% Copyright (C) 2005, 2006, 2007, 2008 by Xue Ruini <xueruini@gmail.com>
 %
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3a
@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2387}
+% \CheckSum{2395}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1824,6 +1824,7 @@
 % 过他们，就是不听。}
 % 本科的公式编号太变态了，我不得不修改~\pkg{amsmath} 中很深的一个命令~\cs{tagform@}。
 %\changes{v2.6.2}{2006/06/19}{根据不同论文格式显示不同公式编号，并自动加入索引。}
+%\changes{v4.2}{2008/01/23}{\cs{eqref} 加括号。}
 % 同时为了让~\pkg{amsmath} 的~\cs{tag*} 命令得到正确的格式，我们必须修改这些代
 % 码。\cs{make@df@tag} 是定义~\cs{tag*} 和~\cs{tag} 内部命令的。
 % \cs{make@df@tag@@} 处理~\cs{tag*}，我们就改它！
@@ -1837,7 +1838,7 @@
 \def\thu@make@df@tag@@#1{%
    \gdef\df@tag{\thu@maketag{#1}\def\@currentlabel{#1}}}
  % redefinitation of tagform broken eqref!
-\renewcommand{\eqref}[1]{\textup{\ref{#1}}}
+\renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
 \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
 \ifthu@bachelor
   \def\thu@maketag#1{\maketag@@@{%
@@ -2574,6 +2575,7 @@
 %
 % \begin{macro}{\thu@doctor@engcover}
 % 博士论文英文封面部分。
+%\changes{v4.2}{2008/01/23}{博士英文封面补充联合导师。}
 %    \begin{macrocode}
 \newcommand{\thu@doctor@engcover}{%
   \begin{center}
@@ -2605,6 +2607,8 @@
         Dissertation Supervisor : & \thu@esupervisor\\
         \ifx\thu@eassosupervisor\@empty
           \else Associate Supervisor : & \thu@eassosupervisor\\\fi
+        \ifx\thu@ecosupervisor\@empty
+          \else Cooperate Supervisor : & \thu@ecosupervisor\\\fi
       \end{tabular}}
     \parbox[t][2cm][b]{\paperwidth-7.2cm}{
     \begin{center}
