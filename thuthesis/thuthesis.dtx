@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2007/11/30 4.1 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2008/03/07 4.2 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -1176,7 +1176,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2007/11/30 4.1 Tsinghua University Thesis Template]
+%<cls|cfg>[2008/03/07 4.2 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1193,7 +1193,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{4.1}
+\def\version{4.2}
 \newif\ifthu@bachelor\thu@bachelorfalse
 \newif\ifthu@master\thu@masterfalse
 \newif\ifthu@doctor\thu@doctorfalse
@@ -1875,21 +1875,18 @@
 %
 % “定理”字样使用黑体，正文使用宋体，冒号隔开
 % \changes{v2.6.2}{2006/06/17}{增加问题和猜想两个数学环境。}
+% \changes{v4.2}{2008/03/07}{调整证明环境的编号和结尾的方块。}
 %    \begin{macrocode}
 \theorembodyfont{\song\rmfamily}
 \theoremheaderfont{\hei\rmfamily}
+%</cls>
+%<*cfg>
  % \theoremsymbol{\ensuremath{\blacksquare}}
 \theoremsymbol{\ensuremath{\square}}
-\theoremstyle{nonumberplain}
-%</cls>
-%<*cfg>
-\newtheorem{proof}{证明}
-%</cfg>
-%<*cls>
+ %\theoremstyle{nonumberplain}
+\newtheorem*{proof}{证明}
 \theoremstyle{plain}
 \theoremsymbol{}
-%</cls>
-%<*cfg>
 \theoremseparator{：}
 \newtheorem{assumption}{假设}[chapter]
 \newtheorem{definition}{定义}[chapter]
