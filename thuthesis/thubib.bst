@@ -286,7 +286,7 @@ FUNCTION {format.names}
       %"{ff }{ll}"
       "{ll }{f{~}}"    
       format.name$
-      %remove.dots
+      remove.dots
       %bibinfo bibinfo.check
       't :=
       nameptr #1 >
@@ -893,7 +893,7 @@ FUNCTION {inproceedings}
   new.block
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
-      %format.bvolume output
+      format.bvolume output
       %format.number.series output
       %format.pages output
       address empty$
