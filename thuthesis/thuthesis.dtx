@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2405}
+% \CheckSum{2404}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1941,6 +1941,7 @@
 % \changes{v2.5.1}{2006/05/23}{增加~\pkg{subfigure} 和~\pkg{subtable} 的~caption 配置。}
 % \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
 % \changes{v2.5.3}{2006/06/07}{不管~caption 出现在什么位置，\cs{aboveskip} 总是出现在标题和浮动体之间的距离。}
+% \changes{v4.3}{2008/03/11}{子图引用时加括号。}
 %    \begin{macrocode}
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
@@ -1950,8 +1951,8 @@
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
 \captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=3bp} 
 \captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=-2bp}
-\captionsetup[subfloat]{font=thu,captionskip=6bp,nearskip=6bp,farskip=0bp,topadjust=0bp}
- %\renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
+\captionsetup[subfloat]{labelformat=simple,font=thu,captionskip=6bp,nearskip=6bp,farskip=0bp,topadjust=0bp}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
  % \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
 % 我们采用~\pkg{longtable} 来处理跨页的表格。默认有个不足：插图索引部分缺少图
