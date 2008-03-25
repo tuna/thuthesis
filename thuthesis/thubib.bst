@@ -913,7 +913,7 @@ FUNCTION {inproceedings}
     }
       if$
       new.block
-      pages output
+      format.pages output
       %remove.dots
     }
     { format.incoll.inproc.crossref output.nonnull
