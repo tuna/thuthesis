@@ -240,20 +240,25 @@
 表~\ref{tab:performance} 就是~\textsf{longtable} 的简单示例。
 \begin{longtable}[c]{c*{6}{r}}
 \caption{实验数据}\label{tab:performance}\\
-\endfirsthead
-\multicolumn{7}{c}{续表~\thetable\hskip1em 实验数据}\\
-\hline
-\endhead
-\hline
-\multicolumn{7}{r}{续下页}
-\endfoot
-\endlastfoot
 \toprule[1.5pt]
  测试程序 & \multicolumn{1}{c}{正常运行} & \multicolumn{1}{c}{同步} & \multicolumn{1}{c}{检查点} & \multicolumn{1}{c}{卷回恢复}
 & \multicolumn{1}{c}{进程迁移} & \multicolumn{1}{c}{检查点} \\
 & \multicolumn{1}{c}{时间~(s)}& \multicolumn{1}{c}{时间~(s)}&
 \multicolumn{1}{c}{时间~(s)}& \multicolumn{1}{c}{时间~(s)}& \multicolumn{1}{c}{
   时间~(s)}&  文件（KB）\\\midrule[1pt]
+\endfirsthead
+\multicolumn{7}{c}{续表~\thetable\hskip1em 实验数据}\\
+\toprule[1.5pt]
+ 测试程序 & \multicolumn{1}{c}{正常运行} & \multicolumn{1}{c}{同步} & \multicolumn{1}{c}{检查点} & \multicolumn{1}{c}{卷回恢复}
+& \multicolumn{1}{c}{进程迁移} & \multicolumn{1}{c}{检查点} \\
+& \multicolumn{1}{c}{时间~(s)}& \multicolumn{1}{c}{时间~(s)}&
+\multicolumn{1}{c}{时间~(s)}& \multicolumn{1}{c}{时间~(s)}& \multicolumn{1}{c}{
+  时间~(s)}&  文件（KB）\\\midrule[1pt]
+\endhead
+\hline
+\multicolumn{7}{r}{续下页}
+\endfoot
+\endlastfoot
 CG.A.2 & 23.05 & 0.002 & 0.116 & 0.035 & 0.589 & 32491 \\
 CG.A.4 & 15.06 & 0.003 & 0.067 & 0.021 & 0.351 & 18211 \\
 CG.A.8 & 13.38 & 0.004 & 0.072 & 0.023 & 0.210 & 9890 \\
