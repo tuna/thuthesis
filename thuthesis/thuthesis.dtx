@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2407}
+% \CheckSum{2410}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1388,6 +1388,13 @@
   plainpages=false,
   pdfpagelabels,
   pdfborder=0 0 0}
+%    \end{macrocode}
+% dvips 模式下网址断字有问题，加入这个包解决之。
+% \changes{v4.4}{2008/05/12}{修复网址断字。}
+%    \begin{macrocode}
+\ifthu@dvips
+  \RequirePackage{breakurl}
+\fi
 %    \end{macrocode}
 %  设置~url 样式，与上下文一致
 %    \begin{macrocode}
