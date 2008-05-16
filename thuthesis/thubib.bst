@@ -851,7 +851,10 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
-  format.date ":" * format.pages * output
+  pages empty$
+    { format.date output }
+    { format.date ":" * format.pages * output }
+  if$
   % format.date "." * format.pages * output
   fin.entry
 }
