@@ -3190,7 +3190,7 @@
 % 我们这里要判断~\pkg{everysel} 是不是装载了。}
 %    \begin{macrocode}
 \def\thu@fixselectfont{%
-  \ifx\@EverySelectfont@EveryHook\relax\else% everysel package is loaded
+  \ifx\@EverySelectfont@EveryHook\@undefined\else% everysel package is loaded
     \DeclareRobustCommand{\selectfont}{%
        \ifx\f@linespread\baselinestretch \else
           \set@fontsize\baselinestretch\f@size\f@baselineskip \fi
