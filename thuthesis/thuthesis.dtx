@@ -399,14 +399,14 @@
 %   ifthen & clac & ifpdf  & CJK & CJKnumb & \textbf{CJKpunct}   \\
 %   array & booktabs & longtable  &  amsmath & amssymb & ntheorem   \\
 %   indentfirst & paralist & txfonts & natbib & hyperref & hypernat \\
-%   graphicx & \textbf{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &  
-%   \textbf{caption}\footnote{版本要求：$\geq$2006/03/21 v3.0j} & 
+%   graphicx & \textbf{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &
+%   \textbf{caption}\footnote{版本要求：$\geq$2006/03/21 v3.0j} &
 %   \textbf{thubib.bst} & &\\\hline
 % \end{tabular}
 % \end{minipage}
 % \end{center}
 %
-% 不要害怕，绝大多数包你的~\TeX{} 系统已经都有了，如果没有请到~\url{www.ctan.org} 
+% 不要害怕，绝大多数包你的~\TeX{} 系统已经都有了，如果没有请到~\url{www.ctan.org}
 % 去下载。中文标点优化的~\pkg{CJKpunct}~可能需要到~\url{www.ctex.org} 去下载，如
 % 果你用~C\TeX{} 中文套装的话，那么~\pkg{CJKpunct} 也已经有了。参考文献
 % 样式~thubib.bst 为模板自带，不必操心。
@@ -962,8 +962,8 @@
 % 关键词用英文逗号分割写入相应的命令中，模板会解析各关键词并生成符合不同论文格式
 % 要求的关键词格式。
 % \begin{example}
-% \ckeywords{关键词, 填在这里}  
-% \ekeywords{keywords, come here}
+% \ckeywords{关键词 1, 关键词 2}
+% \ekeywords{keyword 1, key word 2}
 % \end{example}
 %
 % \subsubsection{其它部分}
@@ -1787,7 +1787,7 @@
 %    \begin{macrocode}
 \renewcommand{\thefootnote}{\thu@textcircled{footnote}}
 \renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
-\def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@} 
+\def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@}
 \let\thu@footnotesize\footnotesize
 \renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.5]}
 \def\@makefnmark{\textsuperscript{\hbox{\normalfont\@thefnmark}}}
@@ -1837,7 +1837,7 @@
 % \cs{make@df@tag@@} 处理~\cs{tag*}，我们就改它！
 % \changes{v4.4}{2008/05/30}{变态的本科论文终于去掉了“公式”二字。}
 %
-% 解决证明环境中方块乱跑的问题。
+% 解决证明环境中方块乱跑的问题。 
 %    \begin{macrocode}
 \gdef\@endtrivlist#1{%  % from \endtrivlist
   \if@inlabel \indent\fi
@@ -1932,7 +1932,7 @@
 \DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
 \DeclareCaptionFont{thu}{\dawu[1.5]}
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
-\captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=3bp} 
+\captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=3bp}
 \captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=-2bp}
 \captionsetup[subfloat]{labelformat=simple,font=thu,captionskip=6bp,nearskip=6bp,farskip=0bp,topadjust=0bp}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
@@ -2120,9 +2120,11 @@
 % 一级节标题，例如：2.1  实验装置与实验方法
 % 节标题序号与标题名之间空一个汉字符（下同）。
 % 采用黑体四号（14pt）字居左书写，行距为固定值~20 磅，段前空~24 磅，段后空~6 磅。
+% \changes{v4.4}{2006/06/04}{调整段前距为~-20bp 而不是原来的~-24bp。本科的混帐例
+% 子！}
 %    \begin{macrocode}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                     {-24bp \@plus -1ex \@minus -.2ex}%
+                     {\ifthu@bachelor -20bp\else -24bp\fi\@plus -1ex \@minus -.2ex}%
                      {6bp \@plus .2ex}%
                      {\hei\csname thu@title@font\endcsname\sihao[1.429]}}
 %    \end{macrocode}
@@ -2130,21 +2132,24 @@
 %
 % \begin{macro}{\subsection}
 % 二级节标题，例如：2.1.1  实验装置
-% 采用黑体~13pt 字居左书写，行距为固定值~20 磅，段前空~12 磅，段后空~6 磅。
+% 采用黑体~13pt~(~本科生是14pt~)~字居左书写，行距为固定值~20 磅，段前空~12 磅，段后空~6 磅。
+% \changes{v4.4}{2006/06/04}{修改本科生模板的二级节标题为小四而不是半小四。}
+% \changes{v4.4}{2006/06/04}{调整段前距为~-12bp 而不是原来的~-16bp。}
 %    \begin{macrocode}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                        {-16bp \@plus -1ex \@minus -.2ex}%
+                        {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
                         {6bp \@plus .2ex}%
-                        {\hei\csname thu@title@font\endcsname\banxiaosi[1.538]}}
+                        {\hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi}}
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\subsubsection}
 % 三级节标题，例如：2.1.2.1  归纳法
 % 采用黑体小四号（12pt）字居左书写，行距为固定值~20 磅，段前空~12 磅，段后空~6 磅。
+% \changes{v4.4}{2006/06/04}{调整段前距为~-12bp 而不是原来的~-16bp。}
 %    \begin{macrocode}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                           {-16bp \@plus -1ex \@minus -.2ex}%
+                           {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
                            {6bp \@plus .2ex}%
                            {\hei\csname thu@title@font\endcsname\xiaosi[1.667]}}
 %</cls>
@@ -2178,12 +2183,14 @@
 % \changes{v2.5.2}{2006/05/29}{用~\cs{thu@chapter*} 改写目录命令。}
 % \changes{v3.0}{2007/05/12}{缩小目录中标题与页码之间“点”之间的距离。}
 % \changes{v4.0}{2007/11/08}{本科研究生目录字号行距都不同。}
+% \changes{v4.4}{2008/06/04}{本科生目录字号改回\cs{xiaosi}\oarg{1.8}。}
+% \changes{v4.4}{2008/06/04}{本科生目录缩进要求不同。}
 % \begin{macro}{\tableofcontents}
 %   目录生成命令。
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
   \thu@chapter*[]{\contentsname}
-  \ifthu@bachelor\wuhao[1.8]\else\xiaosi[1.5]\fi\@starttoc{toc}\normalsize}
+  \ifthu@bachelor\xiaosi[1.8]\else\xiaosi[1.5]\fi\@starttoc{toc}\normalsize}
 \ifthu@arialtoc
   \def\thu@toc@font{\sffamily}
 \fi
@@ -2221,9 +2228,10 @@
       \penalty\@highpenalty
     \endgroup
   \fi}
-\renewcommand*\l@section{\@dottedtocline{1}{1.2em}{2.1em}}
-\renewcommand*\l@subsection{\@dottedtocline{2}{2em}{3em}}
-\renewcommand*\l@subsubsection{\@dottedtocline{3}{3.5em}{3.8em}}
+\renewcommand*\l@section{\@dottedtocline{1}{\ifthu@bachelor 1.0em \else 1.2em \fi}{2.1em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{\ifthu@bachelor 1.6em \else 2em \fi}{3em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{\ifthu@bachelor 2.4em \else 3.5em \fi}{3.8em}}
+
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2233,7 +2241,7 @@
 % \label{sec:cover}
 % \begin{macro}{\thu@define@term}
 % 方便的定义封面的一些替换命令。
-% \changes{v2.6.2}{2006/06/18}{引入~\cs{thu@define@term} 定义封面命令。} 
+% \changes{v2.6.2}{2006/06/18}{引入~\cs{thu@define@term} 定义封面命令。}
 % \changes{v3.1}{2006/06/16}{重新定义摘要为环境，long 选项不需要了。}
 %    \begin{macrocode}
 %<*cls>
@@ -2340,7 +2348,7 @@
 \long\@xp\def\@xp\push@begins\@xp#\@xp1\@xp\begin\@xp#\@xp2\@xp{%
   \push@begins{#1}\begin{#2}}
 \long\@xp\def\@xp\addto@envbody\@xp#\@xp1\@xp{%
-  \addto@envbody{#1}} 
+  \addto@envbody{#1}}
 %    \end{macrocode}
 %
 % 使用~\cs{collect@body} 来构建摘要环境。
@@ -2390,12 +2398,12 @@
 %    \begin{macrocode}
 %<*cfg>
 \def\thu@ckeywords@separator{
-  \ifthu@bachelor，%todo: 
+  \ifthu@bachelor，%todo:
   \else
     \ifthu@master\hspace{2em}\else；\fi
   \fi}
 \def\thu@ekeywords@separator{
-  \ifthu@bachelor,%todo: 
+  \ifthu@bachelor,%todo:
   \else
     \ifthu@master\hspace{2em}\else;\fi
   \fi}
@@ -2840,8 +2848,8 @@
 % \subsubsection{索引部分}
 % \label{sec:threeindex}
 % \changes{v2.5}{2006/05/18}{增加插图、表格和公式索引。}
-% \changes{v2.5}{2006/05/19}{为了让索引中能出现“图 xxx”，我不得不修改~\LaTeX 
-%	内部命令~\cs{@caption}。}
+% \changes{v2.5}{2006/05/19}{为了让索引中能出现“图 xxx”，我不得不修改~\LaTeX
+%   内部命令~\cs{@caption}。}
 % \changes{v2.6.4}{2006/10/23}{增加~\cs{listoffigures*}，\cs{listoftables*}。}
 % \begin{macro}{\listoffigures}
 % \begin{macro}{\listoffigures*}
