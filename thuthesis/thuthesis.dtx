@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2359}
+% \CheckSum{0}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1837,7 +1837,7 @@
 % \cs{make@df@tag@@} 处理~\cs{tag*}，我们就改它！
 % \changes{v4.4}{2008/05/30}{变态的本科论文终于去掉了“公式”二字。}
 %
-% 解决证明环境中方块乱跑的问题。 
+% 解决证明环境中方块乱跑的问题。
 %    \begin{macrocode}
 \gdef\@endtrivlist#1{%  % from \endtrivlist
   \if@inlabel \indent\fi
@@ -2395,15 +2395,17 @@
 % \changes{v3.1}{2007/10/09}{去掉配置文件中的~\cs{hfill}。}
 % \changes{v3.1}{2007/10/09}{“内部”密级前面要五角星了。}
 % \changes{v4.0}{2007/11/08}{“内部”密级前面终究还是不要五角星了。}
+% \changes{v4.4.2}{2008/06/05}{本科生格式终于也开始用空格作为关键字分隔符了。}
+% \changes{v4.4.2}{2008/06/07}{本科生签名之间距离改为~\cs{skip1em}。}
 %    \begin{macrocode}
 %<*cfg>
 \def\thu@ckeywords@separator{
-  \ifthu@bachelor，%todo:
+  \ifthu@bachelor\hspace{1em}
   \else
     \ifthu@master\hspace{2em}\else；\fi
   \fi}
 \def\thu@ekeywords@separator{
-  \ifthu@bachelor,%todo:
+  \ifthu@bachelor\hspace{1em}
   \else
     \ifthu@master\hspace{2em}\else;\fi
   \fi}
@@ -2457,7 +2459,7 @@
 \fi}
 \newcommand{\thu@authorizationaddon}{%
   \ifthu@bachelor(涉密的学位论文在解密后应遵守此规定)\else（保密的论文在解密后应遵守此规定）\fi}
-\newcommand{\thu@authorsig}{\ifthu@bachelor 签\hskip2em名：\else作者签名：\fi}
+\newcommand{\thu@authorsig}{\ifthu@bachelor 签\hskip1em名：\else作者签名：\fi}
 \newcommand{\thu@teachersig}{导师签名：}
 \newcommand{\thu@frontdate}{日\hspace{2em}期：}
 \newcommand{\thu@ckeywords@title}{关键词：}
@@ -2610,6 +2612,7 @@
 % \end{macro}
 % \changes{4.0}{2007/11/08}{研究生的授权部分调整了一下，不知道老师为什么总爱修改
 % 那些无关紧要的格式，郁闷。感谢~PMHT@newsmth 的认真比对。}
+% \changes{4.4.2}{2008/06/07}{修改本科生的授权部分，按照2008年的新样例。}
 % \begin{macro}{\thu@authorization@mk}
 % 封面中论文授权部分。
 %    \begin{macrocode}
@@ -2620,9 +2623,9 @@
   \ifthu@bachelor\vskip\baselineskip\else\vskip18pt\sihao[2.03]\fi\par
   \thu@authorization\par
   \textbf{\thu@authorizationaddon}\par
-  \ifthu@bachelor\vskip2.54cm\else\vskip1.9cm\fi
+  \ifthu@bachelor\vskip1.0cm\else\vskip1.9cm\fi
   \ifthu@bachelor
-    \noindent\thu@authorsig\thu@underline\relax%
+    \ifthu@bachelor\indent\else\noindent\fi\thu@authorsig\thu@underline\relax%
     \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax
   \else
     \begingroup
@@ -2715,10 +2718,12 @@
 % \changes{v2.6.2}{2006/06/17}{取消最后一列的空白。}
 % \changes{v2.6.2}{2006/06/20}{取消~tabular 环境，用~\cs{hangindent} 实现关键词
 % 悬挂缩进，英文摘要同。}
+% \changes{v4.4.2}{2008/06/05}{本科生格式中文关键词采用首行缩进且无悬挂缩进。}
 %    \begin{macrocode}
   \vskip12bp
   \setbox0=\hbox{{\hei \thu@ckeywords@title}}
-  \noindent\hangindent\wd0\hangafter1\box0\thu@ckeywords
+  \ifthu@bachelor\indent\else\noindent\hangindent\wd0\hangafter1\fi
+    \box0\thu@ckeywords
 %    \end{macrocode}
 %
 % 英文摘要部分的标题为“Abstract”，用~Arial 体三号字。研究生的英文摘要要求非常怪
@@ -2740,10 +2745,13 @@
 % \changes{v2.6.4}{2006/10/23}{\textbf{Keywords} but not \textbf{Key words}.}
 % \changes{v3.0}{2007/05/13}{\textbf{Key words} but not
 % \textbf{Keywords}. What are you doing?}
+% \changes{v4.4.2}{2008/06/05}{Bachelor English abstract format requires
+% indent and no hang-indent.}
 %    \begin{macrocode}
   \vskip12bp
   \setbox0=\hbox{\textbf{Key words:\enskip}}
-  \noindent\hangindent\wd0\hangafter1\box0\thu@ekeywords}
+  \ifthu@bachelor\indent\else\noindent\hangindent\wd0\hangafter1\fi
+    \box0\thu@ekeywords}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
