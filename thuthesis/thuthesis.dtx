@@ -2493,7 +2493,7 @@
       \par\vskip1.2cm
       {\ziju{18bp}\xiaochu\hei\thu@bachelor@subtitle}
       \vskip2.5cm
-      \hspace*{-0.3cm}\noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
+      \noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
       \parbox[t]{12cm}{%
          \begin{picture}(0,0)(0,0)
            \setlength\unitlength{1cm}
@@ -2523,10 +2523,12 @@
 % \changes{v2.1}{2006/02/29}{增加本科部分。}
 % \changes{v2.6.2}{2006/06/17}{如果本科生没有辅导教师则不显示。}
 % \changes{v3.1}{2007/10/09}{重新放置封面表格的提示元素。}
+% \changes{v4.4.3}{2008/06/09}{修改本科生论文封面格式以符合新样例。}
 %    \begin{macrocode}
-    \parbox[t][7.8cm][t]{\textwidth}{{\sanhao[1.5]
-      \begin{center}\fs
-        \ifthu@bachelor
+    \ifthu@bachelor
+      \vskip1cm
+      \parbox[t][7.0cm][t]{\textwidth}{{\sanhao[1.8]
+        \hspace*{1.65cm}\fs
           \setlength{\thu@title@width}{4em}
           \setlength{\extrarowheight}{6pt}
           \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{4pt}}l}
@@ -2538,7 +2540,10 @@
               \thu@put@title{\thu@cassosupertitle}        & \thu@title@sep & \thu@cassosupervisor\\
             \fi
           \end{tabular}
-        \else
+        }}
+    \else
+      \parbox[t][7.8cm][t]{\textwidth}{{\sanhao[1.5]
+        \begin{center}\fs
           \setlength{\thu@title@width}{6em}
           \setlength{\extrarowheight}{4pt}
           \begin{tabular}{p{\thu@title@width}c@{\extracolsep{4pt}}l}
@@ -2553,14 +2558,15 @@
               \thu@put@title{\thu@ccosupertitle}   & \thu@title@sep & {\ziju{11bp}\thu@ccosupervisor}\\
             \fi
           \end{tabular}
-        \fi
-      \end{center}}}
+        \end{center}}}
+      \fi
 %    \end{macrocode}
 %
 % 论文成文打印的日期，用三号宋体汉字，不用阿拉伯数字
+% \changes{v4.4.3}{2008/06/09}{修改本科生论文封面日期格式以符合新样例。}
 %    \begin{macrocode}
      \begin{center}
-       {\ifthu@bachelor\xiaosi\else\sanhao\fi \song \thu@cdate}
+       {\ifthu@bachelor\hskip-0.9cm\xiaosi\else\sanhao\fi \song \thu@cdate}
      \end{center}
     \end{center}} % end of titlepage
 %    \end{macrocode}
@@ -2568,7 +2574,7 @@
 %
 % \begin{macro}{\thu@doctor@engcover}
 % 博士论文英文封面部分。
-%\changes{v4.2}{2008/01/23}{博士英文封面补充联合导师。}
+% \changes{v4.2}{2008/01/23}{博士英文封面补充联合导师。}
 %    \begin{macrocode}
 \newcommand{\thu@doctor@engcover}{%
   \begin{center}
