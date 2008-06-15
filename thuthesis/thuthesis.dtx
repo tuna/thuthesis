@@ -43,7 +43,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2008/04/21 4.3 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2008/04/21 4.4 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
 \usepackage{array}
@@ -1174,7 +1174,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2008/04/21 4.3 Tsinghua University Thesis Template]
+%<cls|cfg>[2008/04/21 4.4 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1191,7 +1191,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{4.3}
+\def\version{4.4}
 \newif\ifthu@bachelor\thu@bachelorfalse
 \newif\ifthu@master\thu@masterfalse
 \newif\ifthu@doctor\thu@doctorfalse
@@ -1835,7 +1835,33 @@
 % 同时为了让~\pkg{amsmath} 的~\cs{tag*} 命令得到正确的格式，我们必须修改这些代
 % 码。\cs{make@df@tag} 是定义~\cs{tag*} 和~\cs{tag} 内部命令的。
 % \cs{make@df@tag@@} 处理~\cs{tag*}，我们就改它！
+% \begin{verbatim}
+% \def\make@df@tag{\@ifstar\make@df@tag@@\make@df@tag@@@}
+% \def\make@df@tag@@#1{%
+%   \gdef\df@tag{\maketag@@@{#1}\def\@currentlabel{#1}}}
+% \end{verbatim}
 % \changes{v4.4}{2008/05/30}{变态的本科论文终于去掉了“公式”二字。}
+% \changes{v4.4.4}{2008/06/12}{修复了一个从v4.3升级到v4.4过程中的丢失公式索引的bug，原修改代码保留备忘。}
+%    \begin{macrocode}
+\def\make@df@tag{\@ifstar\thu@make@df@tag@@\make@df@tag@@@}
+\def\thu@make@df@tag@@#1{%
+   \gdef\df@tag{\thu@maketag{#1}\def\@currentlabel{#1}}}
+% redefinitation of tagform broken eqref!
+\renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
+\renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
+%\ifthu@bachelor
+%  \def\thu@maketag#1{\maketag@@@{%
+%    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)}}
+%  \def\tagform@#1{\maketag@@@{%
+%    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)\equcaption{#1}}}
+%\else
+  \def\thu@maketag#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)}}
+  \def\tagform@#1{\maketag@@@{%
+    (\ignorespaces #1\unskip\@@italiccorr)\equcaption{#1}}}
+%\fi
+%    \end{macrocode}
+% ^^A 使公式编号随着每开始新的一节而重新开始。
+% ^^A \@addtoreset{eqation}{section}
 %
 % 解决证明环境中方块乱跑的问题。
 %    \begin{macrocode}
