@@ -43,19 +43,17 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2008/04/21 4.4 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2008/06/18 4.4 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{calc}
-\usepackage{array}
+\usepackage{array,longtable}
 \usepackage{fancybox}
 \usepackage{fancyvrb}
-\usepackage{shapepar}
 \usepackage{url}
- %\IfFileExists{lucidabr.sty}{\usepackage{lucidabr}}{}
 \usepackage{txfonts}
 \usepackage{xcolor}
 \usepackage{CJK,CJKpunct}
-\usepackage[CJKbookmarks=true, bookmarksnumbered=true,
+\usepackage[CJKbookmarks=true, bookmarksnumbered=true,%
             colorlinks=true, linkcolor=blue, dvips]{hyperref}
 \usepackage{indentfirst}
 \setlength{\parskip}{4pt plus1pt minus0pt}
@@ -74,19 +72,18 @@
 \def\DescribeOption#1{\SpecialOptionIndex{#1}}
 \def\SpecialOptionIndex#1{\index{#1\actualchar\textbf{#1}}}
 \renewenvironment{description}
-  {\list{}{\setlength\labelwidth{2cm}
-           \setlength\labelsep{3pt}
-           \setlength\leftmargin{\labelwidth+\labelsep}
-           \addtolength{\itemsep}{3pt}
-           \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}
-          }
+  {\list{}{\setlength\labelwidth{2cm}%
+           \setlength\labelsep{3pt}%
+           \setlength\leftmargin{\labelwidth+\labelsep}%
+           \addtolength{\itemsep}{3pt}%
+           \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}}
   }{\endlist}
 \DefineVerbatimEnvironment{example}{Verbatim}%
-  {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue},
-   fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1.2,
+  {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue},%
+   fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1.2,%
    fontsize=\small, gobble=1}
 \DefineVerbatimEnvironment{shell}{Verbatim}%
-  {frame=single, framerule=0.3mm, rulecolor=\color{red!85!green!60},
+  {frame=single, framerule=0.3mm, rulecolor=\color{red!85!green!60},%
    fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small, gobble=1}
 \makeatletter
 \long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fs #1}}\marginpar{\strut}\hskip\parindent}
@@ -96,9 +93,10 @@
 \def\PrintDescribeMacro#1{{\color{-red!75!green!50!blue!55}\MacroFont \string #1\hskip1em }}
 \def\ps@headings{%
   \let\@oddfoot\@empty
-  \def\@oddhead{\vbox{\hbox
-    to\textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}\vskip-0.7pt
-      \hbox to \textwidth{\hrulefill}}}%
+  \def\@oddhead{\vbox{%
+    \hbox to\textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}%
+    \vskip-0.7pt%
+    \hbox to \textwidth{\hrulefill}}}
   \let\@evenfoot\@oddfoot
   \let\@evenhead\@oddhead
   \let\@mkboth\markboth
@@ -271,8 +269,9 @@
 % \item 本模板为作者根据清华大学教务处颁发的《综合论文训练写作指南》和清华大学研
 %   究生院颁发的《研究生学位论文写作指南》编写而成，旨在供清华大学毕业生撰写学位
 %   论文使用。
-% \item 此模板已经得到清华大学教务处和研究生院的“认证”，但不保证格式审查老师不
-%   提意见，任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
+% \item 清华大学教务处和研究生院只提供毕业论文写作指南，不提供官方模板，也不会授
+%   权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格式审查老师
+%   不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
 % \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
 %   守~\LaTeX{} Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
 %   本模板作者无关。
@@ -292,40 +291,8 @@
 % \pagenumbering{arabic}
 % \pagestyle{headings}
 % \section{模板介绍}
-% 2005 年夏天我把自己写硕士论文的模板稍加整理做了一个所谓的“清华硕士论文
-% ~\LaTeX\ 模板报盘版”。此模板基于王磊编写、王垠整理的博士论文模板，借鉴了
-% ~mynewid@SMTH~的参考文献~bst~工作，并根据清华大学~2005~年研究生院硕士论文最新模
-% 板要求修改而成。其时大家的论文基本上都写完了，所以用的人不是很多；而且那个模板
-% 的结构不好，很多都是将就的写法。
-%
-% 为了给想用~\LaTeX\ 写论文的同学提供方便，我在报盘版的基础上重新整理，在结构上采
-% 用标准的~docstrip 组织，中文支持采用~CJK\footnote{对~CCT 不熟悉，所以没有专门花
-%   时间去看。}，在内容上尽量融合所有论文格式要求，同时更名为~\thuthesis，即
-% ~\textbf{T}sing\textbf{hu}a \textbf{Thesis}，并在
-% ~\href{http://thuthesis.sourceforge.net}{sourceforge.net} 上安了家，随后在
-% ~\href{http://gforge.oss.org.cn/projects/thuthesis}{gforge.oss.org.cn} 建立了镜
-% 像，近来准备将其迁移到~\href{http://thuthesis.googlecode.com}{code.google.com}。
-%
-% 由于个人精力有限，不能保证三者完全同步。现在~\thuthesis{} 也提交到了%
-% ~\href{http://www.ctan.org/macros/latex/contrib/thuthesis}{CTAN} 上，更新一下你
-% 的~\TeX{} 就能得到最新的~\thuthesis。
-%
-% 2005 年圣诞节前，\thuthesis-2.0 发布，成为第一个同时支持硕士、博士论文格式的模
-% 板，后直到~2006 年~3 月初才加入本科论文格式支持，即~\thuthesis-2.1。这个版本除
-% 了增加本科论文格式支持，同时去掉了很多不必要的宏包，改由基本~\TeX{} 和
-% ~\LaTeX{} 命令实现。在随后的几个月时间里，由于教务处的督促以及同学们的积极反馈
-% ，模板进入了一个“高速”发展的阶段，其间增加了许多有用的功能，同时发现并排除了
-% 不少问题，使得~\thuthesis{} 日臻完善。现在的~\thuthesis{} 不仅在结构上跟报盘版
-% 相去甚远，而且在功能上也更加丰富，最重要的是~\thuthesis{} 符合学校的最新规范。
-%
-% 2007 年~11 月~8 日，研究生院同意将~\thuthesis{} 作为官方模板。至此，教务处和研
-% 究生院都认可了~\thuthesis，所有的毕业生都可以放心地使用~\thuthesis{} 来准备论
-% 文，而不必像以前那样犹豫不决，提心吊胆。
-%
-% 在整理这个模板的过程中，我得到不少同学热情的支持，在此不一一列出，感谢他们提供
-% 的每一份帮助！让人感到欣喜的是很多同学都开始为~\thuthesis{} 添砖加瓦，目前包括%
-% ~edyfox~的~Makefile，Truel 的~msmake.cmd，oseen~将其移植到~UTF-8 并制作了%
-% ~Debian package，EricH 制作了~Gentoo ebuild。
+% \thuthesis\ (\textbf{T}sing\textbf{hu}a \textbf{Thesis}) 是为了帮助清华大学毕业
+% 生撰写毕业论文而编写的~\LaTeX{} 论文模板。
 %
 % 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者给邮件
 % 列表（见后）写信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现
@@ -340,15 +307,9 @@
 % \label{sec:installation}
 %
 % \subsection{下载}
-% \thuthesis{} 主页：  \url{http://thuthesis.sourceforge.net}。
-%
-% 但由于各种各样的原因，这个主页访问起来并不顺利，下面提供其它几个链接，按照维护
-% 的优先级排序：
-% \begin{itemize}\addtolength{\itemsep}{-5pt}
-% \item \url{http://gforge.oss.org.cn/projects/thuthesis}
-% \item \url{http://thuthesis.googlecode.com}
-% \item \url{http://www.ctan.org/macros/latex/contrib/thuthesis}
-% \end{itemize}
+% \thuthesis{} 主页：\url{http://thuthesis.sourceforge.net}。同时本模板也提交至%
+% ~\href{http://www.ctan.org/macros/latex/contrib/thuthesis}{CTAN}。除此之外，不
+% 再维护任何镜像。
 %
 % \thuthesis{} 的开发版本同样可以在~sourceforge 上获得：
 % \begin{shell}
@@ -359,9 +320,15 @@
 % 下表列出了~\thuthesis{} 的主要文件及其功能介绍：
 %
 % \begin{center}
-%   \begin{tabular}{l|p{10cm}}
+%   \begin{longtable}{l|p{10cm}}
 % \hline
 % {\hei 文件（夹）} & {\hei 功能描述}\\\hline\hline
+% \endfirsthead
+% \hline
+% {\hei 文件（夹）} & {\hei 功能描述}\\\hline\hline
+% \endhead
+% \endfoot
+% \endlastfoot
 % thuthesis.ins & 模板驱动文件 \\
 % thuthesis.dtx & 模板文档代码的混合文件\\
 % thuthesis.cls & 模板类文件\\
@@ -377,7 +344,7 @@
 % msmake.cmd & Windows 批处理工具\\\hline
 % Readme & self-explanation\\
 % \textbf{thuthesis.pdf} & 用户手册（本文档）\\\hline
-%   \end{tabular}
+%   \end{longtable}
 % \end{center}
 %
 % 需要说明几点：1) thuthesis.cls 和~thuthesis.cfg 可以由~thuthesis.ins 和%
@@ -570,14 +537,9 @@
 % \item \href{http://www.newsmth.net/bbsdoc.php?board=TeX}{\TeX@newsmth}
 % \end{itemize}
 %
-% 考虑到不能将所有的问题堆积到~\TeX@newsmth 版（或许可以申请一个附属版面，但是除
-% 非毕业前夕，这个版面必然十分荒凉，故暂不可行）；邮件列表又不易维护~FAQ，所以我
-% 为~\thuthesis{} 建了一个~wiki：\url{http://thuthesis.wiki.sf.net}。大家可以一起
-% 贡献力量把这个~wiki 弄好，这样以后的同学就不至于有了问题不知该如何求救。
-%
 % \subsection{\thuthesis{} 使用向导}
 % \label{sec:userguide}
-% 推荐新用户先看网上的《\thuthesis{} 使用向导》幻灯片，那份讲稿比这份文档简练易懂。前面列出的几个网址都有这个幻灯片。
+% 推荐新用户先看网上的《\thuthesis{} 使用向导》幻灯片，那份讲稿比这份文档简练易懂。
 %
 % \subsection{\thuthesis{} 示例文件}
 % \label{sec:userguide1}
@@ -685,12 +647,12 @@
 %   正规出版物的章节出现在奇数页，也就是右手边的页面，这就是~\texttt{openright}，
 %   也是~\thuthesis~的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么
 %   模板会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎
-%   更倾向于页面连续，那就是通常所说的~\texttt{openany}。{\fs 目前教务处明确规定
-%   本科论文采用~openright，研究生论文据推断是~openany。}这两个选项不用专门设置，
-%   \thuthesis{} 会根据当前论文类型自动选择。
+%   更倾向于页面连续，那就是通常所说的~\texttt{openany}。{\fs 目前所有论文都是
+%     ~openany。}这两个选项不用专门设置，\thuthesis{} 会根据当前论文类型自动选
+%   择。
 %
 % \item[dvips]
-%   打开~dvips 支持。如果用~pdflatex~编译，请务必去掉此选项，否则模板会报错。
+%   打开~dvips 支持。如果用~pdflatex 编译，请务必去掉此选项，否则模板会报错。
 %   \begin{example}
 % \documentclass[master, dvips]{thuthesis}
 %   \end{example}
@@ -709,15 +671,12 @@
 %   \href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial 字体}。
 %
 % \item[arialtoc]
-%  目录项中的英文是否用~arial 字体。本选项和下一个~\textsl{arialtitle} 都不用用户
+%  目录项（章目录项除外）中的英文是否用~arial 字体。本选项和下一个~\textsl{arialtitle} 都不用用户
 %  操心，模板都自动设置好了。
 %
 % \item[arialtitle]
 %  章节标题中英文是否用~arial 字体（默认打开）。
 % \end{description}
-%
-% 上面只是给出了简单的用法示例，如果你不明白~\LaTeX{} 的选项究竟是怎么一回事，那
-% 就再补充一下基础知识。
 %
 % \subsection{命令}
 % \label{sec:command}
@@ -795,12 +754,12 @@
 %
 % \myentry{引用方式}
 % \DescribeMacro{\onlinecite}
-% 学校要求的参考文献引用有两种模式：1）上标模式。比如“同样的工作有很多$^{[1,2]}$\ldots”
-% 。2）正文模式。比如“文[3] 中详细说明了\ldots”。其中上标模式使用远比正文模式频
+% 学校要求的参考文献引用有两种模式：1）上标模式。比如“同样的工作有很多 $^{[1,2]}$\ldots”。
+% 2）正文模式。比如“文[3] 中详细说明了\ldots”。其中上标模式使用远比正文模式频
 % 繁，所以为了符合使用习惯，上标模式仍然用常规的~|\cite{key}|，而~|\onlinecite{key}| 则用来生成正文模式。
 %
-% 关于参考文献模板推荐使用~BIB\TeX，关于中文参考文献需要额外增加一个~Entry: lang
-% ，将其设置为~\texttt{zh} 用来指示此参考文献为中文，以便~thubib.bst~处理。如：
+% 关于参考文献模板推荐使用~BIB\TeX，关于中文参考文献需要额外增加一个~Entry: lang，将其设置为~\texttt{zh} 
+% 用来指示此参考文献为中文，以便~thubib.bst~处理。如：
 % \begin{example}
 % @INPROCEEDINGS{cnproceed,
 %   author    = {王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝},
@@ -823,15 +782,11 @@
 % }
 % \end{example}
 %
-% 如果你坚持自己写~\cs{bibitem}，我也没有办法，祝你好运！\footnote{由于调整某篇文
-%   献的引用顺序而导致其后所有文献引用序号统统发生变化而带来的繁重的而且极容易出
-%   错的体力劳动谁也帮不了你。}
-%
 % \myentry{书脊}
 % \DescribeMacro{\shuji}
 % 生成装订的书脊，为竖排格式，默认参数为论文中文题目。如果中文题目中没有英文字母，
 % 那么直接调用此命令即可。否则，就要像例子里面那样做一些微调。其实这个命令在独立
-% 的文件生成更好一些，不要和论文混在一起（看到模板自带的~shuji.tex 了么？）。下面
+% 的文件生成更好一些，不要和论文混在一起（参看模板自带的~shuji.tex）。下面
 % 是一个列子：
 % \begin{example}
 % \documentclass[bachelor]{thuthesis}
@@ -1008,8 +963,7 @@
 % \end{tabular}
 % \end{center}
 %
-% \LaTeX{} 默认支持插图和表格索引，是通过~\cs{caption} 命令完成的，因此它们必须出现在浮动环境中
-% ，否则不被计数。
+% \LaTeX{} 默认支持插图和表格索引，是通过~\cs{caption} 命令完成的，因此它们必须出现在浮动环境中，否则不被计数。
 %
 % 有的同学不想让某个表格或者图片出现在索引里面，那么请使用命令~\cs{caption*}，
 % 这个命令不会给表格编号，也就是出来的只有标题文字而没有“表~xx”，“图~xx”，否则
@@ -1020,21 +974,16 @@
 % 随便自己写，具体用法请参看示例文档。
 %
 % 如果你的确想让它编号，但又不想让它出现在索引中的话，那就自己改一改模板的代码吧，
-% 我目前不打算给模板增加这种另类命令\footnote{\thuthesis{} 在教务处和研究生院写
-%   作指南的“导引”下，已经够不伦不类了。我记的有个人在网上说“~\thuthesis{} 的
-%   模版不断要向学校难看的规定妥协！”是啊，除此之外，我又能怎样做呢？提点建议人
-%   家都不愿意听。}。
+% 我目前不打算给模板增加这种另类命令。
 %
 % 公式索引为本模板扩展，模板扩展了~\pkg{amsmath} 几个内部命令，使得公式编号样式和
-% 自动索引功能非常方便。一般来说，你用到的所有数学环境编号都没问题了，  这个可以
-% 参看示例文档。如果你有个非常特殊的数学环境需要加入公式索引，那么请使用
-% ~\cs{equcaption}\marg{编号}。此命令表示~equation caption，带一个参数，即显示在
-% 索引中的编号。因为公式与图表不同，我们很少给一个公式附加一个标题，之所以起这么
-% 个名字是因为图表就是通过~\cs{caption} 加入索引的，\cs{equcaption} 完全就是为了
-% 生成公式列表，不产生什么标题。
+% 自动索引功能非常方便。一般来说，你用到的所有数学环境编号都没问题了，这个可以
+% 参看示例文档。如果你有个非常特殊的数学环境需要加入公式索引，那么请使用~\cs{equcaption}\marg{编号}。
+% 此命令表示~equation caption，带一个参数，即显示在索引中的编号。因为公式与图表不
+% 同，我们很少给一个公式附加一个标题，之所以起这么个名字是因为图表就是通过~\cs{caption} 加入索引的，
+% \cs{equcaption} 完全就是为了生成公式列表，不产生什么标题。
 %
-% 使用方法如下。假如有一个非~equation 数学环境~mymath，只要在其中写一句
-% ~\cs{equcaption} 就可以将它加入公式列表。
+% 使用方法如下。假如有一个非~equation 数学环境~mymath，只要在其中写一句~\cs{equcaption} 就可以将它加入公式列表。
 % \begin{example}
 % \begin{mymath}
 %   \label{eq:emc2}\equcaption{\ref{eq:emc2}}
@@ -1136,33 +1085,19 @@
 %\section{致谢}
 %\label{sec:thanks}
 %
-% 感谢~edyfox~的~Makefile，感谢~Truel 的~msmake.cmd，感谢~oseen~的~utf-8~移植工作
-% 和~debian package，感谢~EricH 制作的~gentoo ebuild！
+% 在模板的开发和维护过程中，我得到不少同学的热情支持，如：edyfox@newsmth 编写了~Makefile，
+% Truel@newsmth 编写了~msmake.cmd，oseen@newsmth~将其移植到~UTF-8 并制
+% 作了~Debian package，特别感谢~MagicGlaive@newsmth 为~2008 年本科论文格式修改作
+% 出的一切！
 %
 % 感谢我自己能把这件事坚持下来，模板制作期间颇多感慨，不断遇到问题，不断摸索解决。其中的
 % 酸甜苦辣恐怕只有自己能体会得到！
 %
-% 很多同学用~\thuthesis{} 提交论文之后都会给我写一封感谢信，有的还会把打印出来的
-% 论文送给我一份：每当这个时候我都有说不出的欣慰。大家的认可才是~\thuthesis{} 最
-% 大的动力。与此同时我也感觉到更大的压力，因为模板的维护还需要花费相当的精力。同
-% 时我对模板还不太满意，代码质量不高，结构组织不好，文档内容不足。我呼唤感兴趣的
-% 同学能出手相助，给模板的开发和维护注入新的活力，让我们一起把~\thuthesis{} 做得
-% 更好！
-%
-% \newpage\hbox{}\vfill
-% \heartpar{\textbf{\thuthesis} is a \LaTeX{} package aiming to facilitate the
-%   thesis writing for bachelors, masters and doctors of Tsinghua University.
-%   By now, \thuthesis\  has been widely used among lots of \TeX\ zealots who do
-%   not want to format their several years' hard work with the infamous  MS
-%   WORD. I created \thuthesis\ in the summer of 2005, and made it more useful
-%   and stable in the spring of 2006. To be frank, \thuthesis\ is not going to
-%   fight with MS WORD, because in my opinion, ``the best tool depends on
-%   you''. It is hard to persuade all students to give up MS WORD and turn to
-%   \TeX, but I'd like to encourage them through my efforts. Actually,
-%   \thuthesis\ is in its initial step now, as an infant, \thuthesis\ needs your
-%   help very much, and it is very kind of you to contribute and promote
-%   it. \textsf{Xue Ruini}}
-% \vfill
+% 感谢所有在论文致谢中提及~\thuthesis{} 或者本人的同学：每当这个时候我都有说不出
+% 的欣慰。大家的认可才是~\thuthesis{} 最大的动力。与此同时我也感觉到更大的压力，
+% 因为模板的维护需要花费相当的精力。同时我对模板还不太满意，代码质量不高，结构组
+% 织不好，文档内容不足。我呼唤感兴趣的同学能出手相助，给模板的开发和维护注入新的
+% 活力，让我们一起把~\thuthesis{} 做得更好！
 %
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
@@ -1174,7 +1109,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2008/04/21 4.4 Tsinghua University Thesis Template]
+%<cls|cfg>[2008/06/18 4.4 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1263,11 +1198,7 @@
 %    \begin{macrocode}
 \ExecuteOptions{arialtitle}
 \ProcessOptions
-\ifthu@bachelor
-  \LoadClass[12pt, a4paper, openright]{book}
-\else
-  \LoadClass[12pt, a4paper, openany]{book}
-\fi
+\LoadClass[12pt, a4paper, openany]{book}
 %    \end{macrocode}
 %
 %
@@ -1309,10 +1240,9 @@
 \RequirePackage{graphicx}
 %    \end{macrocode}
 %
-% 并排图形。\pkg{subfigure} 已经不再推荐，用新的~\pkg{subfig}。加入~|config| 选项以便兼容
-% ~\pkg{subfigure} 的命令。
-% 浮动图形和表格标题样式。\pkg{caption2} 已经不推荐使用，采用新的~\pkg{caption}。它会自动被
-% ~\pkg{subfig} 装载进来。所以可以在后面看到~\cs{captionsetup} 的命令。
+% 并排图形。\pkg{subfigure} 已经不再推荐，用新的~\pkg{subfig}。加入~|config| 选项以便兼容~\pkg{subfigure} 的命令。
+% 浮动图形和表格标题样式。\pkg{caption2} 已经不推荐使用，采用新的~\pkg{caption}。它会自动被~\pkg{subfig} 装载进来。
+% 所以可以在后面看到~\cs{captionsetup} 的命令。
 %    \begin{macrocode}
 \RequirePackage[config]{subfig}
 %    \end{macrocode}
@@ -1340,12 +1270,10 @@
 \RequirePackage{CJKpunct}
 %    \end{macrocode}
 %
-% 可拷贝的~pdf （需要进一步测试）
+% 可拷贝的~pdf （\pkg{ccmap} 结合~\texttt{pdflatex} 和~\texttt{dvipdfmx} 使用）
 %    \begin{macrocode}
-\ifpdf % We're not running pdftex
-  \RequirePackage{ccmap} % 用 pdflatex 编译
-\else
-  % \RequirePackage{cmap}
+\ifthu@dvipdfm\else
+  \RequirePackage{ccmap}
 \fi
 %    \end{macrocode}
 %
@@ -1361,7 +1289,7 @@
 \RequirePackage{longtable}
 %    \end{macrocode}
 %
-% 使用三线表： \cs{toprule}， \cs{midrule}， \cs{bottomrule}。当然简单的可以用~\cs{hwline}\marg{wd}。
+% 使用三线表：\cs{toprule}，\cs{midrule}，\cs{bottomrule}。当然简单的可以用~\cs{hwline}\marg{wd}。
 %    \begin{macrocode}
 \RequirePackage{booktabs}
 %    \end{macrocode}
@@ -1388,6 +1316,7 @@
   pdfpagelabels,
   pdfborder=0 0 0}
 %    \end{macrocode}
+%
 % dvips 模式下网址断字有问题，加入这个包解决之。
 % \changes{v4.4}{2008/05/12}{修复网址断字。}
 %    \begin{macrocode}
@@ -1395,6 +1324,7 @@
   \RequirePackage{breakurl}
 \fi
 %    \end{macrocode}
+%
 %  设置~url 样式，与上下文一致
 %    \begin{macrocode}
 \urlstyle{same}
@@ -1767,12 +1697,12 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% 脚注字体：宋体小五，单倍行距。 悬挂缩进1.5字符。标号在正文中是上标，在脚注中为
-% 正体。默认情况下~|\@makefnmark| 显示为上标，同时为脚标和正文所用，所以如果要区
+% 脚注字体：宋体小五，单倍行距。悬挂缩进~1.5 字符。标号在正文中是上标，在脚注中为
+% 正体。默认情况下~\cs{@makefnmark} 显示为上标，同时为脚标和正文所用，所以如果要区
 % 分，必须分别定义脚注的标号和正文的标号。
 % \changes{v2.1}{2006/03/01}{让脚注它悬挂起来，而且中文中用上标，脚注中用正体。}
 % \changes{v2.5}{2006/05/13}{修正~minipage~中的脚注。}
-% \changes{v2.5.1}{2006/05/21}{脚注编号使用~textcircled 命令，每页允许至多~99 个
+% \changes{v2.5.1}{2006/05/21}{脚注编号使用~\cs{textcircled} 命令，每页允许至多~99 个
 % 脚注条目。}
 % \begin{macro}{\thu@textcircled}
 % 生成带圈的脚注数字。最多处理到~99，当然这个很容易扩展了。
@@ -1841,24 +1771,22 @@
 %   \gdef\df@tag{\maketag@@@{#1}\def\@currentlabel{#1}}}
 % \end{verbatim}
 % \changes{v4.4}{2008/05/30}{变态的本科论文终于去掉了“公式”二字。}
-% \changes{v4.4.4}{2008/06/12}{修复了一个从v4.3升级到v4.4过程中的丢失公式索引的bug，原修改代码保留备忘。}
+% \changes{v4.4.4}{2008/06/12}{修复了一个从~v4.3 升级到~v4.4 过程中的丢失公式索引的~bug，原修改代码保留备忘。}
 %    \begin{macrocode}
 \def\make@df@tag{\@ifstar\thu@make@df@tag@@\make@df@tag@@@}
-\def\thu@make@df@tag@@#1{%
-   \gdef\df@tag{\thu@maketag{#1}\def\@currentlabel{#1}}}
+\def\thu@make@df@tag@@#1{\gdef\df@tag{\thu@maketag{#1}\def\@currentlabel{#1}}}
 % redefinitation of tagform broken eqref!
 \renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
 \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
-%\ifthu@bachelor
-%  \def\thu@maketag#1{\maketag@@@{%
-%    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)}}
-%  \def\tagform@#1{\maketag@@@{%
-%    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)\equcaption{#1}}}
-%\else
-  \def\thu@maketag#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)}}
-  \def\tagform@#1{\maketag@@@{%
-    (\ignorespaces #1\unskip\@@italiccorr)\equcaption{#1}}}
-%\fi
+ %\ifthu@bachelor
+ %  \def\thu@maketag#1{\maketag@@@{%
+ %    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)}}
+ %  \def\tagform@#1{\maketag@@@{%
+ %    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)\equcaption{#1}}}
+ %\else
+\def\thu@maketag#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)\equcaption{#1}}}
+ %\fi
 %    \end{macrocode}
 % ^^A 使公式编号随着每开始新的一节而重新开始。
 % ^^A \@addtoreset{eqation}{section}
@@ -1927,9 +1855,8 @@
 \setlength{\@fpbot}{0bp \@plus1.0fil}
 %    \end{macrocode}
 %
-% 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度
-% 对象占据过多的文本页面，也可以防止在很大空白的浮动页上放置
-% 很小的图形。
+% 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面，
+% 也可以防止在很大空白的浮动页上放置很小的图形。
 %    \begin{macrocode}
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\topfraction}{0.85}
@@ -1945,7 +1872,7 @@
 %   \item 表：caption 在上，段前空~12 磅，段后空~6 磅
 % \end{itemize}
 % \changes{v2.4}{2006/04/14}{表格内容为~11~磅。}
-% \changes{v2.4}{2006/04/14}{图表标题左对齐，取消原先漂亮的~hang~模式。}
+% \changes{v2.4}{2006/04/14}{图表标题左对齐，取消原先漂亮的~hang 模式。}
 % \changes{v2.5}{2006/05/13}{标题上下间距重调，以前没有考虑~\cs{intextsep} 的影响。}
 % \changes{v2.5.1}{2006/05/23}{增加~\pkg{subfigure} 和~\pkg{subtable} 的~caption 配置。}
 % \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
@@ -2157,8 +2084,8 @@
 % \end{macro}
 %
 % \begin{macro}{\subsection}
-% 二级节标题，例如：2.1.1  实验装置
-% 采用黑体~13pt~(~本科生是14pt~)~字居左书写，行距为固定值~20 磅，段前空~12 磅，段后空~6 磅。
+% 二级节标题，例如：2.1.1 实验装置
+% 采用黑体~13pt (本科生是~14pt) 字居左书写，行距为固定值~20 磅，段前空~12 磅，段后空~6 磅。
 % \changes{v4.4}{2006/06/04}{修改本科生模板的二级节标题为小四而不是半小四。}
 % \changes{v4.4}{2006/06/04}{调整段前距为~-12bp 而不是原来的~-16bp。}
 %    \begin{macrocode}
@@ -2170,7 +2097,7 @@
 % \end{macro}
 %
 % \begin{macro}{\subsubsection}
-% 三级节标题，例如：2.1.2.1  归纳法
+% 三级节标题，例如：2.1.2.1 归纳法
 % 采用黑体小四号（12pt）字居左书写，行距为固定值~20 磅，段前空~12 磅，段后空~6 磅。
 % \changes{v4.4}{2006/06/04}{调整段前距为~-12bp 而不是原来的~-16bp。}
 %    \begin{macrocode}
@@ -2200,8 +2127,7 @@
 %    \end{macrocode}
 %
 %
-% 每章标题行前空~6 磅，后空~0 磅。如果使用目录项中英文要使用~Arial，那么就加上
-% ~\cs{sffamily}。章节名中英文用~Arial 字体，页码仍用~Times。
+% 每章标题行前空~6 磅，后空~0 磅。如果使用目录项中英文要使用~Arial，那么就加上~\cs{sffamily}。章节名中英文用~Arial 字体，页码仍用~Times。
 % \changes{v2.0}{2005/12/18}{附录的目录项需要调整一下。以及公式编号方式等等。}
 % \changes{v2.5}{2006/05/13}{取消~\pkg{titletoc}~宏包，用~\cs{dottedtocline} 调整
 %   目录。}
@@ -2211,6 +2137,7 @@
 % \changes{v4.0}{2007/11/08}{本科研究生目录字号行距都不同。}
 % \changes{v4.4}{2008/06/04}{本科生目录字号改回\cs{xiaosi}\oarg{1.8}。}
 % \changes{v4.4}{2008/06/04}{本科生目录缩进要求不同。}
+% \changes{v4.4}{2008/06/18}{本科章目录项一直用黑体~(Arial)。}
 % \begin{macro}{\tableofcontents}
 %   目录生成命令。
 %    \begin{macrocode}
@@ -2248,16 +2175,15 @@
       \leavevmode
       \advance\leftskip\@tempdima
       \hskip -\leftskip
-      {\hei\csname thu@toc@font\endcsname #1} % numberline is called here, and it use @tempdima
+      {\hei\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi #1} % numberline is called here, and it use @tempdima
       \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
       \nobreak{\normalfont\normalcolor #2}\par
       \penalty\@highpenalty
     \endgroup
   \fi}
-\renewcommand*\l@section{\@dottedtocline{1}{\ifthu@bachelor 1.0em \else 1.2em \fi}{2.1em}}
-\renewcommand*\l@subsection{\@dottedtocline{2}{\ifthu@bachelor 1.6em \else 2em \fi}{3em}}
-\renewcommand*\l@subsubsection{\@dottedtocline{3}{\ifthu@bachelor 2.4em \else 3.5em \fi}{3.8em}}
-
+\renewcommand*\l@section{\@dottedtocline{1}{\ifthu@bachelor 1.0em\else 1.2em\fi}{2.1em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{\ifthu@bachelor 1.6em\else 2em\fi}{3em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{\ifthu@bachelor 2.4em\else 3.5em\fi}{3.8em}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2723,8 +2649,7 @@
 % 中文摘要部分的标题为"摘要"，用黑体三号字。
 % \changes{v2.5.1}{2006/05/24}{我靠，教务处又不要正文前的页眉了，ft！}
 % \changes{v2.5.1}{2006/05/24}{不管是哪种论文格式，摘要都要右开。}
-% \changes{v2.5.2}{2006/05/29}{在研究生论文中，摘要不出现在目录中，但是要在书签
-% 中出现。}
+% \changes{v2.5.2}{2006/05/29}{在研究生论文中，摘要不出现在目录中，但是要在书签中出现。}
 % \changes{v2.5.3}{2006/06/03}{\cs{pagenumber} 会自动设置页码为~1。}
 % \changes{v2.6.3}{2006/06/30}{为本科正确设置目录及以后的页码。}
 %    \begin{macrocode}
@@ -2955,11 +2880,7 @@
 % \changes{v2.6.4}{2006/10/23}{增加~\cs{listofequations*}。}
 %    \begin{macrocode}
 \newcommand\listofequations{\thu@listof{\listequationname}{\ext@equation}}
-\ifthu@bachelor
-  \newcommand*\l@equation{\@dottedtocline{1}{0em}{4em}}
-\else
-  \newcommand*\l@equation{\@dottedtocline{1}{0em}{4.2em}}
-\fi
+\let\l@equation\l@figure
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -3018,7 +2939,7 @@
    \list{\@biblabel{\@arabic\c@enumiv}}%
         {\renewcommand{\makelabel}[1]{##1\hfill}
          \settowidth\labelwidth{1.1cm}
-         \setlength{\labelsep}{0.6em}
+         \setlength{\labelsep}{0.4em}
          \setlength{\itemindent}{0pt}
          \setlength{\leftmargin}{\labelwidth+\labelsep}
          \addtolength{\itemsep}{-0.7em}
