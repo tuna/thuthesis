@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{0}
+% \CheckSum{2461}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -210,11 +210,11 @@
 % \changes{v2.4}{2006/04/14}{英文文参考文献调整~In: editor, Proceedings。}
 % \changes{v2.4}{2006/04/14}{参考文献为学位论文时，加方括号，作者后面为实心点。}
 % \changes{v2.4}{2006/04/14}{中文参考文献作者超过三个加等。}
-% \changes{v2.4}{2006/04/14}{中文参考文献需要在~bib~中指定~|lang="chinese"|。}
-% \changes{v2.4}{2006/04/14}{学位论文不在需要~type~字段。}
+% \changes{v2.4}{2006/04/14}{中文参考文献需要在~bib 中指定~|lang="chinese"|。}
+% \changes{v2.4}{2006/04/14}{学位论文不在需要~type 字段。}
 % \changes{v2.4}{2006/04/14}{为摘要等条目增加书签。}
-% \changes{v2.4}{2006/04/14}{章节的编号用黑体，也就是自动打开~arialtitle~选项。}
-% \changes{v2.4.1}{2006/04/17}{2.4 忘了把关键词的tabular改成thu@tabular。}
+% \changes{v2.4}{2006/04/14}{章节的编号用黑体，也就是自动打开~arialtitle 选项。}
+% \changes{v2.4.1}{2006/04/17}{2.4 忘了把关键词的~tabular 改成~thu@tabular。}
 % \changes{v2.4.1}{2006/04/17}{参考文献最后一个作者前是逗号而不是~and。}
 % \changes{v2.4.2}{2006/04/18}{去掉参考文献第二个作者后面烦人的逗号。}
 % \changes{v2.5}{2006/05/19}{对本科论文进行大幅度的重写，因为教务处修改了格式要求。}
@@ -298,9 +298,8 @@
 % 列表（见后）写信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现
 % 在的这个版本基本上满足了学校的要求，但难免还存在不足之处，欢迎大家积极反馈。
 %
-% 最后补充一点：{\color{blue}\fs 模板的作用在于减轻论文写作过程中格式调整的时间，
-%   其前提就是遵守模板的规定，否则即使使用了~\thuthesis{} 也难以保证输出的论文符
-%   合学校规范。}
+% {\color{blue}\fs 模板的作用在于减轻论文写作过程中格式调整的时间，其前提就是遵
+%   守模板的用法，否则即使使用了~\thuthesis{} 也难以保证输出的论文符合学校规范。}
 %
 %
 % \section{安装}
@@ -363,8 +362,8 @@
 % \begin{center}
 % \begin{minipage}{1.0\linewidth}\centering
 % \begin{tabular}{*{6}{l}}\hline
-%   ifthen & clac & ifpdf  & CJK & CJKnumb & \textbf{CJKpunct}   \\
-%   array & booktabs & longtable  &  amsmath & amssymb & ntheorem   \\
+%   ifthen & clac & ifpdf  & CJK & CJKnumb & \textbf{CJKpunct} \\
+%   array & booktabs & longtable  &  amsmath & amssymb & ntheorem \\
 %   indentfirst & paralist & txfonts & natbib & hyperref & hypernat \\
 %   graphicx & \textbf{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &
 %   \textbf{caption}\footnote{版本要求：$\geq$2006/03/21 v3.0j} &
@@ -402,12 +401,12 @@
 % \end{shell}
 %
 % \thuthesis{} 发布的时候已经自带了编译好的文档，如果你对文档如何生成并不关心，
-% 那么上面只需要执行~\texttt{latex thuthesis.ins} 即可。为了进一步简化模板的使用
-% ，\thuthesis{} 的发布中已经自带了~thuthesis.cls~和~thuthesis.cfg，也就是说上面
+% 那么上面只需要执行~\texttt{latex thuthesis.ins} 即可。为了进一步简化模板的使用，
+% \thuthesis{} 的发布中已经自带了~thuthesis.cls~和~thuthesis.cfg，也就是说上面
 % 的命令一条都不必执行。
 %
-%\subsubsection{dvi$\rightarrow$ps$\rightarrow$pdf}
-%\label{sec:dvipspdf}
+% \subsubsection{dvi$\rightarrow$ps$\rightarrow$pdf}
+% \label{sec:dvipspdf}
 %
 % 很多用户对~\LaTeX{} 命令执行的次数不太清楚，一个基本的原则在没有重复标签和丢失
 % 标签的前提下运行~\texttt{latex} 命令直到不出现警告为止。下面给出生成示例文档的
@@ -2446,14 +2445,17 @@
       {\ziju{18bp}\xiaochu\hei\thu@bachelor@subtitle}
       \vskip2.5cm
       \noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
-      \parbox[t]{12cm}{%
-         \begin{picture}(0,0)(0,0)
-           \setlength\unitlength{1cm}
-           \linethickness{1.3pt}
-           \put(0,-0.25){\line(1,0){12}}
-           \put(0,-1.68){\line(1,0){12}}
-         \end{picture}%
-         \ignorespaces\yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
+      \parbox[t]{12cm}{%        
+        \setbox0=\hbox{{\yihao[1.55]\thu@ctitle}}
+        \begin{picture}(0,0)(0,0)
+          \setlength\unitlength{1cm}
+          \linethickness{1.3pt}
+          \put(0,-0.25){\line(1,0){12}}
+          \ifdim\wd0>12cm
+            \put(0,-1.68){\line(1,0){12}}
+          \fi
+        \end{picture}%
+        \ignorespaces\yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
       \vskip1.55cm
     \else
       \parbox[t][9cm][t]{\paperwidth-8cm}{
@@ -2678,7 +2680,7 @@
 % \changes{v4.4.2}{2008/06/05}{本科生格式中文关键词采用首行缩进且无悬挂缩进。}
 %    \begin{macrocode}
   \vskip12bp
-  \setbox0=\hbox{{\hei \thu@ckeywords@title}}
+  \setbox0=\hbox{{\hei\thu@ckeywords@title}}
   \ifthu@bachelor\indent\else\noindent\hangindent\wd0\hangafter1\fi
     \box0\thu@ckeywords
 %    \end{macrocode}
