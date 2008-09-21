@@ -7,7 +7,7 @@
 %
 % \iffalse meta-comment
 %
-% Copyright (C) 2005, 2006, 2007, 2008 by Xue Ruini <xueruini@gmail.com>
+% Copyright (C) 2005, 2006, 2007, 2008 by Ruini Xue <xueruini@gmail.com>
 %
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3a
@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2461}
+% \CheckSum{0}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -40,113 +40,19 @@
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
 %
-%
 % \iffalse
 %<*driver>
 \ProvidesFile{thuthesis.dtx}[2008/06/18 4.4 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
-\usepackage{calc}
-\usepackage{array,longtable}
-\usepackage{fancybox}
-\usepackage{fancyvrb}
-\usepackage{url}
-\usepackage{txfonts}
-\usepackage{xcolor}
-\usepackage{CJK,CJKpunct}
-\usepackage[CJKbookmarks=true, bookmarksnumbered=true,%
-            colorlinks=true, linkcolor=blue, dvips]{hyperref}
-\usepackage{indentfirst}
-\setlength{\parskip}{4pt plus1pt minus0pt}
-\setlength{\topsep}{0pt}
-\setlength{\partopsep}{0pt}
-\setlength{\parindent}{20pt}
-\addtolength{\oddsidemargin}{-1cm}
-\advance\textwidth 1.5cm
-\addtolength{\topmargin}{-1cm}
-\addtolength{\headsep}{0.3cm}
-\addtolength{\textheight}{2.3cm}
-\newcommand\hei{\CJKfamily{hei}}
-\newcommand\fs{\CJKfamily{fs}}
-\renewcommand{\baselinestretch}{1.3}
-\setlength{\shadowsize}{3pt}
-\def\DescribeOption#1{\SpecialOptionIndex{#1}}
-\def\SpecialOptionIndex#1{\index{#1\actualchar\textbf{#1}}}
-\renewenvironment{description}
-  {\list{}{\setlength\labelwidth{2cm}%
-           \setlength\labelsep{3pt}%
-           \setlength\leftmargin{\labelwidth+\labelsep}%
-           \addtolength{\itemsep}{3pt}%
-           \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}}
-  }{\endlist}
-\DefineVerbatimEnvironment{example}{Verbatim}%
-  {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue},%
-   fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1.2,%
-   fontsize=\small, gobble=1}
-\DefineVerbatimEnvironment{shell}{Verbatim}%
-  {frame=single, framerule=0.3mm, rulecolor=\color{red!85!green!60},%
-   fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small, gobble=1}
-\makeatletter
-\long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fs #1}}\marginpar{\strut}\hskip\parindent}
-\def\tableofcontents{\renewcommand{\baselinestretch}{1.0}\@starttoc{toc}}
-\def\DescribeMacro{\Describe@Macro}
-\def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
-\def\PrintDescribeMacro#1{{\color{-red!75!green!50!blue!55}\MacroFont \string #1\hskip1em }}
-\def\ps@headings{%
-  \let\@oddfoot\@empty
-  \def\@oddhead{\vbox{%
-    \hbox to\textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}%
-    \vskip-0.7pt%
-    \hbox to \textwidth{\hrulefill}}}
-  \let\@evenfoot\@oddfoot
-  \let\@evenhead\@oddhead
-  \let\@mkboth\markboth
-  \def\sectionmark##1{%
-    \markright{\ifnum \c@secnumdepth >\m@ne
-      \thesection\quad
-      \fi
-      ##1}}
-  \def\subsectionmark##1{%
-    \markright{\ifnum \c@secnumdepth >\m@ne
-      \thesubsection\quad
-      \fi
-      ##1}}
-  \def\subsubsectionmark##1{%
-    \markright{\ifnum \c@secnumdepth >\m@ne
-      \thesubsubsection\quad
-      \fi
-      ##1}}}
-\renewcommand\section{\@startsection{section}{1}{\z@}%
-                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
-                                   {2.3ex \@plus.2ex}%
-                                   {\normalfont\Large\bfseries\hei}}
-\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                     {1.5ex \@plus .2ex}%
-                                     {\normalfont\large\bfseries\hei}}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                     {1.5ex \@plus .2ex}%
-                                     {\normalfont\normalsize\bfseries\hei}}
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                                    {3.25ex \@plus1ex \@minus.2ex}%
-                                    {-1em}%
-                                    {\normalfont\normalsize\bfseries}}
-\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-                                       {3.25ex \@plus1ex \@minus .2ex}%
-                                       {-1em}%
-                                      {\normalfont\normalsize\bfseries}}
-
-\makeatother
-\pagestyle{empty}
+\usepackage{dtx-style}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
-%\OnlyDescription
-
+ %\OnlyDescription
 \begin{document}
 \begin{CJK*}{GBK}{song}
-\DocInput{thuthesis.dtx}
-\clearpage\end{CJK*}
+  \DocInput{\jobname.dtx}
+\end{CJK*}
 \end{document}
 %</driver>
 % \fi
@@ -191,8 +97,7 @@
 % \changes{v2.2}{2006/03/26}{Adjust hyperref to avoid boxes around links.}
 % \changes{v2.3}{2006/04/07}{Fix a great bug: PassOptionsToClass and LoadClass
 % rather than PassOptionToPackage and LoadPackage.}
-% \changes{v2.3}{2006/04/07}{Reorganize the codes in cover, make the pagestyle
-% more readable.}
+% \changes{v2.3}{2006/04/07}{Reorganize the codes in cover, make the pagestyle more readable.}
 % \changes{v2.3}{2006/04/07}{Add gbk2uni into the document.}
 % \changes{v2.3}{2006/04/07}{Support openright and openany.}
 % \changes{v2.3}{2006/04/09}{Adjust hypersetup to remove color and box.}
@@ -3059,24 +2964,23 @@
 %<*cls>
 \iffalse
 \newcommand{\bs}{\symbol{'134}}%Print backslash
- % \newcommand{\bs}{\ensuremath{\mathtt{\backslash}}}%Print backslash
- % Index entry for a command (\cih for hidden command index
+% \newcommand{\bs}{\ensuremath{\mathtt{\backslash}}}%Print backslash
+% Index entry for a command (\cih for hidden command index
 \newcommand{\cih}[1]{%
-\index{commands!#1@\texttt{\bs#1}}%
-\index{#1@\texttt{\hspace*{-1.2ex}\bs #1}}
-}
+  \index{commands!#1@\texttt{\bs#1}}%
+  \index{#1@\texttt{\hspace*{-1.2ex}\bs #1}}}
 \newcommand{\ci}[1]{\cih{#1}\texttt{\bs#1}}
- % Package
+% Package
 \newcommand{\pai}[1]{%
-\index{packages!#1@\textsf{#1}}%
-\index{#1@\textsf{#1}}%
-\textsf{#1}}
- % Index entry for an environment
+  \index{packages!#1@\textsf{#1}}%
+  \index{#1@\textsf{#1}}%
+  \textsf{#1}}
+% Index entry for an environment
 \newcommand{\ei}[1]{%
-\index{environments!\texttt{#1}}%
-\index{#1@\texttt{#1}}%
-\texttt{#1}}
- % Indexentry for a word (Word inserted into the text)
+  \index{environments!\texttt{#1}}%
+  \index{#1@\texttt{#1}}%
+  \texttt{#1}}
+% Indexentry for a word (Word inserted into the text)
 \newcommand{\wi}[1]{\index{#1}#1}
 \fi
 %</cls>
@@ -3163,7 +3067,7 @@
 %
 %
 % \begin{macro}{\thu@setup@pdfinfo}
-% 设置一些~pdf~文档信息，依赖于~\pkg{hyperref}~宏包。
+% 设置一些~pdf 文档信息，依赖于~\pkg{hyperref} 宏包。
 %    \begin{macrocode}
 \def\thu@setup@pdfinfo{%
   \hypersetup{%
@@ -3197,4 +3101,102 @@
 %    \end{macrocode}
 %
 % \Finale
+%
+% \iffalse
+%    \begin{macrocode}
+%<*dtx-style>
+\ProvidesPackage{dtx-style}
+\usepackage{calc}
+\usepackage{array,longtable}
+\usepackage{fancybox}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{txfonts}
+\usepackage{xcolor}
+\usepackage{CJK,CJKpunct}
+\usepackage[CJKbookmarks=true, bookmarksnumbered=true,%
+            colorlinks=true, linkcolor=blue, dvips]{hyperref}
+\usepackage{indentfirst}
+\setlength{\parskip}{4pt plus1pt minus0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parindent}{20pt}
+\addtolength{\oddsidemargin}{-1cm}
+\advance\textwidth 1.5cm
+\addtolength{\topmargin}{-1cm}
+\addtolength{\headsep}{0.3cm}
+\addtolength{\textheight}{2.3cm}
+\newcommand\hei{\CJKfamily{hei}}
+\newcommand\fs{\CJKfamily{fs}}
+\renewcommand{\baselinestretch}{1.3}
+\setlength{\shadowsize}{3pt}
+\def\DescribeOption#1{\SpecialOptionIndex{#1}}
+\def\SpecialOptionIndex#1{\index{#1\actualchar\textbf{#1}}}
+\renewenvironment{description}
+  {\list{}{\setlength\labelwidth{2cm}%
+           \setlength\labelsep{3pt}%
+           \setlength\leftmargin{\labelwidth+\labelsep}%
+           \addtolength{\itemsep}{3pt}%
+           \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}}
+  }{\endlist}
+\DefineVerbatimEnvironment{example}{Verbatim}%
+  {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue},%
+   fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1.2,%
+   fontsize=\small, gobble=1}
+\DefineVerbatimEnvironment{shell}{Verbatim}%
+  {frame=single, framerule=0.3mm, rulecolor=\color{red!85!green!60},%
+   fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small, gobble=1}
+\long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fs #1}}\marginpar{\strut}\hskip\parindent}
+\def\tableofcontents{\renewcommand{\baselinestretch}{1.0}\@starttoc{toc}}
+\def\DescribeMacro{\Describe@Macro}
+\def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
+\def\PrintDescribeMacro#1{{\color{-red!75!green!50!blue!55}\MacroFont \string #1\hskip1em }}
+\def\ps@headings{%
+  \let\@oddfoot\@empty
+  \def\@oddhead{\vbox{%
+    \hbox to\textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}%
+    \vskip-0.7pt%
+    \hbox to \textwidth{\hrulefill}}}
+  \let\@evenfoot\@oddfoot
+  \let\@evenhead\@oddhead
+  \let\@mkboth\markboth
+  \def\sectionmark##1{%
+    \markright{\ifnum \c@secnumdepth >\m@ne
+      \thesection\quad
+      \fi
+      ##1}}
+  \def\subsectionmark##1{%
+    \markright{\ifnum \c@secnumdepth >\m@ne
+      \thesubsection\quad
+      \fi
+      ##1}}
+  \def\subsubsectionmark##1{%
+    \markright{\ifnum \c@secnumdepth >\m@ne
+      \thesubsubsection\quad
+      \fi
+      ##1}}}
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\Large\bfseries\hei}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\large\bfseries\hei}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries\hei}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                    {3.25ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {3.25ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\pagestyle{empty}
+%</dtx-style>
+%    \end{macrocode}
+% \fi
 \endinput
