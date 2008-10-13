@@ -29,10 +29,7 @@ all: cls doc thesis shuji
 
 
 ###### generate cls/cfg
-cls: $(PACKAGE).cls
-
-$(PACKAGE).cls:	$(SOURCES)
-	rm -f $(PACKAGE).cls $(PACKAGE).cfg
+cls:  $(SOURCES)
 	latex $(PACKAGE).ins
 
 ###### for doc
