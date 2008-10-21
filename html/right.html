@@ -1,8 +1,7 @@
 <html>
   <head>
     <title>ThuThesis: Thesis LaTeX Template for Tsinghua University</title>  
-    <meta http-equiv="Content-Type"
-	content="text/html; charset=gb2312" />
+    <meta http-equiv="Content-Type"	content="text/html; charset=gb2312" />
 	<base  target="_blank" />
 	<link rel="stylesheet" type="text/css" href="core.css" />
   </head>
@@ -18,144 +17,23 @@
 <p>此宏包旨在建立一个简单易用的清华大学学位论文LaTeX模板，包括本科综合论文训练、硕士论文、
 博士论文以及博士哲学论文。现在支持本科、硕士、博士论文格式，对其它格式的支持会陆续加入。
 
-<p>自2005.6报盘版本发布以来，本模板收到很多有益的反馈。由于报盘版以package的形式出现，
-文档结构比较混乱，维护起来不太容易，而且还存在很多不符合学校的格式要求。所以从2005.11开始，
-我着手将其改进，首先用标准的LaTeX宏包工具docstrip重新整理模板，然后在此基础上进行了
-很多重要的改正和改进。在众多同学的认真测试和热情反馈下，此模板日臻完善，完全可以作为一个
-可靠的论文模板来使用。
-
-
-<p>就像Hans Hagen说的，“..., <font color="blue"><I>but in practice many documents look just as 'texy' as MSWord documents 
-look 'wordy' and Quark output looks 'quarky'</I></font>” 。 不管ThuThesis怎样改进， 即使是100％符合学校论文写作指南， 也不能保证跟学校给出的MSWord示例完全相同。确切的说，学校给出的MSWord示例并不是一个模板， 应为里面根本就没有是用样式，不过是信手调整而已。
-
-<p>让人高兴的是，ThuThesis 已经开始为教务处所认可，进一步的合作正在进行中！
-
-<a name='news'></a>
-<h2>News</h2>
-<ul>
-    <li>ThuThesis-2.2 is released! (2006/3/26)
-    <li>ThuThesis-2.1 is released! (2006/3/4)
-	<li>ThuThesis-2.0 is released! (2005/12/20)
-	<li>ThuThesis-1.5 is released! (2005/12/16)
-	<li>ThuThesis-1.4rc1 is released! (2005/12/14)
-	<li>ThuThesis-1.4 is released! (2005/12/05)
-	<li>ThuThesis-1.3 is released! (2005/11/14)
-	<li>ThuThesis-1.2 is releases! (2005/11/04)
-	<li>ThuThesis-BaoPan is released! (2005/06/07)
-</ul>
+<p>ThuThesis 已经通过清华大学教务处和研究生院的“认证”，被指定为官方LaTeX论文模板。
 
 <a name='doc'></a>
 <h2>Documentation</h2>
-<ul>
-	<li>宏包使用说明
-	<li>示例文档
-</ul>
 请下载模板，里面包括具体使用说明以及示例文档。
+<ul>
+	<li>模板使用说明(thuthesis.pdf)
+	<li>示例文档(main.pdf)
+</ul>
 
 <a name='download'></a>
 <h2>Download</h2>
 <ul>
-<li><a href="http://sourceforge.net/project/showfiles.php?group_id=156590">sourceforge 下载</a>
-<li>国内镜像<a href="http://gforge.oss.org.cn/projects/thuthesis/">http://gforge.oss.org.cn/projects/thuthesis/</a>下载。
+<li><a href="http://sourceforge.net/project/showfiles.php?group_id=156590">SourceForge.net</a>
+<li><a href="http://www.ctan.org/tex-archive/macros/latex/contrib/thuthesis/">CTAN</a>
 </ul>
 
-<!--
-<a name='changelog'></a>
-<h2>ChangeLog</h2>
-<ul>
-	<li><b>ThuThesis-2.2</b> is released! (2006/3/26)<br> 
-		<ul>
-			<li>完善本科综合论文训练任务书页面
-			<li>调整页面边距 （为什么必须得以 MS WORD 为准？）
-			<li>导言区支持 CJK
-			<li>清除不是警告的“unresolved references”
-			<li>调整 hyperref 避免出现方框
-			<li>其它 bug fixes 和 code refine
-		</ul>
-	<li><b>ThuThesis-2.1</b> is released! (2006/3/4)<br>   
-	<ul>
-	<li>增加本科论文支持
-	<li>去掉数个不必要宏包
-	<li>完善文档
-	<li>several bug fixes
-	<li>通过教务处认定
-	</ul>
-	<li><b>ThuThesis-2.0</b> is released! (2005/12/20)<br>
-	<ul>
-		<li> 大家务必阅读Readme！（进一步可阅读 thuthesis.pdf）
-		<li> 开始使用前请务必参考示例文档！
-		<li> Changes:
-			<ol>
-				<li> 博士论文格式支持（中英文封面）
-				<li> 保密封面
-				<li> 主要符号对照表
-				<li> 附录
-				<li> 个人简历重写
-				<li> 脚注更改
-				<li> 多处代码的修补
-				<li> 将冗余的包统一放到thutils.sty中
-				<li> 希望这是一份能让各位TeXers喜欢的新年礼物！
-			</ol>
-		</ul>
-		<li>1.5 (2005/12/16)
-		<ul>
-			<li>更改了个人简历命令为<b>\resume</b>
-			<li>修改了目录中超连接和页码的错误
-		</ul>
-		<li>1.4rc1 (2005/12/14)
-		<ul>
-			<li>封面的冒号不小心丢了（多谢姜苍华发现）
-			<li>破则号调整
-		</ul>
-		<li>1.4 (2005/12/05)
-		<ul>
-			<li>修正宏包冲突引起的中文字体问题（everysel和CJK）
-		</ul>
-		<li>1.3 (2005/11/14)
-		<ul>
-			<li>更换了一些不推荐使用的包(subfigure 和 caption2)
-			<li>解决上标和正文两种引用模式。
-		</ul>
-		<li>1.2 (2005/11/04)
-		<ul>
-			<li>用 doc 宏包重写，自动生成的说明文档更方便使用。
-		</ul>
-		<li>BaoPan (2005/06/07)
-		<ul>
-			<li> ....
-		</ul>
-	</ul>
--->
-	<!--
-	<a name='faq'></a>
-	<h2>FAQ</h2>
-
-
-	<a name='mail'></a>
-	<h2>Mailing List</h2>
-	<p>以后有任何意见、建议以及问题，大家都可以到：
-	<a href="http://lists.sourceforge.net/lists/listinfo/thuthesis-user">邮件列表主页</a>注册，然后给
-	<a href="mailto:thuthesis-user@lists.sourceforge.net">thuthesis-user@lists.sourceforge.net</a>写信。
-
-	<a name='list'></a>
-	<h2>User List</h2>
-	<p>
-	<dl>
-		<dt>用户列表：</dt>
-		<dd>
-		<ul>
-			<li>已经有不少同学是用报盘版顺利提交论文，我希望所有使用ThuThesis顺利通过的同学能给我发个邮件，我会将其列举在此。
-		</ul>
-		</dd>
-		<dt>签名列表：</dt>
-		<dd>
-		<ul>
-			<li>如果想让ThuThesis成为学校官方认可的模板，请在此留下你的签名！
-			<li>给我写信，格式随意，内容至少包括：自己的姓名（或者网络id，比如水木id），其他诸如学校、系别随意，如果能加一句自己支持TeX模板的理由就更好了。
-		</ul>
-		</dd>
-	</dl>
-	-->
 
 
 	<a name='googlegroup'></a>
@@ -186,16 +64,10 @@ look 'wordy' and Quark output looks 'quarky'</I></font>” 。 不管ThuThesis怎样改
 		</form>
 		<tr><td colspan=2 align=center> 浏览存于 <a href="http://groups.google.com/">groups.google.com</a> 上的<a href="http://groups.google.com/group/thuthesis">所有帖子</a> </td></tr>
 	</table>
-<!--
-	<a name='feedback'></a>
-	<h2>Feedback</h2>
-	<p>请大家多为ThuThesis提意见和建议，可以通过sourceforege提供的<a href="http://sourceforge.net/tracker/?group_id=156590&atid=800396">Bugs</a>和<a href="http://sourceforge.net/tracker/?group_id=156590&atid=800399">Features Requests</a>，
-	不过推荐大家用<a href="http://groups.google.com/group/thuthesis">ThuThesis Google Group</a>，当然直接给我<a href="mailto:xueruini@gmail.com">写信</a>也可以。
--->
 
 	<a name='aboutme'></a>
 	<h2>About me</h2>
-	<p>看看<a href="http://learn.tsinghua.edu.cn:8080/2003214890">我的个人主页</a>吧！
+	<p>看看<a href="http://xueruini.myipcn.org">我的个人主页</a>吧！
 
 	<p><p>
 	<hr>
