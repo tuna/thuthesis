@@ -1,0 +1,34 @@
+\startproduct main
+\environment thesis
+
+% title page
+\component data/cover
+
+% 前文
+\startfrontmatter
+	\setuppagenumbering[conversion=Romannumerals]
+	%\setuppagenumber[number=1]
+        %\pagereference[Content]
+        %\title{目\;\;录}\blank
+	%\placecontent
+        \completecontent
+\stopfrontmatter
+
+% 正文
+\startbodymatter
+	\setuppagenumbering[conversion=number]
+	\setuppagenumber[number=1]
+	\setups{HeaderFooter}
+	\component data/chap01
+\stopbodymatter
+
+% 附录
+\startappendices
+	%\title{参考文献}
+	%\placepublications[criterium=all]
+\stopappendices
+
+% 后文
+\startbackmatter
+\stopbackmatter
+\stopproduct

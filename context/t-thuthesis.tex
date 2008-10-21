@@ -1,0 +1,257 @@
+%D \module
+%D   [       file=t-thuthesis,
+%D        version=0.1,
+%D          title=Tsinghua University \CONTEXT\ Template,
+%D       subtitle=Dissertation,
+%D         author=Ruini Xue,
+%D           date=\currentdate,
+%D      copyright=Public Domain]
+
+\writestatus{loading}{Tsinghua University \CONTEXT\ Template}
+
+\unprotect
+
+\startmodule[thuthesis]
+
+% use module 
+\usemodule [bib]
+
+% setup layout
+\setuppapersize[A4][A4]
+\setuplayout[width=fit,
+	     height=middle,
+             leftmargin=3cm,
+	     rightmargin=3cm,
+             backspace=4cm,
+             topspace=2cm,
+             headerdistance=.5cm,
+             footerdistance=.5cm,
+	     leftmargindistance=.5cm,
+             rightmargindistance=.5cm,
+             header=1cm,footer=1cm]
+\setuppagenumbering[alternative=doublesided,
+                    style=\tfx,
+                    location={footer,middle}]
+
+% setup font
+\usetypescriptfile [zhfonts]
+\usetypescript [thuthesis]
+\setupbodyfont [thuthesis, 12pt]
+\setupbodyfontenvironment[default][em=italic]
+
+\def\thudefinefontsize%
+  {\dodoubleargument\dothudefinefontsize}
+
+% #1: font name 
+% #2: default size
+\def\dothudefinefontsize[#1][#2]{
+  \@EA\def\csname #1\endcsname{
+    \@EA\dosingleargument\csname do#1\endcsname}
+   % ##1: line space
+   \@EA\def\csname do#1\endcsname[##1]{
+     \switchtobodyfont[#2]
+     \iffirstargument
+       \setupinterlinespace[line=##1]
+     \fi}}
+	
+\thudefinefontsize[chuhao]   [42bp]
+\thudefinefontsize[xiaochu]  [36bp]
+\thudefinefontsize[yihao]    [26bp]
+\thudefinefontsize[xiaoyi]   [24bp]
+\thudefinefontsize[erhao]    [22bp]
+\thudefinefontsize[xiaoer]   [18bp]
+\thudefinefontsize[sanhao]   [16bp]
+\thudefinefontsize[xiaosan]  [15bp]
+\thudefinefontsize[sihao]    [14bp]
+\thudefinefontsize[banxiaosi][13bp]
+\thudefinefontsize[xiaosi]   [12bp]
+\thudefinefontsize[dawu]     [11bp]
+\thudefinefontsize[wuhao]    [10.5bp]
+\thudefinefontsize[xiaowu]   [9bp]
+\thudefinefontsize[liuhao]   [7.5bp]
+\thudefinefontsize[xiaoliu]  [6.5bp]
+\thudefinefontsize[qihao]    [5.5bp]
+\thudefinefontsize[bahao]    [5bp]
+
+% setup titles
+\setupheads[indentnext=yes] % number format of section number
+\setupheader[text][frame=off, bottomframe=on, style=\tfx]
+\definepagebreak
+    [mychapterpagebreak]
+    [yes,header,right] % [pagebreak=yes,header,footer,openwhere=right]
+\setuphead
+   [title,chapter]
+   [align=center,style=\bfb,page=mychapterpagebreak]
+ %   [page=Mychapterpagebreak,header=empty,footer=empty]
+
+\setuphead[section][style=\bfa]
+\setuphead[subsubject][style=\bf]
+
+\setupsectionblock[frontpart][page=no, number=no]
+\setupsectionblock[bodypart][page=yes]
+%\setupsectionblock[appendix][page=no]
+\setupsectionblock[backpart][page=yes]
+
+% setup chinese
+\setuplabeltext [en] [chapter={第\;,\;章}]
+% \setuplabeltext [en] [section={第\;,\;节}]
+\setuplabeltext [en] [figure=图\;]
+\setuplabeltext [en] [table=表\;]
+% \setupheadtext [en] [pubs={\bfc 参考文献}]
+\setupheadtext [en] [content={\bfc 目录}]
+
+% setup figure directory
+% 图片目录
+\setupexternalfigures[directory={./figures}]
+
+%% 目录 %%
+\def\ChapterNumber#1{\doiftext{#1}{第\;#1\;章\quad}}
+\setuplist
+    [chapter]
+    [alternative=c,
+     before={\page[preference]\blank},
+     after=\blank,
+     style=\bf,
+     width=fit,
+     pagestyle=bold,
+     pagenumber=yes,
+     numbercommand=\ChapterNumber]
+
+\def\PageNumber#1{\color[darkgray]{#1}.}
+\setuplist
+    [section]
+    [alternative=c,
+     style=normal,
+     pagecommand=\PageNumber,
+     pagestyle=\itx]
+
+
+% 页眉页脚
+\setupcombinedlist[content][level=3,alternative=c]
+\startsetups HeaderFooter
+        \def\CurrentChapter{%
+                第 \headnumber[chapter]\ 章%
+                \hbox to 2em{}%
+                \getmarking[chapter]}
+        \def\CurrentSection{%
+                \headnumber[section]%
+                \hbox to 2em{}%
+                \getmarking[section]}
+        \setupheadertexts[text]
+                [\CurrentChapter][]
+                [][\CurrentSection]
+        \setupfootertexts[text][][][][]
+        \setupheader[style=\bfx]
+        \setupfooter[style=\bfx]
+\stopsetups
+
+% 书签
+\setupinteraction[state=start]
+\setupinteractionscreen[option=bookmark]
+\placebookmarks[chapter,section,subsection,subsubsection][chapter]
+
+% 参考文献
+%\setupbibtex[database=bibliography]
+\setuppublications[alternative=num]
+
+\setuppublicationlayout[booklet]{%
+   \insertauthors{}{\unskip.}{}%
+   \inserttitle{ \bgroup\it }{\/\egroup\unskip.}{}%
+   \insertbiburl{ URL: }{\unskip.}{}%
+   \insertnote{ }{\unskip.}{}}
+
+\setuppublicationlayout[manual]{%
+   \insertauthors{}{\unskip.}{}%
+   \inserttitle{ \bgroup\it }{\/\egroup\unskip.}{}%
+   \insertbiburl{ URL: }{\unskip.}{}%
+   \insertnote{ }{\unskip.}{}}
+
+
+%---- 其它一些零碎设置 ----
+\setuptolerance [tolerant]
+\setupinterlinespace[big]
+\setupindenting[always,first,2em]
+
+\setupfloats[indentnext=yes] 
+\setupcaptions[style=\tfx, headstyle=\normal]
+
+\definesymbol[1][{\color[darkgray]{\dag}}]
+\setupitemize[each][packed,serried,inmargin][symbol=1,margin=2em]
+
+\setupfootnotes[way=bypage]
+
+\setupinmargin[left,right][style=\tfx]
+
+\definedescription[definition]
+        [location=top,hang=20,width=broad,indenting=always,style=\ss,headstyle=\bf]
+
+\def\mycite#1{\high{\cite[#1]}}
+
+\definesystemvariable{thu}
+
+\startvariables all
+	title: 		title
+	degree:		degree
+	department: 	department
+	discipline:	discipline
+	name:		name
+	supervisor:	supervisor
+	assupervisor:	assupervisor	% associated supervisor
+	cosupervisor:	cosupervisor
+	date:		date
+\stopvariables
+
+\setuplabeltext 
+	[title=题目,
+	 department=培养单位,
+	 discipline=学科,
+	 name=研究生,
+	 supervisor=指导教师,
+	 assupervisor=副指导教师,
+	 cosupervisor=联合导师]
+
+\def\setupcover{%
+  \dosingleargument\dosetupcover}
+\def\dosetupcover[#1]{%
+  \getparameters[\??thu][#1]}
+
+\def\putentry#1{%
+  \@EA\doifsomething\@EA{\csname @@thu#1\endcsname}{%
+    \labeltext{#1}：\getvalue{@@thu#1}\par}}
+
+\startsetups [cover]
+	%\startstandardmarkup
+	\begingroup
+	\setupindenting [no]
+	\startalignment [center]
+	\bgroup\ss\bfd\@@thutitle\endgraf\egroup
+	（申请清华大学 \@@thudegree 学位论文）
+
+	\blank[2*big]
+
+	\putentry{department}
+	\putentry{discipline}
+	\putentry{name}
+	\putentry{assupervisor}
+	\putentry{cosupervisor}
+
+	%\doifelsesomething{\@@thudate}{\currentdate}
+	\@@thudate
+	\stopalignment
+	\endgroup
+	%\stopstandardmarkup
+\stopsetups
+
+\startbuffer [cn-abstract]
+\stopbuffer
+
+\startbuffer [en-abstract]
+\stopbuffer
+
+\stopmodule
+\protect \endinput
+
+%\showframe
+% \startstandardmarkup, \startalignment [center]
+% http://wiki.contextgarden.net/Document_Titles
+% http://source.contextgarden.net/doc/context/manuals/allkind/mcommon.tex

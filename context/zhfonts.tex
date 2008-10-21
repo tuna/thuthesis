@@ -1,0 +1,68 @@
+% engine=luatex
+% \ctxlua{fonts.collections.trace = true}
+\synchronizemathfontsfalse
+\let\synchronizetext\relax
+
+\spaceskip .25em plus .25em \relax
+
+\definefontfeature[zh][mode=node,script=hang,lang=zhs]
+
+\starttypescript [serif] [zhfont]
+    \definefontsynonym [ZhSerif][name:STSong][features=zh]
+    \definefontsynonym [ZhSerifBold][name:STHeiti][features=zh]
+    \definefontsynonym [ZhSerifItalic][name:STKaiti][features=zh]
+    \definefontsynonym [ZhSerifBoldItalic][name:STHeiti][features=zh]
+
+    \definefontfallback [WesternSerif][name:TeXGyreTermes-Regular][0x0000-0x0400][force=yes]
+    \definefontfallback [WesternSerifBold][name:TeXGyreTermes-Bold][0x0000-0x0400][force=yes]
+    \definefontfallback [WesternSerifItalic][name:TeXGyreTermes-Regular][0x0000-0x0400][force=yes]
+    \definefontfallback [WesternSerifBoldItalic][name:TeXGyreTermes-Bold][0x0000-0x0400][force=yes]
+ 
+   \definefontsynonym [Serif][ZhSerif][fallbacks=WesternSerif]
+   \definefontsynonym [SerifBold][ZhSerifBold][fallbacks=WesternSerifBold]
+   \definefontsynonym [SerifItalic][ZhSerifItalic][fallbacks=WesternSerifItalic]
+   \definefontsynonym [SerifBoldItalic][ZhSerifBoldItalic][fallbacks=WesternSerifBoldItalic]
+\stoptypescript
+
+
+\starttypescript [sans] [zhfont]
+    \definefontsynonym [ZhSans][name:STKaiti][features=zh]
+    \definefontsynonym [ZhSansBold][name:STHeiti][features=zh]
+    \definefontsynonym [ZhSansItalic][name:STKaiti][features=zh]
+    \definefontsynonym [ZhSansBoldItalic][name:STHeiti][features=zh]
+
+    \definefontfallback [WesternSans][name:TeXGyreHeros-Regular][0x0000-0x0400][force=yes]
+    \definefontfallback [WesternSansBold][name:TeXGyreHeros-Bold][0x0000-0x0400][force=yes]
+    \definefontfallback [WesternSansItalic][name:TeXGyreHeros-Regular][0x0000-0x0400][force=yes]
+    \definefontfallback [WesternSansBoldItalic][name:TeXGyreHeros-Bold][0x0000-0x0400][force=yes]
+ 
+   \definefontsynonym [Sans][ZhSans][fallbacks=WesternSans]
+   \definefontsynonym [SansBold][ZhSansBold][fallbacks=WesternSansBold]
+   \definefontsynonym [SansItalic][ZhSansItalic][fallbacks=WesternSansItalic]
+   \definefontsynonym [SansBoldItalic][ZhSansBoldItalic][fallbacks=WesternSansBoldItalic]
+\stoptypescript
+
+
+\starttypescript [mono] [zhfont]
+    \definefontsynonym [ZhMono][name:STFangsong][features=zh]
+    \definefontsynonym [ZhMonoBold][name:STHeiti][features=zh]
+    \definefontsynonym [ZhMonoItalic][name:STFangsong][features=zh]
+    \definefontsynonym [ZhMonoBoldItalic][name:STHeiti][features=zh]
+
+    \definefontfallback [WesternMono][name:TeXGyreCursor-Regular][0x0000-0x0400][force=yes]
+    \definefontfallback [WesternMonoBold][name:TeXGyreCursor-Bold][0x0000-0x0400][force=yes]
+    \definefontfallback [WesternMonoItalic][name:TeXGyreCursor-Regular][0x0000-0x0400][force=yes]
+    \definefontfallback [WesternMonoBoldItalic][name:TeXGyreCursor-Bold][0x0000-0x0400][force=yes]
+
+    \definefontsynonym [Mono][ZhMono][fallbacks=WesternMono]
+    \definefontsynonym [MonoBold][ZhMonoBold][fallbacks=WesternMonoBold]
+    \definefontsynonym [MonoItalic][ZhMonoItalic][fallbacks=WesternMonoItalic]
+    \definefontsynonym [MonoBoldItalic][ZhMonoBoldItalic][fallbacks=WesternMonoBoldItalic]
+\stoptypescript
+
+\starttypescript[thuthesis]
+    \definetypeface[thuthesis][rm][serif][zhfont]
+    \definetypeface[thuthesis][ss][sans][zhfont]
+    \definetypeface[thuthesis][tt][mono][zhfont]
+    %\definetypeface[thuthesis][mm][math][zhfont]
+\stoptypescript
