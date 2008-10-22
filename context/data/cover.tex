@@ -1,8 +1,8 @@
 \startcomponent cover
 \product main
 
-\setupcover
-	[title={清华大学学位论文 \CONTEXT\ 模板},
+\setupcover [cn]
+	[title={清华大学学位论文 \CONTEXT\ 模板使用示例文档},
 	degree=工学博士, 
 	department=计算机科学与技术系,
 	discipline=计算机科学与技术,
@@ -12,5 +12,16 @@
 	cosupervisor=某某某教授,
 	date=二零零八年十月]
 
-\setups [cover]
+\setupcover [en]
+	[title={Tsinghua Unviersity \CONTEXT\ Template Example},
+	degree=Doctor of Engineer, 
+	department=Department of Computer Science,
+	discipline=Computer Science and Technology,
+	name=Ruini Xue,
+	supervisor=Professor Guangwen Yang,
+	assupervisor=Wenguang Chen,
+	cosupervisor=Someone,
+	date={October, 2008}]
+
+\makecover
 \stopcomponent
