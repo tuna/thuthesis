@@ -38,10 +38,10 @@
 \usetypescriptfile [zhfonts]
 \usetypescript [thuthesis]
 \setupbodyfont [thuthesis, 12pt]
-\setupbodyfontenvironment[default][em=italic]
+\setupbodyfontenvironment [default] [em=italic]
 
-\def\thudefinefontsize%
-  {\dodoubleargument\dothudefinefontsize}
+\def\thudefinefontsize{%
+  \dodoubleargument\dothudefinefontsize}
 
 % #1: font name 
 % #2: default size
@@ -88,7 +88,6 @@
 \setuphead[section][style=\bfa]
 \setuphead[subsubject][style=\bf]
 
-\iffalse
 \startsectionblockenvironment[frontpart]
   \setuppagenumbering[conversion=Romannumerals]
   \setuppagenumber[number=1]
@@ -100,6 +99,7 @@
   \setups{BodyHeaderFooter}
 \stopsectionblockenvironment
 
+\iffalse
 \startsectionblockenvironment[backpart]
   % todo
 \stopsectionblockenvironment
@@ -122,7 +122,7 @@
 \setuplabeltext [figure=图\;]
 \setuplabeltext [table=表\;]
 % \setupheadtext [en] [pubs={\bfc 参考文献}]
-\setupheadtext [content={\bfc 目录}]
+\setupheadtext [content=目录]
 
 % setup figure directory
 % 图片目录
@@ -141,12 +141,10 @@
      pagenumber=yes,
      numbercommand=\ChapterNumber]
 
-\def\PageNumber#1{\color[darkgray]{#1}.}
 \setuplist
     [section]
     [alternative=c,
      style=normal,
-     pagecommand=\PageNumber,
      pagestyle=\itx]
 
 
@@ -194,17 +192,20 @@
 %---- 其它
 \setuptolerance 
   [verytolerant,stretch]
+
 \setupinterlinespace
   [big]
+
 \setupindenting
   [always,first,2em]
 
 \setupfloats
   [indentnext=yes] 
+
 \setupcaptions
   [style=\tfx, headstyle=\normal]
 
-\definesymbol[1][{\color[darkgray]{\dag}}]
+\definesymbol[1][\dag]
 \setupitemize[each][packed,serried,inmargin][symbol=1,margin=2em]
 
 \setupfootnotes[way=bypage]
@@ -244,7 +245,7 @@
 %D \type{\setupcover} collects meta-data to creat the cover. Since doctor dissertation 
 %D has both Chinese and English covers, so we need collect two sets data, which is distinguished
 %D with the first argument \type{cn | en}, and the second argument provides setup details. If only
-%D one argument is supplied, we take \type{cn} as default. todo
+%D one argument is supplied, we take \type{cn} as default.
 \def\setupcover{%
   \dodoubleempty\dosetupcover}
 \def\dosetupcover[#1][#2]{%
@@ -259,27 +260,24 @@
     \labeltext{#1}：\getvalue{@@thucn#1}\par}}
 
 \def\makecncover{%
-	\startstandardmakeup
-    % \setuplayout []
-	\setupindenting [\v!no]
-    \setupinterlinespace [\v!big]	
-	\setupalign [\v!middle] % or: \raggedcenter, \setupalignment[]\stopalignment
-	%\startalignment [\v!middle]
-	\bgroup\ss\bfd\@@thucntitle\endgraf\egroup
+  \startstandardmakeup
+  % \setuplayout []
+  \setupindenting [\v!no]
+  \setupinterlinespace [\v!big]	
+  \setupalign [\v!middle] % or: \raggedcenter, \setupalignment[]\stopalignment
+  %\startalignment [\v!middle]
+    \bgroup\ss\bfd\@@thucntitle\endgraf\egroup
     \blank[\v!small]
-	（申请清华大学 \@@thucndegree 学位论文）
-
-	\blank[2*\v!big]
-
-	\putentry{department}
-	\putentry{discipline}
-	\putentry{name}
-	\putentry{assupervisor}
-	\putentry{cosupervisor}
-
-	%\doifelsesomething{\@@thudate}{\currentdate}
-	\@@thucndate	
-	\stopstandardmakeup}
+    （申请清华大学 \@@thucndegree 学位论文）
+    \blank[2*\v!big]
+    \putentry{department}
+    \putentry{discipline}
+    \putentry{name}
+    \putentry{assupervisor}
+    \putentry{cosupervisor}
+    %\doifelsesomething{\@@thudate}{\currentdate}
+    \@@thucndate	
+  \stopstandardmakeup}
 
 \def\makeencover{%
   \startstandardmakeup
@@ -287,7 +285,7 @@
   \setupindenting [\v!no]
   \setupinterlinespace [\v!big]
   \setupalign [\v!middle]  
-	\bgroup\ss\bfd\@@thuentitle\endgraf\egroup
+    \bgroup\ss\bfd\@@thuentitle\endgraf\egroup
     \blank[3*\v!big]
     \startlines
      Dissertation Submitted to
@@ -297,17 +295,15 @@
      {\bf\ss \@@thuendegree}
      \blank[\v!big]
      by
-    {\bf\ss \@@thuenname\par\@@thuendiscipline}
+     {\bf\ss \@@thuenname\par\@@thuendiscipline}
     \stoplines
-	\starttabulate [|r|l|]
-      \NC Dissertation Supervisor: \NC \@@thuensupervisor \NC \NR
-      \NC Associate Supervisor: \NC \@@thuenassupervisor  \NC \NR
-	\stoptabulate
+      \starttabulate [|r|l|]
+        \NC Dissertation Supervisor: \NC \@@thuensupervisor \NC \NR
+        \NC Associate Supervisor: \NC \@@thuenassupervisor  \NC \NR
+      \stoptabulate
  \blank[\v!big]
-
  {\bf\ss \@@thuendate}  
-  \stopstandardmakeup
-}
+  \stopstandardmakeup}
 
 \startbuffer [authorization]
 本人完全了解清华大学有关保留、使用学位论文的规定，即：
@@ -319,6 +315,8 @@
 共和国学位条例暂行实施办法》，向国家图书馆报送可以公开的学位论文。
 
 本人保证遵守上述规定。
+
+{\bf（保密的论文在解密后应遵守此规定）}
 \stopbuffer
 
 \def\makeauthorization{%
@@ -329,8 +327,6 @@
   \setupinterlinespace [\v!auto,\v!big]
   \getbuffer [authorization]
 
-  {\bf（保密的论文在解密后应遵守此规定）}
-
   \startalignment [flushright]
   \def\@sigline##1{\hbox to 4em{##1}：\underbar{\hbox to 5em{}}}
   \@sigline{作者签名} \@sigline{导师签名}
@@ -339,7 +335,7 @@
   \stopalignment
   \stopstandardmakeup}
 
-\startsetups [cover]  
+\startsetups [cover]
   \makecncover
   \doifmode{doctor}{\makeencover}
   \makeauthorization
@@ -355,17 +351,20 @@
   \dodoubleempty\dokeywords}
 
 \def\dokeywords[#1][#2]{%
-  \edef\!!stringa{cn}
   \ifsecondargument
-    \edef\!!stringa{#1}
-  \fi
-  \@EAEAEA\gdef\@EA\csname\@EA\??thu\!!stringa keywords\endcsname{#2}}
+    \dodokeywords[#1][#2]
+  \else
+    \dodokeywords[cn][#2]
+  \fi}
+
+\def\dodokeywords[#1][#2]{%
+  \@EA\gdef\csname \??thu#1keywords\endcsname{#2}}
   
 \startsetups [abstract]
   \title{摘要}
   \getbuffer[abstract-cn]\par
   
-  \noindent{\bf 关键词：}\@@thucnkeywords
+  \noindent{\bf 关键词：} \doifdefined{@@thucnkeywords}{\@@thucnkeywords}
   
   \title{Abstract}
   \getbuffer[abstract-en]\par
