@@ -20,16 +20,17 @@
 % setup layout
 \setuppapersize[A4][A4]
 \setuplayout[width=fit,
-	     height=middle,
-             leftmargin=3cm,
-	     rightmargin=3cm,
+%	     height=middle,
+             leftmargin=3.2cm,
+	     rightmargin=3.2cm,
              backspace=4cm,
              topspace=2cm,
              headerdistance=.5cm,
              footerdistance=.5cm,
 	     leftmargindistance=.5cm,
              rightmargindistance=.5cm,
-             header=1cm,footer=1cm]
+             header=20pt,
+             footer=20pt]
 \setuppagenumbering[alternative=doublesided,
                     style=\tfx,
                     location={footer,middle}]
@@ -91,12 +92,13 @@
 \startsectionblockenvironment[frontpart]
   \setuppagenumbering[conversion=Romannumerals]
   \setuppagenumber[number=1]
+  \setups [FrontHeaderFooter]
 \stopsectionblockenvironment
 
 \startsectionblockenvironment[bodypart]
   \setuppagenumbering[conversion=number]
   \setuppagenumber[number=1]
-  \setups{BodyHeaderFooter}
+  \setups [BodyHeaderFooter]
 \stopsectionblockenvironment
 
 \iffalse
@@ -150,21 +152,24 @@
 
 % 页眉页脚
 \setupcombinedlist[content][level=3,alternative=c]
+\startsetups FrontHeaderFooter
+  \setupheadertexts 
+    [{\inframed[width=\textwidth,frame=off,bottomframe=on]{\getmarking[title]}}]
+  \setupfootertexts [pagenumber]
+\stopsetups
+
 \startsetups BodyHeaderFooter
-        \def\CurrentChapter{%
-                第 \headnumber[chapter]\ 章%
-                \hbox to 2em{}%
-                \getmarking[chapter]}
-        \def\CurrentSection{%
-                \headnumber[section]%
-                \hbox to 2em{}%
-                \getmarking[section]}
-        \setupheadertexts[text]
-                [\CurrentChapter][]
-                [][\CurrentSection]
-        \setupfootertexts[text][][][][]
-        \setupheader[style=\bfx]
-        \setupfooter[style=\bfx]
+  \def\CurrentChapter{%
+    第 \headnumber[chapter]\ 章\hbox to 1em{} \getmarking[chapter]}
+  \def\CurrentSection{%
+    \headnumber[section] \getmarking[section]}
+%  \setupheadertexts[text]
+%                   [\CurrentChapter][]
+%                   [][\CurrentSection]
+  \setupheadertexts [{\inframed[width=\textwidth,frame=off,bottomframe=on]{\CurrentChapter}}]
+  \setupfootertexts [pagenumber]
+  \setupheader [style=\bfx]
+  \setupfooter [style=\bfx]
 \stopsetups
 
 % 书签
