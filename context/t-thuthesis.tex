@@ -12,6 +12,7 @@
 \unprotect
 
 \startmodule[thuthesis]
+\def\thuthesis{{\sc ThuThesis}}
 
 % use module 
 \usemodule [bib]
@@ -87,10 +88,33 @@
 \setuphead[section][style=\bfa]
 \setuphead[subsubject][style=\bf]
 
-\setupsectionblock[frontpart][page=no,number=no]
-\setupsectionblock[bodypart][page=yes]
-%\setupsectionblock[appendix][page=no]
-\setupsectionblock[backpart][page=yes]
+\iffalse
+\startsectionblockenvironment[frontpart]
+  \setuppagenumbering[conversion=Romannumerals]
+  \setuppagenumber[number=1]
+\stopsectionblockenvironment
+
+\startsectionblockenvironment[bodypart]
+  \setuppagenumbering[conversion=number]
+  \setuppagenumber[number=1]
+  \setups{BodyHeaderFooter}
+\stopsectionblockenvironment
+
+\startsectionblockenvironment[backpart]
+  % todo
+\stopsectionblockenvironment
+
+\startsectionblockenvironment[appendix]
+  % todo:
+\stopsectionblockenvironment
+
+% hack to remove excess blank pages in the end. needed because front- and back-matter usage
+% makes the system assume it is a book and therefore it adds pages to make the number even
+\setupsectionblock[frontpart][page=no] %todo: number=yes|no?
+\setupsectionblock[bodypart][page=no]
+\setupsectionblock[appendix][page=no]
+\setupsectionblock[backpart][page=no]
+\fi
 
 % setup chinese
 \setuplabeltext [chapter={第\;,\;章}]
@@ -128,7 +152,7 @@
 
 % 页眉页脚
 \setupcombinedlist[content][level=3,alternative=c]
-\startsetups HeaderFooter
+\startsetups BodyHeaderFooter
         \def\CurrentChapter{%
                 第 \headnumber[chapter]\ 章%
                 \hbox to 2em{}%
@@ -167,13 +191,18 @@
    \insertnote{ }{\unskip.}{}}
 
 
-%---- 其它一些零碎设置 ----
-\setuptolerance [tolerant]
-\setupinterlinespace[big]
-\setupindenting[always,first,2em]
+%---- 其它
+\setuptolerance 
+  [verytolerant,stretch]
+\setupinterlinespace
+  [big]
+\setupindenting
+  [always,first,2em]
 
-\setupfloats[indentnext=yes] 
-\setupcaptions[style=\tfx, headstyle=\normal]
+\setupfloats
+  [indentnext=yes] 
+\setupcaptions
+  [style=\tfx, headstyle=\normal]
 
 \definesymbol[1][{\color[darkgray]{\dag}}]
 \setupitemize[each][packed,serried,inmargin][symbol=1,margin=2em]
@@ -212,10 +241,18 @@
 	 assupervisor=副指导教师,
 	 cosupervisor=联合导师]
 
+%D \type{\setupcover} collects meta-data to creat the cover. Since doctor dissertation 
+%D has both Chinese and English covers, so we need collect two sets data, which is distinguished
+%D with the first argument \type{cn | en}, and the second argument provides setup details. If only
+%D one argument is supplied, we take \type{cn} as default. todo
 \def\setupcover{%
-  \dodoubleargument\dosetupcover}
+  \dodoubleempty\dosetupcover}
 \def\dosetupcover[#1][#2]{%
-  \getparameters[\csname ??thu#1\endcsname][#2]}
+  \ifsecondargument
+    \getparameters[\??thu#1][#2]%
+  \else
+    \getparameters[\??thucn][#1]%
+  \fi}
 
 \def\putentry#1{%
   \@EA\doifsomething\@EA{\csname @@thucn#1\endcsname}{%
@@ -224,14 +261,15 @@
 \def\makecncover{%
 	\startstandardmakeup
     % \setuplayout []
-	\setupindenting [no]
-    \setupinterlinespace [medium]
-	\startalignment [center]
+	\setupindenting [\v!no]
+    \setupinterlinespace [\v!big]	
+	\setupalign [\v!middle] % or: \raggedcenter, \setupalignment[]\stopalignment
+	%\startalignment [\v!middle]
 	\bgroup\ss\bfd\@@thucntitle\endgraf\egroup
-    \blank[small]
+    \blank[\v!small]
 	（申请清华大学 \@@thucndegree 学位论文）
 
-	\blank[2*big]
+	\blank[2*\v!big]
 
 	\putentry{department}
 	\putentry{discipline}
@@ -240,39 +278,37 @@
 	\putentry{cosupervisor}
 
 	%\doifelsesomething{\@@thudate}{\currentdate}
-	\@@thucndate
-	\stopalignment
+	\@@thucndate	
 	\stopstandardmakeup}
 
 \def\makeencover{%
   \startstandardmakeup
   % \setuplayout []
-  \setupindenting [no]
-  \setupinterlinespace [big]
-  \startalignment [center]
+  \setupindenting [\v!no]
+  \setupinterlinespace [\v!big]
+  \setupalign [\v!middle]  
 	\bgroup\ss\bfd\@@thuentitle\endgraf\egroup
-    \blank[3*big]
+    \blank[3*\v!big]
     \startlines
      Dissertation Submitted to
      {\bf Tsinghua University}
      in partial fulfillment of the requirement
      for the degree of
      {\bf\ss \@@thuendegree}
-     \blank[big]
+     \blank[\v!big]
      by
     {\bf\ss \@@thuenname\par\@@thuendiscipline}
     \stoplines
- Dissertation Supervisor: \@@thuensupervisor\par
- Associate Supervisor: \@@thuenassupervisor\par
+	\starttabulate [|r|l|]
+      \NC Dissertation Supervisor: \NC \@@thuensupervisor \NC \NR
+      \NC Associate Supervisor: \NC \@@thuenassupervisor  \NC \NR
+	\stoptabulate
+ \blank[\v!big]
 
- \blank[big]
-
- {\bf\ss \@@thuendate}
-  \stopalignment
+ {\bf\ss \@@thuendate}  
   \stopstandardmakeup
 }
 
-\startmode [doctor]
 \startbuffer [authorization]
 本人完全了解清华大学有关保留、使用学位论文的规定，即：
 
@@ -284,38 +320,73 @@
 
 本人保证遵守上述规定。
 \stopbuffer
-\stopmode
 
 \def\makeauthorization{%
-  \startstandardmakeup
+  \startstandardmakeup %[doublesided=no]
   \title{关于学位论文使用授权的说明}
 
+  \setupindenting [\v!yes,2em]
+  \setupinterlinespace [\v!auto,\v!big]
   \getbuffer [authorization]
 
   {\bf（保密的论文在解密后应遵守此规定）}
 
   \startalignment [flushright]
-  作者签名：\underbar{\hbox to 5em{}}  导师签名：
-  日   期：   日   期：
+  \def\@sigline##1{\hbox to 4em{##1}：\underbar{\hbox to 5em{}}}
+  \@sigline{作者签名} \@sigline{导师签名}
+  
+  \@sigline{日期} \@sigline{日期}
   \stopalignment
   \stopstandardmakeup}
 
-\def\makecover{%
+\startsetups [cover]  
   \makecncover
   \doifmode{doctor}{\makeencover}
-  \makeauthorization}
+  \makeauthorization
+\stopsetups  
 
+\def\startabstract{%
+  \dosingleargument\dostartabstract}
+  
+\def\dostartabstract[#1]{%
+  \dostartbuffer[abstract-#1][startabstract][stopabstract]}
 
-\startbuffer [cn-abstract]
-\stopbuffer
+\def\keywords{%
+  \dodoubleempty\dokeywords}
 
-\startbuffer [en-abstract]
-\stopbuffer
-
+\def\dokeywords[#1][#2]{%
+  \edef\!!stringa{cn}
+  \ifsecondargument
+    \edef\!!stringa{#1}
+  \fi
+  \@EAEAEA\gdef\@EA\csname\@EA\??thu\!!stringa keywords\endcsname{#2}}
+  
+\startsetups [abstract]
+  \title{摘要}
+  \getbuffer[abstract-cn]\par
+  
+  \noindent{\bf 关键词：}\@@thucnkeywords
+  
+  \title{Abstract}
+  \getbuffer[abstract-en]\par
+  
+  \noindent{\bf Keywords:} \doifdefined{@@thuenkeywords}{\@@thuenkeywords}
+\stopsetups
+  
 \stopmodule
 \protect \endinput
 
+% test font availability
+% \doiffontpresentelse{A} {
+	% \definefontsynonym[sans][A]
+% } {
+	% \definefontsynonym[sans][B]
+% }
+
+% i guess that this also works
+
+% \expanded{\definefontsynonym[sans][\doiffontpresentelse{A}{A}{B}]}
+
 %\showframe
-% \startstandardmarkup, \startalignment [center]
 % http://wiki.contextgarden.net/Document_Titles
 % http://source.contextgarden.net/doc/context/manuals/allkind/mcommon.tex
