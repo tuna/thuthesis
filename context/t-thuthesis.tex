@@ -15,7 +15,7 @@
 \def\thuthesis{{\sc ThuThesis}}
 
 % use module 
-\usemodule [bib]
+% \usemodule [bib]
 
 % setup layout
 \setuppapersize[A4][A4]
@@ -101,7 +101,6 @@
   \setups [BodyHeaderFooter]
 \stopsectionblockenvironment
 
-\iffalse
 \startsectionblockenvironment[backpart]
   % todo
 \stopsectionblockenvironment
@@ -110,6 +109,7 @@
   % todo:
 \stopsectionblockenvironment
 
+\iffalse
 % hack to remove excess blank pages in the end. needed because front- and back-matter usage
 % makes the system assume it is a book and therefore it adds pages to make the number even
 \setupsectionblock[frontpart][page=no] %todo: number=yes|no?
@@ -179,6 +179,7 @@
 
 % 参考文献
 %\setupbibtex[database=bibliography]
+\iffalse
 \setuppublications[alternative=num]
 
 \setuppublicationlayout[booklet]{%
@@ -192,6 +193,7 @@
    \inserttitle{ \bgroup\it }{\/\egroup\unskip.}{}%
    \insertbiburl{ URL: }{\unskip.}{}%
    \insertnote{ }{\unskip.}{}}
+\fi
 
 
 %---- 其它
@@ -270,18 +272,21 @@
   \setupindenting [\v!no]
   \setupinterlinespace [\v!big]	
   \setupalign [\v!middle] % or: \raggedcenter, \setupalignment[]\stopalignment
-  %\startalignment [\v!middle]
-    \bgroup\ss\bfd\@@thucntitle\endgraf\egroup
-    \blank[\v!small]
+    {\ss\bfd\@@thucntitle\blank[\v!small]}    
     （申请清华大学 \@@thucndegree 学位论文）
-    \blank[2*\v!big]
-    \putentry{department}
-    \putentry{discipline}
-    \putentry{name}
-    \putentry{assupervisor}
-    \putentry{cosupervisor}
-    %\doifelsesomething{\@@thudate}{\currentdate}
-    \@@thucndate	
+
+	\blank[2*\v!big]
+
+	\putentry{department}
+	\putentry{discipline}
+	\putentry{name}
+	\putentry{assupervisor}
+	\putentry{cosupervisor}
+
+	\doifdefinedelse{@@thucndate}%
+	  {\doifemptyelse{\@@thucndate}{\currentdate}{\@@thucndate}}%
+	  {\currentdate} % todo: replace \currentdate with chinese date
+    \vfill	
   \stopstandardmakeup}
 
 \def\makeencover{%
@@ -293,21 +298,22 @@
     \bgroup\ss\bfd\@@thuentitle\endgraf\egroup
     \blank[3*\v!big]
     \startlines
-     Dissertation Submitted to
-     {\bf Tsinghua University}
-     in partial fulfillment of the requirement
-     for the degree of
-     {\bf\ss \@@thuendegree}
-     \blank[\v!big]
-     by
+      Dissertation Submitted to
+      {\bf Tsinghua University}
+      in partial fulfillment of the requirement
+      for the degree of
+      {\bf\ss \@@thuendegree}
+      \blank[\v!big]
+      by
      {\bf\ss \@@thuenname\par\@@thuendiscipline}
     \stoplines
       \starttabulate [|r|l|]
         \NC Dissertation Supervisor: \NC \@@thuensupervisor \NC \NR
         \NC Associate Supervisor: \NC \@@thuenassupervisor  \NC \NR
       \stoptabulate
- \blank[\v!big]
- {\bf\ss \@@thuendate}  
+    \blank[\v!big]
+   {\bf\ss \@@thuendate} 
+   \vfill
   \stopstandardmakeup}
 
 \startbuffer [authorization]
@@ -338,6 +344,7 @@
   
   \@sigline{日期} \@sigline{日期}
   \stopalignment
+  \vfill
   \stopstandardmakeup}
 
 \startsetups [cover]
