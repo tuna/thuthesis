@@ -47,14 +47,16 @@
 % #1: font name 
 % #2: default size
 \def\dothudefinefontsize[#1][#2]{%
-  \@EA\def\csname #1\endcsname{%
-    \@EA\dosingleargument\csname do#1\endcsname}
+  \@EA\unexpanded\@EA\def\csname #1\endcsname{%
+    \@EA\dosingleempty\csname do#1\endcsname}
    % ##1: line space
-   \@EA\def\csname do#1\endcsname[##1]{%
-     \switchtobodyfont[#2]
-     \iffirstargument
-       \setupinterlinespace[line=##1]
-     \fi}}
+  \@EA\unexpanded\@EA\def\csname do#1\endcsname[##1]{%
+    \iffirstargument % NOTE: this must be tested first!
+      \switchtobodyfont[#2]
+      \setupinterlinespace[line=##1]
+    \else
+      \switchtobodyfont[#2]
+    \fi}}
 	
 \thudefinefontsize [chuhao]    [42bp]
 \thudefinefontsize [xiaochu]   [36bp]
@@ -76,18 +78,43 @@
 \thudefinefontsize [bahao]     [5bp]
 
 % setup titles
-\setupheads[indentnext=yes] % number format of section number
-\setupheader[text][frame=off, bottomframe=on, style=\tfx]
+\setupheads
+  [indentnext=yes] 
+
+
 \definepagebreak
     [mychapterpagebreak]
     [yes,header,right] % [pagebreak=yes,header,footer,openwhere=right]
 \setuphead
    [title,chapter]
-   [align=center,style=\bfb,page=mychapterpagebreak]
- %   [page=Mychapterpagebreak,header=empty,footer=empty]
+   [align=center,
+    before={\blank[force,20bp]},
+    after={\blank[24bp]},
+    style={\sanhao\bf},
+    page=mychapterpagebreak]
+ %  [page=Mychapterpagebreak,header=empty,footer=empty]
 
-\setuphead[section][style=\bfa]
-\setuphead[subsubject][style=\bf]
+\setuphead
+  [section,subject]
+  [before={\blank[24bp]},
+   after={\blank[6bp]},
+   style={\sihao\bf}]
+
+\setuphead
+  [subsection,subsubject]
+  [before={\blank[16bp]},
+   after={\blank[6bp]},
+   style={\xiaosi\bf}]
+
+\setuphead
+  [subsubsection,subsubsubject]
+  [before={\blank[12bp]},
+   after={\blank[6bp]},
+   style={\xiaosi\bf}]
+
+\setupheader % todo: what's this?
+  [text]
+  [frame=off, bottomframe=on, style=\tfx]
 
 \startsectionblockenvironment[frontpart]
   \setuppagenumbering[conversion=Romannumerals]
@@ -269,50 +296,54 @@
 \def\makecncover{%
   \startstandardmakeup
   % \setuplayout []
-  \setupindenting [\v!no]
-  \setupinterlinespace [\v!big]	
-  \setupalign [\v!middle] % or: \raggedcenter, \setupalignment[]\stopalignment
-    {\ss\bfd\@@thucntitle\blank[\v!small]}    
+  \setupindenting[\v!no]
+  \setupinterlinespace[\v!big]	
+  \setupalign[\v!middle] % or: \raggedcenter, \setupalignment[]\stopalignment
+    {\bfd\ss\@@thucntitle}
+    \blank[\v!small]
     （申请清华大学 \@@thucndegree 学位论文）
+    \blank[2*\v!big]
 
-	\blank[2*\v!big]
+    \putentry{department}
+    \putentry{discipline}
+    \putentry{name}
+    \putentry{assupervisor}
+    \putentry{cosupervisor}
 
-	\putentry{department}
-	\putentry{discipline}
-	\putentry{name}
-	\putentry{assupervisor}
-	\putentry{cosupervisor}
-
-	\doifdefinedelse{@@thucndate}%
-	  {\doifemptyelse{\@@thucndate}{\currentdate}{\@@thucndate}}%
-	  {\currentdate} % todo: replace \currentdate with chinese date
+    \doifdefinedelse{@@thucndate}%
+      {\doifemptyelse{\@@thucndate}{\currentdate}{\@@thucndate}}%
+      {\currentdate} % todo: replace \currentdate with chinese date
     \vfill	
   \stopstandardmakeup}
 
 \def\makeencover{%
   \startstandardmakeup
   % \setuplayout []
-  \setupindenting [\v!no]
-  \setupinterlinespace [\v!big]
-  \setupalign [\v!middle]  
-    \bgroup\ss\bfd\@@thuentitle\endgraf\egroup
+  \setupindenting[\v!no]
+  \setupinterlinespace[\v!big]
+  \setupalign[\v!middle]  
+    {\bfd\ss\@@thuentitle}
     \blank[3*\v!big]
     \startlines
       Dissertation Submitted to
       {\bf Tsinghua University}
       in partial fulfillment of the requirement
       for the degree of
-      {\bf\ss \@@thuendegree}
+      {\bf\ss\@@thuendegree}
       \blank[\v!big]
       by
-     {\bf\ss \@@thuenname\par\@@thuendiscipline}
+     {\bf\ss\@@thuenname\par\@@thuendiscipline}
     \stoplines
       \starttabulate [|r|l|]
         \NC Dissertation Supervisor: \NC \@@thuensupervisor \NC \NR
         \NC Associate Supervisor: \NC \@@thuenassupervisor  \NC \NR
       \stoptabulate
     \blank[\v!big]
-   {\bf\ss \@@thuendate} 
+    \bgroup\bf\ss%
+    \doifdefinedelse{@@thuendate}%
+      {\doifemptyelse{\@@thuendate}{\currentdate}{\@@thuendate}}%
+      {\currentdate} 
+    \egroup
    \vfill
   \stopstandardmakeup}
 
@@ -334,15 +365,15 @@
   \startstandardmakeup %[doublesided=no]
   \title{关于学位论文使用授权的说明}
 
-  \setupindenting [\v!yes,2em]
-  \setupinterlinespace [\v!auto,\v!big]
-  \getbuffer [authorization]
+  \setupindenting[\v!yes,2em]
+  \setupinterlinespace[\v!auto,\v!big]
+  \getbuffer[authorization]
 
-  \startalignment [flushright]
-  \def\@sigline##1{\hbox to 4em{##1}：\underbar{\hbox to 5em{}}}
-  \@sigline{作者签名} \@sigline{导师签名}
+  \startalignment[flushleft]
+    \def\@sigline##1{\hbox{##1}：\underbar{\hbox to 5em{}}}
+    \@sigline{作者签名} \@sigline{导师签名}
   
-  \@sigline{日期} \@sigline{日期}
+    \@sigline{日期} \@sigline{日期}
   \stopalignment
   \vfill
   \stopstandardmakeup}
