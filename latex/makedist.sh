@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: makedist.sh 47 2006-03-20 03:47:47Z edyfox $
+# $Id$
 
 dirs="data figures ref"
 list_example="data/*.tex figures/* ref/*.bib main.tex shuji.tex main.pdf shuji.pdf thutils.sty Makefile msmake.cmd"
