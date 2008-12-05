@@ -23,7 +23,7 @@ BIBFILE=ref/refs.bib
 SHUJIMAIN=shuji
 SHUJICONTENTS=$(SHUJIMAIN).tex
 
-.PHONY: all clean distclean dist all thesis shuji doc cls cfg dvi ps pdf
+.PHONY: all clean distclean dist all thesis shuji doc cls cfg dvi ps pdf utf8
 
 all: cls doc thesis shuji
 
@@ -148,9 +148,17 @@ clean:
 distclean: clean
 	-@rm -f *.pdf *.tar.gz
 
+utf8:
+	@./makeutf8.sh
+
 dist:
 	@if [ -z "$(VERSION)" ]; then \
 	    echo "Usage: make dist VERSION=<version#>"; \
 	else \
-	    ./makedist.sh $(VERSION); \
-	fi	
+	    ./makedist.sh $(VERSION) GBK; \
+	    if [ ! -d "utf8" ]; then \
+ 	      echo "\n\nYou have NOT created utf8/, type ./makeutf8.sh first.\n"; \
+ 	    else \
+	      (cd utf8 ; ../makedist.sh $(VERSION) UTF8); \
+	    fi \
+	fi
