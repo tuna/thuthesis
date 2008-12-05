@@ -1,47 +1,39 @@
 #!/bin/sh
 # $Id$
 
-dirs="data figures ref"
-list_example="data/*.tex figures/* ref/*.bib main.tex shuji.tex main.pdf shuji.pdf thutils.sty Makefile msmake.cmd"
-list_template="thuthesis.ins thuthesis.dtx thubib.bst Readme thuthesis.pdf thuthesis.cls thuthesis.cfg"
-list_all="$list_example $list_template"
-
-if [ $0 != ./makedist.sh ]; then
-    echo "This script can only be run in the same directory of the script."
-    echo "Using relative path to call as './makedist.sh'."
-    echo "Usage: ./makedist.sh <version#>"
-    exit 1
-fi
+EXAMPLE_FILES="main.tex shuji.tex main.pdf shuji.pdf thutils.sty Makefile msmake.cmd"
+TEMPLATE_FILES="thuthesis.ins thuthesis.dtx thubib.bst Readme thuthesis.pdf thuthesis.cls thuthesis.cfg"
+ALL_FILES="$EXAMPLE_FILES $TEMPLATE_FILES"
+ALL_DIRS="data figures ref"
 
 # $1 should be the version number
-if [ $# -lt 1 ]; then
-    echo "Forget the version number?"
-    echo "Usage: ./makedist.sh <version#>"
+if [ $# -lt 2 ]; then
+    echo "Forget the version number or encode name?"
+    echo "Usage: ./makedist.sh <version#> <encode>"
     exit 2
 fi
 
 version=$1
-templatedir="thuthesis-$version/"
-templatetar="thuthesis-$version.tgz"
+encode=$2
+templatedir="thuthesis@$encode-$version/"
+templatetar="thuthesis@$encode-$version.tgz"
 
-CP="cp -f --parents"
+if [ -d $templatedir ]
+then
+  echo "clean old files"
+  rm -rf $templatedir
+fi
+mkdir -p $templatedir
 
-echo "Create dirs...."
-for dir in $dirs
-do
-    mkdir -p $templatedir/$dir
-done
+echo "Copy dirs...."
+tar cp --exclude ".svn" $ALL_DIRS | (cd $templatedir ; tar xp)
 
-echo "Copy files ...."
-for file in $list_all
-do
-    $CP $file $templatedir
-done
+echo "Copy files...."
+cp -f $ALL_FILES $templatedir
 
 echo "Create tarball...."
 rm -f $templatetar
 tar zcvf $templatetar $templatedir
 rm -rf $templatedir
 
-echo ""
 echo "$templatetar is created."

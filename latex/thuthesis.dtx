@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2461}
+% \CheckSum{2462}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1166,7 +1166,8 @@
 %
 % 中文支持宏包
 %    \begin{macrocode}
-\RequirePackage{CJK,CJKnumb}
+\RequirePackage{CJK}
+\RequirePackage{CJKnumb}
 %    \end{macrocode}
 %
 % 中英文间距和中文标点优化处理：\pkg{CJKpunct} 必须放在 \pkg{CJKspace} 之前。
@@ -3106,17 +3107,21 @@
 %    \begin{macrocode}
 %<*dtx-style>
 \ProvidesPackage{dtx-style}
-\usepackage{calc}
-\usepackage{array,longtable}
-\usepackage{fancybox}
-\usepackage{fancyvrb}
-\usepackage{url}
-\usepackage{txfonts}
-\usepackage{xcolor}
-\usepackage{CJK,CJKpunct,CJKspace}
-\usepackage[CJKbookmarks=true, bookmarksnumbered=true,%
-            colorlinks=true, linkcolor=blue, dvips]{hyperref}
-\usepackage{indentfirst}
+\RequirePackage{calc}
+\RequirePackage{array,longtable}
+\RequirePackage{fancybox}
+\RequirePackage{fancyvrb}
+\RequirePackage{url}
+\RequirePackage{txfonts}
+\RequirePackage{xcolor}
+\RequirePackage{CJK}
+\RequirePackage{CJKpunct,CJKspace}
+\RequirePackage[%
+  CJKbookmarks=true, 
+  bookmarksnumbered=true,
+  colorlinks=true,
+  linkcolor=blue]{hyperref}
+\RequirePackage{indentfirst}
 \setlength{\parskip}{4pt plus1pt minus0pt}
 \setlength{\topsep}{0pt}
 \setlength{\partopsep}{0pt}
