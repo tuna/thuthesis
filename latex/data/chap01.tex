@@ -412,7 +412,7 @@ x&\equiv y+1\pod{m^2}
 
 \begin{lemma}
 《猫和老鼠》是我最爱看的动画片。
-\begin{multline*}\tag*{[a]} % 这个不出现在索引中
+\begin{multline*}%\tag*{[a]} % 这个不出现在索引中
 \int_a^b\biggl\{\int_a^b[f(x)^2g(y)^2+f(y)^2g(x)^2]
  -2f(x)g(x)f(y)g(y)\,dx\biggr\}\,dy \\
  =\int_a^b\biggl\{g(y)^2\int_a^bf^2+f(y)^2
@@ -534,7 +534,7 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 
 前面定理示例部分列举了很多公式环境，可以说把常见的情况都覆盖了，大家在写公式的时
 候一定要好好看 \textsf{amsmath} 的文档，并参考模板中的用法：
-\begin{multline*}\tag{[b]} % 这个出现在索引中的
+\begin{multline*}%\tag{[b]} % 这个出现在索引中的
 \int_a^b\biggl\{\int_a^b[f(x)^2g(y)^2+f(y)^2g(x)^2]
  -2f(x)g(x)f(y)g(y)\,dx\biggr\}\,dy \\
  =\int_a^b\biggl\{g(y)^2\int_a^bf^2+f(y)^2
