@@ -53,15 +53,13 @@ cp -f $EXTRA_FILES $UTF8DIR
 cd $UTF8DIR
 
 sed \
-  -e "s/0A1/080/g" \
   -e "s/RequirePackage{CJK}/RequirePackage{CJKutf8}/" \
-  -e "s/RequirePackage{CJKpunct,/RequirePackage{/" \
+  -e "/IfFileExists{CJKpunct.sty}/d" \
   -e "/CJKbookmarks=true/d" \
   -e "s/{GBK}{song}/{UTF8}{song}/" \
   -e "s/@=127/@=128/" \
   -e "s/<255/<254/" \
      thuthesis.dtx > utf8sed.tmp
-#  -e "s/\\CJKchar/\\CJKchar\[UTF8\]/" \
 
 mv utf8sed.tmp thuthesis.dtx
 

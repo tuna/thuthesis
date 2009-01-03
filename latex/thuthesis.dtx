@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2462}
+% \CheckSum{0}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -42,7 +42,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2008/10/13 4.4 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2009/01/03 4.4 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{dtx-style}
 \EnableCrossrefs
@@ -800,7 +800,7 @@
 % 默认为当前时间，也可以自己指定。
 % \begin{example}
 % \cdate{你真的不必自己指定这个时间}
-% \edate{let thuthesis do it!}
+% \edate{let \thuthesis\ do it!}
 % \end{example}
 %
 % \myentry{摘要}
@@ -1013,7 +1013,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2008/10/13 4.4 Tsinghua University Thesis Template]
+%<cls|cfg>[2008/01/03 4.4 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1039,36 +1039,21 @@
 \DeclareOption{master}{\thu@mastertrue}
 \DeclareOption{doctor}{\thu@doctortrue}
 \DeclareOption{secret}{\thu@secrettrue}
-\AtEndOfClass{%
-  \ifthu@bachelor\relax\else
-    \ifthu@master\relax\else
-      \ifthu@doctor\relax\else
-        \ClassError{thuthesis}%
-                   {You have to specify one of thesis options: bachelor, master or doctor.}{}
-      \fi
-    \fi
-  \fi}
 %    \end{macrocode}
 %
 % 使用 dvips，dvipdfm 还是 pdflatex
 % \changes{v2.5.1}{2006/05/24}{如果选项设置了 dvips，但是用 pdflatex 编译，报错。}
 % \changes{v2.6}{2006/06/09}{增加 dvipdfm 选项。}
+% \changes{v4.4}{2009/01/03}{增加 xetex, pdftex  选项。}
 %    \begin{macrocode}
 \newif\ifthu@dvips
 \newif\ifthu@dvipdfm
+\newif\ifthu@xetex
+\newif\ifthu@pdftex
 \DeclareOption{dvips}{\thu@dvipstrue}
 \DeclareOption{dvipdfm}{\thu@dvipdfmtrue}
-\AtEndOfClass{%
-  \ifpdf
-    \ifthu@dvips
-      \ClassError{thuthesis}%
-                 {Please remove `dvips' if you run pdflatex.}{}
-    \fi
-    \ifthu@dvipdfm
-      \ClassError{thuthesis}%
-                 {Please remove `dvipdfm' if you run pdflatex.}{}
-    \fi
-  \fi}
+\DeclareOption{pdftex}{\thu@pdftextrue}
+\DeclareOption{xetex}{\thu@xetextrue}
 %    \end{macrocode}
 %
 % 如果需要使用 arial 字体，请打开 [arial] 选项
@@ -1101,20 +1086,50 @@
 % \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
 %    \begin{macrocode}
 \ExecuteOptions{arialtitle}
-\ProcessOptions
+\ProcessOptions\relax
 \LoadClass[12pt, a4paper, openany]{book}
+%    \end{macrocode}
+%
+% 用户至少要提供一个选项：指定论文类型。
+%    \begin{macrocode}
+\ifthu@bachelor\relax\else
+  \ifthu@master\relax\else
+    \ifthu@doctor\relax\else
+      \ClassError{thuthesis}%
+                 {You have to specify one of thesis options: bachelor, master or doctor.}{}
+    \fi
+  \fi
+\fi      
+%    \end{macrocode}
+%
+% 检查用户指定的选项和实际编译命令是否冲突。
+%    \begin{macrocode}
+\RequirePackage{ifpdf,ifxetex}
+\ifthu@xetex\RequireXeTeX\fi
+\def\RequirePDFTeX{%
+  \ifpdf\else
+    \ClassError{thuthesis}%
+               {pdflatex is required to compile this document!}{}
+  \fi}
+\ifthu@pdftex\RequirePDFTeX\fi
+\def\thu@checkoption#1#2{%
+  \@for\reserved@a:=#2\do{%
+    \csname ifthu@\reserved@a\endcsname
+      \ClassError{thuthesis}%
+                 {Please remove `\reserved@a' option when you run #1.}{}
+    \fi}}
+\ifpdf\thu@checkoption{pdflatex}{dvips,dvipdfm,xetex}\thu@pdftextrue\fi % force the option to be true
+\ifxetex\thu@checkoption{xelatex}{dvips,dvipdfm,pdftex}\thu@xetextrue\fi
 %    \end{macrocode}
 %
 %
 % \subsection{装载宏包}
 % \label{sec:loadpackage}
 %
-%
 % 引用的宏包和相应的定义。
 %    \begin{macrocode}
 \RequirePackage{ifthen}
 \RequirePackage{calc}
-\RequirePackage{ifpdf}
 %    \end{macrocode}
 %
 % \AmSTeX{} 宏包，用来排出更加漂亮的公式。
@@ -1128,16 +1143,6 @@
 %    \begin{macrocode}
 \RequirePackage{txfonts}
 %    \end{macrocode}
-%
-% arial 字体需要单独安装，如果不使用 arial 字体，可以用 helvet 字体 |\textsf|
-% 模拟，二者基本没有差别。
-%    \begin{macrocode}
-\ifthu@arial
-  \IfFileExists{arial.sty}{\RequirePackage{arial}}%
-                          {\ClassWarning{thuthesis}{no arial.sty availiable!}}
-\fi
-%    \end{macrocode}
-%
 %
 % 图形支持宏包。
 %    \begin{macrocode}
@@ -1164,21 +1169,56 @@
 \RequirePackage[neverdecrease]{paralist}
 %    \end{macrocode}
 %
-% 中文支持宏包
+% 中文支持宏包。XeTeX 模式下直接调用 \pkg{xeCJK}，一切问题都搞定了。
+% \changes{v4.4}{2008/01/03}{加入 XeTeX 支持，需要 \pkg{xeCJK}。}
 %    \begin{macrocode}
-\RequirePackage{CJK}
-\RequirePackage{CJKnumb}
+\ifthu@xetex
+  \RequirePackage{xunicode,xltxtra}
+  \RequirePackage[CJKnumber,CJKtextspaces,CJKmathspaces]{xeCJK}
+  \punctstyle{kaiming}
+%    \end{macrocode}
+% 默认采用Adobe 的四款 (宋，黑，楷，仿宋) 免费字体。这样的话，缺少隶书和幼圆。本
+% 科的封面大字会受影响。请手动替换。
+%    \begin{macrocode}
+  \setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
+  \setCJKsansfont{Adobe Heiti Std}
+  \setCJKmonofont{Adobe Kaiti Std}
+  \setCJKfamilyfont{song}{Adobe Song Std}
+  \setCJKfamilyfont{hei}{Adobe Heiti Std}
+  \setCJKfamilyfont{fs}{Adobe Fangsong Std}
+  \setCJKfamilyfont{kai}{Adobe Kaiti Std}
+  \setCJKfamilyfont{li}{Adobe Kaiti Std} % todo: 用隶书字体代替
+  \setCJKfamilyfont{you}{Adobe Kaiti Std} % todo: 用幼圆字体代替
+
+  \setmainfont{Times New Roman}
+  \setsansfont{Arial}
+  \setmonofont{Courier New} 
+%    \end{macrocode}
+% 对于 \LaTeX\ 和 PDF\LaTeX，调用 \pkg{CJK} 以及相关的包。注意：\pkg{CJKpunct} 必
+% 须放在 \pkg{CJKspace} 之前。
+%    \begin{macrocode}
+\else
+  \RequirePackage{CJK}
+  \RequirePackage{CJKnumb}
+  \IfFileExists{CJKpunct.sty}{\RequirePackage{CJKpunct}}{\ClassWarning{thuthesis}{no CJKpunct.sty availiable!}}
+  \RequirePackage{CJKspace}
+%    \end{macrocode}
+% arial 字体需要单独安装，如果不使用 arial 字体，可以用 helvet 字体 |\textsf|
+% 模拟，二者基本没有差别。
+%    \begin{macrocode}
+  \ifthu@arial
+    \IfFileExists{arial.sty}{\RequirePackage{arial}}%
+                            {\ClassWarning{thuthesis}{no arial.sty availiable!}}
+  \fi
+\fi
 %    \end{macrocode}
 %
-% 中英文间距和中文标点优化处理：\pkg{CJKpunct} 必须放在 \pkg{CJKspace} 之前。
+% 可拷贝的 pdf (\pkg{ccmap} 结合 \texttt{pdflatex} 和 \texttt{dvipdfmx} 使用)
 %    \begin{macrocode}
-\RequirePackage{CJKpunct,CJKspace}
-%    \end{macrocode}
-%
-% 可拷贝的 pdf （\pkg{ccmap} 结合 \texttt{pdflatex} 和 \texttt{dvipdfmx} 使用）
-%    \begin{macrocode}
-\ifthu@dvipdfm\else
-  \RequirePackage{ccmap}
+\ifthu@dvips\else
+  \ifthu@xetex\else
+    \RequirePackage{ccmap}
+  \fi
 \fi
 %    \end{macrocode}
 %
@@ -1549,10 +1589,7 @@
 % 用于中文段落缩进和正文版式
 %    \begin{macrocode}
 %<*cls>
-\newlength\CJKtwospaces
-\def\CJKindent{%
-  \settowidth\CJKtwospaces{\CJKchar{"0A1}{"0A1}\CJKchar{"0A1}{"0A1}}%
-  \parindent\CJKtwospaces}
+\parindent2em
 %    \end{macrocode}
 %
 % 段落之间的竖直距离
@@ -1857,14 +1894,16 @@
   \newcommand{\eabstractname}{Abstract}
 \fi
 \let\CJK@todaysave=\today
-\def\CJK@todaysmall{~\the\year~年~\the\month~月~\the\day~日}
-\def\CJK@todaybig{\CJKdigits{\the\year}年\CJKnumber{\the\month}月\CJKnumber{\the\day}日}
+\def\CJK@todaysmall@short{\the\year 年 \the\month 月}
+\def\CJK@todaysmall{\CJK@todaysmall \the\day 日}
+\def\CJK@todaybig@short{\CJKdigits{\the\year} 年 \CJKnumber{\the\month} 月}
+\def\CJK@todaybig{\CJK@todaybig@short \CJKnumber{\the\day} 日}
 \def\CJK@today{\CJK@todaysmall}
 \renewcommand\today{\CJK@today}
 \newcommand\CJKtoday[1][1]{%
   \ifcase#1\def\CJK@today{\CJK@todaysave}
-  \or\def\CJK@today{\CJK@todaysmall}
-  \or\def\CJK@today{\CJK@todaybig}
+    \or\def\CJK@today{\CJK@todaysmall}
+    \or\def\CJK@today{\CJK@todaybig}
   \fi}
 %</cfg>
 %    \end{macrocode}
@@ -2277,9 +2316,9 @@
 \def\thu@bachelor@authortitle{姓名}
 \def\thu@secretlevel@inner{内部}
 \def\thu@secret@title{%
-  \thu@secretlevel\ifx\thu@secretlevel\thu@secretlevel@inner\else★\fi%
+  \thu@secretlevel\ifx\thu@secretlevel\thu@secretlevel@inner\else ★\fi%
   \hspace{2em}\thu@secretyear\hspace{1em}年}
-\def\thu@apply{（申请清华大学\thu@cdegree学位论文）}
+\def\thu@apply{（申请清华大学\thu@cdegree 学位论文）}
 \def\thu@cdepartmenttitle{培养单位}
 \def\thu@cmajortitle{学科}
 \def\thu@cauthortitle{研究生}
@@ -2291,8 +2330,7 @@
 \fi
 \def\thu@ccosupertitle{%
   \ifthu@doctor 联合导师\else \ifthu@master 联合指导教师\fi\fi}
-\cdate{\ifthu@bachelor\the\year~~年~~\the\month~~月~~\the\day~~日%
-       \else\CJKdigits{\the\year}年\CJKnumber{\the\month}月\fi}
+\cdate{\ifthu@bachelor\CJK@todaysmall@short\else\CJK@todaybig@short\fi}
 \edate{\ifcase \month \or January\or February\or March\or April\or May%
        \or June\or July \or August\or September\or October\or November
        \or December\fi\unskip,\ \ \the\year}
@@ -2308,15 +2346,15 @@
 清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：（1）已获学位的研究生
 必须按学校规定提交学位论文，学校可以采用影印、缩印或其他复制手段保存研究生上交的
 学位论文；（2）为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料
-室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容\ifthu@master 。\else；
+室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容\ifthu@master 。\else ；
 （3）根据《中华人民共和国学位条例暂行实施办法》，向国家图书馆报送可以公开的学位
 论文。\fi
 
 本人保证遵守上述规定。
 \fi}
 \newcommand{\thu@authorizationaddon}{%
-  \ifthu@bachelor(涉密的学位论文在解密后应遵守此规定)\else（保密的论文在解密后应遵守此规定）\fi}
-\newcommand{\thu@authorsig}{\ifthu@bachelor 签\hskip1em名：\else作者签名：\fi}
+  \ifthu@bachelor(涉密的学位论文在解密后应遵守此规定)\else （保密的论文在解密后应遵守此规定）\fi}
+\newcommand{\thu@authorsig}{\ifthu@bachelor 签\hskip1em名：\else 作者签名：\fi}
 \newcommand{\thu@teachersig}{导师签名：}
 \newcommand{\thu@frontdate}{日\hspace{2em}期：}
 \newcommand{\thu@ckeywords@title}{关键词：}
@@ -2391,33 +2429,41 @@
         \hspace*{1.65cm}\fs
           \setlength{\thu@title@width}{4em}
           \setlength{\extrarowheight}{6pt}
-          \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{4pt}}l}
-            \thu@put@title{\thu@bachelor@departmenttitle} & \thu@title@sep & \thu@cdepartment\\
-            \thu@put@title{\thu@bachelor@majortitle}      & \thu@title@sep & \thu@cmajor\\
-            \thu@put@title{\thu@bachelor@authortitle}     & \thu@title@sep & \thu@cauthor \\
-            \thu@put@title{\thu@csupervisortitle}         & \thu@title@sep & \thu@csupervisor\\
-            \ifx\thu@cassosupervisor\@empty\else
-              \thu@put@title{\thu@cassosupertitle}        & \thu@title@sep & \thu@cassosupervisor\\
-            \fi
-          \end{tabular}
+          \ifxetex % todo: ugly codes
+            \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
+          \else
+            \begin{tabular}{p{\thu@title@width}l@{}l}
+          \fi
+              \thu@put@title{\thu@bachelor@departmenttitle} & \thu@title@sep & \thu@cdepartment\\
+              \thu@put@title{\thu@bachelor@majortitle}      & \thu@title@sep & \thu@cmajor\\
+              \thu@put@title{\thu@bachelor@authortitle}     & \thu@title@sep & \thu@cauthor \\
+              \thu@put@title{\thu@csupervisortitle}         & \thu@title@sep & \thu@csupervisor\\
+              \ifx\thu@cassosupervisor\@empty\else
+                \thu@put@title{\thu@cassosupertitle}        & \thu@title@sep & \thu@cassosupervisor\\
+              \fi
+            \end{tabular}
         }}
     \else
       \parbox[t][7.8cm][t]{\textwidth}{{\sanhao[1.5]
         \begin{center}\fs
           \setlength{\thu@title@width}{6em}
           \setlength{\extrarowheight}{4pt}
-          \begin{tabular}{p{\thu@title@width}c@{\extracolsep{4pt}}l}
-            \thu@put@title{\thu@cdepartmenttitle}  & \thu@title@sep & {\ziju{3bp}\thu@cdepartment}\\
-            \thu@put@title{\thu@cmajortitle}       & \thu@title@sep & {\ziju{3bp}\thu@cmajor}\\
-            \thu@put@title{\thu@cauthortitle}      & \thu@title@sep & {\ziju{11bp}\thu@cauthor}\\
-            \thu@put@title{\thu@csupervisortitle}  & \thu@title@sep & {\ziju{11bp}\thu@csupervisor}\\
-            \ifx\thu@cassosupervisor\@empty\else
-              \thu@put@title{\thu@cassosupertitle} & \thu@title@sep & {\ziju{11bp}\thu@cassosupervisor}\\
-            \fi
-            \ifx\thu@ccosupervisor\@empty\else
-              \thu@put@title{\thu@ccosupertitle}   & \thu@title@sep & {\ziju{11bp}\thu@ccosupervisor}\\
-            \fi
-          \end{tabular}
+          \ifxetex % todo: ugly codes
+            \begin{tabular}{p{\thu@title@width}@{}c@{\extracolsep{8pt}}l}
+          \else 
+            \begin{tabular}{p{\thu@title@width}c@{\extracolsep{4pt}}l}
+          \fi
+              \thu@put@title{\thu@cdepartmenttitle}  & \thu@title@sep & {\ziju{3bp}\thu@cdepartment}\\
+              \thu@put@title{\thu@cmajortitle}       & \thu@title@sep & {\ziju{3bp}\thu@cmajor}\\
+              \thu@put@title{\thu@cauthortitle}      & \thu@title@sep & {\ziju{11bp}\thu@cauthor}\\
+              \thu@put@title{\thu@csupervisortitle}  & \thu@title@sep & {\ziju{11bp}\thu@csupervisor}\\
+              \ifx\thu@cassosupervisor\@empty\else
+                \thu@put@title{\thu@cassosupertitle} & \thu@title@sep & {\ziju{11bp}\thu@cassosupervisor}\\
+              \fi
+              \ifx\thu@ccosupervisor\@empty\else
+                \thu@put@title{\thu@ccosupertitle}   & \thu@title@sep & {\ziju{11bp}\thu@ccosupervisor}\\
+              \fi
+            \end{tabular}
         \end{center}}}
       \fi
 %    \end{macrocode}
@@ -3032,7 +3078,7 @@
 % 必须在 document 开始后才能，感觉不好。
 % \changes{v2.5}{2006/05/13}{不用 \cs{CJKcaption}，在导言区直接引入配置文件。}
 %    \begin{macrocode}
-\AtEndOfClass{\thu@active@cjk\input{thuthesis.cfg}}%
+\AtEndOfClass{\ifxetex\else\thu@active@cjk\fi\input{thuthesis.cfg}}
 %    \end{macrocode}
 %
 % \begin{macro}{\thu@fixselectfont}
@@ -3085,19 +3131,22 @@
 % 把 CJK 环境放到合适的位置，以免导致其它宏包的命令位于 CJK 环境中而出现问题（比
 % 如 natbib 的“Multiple-defined labels”，同时自动开启 CJK。
 % \changes{v2.6.2}{2006/06/18}{合理放置 CJK，避免 natbib 的警告。}
+% \changes{v4.4}{2009/01/03}{XeTeX 模式下不需要。}
 %    \begin{macrocode}
-\def\thu@beginCJK{%
-  \thu@fixselectfont%
-  \begin{CJK*}{GBK}{song}%
-  \sloppy\CJKindent\CJKtilde}
-\def\thu@endCJK{\clearpage\end{CJK*}}
-\let\thu@begindocumenthook\@begindocumenthook
-\let\thu@enddocumenthook\@enddocumenthook
-\def\AtBeginDocument{\g@addto@macro\thu@begindocumenthook}
-\def\AtEndDocument{\g@addto@macro\thu@enddocumenthook}
-\def\@begindocumenthook{\thu@begindocumenthook\thu@beginCJK}
-\def\@enddocumenthook{\thu@endCJK\thu@enddocumenthook}
-\AtBeginDocument{\thu@setup@pdfinfo\thu@item@space}
+\ifxetex\else
+  \def\thu@beginCJK{%
+    \thu@fixselectfont%
+    \begin{CJK*}{GBK}{song}}
+  \def\thu@endCJK{\clearpage\end{CJK*}}
+  \let\thu@begindocumenthook\@begindocumenthook
+  \let\thu@enddocumenthook\@enddocumenthook
+  \def\AtBeginDocument{\g@addto@macro\thu@begindocumenthook}
+  \def\AtEndDocument{\g@addto@macro\thu@enddocumenthook}
+  \def\@begindocumenthook{\thu@begindocumenthook\thu@beginCJK}
+  \def\@enddocumenthook{\thu@endCJK\thu@enddocumenthook}
+\fi
+\AtBeginDocument{\sloppy\thu@item@space}
+\AtEndDocument{\thu@setup@pdfinfo}
 %</cls>
 %    \end{macrocode}
 %
@@ -3115,7 +3164,8 @@
 \RequirePackage{txfonts}
 \RequirePackage{xcolor}
 \RequirePackage{CJK}
-\RequirePackage{CJKpunct,CJKspace}
+\IfFileExists{CJKpunct.sty}{\RequirePackage{CJKpunct}}{}
+\RequirePackage{CJKspace}
 \RequirePackage[%
   CJKbookmarks=true, 
   bookmarksnumbered=true,
