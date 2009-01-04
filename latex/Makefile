@@ -155,10 +155,10 @@ dist:
 	@if [ -z "$(VERSION)" ]; then \
 	    echo "Usage: make dist VERSION=<version#>"; \
 	else \
-	    ./makedist.sh $(VERSION) GBK; \
+	    ./makedist.sh $(VERSION) UTF8; \
 	    if [ ! -d "gbk" ]; then \
  	      echo "\n\nYou have NOT created gbk/, run ./makegbk.sh first.\n"; \
  	    else \
-	      (cd gbk ; ../makedist.sh $(VERSION) UTF8); \
+	      (cd gbk ; ../makedist.sh $(VERSION) GBK); \
 	    fi \
 	fi
