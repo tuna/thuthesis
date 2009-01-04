@@ -2971,36 +2971,14 @@
 % \subsubsection{书脊}
 % \label{sec:shuji}
 %
-% 为了生成书脊使用竖排
+% \begin{macro}{\shuji}
+% 单独使用书脊命令会在新的一页产生竖排书脊。
+% \changes{v4.4}{2009/01/04}{简化代码，同时支持 xelatex。}
 %    \begin{macrocode}
 %<*cls>
-\newcommand{\thu@verticle}{%
-  \renewcommand{\CJKsymbol}[1]{%
-  \setbox0=\hbox{\symbol{##1}}%
-  \newcommand{\POS}{}%
-  \ifthenelse{\lengthtest{\ht0<.39\wd0}}%
-             {\renewcommand{\POS}{c}}{\renewcommand{\POS}{r}}%
-  \makebox[1.3\wd0][\POS]{\rotatebox[origin=lB]{90}{\symbol{##1}}}%
-  \ifCJK@bold@%
-  \hbox to \CJKboldshift{\hss\makebox[1.3\wd0][\POS]{%
-      \rotatebox[origin=lB]{90}{\symbol{##1}}}}%
-  \hbox to \CJKboldshift{\hss\makebox[1.3\wd0][\POS]{%
-      \rotatebox[origin=lB]{90}{\symbol{##1}}}}%
-  \fi}}
-\newsavebox{\thu@saverotate}%
-\newcommand{\shupai}[2][\textheight]{%
-  \savebox{\thu@saverotate}{\parbox[t]{#1}{\thu@verticle #2}}
-  \hfill\rotatebox[origin=lt]{-90}{\usebox{\thu@saverotate}}}
-%    \end{macrocode}
-%
-% \begin{macro}{\shuji}
-% 单独使用书脊命令会在新的一页产生竖排书脊
-%    \begin{macrocode}
 \newcommand{\shuji}[1][\thu@ctitle]{
-  \newpage%
-  \thispagestyle{empty}
-  \vspace*{1cm}
-  \shupai[\textheight-2cm]{\fs\xiaosan #1\hfill\thu@cauthor}}
+  \newpage\thispagestyle{empty}\ziju{0.4em}\fs\xiaosan
+  \hfill\rotatebox{-90}{\hb@xt@ \textheight{#1\hfill\thu@cauthor}}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
