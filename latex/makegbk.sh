@@ -15,6 +15,12 @@ function myconvert
   iconv -f utf8 -t gbk $1 > $GBKDIR/$1
 }
 
+# remove the dest
+if [ "$1A" = "-fA" ]
+then
+  rm -rf $GBKDIR
+fi
+
 # create top temp dir
 if [ ! -d $GBKDIR ]
 then
@@ -51,7 +57,7 @@ tar cp --exclude ".svn" --exclude ".git" $EXTRA_DIRS | (cd $GBKDIR ; tar xp)
 echo "copying $EXTRA_FILES"
 cp -f $EXTRA_FILES $GBKDIR
 
-# processing thuthesis.dtx
+# processing thuthesis.dtx and Makefile
 cd $GBKDIR
 
 sed \
@@ -63,5 +69,8 @@ sed \
      thuthesis.dtx > gbksed.tmp
 
 mv gbksed.tmp thuthesis.dtx
+
+sed -e "s/# gbk2uni/gbk2uni/" Makefile > gbksed.tmp
+mv gbksed.tmp Makefile
 
 echo "GBK convesion success."
