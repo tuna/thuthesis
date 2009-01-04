@@ -11,65 +11,65 @@
 %   openany|openright,
 %   arialtoc,arialtitle]{thuthesis}
 
-% ËùÓĞÆäËü¿ÉÄÜÓÃµ½µÄ°ü¶¼Í³Ò»·Åµ½ÕâÀïÁË£¬¿ÉÒÔ¸ù¾İ×Ô¼ºµÄÊµ¼ÊÌí¼Ó»òÕßÉ¾³ı¡£
+% æ‰€æœ‰å…¶å®ƒå¯èƒ½ç”¨åˆ°çš„åŒ…éƒ½ç»Ÿä¸€æ”¾åˆ°è¿™é‡Œäº†ï¼Œå¯ä»¥æ ¹æ®è‡ªå·±çš„å®é™…æ·»åŠ æˆ–è€…åˆ é™¤ã€‚
 \usepackage{thutils}
 
-% Äã¿ÉÒÔÔÚÕâÀïĞŞ¸ÄÅäÖÃÎÄ¼şÖĞµÄ¶¨Òå£¬µ¼ÑÔÇø¿ÉÒÔÊ¹ÓÃÖĞÎÄ¡£
-% \def\myname{Ñ¦ÈğÄá}
+% ä½ å¯ä»¥åœ¨è¿™é‡Œä¿®æ”¹é…ç½®æ–‡ä»¶ä¸­çš„å®šä¹‰ï¼Œå¯¼è¨€åŒºå¯ä»¥ä½¿ç”¨ä¸­æ–‡ã€‚
+% \def\myname{è–›ç‘å°¼}
 
 \begin{document}
 
-% ¶¨ÒåËùÓĞµÄepsÎÄ¼şÔÚ figures ×ÓÄ¿Â¼ÏÂ
+% å®šä¹‰æ‰€æœ‰çš„epsæ–‡ä»¶åœ¨ figures å­ç›®å½•ä¸‹
 \graphicspath{{figures/}}
 
 
-%%% ·âÃæ²¿·Ö
+%%% å°é¢éƒ¨åˆ†
 \frontmatter
 \input{data/cover}
 \makecover
 
-% Ä¿Â¼
+% ç›®å½•
 \tableofcontents
 
-% ·ûºÅ¶ÔÕÕ±í
+% ç¬¦å·å¯¹ç…§è¡¨
 \input{data/denotation}
 
 
-%%% ÕıÎÄ²¿·Ö
+%%% æ­£æ–‡éƒ¨åˆ†
 \mainmatter
 \include{data/chap01}
 \include{data/chap02}
 
 
-%%% ÆäËü²¿·Ö
+%%% å…¶å®ƒéƒ¨åˆ†
 \backmatter
 
-% ±¾¿ÆÉúÒªÕâ¼¸¸öË÷Òı£¬ÑĞ¾¿Éú²»Òª¡£Ñ¡ÔñĞÔÁôÏÂ¡£
+% æœ¬ç§‘ç”Ÿè¦è¿™å‡ ä¸ªç´¢å¼•ï¼Œç ”ç©¶ç”Ÿä¸è¦ã€‚é€‰æ‹©æ€§ç•™ä¸‹ã€‚
 \makeatletter
 \ifthu@bachelor
-  % ²åÍ¼Ë÷Òı
+  % æ’å›¾ç´¢å¼•
   \listoffigures
-  % ±í¸ñË÷Òı
+  % è¡¨æ ¼ç´¢å¼•
   \listoftables
-  % ¹«Ê½Ë÷Òı
+  % å…¬å¼ç´¢å¼•
   \listofequations
 \fi
 \makeatother
 
 
-% ²Î¿¼ÎÄÏ×
+% å‚è€ƒæ–‡çŒ®
 \bibliographystyle{thubib}
 \bibliography{ref/refs}
 
 
-% ÖÂĞ»
+% è‡´è°¢
 \include{data/ack}
 
-% ¸½Â¼
+% é™„å½•
 \begin{appendix}
 \input{data/appendix01}
 \end{appendix}
 
-% ¸öÈË¼òÀú
+% ä¸ªäººç®€å†
 \include{data/resume}
 \end{document}

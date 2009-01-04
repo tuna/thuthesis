@@ -3,32 +3,32 @@
 %%% mode: latex
 %%% TeX-master: t
 %%% End:
-\secretlevel{����} \secretyear{2100}
+\secretlevel{绝密} \secretyear{2100}
 
-\ctitle{�廪��ѧѧλ���� \LaTeX\ ģ��\\ʹ��ʾ���ĵ�}
-% �����Լ������ѡ��������������
+\ctitle{清华大学学位论文 \LaTeX\ 模板\\使用示例文档}
+% 根据自己的情况选，不用这样复杂
 \makeatletter
 \ifthu@bachelor\relax\else
   \ifthu@doctor
-    \cdegree{��ѧ��ʿ}
+    \cdegree{工学博士}
   \else
     \ifthu@master
-      \cdegree{��ѧ˶ʿ}
+      \cdegree{工学硕士}
     \fi
   \fi
 \fi
 \makeatother
 
 
-\cdepartment[�����]{�������ѧ�뼼��ϵ}
-\cmajor{�������ѧ�뼼��}
-\cauthor{Ѧ����} 
-\csupervisor{֣γ�����}
-% ���û�и�ָ����ʦ��������ָ����ʦ��������������Ӧ��ɾ�����ɡ�
-\cassosupervisor{���Ĺ⸱����}
-\ccosupervisor{ĳĳĳ����}
-% �����Զ����ɣ������Ҫ�Լ�д�͸����cdate
-%\cdate{\CJKdigits{\the\year}��\CJKnumber{\the\month}��}
+\cdepartment[计算机]{计算机科学与技术系}
+\cmajor{计算机科学与技术}
+\cauthor{薛瑞尼} 
+\csupervisor{郑纬民教授}
+% 如果没有副指导老师或者联合指导老师，把下面两行相应的删除即可。
+\cassosupervisor{陈文光副教授}
+\ccosupervisor{某某某教授}
+% 日期自动生成，如果你要自己写就改这个cdate
+%\cdate{\CJKdigits{\the\year}年\CJKnumber{\the\month}月}
 
 \etitle{An Introduction to \LaTeX{} Thesis Template of Tsinghua University} 
 % \edegree{Doctor of Science} 
@@ -37,35 +37,35 @@
 \eauthor{Xue Ruini} 
 \esupervisor{Professor Zheng Weimin} 
 \eassosupervisor{Chen Wenguang} 
-% �������Ҳ���Զ����ɣ���Ҫ��ô��
+% 这个日期也会自动生成，你要改么？
 % \edate{December, 2005}
 
-% ������Ӣ��ժҪ�͹ؼ���
+% 定义中英文摘要和关键字
 \begin{cabstract}
-  ���ĵ�ժҪ�Ƕ������о����ݺͳɹ��ĸ߶ȸ�����ժҪӦ���������о������⼰���о�Ŀ
-  �Ľ������������о������͹��̽��м򵥽��ܣ����о��ɹ������ý��۽��и�����ժҪӦ
-  ���ж����Ժ������ԣ�������Ӧ����������ȫ��ͬ��������Ҫ��Ϣ��ʹ���߼�ʹ���Ķ�ȫ
-  �ģ�ͨ��ժҪ�����˽����ĵ��������ݺ���Ҫ�ɹ���
+  论文的摘要是对论文研究内容和成果的高度概括。摘要应对论文所研究的问题及其研究目
+  的进行描述，对研究方法和过程进行简单介绍，对研究成果和所得结论进行概括。摘要应
+  具有独立性和自明性，其内容应包含与论文全文同等量的主要信息。使读者即使不阅读全
+  文，通过摘要就能了解论文的总体内容和主要成果。
 
-  ����ժҪ����дӦ����ȷ���������м�д�ɶ�������д���ݽ�����Ҫ����ʽ������Ҫ��
-  �⡰�� 1 �¡������� 2 �¡��������������ֻ����Ƶĳ�����ʽ��
+  论文摘要的书写应力求精确、简明。切忌写成对论文书写内容进行提要的形式，尤其要避
+  免“第 1 章……；第 2 章……；……”这种或类似的陈述方式。
 
-  ���Ľ����廪��ѧ����ģ�� \thuthesis{} ��ʹ�÷�������ģ�����ѧУ�ı��ơ�˶ʿ��
-  ��ʿ���ĸ�ʽҪ��
+  本文介绍清华大学论文模板 \thuthesis{} 的使用方法。本模板符合学校的本科、硕士、
+  博士论文格式要求。
 
-  ���ĵĴ��µ���Ҫ�У�
+  本文的创新点主要有：
   \begin{itemize}
-    \item ������������ģ���ʹ�÷�����
-    \item �÷ϻ�������޹ؽ�Ҫ�Ĳ��֣�
-    \item һ��ѧϰ����һ�߱�д�´��롣
+    \item 用例子来解释模板的使用方法；
+    \item 用废话来填充无关紧要的部分；
+    \item 一边学习摸索一边编写新代码。
   \end{itemize}
 
-  �ؼ�����Ϊ�����ױ������������Ա�ʾȫ����Ҫ������Ϣ�ĵ��ʻ�����ؼ��ʲ����� 5
-  ����ÿ���ؼ����м��÷ֺŷָ�����ģ������ע���ؼ��ʷָ������ÿ��ǣ�ģ����Զ���
-  ����Ӣ�Ĺؼ���ͬ������
+  关键词是为了文献标引工作、用以表示全文主要内容信息的单词或术语。关键词不超过 5
+  个，每个关键词中间用分号分隔。（模板作者注：关键词分隔符不用考虑，模板会自动处
+  理。英文关键词同理。）
 \end{cabstract}
 
-\ckeywords{\TeX, \LaTeX, CJK, ģ��, ����}
+\ckeywords{\TeX, \LaTeX, CJK, 模板, 论文}
 
 \begin{eabstract} 
    An abstract of a dissertation is a summary and extraction of research work

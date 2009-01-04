@@ -267,7 +267,7 @@ FUNCTION {bbl.etal}
 { "et~al." }
 
 FUNCTION {bbl.cn.etal}
-{ "╣х." }
+{ "Г╜┴." }
 
 FUNCTION {format.lang}
 { lang empty$
@@ -352,7 +352,7 @@ FUNCTION {format.authors}
 FUNCTION {editors.names}
 { lang empty$
     { ", (eds.)" }
-    { ", ╠Ю" }
+    { ", Г╪√" }
   if$
 }
 
@@ -564,7 +564,7 @@ FUNCTION {format.chapter.pages}
 FUNCTION {collection.in}
 { lang empty$
     { "In: " }
-    { "╪Ш: " }
+    { "Х╖│: " }
   if$
 }
 
@@ -967,7 +967,7 @@ FUNCTION {manual}
 FUNCTION {masterthesis.type}
 { lang empty$
     { "\thumasterbib" }
-    { "[к╤й©я╖н╩бшнд]" }
+    { "[Г║∙Её╚Е╜╕Д╫█Х╝╨Ф√┤]" }
   if$
 }
 
@@ -1005,7 +1005,7 @@ FUNCTION {misc}
 FUNCTION {phdthesis.type}
 { lang empty$
     { "\thuphdbib" }
-    { "[╡╘й©я╖н╩бшнд]" }
+    { "[Е█ Её╚Е╜╕Д╫█Х╝╨Ф√┤]" }
   if$ 
 }
 

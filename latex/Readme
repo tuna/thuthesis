@@ -3,126 +3,126 @@ What's it?
 ==========
 ThuThesis is a LaTeX thesis template package for Tsinghua University in order to
 make it easy to write thesises for either bachelor, master or doctor.  ThuThesis
-ÊÇÇå»ª´óÑ§Ñ§Î»ÂÛÎÄLaTeXÄ£°å£¬Ö§³Ö±¾¿Æ¡¢Ë¶Ê¿¡¢²©Ê¿ÂÛÎÄ¸ñÊ½¡£
+æ˜¯æ¸…åå¤§å­¦å­¦ä½è®ºæ–‡LaTeXæ¨¡æ¿ï¼Œæ”¯æŒæœ¬ç§‘ã€ç¡•å£«ã€åšå£«è®ºæ–‡æ ¼å¼ã€‚
 
 
 ========
-Ê¹ÓÃ·½·¨
+ä½¿ç”¨æ–¹æ³•
 ========
-1. ±àÒëÊ¾ÀıÎÄµµ
+1. ç¼–è¯‘ç¤ºä¾‹æ–‡æ¡£
    latex main
    bibtex main
    latex main
-   gbk2uni main  # ¿ÉÑ¡
+   gbk2uni main  # å¯é€‰
    latex main
    dvips main.dvi
    ps2pdf main.ps
 
-   ËµÃ÷£ºÒ²¿ÉÒÔÊ¹ÓÃpdflatex»òdvipdfm(x)Éú³ÉÎÄµµ¡£
+   è¯´æ˜ï¼šä¹Ÿå¯ä»¥ä½¿ç”¨pdflatexæˆ–dvipdfm(x)ç”Ÿæˆæ–‡æ¡£ã€‚
 
-2. ±àĞ´×Ô¼ºµÄÂÛÎÄ
-   ²Î¿¼Ê¾ÀıÎÄµµ£º
-     main.tex   Ö÷¿ØÎÄµµ
-     data/      ÂÛÎÄ¾ßÌåÄÚÈİ
-     ref/       ²Î¿¼ÎÄÏ×Ä¿Â¼
-     figures/   Í¼Æ¬Ä¿Â¼
+2. ç¼–å†™è‡ªå·±çš„è®ºæ–‡
+   å‚è€ƒç¤ºä¾‹æ–‡æ¡£ï¼š
+     main.tex   ä¸»æ§æ–‡æ¡£
+     data/      è®ºæ–‡å…·ä½“å†…å®¹
+     ref/       å‚è€ƒæ–‡çŒ®ç›®å½•
+     figures/   å›¾ç‰‡ç›®å½•
    
 
 ========
-ÈçºÎÉı¼¶
+å¦‚ä½•å‡çº§
 ========
-1. ÏÂÔØĞÂÄ£°å²¢½âÑ¹Ëõ
-2. ½«thuthesis.cls, thuthesis.cfg, thubib.bst×÷ÏàÓ¦Ìæ»»¼´¿É¡£
+1. ä¸‹è½½æ–°æ¨¡æ¿å¹¶è§£å‹ç¼©
+2. å°†thuthesis.cls, thuthesis.cfg, thubib.bstä½œç›¸åº”æ›¿æ¢å³å¯ã€‚
 
 
 ======================================
 Makefile Howto (by edyfox & littleleo)
 ======================================
-1. »ñÈ¡°ïÖúÎÄµµ
+1. è·å–å¸®åŠ©æ–‡æ¡£
 
-   make doc   µÃµ½ thuthesis.pdf£¬°ïÖúÎÄµµ£¬ÀïÃæÓĞÏêÏ¸µÄËµÃ÷¡£
+   make doc   å¾—åˆ° thuthesis.pdfï¼Œå¸®åŠ©æ–‡æ¡£ï¼Œé‡Œé¢æœ‰è¯¦ç»†çš„è¯´æ˜ã€‚
 
-2. Éú³ÉÊ¾ÀıÎÄµµ
+2. ç”Ÿæˆç¤ºä¾‹æ–‡æ¡£
 
    make thesis
 
-3. Éú³ÉÊé¼¹Ê¾Àı   
+3. ç”Ÿæˆä¹¦è„Šç¤ºä¾‹   
 
    make shuji
 
-¸½Â¼£º Makefile ÃüÁîÏê½â£º
+é™„å½•ï¼š Makefile å‘½ä»¤è¯¦è§£ï¼š
 
-Makefile£º
+Makefileï¼š
 
-    Ê¹ÓÃ·½·¨£º
+    ä½¿ç”¨æ–¹æ³•ï¼š
 
         make [{all|thesis|shuji|doc|clean|distclean}] \
             [METHOD={ps2pdf|dvipdfm}] \
             [TEXI2DVI=<tex2dvi>]
 
-    ²ÎÊıËµÃ÷£º
+    å‚æ•°è¯´æ˜ï¼š
 
-        make all       µÈÓÚ make thesis && make shuji && make doc£»
-        make cls       Éú³ÉÄ£°åÎÄ¼ş£¬Ïàµ±ÓÚ make -f thesis.mak cls£»
-        make thesis    Éú³ÉÂÛÎÄ£¬Ïàµ±ÓÚ make -f thesis.mak£»
-        make shuji     Éú³ÉÊé¼¹£¬Ïàµ±ÓÚ make -f shuji.mak£»
-        make doc       Éú³ÉÊ¹ÓÃËµÃ÷Êé£¬Ïàµ±ÓÚ make -f doc.mak£»
-        make clean     ±íÊ¾Çå³ı³ıÁË pdf ÍâµÄËùÓĞÖĞ¼äÎÄ¼şºÍÄ¿±êÎÄ¼ş£»
-        make distclean ±íÊ¾Çå³ı°üÀ¨ pdf ÔÚÄÚµÄËùÓĞÖĞ¼äÎÄ¼şºÍÄ¿±êÎÄ¼ş¡£
+        make all       ç­‰äº make thesis && make shuji && make docï¼›
+        make cls       ç”Ÿæˆæ¨¡æ¿æ–‡ä»¶ï¼Œç›¸å½“äº make -f thesis.mak clsï¼›
+        make thesis    ç”Ÿæˆè®ºæ–‡ï¼Œç›¸å½“äº make -f thesis.makï¼›
+        make shuji     ç”Ÿæˆä¹¦è„Šï¼Œç›¸å½“äº make -f shuji.makï¼›
+        make doc       ç”Ÿæˆä½¿ç”¨è¯´æ˜ä¹¦ï¼Œç›¸å½“äº make -f doc.makï¼›
+        make clean     è¡¨ç¤ºæ¸…é™¤é™¤äº† pdf å¤–çš„æ‰€æœ‰ä¸­é—´æ–‡ä»¶å’Œç›®æ ‡æ–‡ä»¶ï¼›
+        make distclean è¡¨ç¤ºæ¸…é™¤åŒ…æ‹¬ pdf åœ¨å†…çš„æ‰€æœ‰ä¸­é—´æ–‡ä»¶å’Œç›®æ ‡æ–‡ä»¶ã€‚
 
-        METHOD ²ÎÊıÓÃÀ´Ö¸¶¨Éú³É pdf µÄ·½Ê½£¬
+        METHOD å‚æ•°ç”¨æ¥æŒ‡å®šç”Ÿæˆ pdf çš„æ–¹å¼ï¼Œ
 
-        METHOD=ps2pdf  ±íÊ¾Ê¹ÓÃ texi2dvi -> dvips ->ps2pdf µÄ·½Ê½Éú³É pdf£»
-        METHOD=dvipdfm ±íÊ¾Ê¹ÓÃ texi2dvi -> dvipdfm µÄ·½Ê½Éú³É pdf£»
+        METHOD=ps2pdf  è¡¨ç¤ºä½¿ç”¨ texi2dvi -> dvips ->ps2pdf çš„æ–¹å¼ç”Ÿæˆ pdfï¼›
+        METHOD=dvipdfm è¡¨ç¤ºä½¿ç”¨ texi2dvi -> dvipdfm çš„æ–¹å¼ç”Ÿæˆ pdfï¼›
 
-        Èç¹ûÈ±Ê¡£¬Ôò²ÉÓÃ ps2pdf ·½Ê½¡£
+        å¦‚æœç¼ºçœï¼Œåˆ™é‡‡ç”¨ ps2pdf æ–¹å¼ã€‚
 
-        TEXI2DVI ±íÊ¾ texi2dvi ÊµÓÃ¹¤¾ßµÄÎÄ¼şÃû£¬¸Ã¹¤¾ßµÄ×÷ÓÃÊÇ×Ô¶¯ÖØ¸´ÔËĞĞ
-        latex Èô¸É±é£¬Ö±ÖÁËùÓĞ½»²æÒıÓÃ¶¼ÕıÈ·ÎªÖ¹¡£ÔÚÓĞµÄ·¢ĞĞ°æÖĞ¸Ã¹¤¾ßµÄÎÄ¼şÃû
-        ²»½Ğ texi2dvi£¬Æ©Èç CTeX ÏÂµÄÕâ¸ö¹¤¾ß¾Í½Ğ texify¡£Óöµ½ÕâÖÖÇé¿öÄã¿ÉÒÔÔÚ
-        ÃüÁîĞĞÍ¨¹ı TEXI2DVI=texify ÃüÁîÖ¸¶¨Ê¹ÓÃÆäËüµÄ texi2dvi ¹¤¾ß¡£
+        TEXI2DVI è¡¨ç¤º texi2dvi å®ç”¨å·¥å…·çš„æ–‡ä»¶åï¼Œè¯¥å·¥å…·çš„ä½œç”¨æ˜¯è‡ªåŠ¨é‡å¤è¿è¡Œ
+        latex è‹¥å¹²éï¼Œç›´è‡³æ‰€æœ‰äº¤å‰å¼•ç”¨éƒ½æ­£ç¡®ä¸ºæ­¢ã€‚åœ¨æœ‰çš„å‘è¡Œç‰ˆä¸­è¯¥å·¥å…·çš„æ–‡ä»¶å
+        ä¸å« texi2dviï¼Œè­¬å¦‚ CTeX ä¸‹çš„è¿™ä¸ªå·¥å…·å°±å« texifyã€‚é‡åˆ°è¿™ç§æƒ…å†µä½ å¯ä»¥åœ¨
+        å‘½ä»¤è¡Œé€šè¿‡ TEXI2DVI=texify å‘½ä»¤æŒ‡å®šä½¿ç”¨å…¶å®ƒçš„ texi2dvi å·¥å…·ã€‚
 
 
 
 ===========================
 msmake.cmd Howto (by Truel)
 ===========================
-1.ÅäÖÃthuthesisºê°ü
+1.é…ç½®thuthesiså®åŒ…
 
     msmake setup
-   ¡¡¡¡ÔÚµ±Ç°Ä¿Â¼ÏÂÉú³Éthuthesisºê°ü¼°ËµÃ÷ÎÄµµthuthesis.pdf
+   ã€€ã€€åœ¨å½“å‰ç›®å½•ä¸‹ç”Ÿæˆthuthesiså®åŒ…åŠè¯´æ˜æ–‡æ¡£thuthesis.pdf
 
-2.Éú³ÉÊ¾ÀıÎÄµµ
+2.ç”Ÿæˆç¤ºä¾‹æ–‡æ¡£
   
     msmake [shuji|main|all|other]
-¡¡¡¡
-    ÔÚµ±Ç°Ä¿Â¼ÏÂÉú³ÉÊ¾ÀıÎÄµµ£¬»òÆäÖĞµÄÒ»²¿·Ö£¬»òÆäËûÓÃ»§Ö¸¶¨ÎÄµµ
-    Èç¹ûµ±Ç°Ä¿Â¼ÏÂÎŞthuthesis.cls£¬½«×Ô¶¯¸ù¾İthuthesis.insÉú³É¡£
-¡¡¡¡- shuji ½öÉú³ÉÊé¼¹
-¡¡¡¡- main  ½öÉú³Émain.pdf
-¡¡¡¡- all  Éú³ÉÊé¼¹ºÍmain.pdf£¬Ä¬ÈÏÑ¡Ïî
-¡¡¡¡- other ÓÃ»§Ö¸¶¨µÄtexÎÄ¼şÃû£¬ÓÉ¸ÃtexÎÄ¼ş²úÉúpdfÎÄµµ
+ã€€ã€€
+    åœ¨å½“å‰ç›®å½•ä¸‹ç”Ÿæˆç¤ºä¾‹æ–‡æ¡£ï¼Œæˆ–å…¶ä¸­çš„ä¸€éƒ¨åˆ†ï¼Œæˆ–å…¶ä»–ç”¨æˆ·æŒ‡å®šæ–‡æ¡£
+    å¦‚æœå½“å‰ç›®å½•ä¸‹æ— thuthesis.clsï¼Œå°†è‡ªåŠ¨æ ¹æ®thuthesis.insç”Ÿæˆã€‚
+ã€€ã€€- shuji ä»…ç”Ÿæˆä¹¦è„Š
+ã€€ã€€- main  ä»…ç”Ÿæˆmain.pdf
+ã€€ã€€- all  ç”Ÿæˆä¹¦è„Šå’Œmain.pdfï¼Œé»˜è®¤é€‰é¡¹
+ã€€ã€€- other ç”¨æˆ·æŒ‡å®šçš„texæ–‡ä»¶åï¼Œç”±è¯¥texæ–‡ä»¶äº§ç”Ÿpdfæ–‡æ¡£
 
-3.ÇåÀíÄ¿Â¼
+3.æ¸…ç†ç›®å½•
 
     msmake clean [other]
 
-¡¡¡¡ÇåÀíµ±Ç°Ä¿Â¼ÏÂÓÉthuthesisºê°üÉú³ÉµÄÎÄ¼ş£¬¾ßÌå°üÀ¨
-    - ºê°ü¼°ÆäËµÃ÷ÎÄµµthuthesis.{cls,cfg,dvi,ps,pdf}
-    - Ê¾ÀıÎÄµµshuji.pdf, main.{dvi,ps,pdf,aux,etc.}
-    - ÆäËüÁÙÊ±ÎÄ¼ş *.log *.aux *.glo *.idx *.ilg *.ind *.out *.thm *.toc *.lot *.loe *.out.bak
-    - Èç¹ûÓÃ»§Ö¸¶¨ÆäËûÎÄ¼şÃû£¬²»É¾³ımain.*£¬¶øÉ¾³ı other.{dvi,ps,pdf,lo?,aux,bbl,blg,out* toc thm}
+ã€€ã€€æ¸…ç†å½“å‰ç›®å½•ä¸‹ç”±thuthesiså®åŒ…ç”Ÿæˆçš„æ–‡ä»¶ï¼Œå…·ä½“åŒ…æ‹¬
+    - å®åŒ…åŠå…¶è¯´æ˜æ–‡æ¡£thuthesis.{cls,cfg,dvi,ps,pdf}
+    - ç¤ºä¾‹æ–‡æ¡£shuji.pdf, main.{dvi,ps,pdf,aux,etc.}
+    - å…¶å®ƒä¸´æ—¶æ–‡ä»¶ *.log *.aux *.glo *.idx *.ilg *.ind *.out *.thm *.toc *.lot *.loe *.out.bak
+    - å¦‚æœç”¨æˆ·æŒ‡å®šå…¶ä»–æ–‡ä»¶åï¼Œä¸åˆ é™¤main.*ï¼Œè€Œåˆ é™¤ other.{dvi,ps,pdf,lo?,aux,bbl,blg,out* toc thm}
 
-4.¸¨ÖúÍ¼ĞÎÍ¼ÏñÎÄ¼ş¸ñÊ½×ª»»ÃüÁî£º
+4.è¾…åŠ©å›¾å½¢å›¾åƒæ–‡ä»¶æ ¼å¼è½¬æ¢å‘½ä»¤ï¼š
 
    msmake epspdf [param]
 
-     ½«µ±Ç°Ä¿Â¼ÏÂËùÓĞepsÎÄ¼şÓÃepstopdf×ªÎªpdf¸ñÊ½
+     å°†å½“å‰ç›®å½•ä¸‹æ‰€æœ‰epsæ–‡ä»¶ç”¨epstopdfè½¬ä¸ºpdfæ ¼å¼
 
    msmake bmpeps [param]
 
-     ½«µ±Ç°Ä¿Â¼ÏÂËùÓĞbmp,jpg,pngÎÄ¼şÓÃbmeps×ªÎªeps¸ñÊ½
+     å°†å½“å‰ç›®å½•ä¸‹æ‰€æœ‰bmp,jpg,pngæ–‡ä»¶ç”¨bmepsè½¬ä¸ºepsæ ¼å¼
 
-   ÒÔÉÏÁ½¸öÃüÁîÖĞ£¬param¿ÉÒÔÓÉÓÃ»§Ö¸¶¨×ª»»³ÌĞòËùÓÃµÄ²ÎÊı¡£
+   ä»¥ä¸Šä¸¤ä¸ªå‘½ä»¤ä¸­ï¼Œparamå¯ä»¥ç”±ç”¨æˆ·æŒ‡å®šè½¬æ¢ç¨‹åºæ‰€ç”¨çš„å‚æ•°ã€‚
 
 # $Id$
