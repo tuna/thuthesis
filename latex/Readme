@@ -2,8 +2,9 @@
 What's it?
 ==========
 ThuThesis is a LaTeX thesis template package for Tsinghua University in order to
-make it easy to write thesises for either bachelor, master or doctor.  ThuThesis
-是清华大学学位论文LaTeX模板，支持本科、硕士、博士论文格式。
+make it easy to write thesises for either bachelor, master or doctor.  
+
+ThuThesis 是清华大学学位论文 LaTeX 模板，支持本科、硕士、博士论文格式。
 
 
 ========
@@ -13,12 +14,11 @@ make it easy to write thesises for either bachelor, master or doctor.  ThuThesis
    latex main
    bibtex main
    latex main
-   gbk2uni main  # 可选
    latex main
    dvips main.dvi
    ps2pdf main.ps
 
-   说明：也可以使用pdflatex或dvipdfm(x)生成文档。
+   说明：也可以使用 pdflatex/dvipdfm(x)/xelatex 生成文档。
 
 2. 编写自己的论文
    参考示例文档：

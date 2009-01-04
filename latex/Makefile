@@ -49,7 +49,7 @@ $(PACKAGE).dvi: cls
 	latex $(PACKAGE).dtx
 
 $(PACKAGE).ps: $(PACKAGE).dvi
-	gbk2uni $(PACKAGE)
+	# gbk2uni $(PACKAGE)
 	latex $(PACKAGE).dtx
 	dvips -Ppdf -G0 -t letter $(PACKAGE).dvi
 
@@ -71,7 +71,7 @@ $(THESISMAIN).dvi: cls $(THESISCONTENTS) $(THESISMAIN).bbl
 
 ifeq ($(METHOD),dvipdfm)
 $(THESISMAIN).pdf: $(THESISMAIN).dvi
-	gbk2uni $(THESISMAIN)
+	# gbk2uni $(THESISMAIN)
 	latex $(THESISMAIN).tex
 	dvipdfm $(THESISMAIN).dvi
 else
@@ -80,7 +80,7 @@ $(THESISMAIN).pdf: $(THESISMAIN).ps
 endif
 
 $(THESISMAIN).ps: $(THESISMAIN).dvi
-	gbk2uni $(THESISMAIN)
+	# gbk2uni $(THESISMAIN)
 	latex $(THESISMAIN).tex
 	dvips -Ppdf -G0 $(THESISMAIN).dvi
 
@@ -104,7 +104,7 @@ $(SHUJIMAIN).dvi: cls $(SHUJICONTENTS)
 
 ifeq ($(METHOD),dvipdfm)
 $(SHUJIMAIN).pdf: $(SHUJIMAIN).dvi
-	gbk2uni $(SHUJIMAIN)
+	# gbk2uni $(SHUJIMAIN)
 	latex $(SHUJIMAIN).tex
 	dvipdfmx $(SHUJIMAIN).dvi
 elifeq ($(METHOD),ps2pdf)
@@ -116,7 +116,7 @@ $(SHUJIMAIN).pdf: cls $(SHUJICONTENTS)
 endif
 
 $(SHUJIMAIN).ps: $(SHUJIMAIN).dvi
-	gbk2uni $(SHUJIMAIN)
+	# gbk2uni $(SHUJIMAIN)
 	latex $(SHUJIMAIN).tex
 	dvips -Ppdf -G0 $(SHUJIMAIN).dvi 
 
