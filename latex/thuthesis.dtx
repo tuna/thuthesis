@@ -42,7 +42,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2009/01/04 4.4 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2009/01/04 4.5 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{dtx-style}
 \EnableCrossrefs
@@ -128,7 +128,7 @@
 % \changes{v2.5.1}{2006/05/25}{参考文献中杂志文章如果没有卷号，那么页码直接跟在
 % 年份后面，并用句点分割。在 thubib.bst 中增加 output.year 函数。}
 % \changes{v2.6.1}{2006/06/16}{取消 thubib.bst 中 inbook 类 volume 后的页码。}
-% \changes{v4.4}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
+% \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
 % \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
@@ -995,7 +995,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2008/01/04 4.4 Tsinghua University Thesis Template]
+%<cls|cfg>[2008/01/04 4.5 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1012,7 +1012,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{4.4}
+\def\version{4.5}
 \newif\ifthu@bachelor\thu@bachelorfalse
 \newif\ifthu@master\thu@masterfalse
 \newif\ifthu@doctor\thu@doctorfalse
@@ -1026,7 +1026,7 @@
 % 使用 dvips，dvipdfm, pdflatex 还是 xelatex
 % \changes{v2.5.1}{2006/05/24}{如果选项设置了 dvips，但是用 pdflatex 编译，报错。}
 % \changes{v2.6}{2006/06/09}{增加 dvipdfm 选项。}
-% \changes{v4.4}{2009/01/03}{增加 xetex, pdftex 选项。}
+% \changes{v4.5}{2009/01/03}{增加 xetex, pdftex 选项。}
 %    \begin{macrocode}
 \newif\ifthu@dvips
 \newif\ifthu@dvipdfm
@@ -1153,7 +1153,7 @@
 %    \end{macrocode}
 %
 % 中文支持宏包。XeTeX 模式下直接调用 \pkg{xeCJK}，一切问题都搞定了。
-% \changes{v4.4}{2008/01/03}{加入 XeTeX 支持，需要 \pkg{xeCJK}。}
+% \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \pkg{xeCJK}。}
 %    \begin{macrocode}
 \ifthu@xetex
   \RequirePackage{xunicode,xltxtra}
@@ -1682,7 +1682,7 @@
 %
 % 公式改成 (1-1) 的形式，本科还要在前面加上公式二字，我不知道他们是怎么想的，这
 % 忒不好看了。
-% \changes{v2.5.1}{2006/05/24}{本科公式编号前添加{\hei 公式}二字。ft，这个需要修 \pkg{amsmath} 极其深入的一个命令。}
+% \changes{v2.5.1}{2006/05/24}{本科公式编号前添加\textbf{公式}二字。ft，这个需要修 \pkg{amsmath} 极其深入的一个命令。}
 % \changes{v2.5.1}{2006/05/24}{教务处居然要本科论文公式全文编号！}
 % \changes{v2.5.2}{2006/05/29}{上一个版本忘了把研究生的公式编号排除。}
 % \changes{v3.0}{2007/05/12}{本科公式又要取消全文统一编号了，这帮家伙，早就告诉
@@ -1698,7 +1698,7 @@
 % \def\make@df@tag@@#1{%
 %   \gdef\df@tag{\maketag@@@{#1}\def\@currentlabel{#1}}}
 % \end{verbatim}
-% \changes{v4.4}{2008/05/30}{变态的本科论文终于去掉了{\hei 公式}二字。}
+% \changes{v4.4}{2008/05/30}{变态的本科论文终于去掉了\textbf{公式}二字。}
 % \changes{v4.4.4}{2008/06/12}{修复了一个从 v4.3 升级到 v4.4 过程中的丢失公式索引的 bug，原修改代码保留备忘。}
 %    \begin{macrocode}
 \def\make@df@tag{\@ifstar\thu@make@df@tag@@\make@df@tag@@@}
@@ -2003,7 +2003,7 @@
 % 一级节标题，例如：2.1  实验装置与实验方法
 % 节标题序号与标题名之间空一个汉字符（下同）。
 % 采用黑体四号（14pt）字居左书写，行距为固定值 20 磅，段前空 24 磅，段后空 6 磅。
-% \changes{v4.4}{2006/06/04}{调整段前距为 -20bp 而不是原来的 -24bp。本科的混帐例
+% \changes{v4.4}{2008/06/04}{调整段前距为 -20bp 而不是原来的 -24bp。本科的混帐例
 % 子！}
 %    \begin{macrocode}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
@@ -2016,8 +2016,8 @@
 % \begin{macro}{\subsection}
 % 二级节标题，例如：2.1.1 实验装置
 % 采用黑体 13pt (本科生是 14pt) 字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
-% \changes{v4.4}{2006/06/04}{修改本科生模板的二级节标题为小四而不是半小四。}
-% \changes{v4.4}{2006/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
+% \changes{v4.4}{2008/06/04}{修改本科生模板的二级节标题为小四而不是半小四。}
+% \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
 %    \begin{macrocode}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                         {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
@@ -2029,7 +2029,7 @@
 % \begin{macro}{\subsubsection}
 % 三级节标题，例如：2.1.2.1 归纳法
 % 采用黑体小四号（12pt）字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
-% \changes{v4.4}{2006/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
+% \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
 %    \begin{macrocode}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                            {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
@@ -2278,7 +2278,7 @@
 % \changes{v3.1}{2007/10/09}{\textbf{内部}密级前面要五角星了。}
 % \changes{v4.0}{2007/11/08}{\textbf{内部}密级前面终究还是不要五角星了。}
 % \changes{v4.4.2}{2008/06/05}{本科生格式终于也开始用空格作为关键字分隔符了。}
-% \changes{v4.4.2}{2008/06/07}{本科生签名之间距离改为 \cs{skip1em}。}
+% \changes{v4.4.2}{2008/06/07}{本科生签名之间距离改为 \cs{hskip1em}。}
 %    \begin{macrocode}
 %<*cfg>
 \def\thu@ckeywords@separator{
@@ -2948,7 +2948,7 @@
 \fi
 %</cfg>
 %<*cls>
-\newcommand{\resumeitem}[1]{\vspace{2.5em}{\sihao \hei \centerline{#1}}\par}
+\newcommand{\resumeitem}[1]{\vspace{2.5em}{\sihao\hei\centerline{#1}}\par}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2958,7 +2958,7 @@
 %
 % \begin{macro}{\shuji}
 % 单独使用书脊命令会在新的一页产生竖排书脊。
-% \changes{v4.4}{2009/01/04}{简化代码，同时支持 xelatex。}
+% \changes{v4.5}{2009/01/04}{简化代码，同时支持 xelatex。}
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\shuji}[1][\thu@ctitle]{
@@ -3095,7 +3095,7 @@
 % 把 CJK 环境放到合适的位置，以免导致其它宏包的命令位于 CJK 环境中而出现问题（比
 % 如 natbib 的``Multiple-defined labels''，同时自动开
 % 启 CJK。\changes{v2.6.2}{2006/06/18}{合理放置 CJK，避免 natbib 的警告。}
-% \changes{v4.4}{2009/01/03}{XeTeX 模式下不需要。}
+% \changes{v4.5}{2009/01/03}{XeTeX 模式下不需要。}
 %    \begin{macrocode}
 \ifxetex\else
   \def\thu@beginCJK{%
