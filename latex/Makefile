@@ -47,6 +47,7 @@ $(PACKAGE).dvi: cls
 	makeindex -s gind.ist -o $(PACKAGE).ind $(PACKAGE).idx
 	makeindex -s gglo.ist -o $(PACKAGE).gls $(PACKAGE).glo
 	latex $(PACKAGE).dtx
+	latex $(PACKAGE).dtx
 
 $(PACKAGE).ps: $(PACKAGE).dvi
 	# gbk2uni $(PACKAGE)
@@ -143,7 +144,8 @@ clean:
 		*.lof \
 		*.lot \
 		*.loe \
-		data/*.aux
+		data/*.aux \
+		dtx-style.sty
 
 distclean: clean
 	-@rm -f *.pdf *.tar.gz

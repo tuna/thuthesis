@@ -61,6 +61,8 @@ cp -f $EXTRA_FILES $GBKDIR
 cd $GBKDIR
 
 sed \
+  -e "s/ExecuteOptions{utf/ExecuteOptions{gbk/" \
+  -e "s/dtx@UTFtrue/dtx@UTFfalse/" \
   -e "s/RequirePackage{CJKutf8}/RequirePackage{CJK}/" \
   -e "s/CJKbookmarks=false/CJKbookmarks=true/" \
   -e "s/{UTF8}{song}/{GBK}{song}/" \

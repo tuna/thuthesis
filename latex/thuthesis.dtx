@@ -7,7 +7,7 @@
 %
 % \iffalse meta-comment
 %
-% Copyright (C) 2005, 2006, 2007, 2008 by Ruini Xue <xueruini@gmail.com>
+% Copyright (C) 2005, 2006, 2007, 2008, 2009 by Ruini Xue <xueruini@gmail.com>
 %
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3a
@@ -48,7 +48,7 @@
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
- %\OnlyDescription
+%\OnlyDescription
 \begin{document}
 \begin{CJK*}{UTF8}{song}
   \DocInput{\jobname.dtx}
@@ -95,8 +95,8 @@
 % \changes{v2.2}{2006/03/26}{Add bachelor training overview details supporting.}
 % \changes{v2.2}{2006/03/26}{CJK support in preamble.}
 % \changes{v2.2}{2006/03/26}{Adjust hyperref to avoid boxes around links.}
-% \changes{v2.3}{2006/04/07}{Fix a great bug: \cmd{PassOptionsToClass} and \cmd{LoadClass}
-% rather than \cmd{PassOptionToPackage} and \cmd{LoadPackage}.}
+% \changes{v2.3}{2006/04/07}{Fix a great bug: \cmd{PassOptionsToClass} and \cs{LoadClass}
+% rather than \cs{PassOptionToPackage} and \cs{LoadPackage}.}
 % \changes{v2.3}{2006/04/07}{Reorganize the codes in cover, make the pagestyle more readable.}
 % \changes{v2.3}{2006/04/07}{Add gbk2uni into the document.}
 % \changes{v2.3}{2006/04/07}{Support openright and openany.}
@@ -406,7 +406,7 @@
 %
 % \section{使用说明}
 % \label{sec:usage}
-% 本手册假定用户已经能处理一般的 \LaTeX{} 文档，并对 BIB\TeX{} 有一定了解。如果你
+% 本手册假定用户已经能处理一般的 \LaTeX{} 文档，并对 \BibTeX{} 有一定了解。如果你
 % 从来没有接触过 \TeX 和 \LaTeX，建议先学习相关的基础知识。磨刀不误砍柴工！
 %
 % % todo: move some where..
@@ -1000,6 +1000,16 @@
 %
 % \subsection{定义选项}
 % \label{sec:defoption}
+% TODO: 所有的选项用 \pkg{xkeyval} 来重构，现在的太罗唆了。
+%
+% 定义文档所使用编码
+%    \begin{macrocode}
+%<*cls>
+\newif\ifthu@UTF
+\newif\ifthu@GBK
+\DeclareOption{utf}{\thu@UTFtrue\thu@GBKfalse}
+\DeclareOption{gbk}{\thu@GBKtrue\thu@UTFfalse}
+%    \end{macrocode}
 %
 % 定义论文类型以及是否涉密
 % \changes{v2.4}{2006/04/14}{添加模板名称命令。}
@@ -1009,7 +1019,6 @@
 % \changes{v2.5.3}{2006/06/03}{submit 选项的一个笔误。}
 % \changes{v3.0}{2007/05/12}{删除 submit 选项。}
 %    \begin{macrocode}
-%<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
 \def\version{4.5}
@@ -1053,23 +1062,22 @@
 %    \begin{macrocode}
 \newif\ifthu@arialtitle
 \DeclareOption{arialtitle}{\thu@arialtitletrue}
-%    \end{macrocode}%
-%
+%    \end{macrocode}
 %
 % 将选项传递给 book 类
 %    \begin{macrocode}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 %    \end{macrocode}
 %
-% 本科默认打开 arialtoc。\textbf{ExecuteOptions} 的参数之间用逗号分割，必须不能有空
-% 格。开始不知道，折腾了老半天。
+% \cs{ExecuteOptions} 的参数之间用逗号分割，不能有空格。开始不知道，折腾了老半
+% 天。
 % \changes{v2.5.1}{2006/05/24}{ft，研究生院目录要 times，而教务处要 arial。}
 % \changes{v2.5.1}{2006/05/26}{本科 openright，研究生 openany。}
 % \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
 %    \begin{macrocode}
-\ExecuteOptions{arialtitle}
+\ExecuteOptions{utf,arialtitle}
 \ProcessOptions\relax
-\LoadClass[12pt, a4paper, openany]{book}
+\LoadClass[12pt,a4paper,openany]{book}
 %    \end{macrocode}
 %
 % 用户至少要提供一个选项：指定论文类型。
@@ -1110,13 +1118,12 @@
 %
 % 引用的宏包和相应的定义。
 %    \begin{macrocode}
-\RequirePackage{ifthen}
-\RequirePackage{calc}
+\RequirePackage{ifthen,calc}
 %    \end{macrocode}
 %
 % \AmSTeX{} 宏包，用来排出更加漂亮的公式。
 %    \begin{macrocode}
-\RequirePackage{amsmath, amssymb}
+\RequirePackage{amsmath,amssymb}
 %    \end{macrocode}
 %
 % 用很爽的 \pkg{txfonts} 替换 \pkg{mathptmx} 宏包，同时用它自带的 typewriter 字
@@ -1161,7 +1168,7 @@
   \punctstyle{kaiming}
   \defaultfontfeatures{Mapping=tex-text} % after fontspec
 %    \end{macrocode}
-% 默认采用Adobe 的四款 (宋，黑，楷，仿宋) 免费字体。这样的话，缺少隶书和幼圆。本
+% 默认采用 Adobe 的四款 (宋，黑，楷，仿宋) 免费字体。这样的话，缺少隶书和幼圆。本
 % 科的封面大字会受影响。请手动替换。
 %    \begin{macrocode}
   \setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
@@ -1184,22 +1191,25 @@
 \else
   \RequirePackage{CJKutf8}
   \RequirePackage{CJKnumb}
-  \IfFileExists{CJKpunct.sty}%
-               {\RequirePackage{CJKpunct}}%
-               {\ClassWarning{thuthesis}{no CJKpunct.sty availiable!}}
+  \ifthu@GBK % CJKpnct 在 UTF 下工作的不好。
+    \IfFileExists{CJKpunct.sty}%
+                 {\RequirePackage{CJKpunct}}%
+                 {\ClassWarning{thuthesis}{no CJKpunct.sty availiable!}}
+  \fi
   \RequirePackage{CJKspace}
 %    \end{macrocode}
 % arial 字体需要单独安装，如果不使用 arial 字体，可以用 helvet 字体 |\textsf|
 % 模拟，二者基本没有差别。
 %    \begin{macrocode}
   \ifthu@arial
-    \IfFileExists{arial.sty}{\RequirePackage{arial}}%
-                            {\ClassWarning{thuthesis}{no arial.sty availiable!}}
+    \IfFileExists{arial.sty}%
+                 {\RequirePackage{arial}}%
+                 {\ClassWarning{thuthesis}{no arial.sty availiable!}}
   \fi
 \fi
 %    \end{macrocode}
 %
-% 可拷贝的 pdf (\pkg{ccmap} 结合 \texttt{pdflatex} 和 \texttt{dvipdfmx} 使用)
+% 可拷贝的 PDF (\pkg{ccmap} 结合 \texttt{pdflatex} 和 \texttt{dvipdfmx} 使用)
 %    \begin{macrocode}
 \ifthu@dvips\else
   \ifthu@xetex\else
@@ -1208,7 +1218,7 @@
 \fi
 %    \end{macrocode}
 %
-% 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 AMS \LaTeX 的宏包
+% 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX{} 的宏包
 %    \begin{macrocode}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 %    \end{macrocode}
@@ -1220,11 +1230,10 @@
 \RequirePackage{longtable}
 %    \end{macrocode}
 %
-% 使用三线表：\cs{toprule}，\cs{midrule}，\cs{bottomrule}。当然简单的可以用 \cs{hwline}\marg{wd}。
+% 使用三线表：\cs{toprule}，\cs{midrule}，\cs{bottomrule}。
 %    \begin{macrocode}
 \RequirePackage{booktabs}
 %    \end{macrocode}
-%
 %
 % 参考文献引用宏包。
 %    \begin{macrocode}
@@ -1478,9 +1487,8 @@
 %    \end{macrocode}
 %
 %
-%\subsubsection{页面设置}
-%\label{sec:layout}
-%
+% \subsubsection{页面设置}
+% \label{sec:layout}
 % 本来这部分应该是最容易设置的，但根据格式规定出来的结果跟学校的 WORD 样例相差很
 % 大，所以只能微调。
 % \changes{v2.4}{2006/04/14}{把页面尺寸写入 dvi，避免有的用户通
@@ -1516,7 +1524,6 @@
 %
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
-%
 % 新的一章最好从奇数页开始 (openright)，所以必须保证它前面那页如果没有内容也必须
 % 没有页眉页脚。(code stolen from \pkg{fancyhdr})
 %    \begin{macrocode}
@@ -1577,7 +1584,6 @@
 %
 % \subsubsection{段落}
 % \label{sec:paragraph}
-%
 % 用于中文段落缩进和正文版式
 %    \begin{macrocode}
 %<*cls>
@@ -1607,7 +1613,6 @@
 %
 % \subsubsection{脚注}
 % \label{sec:footnote}
-%
 % \begin{macro}{\MakePerPage}
 %   从 perpage.sty 中抽取的代码，使 footnote 按页编号。不再用臃肿的 footmisc。
 %    \begin{macrocode}
@@ -1674,9 +1679,8 @@
 %    \end{macrocode}
 %
 %
-%\subsubsection{数学相关}
-%\label{sec:equation}
-%
+% \subsubsection{数学相关}
+% \label{sec:equation}
 % 允许太长的公式断行、分页等。
 %    \begin{macrocode}
 %<*cls>
@@ -1686,14 +1690,14 @@
 %
 % 公式距前后文的距离由 4 个参数控制，参见 \cs{normalsize} 的定义。
 %
-% 公式改成 (1-1) 的形式，本科还要在前面加上公式二字，我不知道他们是怎么想的，这
+% 公式改成 (1-1) 的形式，本科还要在前面加上\textbf{公式}二字，我不知道他们是怎么想的，这
 % 忒不好看了。
 % \changes{v2.5.1}{2006/05/24}{本科公式编号前添加\textbf{公式}二字。ft，这个需要修 \pkg{amsmath} 极其深入的一个命令。}
 % \changes{v2.5.1}{2006/05/24}{教务处居然要本科论文公式全文编号！}
 % \changes{v2.5.2}{2006/05/29}{上一个版本忘了把研究生的公式编号排除。}
 % \changes{v3.0}{2007/05/12}{本科公式又要取消全文统一编号了，这帮家伙，早就告诉
 % 过他们，就是不听。}
-% 本科的公式编号太变态了，我不得不修改 \pkg{amsmath} 中很深的一个命令 \cs{tagform@}。
+% 本科的公式编号太变态了，不得不修改 \pkg{amsmath} 中很深的一个命令 \cs{tagform@}。
 %\changes{v2.6.2}{2006/06/19}{根据不同论文格式显示不同公式编号，并自动加入索引。}
 %\changes{v4.2}{2008/01/23}{\cs{eqref} 加括号。}
 % 同时为了让 \pkg{amsmath} 的 \cs{tag*} 命令得到正确的格式，我们必须修改这些代
@@ -1712,15 +1716,15 @@
 % redefinitation of tagform broken eqref!
 \renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
 \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
- %\ifthu@bachelor
- %  \def\thu@maketag#1{\maketag@@@{%
- %    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)}}
- %  \def\tagform@#1{\maketag@@@{%
- %    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)\equcaption{#1}}}
- %\else
+%\ifthu@bachelor
+%  \def\thu@maketag#1{\maketag@@@{%
+%    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)}}
+%  \def\tagform@#1{\maketag@@@{%
+%    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)\equcaption{#1}}}
+%\else
 \def\thu@maketag#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)}}
 \def\tagform@#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)\equcaption{#1}}}
- %\fi
+%\fi
 %    \end{macrocode}
 % ^^A 使公式编号随着每开始新的一节而重新开始。
 % ^^A \@addtoreset{eqation}{section}
@@ -1752,9 +1756,9 @@
 \theoremheaderfont{\hei\rmfamily}
 %</cls>
 %<*cfg>
- % \theoremsymbol{\ensuremath{\blacksquare}}
+% \theoremsymbol{\ensuremath{\blacksquare}}
 \theoremsymbol{\ensuremath{\square}}
- %\theoremstyle{nonumberplain}
+%\theoremstyle{nonumberplain}
 \newtheorem*{proof}{证明}
 \theoremstyle{plain}
 \theoremsymbol{}
@@ -1776,7 +1780,6 @@
 %
 % \subsubsection{浮动对象以及表格}
 % \label{sec:float}
-%
 % 设置浮动对象和文字之间的距离
 % \changes{v2.6}{2006/06/09}{增加 \cs{floatsep}，\cs{@fptop}，\cs{@fpsep} 和 \cs{@fpbot}。}
 %    \begin{macrocode}
@@ -1819,12 +1822,12 @@
 \DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
 \DeclareCaptionFont{thu}{\dawu[1.5]}
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
-\captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=3bp}
-\captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=3bp}
+\captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=6bp}
+\captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=6bp}
 \captionsetup[subfloat]{labelformat=simple,font=thu,captionskip=6bp,nearskip=6bp,farskip=0bp,topadjust=0bp}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \renewcommand{\thesubtable}{(\alph{subtable})}
- % \renewcommand{\p@subfigure}{:}
+% \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
 % 我们采用 \pkg{longtable} 来处理跨页的表格。默认有个不足：插图索引部分缺少图
 % 名。同样我们需要设置其默认字体为五号。
@@ -1856,7 +1859,6 @@
 %
 % \subsubsection{中文标题定义}
 % \label{sec:theor}
-%
 % \changes{v2.5}{2006/05/19}{增加索引名称定义。}
 %    \begin{macrocode}
 %<*cfg>
@@ -1875,7 +1877,7 @@
 \newcommand\CJKprechaptername{第}
 \newcommand\CJKchaptername{章}
 \newcommand\CJKthechapter{\@arabic\c@chapter}
- %\newcommand\CJKthechapter{\CJKnumber{\@arabic\c@chapter}}
+%\newcommand\CJKthechapter{\CJKnumber{\@arabic\c@chapter}}
 \renewcommand\chaptername{\CJKprechaptername~\CJKthechapter~\CJKchaptername}
 \renewcommand\appendixname{附录}
 \ifthu@bachelor
@@ -1903,8 +1905,7 @@
 %
 % \subsubsection{章节标题}
 % \label{sec:titleandtoc}
-%
-% 如果章节题目中的英文要使用 arial，那么就加上 sffamily
+% 如果章节题目中的英文要使用 arial，那么就加上 \cs{sffamily}
 %    \begin{macrocode}
 %<*cls>
 \ifthu@arialtitle
@@ -2048,7 +2049,6 @@
 %
 % \subsubsection{目录格式}
 % \label{sec:toc}
-%
 % 最多涉及 4 层，即: x.x.x.x。\par
 % chapter(0), section(1), subsection(2), subsubsection(3)
 % \changes{v3.1}{2007/10/09}{博士论文目录只出现到第 3 级标题即可。}
@@ -2061,7 +2061,6 @@
   \setcounter{tocdepth}{3}
 \fi
 %    \end{macrocode}
-%
 %
 % 每章标题行前空 6 磅，后空 0 磅。如果使用目录项中英文要使用 Arial，那么就加上 \cs{sffamily}。章节名中英文用 Arial 字体，页码仍用 Times。
 % \changes{v2.0}{2005/12/18}{附录的目录项需要调整一下。以及公式编号方式等等。}
@@ -2111,7 +2110,7 @@
       \leavevmode
       \advance\leftskip\@tempdima
       \hskip -\leftskip
-      {\hei\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi #1} % numberline is called here, and it use @tempdima
+      {\hei\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi #1} % numberline is called here, and it uses \@tempdima
       \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
       \nobreak{\normalfont\normalcolor #2}\par
       \penalty\@highpenalty
@@ -2174,11 +2173,11 @@
 \thu@define@term{ctitle}
 \thu@define@term{cdegree}
 \newcommand\cdepartment[2][]{\def\thu@cdepartment@short{#1}\def\thu@cdepartment{#2}}
-\def\caffil{\cdepartment} % for compatibility
+\def\caffil{\cdepartment} % todo: for compatibility
 \def\thu@cdepartment@short{}
 \def\thu@cdepartment{}
 \thu@define@term{cmajor}
-\def\csubject{\cmajor} % for compatibility
+\def\csubject{\cmajor} % todo: for compatibility
 \thu@define@term{cauthor}
 \thu@define@term{csupervisor}
 \thu@define@term{cassosupervisor}
@@ -2516,7 +2515,7 @@
 % \end{macro}
 % \changes{4.0}{2007/11/08}{研究生的授权部分调整了一下，不知道老师为什么总爱修改
 % 那些无关紧要的格式，郁闷。感谢 PMHT@newsmth 的认真比对。}
-% \changes{4.4.2}{2008/06/07}{修改本科生的授权部分，按照2008年的新样例。}
+% \changes{4.4.2}{2008/06/07}{修改本科生的授权部分，按照 2008 年的新样例。}
 % \begin{macro}{\thu@authorization@mk}
 % 封面中论文授权部分。
 %    \begin{macrocode}
@@ -2592,7 +2591,7 @@
 % \label{sec:abstractformat}
 %
 % \begin{macro}{\thu@makeabstract}
-% 中文摘要部分的标题为"摘要"，用黑体三号字。
+% 中文摘要部分的标题为\textbf{摘要}，用黑体三号字。
 % \changes{v2.5.1}{2006/05/24}{我靠，教务处又不要正文前的页眉了，ft！}
 % \changes{v2.5.1}{2006/05/24}{不管是哪种论文格式，摘要都要右开。}
 % \changes{v2.5.2}{2006/05/29}{在研究生论文中，摘要不出现在目录中，但是要在书签中出现。}
@@ -2629,7 +2628,7 @@
     \box0\thu@ckeywords
 %    \end{macrocode}
 %
-% 英文摘要部分的标题为\textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
+% 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
 % 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连
 % 续。\changes{v.2.5.1}{2006/05/28}{研究生封面英文摘要连续。}
 %    \begin{macrocode}
@@ -2760,7 +2759,7 @@
 % \label{sec:threeindex}
 % \changes{v2.5}{2006/05/18}{增加插图、表格和公式索引。}
 % \changes{v2.5}{2006/05/19}{为了让索引中能出现\textbf{图 xxx}，不得不修改 \LaTeX
-%   内部命令 \cs{@caption}。todo: this may conflict with \pkg{caption}.}
+%   内部命令 \cs{@caption}。todo: this may conflict with \pkg{caption}!}
 % \changes{v2.6.4}{2006/10/23}{增加 \cs{listoffigures*}，\cs{listoftables*}。}
 % \begin{macro}{\listoffigures}
 % \begin{macro}{\listoffigures*}
@@ -2841,9 +2840,9 @@
 %    \begin{macrocode}
 %<*cls>
 \bibpunct{[}{]}{,}{s}{}{,}
-\renewcommand\NAT@citesuper[3]{\ifNAT@swa
-\unskip\kern\p@\textsuperscript{\NAT@@open #1\NAT@@close}%
-   \if*#3*\else\ (#3)\fi\else #1\fi\endgroup}
+\renewcommand\NAT@citesuper[3]{\ifNAT@swa%
+  \unskip\kern\p@\textsuperscript{\NAT@@open #1\NAT@@close}%
+  \if*#3*\else\ (#3)\fi\else #1\fi\endgroup}
 \DeclareRobustCommand\onlinecite{\@onlinecite}
 \def\@onlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
 %    \end{macrocode}
@@ -2865,7 +2864,7 @@
 % \begin{macro}{thuphdbib}
 %   本科生和研究生模板要求外文硕士论文参考文献显示``[Master Thesis]''，而博士模板
 %   则于 2007 年冬要求显示为``[M]''。对应的外文博士论文参考文献分别显示为``[Phd
-%   Thesis]''和``[D]''。所以不得不出次下策。
+%   Thesis]''和``[D]''。所以不得不出此下策。
 %    \begin{macrocode}
 \def\thumasterbib{\ifthu@doctor [M]\else [Master Thesis]\fi}
 \def\thuphdbib{\ifthu@doctor [D]\else [Doctor Thesis]\fi}
@@ -2920,14 +2919,13 @@
   }{}
 %</cls>
 %    \end{macrocode}
-%\end{environment}
+% \end{environment}
 %
 % \subsubsection{个人简历}
-%
 % \changes{v1.5}{2005/12/16}{增加个人简历章节的命令，去掉主文件中需要重新
 % 定义 \cs{cleardoublepage} 和自己写 \cs{markboth}，\cs{addcontentsline} 的部分。}
-% 定义个人简历章节标题
 %
+% 定义个人简历章节标题
 % \begin{environment}{resume}
 % 个人简历发表文章等。
 % \changes{v2.0}{2005/12/18}{最后决定将 resume 定义为环境。这样与前面的主要符号
@@ -2961,7 +2959,6 @@
 %
 % \subsubsection{书脊}
 % \label{sec:shuji}
-%
 % \begin{macro}{\shuji}
 % 单独使用书脊命令会在新的一页产生竖排书脊。
 % \changes{v4.5}{2009/01/04}{简化代码，同时支持 xelatex。}
@@ -3018,7 +3015,7 @@
 % \begin{macro}{\pozhehao}
 % 定义破折号。两个字宽，ex 差不多是当前字体的一半高度，所以通过 \cs{rule} 可以简单
 % 的完成破折号绘制。
-% \changes{v2.1}{2006/01/12}{稍微加宽一点。同时把名字改为\textbf{破折号}：\cmd{pozhehao}}
+% \changes{v2.1}{2006/01/12}{稍微加宽一点。同时把名字改为\textbf{破折号}：\cs{pozhehao}}
 %    \begin{macrocode}
 \newcommand{\pozhehao}{\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex}
 %</cls>
@@ -3028,7 +3025,6 @@
 %
 % \subsubsection{其它}
 % \label{sec:other}
-%
 % \begin{macro}{\thu@active@cjk}
 % 在导言区支持中文。
 %    \begin{macrocode}
@@ -3082,7 +3078,6 @@
 %    \end{macrocode}
 % \end{macro}
 %
-%
 % \begin{macro}{\thu@setup@pdfinfo}
 % 设置一些 pdf 文档信息，依赖于 \pkg{hyperref} 宏包。
 %    \begin{macrocode}
@@ -3097,13 +3092,12 @@
 %    \end{macrocode}
 % \end{macro}
 %
-%
 % 把 CJK 环境放到合适的位置，以免导致其它宏包的命令位于 CJK 环境中而出现问题（比
 % 如 natbib 的``Multiple-defined labels''，同时自动开
 % 启 CJK。\changes{v2.6.2}{2006/06/18}{合理放置 CJK，避免 natbib 的警告。}
 % \changes{v4.5}{2009/01/03}{XeTeX 模式下不需要。}
 %    \begin{macrocode}
-\ifxetex\else
+\ifxetex\relax\else
   \def\thu@beginCJK{%
     \thu@fixselectfont%
     \begin{CJK*}{UTF8}{song}}
@@ -3115,7 +3109,8 @@
   \def\@begindocumenthook{\thu@begindocumenthook\thu@beginCJK}
   \def\@enddocumenthook{\thu@endCJK\thu@enddocumenthook}
 \fi
-\AtBeginDocument{\thu@setup@pdfinfo\sloppy\thu@item@space}
+% \AtEndOfClass{\thu@setup@pdfinfo} % todo: useless now
+\AtBeginDocument{\sloppy\thu@item@space}
 %</cls>
 %    \end{macrocode}
 %
@@ -3125,18 +3120,23 @@
 %    \begin{macrocode}
 %<*dtx-style>
 \ProvidesPackage{dtx-style}
+
 \RequirePackage{calc}
 \RequirePackage{array,longtable}
-\RequirePackage{fancybox}
-\RequirePackage{fancyvrb}
-\RequirePackage{url}
-\RequirePackage{txfonts}
+\RequirePackage{fancybox,fancyvrb}
 \RequirePackage{xcolor}
+
+\RequirePackage{txfonts}
 \RequirePackage{CJKutf8}
-\IfFileExists{CJKpunct.sty}%
-             {\RequirePackage{CJKpunct}}%
-             {\ClassWarning{thuthesis}{no CJKpunct.sty availiable!}}
+\newif\ifdtx@UTF\dtx@UTFtrue % todo: review this piece of code, why it needs an
+                             % \iffalse in the comment? where is the real mis-match?
+\ifdtx@UTF\else
+  \IfFileExists{CJKpunct.sty}%
+               {\RequirePackage{CJKpunct}}%
+               {\ClassWarning{thuthesis}{no CJKpunct.sty availiable!}}
+\fi
 \RequirePackage{CJKspace}
+
 \RequirePackage{hyperref}
 \hypersetup{%
   unicode=true,
@@ -3149,7 +3149,9 @@
   plainpages=false,
   pdfpagelabels,
   pdfborder=0 0 0}
+\RequirePackage{url}
 \RequirePackage{indentfirst}
+
 \setlength{\parskip}{4pt plus1pt minus0pt}
 \setlength{\topsep}{0pt}
 \setlength{\partopsep}{0pt}
@@ -3159,8 +3161,10 @@
 \addtolength{\topmargin}{-1cm}
 \addtolength{\headsep}{0.3cm}
 \addtolength{\textheight}{2.3cm}
+
 \newcommand\hei{\CJKfamily{hei}}
 \newcommand\fs{\CJKfamily{fs}}
+
 \renewcommand{\baselinestretch}{1.3}
 \setlength{\shadowsize}{3pt}
 \def\DescribeOption#1{\SpecialOptionIndex{#1}}
@@ -3170,26 +3174,27 @@
            \setlength\labelsep{3pt}%
            \setlength\leftmargin{\labelwidth+\labelsep}%
            \addtolength{\itemsep}{3pt}%
-           \renewcommand\makelabel[1]{\shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}}
+           \renewcommand\makelabel[1]{%
+             \shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}}
   }{\endlist}
 \DefineVerbatimEnvironment{example}{Verbatim}%
-  {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue},%
-   fillcolor=\color{red!75!green!50!blue!15},framesep=2mm, baselinestretch=1.2,%
-   fontsize=\small, gobble=1}
+  {frame=single,framerule=0.3mm,rulecolor=\color{red!75!green!50!blue},%
+   fillcolor=\color{red!75!green!50!blue!15},framesep=2mm,baselinestretch=1.2,%
+   fontsize=\small,gobble=1}
 \DefineVerbatimEnvironment{shell}{Verbatim}%
-  {frame=single, framerule=0.3mm, rulecolor=\color{red!85!green!60},%
-   fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small, gobble=1}
+  {frame=single,framerule=0.3mm,rulecolor=\color{red!85!green!60},%
+   fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small,gobble=1}
 \long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fs #1}}\marginpar{\strut}\hskip\parindent}
 \def\tableofcontents{\renewcommand{\baselinestretch}{1.0}\@starttoc{toc}}
 \def\DescribeMacro{\Describe@Macro}
 \def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
-\def\PrintDescribeMacro#1{{\color{-red!75!green!50!blue!55}\MacroFont \string #1\hskip1em }}
+\def\PrintDescribeMacro#1{{\color{-red!75!green!50!blue!55}\MacroFont \string #1\hskip1em}}
 \def\ps@headings{%
   \let\@oddfoot\@empty
   \def\@oddhead{\vbox{%
-    \hbox to\textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}%
+    \hb@xt@ \textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}%
     \vskip-0.7pt%
-    \hbox to \textwidth{\hrulefill}}}
+    \hb@xt@ \textwidth{\hrulefill}}}
   \let\@evenfoot\@oddfoot
   \let\@evenhead\@oddhead
   \let\@mkboth\markboth
@@ -3212,6 +3217,7 @@
                                     {-3.5ex \@plus -1ex \@minus -.2ex}%
                                     {2.3ex \@plus.2ex}%
                                     {\normalfont\Large\bfseries\hei}}
+
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                                        {-3.25ex\@plus -1ex \@minus -.2ex}%
                                        {1.5ex \@plus .2ex}%
@@ -3232,4 +3238,5 @@
 %</dtx-style>
 %    \end{macrocode}
 % \fi
+%
 \endinput
