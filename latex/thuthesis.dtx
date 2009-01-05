@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2468}
+% \CheckSum{0}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1235,9 +1235,15 @@
 % \changes{v2.6}{2006/06/09}{去除 hyperref 选项，等待全局传递。}
 %    \begin{macrocode}
 \RequirePackage{hyperref}
+\ifxetex
+  \hypersetup{%
+    CJKbookmarks=true}
+\else
+  \hypersetup{%
+    unicode=true,
+    CJKbookmarks=false}
+\fi
 \hypersetup{%
-  unicode=true,
-  CJKbookmarks=false,
   bookmarksnumbered=true,
   bookmarksopen=true,
   bookmarksopenlevel=1,
