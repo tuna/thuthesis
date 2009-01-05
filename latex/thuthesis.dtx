@@ -1166,6 +1166,8 @@
   \RequirePackage{xunicode,xltxtra}
   \RequirePackage[CJKnumber,CJKtextspaces,CJKmathspaces]{xeCJK}
   \punctstyle{kaiming}
+  % todo: minor fix of CJKnumb
+  \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
   \defaultfontfeatures{Mapping=tex-text} % after fontspec
 %    \end{macrocode}
 % 默认采用 Adobe 的四款 (宋，黑，楷，仿宋) 免费字体。这样的话，缺少隶书和幼圆。本
