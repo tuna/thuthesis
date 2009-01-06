@@ -1831,18 +1831,11 @@
 \renewcommand{\thesubtable}{(\alph{subtable})}
 % \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
-% 我们采用 \pkg{longtable} 来处理跨页的表格。默认有个不足：插图索引部分缺少图
-% 名。同样我们需要设置其默认字体为五号。
+% 我们采用 \pkg{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
 % \changes{v2.5.3}{2006/06/08}{增加对 \pkg{longtable} 的处理。}
+% \changes{v4.5.1}{2009/01/06}{太好了，不用处理 \pkg{longtable} 的 \cs{caption}
+% 了。}
 %    \begin{macrocode}
-\def\LT@c@ption#1[#2]#3{% change code from longtable.sty
-  \LT@makecaption#1\fnum@table{#3}%
-  \def\@tempa{#2}%
-  \ifx\@tempa\@empty\else
-    {\let\\\space
-    \addcontentsline{\csname ext@table\endcsname}{table}%
-                    {\protect\numberline{\tablename\hskip0.5em\thetable}{#2}}}%
-  \fi}
 \let\thu@LT@array\LT@array
 \def\LT@array{\dawu[1.5]\thu@LT@array} % set default font size
 %    \end{macrocode}
@@ -2761,34 +2754,30 @@
 % \label{sec:threeindex}
 % \changes{v2.5}{2006/05/18}{增加插图、表格和公式索引。}
 % \changes{v2.5}{2006/05/19}{为了让索引中能出现\textbf{图 xxx}，不得不修改 \LaTeX
-%   内部命令 \cs{@caption}。todo: this may conflict with \pkg{caption}!}
+%   内部命令 \cs{@caption}。}
 % \changes{v2.6.4}{2006/10/23}{增加 \cs{listoffigures*}，\cs{listoftables*}。}
+% \changes{v4.5.1}{2009/01/06}{更优雅的插图/表格索引，避免跟 \pkg{caption} 包冲
+% 突。\cs{thu@listof} 相应修改。}
 % \begin{macro}{\listoffigures}
 % \begin{macro}{\listoffigures*}
 % \begin{macro}{\listoftables}
 % \begin{macro}{\listoftables*}
 %    \begin{macrocode}
 %<*cls>
-\long\def\@caption#1[#2]#3{%
-  \par
-  \addcontentsline{\csname ext@#1\endcsname}{#1}%
-                  {\protect\numberline{\csname #1name\endcsname\hskip0.5em\csname the#1\endcsname}%
-                  {\ignorespaces #2}}%
-  \begingroup
-  \@parboxrestore
-  \if@minipage
-  \@setminipage
-  \fi
-  \normalsize
-  \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
-  \endgroup}
-\def\thu@listof#1#2{%
+\def\save@numberline#1{% #1: float type
+  \let\oldnumberline\numberline
+  \gdef\numberline##1{\oldnumberline{\csname #1name\endcsname\hskip.5em ##1}}}
+\def\reset@numberline{%
+  \let\numberline\oldnumberline}
+\def\thu@listof#1{% #1: float type
+  \save@numberline{#1}
   \@ifstar
-  {\thu@chapter*[]{#1}\@starttoc{#2}}
-  {\thu@chapter*{#1}\@starttoc{#2}}}
-\renewcommand\listoffigures{\thu@listof{\listfigurename}{\ext@figure}}
+    {\thu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}
+    {\thu@chapter*{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}
+  \reset@numberline}
+\renewcommand\listoffigures{\thu@listof{figure}}
 \renewcommand*\l@figure{\@dottedtocline{1}{0em}{4em}}
-\renewcommand\listoftables{\thu@listof{\listtablename}{\ext@table}}
+\renewcommand\listoftables{\thu@listof{table}}
 \let\l@table\l@figure
 %    \end{macrocode}
 % \end{macro}
@@ -2815,7 +2804,7 @@
 \def\ext@equation{loe}
 \def\equcaption#1{%
   \addcontentsline{\ext@equation}{equation}%
-                  {\protect\numberline{\equationname\hskip0.5em #1}}}
+                  {\protect\numberline{#1}}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2826,7 +2815,7 @@
 % \changes{v2.5.1}{2006/05/26}{公式索引项 numwidth 增加。}
 % \changes{v2.6.4}{2006/10/23}{增加 \cs{listofequations*}。}
 %    \begin{macrocode}
-\newcommand\listofequations{\thu@listof{\listequationname}{\ext@equation}}
+\newcommand\listofequations{\thu@listof{equation}}
 \let\l@equation\l@figure
 %</cls>
 %    \end{macrocode}
