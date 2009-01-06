@@ -2550,7 +2550,7 @@
 %
 % 论文封面第一页！
 %    \begin{macrocode}
-\thu@first@titlepage
+    \thu@first@titlepage
 %    \end{macrocode}
 %
 % \changes{v2.5}{2006/05/19}{本科论文评语位置调整。}
@@ -2558,16 +2558,16 @@
 %
 % 博士论文需要增加英文封面
 %    \begin{macrocode}
-\ifthu@doctor
-  \cleardoublepage\thu@doctor@engcover
-\fi
+    \ifthu@doctor
+      \cleardoublepage\thu@doctor@engcover
+    \fi
 %    \end{macrocode}
 %
 % 授权说明
 % \changes{v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
 %    \begin{macrocode}
-\cleardoublepage\thu@authorization@mk
-    \end{titlepage}
+    \cleardoublepage\thu@authorization@mk
+  \end{titlepage}
 %    \end{macrocode}
 %
 % \changes{v2.5}{2006/05/16}{综合论文训练在授权说明之后。}
@@ -2575,9 +2575,9 @@
 %
 % 中英文摘要
 %    \begin{macrocode}
-\normalsize
-\thu@makeabstract
-\let\@tabular\thu@tabular}
+  \normalsize
+  \thu@makeabstract
+  \let\@tabular\thu@tabular}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2764,17 +2764,15 @@
 % \begin{macro}{\listoftables*}
 %    \begin{macrocode}
 %<*cls>
-\def\save@numberline#1{% #1: float type
+\def\thu@starttoc#1{% #1: float type, prepend type name in \listof*** entry.
   \let\oldnumberline\numberline
-  \gdef\numberline##1{\oldnumberline{\csname #1name\endcsname\hskip.5em ##1}}}
-\def\reset@numberline{%
+  \def\numberline##1{\oldnumberline{\csname #1name\endcsname\hskip.4em ##1}}
+  \@starttoc{\csname ext@#1\endcsname}
   \let\numberline\oldnumberline}
 \def\thu@listof#1{% #1: float type
-  \save@numberline{#1}
   \@ifstar
-    {\thu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}
-    {\thu@chapter*{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}
-  \reset@numberline}
+    {\thu@chapter*[]{\csname list#1name\endcsname}\thu@starttoc{#1}}
+    {\thu@chapter*{\csname list#1name\endcsname}\thu@starttoc{#1}}}
 \renewcommand\listoffigures{\thu@listof{figure}}
 \renewcommand*\l@figure{\@dottedtocline{1}{0em}{4em}}
 \renewcommand\listoftables{\thu@listof{table}}
