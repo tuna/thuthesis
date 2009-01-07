@@ -1974,6 +1974,7 @@
 % title 是章标题；header 是页眉出现的标题，如果忽略则取 title。通过这个宏我才真
 % 正体会到 \TeX{} macro 的力量！
 %    \begin{macrocode}
+\newcounter{thu@bookmark}
 \def\thu@chapter*{%
   \@ifnextchar [ % ]
     {\thu@@chapter}
@@ -1989,7 +1990,8 @@
   \def\@tmpa{#1}
   \def\@tmpb{#3}
   \ifx\@tmpa\@empty
-    \pdfbookmark[0]{#2}{\expandafter\@gobble\string#2}
+    \addtocounter{thu@bookmark}\@ne
+    \pdfbookmark[0]{#2}{thuchapter.\thethu@bookmark} 
   \else
     \addcontentsline{toc}{chapter}{#1}
   \fi
