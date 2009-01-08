@@ -1589,7 +1589,20 @@
 % 用于中文段落缩进和正文版式
 %    \begin{macrocode}
 %<*cls>
-\parindent2em
+\newlength\CJK@twochars
+\ifxetex
+  \def\CJK@spaceChar{\Unicode{48}{7}}
+\else
+  \ifthu@UTF
+    \def\CJK@spaceChar{\CJKchar{"080}{"080}}
+  \fi
+  \ifthu@GBK
+    \def\CJK@spaceChar{\CJKchar{"0A1}{"0A1}}
+  \fi
+\fi
+\def\CJKindent{%
+  \settowidth\CJK@twochars{\CJK@spaceChar\CJK@spaceChar}%
+  \parindent\CJK@twochars}
 %    \end{macrocode}
 %
 % 段落之间的竖直距离
@@ -2882,7 +2895,7 @@
          \usecounter{enumiv}%
          \let\p@enumiv\@empty
          \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-    \sloppy
+    \sloppy\frenchspacing
     \clubpenalty4000
     \@clubpenalty \clubpenalty
     \widowpenalty4000%
@@ -2890,7 +2903,7 @@
     \sfcode`\.\@m}
    {\def\@noitemerr
      {\@latex@warning{Empty `thebibliography' environment}}%
-    \endlist}
+    \endlist\frenchspacing}
 %</cls>
 %    \end{macrocode}
 % \end{environment}
@@ -3088,10 +3101,12 @@
 % 启 CJK。\changes{v2.6.2}{2006/06/18}{合理放置 CJK，避免 natbib 的警告。}
 % \changes{v4.5}{2009/01/03}{XeTeX 模式下不需要。}
 %    \begin{macrocode}
-\ifxetex\relax\else
+\ifxetex
+  \AtBeginDocument{\CJKindent}
+\else
   \def\thu@beginCJK{%
     \thu@fixselectfont%
-    \begin{CJK*}{UTF8}{song}}
+    \begin{CJK*}{UTF8}{song}\CJKindent}
   \def\thu@endCJK{\clearpage\end{CJK*}}
   \let\thu@begindocumenthook\@begindocumenthook
   \let\thu@enddocumenthook\@enddocumenthook
@@ -3100,8 +3115,7 @@
   \def\@begindocumenthook{\thu@begindocumenthook\thu@beginCJK}
   \def\@enddocumenthook{\thu@endCJK\thu@enddocumenthook}
 \fi
-% \AtEndOfClass{\thu@setup@pdfinfo} % todo: useless now
-\AtBeginDocument{\sloppy\thu@item@space}
+\AtEndOfClass{\sloppy\thu@item@space}
 %</cls>
 %    \end{macrocode}
 %
