@@ -121,14 +121,12 @@ $(SHUJIMAIN).ps: $(SHUJIMAIN).dvi
 	latex $(SHUJIMAIN).tex
 	dvips -Ppdf -G0 $(SHUJIMAIN).dvi 
 
-clean:
+clean: 
 	-@rm -f \
 		*.aux \
 		*.bak \
 		*.bbl \
 		*.blg \
-		*.cls \
-		*.cfg \
 		*.dvi \
 		*.glo \
 		*.gls \
@@ -148,6 +146,7 @@ clean:
 		dtx-style.sty
 
 distclean: clean
+	-@rm -f *.cls *.cfg
 	-@rm -f *.pdf *.tar.gz
 
 gbk:
@@ -162,5 +161,5 @@ dist:
  	    else \
 	      ./makedist.sh $(VERSION) UTF8; \
 	      (cd gbk ; ../makedist.sh $(VERSION) GBK); \
-	    fi \
+	    fi; \
 	fi

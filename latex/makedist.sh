@@ -26,6 +26,9 @@ fi
 mkdir -p $templatedir
 
 echo "Copy dirs...."
+# have to cleanup tmp files in data/
+find data -maxdepth 1 -type f -not -iname "*.tex" -exec rm {} \;
+rm -rf data/auto
 tar cp --exclude ".svn" $ALL_DIRS | (cd $templatedir ; tar xp)
 
 echo "Copy files...."
