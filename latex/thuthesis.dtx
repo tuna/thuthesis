@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{0}
+% \CheckSum{2486}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -42,7 +42,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2009/01/04 4.5 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2009/02/28 4.5.1 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{dtx-style}
 \EnableCrossrefs
@@ -995,7 +995,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2008/01/04 4.5 Tsinghua University Thesis Template]
+%<cls|cfg>[2008/02/28 4.5.1 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1193,7 +1193,7 @@
 \else
   \RequirePackage{CJKutf8}
   \RequirePackage{CJKnumb}
-  \ifthu@GBK % CJKpnct 在 UTF 下工作的不好。
+  \ifthu@GBK % CJKpunct 在 UTF 下工作的不好。
     \IfFileExists{CJKpunct.sty}%
                  {\RequirePackage{CJKpunct}}%
                  {\ClassWarning{thuthesis}{no CJKpunct.sty availiable!}}
