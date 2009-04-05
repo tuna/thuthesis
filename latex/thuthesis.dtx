@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2486}
+% \CheckSum{0}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1163,6 +1163,7 @@
 % \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \pkg{xeCJK}。}
 %    \begin{macrocode}
 \ifthu@xetex
+  \RequirePackage{mathptmx} % fontspec conflicts with txfonts now, so we have to load other times-math fonts.
   \RequirePackage{xunicode,xltxtra}
   \RequirePackage[CJKnumber,CJKtextspaces,CJKmathspaces]{xeCJK}
   \punctstyle{kaiming}
