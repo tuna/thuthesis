@@ -1554,6 +1554,7 @@
 % 大，所以只能微调。
 % \changes{v2.4}{2006/04/14}{把页面尺寸写入 dvi，避免有的用户通
 %   过 dvips 不指定页面类型而得到古怪的结果。}
+% \changes{v4.5.2}{2010/09/19}{研究生页面边距由 3.2cm 改为 3cm。}
 %    \begin{macrocode}
 %<*cls>
 \AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
@@ -1564,22 +1565,25 @@
 \setlength{\textheight}{\paperheight}
 \setlength\marginparwidth{0cm}
 \setlength\marginparsep{0cm}
-\addtolength{\textwidth}{-6.4cm}
-\setlength{\oddsidemargin}{3.2cm-1in}
-\setlength{\evensidemargin}{\oddsidemargin}
-\setlength{\headheight}{20pt}
-\setlength{\topskip}{0pt}
-\setlength{\skip\footins}{15pt}
-\setlength{\topmargin}{2.8cm-1in}
 \ifthu@bachelor
+  \addtolength{\textwidth}{-6.4cm}
+  \setlength{\topmargin}{2.8cm-1in}
+  \setlength{\oddsidemargin}{3.2cm-1in}
   \setlength{\footskip}{1.3cm}
   \setlength{\headsep}{0.6cm}
   \addtolength{\textheight}{-7.8cm}
 \else
+  \addtolength{\textwidth}{-6cm}
+  \setlength{\topmargin}{2.2cm-1in}
+  \setlength{\oddsidemargin}{3cm-1in}
   \setlength{\footskip}{1.5cm}
   \setlength{\headsep}{0.5cm}
-  \addtolength{\textheight}{-8.6cm}
+  \addtolength{\textheight}{-6cm}
 \fi
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\headheight}{20pt}
+\setlength{\topskip}{0pt}
+\setlength{\skip\footins}{15pt}
 %</cls>
 %    \end{macrocode}
 %
@@ -2641,7 +2645,7 @@
 %
 % 授权说明
 % \changes{v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
-% \changes{v4.5.2}{2010/05/29}{本科封面好授权说明之间不要空白页。}
+% \changes{v4.5.2}{2010/05/29}{本科封面和授权说明之间不要空白页。}
 %    \begin{macrocode}
     \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
     \thu@authorization@mk
@@ -2793,37 +2797,21 @@
 % \changes{v2.5.2}{2006/05/29}{研究生致谢右开。}
 % \changes{v2.5.2}{2006/05/30}{研究生致谢题目是致谢，目录是致谢与声明。}
 % \changes{v2.6.3}{2006/07/01}{重画双虚线，自适应页面宽度。}
+% \changes{v4.5.2}{2010/09/19}{研究生论文的致谢和声明终于分开了。}
 %    \begin{macrocode}
 %<*cls>
 \newenvironment{ack}{%
-  \ifthu@bachelor
     \thu@chapter*{\thu@ackname}
-  \else
-    % \cleardoublepage
-    \thu@chapter*[\thu@acklongname]{\thu@ackname}[\thu@acklongname]
-  \fi}
-  {%
-   \ifthu@bachelor\relax\else %TAG 1
-     \par\vfill%
-     \noindent
-     {\setlength{\unitlength}{0.1\textwidth}
-      \begin{picture}(10, 0.1)
-        \multiput(0,0)(1, 0){10}{\rule{0.8\unitlength}{1.2pt}}
-        \multiput(0,0.08)(1, 0){10}{\rule{0.8\unitlength}{1.2pt}}
-      \end{picture}}
-   \fi % END TAG 1
+  }
 %    \end{macrocode}
 % 声明部分
 % \changes{v3.0}{2007/05/12}{本科论文声明部分图片扫描取消。}
 %    \begin{macrocode}
-   \ifthu@bachelor
+  {
      \thu@chapter*{\thu@declarename}
-   \else
-     \parbox[t][4cm][c]{\textwidth}{{\sanhao\hei\centerline{\thu@declarename}}}
-   \fi
-   \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
-     {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
-      \thu@backdate\thu@underline[2.5cm]\relax}%
+     \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
+       {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
+        \thu@backdate\thu@underline[2.5cm]\relax}%
   }
 %</cls>
 %    \end{macrocode}
