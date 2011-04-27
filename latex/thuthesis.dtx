@@ -7,7 +7,7 @@
 %
 % \iffalse meta-comment
 %
-% Copyright (C) 2005-2010 by Ruini Xue <xueruini@gmail.com>
+% Copyright (C) 2005-2011 by Ruini Xue <xueruini@gmail.com>
 %
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3a
@@ -42,7 +42,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2009/02/28 4.5.1 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2011/04/27 4.6 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{dtx-style}
 \EnableCrossrefs
@@ -129,6 +129,7 @@
 % 年份后面，并用句点分割。在 thubib.bst 中增加 output.year 函数。}
 % \changes{v2.6.1}{2006/06/16}{取消 thubib.bst 中 inbook 类 volume 后的页码。}
 % \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
+% \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
 % \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
@@ -161,8 +162,7 @@
 %
 % \begin{abstract}\noindent
 %   此宏包旨在建立一个简单易用的清华大学学位论文模板，包括本科综合论文训练、硕士
-%   论文、博士论文以及博士哲学论文。现在已经支持本科、硕士和博士论文格式，对其它
-%   格式的支持会陆续加入。
+%   论文、博士论文以及博士后出站报告。
 % \end{abstract}
 %
 % \vskip2cm
@@ -171,9 +171,9 @@
 % \noindent
 % \begin{enumerate}
 % \item 本模板的发布遵守 \LaTeX{} Project Public License，使用前请认真阅读协议内容。
-% \item 本模板为作者根据清华大学教务处颁发的《综合论文训练写作指南》和清华大学研
-%   究生院颁发的《研究生学位论文写作指南》编写而成，旨在供清华大学毕业生撰写学位
-%   论文使用。
+% \item 本模板为作者根据清华大学教务处颁发的《综合论文训练写作指南》，清华大学研
+%   究生院颁发的《研究生学位论文写作指南》，清华大学《编写“清华大学博士后研究报告”参考意见》
+%   编写而成，旨在供清华大学毕业生撰写学位论文使用。
 % \item 清华大学教务处和研究生院只提供毕业论文写作指南，不提供官方模板，也不会授
 %   权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格式审查老师
 %   不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
@@ -275,7 +275,7 @@
 % \end{center}
 %
 % 这些包在常见的 \TeX{} 系统中都有，如果没有请到 \url{www.ctan.org} 下载。推
-% 荐 \TeX live 2008。
+% 荐 \TeX live。
 %
 %
 % \subsection{开始安装}
@@ -412,17 +412,9 @@
 % % todo: move some where..
 % \subsection{关于提问}
 % \label{sec:howtoask}
-% 提问之前先问自己几个问题：
-% \begin{enumerate}\addtolength{\itemsep}{-5pt}
-% \item 我是不是认真地学习了 \LaTeX{} 基础知识？
-% \item 我是不是认真地阅读了相关的文档？
-% \item 我是不是 Google 了？
-% \end{enumerate}
-%
-% 如果你确保自己已经完成了上面的操作，那么就可以到以下两个地方提问：
 % \begin{itemize}\addtolength{\itemsep}{-5pt}
-% \item \url{http://groups.google.com/group/thuthesis} 
-% 或直接给\href{mailto:thuthesis@googlegroups.com}{邮件列表}写信。      
+% \item \url{http://groups.google.com/group/thuthesis}
+% 或直接给\href{mailto:thuthesis@googlegroups.com}{邮件列表}写信。
 % \item \href{http://www.newsmth.net/bbsdoc.php?board=TeX}{\TeX@newsmth}
 % \end{itemize}
 %
@@ -442,7 +434,7 @@
 % \begin{example}
 % \documentclass[bachelor]{thuthesis}
 % %\documentclass[%
-% %  bachelor|master|doctor, % 必选选项
+% %  bachelor|master|doctor|postdoc, % 必选选项
 % %  xetex|pdftex|dvips|dvipdfm, % 可选选项
 % %  secret,
 % %  openany|openright,
@@ -503,6 +495,7 @@
 %
 % % 个人简历
 % \include{data/resume}
+%
 % \end{document}
 % \end{example}
 %
@@ -526,6 +519,12 @@
 %   如果写博士论文将此选项打开。
 %   \begin{example}
 % \documentclass[doctor]{thuthesis}
+%   \end{example}
+%
+% \item[postdoctor]
+%   如果写博士博士后出站报告将此选项打开。
+%   \begin{example}
+% \documentclass[postdoc]{thuthesis}
 %   \end{example}
 %
 % \item[secret]
@@ -571,7 +570,7 @@
 % 正确配置中文字体是使用模板的第一步。模板有两种字体使用方式：
 % \begin{itemize}
 %   \item 基于传统 CJK 包，使用 latex、pdflatex 编译；
-%   \item 基于 xeCJK 包，使用 xelatex 编译。 
+%   \item 基于 xeCJK 包，使用 xelatex 编译。
 % \end{itemize}
 %
 % 第一种方式的字体配置比较繁琐，建议使用 donated 制作的中文字体包（自
@@ -621,7 +620,7 @@
 % \begin{shell}
 % $ fs-list
 % \end{shell}
-% 
+%
 % 来查看系统中现有的字体，并相应替换上述配置。
 %
 % \subsection{命令}
@@ -705,7 +704,7 @@
 % 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
 % 的 |\cite{key}|，而 |\onlinecite{key}| 则用来生成正文模式。
 %
-% 关于参考文献模板推荐使用 BIB\TeX，关于中文参考文献需要额外增加一个 Entry: lang，将其设置为 \texttt{zh} 
+% 关于参考文献模板推荐使用 BIB\TeX，关于中文参考文献需要额外增加一个 Entry: lang，将其设置为 \texttt{zh}
 % 用来指示此参考文献为中文，以便 thubib.bst 处理。如：
 % \begin{example}
 % @INPROCEEDINGS{cnproceed,
@@ -749,7 +748,7 @@
 % \end{document}
 % \end{example}
 %
-% \myentry{破折号} 
+% \myentry{破折号}
 % \DescribeMacro{\pozhehao}
 % 中文破折号在 CJK-\LaTeX\ 里没有很好的处理，我们平时输入的都是两个小短线，比如这
 % 样，{\hei 中国——中华人民共和国}。这不符合中文习惯。所以这里定义了一个命令生成更
@@ -810,11 +809,18 @@
 % \emajor{Major in English}
 % \end{example}
 %
+% \DescribeMacro{\cfirstdiscipline}
+% \DescribeMacro{\cseconddiscipline}
+% \begin{example}
+% \cfirstdiscipline{博士后一级学科}
+% \cseconddiscipline{博士后二级学科}
+% \end{example}
+%
 % \myentry{导师姓名}
 % \DescribeMacro{\csupervisor}
 % \DescribeMacro{\esupervisor}
 % \begin{example}
-% \csupervisor{大老板}
+% \csupervisor{导师~教授}
 % \esupervisor{Supervisor}
 % \end{example}
 %
@@ -823,7 +829,7 @@
 % \DescribeMacro{\eassosupervisor}
 % 本科生的辅导教师，硕士的副指导教师。
 % \begin{example}
-% \cassosupervisor{小老板}
+% \cassosupervisor{副导师~副教授}
 % \eassosupervisor{Small Boss}
 % \end{example}
 %
@@ -832,17 +838,29 @@
 % \DescribeMacro{\ecosupervisor}
 % 硕士生联合指导教师，博士生联合导师。
 % \begin{example}
-% \ccosupervisor{小小老板}
+% \ccosupervisor{联合导师~教授}
 % \ecosupervisor{Tiny Boss}
 % \end{example}
 %
 % \myentry{论文成文日期}
 % \DescribeMacro{\cdate}
 % \DescribeMacro{\edate}
+% \DescribeMacro{\postdocdate}
 % 默认为当前时间，也可以自己指定。
 % \begin{example}
 % \cdate{中文日期}
 % \edate{English Date}
+% \postdocdate{2009年7月——2011年7月} % 博士后研究起止日期
+% \end{example}
+%
+% \myentry{博士后封面其它参数}
+% \DescribeMacro{\catalognumber}
+% \DescribeMacro{\udc}
+% \DescribeMacro{\id}
+% \begin{example}
+% \catalognumber{分类号}
+% \udc{udc}
+% \id{编号}
 % \end{example}
 %
 % \myentry{摘要}
@@ -1076,17 +1094,20 @@
 % \changes{v2.5.1}{2006/05/26}{submit 只能由本科用。}
 % \changes{v2.5.3}{2006/06/03}{submit 选项的一个笔误。}
 % \changes{v3.0}{2007/05/12}{删除 submit 选项。}
+% \changes{v4.6}{2011/04/26}{增加 postdoc 选项。}
 %    \begin{macrocode}
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{4.5}
+\def\version{4.6}
 \newif\ifthu@bachelor\thu@bachelorfalse
 \newif\ifthu@master\thu@masterfalse
 \newif\ifthu@doctor\thu@doctorfalse
+\newif\ifthu@postdoc\thu@postdocfalse
 \newif\ifthu@secret\thu@secretfalse
 \DeclareOption{bachelor}{\thu@bachelortrue}
 \DeclareOption{master}{\thu@mastertrue}
 \DeclareOption{doctor}{\thu@doctortrue}
+\DeclareOption{postdoc}{\thu@postdoctrue}
 \DeclareOption{secret}{\thu@secrettrue}
 %    \end{macrocode}
 %
@@ -1143,11 +1164,13 @@
 \ifthu@bachelor\relax\else
   \ifthu@master\relax\else
     \ifthu@doctor\relax\else
-      \ClassError{thuthesis}%
-                 {You have to specify one of thesis options: bachelor, master or doctor.}{}
+      \ifthu@postdoc\relax\else
+        \ClassError{thuthesis}%
+                   {You have to specify one of thesis options: bachelor, master or doctor.}{}
+      \fi
     \fi
   \fi
-\fi      
+\fi
 %    \end{macrocode}
 %
 % 检查用户指定的选项和实际编译命令是否冲突。
@@ -1222,9 +1245,10 @@
 %    \begin{macrocode}
 \ifthu@xetex
   \RequirePackage{mathptmx} % fontspec conflicts with txfonts now, so we have to load other times-math fonts.
-  \RequirePackage{xunicode,xltxtra}
-  \RequirePackage[CJKnumber,CJKtextspaces,CJKmathspaces]{xeCJK}
-  \punctstyle{kaiming}
+  \RequirePackage{xltxtra}
+  %\RequirePackage[CJKnumber,CJKtextspaces,CJKmathspaces]{xeCJK}
+  \RequirePackage[CJKnumber,BoldFont,normalindentfirst]{xeCJK}
+  \punctstyle{kaiming} % quanjiao
   % todo: minor fix of CJKnumb
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
   \defaultfontfeatures{Mapping=tex-text} % after fontspec
@@ -1244,7 +1268,7 @@
 
   \setmainfont{Times New Roman}
   \setsansfont{Arial}
-  \setmonofont{Courier New} 
+  \setmonofont{Courier New}
 %    \end{macrocode}
 % 对于 \LaTeX\ 和 PDF\LaTeX，调用 \pkg{CJK} 以及相关的包。注意：\pkg{CJKpunct} 必
 % 须放在 \pkg{CJKspace} 之前。
@@ -1626,11 +1650,11 @@
   \let\@evenfoot=\@oddfoot}
 \def\ps@thu@headings{%
   \def\@oddhead{\vbox to\headheight{%
-      \hb@xt@\textwidth{\hfill\wuhao\song\leftmark\ifthu@bachelor\relax\else\hfill\fi}%
+    \hb@xt@\textwidth{\hfill\wuhao\song\leftmark\ifthu@bachelor\relax\else\hfill\fi}%
       \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
   \def\@evenhead{\vbox to\headheight{%
       \hb@xt@\textwidth{\wuhao\song%
-      \ifthu@bachelor\thu@schoolename\thu@bachelor@subtitle%
+      \ifthu@bachelor\thu@schoolname\thu@bachelor@subtitle%
        \else\hfill\leftmark\fi\hfill}%
       \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
   \def\@oddfoot{\hfil\wuhao\thepage\hfil}
@@ -1739,20 +1763,20 @@
 \renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.5]}
 \def\@makefnmark{\textsuperscript{\hbox{\normalfont\@thefnmark}}}
 \long\def\@makefntext#1{
-    \bgroup
-      \setbox\@tempboxa\hbox{%
-        \hb@xt@ 2em{\@thefnmark\hss}}
-      \leftmargin\wd\@tempboxa
-      \rightmargin\z@
-      \linewidth \columnwidth
-      \advance \linewidth -\leftmargin
-      \parshape \@ne \leftmargin \linewidth
-      \footnotesize
-      \@setpar{{\@@par}}%
-      \leavevmode
-      \llap{\box\@tempboxa}%
-      #1
-    \par\egroup}
+  \bgroup
+    \setbox\@tempboxa\hbox{%
+      \hb@xt@ 2em{\@thefnmark\hss}}
+    \leftmargin\wd\@tempboxa
+    \rightmargin\z@
+    \linewidth \columnwidth
+    \advance \linewidth -\leftmargin
+    \parshape \@ne \leftmargin \linewidth
+    \footnotesize
+    \@setpar{{\@@par}}%
+    \leavevmode
+    \llap{\box\@tempboxa}%
+    #1
+  \par\egroup}
 %</cls>
 %    \end{macrocode}
 %
@@ -1776,8 +1800,8 @@
 % \changes{v3.0}{2007/05/12}{本科公式又要取消全文统一编号了，这帮家伙，早就告诉
 % 过他们，就是不听。}
 % 本科的公式编号太变态了，不得不修改 \pkg{amsmath} 中很深的一个命令 \cs{tagform@}。
-%\changes{v2.6.2}{2006/06/19}{根据不同论文格式显示不同公式编号，并自动加入索引。}
-%\changes{v4.2}{2008/01/23}{\cs{eqref} 加括号。}
+% \changes{v2.6.2}{2006/06/19}{根据不同论文格式显示不同公式编号，并自动加入索引。}
+% \changes{v4.2}{2008/01/23}{\cs{eqref} 加括号。}
 % 同时为了让 \pkg{amsmath} 的 \cs{tag*} 命令得到正确的格式，我们必须修改这些代
 % 码。\cs{make@df@tag} 是定义 \cs{tag*} 和 \cs{tag} 内部命令的。
 % \cs{make@df@tag@@} 处理 \cs{tag*}，我们就改它！
@@ -1791,7 +1815,7 @@
 %    \begin{macrocode}
 \def\make@df@tag{\@ifstar\thu@make@df@tag@@\make@df@tag@@@}
 \def\thu@make@df@tag@@#1{\gdef\df@tag{\thu@maketag{#1}\def\@currentlabel{#1}}}
-% redefinitation of tagform broken eqref!
+% redefinitation of tagform brokes eqref!
 \renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
 \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
 %\ifthu@bachelor
@@ -1813,7 +1837,7 @@
   \if@inlabel \indent\fi
   \if@newlist \@noitemerr\fi
   \ifhmode
-    \ifdim\lastskip >\z@ #1\unskip \par  %<<<<<<<<<<<<<<<<<<<<<<
+    \ifdim\lastskip >\z@ #1\unskip \par
       \else #1\unskip \par \fi
   \fi
   \if@noparlist \else
@@ -1991,12 +2015,13 @@
 % \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
 % \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化，ft!}
 %    \begin{macrocode}
-\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi\phantomsection%
-                    \ifthu@bachelor\thispagestyle{thu@plain}%
-                    \else\thispagestyle{thu@headings}\fi%
-                    \global\@topnum\z@%
-                    \@afterindenttrue%
-                    \secdef\@chapter\@schapter}
+\renewcommand\chapter{%
+  \if@openright\cleardoublepage\else\clearpage\fi\phantomsection%
+  \ifthu@bachelor\thispagestyle{thu@plain}%
+  \else\thispagestyle{thu@headings}\fi%
+  \global\@topnum\z@%
+  \@afterindenttrue%
+  \secdef\@chapter\@schapter}
 \def\@chapter[#1]#2{%
   \ifnum \c@secnumdepth >\m@ne
    \if@mainmatter
@@ -2067,7 +2092,7 @@
   \def\@tmpb{#3}
   \ifx\@tmpa\@empty
     \addtocounter{thu@bookmark}\@ne
-    \pdfbookmark[0]{#2}{thuchapter.\thethu@bookmark} 
+    \pdfbookmark[0]{#2}{thuchapter.\thethu@bookmark}
   \else
     \addcontentsline{toc}{chapter}{#1}
   \fi
@@ -2212,8 +2237,13 @@
   \csname #1\endcsname{}}
 %    \end{macrocode}
 % \end{macro}
-% 封面、摘要、版权、致谢格式定义
+%
 % \changes{v2.0}{2005/12/18}{增加了封面密级，增加博士封面支持}
+% \changes{v4.6}{2011/04/27}{增加博士后相关指令。}
+%
+% \begin{macro}{\catalognumber}
+% \begin{macro}{\udc}
+% \begin{macro}{\id}
 % \begin{macro}{\secretlevel}
 % \begin{macro}{\secretyear}
 % \begin{macro}{\ctitle}
@@ -2221,12 +2251,15 @@
 % \begin{macro}{\cdepartment}
 % \begin{macro}{\caffil}
 % \begin{macro}{\cmajor}
+% \begin{macro}{\cfirstdiscipline}
+% \begin{macro}{\cseconddiscipline}
 % \begin{macro}{\csubject}
 % \begin{macro}{\cauthor}
 % \begin{macro}{\csupervisor}
 % \begin{macro}{\cassosupervisor}
 % \begin{macro}{\ccosupervisor}
 % \begin{macro}{\cdate}
+% \begin{macro}{\postdocdate}
 % \begin{macro}{\etitle}
 % \begin{macro}{\edegree}
 % \begin{macro}{\edepartment}
@@ -2239,9 +2272,12 @@
 % \begin{macro}{\ecosupervisor}
 % \begin{macro}{\edate}
 %   \changes{v2.5}{2006/05/20}{院系和专业分别改名用 department 和 major，代替原来
-%     的 affil 和 subject。} \changes{v2.6.2}{2006/06/18}{改正 groupmembers 的拼
-%     写错误。}
+%     的 affil 和 subject。}
+% \changes{v2.6.2}{2006/06/18}{改正 groupmembers 的拼写错误。}
 %    \begin{macrocode}
+\thu@define@term{catalognumber}
+\thu@define@term{udc}
+\thu@define@term{id}
 \thu@define@term{secretlevel}
 \thu@define@term{secretyear}
 \thu@define@term{ctitle}
@@ -2252,11 +2288,14 @@
 \def\thu@cdepartment{}
 \thu@define@term{cmajor}
 \def\csubject{\cmajor} % todo: for compatibility
+\thu@define@term{cfirstdiscipline}
+\thu@define@term{cseconddiscipline}
 \thu@define@term{cauthor}
 \thu@define@term{csupervisor}
 \thu@define@term{cassosupervisor}
 \thu@define@term{ccosupervisor}
 \thu@define@term{cdate}
+\thu@define@term{postdocdate}
 \thu@define@term{etitle}
 \thu@define@term{edegree}
 \thu@define@term{edepartment}
@@ -2293,7 +2332,14 @@
 % \end{macro}
 % \end{macro}
 % \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
 %
+% 封面、摘要、版权、致谢格式定义。
 % \begin{environment}{cabstract}
 % \begin{environment}{eabstract}
 % 摘要最好以环境的形式出现（否则命令的形式会导致开始结束的括号距离太远，我不喜
@@ -2359,6 +2405,7 @@
 % \changes{v4.4.2}{2008/06/05}{本科生格式终于也开始用空格作为关键字分隔符了。}
 % \changes{v4.4.2}{2008/06/07}{本科生签名之间距离改为 \cs{hskip1em}。}
 % \changes{v4.5.2}{2010/05/29}{本科论文日期具体到日。}
+% \changes{v4.6}{2011/04/26}{增加博士后相关配置。}
 %    \begin{macrocode}
 %<*cfg>
 \def\thu@ckeywords@separator{
@@ -2371,30 +2418,51 @@
   \else
     \ifthu@master\hspace{2em}\else;\fi
   \fi}
+\def\thu@catalog@number@title{分类号}
+\def\thu@id@title{编号}
 \def\thu@title@sep{：}
-\def\thu@secretlevel{秘密}
+\ifthu@postdoc
+  \def\thu@secretlevel{密级}
+\else
+  \def\thu@secretlevel{秘密}
+\fi
 \def\thu@secretyear{\the\year}
-\def\thu@schoolename{清华大学}
+\def\thu@schoolname{清华大学}
+\def\thu@postdoc@report@title{博士后研究报告}
 \def\thu@bachelor@subtitle{综合论文训练}
 \def\thu@bachelor@title@pre{题目}
-\def\thu@bachelor@departmenttitle{系别}
-\def\thu@bachelor@majortitle{专业}
-\def\thu@bachelor@authortitle{姓名}
+\def\thu@department@title{系别}
+\def\thu@major@title{专业}
+\def\thu@postdoc@date@title{研究起止日期}
+\ifthu@postdoc
+  \def\thu@author@title{博士后姓名}
+\else
+  \ifthu@bachelor
+    \def\thu@author@title{姓名}
+  \else
+    \def\thu@author@title{研究生}
+  \fi
+\fi
+\def\thu@postdoc@first@discipline@title{流动站（一级学科）名称}
+\def\thu@postdoc@second@discipline@title{专\hspace{1em}业（二级学科）名称}
 \def\thu@secretlevel@inner{内部}
-\def\thu@secret@title{%
-  \thu@secretlevel\ifx\thu@secretlevel\thu@secretlevel@inner\else ★\fi%
+\def\thu@secret@content{%
+  \ifx\thu@secretlevel\thu@secretlevel@inner\relax\else ★\fi%
   \hspace{2em}\thu@secretyear\hspace{1em}年}
 \def\thu@apply{（申请清华大学\thu@cdegree 学位论文）}
-\def\thu@cdepartmenttitle{培养单位}
-\def\thu@cmajortitle{学科}
-\def\thu@cauthortitle{研究生}
-\def\thu@csupervisortitle{指导教师}
-\ifthu@bachelor
-  \def\thu@cassosupertitle{辅导教师}
+\def\thu@department@title{培养单位}
+\def\thu@major@title{学科}
+\ifthu@postdoc
+  \def\thu@supervisor@title{合作导师}
 \else
-  \def\thu@cassosupertitle{副指导教师}
+  \def\thu@supervisor@title{指导教师}
 \fi
-\def\thu@ccosupertitle{%
+\ifthu@bachelor
+  \def\thu@assosuper@title{辅导教师}
+\else
+  \def\thu@assosuper@title{副指导教师}
+\fi
+\def\thu@cosuper@title{%
   \ifthu@doctor 联合导师\else \ifthu@master 联合指导教师\fi\fi}
 \cdate{\ifthu@bachelor\CJK@todaysmall\else\CJK@todaybig@short\fi}
 \edate{\ifcase \month \or January\or February\or March\or April\or May%
@@ -2439,23 +2507,66 @@
 % \changes{v2.5.1}{2006/05/21}{本科封面标题第二行的横线上移一点。}
 % \changes{v2.5.2}{2006/05/29}{研究生论文标题中英文用 arial 字体。}
 % \changes{v2.6}{2006/06/09}{本科生题目加长，最多 24 个字。}
+% \changes{v4.6}{2011/04/26}{增加博士后封面。}
+%
 %    \begin{macrocode}
 %<*cls>
+\newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \newlength{\thu@title@width}
-\def\thu@put@title#1{\makebox{\hb@xt@ \thu@title@width{#1}}}
-\newcommand{\thu@first@titlepage}{
+\def\thu@put@title#1{\makebox{\hb@xt@\thu@title@width{#1}}}
+\def\thu@first@titlepage{%
+  \ifthu@postdoc\thu@first@titlepage@postdoc\else\thu@first@titlepage@other\fi}
+\newcommand{\thu@first@titlepage@postdoc}{
+  \begin{center}
+    \setlength{\thu@title@width}{3em}
+    \vspace*{1cm}
+    \begingroup\wuhao[1.5]%
+    \thu@put@title{\thu@catalog@number@title}\thu@underline\thu@catalognumber\hfill%
+    \thu@put@title{\thu@secretlevel}\thu@underline\thu@secret@content\par
+    \thu@put@title{U D C}\thu@underline\thu@udc\hfill%
+    \thu@put@title{\thu@id@title}\thu@underline\thu@id\par\vskip3cm\endgroup
+    \begingroup\hei
+      {\xiaochu\ziju{1em}\thu@schoolname}\par\vskip2cm
+      {\xiaoyi\ziju{1em}\thu@postdoc@report@title}\par\vskip3cm
+      {\sanhao[1.5]\thu@ctitle}\par\vskip2cm
+      {\xiaoer\thu@cauthor}
+    \endgroup
+    \par\vskip3cm
+    {\xiaosan[1.5]\ziju{1em}\thu@schoolname\par\vskip0.5em\CJK@todaysmall@short}
+  \end{center}
+  \cleardoublepage
+  \begin{center}
+    \vspace*{2cm}
+    {\sihao\hei\thu@ctitle\par\thu@etitle}\par
+    \parbox[t][7cm][b]{\textwidth-6cm}{\sihao[1.5]%
+      \setlength{\thu@title@width}{11em}
+      \setlength{\extrarowheight}{6pt}
+      \ifxetex % todo: ugly codes
+        \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
+      \else
+        \begin{tabular}{p{\thu@title@width}l@{}l}
+      \fi
+          \thu@put@title{\thu@author@title}     & \thu@title@sep & \thu@cauthor \\
+          \thu@put@title{\thu@postdoc@first@discipline@title}      & \thu@title@sep & \thu@cfirstdiscipline\\
+          \thu@put@title{\thu@postdoc@second@discipline@title}      & \thu@title@sep & \thu@cseconddiscipline\\
+          \thu@put@title{\thu@supervisor@title} & \thu@title@sep & \thu@csupervisor\\
+        \end{tabular}}
+    \vskip2cm
+    {\sihao\thu@postdoc@date@title\hskip1em\underline\thu@postdocdate}
+  \end{center}}
+\newcommand{\thu@first@titlepage@other}{
   \begin{center}
     \vspace*{-1.3cm}
     \parbox[b][2.4cm][t]{\textwidth}{%
-      \ifthu@secret\hfill{\sihao\thu@secret@title}\else\rule{1cm}{0cm}\fi}
+      \ifthu@secret\hfill{\sihao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
       \vskip0.2cm
-      {\ziju{10bp}\yihao\li\thu@schoolename}
+      {\ziju{10bp}\yihao\li\thu@schoolname}
       \par\vskip1.2cm
       {\ziju{18bp}\xiaochu\hei\thu@bachelor@subtitle}
       \vskip2.5cm
       \noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
-      \parbox[t]{12cm}{%        
+      \parbox[t]{12cm}{%
         \setbox0=\hbox{{\yihao[1.55]\thu@ctitle}}
         \begin{picture}(0,0)(0,0)
           \setlength\unitlength{1cm}
@@ -2500,12 +2611,12 @@
           \else
             \begin{tabular}{p{\thu@title@width}l@{}l}
           \fi
-              \thu@put@title{\thu@bachelor@departmenttitle} & \thu@title@sep & \thu@cdepartment\\
-              \thu@put@title{\thu@bachelor@majortitle}      & \thu@title@sep & \thu@cmajor\\
-              \thu@put@title{\thu@bachelor@authortitle}     & \thu@title@sep & \thu@cauthor \\
-              \thu@put@title{\thu@csupervisortitle}         & \thu@title@sep & \thu@csupervisor\\
+              \thu@put@title{\thu@department@title} & \thu@title@sep & \thu@cdepartment\\
+              \thu@put@title{\thu@major@title}      & \thu@title@sep & \thu@cmajor\\
+              \thu@put@title{\thu@author@title}     & \thu@title@sep & \thu@cauthor \\
+              \thu@put@title{\thu@supervisor@title}         & \thu@title@sep & \thu@csupervisor\\
               \ifx\thu@cassosupervisor\@empty\else
-                \thu@put@title{\thu@cassosupertitle}        & \thu@title@sep & \thu@cassosupervisor\\
+                \thu@put@title{\thu@assosuper@title}        & \thu@title@sep & \thu@cassosupervisor\\
               \fi
             \end{tabular}
         }}
@@ -2519,15 +2630,15 @@
           \else 
             \begin{tabular}{p{\thu@title@width}c@{\extracolsep{4pt}}l}
           \fi
-              \thu@put@title{\thu@cdepartmenttitle}  & \thu@title@sep & {\ziju{3bp}\thu@cdepartment}\\
-              \thu@put@title{\thu@cmajortitle}       & \thu@title@sep & {\ziju{3bp}\thu@cmajor}\\
-              \thu@put@title{\thu@cauthortitle}      & \thu@title@sep & {\ziju{11bp}\thu@cauthor}\\
-              \thu@put@title{\thu@csupervisortitle}  & \thu@title@sep & {\ziju{11bp}\thu@csupervisor}\\
+              \thu@put@title{\thu@department@title}  & \thu@title@sep & {\ziju{3bp}\thu@cdepartment}\\
+              \thu@put@title{\thu@major@title}       & \thu@title@sep & {\ziju{3bp}\thu@cmajor}\\
+              \thu@put@title{\thu@author@title}      & \thu@title@sep & {\ziju{11bp}\thu@cauthor}\\
+              \thu@put@title{\thu@supervisor@title}  & \thu@title@sep & {\ziju{11bp}\thu@csupervisor}\\
               \ifx\thu@cassosupervisor\@empty\else
-                \thu@put@title{\thu@cassosupertitle} & \thu@title@sep & {\ziju{11bp}\thu@cassosupervisor}\\
+                \thu@put@title{\thu@assosuper@title} & \thu@title@sep & {\ziju{11bp}\thu@cassosupervisor}\\
               \fi
               \ifx\thu@ccosupervisor\@empty\else
-                \thu@put@title{\thu@ccosupertitle}   & \thu@title@sep & {\ziju{11bp}\thu@ccosupervisor}\\
+                \thu@put@title{\thu@cosuper@title}   & \thu@title@sep & {\ziju{11bp}\thu@ccosupervisor}\\
               \fi
             \end{tabular}
         \end{center}}}
@@ -2594,7 +2705,6 @@
 % \begin{macro}{\thu@authorization@mk}
 % 封面中论文授权部分。
 %    \begin{macrocode}
-\newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \newcommand{\thu@authorization@mk}{%
   \ifthu@bachelor\vspace*{-0.6cm}\else\vspace*{-0.1cm}\fi % shit code!
   \begin{center}\erhao\hei\thu@authtitle\end{center}
@@ -2773,10 +2883,7 @@
 % \changes{v2.4}{2006/04/14}{调整\textbf{致谢}等中间的距离。}
 %    \begin{macrocode}
 %<*cfg>
-\newcommand{\thu@ackshortname}{致谢}
 \newcommand{\thu@ackname}{致\hspace{1em}谢}
-\newcommand{\thu@acklongname}{致谢与声明}
-\newcommand{\thu@declareshortname}{声明}
 \newcommand{\thu@declarename}{声\hspace{1em}明}
 \newcommand{\thu@declaretext}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
   ，独立进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容外，本学位论
