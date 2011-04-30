@@ -2523,7 +2523,7 @@
     \vspace*{1cm}
     \begingroup\wuhao[1.5]%
     \thu@put@title{\thu@catalog@number@title}\thu@underline\thu@catalognumber\hfill%
-    \thu@put@title{\thu@secretlevel}\thu@underline\thu@secret@content\par
+    \thu@put@title{\thu@secretlevel}\expandafter\thu@underline\ifthu@secret\thu@secret@content\else\relax\fi\par
     \thu@put@title{U D C}\thu@underline\thu@udc\hfill%
     \thu@put@title{\thu@id@title}\thu@underline\thu@id\par\vskip3cm\endgroup
     \begingroup\hei
