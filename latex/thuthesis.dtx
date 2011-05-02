@@ -264,7 +264,7 @@
 % \begin{center}
 % \begin{minipage}{1.0\linewidth}\centering
 % \begin{tabular}{*{6}{l}}\hline
-%   ifxetex & xunicode & xltxtra & CJK\footnote{版本要求：$\geq$ v4.8.1} & xeCJK\footnote{\href{http://bbs.ctex.org/viewthread.php?tid=40232&extra=page%3D1}{xeCJK 下载页}} & \pkg{CJKpunct} \\
+%   ifxetex & xunicode & xltxtra & CJK\footnote{版本要求：$\geq$ v4.8.1} & xeCJK & \pkg{CJKpunct} \\
 %   array & booktabs & longtable  &  amsmath & amssymb & ntheorem \\
 %   indentfirst & paralist & txfonts & natbib & hyperref & hypernat \\
 %   graphicx & \pkg{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &
@@ -1072,7 +1072,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2008/02/28 4.5.1 Tsinghua University Thesis Template]
+%<cls|cfg>[2011/05/02 4.6 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1247,12 +1247,11 @@
 \ifthu@xetex
   \RequirePackage{mathptmx} % fontspec conflicts with txfonts now, so we have to load other times-math fonts.
   \RequirePackage{xltxtra}
-  %\RequirePackage[CJKnumber,CJKtextspaces,CJKmathspaces]{xeCJK}
-  \RequirePackage[CJKnumber,BoldFont,normalindentfirst]{xeCJK}
-  \punctstyle{kaiming} % quanjiao
+  \RequirePackage[CJKnumber,BoldFont,ItalicFont,normalindentfirst]{xeCJK}
+  \punctstyle{quanjiao}
   % todo: minor fix of CJKnumb
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
-  \defaultfontfeatures{Mapping=tex-text} % after fontspec
+  \defaultfontfeatures{Mapping=tex-text} % use TeX --
 %    \end{macrocode}
 % 默认采用 Adobe 的四款 (宋，黑，楷，仿宋) 免费字体。这样的话，缺少隶书和幼圆。本
 % 科的封面大字会受影响。请手动替换。
@@ -3095,11 +3094,11 @@
 % \changes{v2.0}{2005/12/18}{最后决定将 resume 定义为环境。这样与前面的主要符号
 % 表、致谢等对应。}
 % \changes{v2.5.2}{2006/05/29}{研究生的个人介绍要右开。}
+% \changes{v4.6}{2011/05/02}{支持可选参数，自己定义简历章节标题。}
 %    \begin{macrocode}
 %<*cls>
-\newenvironment{resume}{%
-  % \cleardoublepage
-  \thu@chapter*{\thu@resume@title}}{}
+\newenvironment{resume}[1][\thu@resume@title]{%
+  \thu@chapter*{#1}}{}
 %</cls>
 %    \end{macrocode}
 % \end{environment}
