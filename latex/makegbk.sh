@@ -12,7 +12,7 @@ GBKDIR="./gbk"
 # arg 1: the file name
 function myconvert
 {
-  iconv -f utf8 -t gbk $1 > $GBKDIR/$1
+  iconv -f UTF-8 -t GBK $1 > $GBKDIR/$1
 }
 
 # remove the dest
