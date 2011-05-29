@@ -2757,9 +2757,11 @@
 % 授权说明
 % \changes{v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
 % \changes{v4.5.2}{2010/05/29}{本科封面和授权说明之间不要空白页。}
+% \changes{v4.6}{2011/05/29}{博士后报告无授权说明。}
 %    \begin{macrocode}
-    \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
-    \thu@authorization@mk
+    \ifthu@postdoctor\relax\else%
+      \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
+      \thu@authorization@mk\fi
   \end{titlepage}
 %    \end{macrocode}
 %
@@ -2916,10 +2918,12 @@
 % \changes{v3.0}{2007/05/12}{本科论文声明部分图片扫描取消。}
 %    \begin{macrocode}
   {
+    \ifthu@postdoctor\relax\else%
      \thu@chapter*{\thu@declarename}
      \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
        {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
         \thu@backdate\thu@underline[2.5cm]\relax}%
+    \fi
   }
 %</cls>
 %    \end{macrocode}
