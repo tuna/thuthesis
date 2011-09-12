@@ -12,11 +12,11 @@ ThuThesis为**T**sing**hu**a University **Thesis** LaTeX Template之缩写。
 * 示例文档 (main.pdf)
 
 # Download
-ThuThesis已经上传至[CTAN](http://www.ctan.org/tex-archive/macros/latex/contrib/thuthesis)，新的TeX发行包中自带ThuThesis。如果要使用最新版本，请到[GitHub](http://github.com/xueruini/thuthesis)下载。
+ThuThesis已经上传至[CTAN](http://www.ctan.org/tex-archive/macros/latex/contrib/thuthesis)，新的TeX发行包中自带ThuThesis。如果要使用最新版本，请到[GitHub](http://github.com/xueruini/thuthesis/downloads)下载。
 
 
 # Mailing List
-* **推荐**使用[GitHub Issue](https://github.com/xueruini/thuthesis/issues)。
+* **推荐**使用[GitHub Issues](http://github.com/xueruini/thuthesis/issues)。
 * [ThuThesis@Google Groups](http://groups.google.com/group/thuthesis)
 
 <table style="background: white; border:1px solid #aa0033; font-size: 10pt" align=center>
@@ -27,7 +27,7 @@ ThuThesis已经上传至[CTAN](http://www.ctan.org/tex-archive/macros/latex/cont
     <td colspan=2 align=center><b>订阅 thuthesis@googlegroups.com</b></td>
   </tr>
   <form action="http://groups.google.com/group/thuthesis/boxsubscribe">
-    <tr> 
+    <tr>
       <td>电子邮件： <input type=text name=email></td>
       <td>
 	<table  style="padding:2px;">
