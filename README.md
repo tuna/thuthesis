@@ -12,14 +12,15 @@ ThuThesis为**T**sing**hu**a University **Thesis** LaTeX Template之缩写。
 * 示例文档 (main.pdf)
 
 # Download
-ThuThesis已经上传至[CTAN](http://www.ctan.org/tex-archive/macros/latex/contrib/thuthesis)，新的TeX发行包中自带ThuThesis。如果要使用最新版本，请到[GitHub](http://github.com/xueruini/thuthesis/downloads)下载。
-
+* ThuThesis已经上传至[CTAN](http://www.ctan.org/tex-archive/macros/latex/contrib/thuthesis)，新的TeX发行包中自带ThuThesis。
+* [Google Code](http://code.google.com/p/thuthesis/)提供各版本以及辅助文件的镜像。
+* 如果要使用最新版本，请到[GitHub](http://github.com/xueruini/thuthesis)相关分支下载。
 
 # Mailing List
 * **推荐**使用[GitHub Issues](http://github.com/xueruini/thuthesis/issues)。
 * [ThuThesis@Google Groups](http://groups.google.com/group/thuthesis)
 
-<table style="background: white; border:1px solid #aa0033; font-size: 10pt" align=center>
+<table style="background: white; border:1px solid #aa0033; font-size: 10pt">
   <tr>
     <td rowspan=3>
       <img src="http://groups.google.com/groups/img/groups_medium_zh-CN.gif" height=58 width=150 alt="Google Groups">
@@ -29,15 +30,7 @@ ThuThesis已经上传至[CTAN](http://www.ctan.org/tex-archive/macros/latex/cont
   <form action="http://groups.google.com/group/thuthesis/boxsubscribe">
     <tr>
       <td>电子邮件： <input type=text name=email></td>
-      <td>
-	<table  style="padding:2px;">
-	  <tr>
-	    <td>
-	      <input type=submit name="sub" value="订阅">
-	    </td>
-	  </tr>
-	</table>
-      </td>
+      <td><input type=submit name="sub" value="订阅"></td>
     </tr>
   </form>
   <tr><td colspan=2 align=center> 浏览存于 <a href="http://groups.google.com/">groups.google.com</a> 上的<a href="http://groups.google.com/group/thuthesis">所有帖子</a> </td></tr>
