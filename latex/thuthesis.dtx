@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{0}
+% \CheckSum{2639}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -42,7 +42,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2011/04/27 4.6 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2011/10/22 4.6 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{dtx-style}
 \EnableCrossrefs
@@ -130,6 +130,7 @@
 % \changes{v2.6.1}{2006/06/16}{取消 thubib.bst 中 inbook 类 volume 后的页码。}
 % \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
 % \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
+% \changes{v4.6}{2011/10/22}{使用手册更新。}
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
 % \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
@@ -211,13 +212,20 @@
 % \label{sec:installation}
 %
 % \subsection{下载}
-% \thuthesis{} 主页：\url{http://thuthesis.sourceforge.net}。同时本模板也提交至
-% \href{http://www.ctan.org/macros/latex/contrib/thuthesis}{CTAN}。除此之外，不
-% 再维护任何镜像。
+% \thuthesis{} 相关链接：
+% \begin{itemize}
+% \item 主页：
+% \href{https://github.com/xueruini/thuthesis}{GitHub}\footnote{已经从
+% \url{http://thuthesis.sourceforge.net}迁移至此。}
+% \item 下载：\href{http://code.google.com/p/thuthesis/}{Google Code}
+% \item 同时本模板也提交至
+% \href{http://www.ctan.org/macros/latex/contrib/thuthesis}{CTAN}
+% \end{itemize}
+% 除此之外，不再维护任何镜像。
 %
-% \thuthesis{} 的开发版本同样可以在 sourceforge 上获得：
+% \thuthesis{} 的开发版本同样可以在 GitHub 上获得：
 % \begin{shell}
-% $ svn co https://svn.sourceforge.net/svnroot/thuthesis/trunk/thuthesis
+% $ git clone git://github.com/xueruini/thuthesis.git
 % \end{shell}
 %
 % \subsection{模板的组成部分}
@@ -251,12 +259,14 @@
 %   \end{longtable}
 % \end{center}
 %
-% 需要说明几点：1) thuthesis.cls 和 thuthesis.cfg 可以
-% 由 thuthesis.ins 和thuthesis.dtx 生成，但为了降低新手用户的使用难度，故将 cls
-% 和 cfg 也一起发布。2) 学习一个新东西最好的办法就是读它的文
-% 档：\emph{thuthesis.pdf}.
-%
-%
+% 需要说明几点：
+% \begin{itemize}
+% \item \emph{thuthesis.cls} 和 \emph{thuthesis.cfg} 可以
+%   由 \emph{thuthesis.ins} 和 \emph{thuthesis.dtx} 生成，但为了降低新
+%   手用户的使用难度，故将 cls和 cfg 一起发布。
+% \item 使用前认真阅读文档：\emph{thuthesis.pdf}.
+% \end{itemize}
+% 
 % \subsection{准备工作}
 % \label{sec:prepare}
 % 本模板用到以下宏包：
@@ -409,13 +419,12 @@
 % 本手册假定用户已经能处理一般的 \LaTeX{} 文档，并对 \BibTeX{} 有一定了解。如果你
 % 从来没有接触过 \TeX 和 \LaTeX，建议先学习相关的基础知识。磨刀不误砍柴工！
 %
-% % todo: move some where..
 % \subsection{关于提问}
 % \label{sec:howtoask}
 % \begin{itemize}\addtolength{\itemsep}{-5pt}
 % \item \url{http://groups.google.com/group/thuthesis}
 % 或直接给\href{mailto:thuthesis@googlegroups.com}{邮件列表}写信。
-% \item Google Groups 访问有问题的可以访问 mirror: \url{http://thuthesis.1048723.n5.nabble.com/}
+% \item Google Groups mirror: \url{http://thuthesis.1048723.n5.nabble.com/}
 % \item \href{http://www.newsmth.net/bbsdoc.php?board=TeX}{\TeX@newsmth}
 % \end{itemize}
 %
@@ -1046,23 +1055,18 @@
 % 推荐在导言区使用 \cs{renewcommand}。当然，导言区里可以直接使用中文。
 %
 %
-%\section{致谢}
-%\label{sec:thanks}
+% \section{致谢}
+% \label{sec:thanks}
+% 感谢这些年来一直陪伴 \thuthesis{} 成长的新老同学，大家的需求是模板前
+% 进的动力，大家的反馈是模板提高的机会。
+% 
+% 此版本加入了博士后出站报告的支持，本意为制作一个支持清华所有学位报告
+% 的模板，孰料学校于近期对硕士、博士论文规范又有调整，未能及时更新，见
+% 谅!
 %
-% 在模板的开发和维护过程中，我得到不少同学的热情支持，如：edyfox@newsmth 编写
-% 了 Makefile，Truel@newsmth 编写了 msmake.cmd，oseen@newsmth 将其移植到 UTF-8 并
-% 制作了 Debian package，特别感谢 MagicGlaive@newsmth 为 2008 年本科论文格式修改
-% 作出的一切！
-%
-% 感谢我自己能把这件事坚持下来，模板制作期间颇多感慨，不断遇到问题，不断摸索解决。其中的
-% 酸甜苦辣恐怕只有自己能体会得到！
-%
-% 感谢所有在论文致谢中提及 \thuthesis{} 或者本人的同学：每当这个时候我都有说不出
-% 的欣慰。大家的认可才是 \thuthesis{} 最大的动力。与此同时我也感觉到更大的压力，
-% 因为模板的维护需要花费相当的精力。同时我对模板还不太满意，代码质量不高，结构组
-% 织不好，文档内容不足。我呼唤感兴趣的同学能出手相助，给模板的开发和维护注入新的
-% 活力，让我们一起把 \thuthesis{} 做得更好！
-%
+% 本人已于近期离开清华，虽不忍模板存此瑕疵，然精力有限，必不能如往日及
+% 时升级，还望新的同学能参与或者接手，继续为大家服务。
+% 
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
 %
