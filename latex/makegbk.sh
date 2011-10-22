@@ -43,7 +43,7 @@ for d in $UTF8_DIRS
 do
   echo "processing $d/"
   mkdir -p $GBKDIR/$d
-  for f in `ls $d` # include the path, without .svn
+  for f in `ls $d` # include the path, without .git
   do
     echo "  $f"
     myconvert "$d/$f"
@@ -52,7 +52,7 @@ done
 
 # copy extra files
 echo "copying $EXTRA_DIRS"
-tar cp --exclude ".svn" --exclude ".git" $EXTRA_DIRS | (cd $GBKDIR ; tar xp)
+tar cp --exclude ".git" $EXTRA_DIRS | (cd $GBKDIR ; tar xp)
 
 echo "copying $EXTRA_FILES"
 cp -f $EXTRA_FILES $GBKDIR
