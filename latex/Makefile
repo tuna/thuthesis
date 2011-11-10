@@ -34,13 +34,7 @@ cls:  $(SOURCES)
 
 ###### for doc
 
-doc: doc-pdf
-
-doc-pdf: $(PACKAGE).pdf
-
-doc-ps: $(PACKAGE).ps
-
-doc-dvi: $(PACKAGE).dvi
+doc: $(PACKAGE).pdf
 
 $(PACKAGE).dvi: cls
 	latex $(PACKAGE).dtx
@@ -59,13 +53,7 @@ $(PACKAGE).pdf: $(PACKAGE).ps
 
 ###### for thesis
 
-thesis: thesis-pdf
-
-thesis-pdf: $(THESISMAIN).pdf
-
-thesis-dvi: $(THESISMAIN).dvi
-
-thesis-ps: $(THESISMAIN).ps
+thesis: $(THESISMAIN).pdf
 
 $(THESISMAIN).dvi: cls $(THESISCONTENTS) $(THESISMAIN).bbl
 	$(TEXI2DVI) $(THESISMAIN).tex
@@ -92,13 +80,7 @@ $(THESISMAIN).bbl: $(BIBFILE)
 
 
 ###### for shuji
-shuji: shuji-pdf
-
-shuji-pdf: $(SHUJIMAIN).pdf
-
-shuji-dvi: $(SHUJIMAIN).dvi
-
-shuji-ps: $(SHUJIMAIN).ps
+shuji: $(SHUJIMAIN).pdf
 
 $(SHUJIMAIN).dvi: cls $(SHUJICONTENTS)
 	$(TEXI2DVI) $(SHUJIMAIN).tex
@@ -123,6 +105,7 @@ $(SHUJIMAIN).ps: $(SHUJIMAIN).dvi
 
 clean: 
 	-@rm -f \
+		*~ \
 		*.aux \
 		*.bak \
 		*.bbl \
@@ -157,8 +140,8 @@ dist:
 	    echo "Usage: make dist VERSION=<version#>"; \
 	else \
 	    if [ ! -d "gbk" ]; then \
- 	      echo -e "\n run ./makegbk.sh first to prepare for GBK version.\n"; \
- 	    else \
+	      echo -e "\n run ./makegbk.sh first to prepare for GBK version.\n"; \
+	    else \
 	      ./makedist.sh $(VERSION) UTF8; \
 	      (cd gbk ; ../makedist.sh $(VERSION) GBK); \
 	    fi; \
