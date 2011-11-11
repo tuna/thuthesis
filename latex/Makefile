@@ -22,6 +22,7 @@ THESISCONTENTS=$(THESISMAIN).tex data/*.tex
 BIBFILE=ref/refs.bib
 SHUJIMAIN=shuji
 SHUJICONTENTS=$(SHUJIMAIN).tex
+CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
 .PHONY: all clean distclean dist all thesis shuji doc cls cfg dvi ps pdf gbk
 
@@ -29,20 +30,16 @@ all: cls doc thesis shuji
 
 
 ###### generate cls/cfg
-cls:  $(SOURCES)
+cls: $(CLSFILES)
+
+$(CLSFILES): $(SOURCES)
 	latex $(PACKAGE).ins
 
 ###### for doc
 
-doc: doc-pdf
+doc: $(PACKAGE).pdf
 
-doc-pdf: $(PACKAGE).pdf
-
-doc-ps: $(PACKAGE).ps
-
-doc-dvi: $(PACKAGE).dvi
-
-$(PACKAGE).dvi: cls
+$(PACKAGE).dvi: $(CLSFILES)
 	latex $(PACKAGE).dtx
 	makeindex -s gind.ist -o $(PACKAGE).ind $(PACKAGE).idx
 	makeindex -s gglo.ist -o $(PACKAGE).gls $(PACKAGE).glo
@@ -59,15 +56,9 @@ $(PACKAGE).pdf: $(PACKAGE).ps
 
 ###### for thesis
 
-thesis: thesis-pdf
+thesis: $(THESISMAIN).pdf
 
-thesis-pdf: $(THESISMAIN).pdf
-
-thesis-dvi: $(THESISMAIN).dvi
-
-thesis-ps: $(THESISMAIN).ps
-
-$(THESISMAIN).dvi: cls $(THESISCONTENTS) $(THESISMAIN).bbl
+$(THESISMAIN).dvi: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
 	$(TEXI2DVI) $(THESISMAIN).tex
 
 ifeq ($(METHOD),dvipdfm)
@@ -92,15 +83,9 @@ $(THESISMAIN).bbl: $(BIBFILE)
 
 
 ###### for shuji
-shuji: shuji-pdf
+shuji: $(SHUJIMAIN).pdf
 
-shuji-pdf: $(SHUJIMAIN).pdf
-
-shuji-dvi: $(SHUJIMAIN).dvi
-
-shuji-ps: $(SHUJIMAIN).ps
-
-$(SHUJIMAIN).dvi: cls $(SHUJICONTENTS)
+$(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
 	$(TEXI2DVI) $(SHUJIMAIN).tex
 
 ifeq ($(METHOD),dvipdfm)
@@ -112,7 +97,7 @@ elifeq ($(METHOD),ps2pdf)
 $(SHUJIMAIN).pdf: $(SHUJIMAIN).ps
 	ps2pdf  $(SHUJIMAIN).ps
 else
-$(SHUJIMAIN).pdf: cls $(SHUJICONTENTS)
+$(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
 	pdflatex $(SHUJIMAIN)
 endif
 
@@ -123,6 +108,7 @@ $(SHUJIMAIN).ps: $(SHUJIMAIN).dvi
 
 clean: 
 	-@rm -f \
+		*~ \
 		*.aux \
 		*.bak \
 		*.bbl \
@@ -157,8 +143,8 @@ dist:
 	    echo "Usage: make dist VERSION=<version#>"; \
 	else \
 	    if [ ! -d "gbk" ]; then \
- 	      echo -e "\n run ./makegbk.sh first to prepare for GBK version.\n"; \
- 	    else \
+	      echo -e "\n run ./makegbk.sh first to prepare for GBK version.\n"; \
+	    else \
 	      ./makedist.sh $(VERSION) UTF8; \
 	      (cd gbk ; ../makedist.sh $(VERSION) GBK); \
 	    fi; \
