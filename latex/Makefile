@@ -22,6 +22,7 @@ THESISCONTENTS=$(THESISMAIN).tex data/*.tex
 BIBFILE=ref/refs.bib
 SHUJIMAIN=shuji
 SHUJICONTENTS=$(SHUJIMAIN).tex
+CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
 .PHONY: all clean distclean dist all thesis shuji doc cls cfg dvi ps pdf gbk
 
@@ -29,14 +30,16 @@ all: cls doc thesis shuji
 
 
 ###### generate cls/cfg
-cls:  $(SOURCES)
+cls: $(CLSFILES)
+
+$(CLSFILES): $(SOURCES)
 	latex $(PACKAGE).ins
 
 ###### for doc
 
 doc: $(PACKAGE).pdf
 
-$(PACKAGE).dvi: cls
+$(PACKAGE).dvi: $(CLSFILES)
 	latex $(PACKAGE).dtx
 	makeindex -s gind.ist -o $(PACKAGE).ind $(PACKAGE).idx
 	makeindex -s gglo.ist -o $(PACKAGE).gls $(PACKAGE).glo
@@ -55,7 +58,7 @@ $(PACKAGE).pdf: $(PACKAGE).ps
 
 thesis: $(THESISMAIN).pdf
 
-$(THESISMAIN).dvi: cls $(THESISCONTENTS) $(THESISMAIN).bbl
+$(THESISMAIN).dvi: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
 	$(TEXI2DVI) $(THESISMAIN).tex
 
 ifeq ($(METHOD),dvipdfm)
@@ -82,7 +85,7 @@ $(THESISMAIN).bbl: $(BIBFILE)
 ###### for shuji
 shuji: $(SHUJIMAIN).pdf
 
-$(SHUJIMAIN).dvi: cls $(SHUJICONTENTS)
+$(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
 	$(TEXI2DVI) $(SHUJIMAIN).tex
 
 ifeq ($(METHOD),dvipdfm)
@@ -94,7 +97,7 @@ elifeq ($(METHOD),ps2pdf)
 $(SHUJIMAIN).pdf: $(SHUJIMAIN).ps
 	ps2pdf  $(SHUJIMAIN).ps
 else
-$(SHUJIMAIN).pdf: cls $(SHUJICONTENTS)
+$(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
 	pdflatex $(SHUJIMAIN)
 endif
 
