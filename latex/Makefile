@@ -15,7 +15,11 @@ PACKAGE=thuthesis
 SOURCES=$(PACKAGE).ins $(PACKAGE).dtx 
 THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(EPS) $(EPSGEN)
 EPS=$(wildcard figures/*.eps)
-EPSGEN=$(addsuffix .eps,$(basename $(wildcard figures/*.jpg)))
+EPSGEN=
+# xelatex can directly use jpg file
+ifeq ($(METHOD),xelatex)
+EPSGEN+=$(addsuffix .eps,$(basename $(wildcard figures/*.jpg)))
+endif
 EPSGEN+=$(addsuffix .eps,$(basename $(wildcard figures/*.fig)))
 BIBFILE=ref/*.bib
 SHUJICONTENTS=$(SHUJIMAIN).tex
@@ -57,20 +61,37 @@ $(PACKAGE).pdf: $(PACKAGE).ps
 
 thesis: $(THESISMAIN).pdf
 
-$(THESISMAIN).dvi: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
-	$(TEXI2DVI) $(THESISMAIN).tex
+ifeq ($(METHOD),xelatex)
 
-ifeq ($(METHOD),dvipdfm)
+$(THESISMAIN).pdf: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
+	xelatex $(THESISMAIN).tex
+	xelatex $(THESISMAIN).tex
+
+$(THESISMAIN).bbl: $(BIBFILE)
+	xelatex $(THESISMAIN).tex
+	-bibtex $(THESISMAIN)
+	rm $(THESISMAIN).pdf
+
+else ifeq ($(METHOD),dvipdfm)
+
 $(THESISMAIN).pdf: $(THESISMAIN).dvi
 ifneq ($(GBK),)
 	gbk2uni $(THESISMAIN)
 endif
 	latex $(THESISMAIN).tex
 	dvipdfm $(THESISMAIN).dvi
+
+$(THESISMAIN).dvi: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
+	$(TEXI2DVI) $(THESISMAIN).tex
+
+$(THESISMAIN).bbl: $(BIBFILE)
+	$(TEXI2DVI) $(THESISMAIN).tex
+	-bibtex $(THESISMAIN)
+
 else
+
 $(THESISMAIN).pdf: $(THESISMAIN).ps
 	ps2pdf $(THESISMAIN).ps
-endif
 
 $(THESISMAIN).ps: $(THESISMAIN).dvi
 ifneq ($(GBK),)
@@ -83,6 +104,7 @@ $(THESISMAIN).bbl: $(BIBFILE)
 	$(TEXI2DVI) $(THESISMAIN).tex
 	-bibtex $(THESISMAIN)
 
+endif
 
 
 figures/%.eps: figures/%.jpg
@@ -93,30 +115,39 @@ figures/%.eps: figures/%.fig
 ###### for shuji
 shuji: $(SHUJIMAIN).pdf
 
+ifeq ($(METHOD),xelatex)
+
+$(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
+	xelatex $(SHUJIMAIN).tex
+
+else ifeq ($(METHOD),dvipdfm)
+
 $(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
 	$(TEXI2DVI) $(SHUJIMAIN).tex
 
-ifeq ($(METHOD),dvipdfm)
 $(SHUJIMAIN).pdf: $(SHUJIMAIN).dvi
 ifneq ($(GBK),)
 	gbk2uni $(SHUJIMAIN)
 endif
 	latex $(SHUJIMAIN).tex
 	dvipdfmx $(SHUJIMAIN).dvi
-elifeq ($(METHOD),ps2pdf)
-$(SHUJIMAIN).pdf: $(SHUJIMAIN).ps
-	ps2pdf  $(SHUJIMAIN).ps
+
 else
-$(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
-	pdflatex $(SHUJIMAIN)
-endif
+
+$(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
+	$(TEXI2DVI) $(SHUJIMAIN).tex
 
 $(SHUJIMAIN).ps: $(SHUJIMAIN).dvi
 ifneq ($(GBK),)
 	gbk2uni $(SHUJIMAIN)
 endif
 	latex $(SHUJIMAIN).tex
-	dvips -Ppdf -G0 $(SHUJIMAIN).dvi 
+	dvips -Ppdf -G0 $(SHUJIMAIN).dvi
+
+$(SHUJIMAIN).pdf: $(SHUJIMAIN).ps
+	ps2pdf  $(SHUJIMAIN).ps
+
+endif
 
 clean: 
 	-@rm -f \
