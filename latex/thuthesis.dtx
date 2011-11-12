@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2639}
+% \CheckSum{2647}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1132,7 +1132,7 @@
 \DeclareOption{xetex}{\thu@xetextrue}
 %    \end{macrocode}
 %
-% 加入 [nofonts] 选项，用户可以自定义中英文字体
+% 如果需要自定义中英文字体，请打开 [nofonts] 选项
 %    \begin{macrocode}
 \newif\ifthu@nofonts \thu@nofontsfalse
 \DeclareOption{nofonts}{\thu@nofontstrue}
@@ -1265,7 +1265,7 @@
   \defaultfontfeatures{Mapping=tex-text} % use TeX --
 %    \end{macrocode}
 % 默认采用 Adobe 的四款 (宋，黑，楷，仿宋) 免费字体。这样的话，缺少隶书和幼圆。本
-% 科的封面大字会受影响。请手动替换。可以通过指定 [nofonts] 选项，完全自定义中英文字体。
+% 科的封面大字会受影响。请手动替换。如果打开了 [nofonts] 选项，模板里不会做中英文字体的配置，用户可以完全自定义中英文字体。
 %    \begin{macrocode}
 \ifthu@nofonts\else
   \setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
