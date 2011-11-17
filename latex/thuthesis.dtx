@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2639}
+% \CheckSum{2651}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1261,15 +1261,16 @@
 % 默认采用 Adobe 的四款 (宋，黑，楷，仿宋) 免费字体。这样的话，缺少隶书和幼圆。本
 % 科的封面大字会受影响。请手动替换。
 %    \begin{macrocode}
-  \setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
-  \setCJKsansfont{Adobe Heiti Std}
-  \setCJKmonofont{Adobe Kaiti Std}
-  \setCJKfamilyfont{song}{Adobe Song Std}
-  \setCJKfamilyfont{hei}{Adobe Heiti Std}
-  \setCJKfamilyfont{fs}{Adobe Fangsong Std}
-  \setCJKfamilyfont{kai}{Adobe Kaiti Std}
-  \setCJKfamilyfont{li}{Adobe Kaiti Std} % todo: 用隶书字体代替
-  \setCJKfamilyfont{you}{Adobe Kaiti Std} % todo: 用幼圆字体代替
+  \input{fontname.def}
+  \setCJKmainfont[BoldFont={\fonthei}, ItalicFont={\fontkai}]{\fontsong}
+  \setCJKsansfont{\fonthei}
+  \setCJKmonofont{\fontkai}
+  \setCJKfamilyfont{song}{\fontsong}
+  \setCJKfamilyfont{hei}{\fonthei}
+  \setCJKfamilyfont{fs}{\fontfs}
+  \setCJKfamilyfont{kai}{\fontkai}
+  \setCJKfamilyfont{li}{\fontli}
+  \setCJKfamilyfont{you}{\fontyou}
 
   \setmainfont{Times New Roman}
   \setsansfont{Arial}

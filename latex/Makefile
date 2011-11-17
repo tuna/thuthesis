@@ -30,10 +30,13 @@ all: cls doc thesis shuji
 
 
 ###### generate cls/cfg
-cls: $(CLSFILES)
+cls: $(CLSFILES) fontname.def
 
 $(CLSFILES): $(SOURCES)
 	latex $(PACKAGE).ins
+
+fontname.def:
+	./makefontname.sh
 
 ###### for doc
 
