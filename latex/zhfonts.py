@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from subprocess import check_output
+try:
+    from subprocess import check_output
+except ImportError: # python 2.6 has no check_output
+    from subprocess import Popen, PIPE
+    def check_output(cmdline):
+        return Popen(cmdline, stdout=PIPE).communicate()[0]
+
 from string import split
 import re
 
