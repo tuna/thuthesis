@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 # source files need converting
 UTF8_FILES="thuthesis.ins thuthesis.dtx thutils.sty thubib.bst Readme main.tex shuji.tex"
 UTF8_DIRS="data ref"
 # files for publishing
 EXTRA_DIRS="figures"
-EXTRA_FILES="Makefile msmake.cmd"
+EXTRA_FILES="Makefile msmake.cmd config.mk"
 
 GBKDIR="./gbk"
 
@@ -60,7 +60,7 @@ cp -f $EXTRA_FILES $GBKDIR
 # processing thuthesis.dtx and Makefile
 cd $GBKDIR
 
-sed \
+sed -i \
   -e "s/ExecuteOptions{utf/ExecuteOptions{gbk/" \
   -e "s/dtx@UTFtrue/dtx@UTFfalse/" \
   -e "s/RequirePackage{CJKutf8}/RequirePackage{CJK}/" \
@@ -68,11 +68,8 @@ sed \
   -e "s/{UTF8}{song}/{GBK}{song}/" \
   -e "s/@=128/@=127/" \
   -e "s/<254/<255/" \
-     thuthesis.dtx > gbksed.tmp
+     thuthesis.dtx
 
-mv gbksed.tmp thuthesis.dtx
-
-sed -e "s/# gbk2uni/gbk2uni/" Makefile > gbksed.tmp
-mv gbksed.tmp Makefile
+sed -i -e "s/GBK =/GBK = y/" config.mk
 
 echo "GBK convesion success."

@@ -1,26 +1,20 @@
 # Makefile for ThuThesis
 # $Id$
 
+include config.mk
+
 ifeq ($(MAKE),)
-	override MAKE=make
+    override MAKE = make
 endif
 
 ifeq ($(TEXI2DVI),)
-	override TEXI2DVI=texi2dvi
-endif
-
-ifneq ($(METHOD),ps2pdf)
-ifneq ($(METHOD),dvipdfm)
-    override METHOD=ps2pdf
-endif
+    override TEXI2DVI = texi2dvi
 endif
 
 PACKAGE=thuthesis
 SOURCES=$(PACKAGE).ins $(PACKAGE).dtx 
-THESISMAIN=main
 THESISCONTENTS=$(THESISMAIN).tex data/*.tex
-BIBFILE=ref/refs.bib
-SHUJIMAIN=shuji
+BIBFILE=ref/*.bib
 SHUJICONTENTS=$(SHUJIMAIN).tex
 CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
@@ -47,7 +41,9 @@ $(PACKAGE).dvi: $(CLSFILES)
 	latex $(PACKAGE).dtx
 
 $(PACKAGE).ps: $(PACKAGE).dvi
-	# gbk2uni $(PACKAGE)
+ifneq ($(GBK),)
+	gbk2uni $(PACKAGE)
+endif
 	latex $(PACKAGE).dtx
 	dvips -Ppdf -G0 -t letter $(PACKAGE).dvi
 
@@ -63,7 +59,9 @@ $(THESISMAIN).dvi: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
 
 ifeq ($(METHOD),dvipdfm)
 $(THESISMAIN).pdf: $(THESISMAIN).dvi
-	# gbk2uni $(THESISMAIN)
+ifneq ($(GBK),)
+	gbk2uni $(THESISMAIN)
+endif
 	latex $(THESISMAIN).tex
 	dvipdfm $(THESISMAIN).dvi
 else
@@ -72,7 +70,9 @@ $(THESISMAIN).pdf: $(THESISMAIN).ps
 endif
 
 $(THESISMAIN).ps: $(THESISMAIN).dvi
-	# gbk2uni $(THESISMAIN)
+ifneq ($(GBK),)
+	gbk2uni $(THESISMAIN)
+endif
 	latex $(THESISMAIN).tex
 	dvips -Ppdf -G0 $(THESISMAIN).dvi
 
@@ -90,7 +90,9 @@ $(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
 
 ifeq ($(METHOD),dvipdfm)
 $(SHUJIMAIN).pdf: $(SHUJIMAIN).dvi
-	# gbk2uni $(SHUJIMAIN)
+ifneq ($(GBK),)
+	gbk2uni $(SHUJIMAIN)
+endif
 	latex $(SHUJIMAIN).tex
 	dvipdfmx $(SHUJIMAIN).dvi
 elifeq ($(METHOD),ps2pdf)
@@ -102,7 +104,9 @@ $(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
 endif
 
 $(SHUJIMAIN).ps: $(SHUJIMAIN).dvi
-	# gbk2uni $(SHUJIMAIN)
+ifneq ($(GBK),)
+	gbk2uni $(SHUJIMAIN)
+endif
 	latex $(SHUJIMAIN).tex
 	dvips -Ppdf -G0 $(SHUJIMAIN).dvi 
 
