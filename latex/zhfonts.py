@@ -96,29 +96,36 @@ lishu = selectfont(lishulist)
 print("幼圆：")
 youyuan = selectfont(youyuanlist)
 
-if not songti or not heiti or not kaiti:
-    print "错误：缺少宋体、黑体或楷体字体"
-    exit(2)
+error_msg = ""
+error_critical = False
+if not songti:
+    error_msg += "Fatal error: missing font Song\\\\"
+    error_critical = True
+if not heiti:
+    error_msg += "错误：缺少黑体，使用宋体代替\\\\"
+    error_critical = True
+if not kaiti:
+    error_msg += "错误：缺少楷体，使用宋体代替\\\\"
+    error_critical = True
+if not fangsong:
+    error_msg += "缺少仿宋，使用宋体代替\\\\"
+if not lishu:
+    error_msg += "缺少隶书，使用宋体代替\\\\"
+if not youyuan:
+    error_msg += "缺少幼圆，使用宋体代替\\\\"
+if error_msg and not error_critical:
+    error_msg += "如对字体替换表示满意，需去除该提示，请手工编辑" \
+        "fontname.def文件，将\\textbackslash{}thu@fontmissingtrue去除。\\\\"
 
 print "生成字体文件fontname.def"
 with open('fontname.def', 'w') as f:
     f.write("\\ProvidesFile{fontname.def}\n")
     f.write("\\newcommand{\\fontsong}{" + songti + "}\n")
-    f.write("\\newcommand{\\fonthei}{" + heiti + "}\n")
-    f.write("\\newcommand{\\fontkai}{" + kaiti + "}\n")
-    if fangsong:
-        f.write("\\newcommand{\\fontfs}{" + fangsong + "}\n")
-    else:
-        print "缺少仿宋，宋体代替"
-        f.write("\\newcommand{\\fontfs}{" + songti + "}\n")
-    if lishu:
-        f.write("\\newcommand{\\fontli}{" + lishu + "}\n")
-    else:
-        print "缺少隶书，宋体代替"
-        f.write("\\newcommand{\\fontli}{" + songti + "}\n")
-    if youyuan:
-        f.write("\\newcommand{\\fontyou}{" + youyuan + "}\n")
-    else:
-        print "缺少幼圆，宋体代替"
-        f.write("\\newcommand{\\fontyou}{" + songti + "}\n")
-
+    f.write("\\newcommand{\\fonthei}{" + (heiti or songti) + "}\n")
+    f.write("\\newcommand{\\fontkai}{" + (kaiti or songti) + "}\n")
+    f.write("\\newcommand{\\fontfs}{" + (fangsong or songti) + "}\n")
+    f.write("\\newcommand{\\fontli}{" + (lishu or songti) + "}\n")
+    f.write("\\newcommand{\\fontyou}{" + (youyuan or songti) + "}\n")
+    if error_msg:
+        f.write("\\thu@fontmissingtrue\n")
+        f.write("\\renewcommand{\\fontwarning}{%s}\n" % error_msg[0:-2])
