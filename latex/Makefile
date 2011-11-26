@@ -25,10 +25,9 @@ BIBFILE=ref/*.bib
 SHUJICONTENTS=$(SHUJIMAIN).tex
 CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
-.PHONY: all clean distclean dist all thesis shuji doc cls cfg dvi ps pdf gbk
+.PHONY: all clean distclean dist thesis shuji doc cls gbk
 
-all: cls doc thesis shuji
-
+all: doc thesis shuji
 
 ###### generate cls/cfg
 cls: $(CLSFILES)
@@ -39,6 +38,17 @@ $(CLSFILES): $(SOURCES)
 ###### for doc
 
 doc: $(PACKAGE).pdf
+
+ifeq ($(METHOD),xelatex)
+
+$(PACKAGE).pdf: $(CLSFILES)
+	xelatex $(PACKAGE).dtx
+	makeindex -s gind.ist -o $(PACKAGE).ind $(PACKAGE).idx
+	makeindex -s gglo.ist -o $(PACKAGE).gls $(PACKAGE).glo
+	xelatex $(PACKAGE).dtx
+	xelatex $(PACKAGE).dtx
+
+else
 
 $(PACKAGE).dvi: $(CLSFILES)
 	latex $(PACKAGE).dtx
@@ -56,6 +66,8 @@ endif
 
 $(PACKAGE).pdf: $(PACKAGE).ps
 	ps2pdf  $(PACKAGE).ps
+
+endif
 
 ###### for thesis
 
