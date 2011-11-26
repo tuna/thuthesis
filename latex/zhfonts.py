@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# This script provide you with the Chinese fonts found by fc-list,
+# let you choose which to use with thuthesis.
+
+# The script prefers the font name in ASCII to the one containing Unicode
+# character, thus trying to avoid the problem with 'Adobe 宋体 Std L'.
+
 try:
     from subprocess import check_output
 except ImportError: # python 2.6 has no check_output
@@ -61,7 +67,21 @@ def selectfont(fontlist):
                 continue
         if 0 <= n < len(fontlist):
             break
-    return fontlist[n].split(",")[-1]
+    asciifontname = ''
+    for x in fontlist[n].split(","):
+        try:
+            x.decode('ascii')
+        except UnicodeDecodeError:
+            pass
+        else:
+            asciifontname = x
+            break
+    if asciifontname:
+        return asciifontname
+    else:
+        print "ASCII font name not found!"
+        print "You might encounter error using this font with XeLaTeX..."
+        return fontlist[n].split(",")[-1]
 
 print("宋体：")
 songti = selectfont(songtilist)
