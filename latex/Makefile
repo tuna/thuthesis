@@ -13,7 +13,10 @@ endif
 
 PACKAGE=thuthesis
 SOURCES=$(PACKAGE).ins $(PACKAGE).dtx 
-THESISCONTENTS=$(THESISMAIN).tex data/*.tex
+THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(EPS) $(EPSGEN)
+EPS=$(wildcard figures/*.eps)
+EPSGEN=$(addsuffix .eps,$(basename $(wildcard figures/*.jpg)))
+EPSGEN+=$(addsuffix .eps,$(basename $(wildcard figures/*.fig)))
 BIBFILE=ref/*.bib
 SHUJICONTENTS=$(SHUJIMAIN).tex
 CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
@@ -82,6 +85,11 @@ $(THESISMAIN).bbl: $(BIBFILE)
 
 
 
+figures/%.eps: figures/%.jpg
+	convert $^ -compress none eps2:$@
+figures/%.eps: figures/%.fig
+	fig2dev -L eps $^ $@
+
 ###### for shuji
 shuji: $(SHUJIMAIN).pdf
 
@@ -133,6 +141,7 @@ clean:
 		*.lot \
 		*.loe \
 		data/*.aux \
+		$(EPSGEN) \
 		dtx-style.sty
 
 distclean: clean
