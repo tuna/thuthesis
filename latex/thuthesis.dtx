@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{2651}
+% \CheckSum{2663}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1195,6 +1195,14 @@
 \ifxetex\thu@checkoption{xelatex}{dvips,dvipdfm,pdftex}\thu@xetextrue\fi
 %    \end{macrocode}
 %
+% 给字体搜索脚本提供的接口。如果脚本认为系统缺少某些字体，可以在 fontname.def 中将
+% thu@fontmissing 设置成 true ，并将警告信息放入 \cs{fontwarning} 中。模版将在封面
+% 上提示用户安装相应的字体。
+%    \begin{macrocode}
+\newif\ifthu@fontmissing
+\thu@fontmissingfalse
+\newcommand{\fontwarning}{}
+%    \end{macrocode}
 %
 % \subsection{装载宏包}
 % \label{sec:loadpackage}
@@ -1254,8 +1262,9 @@
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
   \defaultfontfeatures{Mapping=tex-text} % use TeX --
 %    \end{macrocode}
-% 默认采用 Adobe 的四款 (宋，黑，楷，仿宋) 免费字体。这样的话，缺少隶书和幼圆。本
-% 科的封面大字会受影响。请手动替换。
+%
+% 从 fontname.def 中读取字体名称。如果要自定义字体，可以手动编辑该文件，或者使用
+% zhfonts.py 脚本生成。
 %    \begin{macrocode}
   \input{fontname.def}
   \setCJKmainfont[BoldFont={\fonthei}, ItalicFont={\fontkai}]{\fontsong}
@@ -2494,6 +2503,8 @@
 \newcommand{\thu@teachersig}{导师签名：}
 \newcommand{\thu@frontdate}{日\hspace{2em}期：}
 \newcommand{\thu@ckeywords@title}{关键词：}
+\newcommand{\thu@font@warning}{缺失部分模版使用的字体！
+  请安装字体后修改fontname.def或重新运行zhfonts.py！[\fontwarning]}
 %</cfg>
 %    \end{macrocode}
 %
@@ -2517,6 +2528,7 @@
 \newlength{\thu@title@width}
 \def\thu@put@title#1{\makebox{\hb@xt@\thu@title@width{#1}}}
 \def\thu@first@titlepage{%
+  \ifthu@fontmissing{\textbf\thu@font@warning}\fi%
   \ifthu@postdoctor\thu@first@titlepage@postdoctor\else\thu@first@titlepage@other\fi}
 \newcommand{\thu@first@titlepage@postdoctor}{
   \begin{center}
@@ -3299,6 +3311,8 @@
 
 \ifxetex
   \RequirePackage{xeCJK}
+  \newif\ifthu@fontmissing
+  \newcommand{\fontwarning}{}
   \input{fontname.def}
   \setCJKmainfont[BoldFont={\fonthei}, ItalicFont={\fontkai}]{\fontsong}
 \else
