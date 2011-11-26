@@ -72,7 +72,7 @@ print("幼圆：")
 youyuan = selectfont(youyuanlist)
 
 if not songti or not heiti or not kaiti:
-    print "错误：缺少宋体、黑体和楷体"
+    print "错误：缺少宋体、黑体或楷体字体"
     exit(2)
 
 print "生成字体文件fontname.def"
