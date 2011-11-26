@@ -51,10 +51,15 @@ def selectfont(fontlist):
     for i, v in enumerate(fontlist):
         print i, v
     while True:
-        n = raw_input("选择一个：(输入数字[0-" + str(len(fontlist)) + "]，默认0)")
-        if not n:
+        n_str = raw_input("选择一个：(输入数字[0-" + str(len(fontlist)-1) + "]，默认0)")
+        if not n_str:
             n = 0
-        if (0 <= n < len(fontlist)):
+        else:
+            try:
+                n = int(n_str)
+            except ValueError:
+                continue
+        if 0 <= n < len(fontlist):
             break
     return fontlist[n].split(",")[-1]
 
