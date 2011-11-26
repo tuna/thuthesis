@@ -587,45 +587,43 @@
 % 第一种方式的字体配置比较繁琐，建议使用 donated 制作的中文字体包（自
 % 包含安装方法），请用户自行下载安装，此处不再赘述。本模板推荐使用第二
 % 种方法，只要把所需字体放入系统字体文件夹（也可以指定自定义文件夹）即
-% 可。模板默认采用 Adobe 的四款免费字体，配置如下：
+% 可。模板默认采用 Adobe 的四款免费字体，配置在 fontname.def 文件中，内容如下：
 % \begin{example}
-% \setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
-% \setCJKsansfont{Adobe Heiti Std}
-% \setCJKmonofont{Adobe Kaiti Std}
-% \setCJKfamilyfont{song}{Adobe Song Std}
-% \setCJKfamilyfont{hei}{Adobe Heiti Std}
-% \setCJKfamilyfont{fs}{Adobe Fangsong Std}
-% \setCJKfamilyfont{kai}{Adobe Kaiti Std}
-% \setCJKfamilyfont{li}{Adobe Kaiti Std} % todo: 用隶书字体代替
-% \setCJKfamilyfont{you}{Adobe Kaiti Std} % todo: 用幼圆字体代替
+% \ProvidesFile{fontname.def}
+% \newcommand{\fontsong}{Adobe Song Std}
+% \newcommand{\fonthei}{Adobe Heiti Std}
+% \newcommand{\fontkai}{Adobe Kaiti Std}
+% \newcommand{\fontfs}{Adobe Fangsong Std}
+% \newcommand{\fontli}{Adobe Kaiti Std}
+% \newcommand{\fontyou}{Adobe Kaiti Std}
 % \end{example}
 %
 % 一般系统中默认并不存在这四种字体，所以要根据自己的实际情况来修改上述
 % 定义。对 Windows XP 来说如下：
 % \begin{example}
-% \setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi}]{SimSun}
-% \setCJKsansfont{SimHei}
-% \setCJKmonofont{KaiTi_GB2312}
-% \setCJKfamilyfont{song}{SimSun}
-% \setCJKfamilyfont{hei}{SimHei}
-% \setCJKfamilyfont{fs}{FangSong_GB2312}
-% \setCJKfamilyfont{kai}{KaiTi_GB2312}
-% \setCJKfamilyfont{li}{LiSu}
-% \setCJKfamilyfont{you}{YouYuan}
+% \ProvidesFile{fontname.def}
+% \newcommand{\fontsong}{SimSun}
+% \newcommand{\fonthei}{SimHei}
+% \newcommand{\fontkai}{KaiTi_GB2312}
+% \newcommand{\fontfs}{FangSong_GB2312}
+% \newcommand{\fontli}{LiSu}
+% \newcommand{\fontyou}{YouYuan}
 % \end{example}
 %
 % Vista 和 Win 7 中文字体名字略有不同：
 % \begin{example}
-% \setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi}]{SimSun}
-% \setCJKsansfont{SimHei}
-% \setCJKmonofont{KaiTi}
-% \setCJKfamilyfont{song}{SimSun}
-% \setCJKfamilyfont{hei}{SimHei}
-% \setCJKfamilyfont{fs}{FangSong}
-% \setCJKfamilyfont{kai}{KaiTi}
-% \setCJKfamilyfont{li}{LiSu}
-% \setCJKfamilyfont{you}{YouYuan}
+% \ProvidesFile{fontname.def}
+% \newcommand{\fontsong}{SimSun}
+% \newcommand{\fonthei}{SimHei}
+% \newcommand{\fontkai}{KaiTi}
+% \newcommand{\fontfs}{FangSong}
+% \newcommand{\fontli}{LiSu}
+% \newcommand{\fontyou}{YouYuan}
 % \end{example}
+%
+% 宏包中包含了 ``zhfonts.py'' 脚本，可以交互式地让 Linux
+% 用户从系统中文字体中选择合适的六种字体，最终生成对应的 ``fontname.def''
+% 文件。要使用它，只需在命令行输入该脚本的完整路径即可。
 %
 % 总而言之，用户可以通过命令：
 % \begin{shell}
