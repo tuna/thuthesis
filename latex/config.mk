@@ -1,4 +1,4 @@
-# Compiling method: ps2pdf/dvipdfm
+# Compiling method: ps2pdf/dvipdfm/xelatex
 METHOD = ps2pdf
 # Basename of thesis
 THESISMAIN = main

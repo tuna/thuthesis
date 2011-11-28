@@ -50,9 +50,7 @@
 \RecordChanges
 %\OnlyDescription
 \begin{document}
-\begin{CJK*}{UTF8}{song}
   \DocInput{\jobname.dtx}
-\end{CJK*}
 \end{document}
 %</driver>
 % \fi
@@ -439,7 +437,7 @@
 % 示例文档用户会发现很难下手。所以推荐新用户从模板自带的示例文档入手，里面包括了
 % 论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于
 % 不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文
-% 档，具体内容可以参考模板附带的 main.tex 和 data/。
+% 档，具体内容可以参考模板附带的 main.tex 和 data\/。
 %
 % \begin{example}
 % \documentclass[bachelor]{thuthesis}
@@ -3297,22 +3295,30 @@
 \RequirePackage{array,longtable}
 \RequirePackage{fancybox,fancyvrb}
 \RequirePackage{xcolor}
+\RequirePackage{ifxetex}
 
-\RequirePackage{txfonts}
-\RequirePackage{CJKutf8}
-\newif\ifdtx@UTF\dtx@UTFtrue % todo: review this piece of code, why it needs an
-                             % \iffalse in the comment? where is the real mis-match?
-\ifdtx@UTF\else
-  \IfFileExists{CJKpunct.sty}%
-               {\RequirePackage{CJKpunct}}%
-               {\ClassWarning{thuthesis}{no CJKpunct.sty availiable!}}
+\ifxetex
+  \RequirePackage{xeCJK}
+  \input{fontname.def}
+  \setCJKmainfont[BoldFont={\fonthei}, ItalicFont={\fontkai}]{\fontsong}
+\else
+  \RequirePackage{txfonts}
+  \RequirePackage{CJKutf8}
+
+  \AtBeginDocument{\begin{CJK*}{UTF8}{song}}
+  \AtEndDocument{\end{CJK*}}
 \fi
-\RequirePackage{CJKspace}
 
 \RequirePackage{hyperref}
+\ifxetex
+  \hypersetup{%
+    CJKbookmarks=true}
+\else
+  \hypersetup{%
+    unicode=true,
+    CJKbookmarks=false}
+\fi
 \hypersetup{%
-  unicode=true,
-  CJKbookmarks=false,
   bookmarksnumbered=true,
   bookmarksopen=true,
   bookmarksopenlevel=1,
