@@ -22,7 +22,7 @@ if not fontliststr:
     print("No Chinese font exists! Leaving...")
     exit(1)
 
-fontlist = fontliststr.split("\n")
+fontlist = fontliststr.split("\n")[:-1]
 fontnamelist = []
 songtilist = []
 kaitilist = []
@@ -51,13 +51,13 @@ for x in fontnamelist:
     else:
         pass
 
-def selectfont(fontlist):
+def selectfont(fontlist=fontlist):
     if not fontlist:
         return ''
     for i, v in enumerate(fontlist):
         print i, v
     while True:
-        n_str = raw_input("选择一个：(输入数字[0-" + str(len(fontlist)-1) + "]，默认0)")
+        n_str = raw_input("选择一个：(输入数字[0-" + str(len(fontlist)-1) + "]，默认0。按-1选择其他中文字体，按-2选择其他字体)")
         if not n_str:
             n = 0
         else:
@@ -67,6 +67,10 @@ def selectfont(fontlist):
                 continue
         if 0 <= n < len(fontlist):
             break
+        if n == -1:
+            return selectfont()
+        if n == -2:
+            return selectfont( check_output(["fc-list", ""]).split("\n")[:-1])
     asciifontname = ''
     for x in fontlist[n].split(","):
         try:

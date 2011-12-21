@@ -1,0 +1,77 @@
+% slashbox.sty by Koichi Yasuoka, May 27, 1993
+%              minor modification by Toru Sato, May 31, 1993
+\typeout{slashbox style by K.Yasuoka, May 1993.}%
+\newbox\@slashboxa
+\newbox\@slashboxb
+\newbox\@slashboxc
+\newcount\@slashboxwd
+\newcount\@slashboxht
+\newdimen\@slashsepl
+\newdimen\@slashsepr
+\def\slashbox{%
+  \def\@slashboxpicture##1{%
+    \put(0,0){\line(##1,1){\@slashboxwd}}%
+    \put(0,\@slashboxht){\makebox(0,0)[tl]{\box\@slashboxa}}%
+    \put(\@slashboxwd,0){\makebox(0,0)[br]{\box\@slashboxb}}%
+  }%
+  \@slashbox
+}%
+\def\backslashbox{%
+  \def\@slashboxpicture##1{%
+    \put(0,\@slashboxht){\line(##1,-1){\@slashboxwd}}%
+    \put(0,0){\makebox(0,0)[bl]{\box\@slashboxa}}%
+    \put(\@slashboxwd,\@slashboxht){\makebox(0,0)[tr]{\box\@slashboxb}}%
+  }%
+  \@slashbox
+}%
+\def\@slashbox{\@ifnextchar [{\@@slashbox}{\@@slashbox[0pt]}}
+\def\@@slashbox[#1]{\@ifnextchar [{\@@@slashbox[#1]}{\@@@slashbox[#1][c]}}
+\def\@@@slashbox[#1][#2]#3#4{%
+% #1: width, #2: suppression of \tabcolsep on `l', `r', or `lr' side
+% #3: left item, #4: right item
+  \@slashsepl=\tabcolsep
+  \@slashsepr=\tabcolsep
+    \@tfor\@tempa :=#2\do{\expandafter\let
+        \csname @slashsep\@tempa\endcsname=\z@}%
+  \setbox\@slashboxa=\hbox{\strut\hskip\tabcolsep\shortstack[l]{#3}}%
+  \setbox\@slashboxb=\hbox{\shortstack[r]{#4}\hskip\tabcolsep\strut}%
+  \setbox\@slashboxa=\hbox{\raise\dp\@slashboxa\box\@slashboxa}%
+  \setbox\@slashboxb=\hbox{\raise\dp\@slashboxb\box\@slashboxb}%
+  \setbox\@slashboxc=\hbox{%
+    \@tempdima=\wd\@slashboxa
+    \advance\@tempdima by \wd\@slashboxb
+    \advance\@tempdima by \@slashsepl
+    \advance\@tempdima by \@slashsepr
+    \@tempdimb=#1\relax%
+    \ifdim\@tempdimb>\@tempdima \@tempdima=\@tempdimb\fi%
+    \@tempdimb=\ht\@slashboxa
+    \advance\@tempdimb by \dp\@slashboxa
+    \advance\@tempdimb by \ht\@slashboxb
+    \advance\@tempdimb by \dp\@slashboxb
+    \@tempcnta=\@tempdima
+    \@tempcntb=\@tempdimb
+    \advance\@tempcnta by \@tempcntb
+    \advance\@tempcnta by -1
+    \divide\@tempcnta by \@tempcntb
+    \ifnum\@tempcnta>6 \@tempcnta=6
+      \@tempdimb=0.166666666\@tempdima
+    \else
+      \ifnum\@tempcnta<1 \@tempcnta=1\fi
+      \@tempdima=\@tempdimb
+      \multiply\@tempdima by \@tempcnta
+    \fi%
+    \advance\@tempdima by -\@slashsepl
+    \advance\@tempdima by -\@slashsepr
+    \@slashboxwd=\@tempdima
+    \@slashboxht=\@tempdimb
+    \@tempcntb=\@slashsepl
+    \setlength{\unitlength}{1sp}%
+    \begin{picture}(\@slashboxwd,\@slashboxht)(\@tempcntb,0)
+    \advance\@tempdima by \@slashsepl
+    \advance\@tempdima by \@slashsepr
+    \@slashboxwd=\@tempdima
+    \@slashboxpicture{\@tempcnta}
+    \end{picture}%
+  }%
+  $\vcenter{\box\@slashboxc}$%
+}%
