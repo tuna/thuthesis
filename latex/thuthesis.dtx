@@ -2506,6 +2506,7 @@
 % \changes{v2.5.2}{2006/05/29}{研究生论文标题中英文用 arial 字体。}
 % \changes{v2.6}{2006/06/09}{本科生题目加长，最多 24 个字。}
 % \changes{v4.6}{2011/04/26}{增加博士后封面。}
+% \changes{v4.7}{2011/11/28}{硕士中文封面不再需要英文标题。}
 %
 %    \begin{macrocode}
 %<*cls>
@@ -2581,11 +2582,7 @@
       \renewcommand{\baselinestretch}{1.5}
       \begin{center}
       \yihao[1.2]{\hei\sffamily\thu@ctitle}\par
-      \ifthu@master
-        \erhao[1.1] \textbf{\sffamily\thu@etitle}\par\vskip 5bp
-      \else % for doctor
-        \par\vskip 20bp
-      \fi
+      \par\vskip 20bp
       \xiaoer[1] \textrm{{\ziju{2bp}\thu@apply}}
       \end{center}}
     \fi
@@ -2654,10 +2651,23 @@
 % \end{macro}
 %
 % \begin{macro}{\thu@doctor@engcover}
-% 博士论文英文封面部分。
+% 研究生论文英文封面部分。
 % \changes{v4.2}{2008/01/23}{博士英文封面补充联合导师。}
+% \changes{v4.7}{2011/11/28}{硕士生新增英文封面。}
 %    \begin{macrocode}
-\newcommand{\thu@doctor@engcover}{%
+\newcommand{\thu@engcover}{%
+  \def\thu@master@art{Master of Arts}
+  \def\thu@master@sci{Master of Science}
+  \def\thu@doctor@phi{Doctor of Philosophy}
+  \newif\ifthu@professional
+  \thu@professionalfalse
+  \ifthu@master
+    \ifx\thu@edegree\thu@master@art\relax\else
+      \ifx\thu@edegree\thu@master@sci\relax\else
+        \thu@professionaltrue\fi\fi\fi
+  \ifthu@doctor
+    \ifx\thu@edegree\thu@doctor@phi\relax\else
+      \thu@professionaltrue\fi\fi
   \begin{center}
     \vspace*{0.2cm}
     \parbox[t][5.2cm][t]{\paperwidth-7.2cm}{
@@ -2665,26 +2675,38 @@
       \begin{center}
         \erhao[1.1]\bfseries\sffamily\thu@etitle
       \end{center}}
-    \parbox[t][5.8cm][t]{\paperwidth-7.2cm}{
+    \parbox[t][][t]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.3}
       \begin{center}
-        \sanhao Dissertation Submitted to\\
+        \sanhao
+        \ifthu@master Thesis \else Dissertation \fi
+        Submitted to\\
         {\bfseries Tsinghua University}\\
         in partial fulfillment of the requirement\\
-        for the degree of\\
+        for the \ifthu@professional professional\fi
+        degree of\\
         {\bfseries\sffamily\thu@edegree}
+        \ifthu@professional\relax\else
+          \\in\\[3bp]
+          {\bfseries\sffamily\thu@emajor}
+        \fi
       \end{center}}
-    \parbox[t][3.6cm][b]{\paperwidth-7.2cm}{
+    \parbox[t][][b]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.3}
       \begin{center}
         \sanhao\sffamily by\\[3bp]
-        \bfseries\thu@eauthor\\(~\thu@emajor~)
+        \bfseries\thu@eauthor
+        \ifthu@professional
+          \ifx\thu@emajor\empty\relax\else
+            \\(~\thu@emajor~)
+        \fi\fi
       \end{center}}
     \par\vspace{0.9cm}
     \parbox[t][2.1cm][t]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.2}\xiaosan\centering
       \begin{tabular}{rl}
-        Dissertation Supervisor : & \thu@esupervisor\\
+        \ifthu@master Thesis \else Dissertation \fi
+        Supervisor : & \thu@esupervisor\\
         \ifx\thu@eassosupervisor\@empty
           \else Associate Supervisor : & \thu@eassosupervisor\\\fi
         \ifx\thu@ecosupervisor\@empty
@@ -2743,12 +2765,14 @@
 %
 % \changes{v2.5}{2006/05/19}{本科论文评语位置调整。}
 % \changes{v3.0}{2007/05/12}{本科论文评语取消。}
+% \changes{v4.7}{2011/11/28}{硕士论文也需要英文封面。}
 %
-% 博士论文需要增加英文封面
+% 研究生论文需要增加英文封面
 %    \begin{macrocode}
-    \ifthu@doctor
-      \cleardoublepage\thu@doctor@engcover
-    \fi
+    \ifthu@bachelor\relax\else
+      \ifthu@postdoctor\relax\else
+        \cleardoublepage\thu@engcover
+    \fi\fi
 %    \end{macrocode}
 %
 % 授权说明
