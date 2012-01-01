@@ -31,8 +31,8 @@ lishulist = []
 youyuanlist = []
 
 # strip out ':style=BLABLA' stuff
-fontnamelist = [x.split(":")[0] for x in fontliststr.split("\n")[:-1]]
-allfontnamelist = [x.split(":")[0] for x in allfontliststr.split("\n")[:-1]]
+fontnamelist = sorted(set([x.split(":")[0] for x in fontliststr.split("\n")[:-1]]))
+allfontnamelist = sorted(set([x.split(":")[0] for x in allfontliststr.split("\n")[:-1]]))
 
 print fontnamelist
 
