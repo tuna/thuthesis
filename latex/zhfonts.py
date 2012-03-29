@@ -18,12 +18,11 @@ from string import split
 import re
 
 fontliststr = check_output(["fc-list", ":lang=zh"])
+allfontliststr = check_output(["fc-list", ""])
 if not fontliststr:
     print("No Chinese font exists! Leaving...")
     exit(1)
 
-fontlist = fontliststr.split("\n")
-fontnamelist = []
 songtilist = []
 kaitilist = []
 heitilist = []
@@ -32,39 +31,53 @@ lishulist = []
 youyuanlist = []
 
 # strip out ':style=BLABLA' stuff
-for x in fontlist:
-    fontnamelist.append(x.split(":")[0])
+fontnamelist = sorted(set([x.split(":")[0] for x in fontliststr.split("\n")[:-1]]))
+allfontnamelist = sorted(set([x.split(":")[0] for x in allfontliststr.split("\n")[:-1]]))
+
+print fontnamelist
 
 for x in fontnamelist:
-    if re.search("仿宋|FangSong", x, re.IGNORECASE):
+    if re.search("仿宋|Fang", x, re.IGNORECASE):
         fangsonglist.append(x)
     elif re.search("宋|Ming", x, re.IGNORECASE):
         songtilist.append(x)
-    elif re.search("黑", x, re.IGNORECASE):
+    elif re.search("黑|Hei|Sans|Gothic", x, re.IGNORECASE):
         heitilist.append(x)
-    elif re.search("楷", x, re.IGNORECASE):
+    elif re.search("楷|Kai", x, re.IGNORECASE):
         kaitilist.append(x)
     elif re.search("隶|Li", x, re.IGNORECASE):
         lishulist.append(x)
-    elif re.search("幼圆|YouYuan", x, re.IGNORECASE):
+    elif re.search("圆|Yuan", x, re.IGNORECASE):
         youyuanlist.append(x)
     else:
         pass
 
 def selectfont(fontlist):
     if not fontlist:
-        return ''
+        if not fontnamelist:
+            if not allfontnamelist:
+                return ''
+            else:
+                return selectfont(allfontnamelist)
+        else:
+            return selectfont(fontnamelist)
+    
     for i, v in enumerate(fontlist):
         print i, v
     while True:
-        n_str = raw_input("选择一个：(输入数字[0-" + str(len(fontlist)-1) + "]，默认0)")
+        n_str = raw_input("选择一个：(输入数字[0-" + str(len(fontlist)-1) + "]，默认0。按z在所有中文字体中选择，按a在所有字体中选择)")
         if not n_str:
             n = 0
         else:
-            try:
-                n = int(n_str)
-            except ValueError:
-                continue
+            if n_str == "z" or n_str =="Z":
+                return selectfont(fontnamelist)
+            elif n_str == "a" or n_str == "A":
+                return selectfont(allfontnamelist)
+            else:
+                try:
+                    n = int(n_str)
+                except ValueError:
+                    continue
         if 0 <= n < len(fontlist):
             break
     asciifontname = ''
