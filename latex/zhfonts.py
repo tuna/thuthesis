@@ -34,8 +34,6 @@ youyuanlist = []
 fontnamelist = sorted(set([x.split(":")[0] for x in fontliststr.split("\n")[:-1]]))
 allfontnamelist = sorted(set([x.split(":")[0] for x in allfontliststr.split("\n")[:-1]]))
 
-print fontnamelist
-
 for x in fontnamelist:
     if re.search("仿宋|Fang", x, re.IGNORECASE):
         fangsonglist.append(x)
