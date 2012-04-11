@@ -51,21 +51,17 @@ fangsonglist = []
 lishulist = []
 youyuanlist = []
 
+relist = ["仿宋|Fang", "宋|Ming", "黑|Hei|Sans|Gothic",
+          "楷|Kai", "隶|Li", "圆|Yuan"]
+familylist = [fangsonglist, songtilist, heitilist,
+              kaitilist, lishulist, youyuanlist]
+tuplelist = zip(relist, familylist)
+
 for x in fontnamelist:
-    if re.search("仿宋|Fang", x, re.IGNORECASE):
-        fangsonglist.append(x)
-    elif re.search("宋|Ming", x, re.IGNORECASE):
-        songtilist.append(x)
-    elif re.search("黑|Hei|Sans|Gothic", x, re.IGNORECASE):
-        heitilist.append(x)
-    elif re.search("楷|Kai", x, re.IGNORECASE):
-        kaitilist.append(x)
-    elif re.search("隶|Li", x, re.IGNORECASE):
-        lishulist.append(x)
-    elif re.search("圆|Yuan", x, re.IGNORECASE):
-        youyuanlist.append(x)
-    else:
-        pass
+    for t in tuplelist:
+        if re.search(t[0], x, re.IGNORECASE):
+            t[1].append(x)
+            break
 
 def selectfont(fontlist):
     if not fontlist:
