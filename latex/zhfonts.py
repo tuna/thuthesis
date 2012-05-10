@@ -10,6 +10,9 @@
 # The script should work with Python 2.6, 2.7 and Python 3.2, providing
 # that your locale is utf-8. Please report issues if you find.
 
+from __future__ import print_function
+from __future__ import unicode_literals
+
 try:
     from subprocess import check_output
 except ImportError: # python 2.6 has no check_output
@@ -48,21 +51,17 @@ fangsonglist = []
 lishulist = []
 youyuanlist = []
 
+relist = ["仿宋|Fang", "宋|Ming", "黑|Hei|Sans|Gothic",
+          "楷|Kai", "隶|Li", "圆|Yuan"]
+familylist = [fangsonglist, songtilist, heitilist,
+              kaitilist, lishulist, youyuanlist]
+tuplelist = zip(relist, familylist)
+
 for x in fontnamelist:
-    if re.search("仿宋|Fang", x, re.IGNORECASE):
-        fangsonglist.append(x)
-    elif re.search("宋|Ming", x, re.IGNORECASE):
-        songtilist.append(x)
-    elif re.search("黑|Hei|Sans|Gothic", x, re.IGNORECASE):
-        heitilist.append(x)
-    elif re.search("楷|Kai", x, re.IGNORECASE):
-        kaitilist.append(x)
-    elif re.search("隶|Li", x, re.IGNORECASE):
-        lishulist.append(x)
-    elif re.search("圆|Yuan", x, re.IGNORECASE):
-        youyuanlist.append(x)
-    else:
-        pass
+    for t in tuplelist:
+        if re.search(t[0], x, re.IGNORECASE):
+            t[1].append(x)
+            break
 
 def selectfont(fontlist):
     if not fontlist:
@@ -75,10 +74,11 @@ def selectfont(fontlist):
             return selectfont(fontnamelist)
     
     for i, v in enumerate(fontlist):
-        # Ugly, since python 2 has no real print function.
-        print(str(i) + ' ' + v)
+        print('{0:d} {1}'.format(i, v))
     while True:
-        n_str = input("选择一个：(输入数字[0-" + str(len(fontlist)-1) + "]，默认0。按z在所有中文字体中选择，按a在所有字体中选择)")
+        # Note input/raw_input in Python 2.x do not accept unicode string.
+        print("选择一个：(输入数字[0-{0:d}]，默认0。按z在所有中文字体中选择，按a在所有字体中选择)".format(len(fontlist)-1), end='')
+        n_str = input()
         if not n_str:
             n = 0
         else:
