@@ -2013,6 +2013,8 @@
 % \begin{macro}{\chapter}
 % 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段前空 24 磅，段
 % 后空 18 磅。
+%
+% 本科要求：段前段后间距 30/20 pt，行距 20pt。但正文章节 30pt 的话和样例效果不一致。
 % \changes{v2.5}{2006/05/13}{取消 \pkg{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
 % \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
 % \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化，ft!}
@@ -2038,19 +2040,19 @@
   \chaptermark{#1}%
   \@makechapterhead{#2}}
 \def\@makechapterhead#1{%
-  \vspace*{20bp}%
+  \ifthu@bachelor\vspace*{24bp}\else\vspace*{20bp}\fi%
   {\parindent \z@ \centering
     \hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
     \ifnum \c@secnumdepth >\m@ne
       \@chapapp\hskip1em
     \fi
     #1\par\nobreak
-    \vskip 24bp}}
+    \ifthu@bachelor\vskip 20bp\else\vskip 24bp\fi}}
 \def\@schapter#1{%
   \@makeschapterhead{#1}
   \@afterheading}
 \def\@makeschapterhead#1{%
-  \vspace*{20bp}%
+  \ifthu@bachelor\vspace*{30bp}\else\vspace*{20bp}\fi%
   {\parindent \z@ \centering
    \hei\csname thu@title@font\endcsname\sanhao[1]
    \ifthu@bachelor\xiaosan\else
@@ -2060,7 +2062,7 @@
    \fi
    \interlinepenalty\@M
    #1\par\nobreak
-   \vskip 24bp}}
+    \ifthu@bachelor\vskip 20bp\else\vskip 24bp\fi}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2110,12 +2112,14 @@
 % 一级节标题，例如：2.1  实验装置与实验方法
 % 节标题序号与标题名之间空一个汉字符（下同）。
 % 采用黑体四号（14pt）字居左书写，行距为固定值 20 磅，段前空 24 磅，段后空 6 磅。
+%
+% 本科：25/12 pt，行距 18pt
 % \changes{v4.4}{2008/06/04}{调整段前距为 -20bp 而不是原来的 -24bp。本科的混帐例
 % 子！}
 %    \begin{macrocode}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                     {\ifthu@bachelor -20bp\else -24bp\fi\@plus -1ex \@minus -.2ex}%
-                     {6bp \@plus .2ex}%
+                     {\ifthu@bachelor -25bp\else -24bp\fi\@plus -1ex \@minus -.2ex}%
+                     {\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex}%
                      {\hei\csname thu@title@font\endcsname\sihao[1.429]}}
 %    \end{macrocode}
 % \end{macro}
@@ -2408,14 +2412,12 @@
 % \changes{v4.4.2}{2008/06/07}{本科生签名之间距离改为 \cs{hskip1em}。}
 % \changes{v4.5.2}{2010/05/29}{本科论文日期具体到日。}
 % \changes{v4.6}{2011/04/26}{增加博士后相关配置。}
+% \changes{v4.7dev}{2012/05/27}{修正本科生作者信息名称。}
+% \changes{v4.7dev}{2012/05/27}{本科生关键字也用分号分割了。}
 %    \begin{macrocode}
 %<*cfg>
-\def\thu@ckeywords@separator{
-  \ifthu@bachelor\hspace{1em}
-  \else；\fi}
-\def\thu@ekeywords@separator{
-  \ifthu@bachelor\hspace{1em}
-  \else; \fi}
+\def\thu@ckeywords@separator{；}
+\def\thu@ekeywords@separator{;}
 \def\thu@catalog@number@title{分类号}
 \def\thu@id@title{编号}
 \def\thu@title@sep{：}
@@ -2429,8 +2431,6 @@
 \def\thu@postdoctor@report@title{博士后研究报告}
 \def\thu@bachelor@subtitle{综合论文训练}
 \def\thu@bachelor@title@pre{题目}
-\def\thu@department@title{系别}
-\def\thu@major@title{专业}
 \def\thu@postdoctor@date@title{研究起止日期}
 \ifthu@postdoctor
   \def\thu@author@title{博士后姓名}
@@ -2448,8 +2448,13 @@
   \ifx\thu@secretlevel\thu@secretlevel@inner\relax\else ★\fi%
   \hspace{2em}\thu@secretyear\hspace{1em}年}
 \def\thu@apply{（申请清华大学\thu@cdegree 学位论文）}
-\def\thu@department@title{培养单位}
-\def\thu@major@title{学科}
+\ifthu@bachelor
+  \def\thu@department@title{系别}
+  \def\thu@major@title{专业}
+\else
+  \def\thu@department@title{培养单位}
+  \def\thu@major@title{学科}
+\fi
 \ifthu@postdoctor
   \def\thu@supervisor@title{合作导师}
 \else
@@ -2559,11 +2564,11 @@
     \parbox[b][2.4cm][t]{\textwidth}{%
       \ifthu@secret\hfill{\sihao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
-      \vskip0.2cm
+      \vskip0.45cm
       {\ziju{10bp}\yihao\li\thu@schoolname}
-      \par\vskip1.2cm
+      \par\vskip1.5cm
       {\ziju{18bp}\xiaochu\hei\thu@bachelor@subtitle}
-      \vskip2.5cm
+      \vskip2.2cm
       \noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
       \parbox[t]{12cm}{%
         \setbox0=\hbox{{\yihao[1.55]\thu@ctitle}}
@@ -2576,7 +2581,7 @@
           \fi
         \end{picture}%
         \ignorespaces\yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
-      \vskip1.55cm
+      \vskip1.3cm
     \else
       \parbox[t][9cm][t]{\paperwidth-8cm}{
       \renewcommand{\baselinestretch}{1.5}
@@ -2641,10 +2646,11 @@
 %    \end{macrocode}
 %
 % 论文成文打印的日期，用三号宋体汉字，不用阿拉伯数字
+% 本科：论文成文打印的日期用阿拉伯数字，采用小四号宋体
 % \changes{v4.4.3}{2008/06/09}{修改本科生论文封面日期格式以符合新样例。}
 %    \begin{macrocode}
      \begin{center}
-       {\ifthu@bachelor\hskip-0.9cm\xiaosi\else\sanhao\fi \song \thu@cdate}
+       {\ifthu@bachelor\vskip-1.0cm\hskip-1.2cm\xiaosi\else\sanhao\fi \song \thu@cdate}
      \end{center}
     \end{center}} % end of titlepage
 %    \end{macrocode}
@@ -2726,12 +2732,12 @@
 % 封面中论文授权部分。
 %    \begin{macrocode}
 \newcommand{\thu@authorization@mk}{%
-  \ifthu@bachelor\vspace*{-0.6cm}\else\vspace*{-0.1cm}\fi % shit code!
+  \ifthu@bachelor\vspace*{0.5cm}\else\vspace*{-0.1cm}\fi % shit code!
   \begin{center}\erhao\hei\thu@authtitle\end{center}
-  \ifthu@bachelor\vskip\baselineskip\else\vskip18pt\sihao[2.03]\fi\par
+  \ifthu@bachelor\vskip5pt\else\vskip18pt\sihao[2.03]\fi\par
   \thu@authorization\par
   \textbf{\thu@authorizationaddon}\par
-  \ifthu@bachelor\vskip1.0cm\else\vskip1.9cm\fi
+  \ifthu@bachelor\vskip0.7cm\else\vskip1.9cm\fi
   \ifthu@bachelor
     \ifthu@bachelor\indent\else\noindent\fi\thu@authorsig\thu@underline\relax%
     \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax
