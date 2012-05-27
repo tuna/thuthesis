@@ -2013,6 +2013,8 @@
 % \begin{macro}{\chapter}
 % 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段前空 24 磅，段
 % 后空 18 磅。
+%
+% 本科要求：段前段后间距 30/20 pt，行距 20pt。但正文章节 30pt 的话和样例效果不一致。
 % \changes{v2.5}{2006/05/13}{取消 \pkg{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
 % \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
 % \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化，ft!}
@@ -2038,19 +2040,19 @@
   \chaptermark{#1}%
   \@makechapterhead{#2}}
 \def\@makechapterhead#1{%
-  \vspace*{20bp}%
+  \ifthu@bachelor\vspace*{24bp}\else\vspace*{20bp}\fi%
   {\parindent \z@ \centering
     \hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
     \ifnum \c@secnumdepth >\m@ne
       \@chapapp\hskip1em
     \fi
     #1\par\nobreak
-    \vskip 24bp}}
+    \ifthu@bachelor\vskip 20bp\else\vskip 24bp\fi}}
 \def\@schapter#1{%
   \@makeschapterhead{#1}
   \@afterheading}
 \def\@makeschapterhead#1{%
-  \vspace*{20bp}%
+  \ifthu@bachelor\vspace*{30bp}\else\vspace*{20bp}\fi%
   {\parindent \z@ \centering
    \hei\csname thu@title@font\endcsname\sanhao[1]
    \ifthu@bachelor\xiaosan\else
@@ -2060,7 +2062,7 @@
    \fi
    \interlinepenalty\@M
    #1\par\nobreak
-   \vskip 24bp}}
+    \ifthu@bachelor\vskip 20bp\else\vskip 24bp\fi}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2110,12 +2112,14 @@
 % 一级节标题，例如：2.1  实验装置与实验方法
 % 节标题序号与标题名之间空一个汉字符（下同）。
 % 采用黑体四号（14pt）字居左书写，行距为固定值 20 磅，段前空 24 磅，段后空 6 磅。
+%
+% 本科：25/12 pt，行距 18pt
 % \changes{v4.4}{2008/06/04}{调整段前距为 -20bp 而不是原来的 -24bp。本科的混帐例
 % 子！}
 %    \begin{macrocode}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                     {\ifthu@bachelor -20bp\else -24bp\fi\@plus -1ex \@minus -.2ex}%
-                     {6bp \@plus .2ex}%
+                     {\ifthu@bachelor -25bp\else -24bp\fi\@plus -1ex \@minus -.2ex}%
+                     {\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex}%
                      {\hei\csname thu@title@font\endcsname\sihao[1.429]}}
 %    \end{macrocode}
 % \end{macro}
