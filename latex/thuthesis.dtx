@@ -2408,14 +2408,12 @@
 % \changes{v4.4.2}{2008/06/07}{本科生签名之间距离改为 \cs{hskip1em}。}
 % \changes{v4.5.2}{2010/05/29}{本科论文日期具体到日。}
 % \changes{v4.6}{2011/04/26}{增加博士后相关配置。}
+% \changes{v4.7dev}{2012/05/27}{修正本科生作者信息名称。}
+% \changes{v4.7dev}{2012/05/27}{本科生关键字也用分号分割了。}
 %    \begin{macrocode}
 %<*cfg>
-\def\thu@ckeywords@separator{
-  \ifthu@bachelor\hspace{1em}
-  \else；\fi}
-\def\thu@ekeywords@separator{
-  \ifthu@bachelor\hspace{1em}
-  \else; \fi}
+\def\thu@ckeywords@separator{；}
+\def\thu@ekeywords@separator{;}
 \def\thu@catalog@number@title{分类号}
 \def\thu@id@title{编号}
 \def\thu@title@sep{：}
@@ -2429,8 +2427,6 @@
 \def\thu@postdoctor@report@title{博士后研究报告}
 \def\thu@bachelor@subtitle{综合论文训练}
 \def\thu@bachelor@title@pre{题目}
-\def\thu@department@title{系别}
-\def\thu@major@title{专业}
 \def\thu@postdoctor@date@title{研究起止日期}
 \ifthu@postdoctor
   \def\thu@author@title{博士后姓名}
@@ -2448,8 +2444,13 @@
   \ifx\thu@secretlevel\thu@secretlevel@inner\relax\else ★\fi%
   \hspace{2em}\thu@secretyear\hspace{1em}年}
 \def\thu@apply{（申请清华大学\thu@cdegree 学位论文）}
-\def\thu@department@title{培养单位}
-\def\thu@major@title{学科}
+\ifthu@bachelor
+  \def\thu@department@title{系别}
+  \def\thu@major@title{专业}
+\else
+  \def\thu@department@title{培养单位}
+  \def\thu@major@title{学科}
+\fi
 \ifthu@postdoctor
   \def\thu@supervisor@title{合作导师}
 \else
@@ -2641,6 +2642,7 @@
 %    \end{macrocode}
 %
 % 论文成文打印的日期，用三号宋体汉字，不用阿拉伯数字
+% 本科：论文成文打印的日期用阿拉伯数字，采用小四号宋体
 % \changes{v4.4.3}{2008/06/09}{修改本科生论文封面日期格式以符合新样例。}
 %    \begin{macrocode}
      \begin{center}
