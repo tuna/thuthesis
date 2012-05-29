@@ -1581,6 +1581,7 @@
 % \changes{v2.4}{2006/04/14}{把页面尺寸写入 dvi，避免有的用户通
 %   过 dvips 不指定页面类型而得到古怪的结果。}
 % \changes{v4.5.2}{2010/09/19}{研究生页面边距由 3.2cm 改为 3cm。}
+% \changes{v4.7dev}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
 %    \begin{macrocode}
 %<*cls>
 \AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
@@ -1595,7 +1596,7 @@
   \addtolength{\textwidth}{-6.4cm}
   \setlength{\topmargin}{2.8cm-1in}
   \setlength{\oddsidemargin}{3.2cm-1in}
-  \setlength{\footskip}{1.3cm}
+  \setlength{\footskip}{1.78cm}
   \setlength{\headsep}{0.6cm}
   \addtolength{\textheight}{-7.8cm}
 \else
@@ -1630,6 +1631,7 @@
 % \changes{v2.1}{2006/03/01}{彻底放弃 fancyhdr，定义自己的样式。}
 % \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
 % \changes{v2.5}{2006/05/20}{增加 empty 页面样式。}
+% \changes{v4.7dev}{2012/05/29}{本科页码用小五号字。}
 % \begin{macro}{\ps@thu@empty}
 % \begin{macro}{\ps@thu@plain}
 % \begin{macro}{\ps@thu@headings}
@@ -1648,7 +1650,7 @@
 \def\ps@thu@plain{%
   \let\@oddhead\@empty%
   \let\@evenhead\@empty%
-  \def\@oddfoot{\hfil\wuhao\thepage\hfil}%
+  \def\@oddfoot{\hfil\xiaowu\thepage\hfil}%
   \let\@evenfoot=\@oddfoot}
 \def\ps@thu@headings{%
   \def\@oddhead{\vbox to\headheight{%
