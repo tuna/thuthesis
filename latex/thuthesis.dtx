@@ -3047,9 +3047,12 @@
 %
 % 参考文献的正文部分用五号字。
 % 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
+% 本科生要求固定行距 17pt，段前后间距 3pt。
 %
 % \begin{macro}{\thudot}
-% 研究生参考文献条目最后加点，而本科有不要。只好定义一个东西来拙劣地处理了，
+% 研究生参考文献条目最后可加点，图书文献一般不加。
+% 本科生未作说明。
+% 只好定义一个东西来拙劣地处理了，
 % 本来这个命令通过 \texttt{@preamble} 命令放到 bib 文件中是最省事的，但是那
 % 样的话很多人肯定不知道该怎么做了。
 % \changes{v3.1}{2007/06/19}{引入 cs{thudot} 来自动完成参考文献最后的点。}
@@ -3061,10 +3064,15 @@
 % \begin{macro}{thuphdbib}
 %   本科生和研究生模板要求外文硕士论文参考文献显示``[Master Thesis]''，而博士模板
 %   则于 2007 年冬要求显示为``[M]''。对应的外文博士论文参考文献分别显示为``[Phd
-%   Thesis]''和``[D]''。所以不得不出此下策。
+%   Thesis]''和``[D]''。
+%   研究生写作指南(201109)要求：
+%   中文硕士学位论文标注``[硕士学位论文]''，
+%   中文博士学位论文标注``[博士学位论文]''，外文学位论文标注``[D]''。
+%   本科生写作指南未指定，参考文献著录格式文档中对中外文学位论文都标注``[D]''。
+% \changes{v4.7dev}{2012/05/29}{修改两个宏使其对应不同的中文论文需求。}
 %    \begin{macrocode}
-\def\thumasterbib{\ifthu@doctor [M]\else [Master Thesis]\fi}
-\def\thuphdbib{\ifthu@doctor [D]\else [Doctor Thesis]\fi}
+\def\thumasterbib{\ifthu@bachelor [D]\else [硕士学位论文]\fi}
+\def\thuphdbib{\ifthu@bachelor [D]\else [博士学位论文]\fi}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
