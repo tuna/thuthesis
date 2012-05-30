@@ -2514,6 +2514,7 @@
 % \changes{v2.6}{2006/06/09}{本科生题目加长，最多 24 个字。}
 % \changes{v4.6}{2011/04/26}{增加博士后封面。}
 % \changes{v4.7}{2011/11/28}{硕士中文封面不再需要英文标题。}
+% \changes{v4.7dev}{2012/05/30}{本科生题目下划线长度自动适应字数。}
 %
 %    \begin{macrocode}
 %<*cls>
@@ -2560,6 +2561,7 @@
     \vskip2cm
     {\sihao\thu@postdoctor@date@title\hskip1em\underline\thu@postdoctordate}
   \end{center}}
+\newcommand*{\getcmlength}[1]{\strip@pt\dimexpr0.035146\dimexpr#1\relax\relax}
 \newcommand{\thu@first@titlepage@other}{
   \begin{center}
     \vspace*{-1.3cm}
@@ -2577,9 +2579,13 @@
         \begin{picture}(0,0)(0,0)
           \setlength\unitlength{1cm}
           \linethickness{1.3pt}
-          \put(0,-0.25){\line(1,0){12}}
           \ifdim\wd0>12cm
-            \put(0,-1.68){\line(1,0){12}}
+            \put(0,-0.25){\line(1,0){12}}
+            \def\secondlinelength{\getcmlength{\wd0-11.9cm}}
+            \put(0,-1.68){\line(1,0){\secondlinelength}}
+          \else
+            \def\firstlinelength{\getcmlength{\wd0}}
+            \put(0,-0.25){\line(1,0){\firstlinelength}}
           \fi
         \end{picture}%
         \ignorespaces\yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
