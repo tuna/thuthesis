@@ -1581,6 +1581,7 @@
 % \changes{v2.4}{2006/04/14}{把页面尺寸写入 dvi，避免有的用户通
 %   过 dvips 不指定页面类型而得到古怪的结果。}
 % \changes{v4.5.2}{2010/09/19}{研究生页面边距由 3.2cm 改为 3cm。}
+% \changes{v4.7dev}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
 %    \begin{macrocode}
 %<*cls>
 \AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
@@ -1595,7 +1596,7 @@
   \addtolength{\textwidth}{-6.4cm}
   \setlength{\topmargin}{2.8cm-1in}
   \setlength{\oddsidemargin}{3.2cm-1in}
-  \setlength{\footskip}{1.3cm}
+  \setlength{\footskip}{1.78cm}
   \setlength{\headsep}{0.6cm}
   \addtolength{\textheight}{-7.8cm}
 \else
@@ -1630,6 +1631,7 @@
 % \changes{v2.1}{2006/03/01}{彻底放弃 fancyhdr，定义自己的样式。}
 % \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
 % \changes{v2.5}{2006/05/20}{增加 empty 页面样式。}
+% \changes{v4.7dev}{2012/05/29}{本科页码用小五号字。}
 % \begin{macro}{\ps@thu@empty}
 % \begin{macro}{\ps@thu@plain}
 % \begin{macro}{\ps@thu@headings}
@@ -1648,7 +1650,7 @@
 \def\ps@thu@plain{%
   \let\@oddhead\@empty%
   \let\@evenhead\@empty%
-  \def\@oddfoot{\hfil\wuhao\thepage\hfil}%
+  \def\@oddfoot{\hfil\xiaowu\thepage\hfil}%
   \let\@evenfoot=\@oddfoot}
 \def\ps@thu@headings{%
   \def\@oddhead{\vbox to\headheight{%
@@ -2512,6 +2514,7 @@
 % \changes{v2.6}{2006/06/09}{本科生题目加长，最多 24 个字。}
 % \changes{v4.6}{2011/04/26}{增加博士后封面。}
 % \changes{v4.7}{2011/11/28}{硕士中文封面不再需要英文标题。}
+% \changes{v4.7dev}{2012/05/30}{本科生题目下划线长度自动适应字数。}
 %
 %    \begin{macrocode}
 %<*cls>
@@ -2558,6 +2561,7 @@
     \vskip2cm
     {\sihao\thu@postdoctor@date@title\hskip1em\underline\thu@postdoctordate}
   \end{center}}
+\newcommand*{\getcmlength}[1]{\strip@pt\dimexpr0.035146\dimexpr#1\relax\relax}
 \newcommand{\thu@first@titlepage@other}{
   \begin{center}
     \vspace*{-1.3cm}
@@ -2575,9 +2579,13 @@
         \begin{picture}(0,0)(0,0)
           \setlength\unitlength{1cm}
           \linethickness{1.3pt}
-          \put(0,-0.25){\line(1,0){12}}
           \ifdim\wd0>12cm
-            \put(0,-1.68){\line(1,0){12}}
+            \put(0,-0.25){\line(1,0){12}}
+            \def\secondlinelength{\getcmlength{\wd0-11.9cm}}
+            \put(0,-1.68){\line(1,0){\secondlinelength}}
+          \else
+            \def\firstlinelength{\getcmlength{\wd0}}
+            \put(0,-0.25){\line(1,0){\firstlinelength}}
           \fi
         \end{picture}%
         \ignorespaces\yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
@@ -3045,9 +3053,12 @@
 %
 % 参考文献的正文部分用五号字。
 % 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
+% 本科生要求固定行距 17pt，段前后间距 3pt。
 %
 % \begin{macro}{\thudot}
-% 研究生参考文献条目最后加点，而本科有不要。只好定义一个东西来拙劣地处理了，
+% 研究生参考文献条目最后可加点，图书文献一般不加。
+% 本科生未作说明。
+% 只好定义一个东西来拙劣地处理了，
 % 本来这个命令通过 \texttt{@preamble} 命令放到 bib 文件中是最省事的，但是那
 % 样的话很多人肯定不知道该怎么做了。
 % \changes{v3.1}{2007/06/19}{引入 cs{thudot} 来自动完成参考文献最后的点。}
@@ -3059,10 +3070,15 @@
 % \begin{macro}{thuphdbib}
 %   本科生和研究生模板要求外文硕士论文参考文献显示``[Master Thesis]''，而博士模板
 %   则于 2007 年冬要求显示为``[M]''。对应的外文博士论文参考文献分别显示为``[Phd
-%   Thesis]''和``[D]''。所以不得不出此下策。
+%   Thesis]''和``[D]''。
+%   研究生写作指南(201109)要求：
+%   中文硕士学位论文标注``[硕士学位论文]''，
+%   中文博士学位论文标注``[博士学位论文]''，外文学位论文标注``[D]''。
+%   本科生写作指南未指定，参考文献著录格式文档中对中外文学位论文都标注``[D]''。
+% \changes{v4.7dev}{2012/05/29}{修改两个宏使其对应不同的中文论文需求。}
 %    \begin{macrocode}
-\def\thumasterbib{\ifthu@doctor [M]\else [Master Thesis]\fi}
-\def\thuphdbib{\ifthu@doctor [D]\else [Doctor Thesis]\fi}
+\def\thumasterbib{\ifthu@bachelor [D]\else [硕士学位论文]\fi}
+\def\thuphdbib{\ifthu@bachelor [D]\else [博士学位论文]\fi}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
