@@ -2875,9 +2875,10 @@
 % \textbf{Keywords}. What are you doing?}
 % \changes{v4.4.2}{2008/06/05}{Bachelor English abstract format requires
 % indent and no hang-indent.}
+% \changes{v4.7dev}{2012/06/02}{Bachelor sample uses Keywords w/o space \texttt{-\_-}}
 %    \begin{macrocode}
   \vskip12bp
-  \setbox0=\hbox{\textbf{Key words:\enskip}}
+  \setbox0=\hbox{\textbf{\ifthu@bachelor Keywords:\else Key words:\fi\enskip}}
   \ifthu@bachelor\indent\else\noindent\hangindent\wd0\hangafter1\fi
     \box0\thu@ekeywords}
 %</cls>
