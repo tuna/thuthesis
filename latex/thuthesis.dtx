@@ -129,6 +129,7 @@
 % \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
 % \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
 % \changes{v4.6}{2011/10/22}{使用手册更新。}
+% \changes{v4.7dev}{2012/06/12}{去掉 hypernat 依赖，hyperref 和 natbib 可以很好配合了。}
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
 % \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
@@ -274,7 +275,7 @@
 % \begin{tabular}{*{6}{l}}\hline
 %   ifxetex & xunicode & xltxtra & CJK\footnote{版本要求：$\geq$ v4.8.1} & xeCJK & \pkg{CJKpunct} \\
 %   array & booktabs & longtable  &  amsmath & amssymb & ntheorem \\
-%   indentfirst & paralist & txfonts & natbib & hyperref & hypernat \\
+%   indentfirst & paralist & txfonts & natbib & hyperref & \\
 %   graphicx & \pkg{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &
 %   \pkg{caption}\footnote{版本要求：$\geq$2006/03/21 v3.0j} &
 %   \pkg{thubib.bst} & &\\\hline
@@ -1361,12 +1362,6 @@
 % 设置 url 样式，与上下文一致
 %    \begin{macrocode}
 \urlstyle{same}
-%    \end{macrocode}
-%
-% \pkg{hypernat} 让 \pkg{hyperref} 和 \pkg{natbib} 协调的工作。应该
-% 在 \pkg{natbib} 和 \pkg{hyperref} 之后加载，参看其文档。
-%    \begin{macrocode}
-\RequirePackage{hypernat}
 %</cls>
 %    \end{macrocode}
 %
