@@ -2490,7 +2490,8 @@
   \ifthu@bachelor(涉密的学位论文在解密后应遵守此规定)\else （保密的论文在解密后应遵守此规定）\fi}
 \newcommand{\thu@authorsig}{\ifthu@bachelor 签\hskip1em名：\else 作者签名：\fi}
 \newcommand{\thu@teachersig}{导师签名：}
-\newcommand{\thu@frontdate}{日\hspace{2em}期：}
+\newcommand{\thu@frontdate}{%
+  日\ifthu@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
 \newcommand{\thu@ckeywords@title}{关键词：}
 %</cfg>
 %    \end{macrocode}
