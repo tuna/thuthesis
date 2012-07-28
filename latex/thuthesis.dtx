@@ -7,7 +7,7 @@
 %
 % \iffalse meta-comment
 %
-% Copyright (C) 2005-2011 by Ruini Xue <xueruini@gmail.com>
+% Copyright (C) 2005-2012 by Ruini Xue <xueruini@gmail.com>
 %
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3a
@@ -23,7 +23,7 @@
 %
 % \fi
 %
-% \CheckSum{0}
+% \CheckSum{2737}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -42,7 +42,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2011/10/22 4.6 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2012/07/28 4.7 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{dtx-style}
 \EnableCrossrefs
@@ -129,7 +129,7 @@
 % \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
 % \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
 % \changes{v4.6}{2011/10/22}{使用手册更新。}
-% \changes{v4.7dev}{2012/06/12}{去掉 hypernat 依赖，hyperref 和 natbib 可以很好配合了。}
+% \changes{v4.7}{2012/06/12}{去掉 hypernat 依赖，hyperref 和 natbib 可以很好配合了。}
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup}
 % \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
@@ -1074,7 +1074,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2011/05/02 4.6 Tsinghua University Thesis Template]
+%<cls|cfg>[2012/07/28 4.7 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1101,7 +1101,7 @@
 %    \begin{macrocode}
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{4.6}
+\def\version{4.7}
 \newif\ifthu@bachelor\thu@bachelorfalse
 \newif\ifthu@master\thu@masterfalse
 \newif\ifthu@doctor\thu@doctorfalse
@@ -1576,7 +1576,7 @@
 % \changes{v2.4}{2006/04/14}{把页面尺寸写入 dvi，避免有的用户通
 %   过 dvips 不指定页面类型而得到古怪的结果。}
 % \changes{v4.5.2}{2010/09/19}{研究生页面边距由 3.2cm 改为 3cm。}
-% \changes{v4.7dev}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
+% \changes{v4.7}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
 %    \begin{macrocode}
 %<*cls>
 \AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
@@ -1626,7 +1626,7 @@
 % \changes{v2.1}{2006/03/01}{彻底放弃 fancyhdr，定义自己的样式。}
 % \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
 % \changes{v2.5}{2006/05/20}{增加 empty 页面样式。}
-% \changes{v4.7dev}{2012/05/29}{本科页码用小五号字。}
+% \changes{v4.7}{2012/05/29}{本科页码用小五号字。}
 % \begin{macro}{\ps@thu@empty}
 % \begin{macro}{\ps@thu@plain}
 % \begin{macro}{\ps@thu@headings}
@@ -2409,8 +2409,8 @@
 % \changes{v4.4.2}{2008/06/07}{本科生签名之间距离改为 \cs{hskip1em}。}
 % \changes{v4.5.2}{2010/05/29}{本科论文日期具体到日。}
 % \changes{v4.6}{2011/04/26}{增加博士后相关配置。}
-% \changes{v4.7dev}{2012/05/27}{修正本科生作者信息名称。}
-% \changes{v4.7dev}{2012/05/27}{本科生关键字也用分号分割了。}
+% \changes{v4.7}{2012/05/27}{修正本科生作者信息名称。}
+% \changes{v4.7}{2012/05/27}{本科生关键字也用分号分割了。}
 %    \begin{macrocode}
 %<*cfg>
 \def\thu@ckeywords@separator{；}
@@ -2510,7 +2510,7 @@
 % \changes{v2.6}{2006/06/09}{本科生题目加长，最多 24 个字。}
 % \changes{v4.6}{2011/04/26}{增加博士后封面。}
 % \changes{v4.7}{2011/11/28}{硕士中文封面不再需要英文标题。}
-% \changes{v4.7dev}{2012/05/30}{本科生题目下划线长度自动适应字数。}
+% \changes{v4.7}{2012/05/30}{本科生题目下划线长度自动适应字数。}
 %
 %    \begin{macrocode}
 %<*cls>
@@ -2871,7 +2871,7 @@
 % \textbf{Keywords}. What are you doing?}
 % \changes{v4.4.2}{2008/06/05}{Bachelor English abstract format requires
 % indent and no hang-indent.}
-% \changes{v4.7dev}{2012/06/02}{Bachelor sample uses Keywords w/o space \texttt{-\_-}}
+% \changes{v4.7}{2012/06/02}{Bachelor sample uses Keywords w/o space \texttt{-\_-}}
 %    \begin{macrocode}
   \vskip12bp
   \setbox0=\hbox{\textbf{\ifthu@bachelor Keywords:\else Key words:\fi\enskip}}
@@ -3072,7 +3072,7 @@
 %   中文硕士学位论文标注``[硕士学位论文]''，
 %   中文博士学位论文标注``[博士学位论文]''，外文学位论文标注``[D]''。
 %   本科生写作指南未指定，参考文献著录格式文档中对中外文学位论文都标注``[D]''。
-% \changes{v4.7dev}{2012/05/29}{修改两个宏使其对应不同的中文论文需求。}
+% \changes{v4.7}{2012/05/29}{修改两个宏使其对应不同的中文论文需求。}
 %    \begin{macrocode}
 \def\thumasterbib{\ifthu@bachelor [D]\else [硕士学位论文]\fi}
 \def\thuphdbib{\ifthu@bachelor [D]\else [博士学位论文]\fi}
