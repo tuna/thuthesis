@@ -1146,6 +1146,13 @@
 \DeclareOption{arialtitle}{\thu@arialtitletrue}
 %    \end{macrocode}
 %
+% noraggedbottom 选项
+% \changes{4.8dev}{2013/03/05}{增加 noraggedbottom 选项。}
+%    \begin{macrocode}
+\newif\ifthu@raggedbottom\thu@raggedbottomtrue
+\DeclareOption{noraggedbottom}{\thu@raggedbottomfalse}
+%    \end{macrocode}
+%
 % 将选项传递给 book 类
 %    \begin{macrocode}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
@@ -1241,6 +1248,14 @@
 % \changes{v2.6.4}{2006/10/23}{增加 \texttt{neverdecrease} 选项。}
 %    \begin{macrocode}
 \RequirePackage[neverdecrease]{paralist}
+%    \end{macrocode}
+%
+% raggedbottom，禁止Latex自动调整多余的页面底部空白，并保持脚注仍然在底部。
+%    \begin{macrocode}
+\ifthu@raggedbottom
+  \RequirePackage[bottom]{footmisc}
+  \raggedbottom
+\fi
 %    \end{macrocode}
 %
 % 中文支持宏包。XeTeX 模式下直接调用 \pkg{xeCJK}，一切问题都搞定了。
