@@ -1,7 +1,25 @@
+% vim: set ft=tex:
+% This file is originally copyed from ctex's ctex-xecjk-winfonts.def.
+
 \ProvidesFile{fontname.def}
-\newcommand{\fontsong}{Adobe Song Std}
-\newcommand{\fonthei}{Adobe Heiti Std}
-\newcommand{\fontkai}{Adobe Kaiti Std}
-\newcommand{\fontfs}{Adobe Fangsong Std}
-\newcommand{\fontli}{Adobe Kaiti Std}
-\newcommand{\fontyou}{Adobe Kaiti Std}
+\setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]
+  {SimSun}
+\setCJKsansfont{SimHei}
+\setCJKmonofont{FangSong}
+
+% 本科生请把下面的注释行(% 开头的行) 开头的 % 删除，以使
+% 隶书字体可用。
+
+\setCJKfamilyfont{zhsong}{SimSun}
+\setCJKfamilyfont{zhhei}{SimHei}
+\setCJKfamilyfont{zhkai}{KaiTi}
+\setCJKfamilyfont{zhfs}{FangSong}
+%\setCJKfamilyfont{zhli}{LiSu}
+%\setCJKfamilyfont{zhyou}{YouYuan}
+
+\newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
+\newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
+\newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
+\newcommand*{\fangsong}{\CJKfamily{zhfs}} % 仿宋
+\newcommand*{\lishu}{\CJKfamily{zhli}}    % 隶书
+\newcommand*{\youyuan}{\CJKfamily{zhyou}} % 幼圆
