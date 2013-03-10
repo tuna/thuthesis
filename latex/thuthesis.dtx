@@ -1960,7 +1960,7 @@
 \def\@makechapterhead#1{%
   \ifthu@bachelor\vspace*{24bp}\else\vspace*{20bp}\fi%
   {\parindent \z@ \centering
-    \hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
+    \csname thu@title@font\endcsname\heiti\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
     \ifnum \c@secnumdepth >\m@ne
       \@chapapp\hskip1em
     \fi
@@ -1972,7 +1972,7 @@
 \def\@makeschapterhead#1{%
   \ifthu@bachelor\vspace*{30bp}\else\vspace*{20bp}\fi%
   {\parindent \z@ \centering
-   \hei\csname thu@title@font\endcsname\sanhao[1]
+   \csname thu@title@font\endcsname\heiti\sanhao[1]
    \ifthu@bachelor\xiaosan\else
      \def\@tempa{#1}
      \def\@tempb{\eabstractname}
@@ -2038,7 +2038,7 @@
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                      {\ifthu@bachelor -25bp\else -24bp\fi\@plus -1ex \@minus -.2ex}%
                      {\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex}%
-                     {\hei\csname thu@title@font\endcsname\sihao[1.429]}}
+                     {\csname thu@title@font\endcsname\heiti\sihao[1.429]}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2051,7 +2051,7 @@
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                         {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
                         {6bp \@plus .2ex}%
-                        {\hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi}}
+                        {\csname thu@title@font\endcsname\heiti\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2063,7 +2063,7 @@
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                            {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
                            {6bp \@plus .2ex}%
-                           {\hei\csname thu@title@font\endcsname\xiaosi[1.667]}}
+                           {\csname thu@title@font\endcsname\heiti\xiaosi[1.667]}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2133,7 +2133,7 @@
       \leavevmode
       \advance\leftskip\@tempdima
       \hskip -\leftskip
-      {\hei\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi #1} % numberline is called here, and it uses \@tempdima
+      {\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi\hei #1} % numberline is called here, and it uses \@tempdima
       \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
       \nobreak{\normalfont\normalcolor #2}\par
       \penalty\@highpenalty
@@ -2511,7 +2511,7 @@
       \parbox[t][9cm][t]{\paperwidth-8cm}{
       \renewcommand{\baselinestretch}{1.5}
       \begin{center}
-      \yihao[1.2]{\hei\sffamily\thu@ctitle}\par
+      \yihao[1.2]{\sffamily\hei\thu@ctitle}\par
       \par\vskip 20bp
       \xiaoer[1] \textrm{{\zijuabs{2bp}\thu@apply}}
       \end{center}}
