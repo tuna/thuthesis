@@ -1681,9 +1681,10 @@
 \def\@makefnmark{\textsuperscript{\hbox{\normalfont\@thefnmark}}}
 \long\def\@makefntext#1{
   \bgroup
-    \setbox\@tempboxa\hbox{%
+    \newbox\thu@tempboxa
+    \setbox\thu@tempboxa\hbox{%
       \hb@xt@ 2em{\@thefnmark\hss}}
-    \leftmargin\wd\@tempboxa
+    \leftmargin\wd\thu@tempboxa
     \rightmargin\z@
     \linewidth \columnwidth
     \advance \linewidth -\leftmargin
@@ -1691,7 +1692,7 @@
     \footnotesize
     \@setpar{{\@@par}}%
     \leavevmode
-    \llap{\box\@tempboxa}%
+    \llap{\box\thu@tempboxa}%
     #1
   \par\egroup}
 %</cls>
