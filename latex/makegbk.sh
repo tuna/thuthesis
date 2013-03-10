@@ -5,7 +5,7 @@ UTF8_FILES="thuthesis.ins thuthesis.dtx thutils.sty thubib.bst Readme main.tex s
 UTF8_DIRS="data ref"
 # files for publishing
 EXTRA_DIRS="figures"
-EXTRA_FILES="Makefile msmake.cmd config.mk"
+EXTRA_FILES="Makefile config.mk"
 
 GBKDIR="./gbk"
 

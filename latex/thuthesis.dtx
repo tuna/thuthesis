@@ -252,7 +252,6 @@
 % figures/ & 示例文档图片路径\\
 % thutils.sty & 为示例文档加载其它宏包\\\hline
 % Makefile & self-explanation \\
-% msmake.cmd & Windows 批处理工具\\\hline
 % Readme & self-explanation\\
 % \textbf{thuthesis.pdf} & 用户手册（本文档）\\\hline
 %   \end{longtable}
@@ -386,17 +385,7 @@
 % $ make shuji     # 生成书脊 shuji.pdf
 % \end{shell}
 %
-% 如果使用 Windows 平台，可以试一试 Truel 编写的批处理脚
-% 本 \texttt{msmake.cmd}\footnote{尚不完善，亟需改进。}：
-% \begin{shell}
-% your_path $ msmake setup   # 生成宏包文件和说明文档
-% your_path $ msmake all     # 生成示例文档和书脊
-% your_path $ msmake main    # 生成示例文档
-% your_path $ msmake shuji   # 生成书脊
-% your_path $ msmake clean   # 清除临时文件
-% \end{shell}
-%
-% \texttt{Makefile} 和 \texttt{msmake.cmd} 默认采用 \LaTeX\ 编译，可以根据自己的
+% \texttt{Makefile} 默认采用 \LaTeX\ 编译，可以根据自己的
 % 需要修改命令。
 %
 %

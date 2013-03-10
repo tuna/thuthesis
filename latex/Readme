@@ -83,46 +83,4 @@ Makefile：
         命令行通过 TEXI2DVI=texify 命令指定使用其它的 texi2dvi 工具。
 
 
-
-===========================
-msmake.cmd Howto (by Truel)
-===========================
-1.配置thuthesis宏包
-
-    msmake setup
-   　　在当前目录下生成thuthesis宏包及说明文档thuthesis.pdf
-
-2.生成示例文档
-  
-    msmake [shuji|main|all|other]
-　　
-    在当前目录下生成示例文档，或其中的一部分，或其他用户指定文档
-    如果当前目录下无thuthesis.cls，将自动根据thuthesis.ins生成。
-　　- shuji 仅生成书脊
-　　- main  仅生成main.pdf
-　　- all  生成书脊和main.pdf，默认选项
-　　- other 用户指定的tex文件名，由该tex文件产生pdf文档
-
-3.清理目录
-
-    msmake clean [other]
-
-　　清理当前目录下由thuthesis宏包生成的文件，具体包括
-    - 宏包及其说明文档thuthesis.{cls,cfg,dvi,ps,pdf}
-    - 示例文档shuji.pdf, main.{dvi,ps,pdf,aux,etc.}
-    - 其它临时文件 *.log *.aux *.glo *.idx *.ilg *.ind *.out *.thm *.toc *.lot *.loe *.out.bak
-    - 如果用户指定其他文件名，不删除main.*，而删除 other.{dvi,ps,pdf,lo?,aux,bbl,blg,out* toc thm}
-
-4.辅助图形图像文件格式转换命令：
-
-   msmake epspdf [param]
-
-     将当前目录下所有eps文件用epstopdf转为pdf格式
-
-   msmake bmpeps [param]
-
-     将当前目录下所有bmp,jpg,png文件用bmeps转为eps格式
-
-   以上两个命令中，param可以由用户指定转换程序所用的参数。
-
 # $Id$

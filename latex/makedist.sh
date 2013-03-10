@@ -1,7 +1,7 @@
 #!/bin/sh
 # $Id$
 
-EXAMPLE_FILES="main.tex shuji.tex main.pdf shuji.pdf thutils.sty Makefile msmake.cmd"
+EXAMPLE_FILES="main.tex shuji.tex main.pdf shuji.pdf thutils.sty Makefile"
 TEMPLATE_FILES="thuthesis.ins thuthesis.dtx thubib.bst Readme thuthesis.pdf thuthesis.cls thuthesis.cfg"
 ALL_FILES="$EXAMPLE_FILES $TEMPLATE_FILES"
 ALL_DIRS="data figures ref"
