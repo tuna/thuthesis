@@ -25,7 +25,7 @@ BIBFILE=ref/*.bib
 SHUJICONTENTS=$(SHUJIMAIN).tex
 CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
-.PHONY: all clean distclean dist thesis shuji doc cls gbk
+.PHONY: all clean distclean dist thesis shuji doc cls
 
 all: doc thesis shuji
 
@@ -58,9 +58,6 @@ $(PACKAGE).dvi: $(CLSFILES)
 	latex $(PACKAGE).dtx
 
 $(PACKAGE).ps: $(PACKAGE).dvi
-ifneq ($(GBK),)
-	gbk2uni $(PACKAGE)
-endif
 	latex $(PACKAGE).dtx
 	dvips -Ppdf -G0 -t letter $(PACKAGE).dvi
 
@@ -87,9 +84,6 @@ $(THESISMAIN).bbl: $(BIBFILE)
 else ifeq ($(METHOD),dvipdfm)
 
 $(THESISMAIN).pdf: $(THESISMAIN).dvi
-ifneq ($(GBK),)
-	gbk2uni $(THESISMAIN)
-endif
 	latex $(THESISMAIN).tex
 	dvipdfm $(THESISMAIN).dvi
 
@@ -106,9 +100,6 @@ $(THESISMAIN).pdf: $(THESISMAIN).ps
 	ps2pdf $(THESISMAIN).ps
 
 $(THESISMAIN).ps: $(THESISMAIN).dvi
-ifneq ($(GBK),)
-	gbk2uni $(THESISMAIN)
-endif
 	latex $(THESISMAIN).tex
 	dvips -Ppdf -G0 $(THESISMAIN).dvi
 
@@ -141,9 +132,6 @@ $(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
 	$(TEXI2DVI) $(SHUJIMAIN).tex
 
 $(SHUJIMAIN).pdf: $(SHUJIMAIN).dvi
-ifneq ($(GBK),)
-	gbk2uni $(SHUJIMAIN)
-endif
 	latex $(SHUJIMAIN).tex
 	dvipdfmx $(SHUJIMAIN).dvi
 
@@ -153,9 +141,6 @@ $(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
 	$(TEXI2DVI) $(SHUJIMAIN).tex
 
 $(SHUJIMAIN).ps: $(SHUJIMAIN).dvi
-ifneq ($(GBK),)
-	gbk2uni $(SHUJIMAIN)
-endif
 	latex $(SHUJIMAIN).tex
 	dvips -Ppdf -G0 $(SHUJIMAIN).dvi
 
@@ -194,17 +179,9 @@ distclean: clean
 	-@rm -f *.cls *.cfg
 	-@rm -f *.pdf *.tar.gz
 
-gbk:
-	@./makegbk.sh
-
 dist:
 	@if [ -z "$(VERSION)" ]; then \
 	    echo "Usage: make dist VERSION=<version#>"; \
 	else \
-	    if [ ! -d "gbk" ]; then \
-	      echo -e "\n run ./makegbk.sh first to prepare for GBK version.\n"; \
-	    else \
-	      ./makedist.sh $(VERSION) UTF8; \
-	      (cd gbk ; ../makedist.sh $(VERSION) GBK); \
-	    fi; \
+	    ./makedist.sh $(VERSION) UTF8; \
 	fi

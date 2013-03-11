@@ -1070,15 +1070,6 @@
 % \label{sec:defoption}
 % TODO: 所有的选项用 \pkg{xkeyval} 来重构，现在的太罗唆了。
 %
-% 定义文档所使用编码
-%    \begin{macrocode}
-%<*cls>
-\newif\ifthu@UTF
-\newif\ifthu@GBK
-\DeclareOption{utf}{\thu@UTFtrue\thu@GBKfalse}
-\DeclareOption{gbk}{\thu@GBKtrue\thu@UTFfalse}
-%    \end{macrocode}
-%
 % 定义论文类型以及是否涉密
 % \changes{v2.4}{2006/04/14}{添加模板名称命令。}
 % \changes{v2.5}{2006/05/19}{增加本科论文的提交选项 submit。}
@@ -1088,6 +1079,7 @@
 % \changes{v3.0}{2007/05/12}{删除 submit 选项。}
 % \changes{v4.6}{2011/04/26}{增加 postdoctor 选项。}
 %    \begin{macrocode}
+%<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
 \def\version{4.8dev}

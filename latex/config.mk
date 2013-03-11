@@ -4,5 +4,3 @@ METHOD = ps2pdf
 THESISMAIN = main
 # Basename of shuji
 SHUJIMAIN = shuji
-# Use gbk or utf8
-GBK =
