@@ -48,6 +48,15 @@ $(PACKAGE).pdf: $(CLSFILES)
 	xelatex $(PACKAGE).dtx
 	xelatex $(PACKAGE).dtx
 
+else ifeq ($(METHOD),pdflatex)
+
+$(PACKAGE).pdf: $(CLSFILES)
+	pdflatex $(PACKAGE).dtx
+	makeindex -s gind.ist -o $(PACKAGE).ind $(PACKAGE).idx
+	makeindex -s gglo.ist -o $(PACKAGE).gls $(PACKAGE).glo
+	pdflatex $(PACKAGE).dtx
+	pdflatex $(PACKAGE).dtx
+
 else
 
 $(PACKAGE).dvi: $(CLSFILES)
@@ -57,12 +66,9 @@ $(PACKAGE).dvi: $(CLSFILES)
 	latex $(PACKAGE).dtx
 	latex $(PACKAGE).dtx
 
-$(PACKAGE).ps: $(PACKAGE).dvi
+$(PACKAGE).pdf: $(PACKAGE).dvi
 	latex $(PACKAGE).dtx
-	dvips -Ppdf -G0 -t letter $(PACKAGE).dvi
-
-$(PACKAGE).pdf: $(PACKAGE).ps
-	ps2pdf  $(PACKAGE).ps
+	dvipdfmx  $(PACKAGE).dvi
 
 endif
 
@@ -81,27 +87,22 @@ $(THESISMAIN).bbl: $(BIBFILE)
 	-bibtex $(THESISMAIN)
 	rm $(THESISMAIN).pdf
 
-else ifeq ($(METHOD),dvipdfm)
+else ifeq ($(METHOD),pdflatex)
 
-$(THESISMAIN).pdf: $(THESISMAIN).dvi
-	latex $(THESISMAIN).tex
-	dvipdfm $(THESISMAIN).dvi
-
-$(THESISMAIN).dvi: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
-	$(TEXI2DVI) $(THESISMAIN).tex
+$(THESISMAIN).pdf: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
+	pdflatex $(THESISMAIN).tex
+	pdflatex $(THESISMAIN).tex
 
 $(THESISMAIN).bbl: $(BIBFILE)
-	$(TEXI2DVI) $(THESISMAIN).tex
+	pdflatex $(THESISMAIN).tex
 	-bibtex $(THESISMAIN)
+	rm $(THESISMAIN).pdf
 
 else
 
-$(THESISMAIN).pdf: $(THESISMAIN).ps
-	ps2pdf $(THESISMAIN).ps
-
-$(THESISMAIN).ps: $(THESISMAIN).dvi
+$(THESISMAIN).pdf: $(THESISMAIN).dvi
 	latex $(THESISMAIN).tex
-	dvips -Ppdf -G0 $(THESISMAIN).dvi
+	dvipdfmx $(THESISMAIN).dvi
 
 $(THESISMAIN).dvi: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
 	$(TEXI2DVI) $(THESISMAIN).tex
@@ -126,7 +127,12 @@ ifeq ($(METHOD),xelatex)
 $(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
 	xelatex $(SHUJIMAIN).tex
 
-else ifeq ($(METHOD),dvipdfm)
+else ifeq ($(METHOD),pdflatex)
+
+$(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
+	pdflatex $(SHUJIMAIN).tex
+
+else
 
 $(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
 	$(TEXI2DVI) $(SHUJIMAIN).tex
@@ -134,18 +140,6 @@ $(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
 $(SHUJIMAIN).pdf: $(SHUJIMAIN).dvi
 	latex $(SHUJIMAIN).tex
 	dvipdfmx $(SHUJIMAIN).dvi
-
-else
-
-$(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
-	$(TEXI2DVI) $(SHUJIMAIN).tex
-
-$(SHUJIMAIN).ps: $(SHUJIMAIN).dvi
-	latex $(SHUJIMAIN).tex
-	dvips -Ppdf -G0 $(SHUJIMAIN).dvi
-
-$(SHUJIMAIN).pdf: $(SHUJIMAIN).ps
-	ps2pdf  $(SHUJIMAIN).ps
 
 endif
 
