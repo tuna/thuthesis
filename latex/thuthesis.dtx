@@ -2650,12 +2650,12 @@
 % 封面中论文授权部分。
 %    \begin{macrocode}
 \newcommand{\thu@authorization@mk}{%
-  \ifthu@bachelor\vspace*{0.5cm}\else\vspace*{-0.1cm}\fi % shit code!
+  \ifthu@bachelor\vspace*{0.5cm}\else\vspace*{0.72cm}\fi % shit code!
   \begin{center}\erhao\hei\thu@authtitle\end{center}
-  \ifthu@bachelor\vskip5pt\else\vskip18pt\sihao[2.03]\fi\par
+  \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
   \thu@authorization\par
   \textbf{\thu@authorizationaddon}\par
-  \ifthu@bachelor\vskip0.7cm\else\vskip1.9cm\fi
+  \ifthu@bachelor\vskip0.7cm\else\vskip1.0cm\fi
   \ifthu@bachelor
     \indent\mbox{\thu@authorsig\thu@underline\relax%
     \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax}
@@ -2706,7 +2706,16 @@
 %    \begin{macrocode}
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
-      \thu@authorization@mk\fi
+      \ifthu@bachelor\thu@authorization@mk\else%
+      \begin{list}{}{%
+        \topsep\z@%
+        \listparindent\parindent%
+        \parsep\parskip%
+        \setlength{\leftmargin}{0.9mm}%
+        \setlength{\rightmargin}{0.9mm}}%
+      \item[]\thu@authorization@mk%
+      \end{list}\fi%
+    \fi
   \end{titlepage}
 %    \end{macrocode}
 %
