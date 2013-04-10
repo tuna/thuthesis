@@ -680,10 +680,6 @@
 % {\erhao 二号 \sanhao 三号 \sihao 四号  \qihao 七号}
 % \end{example}
 %
-% \myentry{字距}
-% \DescribeMacro{\zijuabs}
-% 更改汉字之间默认的距离，使用格式为 |\zijuabs{4bp}|，其中的距离只要是合格的 \TeX{} 距离即可。
-%
 % \myentry{密级}
 % \DescribeMacro{\secretlevel}
 % \DescribeMacro{\secretyear}
@@ -2443,13 +2439,13 @@
     \thu@put@title{U D C}\thu@underline\thu@udc\hfill%
     \thu@put@title{\thu@id@title}\thu@underline\thu@id\par\vskip3cm\endgroup
     \begingroup\hei
-      {\xiaochu\zijuabs{1em}\thu@schoolname}\par\vskip2cm
-      {\xiaoyi\zijuabs{1em}\thu@postdoctor@report@title}\par\vskip3cm
+      {\xiaochu\ziju{1}\thu@schoolname}\par\vskip2cm
+      {\xiaoyi\ziju{1}\thu@postdoctor@report@title}\par\vskip3cm
       {\sanhao[1.5]\thu@ctitle}\par\vskip2cm
       {\xiaoer\thu@cauthor}
     \endgroup
     \par\vskip3cm
-    {\xiaosan[1.5]\zijuabs{1em}\thu@schoolname\par\vskip0.5em\CJK@todaysmall@short}
+    {\xiaosan[1.5]\ziju{1}\thu@schoolname\par\vskip0.5em\CJK@todaysmall@short}
   \end{center}
   \cleardoublepage
   \begin{center}
@@ -2479,9 +2475,9 @@
       \ifthu@secret\hfill{\sihao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
       \vskip0.45cm
-      {\zijuabs{10bp}\yihao\li\thu@schoolname}
+      {\yihao\li\ziju{0.3846}\thu@schoolname}
       \par\vskip1.5cm
-      {\zijuabs{18bp}\xiaochu\hei\thu@bachelor@subtitle}
+      {\xiaochu\hei\ziju{0.5}\thu@bachelor@subtitle}
       \vskip2.2cm
       \noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
       \parbox[t]{12cm}{%
@@ -2506,7 +2502,7 @@
       \begin{center}
       \yihao[1.2]{\sffamily\hei\thu@ctitle}\par
       \par\vskip 20bp
-      \xiaoer[1] \textrm{{\zijuabs{2bp}\thu@apply}}
+      \xiaoer[1] \textrm{{\ziju{0.1111}\thu@apply}}
       \end{center}}
     \fi
 %    \end{macrocode}
@@ -2548,15 +2544,15 @@
           \else 
             \begin{tabular}{p{\thu@title@width}c@{\extracolsep{4pt}}l}
           \fi
-              \thu@put@title{\thu@department@title}  & \thu@title@sep & {\zijuabs{3bp}\thu@cdepartment}\\
-              \thu@put@title{\thu@major@title}       & \thu@title@sep & {\zijuabs{3bp}\thu@cmajor}\\
-              \thu@put@title{\thu@author@title}      & \thu@title@sep & {\zijuabs{11bp}\thu@cauthor}\\
-              \thu@put@title{\thu@supervisor@title}  & \thu@title@sep & {\zijuabs{11bp}\thu@csupervisor}\\
+              \thu@put@title{\thu@department@title}  & \thu@title@sep & {\ziju{0.1875}\thu@cdepartment}\\
+              \thu@put@title{\thu@major@title}       & \thu@title@sep & {\ziju{0.1875}\thu@cmajor}\\
+              \thu@put@title{\thu@author@title}      & \thu@title@sep & {\ziju{0.6875}\thu@cauthor}\\
+              \thu@put@title{\thu@supervisor@title}  & \thu@title@sep & {\ziju{0.6875}\thu@csupervisor}\\
               \ifx\thu@cassosupervisor\@empty\else
-                \thu@put@title{\thu@assosuper@title} & \thu@title@sep & {\zijuabs{11bp}\thu@cassosupervisor}\\
+                \thu@put@title{\thu@assosuper@title} & \thu@title@sep & {\ziju{0.6875}\thu@cassosupervisor}\\
               \fi
               \ifx\thu@ccosupervisor\@empty\else
-                \thu@put@title{\thu@cosuper@title}   & \thu@title@sep & {\zijuabs{11bp}\thu@ccosupervisor}\\
+                \thu@put@title{\thu@cosuper@title}   & \thu@title@sep & {\ziju{0.6875}\thu@ccosupervisor}\\
               \fi
             \end{tabular}
         \end{center}}}
@@ -3096,7 +3092,7 @@
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\shuji}[1][\thu@ctitle]{
-  \newpage\thispagestyle{empty}\zijuabs{0.4em}\fs\xiaosan
+  \newpage\thispagestyle{empty}\fs\xiaosan\ziju{0.4}
   \hfill\rotatebox{-90}{\hb@xt@ \textheight{#1\hfill\thu@cauthor}}}
 %</cls>
 %    \end{macrocode}
@@ -3133,17 +3129,6 @@
 %
 % \subsubsection{自定义命令和环境}
 % \label{sec:userdefine}
-%
-% \begin{macro}{\zijuabs}
-% 改变字距。参数为距离
-% \changes{v2.0}{2005/12/20}{字距改变，重定义 \cs{CJKglue} 即可。}
-% \changes{v4.8dev}{2013/03/09}{字距为绝对字距，重命名避免和 ctex 的冲突。}
-%    \begin{macrocode}
-%<*cls>
-\newcommand*{\zijuabs}[1]{\renewcommand{\CJKglue}{\hskip #1}}
-%</cls>
-%    \end{macrocode}
-% \end{macro}
 %
 % \begin{macro}{\pozhehao}
 % 定义破折号。两个字宽，ex 差不多是当前字体的一半高度，所以通过 \cs{rule} 可以简单
