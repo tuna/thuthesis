@@ -155,7 +155,7 @@
 %
 %
 % \title{\thuthesis：清华大学学位论文模板\thanks{Tsinghua University \LaTeX{} Thesis Template.}}
-% \author{{\fs 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt]{\fs 清华大学计算机系高性能所}\\[5pt] \texttt{xueruini@gmail.com}}
+% \author{{\fangsong 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt]{\fangsong 清华大学计算机系高性能所}\\[5pt] \texttt{xueruini@gmail.com}}
 % \date{v\fileversion\ (\filedate)}
 % \maketitle\thispagestyle{empty}
 %
@@ -203,7 +203,7 @@
 % 列表（见后）写信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现
 % 在的这个版本基本上满足了学校的要求，但难免还存在不足之处，欢迎大家积极反馈。
 %
-% {\color{blue}\fs 模板的作用在于减轻论文写作过程中格式调整的时间，其前提就是遵
+% {\color{blue}\fangsong 模板的作用在于减轻论文写作过程中格式调整的时间，其前提就是遵
 %   守模板的用法，否则即使使用了 \thuthesis{} 也难以保证输出的论文符合学校规范。}
 %
 %
@@ -233,10 +233,10 @@
 % \begin{center}
 %   \begin{longtable}{l|p{10cm}}
 % \hline
-% {\hei 文件（夹）} & {\hei 功能描述}\\\hline\hline
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\hline\hline
 % \endfirsthead
 % \hline
-% {\hei 文件（夹）} & {\hei 功能描述}\\\hline\hline
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\hline\hline
 % \endhead
 % \endfoot
 % \endlastfoot
@@ -291,7 +291,7 @@
 %
 % \subsubsection{生成模板}
 % \label{sec:generate-cls}
-% {\hei 说明：默认的发行包中已经包含了所有文件，可以直接使用。如果对如何由 dtx 生
+% {\heiti 说明：默认的发行包中已经包含了所有文件，可以直接使用。如果对如何由 dtx 生
 %   成模板文件以及模板文档不感兴趣，请跳过本小节。}
 %
 % 模板解压缩后生成文件夹 thuthesis-VERSION\footnote{VERSION 为版本号。}，其中包括：
@@ -540,7 +540,7 @@
 %   正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \texttt{openright}，
 %   也是 \thuthesis 的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么
 %   模板会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎
-%   更倾向于页面连续，那就是通常所说的 \texttt{openany}。{\fs 目前所有论文都是
+%   更倾向于页面连续，那就是通常所说的 \texttt{openany}。{\fangsong 目前所有论文都是
 %      openany。}这两个选项不用专门设置，\thuthesis{} 会根据当前论文类型自动选
 %   择。
 %
@@ -631,31 +631,23 @@
 % \label{sec:basiccom}
 %
 % \myentry{字体}
-% \DescribeMacro{\song}
-% \DescribeMacro{\fs}
-% \DescribeMacro{\hei}
-% \DescribeMacro{\kai}
-% \DescribeMacro{\li}
-% \DescribeMacro{\you}
-% 等分别用来切换宋体、仿宋、黑体、楷体、隶书和幼圆字体。为了兼容不同用户的习惯，模
-% 板还定义了另外一些字体切换命令，对应关系如下：
-%
-% \begin{center}
-% \begin{tabular}{llllll}\hline
-%  \cs{song} &\cs{fs}&\cs{hei}&\cs{kai}&\cs{li}&\cs{you}\\\hline
-%  \cs{songti}&\cs{fangsong}&\cs{heiti}&\cs{kaishu}&\cs{lishu}&\cs{youyuan}\\\hline
-% \end{tabular}
-% \end{center}
+% \DescribeMacro{\songti}
+% \DescribeMacro{\fangsong}
+% \DescribeMacro{\heiti}
+% \DescribeMacro{\kaishu}
+% \DescribeMacro{\lishu}
+% \DescribeMacro{\youyuan}
+% 等分别用来切换宋体、仿宋、黑体、楷体、隶书和幼圆字体。
 %
 % \begin{example}
-% {\song 乾：元，亨，利贞}
-% {\fs 初九，潜龙勿用}
-% {\hei 九二，见龙在田，利见大人}
-% {\kai 九三，君子终日乾乾，夕惕若，厉，无咎}
-% {\li 九四，或跃在渊，无咎}
-% {\hei 九五，飞龙在天，利见大人}
-% {\song 上九，亢龙有悔}
-% {\you 用九，见群龙无首，吉}
+% {\songti 乾：元，亨，利贞}
+% {\fangsong 初九，潜龙勿用}
+% {\heiti 九二，见龙在田，利见大人}
+% {\kaishu 九三，君子终日乾乾，夕惕若，厉，无咎}
+% {\lishu 九四，或跃在渊，无咎}
+% {\heiti 九五，飞龙在天，利见大人}
+% {\songti 上九，亢龙有悔}
+% {\youyuan 用九，见群龙无首，吉}
 % \end{example}
 %
 % \myentry{字号}
@@ -744,7 +736,7 @@
 % \myentry{破折号}
 % \DescribeMacro{\pozhehao}
 % 中文破折号在 CJK-\LaTeX\ 里没有很好的处理，我们平时输入的都是两个小短线，比如这
-% 样，{\hei 中国——中华人民共和国}。这不符合中文习惯。所以这里定义了一个命令生成更
+% 样，{\heiti 中国——中华人民共和国}。这不符合中文习惯。所以这里定义了一个命令生成更
 % 好看的破折号，不过这似乎不是一个好的解决办法。有同学说不能用在 |\section| 等命
 % 令中使用，简单的办法是可以提供一个不带破折号的段标题：\cs{section}\oarg{没有破
 %   折号精简标题}\marg{带破折号的标题}。
@@ -910,7 +902,7 @@
 % \begin{center}
 % \begin{tabular}{ll}
 % \hline
-%   {\hei 命令} & {\hei 说明} \\\hline
+%   {\heiti 命令} & {\heiti 说明} \\\hline
 % \cs{listoffigures} & 插图索引\\
 % \cs{listoffigures*} & \\\hline
 % \cs{listoftables} & 表格索引\\
@@ -965,7 +957,7 @@
 %
 % \myentry{附录}
 % \DescribeEnv{appendix}
-% 所有的附录都插到这里来。因为附录会更改默认的 chapter 属性，而后面的{\hei 个人简
+% 所有的附录都插到这里来。因为附录会更改默认的 chapter 属性，而后面的{\heiti 个人简
 %   历}又需要恢复，所以实现为环境可以保证全局的属性不受影响。
 % \begin{example}
 % \begin{appendix}
@@ -1015,9 +1007,9 @@
 % \end{definition}
 % \end{example}
 % 产生（自动编号）：\\[5pt]
-% \fbox{{\hei 定义~1.1~~~} {道千乘之国，敬事而信，节用而爱人，使民以时。}}
+% \fbox{{\heiti 定义~1.1~~~} {道千乘之国，敬事而信，节用而爱人，使民以时。}}
 %
-% 列举出来的数学环境毕竟是有限的，如果想用{\hei 胡说}这样的数学环境，那么很容易定义：
+% 列举出来的数学环境毕竟是有限的，如果想用{\heiti 胡说}这样的数学环境，那么很容易定义：
 % \begin{example}
 % \newtheorem{nonsense}{胡说}[chapter]
 % \end{example}
@@ -1029,7 +1021,7 @@
 % \end{nonsense}
 % \end{example}
 % 产生（自动编号）：\\[5pt]
-% \fbox{{\hei 胡说~1.1~~~} {契丹武士要来中原夺武林秘笈。\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex 慕容博}}
+% \fbox{{\heiti 胡说~1.1~~~} {契丹武士要来中原夺武林秘笈。\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex 慕容博}}
 %
 % \subsection{自定义以及其它}
 % \label{sec:othercmd}
@@ -1328,41 +1320,6 @@
 % \subsubsection{字体}
 % \label{sec:font}
 %
-% \begin{macro}{\song}
-% \begin{macro}{\songti}
-% \begin{macro}{\fs}
-% \begin{macro}{\fangsong}
-% \begin{macro}{\kai}
-% \begin{macro}{\kaishu}
-% \begin{macro}{\hei}
-% \begin{macro}{\heiti}
-% \begin{macro}{\li}
-% \begin{macro}{\lishu}
-% \begin{macro}{\you}
-% \begin{macro}{\youyuan}
-% 重定义字体命令
-%    \begin{macrocode}
-%<*cls>
-\def\song{\songti}
-\def\fs{\fangsong}
-\def\kai{\kaishu}
-\def\hei{\heiti}
-\def\li{\lishu}
-\def\you{\youyuan}
-%    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-%
 % 重定义字号命令
 %
 % Ref 1:
@@ -1414,6 +1371,7 @@
 %
 % 避免了字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
 %    \begin{macrocode}
+%<*cls>
 \newlength\thu@linespace
 \newcommand{\thu@choosefont}[2]{%
    \setlength{\thu@linespace}{#2*\real{#1}}%
@@ -1572,10 +1530,10 @@
   \let\@evenfoot=\@oddfoot}
 \def\ps@thu@headings{%
   \def\@oddhead{\vbox to\headheight{%
-    \hb@xt@\textwidth{\hfill\wuhao\song\leftmark\ifthu@bachelor\relax\else\hfill\fi}%
+    \hb@xt@\textwidth{\hfill\wuhao\songti\leftmark\ifthu@bachelor\relax\else\hfill\fi}%
       \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
   \def\@evenhead{\vbox to\headheight{%
-      \hb@xt@\textwidth{\wuhao\song%
+      \hb@xt@\textwidth{\wuhao\songti%
       \ifthu@bachelor\thu@schoolname\thu@bachelor@subtitle%
        \else\hfill\leftmark\fi\hfill}%
       \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
@@ -1760,8 +1718,8 @@
 % \changes{v2.6.2}{2006/06/17}{增加问题和猜想两个数学环境。}
 % \changes{v4.2}{2008/03/07}{调整证明环境的编号和结尾的方块。}
 %    \begin{macrocode}
-\theorembodyfont{\song\rmfamily}
-\theoremheaderfont{\hei\rmfamily}
+\theorembodyfont{\songti\rmfamily}
+\theoremheaderfont{\heiti\rmfamily}
 %</cls>
 %<*cfg>
 % \theoremsymbol{\ensuremath{\blacksquare}}
@@ -1826,7 +1784,7 @@
 %    \begin{macrocode}
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
-\DeclareCaptionLabelFormat{thu}{{\dawu[1.5]\song #1~\rmfamily #2}}
+\DeclareCaptionLabelFormat{thu}{{\dawu[1.5]\songti #1~\rmfamily #2}}
 \DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
 \DeclareCaptionFont{thu}{\dawu[1.5]}
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
@@ -2122,7 +2080,7 @@
       \leavevmode
       \advance\leftskip\@tempdima
       \hskip -\leftskip
-      {\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi\hei #1} % numberline is called here, and it uses \@tempdima
+      {\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi\heiti #1} % numberline is called here, and it uses \@tempdima
       \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
       \nobreak{\normalfont\normalcolor #2}\par
       \penalty\@highpenalty
@@ -2438,7 +2396,7 @@
     \thu@put@title{\thu@secretlevel}\expandafter\thu@underline\ifthu@secret\thu@secret@content\else\relax\fi\par
     \thu@put@title{U D C}\thu@underline\thu@udc\hfill%
     \thu@put@title{\thu@id@title}\thu@underline\thu@id\par\vskip3cm\endgroup
-    \begingroup\hei
+    \begingroup\heiti
       {\xiaochu\ziju{1}\thu@schoolname}\par\vskip2cm
       {\xiaoyi\ziju{1}\thu@postdoctor@report@title}\par\vskip3cm
       {\sanhao[1.5]\thu@ctitle}\par\vskip2cm
@@ -2450,7 +2408,7 @@
   \cleardoublepage
   \begin{center}
     \vspace*{2cm}
-    {\sihao\hei\thu@ctitle\par\thu@etitle}\par
+    {\sihao\heiti\thu@ctitle\par\thu@etitle}\par
     \parbox[t][7cm][b]{\textwidth-6cm}{\sihao[1.5]%
       \setlength{\thu@title@width}{11em}
       \setlength{\extrarowheight}{6pt}
@@ -2475,11 +2433,11 @@
       \ifthu@secret\hfill{\sihao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
       \vskip0.45cm
-      {\yihao\li\ziju{0.3846}\thu@schoolname}
+      {\yihao\lishu\ziju{0.3846}\thu@schoolname}
       \par\vskip1.5cm
-      {\xiaochu\hei\ziju{0.5}\thu@bachelor@subtitle}
+      {\xiaochu\heiti\ziju{0.5}\thu@bachelor@subtitle}
       \vskip2.2cm
-      \noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
+      \noindent\heiti\xiaoer\thu@bachelor@title@pre\thu@title@sep
       \parbox[t]{12cm}{%
         \setbox0=\hbox{{\yihao[1.55]\thu@ctitle}}
         \begin{picture}(0,0)(0,0)
@@ -2500,7 +2458,7 @@
       \parbox[t][9cm][t]{\paperwidth-8cm}{
       \renewcommand{\baselinestretch}{1.5}
       \begin{center}
-      \yihao[1.2]{\sffamily\hei\thu@ctitle}\par
+      \yihao[1.2]{\sffamily\heiti\thu@ctitle}\par
       \par\vskip 20bp
       \xiaoer[1] \textrm{{\ziju{0.1111}\thu@apply}}
       \end{center}}
@@ -2517,7 +2475,7 @@
     \ifthu@bachelor
       \vskip1cm
       \parbox[t][7.0cm][t]{\textwidth}{{\sanhao[1.8]
-        \hspace*{1.65cm}\fs
+        \hspace*{1.65cm}\fangsong
           \setlength{\thu@title@width}{4em}
           \setlength{\extrarowheight}{6pt}
           \ifxetex % todo: ugly codes
@@ -2536,7 +2494,7 @@
         }}
     \else
       \parbox[t][7.8cm][t]{\textwidth}{{\sanhao[1.5]
-        \begin{center}\fs
+        \begin{center}\fangsong
           \setlength{\thu@title@width}{6em}
           \setlength{\extrarowheight}{4pt}
           \ifxetex % todo: ugly codes
@@ -2564,7 +2522,7 @@
 % \changes{v4.4.3}{2008/06/09}{修改本科生论文封面日期格式以符合新样例。}
 %    \begin{macrocode}
      \begin{center}
-       {\ifthu@bachelor\vskip-1.0cm\hskip-1.2cm\xiaosi\else\sanhao\fi \song \thu@cdate}
+       {\ifthu@bachelor\vskip-1.0cm\hskip-1.2cm\xiaosi\else\sanhao\fi \songti \thu@cdate}
      \end{center}
     \end{center}} % end of titlepage
 %    \end{macrocode}
@@ -2647,7 +2605,7 @@
 %    \begin{macrocode}
 \newcommand{\thu@authorization@mk}{%
   \ifthu@bachelor\vspace*{0.5cm}\else\vspace*{0.72cm}\fi % shit code!
-  \begin{center}\erhao\hei\thu@authtitle\end{center}
+  \begin{center}\erhao\heiti\thu@authtitle\end{center}
   \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
   \thu@authorization\par
   \textbf{\thu@authorizationaddon}\par
@@ -2764,7 +2722,7 @@
 % \changes{v4.4.2}{2008/06/05}{本科生格式中文关键词采用首行缩进且无悬挂缩进。}
 %    \begin{macrocode}
   \vskip12bp
-  \setbox0=\hbox{{\hei\thu@ckeywords@title}}
+  \setbox0=\hbox{{\heiti\thu@ckeywords@title}}
   \ifthu@bachelor\indent\else\noindent\hangindent\wd0\hangafter1\fi
     \box0\thu@ckeywords
 %    \end{macrocode}
@@ -3079,7 +3037,7 @@
 \fi
 %</cfg>
 %<*cls>
-\newcommand{\resumeitem}[1]{\vspace{2.5em}{\sihao\hei\centerline{#1}}\par}
+\newcommand{\resumeitem}[1]{\vspace{2.5em}{\sihao\heiti\centerline{#1}}\par}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -3092,7 +3050,7 @@
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\shuji}[1][\thu@ctitle]{
-  \newpage\thispagestyle{empty}\fs\xiaosan\ziju{0.4}
+  \newpage\thispagestyle{empty}\fangsong\xiaosan\ziju{0.4}
   \hfill\rotatebox{-90}{\hb@xt@ \textheight{#1\hfill\thu@cauthor}}}
 %</cls>
 %    \end{macrocode}
@@ -3255,8 +3213,6 @@
 \addtolength{\headsep}{0.3cm}
 \addtolength{\textheight}{2.3cm}
 
-\def\hei{\heiti}
-\def\fs{\fangsong}
 \renewcommand{\baselinestretch}{1.3}
 \setlength{\shadowsize}{3pt}
 \def\DescribeOption#1{\SpecialOptionIndex{#1}}
@@ -3276,7 +3232,7 @@
 \DefineVerbatimEnvironment{shell}{Verbatim}%
   {frame=single,framerule=0.3mm,rulecolor=\color{red!85!green!60},%
    fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small,gobble=1}
-\long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fs #1}}\marginpar{\strut}\hskip\parindent}
+\long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fangsong #1}}\marginpar{\strut}\hskip\parindent}
 \def\tableofcontents{\renewcommand{\baselinestretch}{1.0}\@starttoc{toc}}
 \def\DescribeMacro{\Describe@Macro}
 \def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
