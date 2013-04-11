@@ -566,7 +566,7 @@
 %
 % \subsection{字体配置}
 % \label{sec:font-config}
-% 正确配置中文字体是使用模板的第一步。模板有两种字体使用方式：
+% 正确配置中文字体是使用模板的第一步。模板调用 ctex 宏包，提供如下字体使用方式：
 % \begin{itemize}
 %   \item 基于传统 CJK 包，使用 latex、pdflatex 编译；
 %   \item 基于 xeCJK 包，使用 xelatex 编译。
@@ -575,50 +575,42 @@
 % 第一种方式的字体配置比较繁琐，建议使用 donated 制作的中文字体包（自
 % 包含安装方法），请用户自行下载安装，此处不再赘述。本模板推荐使用第二
 % 种方法，只要把所需字体放入系统字体文件夹（也可以指定自定义文件夹）即
-% 可。模板默认采用 Adobe 的四款免费字体，配置在 fontname.def 文件中，内容如下：
+% 可。用户可以使用 winfonts,adobefonts,nofonts 选项来选择可用的中文字库，
+% 缺省情况下为 winfonts 有效，使用中易字体。注意当使用 xelatex 编译时，
+% winfonts 只有中易的四款字体（宋体、黑体、楷书和仿宋）可用，而本科生需要用到幼圆，
+% 另外 Linux 系统缺少上述字体，这些用户可以通过指定 nofonts 选项，利用 fontname.def
+% 文件配置所需字体。使用中易六种字体的配置如下：
 % \begin{example}
 % \ProvidesFile{fontname.def}
-% \newcommand{\fontsong}{Adobe Song Std}
-% \newcommand{\fonthei}{Adobe Heiti Std}
-% \newcommand{\fontkai}{Adobe Kaiti Std}
-% \newcommand{\fontfs}{Adobe Fangsong Std}
-% \newcommand{\fontli}{Adobe Kaiti Std}
-% \newcommand{\fontyou}{Adobe Kaiti Std}
+% \setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
+% \setCJKsansfont{SimHei}
+% \setCJKmonofont{FangSong}
+% \setCJKfamilyfont{zhsong}{SimSun}
+% \setCJKfamilyfont{zhhei}{SimHei}
+% \setCJKfamilyfont{zhkai}{KaiTi}
+% \setCJKfamilyfont{zhfs}{FangSong}
+% \setCJKfamilyfont{zhli}{LiSu}
+% \setCJKfamilyfont{zhyou}{YouYuan}
+% \newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
+% \newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
+% \newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
+% \newcommand*{\fangsong}{\CJKfamily{zhfs}} % 仿宋
+% \newcommand*{\lishu}{\CJKfamily{zhli}}    % 隶书
+% \newcommand*{\youyuan}{\CJKfamily{zhyou}} % 幼圆
 % \end{example}
 %
-% 一般系统中默认并不存在这四种字体，所以要根据自己的实际情况来修改上述
-% 定义。对 Windows XP 来说如下：
-% \begin{example}
-% \ProvidesFile{fontname.def}
-% \newcommand{\fontsong}{SimSun}
-% \newcommand{\fonthei}{SimHei}
-% \newcommand{\fontkai}{KaiTi_GB2312}
-% \newcommand{\fontfs}{FangSong_GB2312}
-% \newcommand{\fontli}{LiSu}
-% \newcommand{\fontyou}{YouYuan}
-% \end{example}
+% 对 Windows XP 来说如下，KaiTi 需要替换为 KaiTi\_GB2312，
+% FangSong 需要替换为 FangSong\_GB2312。
 %
-% Vista 和 Win 7 中文字体名字略有不同：
-% \begin{example}
-% \ProvidesFile{fontname.def}
-% \newcommand{\fontsong}{SimSun}
-% \newcommand{\fonthei}{SimHei}
-% \newcommand{\fontkai}{KaiTi}
-% \newcommand{\fontfs}{FangSong}
-% \newcommand{\fontli}{LiSu}
-% \newcommand{\fontyou}{YouYuan}
-% \end{example}
-%
-% 宏包中包含了 ``zhfonts.py'' 脚本，可以交互式地让 Linux
-% 用户从系统中文字体中选择合适的六种字体，最终生成对应的 ``fontname.def''
+% 宏包中包含了 ``zhfonts.py'' 脚本，为 Linux 用户提供一种交互式的方式
+% 从系统中文字体中选择合适的六种字体，最终生成对应的 ``fontname.def''
 % 文件。要使用它，只需在命令行输入该脚本的完整路径即可。
 %
-% 总而言之，用户可以通过命令：
+% 最后，用户可以通过命令
 % \begin{shell}
-% $ fs-list
+% $ fs-list :lang=zh > zhfonts.txt
 % \end{shell}
-%
-% 来查看系统中现有的字体，并相应替换上述配置。
+% 得到系统中现有的中文字体列表，并相应替换上述配置。
 %
 % \subsection{命令}
 % \label{sec:command}
