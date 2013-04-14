@@ -272,7 +272,7 @@
 % \begin{center}
 % \begin{minipage}{1.0\linewidth}\centering
 % \begin{tabular}{*{6}{l}}\hline
-%   ifxetex & xunicode & CJK\footnote{版本要求：$\geq$ v4.8.1} & xeCJK & \pkg{CJKpunct} & \\
+%   ifxetex & xunicode & CJK\footnote{版本要求：$\geq$ v4.8.1} & xeCJK & \pkg{CJKpunct} & \pkg{ctex} \\
 %   array & booktabs & longtable  &  amsmath & amssymb & ntheorem \\
 %   indentfirst & paralist & txfonts & natbib & hyperref & \\
 %   graphicx & \pkg{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &
@@ -283,7 +283,7 @@
 % \end{center}
 %
 % 这些包在常见的 \TeX{} 系统中都有，如果没有请到 \url{www.ctan.org} 下载。推
-% 荐 \TeX live。
+% 荐 \TeX\ Live。
 %
 %
 % \subsection{开始安装}
@@ -364,9 +364,9 @@
 % \subsubsection{xelatex}
 % \label{sec:xelatex}
 % XeTeX 最大的优势就是不再需要繁琐的字体配置。\thuthesis{} 通过 \pkg{xeCJK} 来控
-% 制中文字体和标点压缩。模板里默认用的是 Adobe 的四款免费字体（宋，黑，楷，仿宋），
+% 制中文字体和标点压缩。模板里默认用的是中易的四款免费字体（宋，黑，楷，仿宋），
 % 用户可以根据自己的实际情况方便的替换。另外，本科论文封面要用到隶书，请用户自行
-% 修改。
+% 修改，参考第~\ref{sec:font-config} 节。
 %
 % Xe\LaTeX\ 的使用步骤同 PDF\LaTeX。
 %
@@ -385,8 +385,8 @@
 % $ make shuji     # 生成书脊 shuji.pdf
 % \end{shell}
 %
-% \texttt{Makefile} 默认采用 \LaTeX\ 编译，可以根据自己的
-% 需要修改命令。
+% \texttt{Makefile} 默认采用 Xe\LaTeX\ 编译，可以根据自己的
+% 需要修改 \texttt{config.mk} 中的参数设置。
 %
 %
 % \subsection{升级}
@@ -427,17 +427,21 @@
 % 示例文档用户会发现很难下手。所以推荐新用户从模板自带的示例文档入手，里面包括了
 % 论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于
 % 不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文
-% 档，具体内容可以参考模板附带的 main.tex 和 data\/。
+% 档，具体内容可以参考模板附带的 main.tex 和 data/。
 %
 % \begin{example}
-% \documentclass[bachelor]{thuthesis}
+% \documentclass[bachelor,nofonts]{thuthesis}
+% %\documentclass[master,adobefonts]{thuthesis}
+% %\documentclass[doctor]{thuthesis}
 % %\documentclass[%
-% %  bachelor|master|doctor|postdoc, % 必选选项
-% %  xetex|pdftex|dvips|dvipdfm, % 可选选项
+% %  bachelor|master|doctor|postdoctor, % 必选选项
+% %  winfonts|nofonts|adobefonts, % 本科生、Linux 用户使用 XeLaTeX 时必选
 % %  secret, % 可选选项
 % %  openany|openright, % 可选选项
 % %  arialtoc,arialtitle % 可选选项
 % %  ]{thuthesis}
+% % 当使用 XeLaTeX 编译时，本科生、Linux 用户需要加上 nofonts 选项；
+% % 当使用 PDFLaTeX 编译时，adobefonts 选项等效于 winfonts 选项(缺省选项)。
 %
 % % 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
 % \usepackage{thutils}
@@ -544,10 +548,10 @@
 %      openany。}这两个选项不用专门设置，\thuthesis{} 会根据当前论文类型自动选
 %   择。
 %
-% \item[dvips,dvipdfm,pdftex,xetex]
-%   这些选项主要是配合 \pkg{hyperref} 能正确生成书签和链接，以及所有其它对底层驱动有依
-%   赖的包。一般来说，这些选项可以忽略，不过一旦指定了，就要保证使用对应的命令编
-%   译，否则模板会报错。
+% \item[winfonts,adobefonts,nofonts]
+%   这些选项用来指导 ctex 宏包/文档类设置选用的中文字体。
+%   winfonts 指定使用中易的六款字体（XeTeX 下为四种）。adobefonts 指定使用 Adobe 的
+%   四款免费中文字体，nofonts 不提供可用的中文字体，由用户自行设定。
 %
 % \item[arial]
 %   使用真正的 arial 字体。此选项会装载 arial 字体宏包，如果此宏包不存在，就装
@@ -681,7 +685,7 @@
 % 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
 % 的 |\cite{key}|，而 |\onlinecite{key}| 则用来生成正文模式。
 %
-% 关于参考文献模板推荐使用 BIB\TeX，关于中文参考文献需要额外增加一个 Entry: lang，将其设置为 \texttt{zh}
+% 关于参考文献模板推荐使用 \BibTeX{}，关于中文参考文献需要额外增加一个 Entry: lang，将其设置为 \texttt{zh}
 % 用来指示此参考文献为中文，以便 thubib.bst 处理。如：
 % \begin{example}
 % @INPROCEEDINGS{cnproceed,
