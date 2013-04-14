@@ -1848,8 +1848,8 @@
 \CTEXdigits{\thu@CJK@year}{\the\year}
 \CTEXnumber{\thu@CJK@month}{\the\month}
 \CTEXnumber{\thu@CJK@day}{\the\day}
-\def\CJK@todaybig@short{\thu@CJK@year 年 \thu@CJK@month 月}
-\def\CJK@todaybig{\CJK@todaybig@short \thu@CJK@day 日}
+\def\CJK@todaybig@short{\thu@CJK@year{}年\thu@CJK@month{}月}
+\def\CJK@todaybig{\CJK@todaybig@short{}\thu@CJK@day{}日}
 \def\CJK@today{\CJK@todaysmall}
 \renewcommand\today{\CJK@today}
 \newcommand\CJKtoday[1][1]{%
