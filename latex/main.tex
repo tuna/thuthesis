@@ -3,13 +3,17 @@
 %%% TeX-master: t
 %%% End:
 
-\documentclass[bachelor]{thuthesis}
+\documentclass[bachelor,nofonts]{thuthesis}
+%\documentclass[master]{thuthesis}
+%\documentclass[doctor]{thuthesis}
 % \documentclass[%
 %   bachelor|master|doctor|postdoctor, % mandatory option
-%   xetex|pdftex|dvips|dvipdfm, % optional
+%   winfonts|nofonts|adobefonts, % mandatory only for bachelor and Linuxer
 %   secret,
 %   openany|openright,
 %   arialtoc,arialtitle]{thuthesis}
+% 当使用 XeLaTeX 编译时，本科生、Linux 用户需要加上 nofonts 选项；
+% 当使用 PDFLaTeX 编译时，adobefonts 选项等效于 winfonts 选项(缺省选项)。
 
 % 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
 \usepackage{thutils}

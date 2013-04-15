@@ -1,7 +1,7 @@
 \documentclass[doctor]{thuthesis}
 
 \ifxetex
-  \setCJKfamilyfont{fs}[RawFeature={vertical:}]{\fontfs}
+  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]{FangSong}
 \else % for latex/pdflatex
   \usepackage{CJKvert}
 \fi
@@ -12,5 +12,9 @@
 
 \shuji
 
-\shuji[清华大学学位\hspace{0.2em}\raisebox{2pt}{\LaTeX}\hspace{-0.25em} 论文模板 \hspace{0.1em}\raisebox{2pt}{v\version}\hspace{-0.25em} 样例]
+\ifxetex
+\shuji[清华大学学位\hspace{0.2em}\raisebox{-5pt}{\LaTeX}\hspace{-0.25em} 论文模板 \hspace{0.1em}\raisebox{-5pt}{v\version}\hspace{-0.25em} 样例]
+\else
+\shuji[清华大学学位\hspace{0.2em}\raisebox{8pt}{\LaTeX}\hspace{-0.25em} 论文模板 \hspace{0.1em}\raisebox{8pt}{v\version}\hspace{-0.25em} 样例]
+\fi
 \end{document}
