@@ -1,7 +1,21 @@
+% vim: set ft=tex:
+% This file is modified from ctex's ctex-xecjk-winfonts.def.
+
 \ProvidesFile{fontname.def}
-\newcommand{\fontsong}{Adobe Song Std}
-\newcommand{\fonthei}{Adobe Heiti Std}
-\newcommand{\fontkai}{Adobe Kaiti Std}
-\newcommand{\fontfs}{Adobe Fangsong Std}
-\newcommand{\fontli}{Adobe Kaiti Std}
-\newcommand{\fontyou}{Adobe Kaiti Std}
+\setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
+\setCJKsansfont{SimHei}
+\setCJKmonofont{FangSong}
+
+\setCJKfamilyfont{zhsong}{SimSun}
+\setCJKfamilyfont{zhhei}{SimHei}
+\setCJKfamilyfont{zhkai}{KaiTi}
+\setCJKfamilyfont{zhfs}{FangSong}
+\setCJKfamilyfont{zhli}{LiSu}
+\setCJKfamilyfont{zhyou}{YouYuan}
+
+\newcommand*{\songti}{\CJKfamily{zhsong}}
+\newcommand*{\heiti}{\CJKfamily{zhhei}}
+\newcommand*{\kaishu}{\CJKfamily{zhkai}}
+\newcommand*{\fangsong}{\CJKfamily{zhfs}}
+\newcommand*{\lishu}{\CJKfamily{zhli}}
+\newcommand*{\youyuan}{\CJKfamily{zhyou}}

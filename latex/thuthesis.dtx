@@ -155,7 +155,7 @@
 %
 %
 % \title{\thuthesis：清华大学学位论文模板\thanks{Tsinghua University \LaTeX{} Thesis Template.}}
-% \author{{\fs 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt]{\fs 清华大学计算机系高性能所}\\[5pt] \texttt{xueruini@gmail.com}}
+% \author{{\fangsong 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt]{\fangsong 清华大学计算机系高性能所}\\[5pt] \texttt{xueruini@gmail.com}}
 % \date{v\fileversion\ (\filedate)}
 % \maketitle\thispagestyle{empty}
 %
@@ -203,7 +203,7 @@
 % 列表（见后）写信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现
 % 在的这个版本基本上满足了学校的要求，但难免还存在不足之处，欢迎大家积极反馈。
 %
-% {\color{blue}\fs 模板的作用在于减轻论文写作过程中格式调整的时间，其前提就是遵
+% {\color{blue}\fangsong 模板的作用在于减轻论文写作过程中格式调整的时间，其前提就是遵
 %   守模板的用法，否则即使使用了 \thuthesis{} 也难以保证输出的论文符合学校规范。}
 %
 %
@@ -233,10 +233,10 @@
 % \begin{center}
 %   \begin{longtable}{l|p{10cm}}
 % \hline
-% {\hei 文件（夹）} & {\hei 功能描述}\\\hline\hline
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\hline\hline
 % \endfirsthead
 % \hline
-% {\hei 文件（夹）} & {\hei 功能描述}\\\hline\hline
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\hline\hline
 % \endhead
 % \endfoot
 % \endlastfoot
@@ -272,7 +272,7 @@
 % \begin{center}
 % \begin{minipage}{1.0\linewidth}\centering
 % \begin{tabular}{*{6}{l}}\hline
-%   ifxetex & xunicode & CJK\footnote{版本要求：$\geq$ v4.8.1} & xeCJK & \pkg{CJKpunct} & \\
+%   ifxetex & xunicode & CJK\footnote{版本要求：$\geq$ v4.8.1} & xeCJK & \pkg{CJKpunct} & \pkg{ctex} \\
 %   array & booktabs & longtable  &  amsmath & amssymb & ntheorem \\
 %   indentfirst & paralist & txfonts & natbib & hyperref & \\
 %   graphicx & \pkg{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &
@@ -283,7 +283,7 @@
 % \end{center}
 %
 % 这些包在常见的 \TeX{} 系统中都有，如果没有请到 \url{www.ctan.org} 下载。推
-% 荐 \TeX live。
+% 荐 \TeX\ Live。
 %
 %
 % \subsection{开始安装}
@@ -291,7 +291,7 @@
 %
 % \subsubsection{生成模板}
 % \label{sec:generate-cls}
-% {\hei 说明：默认的发行包中已经包含了所有文件，可以直接使用。如果对如何由 dtx 生
+% {\heiti 说明：默认的发行包中已经包含了所有文件，可以直接使用。如果对如何由 dtx 生
 %   成模板文件以及模板文档不感兴趣，请跳过本小节。}
 %
 % 模板解压缩后生成文件夹 thuthesis-VERSION\footnote{VERSION 为版本号。}，其中包括：
@@ -364,9 +364,9 @@
 % \subsubsection{xelatex}
 % \label{sec:xelatex}
 % XeTeX 最大的优势就是不再需要繁琐的字体配置。\thuthesis{} 通过 \pkg{xeCJK} 来控
-% 制中文字体和标点压缩。模板里默认用的是 Adobe 的四款免费字体（宋，黑，楷，仿宋），
+% 制中文字体和标点压缩。模板里默认用的是中易的四款免费字体（宋，黑，楷，仿宋），
 % 用户可以根据自己的实际情况方便的替换。另外，本科论文封面要用到隶书，请用户自行
-% 修改。
+% 修改，参考第~\ref{sec:font-config} 节。
 %
 % Xe\LaTeX\ 的使用步骤同 PDF\LaTeX。
 %
@@ -385,8 +385,8 @@
 % $ make shuji     # 生成书脊 shuji.pdf
 % \end{shell}
 %
-% \texttt{Makefile} 默认采用 \LaTeX\ 编译，可以根据自己的
-% 需要修改命令。
+% \texttt{Makefile} 默认采用 Xe\LaTeX\ 编译，可以根据自己的
+% 需要修改 \texttt{config.mk} 中的参数设置。
 %
 %
 % \subsection{升级}
@@ -427,17 +427,21 @@
 % 示例文档用户会发现很难下手。所以推荐新用户从模板自带的示例文档入手，里面包括了
 % 论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于
 % 不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文
-% 档，具体内容可以参考模板附带的 main.tex 和 data\/。
+% 档，具体内容可以参考模板附带的 main.tex 和 data/。
 %
 % \begin{example}
-% \documentclass[bachelor]{thuthesis}
+% \documentclass[bachelor,nofonts]{thuthesis}
+% %\documentclass[master,adobefonts]{thuthesis}
+% %\documentclass[doctor]{thuthesis}
 % %\documentclass[%
-% %  bachelor|master|doctor|postdoc, % 必选选项
-% %  xetex|pdftex|dvips|dvipdfm, % 可选选项
+% %  bachelor|master|doctor|postdoctor, % 必选选项
+% %  winfonts|nofonts|adobefonts, % 本科生、Linux 用户使用 XeLaTeX 时必选
 % %  secret, % 可选选项
 % %  openany|openright, % 可选选项
 % %  arialtoc,arialtitle % 可选选项
 % %  ]{thuthesis}
+% % 当使用 XeLaTeX 编译时，本科生、Linux 用户需要加上 nofonts 选项；
+% % 当使用 PDFLaTeX 编译时，adobefonts 选项等效于 winfonts 选项(缺省选项)。
 %
 % % 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
 % \usepackage{thutils}
@@ -540,14 +544,14 @@
 %   正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \texttt{openright}，
 %   也是 \thuthesis 的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么
 %   模板会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎
-%   更倾向于页面连续，那就是通常所说的 \texttt{openany}。{\fs 目前所有论文都是
+%   更倾向于页面连续，那就是通常所说的 \texttt{openany}。{\fangsong 目前所有论文都是
 %      openany。}这两个选项不用专门设置，\thuthesis{} 会根据当前论文类型自动选
 %   择。
 %
-% \item[dvips,dvipdfm,pdftex,xetex]
-%   这些选项主要是配合 \pkg{hyperref} 能正确生成书签和链接，以及所有其它对底层驱动有依
-%   赖的包。一般来说，这些选项可以忽略，不过一旦指定了，就要保证使用对应的命令编
-%   译，否则模板会报错。
+% \item[winfonts,adobefonts,nofonts]
+%   这些选项用来指导 ctex 宏包/文档类设置选用的中文字体。
+%   winfonts 指定使用中易的六款字体（XeTeX 下为四种）。adobefonts 指定使用 Adobe 的
+%   四款免费中文字体，nofonts 不提供可用的中文字体，由用户自行设定。
 %
 % \item[arial]
 %   使用真正的 arial 字体。此选项会装载 arial 字体宏包，如果此宏包不存在，就装
@@ -566,7 +570,7 @@
 %
 % \subsection{字体配置}
 % \label{sec:font-config}
-% 正确配置中文字体是使用模板的第一步。模板有两种字体使用方式：
+% 正确配置中文字体是使用模板的第一步。模板调用 ctex 宏包，提供如下字体使用方式：
 % \begin{itemize}
 %   \item 基于传统 CJK 包，使用 latex、pdflatex 编译；
 %   \item 基于 xeCJK 包，使用 xelatex 编译。
@@ -575,50 +579,42 @@
 % 第一种方式的字体配置比较繁琐，建议使用 donated 制作的中文字体包（自
 % 包含安装方法），请用户自行下载安装，此处不再赘述。本模板推荐使用第二
 % 种方法，只要把所需字体放入系统字体文件夹（也可以指定自定义文件夹）即
-% 可。模板默认采用 Adobe 的四款免费字体，配置在 fontname.def 文件中，内容如下：
+% 可。用户可以使用 winfonts,adobefonts,nofonts 选项来选择可用的中文字库，
+% 缺省情况下为 winfonts 有效，使用中易字体。注意当使用 xelatex 编译时，
+% winfonts 只有中易的四款字体（宋体、黑体、楷书和仿宋）可用，而本科生需要用到幼圆，
+% 另外 Linux 系统缺少上述字体，这些用户可以通过指定 nofonts 选项，利用 fontname.def
+% 文件配置所需字体。使用中易六种字体的配置如下：
 % \begin{example}
 % \ProvidesFile{fontname.def}
-% \newcommand{\fontsong}{Adobe Song Std}
-% \newcommand{\fonthei}{Adobe Heiti Std}
-% \newcommand{\fontkai}{Adobe Kaiti Std}
-% \newcommand{\fontfs}{Adobe Fangsong Std}
-% \newcommand{\fontli}{Adobe Kaiti Std}
-% \newcommand{\fontyou}{Adobe Kaiti Std}
+% \setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
+% \setCJKsansfont{SimHei}
+% \setCJKmonofont{FangSong}
+% \setCJKfamilyfont{zhsong}{SimSun}
+% \setCJKfamilyfont{zhhei}{SimHei}
+% \setCJKfamilyfont{zhkai}{KaiTi}
+% \setCJKfamilyfont{zhfs}{FangSong}
+% \setCJKfamilyfont{zhli}{LiSu}
+% \setCJKfamilyfont{zhyou}{YouYuan}
+% \newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
+% \newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
+% \newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
+% \newcommand*{\fangsong}{\CJKfamily{zhfs}} % 仿宋
+% \newcommand*{\lishu}{\CJKfamily{zhli}}    % 隶书
+% \newcommand*{\youyuan}{\CJKfamily{zhyou}} % 幼圆
 % \end{example}
 %
-% 一般系统中默认并不存在这四种字体，所以要根据自己的实际情况来修改上述
-% 定义。对 Windows XP 来说如下：
-% \begin{example}
-% \ProvidesFile{fontname.def}
-% \newcommand{\fontsong}{SimSun}
-% \newcommand{\fonthei}{SimHei}
-% \newcommand{\fontkai}{KaiTi_GB2312}
-% \newcommand{\fontfs}{FangSong_GB2312}
-% \newcommand{\fontli}{LiSu}
-% \newcommand{\fontyou}{YouYuan}
-% \end{example}
+% 对 Windows XP 来说如下，KaiTi 需要替换为 KaiTi\_GB2312，
+% FangSong 需要替换为 FangSong\_GB2312。
 %
-% Vista 和 Win 7 中文字体名字略有不同：
-% \begin{example}
-% \ProvidesFile{fontname.def}
-% \newcommand{\fontsong}{SimSun}
-% \newcommand{\fonthei}{SimHei}
-% \newcommand{\fontkai}{KaiTi}
-% \newcommand{\fontfs}{FangSong}
-% \newcommand{\fontli}{LiSu}
-% \newcommand{\fontyou}{YouYuan}
-% \end{example}
-%
-% 宏包中包含了 ``zhfonts.py'' 脚本，可以交互式地让 Linux
-% 用户从系统中文字体中选择合适的六种字体，最终生成对应的 ``fontname.def''
+% 宏包中包含了 ``zhfonts.py'' 脚本，为 Linux 用户提供一种交互式的方式
+% 从系统中文字体中选择合适的六种字体，最终生成对应的 ``fontname.def''
 % 文件。要使用它，只需在命令行输入该脚本的完整路径即可。
 %
-% 总而言之，用户可以通过命令：
+% 最后，用户可以通过命令
 % \begin{shell}
-% $ fs-list
+% $ fs-list :lang=zh > zhfonts.txt
 % \end{shell}
-%
-% 来查看系统中现有的字体，并相应替换上述配置。
+% 得到系统中现有的中文字体列表，并相应替换上述配置。
 %
 % \subsection{命令}
 % \label{sec:command}
@@ -631,31 +627,23 @@
 % \label{sec:basiccom}
 %
 % \myentry{字体}
-% \DescribeMacro{\song}
-% \DescribeMacro{\fs}
-% \DescribeMacro{\hei}
-% \DescribeMacro{\kai}
-% \DescribeMacro{\li}
-% \DescribeMacro{\you}
-% 等分别用来切换宋体、仿宋、黑体、楷体、隶书和幼圆字体。为了兼容不同用户的习惯，模
-% 板还定义了另外一些字体切换命令，对应关系如下：
-%
-% \begin{center}
-% \begin{tabular}{llllll}\hline
-%  \cs{song} &\cs{fs}&\cs{hei}&\cs{kai}&\cs{li}&\cs{you}\\\hline
-%  \cs{songti}&\cs{fangsong}&\cs{heiti}&\cs{kaishu}&\cs{lishu}&\cs{youyuan}\\\hline
-% \end{tabular}
-% \end{center}
+% \DescribeMacro{\songti}
+% \DescribeMacro{\fangsong}
+% \DescribeMacro{\heiti}
+% \DescribeMacro{\kaishu}
+% \DescribeMacro{\lishu}
+% \DescribeMacro{\youyuan}
+% 等分别用来切换宋体、仿宋、黑体、楷体、隶书和幼圆字体。
 %
 % \begin{example}
-% {\song 乾：元，亨，利贞}
-% {\fs 初九，潜龙勿用}
-% {\hei 九二，见龙在田，利见大人}
-% {\kai 九三，君子终日乾乾，夕惕若，厉，无咎}
-% {\li 九四，或跃在渊，无咎}
-% {\hei 九五，飞龙在天，利见大人}
-% {\song 上九，亢龙有悔}
-% {\you 用九，见群龙无首，吉}
+% {\songti 乾：元，亨，利贞}
+% {\fangsong 初九，潜龙勿用}
+% {\heiti 九二，见龙在田，利见大人}
+% {\kaishu 九三，君子终日乾乾，夕惕若，厉，无咎}
+% {\lishu 九四，或跃在渊，无咎}
+% {\heiti 九五，飞龙在天，利见大人}
+% {\songti 上九，亢龙有悔}
+% {\youyuan 用九，见群龙无首，吉}
 % \end{example}
 %
 % \myentry{字号}
@@ -680,10 +668,6 @@
 % {\erhao 二号 \sanhao 三号 \sihao 四号  \qihao 七号}
 % \end{example}
 %
-% \myentry{字距}
-% \DescribeMacro{\ziju}
-% 更改汉字之间默认的距离，使用格式为 |\ziju{4bp}|，其中的距离只要是合格的 \TeX{} 距离即可。
-%
 % \myentry{密级}
 % \DescribeMacro{\secretlevel}
 % \DescribeMacro{\secretyear}
@@ -701,7 +685,7 @@
 % 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
 % 的 |\cite{key}|，而 |\onlinecite{key}| 则用来生成正文模式。
 %
-% 关于参考文献模板推荐使用 BIB\TeX，关于中文参考文献需要额外增加一个 Entry: lang，将其设置为 \texttt{zh}
+% 关于参考文献模板推荐使用 \BibTeX{}，关于中文参考文献需要额外增加一个 Entry: lang，将其设置为 \texttt{zh}
 % 用来指示此参考文献为中文，以便 thubib.bst 处理。如：
 % \begin{example}
 % @INPROCEEDINGS{cnproceed,
@@ -748,7 +732,7 @@
 % \myentry{破折号}
 % \DescribeMacro{\pozhehao}
 % 中文破折号在 CJK-\LaTeX\ 里没有很好的处理，我们平时输入的都是两个小短线，比如这
-% 样，{\hei 中国——中华人民共和国}。这不符合中文习惯。所以这里定义了一个命令生成更
+% 样，{\heiti 中国——中华人民共和国}。这不符合中文习惯。所以这里定义了一个命令生成更
 % 好看的破折号，不过这似乎不是一个好的解决办法。有同学说不能用在 |\section| 等命
 % 令中使用，简单的办法是可以提供一个不带破折号的段标题：\cs{section}\oarg{没有破
 %   折号精简标题}\marg{带破折号的标题}。
@@ -914,7 +898,7 @@
 % \begin{center}
 % \begin{tabular}{ll}
 % \hline
-%   {\hei 命令} & {\hei 说明} \\\hline
+%   {\heiti 命令} & {\heiti 说明} \\\hline
 % \cs{listoffigures} & 插图索引\\
 % \cs{listoffigures*} & \\\hline
 % \cs{listoftables} & 表格索引\\
@@ -969,7 +953,7 @@
 %
 % \myentry{附录}
 % \DescribeEnv{appendix}
-% 所有的附录都插到这里来。因为附录会更改默认的 chapter 属性，而后面的{\hei 个人简
+% 所有的附录都插到这里来。因为附录会更改默认的 chapter 属性，而后面的{\heiti 个人简
 %   历}又需要恢复，所以实现为环境可以保证全局的属性不受影响。
 % \begin{example}
 % \begin{appendix}
@@ -1019,9 +1003,9 @@
 % \end{definition}
 % \end{example}
 % 产生（自动编号）：\\[5pt]
-% \fbox{{\hei 定义~1.1~~~} {道千乘之国，敬事而信，节用而爱人，使民以时。}}
+% \fbox{{\heiti 定义~1.1~~~} {道千乘之国，敬事而信，节用而爱人，使民以时。}}
 %
-% 列举出来的数学环境毕竟是有限的，如果想用{\hei 胡说}这样的数学环境，那么很容易定义：
+% 列举出来的数学环境毕竟是有限的，如果想用{\heiti 胡说}这样的数学环境，那么很容易定义：
 % \begin{example}
 % \newtheorem{nonsense}{胡说}[chapter]
 % \end{example}
@@ -1033,7 +1017,7 @@
 % \end{nonsense}
 % \end{example}
 % 产生（自动编号）：\\[5pt]
-% \fbox{{\hei 胡说~1.1~~~} {契丹武士要来中原夺武林秘笈。\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex 慕容博}}
+% \fbox{{\heiti 胡说~1.1~~~} {契丹武士要来中原夺武林秘笈。\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex 慕容博}}
 %
 % \subsection{自定义以及其它}
 % \label{sec:othercmd}
@@ -1070,15 +1054,6 @@
 % \label{sec:defoption}
 % TODO: 所有的选项用 \pkg{xkeyval} 来重构，现在的太罗唆了。
 %
-% 定义文档所使用编码
-%    \begin{macrocode}
-%<*cls>
-\newif\ifthu@UTF
-\newif\ifthu@GBK
-\DeclareOption{utf}{\thu@UTFtrue\thu@GBKfalse}
-\DeclareOption{gbk}{\thu@GBKtrue\thu@UTFfalse}
-%    \end{macrocode}
-%
 % 定义论文类型以及是否涉密
 % \changes{v2.4}{2006/04/14}{添加模板名称命令。}
 % \changes{v2.5}{2006/05/19}{增加本科论文的提交选项 submit。}
@@ -1088,6 +1063,7 @@
 % \changes{v3.0}{2007/05/12}{删除 submit 选项。}
 % \changes{v4.6}{2011/04/26}{增加 postdoctor 选项。}
 %    \begin{macrocode}
+%<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
 \def\version{4.8dev}
@@ -1103,20 +1079,10 @@
 \DeclareOption{secret}{\thu@secrettrue}
 %    \end{macrocode}
 %
-% 使用 dvips，dvipdfm, pdflatex 还是 xelatex
 % \changes{v2.5.1}{2006/05/24}{如果选项设置了 dvips，但是用 pdflatex 编译，报错。}
 % \changes{v2.6}{2006/06/09}{增加 dvipdfm 选项。}
 % \changes{v4.5}{2009/01/03}{增加 xetex, pdftex 选项。}
-%    \begin{macrocode}
-\newif\ifthu@dvips
-\newif\ifthu@dvipdfm
-\newif\ifthu@xetex
-\newif\ifthu@pdftex
-\DeclareOption{dvips}{\thu@dvipstrue}
-\DeclareOption{dvipdfm}{\thu@dvipdfmtrue}
-\DeclareOption{pdftex}{\thu@pdftextrue}
-\DeclareOption{xetex}{\thu@xetextrue}
-%    \end{macrocode}
+% \changes{v4.8dev}{2013/03/02}{内部调用 ctex 宏包，自动检测编译引擎}
 %
 % 如果需要使用 arial 字体，请打开 [arial] 选项
 %    \begin{macrocode}
@@ -1142,9 +1108,9 @@
 \DeclareOption{noraggedbottom}{\thu@raggedbottomfalse}
 %    \end{macrocode}
 %
-% 将选项传递给 book 类
+% 将选项传递给 ctexbook 类
 %    \begin{macrocode}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 %    \end{macrocode}
 %
 % \cs{ExecuteOptions} 的参数之间用逗号分割，不能有空格。开始不知道，折腾了老半
@@ -1152,10 +1118,11 @@
 % \changes{v2.5.1}{2006/05/24}{ft，研究生院目录要 times，而教务处要 arial。}
 % \changes{v2.5.1}{2006/05/26}{本科 openright，研究生 openany。}
 % \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
+% \changes{v4.8dev}{2013/03/10}{使用 ctexbook 类，优于调用 ctex 宏包。}
 %    \begin{macrocode}
 \ExecuteOptions{utf,arialtitle}
 \ProcessOptions\relax
-\LoadClass[12pt,a4paper,openany]{book}
+\LoadClass[cs4size,a4paper,openany,UTF8]{ctexbook}
 %    \end{macrocode}
 %
 % 用户至少要提供一个选项：指定论文类型。
@@ -1172,38 +1139,19 @@
 \fi
 %    \end{macrocode}
 %
-% 检查用户指定的选项和实际编译命令是否冲突。
-%    \begin{macrocode}
-\RequirePackage{ifpdf,ifxetex}
-\ifthu@xetex\RequireXeTeX\fi
-\def\RequirePDFTeX{%
-  \ifpdf\else
-    \ClassError{thuthesis}%
-               {pdflatex is required to compile this document!}{}
-  \fi}
-\ifthu@pdftex\RequirePDFTeX\fi
-\def\thu@checkoption#1#2{%
-  \@for\reserved@a:=#2\do{%
-    \csname ifthu@\reserved@a\endcsname
-      \ClassError{thuthesis}%
-                 {Please remove `\reserved@a' option when you run #1.}{}
-    \fi}}
-\ifpdf\thu@checkoption{pdflatex}{dvips,dvipdfm,xetex}\thu@pdftextrue\fi % force the option to be true
-\ifxetex\thu@checkoption{xelatex}{dvips,dvipdfm,pdftex}\thu@xetextrue\fi
-%    \end{macrocode}
-%
-%
 % \subsection{装载宏包}
 % \label{sec:loadpackage}
 %
 % 引用的宏包和相应的定义。
 %    \begin{macrocode}
+\RequirePackage{ifxetex}
 \RequirePackage{ifthen,calc}
 %    \end{macrocode}
 %
 % \AmSTeX{} 宏包，用来排出更加漂亮的公式。
+% \changes{v4.8}{2013/03/02}{no need to load amssymb since we use txfonts.}
 %    \begin{macrocode}
-\RequirePackage{amsmath,amssymb}
+\RequirePackage{amsmath}
 %    \end{macrocode}
 %
 % 用很爽的 \pkg{txfonts} 替换 \pkg{mathptmx} 宏包，同时用它自带的 typewriter 字
@@ -1223,13 +1171,10 @@
 % 推荐使用，采用新的 \pkg{caption}。它会自动被 \pkg{subfig} 装载进来。所以可以在
 % 后面看到 \cs{captionsetup} 的命令。
 %    \begin{macrocode}
-\RequirePackage[config]{subfig}
+\RequirePackage[config]{subfig} %todo: subfig is deprecated, use subcaption package.
 %    \end{macrocode}
 %
-% 首行缩进宏包
-%    \begin{macrocode}
-\RequirePackage{indentfirst}
-%    \end{macrocode}
+% \changes{v4.8}{2013/03/02}{no need to load indentfirst directly since we use ctex.}
 %
 % 更好的列表环境。
 % \changes{v2.6.2}{2006/06/18}{去掉 \pkg{paralist} 的 newitem 和 newenum 选项，因为默
@@ -1247,48 +1192,29 @@
 \fi
 %    \end{macrocode}
 %
-% 中文支持宏包。XeTeX 模式下直接调用 \pkg{xeCJK}，一切问题都搞定了。
+% 中文支持，我们使用 ctex 宏包。
 % \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \pkg{xeCJK}。}
+% \changes{v4.8dev}{2013/03/09}{reset baselinestretch after ctex's change.}
 %    \begin{macrocode}
-\ifthu@xetex
-  \RequirePackage{mathptmx} % fontspec conflicts with txfonts now, so we have to load other times-math fonts.
-  \RequirePackage[CJKnumber=true,normalindentfirst]{xeCJK}
+\renewcommand{\baselinestretch}{1.0}
+\ifxetex
   \xeCJKsetup{AutoFakeBold=true,AutoFakeSlant=true}
   \punctstyle{quanjiao}
   % todo: minor fix of CJKnumb
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
   \defaultfontfeatures{Mapping=tex-text} % use TeX --
 %    \end{macrocode}
-% 默认采用 Adobe 的四款 (宋，黑，楷，仿宋) 免费字体。这样的话，缺少隶书和幼圆。本
-% 科的封面大字会受影响。请手动替换。
+% 默认采用中易的四款 (宋，黑，楷，仿宋) 免费字体。本科生还需要隶书，需要手工
+% 修改 fontname.def 文件。缺少中文字体的 Linux 用户可以通过 fontname.def 文件定义字体。
 %    \begin{macrocode}
-  \input{fontname.def}
-  \setCJKmainfont[BoldFont={\fonthei}, ItalicFont={\fontkai}]{\fontsong}
-  \setCJKsansfont{\fonthei}
-  \setCJKmonofont{\fontkai}
-  \setCJKfamilyfont{song}{\fontsong}
-  \setCJKfamilyfont{hei}{\fonthei}
-  \setCJKfamilyfont{fs}{\fontfs}
-  \setCJKfamilyfont{kai}{\fontkai}
-  \setCJKfamilyfont{li}{\fontli}
-  \setCJKfamilyfont{you}{\fontyou}
+  \ifCTEX@nofonts
+    \input{fontname.def}
+  \fi
 
   \setmainfont{Times New Roman}
   \setsansfont{Arial}
   \setmonofont{Courier New}
-%    \end{macrocode}
-% 对于 \LaTeX\ 和 PDF\LaTeX，调用 \pkg{CJK} 以及相关的包。注意：\pkg{CJKpunct} 必
-% 须放在 \pkg{CJKspace} 之前。
-%    \begin{macrocode}
 \else
-  \RequirePackage{CJKutf8}
-  \RequirePackage{CJKnumb}
-  \ifthu@GBK % CJKpunct 在 UTF 下工作的不好。
-    \IfFileExists{CJKpunct.sty}%
-                 {\RequirePackage{CJKpunct}}%
-                 {\ClassWarning{thuthesis}{no CJKpunct.sty availiable!}}
-  \fi
-  \RequirePackage{CJKspace}
 %    \end{macrocode}
 % arial 字体需要单独安装，如果不使用 arial 字体，可以用 helvet 字体 |\textsf|
 % 模拟，二者基本没有差别。
@@ -1297,15 +1223,6 @@
     \IfFileExists{arial.sty}%
                  {\RequirePackage{arial}}%
                  {\ClassWarning{thuthesis}{no arial.sty availiable!}}
-  \fi
-\fi
-%    \end{macrocode}
-%
-% 可拷贝的 PDF (\pkg{ccmap} 结合 \texttt{pdflatex} 和 \texttt{dvipdfmx} 使用)
-%    \begin{macrocode}
-\ifthu@dvips\else
-  \ifthu@xetex\else
-    \RequirePackage{ccmap}
   \fi
 \fi
 %    \end{macrocode}
@@ -1355,13 +1272,9 @@
   pdfborder=0 0 0}
 %    \end{macrocode}
 %
-% dvips 模式下网址断字有问题，加入这个包解决之。
+% dvips 模式下网址断字有问题，请手工加载 breakurl 这个宏包解决之。
 % \changes{v4.4}{2008/05/12}{修复网址断字。}
-%    \begin{macrocode}
-\ifthu@dvips
-  \RequirePackage{breakurl}
-\fi
-%    \end{macrocode}
+% \changes{v4.8}{2013/03/04}{dvips method is deprecated. We ask their users to load it manually.}
 %
 % 设置 url 样式，与上下文一致
 %    \begin{macrocode}
@@ -1402,47 +1315,6 @@
 %
 % \subsubsection{字体}
 % \label{sec:font}
-%
-% \begin{macro}{\song}
-% \begin{macro}{\songti}
-% \begin{macro}{\fs}
-% \begin{macro}{\fangsong}
-% \begin{macro}{\kai}
-% \begin{macro}{\kaishu}
-% \begin{macro}{\hei}
-% \begin{macro}{\heiti}
-% \begin{macro}{\li}
-% \begin{macro}{\lishu}
-% \begin{macro}{\you}
-% \begin{macro}{\youyuan}
-% 重定义字体命令
-%    \begin{macrocode}
-%<*cls>
-\newcommand{\song}{\CJKfamily{song}}    % 宋体
-\def\songti{\song}
-\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
-\def\fangsong{\fs}
-\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
-\def\kaishu{\kai}
-\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
-\def\heiti{\hei}
-\newcommand{\li}{\CJKfamily{li}}        % 隶书
-\def\lishu{\li}
-\newcommand{\you}{\CJKfamily{you}}      % 幼圆
-\def\youyuan{\you}
-%    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
 %
 % 重定义字号命令
 %
@@ -1495,6 +1367,7 @@
 %
 % 避免了字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
 %    \begin{macrocode}
+%<*cls>
 \newlength\thu@linespace
 \newcommand{\thu@choosefont}[2]{%
    \setlength{\thu@linespace}{#2*\real{#1}}%
@@ -1653,10 +1526,10 @@
   \let\@evenfoot=\@oddfoot}
 \def\ps@thu@headings{%
   \def\@oddhead{\vbox to\headheight{%
-    \hb@xt@\textwidth{\hfill\wuhao\song\leftmark\ifthu@bachelor\relax\else\hfill\fi}%
+    \hb@xt@\textwidth{\hfill\wuhao\songti\leftmark\ifthu@bachelor\relax\else\hfill\fi}%
       \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
   \def\@evenhead{\vbox to\headheight{%
-      \hb@xt@\textwidth{\wuhao\song%
+      \hb@xt@\textwidth{\wuhao\songti%
       \ifthu@bachelor\thu@schoolname\thu@bachelor@subtitle%
        \else\hfill\leftmark\fi\hfill}%
       \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
@@ -1676,27 +1549,10 @@
 %
 % \subsubsection{段落}
 % \label{sec:paragraph}
-% 用于中文段落缩进和正文版式
-%    \begin{macrocode}
-%<*cls>
-\newlength\CJK@twochars
-\ifxetex
-  \def\CJK@spaceChar{\Unicode{48}{7}}
-\else
-  \ifthu@UTF
-    \def\CJK@spaceChar{\CJKchar{"080}{"080}}
-  \fi
-  \ifthu@GBK
-    \def\CJK@spaceChar{\CJKchar{"0A1}{"0A1}}
-  \fi
-\fi
-\def\CJKindent{%
-  \settowidth\CJK@twochars{\CJK@spaceChar\CJK@spaceChar}%
-  \parindent\CJK@twochars}
-%    \end{macrocode}
 %
 % 段落之间的竖直距离
 %    \begin{macrocode}
+%<*cls>
 \setlength{\parskip}{0pt \@plus2pt \@minus0pt}
 %    \end{macrocode}
 %
@@ -1767,9 +1623,10 @@
 \def\@makefnmark{\textsuperscript{\hbox{\normalfont\@thefnmark}}}
 \long\def\@makefntext#1{
   \bgroup
-    \setbox\@tempboxa\hbox{%
+    \newbox\thu@tempboxa
+    \setbox\thu@tempboxa\hbox{%
       \hb@xt@ 2em{\@thefnmark\hss}}
-    \leftmargin\wd\@tempboxa
+    \leftmargin\wd\thu@tempboxa
     \rightmargin\z@
     \linewidth \columnwidth
     \advance \linewidth -\leftmargin
@@ -1777,7 +1634,7 @@
     \footnotesize
     \@setpar{{\@@par}}%
     \leavevmode
-    \llap{\box\@tempboxa}%
+    \llap{\box\thu@tempboxa}%
     #1
   \par\egroup}
 %</cls>
@@ -1857,8 +1714,8 @@
 % \changes{v2.6.2}{2006/06/17}{增加问题和猜想两个数学环境。}
 % \changes{v4.2}{2008/03/07}{调整证明环境的编号和结尾的方块。}
 %    \begin{macrocode}
-\theorembodyfont{\song\rmfamily}
-\theoremheaderfont{\hei\rmfamily}
+\theorembodyfont{\songti\rmfamily}
+\theoremheaderfont{\heiti\rmfamily}
 %</cls>
 %<*cfg>
 % \theoremsymbol{\ensuremath{\blacksquare}}
@@ -1923,7 +1780,7 @@
 %    \begin{macrocode}
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
-\DeclareCaptionLabelFormat{thu}{{\dawu[1.5]\song #1~\rmfamily #2}}
+\DeclareCaptionLabelFormat{thu}{{\dawu[1.5]\songti #1~\rmfamily #2}}
 \DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
 \DeclareCaptionFont{thu}{\dawu[1.5]}
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
@@ -1971,11 +1828,11 @@
 \renewcommand\tablename{表}
 \newcommand\CJKprepartname{第}
 \newcommand\CJKpartname{部分}
-\newcommand\CJKthepart{\CJKnumber{\@arabic\c@part}}
+\CTEXnumber{\thu@thepart}{\@arabic\c@part}
+\newcommand\CJKthepart{\thu@thepart}
 \newcommand\CJKprechaptername{第}
 \newcommand\CJKchaptername{章}
 \newcommand\CJKthechapter{\@arabic\c@chapter}
-%\newcommand\CJKthechapter{\CJKnumber{\@arabic\c@chapter}}
 \renewcommand\chaptername{\CJKprechaptername~\CJKthechapter~\CJKchaptername}
 \renewcommand\appendixname{附录}
 \ifthu@bachelor
@@ -1988,8 +1845,11 @@
 \let\CJK@todaysave=\today
 \def\CJK@todaysmall@short{\the\year 年 \the\month 月}
 \def\CJK@todaysmall{\CJK@todaysmall@short \the\day 日}
-\def\CJK@todaybig@short{\CJKdigits{\the\year} 年 \CJKnumber{\the\month} 月}
-\def\CJK@todaybig{\CJK@todaybig@short \CJKnumber{\the\day} 日}
+\CTEXdigits{\thu@CJK@year}{\the\year}
+\CTEXnumber{\thu@CJK@month}{\the\month}
+\CTEXnumber{\thu@CJK@day}{\the\day}
+\def\CJK@todaybig@short{\thu@CJK@year{}年\thu@CJK@month{}月}
+\def\CJK@todaybig{\CJK@todaybig@short{}\thu@CJK@day{}日}
 \def\CJK@today{\CJK@todaysmall}
 \renewcommand\today{\CJK@today}
 \newcommand\CJKtoday[1][1]{%
@@ -2043,7 +1903,7 @@
 \def\@makechapterhead#1{%
   \ifthu@bachelor\vspace*{24bp}\else\vspace*{20bp}\fi%
   {\parindent \z@ \centering
-    \hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
+    \csname thu@title@font\endcsname\heiti\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
     \ifnum \c@secnumdepth >\m@ne
       \@chapapp\hskip1em
     \fi
@@ -2055,7 +1915,7 @@
 \def\@makeschapterhead#1{%
   \ifthu@bachelor\vspace*{30bp}\else\vspace*{20bp}\fi%
   {\parindent \z@ \centering
-   \hei\csname thu@title@font\endcsname\sanhao[1]
+   \csname thu@title@font\endcsname\heiti\sanhao[1]
    \ifthu@bachelor\xiaosan\else
      \def\@tempa{#1}
      \def\@tempb{\eabstractname}
@@ -2121,7 +1981,7 @@
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                      {\ifthu@bachelor -25bp\else -24bp\fi\@plus -1ex \@minus -.2ex}%
                      {\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex}%
-                     {\hei\csname thu@title@font\endcsname\sihao[1.429]}}
+                     {\csname thu@title@font\endcsname\heiti\sihao[1.429]}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2134,7 +1994,7 @@
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                         {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
                         {6bp \@plus .2ex}%
-                        {\hei\csname thu@title@font\endcsname\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi}}
+                        {\csname thu@title@font\endcsname\heiti\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2146,7 +2006,7 @@
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                            {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
                            {6bp \@plus .2ex}%
-                           {\hei\csname thu@title@font\endcsname\xiaosi[1.667]}}
+                           {\csname thu@title@font\endcsname\heiti\xiaosi[1.667]}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2216,7 +2076,7 @@
       \leavevmode
       \advance\leftskip\@tempdima
       \hskip -\leftskip
-      {\hei\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi #1} % numberline is called here, and it uses \@tempdima
+      {\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi\heiti #1} % numberline is called here, and it uses \@tempdima
       \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
       \nobreak{\normalfont\normalcolor #2}\par
       \penalty\@highpenalty
@@ -2532,19 +2392,19 @@
     \thu@put@title{\thu@secretlevel}\expandafter\thu@underline\ifthu@secret\thu@secret@content\else\relax\fi\par
     \thu@put@title{U D C}\thu@underline\thu@udc\hfill%
     \thu@put@title{\thu@id@title}\thu@underline\thu@id\par\vskip3cm\endgroup
-    \begingroup\hei
-      {\xiaochu\ziju{1em}\thu@schoolname}\par\vskip2cm
-      {\xiaoyi\ziju{1em}\thu@postdoctor@report@title}\par\vskip3cm
+    \begingroup\heiti
+      {\xiaochu\ziju{1}\thu@schoolname}\par\vskip2cm
+      {\xiaoyi\ziju{1}\thu@postdoctor@report@title}\par\vskip3cm
       {\sanhao[1.5]\thu@ctitle}\par\vskip2cm
       {\xiaoer\thu@cauthor}
     \endgroup
     \par\vskip3cm
-    {\xiaosan[1.5]\ziju{1em}\thu@schoolname\par\vskip0.5em\CJK@todaysmall@short}
+    {\xiaosan[1.5]\ziju{1}\thu@schoolname\par\vskip0.5em\CJK@todaysmall@short}
   \end{center}
   \cleardoublepage
   \begin{center}
     \vspace*{2cm}
-    {\sihao\hei\thu@ctitle\par\thu@etitle}\par
+    {\sihao\heiti\thu@ctitle\par\thu@etitle}\par
     \parbox[t][7cm][b]{\textwidth-6cm}{\sihao[1.5]%
       \setlength{\thu@title@width}{11em}
       \setlength{\extrarowheight}{6pt}
@@ -2569,11 +2429,11 @@
       \ifthu@secret\hfill{\sihao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
       \vskip0.45cm
-      {\ziju{10bp}\yihao\li\thu@schoolname}
+      {\yihao\lishu\ziju{0.3846}\thu@schoolname}
       \par\vskip1.5cm
-      {\ziju{18bp}\xiaochu\hei\thu@bachelor@subtitle}
+      {\xiaochu\heiti\ziju{0.5}\thu@bachelor@subtitle}
       \vskip2.2cm
-      \noindent\hei\xiaoer\thu@bachelor@title@pre\thu@title@sep
+      \noindent\heiti\xiaoer\thu@bachelor@title@pre\thu@title@sep
       \parbox[t]{12cm}{%
         \setbox0=\hbox{{\yihao[1.55]\thu@ctitle}}
         \begin{picture}(0,0)(0,0)
@@ -2594,9 +2454,9 @@
       \parbox[t][9cm][t]{\paperwidth-8cm}{
       \renewcommand{\baselinestretch}{1.5}
       \begin{center}
-      \yihao[1.2]{\hei\sffamily\thu@ctitle}\par
+      \yihao[1.2]{\sffamily\heiti\thu@ctitle}\par
       \par\vskip 20bp
-      \xiaoer[1] \textrm{{\ziju{2bp}\thu@apply}}
+      \xiaoer[1] \textrm{{\ziju{0.1111}\thu@apply}}
       \end{center}}
     \fi
 %    \end{macrocode}
@@ -2611,7 +2471,7 @@
     \ifthu@bachelor
       \vskip1cm
       \parbox[t][7.0cm][t]{\textwidth}{{\sanhao[1.8]
-        \hspace*{1.65cm}\fs
+        \hspace*{1.65cm}\fangsong
           \setlength{\thu@title@width}{4em}
           \setlength{\extrarowheight}{6pt}
           \ifxetex % todo: ugly codes
@@ -2630,7 +2490,7 @@
         }}
     \else
       \parbox[t][7.8cm][t]{\textwidth}{{\sanhao[1.5]
-        \begin{center}\fs
+        \begin{center}\fangsong
           \setlength{\thu@title@width}{6em}
           \setlength{\extrarowheight}{4pt}
           \ifxetex % todo: ugly codes
@@ -2638,15 +2498,15 @@
           \else 
             \begin{tabular}{p{\thu@title@width}c@{\extracolsep{4pt}}l}
           \fi
-              \thu@put@title{\thu@department@title}  & \thu@title@sep & {\ziju{3bp}\thu@cdepartment}\\
-              \thu@put@title{\thu@major@title}       & \thu@title@sep & {\ziju{3bp}\thu@cmajor}\\
-              \thu@put@title{\thu@author@title}      & \thu@title@sep & {\ziju{11bp}\thu@cauthor}\\
-              \thu@put@title{\thu@supervisor@title}  & \thu@title@sep & {\ziju{11bp}\thu@csupervisor}\\
+              \thu@put@title{\thu@department@title}  & \thu@title@sep & {\ziju{0.1875}\thu@cdepartment}\\
+              \thu@put@title{\thu@major@title}       & \thu@title@sep & {\ziju{0.1875}\thu@cmajor}\\
+              \thu@put@title{\thu@author@title}      & \thu@title@sep & {\ziju{0.6875}\thu@cauthor}\\
+              \thu@put@title{\thu@supervisor@title}  & \thu@title@sep & {\ziju{0.6875}\thu@csupervisor}\\
               \ifx\thu@cassosupervisor\@empty\else
-                \thu@put@title{\thu@assosuper@title} & \thu@title@sep & {\ziju{11bp}\thu@cassosupervisor}\\
+                \thu@put@title{\thu@assosuper@title} & \thu@title@sep & {\ziju{0.6875}\thu@cassosupervisor}\\
               \fi
               \ifx\thu@ccosupervisor\@empty\else
-                \thu@put@title{\thu@cosuper@title}   & \thu@title@sep & {\ziju{11bp}\thu@ccosupervisor}\\
+                \thu@put@title{\thu@cosuper@title}   & \thu@title@sep & {\ziju{0.6875}\thu@ccosupervisor}\\
               \fi
             \end{tabular}
         \end{center}}}
@@ -2658,7 +2518,7 @@
 % \changes{v4.4.3}{2008/06/09}{修改本科生论文封面日期格式以符合新样例。}
 %    \begin{macrocode}
      \begin{center}
-       {\ifthu@bachelor\vskip-1.0cm\hskip-1.2cm\xiaosi\else\sanhao\fi \song \thu@cdate}
+       {\ifthu@bachelor\vskip-1.0cm\hskip-1.2cm\xiaosi\else\sanhao\fi \songti \thu@cdate}
      \end{center}
     \end{center}} % end of titlepage
 %    \end{macrocode}
@@ -2740,12 +2600,12 @@
 % 封面中论文授权部分。
 %    \begin{macrocode}
 \newcommand{\thu@authorization@mk}{%
-  \ifthu@bachelor\vspace*{0.5cm}\else\vspace*{-0.1cm}\fi % shit code!
-  \begin{center}\erhao\hei\thu@authtitle\end{center}
-  \ifthu@bachelor\vskip5pt\else\vskip18pt\sihao[2.03]\fi\par
+  \ifthu@bachelor\vspace*{0.5cm}\else\vspace*{0.72cm}\fi % shit code!
+  \begin{center}\erhao\heiti\thu@authtitle\end{center}
+  \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
   \thu@authorization\par
   \textbf{\thu@authorizationaddon}\par
-  \ifthu@bachelor\vskip0.7cm\else\vskip1.9cm\fi
+  \ifthu@bachelor\vskip0.7cm\else\vskip1.0cm\fi
   \ifthu@bachelor
     \indent\mbox{\thu@authorsig\thu@underline\relax%
     \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax}
@@ -2796,7 +2656,16 @@
 %    \begin{macrocode}
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
-      \thu@authorization@mk\fi
+      \ifthu@bachelor\thu@authorization@mk\else%
+      \begin{list}{}{%
+        \topsep\z@%
+        \listparindent\parindent%
+        \parsep\parskip%
+        \setlength{\leftmargin}{0.9mm}%
+        \setlength{\rightmargin}{0.9mm}}%
+      \item[]\thu@authorization@mk%
+      \end{list}\fi%
+    \fi
   \end{titlepage}
 %    \end{macrocode}
 %
@@ -2849,7 +2718,7 @@
 % \changes{v4.4.2}{2008/06/05}{本科生格式中文关键词采用首行缩进且无悬挂缩进。}
 %    \begin{macrocode}
   \vskip12bp
-  \setbox0=\hbox{{\hei\thu@ckeywords@title}}
+  \setbox0=\hbox{{\heiti\thu@ckeywords@title}}
   \ifthu@bachelor\indent\else\noindent\hangindent\wd0\hangafter1\fi
     \box0\thu@ckeywords
 %    \end{macrocode}
@@ -3164,7 +3033,7 @@
 \fi
 %</cfg>
 %<*cls>
-\newcommand{\resumeitem}[1]{\vspace{2.5em}{\sihao\hei\centerline{#1}}\par}
+\newcommand{\resumeitem}[1]{\vspace{2.5em}{\sihao\heiti\centerline{#1}}\par}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -3177,7 +3046,7 @@
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\shuji}[1][\thu@ctitle]{
-  \newpage\thispagestyle{empty}\ziju{0.4em}\fs\xiaosan
+  \newpage\thispagestyle{empty}\fangsong\xiaosan\ziju{0.4}
   \hfill\rotatebox{-90}{\hb@xt@ \textheight{#1\hfill\thu@cauthor}}}
 %</cls>
 %    \end{macrocode}
@@ -3215,20 +3084,12 @@
 % \subsubsection{自定义命令和环境}
 % \label{sec:userdefine}
 %
-% \begin{macro}{\ziju}
-% 改变字距。参数为距离
-% \changes{v2.0}{2005/12/20}{字距改变，重定义 \cs{CJKglue} 即可。}
-%    \begin{macrocode}
-%<*cls>
-\newcommand*{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
-%    \end{macrocode}
-% \end{macro}
-%
 % \begin{macro}{\pozhehao}
 % 定义破折号。两个字宽，ex 差不多是当前字体的一半高度，所以通过 \cs{rule} 可以简单
 % 的完成破折号绘制。
 % \changes{v2.1}{2006/01/12}{稍微加宽一点。同时把名字改为\textbf{破折号}：\cs{pozhehao}}
 %    \begin{macrocode}
+%<*cls>
 \newcommand{\pozhehao}{\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex}
 %</cls>
 %    \end{macrocode}
@@ -3237,26 +3098,13 @@
 %
 % \subsubsection{其它}
 % \label{sec:other}
-% \begin{macro}{\thu@active@cjk}
-% 在导言区支持中文。
-%    \begin{macrocode}
-%<*cls>
-\def\thu@active@cjk{
-  % Activate all >128 characters.
-  \count@=128
-  \@whilenum\count@<254 \do{%
-    \advance\count@ by 1
-    \lccode`\~=\count@
-    \catcode\count@=\active
-    \lowercase{\def~{\kern1ex}}}}
-%    \end{macrocode}
-% \end{macro}
 %
 % 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改，否则
 % 必须在 document 开始后才能，感觉不好。
 % \changes{v2.5}{2006/05/13}{不用 \cs{CJKcaption}，在导言区直接引入配置文件。}
 %    \begin{macrocode}
-\AtEndOfClass{\ifxetex\else\thu@active@cjk\fi\input{thuthesis.cfg}}
+%<*cls>
+\AtEndOfClass{\input{thuthesis.cfg}}
 %    \end{macrocode}
 %
 % \begin{macro}{\thu@fixselectfont}
@@ -3304,25 +3152,8 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% 把 CJK 环境放到合适的位置，以免导致其它宏包的命令位于 CJK 环境中而出现问题（比
-% 如 natbib 的``Multiple-defined labels''，同时自动开
-% 启 CJK。\changes{v2.6.2}{2006/06/18}{合理放置 CJK，避免 natbib 的警告。}
-% \changes{v4.5}{2009/01/03}{XeTeX 模式下不需要。}
+% 应用对列表环境的修改。
 %    \begin{macrocode}
-\ifxetex
-  \AtBeginDocument{\CJKindent}
-\else
-  \def\thu@beginCJK{%
-    \thu@fixselectfont%
-    \begin{CJK*}{UTF8}{song}\CJKindent}
-  \def\thu@endCJK{\clearpage\end{CJK*}}
-  \let\thu@begindocumenthook\@begindocumenthook
-  \let\thu@enddocumenthook\@enddocumenthook
-  \def\AtBeginDocument{\g@addto@macro\thu@begindocumenthook}
-  \def\AtEndDocument{\g@addto@macro\thu@enddocumenthook}
-  \def\@begindocumenthook{\thu@begindocumenthook\thu@beginCJK}
-  \def\@enddocumenthook{\thu@endCJK\thu@enddocumenthook}
-\fi
 \AtEndOfClass{\sloppy\thu@item@space}
 %</cls>
 %    \end{macrocode}
@@ -3339,20 +3170,15 @@
 \RequirePackage{fancybox,fancyvrb}
 \RequirePackage{xcolor}
 \RequirePackage{ifxetex}
-\RequirePackage{hyperref}
 
 \ifxetex
-  \RequirePackage{xeCJK}
+  \RequirePackage[nofonts,UTF8,hyperref]{ctex}
   \input{fontname.def}
-  \setCJKmainfont[BoldFont={\fonthei}, ItalicFont={\fontkai}]{\fontsong}
 \else
+  \RequirePackage[winfonts,UTF8,hyperref]{ctex}
   \RequirePackage{txfonts}
-  \RequirePackage{CJKutf8}
-
-  \AtBeginDocument{\begin{CJK*}{UTF8}{song}}
-  \AtEndDocument{\end{CJK*}}
 \fi
-
+\RequirePackage{hyperref}
 \ifxetex
   \hypersetup{%
     CJKbookmarks=true}
@@ -3383,9 +3209,6 @@
 \addtolength{\headsep}{0.3cm}
 \addtolength{\textheight}{2.3cm}
 
-\newcommand\hei{\CJKfamily{hei}}
-\newcommand\fs{\CJKfamily{fs}}
-
 \renewcommand{\baselinestretch}{1.3}
 \setlength{\shadowsize}{3pt}
 \def\DescribeOption#1{\SpecialOptionIndex{#1}}
@@ -3405,7 +3228,7 @@
 \DefineVerbatimEnvironment{shell}{Verbatim}%
   {frame=single,framerule=0.3mm,rulecolor=\color{red!85!green!60},%
    fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small,gobble=1}
-\long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fs #1}}\marginpar{\strut}\hskip\parindent}
+\long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fangsong #1}}\marginpar{\strut}\hskip\parindent}
 \def\tableofcontents{\renewcommand{\baselinestretch}{1.0}\@starttoc{toc}}
 \def\DescribeMacro{\Describe@Macro}
 \def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
@@ -3437,16 +3260,16 @@
 \renewcommand\section{\@startsection{section}{1}{\z@}%
                                     {-3.5ex \@plus -1ex \@minus -.2ex}%
                                     {2.3ex \@plus.2ex}%
-                                    {\normalfont\Large\bfseries\hei}}
+                                    {\normalfont\Large\bfseries}}
 
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                                        {-3.25ex\@plus -1ex \@minus -.2ex}%
                                        {1.5ex \@plus .2ex}%
-                                       {\normalfont\large\bfseries\hei}}
+                                       {\normalfont\large\bfseries}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                                           {-3.25ex\@plus -1ex \@minus -.2ex}%
                                           {1.5ex \@plus .2ex}%
-                                          {\normalfont\normalsize\bfseries\hei}}
+                                          {\normalfont\normalsize\bfseries}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
                                       {3.25ex \@plus1ex \@minus.2ex}%
                                       {-1em}%

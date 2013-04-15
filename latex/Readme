@@ -11,14 +11,12 @@ ThuThesis 是清华大学学位论文 LaTeX 模板，支持本科、硕士、博
 使用方法
 ========
 1. 编译示例文档
-   latex main
+   xelatex main
    bibtex main
-   latex main
-   latex main
-   dvips main.dvi
-   ps2pdf main.ps
+   xelatex main
+   xelatex main
 
-   说明：也可以使用 pdflatex/dvipdfm(x)/xelatex 生成文档。
+   说明：也可以使用 pdflatex/latex+dvipdfmx 生成文档。
 
 2. 编写自己的论文
    参考示例文档：
@@ -57,7 +55,7 @@ Makefile：
     使用方法：
 
         make [{all|thesis|shuji|doc|clean|distclean}] \
-            [METHOD={ps2pdf|dvipdfm}] \
+            [METHOD={xelatex|pdflatex|dvipdfmx}] \
             [TEXI2DVI=<tex2dvi>]
 
     参数说明：
@@ -72,10 +70,11 @@ Makefile：
 
         METHOD 参数用来指定生成 pdf 的方式，
 
-        METHOD=ps2pdf  表示使用 texi2dvi -> dvips ->ps2pdf 的方式生成 pdf；
-        METHOD=dvipdfm 表示使用 texi2dvi -> dvipdfm 的方式生成 pdf；
+        METHOD=xelatex  表示使用 xelatex 引擎编译生成 pdf；
+        METHOD=pdflatex 表示使用 pdflatex 引擎编译生成 pdf；
+        METHOD=dvipdfmx 表示使用 texi2dvi -> dvipdfmx 的方式生成 pdf；
 
-        如果缺省，则采用 ps2pdf 方式。
+        如果缺省，则采用 xelatex 方式。
 
         TEXI2DVI 表示 texi2dvi 实用工具的文件名，该工具的作用是自动重复运行
         latex 若干遍，直至所有交叉引用都正确为止。在有的发行版中该工具的文件名

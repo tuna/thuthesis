@@ -29,8 +29,8 @@ except:
 import re
 
 # The return value is of type byte string (in py3k).
-fontliststr = check_output(["fc-list", ":lang=zh"])
-allfontliststr = check_output(["fc-list", ""])
+fontliststr = check_output(["fc-list", "-f", "%{family}\n", ":lang=zh"])
+allfontliststr = check_output(["fc-list", "-f", "%{family}\n"])
 if not fontliststr:
     print("No Chinese font exists! Leaving...")
     exit(1)
@@ -129,22 +129,36 @@ if not songti or not heiti or not kaiti:
 print("生成字体文件fontname.def")
 with open('fontname.def', 'w') as f:
     f.write("\\ProvidesFile{fontname.def}\n")
-    f.write("\\newcommand{\\fontsong}{" + songti + "}\n")
-    f.write("\\newcommand{\\fonthei}{" + heiti + "}\n")
-    f.write("\\newcommand{\\fontkai}{" + kaiti + "}\n")
+    f.write("\\setCJKmainfont[BoldFont={" + heiti + "},ItalicFont={" + kaiti + "}]{" + songti + "}\n")
+    f.write("\\setCJKsansfont{" + heiti + "}\n")
     if fangsong:
-        f.write("\\newcommand{\\fontfs}{" + fangsong + "}\n")
+        f.write("\\setCJKmonofont{" + fangsong + "}\n")
     else:
         print("缺少仿宋，宋体代替")
-        f.write("\\newcommand{\\fontfs}{" + songti + "}\n")
+        f.write("\\setCJKmonofont{" + songti + "}\n")
+
+    f.write("\\setCJKfamilyfont{zhsong}{" + songti + "}\n")
+    f.write("\\setCJKfamilyfont{zhhei}{" + heiti + "}\n")
+    f.write("\\setCJKfamilyfont{zhkai}{" + kaiti + "}\n")
+    if fangsong:
+        f.write("\\setCJKfamilyfont{zhfs}{" + fangsong + "}\n")
+    else:
+        f.write("\\setCJKfamilyfont{zhfs}{" + songti + "}\n")
     if lishu:
-        f.write("\\newcommand{\\fontli}{" + lishu + "}\n")
+        f.write("\\setCJKfamilyfont{zhli}{" + lishu + "}\n")
     else:
         print("缺少隶书，宋体代替")
-        f.write("\\newcommand{\\fontli}{" + songti + "}\n")
+        f.write("\\setCJKfamilyfont{zhli}{" + songti + "}\n")
     if youyuan:
-        f.write("\\newcommand{\\fontyou}{" + youyuan + "}\n")
+        f.write("\\setCJKfamilyfont{zhyou}{" + youyuan + "}\n")
     else:
         print("缺少幼圆，宋体代替")
-        f.write("\\newcommand{\\fontyou}{" + songti + "}\n")
-
+        f.write("\\setCJKfamilyfont{zhyou}{" + songti + "}\n")
+    f.write('''
+\\newcommand*{\\songti}{\\CJKfamily{zhsong}}
+\\newcommand*{\\heiti}{\\CJKfamily{zhhei}}
+\\newcommand*{\\kaishu}{\\CJKfamily{zhkai}}
+\\newcommand*{\\fangsong}{\\CJKfamily{zhfs}}
+\\newcommand*{\\lishu}{\\CJKfamily{zhli}}
+\\newcommand*{\\youyuan}{\\CJKfamily{zhyou}}
+''')
