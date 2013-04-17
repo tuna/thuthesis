@@ -275,7 +275,7 @@
 %   ifxetex & xunicode & CJK\footnote{版本要求：$\geq$ v4.8.1} & xeCJK & \pkg{CJKpunct} & \pkg{ctex} \\
 %   array & booktabs & longtable  &  amsmath & amssymb & ntheorem \\
 %   indentfirst & paralist & txfonts & natbib & hyperref & \\
-%   graphicx & \pkg{subfig}\footnote{版本要求：$\geq$2005/06/28 ver: 1.3} &
+%   graphicx & \pkg{subcaption} &
 %   \pkg{caption}\footnote{版本要求：$\geq$2006/03/21 v3.0j} &
 %   \pkg{thubib.bst} & &\\\hline
 % \end{tabular}
@@ -1166,12 +1166,10 @@
 \RequirePackage{graphicx}
 %    \end{macrocode}
 %
-% 并排图形。\pkg{subfigure} 已经不再推荐，用新的 \pkg{subfig}。加入 |config| 选项
-% 以便兼容 \pkg{subfigure} 的命令。浮动图形和表格标题样式。\pkg{caption2} 已经不
-% 推荐使用，采用新的 \pkg{caption}。它会自动被 \pkg{subfig} 装载进来。所以可以在
-% 后面看到 \cs{captionsetup} 的命令。
+% 并排图形。\pkg{subfigure}、\pkg{subfig} 已经不再推荐，用新的 \pkg{subcaption}。
+% 浮动图形和表格标题样式。\pkg{caption2} 已经不推荐使用，采用新的 \pkg{caption}。
 %    \begin{macrocode}
-\RequirePackage[config]{subfig} %todo: subfig is deprecated, use subcaption package.
+\RequirePackage[labelformat=simple]{subcaption}
 %    \end{macrocode}
 %
 % \changes{v4.8}{2013/03/02}{no need to load indentfirst directly since we use ctex.}
@@ -1786,7 +1784,7 @@
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
 \captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=6bp}
 \captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=6bp}
-\captionsetup[subfloat]{labelformat=simple,font=thu,captionskip=6bp,nearskip=6bp,farskip=0bp,topadjust=0bp}
+\captionsetup[sub]{font=thu,skip=6bp}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \renewcommand{\thesubtable}{(\alph{subtable})}
 % \renewcommand{\p@subfigure}{:}

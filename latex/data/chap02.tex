@@ -29,7 +29,7 @@ jPicEdt, jaxdraw 等等。
 \subsection{插图}
 \label{sec:graphs}
 
-强烈推荐《\LaTeXe 插图指南》！关于子图形的使用细节请参看 \textsf{subfig} 的说明文档。
+强烈推荐《\LaTeXe 插图指南》！关于子图形的使用细节请参看 \textsf{subcaption} 宏包的说明文档。
 
 \subsubsection{一个图形}
 \label{sec:onefig}
@@ -59,21 +59,37 @@ jPicEdt, jaxdraw 等等。
 \label{sec:multifig}
 
 如果多个图形相互独立，并不共用一个图形计数器，那么用 \verb|minipage| 或者
-\verb|parbox| 就可以。否则，请参看图~\ref{fig:big1}，它包含两个小图，分别是图~\ref{fig:subfig1} 
-和图~\ref{fig:subfig2}。推荐使用 \verb|\subfloat|，不要再用
+\verb|parbox| 就可以。否则，请参看图~\ref{fig:big1-subcaptionbox}，它包含两个小图，分别是图~\ref{fig:subfig1} 
+和图~\ref{fig:subfig2}。推荐使用\verb|\subcaptionbox|，
+因为可以像图~\ref{fig:big1-subcaptionbox} 那样对齐子图的标题，
+也可以使用\textsf{subcaption}宏包的\verb|\subcaption|（放在minipage中，用法同\verb|\caption|）
+或是 subfigure 、 subtable环境，像图~\ref{fig:big1-subfigure}，不要再用 \verb|\subfloat|、
 \verb|\subfigure| 和 \verb|\subtable|。
-\begin{figure} %[h]
+\begin{figure}[h]
   \centering%
-  \subfloat[第一个小图形]{%
-    \label{fig:subfig1}
-    \includegraphics[height=2cm]{thu-fig-logo}}\hspace{4em}%
-  \subfloat[第二个小图形。如果标题很长的话，它会自动换行，这个 caption 就是这样的例子]{%
-    \label{fig:subfig2}
-    \includegraphics[height=2cm]{thu-text-logo}}
-  \caption{包含子图形的大图形}
-  \label{fig:big1}
+  \subcaptionbox{第一个小图形\label{fig:subfig1}}
+  [3cm] %标题的长度，超过则会换行，如下一个小图。
+    {\includegraphics[height=3cm]{thu-fig-logo}}
+      \hspace{4em}%
+  \subcaptionbox{第二个小图形，注意这个图略矮些。如果标题很长的话，它会自动换行\label{fig:subfig2}}
+      {\includegraphics[height=2cm]{thu-text-logo}}
+  \caption{包含子图形的大图形(subcaptionbox示例)}
+  \label{fig:big1-subcaptionbox}
 \end{figure}
-
+\begin{figure}[h]
+  \centering%
+  \begin{subfigure}{3cm}
+    \includegraphics[height=3cm]{thu-fig-logo}
+    \caption{第一个小图形}
+  \end{subfigure}
+  \hspace{4em}%
+  \begin{subfigure}{0.5\textwidth}
+    \includegraphics[height=2cm]{thu-text-logo}
+    \caption{第二个小图形，注意这个图略矮些。subfigure中同一行的子图在顶端对齐。}
+  \end{subfigure}
+  \caption{包含子图形的大图形(subfigure示例)}
+  \label{fig:big1-subfigure}
+\end{figure}
 古之学者必有师。师者，所以传道受业解惑也。人非生而知之者，孰能无惑？惑而不从师，
 其为惑也，终不解矣。生乎吾前，其闻道也固先乎吾，吾从而师之；生乎吾後，其闻道也亦
 先乎吾，吾从而师之。吾师道也，夫庸知其年之先後生於吾乎！是故无贵无贱无长无少，道
