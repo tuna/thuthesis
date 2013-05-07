@@ -585,3 +585,10 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 来要好一些。如果还是不满意，自己也可以调 \verb|\itemsep| 的。\textsf{paralist} 还
 可以方便的指定标签的样式。
 
+\section{其他说明}
+
+\LaTeX 在某些情况下会对超过一行的脚分页，这是\LaTeX 的一个特性，
+见 \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=splitfoot}。
+本模板使用了 \verb|\interfootnotelinepenalty=10000|
+尽量阻止\LaTeX 对脚注分页，但可能在某些情况下仍可能出现该问题，
+到时请加大上面命令的数值，如在main.tex中添加 \verb|\interfootnotelinepenalty=100000|。
