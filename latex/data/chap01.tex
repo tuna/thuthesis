@@ -192,18 +192,23 @@
 \centering
 \caption{并排子表格}
 \label{tab:subtable}
-\subfloat[第一个子表格]{
+\subcaptionbox{第一个子表格}
+{
 \begin{tabular}{p{2cm}p{2cm}}
 \toprule[1.5pt]
 111 & 222 \\\midrule[1pt]
 222 & 333 \\\bottomrule[1.5pt]
-\end{tabular}}\hskip2cm
-\subfloat[第二个子表格]{
+\end{tabular}
+}
+\hskip2cm
+\subcaptionbox{第二个子表格}
+{
 \begin{tabular}{p{2cm}p{2cm}}
 \toprule[1.5pt]
 111 & 222 \\\midrule[1pt]
 222 & 333 \\\bottomrule[1.5pt]
-\end{tabular}}
+\end{tabular}
+}
 \end{table}
 
 不可否认 \LaTeX{} 的表格功能没有想象中的那么强大，不过只要你足够认真，足够细致，那么
