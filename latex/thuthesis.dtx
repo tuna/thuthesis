@@ -3105,37 +3105,6 @@
 \AtEndOfClass{\input{thuthesis.cfg}}
 %    \end{macrocode}
 %
-% \begin{macro}{\thu@fixselectfont}
-% \pkg{caption} 宏包会调用 \pkg{ragged2e}，\pkg{ragged2e} 又调用 \pkg{everysel}。而 \pkg{everysel} 宏包和 \pkg{CJK}
-% 宏包都要修改 \cs{selectfont}，一个是给 \cs{selectfont} 加 hook，一个是让
-%  \cs{selectfont} 支持 \cs{CJKbold}。幸好两者本质上并不冲突，把他们源文件中对
-%  \cs{selectfont} 重定义的部分合并一下就可以了。
-% \changes{4.3}{2008/03/09}{\pkg{caption} 调整了对 \pkg{ragged2e} 包的调用，所以
-% 我们这里要判断 \pkg{everysel} 是不是装载了。}
-%    \begin{macrocode}
-\def\thu@fixselectfont{%
-  \ifx\@EverySelectfont@EveryHook\@undefined\else% everysel package is loaded
-    \DeclareRobustCommand{\selectfont}{%
-       \ifx\f@linespread\baselinestretch \else
-          \set@fontsize\baselinestretch\f@size\f@baselineskip \fi
-       \xdef\font@name{%
-          \csname\curr@fontshape/\f@size\endcsname}%
-       \pickup@font
-       \font@name
-       % CJK addition:
-       \CJK@bold@false
-       \csname \curr@fontshape\endcsname
-       % everysel addition:
-       \@EverySelectfont@EveryHook
-       \@EverySelectfont@AtNextHook
-       \gdef\@EverySelectfont@AtNextHook{}%
-       % end additions
-       \size@update
-       \enc@update}
-  \fi}
-%    \end{macrocode}
-% \end{macro}
-%
 % \begin{macro}{\thu@setup@pdfinfo}
 % 设置一些 pdf 文档信息，依赖于 \pkg{hyperref} 宏包。
 %    \begin{macrocode}
