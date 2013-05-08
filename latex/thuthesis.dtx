@@ -1635,9 +1635,13 @@
     \llap{\box\thu@tempboxa}%
     #1
   \par\egroup}
-%</cls>
 %    \end{macrocode}
 %
+% \changes{v4.8dev}{2013/05/07}{禁止脚注过长时被分页。}
+%    \begin{macrocode}
+\interfootnotelinepenalty=10000
+%</cls>
+%    \end{macrocode}
 %
 % \subsubsection{数学相关}
 % \label{sec:equation}
