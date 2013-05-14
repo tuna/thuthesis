@@ -30,6 +30,10 @@
 %%% 封面部分
 \frontmatter
 \input{data/cover}
+% 设置 PDF 文档的作者、主题等属性
+\makeatletter
+\thu@setup@pdfinfo
+\makeatother
 \makecover
 
 % 目录
