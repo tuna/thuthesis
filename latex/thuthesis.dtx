@@ -1193,6 +1193,7 @@
 % 中文支持，我们使用 ctex 宏包。
 % \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \pkg{xeCJK}。}
 % \changes{v4.8dev}{2013/03/09}{reset baselinestretch after ctex's change.}
+% \changes{v4.8dev}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 %    \begin{macrocode}
 \renewcommand{\baselinestretch}{1.0}
 \ifxetex
@@ -1213,6 +1214,7 @@
   \setsansfont{Arial}
   \setmonofont{Courier New}
 \else
+  \RequirePackage{CJKspace}
 %    \end{macrocode}
 % arial 字体需要单独安装，如果不使用 arial 字体，可以用 helvet 字体 |\textsf|
 % 模拟，二者基本没有差别。
