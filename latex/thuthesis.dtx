@@ -1119,10 +1119,11 @@
 % \changes{v2.5.1}{2006/05/26}{本科 openright，研究生 openany。}
 % \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
 % \changes{v4.8dev}{2013/03/10}{使用 ctexbook 类，优于调用 ctex 宏包。}
+% \changes{v4.8dev}{2013/05/29}{添加 nocap 选项，恢复默认标题样式，模板会进一步定制。}
 %    \begin{macrocode}
 \ExecuteOptions{utf,arialtitle}
 \ProcessOptions\relax
-\LoadClass[cs4size,a4paper,openany,UTF8]{ctexbook}
+\LoadClass[cs4size,a4paper,openany,nocap,UTF8]{ctexbook}
 %    \end{macrocode}
 %
 % 用户至少要提供一个选项：指定论文类型。
