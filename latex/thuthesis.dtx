@@ -1196,6 +1196,9 @@
 % \changes{v4.8dev}{2013/03/09}{reset baselinestretch after ctex's change.}
 % \changes{v4.8dev}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 %    \begin{macrocode}
+\ifthu@bachelor
+  \RequirePackage{CJKfntef}
+\fi
 \renewcommand{\baselinestretch}{1.0}
 \ifxetex
   \xeCJKsetup{AutoFakeBold=true,AutoFakeSlant=true}
@@ -2436,20 +2439,11 @@
       \vskip2.2cm
       \noindent\heiti\xiaoer\thu@bachelor@title@pre\thu@title@sep
       \parbox[t]{12cm}{%
-        \setbox0=\hbox{{\yihao[1.55]\thu@ctitle}}
-        \begin{picture}(0,0)(0,0)
-          \setlength\unitlength{1cm}
-          \linethickness{1.3pt}
-          \ifdim\wd0>12cm
-            \put(0,-0.25){\line(1,0){12}}
-            \def\secondlinelength{\getcmlength{\wd0-11.9cm}}
-            \put(0,-1.68){\line(1,0){\secondlinelength}}
-          \else
-            \def\firstlinelength{\getcmlength{\wd0}}
-            \put(0,-0.25){\line(1,0){\firstlinelength}}
-          \fi
-        \end{picture}%
-        \ignorespaces\yihao[1.55]\thu@ctitle} %TODO: CJKulem.sty
+      \ignorespaces\yihao[1.55]%
+      \renewcommand{\CJKunderlinebasesep}{0.25cm}%
+      \renewcommand{\ULthickness}{1.3pt}%
+      \def\CJKunderlinecolor{}%
+      \CJKunderline*{\thu@ctitle}}
       \vskip1.3cm
     \else
       \vskip0.8cm
