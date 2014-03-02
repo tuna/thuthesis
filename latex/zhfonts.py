@@ -72,7 +72,7 @@ def selectfont(fontlist):
                 return selectfont(allfontnamelist)
         else:
             return selectfont(fontnamelist)
-    
+
     for i, v in enumerate(fontlist):
         print('{0:d} {1}'.format(i, v))
     while True:
@@ -164,3 +164,11 @@ with open('fontname.def', 'w') as f:
 \\newcommand*{\\lishu}{\\CJKfamily{zhli}}
 \\newcommand*{\\youyuan}{\\CJKfamily{zhyou}}
 ''')
+
+print("替换shuji.tex中的仿宋字体")
+import fileinput
+for line in fileinput.input("shuji.tex", inplace=True):
+    line = line.decode('utf-8')
+    if line.startswith("  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]"):
+        line = "  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]{" + fangsong + "}\n"
+    print(line.encode('utf-8'), end = '')
