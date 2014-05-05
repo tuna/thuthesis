@@ -1,5 +1,5 @@
 # What's it?
-ThuThesis为 **T**sing<b>h</b>ua <b>U</b>niversity **Thesis** LaTeX Template之缩写。
+ThuThesis为<b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Template之缩写。
 
 此宏包旨在建立一个简单易用的清华大学学位论文LaTeX模板，包括本科综合论文训练、硕士论文、博士论文、博士哲学论文以及博士后出站报告。现在支持本科、硕士、博士论文、博士后出站报告格式，对其它格式的支持会陆续加入。
 
