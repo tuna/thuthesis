@@ -25,6 +25,13 @@ BIBFILE=ref/*.bib
 SHUJICONTENTS=$(SHUJIMAIN).tex
 CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
+# make deletion work on Windows
+ifdef SystemRoot
+   RM = del /Q
+else
+   RM = rm -f
+endif
+
 .PHONY: all clean distclean dist thesis shuji doc cls
 
 all: doc thesis shuji
@@ -85,7 +92,7 @@ $(THESISMAIN).pdf: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
 $(THESISMAIN).bbl: $(BIBFILE)
 	xelatex $(THESISMAIN).tex
 	-bibtex $(THESISMAIN)
-	rm $(THESISMAIN).pdf
+	$(RM) $(THESISMAIN).pdf
 
 else ifeq ($(METHOD),pdflatex)
 
@@ -96,7 +103,7 @@ $(THESISMAIN).pdf: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
 $(THESISMAIN).bbl: $(BIBFILE)
 	pdflatex $(THESISMAIN).tex
 	-bibtex $(THESISMAIN)
-	rm $(THESISMAIN).pdf
+	$(RM) $(THESISMAIN).pdf
 
 else
 
@@ -144,7 +151,7 @@ $(SHUJIMAIN).pdf: $(SHUJIMAIN).dvi
 endif
 
 clean: 
-	-@rm -f \
+	-@$(RM) \
 		*~ \
 		*.aux \
 		*.bak \
@@ -170,7 +177,7 @@ clean:
 		dtx-style.sty
 
 distclean: clean
-	-@rm -f *.cls *.cfg
+	-@$(RM) *.cls *.cfg
 	-@rm -f *.pdf *.tar.gz
 
 dist:
