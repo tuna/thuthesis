@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""This script can help to choose Chinse fonts found by `fc-list`, which will be
+used in thuthesis.
 
-# This script provide you with the Chinese fonts found by fc-list,
-# let you choose which to use with thuthesis.
+This script prefers the font name in ASCII to the one containing Unicode
+character, in order to avoid the problem with 'Adobe 宋体 Std L'.
 
-# The script prefers the font name in ASCII to the one containing Unicode
-# character, thus trying to avoid the problem with 'Adobe 宋体 Std L'.
-
-# The script should work with Python 2.6, 2.7 and Python 3.2, providing
-# that your locale is utf-8. Please report issues if you find.
+This script should work with Python 2.6, 2.7 and Python 3.2, providing that your
+locale is utf-8. Please report issues if you find.
+"""
 
 from __future__ import print_function
 from __future__ import unicode_literals
@@ -29,133 +29,141 @@ except:
 import re
 
 # The return value is of type byte string (in py3k).
-fontliststr = check_output(["fc-list", "-f", "%{family}\n", ":lang=zh"])
-allfontliststr = check_output(["fc-list", "-f", "%{family}\n"])
-if not fontliststr:
-    print("No Chinese font exists! Leaving...")
+zh_fonts_str = check_output(['fc-list', '-f', '%{family}\n', ':lang=zh'])
+all_fonts_str = check_output(['fc-list', '-f', '%{family}\n'])
+if not zh_fonts_str:
+    print('No Chinese font exists! Leaving...')
     exit(1)
 
 # strip out ':style=BLABLA' stuff
-fontnamelist = sorted([x.split(b":")[0] for x in fontliststr.splitlines()])
-allfontnamelist = sorted([x.split(b":")[0] for x in allfontliststr.splitlines()])
+zh_fonts_list = sorted(set([x.split(b':')[0] for x in zh_fonts_str.splitlines()]))
+all_fonts_list = sorted(set([x.split(b':')[0] for x in all_fonts_str.splitlines()]))
 
 # Convert to unicode string, assuming utf-8 encoding of byte string.
 # Thus following variables are all unicode string.
-fontnamelist = [x.decode("utf-8") for x in fontnamelist]
-allfontnamelist = [x.decode("utf-8") for x in allfontnamelist]
+zh_fonts_list = [x.decode('utf-8') for x in zh_fonts_list]
+all_fonts_list = [x.decode('utf-8') for x in all_fonts_list]
 
-songtilist = []
-kaitilist = []
-heitilist = []
-fangsonglist = []
-lishulist = []
-youyuanlist = []
+final_fonts = {'songti': {'name': '宋体',
+                          'candidates': [],
+                          'keyword': '宋|Ming',
+                          'font': ''},
+               'heiti': {'name': '黑体',
+                         'candidates': [],
+                         'keyword': '黑|Hei|Sans|Gothic',
+                         'font': ''},
+               'kaiti': {'name': '楷体',
+                         'candidates': [],
+                         'keyword': '楷|Kai',
+                         'font': ''},
+               'fangsong': {'name': '仿宋',
+                            'candidates': [],
+                            'keyword': '仿宋|Fang',
+                            'font': ''},
+               'lishu': {'name': '隶书',
+                         'candidates': [],
+                         'keyword': '隶|Li',
+                         'font': ''},
+               'youyuan': {'name': '幼圆',
+                           'candidates': [],
+                           'keyword': '圆|Yuan',
+                           'font': ''}}
 
-relist = ["仿宋|Fang", "宋|Ming", "黑|Hei|Sans|Gothic",
-          "楷|Kai", "隶|Li", "圆|Yuan"]
-familylist = [fangsonglist, songtilist, heitilist,
-              kaitilist, lishulist, youyuanlist]
-tuplelist = zip(relist, familylist)
-
-for x in fontnamelist:
-    for t in tuplelist:
-        if re.search(t[0], x, re.IGNORECASE):
-            t[1].append(x)
+for zh_font in zh_fonts_list:
+    for key in final_fonts:
+        if re.search(final_fonts[key]['keyword'], zh_font, re.IGNORECASE):
+            final_fonts[key]['candidates'].append(zh_font)
             break
 
-def selectfont(fontlist):
-    if not fontlist:
-        if not fontnamelist:
-            if not allfontnamelist:
+def select_font(font_list):
+    if not font_list:
+        if not zh_fonts_list:
+            if not all_fonts_list:
                 return ''
             else:
-                return selectfont(allfontnamelist)
+                return select_font(all_fonts_list)
         else:
-            return selectfont(fontnamelist)
+            return select_font(zh_fonts_list)
 
-    for i, v in enumerate(fontlist):
-        print('{0:d} {1}'.format(i, v))
+    print('-' * 60);
+    for i, v in enumerate(font_list):
+        print('{0:d}.\t{1}'.format(i, v))
+    print('-' * 60);
     while True:
         # Note input/raw_input in Python 2.x do not accept unicode string.
-        print("选择一个：(输入数字[0-{0:d}]，默认0。按z在所有中文字体中选择，按a在所有字体中选择)".format(len(fontlist)-1), end='')
+        print('选择序号（默认0，z: 所有中文字体中选择，a: 所有字体中选择）: ', end='')
         n_str = input()
         if not n_str:
             n = 0
         else:
-            if n_str == "z" or n_str =="Z":
-                return selectfont(fontnamelist)
-            elif n_str == "a" or n_str == "A":
-                return selectfont(allfontnamelist)
+            if n_str == 'z' or n_str =='Z':
+                return select_font(zh_fonts_list)
+            elif n_str == 'a' or n_str == 'A':
+                return select_font(all_fonts_list)
             else:
                 try:
                     n = int(n_str)
                 except ValueError:
                     continue
-        if 0 <= n < len(fontlist):
+        if 0 <= n < len(font_list):
             break
-    asciifontname = ''
-    for x in fontlist[n].split(","):
+    ascii_font_name = ''
+    for x in font_list[n].split(','):
         try:
             x.encode('ascii')
         except UnicodeEncodeError:
             pass
         else:
-            asciifontname = x
+            ascii_font_name = x
             break
-    if asciifontname:
-        return asciifontname
+    if ascii_font_name:
+        return ascii_font_name
     else:
-        print("ASCII font name not found!")
-        print("You might encounter error using this font with XeLaTeX...")
-        return fontlist[n].split(",")[-1]
+        print('ASCII font name not found!')
+        print('You might encounter error using this font with XeLaTeX...')
+        return font_list[n].split(',')[-1]
 
-print("宋体：")
-songti = selectfont(songtilist)
-print("黑体：")
-heiti = selectfont(heitilist)
-print("楷体：")
-kaiti = selectfont(kaitilist)
-print("仿宋：")
-fangsong = selectfont(fangsonglist)
-print("隶书：")
-lishu = selectfont(lishulist)
-print("幼圆：")
-youyuan = selectfont(youyuanlist)
 
-if not songti or not heiti or not kaiti:
-    print("错误：缺少宋体、黑体或楷体字体")
+print('>> 请选择字体：')
+for key in final_fonts:
+    print('{0}：'.format(final_fonts[key]['name']))
+    final_fonts[key]['font'] = select_font(final_fonts[key]['candidates'])
+    print()
+
+if not all((final_fonts['songti']['font'],
+            final_fonts['heiti']['font'],
+            final_fonts['kaiti']['font'])):
+    print('错误：缺少宋体、黑体或楷体字体。')
     exit(2)
 
-print("生成字体文件fontname.def")
+print('>> 生成字体文件fontname.def')
 with open('fontname.def', 'w') as f:
-    f.write("% vim: set ft=tex:\n")
-    f.write("% This file is auto-generated by zhfonts.py script\n\n")
-    f.write("\\ProvidesFile{fontname.def}\n")
-    f.write("\\setCJKmainfont[BoldFont={" + heiti + "},ItalicFont={" + kaiti + "}]{" + songti + "}\n")
-    f.write("\\setCJKsansfont{" + heiti + "}\n")
-    if fangsong:
-        f.write("\\setCJKmonofont{" + fangsong + "}\n")
-    else:
-        print("缺少仿宋，宋体代替")
-        f.write("\\setCJKmonofont{" + songti + "}\n")
+    f.write('% vim: set ft=tex:\n')
+    f.write('% This file is auto-generated by zhfonts.py script\n\n')
+    f.write('\\ProvidesFile{fontname.def}\n')
 
-    f.write("\\setCJKfamilyfont{zhsong}{" + songti + "}\n")
-    f.write("\\setCJKfamilyfont{zhhei}{" + heiti + "}\n")
-    f.write("\\setCJKfamilyfont{zhkai}{" + kaiti + "}\n")
-    if fangsong:
-        f.write("\\setCJKfamilyfont{zhfs}{" + fangsong + "}\n")
+    f.write('\\setCJKmainfont[BoldFont={' + final_fonts['heiti']['font'] + '},ItalicFont={' + final_fonts['kaiti']['font'] + '}]{' + final_fonts['songti']['font'] + '}\n')
+    f.write('\\setCJKsansfont{' + final_fonts['heiti']['font'] + '}\n')
+    f.write('\\setCJKmonofont{' + final_fonts['kaiti']['font'] + '}\n')
+
+    f.write('\\setCJKfamilyfont{zhsong}{' + final_fonts['songti']['font'] + '}\n')
+    f.write('\\setCJKfamilyfont{zhhei}{' + final_fonts['heiti']['font'] + '}\n')
+    f.write('\\setCJKfamilyfont{zhkai}{' + final_fonts['kaiti']['font'] + '}\n')
+    if final_fonts['fangsong']['font']:
+        f.write('\\setCJKfamilyfont{zhfs}{' + final_fonts['fangsong']['font'] + '}\n')
     else:
-        f.write("\\setCJKfamilyfont{zhfs}{" + songti + "}\n")
-    if lishu:
-        f.write("\\setCJKfamilyfont{zhli}{" + lishu + "}\n")
+        print('>>> 缺少仿宋，宋体代替')
+        f.write('\\setCJKfamilyfont{zhfs}{' + final_fonts['songti']['font'] + '}\n')
+    if final_fonts['lishu']['font']:
+        f.write('\\setCJKfamilyfont{zhli}{' + final_fonts['lishu']['font'] + '}\n')
     else:
-        print("缺少隶书，宋体代替")
-        f.write("\\setCJKfamilyfont{zhli}{" + songti + "}\n")
-    if youyuan:
-        f.write("\\setCJKfamilyfont{zhyou}{" + youyuan + "}\n")
+        print('>>> 缺少隶书，宋体代替')
+        f.write('\\setCJKfamilyfont{zhli}{' + final_fonts['songti']['font'] + '}\n')
+    if final_fonts['youyuan']['font']:
+        f.write('\\setCJKfamilyfont{zhyou}{' + final_fonts['youyuan']['font'] + '}\n')
     else:
-        print("缺少幼圆，宋体代替")
-        f.write("\\setCJKfamilyfont{zhyou}{" + songti + "}\n")
+        print('>>> 缺少幼圆，宋体代替')
+        f.write('\\setCJKfamilyfont{zhyou}{' + final_fonts['songti']['font'] + '}\n')
     f.write('''
 \\newcommand*{\\songti}{\\CJKfamily{zhsong}}
 \\newcommand*{\\heiti}{\\CJKfamily{zhhei}}
@@ -165,10 +173,12 @@ with open('fontname.def', 'w') as f:
 \\newcommand*{\\youyuan}{\\CJKfamily{zhyou}}
 ''')
 
-print("替换shuji.tex中的仿宋字体")
+print('>> 替换shuji.tex中的仿宋字体')
 import fileinput
-for line in fileinput.input("shuji.tex", inplace=True):
+for line in fileinput.input('shuji.tex', inplace=True):
     line = line.decode('utf-8')
-    if line.startswith("  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]"):
-        line = "  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]{" + fangsong + "}\n"
-    print(line.encode('utf-8'), end = '')
+    if line.startswith('  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]'):
+        line = '  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]{' + final_fonts['fangsong']['font'] + '}\n'
+    print(line.encode('utf-8'), end='')
+
+print('>> 中文字体处理结束。')
