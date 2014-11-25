@@ -373,7 +373,7 @@ FUNCTION {format.editors}
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title }
+    { title "t" change.case$ }
   if$
 }
 
@@ -573,12 +573,14 @@ FUNCTION {format.in.ed.booktitle}
     { "" }
     { editor empty$
     { lang empty$
-        { "Proceedings of " booktitle * }
+%        { "Proceedings of " booktitle * }
+        { " " booktitle * }
         { " " booktitle * }
       if$
     }
     { lang empty$
-        { collection.in format.editors * ". Proceedings of " * booktitle * }
+%        { collection.in format.editors * ". Proceedings of " * booktitle * }
+        { collection.in format.editors * ". " * booktitle * }
         { collection.in format.editors * ". " * booktitle * }
       if$
     }
@@ -977,6 +979,29 @@ FUNCTION {mastersthesis}
   new.block
   % format.title remove.dots ": " * masterthesis.type * output
   format.title remove.dots masterthesis.type * output
+  new.block
+  format.address.school output
+  %format.madd "address" output.check
+  %school "school" output.check  
+  format.date "year" output.check
+  new.block
+  note output
+  fin.entry
+}
+
+FUNCTION {bachelorthesis.type}
+{ lang empty$
+    { "[D]" }
+    { "本科学位论文" }
+  if$
+}
+
+FUNCTION {bachelorthesis}
+{ output.bibitem
+  format.authors "author" add.period$ output.check
+  new.block
+  % format.title remove.dots ": " * bachelorthesis.type * output
+  format.title remove.dots bachelorthesis.type * output
   new.block
   format.address.school output
   %format.madd "address" output.check
