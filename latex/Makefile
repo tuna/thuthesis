@@ -17,14 +17,9 @@ endif
 
 PACKAGE=thuthesis
 SOURCES=$(PACKAGE).ins $(PACKAGE).dtx 
-THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(EPS) $(EPSGEN)
+THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(EPS)
+# NOTE: update this to reflect your local file types.
 EPS=$(wildcard figures/*.eps)
-EPSGEN=
-# xelatex can directly use jpg file
-ifneq ($(METHOD),xelatex)
-EPSGEN+=$(addsuffix .eps,$(basename $(wildcard figures/*.jpg)))
-endif
-EPSGEN+=$(addsuffix .eps,$(basename $(wildcard figures/*.fig)))
 BIBFILE=ref/*.bib
 SHUJICONTENTS=$(SHUJIMAIN).tex
 CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
@@ -125,11 +120,6 @@ $(THESISMAIN).bbl: $(BIBFILE)
 endif
 
 
-figures/%.eps: figures/%.jpg
-	convert $^ -compress none eps2:$@
-figures/%.eps: figures/%.fig
-	fig2dev -L eps $^ $@
-
 ###### for shuji
 shuji: $(SHUJIMAIN).pdf
 
@@ -177,12 +167,11 @@ clean:
 		*.lot \
 		*.loe \
 		data/*.aux \
-		$(EPSGEN) \
 		dtx-style.sty
 
 distclean: clean
-	-@$(RM) *.cls *.cfg
-	-@rm -f *.pdf *.tar.gz
+	-@$(RM) $(CLSFILES)
+	-@$(RM) $(PACKAGE).pdf $(THESISMAIN).pdf $(SHUJI).pdf
 
 dist:
 	@if [ -z "$(VERSION)" ]; then \
