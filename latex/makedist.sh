@@ -1,8 +1,7 @@
 #!/bin/sh
-# $Id$
 
-EXAMPLE_FILES="main.tex shuji.tex main.pdf shuji.pdf thutils.sty Makefile"
-TEMPLATE_FILES="thuthesis.ins thuthesis.dtx thubib.bst Readme thuthesis.pdf thuthesis.cls thuthesis.cfg"
+EXAMPLE_FILES="main.tex shuji.tex main.pdf shuji.pdf thutils.sty"
+TEMPLATE_FILES="thuthesis.ins thuthesis.dtx thubib.bst thuthesis.pdf thuthesis.cls thuthesis.cfg fontname.def zhfonts.py Makefile README.md"
 ALL_FILES="$EXAMPLE_FILES $TEMPLATE_FILES"
 ALL_DIRS="data figures ref"
 
@@ -16,7 +15,7 @@ fi
 version=$1
 encode=$2
 templatedir="thuthesis@$encode-$version/"
-templatetar="thuthesis@$encode-$version.tgz"
+templatezip="thuthesis@$encode-$version.zip"
 
 if [ -d $templatedir ]
 then
@@ -35,8 +34,8 @@ echo "Copy files...."
 cp -f $ALL_FILES $templatedir
 
 echo "Create tarball...."
-rm -f $templatetar
-tar zcvf $templatetar $templatedir
+rm -f $templatezip
+zip -r $templatezip $templatedir
 rm -rf $templatedir
 
-echo "$templatetar is created."
+echo "$templatezip is created."

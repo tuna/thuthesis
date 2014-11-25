@@ -1,7 +1,11 @@
 # Makefile for ThuThesis
-# $Id$
 
-include config.mk
+# Compiling method: xelatex/pdflatex/dvipdfmx
+METHOD = xelatex
+# Basename of thesis
+THESISMAIN = main
+# Basename of shuji
+SHUJIMAIN = shuji
 
 ifeq ($(MAKE),)
     override MAKE = make
