@@ -1,41 +1,43 @@
 #!/bin/sh
 
-EXAMPLE_FILES="main.tex shuji.tex main.pdf shuji.pdf thutils.sty"
-TEMPLATE_FILES="thuthesis.ins thuthesis.dtx thubib.bst thuthesis.pdf thuthesis.cls thuthesis.cfg fontname.def zhfonts.py Makefile README.md"
-ALL_FILES="$EXAMPLE_FILES $TEMPLATE_FILES"
-ALL_DIRS="data figures ref"
+EXAMPLE_FILES="main.tex shuji.tex main.pdf shuji.pdf"
+TEMPLATE_FILES="thuthesis.ins thuthesis.dtx thubib.bst thutils.sty fontname.def zhfonts.py Makefile README.md thuthesis.pdf "
+GEN_FILES="thuthesis.cls thuthesis.cfg"
+ALL_FILES="$EXAMPLE_FILES $TEMPLATE_FILES $GEN_FILES"
+ALL_DIRS="data/ figures/ ref/"
+DIST_DIR="dist/"
 
-# $1 should be the version number
-if [ $# -lt 2 ]; then
-    echo "Forget the version number or encode name?"
-    echo "Usage: ./makedist.sh <version#> <encode>"
+if [ $# -lt 1 ]; then
+    echo "Usage: ./makedist.sh version_number"
     exit 2
 fi
 
 version=$1
-encode=$2
-templatedir="thuthesis@$encode-$version/"
-templatezip="thuthesis@$encode-$version.zip"
+dist_build="$DIST_DIR/thuthesis-$version"
+dist_zip="$DIST_DIR/thuthesis-$version.zip"
 
-if [ -d $templatedir ]
+if [ -d $dist_build ]
 then
-  echo "clean old files"
-  rm -rf $templatedir
+  echo "clean old dist files..."
+  rm -rf $dist_build
 fi
-mkdir -p $templatedir
+mkdir -p $dist_build
 
-echo "Copy dirs...."
-# have to cleanup tmp files in data/
-find data -maxdepth 1 -type f -not -iname "*.tex" -exec rm {} \;
-rm -rf data/auto
-tar cp --exclude ".git" $ALL_DIRS | (cd $templatedir ; tar xp)
+echo "Have you cleaned up files in \"$ALL_DIRS\"?"
+select yn in "Yes" "No"; do
+case $yn in
+    Yes ) break;;
+    No ) exit;;
+esac
+done
 
-echo "Copy files...."
-cp -f $ALL_FILES $templatedir
+echo "copy files..."
+tar cp $ALL_FILES $ALL_DIRS | tar xp -C $dist_build
 
-echo "Create tarball...."
-rm -f $templatezip
-zip -r $templatezip $templatedir
-rm -rf $templatedir
+echo "create tarball...."
+rm -f $dist_zip
+pushd $DIST_DIR > /dev/null
+zip -r -m -q `basename $dist_zip` `basename $dist_build`
+popd > /dev/null
 
-echo "$templatezip is created."
+echo "$dist_zip is created."

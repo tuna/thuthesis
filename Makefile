@@ -172,6 +172,7 @@ clean:
 distclean: clean
 	-@$(RM) $(CLSFILES)
 	-@$(RM) $(PACKAGE).pdf $(THESISMAIN).pdf $(SHUJI).pdf
+	-@$(RM) -r dist
 
 dist:
 	@if [ -z "$(VERSION)" ]; then \
