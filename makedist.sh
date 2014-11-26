@@ -1,27 +1,30 @@
-#!/bin/sh
+#!/bin/bash
+
+set -e
 
 EXAMPLE_FILES="main.tex shuji.tex main.pdf shuji.pdf"
 TEMPLATE_FILES="thuthesis.ins thuthesis.dtx thubib.bst thutils.sty fontname.def zhfonts.py Makefile README.md thuthesis.pdf "
 GEN_FILES="thuthesis.cls thuthesis.cfg"
 ALL_FILES="$EXAMPLE_FILES $TEMPLATE_FILES $GEN_FILES"
 ALL_DIRS="data/ figures/ ref/"
-DIST_DIR="dist/"
+DIST_DIR="dist"
 
 if [ $# -lt 1 ]; then
-    echo "Usage: ./makedist.sh version_number"
+    echo "Usage: ./makedist.sh [version_number | ctan]"
     exit 2
 fi
 
 version=$1
-dist_build="$DIST_DIR/thuthesis-$version"
-dist_zip="$DIST_DIR/thuthesis-$version.zip"
-
-if [ -d $dist_build ]
-then
-  echo "clean old dist files..."
-  rm -rf $dist_build
+version_up=$(echo "$version" | tr '[:lower:]' '[:upper:]')
+if [ "$version_up" = "CTAN" ]; then
+    dist_build="$DIST_DIR/thuthesis"
+    dist_zip="$DIST_DIR/thuthesis.zip"
+else
+    dist_build="$DIST_DIR/thuthesis-$version"
+    dist_zip="$DIST_DIR/thuthesis-$version.zip"
 fi
-mkdir -p $dist_build
+
+rm -rf $dist_build && mkdir -p $dist_build
 
 echo "Have you cleaned up files in \"$ALL_DIRS\"?"
 select yn in "Yes" "No"; do
