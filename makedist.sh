@@ -5,7 +5,7 @@ set -e
 EXAMPLE_FILES="main.tex shuji.tex main.pdf shuji.pdf"
 TEMPLATE_FILES="thuthesis.ins thuthesis.dtx thubib.bst thutils.sty fontname.def zhfonts.py Makefile README.md thuthesis.pdf "
 GEN_FILES="thuthesis.cls thuthesis.cfg"
-ALL_FILES="$EXAMPLE_FILES $TEMPLATE_FILES $GEN_FILES"
+ALL_FILES="$EXAMPLE_FILES $TEMPLATE_FILES"
 ALL_DIRS="data/ figures/ ref/"
 DIST_DIR="dist"
 
@@ -20,6 +20,7 @@ if [ "$version_up" = "CTAN" ]; then
     dist_build="$DIST_DIR/thuthesis"
     dist_zip="$DIST_DIR/thuthesis.zip"
 else
+    ALL_FILES+=" $GEN_FILES"
     dist_build="$DIST_DIR/thuthesis-$version"
     dist_zip="$DIST_DIR/thuthesis-$version.zip"
 fi
@@ -36,6 +37,9 @@ done
 
 echo "copy files..."
 tar cp $ALL_FILES $ALL_DIRS | tar xp -C $dist_build
+if [ "$version_up" = "CTAN" ]; then
+    mv $dist_build/README.md $dist_build/README
+fi
 
 echo "create tarball...."
 rm -f $dist_zip
