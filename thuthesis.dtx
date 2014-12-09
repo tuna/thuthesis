@@ -35,7 +35,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2014/11/27 4.8 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2014/12/09 4.8.1 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{dtx-style}
 \EnableCrossrefs
@@ -222,7 +222,7 @@
 % thuthesis.dtx & 模板文档代码的混合文件\\
 % thuthesis.cls & 模板类文件\\
 % thuthesis.cfg & 模板配置文件\\
-% fontname.def & 中文字体配置文件\\
+% thufonts.def & 中文字体配置文件\\
 % thubib.bst & 参考文献样式文件\\\hline
 % main.tex & 示例文档主文件\\
 % shuji.tex & 书脊示例文档\\
@@ -273,7 +273,7 @@
 % 模板解压缩后生成文件夹 \file{thuthesis-VERSION}\footnote{VERSION 为版本号。}，
 % 其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参考文献
 % 样式 \file{thubib.bst}，示例文档
-% （\file{main.tex}，\file{shuji.tex}，\file{fontname.def}\footnote{Xe\LaTeX 中文
+% （\file{main.tex}，\file{shuji.tex}，\file{thufonts.def}\footnote{Xe\LaTeX 中文
 % 字体配置文件}，\file{thutils.sty}\footnote{可能用到的包以及一些命令定义都放在这
 % 里，以免 \file{thuthesis.cls} 过分臃
 % 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
@@ -406,7 +406,7 @@
 % \subsection{\thuthesis{} 示例文件}
 % \label{sec:userguide1}
 % 模板核心文件有四
-% 个：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{fontname.def} 和
+% 个：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thufonts.def} 和
 % \file{thubib.bst}，但是如果没有示例文档用户会发现很难下手。所以推荐新用户从模板
 % 自带的示例文档入手，里面包括了论文写作用到的所有命令及其使用方法，只需要用自己
 % 的内容进行相应替换就可以。对于不清楚的命令可以查阅本手册。下面的例子描述了模板
@@ -572,10 +572,10 @@
 % 文字库，缺省为 \option{winfonts} 有效，使用中易字体。当使用 xelatex 编译
 % 时，\option{winfonts} 只有中易的四款字体（宋体、黑体、楷书和仿宋）可用，而本科
 % 生需要用到幼圆，另外 Linux 系统缺少上述字体，这些用户可以通过指
-% 定 \option{nofonts} 选项，利用 \file{fontname.def} 文件配置所需字体。使用中易
+% 定 \option{nofonts} 选项，利用 \file{thufonts.def} 文件配置所需字体。使用中易
 % 六种字体的配置如下：
 % \begin{example}
-% \ProvidesFile{fontname.def}
+% \ProvidesFile{thufonts.def}
 % \setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
 % \setCJKsansfont{SimHei}
 % \setCJKmonofont{FangSong}
@@ -597,7 +597,7 @@
 % 为 |FangSong_GB2312|。
 %
 % 宏包中包含了 \file{zhfonts.py} 脚本，为 Linux/Mac 用户提供一种交互式的方式从系
-% 统中文字体中选择合适的六种字体，最终生成对应的 \file{fontname.def}文件。要使用
+% 统中文字体中选择合适的六种字体，最终生成对应的 \file{thufonts.def}文件。要使用
 % 它，只需在命令行输入该脚本的完整路径即可。
 %
 % 另外，用户也可以通过命令
@@ -1034,7 +1034,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2014/11/27 4.8 Tsinghua University Thesis Template]
+%<cls|cfg>[2014/12/09 4.8.1 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1048,11 +1048,12 @@
 % \changes{v3.0}{2007/05/12}{删除 submit 选项。}
 % \changes{v4.6}{2011/04/26}{增加 postdoctor 选项。}
 % \changes{v4.8}{2014/11/25}{v4.7曾经想发布，但是一直没有做，于是就被跳过了，算是造一个段子吧。}
+% \changes{v4.8.1}{2014/12/09}{按照 CTAN 的要求整理一下文件。}
 %    \begin{macrocode}
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{4.8}
+\def\version{4.8.1}
 \newif\ifthu@bachelor\thu@bachelorfalse
 \newif\ifthu@master\thu@masterfalse
 \newif\ifthu@doctor\thu@doctorfalse
@@ -1193,11 +1194,12 @@
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
   \defaultfontfeatures{Mapping=tex-text} % use TeX --
 %    \end{macrocode}
-% 默认采用中易的四款 (宋，黑，楷，仿宋) 免费字体。本科生还需要隶书，需要手工
-% 修改 fontname.def 文件。缺少中文字体的 Linux 用户可以通过 fontname.def 文件定义字体。
+% 默认采用中易的四款 (宋，黑，楷，仿宋) 免费字体。本科生还需要隶书，需要手工修
+% 改 \file{thufonts.def} 文件。缺少中文字体的 Linux 用户可以通
+% 过 \file{thufonts.def} 文件定义字体。
 %    \begin{macrocode}
   \ifCTEX@nofonts
-    \input{fontname.def}
+    \input{thufonts.def}
   \fi
 
   \setmainfont{Times New Roman}
@@ -3125,7 +3127,7 @@
 
 \ifxetex
   \RequirePackage[nofonts,UTF8,hyperref]{ctex}
-  \input{fontname.def}
+  \input{thufonts.def}
 \else
   \RequirePackage[winfonts,UTF8,hyperref]{ctex}
   \RequirePackage{txfonts}

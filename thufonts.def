@@ -1,7 +1,7 @@
 % vim: set ft=tex:
 % This file is modified from ctex's ctex-xecjk-winfonts.def.
 
-\ProvidesFile{fontname.def}
+\ProvidesFile{thufonts.def}
 \setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
 \setCJKsansfont{SimHei}
 \setCJKmonofont{FangSong}
