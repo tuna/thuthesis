@@ -16,7 +16,7 @@
 %
 % \fi
 %
-% \CheckSum{2499}
+% \CheckSum{0}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1446,12 +1446,10 @@
 %   过 dvips 不指定页面类型而得到古怪的结果。}
 % \changes{v4.5.2}{2010/09/19}{研究生页面边距由 3.2cm 改为 3cm。}
 % \changes{v4.7}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
+% \changes{v4.8.2}{2015/03/10}{不再将页面尺寸写入 dvi，因为已不支持 dvips，
+% 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。}
 %    \begin{macrocode}
 %<*cls>
-\AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
-\AtBeginDvi{\special{!%
-      \@percentchar\@percentchar BeginPaperSize: a4
-      ^^Ja4^^J\@percentchar\@percentchar EndPaperSize}}
 \setlength{\textwidth}{\paperwidth}
 \setlength{\textheight}{\paperheight}
 \setlength\marginparwidth{0cm}
