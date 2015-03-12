@@ -1094,9 +1094,13 @@
 % \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
 % \changes{v4.8}{2013/03/10}{使用 ctexbook 类，优于调用 ctex 宏包。}
 % \changes{v4.8}{2013/05/29}{添加 nocap 选项，恢复默认标题样式，模板会进一步定制。}
+% \changes{v4.8.2}{2015/03/12}{使用 XeTeX 引擎时，fontspec 宏包会被 xeCJK 自动
+% 调用。传递给 fontspec 宏包 no-math 选项，避免部分数学符号字体自动调整为 CMR。
+% 其他引擎下没有这个问题，这一行会被无视。}
 %    \begin{macrocode}
 \ExecuteOptions{utf,arialtitle}
 \ProcessOptions\relax
+\PassOptionsToPackage{no-math}{fontspec}
 \LoadClass[cs4size,a4paper,openany,nocap,UTF8]{ctexbook}
 %    \end{macrocode}
 %
