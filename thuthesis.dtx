@@ -16,7 +16,7 @@
 %
 % \fi
 %
-% \CheckSum{2499}
+% \CheckSum{0}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -293,62 +293,49 @@
 % \end{shell}
 %
 %
-% \subsubsection{dvi$\rightarrow$ps$\rightarrow$pdf}
-% \label{sec:dvipspdf}
+% \subsubsection{xelatex}
+% \label{sec:xelatex}
 % 很多用户对 \LaTeX{} 命令执行的次数不太清楚，一个基本的原则是多次运行 \LaTeX{}命
 % 令直至不再出现警告。下面给出生成示例文档的详细过程（\# 开头的行为注释），首先来
-% 看经典的 \texttt{dvi$\rightarrow$ps$\rightarrow$pdf} 方式：
+% 看比较推荐的 \texttt{xelatex} 方式：
 % \begin{shell}
 % # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
-% $ latex main
+% $ xelatex main
 %
 % # 2. 编译参考文件源文件，生成 bbl 文件
 % $ bibtex main
 %
 % # 3. 下面解决引用
-% $ latex main
-% # 如果是 GBK 编码，此处运行：
-% # $ gbk2uni main  # 防止书签乱码
-% $ latex main   # 此时生成完整的 dvi 文件
-%
-% # 4. 生成 ps
-% $ dvips main.dvi
-%
-% # 5. 生成 pdf
-% $ ps2pdf main.ps
+% $ xelatex main
+% $ xelatex main   # 此时生成完整的 pdf 文件
 % \end{shell}
+% Xe\TeX 最大的优势就是不再需要繁琐的字体配置。\thuthesis{} 通过 \pkg{xeCJK} 来控
+% 制中文字体和标点压缩。模板里默认用的是中易的四款免费字体（宋，黑，楷，仿宋），
+% 用户可以根据自己的实际情况自行替换。另外，本科论文封面要用到隶书，需要使用模板的
+% nofonts 选项。字体配置参考第~\ref{sec:font-config} 节。
 %
-% 模板已经把纸型信息写入目标文件，这样执行 \texttt{dvips} 时就可以避免由于遗忘
-%  \texttt{-ta4} 参数而导致输出不合格的文件（因为 \texttt{dvips} 默认使用
-%  letter 纸型）。
-%
-% \subsubsection{dvipdfm(x)}
+% \subsubsection{dvipdfmx}
 % \label{sec:dvipdfmx}
-% 如果使用 \texttt{dvipdfm(x)}，那么在生成完整的 dvi 文件之后（参见上面的例子），
-% 可以直接得到 pdf：
+% 如果使用 \texttt{dvipdfmx}，那么需要先生成完整的 dvi 文件：
 % \begin{shell}%
-% $ dvipdfm  main.dvi
-% # 或者
-% $ dvipdfmx  main.dvi
+% $ latex main
+% $ bibtex main
+% $ latex main
+% $ latex main
+% \end{shell}
+% 在生成完整的 dvi 文件之后，可以用 dvipdfmx 直接得到 pdf 文件：
+% \begin{shell}%
+% $ dvipdfmx main
 % \end{shell}
 %
 % \subsubsection{pdflatex}
 % \label{sec:pdflatex}
-% 如果使用 PDF\LaTeX，按照第~\ref{sec:dvipspdf} 节的顺序执行到第 3 步即可，不再经
-% 过中间转换。
+% 如果使用 PDF\LaTeX，按照第~\ref{sec:xelatex} 节的顺序执行即可，只是将命令中
+% xelatex 替换为 pdflatex。
 %
 % 需要注意的是 PDF\LaTeX\ 不能处理常见的 EPS 图形，需要先用 epstopdf 将其转化
 % 成 PDF。不过 PDF\LaTeX\ 增加了对 png，jpg 等标量图形的支持，比较方便。
-%
-% \subsubsection{xelatex}
-% \label{sec:xelatex}
-% Xe\TeX 最大的优势就是不再需要繁琐的字体配置。\thuthesis{} 通过 \pkg{xeCJK} 来控
-% 制中文字体和标点压缩。模板里默认用的是中易的四款免费字体（宋，黑，楷，仿宋），
-% 用户可以根据自己的实际情况自行替换。另外，本科论文封面要用到隶书，请用户自行修
-% 改。字体配置参考第~\ref{sec:font-config} 节。
-%
-% Xe\LaTeX\ 的使用步骤同 PDF\LaTeX。
-%
+% TeX Live 自从 2010 版本起自动调用 epstopdf 将 EPS 图形转化为 PDF。
 %
 % \subsubsection{自动化过程}
 % \label{sec:automation}
@@ -1446,12 +1433,10 @@
 %   过 dvips 不指定页面类型而得到古怪的结果。}
 % \changes{v4.5.2}{2010/09/19}{研究生页面边距由 3.2cm 改为 3cm。}
 % \changes{v4.7}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
+% \changes{v4.8.2}{2015/03/10}{不再将页面尺寸写入 dvi，因为已不支持 dvips，
+% 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。}
 %    \begin{macrocode}
 %<*cls>
-\AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
-\AtBeginDvi{\special{!%
-      \@percentchar\@percentchar BeginPaperSize: a4
-      ^^Ja4^^J\@percentchar\@percentchar EndPaperSize}}
 \setlength{\textwidth}{\paperwidth}
 \setlength{\textheight}{\paperheight}
 \setlength\marginparwidth{0cm}
