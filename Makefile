@@ -27,8 +27,10 @@ CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 # make deletion work on Windows
 ifdef SystemRoot
    RM = del /Q
+   SLASH = \\
 else
    RM = rm -f
+   SLASH = /
 endif
 
 .PHONY: all clean distclean dist thesis shuji doc cls
@@ -166,7 +168,7 @@ clean:
 		*.lof \
 		*.lot \
 		*.loe \
-		data/*.aux \
+		data$(SLASH)*.aux \
 		dtx-style.sty
 
 distclean: clean
