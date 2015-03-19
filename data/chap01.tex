@@ -522,6 +522,17 @@ V_j & = v_j, & \qquad X_j & = x_j,
 
 有时候不想要上标，那么可以这样 \onlinecite{shaheshang}，这个非常重要。
 
+有时候一些参考文献没有纸质出处，需要标注 URL。缺省情况下，URL 不会在连字符处断行，
+这可能使得用连字符代替空格的网址分行很难看。如果需要，可以将模板类文件中
+\begin{verbatim}
+\RequirePackage{hyperref}
+\end{verbatim}
+一行改为
+\begin{verbatim}
+\PassOptionsToPackage{hyphens}{url}\RequirePackage{hyperref}
+\end{verbatim}
+使得连字符处可以断行。更多设置可以参考 \texttt{url} 宏包文档。
+
 \section{公式}
 \label{sec:equation}
 贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中 $p(y|\mathbf{x})$ 为后验；
