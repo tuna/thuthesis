@@ -1,7 +1,9 @@
 # Makefile for ThuThesis
 
-# Compiling method: xelatex/pdflatex/dvipdfmx
+# Compiling method: xelatex/pdflatex/dvipdfmx/latexmk
 METHOD = xelatex
+# Set opts for latexmk if you use it
+LATEXMKOPTS = -xelatex
 # Basename of thesis
 THESISMAIN = main
 # Basename of shuji
@@ -65,6 +67,11 @@ $(PACKAGE).pdf: $(CLSFILES)
 	pdflatex $(PACKAGE).dtx
 	pdflatex $(PACKAGE).dtx
 
+else ifeq ($(METHOD),latexmk)
+	ln -s $(PACKAGE).dtx $(PACKAGE).tex
+	latexmk ${LATEXMKOPTS} $(PACKAGE)
+	rm $(PACKAGE).tex
+
 else
 
 $(PACKAGE).dvi: $(CLSFILES)
@@ -106,6 +113,9 @@ $(THESISMAIN).bbl: $(BIBFILE)
 	-bibtex $(THESISMAIN)
 	$(RM) $(THESISMAIN).pdf
 
+else ifeq ($(METHOD),latexmk)
+	latexmk ${LATEXMKOPTS} $(THESISMAIN)
+
 else
 
 $(THESISMAIN).pdf: $(THESISMAIN).dvi
@@ -134,6 +144,9 @@ else ifeq ($(METHOD),pdflatex)
 
 $(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
 	pdflatex $(SHUJIMAIN).tex
+
+else ifeq ($(METHOD),latexmk)
+	latexmk ${LATEXMKOPTS} $(SHUJIMAIN)
 
 else
 
