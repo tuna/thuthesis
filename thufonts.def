@@ -10,6 +10,7 @@
 \setCJKfamilyfont{zhhei}{SimHei}
 \setCJKfamilyfont{zhkai}{KaiTi}
 \setCJKfamilyfont{zhfs}{FangSong}
+% 研究生一般用不到隶书和幼圆字体，系统没有它们时可以删除如下两行
 \setCJKfamilyfont{zhli}{LiSu}
 \setCJKfamilyfont{zhyou}{YouYuan}
 
@@ -17,5 +18,6 @@
 \newcommand*{\heiti}{\CJKfamily{zhhei}}
 \newcommand*{\kaishu}{\CJKfamily{zhkai}}
 \newcommand*{\fangsong}{\CJKfamily{zhfs}}
+% 研究生一般用不到隶书和幼圆字体，系统没有它们时可以删除如下两行
 \newcommand*{\lishu}{\CJKfamily{zhli}}
 \newcommand*{\youyuan}{\CJKfamily{zhyou}}
