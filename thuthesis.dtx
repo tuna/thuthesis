@@ -292,6 +292,15 @@
 % $ xelatex thuthesis.dtx  % 生成说明文档 thuthesis.pdf
 % \end{shell}
 %
+% \subsubsection{latexmk}
+% \label{sec:latexmk}
+% \texttt{latexmk} 命令支持全自动生成 \LaTeX{} 编写的文档，并且支持使用不同的工具
+% 链来进行生成。从2015年开始， \thuthesis{} 改为默认用 \texttt{latexmk} 调用 
+% \texttt{xelatex} 生成。下面来看用 \texttt{latexmk} 进行生成的命令：
+% \begin{shell}
+% # 一句话就够了！
+% $ latexmk -xelatex main
+% \end{shell}
 %
 % \subsubsection{xelatex}
 % \label{sec:xelatex}
