@@ -2058,8 +2058,15 @@
       \penalty\@highpenalty
     \endgroup
   \fi}
-\renewcommand*\l@section{\@dottedtocline{1}{\ifthu@bachelor 1.0em\else 1.2em\fi}{2.1em}}
-\renewcommand*\l@subsection{\@dottedtocline{2}{\ifthu@bachelor 1.6em\else 2em\fi}{3em}}
+%    \end{macrocode}
+%
+% 研究生学位论文写作指南中规定：目录中的章标题行居左书写，一级节标题行缩进 1 个
+% 汉字符，二级节标题行缩进 2 个汉字符（但示例文件中为 1.5 个汉字符）。本科生指
+% 南中未作明确规定，示例文件中对于一级和二级节标题分别缩进 1 和 1.5 个汉字符。
+% \changes{v4.8.2}{2015/04/28}{修正学位论文中目录里节前缩进(\#103)}
+%    \begin{macrocode}
+\renewcommand*\l@section{\@dottedtocline{1}{\ccwd}{2.1em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{\ifthu@bachelor 1.5\ccwd\else 2\ccwd\fi}{3em}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{\ifthu@bachelor 2.4em\else 3.5em\fi}{3.8em}}
 %</cls>
 %    \end{macrocode}
