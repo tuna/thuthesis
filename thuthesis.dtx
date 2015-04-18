@@ -2998,12 +2998,17 @@
 % \begin{macro}{\resumeitem}
 % 个人简历里面会出现的以发表文章，在投文章等。
 % \changes{v2.5.1}{2006/05/23}{ft，教务处和研究生院非要搞的不一样！}
+% \changes{v4.8.2}{2015/04/18}{博士后就不提在学期间了，不合适(\#100)}
 %    \begin{macrocode}
 %<*cfg>
 \ifthu@bachelor
   \newcommand{\thu@resume@title}{在学期间参加课题的研究成果}
 \else
-  \newcommand{\thu@resume@title}{个人简历、在学期间发表的学术论文与研究成果}
+  \ifthu@postdoctor
+    \newcommand{\thu@resume@title}{个人简历、发表的学术论文与科研成果}
+  \else
+    \newcommand{\thu@resume@title}{个人简历、在学期间发表的学术论文与研究成果}
+  \fi
 \fi
 %</cfg>
 %<*cls>
