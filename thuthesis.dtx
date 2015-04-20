@@ -1853,6 +1853,7 @@
 % \changes{v2.5}{2006/05/13}{取消 \pkg{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
 % \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
 % \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化，ft!}
+% \changes{v4.8.2}{2015/04/17}{修正章节间距问题(\#57)}
 %    \begin{macrocode}
 \renewcommand\chapter{%
   \if@openright\cleardoublepage\else\clearpage\fi\phantomsection%
@@ -1873,7 +1874,8 @@
     \addcontentsline{toc}{chapter}{#1}%
   \fi
   \chaptermark{#1}%
-  \@makechapterhead{#2}}
+  \@makechapterhead{#2}%
+  \@afterheading}
 \def\@makechapterhead#1{%
   \ifthu@bachelor\vspace*{24bp}\else\vspace*{20bp}\fi%
   {\parindent \z@ \centering
