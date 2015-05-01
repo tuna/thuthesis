@@ -185,6 +185,8 @@ clean:
 		*.lof \
 		*.lot \
 		*.loe \
+		*.fls \
+		*.fdb_latexmk \
 		data$(SLASH)*.aux \
 		dtx-style.sty
 
