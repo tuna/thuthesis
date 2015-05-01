@@ -70,7 +70,7 @@ $(PACKAGE).pdf: $(CLSFILES)
 else ifeq ($(METHOD),latexmk)
 
 $(PACKAGE).pdf: $(CLSFILES)
-	latexmk ${LATEXMKOPTS} $(PACKAGE).dtx
+	latexmk $(LATEXMKOPTS) $(PACKAGE).dtx
 
 else
 
@@ -116,7 +116,7 @@ $(THESISMAIN).bbl: $(BIBFILE)
 else ifeq ($(METHOD),latexmk)
 
 $(THESISMAIN).pdf: $(CLSFILES)
-	latexmk ${LATEXMKOPTS} $(THESISMAIN)
+	latexmk $(LATEXMKOPTS) $(THESISMAIN)
 
 else
 
@@ -150,7 +150,7 @@ $(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
 else ifeq ($(METHOD),latexmk)
 
 $(SHUJIMAIN).pdf: $(CLSFILES)
-	latexmk ${LATEXMKOPTS} $(SHUJIMAIN)
+	latexmk $(LATEXMKOPTS) $(SHUJIMAIN)
 
 else
 
