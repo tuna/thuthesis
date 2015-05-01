@@ -1,6 +1,6 @@
 # Makefile for ThuThesis
 
-# Compiling method: xelatex/pdflatex/dvipdfmx/latexmk
+# Compiling method: latexmk/xelatex/pdflatex/dvipdfmx
 METHOD = latexmk
 # Set opts for latexmk if you use it
 LATEXMKOPTS = -xelatex

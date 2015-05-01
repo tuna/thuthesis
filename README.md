@@ -38,7 +38,7 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 # Makefile的用法
 
     make [{all|thesis|shuji|doc|clean|distclean}] \
-         [METHOD={xelatex|pdflatex|dvipdfmx}] \
+         [METHOD={latexmk|xelatex|pdflatex|dvipdfmx}] \
          [TEXI2DVI=<tex2dvi>]
 
 ## 目标
@@ -52,10 +52,10 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 
 ## 参数
 * **METHOD**：指定生成 pdf 的方式，缺省采用 xelatex。
+  * METHOD=latexmk  表示使用 latexmk 的方式生成 pdf。
   * METHOD=xelatex  表示使用 xelatex 引擎编译生成 pdf；
   * METHOD=pdflatex 表示使用 pdflatex 引擎编译生成 pdf；
   * METHOD=dvipdfmx 表示使用 texi2dvi -> dvipdfmx 的方式生成 pdf。
-  * METHOD=latexmk  表示使用 latexmk 的方式生成 pdf。
 * **TEXI2DVI**： `texi2dvi` 实用工具的文件名，该工具的作用是自动重复运行latex 若
         干遍，直至所有交叉引用都正确为止。在有的发行版中该工具的文件名不叫
         `texi2dvi`，譬如 CTeX 下的这个工具就叫 `texify`。遇到这种情况可以在命令
