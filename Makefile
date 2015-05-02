@@ -163,36 +163,16 @@ $(SHUJIMAIN).pdf: $(SHUJIMAIN).dvi
 
 endif
 
-clean: 
-	-@$(RM) \
-		*~ \
-		*.aux \
-		*.bak \
-		*.bbl \
-		*.blg \
-		*.dvi \
-		*.glo \
-		*.gls \
-		*.idx \
-		*.ilg \
-		*.ind \
-		*.ist \
-		*.log \
-		*.out \
-		*.ps \
-		*.thm \
-		*.toc \
-		*.lof \
-		*.lot \
-		*.loe \
-		*.fls \
-		*.fdb_latexmk \
-		data$(SLASH)*.aux \
-		dtx-style.sty
+clean:
+	latexmk -c $(PACKAGE).dtx $(THESISMAIN) $(SHUJIMAIN)
+	-@$(RM) $(PACKAGE).dvi $(THESISMAIN).dvi $(SHUJIMAIN).dvi
+	-@$(RM) *~
 
-distclean: clean
+cleanall: clean
+	-@$(RM) $(PACKAGE).pdf $(THESISMAIN).pdf $(SHUJIMAIN).pdf
+
+distclean: cleanall
 	-@$(RM) $(CLSFILES)
-	-@$(RM) $(PACKAGE).pdf $(THESISMAIN).pdf $(SHUJI).pdf
 	-@$(RM) -r dist
 
 dist:

@@ -1,4 +1,5 @@
 # vim: set ft=perl:
+$clean_ext = 'thm glo gls bbl';
 $makeindex = 'makeindex -s gind.ist %O -o %D %S';
 add_cus_dep('glo', 'gls', 0, 'makeglo2gls');
 sub makeglo2gls {
