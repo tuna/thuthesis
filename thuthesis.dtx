@@ -231,6 +231,7 @@
 % figures/ & 示例文档图片路径\\
 % thutils.sty & 为示例文档加载其它宏包\\\hline
 % Makefile & self-explanation\\
+% latexmkrc & latexmk 配置文件 \\
 % zhfonts.py & 生成中文字体配置文件\\
 % README.md & self-explanation\\
 % \textbf{thuthesis.pdf} & 用户手册（本文档）\\\hline
@@ -292,7 +293,6 @@
 % $ xelatex thuthesis.dtx  % 生成说明文档 thuthesis.pdf
 % \end{shell}
 %
-%
 % \subsubsection{xelatex}
 % \label{sec:xelatex}
 % 很多用户对 \LaTeX{} 命令执行的次数不太清楚，一个基本的原则是多次运行 \LaTeX{}命
@@ -339,12 +339,21 @@
 % 成 PDF。不过 PDF\LaTeX\ 增加了对 png，jpg 等标量图形的支持，比较方便。
 % TeX Live 自从 2010 版本起自动调用 epstopdf 将 EPS 图形转化为 PDF。
 %
+% \subsubsection{latexmk}
+% \label{sec:latexmk}
+% \texttt{latexmk} 命令支持全自动生成 \LaTeX{} 编写的文档，并且支持使用不同的工具
+% 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。下面给出了一个用
+% \texttt{latexmk} 调用 \texttt{xelatex} 生成最终文档的示例：
+% \begin{shell}
+% # 一句话就够了！
+% $ latexmk -xelatex main
+% \end{shell}
+%
 % \subsubsection{自动化过程}
 % \label{sec:automation}
 % 上面的例子只是给出一般情况下的使用方法。虽然命令很简单，但是每次都输入的话还是
-% 非常罗嗦的，所以 \thuthesis{} 还提供了一些自动处理的文件。
+% 非常罗嗦的，所以 \thuthesis{} 还提供了一个简单的 \file{Makefile}：
 %
-% 我们提供了一个简单的 \file{Makefile}：
 % \begin{shell}
 % $ make clean
 % $ make cls       # 生成 thuthesis.cls 和 thuthesis.cfg
@@ -353,9 +362,11 @@
 % $ make shuji     # 生成书脊 shuji.pdf
 % \end{shell}
 %
-% \file{Makefile} 默认采用 Xe\LaTeX\ 编译，可以根据自己的需要修
-% 改 \file{Makefile} 开头的参数设置或通过命令行传递参数（请参看 \file{README.md}）。
-%
+% \thuthesis{} 的 Makefile 默认用 \texttt{latexmk} 调用
+% \texttt{xelatex} 编译，此外还支持采用 \texttt{xelatex}、\texttt{pdflatex} 和
+% \texttt{dvipdfmx} 方式编译，如有需要可以修
+% 改 \file{Makefile} 开头的参数设置或通过命令行传递参数（请参看 \file{README.md}），
+% 进一步还可以修改 \file{latexmkrc} 进行定制。
 %
 % \subsection{升级}
 % \label{sec:updgrade}
