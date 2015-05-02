@@ -1,7 +1,9 @@
 # Makefile for ThuThesis
 
-# Compiling method: xelatex/pdflatex/dvipdfmx
-METHOD = xelatex
+# Compiling method: latexmk/xelatex/pdflatex/dvipdfmx
+METHOD = latexmk
+# Set opts for latexmk if you use it
+LATEXMKOPTS = -xelatex
 # Basename of thesis
 THESISMAIN = main
 # Basename of shuji
@@ -65,6 +67,11 @@ $(PACKAGE).pdf: $(CLSFILES)
 	pdflatex $(PACKAGE).dtx
 	pdflatex $(PACKAGE).dtx
 
+else ifeq ($(METHOD),latexmk)
+
+$(PACKAGE).pdf: $(CLSFILES)
+	latexmk $(LATEXMKOPTS) $(PACKAGE).dtx
+
 else
 
 $(PACKAGE).dvi: $(CLSFILES)
@@ -106,6 +113,11 @@ $(THESISMAIN).bbl: $(BIBFILE)
 	-bibtex $(THESISMAIN)
 	$(RM) $(THESISMAIN).pdf
 
+else ifeq ($(METHOD),latexmk)
+
+$(THESISMAIN).pdf: $(CLSFILES)
+	latexmk $(LATEXMKOPTS) $(THESISMAIN)
+
 else
 
 $(THESISMAIN).pdf: $(THESISMAIN).dvi
@@ -135,6 +147,11 @@ else ifeq ($(METHOD),pdflatex)
 $(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
 	pdflatex $(SHUJIMAIN).tex
 
+else ifeq ($(METHOD),latexmk)
+
+$(SHUJIMAIN).pdf: $(CLSFILES)
+	latexmk $(LATEXMKOPTS) $(SHUJIMAIN)
+
 else
 
 $(SHUJIMAIN).dvi: $(CLSFILES) $(SHUJICONTENTS)
@@ -146,34 +163,16 @@ $(SHUJIMAIN).pdf: $(SHUJIMAIN).dvi
 
 endif
 
-clean: 
-	-@$(RM) \
-		*~ \
-		*.aux \
-		*.bak \
-		*.bbl \
-		*.blg \
-		*.dvi \
-		*.glo \
-		*.gls \
-		*.idx \
-		*.ilg \
-		*.ind \
-		*.ist \
-		*.log \
-		*.out \
-		*.ps \
-		*.thm \
-		*.toc \
-		*.lof \
-		*.lot \
-		*.loe \
-		data$(SLASH)*.aux \
-		dtx-style.sty
+clean:
+	latexmk -c $(PACKAGE).dtx $(THESISMAIN) $(SHUJIMAIN)
+	-@$(RM) $(PACKAGE).dvi $(THESISMAIN).dvi $(SHUJIMAIN).dvi
+	-@$(RM) *~
 
-distclean: clean
+cleanall: clean
+	-@$(RM) $(PACKAGE).pdf $(THESISMAIN).pdf $(SHUJIMAIN).pdf
+
+distclean: cleanall
 	-@$(RM) $(CLSFILES)
-	-@$(RM) $(PACKAGE).pdf $(THESISMAIN).pdf $(SHUJI).pdf
 	-@$(RM) -r dist
 
 dist:
