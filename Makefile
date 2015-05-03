@@ -179,5 +179,5 @@ dist:
 	@if [ -z "$(VERSION)" ]; then \
 	    echo "Usage: make dist VERSION=<version#>"; \
 	else \
-	    ./makedist.sh $(VERSION) UTF8; \
+	    ./makedist.sh $(VERSION); \
 	fi
