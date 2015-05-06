@@ -8,6 +8,7 @@ ENTRY
     author
     booktitle
     chapter
+    citedate
     edition
     editor
     howpublished
@@ -15,6 +16,7 @@ ENTRY
     journal
     key
     lang
+    modifydate
     month
     note
     number
@@ -489,6 +491,19 @@ FUNCTION {format.url}
     { new.block " {\url{" url * "}}" * }
   if$
 }
+
+FUNCTION {format.modifydate}
+{ modifydate empty$
+    { "" }
+    { new.block "(" modifydate * ")" * }
+  if$
+}
+
+FUNCTION {format.citedate}
+{ new.block "[" citedate * "]" * }
+
+FUNCTION {format.onlinemark}
+{ "[EB/OL]" }
 
 
 INTEGERS { multiresult }
@@ -1025,6 +1040,16 @@ FUNCTION {misc}
   note output
   fin.entry
   empty.misc.check
+}
+
+FUNCTION {online}
+{ output.bibitem
+  format.authors output
+  new.block
+  format.title remove.dots format.onlinemark * output
+  format.modifydate remove.dots format.citedate * output
+  format.url output
+  fin.entry
 }
 
 FUNCTION {phdthesis.type}
