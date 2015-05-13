@@ -510,17 +510,18 @@ V_j & = v_j, & \qquad X_j & = x_j,
 当然参考文献可以直接写 bibitem，虽然费点功夫，但是好控制，各种格式可以自己随意改
 写。
 
-本模板推荐使用 BIB\TeX，样式文件为 thubib.bst，基本符合学校的参考文献格式（如专利
-等引用未加详细测试）。看看这个例子，关于书的\cite{tex, companion, ColdSources}，
-还有这些\cite{Krasnogor2004e, clzs, zjsw}，关于杂志的\cite{ELIDRISSI94,
-  MELLINGER96, SHELL02}，硕士论文\cite{zhubajie, metamori2004}，博士论文
-\cite{shaheshang, FistSystem01}，标准文件\cite{IEEE-1363}，会议论文\cite{DPMG,kocher99}，技术报告\cite{NPB2}，
-电子文献~\cite{chuban2001,oclc2000}。
-中文参考文献\cite{cnarticle}应增加 \texttt{lang=``zh''} 字段，以便进行相应处理。另
-外，这个 bst 对中文文献\cite{cnproceed}的支持并不是十全十美，如果有不如意的地方，
-请手动修改 bbl 文件。
+本模板推荐使用 BIB\TeX，样式文件为 \texttt{thubib.bst}，基本符合学校的参考文献格
+式（如专利等引用未加详细测试）。看看这个例子，关于书的~\cite{tex, companion,
+  ColdSources}，还有这些~\cite{Krasnogor2004e, clzs, zjsw}，关于杂志
+的~\cite{ELIDRISSI94, MELLINGER96, SHELL02}，硕士论文~\cite{zhubajie,
+  metamori2004}，博士论文~\cite{shaheshang, FistSystem01}，标准文
+件~\cite{IEEE-1363}，会议论文~\cite{DPMG,kocher99}，技术报告~\cite{NPB2}，电子文
+献~\cite{chuban2001,oclc2000}。中文参考文献~\cite{cnarticle}应增
+加 \texttt{lang=``zh''} 字段，以便进行相应处理。另外，本模板对中文文
+献~\cite{cnproceed}的支持并不是十全十美，如果有不如意的地方，请手动修
+改 \texttt{bbl} 文件。
 
-有时候不想要上标，那么可以这样 \onlinecite{shaheshang}，这个非常重要。
+有时候不想要上标，那么可以这样~\onlinecite{shaheshang}，这个非常重要。
 
 有时候一些参考文献没有纸质出处，需要标注 URL。缺省情况下，URL 不会在连字符处断行，
 这可能使得用连字符代替空格的网址分行很难看。如果需要，可以将模板类文件中
