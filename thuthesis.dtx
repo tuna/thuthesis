@@ -1169,6 +1169,7 @@
 % \changes{v2.6.4}{2006/10/23}{增加 \texttt{neverdecrease} 选项。}
 %    \begin{macrocode}
 \RequirePackage[neverdecrease]{paralist}
+\RequirePackage{enumitem}
 %    \end{macrocode}
 %
 % raggedbottom，禁止Latex自动调整多余的页面底部空白，并保持脚注仍然在底部。
@@ -3029,7 +3030,14 @@
 \fi
 %</cfg>
 %<*cls>
-\newcommand{\resumeitem}[1]{\vspace{24pt}{\sihao\heiti\centerline{#1}}\par\vspace{6pt}}
+\newcommand{\resumeitem}[1]{\vspace{24bp}{\sihao\heiti\centerline{#1}}\par\vspace{6bp}}
+\newcommand{\researchitem}[1]{\vspace{32bp}{\sihao\heiti\centerline{#1}}\par\vspace{14bp}}
+\newlist{publications}{enumerate}{1}
+\setlist[publications]{label=[\arabic*],align=left,nosep,itemsep=8bp,
+leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26],after*=\vspace{29bp},resume}
+\newlist{achievements}{enumerate}{1}
+\setlist[achievements]{label=[\arabic*],align=left,nosep,itemsep=8bp,
+leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
