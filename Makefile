@@ -35,7 +35,7 @@ else
    SLASH = /
 endif
 
-.PHONY: all clean distclean dist thesis shuji doc cls
+.PHONY: all clean distclean dist thesis shuji doc cls FORCE_MAKE
 
 all: doc thesis shuji
 
@@ -69,7 +69,7 @@ $(PACKAGE).pdf: $(CLSFILES)
 
 else ifeq ($(METHOD),latexmk)
 
-$(PACKAGE).pdf: $(CLSFILES)
+$(PACKAGE).pdf: $(CLSFILES) FORCE_MAKE
 	latexmk $(LATEXMKOPTS) $(PACKAGE).dtx
 
 else
@@ -115,7 +115,7 @@ $(THESISMAIN).bbl: $(BIBFILE)
 
 else ifeq ($(METHOD),latexmk)
 
-$(THESISMAIN).pdf: $(CLSFILES)
+$(THESISMAIN).pdf: $(CLSFILES) FORCE_MAKE
 	latexmk $(LATEXMKOPTS) $(THESISMAIN)
 
 else
@@ -149,7 +149,7 @@ $(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
 
 else ifeq ($(METHOD),latexmk)
 
-$(SHUJIMAIN).pdf: $(CLSFILES)
+$(SHUJIMAIN).pdf: $(CLSFILES) FORCE_MAKE
 	latexmk $(LATEXMKOPTS) $(SHUJIMAIN)
 
 else
