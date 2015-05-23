@@ -52,7 +52,7 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 * `make distclean` 表示清除包括 cls 在内的所有中间文件和目标文件。
 
 ## 参数
-* **METHOD**：指定生成 pdf 的方式，缺省采用 xelatex。
+* **METHOD**：指定生成 pdf 的方式，缺省采用 latexmk。
   * METHOD=latexmk  表示使用 latexmk 的方式生成 pdf。
   * METHOD=xelatex  表示使用 xelatex 引擎编译生成 pdf；
   * METHOD=pdflatex 表示使用 pdflatex 引擎编译生成 pdf；
