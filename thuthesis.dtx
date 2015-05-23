@@ -2009,14 +2009,11 @@
 % 最多涉及 4 层，即: x.x.x.x。\par
 % chapter(0), section(1), subsection(2), subsubsection(3)
 % \changes{v3.1}{2007/10/09}{博士论文目录只出现到第 3 级标题即可。}
+% \changes{v4.8.2}{2015/05/21}{硕士博士论文目录只出现到第 3 级标题即可。其他未明确要求。}
 %    \begin{macrocode}
 %<*cls>
 \setcounter{secnumdepth}{3}
-\ifthu@doctor
-  \setcounter{tocdepth}{2}
-\else
-  \setcounter{tocdepth}{3}
-\fi
+\setcounter{tocdepth}{2}
 %    \end{macrocode}
 %
 % 每章标题行前空 6 磅，后空 0 磅。如果使用目录项中英文要使用 Arial，那么就加上 \cs{sffamily}。
