@@ -27,6 +27,7 @@ except:
     pass
 
 import re
+import fileinput
 
 # The return value is of type byte string (in py3k).
 zh_fonts_str = check_output(['fc-list', '-f', '%{family}\n', ':lang=zh'])
@@ -174,11 +175,19 @@ with open('thufonts.def', 'w') as f:
 ''')
 
 print('>> 替换shuji.tex中的仿宋字体')
-import fileinput
-for line in fileinput.input('shuji.tex', inplace=True):
-    line = line.decode('utf-8')
-    if line.startswith('  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]'):
-        line = '  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]{' + final_fonts['fangsong']['font'] + '}\n'
-    print(line.encode('utf-8'), end='')
+for line in fileinput.input('shuji.tex', inplace=1):
+    # Ugly try-except for Python 2/3 compatibility.
+    try:
+        tmp = line.decode('utf-8')
+        line = tmp
+        python2 = True
+    except AttributeError:
+        python2 = False
+        pass
+    if line.startswith('  \\setCJKfamilyfont{zhfs}[RawFeature={vertical:}]'):
+        line = line.replace('FangSong', final_fonts['fangsong']['font'])
+    if python2 == True:
+        line = line.encode('utf-8')
+    print(line, end='')
 
 print('>> 中文字体处理结束。')
