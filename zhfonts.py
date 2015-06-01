@@ -186,7 +186,7 @@ for line in fileinput.input('shuji.tex', inplace=1):
         pass
     if line.startswith('  \\setCJKfamilyfont{zhfs}[RawFeature={vertical:}]'):
         line = line.replace('FangSong', final_fonts['fangsong']['font'])
-    if python2 == True:
+    if python2:
         line = line.encode('utf-8')
     print(line, end='')
 
