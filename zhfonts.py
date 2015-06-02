@@ -28,6 +28,7 @@ except:
 
 import re
 import fileinput
+from collections import OrderedDict
 
 # The return value is of type byte string (in py3k).
 zh_fonts_str = check_output(['fc-list', '-f', '%{family}\n', ':lang=zh'])
@@ -45,30 +46,32 @@ all_fonts_list = sorted(set([x.split(b':')[0] for x in all_fonts_str.splitlines(
 zh_fonts_list = [x.decode('utf-8') for x in zh_fonts_list]
 all_fonts_list = [x.decode('utf-8') for x in all_fonts_list]
 
-final_fonts = {'songti': {'name': '宋体',
+final_fonts = OrderedDict([
+               ('songti', {'name': '宋体',
                           'candidates': [],
                           'keyword': '宋|Ming',
-                          'font': ''},
-               'heiti': {'name': '黑体',
+                          'font': ''}),
+               ('heiti', {'name': '黑体',
                          'candidates': [],
                          'keyword': '黑|Hei|Sans|Gothic',
-                         'font': ''},
-               'kaiti': {'name': '楷体',
+                         'font': ''}),
+               ('kaiti', {'name': '楷体',
                          'candidates': [],
                          'keyword': '楷|Kai',
-                         'font': ''},
-               'fangsong': {'name': '仿宋',
+                         'font': ''}),
+               ('fangsong', {'name': '仿宋',
                             'candidates': [],
                             'keyword': '仿宋|Fang',
-                            'font': ''},
-               'lishu': {'name': '隶书',
+                            'font': ''}),
+               ('lishu', {'name': '隶书',
                          'candidates': [],
                          'keyword': '隶|Li',
-                         'font': ''},
-               'youyuan': {'name': '幼圆',
+                         'font': ''}),
+               ('youyuan', {'name': '幼圆',
                            'candidates': [],
                            'keyword': '圆|Yuan',
-                           'font': ''}}
+                           'font': ''})
+])
 
 for zh_font in zh_fonts_list:
     for key in final_fonts:
