@@ -49,7 +49,8 @@ all_fonts_list = [x.decode('utf-8') for x in all_fonts_list]
 final_fonts = OrderedDict([
                ('songti', {'name': '宋体',
                           'candidates': [],
-                          'keyword': '宋|Ming',
+                          # Use negative lookbehind to not match 仿宋.
+                          'keyword': '((?<!仿)宋)|Ming',
                           'font': ''}),
                ('heiti', {'name': '黑体',
                          'candidates': [],
