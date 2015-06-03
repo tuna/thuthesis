@@ -27,6 +27,8 @@ except:
     pass
 
 import re
+import fileinput
+from collections import OrderedDict
 
 # The return value is of type byte string (in py3k).
 zh_fonts_str = check_output(['fc-list', '-f', '%{family}\n', ':lang=zh'])
@@ -44,30 +46,33 @@ all_fonts_list = sorted(set([x.split(b':')[0] for x in all_fonts_str.splitlines(
 zh_fonts_list = [x.decode('utf-8') for x in zh_fonts_list]
 all_fonts_list = [x.decode('utf-8') for x in all_fonts_list]
 
-final_fonts = {'songti': {'name': '宋体',
+final_fonts = OrderedDict([
+               ('songti', {'name': '宋体',
                           'candidates': [],
-                          'keyword': '宋|Ming',
-                          'font': ''},
-               'heiti': {'name': '黑体',
+                          # Use negative lookbehind to not match 仿宋.
+                          'keyword': '((?<!仿)宋)|Ming',
+                          'font': ''}),
+               ('heiti', {'name': '黑体',
                          'candidates': [],
                          'keyword': '黑|Hei|Sans|Gothic',
-                         'font': ''},
-               'kaiti': {'name': '楷体',
+                         'font': ''}),
+               ('kaiti', {'name': '楷体',
                          'candidates': [],
                          'keyword': '楷|Kai',
-                         'font': ''},
-               'fangsong': {'name': '仿宋',
+                         'font': ''}),
+               ('fangsong', {'name': '仿宋',
                             'candidates': [],
                             'keyword': '仿宋|Fang',
-                            'font': ''},
-               'lishu': {'name': '隶书',
+                            'font': ''}),
+               ('lishu', {'name': '隶书',
                          'candidates': [],
                          'keyword': '隶|Li',
-                         'font': ''},
-               'youyuan': {'name': '幼圆',
+                         'font': ''}),
+               ('youyuan', {'name': '幼圆',
                            'candidates': [],
                            'keyword': '圆|Yuan',
-                           'font': ''}}
+                           'font': ''})
+])
 
 for zh_font in zh_fonts_list:
     for key in final_fonts:
@@ -174,11 +179,19 @@ with open('thufonts.def', 'w') as f:
 ''')
 
 print('>> 替换shuji.tex中的仿宋字体')
-import fileinput
-for line in fileinput.input('shuji.tex', inplace=True):
-    line = line.decode('utf-8')
-    if line.startswith('  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]'):
-        line = '  \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]{' + final_fonts['fangsong']['font'] + '}\n'
-    print(line.encode('utf-8'), end='')
+for line in fileinput.input('shuji.tex', inplace=1):
+    # Ugly try-except for Python 2/3 compatibility.
+    try:
+        tmp = line.decode('utf-8')
+        line = tmp
+        python2 = True
+    except AttributeError:
+        python2 = False
+        pass
+    if line.startswith('  \\setCJKfamilyfont{zhfs}[RawFeature={vertical:}]'):
+        line = line.replace('FangSong', final_fonts['fangsong']['font'])
+    if python2:
+        line = line.encode('utf-8')
+    print(line, end='')
 
 print('>> 中文字体处理结束。')
