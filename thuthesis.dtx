@@ -2441,8 +2441,12 @@
       \ignorespaces\yihao[1.55]%
       \renewcommand{\CJKunderlinebasesep}{0.25cm}%
       \renewcommand{\ULthickness}{1.3pt}%
-      \def\CJKunderlinecolor{}%
-      \CJKunderline*{\thu@ctitle}}
+      \ifxetex
+        \xeCJKsetup{underline/format=\color{black}}%
+      \else
+        \def\CJKunderlinecolor{\color{black}}%
+      \fi
+      \CJKunderline*{\thu@ctitle}}%
       \vskip1.3cm
     \else
       \vskip0.8cm
