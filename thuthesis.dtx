@@ -2653,10 +2653,11 @@
 % \changes{v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
 % \changes{v4.5.2}{2010/05/29}{本科封面和授权说明之间不要空白页。}
 % \changes{v4.6}{2011/05/29}{博士后报告无授权说明。}
+% \changes{v4.9}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文授权说明扫描版(\#36)。}
 %    \begin{macrocode}
     \ifthu@postdoctor\relax\else%
+      \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
       \IfNoValueTF{#1}{%
-	\ifthu@bachelor\clearpage\else\cleardoublepage\fi%
 	\ifthu@bachelor\thu@authorization@mk\else%
 	\begin{list}{}{%
 	  \topsep\z@%
@@ -2825,6 +2826,7 @@
 %    \end{macrocode}
 % 声明部分
 % \changes{v3.0}{2007/05/12}{本科论文声明部分图片扫描取消。}
+% \changes{v4.9}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文声明扫描版(\#36)。}
 %    \begin{macrocode}
   {
     \ifthu@postdoctor\relax\else%
