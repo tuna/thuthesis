@@ -10,15 +10,15 @@ THESISMAIN = main
 SHUJIMAIN = shuji
 
 ifeq ($(MAKE),)
-    override MAKE = make
+	override MAKE = make
 endif
 
 ifeq ($(TEXI2DVI),)
-    override TEXI2DVI = texi2dvi
+	override TEXI2DVI = texi2dvi
 endif
 
 PACKAGE=thuthesis
-SOURCES=$(PACKAGE).ins $(PACKAGE).dtx 
+SOURCES=$(PACKAGE).ins $(PACKAGE).dtx
 THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(EPS)
 # NOTE: update this to reflect your local file types.
 EPS=$(wildcard figures/*.eps)
@@ -177,7 +177,7 @@ distclean: cleanall
 
 dist:
 	@if [ -z "$(VERSION)" ]; then \
-	    echo "Usage: make dist VERSION=<version#>"; \
+		echo "Usage: make dist VERSION=<version#>"; \
 	else \
-	    ./makedist.sh $(VERSION); \
+		./makedist.sh $(VERSION); \
 	fi

@@ -186,7 +186,7 @@
 % 生撰写毕业论文而编写的 \LaTeX{} 论文模板。
 %
 % 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据
-% 第~\ref{sec:howtoask}节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
+% 第~\ref{sec:howtoask} 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
 % 码的贡献。
 %
 % {\color{blue}\fangsong 模板的作用在于减少论文写作过程中格式调整的时间，前提是遵
@@ -244,7 +244,7 @@
 %   将 \file{thuthesis.cls} 和 \file{thuthesis.cfg} 文件一起发布。
 % \item 使用前阅读文档：\file{thuthesis.pdf}.
 % \end{itemize}
-% 
+%
 % \subsection{准备工作}
 % \label{sec:prepare}
 % 本模板用到的主要宏包包括：
@@ -1012,11 +1012,11 @@
 % \label{sec:thanks}
 % 感谢这些年来一直陪伴 \thuthesis{} 成长的新老同学，大家的需求是模板前进的动力，
 % 大家的反馈是模板提高的机会。
-% 
+%
 % 本人已离开清华，不能如往日及时升级，热烈欢迎各位
 % 到\href{http://github.com/xueruini/thuthesis/}{Github 主页}贡献，继续为大家服
 % 务。
-% 
+%
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
 %
@@ -2495,7 +2495,7 @@
           \setlength{\extrarowheight}{4pt}
           \ifxetex % todo: ugly codes
             \begin{tabular}{p{\thu@title@width}@{}c@{\extracolsep{8pt}}l}
-          \else 
+          \else
             \begin{tabular}{p{\thu@title@width}c@{\extracolsep{4pt}}l}
           \fi
               \thu@put@title{\thu@department@title}  & \thu@title@sep & {\ziju{0.1875}\thu@cdepartment}\\
@@ -2658,15 +2658,15 @@
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
       \IfNoValueTF{#1}{%
-	\ifthu@bachelor\thu@authorization@mk\else%
-	\begin{list}{}{%
-	  \topsep\z@%
-	  \listparindent\parindent%
-	  \parsep\parskip%
-	  \setlength{\leftmargin}{0.9mm}%
-	  \setlength{\rightmargin}{0.9mm}}%
-	\item[]\thu@authorization@mk%
-	\end{list}\fi%
+    \ifthu@bachelor\thu@authorization@mk\else%
+    \begin{list}{}{%
+      \topsep\z@%
+      \listparindent\parindent%
+      \parsep\parskip%
+      \setlength{\leftmargin}{0.9mm}%
+      \setlength{\rightmargin}{0.9mm}}%
+    \item[]\thu@authorization@mk%
+    \end{list}\fi%
       }{%
         \includepdf{#1}%
       }%
@@ -2833,12 +2833,12 @@
       \IfNoValueTF{#1}{%
        \thu@chapter*{\thu@declarename}
        \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
-	 {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
-	  \thu@backdate\thu@underline[2.5cm]\relax}%
+     {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
+      \thu@backdate\thu@underline[2.5cm]\relax}%
       }{%
-	\includepdf[pagecommand={\thispagestyle{thu@empty}%
-	  \phantomsection\addcontentsline{toc}{chapter}{\thu@declarename}%
-	}]{#1}%
+    \includepdf[pagecommand={\thispagestyle{thu@empty}%
+      \phantomsection\addcontentsline{toc}{chapter}{\thu@declarename}%
+    }]{#1}%
       }%
     \fi
   }
