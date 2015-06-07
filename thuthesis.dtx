@@ -2658,15 +2658,16 @@
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
       \IfNoValueTF{#1}{%
-    \ifthu@bachelor\thu@authorization@mk\else%
-    \begin{list}{}{%
-      \topsep\z@%
-      \listparindent\parindent%
-      \parsep\parskip%
-      \setlength{\leftmargin}{0.9mm}%
-      \setlength{\rightmargin}{0.9mm}}%
-    \item[]\thu@authorization@mk%
-    \end{list}\fi%
+        \ifthu@bachelor\thu@authorization@mk\else%
+          \begin{list}{}{%
+            \topsep\z@%
+            \listparindent\parindent%
+            \parsep\parskip%
+            \setlength{\leftmargin}{0.9mm}%
+            \setlength{\rightmargin}{0.9mm}}%
+          \item[]\thu@authorization@mk%
+          \end{list}%
+        \fi%
       }{%
         \includepdf{#1}%
       }%
@@ -2831,14 +2832,14 @@
   {
     \ifthu@postdoctor\relax\else%
       \IfNoValueTF{#1}{%
-       \thu@chapter*{\thu@declarename}
-       \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
-     {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
-      \thu@backdate\thu@underline[2.5cm]\relax}%
+        \thu@chapter*{\thu@declarename}
+        \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
+        {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
+         \thu@backdate\thu@underline[2.5cm]\relax}%
       }{%
-    \includepdf[pagecommand={\thispagestyle{thu@empty}%
-      \phantomsection\addcontentsline{toc}{chapter}{\thu@declarename}%
-    }]{#1}%
+        \includepdf[pagecommand={\thispagestyle{thu@empty}%
+          \phantomsection\addcontentsline{toc}{chapter}{\thu@declarename}%
+        }]{#1}%
       }%
     \fi
   }
