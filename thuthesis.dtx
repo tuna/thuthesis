@@ -1169,6 +1169,9 @@
 %    \end{macrocode}
 %
 % \changes{v4.8}{2013/03/02}{no need to load indentfirst directly since we use ctex.}
+%    \begin{macrocode}
+\RequirePackage{indentfirst}
+%    \end{macrocode}
 %
 % 更好的列表环境。
 % \changes{v2.6.2}{2006/06/18}{去掉 \pkg{paralist} 的 newitem 和 newenum 选项，因为默
@@ -1180,10 +1183,13 @@
 %    \end{macrocode}
 %
 % raggedbottom，禁止Latex自动调整多余的页面底部空白，并保持脚注仍然在底部。
+% 脚注按页编号。
 %    \begin{macrocode}
 \ifthu@raggedbottom
-  \RequirePackage[bottom]{footmisc}
+  \RequirePackage[bottom,perpage]{footmisc}
   \raggedbottom
+\else
+  \RequirePackage[perpage]{footmisc}
 \fi
 %    \end{macrocode}
 %
@@ -1192,6 +1198,7 @@
 % \changes{v4.8}{2013/03/09}{reset baselinestretch after ctex's change.}
 % \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 %    \begin{macrocode}
+\ctexset{autoindent=true}
 \ifthu@bachelor
   \RequirePackage{CJKfntef}
 \fi
@@ -1570,29 +1577,6 @@
 %
 % \subsubsection{脚注}
 % \label{sec:footnote}
-% \begin{macro}{\MakePerPage}
-%   从 perpage.sty 中抽取的代码，使 footnote 按页编号。不再用臃肿的 footmisc。
-%    \begin{macrocode}
-%<*cls>
-\newcommand*\MakePerPage[2][\@ne]{%
-  \expandafter\def\csname c@pchk@#2\endcsname{\c@pchk@{#2}{#1}}%
-  \newcounter{pcabs@#2}%
-  \@addtoreset{pchk@#2}{#2}}
-\def\new@pagectr#1{\@newl@bel{pchk@#1}}
-\def\c@pchk@#1#2{\z@=\z@
-  \begingroup
-  \expandafter\let\expandafter\next\csname pchk@#1@\arabic{pcabs@#1}\endcsname
-  \addtocounter{pcabs@#1}\@ne
-  \expandafter\ifx\csname pchk@#1@\arabic{pcabs@#1}\endcsname\next
-  \else \setcounter{#1}{#2}\fi
-  \protected@edef\next{%
-    \string\new@pagectr{#1}{\arabic{pcabs@#1}}{\noexpand\thepage}}%
-  \protected@write\@auxout{}{\next}%
-  \endgroup\global\z@}
-\MakePerPage{footnote}
-%    \end{macrocode}
-% \end{macro}
-%
 % 脚注字体：宋体小五，单倍行距。悬挂缩进 1.5 字符。标号在正文中是上标，在脚注中为
 % 正体。默认情况下 \cs{@makefnmark} 显示为上标，同时为脚标和正文所用，所以如果要区
 % 分，必须分别定义脚注的标号和正文的标号。
@@ -1603,6 +1587,7 @@
 % \begin{macro}{\thu@textcircled}
 % 生成带圈的脚注数字。最多处理到 99，当然这个很容易扩展了。
 %    \begin{macrocode}
+%<*cls>
 \def\thu@textcircled#1{%
   \ifnum \value{#1} <10 \textcircled{\xiaoliu\arabic{#1}}
   \else\ifnum \value{#1} <100 \textcircled{\qihao\arabic{#1}}\fi
