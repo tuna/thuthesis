@@ -1774,7 +1774,12 @@
 % \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
 % \changes{v2.5.3}{2006/06/07}{不管 caption 出现在什么位置，\cs{aboveskip} 总是出现在标题和浮动体之间的距离。}
 % \changes{v4.3}{2008/03/11}{子图引用时加括号。}
+% \changes{v4.8.2}{2015/06/27}{本科附录图表编号用-不用.（如图A-1，表A-2）。}
 %    \begin{macrocode}
+\ifthu@bachelor
+  \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
+  \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
+\fi
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
 \DeclareCaptionLabelFormat{thu}{{\dawu[1.5]\songti #1~\rmfamily #2}}
