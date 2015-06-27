@@ -24,7 +24,7 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 ## 手动更新
 从 [GitHub](https://github.com/xueruini/thuthesis)下载放入论文目录，执行命令：
 
-    $ latex thuthsis.ins
+    $ latex thuthesis.ins
 
 # 提问
 按推荐顺序排序：
