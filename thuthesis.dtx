@@ -1965,7 +1965,7 @@
 % 子！}
 %    \begin{macrocode}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                     {\ifthu@bachelor -25bp\else -24bp\fi\@plus -1ex \@minus -.2ex}%
+                     {\ifthu@bachelor 25bp\else 24bp\fi\@plus 1ex \@minus .2ex}%
                      {\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex}%
                      {\csname thu@title@font\endcsname\heiti\sihao[1.429]}}
 %    \end{macrocode}
@@ -1978,7 +1978,7 @@
 % \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
 %    \begin{macrocode}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                        {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
+                        {\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex}%
                         {6bp \@plus .2ex}%
                         {\csname thu@title@font\endcsname\heiti\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi}}
 %    \end{macrocode}
@@ -1990,7 +1990,7 @@
 % \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
 %    \begin{macrocode}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                           {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
+                           {\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex}%
                            {6bp \@plus .2ex}%
                            {\csname thu@title@font\endcsname\heiti\xiaosi[1.667]}}
 %</cls>
@@ -3245,27 +3245,11 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
       \thesubsubsection\quad
       \fi
       ##1}}}
-\renewcommand\section{\@startsection{section}{1}{\z@}%
-                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
-                                    {2.3ex \@plus.2ex}%
-                                    {\normalfont\Large\bfseries}}
-
-\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                                       {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                       {1.5ex \@plus .2ex}%
-                                       {\normalfont\large\bfseries}}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                                          {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                          {1.5ex \@plus .2ex}%
-                                          {\normalfont\normalsize\bfseries}}
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                                      {3.25ex \@plus1ex \@minus.2ex}%
-                                      {-1em}%
-                                      {\normalfont\normalsize\bfseries}}
-\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-                                         {3.25ex \@plus1ex \@minus .2ex}%
-                                         {-1em}%
-                                         {\normalfont\normalsize\bfseries}}
+\ifdefined \ctexset
+  \ctexset{section/format=\Large\bfseries}
+\else
+  \CTEXsetup[format=\Large\bfseries]{section}
+\fi
 \pagestyle{empty}
 \MakeShortVerb{\|}
 \def\pkg#1{\texttt{#1}}
