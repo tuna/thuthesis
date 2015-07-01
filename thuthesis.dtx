@@ -2876,7 +2876,7 @@
     {\thu@chapter*[]{\csname list#1name\endcsname}\thu@starttoc{#1}}
     {\thu@chapter*{\csname list#1name\endcsname}\thu@starttoc{#1}}}
 \renewcommand\listoffigures{\thu@listof{figure}}
-\renewcommand*\l@figure{\@dottedtocline{1}{0em}{4em}}
+\renewcommand*\l@figure{\addvspace{6bp}\@dottedtocline{1}{0em}{4em}}
 \renewcommand\listoftables{\thu@listof{table}}
 \let\l@table\l@figure
 %    \end{macrocode}
