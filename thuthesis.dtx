@@ -254,7 +254,7 @@
 % \begin{tabular}{*{6}{l}}\hline
 %   \pkg{ifxetex} & \pkg{xunicode} & \pkg{CJK}        & \pkg{xeCJK}    & \pkg{CJKpunct} & \pkg{ctex} \\
 %   \pkg{array}   & \pkg{booktabs} & \pkg{longtable}  &  \pkg{amsmath} & \pkg{amssymb}  & \pkg{ntheorem} \\
-%   \pkg{indentfirst} & \pkg{paralist} & \pkg{txfonts} & \pkg{natbib} & \pkg{hyperref}  & \pkg{graphicx} \\
+%    & \pkg{paralist} & \pkg{txfonts} & \pkg{natbib} & \pkg{hyperref}  & \pkg{graphicx} \\
 %   \pkg{subcaption}  &  \pkg{caption} & \pkg{enumitem} & \pkg{thubib.bst} & & \\\hline
 % \end{tabular}
 % \end{minipage}
@@ -1180,10 +1180,13 @@
 %    \end{macrocode}
 %
 % raggedbottom，禁止Latex自动调整多余的页面底部空白，并保持脚注仍然在底部。
+% 脚注按页编号。
 %    \begin{macrocode}
 \ifthu@raggedbottom
-  \RequirePackage[bottom]{footmisc}
+  \RequirePackage[bottom,perpage]{footmisc}
   \raggedbottom
+\else
+  \RequirePackage[perpage]{footmisc}
 \fi
 %    \end{macrocode}
 %
@@ -1192,6 +1195,15 @@
 % \changes{v4.8}{2013/03/09}{reset baselinestretch after ctex's change.}
 % \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 %    \begin{macrocode}
+\ctexset{%
+autoindent=true,
+chapter/afterindent=true,
+section/afterindent=true,
+subsection/afterindent=true,
+subsubsection/afterindent=true,
+paragraph/afterindent=true,
+subparagraph/afterindent=true,
+}
 \ifthu@bachelor
   \RequirePackage{CJKfntef}
 \fi
@@ -1570,29 +1582,6 @@
 %
 % \subsubsection{脚注}
 % \label{sec:footnote}
-% \begin{macro}{\MakePerPage}
-%   从 perpage.sty 中抽取的代码，使 footnote 按页编号。不再用臃肿的 footmisc。
-%    \begin{macrocode}
-%<*cls>
-\newcommand*\MakePerPage[2][\@ne]{%
-  \expandafter\def\csname c@pchk@#2\endcsname{\c@pchk@{#2}{#1}}%
-  \newcounter{pcabs@#2}%
-  \@addtoreset{pchk@#2}{#2}}
-\def\new@pagectr#1{\@newl@bel{pchk@#1}}
-\def\c@pchk@#1#2{\z@=\z@
-  \begingroup
-  \expandafter\let\expandafter\next\csname pchk@#1@\arabic{pcabs@#1}\endcsname
-  \addtocounter{pcabs@#1}\@ne
-  \expandafter\ifx\csname pchk@#1@\arabic{pcabs@#1}\endcsname\next
-  \else \setcounter{#1}{#2}\fi
-  \protected@edef\next{%
-    \string\new@pagectr{#1}{\arabic{pcabs@#1}}{\noexpand\thepage}}%
-  \protected@write\@auxout{}{\next}%
-  \endgroup\global\z@}
-\MakePerPage{footnote}
-%    \end{macrocode}
-% \end{macro}
-%
 % 脚注字体：宋体小五，单倍行距。悬挂缩进 1.5 字符。标号在正文中是上标，在脚注中为
 % 正体。默认情况下 \cs{@makefnmark} 显示为上标，同时为脚标和正文所用，所以如果要区
 % 分，必须分别定义脚注的标号和正文的标号。
@@ -1603,6 +1592,7 @@
 % \begin{macro}{\thu@textcircled}
 % 生成带圈的脚注数字。最多处理到 99，当然这个很容易扩展了。
 %    \begin{macrocode}
+%<*cls>
 \def\thu@textcircled#1{%
   \ifnum \value{#1} <10 \textcircled{\xiaoliu\arabic{#1}}
   \else\ifnum \value{#1} <100 \textcircled{\qihao\arabic{#1}}\fi
@@ -1983,7 +1973,7 @@
 % 子！}
 %    \begin{macrocode}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                     {\ifthu@bachelor -25bp\else -24bp\fi\@plus -1ex \@minus -.2ex}%
+                     {\ifthu@bachelor 25bp\else 24bp\fi\@plus 1ex \@minus .2ex}%
                      {\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex}%
                      {\csname thu@title@font\endcsname\heiti\sihao[1.429]}}
 %    \end{macrocode}
@@ -1996,7 +1986,7 @@
 % \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
 %    \begin{macrocode}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                        {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
+                        {\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex}%
                         {6bp \@plus .2ex}%
                         {\csname thu@title@font\endcsname\heiti\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi}}
 %    \end{macrocode}
@@ -2008,7 +1998,7 @@
 % \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
 %    \begin{macrocode}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                           {\ifthu@bachelor -12bp\else -16bp\fi\@plus -1ex \@minus -.2ex}%
+                           {\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex}%
                            {6bp \@plus .2ex}%
                            {\csname thu@title@font\endcsname\heiti\xiaosi[1.667]}}
 %</cls>
@@ -3204,7 +3194,6 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
   plainpages=false,
   pdfborder=0 0 0}
 \RequirePackage{url}
-\RequirePackage{indentfirst}
 
 \setlength{\parskip}{4pt plus1pt minus0pt}
 \setlength{\topsep}{0pt}
@@ -3264,27 +3253,6 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
       \thesubsubsection\quad
       \fi
       ##1}}}
-\renewcommand\section{\@startsection{section}{1}{\z@}%
-                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
-                                    {2.3ex \@plus.2ex}%
-                                    {\normalfont\Large\bfseries}}
-
-\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                                       {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                       {1.5ex \@plus .2ex}%
-                                       {\normalfont\large\bfseries}}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                                          {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                          {1.5ex \@plus .2ex}%
-                                          {\normalfont\normalsize\bfseries}}
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                                      {3.25ex \@plus1ex \@minus.2ex}%
-                                      {-1em}%
-                                      {\normalfont\normalsize\bfseries}}
-\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-                                         {3.25ex \@plus1ex \@minus .2ex}%
-                                         {-1em}%
-                                         {\normalfont\normalsize\bfseries}}
 \pagestyle{empty}
 \MakeShortVerb{\|}
 \def\pkg#1{\texttt{#1}}
