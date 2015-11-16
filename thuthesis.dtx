@@ -1195,7 +1195,15 @@
 % \changes{v4.8}{2013/03/09}{reset baselinestretch after ctex's change.}
 % \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 %    \begin{macrocode}
-\ctexset{autoindent=true}
+\ctexset{%
+autoindent=true,
+chapter/afterindent=true,
+section/afterindent=true,
+subsection/afterindent=true,
+subsubsection/afterindent=true,
+paragraph/afterindent=true,
+subparagraph/afterindent=true,
+}
 \ifthu@bachelor
   \RequirePackage{CJKfntef}
 \fi
