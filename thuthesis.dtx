@@ -254,7 +254,7 @@
 % \begin{tabular}{*{6}{l}}\hline
 %   \pkg{ifxetex} & \pkg{xunicode} & \pkg{CJK}        & \pkg{xeCJK}    & \pkg{CJKpunct} & \pkg{ctex} \\
 %   \pkg{array}   & \pkg{booktabs} & \pkg{longtable}  &  \pkg{amsmath} & \pkg{amssymb}  & \pkg{ntheorem} \\
-%   \pkg{indentfirst} & \pkg{paralist} & \pkg{txfonts} & \pkg{natbib} & \pkg{hyperref}  & \pkg{graphicx} \\
+%    & \pkg{paralist} & \pkg{txfonts} & \pkg{natbib} & \pkg{hyperref}  & \pkg{graphicx} \\
 %   \pkg{subcaption}  &  \pkg{caption} & \pkg{enumitem} & \pkg{thubib.bst} & & \\\hline
 % \end{tabular}
 % \end{minipage}
@@ -1169,9 +1169,6 @@
 %    \end{macrocode}
 %
 % \changes{v4.8}{2013/03/02}{no need to load indentfirst directly since we use ctex.}
-%    \begin{macrocode}
-\RequirePackage{indentfirst}
-%    \end{macrocode}
 %
 % 更好的列表环境。
 % \changes{v2.6.2}{2006/06/18}{去掉 \pkg{paralist} 的 newitem 和 newenum 选项，因为默
@@ -3189,7 +3186,6 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
   plainpages=false,
   pdfborder=0 0 0}
 \RequirePackage{url}
-\RequirePackage{indentfirst}
 
 \setlength{\parskip}{4pt plus1pt minus0pt}
 \setlength{\topsep}{0pt}
