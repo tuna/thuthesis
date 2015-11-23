@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2005-2014 by Ruini Xue <xueruini@gmail.com>
+% Copyright (C) 2005-2015 by Ruini Xue <xueruini@gmail.com>
 %
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3a
@@ -658,12 +658,14 @@
 %   \end{example}
 %
 % \myentry{引用方式}
-% \DescribeMacro{\onlinecite}
-
+% \changes{v4.8.2}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
+% 容性，\cs{onlinecite} 会保留。}
+% \DescribeMacro{\inlinecite}
+%
 % 学校要求的参考文献引用有两种模式：（1）上标模式。比如``同样的工作有很
 % 多$^{[1,2]}$\ldots''。（2）正文模式。比如``文[3] 中详细说明了\ldots''。其中上标
 % 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
-% 的 |\cite{key}|，而 |\onlinecite{key}| 则用来生成正文模式。
+% 的 |\cite{key}|，而 |\inlinecite{key}| 则用来生成正文模式。
 %
 % 关于参考文献模板推荐使用 \BibTeX{}，关于中文参考文献需要额外增加一个 Entry: lang，将其设置为 \texttt{zh}
 % 用来指示此参考文献为中文，以便 thubib.bst 处理。如：
@@ -2916,16 +2918,18 @@ subparagraph/afterindent=true,
 % \subsubsection{参考文献}
 % \label{sec:ref}
 %
-% \begin{macro}{\onlinecite}
-% 正文引用模式。依赖于 \pkg{natbib} 宏包，修改其中的命令。
+% \begin{macro}{\inlinecite}
+% 正文引用模式。依赖于 \pkg{natbib} 宏包，修改其中的命令。旧命令 \cs{onlinecite}
+% 依然可用。
 %    \begin{macrocode}
 %<*cls>
 \bibpunct{[}{]}{,}{s}{}{,}
 \renewcommand\NAT@citesuper[3]{\ifNAT@swa%
   \unskip\kern\p@\textsuperscript{\NAT@@open #1\NAT@@close}%
   \if*#3*\else\ (#3)\fi\else #1\fi\endgroup}
-\DeclareRobustCommand\onlinecite{\@onlinecite}
-\def\@onlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
+\DeclareRobustCommand\inlinecite{\@inlinecite}
+\def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
+\let\onlinecite\inlinecite
 %    \end{macrocode}
 % \end{macro}
 %
