@@ -414,15 +414,13 @@
 % 的 \file{main.tex} 和 \file{data/}。
 %
 % \begin{example}
-% \documentclass[bachelor]{thuthesis}
-% %\documentclass[master]{thuthesis}
-% %\documentclass[doctor]{thuthesis}
-% %\documentclass[%
-% %  bachelor|master|doctor|postdoctor, % 必选选项
-% %  secret, % 可选选项
-% %  openany|openright, % 可选选项
-% %  arialtoc,arialtitle % 可选选项
-% %  ]{thuthesis}
+% \documentclass[type=bachelor]{thuthesis}
+% % \documentclass[%
+% %   type=[bachelor|master|doctor|postdoctor], % 必选项
+% %   secret, % 可选项
+% %   openany|openright, % 可选项
+% %   arialtoc,arialtitle % 可选项
+% % ]{thuthesis}
 %
 % % 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
 % \usepackage{thutils}
@@ -489,36 +487,21 @@
 % \label{sec:option}
 % 本模板提供了一些选项以方便使用：
 % \begin{description}
-% \item[bachelor]
-%   如果写本科论文将此选项打开。
+% \changes{v4.8.2}{2015/12/13}{使用 \pkg{kvoptions} 简化选项 type。}
+% \item[type]
+%   选择论文类型，当前支持：bachelor，master，doctor，postdoctor。默认为：bachelor。
 %   \begin{example}
-% \documentclass[bachelor]{thuthesis}
-%   \end{example}
-%
-% \item[master]
-%   如果写硕士论文将此选项打开。
-%   \begin{example}
-% \documentclass[master]{thuthesis}
-%   \end{example}
-%
-% \item[doctor]
-%   如果写博士论文将此选项打开。
-%   \begin{example}
-% \documentclass[doctor]{thuthesis}
-%   \end{example}
-%
-% \item[postdoctor]
-%   如果写博士博士后出站报告将此选项打开。
-%   \begin{example}
-% \documentclass[postdoctor]{thuthesis}
+% \documentclass[type=doctor]{thuthesis}
 %   \end{example}
 %
 % \item[secret]
-%   涉秘论文开关。配合另外两个命令 \cs{secretlevel} 和 \cs{secretyear} 分别用来指
-%   定保密级别和时间。二者默认分别为\textbf{秘密}和当前年份。可以通
+%   涉秘论文开关（默认：关闭）。配合另外两个命
+%   令 \cs{secretlevel} 和 \cs{secretyear} 分别用来指定保密级别和时间。二者默认分
+%   别为\textbf{秘密}和当前年份。可以通
 %   过：|\secretlevel{绝密}| 和 |\secretyear}{1984}| 修改。
 %   \begin{example}
-% \documentclass[bachelor, secret]{thuthesis}
+% \documentclass[secret]{thuthesis} % 打开保密
+% \documentclass[secret=false]{thuthesis} % 关闭保密
 %   \end{example}
 %
 % \changes{v3.0}{2007/05/12}{不用专门为本科论文生成\textbf{提交}版本了。}
@@ -700,7 +683,7 @@
 % 那么直接调用此命令即可。否则，就要像例子里面那样做一些微调（参看模板自带
 % 的 \file{shuji.tex}）。下面是一个列子：
 % \begin{example}
-% \documentclass[bachelor]{thuthesis}
+% \documentclass[type=master]{thuthesis}
 % \begin{document}
 % \ctitle{论文中文题目}
 % \cauthor{中文姓名}
@@ -953,7 +936,7 @@
 % 学致谢里的话，拿过来做个广告。希望每个人都能写这么一句 :)
 % \begin{example}
 % \begin{ack}
-%   ……
+%   …
 %   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
 % \end{ack}
 % \end{example}
@@ -1049,16 +1032,33 @@
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
 \def\version{4.8.1}
-\newif\ifthu@bachelor\thu@bachelorfalse
-\newif\ifthu@master\thu@masterfalse
-\newif\ifthu@doctor\thu@doctorfalse
-\newif\ifthu@postdoctor\thu@postdoctorfalse
-\newif\ifthu@secret\thu@secretfalse
-\DeclareOption{bachelor}{\thu@bachelortrue}
-\DeclareOption{master}{\thu@mastertrue}
-\DeclareOption{doctor}{\thu@doctortrue}
-\DeclareOption{postdoctor}{\thu@postdoctortrue}
-\DeclareOption{secret}{\thu@secrettrue}
+
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family=thu,
+  prefix=thu@,
+  setkeys=\kvsetkeys}
+\newif\ifthu@bachelor
+\newif\ifthu@master
+\newif\ifthu@doctor
+\newif\ifthu@postdoctor
+\define@key{thu}{type}{%
+  \thu@bachelorfalse
+  \thu@masterfalse
+  \thu@doctorfalse
+  \thu@postdoctorfalse
+  \expandafter\csname thu@#1true\endcsname}
+
+\def\thu@deprecated@type@option{%
+  \setkeys{thu}{type=\CurrentOption} % for compatability.
+  \ClassError{thuthesis}{Option '\CurrentOption' is deprecated, \MessageBreak
+                         please use 'type=\CurrentOption' instead}{}}
+\DeclareVoidOption{bachelor}{\thu@deprecated@type@option}
+\DeclareVoidOption{master}{\thu@deprecated@type@option}
+\DeclareVoidOption{doctor}{\thu@deprecated@type@option}
+\DeclareVoidOption{postdoctor}{\thu@deprecated@type@option}
+
+\DeclareBoolOption{secret}
 %    \end{macrocode}
 %
 % \changes{v2.5.1}{2006/05/24}{如果选项设置了 dvips，但是用 pdflatex 编译，报错。}
@@ -1068,35 +1068,30 @@
 %
 % 如果需要使用 arial 字体，请打开 [arial] 选项
 %    \begin{macrocode}
-\newif\ifthu@arial
-\DeclareOption{arial}{\thu@arialtrue}
+\DeclareBoolOption{arial}
 %    \end{macrocode}
 %
 % 目录中英文是否用 arial
 %    \begin{macrocode}
-\newif\ifthu@arialtoc
-\DeclareOption{arialtoc}{\thu@arialtoctrue}
+\DeclareBoolOption{arialtoc}
 %    \end{macrocode}
 % 章节标题中的英文是否用 arial
 %    \begin{macrocode}
-\newif\ifthu@arialtitle
-\DeclareOption{arialtitle}{\thu@arialtitletrue}
+\DeclareBoolOption{arialtitle}
 %    \end{macrocode}
 %
 % noraggedbottom 选项
 % \changes{v4.8}{2013/03/05}{增加 noraggedbottom 选项。}
+% \changes{v4.8.2}{2015/12/13}{norggedbottom 选项修改未 raggedbottom。}
 %    \begin{macrocode}
-\newif\ifthu@raggedbottom\thu@raggedbottomtrue
-\DeclareOption{noraggedbottom}{\thu@raggedbottomfalse}
+\DeclareBoolOption{raggedbottom}
 %    \end{macrocode}
 %
 % 将选项传递给 ctexbook 类
 %    \begin{macrocode}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 %    \end{macrocode}
 %
-% \cs{ExecuteOptions} 的参数之间用逗号分割，不能有空格。开始不知道，折腾了老半
-% 天。
 % \changes{v2.5.1}{2006/05/24}{ft，研究生院目录要 times，而教务处要 arial。}
 % \changes{v2.5.1}{2006/05/26}{本科 openright，研究生 openany。}
 % \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
@@ -1106,8 +1101,13 @@
 % 调用。传递给 fontspec 宏包 no-math 选项，避免部分数学符号字体自动调整为 CMR。
 % 其他引擎下没有这个问题，这一行会被无视。}
 %    \begin{macrocode}
-\ExecuteOptions{utf,arialtitle}
-\ProcessOptions\relax
+\setkeys{thu}{%
+  type=bachelor,
+  raggedbottom,
+  arial,
+  arialtitle}
+
+\ProcessKeyvalOptions*
 \PassOptionsToPackage{no-math}{fontspec}
 \RequirePackage{ifxetex}
 \ifxetex
@@ -1124,7 +1124,8 @@
     \ifthu@doctor\relax\else
       \ifthu@postdoctor\relax\else
         \ClassError{thuthesis}%
-                   {You have to specify one of thesis options: bachelor, master or doctor.}{}
+                   {Please specify thesis type in option: \MessageBreak
+                    type=[bachelor | master | doctor | postdoctor]}{}
       \fi
     \fi
   \fi
@@ -1181,7 +1182,7 @@
 \RequirePackage{enumitem}
 %    \end{macrocode}
 %
-% raggedbottom，禁止Latex自动调整多余的页面底部空白，并保持脚注仍然在底部。
+% raggedbottom，禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
 % 脚注按页编号。
 %    \begin{macrocode}
 \ifthu@raggedbottom
@@ -1198,20 +1199,21 @@
 % \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 %    \begin{macrocode}
 \ctexset{%
-autoindent=true,
-chapter/afterindent=true,
-section/afterindent=true,
-subsection/afterindent=true,
-subsubsection/afterindent=true,
-paragraph/afterindent=true,
-subparagraph/afterindent=true,
-}
+  autoindent=true,
+  chapter/afterindent=true,
+  section/afterindent=true,
+  subsection/afterindent=true,
+  subsubsection/afterindent=true,
+  paragraph/afterindent=true,
+  subparagraph/afterindent=true}
 \ifthu@bachelor
   \RequirePackage{CJKfntef}
 \fi
 \renewcommand{\baselinestretch}{1.0}
 \ifxetex
-  \xeCJKsetup{AutoFakeBold=true,AutoFakeSlant=true}
+  \xeCJKsetup{%
+    AutoFakeBold=true,
+    AutoFakeSlant=true}
   \punctstyle{quanjiao}
   % todo: minor fix of CJKnumb
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
