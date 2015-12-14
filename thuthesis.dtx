@@ -1284,6 +1284,45 @@
 %    \end{macrocode}
 %
 %
+% \subsection{页面设置}
+% \label{sec:layout}
+% 本来这部分应该是最容易设置的，但根据格式规定出来的结果跟学校的 WORD 样例相差很
+% 大，所以只能微调。
+% \changes{v2.4}{2006/04/14}{把页面尺寸写入 dvi，避免有的用户通
+%   过 dvips 不指定页面类型而得到古怪的结果。}
+% \changes{v4.5.2}{2010/09/19}{研究生页面边距由 3.2cm 改为 3cm。}
+% \changes{v4.7}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
+% \changes{v4.8.2}{2015/03/10}{不再将页面尺寸写入 dvi，因为已不支持 dvips，
+% 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。}
+% \changes{v4.8.2}{2015/12/14}{用 \pkg{geometry} 简化设置。}
+%    \begin{macrocode}
+%<*cls>
+\RequirePackage{geometry}
+\setlength{\topskip}{0pt}
+\setlength{\skip\footins}{15pt}
+\geometry{
+  a4paper,
+  hcentering,
+  includeheadfoot,
+  nomarginpar}
+\ifthu@bachelor
+  \geometry{
+    hmargin={3.2cm, 3.2cm},
+    vmargin={2.8cm, 1.8cm},
+    headheight=20pt,
+    headsep=0.6cm,
+    footskip=1.78cm}
+\else
+  \geometry{
+    hmargin={3cm, 3cm},
+    vmargin={2.3cm, 2.3cm},
+    headheight=20pt,
+    headsep=0.2cm,
+    footskip=0.6cm}
+\fi
+%</cls>
+%    \end{macrocode}
+%
 % \subsection{主文档格式}
 % \label{sec:mainbody}
 %
@@ -1446,44 +1485,6 @@
 %</cls>
 %    \end{macrocode}
 %
-%
-% \subsubsection{页面设置}
-% \label{sec:layout}
-% 本来这部分应该是最容易设置的，但根据格式规定出来的结果跟学校的 WORD 样例相差很
-% 大，所以只能微调。
-% \changes{v2.4}{2006/04/14}{把页面尺寸写入 dvi，避免有的用户通
-%   过 dvips 不指定页面类型而得到古怪的结果。}
-% \changes{v4.5.2}{2010/09/19}{研究生页面边距由 3.2cm 改为 3cm。}
-% \changes{v4.7}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
-% \changes{v4.8.2}{2015/03/10}{不再将页面尺寸写入 dvi，因为已不支持 dvips，
-% 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。}
-%    \begin{macrocode}
-%<*cls>
-\setlength{\textwidth}{\paperwidth}
-\setlength{\textheight}{\paperheight}
-\setlength\marginparwidth{0cm}
-\setlength\marginparsep{0cm}
-\ifthu@bachelor
-  \addtolength{\textwidth}{-6.4cm}
-  \setlength{\topmargin}{2.8cm-1in}
-  \setlength{\oddsidemargin}{3.2cm-1in}
-  \setlength{\footskip}{1.78cm}
-  \setlength{\headsep}{0.6cm}
-  \addtolength{\textheight}{-7.8cm}
-\else
-  \addtolength{\textwidth}{-6cm}
-  \setlength{\topmargin}{2.2cm-1in}
-  \setlength{\oddsidemargin}{3cm-1in}
-  \setlength{\footskip}{0.6cm}
-  \setlength{\headsep}{0.2cm}
-  \addtolength{\textheight}{-6cm}
-\fi
-\setlength{\evensidemargin}{\oddsidemargin}
-\setlength{\headheight}{20pt}
-\setlength{\topskip}{0pt}
-\setlength{\skip\footins}{15pt}
-%</cls>
-%    \end{macrocode}
 %
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
