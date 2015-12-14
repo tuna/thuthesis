@@ -247,21 +247,8 @@
 %
 % \subsection{准备工作}
 % \label{sec:prepare}
-% 本模板用到的主要宏包包括：
-%
-% \begin{center}
-% \begin{minipage}{1.0\linewidth}\centering
-% \begin{tabular}{*{6}{l}}\hline
-%   \pkg{ifxetex} & \pkg{xunicode} & \pkg{CJK}        & \pkg{xeCJK}    & \pkg{CJKpunct} & \pkg{ctex} \\
-%   \pkg{array}   & \pkg{booktabs} & \pkg{longtable}  &  \pkg{amsmath} & \pkg{amssymb}  & \pkg{ntheorem} \\
-%    & \pkg{paralist} & \pkg{txfonts} & \pkg{natbib} & \pkg{hyperref}  & \pkg{graphicx} \\
-%   \pkg{subcaption}  &  \pkg{caption} & \pkg{enumitem} & \pkg{thubib.bst} & & \\\hline
-% \end{tabular}
-% \end{minipage}
-% \end{center}
-%
-% 这些包在常见的 \TeX{} 系统中都有，如果没有请到 \url{www.ctan.org} 下载。
-%
+% 本模板用到的宏包比较多，这些包在常见的 \TeX{} 系统中都有，如果没有安装请优先使用发
+% 行版自带的升级工具下载。现在的发行版都可以自动解决依赖，很少需要手动。
 %
 % \subsection{开始安装}
 % \label{sec:install}
@@ -945,9 +932,9 @@
 % \DescribeEnv{itemize}
 % \DescribeEnv{enumerate}
 % \DescribeEnv{description}
-% 为了适合中文习惯，模板将这三个常用的列表环境用 \pkg{paralist} 对应的压缩环境替
-% 换。一方面满足了多余空间的清楚，另一方面可以自己指定标签的样式和符号。细节请参
-% 看 \pkg{paralist} 文档，此处不再赘述。
+% 为了适合中文习惯，模板将这三个常用的列表环境用 \pkg{enumitem} 进行了纵向间距压
+% 缩。一方面满足了多余空间的清楚，另一方面可以自己指定标签的样式和符号。细节请参
+% 看 \pkg{enumitem} 文档，此处不再赘述。
 %
 % \changes{v3.0}{2007/05/12}{没有了综合论文训练页面，很多本科论文专用命令就消失了。}
 %
@@ -1177,9 +1164,9 @@
 % \changes{v2.6.2}{2006/06/18}{去掉 \pkg{paralist} 的 newitem 和 newenum 选项，因为默
 % 认是打开的。}
 % \changes{v2.6.4}{2006/10/23}{增加 \texttt{neverdecrease} 选项。}
+% \changes{v4.8.2}{2012/12/13}{删除 \pkg{paralist} 选项。}
 %    \begin{macrocode}
-\RequirePackage[neverdecrease]{paralist}
-\RequirePackage{enumitem}
+\RequirePackage[shortlabels]{enumitem}
 %    \end{macrocode}
 %
 % raggedbottom，禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
@@ -1537,10 +1524,10 @@
   \def\@oddfoot{\hfil\xiaowu\thepage\hfil}%
   \let\@evenfoot=\@oddfoot}
 \def\ps@thu@headings{%
-  \def\@oddhead{\vbox to\headheight{%
+  \def\@oddhead{\vbox to\headheight{\vfill%
     \hb@xt@\textwidth{\hfill\wuhao\songti\leftmark\ifthu@bachelor\relax\else\hfill\fi}%
       \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
-  \def\@evenhead{\vbox to\headheight{%
+  \def\@evenhead{\vbox to\headheight{\vfill%
       \hb@xt@\textwidth{\wuhao\songti%
       \ifthu@bachelor\thu@schoolname\thu@bachelor@subtitle%
        \else\hfill\leftmark\fi\hfill}%
@@ -1573,12 +1560,7 @@
 % \begin{macro}{thu@item@space}
 %    \begin{macrocode}
 \def\thu@item@space{%
-  \let\itemize\compactitem
-  \let\enditemize\endcompactitem
-  \let\enumerate\compactenum
-  \let\endenumerate\endcompactenum
-  \let\description\compactdesc
-  \let\enddescription\endcompactdesc}
+  \setlist{nosep}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
