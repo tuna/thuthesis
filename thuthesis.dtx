@@ -12,8 +12,6 @@
 % and version 1.3a or later is part of all distributions of LaTeX
 % version 2004/10/01 or later.
 %
-% $Id$
-%
 % \fi
 %
 % \CheckSum{0}
@@ -180,7 +178,7 @@
 %
 % \clearpage
 % \pagenumbering{arabic}
-% \pagestyle{headings}
+% \pagestyle{fancy}
 % \section{模板介绍}
 % \thuthesis\ (\textbf{T}sing\textbf{hu}a \textbf{Thesis}) 是为了帮助清华大学毕业
 % 生撰写毕业论文而编写的 \LaTeX{} 论文模板。
@@ -3156,8 +3154,11 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \RequirePackage{calc}
 \RequirePackage{array,longtable}
 \RequirePackage{fancybox,fancyvrb}
+\RequirePackage{fancyhdr}
 \RequirePackage{xcolor}
 \RequirePackage{ifxetex}
+
+\RequirePackage[top=2.5cm, bottom=2.5cm]{geometry}
 
 \ifxetex
   \RequirePackage[nofonts,UTF8,hyperref]{ctex}
@@ -3180,20 +3181,15 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
   bookmarksopen=true,
   bookmarksopenlevel=1,
   breaklinks=true,
+  colorlinks=true,
   linkcolor=blue,
   plainpages=false,
   pdfborder=0 0 0}
+
 \RequirePackage{url}
 
 \setlength{\parskip}{4pt plus1pt minus0pt}
-\setlength{\topsep}{0pt}
-\setlength{\partopsep}{0pt}
 \setlength{\parindent}{20pt}
-\addtolength{\oddsidemargin}{-1cm}
-\advance\textwidth 1.5cm
-\addtolength{\topmargin}{-1cm}
-\addtolength{\headsep}{0.3cm}
-\addtolength{\textheight}{2.3cm}
 
 \renewcommand{\baselinestretch}{1.3}
 \setlength{\shadowsize}{3pt}
@@ -3219,31 +3215,6 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \def\DescribeMacro{\Describe@Macro}
 \def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
 \def\PrintDescribeMacro#1{{\color{-red!75!green!50!blue!55}\MacroFont \string #1\hskip1em}}
-\def\ps@headings{%
-  \let\@oddfoot\@empty
-  \def\@oddhead{\vbox{%
-    \hb@xt@ \textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}%
-    \vskip-0.7pt%
-    \hb@xt@ \textwidth{\hrulefill}}}
-  \let\@evenfoot\@oddfoot
-  \let\@evenhead\@oddhead
-  \let\@mkboth\markboth
-  \def\sectionmark##1{%
-    \markright{\ifnum \c@secnumdepth >\m@ne
-      \thesection\quad
-      \fi
-      ##1}}
-  \def\subsectionmark##1{%
-    \markright{\ifnum \c@secnumdepth >\m@ne
-      \thesubsection\quad
-      \fi
-      ##1}}
-  \def\subsubsectionmark##1{%
-    \markright{\ifnum \c@secnumdepth >\m@ne
-      \thesubsubsection\quad
-      \fi
-      ##1}}}
-\pagestyle{empty}
 \MakeShortVerb{\|}
 \def\pkg#1{\texttt{#1}}
 \def\option#1{\textsf{#1}}
