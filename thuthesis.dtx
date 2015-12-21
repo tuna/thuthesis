@@ -177,8 +177,8 @@
 % \end{multicols}
 %
 % \clearpage
-% \pagenumbering{arabic}
 % \pagestyle{fancy}
+%
 % \section{模板介绍}
 % \thuthesis\ (\textbf{T}sing\textbf{hu}a \textbf{Thesis}) 是为了帮助清华大学毕业
 % 生撰写毕业论文而编写的 \LaTeX{} 论文模板。
@@ -3178,31 +3178,18 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 %<*dtx-style>
 \ProvidesPackage{dtx-style}
 
+\RequirePackage[UTF8]{ctex}
+\RequirePackage[top=2.5cm, bottom=2.5cm]{geometry}
+
 \RequirePackage{calc}
 \RequirePackage{array,longtable}
 \RequirePackage{fancybox,fancyvrb}
 \RequirePackage{fancyhdr}
 \RequirePackage{xcolor}
+\RequirePackage{url}
 \RequirePackage{ifxetex}
 
-\RequirePackage[top=2.5cm, bottom=2.5cm]{geometry}
-
-\ifxetex
-  \RequirePackage[nofonts,UTF8,hyperref]{ctex}
-  \input{thuthesis-fonts.cfg}
-\else
-  \RequirePackage[winfonts,UTF8,hyperref]{ctex}
-  \RequirePackage{txfonts}
-\fi
 \RequirePackage{hyperref}
-\ifxetex
-  \hypersetup{%
-    CJKbookmarks=true}
-\else
-  \hypersetup{%
-    unicode=true,
-    CJKbookmarks=false}
-\fi
 \hypersetup{%
   bookmarksnumbered=true,
   bookmarksopen=true,
@@ -3212,8 +3199,14 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
   linkcolor=blue,
   plainpages=false,
   pdfborder=0 0 0}
-
-\RequirePackage{url}
+\ifxetex
+  \hypersetup{%
+    CJKbookmarks=true}
+\else
+  \hypersetup{%
+    unicode=true,
+    CJKbookmarks=false}
+\fi
 
 \setlength{\parskip}{4pt plus1pt minus0pt}
 \setlength{\parindent}{20pt}
