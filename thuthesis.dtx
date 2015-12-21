@@ -220,7 +220,7 @@
 % thuthesis.dtx & 模板文档代码的混合文件\\
 % thuthesis.cls & 模板类文件\\
 % thuthesis.cfg & 模板配置文件\\
-% thuthesis-fonts.cfg & 中文字体配置文件\\
+% ctex-fontset-thuthesis.def & 中文字体配置文件\\
 % thuthesis.bst & 参考文献样式文件\\\hline
 % main.tex & 示例文档主文件\\
 % shuji.tex & 书脊示例文档\\
@@ -259,7 +259,7 @@
 % 模板解压缩后生成文件夹 \file{thuthesis-VERSION}\footnote{VERSION 为版本号。}，
 % 其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参考文献
 % 样式 \file{thuthesis.bst}，示例文档
-% （\file{main.tex}，\file{shuji.tex}，\file{thuthesis-fonts.cfg}\footnote{Xe\LaTeX 中文
+% （\file{main.tex}，\file{shuji.tex}，\file{ctex-fontset-thuthesis.def}\footnote{Xe\LaTeX 中文
 % 字体配置文件}，\file{thuthesis.sty}\footnote{可能用到的包以及一些命令定义都放在这
 % 里，以免 \file{thuthesis.cls} 过分臃
 % 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
@@ -297,8 +297,8 @@
 % Xe\TeX 最大的优势就是不再需要繁琐的字体配置。\thuthesis{} 通过 \pkg{xeCJK} 来控
 % 制中文字体和标点压缩。模板里默认用的是中易的六款免费字体（宋，黑，楷，仿宋，隶书
 % 和幼圆），因学位论文需求不建议替换为其他字体。如果实在必要，可以通过定制
-% \file{thuthesis-fonts.cfg} 文件中的字体自行替换。研究生一般用不到隶书和幼圆字体，如果
-% 系统上没有它们，可以直接将 \file{thuthesis-fonts.cfg} 文件以及论文的 \file{.tex} 文件中
+% \file{ctex-fontset-thuthesis.def} 文件中的字体自行替换。研究生一般用不到隶书和幼圆字体，如果
+% 系统上没有它们，可以直接将 \file{ctex-fontset-thuthesis.def} 文件以及论文的 \file{.tex} 文件中
 % 相应行删除。字体配置参考第~\ref{sec:font-config} 节。
 %
 % \subsubsection{dvipdfmx}
@@ -391,7 +391,7 @@
 % \subsection{\thuthesis{} 示例文件}
 % \label{sec:userguide1}
 % 模板核心文件有四
-% 个：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thuthesis-fonts.cfg} 和
+% 个：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{ctex-fontset-thuthesis.def} 和
 % \file{thuthesis.bst}，但是如果没有示例文档用户会发现很难下手。所以推荐新用户从模板
 % 自带的示例文档入手，里面包括了论文写作用到的所有命令及其使用方法，只需要用自己
 % 的内容进行相应替换就可以。对于不清楚的命令可以查阅本手册。下面的例子描述了模板
@@ -450,7 +450,7 @@
 % % 参考文献
 % % 注意至少需要引用一篇参考文献，否则下面两行可能引起编译错误。
 % % 如果不需要参考文献，请将下面两行删除或注释掉。
-% \bibliographystyle{thubib}
+% \bibliographystyle{thuthesis}
 % \bibliography{ref/refs}
 %
 %
@@ -483,7 +483,7 @@
 %   涉秘论文开关（默认：关闭）。配合另外两个命
 %   令 \cs{secretlevel} 和 \cs{secretyear} 分别用来指定保密级别和时间。二者默认分
 %   别为\textbf{秘密}和当前年份。可以通
-%   过：|\secretlevel{绝密}| 和 |\secretyear}{1984}| 修改。
+%   过：|\secretlevel{绝密}| 和 |\secretyear{1984}| 修改。
 %   \begin{example}
 % \documentclass[secret]{thuthesis} % 打开保密
 % \documentclass[secret=false]{thuthesis} % 关闭保密
@@ -527,9 +527,9 @@
 % 第一种方式的字体配置比较繁琐，建议使用 \emph{donated@newsmth} 制作的中文字体包
 % （自包含安装方法），请用户自行下载安装，此处不再赘述。本模板推荐使用第二种方法，
 % 只要把所需字体放入系统字体文件夹（也可以指定自定义文件夹）即可。用户可以使用
-% \file{thuthesis-fonts.cfg} 文件配置所需字体。使用中易六种字体的配置如下：
+% \file{ctex-fontset-thuthesis.def} 文件配置所需字体。使用中易六种字体的配置如下：
 % \begin{example}
-% \ProvidesFile{thuthesis-fonts.cfg}
+% \ProvidesFile{ctex-fontset-thuthesis.def}
 % \setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
 % \setCJKsansfont{SimHei}
 % \setCJKmonofont{FangSong}
@@ -551,11 +551,11 @@
 % 为 |FangSong_GB2312|。
 %
 % 研究生一般用不到隶书和幼圆字体。如果系统中没有导致报错，可以将
-% \file{thuthesis-fonts.cfg} 文件中 zhli 和 zhyou 相应行删除，并将论文 \file{.tex} 文件
+% \file{ctex-fontset-thuthesis.def} 文件中 zhli 和 zhyou 相应行删除，并将论文 \file{.tex} 文件
 % 中引用 |\lishu| 和 |\youyuan| 的文字删除。
 %
 % 宏包中包含了 \file{zhfonts.py} 脚本，为 Linux/Mac 用户提供一种交互式的方式从系
-% 统中文字体中选择合适的六种字体，最终生成对应的 \file{thuthesis-fonts.cfg}文件。要使用
+% 统中文字体中选择合适的六种字体，最终生成对应的 \file{ctex-fontset-thuthesis.def}文件。要使用
 % 它，只需在命令行输入该脚本的完整路径即可。
 %
 % 另外，用户也可以通过命令
@@ -599,12 +599,11 @@
 % 等命令定义一组字体大小，分别为：
 %
 % \begin{center}
-% \begin{tabular}{lllll}
+% \begin{tabular}{llllll}
 % \hline
-% |\chuhao|&|\xiaochu|&|\yihao|&|\xiaoyi| &\\
-% |\erhao|&|\xiaoer|&|\sanhao|&|\xiaosan|&\\
-% |\sihao|& |\banxiaosi|&|\xiaosi|&|\dawu|&|\wuhao|\\
-% |\xiaowu|&|\liuhao|&|\xiaoliu|&|\qihao|& |\bahao|\\\hline
+% \cs{chuhao} & \cs{xiaochu} & \cs{yihao}  & \cs{xiaoyi}    & \cs{erhao}  & \cs{xiaoer}\\
+% \cs{sanhao} & \cs{xiaosan} & \cs{sihao}  & \cs{banxiaosi} & \cs{xiaosi} & \cs{dawu}\\
+% \cs{wuhao}  & \cs{xiaowu}  & \cs{liuhao} & \cs{xiaoliu}   & \cs{qihao}  & \cs{bahao}\\\hline
 % \end{tabular}
 % \end{center}
 %
@@ -1094,15 +1093,10 @@
 
 \ProcessKeyvalOptions*
 \PassOptionsToPackage{no-math}{fontspec}
-\RequirePackage{ifxetex}
-\ifxetex
-  \LoadClass[cs4size,a4paper,openany,nocap,nofonts,UTF8]{ctexbook}
-\else
-  \LoadClass[cs4size,a4paper,openany,nocap,winfonts,UTF8]{ctexbook}
-\fi
+\LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain,fontset=none]{ctexbook}
 %    \end{macrocode}
 %
-% 用户至少要提供一个选项：指定论文类型。
+% 用户至少要提供一个选项，指定论文类型。
 %    \begin{macrocode}
 \ifthu@bachelor\relax\else
   \ifthu@master\relax\else
@@ -1122,6 +1116,7 @@
 %
 % 引用的宏包和相应的定义。
 %    \begin{macrocode}
+\RequirePackage{ifxetex}
 \RequirePackage{xparse}
 %    \end{macrocode}
 %
@@ -1183,6 +1178,7 @@
 % \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 %    \begin{macrocode}
 \ctexset{%
+  punct=quanjiao,
   autoindent=true,
   chapter/afterindent=true,
   section/afterindent=true,
@@ -1195,19 +1191,17 @@
 \fi
 \renewcommand{\baselinestretch}{1.0}
 \ifxetex
-  \xeCJKsetup{%
-    AutoFakeBold=true,
-    AutoFakeSlant=true}
-  \punctstyle{quanjiao}
   % todo: minor fix of CJKnumb
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
   \defaultfontfeatures{Mapping=tex-text} % use TeX --
 %    \end{macrocode}
 % 默认采用中易的六款免费字体。缺少上述字体的用户可以通过
-% \file{thuthesis-fonts.cfg} 文件自定义字体。
+% \file{ctex-fontset-thuthesis.def} 文件自定义字体。
 % \changes{v4.9}{2015/04/17}{固定字体设置，同时改善与 ctex 兼容性。}
 %    \begin{macrocode}
-  \input{thuthesis-fonts.cfg}
+  \IfFileExists{ctex-fontset-thuthesis.def}%
+    {\ctexset{fontset=thuthesis}}%
+    {\ctexset{fontset=windows}}
 
   \setmainfont{Times New Roman}
   \setsansfont{Arial}
@@ -1362,7 +1356,7 @@
 % \changes{v4.8.2}{2015/12/21}{默认字体文件从 docstrip 生成。}
 %    \begin{macrocode}
 %<*fonts>
-\ProvidesFile{thuthesis-fonts.cfg}
+\ProvidesFile{ctex-fontset-thuthesis.def}
 
 \setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi}]{SimSun}
 \setCJKsansfont{SimHei}
@@ -1388,25 +1382,6 @@
 %
 % 重定义字号命令
 %
-% Ref 1:
-% \begin{verbatim}
-% 参考科学出版社编写的《著译编辑手册》(1994年)
-% 七号       5.25pt       1.845mm
-% 六号       7.875pt      2.768mm
-% 小五       9pt          3.163mm
-% 五号      10.5pt        3.69mm
-% 小四      12pt          4.2175mm
-% 四号      13.75pt       4.83mm
-% 三号      15.75pt       5.53mm
-% 二号      21pt          7.38mm
-% 一号      27.5pt        9.48mm
-% 小初      36pt         12.65mm
-% 初号      42pt         14.76mm
-%
-% 这里的 pt 对应的是 1/72.27 inch，也就是 TeX 中的标准 pt
-% \end{verbatim}
-%
-% Ref 2:
 % WORD 中的字号对应该关系如下:
 % \begin{verbatim}
 % 初号 = 42bp = 14.82mm = 42.1575pt
@@ -1849,12 +1824,9 @@
 \fi
 \let\CJK@todaysave=\today
 \def\CJK@todaysmall@short{\the\year 年 \the\month 月}
-\def\CJK@todaysmall{\CJK@todaysmall@short \the\day 日}
-\CTEXdigits{\thu@CJK@year}{\the\year}
-\CTEXnumber{\thu@CJK@month}{\the\month}
-\CTEXnumber{\thu@CJK@day}{\the\day}
-\def\CJK@todaybig@short{\thu@CJK@year{}年\thu@CJK@month{}月}
-\def\CJK@todaybig{\CJK@todaybig@short{}\thu@CJK@day{}日}
+\def\CJK@todaysmall{\the\year 年 \the\month 月 \the\day 日}
+\def\CJK@todaybig@short{\zhdigits{\the\year}年\zhnumber{\the\month}月}
+\def\CJK@todaybig{\zhdigits{\the\year}年\zhnumber{\the\month}月\zhnumber{\the\day}日}
 \def\CJK@today{\CJK@todaysmall}
 \renewcommand\today{\CJK@today}
 \newcommand\CJKtoday[1][1]{%
