@@ -30,7 +30,6 @@ import re
 import fileinput
 from collections import OrderedDict
 
-#
 cfg_file = 'ctex-fontset-thuthesis.def'
 
 # The return value is of type byte string (in py3k).

@@ -20,10 +20,12 @@ auto
 *.lot
 *.loe
 *.vrb
+*.fdb_latexmk
+*.fls
 dtx-style.sty
 thuthesis.cls
 thuthesis.cfg
-thuthesis-fonts.cfg
+ctex-fontset-thuthesis.def
 thuthesis.glo
 thuthesis.idx
 thuthesis.pdf

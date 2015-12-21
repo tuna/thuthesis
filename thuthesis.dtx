@@ -663,18 +663,24 @@
 %
 % \myentry{书脊}
 % \DescribeMacro{\shuji}
-% 生成装订的书脊，为竖排格式，默认参数为论文中文题目。如果中文题目中没有英文字母，
-% 那么直接调用此命令即可。否则，就要像例子里面那样做一些微调（参看模板自带
-% 的 \file{shuji.tex}）。下面是一个列子：
+% 生成装订的书脊，为竖排格式，命令格式：\cs{shuji}\oarg{标题}\oarg{作者}。默认参
+% 数为论文中文题目和中文作者。如果中文题目中没有英文字母，那么直接调用此命令即可。
+% 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{shuji.tex}）。下面是一
+% 个例子：
 % \begin{example}
-% \documentclass[type=master]{thuthesis}
+% \documentclass{thuthesis}
+%
 % \begin{document}
 % \ctitle{论文中文题目}
 % \cauthor{中文姓名}
-% % \shuji 命令需要上面两个变量
-% \shuji
 %
-% % 如果你的中文标题中有英文，那可以指定：
+% \shuji % 使用默认标题和默认作者
+%
+% \shuji[使用默认作者的标题]
+%
+% \shuji[同时修改标题和作者的标题][尼瑞薛]
+%
+% % 如果标题中有英文，那可以参考如下方法进行微调：
 % \shuji[清华大学~\hspace{0.2em}\raisebox{2pt}{\LaTeX}%
 % \hspace{-0.25em} 论文模板 \hspace{0.1em}\raisebox{2pt}%
 % {v\version}\hspace{-0.25em}样例]
@@ -3059,11 +3065,12 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 % \begin{macro}{\shuji}
 % 单独使用书脊命令会在新的一页产生竖排书脊。
 % \changes{v4.5}{2009/01/04}{简化代码，同时支持 xelatex。}
+% \changes{v4.8.2}{2015/12/21}{扩展 \cs{shuji}\oarg{标题}\oarg{作者}。}
 %    \begin{macrocode}
 %<*cls>
-\newcommand{\shuji}[1][\thu@ctitle]{
-  \newpage\thispagestyle{empty}\fangsong\xiaosan\ziju{0.4}
-  \hfill\rotatebox{-90}{\hb@xt@ \textheight{#1\hfill\thu@cauthor}}}
+\NewDocumentCommand{\shuji}{O{\thu@ctitle} O{\thu@cauthor}}{%
+  \newpage\thispagestyle{empty}\fangsong\xiaosan\ziju{0.4}%
+  \noindent\hfill\rotatebox[origin=lt]{-90}{\makebox[\textheight]{#1\hfill#2}}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
