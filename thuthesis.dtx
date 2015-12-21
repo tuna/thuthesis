@@ -12,8 +12,6 @@
 % and version 1.3a or later is part of all distributions of LaTeX
 % version 2004/10/01 or later.
 %
-% $Id$
-%
 % \fi
 %
 % \CheckSum{0}
@@ -180,7 +178,7 @@
 %
 % \clearpage
 % \pagenumbering{arabic}
-% \pagestyle{headings}
+% \pagestyle{fancy}
 % \section{模板介绍}
 % \thuthesis\ (\textbf{T}sing\textbf{hu}a \textbf{Thesis}) 是为了帮助清华大学毕业
 % 生撰写毕业论文而编写的 \LaTeX{} 论文模板。
@@ -1298,28 +1296,33 @@
 %    \begin{macrocode}
 %<*cls>
 \RequirePackage{geometry}
-\setlength{\topskip}{0pt}
-\setlength{\skip\footins}{15pt}
 \geometry{
-  a4paper,
+  a4paper, % 210 * 297mm
   hcentering,
-  includeheadfoot,
+  ignoreall,
   nomarginpar}
 \ifthu@bachelor
   \geometry{
-    hmargin={3.2cm, 3.2cm},
-    vmargin={2.8cm, 1.8cm},
-    headheight=20pt,
-    headsep=0.6cm,
-    footskip=1.78cm}
+    left=32mm,
+    headsep=5mm,
+    textheight=220mm,
+    bottom=37mm,
+    footskip=17mm}
 \else
   \geometry{
-    hmargin={3cm, 3cm},
-    vmargin={2.3cm, 2.3cm},
-    headheight=20pt,
-    headsep=0.2cm,
-    footskip=0.6cm}
+    left=30mm,
+    headsep=5mm,
+    textheight=237mm,
+    bottom=29mm,
+    footskip=6mm}
 \fi
+%</cls>
+%    \end{macrocode}
+%
+% 利用 \pkg{fancyhdr} 设置页眉页脚。
+%    \begin{macrocode}
+%<*cls>
+\RequirePackage{fancyhdr}
 %</cls>
 %    \end{macrocode}
 %
@@ -1504,6 +1507,7 @@
 % \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
 % \changes{v2.5}{2006/05/20}{增加 empty 页面样式。}
 % \changes{v4.7}{2012/05/29}{本科页码用小五号字。}
+% \changes{v4.8.2}{2015/12/20}{利用 \pkg{fancyhdr} 设置页眉页脚。}
 % \begin{macro}{\ps@thu@empty}
 % \begin{macro}{\ps@thu@plain}
 % \begin{macro}{\ps@thu@headings}
@@ -1514,27 +1518,22 @@
 % \item \texttt{thu@headings}：页眉页脚同时显示
 % \end{itemize}
 %    \begin{macrocode}
-\def\ps@thu@empty{%
-  \let\@oddhead\@empty%
-  \let\@evenhead\@empty%
-  \let\@oddfoot\@empty%
-  \let\@evenfoot\@empty}
-\def\ps@thu@plain{%
-  \let\@oddhead\@empty%
-  \let\@evenhead\@empty%
-  \def\@oddfoot{\hfil\xiaowu\thepage\hfil}%
-  \let\@evenfoot=\@oddfoot}
-\def\ps@thu@headings{%
-  \def\@oddhead{\vbox to\headheight{\vfill%
-    \hb@xt@\textwidth{\hfill\wuhao\songti\leftmark\ifthu@bachelor\relax\else\hfill\fi}%
-      \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
-  \def\@evenhead{\vbox to\headheight{\vfill%
-      \hb@xt@\textwidth{\wuhao\songti%
-      \ifthu@bachelor\thu@schoolname\thu@bachelor@subtitle%
-       \else\hfill\leftmark\fi\hfill}%
-      \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
-  \def\@oddfoot{\hfil\wuhao\thepage\hfil}
-  \let\@evenfoot=\@oddfoot}
+\fancypagestyle{thu@empty}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{thu@plain}{%
+  \fancyhead{}
+  \fancyfoot[C]{\xiaowu\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{thu@headings}{%
+  \fancyhead{}
+  \fancyhead[C]{\wuhao\songti\leftmark}
+  \fancyfoot{}
+  \fancyfoot[C]{\wuhao\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -1882,7 +1881,7 @@
   \@makechapterhead{#2}%
   \@afterheading}
 \def\@makechapterhead#1{%
-  \ifthu@bachelor\vspace*{24bp}\else\vspace*{20bp}\fi%
+  \ifthu@bachelor\vspace*{14bp}\else\vspace*{10bp}\fi%
   {\parindent \z@ \centering
     \csname thu@title@font\endcsname\heiti\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
     \ifnum \c@secnumdepth >\m@ne
@@ -1894,7 +1893,7 @@
   \@makeschapterhead{#1}
   \@afterheading}
 \def\@makeschapterhead#1{%
-  \ifthu@bachelor\vspace*{30bp}\else\vspace*{20bp}\fi%
+  \ifthu@bachelor\vspace*{20bp}\else\vspace*{10bp}\fi%
   {\parindent \z@ \centering
    \csname thu@title@font\endcsname\heiti\sanhao[1]
    \ifthu@bachelor\xiaosan\else
@@ -2199,7 +2198,7 @@
 %  \pkg{amsmath} 中的 \cs{collect@body}，但是此宏没有定义为 long，不能直接用。
 % 2）利用 \LaTeX{} 中环境和对应命令间的命名关系以及参数分隔符的特点非常巧妙地实
 % 现了这个功能，其不足是不能嵌套环境。由于摘要部分经常会用到诸如 itemize 类似
-% 的环境，所以我们不得不选择第一种负责的方法。以下是修改 \pkg{amsmath} 代码部分：
+% 的环境，所以我们不得不选择第一种复杂的方法。以下是修改 \pkg{amsmath} 代码部分：
 % \changes{v3.1}{2006/06/17}{重新定义摘要成为环境，Great!}
 %    \begin{macrocode}
 \long\@xp\def\@xp\collect@@body\@xp#\@xp1\@xp\end\@xp#\@xp2\@xp{%
@@ -2371,7 +2370,7 @@
 \newcommand{\thu@first@titlepage@postdoctor}{
   \begin{center}
     \setlength{\thu@title@width}{3em}
-    \vspace*{1cm}
+    \vspace*{0.7cm}
     \begingroup\wuhao[1.5]%
     \thu@put@title{\thu@catalog@number@title}\thu@underline\thu@catalognumber\hfill%
     \thu@put@title{\thu@secretlevel}\expandafter\thu@underline\ifthu@secret\thu@secret@content\else\relax\fi\par
@@ -2409,7 +2408,7 @@
 \newcommand*{\getcmlength}[1]{\strip@pt\dimexpr0.035146\dimexpr#1\relax\relax}
 \newcommand{\thu@first@titlepage@other}{
   \begin{center}
-    \vspace*{-1.3cm}
+    \vspace*{-1.6cm}
     \parbox[b][2.4cm][t]{\textwidth}{%
       \ifthu@secret\hfill{\sihao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
@@ -2525,7 +2524,7 @@
     \ifx\thu@edegree\thu@doctor@phi\relax\else
       \thu@professionaltrue\fi\fi
   \begin{center}
-    \vspace*{0.2cm}
+    \vspace*{-5pt}
     \parbox[t][5.2cm][t]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.5}
       \begin{center}
@@ -2582,7 +2581,7 @@
 % 封面中论文授权部分。
 %    \begin{macrocode}
 \newcommand{\thu@authorization@mk}{%
-  \ifthu@bachelor\vspace*{0.5cm}\else\vspace*{0.72cm}\fi % shit code!
+  \ifthu@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
   \begin{center}\erhao\heiti\thu@authtitle\end{center}
   \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
   \thu@authorization\par
@@ -3155,8 +3154,11 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \RequirePackage{calc}
 \RequirePackage{array,longtable}
 \RequirePackage{fancybox,fancyvrb}
+\RequirePackage{fancyhdr}
 \RequirePackage{xcolor}
 \RequirePackage{ifxetex}
+
+\RequirePackage[top=2.5cm, bottom=2.5cm]{geometry}
 
 \ifxetex
   \RequirePackage[nofonts,UTF8,hyperref]{ctex}
@@ -3179,20 +3181,15 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
   bookmarksopen=true,
   bookmarksopenlevel=1,
   breaklinks=true,
+  colorlinks=true,
   linkcolor=blue,
   plainpages=false,
   pdfborder=0 0 0}
+
 \RequirePackage{url}
 
 \setlength{\parskip}{4pt plus1pt minus0pt}
-\setlength{\topsep}{0pt}
-\setlength{\partopsep}{0pt}
 \setlength{\parindent}{20pt}
-\addtolength{\oddsidemargin}{-1cm}
-\advance\textwidth 1.5cm
-\addtolength{\topmargin}{-1cm}
-\addtolength{\headsep}{0.3cm}
-\addtolength{\textheight}{2.3cm}
 
 \renewcommand{\baselinestretch}{1.3}
 \setlength{\shadowsize}{3pt}
@@ -3218,31 +3215,6 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \def\DescribeMacro{\Describe@Macro}
 \def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
 \def\PrintDescribeMacro#1{{\color{-red!75!green!50!blue!55}\MacroFont \string #1\hskip1em}}
-\def\ps@headings{%
-  \let\@oddfoot\@empty
-  \def\@oddhead{\vbox{%
-    \hb@xt@ \textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}%
-    \vskip-0.7pt%
-    \hb@xt@ \textwidth{\hrulefill}}}
-  \let\@evenfoot\@oddfoot
-  \let\@evenhead\@oddhead
-  \let\@mkboth\markboth
-  \def\sectionmark##1{%
-    \markright{\ifnum \c@secnumdepth >\m@ne
-      \thesection\quad
-      \fi
-      ##1}}
-  \def\subsectionmark##1{%
-    \markright{\ifnum \c@secnumdepth >\m@ne
-      \thesubsection\quad
-      \fi
-      ##1}}
-  \def\subsubsectionmark##1{%
-    \markright{\ifnum \c@secnumdepth >\m@ne
-      \thesubsubsection\quad
-      \fi
-      ##1}}}
-\pagestyle{empty}
 \MakeShortVerb{\|}
 \def\pkg#1{\texttt{#1}}
 \def\option#1{\textsf{#1}}
