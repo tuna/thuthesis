@@ -36,10 +36,7 @@
 \ProvidesFile{thuthesis.dtx}[2014/12/09 4.8.1 Tsinghua University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 \usepackage{dtx-style}
-\EnableCrossrefs
-\CodelineIndex
-\RecordChanges
-%\OnlyDescription
+\AtBeginDocument{\RecordChanges\CodelineIndex\EnableCrossrefs}
 \begin{document}
   \DocInput{\jobname.dtx}
 \end{document}
@@ -1203,7 +1200,7 @@
 %    \end{macrocode}
 % 默认采用中易的六款免费字体。缺少上述字体的用户可以通过
 % \file{ctex-fontset-thuthesis.def} 文件自定义字体。
-% \changes{v4.9}{2015/04/17}{固定字体设置，同时改善与 ctex 兼容性。}
+% \changes{v4.8.2}{2015/04/17}{固定字体设置，同时改善与 ctex 兼容性。}
 %    \begin{macrocode}
   \IfFileExists{ctex-fontset-thuthesis.def}%
     {\ctexset{fontset=thuthesis}}%
