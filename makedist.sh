@@ -3,7 +3,7 @@
 set -e
 
 EXAMPLE_FILES="main.tex shuji.tex main.pdf shuji.pdf"
-TEMPLATE_FILES="thuthesis.ins thuthesis.dtx thubib.bst thutils.sty thufonts.def zhfonts.py Makefile README.md thuthesis.pdf "
+TEMPLATE_FILES="thuthesis.ins thuthesis.dtx thuthesis.bst thuthesis.sty thuthesis-fonts.cfg zhfonts.py Makefile README.md thuthesis.pdf "
 GEN_FILES="thuthesis.cls thuthesis.cfg"
 ALL_FILES="$EXAMPLE_FILES $TEMPLATE_FILES"
 ALL_DIRS="data/ figures/ ref/"

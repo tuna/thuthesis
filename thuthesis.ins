@@ -61,7 +61,6 @@ http://www.latex-project.org/lppl.txt
 and version 1.3a or later is part of all distributions of LaTeX
 version 2004/10/01 or later.
 
-
 This is the configuration file of the thuthesis package with LaTeX2e.
 
 \endpreamble
@@ -69,25 +68,27 @@ This is the configuration file of the thuthesis package with LaTeX2e.
 \generate{\file{\jobname.cls}{\from{\jobname.dtx}{cls}}
           \usepreamble\cfgpreamble
           \file{\jobname.cfg}{\from{\jobname.dtx}{cfg}}
+          \file{\jobname-fonts.cfg}{\from{\jobname.dtx}{fonts}}
           \nopreamble\nopostamble
           \file{dtx-style.sty}{\from{\jobname.dtx}{dtx-style}}}
 
-\ifToplevel{
-\Msg{***********************************************************}
-\Msg{*}
-\Msg{* To finish the installation you have to move the following}
-\Msg{* files into a directory searched by TeX:}
-\Msg{*}
-\Msg{* The recommended directory is TEXMF/tex/latex/thuthesis}
-\Msg{*}
-\Msg{* \space\space thuthesis.cls}
-\Msg{* \space\space thuthesis.cfg}
-\Msg{*}
-\Msg{* To produce the documentation run the files ending with}
-\Msg{* `.dtx' through LaTeX.}
-\Msg{*}
-\Msg{* Happy TeXing!}
-\Msg{***********************************************************}
+\ifToplevel{%
+  \Msg{***********************************************************}
+  \Msg{*}
+  \Msg{* To finish the installation you have to move the following}
+  \Msg{* files into a directory searched by TeX:}
+  \Msg{*}
+  \Msg{* The recommended directory is TEXMF/tex/latex/thuthesis}
+  \Msg{*}
+  \Msg{* \space\space thuthesis.cls}
+  \Msg{* \space\space thuthesis.cfg}
+  \Msg{* \space\space thuthesis-fonts.cfg}
+  \Msg{*}
+  \Msg{* To produce the documentation run the files ending with}
+  \Msg{* `.dtx' through LaTeX.}
+  \Msg{*}
+  \Msg{* Happy TeXing!}
+  \Msg{***********************************************************}
 }
 
 \endbatchfile

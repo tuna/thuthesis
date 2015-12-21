@@ -1,7 +1,5 @@
-% BibTeX standard bibliography style `thubib.bst' derived from `unsrt'
+% BibTeX standard bibliography style `thuthesis.bst' derived from `unsrt'
 % This file is part of `thuthesis' package.
-%
-% $Id$
 
 ENTRY
   { address

@@ -220,14 +220,14 @@
 % thuthesis.dtx & 模板文档代码的混合文件\\
 % thuthesis.cls & 模板类文件\\
 % thuthesis.cfg & 模板配置文件\\
-% thufonts.def & 中文字体配置文件\\
-% thubib.bst & 参考文献样式文件\\\hline
+% thuthesis-fonts.cfg & 中文字体配置文件\\
+% thuthesis.bst & 参考文献样式文件\\\hline
 % main.tex & 示例文档主文件\\
 % shuji.tex & 书脊示例文档\\
 % ref/ & 示例文档参考文献目录\\
 % data/ & 示例文档章节具体内容\\
 % figures/ & 示例文档图片路径\\
-% thutils.sty & 为示例文档加载其它宏包\\\hline
+% thuthesis.sty & 为示例文档加载其它宏包\\\hline
 % Makefile & self-explanation\\
 % latexmkrc & latexmk 配置文件 \\
 % zhfonts.py & 生成中文字体配置文件\\
@@ -258,9 +258,9 @@
 %
 % 模板解压缩后生成文件夹 \file{thuthesis-VERSION}\footnote{VERSION 为版本号。}，
 % 其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参考文献
-% 样式 \file{thubib.bst}，示例文档
-% （\file{main.tex}，\file{shuji.tex}，\file{thufonts.def}\footnote{Xe\LaTeX 中文
-% 字体配置文件}，\file{thutils.sty}\footnote{可能用到的包以及一些命令定义都放在这
+% 样式 \file{thuthesis.bst}，示例文档
+% （\file{main.tex}，\file{shuji.tex}，\file{thuthesis-fonts.cfg}\footnote{Xe\LaTeX 中文
+% 字体配置文件}，\file{thuthesis.sty}\footnote{可能用到的包以及一些命令定义都放在这
 % 里，以免 \file{thuthesis.cls} 过分臃
 % 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
 % 板文件和配置文件（具体命令细节请参考 \file{README.md} 和 \file{Makefile}）：
@@ -297,8 +297,8 @@
 % Xe\TeX 最大的优势就是不再需要繁琐的字体配置。\thuthesis{} 通过 \pkg{xeCJK} 来控
 % 制中文字体和标点压缩。模板里默认用的是中易的六款免费字体（宋，黑，楷，仿宋，隶书
 % 和幼圆），因学位论文需求不建议替换为其他字体。如果实在必要，可以通过定制
-% \file{thufonts.def} 文件中的字体自行替换。研究生一般用不到隶书和幼圆字体，如果
-% 系统上没有它们，可以直接将 \file{thufonts.def} 文件以及论文的 \file{.tex} 文件中
+% \file{thuthesis-fonts.cfg} 文件中的字体自行替换。研究生一般用不到隶书和幼圆字体，如果
+% 系统上没有它们，可以直接将 \file{thuthesis-fonts.cfg} 文件以及论文的 \file{.tex} 文件中
 % 相应行删除。字体配置参考第~\ref{sec:font-config} 节。
 %
 % \subsubsection{dvipdfmx}
@@ -357,14 +357,14 @@
 % \label{sec:updgrade}
 % \thuthesis{} 升级非常简单，可以通过 TeX 发行版的包管理工具自动更新发行版，也可
 % 以下载最新的开发版，
-% 将 \file{thuthesis.ins}，\file{thuthesis.dtx} 和 \file{thubib.bst} 拷贝至工作目
+% 将 \file{thuthesis.ins}，\file{thuthesis.dtx} 和 \file{thuthesis.bst} 拷贝至工作目
 % 录覆盖相应的文件，然后运行：
 % \begin{shell}
 % $ latex thuthesis.ins
 % \end{shell}
 %
 % 生成新的类文件和配置文件即可。也可以直接拷
-% 贝 \file{thuthesis.cls}，\file{thuthesis.cfg}和 \file{thubib.bst}，免去上面命令
+% 贝 \file{thuthesis.cls}，\file{thuthesis.cfg}和 \file{thuthesis.bst}，免去上面命令
 % 的执行。
 %
 %
@@ -391,8 +391,8 @@
 % \subsection{\thuthesis{} 示例文件}
 % \label{sec:userguide1}
 % 模板核心文件有四
-% 个：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thufonts.def} 和
-% \file{thubib.bst}，但是如果没有示例文档用户会发现很难下手。所以推荐新用户从模板
+% 个：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thuthesis-fonts.cfg} 和
+% \file{thuthesis.bst}，但是如果没有示例文档用户会发现很难下手。所以推荐新用户从模板
 % 自带的示例文档入手，里面包括了论文写作用到的所有命令及其使用方法，只需要用自己
 % 的内容进行相应替换就可以。对于不清楚的命令可以查阅本手册。下面的例子描述了模板
 % 中章节的组织形式，来自于示例文档，具体内容可以参考模板附带
@@ -408,7 +408,7 @@
 % % ]{thuthesis}
 %
 % % 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
-% \usepackage{thutils}
+% \usepackage{thuthesis}
 %
 % % 可以在这里修改配置文件中的定义，导言区可以使用中文。
 % % \def\myname{薛瑞尼}
@@ -527,9 +527,9 @@
 % 第一种方式的字体配置比较繁琐，建议使用 \emph{donated@newsmth} 制作的中文字体包
 % （自包含安装方法），请用户自行下载安装，此处不再赘述。本模板推荐使用第二种方法，
 % 只要把所需字体放入系统字体文件夹（也可以指定自定义文件夹）即可。用户可以使用
-% \file{thufonts.def} 文件配置所需字体。使用中易六种字体的配置如下：
+% \file{thuthesis-fonts.cfg} 文件配置所需字体。使用中易六种字体的配置如下：
 % \begin{example}
-% \ProvidesFile{thufonts.def}
+% \ProvidesFile{thuthesis-fonts.cfg}
 % \setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
 % \setCJKsansfont{SimHei}
 % \setCJKmonofont{FangSong}
@@ -551,11 +551,11 @@
 % 为 |FangSong_GB2312|。
 %
 % 研究生一般用不到隶书和幼圆字体。如果系统中没有导致报错，可以将
-% \file{thufonts.def} 文件中 zhli 和 zhyou 相应行删除，并将论文 \file{.tex} 文件
+% \file{thuthesis-fonts.cfg} 文件中 zhli 和 zhyou 相应行删除，并将论文 \file{.tex} 文件
 % 中引用 |\lishu| 和 |\youyuan| 的文字删除。
 %
 % 宏包中包含了 \file{zhfonts.py} 脚本，为 Linux/Mac 用户提供一种交互式的方式从系
-% 统中文字体中选择合适的六种字体，最终生成对应的 \file{thufonts.def}文件。要使用
+% 统中文字体中选择合适的六种字体，最终生成对应的 \file{thuthesis-fonts.cfg}文件。要使用
 % 它，只需在命令行输入该脚本的完整路径即可。
 %
 % 另外，用户也可以通过命令
@@ -636,7 +636,7 @@
 % 的 |\cite{key}|，而 |\inlinecite{key}| 则用来生成正文模式。
 %
 % 关于参考文献模板推荐使用 \BibTeX{}，关于中文参考文献需要额外增加一个 Entry: lang，将其设置为 \texttt{zh}
-% 用来指示此参考文献为中文，以便 thubib.bst 处理。如：
+% 用来指示此参考文献为中文，以便 \file{thuthesis.bst} 处理。如：
 % \begin{example}
 % @INPROCEEDINGS{cnproceed,
 %   author    = {王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝},
@@ -1123,7 +1123,6 @@
 % 引用的宏包和相应的定义。
 %    \begin{macrocode}
 \RequirePackage{xparse}
-\RequirePackage{calc}
 %    \end{macrocode}
 %
 % \AmSTeX{} 宏包，用来排出更加漂亮的公式。
@@ -1205,10 +1204,10 @@
   \defaultfontfeatures{Mapping=tex-text} % use TeX --
 %    \end{macrocode}
 % 默认采用中易的六款免费字体。缺少上述字体的用户可以通过
-% \file{thufonts.def} 文件自定义字体。
+% \file{thuthesis-fonts.cfg} 文件自定义字体。
 % \changes{v4.9}{2015/04/17}{固定字体设置，同时改善与 ctex 兼容性。}
 %    \begin{macrocode}
-  \input{thufonts.def}
+  \input{thuthesis-fonts.cfg}
 
   \setmainfont{Times New Roman}
   \setsansfont{Arial}
@@ -1358,6 +1357,34 @@
 %
 % \subsubsection{字体}
 % \label{sec:font}
+%
+% 中文字体说简单也简单，说复杂也复杂。
+% \changes{v4.8.2}{2015/12/21}{默认字体文件从 docstrip 生成。}
+%    \begin{macrocode}
+%<*fonts>
+\ProvidesFile{thuthesis-fonts.cfg}
+
+\setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi}]{SimSun}
+\setCJKsansfont{SimHei}
+\setCJKmonofont{FangSong}
+
+\setCJKfamilyfont{zhsong}{SimSun}
+\setCJKfamilyfont{zhhei}{SimHei}
+\setCJKfamilyfont{zhkai}{KaiTi}
+\setCJKfamilyfont{zhfs}{FangSong}
+
+\setCJKfamilyfont{zhli}{LiSu}
+\setCJKfamilyfont{zhyou}{YouYuan}
+
+\newcommand*{\songti}{\CJKfamily{zhsong}}
+\newcommand*{\heiti}{\CJKfamily{zhhei}}
+\newcommand*{\kaishu}{\CJKfamily{zhkai}}
+\newcommand*{\fangsong}{\CJKfamily{zhfs}}
+
+\newcommand*{\lishu}{\CJKfamily{zhli}}
+\newcommand*{\youyuan}{\CJKfamily{zhyou}}
+%</fonts>
+%    \end{macrocode}
 %
 % 重定义字号命令
 %
@@ -3162,7 +3189,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 
 \ifxetex
   \RequirePackage[nofonts,UTF8,hyperref]{ctex}
-  \input{thufonts.def}
+  \input{thuthesis-fonts.cfg}
 \else
   \RequirePackage[winfonts,UTF8,hyperref]{ctex}
   \RequirePackage{txfonts}

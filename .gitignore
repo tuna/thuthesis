@@ -1,3 +1,4 @@
+auto
 .DS_Store
 *~
 *.aux
@@ -13,16 +14,18 @@
 *.ist
 *.log
 *.out
-*.ps
-*.pdf
 *.thm
 *.toc
 *.lof
 *.lot
 *.loe
+*.vrb
 dtx-style.sty
-thuthesis.cfg
 thuthesis.cls
+thuthesis.cfg
+thuthesis-fonts.cfg
 thuthesis.glo
 thuthesis.idx
-!/figures/*.pdf
+thuthesis.pdf
+main.pdf
+shuji.pdf
