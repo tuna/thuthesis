@@ -15,28 +15,16 @@
 % \fi
 %
 % \CheckSum{0}
-% \CharacterTable
-%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
-%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-%   Digits        \0\1\2\3\4\5\6\7\8\9
-%   Exclamation   \!     Double quote  \"     Hash (number) \#
-%   Dollar        \$     Percent       \%     Ampersand     \&
-%   Acute accent  \'     Left paren    \(     Right paren   \)
-%   Asterisk      \*     Plus          \+     Comma         \,
-%   Minus         \-     Point         \.     Solidus       \/
-%   Colon         \:     Semicolon     \;     Less than     \<
-%   Equals        \=     Greater than  \>     Question mark \?
-%   Commercial at \@     Left bracket  \[     Backslash     \\
-%   Right bracket \]     Circumflex    \^     Underscore    \_
-%   Grave accent  \`     Left brace    \{     Vertical bar  \|
-%   Right brace   \}     Tilde         \~}
 %
 % \iffalse
 %<*driver>
 \ProvidesFile{thuthesis.dtx}[2014/12/09 4.8.1 Tsinghua University Thesis Template]
-\documentclass[10pt]{ltxdoc}
+\documentclass{ltxdoc}
+
 \usepackage{dtx-style}
+
 \AtBeginDocument{\RecordChanges\CodelineIndex\EnableCrossrefs}
+
 \begin{document}
   \DocInput{\jobname.dtx}
 \end{document}
@@ -110,22 +98,23 @@
 % \changes{v4.7}{2012/06/12}{去掉 \pkg{hypernat} 依赖，\pkg{hyperref} 和 \pkg{natbib} 可以很好配合了。}
 % \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \pkg{ctex}。}
 %
-% \DoNotIndex{\begin,\end,\begingroup,\endgroup}
-% \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
-% \DoNotIndex{\let,\def,\xdef,\newcommand,\renewcommand}
+% \DoNotIndex{\begin,\end,\begingroup,\endgroup,\par,\\}
+% \DoNotIndex{\if,\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
+% \DoNotIndex{\let,\def,\xdef,\edef,\newcommand,\renewcommand}
 % \DoNotIndex{\expandafter,\csname,\endcsname,\relax,\protect}
 % \DoNotIndex{\Huge,\huge,\LARGE,\Large,\large,\normalsize}
 % \DoNotIndex{\small,\footnotesize,\scriptsize,\tiny}
-% \DoNotIndex{\normalfont,\bfseries,\slshape,\interlinepenalty}
+% \DoNotIndex{\normalfont,\bfseries,\slshape,\sffamily,\interlinepenalty}
+% \DoNotIndex{\textbf,\textit,\textsf,\textsc}
 % \DoNotIndex{\hfil,\par,\hskip,\vskip,\vspace,\quad}
-% \DoNotIndex{\centering,\raggedright}
+% \DoNotIndex{\centering,\raggedright,\ref,\}
 % \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
 % \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
 % \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass}
 % \DoNotIndex{\AtBeginDocument,\AtEndDocument}
-%
+
 % \IndexPrologue{\section*{索引}%
-%    \addcontentsline{toc}{section}{索~~~~引}}
+%    \addcontentsline{toc}{section}{索引}}
 % \GlossaryPrologue{\section*{修改记录}%
 %    \addcontentsline{toc}{section}{修改记录}}
 %
@@ -133,7 +122,7 @@
 % \renewcommand{\contentsname}{目~~录}
 %
 %
-% \title{\thuthesis：清华大学学位论文模板\thanks{Tsinghua University \LaTeX{} Thesis Template.}}
+% \title{\bfseries\thuthesis：清华大学学位论文模板\thanks{Tsinghua University \LaTeX{} Thesis Template.}}
 % \author{{\fangsong 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt]{\fangsong 清华大学
 % 计算机系高性能所\thanks{目前于电子科技大学工作。}}\\[5pt] \texttt{xueruini@gmail.com}}
 % \date{v\fileversion\ (\filedate)}
@@ -166,15 +155,14 @@
 %
 %
 % \clearpage
+% \pagestyle{fancy}
 % \begin{multicols}{2}[
-%   \section*{\contentsname}
 %   \setlength{\columnseprule}{.4pt}
 %   \setlength{\columnsep}{18pt}]
 %   \tableofcontents
 % \end{multicols}
 %
 % \clearpage
-% \pagestyle{fancy}
 %
 % \section{模板介绍}
 % \thuthesis\ (\textbf{T}sing\textbf{hu}a \textbf{Thesis}) 是为了帮助清华大学毕业
@@ -468,7 +456,7 @@
 % \subsection{选项}
 % \label{sec:option}
 % 本模板提供了一些选项以方便使用：
-% \begin{description}
+% \begin{options}
 % \changes{v4.8.2}{2015/12/13}{使用 \pkg{kvoptions} 简化选项 type。}
 % \item[type]
 %   选择论文类型，当前支持：bachelor，master，doctor，postdoctor。默认为：bachelor。
@@ -511,7 +499,7 @@
 %
 % \item[arialtitle]
 %   章节标题中英文是否用 \option{arial} 字体（默认打开）。
-% \end{description}
+% \end{options}
 %
 % \subsection{字体配置}
 % \label{sec:font-config}
@@ -789,7 +777,7 @@
 % \postdoctordate{2009年7月——2011年7月} % 博士后研究起止日期
 % \end{example}
 %
-% \myentry{博士后封面其它参数}
+% \myentry{博士后专用参数}
 % \DescribeMacro{\catalognumber}
 % \DescribeMacro{\udc}
 % \DescribeMacro{\id}
@@ -2636,7 +2624,7 @@
 % \changes{v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
 % \changes{v4.5.2}{2010/05/29}{本科封面和授权说明之间不要空白页。}
 % \changes{v4.6}{2011/05/29}{博士后报告无授权说明。}
-% \changes{v4.9}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文授权说明扫描版(\#36)。}
+% \changes{v4.8.2}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文授权说明扫描版(\#36)。}
 %    \begin{macrocode}
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
@@ -2810,7 +2798,7 @@
 %    \end{macrocode}
 % 声明部分
 % \changes{v3.0}{2007/05/12}{本科论文声明部分图片扫描取消。}
-% \changes{v4.9}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文声明扫描版(\#36)。}
+% \changes{v4.8.2}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文声明扫描版(\#36)。}
 %    \begin{macrocode}
   {
     \ifthu@postdoctor\relax\else%
@@ -2934,8 +2922,8 @@
 \def\thudot{\ifthu@bachelor\else\unskip.\fi}
 %    \end{macrocode}
 % \end{macro}
-% \begin{macro}{thumasterbib}
-% \begin{macro}{thuphdbib}
+% \begin{macro}{\thumasterbib}
+% \begin{macro}{\thuphdbib}
 %   本科生和研究生模板要求外文硕士论文参考文献显示``[Master Thesis]''，而博士模板
 %   则于 2007 年冬要求显示为``[M]''。对应的外文博士论文参考文献分别显示为``[Phd
 %   Thesis]''和``[D]''。
@@ -3024,7 +3012,7 @@
 % publications 环境可以连续出现多次，模板会自动在之间加入空行。
 % \changes{v2.5.1}{2006/05/23}{ft，教务处和研究生院非要搞的不一样！}
 % \changes{v4.8.2}{2015/04/18}{博士后就不提在学期间了，不合适(\#100)}
-% \changes{v4.9}{2015/05/17}{让简历部分更符合格式指南和示例文件(\#122)}
+% \changes{v4.8.2}{2015/05/17}{让简历部分更符合格式指南和示例文件(\#122)}
 % \begin{macro}{\resumeitem}
 % \begin{macro}{\researchitem}
 % \begin{environment}{publications}
@@ -3154,7 +3142,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 %<*dtx-style>
 \ProvidesPackage{dtx-style}
 
-\RequirePackage[UTF8]{ctex}
+\RequirePackage[UTF8,scheme=chinese]{ctex}
 \RequirePackage[top=2.5cm, bottom=2.5cm]{geometry}
 
 \RequirePackage{calc}
@@ -3184,33 +3172,25 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
     CJKbookmarks=false}
 \fi
 
-\setlength{\parskip}{4pt plus1pt minus0pt}
-\setlength{\parindent}{20pt}
-
-\renewcommand{\baselinestretch}{1.3}
-\setlength{\shadowsize}{3pt}
-\def\DescribeOption#1{\SpecialOptionIndex{#1}}
-\def\SpecialOptionIndex#1{\index{#1\actualchar\textbf{#1}}}
-\renewenvironment{description}
+\def\SpecialOptionIndex#1{\@bsphack\index{#1\actualchar{\protect\bfseries #1}}\@esphack}
+\newenvironment{options}
   {\list{}{\setlength\labelwidth{2cm}%
            \setlength\labelsep{3pt}%
            \setlength\leftmargin{\labelwidth+\labelsep}%
            \addtolength{\itemsep}{3pt}%
            \renewcommand\makelabel[1]{%
-             \shadowbox{\color{blue!90}\sffamily ##1}\DescribeOption{##1}}}
+             \ovalbox{\color{magenta}\bfseries\sffamily ##1}%
+             \SpecialOptionIndex{##1}}}
   }{\endlist}
 \DefineVerbatimEnvironment{example}{Verbatim}%
-  {frame=single,framerule=0.3mm,rulecolor=\color{red!75!green!50!blue},%
-   fillcolor=\color{red!75!green!50!blue!15},framesep=2mm,baselinestretch=1.2,%
+  {frame=single,framerule=0.3mm,rulecolor=\color{violet},%
+   fillcolor=\color{violet!5},framesep=1mm,baselinestretch=1.2,%
    fontsize=\small,gobble=1}
 \DefineVerbatimEnvironment{shell}{Verbatim}%
-  {frame=single,framerule=0.3mm,rulecolor=\color{red!85!green!60},%
-   fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small,gobble=1}
-\long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fangsong #1}}\marginpar{\strut}\hskip\parindent}
-\def\tableofcontents{\renewcommand{\baselinestretch}{1.0}\@starttoc{toc}}
-\def\DescribeMacro{\Describe@Macro}
-\def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
-\def\PrintDescribeMacro#1{{\color{-red!75!green!50!blue!55}\MacroFont \string #1\hskip1em}}
+  {frame=single,framerule=0.3mm,rulecolor=\color{olive},%
+   fillcolor=\color{olive!5},framesep=1mm,fontsize=\small,gobble=1}
+\newcommand{\myentry}[1]{%
+  \vskip5pt\par\noindent\llap{{\color{purple}\bfseries #1}}\marginpar{\strut}\hskip\parindent}
 \MakeShortVerb{\|}
 \def\pkg#1{\texttt{#1}}
 \def\option#1{\textsf{#1}}
