@@ -112,7 +112,7 @@
 % \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
 % \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass}
 % \DoNotIndex{\AtBeginDocument,\AtEndDocument}
-
+%
 % \IndexPrologue{\section*{索引}%
 %    \addcontentsline{toc}{section}{索引}}
 % \GlossaryPrologue{\section*{修改记录}%
@@ -120,7 +120,6 @@
 %
 % \renewcommand{\abstractname}{摘~~要}
 % \renewcommand{\contentsname}{目~~录}
-%
 %
 % \title{\bfseries\thuthesis：清华大学学位论文模板\thanks{Tsinghua University \LaTeX{} Thesis Template.}}
 % \author{{\fangsong 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt]{\fangsong 清华大学
@@ -161,7 +160,6 @@
 %   \setlength{\columnsep}{18pt}]
 %   \tableofcontents
 % \end{multicols}
-%
 % \clearpage
 %
 % \section{模板介绍}
@@ -172,7 +170,7 @@
 % 第~\ref{sec:howtoask} 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
 % 码的贡献。
 %
-% {\color{blue}\fangsong 模板的作用在于减少论文写作过程中格式调整的时间，前提是遵
+% {\color{teal}\fangsong 模板的作用在于减少论文写作过程中格式调整的时间，前提是遵
 % 守模板的用法，否则即便用了 \thuthesis{} 也难以保证输出的论文符合学校规范。}
 %
 %
@@ -1163,24 +1161,13 @@
 \fi
 %    \end{macrocode}
 %
-% 中文支持，我们使用 ctex 宏包。
 % \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \pkg{xeCJK}。}
 % \changes{v4.8}{2013/03/09}{reset baselinestretch after ctex's change.}
-% \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 %    \begin{macrocode}
-\ctexset{%
-  punct=quanjiao,
-  autoindent=true,
-  chapter/afterindent=true,
-  section/afterindent=true,
-  subsection/afterindent=true,
-  subsubsection/afterindent=true,
-  paragraph/afterindent=true,
-  subparagraph/afterindent=true}
 \ifthu@bachelor
   \RequirePackage{CJKfntef}
 \fi
-\renewcommand{\baselinestretch}{1.0}
+\renewcommand{\baselinestretch}{1.0} % todo:?
 \ifxetex
   % todo: minor fix of CJKnumb
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
@@ -1188,6 +1175,7 @@
 %    \end{macrocode}
 % 默认采用中易的六款免费字体。缺少上述字体的用户可以通过
 % \file{ctex-fontset-thuthesis.def} 文件自定义字体。
+% \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 % \changes{v4.8.2}{2015/04/17}{固定字体设置，同时改善与 ctex 兼容性。}
 %    \begin{macrocode}
   \IfFileExists{ctex-fontset-thuthesis.def}%
@@ -1262,7 +1250,6 @@
 % 设置 url 样式，与上下文一致
 %    \begin{macrocode}
 \urlstyle{same}
-%</cls>
 %    \end{macrocode}
 %
 %
@@ -1278,7 +1265,6 @@
 % 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。}
 % \changes{v4.8.2}{2015/12/14}{用 \pkg{geometry} 简化设置。}
 %    \begin{macrocode}
-%<*cls>
 \RequirePackage{geometry}
 \geometry{
   a4paper, % 210 * 297mm
@@ -1300,12 +1286,10 @@
     bottom=29mm,
     footskip=6mm}
 \fi
-%</cls>
 %    \end{macrocode}
 %
 % 利用 \pkg{fancyhdr} 设置页眉页脚。
 %    \begin{macrocode}
-%<*cls>
 \RequirePackage{fancyhdr}
 %</cls>
 %    \end{macrocode}
@@ -1314,15 +1298,28 @@
 % \label{sec:mainbody}
 %
 % \subsubsection{Three matters}
+% 对于 \textsl{openright} 选项，必须保证章首页右开，且如果前章末页无内容须
+% 清空其页眉页脚。
+% \begin{macro}{\cleardoublepage}
+%    \begin{macrocode}
+%<*cls>
+\let\thu@cleardoublepage\cleardoublepage
+\newcommand{\thu@clearemptydoublepage}{%
+  \clearpage{\pagestyle{empty}\thu@cleardoublepage}}
+\let\cleardoublepage\thu@clearemptydoublepage
+%    \end{macrocode}
+% \end{macro}
+%
 % 我们的单面和双面模式与常规的不太一样。
 % \changes{v2.5.1}{2006/05/23}{本科正文之后页码即用罗马数字，研究生不变。}
 % \changes{v2.5.3}{2006/06/03}{第一章永远右开。}
 % \changes{v4.4}{2008/05/30}{本科正文后的页码延续前面的阿拉伯数字，不再用罗马数
 % 字。}
-% \changes{v4.4}{2008/05/30}{本科取消了所有页眉，毫无疑问，在以后的修订中还会加
-% 上的，我们等着看。}
+% \changes{v4.4}{2008/05/30}{本科取消了所有页眉。}
+% \begin{macro}{\frontmatter}
+% \begin{macro}{\mainmatter}
+% \begin{macro}{\backmatter}
 %    \begin{macrocode}
-%<*cls>
 \renewcommand\frontmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmatterfalse
@@ -1338,7 +1335,9 @@
   \@mainmattertrue}
 %</cls>
 %    \end{macrocode}
-%
+% \end{macro}
+% \end{macro}
+% \end{macro}
 %
 % \subsubsection{字体}
 % \label{sec:font}
@@ -1373,33 +1372,34 @@
 %
 % 重定义字号命令
 %
-% WORD 中的字号对应该关系如下:
-% \begin{verbatim}
-% 初号 = 42bp = 14.82mm = 42.1575pt
-% 小初 = 36bp = 12.70mm = 36.135 pt
-% 一号 = 26bp = 9.17mm = 26.0975pt
-% 小一 = 24bp = 8.47mm = 24.09pt
-% 二号 = 22bp = 7.76mm = 22.0825pt
-% 小二 = 18bp = 6.35mm = 18.0675pt
-% 三号 = 16bp = 5.64mm = 16.06pt
-% 小三 = 15bp = 5.29mm = 15.05625pt
-% 四号 = 14bp = 4.94mm = 14.0525pt
-% 小四 = 12bp = 4.23mm = 12.045pt
-% 五号 = 10.5bp = 3.70mm = 10.59375pt
-% 小五 = 9bp = 3.18mm = 9.03375pt
-% 六号 = 7.5bp = 2.56mm
-% 小六 = 6.5bp = 2.29mm
-% 七号 = 5.5bp = 1.94mm
-% 八号 = 5bp = 1.76mm
+% WORD 中的字号对应该关系如下（1bp = 72.27/72 pt）:
+% \begin{center}
+% \begin{tabular}{llll}
+% \hline
+% 初号 & 42bp & 14.82mm & 42.1575pt \\
+% 小初 & 36bp & 12.70mm & 36.135 pt \\
+% 一号 & 26bp & 9.17mm & 26.0975pt \\
+% 小一 & 24bp & 8.47mm & 24.09pt \\
+% 二号 & 22bp & 7.76mm & 22.0825pt \\
+% 小二 & 18bp & 6.35mm & 18.0675pt \\
+% 三号 & 16bp & 5.64mm & 16.06pt \\
+% 小三 & 15bp & 5.29mm & 15.05625pt \\
+% 四号 & 14bp & 4.94mm & 14.0525pt \\
+% 小四 & 12bp & 4.23mm & 12.045pt \\
+% 五号 & 10.5bp & 3.70mm & 10.59375pt \\
+% 小五 & 9bp & 3.18mm & 9.03375pt \\
+% 六号 & 7.5bp & 2.56mm & \\
+% 小六 & 6.5bp & 2.29mm & \\
+% 七号 & 5.5bp & 1.94mm & \\
+% 八号 & 5bp & 1.76mm & \\\hline
+% \end{tabular}
+% \end{center}
 %
-% 1bp = 72.27/72 pt
-% \end{verbatim}
-%
-% \begin{macro}{\thu@define@fontsize}
+% \begin{macro}{\thu@def@fontsize}
 % \changes{v2.6.2}{2006/06/18}{引入此命令重新定义字号。}
 % 根据习惯定义字号。用法：
 %
-% \cs{thu@define@fontsize}\marg{字号名称}\marg{磅数}
+% \cs{thu@def@fontsize}\marg{字号名称}\marg{磅数}
 %
 % 避免了字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
 %    \begin{macrocode}
@@ -1408,69 +1408,104 @@
 \newcommand{\thu@choosefont}[2]{%
    \setlength{\thu@linespace}{#2*\real{#1}}%
    \fontsize{#2}{\thu@linespace}\selectfont}
-\def\thu@define@fontsize#1#2{%
+\def\thu@def@fontsize#1#2{%
   \expandafter\newcommand\csname #1\endcsname[1][\baselinestretch]{%
     \thu@choosefont{##1}{#2}}}
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\chuhao}
-% \begin{macro}{\xiaochu}
-% \begin{macro}{\yihao}
-% \begin{macro}{\xiaoyi}
-% \begin{macro}{\erhao}
-% \begin{macro}{\xiaoer}
-% \begin{macro}{\sanhao}
-% \begin{macro}{\xiaosan}
-% \begin{macro}{\sihao}
-% \begin{macro}{\banxiaosi}
-% \begin{macro}{\xiaosi}
-% \begin{macro}{\dawu}
-% \begin{macro}{\wuhao}
-% \begin{macro}{\xiaowu}
-% \begin{macro}{\liuhao}
-% \begin{macro}{\xiaoliu}
-% \begin{macro}{\qihao}
-% \begin{macro}{\bahao}
 %    \begin{macrocode}
-\thu@define@fontsize{chuhao}{42bp}
-\thu@define@fontsize{xiaochu}{36bp}
-\thu@define@fontsize{yihao}{26bp}
-\thu@define@fontsize{xiaoyi}{24bp}
-\thu@define@fontsize{erhao}{22bp}
-\thu@define@fontsize{xiaoer}{18bp}
-\thu@define@fontsize{sanhao}{16bp}
-\thu@define@fontsize{xiaosan}{15bp}
-\thu@define@fontsize{sihao}{14bp}
-\thu@define@fontsize{banxiaosi}{13bp}
-\thu@define@fontsize{xiaosi}{12bp}
-\thu@define@fontsize{dawu}{11bp}
-\thu@define@fontsize{wuhao}{10.5bp}
-\thu@define@fontsize{xiaowu}{9bp}
-\thu@define@fontsize{liuhao}{7.5bp}
-\thu@define@fontsize{xiaoliu}{6.5bp}
-\thu@define@fontsize{qihao}{5.5bp}
-\thu@define@fontsize{bahao}{5bp}
+\thu@def@fontsize{chuhao}{42bp}
 %    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\xiaochu}
+%    \begin{macrocode}
+\thu@def@fontsize{xiaochu}{36bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\yihao}
+%    \begin{macrocode}
+\thu@def@fontsize{yihao}{26bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\xiaoyi}
+%    \begin{macrocode}
+\thu@def@fontsize{xiaoyi}{24bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\erhao}
+%    \begin{macrocode}
+\thu@def@fontsize{erhao}{22bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\xiaoer}
+%    \begin{macrocode}
+\thu@def@fontsize{xiaoer}{18bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\sanhao}
+%    \begin{macrocode}
+\thu@def@fontsize{sanhao}{16bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\xiaosan}
+%    \begin{macrocode}
+\thu@def@fontsize{xiaosan}{15bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\sihao}
+%    \begin{macrocode}
+\thu@def@fontsize{sihao}{14bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\banxiaosi}
+%    \begin{macrocode}
+\thu@def@fontsize{banxiaosi}{13bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\xiaosi}
+%    \begin{macrocode}
+\thu@def@fontsize{xiaosi}{12bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\dawu}
+%    \begin{macrocode}
+\thu@def@fontsize{dawu}{11bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\wuhao}
+%    \begin{macrocode}
+\thu@def@fontsize{wuhao}{10.5bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\xiaowu}
+%    \begin{macrocode}
+\thu@def@fontsize{xiaowu}{9bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\liuhao}
+%    \begin{macrocode}
+\thu@def@fontsize{liuhao}{7.5bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\xiaoliu}
+%    \begin{macrocode}
+\thu@def@fontsize{xiaoliu}{6.5bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\qihao}
+%    \begin{macrocode}
+\thu@def@fontsize{qihao}{5.5bp}
+%    \end{macrocode}
 % \end{macro}
+% \begin{macro}{\bahao}
+%    \begin{macrocode}
+\thu@def@fontsize{bahao}{5bp}
+%    \end{macrocode}
 % \end{macro}
 %
-% 正文小四号 (12pt) 字，行距为固定值 20 磅。
+% \begin{macro}{\normalsize}
+% 正文小四号 (12bp) 字，行距为固定值 20 bp。
 %    \begin{macrocode}
 \renewcommand\normalsize{%
   \@setfontsize\normalsize{12bp}{20bp}
@@ -1480,21 +1515,13 @@
   \belowdisplayshortskip=\abovedisplayshortskip}
 %</cls>
 %    \end{macrocode}
+% \end{macro}
 %
 %
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
-% 新的一章最好从奇数页开始 (openright)，所以必须保证它前面那页如果没有内容也必须
-% 没有页眉页脚。(code stolen from \pkg{fancyhdr})
-%    \begin{macrocode}
-%<*cls>
-\let\thu@cleardoublepage\cleardoublepage
-\newcommand{\thu@clearemptydoublepage}{%
-  \clearpage{\pagestyle{empty}\thu@cleardoublepage}}
-\let\cleardoublepage\thu@clearemptydoublepage
-%    \end{macrocode}
 %
-% 定义页眉和页脚。chapter 自动调用 thispagestyle{thu@plain}，所以要重新定义 thu@plain。
+% 定义页眉和页脚。chapter 自动调用 \cs{thispagestyle\{thu@plain\}}，所以要重新定义 thu@plain。
 % \changes{v2.0}{2005/12/18}{以前的太乱了，重新整理过清晰多了。}
 % \changes{v2.1}{2006/03/01}{彻底放弃 fancyhdr，定义自己的样式。}
 % \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
@@ -1511,6 +1538,7 @@
 % \item \texttt{thu@headings}：页眉页脚同时显示
 % \end{itemize}
 %    \begin{macrocode}
+%<*cls>
 \fancypagestyle{thu@empty}{%
   \fancyhf{}
   \renewcommand{\headrulewidth}{0pt}
@@ -1527,36 +1555,31 @@
   \fancyfoot[C]{\wuhao\thepage}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0pt}}
-%    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-%
-% 其实可以直接写到 \cs{chapter} 的定义里面。
-%    \begin{macrocode}
-\renewcommand{\chaptermark}[1]{\@mkboth{\@chapapp\  ~~#1}{}}
 %</cls>
 %    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
 %
 %
 % \subsubsection{段落}
 % \label{sec:paragraph}
 %
-% 段落之间的竖直距离
+% 全文首行缩进 2 字符，标点符号用全角
 %    \begin{macrocode}
 %<*cls>
-\setlength{\parskip}{0pt \@plus2pt \@minus0pt}
+\ctexset{%
+  punct=quanjiao,
+  space=auto,
+  autoindent=true}
 %    \end{macrocode}
 %
-% 调整默认列表环境间的距离，以符合中文习惯。
+% 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
 % \changes{v2.5.2}{2006/06/01}{更改默认列表距离。}
-% \begin{macro}{thu@item@space}
 %    \begin{macrocode}
-\def\thu@item@space{%
-  \setlist{nosep}}
+\setlist{nosep}
 %</cls>
 %    \end{macrocode}
-% \end{macro}
 %
 %
 % \subsubsection{脚注}
@@ -1831,12 +1854,61 @@
 %
 % \subsubsection{章节标题}
 % \label{sec:titleandtoc}
+%
 % 如果章节题目中的英文要使用 arial，那么就加上 \cs{sffamily}
 %    \begin{macrocode}
 %<*cls>
-\ifthu@arialtitle
-  \def\thu@title@font{\sffamily}
-\fi
+\def\thu@title@font{%
+  \ifthu@arialtitle\sffamily\else\relax\fi}
+%    \end{macrocode}
+%
+% 各级标题格式设置。
+% \begin{description}
+% \item[section]  一级节标题，例如：\fbox{2.1  实验装置与实验方法}。
+% 节标题序号与标题名之间空一个汉字符（下同）。采用黑体四号（14pt）字居左书写，行距为固定值 20 磅，段前空 24 磅，段后空 6 磅。
+% 本科：25/12 pt，行距 18pt。
+%
+% \changes{v4.4}{2008/06/04}{调整段前距为 -20bp 而不是原来的 -24bp。}
+% \changes{v4.8.2}{2012/12/23}{用 \cs{ctexset} 来设置，替换复杂的 \cs{@startsection}。}
+%
+% \item[subsection] 二级节标题，例如：\fbox{2.1.1 实验装置}。
+% 采用黑体 13pt (本科生是 14pt) 字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
+%
+% \changes{v4.4}{2008/06/04}{修改本科生模板的二级节标题为小四而不是半小四。}
+% \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
+%
+% \item[subsubsection] 三级节标题，例如：\fbox{2.1.2.1 归纳法}。
+% 采用黑体小四号（12pt）字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
+%
+% \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
+% \end{description}
+%    \begin{macrocode}
+\renewcommand{\chaptermark}[1]{\@mkboth{\@chapapp\sapce #1}{}}
+\ctexset{%
+  chapter={
+    afterindent=true,
+    pagestyle={\ifthu@bachelor thu@plain\else thu@headings\fi},
+  },
+  section={
+    afterindent=true,
+    beforeskip={\ifthu@bachelor 25bp\else 24bp\fi\@plus 1ex \@minus .2ex},
+    afterskip={\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex},
+    format={\thu@title@font\heiti\sihao[1.429]},
+  },
+  subsection={
+    afterindent=true,
+    beforeskip={\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
+    afterskip={6bp \@plus .2ex},
+    format={\thu@title@font\heiti\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi},
+  },
+  subsubsection={
+    afterindent=true,
+    beforeskip={\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
+    afterskip={6bp \@plus .2ex},
+    format={\csname thu@title@font\endcsname\heiti\xiaosi[1.667]},
+  },
+  paragraph/afterindent=true,
+  subparagraph/afterindent=true}
 %    \end{macrocode}
 %
 % \begin{macro}{\chapter}
@@ -1849,13 +1921,6 @@
 % \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化，ft!}
 % \changes{v4.8.2}{2015/04/17}{修正章节间距问题(\#57)}
 %    \begin{macrocode}
-\renewcommand\chapter{%
-  \if@openright\cleardoublepage\else\clearpage\fi\phantomsection%
-  \ifthu@bachelor\thispagestyle{thu@plain}%
-  \else\thispagestyle{thu@headings}\fi%
-  \global\@topnum\z@%
-  \@afterindenttrue%
-  \secdef\@chapter\@schapter}
 \def\@chapter[#1]#2{%
   \ifnum \c@secnumdepth >\m@ne
    \if@mainmatter
@@ -1939,47 +2004,7 @@
   \fi}
 %    \end{macrocode}
 % \end{macro}
-% \begin{macro}{\section}
-% 一级节标题，例如：2.1  实验装置与实验方法
-% 节标题序号与标题名之间空一个汉字符（下同）。
-% 采用黑体四号（14pt）字居左书写，行距为固定值 20 磅，段前空 24 磅，段后空 6 磅。
-%
-% 本科：25/12 pt，行距 18pt
-% \changes{v4.4}{2008/06/04}{调整段前距为 -20bp 而不是原来的 -24bp。本科的混帐例
-% 子！}
-%    \begin{macrocode}
-\renewcommand\section{\@startsection {section}{1}{\z@}%
-                     {\ifthu@bachelor 25bp\else 24bp\fi\@plus 1ex \@minus .2ex}%
-                     {\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex}%
-                     {\csname thu@title@font\endcsname\heiti\sihao[1.429]}}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\subsection}
-% 二级节标题，例如：2.1.1 实验装置
-% 采用黑体 13pt (本科生是 14pt) 字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
-% \changes{v4.4}{2008/06/04}{修改本科生模板的二级节标题为小四而不是半小四。}
-% \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
-%    \begin{macrocode}
-\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                        {\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex}%
-                        {6bp \@plus .2ex}%
-                        {\csname thu@title@font\endcsname\heiti\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi}}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\subsubsection}
-% 三级节标题，例如：2.1.2.1 归纳法
-% 采用黑体小四号（12pt）字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
-% \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
-%    \begin{macrocode}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                           {\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex}%
-                           {6bp \@plus .2ex}%
-                           {\csname thu@title@font\endcsname\heiti\xiaosi[1.667]}}
 %</cls>
-%    \end{macrocode}
-% \end{macro}
 %
 %
 % \subsubsection{目录格式}
@@ -2066,13 +2091,13 @@
 %
 % \subsubsection{封面和封底}
 % \label{sec:cover}
-% \begin{macro}{\thu@define@term}
+% \begin{macro}{\thu@def@term}
 % 方便的定义封面的一些替换命令。
-% \changes{v2.6.2}{2006/06/18}{引入 \cs{thu@define@term} 定义封面命令。}
+% \changes{v2.6.2}{2006/06/18}{引入 \cs{thu@def@term} 定义封面命令。}
 % \changes{v3.1}{2006/06/16}{重新定义摘要为环境，long 选项不需要了。}
 %    \begin{macrocode}
 %<*cls>
-\def\thu@define@term#1{
+\def\thu@def@term#1{
   \expandafter\gdef\csname #1\endcsname##1{%
     \expandafter\gdef\csname thu@#1\endcsname{##1}}
   \csname #1\endcsname{}}
@@ -2116,38 +2141,38 @@
 %     的 affil 和 subject。}
 % \changes{v2.6.2}{2006/06/18}{改正 groupmembers 的拼写错误。}
 %    \begin{macrocode}
-\thu@define@term{catalognumber}
-\thu@define@term{udc}
-\thu@define@term{id}
-\thu@define@term{secretlevel}
-\thu@define@term{secretyear}
-\thu@define@term{ctitle}
-\thu@define@term{cdegree}
+\thu@def@term{catalognumber}
+\thu@def@term{udc}
+\thu@def@term{id}
+\thu@def@term{secretlevel}
+\thu@def@term{secretyear}
+\thu@def@term{ctitle}
+\thu@def@term{cdegree}
 \newcommand\cdepartment[2][]{\def\thu@cdepartment@short{#1}\def\thu@cdepartment{#2}}
 \def\caffil{\cdepartment} % todo: for compatibility
 \def\thu@cdepartment@short{}
 \def\thu@cdepartment{}
-\thu@define@term{cmajor}
+\thu@def@term{cmajor}
 \def\csubject{\cmajor} % todo: for compatibility
-\thu@define@term{cfirstdiscipline}
-\thu@define@term{cseconddiscipline}
-\thu@define@term{cauthor}
-\thu@define@term{csupervisor}
-\thu@define@term{cassosupervisor}
-\thu@define@term{ccosupervisor}
-\thu@define@term{cdate}
-\thu@define@term{postdoctordate}
-\thu@define@term{etitle}
-\thu@define@term{edegree}
-\thu@define@term{edepartment}
+\thu@def@term{cfirstdiscipline}
+\thu@def@term{cseconddiscipline}
+\thu@def@term{cauthor}
+\thu@def@term{csupervisor}
+\thu@def@term{cassosupervisor}
+\thu@def@term{ccosupervisor}
+\thu@def@term{cdate}
+\thu@def@term{postdoctordate}
+\thu@def@term{etitle}
+\thu@def@term{edegree}
+\thu@def@term{edepartment}
 \def\eaffil{\edepartment} % todo: for compability
-\thu@define@term{emajor}
+\thu@def@term{emajor}
 \def\esubject{\emajor} % todo: for compability
-\thu@define@term{eauthor}
-\thu@define@term{esupervisor}
-\thu@define@term{eassosupervisor}
-\thu@define@term{ecosupervisor}
-\thu@define@term{edate}
+\thu@def@term{eauthor}
+\thu@def@term{esupervisor}
+\thu@def@term{eassosupervisor}
+\thu@def@term{ecosupervisor}
+\thu@def@term{edate}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -3131,7 +3156,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 %
 % 应用对列表环境的修改。
 %    \begin{macrocode}
-\AtEndOfClass{\sloppy\thu@item@space}
+\AtEndOfClass{\sloppy}
 %</cls>
 %    \end{macrocode}
 %

@@ -35,7 +35,7 @@ else
    SLASH = /
 endif
 
-.PHONY: all clean distclean dist thesis shuji doc cls FORCE_MAKE
+.PHONY: all clean distclean dist thesis viewthesis shuji viewshuji doc viewdoc cls FORCE_MAKE
 
 all: doc thesis shuji
 
@@ -46,6 +46,9 @@ $(CLSFILES): $(SOURCES)
 	latex $(PACKAGE).ins
 
 ###### for doc
+
+viewdoc: doc
+	open $(PACKAGE).pdf
 
 doc: $(PACKAGE).pdf
 
@@ -88,6 +91,9 @@ $(PACKAGE).pdf: $(PACKAGE).dvi
 endif
 
 ###### for thesis
+
+viewthesis: thesis
+	open $(THESISMAIN).pdf
 
 thesis: $(THESISMAIN).pdf
 
@@ -135,6 +141,10 @@ endif
 
 
 ###### for shuji
+
+viewshuji: shuji
+	open $(SHUJIMAIN).pdf
+
 shuji: $(SHUJIMAIN).pdf
 
 ifeq ($(METHOD),xelatex)
