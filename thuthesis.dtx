@@ -1342,34 +1342,6 @@
 % \subsubsection{字体}
 % \label{sec:font}
 %
-% 中文字体说简单也简单，说复杂也复杂。
-% \changes{v4.8.2}{2015/12/21}{默认字体文件从 docstrip 生成。}
-%    \begin{macrocode}
-%<*fonts>
-\ProvidesFile{ctex-fontset-thuthesis.def}
-
-\setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi}]{SimSun}
-\setCJKsansfont{SimHei}
-\setCJKmonofont{FangSong}
-
-\setCJKfamilyfont{zhsong}{SimSun}
-\setCJKfamilyfont{zhhei}{SimHei}
-\setCJKfamilyfont{zhkai}{KaiTi}
-\setCJKfamilyfont{zhfs}{FangSong}
-
-\setCJKfamilyfont{zhli}{LiSu}
-\setCJKfamilyfont{zhyou}{YouYuan}
-
-\newcommand*{\songti}{\CJKfamily{zhsong}}
-\newcommand*{\heiti}{\CJKfamily{zhhei}}
-\newcommand*{\kaishu}{\CJKfamily{zhkai}}
-\newcommand*{\fangsong}{\CJKfamily{zhfs}}
-
-\newcommand*{\lishu}{\CJKfamily{zhli}}
-\newcommand*{\youyuan}{\CJKfamily{zhyou}}
-%</fonts>
-%    \end{macrocode}
-%
 % 重定义字号命令
 %
 % WORD 中的字号对应该关系如下（1bp = 72.27/72 pt）:
@@ -1931,8 +1903,8 @@
     aftername=\hskip\ccwd,
     afterskip={\ifthu@bachelor 20bp\else 24bp\fi},
     format={\centering\thu@title@font\heiti\ifthu@bachelor\xiaosan\else\sanhao[1]\fi},
-    %nameformat=\relax,
-    %numberformat=\relax,
+    nameformat=\relax,
+    numberformat=\relax,
     titleformat=\thu@chapter@titleformat,
   },
   section={
@@ -1971,32 +1943,39 @@
 % 正体会到 \TeX{} macro 的力量！
 %    \begin{macrocode}
 \newcounter{thu@bookmark}
-\def\thu@chapter*{%
-  \@ifnextchar [ % ]
-    {\thu@@chapter}
-    {\thu@@chapter@}}
-\def\thu@@chapter@#1{\thu@@chapter[#1]{#1}}
-\def\thu@@chapter[#1]#2{%
-  \@ifnextchar [ % ]
-    {\thu@@@chapter[#1]{#2}}
-    {\thu@@@chapter[#1]{#2}[]}}
-\def\thu@@@chapter[#1]#2[#3]{%
-  \if@openright\cleardoublepage\else\clearpage\fi
-  \phantomsection
-  \def\@tmpa{#1}
-  \def\@tmpb{#3}
-  \ifx\@tmpa\@empty
-    \addtocounter{thu@bookmark}\@ne
-    \pdfbookmark[0]{#2}{thuchapter.\thethu@bookmark}
-  \else
-    \addcontentsline{toc}{chapter}{#1}
-  \fi
-  \chapter*{#2}
-  \ifx\@tmpb\@empty
-    \@mkboth{#2}{#2}
-  \else
+\NewDocumentCommand\thu@chapter{s o m o}{
+  \IfBooleanF{#1}
+  {%
+    \ClassError{thuthesis}{You have to use the star form: \string\thu@chapter*}{}
+  }
+
+  \IfValueTF{#2}
+  {%
+    \ifthenelse{\equal{#2}{}}
+    {%
+      \addtocounter{thu@bookmark}\@ne
+      \pdfbookmark[0]{#3}{thuchapter.\thethu@bookmark}
+    }
+    {%
+      \addcontentsline{toc}{chapter}{#3}
+    }
+  }
+  {%
+    \addcontentsline{toc}{chapter}{#3}
+  }
+
+  \chapter*{#3}%\phantomsection
+
+  \IfValueTF{#4}
+  {%
+    \ifthenelse{\equal{#4}{}}
+    {\@mkboth{}{}}
+    {\@mkboth{#4}{#4}}
+  }
+  {%
     \@mkboth{#3}{#3}
-  \fi}
+  }
+}
 %    \end{macrocode}
 % \end{macro}
 %</cls>
@@ -3190,7 +3169,8 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
     CJKbookmarks=false}
 \fi
 
-\def\SpecialOptionIndex#1{\@bsphack\index{#1\actualchar{\protect\bfseries #1}}\@esphack}
+\def\SpecialOptionIndex#1{\@bsphack%
+  \index{#1\actualchar{\protect\bfseries #1}}\@esphack}
 \newenvironment{options}
   {\list{}{\setlength\labelwidth{2cm}%
            \setlength\labelsep{3pt}%
