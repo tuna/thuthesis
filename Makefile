@@ -186,8 +186,8 @@ distclean: cleanall
 	-@$(RM) -r dist
 
 dist:
-	@if [ -z "$(VERSION)" ]; then \
-		echo "Usage: make dist VERSION=<version#>"; \
+	@if [ -z "$(version)" ]; then \
+		echo "Usage: make dist version=[x.y.z | ctan]"; \
 	else \
-		./makedist.sh $(VERSION); \
+		gulp build --version=$(version); \
 	fi
