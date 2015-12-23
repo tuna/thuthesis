@@ -170,8 +170,8 @@
 % 第~\ref{sec:howtoask} 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
 % 码的贡献。
 %
-% {\color{teal}\fangsong 模板的作用在于减少论文写作过程中格式调整的时间，前提是遵
-% 守模板的用法，否则即便用了 \thuthesis{} 也难以保证输出的论文符合学校规范。}
+% \note{模板的作用在于减少论文写作过程中格式调整的时间，前提是遵守模板的用法，否
+% 则即便用了 \thuthesis{} 也难以保证输出的论文符合学校规范。}
 %
 %
 % \section{安装}
@@ -236,8 +236,8 @@
 %
 % \subsubsection{生成模板}
 % \label{sec:generate-cls}
-% {\heiti 说明：默认的发行包中已经包含了所有文件，可以直接使用。如果对如何生成模
-% 板文件以及模板文档不感兴趣，请跳过本小节。}
+% \note{默认的发行包中已经包含了所有文件，可以直接使用。如果对如何生成模板文件以
+% 及模板文档不感兴趣，请跳过本小节。}
 %
 % 模板解压缩后生成文件夹 \file{thuthesis-VERSION}\footnote{VERSION 为版本号。}，
 % 其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参考文献
@@ -1811,29 +1811,24 @@
 % \changes{v2.5}{2006/05/19}{增加索引名称定义。}
 %    \begin{macrocode}
 %<*cfg>
-\renewcommand\contentsname{目\hspace{1em}录}
-\renewcommand\listfigurename{插图索引}
-\renewcommand\listtablename{表格索引}
+\ctexset{%
+  chapter/name={第,章},
+  appendixname=附录,
+  contentsname={目\hspace{\ccwd}录},
+  listfigurename=插图索引,
+  listtablename=表格索引,
+  figurename=图,
+  tablename=表,
+  bibname=参考文献,
+  indexname=索引,
+}
 \newcommand\listequationname{公式索引}
 \newcommand\equationname{公式}
-\renewcommand\bibname{参考文献}
-\renewcommand\indexname{索引}
-\renewcommand\figurename{图}
-\renewcommand\tablename{表}
-\newcommand\CJKprepartname{第}
-\newcommand\CJKpartname{部分}
-\CTEXnumber{\thu@thepart}{\@arabic\c@part}
-\newcommand\CJKthepart{\thu@thepart}
-\newcommand\CJKprechaptername{第}
-\newcommand\CJKchaptername{章}
-\newcommand\CJKthechapter{\@arabic\c@chapter}
-\renewcommand\chaptername{\CJKprechaptername~\CJKthechapter~\CJKchaptername}
-\renewcommand\appendixname{附录}
 \ifthu@bachelor
   \newcommand{\cabstractname}{中文摘要}
   \newcommand{\eabstractname}{ABSTRACT}
 \else
-  \newcommand{\cabstractname}{摘\hspace{1em}要}
+  \newcommand{\cabstractname}{摘\hspace{\ccwd}要}
   \newcommand{\eabstractname}{Abstract}
 \fi
 \let\CJK@todaysave=\today
@@ -1862,32 +1857,83 @@
   \ifthu@arialtitle\sffamily\else\relax\fi}
 %    \end{macrocode}
 %
+% \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。通过 \pkg{fancyhdr}
+% 定义的样式在第一次被调用时会修改 \cs{chaptermark}，这会导致页眉信息错误（多余
+% 章号并且英文大写）。这是因为在原始的 \file{book.cls} 中定义如下（大意）：
+% \begin{verbatim}
+% \newcommand\chaptername{Chapter}
+% \newcommand\@chapapp{\chaptername}
+% \def\chaptermark#1{
+%  \markboth{\MakeUppercase{\@chapapp\ \thechapter}}{}}
+% \end{verbatim}
+% 很显然这个 \cs{\@chapapp} 不适合中文，因此我们使用\cs{CTEXthechapter}（
+% 如，“第 x 章”），同时会将 \cs{MakeUppercase} 去掉。也就是说我们会做如下动作：
+% \begin{verbatim}
+% \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}
+% \end{verbatim}
+% 但，\pkg{fancyhdr} 不知何故在 \cs{ps@fancy} 中对 \cs{chaptermark} 进行重定义
+% （其实一模一样），而这个 \cs{ps@fancy} 会在 \cs{fancypagestyle} 中使用，如下：
+% \begin{verbatim}
+% \newcommand{\fancypagestyle}[2]{%
+%   \@namedef{ps@#1}{\let\fancy@gbl\relax#2\relax\ps@fancy}}
+% \end{verbatim}
+% 这样的话，\cs{ps@fancy} 会在 \pkg{fancyhdr} 定义的任何样式首次样被激活时调用，从
+% 而覆盖我们的 \cs{chaptermark} 定义（后续样式再激活不会重复覆盖）。所以我们采用如下
+% 方法解决：
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \pagestyle{thu@empty}
+  \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}}
+%    \end{macrocode}
+%
 % 各级标题格式设置。
+% \changes{v4.8.2}{2012/12/23}{用 \cs{ctexset} 来设置，替换复杂的 \cs{@startsection}。}
 % \begin{description}
-% \item[section]  一级节标题，例如：\fbox{2.1  实验装置与实验方法}。
-% 节标题序号与标题名之间空一个汉字符（下同）。采用黑体四号（14pt）字居左书写，行距为固定值 20 磅，段前空 24 磅，段后空 6 磅。
-% 本科：25/12 pt，行距 18pt。
+% \item[chapter] 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段
+%   前空 24 磅，段后空 18 磅。本科要求：段前段后间距 30/20 pt，行距 20pt。但正文
+%   章节 30pt 的话和样例效果不一致。
+%
+% \changes{v2.5}{2006/05/13}{取消 \pkg{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
+% \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
+% \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化，ft!}
+% \changes{v4.8.2}{2015/04/17}{修正章节间距问题(\#57)}
+%
+% \item[section] 一级节标题，例如：\fbox{2.1 实验装置与实验方法}。节标题序号与标
+%   题名之间空一个汉字符（下同）。采用黑体四号（14pt）字居左书写，行距为固定
+%   值 20 磅，段前空 24 磅，段后空 6 磅。本科：25/12 pt，行距 18pt。
 %
 % \changes{v4.4}{2008/06/04}{调整段前距为 -20bp 而不是原来的 -24bp。}
-% \changes{v4.8.2}{2012/12/23}{用 \cs{ctexset} 来设置，替换复杂的 \cs{@startsection}。}
 %
-% \item[subsection] 二级节标题，例如：\fbox{2.1.1 实验装置}。
-% 采用黑体 13pt (本科生是 14pt) 字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
+% \item[subsection] 二级节标题，例如：\fbox{2.1.1 实验装置}。采用黑体 13pt (本科
+%   生是 14pt) 字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
 %
 % \changes{v4.4}{2008/06/04}{修改本科生模板的二级节标题为小四而不是半小四。}
 % \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
 %
-% \item[subsubsection] 三级节标题，例如：\fbox{2.1.2.1 归纳法}。
-% 采用黑体小四号（12pt）字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
+% \item[subsubsection] 三级节标题，例如：\fbox{2.1.2.1 归纳法}。采用黑体小四号
+%   （12pt）字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
 %
 % \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
 % \end{description}
 %    \begin{macrocode}
-\renewcommand{\chaptermark}[1]{\@mkboth{\@chapapp\sapce #1}{}}
+\newcommand\thu@chapter@titleformat[1]{%
+  \ifthu@bachelor #1\else%
+    \ifthenelse%
+      {\equal{#1}{\eabstractname}}%
+      {\bfseries #1}%
+      {#1}%
+  \fi}
 \ctexset{%
   chapter={
     afterindent=true,
     pagestyle={\ifthu@bachelor thu@plain\else thu@headings\fi},
+    beforeskip={\ifthu@bachelor 13bp\else 9bp\fi},
+    aftername=\hskip\ccwd,
+    afterskip={\ifthu@bachelor 20bp\else 24bp\fi},
+    format={\centering\thu@title@font\heiti\ifthu@bachelor\xiaosan\else\sanhao[1]\fi},
+    %nameformat=\relax,
+    %numberformat=\relax,
+    titleformat=\thu@chapter@titleformat,
   },
   section={
     afterindent=true,
@@ -1910,57 +1956,6 @@
   paragraph/afterindent=true,
   subparagraph/afterindent=true}
 %    \end{macrocode}
-%
-% \begin{macro}{\chapter}
-% 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段前空 24 磅，段
-% 后空 18 磅。
-%
-% 本科要求：段前段后间距 30/20 pt，行距 20pt。但正文章节 30pt 的话和样例效果不一致。
-% \changes{v2.5}{2006/05/13}{取消 \pkg{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
-% \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
-% \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化，ft!}
-% \changes{v4.8.2}{2015/04/17}{修正章节间距问题(\#57)}
-%    \begin{macrocode}
-\def\@chapter[#1]#2{%
-  \ifnum \c@secnumdepth >\m@ne
-   \if@mainmatter
-     \refstepcounter{chapter}%
-     \addcontentsline{toc}{chapter}{\protect\numberline{\@chapapp}#1}%TODO: shit
-   \else
-     \addcontentsline{toc}{chapter}{#1}%
-   \fi
-  \else
-    \addcontentsline{toc}{chapter}{#1}%
-  \fi
-  \chaptermark{#1}%
-  \@makechapterhead{#2}%
-  \@afterheading}
-\def\@makechapterhead#1{%
-  \ifthu@bachelor\vspace*{14bp}\else\vspace*{10bp}\fi%
-  {\parindent \z@ \centering
-    \csname thu@title@font\endcsname\heiti\ifthu@bachelor\xiaosan\else\sanhao[1]\fi
-    \ifnum \c@secnumdepth >\m@ne
-      \@chapapp\hskip1em
-    \fi
-    #1\par\nobreak
-    \ifthu@bachelor\vskip 20bp\else\vskip 24bp\fi}}
-\def\@schapter#1{%
-  \@makeschapterhead{#1}
-  \@afterheading}
-\def\@makeschapterhead#1{%
-  \ifthu@bachelor\vspace*{20bp}\else\vspace*{10bp}\fi%
-  {\parindent \z@ \centering
-   \csname thu@title@font\endcsname\heiti\sanhao[1]
-   \ifthu@bachelor\xiaosan\else
-     \def\@tempa{#1}
-     \def\@tempb{\eabstractname}
-     \ifx\@tempa\@tempb\bfseries\fi
-   \fi
-   \interlinepenalty\@M
-   #1\par\nobreak
-    \ifthu@bachelor\vskip 20bp\else\vskip 24bp\fi}}
-%    \end{macrocode}
-% \end{macro}
 %
 % \begin{macro}{\thu@chapter*}
 % \changes{v2.5.2}{2006/05/29}{定义自己的 \cs{thu@chapter*}。}
@@ -3006,8 +3001,6 @@
 \let\thu@appendix\appendix
 \renewenvironment{appendix}{%
   \thu@appendix
-  \gdef\@chapapp{\appendixname~\thechapter}
-  %\renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
   }{}
 %</cls>
 %    \end{macrocode}
@@ -3221,6 +3214,8 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \def\option#1{\textsf{#1}}
 \def\file#1{\textsl{#1}}
 \def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
+\newcommand{\note}[1]{\par%
+  {\color{magenta}\bfseries 说明：#1}}
 %</dtx-style>
 %    \end{macrocode}
 % \fi
