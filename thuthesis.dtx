@@ -18,7 +18,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2014/12/09 4.8.1 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2015/12/24 5.0 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 
 \usepackage{dtx-style}
@@ -405,6 +405,8 @@
 % %%% 封面部分
 % \frontmatter
 % \input{data/cover}
+% % 如果使用授权说明扫描页，将可选参数中指定为扫描得到的 PDF 文件名，例如：
+% % \makecover[scan-auth.pdf]
 % \makecover
 %
 % % 目录
@@ -807,6 +809,19 @@
 % \ekeywords{keyword 1, keyword 2}
 % \end{example}
 %
+% \myentry{生成封面}
+% \DescribeMacro{\makecover}
+% 生成封面，包括首页，授权，摘要等。用法：\cs{makecover}\oarg{file}。如果使用授权
+% 说明扫描页，将可选参数中指定为扫描得到的 PDF 文件名，例如：
+% \begin{example}
+% % 直接生成封面
+% \makecover
+%
+% % 将签字扫描后授权文件 scan-auth.pdf 替换原始页面
+% \makecover[scan-auth.pdf]
+% \end{example}
+%
+%
 % \subsubsection{其它部分}
 % \label{sec:otherparts}
 % 论文其它主要部分命令：
@@ -887,10 +902,23 @@
 % 处不再罗嗦，实例请参看示例文档附录 A 的前两个公式。
 %
 % \myentry{简历}
-% \DescribeEnv{resume}\DescribeMacro{\resumeitem}
-% 开启个人简历章节，包括发表文章列表等。其实就是一个 chapter。里面的每个子项目请用命令 |\resumeitem{sub title}|。
+% \DescribeEnv{resume}
+% 开启个人简历章节，包括个人简历，发表文章，研究成果列表等。每个子项目请
+% 用以下对应命令开启：\cs{xxxitem}\marg{subtitle}。
 %
-% 这里就不再列举例子了，请参看示例文档的 data/resume.tex。
+% \DescribeMacro{\resumeitem}
+% 个人简历，用法：\cs{resumeitem}\{个人简历\}
+%
+% \DescribeMacro{\researchitem}
+% \DescribeEnv{publications}
+% 发表学术论文，用法：\cs{researchitem}\{发表学术论文\}。随后用
+% \texttt{publicatoins} 环境进行罗列。
+%
+% \DescribeEnv{achievements}
+% 研究成果用 \cs{researchitem}\{研究成果\} 开启，随后用 \texttt{achievements} 环
+% 境罗列。
+%
+% 具体用法请参看示例文档 \file{data/resume.tex}。
 %
 % \myentry{附录}
 % \DescribeEnv{appendix}
@@ -910,6 +938,16 @@
 % \begin{example}
 % \begin{ack}
 %   …
+%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
+% \end{ack}
+% \end{example}
+%
+% 本科论文在此处还有一节“声明”，提交版本时需要替换为签字扫描文件，同样我们也提供：
+% 如果使用声明扫描页，将可选参数指定为扫描后的 PDF 文件名，例如：
+% \begin{example}
+% \begin{ack}[scan-statement.pdf]
+%   加了扫描文件后，这里面的文字就没用了。
+%
 %   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
 % \end{ack}
 % \end{example}
@@ -985,7 +1023,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2014/12/09 4.8.1 Tsinghua University Thesis Template]
+%<cls|cfg>[2015/12/24 5.0 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
