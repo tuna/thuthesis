@@ -2534,19 +2534,27 @@
 % \changes{v4.2}{2008/01/23}{博士英文封面补充联合导师。}
 % \changes{v4.7}{2011/11/28}{硕士生新增英文封面。}
 %    \begin{macrocode}
+%</cls>
+%<*cfg>
+\def\thu@master@art{Master of Arts}
+\def\thu@master@sci{Master of Science}
+\def\thu@doctor@phi{Doctor of Philosophy}
+%</cfg>
+%<*cls>
 \newcommand{\thu@engcover}{%
-  \def\thu@master@art{Master of Arts}
-  \def\thu@master@sci{Master of Science}
-  \def\thu@doctor@phi{Doctor of Philosophy}
-  \newif\ifthu@professional
-  \thu@professionalfalse
+  \newif\ifthu@professional\thu@professionalfalse
   \ifthu@master
-    \ifx\thu@edegree\thu@master@art\relax\else
-      \ifx\thu@edegree\thu@master@sci\relax\else
-        \thu@professionaltrue\fi\fi\fi
+    \ifthenelse{\equal{\thu@edegree}{\thu@master@art}}
+      {\relax}
+      {\ifthenelse{\equal{\thu@edegree}{\thu@master@sci}}
+        {\relax}
+        {\thu@professionaltrue}}
+  \fi
   \ifthu@doctor
-    \ifx\thu@edegree\thu@doctor@phi\relax\else
-      \thu@professionaltrue\fi\fi
+    \ifthenelse{\equal{\thu@edegree}{\thu@doctor@phi}}
+      {\relax}
+      {\thu@professionaltrue}
+  \fi
   \begin{center}
     \vspace*{-5pt}
     \parbox[t][5.2cm][t]{\paperwidth-7.2cm}{
