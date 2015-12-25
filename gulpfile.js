@@ -1,10 +1,7 @@
 const path = require('path');
 const gulp = require('gulp');
-const lazypipe = require('lazypipe');
 const util = require('gulp-util');
 const del = require('del');
-const gulpif = require('gulp-if');
-const rename = require('gulp-rename');
 const zip = require('gulp-zip');
 
 const packageName = 'thuthesis';
@@ -82,16 +79,6 @@ gulp.task('bootstrap', function(callback) {
     callback();
 });
 
-function readmeFilter() {
-    const pattern = new RegExp('README.md', 'i');
-
-    return lazypipe().pipe(function() {
-        return gulpif(pattern, rename({
-            extname: ''
-        }));
-    })();
-}
-
 gulp.task('copy', ['bootstrap'], function() {
     const src = [...config.template.files, ...config.example.files];
     const dest = path.join(config.dist.root, config.dist.build);
@@ -99,7 +86,6 @@ gulp.task('copy', ['bootstrap'], function() {
     return gulp.src(src, {
         cwdbase: true
     })
-        .pipe(readmeFilter())
         .pipe(gulp.dest(dest));
 });
 
