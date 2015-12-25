@@ -18,7 +18,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2015/12/24 5.0 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2015/12/25 5.0.0 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 
 \usepackage{dtx-style}
@@ -118,12 +118,9 @@
 % \GlossaryPrologue{\section*{修改记录}%
 %    \addcontentsline{toc}{section}{修改记录}}
 %
-% \renewcommand{\abstractname}{摘~~要}
-% \renewcommand{\contentsname}{目~~录}
 %
-% \title{\bfseries\thuthesis：清华大学学位论文模板\thanks{Tsinghua University \LaTeX{} Thesis Template.}}
-% \author{{\fangsong 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt]{\fangsong 清华大学
-% 计算机系高性能所\thanks{目前于电子科技大学工作。}}\\[5pt] \texttt{xueruini@gmail.com}}
+% \title{\bfseries\thuthesis：清华大学学位论文模板\thanks{\textbf{T}sing\textbf{h}ua \textbf{U}niversity \LaTeX{} \textbf{Thesis} Template.}}
+% \author{{\fangsong 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt] \texttt{xueruini@gmail.com}}
 % \date{v\fileversion\ (\filedate)}
 % \maketitle\thispagestyle{empty}
 %
@@ -265,7 +262,7 @@
 % \label{sec:xelatex}
 % 很多用户对 \LaTeX{} 命令执行的次数不太清楚，一个基本的原则是多次运行 \LaTeX{}命
 % 令直至不再出现警告。下面给出生成示例文档的详细过程（\# 开头的行为注释），首先来
-% 看比较推荐的 \texttt{xelatex} 方式：
+% 看推荐的 \texttt{xelatex} 方式：
 % \begin{shell}
 % # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
 % $ xelatex main
@@ -457,7 +454,7 @@
 % \label{sec:option}
 % 本模板提供了一些选项以方便使用：
 % \begin{options}
-% \changes{v4.8.2}{2015/12/13}{使用 \pkg{kvoptions} 简化选项 type。}
+% \changes{v5.0.0}{2015/12/13}{使用 \pkg{kvoptions} 简化选项 type。}
 % \item[type]
 %   选择论文类型，当前支持：bachelor，master，doctor，postdoctor。默认为：bachelor。
 %   \begin{example}
@@ -610,7 +607,7 @@
 %   \end{example}
 %
 % \myentry{引用方式}
-% \changes{v4.8.2}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
+% \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
 % 容性，\cs{onlinecite} 会保留。}
 % \DescribeMacro{\inlinecite}
 %
@@ -1023,7 +1020,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2015/12/24 5.0 Tsinghua University Thesis Template]
+%<cls|cfg>[2015/12/25 5.0.0 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1042,7 +1039,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{4.8.1}
+\def\version{5.0.0}
 
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
@@ -1093,7 +1090,7 @@
 %
 % noraggedbottom 选项
 % \changes{v4.8}{2013/03/05}{增加 noraggedbottom 选项。}
-% \changes{v4.8.2}{2015/12/13}{norggedbottom 选项修改未 raggedbottom。}
+% \changes{v5.0.0}{2015/12/13}{norggedbottom 选项修改未 raggedbottom。}
 %    \begin{macrocode}
 \DeclareBoolOption{raggedbottom}
 %    \end{macrocode}
@@ -1108,7 +1105,7 @@
 % \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
 % \changes{v4.8}{2013/03/10}{使用 ctexbook 类，优于调用 ctex 宏包。}
 % \changes{v4.8}{2013/05/29}{添加 nocap 选项，恢复默认标题样式，模板会进一步定制。}
-% \changes{v4.8.2}{2015/03/12}{使用 XeTeX 引擎时，fontspec 宏包会被 xeCJK 自动
+% \changes{v5.0.0}{2015/03/12}{使用 XeTeX 引擎时，fontspec 宏包会被 xeCJK 自动
 % 调用。传递给 fontspec 宏包 no-math 选项，避免部分数学符号字体自动调整为 CMR。
 % 其他引擎下没有这个问题，这一行会被无视。}
 %    \begin{macrocode}
@@ -1183,7 +1180,7 @@
 % \changes{v2.6.2}{2006/06/18}{去掉 \pkg{paralist} 的 newitem 和 newenum 选项，因为默
 % 认是打开的。}
 % \changes{v2.6.4}{2006/10/23}{增加 \texttt{neverdecrease} 选项。}
-% \changes{v4.8.2}{2012/12/13}{删除 \pkg{paralist} 选项。}
+% \changes{v5.0.0}{2012/12/13}{删除 \pkg{paralist} 选项。}
 %    \begin{macrocode}
 \RequirePackage[shortlabels]{enumitem}
 %    \end{macrocode}
@@ -1214,7 +1211,7 @@
 % 默认采用中易的六款免费字体。缺少上述字体的用户可以通过
 % \file{ctex-fontset-thuthesis.def} 文件自定义字体。
 % \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
-% \changes{v4.8.2}{2015/04/17}{固定字体设置，同时改善与 ctex 兼容性。}
+% \changes{v5.0.0}{2015/04/17}{固定字体设置，同时改善与 ctex 兼容性。}
 %    \begin{macrocode}
   \IfFileExists{ctex-fontset-thuthesis.def}%
     {\ctexset{fontset=thuthesis}}%
@@ -1299,9 +1296,9 @@
 %   过 dvips 不指定页面类型而得到古怪的结果。}
 % \changes{v4.5.2}{2010/09/19}{研究生页面边距由 3.2cm 改为 3cm。}
 % \changes{v4.7}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
-% \changes{v4.8.2}{2015/03/10}{不再将页面尺寸写入 dvi，因为已不支持 dvips，
+% \changes{v5.0.0}{2015/03/10}{不再将页面尺寸写入 dvi，因为已不支持 dvips，
 % 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。}
-% \changes{v4.8.2}{2015/12/14}{用 \pkg{geometry} 简化设置。}
+% \changes{v5.0.0}{2015/12/14}{用 \pkg{geometry} 简化设置。}
 %    \begin{macrocode}
 \RequirePackage{geometry}
 \geometry{
@@ -1537,7 +1534,7 @@
 % \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
 % \changes{v2.5}{2006/05/20}{增加 empty 页面样式。}
 % \changes{v4.7}{2012/05/29}{本科页码用小五号字。}
-% \changes{v4.8.2}{2015/12/20}{利用 \pkg{fancyhdr} 设置页眉页脚。}
+% \changes{v5.0.0}{2015/12/20}{利用 \pkg{fancyhdr} 设置页眉页脚。}
 % \begin{macro}{\ps@thu@empty}
 % \begin{macro}{\ps@thu@plain}
 % \begin{macro}{\ps@thu@headings}
@@ -1711,7 +1708,7 @@
 % 定理字样使用黑体，正文使用宋体，冒号隔开
 % \changes{v2.6.2}{2006/06/17}{增加问题和猜想两个数学环境。}
 % \changes{v4.2}{2008/03/07}{调整证明环境的编号和结尾的方块。}
-% \changes{v4.8.2}{2015/04/18}{修正定理字样为黑体 (\#104)。}
+% \changes{v5.0.0}{2015/04/18}{修正定理字样为黑体 (\#104)。}
 %    \begin{macrocode}
 \theorembodyfont{\rmfamily\songti}
 \theoremheaderfont{\rmfamily\heiti}
@@ -1776,7 +1773,7 @@
 % \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
 % \changes{v2.5.3}{2006/06/07}{不管 caption 出现在什么位置，\cs{aboveskip} 总是出现在标题和浮动体之间的距离。}
 % \changes{v4.3}{2008/03/11}{子图引用时加括号。}
-% \changes{v4.8.2}{2015/06/27}{本科附录图表编号用-不用.（如图A-1，表A-2）。}
+% \changes{v5.0.0}{2015/06/27}{本科附录图表编号用-不用.（如图A-1，表A-2）。}
 %    \begin{macrocode}
 \ifthu@bachelor
   \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
@@ -1897,7 +1894,7 @@
 %    \end{macrocode}
 %
 % 各级标题格式设置。
-% \changes{v4.8.2}{2012/12/23}{用 \cs{ctexset} 来设置，替换复杂的 \cs{@startsection}。}
+% \changes{v5.0.0}{2012/12/23}{用 \cs{ctexset} 来设置，替换复杂的 \cs{@startsection}。}
 % \begin{description}
 % \item[chapter] 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段
 %   前空 24 磅，段后空 18 磅。本科要求：段前段后间距 30/20 pt，行距 20pt。但正文
@@ -1906,7 +1903,7 @@
 % \changes{v2.5}{2006/05/13}{取消 \pkg{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
 % \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
 % \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化，ft!}
-% \changes{v4.8.2}{2015/04/17}{修正章节间距问题(\#57)}
+% \changes{v5.0.0}{2015/04/17}{修正章节间距问题(\#57)}
 %
 % \item[section] 一级节标题，例如：\fbox{2.1 实验装置与实验方法}。节标题序号与标
 %   题名之间空一个汉字符（下同）。采用黑体四号（14pt）字居左书写，行距为固定
@@ -2024,7 +2021,7 @@
 % 最多涉及 4 层，即: x.x.x.x。\par
 % chapter(0), section(1), subsection(2), subsubsection(3)
 % \changes{v3.1}{2007/10/09}{博士论文目录只出现到第 3 级标题即可。}
-% \changes{v4.8.2}{2015/05/21}{硕士博士论文目录只出现到第 3 级标题即可。其他未明确要求。}
+% \changes{v5.0.0}{2015/05/21}{硕士博士论文目录只出现到第 3 级标题即可。其他未明确要求。}
 %    \begin{macrocode}
 %<*cls>
 \setcounter{secnumdepth}{3}
@@ -2091,7 +2088,7 @@
 % 研究生学位论文写作指南中规定：目录中的章标题行居左书写，一级节标题行缩进 1 个
 % 汉字符，二级节标题行缩进 2 个汉字符（但示例文件中为 1.5 个汉字符）。本科生指
 % 南中未作明确规定，示例文件中对于一级和二级节标题分别缩进 1 和 1.5 个汉字符。
-% \changes{v4.8.2}{2015/04/28}{修正学位论文中目录里节前缩进(\#103)}
+% \changes{v5.0.0}{2015/04/28}{修正学位论文中目录里节前缩进(\#103)}
 %    \begin{macrocode}
 \renewcommand*\l@section{\@dottedtocline{1}{\ccwd}{2.1em}}
 \renewcommand*\l@subsection{\@dottedtocline{2}{\ifthu@bachelor 1.5\ccwd\else 2\ccwd\fi}{3em}}
@@ -2661,7 +2658,7 @@
 % \changes{v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
 % \changes{v4.5.2}{2010/05/29}{本科封面和授权说明之间不要空白页。}
 % \changes{v4.6}{2011/05/29}{博士后报告无授权说明。}
-% \changes{v4.8.2}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文授权说明扫描版(\#36)。}
+% \changes{v5.0.0}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文授权说明扫描版(\#36)。}
 %    \begin{macrocode}
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
@@ -2835,7 +2832,7 @@
 %    \end{macrocode}
 % 声明部分
 % \changes{v3.0}{2007/05/12}{本科论文声明部分图片扫描取消。}
-% \changes{v4.8.2}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文声明扫描版(\#36)。}
+% \changes{v5.0.0}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文声明扫描版(\#36)。}
 %    \begin{macrocode}
   {
     \ifthu@postdoctor\relax\else%
@@ -3046,8 +3043,8 @@
 % 分别用于个人简历里面会出现的学术论文列表和研究成果列表。
 % publications 环境可以连续出现多次，模板会自动在之间加入空行。
 % \changes{v2.5.1}{2006/05/23}{ft，教务处和研究生院非要搞的不一样！}
-% \changes{v4.8.2}{2015/04/18}{博士后就不提在学期间了，不合适(\#100)}
-% \changes{v4.8.2}{2015/05/17}{让简历部分更符合格式指南和示例文件(\#122)}
+% \changes{v5.0.0}{2015/04/18}{博士后就不提在学期间了，不合适(\#100)}
+% \changes{v5.0.0}{2015/05/17}{让简历部分更符合格式指南和示例文件(\#122)}
 % \begin{macro}{\resumeitem}
 % \begin{macro}{\researchitem}
 % \begin{environment}{publications}
@@ -3085,7 +3082,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 % \begin{macro}{\shuji}
 % 单独使用书脊命令会在新的一页产生竖排书脊。
 % \changes{v4.5}{2009/01/04}{简化代码，同时支持 xelatex。}
-% \changes{v4.8.2}{2015/12/21}{扩展 \cs{shuji}\oarg{标题}\oarg{作者}。}
+% \changes{v5.0.0}{2015/12/21}{扩展 \cs{shuji}\oarg{标题}\oarg{作者}。}
 %    \begin{macrocode}
 %<*cls>
 \NewDocumentCommand{\shuji}{O{\thu@ctitle} O{\thu@cauthor}}{%
@@ -3178,7 +3175,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \ProvidesPackage{dtx-style}
 
 \RequirePackage[UTF8,scheme=chinese]{ctex}
-\RequirePackage[top=2.5cm, bottom=2.5cm]{geometry}
+\RequirePackage[top=2.5cm, bottom=2.5cm, headsep=5mm]{geometry}
 
 \RequirePackage{calc}
 \RequirePackage{array,longtable}
@@ -3186,9 +3183,10 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \RequirePackage{fancyhdr}
 \RequirePackage{xcolor}
 \RequirePackage{url}
+\RequirePackage{hyperref}
+\RequirePackage{enumitem}
 \RequirePackage{ifxetex}
 
-\RequirePackage{hyperref}
 \hypersetup{%
   bookmarksnumbered=true,
   bookmarksopen=true,
@@ -3207,6 +3205,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
     CJKbookmarks=false}
 \fi
 
+\setlist{nosep}
 \def\SpecialOptionIndex#1{\@bsphack%
   \index{#1\actualchar{\protect\bfseries #1}}\@esphack}
 \newenvironment{options}
@@ -3218,22 +3217,28 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
              \ovalbox{\color{magenta}\bfseries\sffamily ##1}%
              \SpecialOptionIndex{##1}}}
   }{\endlist}
+
 \DefineVerbatimEnvironment{example}{Verbatim}%
   {frame=single,framerule=0.3mm,rulecolor=\color{violet},%
    fillcolor=\color{violet!5},framesep=1mm,baselinestretch=1.2,%
    fontsize=\small,gobble=1}
+
 \DefineVerbatimEnvironment{shell}{Verbatim}%
   {frame=single,framerule=0.3mm,rulecolor=\color{olive},%
    fillcolor=\color{olive!5},framesep=1mm,fontsize=\small,gobble=1}
-\newcommand{\myentry}[1]{%
-  \vskip5pt\par\noindent\llap{{\color{purple}\bfseries #1}}\marginpar{\strut}\hskip\parindent}
+
+\newcommand{\myentry}[1]{\vskip5pt\par%
+  \noindent\llap{{\color{purple}\bfseries #1}}%
+  \marginpar{\strut}\hskip\parindent}
+
 \MakeShortVerb{\|}
-\def\pkg#1{\texttt{#1}}
-\def\option#1{\textsf{#1}}
-\def\file#1{\textsl{#1}}
+
+\newcommand*\pkg[1]{\texttt{#1}}
+\newcommand*\option[1]{\textsf{#1}}
+\newcommand*\file[1]{\textsl{#1}}
 \def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
 \newcommand{\note}[1]{\par%
-  {\color{magenta}\bfseries 说明：#1}}
+  {\color{magenta}{\bfseries 说明：}\emph{#1}}}
 %</dtx-style>
 %    \end{macrocode}
 % \fi
