@@ -2,62 +2,55 @@
 %%% mode: latex
 %%% TeX-master: t
 %%% End:
-\secretlevel{绝密} \secretyear{2100}
 
-\ctitle{清华大学学位论文 \LaTeX\ 模板\\使用示例文档}
-% 根据自己的情况选，不用这样复杂
-\makeatletter
-\ifthu@bachelor\relax\else
-  \ifthu@doctor
-    \cdegree{工学博士}
-  \else
-    \ifthu@master
-      \cdegree{工学硕士}
-    \fi
-  \fi
-\fi
-\makeatother
-
-
-\cdepartment[计算机]{计算机科学与技术系}
-\cmajor{计算机科学与技术}
-\cauthor{薛瑞尼}
-\csupervisor{郑纬民教授}
-% 如果没有副指导老师或者联合指导老师，把下面两行相应的删除即可。
-\cassosupervisor{陈文光教授}
-\ccosupervisor{某某某教授}
-% 日期自动生成，如果你要自己写就直接改这个cdate。
-% 硕博也可以启用如下三行，替换其中的\the\year和\the\month为阿拉伯数字。
-%\cdate{\zhdigits{\the\year}年\zhnumber{\the\month}月}
-
-% 博士后部分
-% \cfirstdiscipline{计算机科学与技术}
-% \cseconddiscipline{系统结构}
-% \postdoctordate{2009年7月——2011年7月}
-
-\etitle{An Introduction to \LaTeX{} Thesis Template of Tsinghua University}
-% 这块比较复杂，需要分情况讨论：
-% 1. 学术型硕士
-%    \edegree：必须为Master of Arts或Master of Science（注意大小写）
-%              “哲学、文学、历史学、法学、教育学、艺术学门类，公共管理学科
-%               填写Master of Arts，其它填写Master of Science”
-%    \emajor：“获得一级学科授权的学科填写一级学科名称，其它填写二级学科名称”
-% 2. 专业型硕士
-%    \edegree：“填写专业学位英文名称全称”
-%    \emajor：“工程硕士填写工程领域，其它专业学位不填写此项”
-% 3. 学术型博士
-%    \edegree：Doctor of Philosophy（注意大小写）
-%    \emajor：“获得一级学科授权的学科填写一级学科名称，其它填写二级学科名称”
-% 4. 专业型博士
-%    \edegree：“填写专业学位英文名称全称”
-%    \emajor：不填写此项
-\edegree{Doctor of Engineering}
-\emajor{Computer Science and Technology}
-\eauthor{Xue Ruini}
-\esupervisor{Professor Zheng Weimin}
-\eassosupervisor{Chen Wenguang}
-% 这个日期也会自动生成，你要改么？
-% \edate{December, 2005}
+\thuthesissetup{
+  %%%%%%%%%%%%%%%%%%%%%%%%%
+  % 注意：配置里面不要出现空行
+  %%%%%%%%%%%%%%%%%%%%%%%%%
+  secretlevel={绝密},
+  secretyear={2100},
+  ctitle={清华大学学位论文 \LaTeX\ 模板\\使用示例文档},
+  cdegree={工学硕士},
+  % cdepartment允许在[]中输入简称
+  cdepartment={[计算机]{计算机科学与技术系}},
+  cmajor={计算机科学与技术},
+  cauthor={薛瑞尼},
+  csupervisor={郑纬民教授},
+  % 根据实际情况相应注释以下两行：
+  cassosupervisor={陈文光教授}, % 副指导老师
+  ccosupervisor={某某某教授}, % 联合指导老师
+  % 日期自动生成，如果要自己写就直接设置。
+  % cdate={超新星纪元},
+  % 博士后部分
+  % cfirstdiscipline={计算机科学与技术},
+  % cseconddiscipline={系统结构},
+  % postdoctordate={2009年7月——2011年7月},
+  etitle={An Introduction to \LaTeX{} Thesis Template of Tsinghua University},
+  % 这块比较复杂，需要分情况讨论：
+  % 1. 学术型硕士
+  %    edegree：必须为Master of Arts或Master of Science（注意大小写）
+  %             “哲学、文学、历史学、法学、教育学、艺术学门类，公共管理学科
+  %              填写Master of Arts，其它填写Master of Science”
+  %    emajor：“获得一级学科授权的学科填写一级学科名称，其它填写二级学科名称”
+  % 2. 专业型硕士
+  %    edegree：“填写专业学位英文名称全称”
+  %    emajor：“工程硕士填写工程领域，其它专业学位不填写此项”
+  % 3. 学术型博士
+  %    edegree：Doctor of Philosophy（注意大小写）
+  %    emajor：“获得一级学科授权的学科填写一级学科名称，其它填写二级学科名称”
+  % 4. 专业型博士
+  %    edegree：“填写专业学位英文名称全称”
+  %    emajor：不填写此项
+  edegree={Doctor of Engineering},
+  emajor={Computer Science and Technology},
+  eauthor={Xue Ruini},
+  esupervisor={Professor Zheng Weimin},
+  eassosupervisor={Chen Wenguang},
+  % 这个日期也会自动生成
+  % edate={December, 2005}
+  ckeywords={\TeX, \LaTeX, CJK, 模板, 论文},
+  ekeywords={\TeX, \LaTeX, CJK, template, thesis}
+}
 
 % 定义中英文摘要和关键字
 \begin{cabstract}
@@ -84,7 +77,8 @@
   理。英文关键词同理。）
 \end{cabstract}
 
-\ckeywords{\TeX, \LaTeX, CJK, 模板, 论文}
+% 如果习惯关键字跟在摘要文字后面，可以用直接命令来设置，如下：
+% \ckeywords{\TeX, \LaTeX, CJK, 模板, 论文}
 
 \begin{eabstract}
    An abstract of a dissertation is a summary and extraction of research work
@@ -106,4 +100,4 @@
    words, with semi-colons used in between to separate one another.
 \end{eabstract}
 
-\ekeywords{\TeX, \LaTeX, CJK, template, thesis}
+% \ekeywords{\TeX, \LaTeX, CJK, template, thesis}

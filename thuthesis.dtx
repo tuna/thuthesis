@@ -2106,7 +2106,8 @@
 % \changes{v3.1}{2006/06/16}{重新定义摘要为环境，long 选项不需要了。}
 %    \begin{macrocode}
 %<*cls>
-\def\thu@def@term#1{
+\def\thu@def@term#1{%
+  \define@key{thu}{#1}{\csname #1\endcsname{##1}}
   \expandafter\gdef\csname #1\endcsname##1{%
     \expandafter\gdef\csname thu@#1\endcsname{##1}}
   \csname #1\endcsname{}}
@@ -2157,12 +2158,16 @@
 \thu@def@term{secretyear}
 \thu@def@term{ctitle}
 \thu@def@term{cdegree}
-\newcommand\cdepartment[2][]{\def\thu@cdepartment@short{#1}\def\thu@cdepartment{#2}}
-\def\caffil{\cdepartment} % todo: for compatibility
+\newcommand\cdepartment[2][]{% todo: for definekeys
+  \def\thu@cdepartment@short{#1}
+  \def\thu@cdepartment{#2}}
+\define@key{thu}{cdepartment}{%
+  \expandafter\cdepartment#1}
+\def\caffil{\cdepartment} % for compatibility
 \def\thu@cdepartment@short{}
 \def\thu@cdepartment{}
 \thu@def@term{cmajor}
-\def\csubject{\cmajor} % todo: for compatibility
+\def\csubject{\cmajor} % for compatibility
 \thu@def@term{cfirstdiscipline}
 \thu@def@term{cseconddiscipline}
 \thu@def@term{cauthor}
@@ -2174,9 +2179,9 @@
 \thu@def@term{etitle}
 \thu@def@term{edegree}
 \thu@def@term{edepartment}
-\def\eaffil{\edepartment} % todo: for compability
+\def\eaffil{\edepartment} % for compability
 \thu@def@term{emajor}
-\def\esubject{\emajor} % todo: for compability
+\def\esubject{\emajor} %for compability
 \thu@def@term{eauthor}
 \thu@def@term{esupervisor}
 \thu@def@term{eassosupervisor}
@@ -2249,7 +2254,8 @@
 %   \cs{expandafter} 都快把我整晕了。
 %    \begin{macrocode}
 \def\thu@parse@keywords#1{
-  \expandafter\gdef\csname thu@#1\endcsname{} % todo: need or not?
+  \define@key{thu}{#1}{\csname #1\endcsname{##1}}
+  \expandafter\gdef\csname thu@#1\endcsname{}
   \expandafter\gdef\csname #1\endcsname##1{
     \@for\reserved@a:=##1\do{
       \expandafter\ifx\csname thu@#1\endcsname\@empty\else
@@ -2266,9 +2272,27 @@
 %    \begin{macrocode}
 \thu@parse@keywords{ckeywords}
 \thu@parse@keywords{ekeywords}
-%</cls>
 %    \end{macrocode}
 % \end{macro}
+% \end{macro}
+%
+% 由上可见，封面和封底有一大堆信息需要设置，为了简化操作界面，提供一
+% 个 \cs{thuthesissetup} 命令支持key/value 的方式来设置。key 就是前面各个设置项的
+% 名字。\note{只能设置普通项，不支持环境项，
+% 如 \texttt{cabstract} 和 \texttt{eabstract}。} 由于这些设置项被 \cs{makecover}
+% 调用，所以此命令需要在 \cs{makecover} 之前被调用。
+% \begin{macro}{thuthesissetup}
+%    \begin{macrocode}
+\def\thuthesissetup{\kvsetkeys{thu}}
+%</cls>
+%    \end{macrocode}
+% \begin{example}
+% \thuthesissetup{
+%   cauthor={薛瑞尼},
+%   ckeywords={\TeX, \LaTeX, 论文},
+%   % 其它
+% }
+% \end{example}
 % \end{macro}
 %
 % \changes{v1.4rc1}{2005/12/14}{I have to put all chinese chars into cfg,
