@@ -2626,11 +2626,20 @@
 %    \end{macrocode}
 % \end{macro}
 %
-%
 % \begin{macro}{\makecover}
+% 生成封面总命令。
 % \changes{v2.1}{2006/02/29}{分成几个小模块来搞，不然这个 macro 太大了，看不过来。}
 %    \begin{macrocode}
-\NewDocumentCommand{\makecover}{o}{
+\def\makecover{%
+  \thu@setup@pdfinfo\thu@makecover}
+\def\thu@setup@pdfinfo{%
+  \hypersetup{%
+    pdftitle={\thu@ctitle},
+    pdfauthor={\thu@cauthor},
+    pdfsubject={\thu@cdegree},
+    pdfkeywords={\thu@ckeywords},
+    pdfcreator={\thuthesis-v\version}}}
+\NewDocumentCommand{\thu@makecover}{o}{
   \phantomsection
   \pdfbookmark[-1]{\thu@ctitle}{ctitle}
   \normalsize%
@@ -3146,20 +3155,6 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 %<*cls>
 \AtEndOfClass{\input{thuthesis.cfg}}
 %    \end{macrocode}
-%
-% \begin{macro}{\thu@setup@pdfinfo}
-% 设置一些 pdf 文档信息，依赖于 \pkg{hyperref} 宏包。
-%    \begin{macrocode}
-\def\thu@setup@pdfinfo{%
-  \hypersetup{%
-    pdftitle={\thu@ctitle},
-    pdfauthor={\thu@cauthor},
-    pdfsubject={\thu@cdegree},
-    pdfkeywords={\thu@ckeywords},
-    pdfcreator={\thu@cauthor},
-    pdfproducer={\thuthesis}}}
-%    \end{macrocode}
-% \end{macro}
 %
 % 应用对列表环境的修改。
 %    \begin{macrocode}
