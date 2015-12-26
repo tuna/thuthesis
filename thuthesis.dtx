@@ -177,11 +177,19 @@
 % \label{sec:installation}
 %
 % \subsection{下载}
+% \thuthesis{} 已经包含在主要的 \TeX{} 发行版中，一般不需要安装，阅读文档可以使
+% 用以下命令：
+% \begin{shell}
+% $ texdoc thuthesis
+% \end{shell}
+%
+% 如果要自己安装，请继续阅读。
 % \thuthesis{} 相关链接：
 % \begin{itemize}
 % \item 主页：\href{https://github.com/xueruini/thuthesis}{GitHub}
 % \item 下载：\href{http://www.ctan.org/pkg/thuthesis}{CTAN}
 % \end{itemize}
+%
 % 除此之外，不再维护任何镜像。
 %
 %
@@ -213,10 +221,11 @@
 % Makefile & self-explanation\\
 % latexmkrc & latexmk 配置文件 \\
 % zhfonts.py & 生成中文字体配置文件\\
-% README.md & self-explanation\\
+% README.md & Readme\\
 % \textbf{thuthesis.pdf} & 用户手册（本文档）\\\hline
 %   \end{longtable}
 % \end{center}
+%
 % 几点说明：
 % \begin{itemize}
 % \item \file{thuthesis.cls} 和 \file{thuthesis.cfg} 可以由 \file{thuthesis.ins}
@@ -766,7 +775,7 @@
 % \ecosupervisor{3rd Boss}
 % \end{example}
 %
-% \subsubsection{论文成文日期}
+% \subsubsection{成文日期}
 % \DescribeMacro{\cdate}
 % \DescribeMacro{\edate}
 % \DescribeMacro{\postdoctordate}
@@ -793,8 +802,9 @@
 % \begin{cabstract}
 %  摘要请写在这里...
 % \end{cabstract}
+%
 % \begin{eabstract}
-%  Here comes English abstract...
+%  Here comes the abstract in English...
 % \end{eabstract}
 % \end{example}
 %
@@ -846,14 +856,19 @@
 % \end{denotation}
 % \end{example}
 %
-% \subsubsection{索引}
-% 插图、表格和公式三个索引命令分别如下，将其插入到期望的位置即可（带星号的命令表
+% \subsection{目录和索引表}
+% 目录、插图、表格和公式等索引命令分别如下，将其插入到期望的位置即可（带星号的命令表
 % 示对应的索引表不会出现在目录中）：
 %
+% \DescribeMacro{\tableofcontents}
+% \DescribeMacro{\listoffigures}
+% \DescribeMacro{\listoftables}
+% \DescribeMacro{\listofequations}
 % \begin{center}
 % \begin{tabular}{ll}
 % \hline
 %   {\heiti 命令} & {\heiti 说明} \\\hline
+% \cs{tableofcontents} & 目录 \\
 % \cs{listoffigures} & 插图索引\\
 % \cs{listoffigures*} & \\\hline
 % \cs{listoftables} & 表格索引\\
@@ -866,7 +881,7 @@
 % \LaTeX{} 默认支持插图和表格索引，是通过 \cs{caption} 命令完成的，因此它们必须出
 % 现在浮动环境中，否则不被计数。
 %
-% 有的同学不想让某个表格或者图片出现在索引里面，那么请使用命令 \cs{caption*}，这
+% 如果不想让某个表格或者图片出现在索引里面，那么请使用命令 \cs{caption*}，这
 % 个命令不会给表格编号，也就是出来的只有标题文字而没有``表~xx''，``图~xx''，否则
 % 索引里面序号不连续就显得不伦不类，这也是 \LaTeX{} 里星号命令默认的规则。
 %
@@ -874,8 +889,7 @@
 % 图片显示成``表''和``图''很不协调的话，一个很好的办法还是用 \cs{caption*}，参数
 % 随便自己写，具体用法请参看示例文档。
 %
-% 如果你的确想让它编号，但又不想让它出现在索引中的话，那就自己改一改模板的代码吧，
-% 我目前不打算给模板增加这种另类命令。
+% 如果的确想让其编号，但又不想出现在索引中的话，目前模板暂不支持。
 %
 % 公式索引为本模板扩展，模板扩展了 \pkg{amsmath} 几个内部命令，使得公式编号样式和
 % 自动索引功能非常方便。一般来说，你用到的所有数学环境编号都没问题了，这个可以参
@@ -952,7 +966,10 @@
 % \end{ack}
 % \end{example}
 %
-% \subsection{数学环境}
+% \subsection{自定义}
+% \label{sec:othercmd}
+%
+% \subsubsection{数学环境}
 % \label{sec:math}
 % \thuthesis{} 定义了常用的数学环境：
 %
@@ -988,8 +1005,6 @@
 % 产生（自动编号）：\\[5pt]
 % \fbox{{\heiti 胡说~1.1~~~} {契丹武士要来中原夺武林秘笈。—— 慕容博}}
 %
-% \subsection{自定义以及其它}
-% \label{sec:othercmd}
 % \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
 % 容性，\cs{onlinecite} 会保留。}
 %
@@ -1064,7 +1079,7 @@
 % \end{document}
 % \end{example}
 %
-% \myentry{其它}
+% \subsection{其它}
 % 模板的配置文件 \file{thuthesis.cfg} 中定义了很多固定词汇，一般无须修改。如果有特殊需求，
 % 推荐在导言区使用 \cs{renewcommand}。
 %
@@ -1405,7 +1420,7 @@
 %<*cls>
 \let\thu@cleardoublepage\cleardoublepage
 \newcommand{\thu@clearemptydoublepage}{%
-  \clearpage{\pagestyle{empty}\thu@cleardoublepage}}
+  \clearpage{\pagestyle{thu@empty}\thu@cleardoublepage}}
 \let\cleardoublepage\thu@clearemptydoublepage
 %    \end{macrocode}
 % \end{macro}
@@ -1580,7 +1595,7 @@
 % 正文小四号 (12bp) 字，行距为固定值 20 bp。
 %    \begin{macrocode}
 \renewcommand\normalsize{%
-  \@setfontsize\normalsize{12bp}{20bp}
+  \@setfontsize\normalsize{12bp}{20bp}%
   \abovedisplayskip=20bp \@plus 2bp \@minus 2bp
   \abovedisplayshortskip=20bp \@plus 2bp \@minus 2bp
   \belowdisplayskip=\abovedisplayskip
@@ -1878,7 +1893,7 @@
 % \end{macro}
 %
 %
-% \subsubsection{中文标题定义}
+% \subsubsection{章节标题}
 % \label{sec:theor}
 % \changes{v2.5}{2006/05/19}{增加索引名称定义。}
 %    \begin{macrocode}
@@ -1917,10 +1932,6 @@
   \fi}
 %</cfg>
 %    \end{macrocode}
-%
-%
-% \subsubsection{章节标题}
-% \label{sec:titleandtoc}
 %
 % 如果章节题目中的英文要使用 arial，那么就加上 \cs{sffamily}
 %    \begin{macrocode}
@@ -2081,7 +2092,7 @@
 %</cls>
 %
 %
-% \subsubsection{目录格式}
+% \subsubsection{目录}
 % \label{sec:toc}
 % 最多涉及 4 层，即: x.x.x.x。\par
 % chapter(0), section(1), subsection(2), subsubsection(3)
@@ -2798,7 +2809,7 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \subsubsection{摘要格式}
+% \subsubsection{摘要}
 % \label{sec:abstractformat}
 %
 % \begin{macro}{\thu@makeabstract}
@@ -2958,7 +2969,7 @@
 %    \end{macrocode}
 % \end{environment}
 %
-% \subsubsection{索引部分}
+% \subsubsection{图表索引}
 % \label{sec:threeindex}
 % \changes{v2.5}{2006/05/18}{增加插图、表格和公式索引。}
 % \changes{v2.5}{2006/05/19}{为了让索引中能出现\textbf{图 xxx}，不得不修改 \LaTeX
@@ -3029,7 +3040,7 @@
 % \end{macro}
 %
 %
-% \subsubsection{参考文献}
+% \subsection{参考文献}
 % \label{sec:ref}
 %
 % \begin{macro}{\inlinecite}
@@ -3112,7 +3123,7 @@
 % \end{environment}
 %
 %
-% \subsubsection{附录}
+% \subsection{附录}
 % \label{sec:appendix}
 %
 % \begin{environment}{appendix}
@@ -3126,7 +3137,7 @@
 %    \end{macrocode}
 % \end{environment}
 %
-% \subsubsection{个人简历}
+% \subsection{个人简历}
 % \changes{v1.5}{2005/12/16}{增加个人简历章节的命令，去掉主文件中需要重新
 % 定义 \cs{cleardoublepage} 和自己写 \cs{markboth}，\cs{addcontentsline} 的部分。}
 %
@@ -3183,7 +3194,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 % \end{macro}
 % \end{macro}
 %
-% \subsubsection{书脊}
+% \subsection{书脊}
 % \label{sec:shuji}
 % \begin{macro}{\shuji}
 % 单独使用书脊命令会在新的一页产生竖排书脊。
@@ -3198,7 +3209,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 %    \end{macrocode}
 % \end{macro}
 %
-% \subsubsection{索引}
+% \subsection{索引}
 %
 % 生成索引的一些命令，虽然我们暂时还用不到。
 %    \begin{macrocode}
@@ -3227,7 +3238,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 %</cls>
 %    \end{macrocode}
 %
-% \subsubsection{自定义命令和环境}
+% \subsection{自定义命令和环境}
 % \label{sec:userdefine}
 %
 % \begin{macro}{\pozhehao}
@@ -3241,7 +3252,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 % \end{macro}
 %
 %
-% \subsubsection{其它}
+% \subsection{其它}
 % \label{sec:other}
 %
 % 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改，否则
