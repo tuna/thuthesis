@@ -3,12 +3,15 @@
 %%% TeX-master: t
 %%% End:
 
-\thuthesissetup{
+\thusetup{
   %%%%%%%%%%%%%%%%%%%%%%%%%
   % 注意：配置里面不要出现空行
   %%%%%%%%%%%%%%%%%%%%%%%%%
+  % 不需要就注释掉
   secretlevel={绝密},
   secretyear={2100},
+  %
+  % 中文信息
   ctitle={清华大学学位论文 \LaTeX\ 模板\\使用示例文档},
   cdegree={工学硕士},
   % cdepartment允许在[]中输入简称
@@ -19,12 +22,18 @@
   % 根据实际情况相应注释以下两行：
   cassosupervisor={陈文光教授}, % 副指导老师
   ccosupervisor={某某某教授}, % 联合指导老师
-  % 日期自动生成，如果要自己写就直接设置。
+  % 日期自动使用当前时间，若需指定按如下方式修改：
   % cdate={超新星纪元},
-  % 博士后部分
+  %
+  % 博士后专有部分
   % cfirstdiscipline={计算机科学与技术},
   % cseconddiscipline={系统结构},
   % postdoctordate={2009年7月——2011年7月},
+  % id={what?},
+  % udc={what?},
+  % catalognumber={what},
+  %
+  % 英文信息
   etitle={An Introduction to \LaTeX{} Thesis Template of Tsinghua University},
   % 这块比较复杂，需要分情况讨论：
   % 1. 学术型硕士
@@ -46,8 +55,10 @@
   eauthor={Xue Ruini},
   esupervisor={Professor Zheng Weimin},
   eassosupervisor={Chen Wenguang},
-  % 这个日期也会自动生成
+  % 日期自动生成，若需指定按如下方式修改：
   % edate={December, 2005}
+  %
+  % 关键词用“英文逗号”分割
   ckeywords={\TeX, \LaTeX, CJK, 模板, 论文},
   ekeywords={\TeX, \LaTeX, CJK, template, thesis}
 }

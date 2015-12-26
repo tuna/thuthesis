@@ -91,12 +91,14 @@
 % \changes{v2.5.1}{2006/05/24}{根据教务处的新要求调整附录部分。}
 % \changes{v2.5.1}{2006/05/25}{参考文献中杂志文章如果没有卷号，那么页码直接跟在
 % 年份后面，并用句点分割。在 \file{thubib.bst} 中增加 output.year 函数。}
-% \changes{v2.6.1}{2006/06/16}{取消 \file{thubib.bst} 中 inbook 类 volume 后的页码。}
+% \changes{v2.6.1}{2006/06/16}{取消 \file{thubib.bst} 中 inbook 类 volume 后的页
+% 码。}
+% \changes{v3.0}{2007/05/12}{没有了综合论文训练页面，很多本科论文专用命令就消失了。}
 % \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
 % \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
 % \changes{v4.6}{2011/10/22}{使用手册更新。}
 % \changes{v4.7}{2012/06/12}{去掉 \pkg{hypernat} 依赖，\pkg{hyperref} 和 \pkg{natbib} 可以很好配合了。}
-% \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \pkg{ctex}。}
+% \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \CTeX。}
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup,\par,\\}
 % \DoNotIndex{\if,\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
@@ -363,13 +365,8 @@
 % \item \href{http://groups.google.com/group/thuthesis}{ThuThesis@Google Groups}
 % \end{itemize}
 %
-% \subsection{\thuthesis{} 使用向导}
+% \subsection{示例文件}
 % \label{sec:userguide}
-% 推荐新用户先看网上的《\thuthesis{} 使用向导》幻灯片\footnote{有点老了，不过还是
-%   很有帮助的。}，那份讲稿比这份文档简练易懂。
-%
-% \subsection{\thuthesis{} 示例文件}
-% \label{sec:userguide1}
 % 模板核心文件有四
 % 个：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{ctex-fontset-thuthesis.def} 和
 % \file{thuthesis.bst}，但是如果没有示例文档用户会发现很难下手。所以推荐新用户从模板
@@ -390,14 +387,13 @@
 % % 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
 % \usepackage{thuthesis}
 %
+% % 指定图片的搜索目录
+% \graphicspath{{figures/}}
+%
 % % 可以在这里修改配置文件中的定义，导言区可以使用中文。
 % % \def\myname{薛瑞尼}
 %
 % \begin{document}
-%
-% % 指定图片的搜索目录
-% \graphicspath{{figures/}}
-%
 %
 % %%% 封面部分
 % \frontmatter
@@ -412,12 +408,10 @@
 % % 符号对照表
 % \input{data/denotation}
 %
-%
 % %%% 正文部分
 % \mainmatter
 % \include{data/chap01}
 % \include{data/chap02}
-%
 %
 % %%% 其它部分
 % \backmatter
@@ -428,13 +422,11 @@
 % % 公式索引
 % \listofequations
 %
-%
 % % 参考文献
-% % 注意至少需要引用一篇参考文献，否则下面两行可能引起编译错误。
+% % 注意：至少需要引用一篇参考文献，否则下面两行可能引起编译错误。
 % % 如果不需要参考文献，请将下面两行删除或注释掉。
 % \bibliographystyle{thuthesis}
 % \bibliography{ref/refs}
-%
 %
 % % 致谢
 % \include{data/ack}
@@ -450,13 +442,15 @@
 % \end{document}
 % \end{example}
 %
-% \subsection{选项}
+% \subsection{论文选项}
 % \label{sec:option}
 % 本模板提供了一些选项以方便使用：
 % \begin{options}
 % \changes{v5.0.0}{2015/12/13}{使用 \pkg{kvoptions} 简化选项 type。}
 % \item[type]
-%   选择论文类型，当前支持：bachelor，master，doctor，postdoctor。默认为：bachelor。
+%   选择论文类型，当前支
+%   持：\option{bachelor}，\option{master}，\option{doctor}，\option{postdoctor}。
+%   为必选项。
 %   \begin{example}
 % \documentclass[type=doctor]{thuthesis}
 %   \end{example}
@@ -477,33 +471,36 @@
 %   正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \option{openright}，
 %   也是 \thuthesis\ 的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么
 %   模板会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎
-%   更倾向于页面连续，那就是通常所说的 \option{openany}。{\fangsong 目前所有论文
-%   都是 \option{openany}。}这两个选项不用专门设置，\thuthesis{} 会根据当前论文类
+%   更倾向于页面连续，那就是通常所说的 \option{openany}。\footnote{目前所有论文
+%   都是 \option{openany}。}这两个选项不用设置，\thuthesis{} 会根据当前论文类
 %   型自动选择。
 %
 % \item[arial]
-%   使用真正的 \option{arial} 字体。此选项会装载 \pkg{arial} 字体宏包，如果此宏包
+%   使用真正的 \emph{Arial} 字体。此选项会装载 \pkg{Arial} 字体宏包，如果此宏包
 %   不存在，就装
 %   载 \pkg{Helvet}。\option{arialtoc} 和 \option{arialtitle} 不受
-%   \texttt{arial} 的影响。因为一般的 \TeX{} 发行都没有 \pkg{arial} 字体，所以默
-%   认采用 \pkg{Helvet}，二者效果非常相似。如果一定要用 \pkg{arial} 字体，请参
+%   \option{arial} 选项的影响。因为一般的 \TeX{} 发行都没有 \emph{Arial} 字体，所以默
+%   认采用 \pkg{Helvet}，二者效果非常相似。如果一定要用 \emph{Arial} 字体，请参
 %   看：\href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial
 %   字体}。
 %
 % \item[arialtoc]
-%   目录项（章目录项除外）中的英文是否用 \option{arial} 字体。本选项
+%   目录项（章目录项除外）中的英文是否用 \emph{Arial} 字体。本选项
 %   和 \option{arialtitle} 都不用用户干预，模板根据当前论文类型自动设置。
 %
 % \item[arialtitle]
-%   章节标题中英文是否用 \option{arial} 字体（默认打开）。
+%   章节标题中英文是否用 \emph{Arial} 字体（默认打开）。
 % \end{options}
 %
-% \subsection{字体配置}
+% \subsection{中文字体}
+% \label{sec:chinese-fonts}
+%
+% \subsubsection{字体配置}
 % \label{sec:font-config}
-% 正确配置中文字体是使用模板的第一步。模板调用 \pkg{ctex} 宏包，提供如下字体使用方式：
+% 正确配置中文字体是使用模板的第一步。模板调用 \CTeX\ 宏包，提供如下字体使用方式：
 % \begin{itemize}
-%   \item 基于传统 \pkg{CJK} 包，使用 latex、pdflatex 编译；
-%   \item 基于 \pkg{xeCJK} 包，使用 xelatex 编译。
+%   \item 基于传统 \pkg{CJK} 包，使用 latex、pdflatex 编译。
+%   \item 基于 \pkg{xeCJK} 包，使用 xelatex 编译。（推荐方法）
 % \end{itemize}
 %
 % 第一种方式的字体配置比较繁琐，建议使用 \emph{donated@newsmth} 制作的中文字体包
@@ -512,6 +509,7 @@
 % \file{ctex-fontset-thuthesis.def} 文件配置所需字体。使用中易六种字体的配置如下：
 % \begin{example}
 % \ProvidesFile{ctex-fontset-thuthesis.def}
+%
 % \setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
 % \setCJKsansfont{SimHei}
 % \setCJKmonofont{FangSong}
@@ -521,6 +519,7 @@
 % \setCJKfamilyfont{zhfs}{FangSong}
 % \setCJKfamilyfont{zhli}{LiSu}
 % \setCJKfamilyfont{zhyou}{YouYuan}
+%
 % \newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
 % \newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
 % \newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
@@ -533,12 +532,13 @@
 % 为 |FangSong_GB2312|。
 %
 % 研究生一般用不到隶书和幼圆字体。如果系统中没有导致报错，可以将
-% \file{ctex-fontset-thuthesis.def} 文件中 zhli 和 zhyou 相应行删除，并将论文 \file{.tex} 文件
-% 中引用 |\lishu| 和 |\youyuan| 的文字删除。
+% \file{ctex-fontset-thuthesis.def} 文件中 \texttt{zhli} 和 \texttt{zhyou} 相应行删除，并将论文 \file{.tex} 文件
+% 中引用 \cs{lishu} 和 \cs{youyuan} 的文字删除。
 %
 % 宏包中包含了 \file{zhfonts.py} 脚本，为 Linux/Mac 用户提供一种交互式的方式从系
-% 统中文字体中选择合适的六种字体，最终生成对应的 \file{ctex-fontset-thuthesis.def}文件。要使用
-% 它，只需在命令行输入该脚本的完整路径即可。
+% 统中文字体中选择合适的六种字体，最终生成对应
+% 的\file{ctex-fontset-thuthesis.def} 文件。要使用它，只需在命令行输入该脚本的完
+% 整路径即可。
 %
 % 另外，用户也可以通过命令
 % \begin{shell}
@@ -546,16 +546,8 @@
 % \end{shell}
 % 得到系统中现有的中文字体列表，并相应替换上述配置。
 %
-% \subsection{命令}
-% \label{sec:command}
-% 模板中的命令分为两类：一是格式控制，二是内容替换。格式控制如字体、字号、字距和
-% 行距。内容替换如姓名、院系、专业、致谢等等。其中内容替换命令居多，而且主要集中
-% 在封面上，其中有以本科论文为最（比硕士和博士论文多了\textbf{综合论文训练任务书}一
-% 页）。首先来看格式控制命令。
-%
-% \subsubsection{基本控制命令}
-% \label{sec:basiccom}
-%
+% \subsubsection{字体命令}
+% \label{sec:fontcmds}
 % \myentry{字体}
 % \DescribeMacro{\songti}
 % \DescribeMacro{\fangsong}
@@ -563,7 +555,7 @@
 % \DescribeMacro{\kaishu}
 % \DescribeMacro{\lishu}
 % \DescribeMacro{\youyuan}
-% 等分别用来切换宋体、仿宋、黑体、楷体、隶书和幼圆字体。
+% 用来切换宋体、仿宋、黑体、楷体、隶书和幼圆字体。
 %
 % \begin{example}
 % {\songti 乾：元，亨，利贞}
@@ -589,7 +581,7 @@
 % \end{tabular}
 % \end{center}
 %
-% 使用方法为：\cs{command}\oarg{num}，其中 |command| 为字号命令，|num| 为行距。比
+% 使用方法为：\cs{command}\oarg{num}，其中 command 为字号命令，num 为行距。比
 % 如 |\xiaosi[1.5]| 表示选择小四字体，行距 1.5 倍。写作指南要求表格中的字体
 % 是 \cs{dawu}，模板已经设置好了。
 %
@@ -597,135 +589,130 @@
 % {\erhao 二号 \sanhao 三号 \sihao 四号  \qihao 七号}
 % \end{example}
 %
-% \myentry{密级}
-% \DescribeMacro{\secretlevel}
-% \DescribeMacro{\secretyear}
-% 定义秘密级别和年限：
-%   \begin{example}
-% \secretyear{5}
-% \secretlevel{内部}
-%   \end{example}
+% 也可以使用 \CTeX\ 定义的 \cs{zihao}\marg{num} 来切换字号，具体用法参看其文
+% 档。
 %
-% \myentry{引用方式}
-% \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
-% 容性，\cs{onlinecite} 会保留。}
-% \DescribeMacro{\inlinecite}
-%
-% 学校要求的参考文献引用有两种模式：（1）上标模式。比如``同样的工作有很
-% 多$^{[1,2]}$\ldots''。（2）正文模式。比如``文[3] 中详细说明了\ldots''。其中上标
-% 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
-% 的 |\cite{key}|，而 |\inlinecite{key}| 则用来生成正文模式。
-%
-% 关于参考文献模板推荐使用 \BibTeX{}，关于中文参考文献需要额外增加一个 Entry: lang，将其设置为 \texttt{zh}
-% 用来指示此参考文献为中文，以便 \file{thuthesis.bst} 处理。如：
-% \begin{example}
-% @INPROCEEDINGS{cnproceed,
-%   author    = {王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝},
-%   title     = {武林高手从入门到精通},
-%   booktitle = {第~$N$~次华山论剑},
-%   year      = 2006,
-%   address   = {西安, 中国},
-%   month     = sep,
-%   lang      = "zh",
-% }
-%
-% @ARTICLE{cnarticle,
-%   AUTHOR  = "贾宝玉 and 林黛玉 and 薛宝钗 and 贾探春",
-%   TITLE   = "论刘姥姥食量大如牛之现实意义",
-%   JOURNAL = "红楼梦杂谈",
-%   PAGES   = "260--266",
-%   VOLUME  = "224",
-%   YEAR    = "1800",
-%   LANG    = "zh",
-% }
-% \end{example}
-%
-% 注意如果不需要引用参考文献，请删除 \file{main.tex} 中 |\bibliography| 开头的两行，
-% 以避免可能的编译错误。
-%
-% \myentry{书脊}
-% \DescribeMacro{\shuji}
-% 生成装订的书脊，为竖排格式，命令格式：\cs{shuji}\oarg{标题}\oarg{作者}。默认参
-% 数为论文中文题目和中文作者。如果中文题目中没有英文字母，那么直接调用此命令即可。
-% 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{shuji.tex}）。下面是一
-% 个例子：
-% \begin{example}
-% \documentclass{thuthesis}
-%
-% \begin{document}
-% \ctitle{论文中文题目}
-% \cauthor{中文姓名}
-%
-% \shuji % 使用默认标题和默认作者
-%
-% \shuji[使用默认作者的标题]
-%
-% \shuji[同时修改标题和作者的标题][尼瑞薛]
-%
-% % 如果标题中有英文，那可以参考如下方法进行微调：
-% \shuji[清华大学~\hspace{0.2em}\raisebox{2pt}{\LaTeX}%
-% \hspace{-0.25em} 论文模板 \hspace{0.1em}\raisebox{2pt}%
-% {v\version}\hspace{-0.25em}样例]
-% \end{document}
-% \end{example}
-%
-% \myentry{破折号}
-% \DescribeMacro{\pozhehao}
-% 中文破折号在 CJK-\LaTeX\ 里没有很好的处理，我们平时输入的都是两个小短线，比如这
-% 样，{\heiti 中国——中华人民共和国}。这不符合中文习惯。所以这里定义了一个命令生成更
-% 好看的破折号，不过这似乎不是一个好的解决办法。有同学说不能用在 \cs{section} 等命
-% 令中使用，简单的办法是可以提供一个不带破折号的段标题：\cs{section}\oarg{没有破
-%   折号精简标题}\marg{带破折号的标题}。
-%
-%
-% \subsubsection{封面命令}
+% \subsection{封面信息}
 % \label{sec:titlepage}
-% 下面是内容替换命令，其中以 |c| 开头的命令跟中文相关，|e| 开头则为对应的英文。这
-% 部分的命令数目虽然比较多，实际上都相当简单，套用即可。
+% 封面信息提供两种配置方法：一是通过统一设置命
+% 令 \cs{thusetup} 通过\emph{key=value} 形式完成；二是每个信息利用命令独立设置，
+% 其中命令的名字跟 |key| 相同。两种方式可以交叉使用，并按顺序执行（即后来的设置会覆
+% 盖前面的）。以 \texttt{c} 开头的命令跟中文相关，\texttt{e} 开头则为对应的英文。
+%
+% \DescribeMacro{\thusetup}
+% 用法与常见 \emph{key=value} 命令相同，如下：
+% \begin{example}
+% \thusetup{
+%   key1 = value1,
+%   key2 = {a value, with comma},
+% }
+% % 可以多次调用
+% \thusetup{
+%   key3 = value3,
+%   key1 = value11, % 覆盖 value1
+% }
+% \end{example}
+%
+% \note{\cs{thusetup} 使用 \pkg{kvoptions} 机制，所以配置项之间不能有空行，否则
+% 会报错。}
 %
 % 大多数命令的使用方法都是： \cs{command}\marg{arg}，例外者将具体指出。这些命令都
 % 在示例文档的 \file{data/cover.tex} 中。
 %
-% \myentry{论文标题}
+% \subsubsection{密级}
+% \DescribeMacro{\secretlevel}
+% \DescribeMacro{\secretyear}
+% 定义秘密级别和年限，需要打开论文的 \option{secret} 选项。
+%   \begin{example}
+% \thusetup{
+%   secretyear=2020,
+%   secretlevel=内部,
+% }
+% % 以下命令方式与上面的等价：
+% \secretyear{2020}
+% \secretlevel{内部}
+%   \end{example}
+%
+% \subsubsection{博士后专用参数}
+% \DescribeMacro{\catalognumber}
+% \DescribeMacro{\udc}
+% \DescribeMacro{\id}
+% \begin{example}
+% \thusetup{
+%   catalognumber={分类号},
+%   udc={udc},
+%   id={id}
+% }
+% % 等价：
+% \catalognumber{分类号}
+% \udc{udc}
+% \id{编号}
+% \end{example}
+%
+% \subsubsection{论文标题}
 % \DescribeMacro{\ctitle}
 % \DescribeMacro{\etitle}
 % \begin{example}
+% \thusetup{
+%   ctitle={论文中文题目},
+%   etitle={Thesis English Title}
+% }
+% % 等价命令形式：
 % \ctitle{论文中文题目}
 % \etitle{Thesis English Title}
 % \end{example}
 %
-% \myentry{作者姓名}
+% \subsubsection{作者姓名}
 % \DescribeMacro{\cauthor}
 % \DescribeMacro{\eauthor}
 % \begin{example}
+% \thusetup{
+%   cauthor={中文姓名},
+%   eauthor={Name in Pinyin}
+% }
+% % 等价：
 % \cauthor{中文姓名}
-% \eauthor{Your name in PinYin}
+% \eauthor{Name in PinYin}
 % \end{example}
 %
-% \myentry{申请学位名称}
+% \subsubsection{申请学位名称}
 % \DescribeMacro{\cdegree}
 % \DescribeMacro{\edegree}
 % \begin{example}
+% \thusetup{
+%   cdegree={您要申请什么学位},
+%   edegree={degree in English}
+% }
+% % 等价：
 % \cdegree{您要申请什么学位}
 % \edegree{degree in English}
 % \end{example}
 %
-% \myentry{院系名称}
+% \subsubsection{院系名称}
 % \DescribeMacro{\cdepartment}
 % \DescribeMacro{\edepartment}
-%
 % \cs{cdepartment} 可以加一个可选参数，如：\cs{cdepartmentl}\oarg{精简}\marg{详
-%   细}，主要针对本科生的\textbf{综合论文训练}部分，因为需要填写的空间有限，最好
-% 给出一个详细和精简院系名称，如\textbf{计算机科学与技术}和\textbf{计算机}。
+%   细}，主要针对本科生的“\textbf{综合论文训练}”部分，因为需要填写的空间有限，最好
+% 给出一个详细和精简院系名称，如“\textbf{计算机科学与技术}”和“\textbf{计算机}”。
 % \begin{example}
+% \thusetup{
+%   cdepartment={[系名简称]{系名全称}},
+%   edepartment={Deparment}
+% }
+% % 等价：
 % \cdepartment[系名简称]{系名全称}
 % \edepartment{Department}
 % \end{example}
 %
-% \myentry{专业名称}
+% \subsubsection{专业名称}
 % \DescribeMacro{\cmajor}
 % \DescribeMacro{\emajor}
 % \begin{example}
+% \thusetup{
+%   cmajor={专业名称},
+%   emajor={Major in English}
+% }
+% % 等价：
 % \cmajor{专业名称}
 % \emajor{Major in English}
 % \end{example}
@@ -733,14 +720,25 @@
 % \DescribeMacro{\cfirstdiscipline}
 % \DescribeMacro{\cseconddiscipline}
 % \begin{example}
+% \thusetup{
+%   cfirstdiscipline={博士后一级学科},
+%   cseconddiscipline={博士后二级学科}
+% }
+% % 等价：
 % \cfirstdiscipline{博士后一级学科}
 % \cseconddiscipline{博士后二级学科}
 % \end{example}
 %
-% \myentry{导师姓名}
+% \subsubsection{导师}
+% \myentry{导师}
 % \DescribeMacro{\csupervisor}
 % \DescribeMacro{\esupervisor}
 % \begin{example}
+% \thusetup{
+%   csupervisor={导师~教授},
+%   esupervisor={Supervisor}
+% }
+% % 等价：
 % \csupervisor{导师~教授}
 % \esupervisor{Supervisor}
 % \end{example}
@@ -751,7 +749,7 @@
 % 本科生的辅导教师，硕士的副指导教师。
 % \begin{example}
 % \cassosupervisor{副导师~副教授}
-% \eassosupervisor{Small Boss}
+% \eassosupervisor{2nd Boss}
 % \end{example}
 %
 % \myentry{联合导师}
@@ -759,34 +757,38 @@
 % \DescribeMacro{\ecosupervisor}
 % 硕士生联合指导教师，博士生联合导师。
 % \begin{example}
+% \thusetup{
+%   ccosupervisor={联合导师~教授},
+%   ecosupervisor={3rd Boss}
+% }
+% % 等价：
 % \ccosupervisor{联合导师~教授}
-% \ecosupervisor{Tiny Boss}
+% \ecosupervisor{3rd Boss}
 % \end{example}
 %
-% \myentry{论文成文日期}
+% \subsubsection{论文成文日期}
 % \DescribeMacro{\cdate}
 % \DescribeMacro{\edate}
 % \DescribeMacro{\postdoctordate}
 % 默认为当前时间，也可以自己指定。
 % \begin{example}
+% \thusetup{
+%   cdate={中文日期},
+%   edate={English Date},
+%   postdoctordate={2009年7月——2011年7月} % 博士后研究起止日期
+% }
+% % 等价：
 % \cdate{中文日期}
 % \edate{English Date}
 % \postdoctordate{2009年7月——2011年7月} % 博士后研究起止日期
 % \end{example}
 %
-% \myentry{博士后专用参数}
-% \DescribeMacro{\catalognumber}
-% \DescribeMacro{\udc}
-% \DescribeMacro{\id}
-% \begin{example}
-% \catalognumber{分类号}
-% \udc{udc}
-% \id{编号}
-% \end{example}
-%
-% \myentry{摘要}
+% \subsubsection{摘要}
+% \myentry{摘要正文}
 % \DescribeEnv{cabstract}
 % \DescribeEnv{eabstract}
+% \note{摘要正文只能用环境命令的形式，不支持 \cs{thusetup}。}
+%
 % \begin{example}
 % \begin{cabstract}
 %  摘要请写在这里...
@@ -802,6 +804,11 @@
 % 关键词用英文逗号分割写入相应的命令中，模板会解析各关键词并生成符合不同论文格式
 % 要求的关键词格式。
 % \begin{example}
+% \thusetup{
+%   ckeywords={关键词 1, 关键词 2},
+%   ekeywords={keyword 1, keyword 2}
+% }
+% % 等价：
 % \ckeywords{关键词 1, 关键词 2}
 % \ekeywords{keyword 1, keyword 2}
 % \end{example}
@@ -818,12 +825,7 @@
 % \makecover[scan-auth.pdf]
 % \end{example}
 %
-%
-% \subsubsection{其它部分}
-% \label{sec:otherparts}
-% 论文其它主要部分命令：
-%
-% \myentry{符号对照表}
+% \subsubsection{符号对照表}
 % \DescribeEnv{denotation}
 % 主要符号表环境。简单定义的一个 \texttt{list}，跟 \texttt{description} 非常类似，
 % 使用方法参见示例文件。带一个可选参数，用来指定符号列的宽度（默认为 2.5cm）。
@@ -844,7 +846,7 @@
 % \end{denotation}
 % \end{example}
 %
-% \myentry{索引}
+% \subsubsection{索引}
 % 插图、表格和公式三个索引命令分别如下，将其插入到期望的位置即可（带星号的命令表
 % 示对应的索引表不会出现在目录中）：
 %
@@ -892,13 +894,14 @@
 % \end{mymath}
 % \end{example}
 %
-% 当然 mymath 正文中公式的编号需要你自己来做。
+% 当然 mymath 正文中公式的编号需要自己来做。
 %
 % 同图表一样，附录中的公式有时候也不希望它跟全文统一编号，而且不希望它出现在公式
 % 索引中，目前的解决办法就是利用 \cs{tag*}\marg{公式编号} 来解决。用法很简单，此
 % 处不再罗嗦，实例请参看示例文档附录 A 的前两个公式。
 %
-% \myentry{简历}
+% \subsection{封底部分}
+% \subsubsection{简历}
 % \DescribeEnv{resume}
 % 开启个人简历章节，包括个人简历，发表文章，研究成果列表等。每个子项目请
 % 用以下对应命令开启：\cs{xxxitem}\marg{subtitle}。
@@ -917,7 +920,7 @@
 %
 % 具体用法请参看示例文档 \file{data/resume.tex}。
 %
-% \myentry{附录}
+% \subsubsection{附录}
 % \DescribeEnv{appendix}
 % 所有的附录都插到这里来。因为附录会更改默认的 chapter 属性，而后面的{\heiti 个人简
 %   历}又需要恢复，所以实现为环境可以保证全局的属性不受影响。
@@ -928,7 +931,7 @@
 % \end{appendix}
 % \end{example}
 %
-% \myentry{致谢声明}
+% \subsubsection{致谢声明}
 % \DescribeEnv{ack}
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！下面是数学系一位同
 % 学致谢里的话，拿过来做个广告。希望每个人都能写这么一句 :)
@@ -948,16 +951,6 @@
 %   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
 % \end{ack}
 % \end{example}
-%
-% \myentry{列表环境}
-% \DescribeEnv{itemize}
-% \DescribeEnv{enumerate}
-% \DescribeEnv{description}
-% 为了适合中文习惯，模板将这三个常用的列表环境用 \pkg{enumitem} 进行了纵向间距压
-% 缩。一方面满足了多余空间的清楚，另一方面可以自己指定标签的样式和符号。细节请参
-% 看 \pkg{enumitem} 文档，此处不再赘述。
-%
-% \changes{v3.0}{2007/05/12}{没有了综合论文训练页面，很多本科论文专用命令就消失了。}
 %
 % \subsection{数学环境}
 % \label{sec:math}
@@ -989,26 +982,99 @@
 % 然后这样使用：
 % \begin{example}
 % \begin{nonsense}
-% 契丹武士要来中原夺武林秘笈。\pozhehao 慕容博
+% 契丹武士要来中原夺武林秘笈。—— 慕容博
 % \end{nonsense}
 % \end{example}
 % 产生（自动编号）：\\[5pt]
-% \fbox{{\heiti 胡说~1.1~~~} {契丹武士要来中原夺武林秘笈。\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex 慕容博}}
+% \fbox{{\heiti 胡说~1.1~~~} {契丹武士要来中原夺武林秘笈。—— 慕容博}}
 %
 % \subsection{自定义以及其它}
 % \label{sec:othercmd}
-% 模板的配置文件 \file{thuthesis.cfg} 中定义了很多固定词汇，一般无须修改。如果有特殊需求，
-% 推荐在导言区使用 \cs{renewcommand}。当然，导言区里可以直接使用中文。
+% \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
+% 容性，\cs{onlinecite} 会保留。}
 %
+% \subsubsection{引用方式}
+% \DescribeMacro{\inlinecite}
+% 学校要求的参考文献引用有两种模式：（1）上标模式。比如``同样的工作有很
+% 多$^{[1,2]}$\ldots''。（2）正文模式。比如``文[3] 中详细说明了\ldots''。其中上标
+% 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
+% 的 \cs{cite}\marg{key}，而 \cs{inlinecite}\marg{key} 则用来生成正文模式。
+%
+% 关于参考文献模板推荐使用 \BibTeX{}，关于中文参考文献需要额外增加一个 Entry:
+% lang，将其设置为 \texttt{zh}用来指示此参考文献为中文，以
+% 便 \file{thuthesis.bst} 处理。如：
+% \begin{example}
+% @INPROCEEDINGS{cnproceed,
+%   author    = {王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝},
+%   title     = {武林高手从入门到精通},
+%   booktitle = {第~$N$~次华山论剑},
+%   year      = 2006,
+%   address   = {西安, 中国},
+%   month     = sep,
+%   lang      = "zh",
+% }
+%
+% @ARTICLE{cnarticle,
+%   AUTHOR  = "贾宝玉 and 林黛玉 and 薛宝钗 and 贾探春",
+%   TITLE   = "论刘姥姥食量大如牛之现实意义",
+%   JOURNAL = "红楼梦杂谈",
+%   PAGES   = "260--266",
+%   VOLUME  = "224",
+%   YEAR    = "1800",
+%   LANG    = "zh",
+% }
+% \end{example}
+%
+% 注意如果不需要引用参考文献，请删除 \file{main.tex} 中 \cs{bibliography} 开头的两行，
+% 以避免可能的编译错误。
+%
+% \subsubsection{列表环境}
+% \DescribeEnv{itemize}
+% \DescribeEnv{enumerate}
+% \DescribeEnv{description}
+% 为了适合中文习惯，模板将这三个常用的列表环境用 \pkg{enumitem} 进行了纵向间距压
+% 缩。一方面清除了多余空间，另一方面用户可以自己指定列表环境的样式（如标签符号，
+% 缩进等）。细节请参看 \pkg{enumitem} 文档，此处不再赘述。
+%
+% \subsubsection{书脊}
+% \DescribeMacro{\shuji}
+% 生成装订的书脊，为竖排格式，命令格式：\cs{shuji}\oarg{标题}\oarg{作者}。默认参
+% 数为论文中文题目和中文作者。如果中文题目中没有英文字母，那么直接调用此命令即可。
+% 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{shuji.tex}）。下面是一
+% 个例子：
+% \begin{example}
+% \documentclass[type=master]{thuthesis}
+% % 此处 type 无所谓
+%
+% \begin{document}
+% \thuset{
+%   ctitle={论文中文题目},
+%   cauthor={中文姓名}}
+%
+% \shuji % 使用默认标题和默认作者
+%
+% \shuji[使用默认作者的标题]
+%
+% \shuji[同时修改标题和作者的标题][尼瑞薛]
+%
+% % 如果标题中有英文，那可以参考如下方法进行微调：
+% \shuji[清华大学~\hspace{0.2em}\raisebox{2pt}{\LaTeX}%
+% \hspace{-0.25em} 论文模板 \hspace{0.1em}\raisebox{2pt}%
+% {v\version}\hspace{-0.25em}样例]
+% \end{document}
+% \end{example}
+%
+% \myentry{其它}
+% 模板的配置文件 \file{thuthesis.cfg} 中定义了很多固定词汇，一般无须修改。如果有特殊需求，
+% 推荐在导言区使用 \cs{renewcommand}。
 %
 % \section{致谢}
 % \label{sec:thanks}
 % 感谢这些年来一直陪伴 \thuthesis{} 成长的新老同学，大家的需求是模板前进的动力，
 % 大家的反馈是模板提高的机会。
 %
-% 本人已离开清华，不能如往日及时升级，热烈欢迎各位
-% 到\href{http://github.com/xueruini/thuthesis/}{Github 主页}贡献，继续为大家服
-% 务。
+% 本人已离开清华，热烈欢迎各位
+% 到\href{http://github.com/xueruini/thuthesis/}{\thuthesis\ Github 主页}贡献！
 %
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
@@ -1058,7 +1124,7 @@
   \expandafter\csname thu@#1true\endcsname}
 
 \def\thu@deprecated@type@option{%
-  \setkeys{thu}{type=\CurrentOption} % for compatability.
+  \kvsetkeys{thu}{type=\CurrentOption} % for compatability.
   \ClassError{thuthesis}{Option '\CurrentOption' is deprecated, \MessageBreak
                          please use 'type=\CurrentOption' instead}{}}
 \DeclareVoidOption{bachelor}{\thu@deprecated@type@option}
@@ -1109,8 +1175,7 @@
 % 调用。传递给 fontspec 宏包 no-math 选项，避免部分数学符号字体自动调整为 CMR。
 % 其他引擎下没有这个问题，这一行会被无视。}
 %    \begin{macrocode}
-\setkeys{thu}{%
-  type=bachelor,
+\kvsetkeys{thu}{%
   raggedbottom,
   arial,
   arialtitle}
@@ -2277,17 +2342,17 @@
 % \end{macro}
 %
 % 由上可见，封面和封底有一大堆信息需要设置，为了简化操作界面，提供一
-% 个 \cs{thuthesissetup} 命令支持key/value 的方式来设置。key 就是前面各个设置项的
+% 个 \cs{thusetup} 命令支持 key/value 的方式来设置。key 就是前面各个设置项的
 % 名字。\note{只能设置普通项，不支持环境项，
 % 如 \texttt{cabstract} 和 \texttt{eabstract}。} 由于这些设置项被 \cs{makecover}
 % 调用，所以此命令需要在 \cs{makecover} 之前被调用。
-% \begin{macro}{thuthesissetup}
+% \begin{macro}{thusetup}
 %    \begin{macrocode}
-\def\thuthesissetup{\kvsetkeys{thu}}
+\def\thusetup{\kvsetkeys{thu}}
 %</cls>
 %    \end{macrocode}
 % \begin{example}
-% \thuthesissetup{
+% \thusetup{
 %   cauthor={薛瑞尼},
 %   ckeywords={\TeX, \LaTeX, 论文},
 %   % 其它
@@ -3166,12 +3231,11 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 % \label{sec:userdefine}
 %
 % \begin{macro}{\pozhehao}
-% 定义破折号。两个字宽，ex 差不多是当前字体的一半高度，所以通过 \cs{rule} 可以简单
-% 的完成破折号绘制。
+% 为了兼容性保留之，推荐直接输入“——”。
 % \changes{v2.1}{2006/01/12}{稍微加宽一点。同时把名字改为\textbf{破折号}：\cs{pozhehao}}
 %    \begin{macrocode}
 %<*cls>
-\newcommand{\pozhehao}{\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex}
+\newcommand{\pozhehao}{——}
 %</cls>
 %    \end{macrocode}
 % \end{macro}

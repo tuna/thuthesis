@@ -1,4 +1,4 @@
-\documentclass{thuthesis}
+\documentclass[type=master]{thuthesis}
 
 \ifxetex
   \setCJKfamilyfont{zhfs}[RawFeature={vertical:}]{FangSong}
@@ -7,8 +7,10 @@
 \fi
 
 \begin{document}
-\cauthor{薛瑞尼}
-\ctitle{没有英文的中文标题}
+\thusetup{
+  cauthor={薛瑞尼},
+  ctitle={没有英文的中文标题}
+}
 
 \shuji % 使用默认标题和默认作者
 
