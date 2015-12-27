@@ -20,21 +20,21 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 \subsection{绘图}
 \label{sec:draw}
 
-本模板不再预先装载任何绘图包（如 \textsf{pstricks，pgf} 等），完全由你自己来决定。
-个人觉得 \textsf{pgf} 不错，不依赖于 Postscript。此外还有很多针对 \LaTeX{} 的
+本模板不再预先装载任何绘图包（如 \pkg{pstricks，pgf} 等），完全由你自己来决定。
+个人觉得 \pkg{pgf} 不错，不依赖于 Postscript。此外还有很多针对 \LaTeX{} 的
  GUI 作图工具，如 XFig(jFig), WinFig, Tpx, Ipe, Dia, Inkscape, LaTeXPiX,
 jPicEdt, jaxdraw 等等。
 
 \subsection{插图}
 \label{sec:graphs}
 
-强烈推荐《\LaTeXe 插图指南》！关于子图形的使用细节请参看 \textsf{subcaption} 宏包的说明文档。
+强烈推荐《\LaTeXe 插图指南》！关于子图形的使用细节请参看 \pkg{subcaption} 宏包的说明文档。
 
 \subsubsection{一个图形}
 \label{sec:onefig}
 一般图形都是处在浮动环境中。之所以称为浮动是指最终排版效果图形的位置不一定与源文
 件中的位置对应\footnote{This is not a bug, but a feature of \LaTeX!}，这也是刚使
-用 \LaTeX{} 同学可能遇到的问题。如果要强制固定浮动图形的位置，请使用 \textsf{float} 宏包，
+用 \LaTeX{} 同学可能遇到的问题。如果要强制固定浮动图形的位置，请使用 \pkg{float} 宏包，
 它提供了 \texttt{[H]} 参数，比如图~\ref{fig:xfig1}。
 \begin{figure}[H] % use float package if you want it here
   \centering
@@ -57,13 +57,14 @@ jPicEdt, jaxdraw 等等。
 \subsubsection{多个图形}
 \label{sec:multifig}
 
-如果多个图形相互独立，并不共用一个图形计数器，那么用 \verb|minipage| 或者
-\verb|parbox| 就可以。否则，请参看图~\ref{fig:big1-subcaptionbox}，它包含两个小图，分别是图~\ref{fig:subfig1}
-和图~\ref{fig:subfig2}。推荐使用\verb|\subcaptionbox|，
-因为可以像图~\ref{fig:big1-subcaptionbox} 那样对齐子图的标题，
-也可以使用\textsf{subcaption}宏包的\verb|\subcaption|（放在minipage中，用法同\verb|\caption|）
-或是 subfigure 、 subtable环境，像图~\ref{fig:big1-subfigure}，不要再用 \verb|\subfloat|、
-\verb|\subfigure| 和 \verb|\subtable|。
+如果多个图形相互独立，并不共用一个图形计数器，那么
+用 \texttt{minipage} 或者\texttt{parbox} 就可以。否则，请参看
+图~\ref{fig:big1-subcaptionbox}，它包含两个小图，分别是图~\ref{fig:subfig1}和
+图~\ref{fig:subfig2}。推荐使用\cs{subcaptionbox}，因为可以像
+图~\ref{fig:big1-subcaptionbox} 那样对齐子图的标题，也可以使
+用\pkg{subcaption}宏包的\cs{subcaption}（放在 minipage中，用法同\cs{caption}）
+或是 \pkg{subfigure} 、 \pkg{subtable}环境，像图~\ref{fig:big1-subfigure}，
+不要再用 \cs{subfloat}、\cs{subfigure} 和 \cs{subtable}。
 \begin{figure}[h]
   \centering%
   \subcaptionbox{第一个小图形\label{fig:subfig1}}

@@ -72,11 +72,11 @@
 \subsection{基本表格}
 \label{sec:basictable}
 
-模板中关于表格的宏包有三个： \textsf{booktabs}、\textsf{array} 和
-\textsf{longtabular}，命令有一个 \verb|\hlinewd|。三线表可以用 \textsf{booktabs}
-提供的 \verb|\toprule|、\verb|\midrule| 和 \verb|\bottomrule|。它们与
-\textsf{longtable} 能很好的配合使用。如果表格比较简单的话可以直接用命令
-\verb|hlinewd{xpt}| 控制。
+模板中关于表格的宏包有三个： \pkg{booktabs}、\pkg{array} 和
+\pkg{longtabular}，命令有一个 \cs{hlinewd}。三线表可以用 \pkg{booktabs}
+提供的 \cs{toprule}、\cs{midrule} 和 \cs{bottomrule}。它们与
+\pkg{longtable} 能很好的配合使用。如果表格比较简单的话可以直接用命令
+\cs{hlinewd}\marg{width} 控制。
 \begin{table}[htb]
   \centering
   \begin{minipage}[t]{0.8\linewidth} % 如果想在表格中使用脚注，minipage是个不错的办法
@@ -100,7 +100,7 @@
 
 首先来看一个最简单的表格。表 \ref{tab:template-files} 列举了本模板主要文件及其功
 能。请大家注意三线表中各条线对应的命令。这个例子还展示了如何在表格中正确使用脚注。
-由于 \LaTeX{} 本身不支持在表格中使用 \verb|\footnote|，所以我们不得不将表格放在
+由于 \LaTeX{} 本身不支持在表格中使用 \cs{footnote}，所以我们不得不将表格放在
 小页中，而且最好将表格的宽度设置为小页的宽度，这样脚注看起来才更美观。
 
 \subsection{复杂表格}
@@ -115,7 +115,7 @@
   \begin{minipage}[t]{0.8\textwidth} 
     \begin{tabularx}{\linewidth}{|l|X|X|X|X|}
       \hline
- \multirow{2}*{\diagbox[width=5em]{x}{y}}  & \multicolumn{2}{c|}{First Half} & \multicolumn{2}{c|}{Second Half}\\\cline{2-5}
+ \multirow{2}*{\diagbox[width=5em]{x}{y}} & \multicolumn{2}{c|}{First Half} & \multicolumn{2}{c|}{Second Half}\\\cline{2-5}
       & 1st Qtr &2nd Qtr&3rd Qtr&4th Qtr \\ \hline
       East$^{*}$ &   20.4&   27.4&   90&     20.4 \\
       West$^{**}$ &   30.6 &   38.6 &   34.6 &  31.6 \\ \hline
@@ -126,8 +126,8 @@
   \end{minipage}
 \end{table}
 
-此外，表~\ref{tab:tabexamp1} 同时还演示了另外两个功能：1）通过 \textsf{tabularx} 的
- \texttt{|X|} 扩展实现表格自动放大；2）通过命令 \verb|\diagbox| 在表头部分
+此外，表~\ref{tab:tabexamp1} 同时还演示了另外两个功能：1）通过 \pkg{tabularx} 的
+ \texttt{|X|} 扩展实现表格自动放大；2）通过命令 \cs{diagbox} 在表头部分
 插入反斜线。
 
 为了使我们的例子更接近实际情况，我会在必要的时候插入一些“无关”文字，以免太多图
@@ -246,9 +246,9 @@
 都是使用 Word 等字处理工具，以为 \LaTeX{}模板的用法也应该类似，所以就沿袭同样的思
 路来对待这种所见非所得的排版工具，结果被折腾的焦头烂额，疲惫不堪。
 
-如果您要排版的表格长度超过一页，那么推荐使用 \textsf{longtable} 或者 \textsf{supertabular} 
-宏包，模板对 \textsf{longtable} 进行了相应的设置，所以用起来可能简单一些。
-表~\ref{tab:performance} 就是 \textsf{longtable} 的简单示例。
+如果您要排版的表格长度超过一页，那么推荐使用 \pkg{longtable} 或者 \pkg{supertabular}
+宏包，模板对 \pkg{longtable} 进行了相应的设置，所以用起来可能简单一些。
+表~\ref{tab:performance} 就是 \pkg{longtable} 的简单示例。
 \begin{longtable}[c]{c*{6}{r}}
 \caption{实验数据}\label{tab:performance}\\
 \toprule[1.5pt]
@@ -299,12 +299,12 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 
 \subsection{其它}
 \label{sec:tableother}
-有的同学不想让某个表格或者图片出现在索引里面，那么请使用命令 \verb|\caption*{}|，
+有的同学不想让某个表格或者图片出现在索引里面，那么请使用命令 \cs{caption*}，
 这个命令不会给表格编号，也就是出来的只有标题文字而没有“表~XX”，“图~XX”，否则
 索引里面序号不连续就显得不伦不类，这也是 \LaTeX{} 里星号命令默认的规则。
 
 有这种需求的多是本科同学的英文资料翻译部分，如果你觉得附录中英文原文中的表格和图
-片显示成“  表”和“图”很不协调的话，一个很好的办法就是用 \verb|\caption*|，参数
+片显示成“  表”和“图”很不协调的话，一个很好的办法就是用 \cs{caption*}，参数
 随便自己写，比如不守规矩的表~1.111 和图~1.111 能满足这种特殊需要（可以参看附录部
 分）。
 \begin{table}[ht]
@@ -498,7 +498,7 @@ V_j & = v_j, & \qquad X_j & = x_j,
  回答还是不回答，是个问题。 
 \end{problem}
 
-如何引用定理~\ref{the:theorem1} 呢？加上 \verb|label| 使用 \verb|ref| 即可。妾发
+如何引用定理~\ref{the:theorem1} 呢？加上 \cs{label} 使用 \cs{ref} 即可。妾发
 初覆额，折花门前剧。郎骑竹马来，绕床弄青梅。同居长干里，两小无嫌猜。 十四为君妇，
 羞颜未尝开。低头向暗壁，千唤不一回。十五始展眉，愿同尘与灰。常存抱柱信，岂上望夫
 台。 十六君远行，瞿塘滟滪堆。五月不可触，猿声天上哀。门前迟行迹，一一生绿苔。苔深
@@ -527,9 +527,10 @@ V_j & = v_j, & \qquad X_j & = x_j,
 \begin{verbatim}
 \RequirePackage{hyperref}
 \end{verbatim}
-一行改为
+一行改为：
 \begin{verbatim}
-\PassOptionsToPackage{hyphens}{url}\RequirePackage{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\RequirePackage{hyperref}
 \end{verbatim}
 使得连字符处可以断行。更多设置可以参考 \texttt{url} 宏包文档。
 
@@ -543,7 +544,7 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 \frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})} 
 \end{equation}
 
-论文里面公式越多，\TeX{} 就越 happy。再看一个 \textsf{amsmath} 的例子：
+论文里面公式越多，\TeX{} 就越 happy。再看一个 \pkg{amsmath} 的例子：
 \newcommand{\envert}[1]{\left\lvert#1\right\rvert} 
 \begin{equation}\label{detK2}
 \det\mathbf{K}(t=1,t_1,\dots,t_n)=\sum_{I\in\mathbf{n}}(-1)^{\envert{I}}
@@ -552,7 +553,7 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 \end{equation} 
 
 前面定理示例部分列举了很多公式环境，可以说把常见的情况都覆盖了，大家在写公式的时
-候一定要好好看 \textsf{amsmath} 的文档，并参考模板中的用法：
+候一定要好好看 \pkg{amsmath} 的文档，并参考模板中的用法：
 \begin{multline*}%\tag{[b]} % 这个出现在索引中的
 \int_a^b\biggl\{\int_a^b[f(x)^2g(y)^2+f(y)^2g(x)^2]
  -2f(x)g(x)f(y)g(y)\,dx\biggr\}\,dy \\
