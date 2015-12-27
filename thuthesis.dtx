@@ -3077,6 +3077,7 @@
 % \changes{v3.1}{2007/06/19}{引入 cs{thudot} 来自动完成参考文献最后的点。}
 %    \begin{macrocode}
 \def\thudot{\ifthu@bachelor\else\unskip.\fi}
+%</cls>
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\thumasterbib}
@@ -3090,8 +3091,10 @@
 %   本科生写作指南未指定，参考文献著录格式文档中对中外文学位论文都标注``[D]''。
 % \changes{v4.7}{2012/05/29}{修改两个宏使其对应不同的中文论文需求。}
 %    \begin{macrocode}
+%<*cfg>
 \def\thumasterbib{\ifthu@bachelor [D]\else [硕士学位论文]\fi}
 \def\thuphdbib{\ifthu@bachelor [D]\else [博士学位论文]\fi}
+%</cfg>
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -3102,6 +3105,7 @@
 % \changes{v2.5}{2006/05/13}{参考文献序号靠左，而不是靠右。}
 % \changes{v2.6.4}{2006/10/23}{调整参考文献标签宽度，使得条目增多时仍能对齐。}
 %    \begin{macrocode}
+%<*cls>
 \renewenvironment{thebibliography}[1]{%
    \thu@chapter*{\bibname}%
    \wuhao[1.5]

@@ -84,7 +84,7 @@
     观，所以要像 chapter 那样在前面用中括号写一个简短的标题。这个标题会出现在索
     引中。}
   \label{tab:template-files}
-    \begin{tabular*}{\linewidth}{lp{10cm}}
+    \begin{tabularx}{\linewidth}{lX}
       \toprule[1.5pt]
       {\heiti 文件名} & {\heiti 描述} \\\midrule[1pt]
       thuthesis.ins & \LaTeX{} 安装文件，docstrip\footnote{表格中的脚注} \\
@@ -94,7 +94,7 @@
       thuthesis.bst    & 参考文献 Bibtex 样式文件。\\
       thuthesis.sty   & 常用的包和命令写在这里，减轻主文件的负担。\\
       \bottomrule[1.5pt]
-    \end{tabular*}
+    \end{tabularx}
   \end{minipage}
 \end{table}
 
@@ -148,6 +148,7 @@
 浮动体的并排放置一般有两种情况：1）二者没有关系，为两个独立的浮动体；2）二者隶属
 于同一个浮动体。对表格来说并排表格既可以像图~\ref{tab:parallel1}、图~\ref{tab:parallel2} 
 使用小页环境，也可以如图~\ref{tab:subtable} 使用子表格来做。图的例子参见第~\ref{sec:multifig} 节。
+
 \begin{table}[htbp]
 \noindent\begin{minipage}{0.5\textwidth}
 \centering
@@ -158,7 +159,7 @@
 111 & 222 \\\midrule[1pt]
 222 & 333 \\\bottomrule[1.5pt]
 \end{tabular}
-\end{minipage}
+\end{minipage}%
 \begin{minipage}{0.5\textwidth}
 \centering
 \caption{第二个并排子表格}
@@ -215,7 +216,7 @@
   \centering\dawu[1.3]
   \caption{复杂表格示例 2}
   \label{tab:tabexamp2}
-  \begin{tabular}[c]{|c|m{0.8in}|c|c|c|c|c|}\hline
+  \begin{tabular}[c]{|m{1.5cm}|c|c|c|c|c|c|}\hline
     \multicolumn{2}{|c|}{Network Topology} & \# of nodes & 
     \multicolumn{3}{c|}{\# of clients} & Server \\\hline
     GT-ITM & Waxman Transit-Stub & 600 &
@@ -224,7 +225,7 @@
     \multirow{2}{2em}{50\%}& 
     \multirow{2}{1.2in}{Max. Connectivity}\\\cline{1-3}
     \multicolumn{2}{|c|}{Inet-2.1} & 6000 & & & &\\\hline
-    \multirow{2}{1in}{Xue} & Rui  & Ni &\multicolumn{4}{c|}{\multirow{2}*{\thuthesis}}\\\cline{2-3}
+    \multirow{2}{1.5cm}{Xue} & Rui  & Ni &\multicolumn{4}{c|}{\multirow{2}*{\thuthesis}}\\\cline{2-3}
     & \multicolumn{2}{c|}{ABCDEF} &\multicolumn{4}{c|}{} \\\hline
 \end{tabular}
 \end{table}
@@ -299,7 +300,7 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 
 \subsection{其它}
 \label{sec:tableother}
-有的同学不想让某个表格或者图片出现在索引里面，那么请使用命令 \cs{caption*}，
+如果不想让某个表格或者图片出现在索引里面，请使用命令 \cs{caption*}。
 这个命令不会给表格编号，也就是出来的只有标题文字而没有“表~XX”，“图~XX”，否则
 索引里面序号不连续就显得不伦不类，这也是 \LaTeX{} 里星号命令默认的规则。
 
@@ -308,22 +309,18 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 随便自己写，比如不守规矩的表~1.111 和图~1.111 能满足这种特殊需要（可以参看附录部
 分）。
 \begin{table}[ht]
-\centering
-  \begin{minipage}{0.45\linewidth}
-  \centering
-  \caption*{表~1.111\hskip1em 这是一个手动编号，不出现在索引中的表格。}
-  \label{tab:badtabular}
-  \begin{picture}(150,50)
-    \framebox(150,50)[c]{\thuthesis}
-  \end{picture}    
-  \end{minipage}\hfill
-  \begin{minipage}{0.45\linewidth}
-  \centering
-  \begin{picture}(150,50)
+  \begin{minipage}{0.4\linewidth}
+    \centering
+    \caption*{表~1.111\quad 这是一个手动编号，不出现在索引中的表格。}
+    \label{tab:badtabular}
+      \framebox(150,50)[c]{\thuthesis}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}{0.4\linewidth}
+    \centering
+    \caption*{Figure~1.111\quad 这是一个手动编号，不出现在索引中的图。}
+    \label{tab:badfigure}
     \framebox(150,50)[c]{薛瑞尼}
-  \end{picture}
-  \caption*{Figure~1.111\hskip1em 这是一个手动编号，不出现在索引中的图。}
-  \label{tab:badfigure}
   \end{minipage}
 \end{table}
 
@@ -337,7 +334,7 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
   柳宗元，字子厚（773-819），河东（今永济县）人\footnote{山西永济水饺。}，是唐代
   杰出的文学家，哲学家，同时也是一位政治改革家。与韩愈共同倡导唐代古文运动，并称
   韩柳\footnote{唐宋八大家之首二位。}。
-\end{minipage}\\[-5pt]
+\end{minipage}
 
 唐朝安史之乱后，宦官专权，藩镇割据，土地兼并日渐严重，社会生产破坏严重，民不聊生。柳宗
 元对这种社会现实极为不满，他积极参加了王叔文领导的“永济革新”，并成为这一
