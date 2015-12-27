@@ -18,7 +18,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2015/12/25 5.0.0 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2015/12/27 5.1.0 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 
 \usepackage{dtx-style}
@@ -1104,7 +1104,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2015/12/25 5.0.0 Tsinghua University Thesis Template]
+%<cls|cfg>[2015/12/27 5.1.0 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1123,7 +1123,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{5.0.0}
+\def\version{5.1.0}
 
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
@@ -2355,6 +2355,7 @@
 % \end{macro}
 % \end{macro}
 %
+% \changes{v5.1.0}{2015/12/26}{通过 \cs{thusetup} 统一设置封面信息。}
 % 由上可见，封面和封底有一大堆信息需要设置，为了简化操作界面，提供一
 % 个 \cs{thusetup} 命令支持 key/value 的方式来设置。key 就是前面各个设置项的
 % 名字。\note{只能设置普通项，不支持环境项，

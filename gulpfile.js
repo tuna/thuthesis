@@ -68,7 +68,7 @@ gulp.task('bootstrap', function(callback) {
         config.dist.build = `${packageName}`;
     } else {
         config.template.files.push(...config.template.generated);
-        config.dist.build = `${packageName}-${version}`;
+        config.dist.build = `${packageName}-v${version}`;
     }
     config.dist.zip = `${config.dist.build}.zip`;
 
