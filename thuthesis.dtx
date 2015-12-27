@@ -94,10 +94,13 @@
 % \changes{v2.6.1}{2006/06/16}{取消 \file{thubib.bst} 中 inbook 类 volume 后的页
 % 码。}
 % \changes{v3.0}{2007/05/12}{没有了综合论文训练页面，很多本科论文专用命令就消失了。}
+% \changes{v4.4}{2008/05/12}{修复网址断字。}
+% \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \pkg{xeCJK}。}
 % \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
 % \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
 % \changes{v4.6}{2011/10/22}{使用手册更新。}
 % \changes{v4.7}{2012/06/12}{去掉 \pkg{hypernat} 依赖，\pkg{hyperref} 和 \pkg{natbib} 可以很好配合了。}
+% \changes{v4.8}{2013/03/04}{dvips method is deprecated. We ask their users to load it manually.}
 % \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \CTeX。}
 %
 % \DoNotIndex{\begin,\end,\begingroup,\endgroup,\par,\\}
@@ -1276,12 +1279,13 @@
 \fi
 %    \end{macrocode}
 %
-% \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \pkg{xeCJK}。}
+% 利用 \pkg{CJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
+% \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
+%    \begin{macrocode}
+\RequirePackage{CJKfntef}
+%    \end{macrocode}
 % \changes{v4.8}{2013/03/09}{reset baselinestretch after ctex's change.}
 %    \begin{macrocode}
-\ifthu@bachelor
-  \RequirePackage{CJKfntef}
-\fi
 \renewcommand{\baselinestretch}{1.0} % todo:?
 \ifxetex
   % todo: minor fix of CJKnumb
@@ -1359,9 +1363,6 @@
 %    \end{macrocode}
 %
 % dvips 模式下网址断字有问题，请手工加载 breakurl 这个宏包解决之。
-% \changes{v4.4}{2008/05/12}{修复网址断字。}
-% \changes{v4.8}{2013/03/04}{dvips method is deprecated. We ask their users to load it manually.}
-%
 % 设置 url 样式，与上下文一致
 %    \begin{macrocode}
 \urlstyle{same}
@@ -2485,12 +2486,14 @@
 % \changes{v4.6}{2011/04/26}{增加博士后封面。}
 % \changes{v4.7}{2011/11/28}{硕士中文封面不再需要英文标题。}
 % \changes{v4.7}{2012/05/30}{本科生题目下划线长度自动适应字数。}
+% \changes{v5.1.0}{2015/12/27}{利用 CJKfilltwosides 优化封面排版。}
 %
 %    \begin{macrocode}
 %<*cls>
 \newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \newlength{\thu@title@width}
-\def\thu@put@title#1{\makebox{\hb@xt@\thu@title@width{#1}}}
+\newcommand{\thu@put@title}[2][\thu@title@width]{%
+  \begin{CJKfilltwosides}{#1}#2\end{CJKfilltwosides}}
 \def\thu@first@titlepage{%
   \ifthu@postdoctor\thu@first@titlepage@postdoctor\else\thu@first@titlepage@other\fi}
 \newcommand{\thu@first@titlepage@postdoctor}{
@@ -2531,7 +2534,6 @@
     \vskip2cm
     {\sihao\thu@postdoctor@date@title\hskip1em\underline\thu@postdoctordate}
   \end{center}}
-\newcommand*{\getcmlength}[1]{\strip@pt\dimexpr0.035146\dimexpr#1\relax\relax}
 \newcommand{\thu@first@titlepage@other}{
   \begin{center}
     \vspace*{-1.6cm}
@@ -2573,26 +2575,28 @@
 % \changes{v2.6.2}{2006/06/17}{如果本科生没有辅导教师则不显示。}
 % \changes{v3.1}{2007/10/09}{重新放置封面表格的提示元素。}
 % \changes{v4.4.3}{2008/06/09}{修改本科生论文封面格式以符合新样例。}
+% \changes{v5.1.0}{2015/12/27}{修改联合指导教师显示问题。}
 %    \begin{macrocode}
     \ifthu@bachelor
       \vskip1cm
-      \parbox[t][7.0cm][t]{\textwidth}{{\sanhao[1.8]
-        \hspace*{1.65cm}\fangsong
-          \setlength{\thu@title@width}{4em}
-          \setlength{\extrarowheight}{6pt}
-          \ifxetex % todo: ugly codes
-            \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
-          \else
-            \begin{tabular}{p{\thu@title@width}l@{}l}
-          \fi
-              \thu@put@title{\thu@department@title} & \thu@title@sep & \thu@cdepartment\\
-              \thu@put@title{\thu@major@title}      & \thu@title@sep & \thu@cmajor\\
-              \thu@put@title{\thu@author@title}     & \thu@title@sep & \thu@cauthor \\
-              \thu@put@title{\thu@supervisor@title}         & \thu@title@sep & \thu@csupervisor\\
-              \ifx\thu@cassosupervisor\@empty\else
-                \thu@put@title{\thu@assosuper@title}        & \thu@title@sep & \thu@cassosupervisor\\
-              \fi
-            \end{tabular}
+      \parbox[t][7.0cm][t]{\textwidth}{%
+        {\fangsong\sanhao[1.8]%
+         \hspace*{1.65cm}
+         \setlength{\thu@title@width}{4em}
+         \setlength{\extrarowheight}{6pt}
+         \ifxetex % todo: ugly codes
+           \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
+         \else
+           \begin{tabular}{p{\thu@title@width}l@{}l}
+         \fi
+             \thu@put@title{\thu@department@title} & \thu@title@sep & \thu@cdepartment\\
+             \thu@put@title{\thu@major@title}      & \thu@title@sep & \thu@cmajor\\
+             \thu@put@title{\thu@author@title}     & \thu@title@sep & \thu@cauthor \\
+             \thu@put@title{\thu@supervisor@title} & \thu@title@sep & \thu@csupervisor\\
+             \ifx\thu@cassosupervisor\@empty\else%
+               \thu@put@title{\thu@assosuper@title} & \thu@title@sep & \thu@cassosupervisor\\
+             \fi
+           \end{tabular}
         }}
     \else
       \vskip 5bp
@@ -2613,7 +2617,7 @@
                 \thu@put@title{\thu@assosuper@title} & \thu@title@sep & {\ziju{0.6875}\thu@cassosupervisor}\\
               \fi
               \ifx\thu@ccosupervisor\@empty\else
-                \thu@put@title{\thu@cosuper@title}   & \thu@title@sep & {\ziju{0.6875}\thu@ccosupervisor}\\
+                \hfill\makebox[0pt][r]{\thu@cosuper@title} & \thu@title@sep & {\ziju{0.6875}\thu@ccosupervisor}\\
               \fi
             \end{tabular}
         \end{center}}}
