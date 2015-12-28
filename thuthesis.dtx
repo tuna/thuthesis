@@ -229,6 +229,7 @@
 %   \end{longtable}
 % \end{center}
 %
+% \vskip-1cm
 % 几点说明：
 % \begin{itemize}
 % \item \file{thuthesis.cls} 和 \file{thuthesis.cfg} 可以由 \file{thuthesis.ins}
@@ -649,6 +650,7 @@
 % \DescribeMacro{\catalognumber}
 % \DescribeMacro{\udc}
 % \DescribeMacro{\id}
+% 只见过，没用过，不知道具体是什么意思。
 % \begin{example}
 % \thusetup{
 %   catalognumber={分类号},
@@ -664,6 +666,7 @@
 % \subsubsection{论文标题}
 % \DescribeMacro{\ctitle}
 % \DescribeMacro{\etitle}
+% 中英文标题。可以在标题内部使用换行 \verb|\\|。
 % \begin{example}
 % \thusetup{
 %   ctitle={论文中文题目},
@@ -688,8 +691,27 @@
 % \end{example}
 %
 % \subsubsection{申请学位名称}
+% \label{sec:degree}
 % \DescribeMacro{\cdegree}
 % \DescribeMacro{\edegree}
+% 学位和专业的设置比想象的要复杂一些：
+%
+% \noindent\begin{tabular}{p{2cm}p{7.8cm}p{4cm}}
+%   \hline
+%   学位类型 & edegree & emajor \\\hline
+%   学术型硕士
+%     & 必须为“Master of Art”或“Master of Science”（注意大
+%       小写），其中 “哲学、文学、历史学、法学、教育学、艺术学门类，公共
+%       管理学科填写“Master of Arts”，其它填写“Master of Science”。
+%     & “获得一级学科授权的学科填写一级学科名称，其它填写二级学
+%       科名称”。\\\hline
+%   专业型硕士
+%     & 专业学位英文名称全称 & 工程硕士填写工程领域，其它专业学位不填写此项。\\\hline
+%   学术型博士 & Doctor of Philosophy（注意大小写）
+%     & 获得一级学科授权的学科填写一级学科名称，其它填写二级学科名称。\\\hline
+%   专业型博士 & 专业学位英文名称全称 & 不填写此项。\\\hline
+% \end{tabular}
+%
 % \begin{example}
 % \thusetup{
 %   cdegree={您要申请什么学位},
@@ -703,22 +725,20 @@
 % \subsubsection{院系名称}
 % \DescribeMacro{\cdepartment}
 % \DescribeMacro{\edepartment}
-% \cs{cdepartment} 可以加一个可选参数，如：\cs{cdepartmentl}\oarg{精简}\marg{详
-%   细}，主要针对本科生的“\textbf{综合论文训练}”部分，因为需要填写的空间有限，最好
-% 给出一个详细和精简院系名称，如“\textbf{计算机科学与技术}”和“\textbf{计算机}”。
 % \begin{example}
 % \thusetup{
-%   cdepartment={[系名简称]{系名全称}},
-%   edepartment={Deparment}
+%   cdepartment={系名全称},
+%   edepartment={Deparment of CS}
 % }
 % % 等价：
-% \cdepartment[系名简称]{系名全称}
-% \edepartment{Department}
+% \cdepartment{系名全称}
+% \edepartment{Department of CS}
 % \end{example}
 %
 % \subsubsection{专业名称}
 % \DescribeMacro{\cmajor}
 % \DescribeMacro{\emajor}
+% 参见第 \ref{sec:degree} 节。
 % \begin{example}
 % \thusetup{
 %   cmajor={专业名称},
@@ -731,6 +751,7 @@
 %
 % \DescribeMacro{\cfirstdiscipline}
 % \DescribeMacro{\cseconddiscipline}
+% 博士后专用。
 % \begin{example}
 % \thusetup{
 %   cfirstdiscipline={博士后一级学科},
@@ -745,6 +766,7 @@
 % \myentry{导师}
 % \DescribeMacro{\csupervisor}
 % \DescribeMacro{\esupervisor}
+% 直接导师。
 % \begin{example}
 % \thusetup{
 %   csupervisor={导师~教授},
@@ -755,7 +777,7 @@
 % \esupervisor{Supervisor}
 % \end{example}
 %
-% \myentry{副导师姓名}
+% \myentry{副导师}
 % \DescribeMacro{\cassosupervisor}
 % \DescribeMacro{\eassosupervisor}
 % 本科生的辅导教师，硕士的副指导教师。
@@ -2204,11 +2226,9 @@
 % \begin{macro}{\ctitle}
 % \begin{macro}{\cdegree}
 % \begin{macro}{\cdepartment}
-% \begin{macro}{\caffil}
 % \begin{macro}{\cmajor}
 % \begin{macro}{\cfirstdiscipline}
 % \begin{macro}{\cseconddiscipline}
-% \begin{macro}{\csubject}
 % \begin{macro}{\cauthor}
 % \begin{macro}{\csupervisor}
 % \begin{macro}{\cassosupervisor}
@@ -2218,9 +2238,7 @@
 % \begin{macro}{\etitle}
 % \begin{macro}{\edegree}
 % \begin{macro}{\edepartment}
-% \begin{macro}{\eaffil}
 % \begin{macro}{\emajor}
-% \begin{macro}{\esubject}
 % \begin{macro}{\eauthor}
 % \begin{macro}{\esupervisor}
 % \begin{macro}{\eassosupervisor}
@@ -2237,16 +2255,16 @@
 \thu@def@term{secretyear}
 \thu@def@term{ctitle}
 \thu@def@term{cdegree}
-\newcommand\cdepartment[2][]{% todo: for definekeys
-  \def\thu@cdepartment@short{#1}
-  \def\thu@cdepartment{#2}}
-\define@key{thu}{cdepartment}{%
-  \expandafter\cdepartment#1}
-\def\caffil{\cdepartment} % for compatibility
-\def\thu@cdepartment@short{}
-\def\thu@cdepartment{}
+\thu@def@term{cdepartment}
+\def\caffil{% for compatibility
+  \ClassWarning{thuthesis}
+    {'\string\caffil' is deprecated, please use '\string\cdepartment' instead.}{}%
+  \cdepartment}
 \thu@def@term{cmajor}
-\def\csubject{\cmajor} % for compatibility
+\def\csubject{% for compatibility
+  \ClassWarning{thuthesis}
+    {'\string\csubject' is deprecated, please use '\string\cmajor' instead.}{}%
+  \cmajor}
 \thu@def@term{cfirstdiscipline}
 \thu@def@term{cseconddiscipline}
 \thu@def@term{cauthor}
@@ -2258,19 +2276,21 @@
 \thu@def@term{etitle}
 \thu@def@term{edegree}
 \thu@def@term{edepartment}
-\def\eaffil{\edepartment} % for compability
+\def\eaffil{% for compability
+  \ClassWarning{thuthesis}
+    {'\string\eaffil' is deprecated, please use '\string\edepartment' instead.}{}%
+  \edepartment}
 \thu@def@term{emajor}
-\def\esubject{\emajor} %for compability
+\def\esubject{%for compability
+  \ClassWarning{thuthesis}
+    {'\string\esubject' is deprecated, please use '\string\emajor' instead.}{}%
+  \emajor}
 \thu@def@term{eauthor}
 \thu@def@term{esupervisor}
 \thu@def@term{eassosupervisor}
 \thu@def@term{ecosupervisor}
 \thu@def@term{edate}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -3323,7 +3343,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
            \setlength\leftmargin{\labelwidth+\labelsep}%
            \addtolength{\itemsep}{3pt}%
            \renewcommand\makelabel[1]{%
-             \ovalbox{\color{magenta}\bfseries\sffamily ##1}%
+             \ovalbox{\color{purple}\sffamily ##1}%
              \SpecialOptionIndex{##1}}}
   }{\endlist}
 
@@ -3336,9 +3356,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
   {frame=single,framerule=0.3mm,rulecolor=\color{olive},%
    fillcolor=\color{olive!5},framesep=1mm,fontsize=\small,gobble=1}
 
-\newcommand{\myentry}[1]{\vskip5pt\par%
-  \noindent\llap{{\color{purple}\bfseries #1}}%
-  \marginpar{\strut}\hskip\parindent}
+\newcommand{\myentry}[1]{\marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
 
 \MakeShortVerb{\|}
 
@@ -3346,8 +3364,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \newcommand*\option[1]{\textsf{#1}}
 \newcommand*\file[1]{\textsl{#1}}
 \def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
-\newcommand{\note}[1]{\par%
-  {\color{magenta}{\bfseries 说明：}\emph{#1}}}
+\newcommand{\note}[1]{{\color{magenta}{\bfseries 说明：}\emph{#1}}}
 %</dtx-style>
 %    \end{macrocode}
 % \fi
