@@ -1183,9 +1183,9 @@
 \DeclareBoolOption{arialtitle}
 %    \end{macrocode}
 %
-% noraggedbottom 选项
+% \option{raggedbottom} 选项
 % \changes{v4.8}{2013/03/05}{增加 noraggedbottom 选项。}
-% \changes{v5.0.0}{2015/12/13}{norggedbottom 选项修改未 raggedbottom。}
+% \changes{v5.0.0}{2015/12/13}{norggedbottom 选项修改为 raggedbottom。}
 %    \begin{macrocode}
 \DeclareBoolOption{raggedbottom}
 %    \end{macrocode}
@@ -3269,6 +3269,13 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \RequirePackage{fancyhdr}
 \RequirePackage{xcolor}
 \RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+
+\colorlet{thu@ColorCodeNames}{blue!50!black}
+\patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
+\patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
+\patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
+\patchcmd{\PrintEnvName}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
 
 \def\SpecialOptionIndex#1{\@bsphack%
   \index{#1\actualchar{\protect\bfseries #1} (option)}
