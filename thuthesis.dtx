@@ -670,7 +670,8 @@
 % \DescribeMacro{\edegree}
 % 学位和专业的设置比想象的要复杂一些：
 %
-% \noindent\begin{tabular}{p{2cm}p{7.8cm}p{4cm}}
+% \begin{center}
+% \begin{longtable}{p{2cm}p{8cm}p{4cm}}
 %   \hline
 %   学位类型 & edegree & emajor \\\hline\hline
 %   学术型硕士
@@ -684,8 +685,10 @@
 %   学术型博士 & Doctor of Philosophy（注意大小写）
 %     & 获得一级学科授权的学科填写一级学科名称，其它填写二级学科名称。\\\hline
 %   专业型博士 & 专业学位英文名称全称 & 不填写此项。\\\hline
-% \end{tabular}
+% \end{longtable}
+% \end{center}
 %
+% \vskip-0.7cm
 % \begin{latex}
 % \thusetup{
 %   cdegree={您要申请什么学位},
@@ -3312,18 +3315,20 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
    framerule=0.4pt,
    stringstyle=\color{green!40!black!100},
    keywordstyle=\bfseries\color{blue!50!black},
-   commentstyle=\slshape\color{black!60},
-   backgroundcolor=\color{gray!5},
-   rulecolor=\color{gray}}
+   commentstyle=\slshape\color{black!60}}
 
 \lstdefinestyle{lstStyleShell}{%
    style=lstStyleBase,
    frame=lines,
+   backgroundcolor=\color{purple!2},
+   rulecolor=\color{purple},
    language=bash}
 
 \lstdefinestyle{lstStyleLaTeX}{%
    style=lstStyleBase,
    frame=lines,
+   backgroundcolor=\color{violet!2},
+   rulecolor=\color{violet},
    language=[LaTeX]TeX}
 
 \lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
