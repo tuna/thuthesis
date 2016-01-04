@@ -142,12 +142,6 @@
 % \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \CTeX。}
 %
 %
-% \IndexPrologue{\section*{索引}%
-%    \addcontentsline{toc}{section}{索引}}
-% \GlossaryPrologue{\section*{修改记录}%
-%    \addcontentsline{toc}{section}{修改记录}}
-%
-%
 % \title{\bfseries\color{violet}\thuthesis：清华大学学位论文模板\thanks{\textbf{T}sing\textbf{h}ua \textbf{U}niversity \LaTeX{} \textbf{Thesis} Template.}}
 % \author{{\fangsong 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt] \texttt{xueruini@gmail.com}}
 % \date{v\fileversion\ (\filedate)}
@@ -450,7 +444,8 @@
 %
 % \changes{v3.0}{2007/05/12}{不用专门为本科论文生成\textbf{提交}版本了。}
 %
-% \item[openany, openright]
+% \item[openany]
+% \item[openright]
 %   正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \option{openright}，
 %   也是 \thuthesis\ 的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么
 %   模板会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎
@@ -3271,6 +3266,11 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
 
+\ctexset{
+  indexname={索引}
+}
+\def\glossaryname{修改记录}
+
 \colorlet{thu@ColorCodeNames}{blue!50!black}
 \patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
 \patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
@@ -3278,8 +3278,9 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \patchcmd{\PrintEnvName}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
 
 \def\SpecialOptionIndex#1{\@bsphack%
-  \index{#1\actualchar{\protect\bfseries #1} (option)}
-  \index{Option: \levelchar#1\actualchar{\protect\bfseries #1}}\@esphack}
+  \HD@target
+  \special@index{#1\actualchar{#1 (option)}}
+  \special@index{Option: \levelchar#1\actualchar{#1}}\@esphack}
 \newenvironment{options}
   {\list{}{\setlength\labelwidth{2cm}%
            \setlength\labelsep{3pt}%
