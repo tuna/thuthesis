@@ -15,6 +15,7 @@ const config = {
                 'ctex-fontset-thuthesis.def',
                 'zhfonts.py',
                 'Makefile',
+                'latexmkrc',
                 'README.md',
                 'thuthesis.pdf'],
         generated: ['thuthesis.cls',
