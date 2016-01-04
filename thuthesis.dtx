@@ -411,9 +411,9 @@
 % \subsection{论文选项}
 % \label{sec:option}
 % 本模板提供了一些选项以方便使用：
-% \begin{options}
+%
 % \changes{v5.0.0}{2015/12/13}{使用 \package{kvoptions} 简化选项 type。}
-% \item[type]
+% \DescribeOption{type}
 %   选择论文类型，当前支
 %   持：\option{bachelor}，\option{master}，\option{doctor}，\option{postdoctor}。
 %   为必选项。
@@ -425,7 +425,7 @@
 % \documentclass[type=master]{thuthesis}
 % \end{latex}
 %
-% \item[secret]
+% \DescribeOption{secret}
 %   涉秘论文开关（默认：关闭）。第 \ref{sec:setup-secret} 节两个配置（或命
 %   令）\cs{secretlevel}\marg{级别} 和 \cs{secretyear}\marg{年份} 分别用来指定保
 %   密级别和时间。若不设置，则二者取默认值，分别为“\textbf{秘密}”和当前年份。
@@ -444,8 +444,8 @@
 %
 % \changes{v3.0}{2007/05/12}{不用专门为本科论文生成\textbf{提交}版本了。}
 %
-% \item[openany]
-% \item[openright]
+% \DescribeOption{openany}
+% \DescribeOption{openright}
 %   正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \option{openright}，
 %   也是 \thuthesis\ 的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么
 %   模板会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎
@@ -453,7 +453,7 @@
 %   都是 \option{openany}。}这两个选项不用设置，\thuthesis{} 会根据当前论文类
 %   型自动选择。
 %
-% \item[arial]
+% \DescribeOption{arial}
 %   使用真正的 \emph{Arial} 字体。此选项会装载 \package{Arial} 字体宏包，如果此宏包
 %   不存在，就装
 %   载 \package{Helvet}。\option{arialtoc} 和 \option{arialtitle} 不受
@@ -462,13 +462,12 @@
 %   看：\href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial
 %   字体}。
 %
-% \item[arialtoc]
+% \DescribeOption{arialtoc}
 %   目录项（章目录项除外）中的英文是否用 \emph{Arial} 字体。本选项
 %   和 \option{arialtitle} 都不用用户干预，模板根据当前论文类型自动设置。
 %
-% \item[arialtitle]
+% \DescribeOption{arialtitle}
 %   章节标题中英文是否用 \emph{Arial} 字体（默认打开）。
-% \end{options}
 %
 % \subsection{中文字体}
 % \label{sec:chinese-fonts}
@@ -3271,25 +3270,34 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 }
 \def\glossaryname{修改记录}
 
-\colorlet{thu@ColorCodeNames}{blue!50!black}
-\patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
-\patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
-\patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
-\patchcmd{\PrintEnvName}{\MacroFont}{\MacroFont\color{thu@ColorCodeNames}}{}{}
+\colorlet{thu@macro}{blue!60!black}
+\colorlet{thu@env}{blue!70!black}
+\colorlet{thu@option}{violet}
+\patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\bfseries\color{thu@macro}}{}{}
+\patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\bfseries\color{thu@macro}}{}{}
+\patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\bfseries\color{thu@env}}{}{}
+\patchcmd{\PrintEnvName}{\MacroFont}{\MacroFont\bfseries\color{thu@env}}{}{}
 
-\def\SpecialOptionIndex#1{\@bsphack%
-  \HD@target
-  \special@index{#1\actualchar{#1 (option)}}
-  \special@index{Option: \levelchar#1\actualchar{#1}}\@esphack}
-\newenvironment{options}
-  {\list{}{\setlength\labelwidth{2cm}%
-           \setlength\labelsep{3pt}%
-           \setlength\leftmargin{\labelwidth+\labelsep}%
-           \addtolength{\itemsep}{3pt}%
-           \renewcommand\makelabel[1]{%
-             \fbox{\color{purple}\sffamily ##1}%
-             \SpecialOptionIndex{##1}}}
-  }{\endlist}
+\def\DescribeOption{%
+  \leavevmode\@bsphack\begingroup\MakePrivateLetters%
+  \Describe@Option}
+\def\Describe@Option#1{\endgroup
+  \marginpar{\raggedleft\PrintDescribeOption{#1}}%
+  \SpecialOptionIndex{#1}\@esphack\ignorespaces}
+\def\PrintDescribeOption#1{\strut \MacroFont\bfseries\sffamily\color{thu@option} #1\ }
+\def\SpecialOptionIndex#1{\@bsphack
+  \begingroup
+    \HD@target
+    \let\HDorg@encapchar\encapchar
+    \edef\encapchar usage{%
+      \HDorg@encapchar hdclindex{\the\c@HD@hypercount}{usage}%
+    }%
+    \index{#1\actualchar{\string\ttfamily\space#1}
+           (option)\encapchar usage}%
+    \index{option:\levelchar#1\actualchar
+           {\string\ttfamily\space#1}\encapchar usage}
+  \endgroup
+  \@esphack}
 
 \lstdefinestyle{lstStyleBase}{%
    basicstyle=\small\ttfamily,
@@ -3318,24 +3326,21 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
    gobble=2,
    framesep=3pt,
    rulesep=1pt,
-   framexleftmargin=4pt,
-   framexrightmargin=4pt,
    framerule=0.4pt,
+   backgroundcolor=\color{gray!5},
    stringstyle=\color{green!40!black!100},
    keywordstyle=\bfseries\color{blue!50!black},
    commentstyle=\slshape\color{black!60}}
 
 \lstdefinestyle{lstStyleShell}{%
    style=lstStyleBase,
-   frame=lines,
-   backgroundcolor=\color{purple!2},
+   frame=l,
    rulecolor=\color{purple},
    language=bash}
 
 \lstdefinestyle{lstStyleLaTeX}{%
    style=lstStyleBase,
-   frame=lines,
-   backgroundcolor=\color{violet!2},
+   frame=l,
    rulecolor=\color{violet},
    language=[LaTeX]TeX}
 
@@ -3346,7 +3351,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 
 \providecommand*{\package}[1]{\texttt{#1}}
 \providecommand*{\option}[1]{\textsf{#1}}
-\providecommand*{\file}[1]{\textsl{#1}}
+\providecommand*{\file}[1]{\texttt{#1}}
 \newcommand{\myentry}[1]{\marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
 \newcommand{\note}[1]{{\color{magenta}{\bfseries 说明：}\emph{#1}}}
 
