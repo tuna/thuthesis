@@ -47,9 +47,9 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 * `make thesis`    生成论文 main.pdf；
 * `make shuji`     生成书脊 shuji.pdf；
 * `make doc`       生成使用说明书 thuthesis.pdf；
-* `make clean`     删除 pdf 外的所有中间文件和目标文件；
-* `make cleanall`     删除包括 pdf 在内的所有中间文件和目标文件；
-* `make distclean` 表示清除包括 cls 在内的所有中间文件和目标文件。
+* `make clean`     删除示例文件的中间文件（不含main.pdf）；
+* `make cleanall`  删除示例文件的中间文件和main.pdf；
+* `make distclean` 删除示例文件和模板的所有中间文件和PDF。
 
 ## 参数
 * **METHOD**：指定生成 pdf 的方式，缺省采用 latexmk。
