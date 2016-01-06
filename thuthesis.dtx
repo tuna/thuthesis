@@ -648,6 +648,7 @@
 % \subsubsection{作者姓名}
 % \DescribeMacro{\cauthor}
 % \DescribeMacro{\eauthor}
+% 作者姓名。
 % \begin{latex}
 % \thusetup{
 %   cauthor={中文姓名},
@@ -994,10 +995,12 @@
 % \end{definition}
 % \end{latex}
 % 产生（自动编号）：
+% \medskip
 %
-% \fbox{{\heiti 定义~1.1~~~} {道千乘之国，敬事而信，节用而爱人，使民以时。}}
+% \noindent\framebox[\linewidth][l]{{\heiti 定义~1.1~~~} % {道千乘之国，敬事而信，节用而爱人，使民以时。}}
 %
-% 列举出来的数学环境毕竟是有限的，如果想用{\heiti 胡说}这样的数学环境，那么很容易定义：
+% \smallskip
+% 列举出来的数学环境毕竟是有限的，如果想用\emph{胡说}这样的数学环境，那么可以定义：
 % \begin{latex}
 % \newtheorem{nonsense}{胡说}[chapter]
 % \end{latex}
@@ -1010,7 +1013,8 @@
 % \end{latex}
 % 产生（自动编号）：
 %
-% \fbox{{\heiti 胡说~1.1~~~} {契丹武士要来中原夺武林秘笈。—— 慕容博}}
+% \medskip
+% \noindent\framebox[\linewidth][l]{{\heiti 胡说~1.1~~~} % {契丹武士要来中原夺武林秘笈。—— 慕容博}}
 %
 % \subsubsection{引用方式}
 %
@@ -3314,7 +3318,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
    showstringspaces=false,
    numbers=none,
    linewidth=\linewidth,
-   xleftmargin=0pt,
+   xleftmargin=3pt,
    xrightmargin=0pt,
    resetmargins=false,
    breaklines=true,
