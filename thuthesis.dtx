@@ -141,6 +141,10 @@
 % \changes{v4.8}{2013/03/04}{dvips method is deprecated. We ask their users to load it manually.}
 % \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \CTeX。}
 %
+% \def\indexname{索引}
+% \def\glossaryname{修改记录}
+% \IndexPrologue{\section{\indexname}}
+% \GlossaryPrologue{\section{\glossaryname}}
 %
 % \title{\bfseries\color{violet}\thuthesis：清华大学学位论文模板\thanks{\textbf{T}sing\textbf{h}ua \textbf{U}niversity \LaTeX{} \textbf{Thesis} Template.}}
 % \author{{\fangsong 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt] \texttt{xueruini@gmail.com}}
@@ -512,7 +516,7 @@
 %
 % 研究生一般用不到隶书和幼圆字体。如果系统中没有导致报错，可以
 % 将\file{ctex-fontset-thuthesis.def} 文件中 \texttt{zhli} 和 \texttt{zhyou} 相应
-% 行删除，并将论文 \file{.tex} 文件中引用 \cs{lishu} 和 \cs{youyuan} 的文字删除。
+% 行删除，并将论文中引用 \cs{lishu} 和 \cs{youyuan} 的文字删除。
 %
 % 宏包中包含了 \file{zhfonts.py} 脚本，为 Linux/Mac 用户提供一种交互式的方式从系
 % 统中文字体中选择合适的六种字体，最终生成对应
@@ -3272,11 +3276,6 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 \RequirePackage{xcolor}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
-
-\ctexset{
-  indexname={索引}
-}
-\def\glossaryname{修改记录}
 
 \colorlet{thu@macro}{blue!60!black}
 \colorlet{thu@env}{blue!70!black}
