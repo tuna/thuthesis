@@ -74,23 +74,23 @@
 % \changes{v1.0}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 % \changes{v1.1}{2005/11/03}{Initial version, migrate from the old ``Bao--Pan''
 % version. Make the template a class instead of package.}
-% \changes{v1.2}{2005/11/04}{Remove \package{fancyref}; Remove \package{ucite} and implement
-% \cs{onlinecite}; use package \package{arial} or \package{helvet} selectively.}
-% \changes{v1.3}{2005/11/14}{Replace \package{subfigure} with \package{subfig}, replace \package{caption2}
-% with \package{caption}, add details about using figure are in the example.}
+% \changes{v1.2}{2005/11/04}{Remove \pkg*{fancyref}; Remove \pkg*{ucite} and implement
+% \cs{onlinecite}; use package \pkg*{arial} or \pkg*{helvet} selectively.}
+% \changes{v1.3}{2005/11/14}{Replace \pkg*{subfigure} with \pkg*{subfig}, replace \pkg*{caption2}
+% with \pkg*{caption}, add details about using figure are in the example.}
 % \changes{v1.4rc1}{2005/11/20}{I do not know why \cs{thu@authorizationaddon} does not work
 % now for v1.3, while it's fine in v1.2. Temporarily, I remove the directive
-% :(. There might be better solution. Other changes: add \textsf{config} option to
-% subfig to be compatible with subfigure. add \package{courier} package for tt font.}
+% :(. There might be better solution. Other changes: add \option{config} option to
+% subfig to be compatible with subfigure. add \pkg*{courier} package for tt font.}
 % \changes{v1.4}{2005/12/05}{Fix the problem of \textbf{chinese}, which is
 % because both CJK and everysel redefine the \cs{selectfont}. So, a not so good
-% workaround is merge them up. Add \file{shuji.tex} example. Add \cs{pozhehao} command.}
+% workaround is merge them up. Add \file*{shuji.tex} example. Add \cs{pozhehao} command.}
 % \changes{v2.1}{2006/02/27}{Add support to bachelor thesis.}
-% \changes{v2.1}{2006/03/01}{Remove \package{fancyhdr} and \package{geometry}.}
+% \changes{v2.1}{2006/03/01}{Remove \pkg*{fancyhdr} and \pkg*{geometry}.}
 % \changes{v2.1}{2006/03/01}{Redefine footnote marks.}
-% \changes{v2.1}{2006/03/01}{Replace \file{thubib.bst} with \file{chinesebst.bst}.}
-% \changes{v2.1}{2006/03/02}{Merge the modification of \package{ntheorem}.}
-% \changes{v2.1}{2006/03/02}{Remove \package{footmisc} and refine the document.}
+% \changes{v2.1}{2006/03/01}{Replace \file*{thubib.bst} with \file*{chinesebst.bst}.}
+% \changes{v2.1}{2006/03/02}{Merge the modification of \pkg*{ntheorem}.}
+% \changes{v2.1}{2006/03/02}{Remove \pkg*{footmisc} and refine the document.}
 % \changes{v2.1}{2006/03/03}{Work very hard on the document.}
 % \changes{v2.1}{2006/03/03}{Add \cs{checklab} code to reduce ``unresolved labels'' warning}
 % \changes{v2.2}{2006/03/26}{Adjust margins. How bad it is to simulate MS WORD!.}
@@ -128,16 +128,16 @@
 % \changes{v2.5}{2006/05/19}{重新整理代码，使其布局更易读。}
 % \changes{v2.5.1}{2006/05/24}{根据教务处的新要求调整附录部分。}
 % \changes{v2.5.1}{2006/05/25}{参考文献中杂志文章如果没有卷号，那么页码直接跟在
-% 年份后面，并用句点分割。在 \file{thubib.bst} 中增加 output.year 函数。}
-% \changes{v2.6.1}{2006/06/16}{取消 \file{thubib.bst} 中 inbook 类 volume 后的页
+% 年份后面，并用句点分割。在 \file*{thubib.bst} 中增加 output.year 函数。}
+% \changes{v2.6.1}{2006/06/16}{取消 \file*{thubib.bst} 中 inbook 类 volume 后的页
 % 码。}
 % \changes{v3.0}{2007/05/12}{没有了综合论文训练页面，很多本科论文专用命令就消失了。}
 % \changes{v4.4}{2008/05/12}{修复网址断字。}
-% \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \package{xeCJK}。}
+% \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \pkg*{xeCJK}。}
 % \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
 % \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
 % \changes{v4.6}{2011/10/22}{使用手册更新。}
-% \changes{v4.7}{2012/06/12}{去掉 \package{hypernat} 依赖，\package{hyperref} 和 \package{natbib} 可以很好配合了。}
+% \changes{v4.7}{2012/06/12}{去掉 \pkg*{hypernat} 依赖，\pkg*{hyperref} 和 \pkg*{natbib} 可以很好配合了。}
 % \changes{v4.8}{2013/03/04}{dvips method is deprecated. We ask their users to load it manually.}
 % \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \CTeX。}
 %
@@ -294,8 +294,8 @@
 % \subsubsection{xelatex}
 % \label{sec:xelatex}
 % 很多用户对 \LaTeX{} 命令执行的次数不太清楚，一个基本的原则是多次运行 \LaTeX{}命
-% 令直至不再出现警告。下面给出生成示例文档的详细过程（\# 开头的行为注释），首先来
-% 看推荐的 \texttt{xelatex} 方式：
+% 令直至不再出现警告。下面给出生成示例文档的详细过程（\texttt{\#} 开头的行为注
+% 释），首先来看推荐的 \texttt{xelatex} 方式：
 % \begin{shell}
 % # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
 % $ xelatex main
@@ -307,12 +307,12 @@
 % $ xelatex main
 % $ xelatex main   # 此时生成完整的 pdf 文件
 % \end{shell}
-% Xe\TeX 最大的优势就是不再需要繁琐的字体配置。\thuthesis{} 通过 \package{xeCJK} 来控
-% 制中文字体和标点压缩。模板里默认用的是中易的六款免费字体（宋，黑，楷，仿宋，隶书
-% 和幼圆），因学位论文需求不建议替换为其他字体。如果实在必要，可以通过定制
-% \file{ctex-fontset-thuthesis.def} 文件中的字体自行替换。研究生一般用不到隶书和幼圆字体，如果
-% 系统上没有它们，可以直接将 \file{ctex-fontset-thuthesis.def} 文件以及论文的 \file{.tex} 文件中
-% 相应行删除。字体配置参考第~\ref{sec:font-config} 节。
+% Xe\TeX 最大的优势就是不再需要繁琐的字体配置。\thuthesis{} 通过 \pkg{xeCJK} 来控
+% 制中文字体和标点压缩。模板里默认用的是中易的六款免费字体（宋，黑，楷，仿宋，隶
+% 书和幼圆），因学位论文需求不建议替换为其他字体。如果实在必要，可以通过定
+% 制\file{ctex-fontset-thuthesis.def} 文件中的字体自行替换。研究生一般用不到隶书
+% 和幼圆字体，如果系统上没有它们，可以直接将 \file{ctex-fontset-thuthesis.def} 文
+% 件以及论文中相应行删除。字体配置参考第~\ref{sec:font-config} 节。
 %
 % \subsubsection{dvipdfmx}
 % \label{sec:dvipdfmx}
@@ -412,7 +412,7 @@
 % \label{sec:option}
 % 本模板提供了一些选项以方便使用：
 %
-% \changes{v5.0.0}{2015/12/13}{使用 \package{kvoptions} 简化选项 type。}
+% \changes{v5.0.0}{2015/12/13}{使用 \pkg*{kvoptions} 简化选项 type。}
 % \DescribeOption{type}
 %   选择论文类型，当前支
 %   持：\option{bachelor}，\option{master}，\option{doctor}，\option{postdoctor}。
@@ -446,28 +446,28 @@
 %
 % \DescribeOption{openany}
 % \DescribeOption{openright}
-%   正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \option{openright}，
-%   也是 \thuthesis\ 的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么
-%   模板会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎
-%   更倾向于页面连续，那就是通常所说的 \option{openany}。\footnote{目前所有论文
-%   都是 \option{openany}。}这两个选项不用设置，\thuthesis{} 会根据当前论文类
-%   型自动选择。
+% 正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \option{openright}，也
+% 是 \thuthesis\ 的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么模板
+% 会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎更倾向
+% 于页面连续，那就是通常所说的 \option{openany}。\footnote{目前所有论文都
+% 是 \option{openany}。}这两个选项不用设置，\thuthesis{} 会根据当前论文类型自动选
+% 择。
 %
 % \DescribeOption{arial}
-%   使用真正的 \emph{Arial} 字体。此选项会装载 \package{Arial} 字体宏包，如果此宏包
-%   不存在，就装
-%   载 \package{Helvet}。\option{arialtoc} 和 \option{arialtitle} 不受
-%   \option{arial} 选项的影响。因为一般的 \TeX{} 发行都没有 \emph{Arial} 字体，所以默
-%   认采用 \package{Helvet}，二者效果非常相似。如果一定要用 \emph{Arial} 字体，请参
-%   看：\href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial
-%   字体}。
+% 使用真正的 \emph{Arial} 字体。此选项会装载 \pkg{Arial} 字体宏包，如果此宏包不存
+% 在，就装
+% 载 \pkg{Helvet}。\option{arialtoc} 和 \option{arialtitle} 不受 \option{arial}
+% 选项的影响。因为一般的 \TeX{} 发行都没有 \emph{Arial} 字体，所以默认采
+% 用 \pkg{Helvet}，二者效果非常相似。如果一定要用 \emph{Arial} 字体，请参
+% 看：\href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial字
+% 体}。
 %
 % \DescribeOption{arialtoc}
-%   目录项（章目录项除外）中的英文是否用 \emph{Arial} 字体。本选项
-%   和 \option{arialtitle} 都不用用户干预，模板根据当前论文类型自动设置。
+% 目录项（章目录项除外）中的英文是否用 \emph{Arial} 字体。本选项
+% 和 \option{arialtitle} 都不用用户干预，模板根据当前论文类型自动设置。
 %
 % \DescribeOption{arialtitle}
-%   章节标题中英文是否用 \emph{Arial} 字体（默认打开）。
+% 章节标题中英文是否用 \emph{Arial} 字体（默认打开）。
 %
 % \subsection{中文字体}
 % \label{sec:chinese-fonts}
@@ -476,8 +476,8 @@
 % \label{sec:font-config}
 % 正确配置中文字体是使用模板的第一步。模板调用 \CTeX\ 宏包，提供如下字体使用方式：
 % \begin{itemize}
-%   \item 基于传统 \package{CJK} 包，使用 latex、pdflatex 编译。
-%   \item 基于 \package{xeCJK} 包，使用 xelatex 编译。（推荐方法）
+%   \item 基于传统 \pkg{CJK} 包，使用 latex、pdflatex 编译。
+%   \item 基于 \pkg{xeCJK} 包，使用 xelatex 编译。（推荐方法）
 % \end{itemize}
 %
 % 第一种方式的字体配置比较繁琐，建议使用 \emph{donated@newsmth} 制作的中文字体包
@@ -510,9 +510,9 @@
 % \texttt{KaiTi\_GB2312}，\texttt{FangSong} 需要替换
 % 为 \texttt{FangSong\_GB2312}。
 %
-% 研究生一般用不到隶书和幼圆字体。如果系统中没有导致报错，可以将
-% \file{ctex-fontset-thuthesis.def} 文件中 \texttt{zhli} 和 \texttt{zhyou} 相应行删除，并将论文 \file{.tex} 文件
-% 中引用 \cs{lishu} 和 \cs{youyuan} 的文字删除。
+% 研究生一般用不到隶书和幼圆字体。如果系统中没有导致报错，可以
+% 将\file{ctex-fontset-thuthesis.def} 文件中 \texttt{zhli} 和 \texttt{zhyou} 相应
+% 行删除，并将论文 \file{.tex} 文件中引用 \cs{lishu} 和 \cs{youyuan} 的文字删除。
 %
 % 宏包中包含了 \file{zhfonts.py} 脚本，为 Linux/Mac 用户提供一种交互式的方式从系
 % 统中文字体中选择合适的六种字体，最终生成对应
@@ -593,7 +593,7 @@
 % }
 % \end{latex}
 %
-% \note{\cs{thusetup} 使用 \package{kvoptions} 机制，所以配置项之间不能有空行，否则
+% \note{\cs{thusetup} 使用 \pkg{kvoptions} 机制，所以配置项之间不能有空行，否则
 % 会报错。}
 %
 % 大多数命令的使用方法都是： \cs{command}\marg{arg}，例外者将具体指出。这些命令都
@@ -897,7 +897,7 @@
 %
 % 如果的确想让其编号，但又不想出现在索引中的话，目前模板暂不支持。
 %
-% 公式索引为本模板扩展，模板扩展了 \package{amsmath} 几个内部命令，使得公式编号样式和
+% 公式索引为本模板扩展，模板扩展了 \pkg{amsmath} 几个内部命令，使得公式编号样式和
 % 自动索引功能非常方便。一般来说，你用到的所有数学环境编号都没问题了，这个可以参
 % 看示例文档。如果你有个非常特殊的数学环境需要加入公式索引，那么请使
 % 用 \cs{equcaption}\marg{编号}。此命令表示 equation caption，带一个参数，即显示
@@ -1058,9 +1058,9 @@
 % \DescribeEnv{itemize}
 % \DescribeEnv{enumerate}
 % \DescribeEnv{description}
-% 为了适合中文习惯，模板将这三个常用的列表环境用 \package{enumitem} 进行了纵向间距压
+% 为了适合中文习惯，模板将这三个常用的列表环境用 \pkg{enumitem} 进行了纵向间距压
 % 缩。一方面清除了多余空间，另一方面用户可以自己指定列表环境的样式（如标签符号，
-% 缩进等）。细节请参看 \package{enumitem} 文档，此处不再赘述。
+% 缩进等）。细节请参看 \pkg{enumitem} 文档，此处不再赘述。
 %
 % \subsubsection{书脊}
 % \DescribeMacro{\shuji}
@@ -1188,7 +1188,7 @@
 \DeclareBoolOption{raggedbottom}
 %    \end{macrocode}
 %
-% 将选项传递给 ctexbook 类
+% 将选项传递给 \pkg{ctexbook}。
 %    \begin{macrocode}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 %    \end{macrocode}
@@ -1201,12 +1201,16 @@
 % \changes{v5.0.0}{2015/03/12}{使用 XeTeX 引擎时，fontspec 宏包会被 xeCJK 自动
 % 调用。传递给 fontspec 宏包 no-math 选项，避免部分数学符号字体自动调整为 CMR。
 % 其他引擎下没有这个问题，这一行会被无视。}
+% 打开默认选项。
 %    \begin{macrocode}
 \kvsetkeys{thu}{%
   raggedbottom,
   arial,
   arialtitle}
-
+%    \end{macrocode}
+%
+% 解析用户传递过来的选项，并加载 \pkg{ctexbook}。
+%    \begin{macrocode}
 \ProcessKeyvalOptions*
 \PassOptionsToPackage{no-math}{fontspec}
 \LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain,fontset=none]{ctexbook}
@@ -1242,7 +1246,7 @@
 \RequirePackage{amsmath}
 %    \end{macrocode}
 %
-% 用很爽的 \package{txfonts} 替换 \package{mathptmx} 宏包，同时用它自带的 typewriter 字
+% 用 \pkg{txfonts} 替换 \pkg{mathptmx} 宏包，同时用它自带的 typewriter 字
 % 体替换 courier。必须出现在 \AmSTeX{} 之后。
 % \changes{v3.1}{2007/06/16}{replace mathptmx with txfonts.}
 %    \begin{macrocode}
@@ -1254,13 +1258,13 @@
 \RequirePackage{graphicx}
 %    \end{macrocode}
 %
-% 并排图形。\package{subfigure}、\package{subfig} 已经不再推荐，用新的 \package{subcaption}。
-% 浮动图形和表格标题样式。\package{caption2} 已经不推荐使用，采用新的 \package{caption}。
+% 并排图形。\pkg{subfigure}、\pkg{subfig} 已经不再推荐，用新的 \pkg{subcaption}。
+% 浮动图形和表格标题样式。\pkg{caption2} 已经不推荐使用，采用新的 \pkg{caption}。
 %    \begin{macrocode}
 \RequirePackage[labelformat=simple]{subcaption}
 %    \end{macrocode}
 %
-% pdfpages 宏包便于我们插入扫描后的授权页和声明页 PDF 文档。
+% \pkg{pdfpages} 宏包便于我们插入扫描后的授权页和声明页 PDF 文档。
 %    \begin{macrocode}
 \RequirePackage{pdfpages}
 \includepdfset{fitpaper=true}
@@ -1269,10 +1273,10 @@
 % \changes{v4.8}{2013/03/02}{no need to load indentfirst directly since we use ctex.}
 %
 % 更好的列表环境。
-% \changes{v2.6.2}{2006/06/18}{去掉 \package{paralist} 的 newitem 和 newenum 选项，因为默
-% 认是打开的。}
-% \changes{v2.6.4}{2006/10/23}{增加 \texttt{neverdecrease} 选项。}
-% \changes{v5.0.0}{2012/12/13}{删除 \package{paralist} 选项。}
+% \changes{v2.6.2}{2006/06/18}{去掉 \pkg*{paralist} 的 \option{newitem} 和
+% \option{newenum} 选项，因为默认是打开的。}
+% \changes{v2.6.4}{2006/10/23}{增加 \option{neverdecrease} 选项。}
+% \changes{v5.0.0}{2012/12/13}{删除 \pkg{paralist} 选项。}
 %    \begin{macrocode}
 \RequirePackage[shortlabels]{enumitem}
 %    \end{macrocode}
@@ -1288,7 +1292,7 @@
 \fi
 %    \end{macrocode}
 %
-% 利用 \package{CJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
+% 利用 \pkg{CJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
 % \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
 %    \begin{macrocode}
 \RequirePackage{CJKfntef}
@@ -1303,7 +1307,7 @@
 %    \end{macrocode}
 % 默认采用中易的六款免费字体。缺少上述字体的用户可以通过
 % \file{ctex-fontset-thuthesis.def} 文件自定义字体。
-% \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \package{CJKspace} 保留中英文间空格。}
+% \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg*{CJKspace} 保留中英文间空格。}
 % \changes{v5.0.0}{2015/04/17}{固定字体设置，同时改善与 ctex 兼容性。}
 %    \begin{macrocode}
   \IfFileExists{ctex-fontset-thuthesis.def}%
@@ -1327,13 +1331,13 @@
 \fi
 %    \end{macrocode}
 %
-% 定理类环境宏包，其中 \package{amsmath} 选项用来兼容 \AmSTeX{} 的宏包
+% 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX{} 的宏包
 %    \begin{macrocode}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 %    \end{macrocode}
 %
 % 表格控制
-% \changes{v2.6}{2006/06/09}{增加 \package{longtable}。}
+% \changes{v2.6}{2006/06/09}{增加 \pkg*{longtable}。}
 %    \begin{macrocode}
 \RequirePackage{array}
 \RequirePackage{longtable}
@@ -1388,7 +1392,7 @@
 % \changes{v4.7}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
 % \changes{v5.0.0}{2015/03/10}{不再将页面尺寸写入 dvi，因为已不支持 dvips，
 % 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。}
-% \changes{v5.0.0}{2015/12/14}{用 \package{geometry} 简化设置。}
+% \changes{v5.0.0}{2015/12/14}{用 \pkg*{geometry} 简化设置。}
 %    \begin{macrocode}
 \RequirePackage{geometry}
 \geometry{
@@ -1415,7 +1419,7 @@
 \fi
 %    \end{macrocode}
 %
-% 利用 \package{fancyhdr} 设置页眉页脚。
+% 利用 \pkg{fancyhdr} 设置页眉页脚。
 %    \begin{macrocode}
 \RequirePackage{fancyhdr}
 %</cls>
@@ -1624,7 +1628,7 @@
 % \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
 % \changes{v2.5}{2006/05/20}{增加 empty 页面样式。}
 % \changes{v4.7}{2012/05/29}{本科页码用小五号字。}
-% \changes{v5.0.0}{2015/12/20}{利用 \package{fancyhdr} 设置页眉页脚。}
+% \changes{v5.0.0}{2015/12/20}{利用 \pkg*{fancyhdr} 设置页眉页脚。}
 % \begin{macro}{\ps@thu@empty}
 % \begin{macro}{\ps@thu@plain}
 % \begin{macro}{\ps@thu@headings}
@@ -1671,7 +1675,7 @@
   autoindent=true}
 %    \end{macrocode}
 %
-% 利用 \package{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
+% 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
 % \changes{v2.5.2}{2006/06/01}{更改默认列表距离。}
 %    \begin{macrocode}
 \setlist{nosep}
@@ -1739,15 +1743,15 @@
 %
 % 公式改成 (1-1) 的形式，本科还要在前面加上\textbf{公式}二字，我不知道他们是怎么想的，这
 % 忒不好看了。
-% \changes{v2.5.1}{2006/05/24}{本科公式编号前添加\textbf{公式}二字。ft，这个需要修 \package{amsmath} 极其深入的一个命令。}
+% \changes{v2.5.1}{2006/05/24}{本科公式编号前添加\textbf{公式}二字。ft，这个需要修 \pkg*{amsmath} 极其深入的一个命令。}
 % \changes{v2.5.1}{2006/05/24}{教务处居然要本科论文公式全文编号！}
 % \changes{v2.5.2}{2006/05/29}{上一个版本忘了把研究生的公式编号排除。}
 % \changes{v3.0}{2007/05/12}{本科公式又要取消全文统一编号了，这帮家伙，早就告诉
 % 过他们，就是不听。}
-% 本科的公式编号太变态了，不得不修改 \package{amsmath} 中很深的一个命令 \cs{tagform@}。
+% 本科的公式编号太变态了，不得不修改 \pkg{amsmath} 中很深的一个命令 \cs{tagform@}。
 % \changes{v2.6.2}{2006/06/19}{根据不同论文格式显示不同公式编号，并自动加入索引。}
 % \changes{v4.2}{2008/01/23}{\cs{eqref} 加括号。}
-% 同时为了让 \package{amsmath} 的 \cs{tag*} 命令得到正确的格式，我们必须修改这些代
+% 同时为了让 \pkg{amsmath} 的 \cs{tag*} 命令得到正确的格式，我们必须修改这些代
 % 码。\cs{make@df@tag} 是定义 \cs{tag*} 和 \cs{tag} 内部命令的。
 % \cs{make@df@tag@@} 处理 \cs{tag*}，我们就改它！
 % \begin{latex}
@@ -1857,7 +1861,7 @@
 % \changes{v2.4}{2006/04/14}{表格内容为 11 磅。}
 % \changes{v2.4}{2006/04/14}{图表标题左对齐，取消原先漂亮的 hang 模式。}
 % \changes{v2.5}{2006/05/13}{标题上下间距重调，以前没有考虑 \cs{intextsep} 的影响。}
-% \changes{v2.5.1}{2006/05/23}{增加 \package{subfigure} 和 \package{subtable} 的 caption 配置。}
+% \changes{v2.5.1}{2006/05/23}{增加 \pkg*{subfigure} 和 \pkg*{subtable} 的 caption 配置。}
 % \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
 % \changes{v2.5.3}{2006/06/07}{不管 caption 出现在什么位置，\cs{aboveskip} 总是出现在标题和浮动体之间的距离。}
 % \changes{v4.3}{2008/03/11}{子图引用时加括号。}
@@ -1880,9 +1884,9 @@
 \renewcommand{\thesubtable}{(\alph{subtable})}
 % \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
-% 我们采用 \package{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
-% \changes{v2.5.3}{2006/06/08}{增加对 \package{longtable} 的处理。}
-% \changes{v4.5.1}{2009/01/06}{太好了，不用处理 \package{longtable} 的 \cs{caption}
+% 我们采用 \pkg{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
+% \changes{v2.5.3}{2006/06/08}{增加对 \pkg*{longtable} 的处理。}
+% \changes{v4.5.1}{2009/01/06}{太好了，不用处理 \pkg*{longtable} 的 \cs{caption}
 % 了。}
 %    \begin{macrocode}
 \let\thu@LT@array\LT@array
@@ -1890,7 +1894,7 @@
 %    \end{macrocode}
 %
 % \begin{macro}{\hlinewd}
-% 简单的表格使用三线表推荐用 \cs{hlinewd}。如果表格比较复杂还是用 \package{booktabs} 的命
+% 简单的表格使用三线表推荐用 \cs{hlinewd}。如果表格比较复杂还是用 \pkg*{booktabs} 的命
 % 令好一些。
 %    \begin{macrocode}
 \def\hlinewd#1{%
@@ -1948,7 +1952,7 @@
   \ifthu@arialtitle\sffamily\else\relax\fi}
 %    \end{macrocode}
 %
-% \package{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。通过 \package{fancyhdr}
+% \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。通过 \pkg{fancyhdr}
 % 定义的样式在第一次被调用时会修改 \cs{chaptermark}，这会导致页眉信息错误（多余
 % 章号并且英文大写）。这是因为在原始的 \file{book.cls} 中定义如下（大意）：
 % \begin{latex}
@@ -1962,13 +1966,13 @@
 % \begin{latex}
 % \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}
 % \end{latex}
-% 但，\package{fancyhdr} 不知何故在 \cs{ps@fancy} 中对 \cs{chaptermark} 进行重定义
+% 但，\pkg{fancyhdr} 不知何故在 \cs{ps@fancy} 中对 \cs{chaptermark} 进行重定义
 % （其实一模一样），而这个 \cs{ps@fancy} 会在 \cs{fancypagestyle} 中使用，如下：
 % \begin{latex}
 % \newcommand{\fancypagestyle}[2]{%
 %   \@namedef{ps@#1}{\let\fancy@gbl\relax#2\relax\ps@fancy}}
 % \end{latex}
-% 这样的话，\cs{ps@fancy} 会在 \package{fancyhdr} 定义的任何样式首次样被激活时调用，从
+% 这样的话，\cs{ps@fancy} 会在 \pkg{fancyhdr} 定义的任何样式首次样被激活时调用，从
 % 而覆盖我们的 \cs{chaptermark} 定义（后续样式再激活不会重复覆盖）。所以我们采用如下
 % 方法解决：
 %    \begin{macrocode}
@@ -1984,7 +1988,7 @@
 %   前空 24 磅，段后空 18 磅。本科要求：段前段后间距 30/20 pt，行距 20pt。但正文
 %   章节 30pt 的话和样例效果不一致。
 %
-% \changes{v2.5}{2006/05/13}{取消 \package{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
+% \changes{v2.5}{2006/05/13}{取消 \pkg*{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
 % \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
 % \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化。}
 % \changes{v5.0.0}{2015/04/17}{修正章节间距问题(\#57)}
@@ -2115,7 +2119,7 @@
 % 每章标题行前空 6 磅，后空 0 磅。如果使用目录项中英文要使用 Arial，那么就加上 \cs{sffamily}。
 % 章节名中英文用 Arial 字体，页码仍用 Times。
 % \changes{v2.0}{2005/12/18}{附录的目录项需要调整一下。以及公式编号方式等等。}
-% \changes{v2.5}{2006/05/13}{取消 \package{titletoc} 宏包，用 \cs{dottedtocline} 调整
+% \changes{v2.5}{2006/05/13}{取消 \pkg*{titletoc} 宏包，用 \cs{dottedtocline} 调整
 %   目录。}
 % \changes{v2.5.1}{2006/05/23}{减小目录项中的导引小点跟页码之间的留白。}
 % \changes{v2.5.2}{2006/05/29}{用 \cs{thu@chapter*} 改写目录命令。}
@@ -2307,13 +2311,13 @@
 % 摘要最好以环境的形式出现（否则命令的形式会导致开始结束的括号距离太远，我不喜
 % 欢），这就必须让环境能够自己保存内容留待以后使用。ctt 上找到两种方法：
 % \begin{itemize}
-% \item 使用 \package{amsmath} 中的 \cs{collect@body}，但是此宏没有定义
+% \item 使用 \pkg{amsmath} 中的 \cs{collect@body}，但是此宏没有定义
 %   为 \texttt{long}，不能直接用。
 % \item 利用 \LaTeX{} 中环境和对应命令间的命名关系以及参数分隔符的特点非常巧妙地
 %   实现了这个功能，其不足是不能嵌套环境。
 % \end{itemize}
 % 由于摘要部分经常会用到诸如 \texttt{itemize} 类似的环境，所以我们不得不选择第一
-% 种复杂的方法。以下是修改 \package{amsmath} 代码部分：
+% 种复杂的方法。以下是修改 \pkg{amsmath} 代码部分：
 % \changes{v3.1}{2006/06/17}{重新定义摘要成为环境。}
 %    \begin{macrocode}
 \long\@xp\def\@xp\collect@@body\@xp#\@xp1\@xp\end\@xp#\@xp2\@xp{%
@@ -2991,7 +2995,7 @@
 % \changes{v2.5}{2006/05/19}{为了让索引中能出现\textbf{图 xxx}，不得不修改 \LaTeX
 %   内部命令 \cs{@caption}。}
 % \changes{v2.6.4}{2006/10/23}{增加 \cs{listoffigures*}，\cs{listoftables*}。}
-% \changes{v4.5.1}{2009/01/06}{更优雅的插图/表格索引，避免跟 \package{caption} 包冲
+% \changes{v4.5.1}{2009/01/06}{更优雅的插图/表格索引，避免跟 \pkg*{caption} 包冲
 % 突。\cs{thu@listof} 相应修改。}
 %    \begin{macrocode}
 %<*cls>
@@ -3015,7 +3019,7 @@
 % \end{macro}
 %
 % \begin{macro}{\equcaption}
-% \changes{v2.6.2}{2006/06/19}{此命令配合 \package{amsmath} 命令基本可以满足所有
+% \changes{v2.6.2}{2006/06/19}{此命令配合 \pkg*{amsmath} 命令基本可以满足所有
 % 公式需要。}
 %   本命令只是为了生成公式列表，所以这个 caption 是假的。如果要编号最好用
 %    equation 环境，如果是其它编号环境，请手动添加添加 \cs{equcaption}。
@@ -3024,7 +3028,7 @@
 % \cs{equcaption}\marg{counter}
 %
 % \marg{counter} 指定出现在索引中的编号，一般取 \cs{theequation}，如果你是用
-%  \package{amsmath} 的 \cs{tag}，那么默认是 \cs{tag} 的参数；除此之外可能需要你
+%  \pkg{amsmath} 的 \cs{tag}，那么默认是 \cs{tag} 的参数；除此之外可能需要你
 % 手工指定。
 %
 % \changes{v2.5}{2006/05/19}{将公式编号写入临时文件以便生成公式列表。}
@@ -3056,7 +3060,7 @@
 % \label{sec:ref}
 %
 % \begin{macro}{\inlinecite}
-% 正文引用模式。依赖于 \package{natbib} 宏包，修改其中的命令。旧命令 \cs{onlinecite}
+% 正文引用模式。依赖于 \pkg{natbib} 宏包，修改其中的命令。旧命令 \cs{onlinecite}
 % 依然可用。
 %    \begin{macrocode}
 %<*cls>
@@ -3174,7 +3178,7 @@
 % \begin{macro}{\researchitem}
 % \begin{environment}{publications}
 % \begin{environment}{achievements}
-% 利用 \package{enumitem} 宏包引入两个新列表环境 publications 和 achievements，
+% 利用 \pkg{enumitem} 宏包引入两个新列表环境 publications 和 achievements，
 % 分别用于个人简历里面会出现的学术论文列表和研究成果列表。
 % publications 环境可以连续出现多次，模板会自动在之间加入空行。
 % \changes{v2.5.1}{2006/05/23}{ft，教务处和研究生院非要搞的不一样！}
@@ -3276,7 +3280,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 
 \colorlet{thu@macro}{blue!60!black}
 \colorlet{thu@env}{blue!70!black}
-\colorlet{thu@option}{violet}
+\colorlet{thu@option}{purple}
 \patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\bfseries\color{thu@macro}}{}{}
 \patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\bfseries\color{thu@macro}}{}{}
 \patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\bfseries\color{thu@env}}{}{}
@@ -3287,19 +3291,19 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
   \Describe@Option}
 \def\Describe@Option#1{\endgroup
   \marginpar{\raggedleft\PrintDescribeOption{#1}}%
-  \SpecialOptionIndex{#1}\@esphack\ignorespaces}
+  \thu@special@index{option}{#1}\@esphack\ignorespaces}
 \def\PrintDescribeOption#1{\strut \MacroFont\bfseries\sffamily\color{thu@option} #1\ }
-\def\SpecialOptionIndex#1{\@bsphack
+\def\thu@special@index#1#2{\@bsphack
   \begingroup
     \HD@target
     \let\HDorg@encapchar\encapchar
     \edef\encapchar usage{%
       \HDorg@encapchar hdclindex{\the\c@HD@hypercount}{usage}%
     }%
-    \index{#1\actualchar{\string\ttfamily\space#1}
-           (option)\encapchar usage}%
-    \index{option:\levelchar#1\actualchar
-           {\string\ttfamily\space#1}\encapchar usage}
+    \index{#2\actualchar{\string\ttfamily\space#2}
+           (#1)\encapchar usage}%
+    \index{#1:\levelchar#2\actualchar
+           {\string\ttfamily\space#2}\encapchar usage}
   \endgroup
   \@esphack}
 
@@ -3318,7 +3322,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
    showstringspaces=false,
    numbers=none,
    linewidth=\linewidth,
-   xleftmargin=3pt,
+   xleftmargin=4pt,
    xrightmargin=0pt,
    resetmargins=false,
    breaklines=true,
@@ -3330,7 +3334,7 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
    gobble=2,
    framesep=3pt,
    rulesep=1pt,
-   framerule=0.4pt,
+   framerule=1pt,
    backgroundcolor=\color{gray!5},
    stringstyle=\color{green!40!black!100},
    keywordstyle=\bfseries\color{blue!50!black},
@@ -3353,11 +3357,15 @@ leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 
 \setlist{nosep}
 
-\providecommand*{\package}[1]{\texttt{#1}}
-\providecommand*{\option}[1]{\textsf{#1}}
-\providecommand*{\file}[1]{\texttt{#1}}
-\newcommand{\myentry}[1]{\marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
-\newcommand{\note}[1]{{\color{magenta}{\bfseries 说明：}\emph{#1}}}
+\DeclareDocumentCommand{\option}{m}{\textsf{#1}}
+\DeclareDocumentCommand{\pkg}{s m}{%
+  \texttt{#2}\IfBooleanF#1{\thu@special@index{package}{#2}}}
+\DeclareDocumentCommand{\file}{s m}{%
+  \texttt{#2}\IfBooleanF#1{\thu@special@index{file}{#2}}}
+\newcommand{\myentry}[1]{%
+  \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
+\newcommand{\note}[1]{{%
+  \color{magenta}{\bfseries 说明：}\emph{#1}}}
 
 \def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
 %</dtx-style>
