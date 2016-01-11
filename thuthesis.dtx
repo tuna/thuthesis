@@ -2086,35 +2086,26 @@
 %    \begin{macrocode}
 \newcounter{thu@bookmark}
 \NewDocumentCommand\thu@chapter{s o m o}{
-  \IfBooleanF{#1}
-  {%
+  \IfBooleanF{#1}{%
     \ClassError{thuthesis}{You have to use the star form: \string\thu@chapter*}{}
-  }
-
-  \IfValueTF{#2}
-  {%
-    \ifthenelse{\equal{#2}{}}
-    {%
+  }%
+  \if@openright\cleardoublepage\else\clearpage\fi\phantomsection%
+  \IfValueTF{#2}{%
+    \ifthenelse{\equal{#2}{}}{%
       \addtocounter{thu@bookmark}\@ne
       \pdfbookmark[0]{#3}{thuchapter.\thethu@bookmark}
-    }
-    {%
+    }{%
       \addcontentsline{toc}{chapter}{#3}
     }
-  }
-  {%
+  }{%
     \addcontentsline{toc}{chapter}{#3}
-  }
-
-  \chapter*{#3}%\phantomsection
-
-  \IfValueTF{#4}
-  {%
+  }%
+  \chapter*{#3}%
+  \IfValueTF{#4}{%
     \ifthenelse{\equal{#4}{}}
     {\@mkboth{}{}}
     {\@mkboth{#4}{#4}}
-  }
-  {%
+  }{%
     \@mkboth{#3}{#3}
   }
 }
