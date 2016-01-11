@@ -927,24 +927,27 @@
 % 处不再罗嗦，实例请参看示例文档附录 A 的前两个公式。
 %
 % \subsection{封底部分}
-% \subsubsection{简历}
-% \DescribeEnv{resume}
-% 开启个人简历章节，包括个人简历，发表文章，研究成果列表等。每个子项目请
-% 用以下对应命令开启：\cs{xxxitem}\marg{subtitle}。
 %
-% \DescribeMacro{\resumeitem}
-% 个人简历，用法：\cs{resumeitem}\{个人简历\}
+% \subsubsection{致谢声明}
+% \DescribeEnv{ack}
+% 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！下面是数学系一位同
+% 学致谢里的话，拿过来做个广告。希望每个人都能写这么一句 :)
+% \begin{latex}
+% \begin{ack}
+%   …
+%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
+% \end{ack}
+% \end{latex}
 %
-% \DescribeMacro{\researchitem}
-% \DescribeEnv{publications}
-% 发表学术论文，用法：\cs{researchitem}\{发表学术论文\}。随后用
-% \texttt{publicatoins} 环境进行罗列。
+% 本科论文在此处还有一节“声明”，提交版本时需要替换为签字扫描文件，同样我们也提供：
+% 如果使用声明扫描页，将可选参数指定为扫描后的 PDF 文件名，例如：
+% \begin{latex}
+% \begin{ack}[scan-statement.pdf]
+%   加了扫描文件后，这里面的文字就没用了。
 %
-% \DescribeEnv{achievements}
-% 研究成果用 \cs{researchitem}\{研究成果\} 开启，随后用 \texttt{achievements} 环
-% 境罗列。
-%
-% 具体用法请参看示例文档 \file{data/resume.tex}。
+%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
+% \end{ack}
+% \end{latex}
 %
 % \subsubsection{附录}
 % \DescribeEnv{appendix}
@@ -973,26 +976,70 @@
 % \end{translationbib}
 % \end{latex}
 %
-% \subsubsection{致谢声明}
-% \DescribeEnv{ack}
-% 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！下面是数学系一位同
-% 学致谢里的话，拿过来做个广告。希望每个人都能写这么一句 :)
-% \begin{latex}
-% \begin{ack}
-%   …
-%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
-% \end{ack}
-% \end{latex}
+% \subsubsection{简历}
+% \DescribeEnv{resume}
+% 开启个人简历章节，包括个人简历，发表文章，研究成果列表等。每个子项目请
+% 用以下对应命令开启：\cs{xxxitem}\marg{subtitle}。
 %
-% 本科论文在此处还有一节“声明”，提交版本时需要替换为签字扫描文件，同样我们也提供：
-% 如果使用声明扫描页，将可选参数指定为扫描后的 PDF 文件名，例如：
-% \begin{latex}
-% \begin{ack}[scan-statement.pdf]
-%   加了扫描文件后，这里面的文字就没用了。
+% \DescribeMacro{\resumeitem}
+% 个人简历，用法：\cs{resumeitem}\{个人简历\}。简历内容部分没有格式要求，正常段
+% 落排版。
 %
-%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
-% \end{ack}
-% \end{latex}
+% \DescribeMacro{\researchitem}
+% 发表学术论文，用法：\cs{researchitem}\marg{类别}，包括“学术论文”和“研究成果”两
+% 个类别。分别用 \env{publications} 和 \env{achievements} 罗列。
+%
+% \DescribeEnv{publications}
+% \DescribeMacro{\publicationskip}
+% 用 \env{publications} 环境进行罗列发表的论文。按照学校要求，在学期间发表的学术
+% 论文分以下三部分按顺序分别列出，每部分之间空 1 行，序号可连续排列：
+% \begin{enumerate}
+% \item 已经刊载的学术论文（本人是第一作者，或者导师为第一作者本人是第二作者）
+% \item 尚未刊载，但已经接到正式录用函的学术论文（本人为第一作者，或者导师为第一
+%   作者本人是第二作者）。
+% \item 其他学术论文。可列出除上述两种情况以外的其他学术论文，但必须是已经刊载或
+%   者收到正式录用函的论文。
+% \end{enumerate}
+%
+% \env{publications} 环境支持每一部分分别编写，逻辑上更清楚，为了在环境之间支持
+% 空行，需要利用 \cs{publicationskip} 控制。示例：
+% \begin{latex}
+%  \researchitem{发表的学术论文}
+%
+%  % 1. 已经刊载的学术论文
+%  \begin{publications}
+%    \item Yang Y, Ren T L, Zhang L T, et al. Miniature microphone with silicon-
+%      based ferroelectric thin films. Integrated Ferroelectrics, 2003,
+%      52:229-235. (SCI 收录, 检索号:758FZ.)
+%    \item 杨轶, 张宁欣, 任天令, 等. 硅基铁电微声学器件中薄膜残余应力的研究. 中国机
+%      械工程, 2005, 16(14):1289-1291. (EI 收录, 检索号:0534931 2907.)
+%    \item 杨轶, 张宁欣, 任天令, 等. 集成铁电器件中的关键工艺研究. 仪器仪表学报,
+%      2003, 24(S4):192-193. (EI 源刊.)
+%  \end{publications}
+%
+%  % 2. 尚未刊载，但已经接到正式录用函的学术论文
+%  \begin{publications}[before=\publicationskip,after=\publicationskip]
+%    \item Yang Y, Ren T L, Zhu Y P, et al. PMUTs for handwriting recognition. In
+%      press. (已被 Integrated Ferroelectrics 录用. SCI 源刊.)
+%  \end{publications}
+%
+%  % 3. 其他学术论文。
+%  \begin{publications}
+%    \item Wu X M, Yang Y, Cai J, et al. Measurements of ferroelectric MEMS
+%      microphones. Integrated Ferroelectrics, 2005, 69:417-429. (SCI 收录, 检索号
+%      :896KM)
+%    \item 贾泽, 杨轶, 陈兢, 等. 用于压电和电容微麦克风的体硅腐蚀相关研究. 压电与声
+%      光, 2006, 28(1):117-119. (EI 收录, 检索号:06129773469)
+%    \item 伍晓明, 杨轶, 张宁欣, 等. 基于MEMS技术的集成铁电硅微麦克风. 中国集成电路,
+%      2003, 53:59-61.
+%  \end{publications}
+%% \end{latex}
+%
+% \DescribeEnv{achievements}
+% 研究成果用 \cs{researchitem}\{研究成果\} 开启，随后用 \env{achievements} 环
+% 境罗列。
+%
+% 具体用法请参看示例文档 \file{data/resume.tex}。
 %
 % \subsection{自定义}
 % \label{sec:othercmd}
@@ -3180,7 +3227,7 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \changes{v5.1.1}{2016/1/11}{增加翻译文献环境 \env*{translationbib}。}
+% \changes{v5.1.1}{2016/1/11}{增加翻译文献环境 \env{translationbib}。}
 % \begin{environment}{translationbib}
 % 外文资料的参考文用宋体五号字，取固定行距17pt，段前后3pt。
 %    \begin{macrocode}
@@ -3192,32 +3239,16 @@
 % \end{environment}
 %
 % \subsection{个人简历}
+%
 % \begin{environment}{resume}
 % \changes{v1.5}{2005/12/16}{增加个人简历章节的命令，去掉主文件中需要重新
 % 定义 \cs{cleardoublepage} 和自己写 \cs{markboth}，\cs{addcontentsline} 的部分。}
 % \changes{v2.0}{2005/12/18}{最后决定将 resume 定义为环境。这样与前面的主要符号
 % 表、致谢等对应。}
+% \changes{v2.5.1}{2006/05/23}{ft，教务处和研究生院非要搞的不一样！}
 % \changes{v2.5.2}{2006/05/29}{研究生的个人介绍要右开。}
 % \changes{v4.6}{2011/05/02}{支持可选参数，自己定义简历章节标题。}
 % 个人简历发表文章等。
-%    \begin{macrocode}
-%<*cls>
-\newenvironment{resume}[1][\thu@resume@title]{%
-  \thu@chapter*{#1}}{}
-%</cls>
-%    \end{macrocode}
-% \end{environment}
-%
-% \begin{macro}{\resumeitem}
-% \begin{macro}{\researchitem}
-% \begin{environment}{publications}
-% \begin{environment}{achievements}
-% 利用 \pkg{enumitem} 宏包引入两个新列表环境 publications 和 achievements，
-% 分别用于个人简历里面会出现的学术论文列表和研究成果列表。
-% publications 环境可以连续出现多次，模板会自动在之间加入空行。
-% \changes{v2.5.1}{2006/05/23}{ft，教务处和研究生院非要搞的不一样！}
-% \changes{v5.0.0}{2015/04/18}{博士后就不提在学期间了，不合适(\#100)}
-% \changes{v5.0.0}{2015/05/17}{让简历部分更符合格式指南和示例文件(\#122)}
 %    \begin{macrocode}
 %<*cfg>
 \ifthu@bachelor
@@ -3231,19 +3262,54 @@
 \fi
 %</cfg>
 %<*cls>
-\newcommand{\resumeitem}[1]{\vspace{24bp}{\sihao\heiti\centerline{#1}}\par\vspace{6bp}}
-\newcommand{\researchitem}[1]{\vspace{32bp}{\sihao\heiti\centerline{#1}}\par\vspace{14bp}}
+\newenvironment{resume}[1][\thu@resume@title]{%
+  \thu@chapter*{#1}}{}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{macro}{\resumeitem}
+% 个人简历部分。每条信息一个段落，故不需要特别处理。
+%    \begin{macrocode}
+\newcommand{\resumeitem}[1]{%
+  \vspace{24bp}{\sihao\heiti\centerline{#1}}\par\vspace{6bp}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\researchitem}
+% 研究成果用 \cs{researchitem}\marg{类别} 开启，包括“学术论文”和“研究成果”两个
+% 列表。
+%    \begin{macrocode}
+\newcommand{\researchitem}[1]{%
+  \vspace{32bp}{\sihao\heiti\centerline{#1}}\par\vspace{14bp}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{environment}{publications}
+% \begin{environment}{achievements}
+% 二者分别通过两个环境 \env{publications} 和 \env{achievements} 罗
+% 列。
+%
+% \changes{v5.0.0}{2015/04/18}{博士后就不提在学期间了，不合适(\#100)}
+% \changes{v5.0.0}{2015/05/17}{让简历部分更符合格式指南和示例文件(\#122)}
+%    \begin{macrocode}
 \newlist{publications}{enumerate}{1}
 \setlist[publications]{label=[\arabic*],align=left,nosep,itemsep=8bp,
-  leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26],after*=\vspace{29bp},resume}
+  leftmargin=10mm,labelsep=!,before=\xiaosi[1.26],resume}
 \newlist{achievements}{enumerate}{1}
 \setlist[achievements]{label=[\arabic*],align=left,nosep,itemsep=8bp,
-  leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
-%</cls>
+  leftmargin=10mm,labelsep=!,before=\xiaosi[1.26]}
 %    \end{macrocode}
 % \end{environment}
 % \end{environment}
-% \end{macro}
+%
+% \changes{v5.1.1}{2016/1/11}{增加 \cs{publicationskip}。}
+% \begin{macro}{\publicationskip}
+% \env{publications} 环境可以连续出现多次，第二类论文列表前后要空一行，使
+% 用 \cs{publicationskip}。
+%    \begin{macrocode}
+\def\publicationskip{\bigskip\bigskip}
+%</cls>
+%    \end{macrocode}
 % \end{macro}
 %
 % \subsection{书脊}
@@ -3387,8 +3453,7 @@
 \setlist{nosep}
 
 \DeclareDocumentCommand{\option}{m}{\textsf{#1}}
-\DeclareDocumentCommand{\env}{s m}{
-  \texttt{#2}\IfBooleanF#1{\thu@special@index{environment}{#2}}}
+\DeclareDocumentCommand{\env}{m}{\texttt{#1}}
 \DeclareDocumentCommand{\pkg}{s m}{%
   \texttt{#2}\IfBooleanF#1{\thu@special@index{package}{#2}}}
 \DeclareDocumentCommand{\file}{s m}{%
