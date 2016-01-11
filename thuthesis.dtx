@@ -846,8 +846,8 @@
 %
 % \subsubsection{符号对照表}
 % \DescribeEnv{denotation}
-% 主要符号表环境。简单定义的一个 \texttt{list}，跟 \texttt{description} 非常类似，
-% 使用方法参见示例文件。带一个可选参数，用来指定符号列的宽度（默认为 2.5cm）。
+% 主要符号表环境，跟 \env{description} 类似，使用方法参见示例文件。带一个可选参数，
+% 用来指定符号列的宽度（默认为 2.5cm）。
 % \begin{latex}
 % \begin{denotation}
 %   \item[E] 能量
@@ -856,7 +856,7 @@
 % \end{denotation}
 % \end{latex}
 %
-% 如果你觉得符号列的宽度不满意，那可以这样来调整：
+% 如果默认符号列的宽度不满意，可以通过参数来调整：
 % \begin{latex}
 % \begin{denotation}[1.5cm] % 设置为 1.5cm
 %   \item[E] 能量
@@ -2547,7 +2547,7 @@
 % \changes{v4.6}{2011/04/26}{增加博士后封面。}
 % \changes{v4.7}{2011/11/28}{硕士中文封面不再需要英文标题。}
 % \changes{v4.7}{2012/05/30}{本科生题目下划线长度自动适应字数。}
-% \changes{v5.1.0}{2015/12/27}{利用 CJKfilltwosides 优化封面排版。}
+% \changes{v5.1.0}{2015/12/27}{利用 \env{CJKfilltwosides} 优化封面排版。}
 %
 %    \begin{macrocode}
 %<*cls>
@@ -2955,28 +2955,32 @@
 % \subsubsection{主要符号表}
 % \label{sec:denotationfmt}
 % \begin{environment}{denotation}
-% 主要符号对照表\changes{v2.0e}{2005/12/18}{主要符号表定义为一个 list，用起来方便。}
+% 主要符号对照表。
+% \changes{v2.0e}{2005/12/18}{主要符号表定义为一个 list，用起来方便。}
 % \changes{v2.4}{2006/04/14}{为主要符号表环境增加一个可选参数，调节符号列的宽度。}
+% \changes{v5.2.1}{2016/1/11}{利用 \pkg*{enumitem} 改造环境定义，更直观。}
 %    \begin{macrocode}
 %<*cfg>
 \newcommand{\thu@denotation@name}{主要符号对照表}
 %</cfg>
 %<*cls>
-\newenvironment{denotation}[1][2.5cm]{
+\newenvironment{denotation}[1][2.5cm]{%
   \thu@chapter*[]{\thu@denotation@name} % no tocline
-  \noindent\begin{list}{}%
-    {\vskip-30bp\xiaosi[1.6]
-     \renewcommand\makelabel[1]{##1\hfil}
-     \setlength{\labelwidth}{#1} % 标签盒子宽度
-     \setlength{\labelsep}{0.5cm} % 标签与列表文本距离
-     \setlength{\itemindent}{0cm} % 标签缩进量
-     \setlength{\leftmargin}{\labelwidth+\labelsep} % 左边界
-     \setlength{\rightmargin}{0cm}
-     \setlength{\parsep}{0cm} % 段落间距
-     \setlength{\itemsep}{0cm} % 标签间距
-    \setlength{\listparindent}{0cm} % 段落缩进量
-    \setlength{\topsep}{0pt} % 标签与上文的间距
-   }}{\end{list}}
+  \vskip-30bp\xiaosi[1.6]\begin{thu@denotation}[labelwidth=#1]
+}{%
+  \end{thu@denotation}
+}
+\newlist{thu@denotation}{description}{1}
+\setlist[thu@denotation]{%
+  nosep,
+  font=\normalfont,
+  align=left,
+  leftmargin=!, % sum of the following 3 lengths
+  labelindent=0pt,
+  labelwidth=2.5cm,
+  labelsep*=0.5cm,
+  itemindent=0pt,
+}
 %</cls>
 %    \end{macrocode}
 % \end{environment}
@@ -3214,8 +3218,8 @@
 %    \end{macrocode}
 % \end{environment}
 %
-% \changes{v5.2.0}{2016/1/11}{增加 \cs{title} 排版翻译标题。}
 % \begin{macro}{\title}
+% \changes{v5.2.0}{2016/1/11}{增加 \cs{title} 排版翻译标题。}
 % 本科外文翻译文章的标题，用法：\cs{title}\marg{资料标题}。这个命令只能在附录环
 % 境下使用。
 %    \begin{macrocode}
@@ -3227,8 +3231,8 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \changes{v5.2.0}{2016/1/11}{增加翻译文献环境 \env{translationbib}。}
 % \begin{environment}{translationbib}
+% \changes{v5.2.0}{2016/1/11}{增加翻译文献环境 \env{translationbib}。}
 % 外文资料的参考文用宋体五号字，取固定行距17pt，段前后3pt。
 %    \begin{macrocode}
 \newlist{translationbib}{enumerate}{1}
@@ -3302,8 +3306,8 @@
 % \end{environment}
 % \end{environment}
 %
-% \changes{v5.2.0}{2016/1/11}{增加 \cs{publicationskip}。}
 % \begin{macro}{\publicationskip}
+% \changes{v5.2.0}{2016/1/11}{增加 \cs{publicationskip}。}
 % \env{publications} 环境可以连续出现多次，第二类论文列表前后要空一行，使
 % 用 \cs{publicationskip}。
 %    \begin{macrocode}
