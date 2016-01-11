@@ -929,24 +929,24 @@
 % \subsection{封底部分}
 %
 % \subsubsection{致谢声明}
-% \DescribeEnv{ack}
+% \DescribeEnv{acknowledgement}
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！下面是数学系一位同
 % 学致谢里的话，拿过来做个广告。希望每个人都能写这么一句 :)
 % \begin{latex}
-% \begin{ack}
+% \begin{acknowledgement}
 %   …
 %   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
-% \end{ack}
+% \end{acknowledgement}
 % \end{latex}
 %
 % 本科论文在此处还有一节“声明”，提交版本时需要替换为签字扫描文件，同样我们也提供：
 % 如果使用声明扫描页，将可选参数指定为扫描后的 PDF 文件名，例如：
 % \begin{latex}
-% \begin{ack}[scan-statement.pdf]
+% \begin{acknowledgement}[scan-statement.pdf]
 %   加了扫描文件后，这里面的文字就没用了。
 %
 %   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
-% \end{ack}
+% \end{acknowledgement}
 % \end{latex}
 %
 % \subsubsection{附录}
@@ -1178,7 +1178,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2016/1/11 5.2.0 Tsinghua University Thesis Template]
+%<cls|cfg>[2016/01/11 5.2.0 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -2958,7 +2958,7 @@
 % 主要符号对照表。
 % \changes{v2.0e}{2005/12/18}{主要符号表定义为一个 list，用起来方便。}
 % \changes{v2.4}{2006/04/14}{为主要符号表环境增加一个可选参数，调节符号列的宽度。}
-% \changes{v5.2.1}{2016/1/11}{利用 \pkg*{enumitem} 改造环境定义，更直观。}
+% \changes{v5.2.1}{2016/01/11}{利用 \pkg*{enumitem} 改造环境定义，更直观。}
 %    \begin{macrocode}
 %<*cfg>
 \newcommand{\thu@denotation@name}{主要符号对照表}
@@ -2989,7 +2989,7 @@
 % \subsubsection{致谢以及声明}
 % \label{sec:ackanddeclare}
 %
-% \begin{environment}{ack}
+% \begin{environment}{acknowledgement}
 % 支持扫描文件替换。
 % \changes{v2.4}{2006/04/14}{调整\textbf{致谢}等中间的距离。}
 %    \begin{macrocode}
@@ -3016,9 +3016,10 @@
 % \changes{v2.5.2}{2006/05/30}{研究生致谢题目是致谢，目录是致谢与声明。}
 % \changes{v2.6.3}{2006/07/01}{重画双虚线，自适应页面宽度。}
 % \changes{v4.5.2}{2010/09/19}{研究生论文的致谢和声明终于分开了。}
+% \changes{v5.2.1}{2016/01/11}{用 \env{acknowledgement} 替换 \env{ack}。}
 %    \begin{macrocode}
 %<*cls>
-\NewDocumentEnvironment{ack}{o}{%
+\NewDocumentEnvironment{acknowledgement}{o}{%
     \thu@chapter*{\thu@ackname}
   }
 %    \end{macrocode}
@@ -3041,6 +3042,13 @@
       }%
     \fi
   }
+%    \end{macrocode}
+% \end{environment}
+% \begin{environment}{ack}
+% 兼容旧版本保留 \env{ack}。
+%    \begin{macrocode}
+\let\ack\acknowledgement
+\let\endack\endacknowledgement
 %</cls>
 %    \end{macrocode}
 % \end{environment}
@@ -3219,7 +3227,7 @@
 % \end{environment}
 %
 % \begin{macro}{\title}
-% \changes{v5.2.0}{2016/1/11}{增加 \cs{title} 排版翻译标题。}
+% \changes{v5.2.0}{2016/01/11}{增加 \cs{title} 排版翻译标题。}
 % 本科外文翻译文章的标题，用法：\cs{title}\marg{资料标题}。这个命令只能在附录环
 % 境下使用。
 %    \begin{macrocode}
@@ -3232,7 +3240,7 @@
 % \end{macro}
 %
 % \begin{environment}{translationbib}
-% \changes{v5.2.0}{2016/1/11}{增加翻译文献环境 \env{translationbib}。}
+% \changes{v5.2.0}{2016/01/11}{增加翻译文献环境 \env{translationbib}。}
 % 外文资料的参考文用宋体五号字，取固定行距17pt，段前后3pt。
 %    \begin{macrocode}
 \newlist{translationbib}{enumerate}{1}
@@ -3307,7 +3315,7 @@
 % \end{environment}
 %
 % \begin{macro}{\publicationskip}
-% \changes{v5.2.0}{2016/1/11}{增加 \cs{publicationskip}。}
+% \changes{v5.2.0}{2016/01/11}{增加 \cs{publicationskip}。}
 % \env{publications} 环境可以连续出现多次，第二类论文列表前后要空一行，使
 % 用 \cs{publicationskip}。
 %    \begin{macrocode}
