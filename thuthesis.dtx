@@ -104,13 +104,13 @@
 % \changes{v2.3}{2006/04/07}{Reorganize the codes in cover, make the pagestyle more readable.}
 % \changes{v2.3}{2006/04/07}{Add gbk2uni into the document.}
 % \changes{v2.3}{2006/04/07}{Support \option{openright} and openany.}
-% \changes{v2.3}{2006/04/09}{Adjust hypersetup to remove color and box.}
+% \changes{v2.3}{2006/04/09}{Adjust \cs{hypersetup} to remove color and box.}
 % \changes{v2.3}{2006/04/09}{Adjust margins again.}
 % \changes{v2.3}{2006/04/09}{Adjust references formats.}
 % \changes{v2.3}{2006/04/09}{Redefine frontmatter and mainmatter to fit our case.}
 % \changes{v2.3}{2006/04/09}{Add assumption environment.}
 % \changes{v2.3}{2006/04/09}{Change the brace in the cover.}
-% \changes{v2.4}{2006/04/14}{Fill more pdf info. with hypersetup.}
+% \changes{v2.4}{2006/04/14}{Fill more pdf info. with \cs{hypersetup}.}
 % \changes{v2.4}{2006/04/14}{自动隐藏密级为内部时后面的五角星。}
 % \changes{v2.4}{2006/04/14}{增加“注释 (Remark)”环境。}
 % \changes{v2.4}{2006/04/14}{压缩 item 之间的距离。}
@@ -128,18 +128,24 @@
 % \changes{v2.4.2}{2006/04/18}{去掉参考文献第二个作者后面烦人的逗号。}
 % \changes{v2.5}{2006/05/19}{对本科论文进行大幅度的重写，因为教务处修改了格式要求。}
 % \changes{v2.5}{2006/05/19}{重新整理代码，使其布局更易读。}
+% \changes{v2.5.1}{2006/05/24}{如果选项设置了 dvips，但是用 pdflatex 编译，报错。}
 % \changes{v2.5.1}{2006/05/24}{根据教务处的新要求调整附录部分。}
 % \changes{v2.5.1}{2006/05/25}{参考文献中杂志文章如果没有卷号，那么页码直接跟在
 % 年份后面，并用句点分割。在 \file*{thubib.bst} 中增加 output.year 函数。}
+% \changes{v2.6}{2006/06/09}{增加 dvipdfm 选项。}
 % \changes{v2.6.1}{2006/06/16}{取消 \file*{thubib.bst} 中 inbook 类 volume 后的页
 % 码。}
+% \changes{v3.0}{2007/05/12}{不用专门为本科论文生成“\textbf{提交}”版本了。}
 % \changes{v3.0}{2007/05/12}{没有了综合论文训练页面，很多本科论文专用命令就消失了。}
 % \changes{v4.4}{2008/05/12}{修复网址断字。}
 % \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \pkg*{xeCJK}。}
 % \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
+% \changes{v4.5}{2009/01/03}{增加 xetex, pdftex 选项。}
 % \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
 % \changes{v4.6}{2011/10/22}{使用手册更新。}
 % \changes{v4.7}{2012/06/12}{去掉 \pkg*{hypernat} 依赖，\pkg*{hyperref} 和 \pkg*{natbib} 可以很好配合了。}
+% \changes{v4.8}{2013/03/02}{no need to load \pkg*{indentfirst} directly since we use \pkg*{ctex}.}
+% \changes{v4.8}{2013/03/02}{内部调用 ctex 宏包，自动检测编译引擎。}
 % \changes{v4.8}{2013/03/04}{dvips method is deprecated. We ask their users to load it manually.}
 % \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \CTeX。}
 %
@@ -148,8 +154,8 @@
 % \IndexPrologue{\section{\indexname}}
 % \GlossaryPrologue{\section{\glossaryname}}
 %
-% \title{\bfseries\color{violet}\thuthesis：清华大学学位论文模板\thanks{\textbf{T}sing\textbf{h}ua \textbf{U}niversity \LaTeX{} \textbf{Thesis} Template.}}
-% \author{{\fangsong 薛瑞尼\thanks{LittleLeo@newsmth}}\\[5pt] \texttt{xueruini@gmail.com}}
+% \title{\bfseries\color{violet}\thuthesis：清华大学学位论文模板}
+% \author{{\fangsong 薛瑞尼}\\[5pt]\texttt{xueruini@gmail.com}}
 % \date{v\fileversion\ (\filedate)}
 % \maketitle\thispagestyle{empty}
 %
@@ -189,8 +195,9 @@
 % \clearpage
 %
 % \section{模板介绍}
-% \thuthesis\ (\textbf{T}sing\textbf{hu}a \textbf{Thesis}) 是为了帮助清华大学毕业
-% 生撰写毕业论文而编写的 \LaTeX{} 论文模板。
+% \thuthesis\ (\textbf{T}sing\textbf{h}ua \textbf{U}niversity \LaTeX{}
+% \textbf{Thesis} Template) 是为了帮助清华大学毕业生撰写毕业论文而编写
+% 的 \LaTeX{} 论文模板。
 %
 % 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据
 % 第~\ref{sec:howtoask} 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
@@ -316,7 +323,7 @@
 % Xe\TeX 最大的优势就是不再需要繁琐的字体配置。\thuthesis{} 通过 \pkg{xeCJK} 来控
 % 制中文字体和标点压缩。模板里默认用的是中易的六款免费字体（宋，黑，楷，仿宋，隶
 % 书和幼圆），因学位论文需求不建议替换为其他字体。如果实在必要，可以通过定
-% 制\file{ctex-fontset-thuthesis.def} 文件中的字体自行替换。研究生一般用不到隶书
+% 制 \file{ctex-fontset-thuthesis.def} 文件中的字体自行替换。研究生一般用不到隶书
 % 和幼圆字体，如果系统上没有它们，可以直接将 \file{ctex-fontset-thuthesis.def} 文
 % 件以及论文中相应行删除。字体配置参考第~\ref{sec:font-config} 节。
 %
@@ -340,8 +347,8 @@
 % xelatex 替换为 pdflatex。
 %
 % 需要注意的是 PDF\LaTeX\ 不能处理常见的 EPS 图形，需要先用 epstopdf 将其转化
-% 成 PDF。不过 PDF\LaTeX\ 增加了对 png，jpg 等标量图形的支持，比较方便。
-% TeX Live 自从 2010 版本起自动调用 epstopdf 将 EPS 图形转化为 PDF。
+% 成 PDF。不过 PDF\LaTeX\ 增加了对 png，jpg 等标量图形的支持，比较方便。TeX Live
+% 自从 2010 版本起自动调用 \texttt{epstopdf} 将 EPS 图形转化为 PDF。
 %
 % \subsubsection{latexmk}
 % \label{sec:latexmk}
@@ -416,9 +423,7 @@
 %
 % \subsection{论文选项}
 % \label{sec:option}
-% 本模板提供了一些选项以方便使用：
 %
-% \changes{v5.0.0}{2015/12/13}{使用 \pkg*{kvoptions} 简化选项 type。}
 % \DescribeOption{type}
 %   选择论文类型，当前支
 %   持：\option{bachelor}，\option{master}，\option{doctor}，\option{postdoctor}。
@@ -448,7 +453,6 @@
 % \secretyear{2020}
 % \end{latex}
 %
-% \changes{v3.0}{2007/05/12}{不用专门为本科论文生成\textbf{提交}版本了。}
 %
 % \DescribeOption{openany}
 % \DescribeOption{openright}
@@ -1087,8 +1091,6 @@
 %
 % \subsubsection{引用方式}
 %
-% \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
-% 容性，\cs{onlinecite} 会保留。}
 % \DescribeMacro{\inlinecite}
 % 学校要求的参考文献引用有两种模式：（1）上标模式。比如``同样的工作有很
 % 多$^{[1,2]}$\ldots''。（2）正文模式。比如``文[3] 中详细说明了\ldots''。其中上标
@@ -1204,6 +1206,10 @@
   family=thu,
   prefix=thu@,
   setkeys=\kvsetkeys}
+%    \end{macrocode}
+% 用 \pkg{kvoptions} 的 key=value 方式来设置论文类型。
+% \changes{v5.0.0}{2015/12/13}{使用 \pkg*{kvoptions} 简化选项 type。}
+%    \begin{macrocode}
 \newif\ifthu@bachelor
 \newif\ifthu@master
 \newif\ifthu@doctor
@@ -1226,11 +1232,6 @@
 
 \DeclareBoolOption{secret}
 %    \end{macrocode}
-%
-% \changes{v2.5.1}{2006/05/24}{如果选项设置了 dvips，但是用 pdflatex 编译，报错。}
-% \changes{v2.6}{2006/06/09}{增加 dvipdfm 选项。}
-% \changes{v4.5}{2009/01/03}{增加 xetex, pdftex 选项。}
-% \changes{v4.8}{2013/03/02}{内部调用 ctex 宏包，自动检测编译引擎。}
 %
 % 如果需要使用 arial 字体，请打开 [arial] 选项
 %    \begin{macrocode}
@@ -1262,11 +1263,7 @@
 % \changes{v2.5.1}{2006/05/24}{ft，研究生院目录要 times，而教务处要 arial。}
 % \changes{v2.5.1}{2006/05/26}{本科 openright，研究生 openany。}
 % \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
-% \changes{v4.8}{2013/03/10}{使用 ctexbook 类，优于调用 ctex 宏包。}
 % \changes{v4.8}{2013/05/29}{添加 nocap 选项，恢复默认标题样式，模板会进一步定制。}
-% \changes{v5.0.0}{2015/03/12}{使用 XeTeX 引擎时，fontspec 宏包会被 xeCJK 自动
-% 调用。传递给 fontspec 宏包 no-math 选项，避免部分数学符号字体自动调整为 CMR。
-% 其他引擎下没有这个问题，这一行会被无视。}
 % 打开默认选项。
 %    \begin{macrocode}
 \kvsetkeys{thu}{%
@@ -1278,7 +1275,17 @@
 % 解析用户传递过来的选项，并加载 \pkg{ctexbook}。
 %    \begin{macrocode}
 \ProcessKeyvalOptions*
+%    \end{macrocode}
+%
+% 使用 XeTeX 引擎时，\pkg{fontspec} 宏包会被 \pkg{xeCJK} 自动
+% 调用。传递给 \pkg{fontspec} 宏包 \option{no-math} 选项，避免部分数学符号字体自动调整为 CMR。
+% 其他引擎下没有这个问题，这一行会被无视。
+%    \begin{macrocode}
 \PassOptionsToPackage{no-math}{fontspec}
+%    \end{macrocode}
+%
+% 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
+%    \begin{macrocode}
 \LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain,fontset=none]{ctexbook}
 %    \end{macrocode}
 %
@@ -1312,11 +1319,18 @@
 \RequirePackage{amsmath}
 %    \end{macrocode}
 %
-% 用 \pkg{txfonts} 替换 \pkg{mathptmx} 宏包，同时用它自带的 typewriter 字
-% 体替换 courier。必须出现在 \AmSTeX{} 之后。
-% \changes{v3.1}{2007/06/16}{replace mathptmx with txfonts.}
+% \pkg{newtx} 设置 Times New Roman，Helvetica。
+% \changes{v3.1}{2007/06/16}{replace \pkg*{mathptmx} with \pkg*{txfonts}.}
+% \changes{v5.2.1}{2016/01/14}{使用 \pkg*{newtx} 替换 \pkg*{txfonts}。}
 %    \begin{macrocode}
-\RequirePackage{txfonts}
+\RequirePackage{newtxtext}
+\RequirePackage{newtxmath}
+%    \end{macrocode}
+%
+% \pkg{newtx} 的 Mono 字体虽然很好看，但是在论文中不常见。学校固然未要求 Mono 字
+% 体，还是选择常见的 Courier 字体，采用比较新的实现 TEX Gyre Cursor。
+%    \begin{macrocode}
+\RequirePackage{tgcursor}
 %    \end{macrocode}
 %
 % 图形支持宏包。
@@ -1336,8 +1350,6 @@
 \includepdfset{fitpaper=true}
 %    \end{macrocode}
 %
-% \changes{v4.8}{2013/03/02}{no need to load indentfirst directly since we use ctex.}
-%
 % 更好的列表环境。
 % \changes{v2.6.2}{2006/06/18}{去掉 \pkg*{paralist} 的 \option{newitem} 和
 % \option{newenum} 选项，因为默认是打开的。}
@@ -1347,7 +1359,7 @@
 \RequirePackage[shortlabels]{enumitem}
 %    \end{macrocode}
 %
-% raggedbottom，禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
+% 禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
 % 脚注按页编号。
 %    \begin{macrocode}
 \ifthu@raggedbottom
@@ -1363,26 +1375,30 @@
 %    \begin{macrocode}
 \RequirePackage{CJKfntef}
 %    \end{macrocode}
+%
+% TODO：重置 \cs{baselinestretch}，这个地方太诡异了。是古老版本留下来的，会影响
+% 封面部分的排班，应该优化一下。
 % \changes{v4.8}{2013/03/09}{reset baselinestretch after ctex's change.}
 %    \begin{macrocode}
 \renewcommand{\baselinestretch}{1.0} % todo:?
+%    \end{macrocode}
+%
+% XeTeX 环境下独立配置，包括零对应的圆圈符号和字体。
+%    \begin{macrocode}
 \ifxetex
-  % todo: minor fix of CJKnumb
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
-  \defaultfontfeatures{Mapping=tex-text} % use TeX --
+  \defaultfontfeatures{Mapping=tex-text}
 %    \end{macrocode}
 % 默认采用中易的六款免费字体。缺少上述字体的用户可以通过
-% \file{ctex-fontset-thuthesis.def} 文件自定义字体。
+% \file{ctex-fontset-thuthesis.def} 文件自定义字体。非 XeTeX 环境下利用
+% \pkg{CJKspace} 来控制中英文之间的间距。
 % \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg*{CJKspace} 保留中英文间空格。}
 % \changes{v5.0.0}{2015/04/17}{固定字体设置，同时改善与 ctex 兼容性。}
+% \changes{v5.2.1}{2016/01/14}{使用 \pkg*{newtx} 字体。}
 %    \begin{macrocode}
   \IfFileExists{ctex-fontset-thuthesis.def}%
     {\ctexset{fontset=thuthesis}}%
     {\ctexset{fontset=windows}}
-
-  \setmainfont{Times New Roman}
-  \setsansfont{Arial}
-  \setmonofont{Courier New}
 \else
   \RequirePackage{CJKspace}
 %    \end{macrocode}
@@ -1441,7 +1457,8 @@
   pdfborder=0 0 0}
 %    \end{macrocode}
 %
-% dvips 模式下网址断字有问题，请手工加载 breakurl 这个宏包解决之。
+% dvips 模式下网址断字有问题，请手工加载 \pkg{breakurl} 宏包解决之。
+%
 % 设置 url 样式，与上下文一致
 %    \begin{macrocode}
 \urlstyle{same}
@@ -1688,16 +1705,17 @@
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
 %
-% 定义页眉和页脚。chapter 自动调用 \cs{thispagestyle\{thu@plain\}}，所以要重新定义 thu@plain。
+% 定义页眉和页脚。\cs{chapter} 自动调用
+% \cs{thispagestyle\{thu@plain\}}，所以要重新定义 \cs{thu@plain}。
+% \begin{macro}{\ps@thu@empty}
+% \begin{macro}{\ps@thu@plain}
+% \begin{macro}{\ps@thu@headings}
 % \changes{v2.0}{2005/12/18}{以前的太乱了，重新整理过清晰多了。}
 % \changes{v2.1}{2006/03/01}{彻底放弃 fancyhdr，定义自己的样式。}
 % \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
 % \changes{v2.5}{2006/05/20}{增加 empty 页面样式。}
 % \changes{v4.7}{2012/05/29}{本科页码用小五号字。}
 % \changes{v5.0.0}{2015/12/20}{利用 \pkg*{fancyhdr} 设置页眉页脚。}
-% \begin{macro}{\ps@thu@empty}
-% \begin{macro}{\ps@thu@plain}
-% \begin{macro}{\ps@thu@headings}
 % 定义三种页眉页脚格式：
 % \begin{itemize}
 % \item \texttt{thu@empty}：页眉页脚都没有
@@ -1768,6 +1786,7 @@
   \fi}
 %    \end{macrocode}
 % \end{macro}
+% 修改脚注内部命令。
 % \changes{v2.6}{2006/06/09}{脚注改成 1.5 倍行距，漂亮。}
 %    \begin{macrocode}
 \renewcommand{\thefootnote}{\thu@textcircled{footnote}}
@@ -1844,7 +1863,7 @@
 %\fi
 %    \end{macrocode}
 %
-% 解决证明环境中方块乱跑的问题。
+% TODO：解决证明环境中方块乱跑的问题。
 %    \begin{macrocode}
 \gdef\@endtrivlist#1{%  % from \endtrivlist
   \if@inlabel \indent\fi
@@ -2222,7 +2241,8 @@
       \leavevmode
       \advance\leftskip\@tempdima
       \hskip -\leftskip
-      {\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi\heiti #1} % numberline is called here, and it uses \@tempdima
+      % numberline is called here, and it uses \@tempdima
+      {\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi\heiti #1}
       \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
       \nobreak{\normalfont\normalcolor #2}\par
       \penalty\@highpenalty
@@ -2235,9 +2255,12 @@
 % 南中未作明确规定，示例文件中对于一级和二级节标题分别缩进 1 和 1.5 个汉字符。
 % \changes{v5.0.0}{2015/04/28}{修正学位论文中目录里节前缩进(\#103)}
 %    \begin{macrocode}
-\renewcommand*\l@section{\@dottedtocline{1}{\ccwd}{2.1em}}
-\renewcommand*\l@subsection{\@dottedtocline{2}{\ifthu@bachelor 1.5\ccwd\else 2\ccwd\fi}{3em}}
-\renewcommand*\l@subsubsection{\@dottedtocline{3}{\ifthu@bachelor 2.4em\else 3.5em\fi}{3.8em}}
+\renewcommand*\l@section{%
+  \@dottedtocline{1}{\ccwd}{2.1em}}
+\renewcommand*\l@subsection{%
+  \@dottedtocline{2}{\ifthu@bachelor 1.5\ccwd\else 2\ccwd\fi}{3em}}
+\renewcommand*\l@subsubsection{%
+  \@dottedtocline{3}{\ifthu@bachelor 2.4em\else 3.5em\fi}{3.8em}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -2405,7 +2428,8 @@
   \expandafter\gdef\csname #1\endcsname##1{
     \@for\reserved@a:=##1\do{
       \expandafter\ifx\csname thu@#1\endcsname\@empty\else
-        \expandafter\g@addto@macro\csname thu@#1\endcsname{\ignorespaces\csname thu@#1@separator\endcsname}
+        \expandafter\g@addto@macro\csname thu@#1\endcsname{%
+          \ignorespaces\csname thu@#1@separator\endcsname}
       \fi
       \expandafter\expandafter\expandafter\g@addto@macro%
         \expandafter\csname thu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
@@ -2563,7 +2587,8 @@
     \vspace*{0.7cm}
     \begingroup\wuhao[1.5]%
     \thu@put@title{\thu@catalog@number@title}\thu@underline\thu@catalognumber\hfill%
-    \thu@put@title{\thu@secretlevel}\expandafter\thu@underline\ifthu@secret\thu@secret@content\else\relax\fi\par
+    \thu@put@title{\thu@secretlevel}%
+      \expandafter\thu@underline\ifthu@secret\thu@secret@content\else\relax\fi\par
     \thu@put@title{U D C}\thu@underline\thu@udc\hfill%
     \thu@put@title{\thu@id@title}\thu@underline\thu@id\par\vskip3cm\endgroup
     \begingroup\heiti
@@ -2587,10 +2612,18 @@
       \else
         \begin{tabular}{p{\thu@title@width}l@{}l}
       \fi
-          \thu@put@title{\thu@author@title}     & \thu@title@sep & \thu@cauthor \\
-          \thu@put@title{\thu@postdoctor@first@discipline@title}      & \thu@title@sep & \thu@cfirstdiscipline\\
-          \thu@put@title{\thu@postdoctor@second@discipline@title}      & \thu@title@sep & \thu@cseconddiscipline\\
-          \thu@put@title{\thu@supervisor@title} & \thu@title@sep & \thu@csupervisor\\
+          \thu@put@title{\thu@author@title}
+            & \thu@title@sep
+            & \thu@cauthor \\
+          \thu@put@title{\thu@postdoctor@first@discipline@title}
+            & \thu@title@sep
+            & \thu@cfirstdiscipline\\
+          \thu@put@title{\thu@postdoctor@second@discipline@title}
+            & \thu@title@sep
+            & \thu@cseconddiscipline\\
+          \thu@put@title{\thu@supervisor@title}
+            & \thu@title@sep
+            & \thu@csupervisor\\
         \end{tabular}}
     \vskip2cm
     {\sihao\thu@postdoctor@date@title\hskip1em\underline\thu@postdoctordate}
@@ -2650,12 +2683,17 @@
          \else
            \begin{tabular}{p{\thu@title@width}l@{}l}
          \fi
-             \thu@put@title{\thu@department@title} & \thu@title@sep & \thu@cdepartment\\
-             \thu@put@title{\thu@major@title}      & \thu@title@sep & \thu@cmajor\\
-             \thu@put@title{\thu@author@title}     & \thu@title@sep & \thu@cauthor \\
-             \thu@put@title{\thu@supervisor@title} & \thu@title@sep & \thu@csupervisor\\
+             \thu@put@title{\thu@department@title} & \thu@title@sep
+               & \thu@cdepartment\\
+             \thu@put@title{\thu@major@title}      & \thu@title@sep
+               & \thu@cmajor\\
+             \thu@put@title{\thu@author@title}     & \thu@title@sep
+               & \thu@cauthor \\
+             \thu@put@title{\thu@supervisor@title} & \thu@title@sep
+               & \thu@csupervisor\\
              \ifx\thu@cassosupervisor\@empty\else%
-               \thu@put@title{\thu@assosuper@title} & \thu@title@sep & \thu@cassosupervisor\\
+               \thu@put@title{\thu@assosuper@title} & \thu@title@sep
+               & \thu@cassosupervisor\\
              \fi
            \end{tabular}
         }}
@@ -2670,15 +2708,21 @@
           \else
             \begin{tabular}{p{\thu@title@width}c@{\extracolsep{4pt}}l}
           \fi
-              \thu@put@title{\thu@department@title}  & \thu@title@sep & {\ziju{0.1875}\thu@cdepartment}\\
-              \thu@put@title{\thu@major@title}       & \thu@title@sep & {\ziju{0.1875}\thu@cmajor}\\
-              \thu@put@title{\thu@author@title}      & \thu@title@sep & {\ziju{0.6875}\thu@cauthor}\\
-              \thu@put@title{\thu@supervisor@title}  & \thu@title@sep & {\ziju{0.6875}\thu@csupervisor}\\
+              \thu@put@title{\thu@department@title}  & \thu@title@sep
+                & {\ziju{0.1875}\thu@cdepartment}\\
+              \thu@put@title{\thu@major@title}       & \thu@title@sep
+                & {\ziju{0.1875}\thu@cmajor}\\
+              \thu@put@title{\thu@author@title}      & \thu@title@sep
+                & {\ziju{0.6875}\thu@cauthor}\\
+              \thu@put@title{\thu@supervisor@title}  & \thu@title@sep
+                & {\ziju{0.6875}\thu@csupervisor}\\
               \ifx\thu@cassosupervisor\@empty\else
-                \thu@put@title{\thu@assosuper@title} & \thu@title@sep & {\ziju{0.6875}\thu@cassosupervisor}\\
+                \thu@put@title{\thu@assosuper@title} & \thu@title@sep
+                & {\ziju{0.6875}\thu@cassosupervisor}\\
               \fi
               \ifx\thu@ccosupervisor\@empty\else
-                \hfill\makebox[0pt][r]{\thu@cosuper@title} & \thu@title@sep & {\ziju{0.6875}\thu@ccosupervisor}\\
+                \hfill\makebox[0pt][r]{\thu@cosuper@title} & \thu@title@sep
+                & {\ziju{0.6875}\thu@ccosupervisor}\\
               \fi
             \end{tabular}
         \end{center}}}
@@ -2690,7 +2734,9 @@
 % \changes{v4.4.3}{2008/06/09}{修改本科生论文封面日期格式以符合新样例。}
 %    \begin{macrocode}
      \begin{center}
-       {\ifthu@bachelor\vskip-1.0cm\hskip-1.2cm\xiaosi\else\vskip-0.5cm\sanhao\fi \songti \thu@cdate}
+       {\ifthu@bachelor\vskip-1.0cm\hskip-1.2cm\xiaosi\else%
+         \vskip-0.5cm\sanhao\fi%
+         \songti\thu@cdate}
      \end{center}
     \end{center}} % end of titlepage
 %</cls>
@@ -2845,7 +2891,7 @@
 % \changes{v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
 % \changes{v4.5.2}{2010/05/29}{本科封面和授权说明之间不要空白页。}
 % \changes{v4.6}{2011/05/29}{博士后报告无授权说明。}
-% \changes{v5.0.0}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文授权说明扫描版(\#36)。}
+% \changes{v5.0.0}{2015/06/05}{使用 \pkg*{pdfpages} 宏包支持本硕博论文授权说明扫描版(\#36)。}
 %    \begin{macrocode}
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
@@ -3131,6 +3177,8 @@
 % \begin{macro}{\inlinecite}
 % 正文引用模式。依赖于 \pkg{natbib} 宏包，修改其中的命令。旧命令 \cs{onlinecite}
 % 依然可用。
+% \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
+% 容性，\cs{onlinecite} 会保留。}
 %    \begin{macrocode}
 %<*cls>
 \bibpunct{[}{]}{,}{s}{}{,}
@@ -3373,11 +3421,12 @@
 \ProvidesPackage{dtx-style}
 \RequirePackage{hypdoc}
 \RequirePackage[UTF8,scheme=chinese]{ctex}
+\RequirePackage{newpxtext}
+\RequirePackage{newpxmath}
 \RequirePackage[
   top=2.5cm, bottom=2.5cm,
   left=4cm, right=2cm,
   headsep=3mm]{geometry}
-\RequirePackage{calc}
 \RequirePackage{array,longtable,booktabs}
 \RequirePackage{listings}
 \RequirePackage{fancyhdr}
