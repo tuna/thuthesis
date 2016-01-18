@@ -211,13 +211,13 @@
 % \label{sec:installation}
 %
 % \subsection{下载}
-% \thuthesis{} 已经包含在主要的 \TeX{} 发行版中，一般不需要安装，阅读文档可以使
-% 用以下命令：
+% \thuthesis{} 已经包含在主要的 \TeX{} 发行版中，一般不需要安装，可以利用发行版自
+% 带更新工具自动更新。阅读文档可以使用以下命令：
 % \begin{shell}
 % $ texdoc thuthesis
 % \end{shell}
 %
-% 如果要自己安装，请继续阅读。
+% 如果要使用开发版，需自己安装，请继续阅读。
 % \thuthesis{} 相关链接：
 % \begin{itemize}
 % \item 主页：\href{https://github.com/xueruini/thuthesis}{GitHub}
@@ -282,7 +282,7 @@
 % \note{默认的发行包中已经包含了所有文件，可以直接使用。如果对如何生成模板文件以
 % 及模板文档不感兴趣，请跳过本小节。}
 %
-% 模板解压缩后生成文件夹 \file{thuthesis-VERSION}\footnote{VERSION 为版本号。}，
+% 模板解压缩后生成文件夹 \file{thuthesis-vX.Y.Z}\footnote{\texttt{vX.Y.Z} 为版本号。}，
 % 其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参考文献
 % 样式 \file{thuthesis.bst}，示例文档
 % （\file{main.tex}，\file{shuji.tex}，\file{thuthesis.sty}\footnote{可能用到的包
@@ -292,7 +292,7 @@
 % 板文件和配置文件（具体命令细节请参考 \file{README.md} 和 \file{Makefile}）：
 %
 % \begin{shell}
-% $ cd thuthesis-VERSION
+% $ cd thuthesis-vX.Y.Z
 % # 生成 thuthesis.cls 和 thuthesis.cfg
 % $ latex thuthesis.ins
 %
