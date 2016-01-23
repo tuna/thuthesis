@@ -1309,6 +1309,7 @@
 %
 % 引用的宏包和相应的定义。
 %    \begin{macrocode}
+\RequirePackage{etoolbox}
 \RequirePackage{ifxetex}
 \RequirePackage{xparse}
 %    \end{macrocode}
@@ -2194,6 +2195,7 @@
 %
 % 每章标题行前空 6 磅，后空 0 磅。如果使用目录项中英文要使用 Arial，那么就加上 \cs{sffamily}。
 % 章节名中英文用 Arial 字体，页码仍用 Times。
+% \begin{macro}{\tableofcontents}
 % \changes{v2.0}{2005/12/18}{附录的目录项需要调整一下。以及公式编号方式等等。}
 % \changes{v2.5}{2006/05/13}{取消 \pkg*{titletoc} 宏包，用 \cs{dottedtocline} 调整
 %   目录。}
@@ -2204,32 +2206,23 @@
 % \changes{v4.4}{2008/06/04}{本科生目录字号改回\cs{xiaosi}\oarg{1.8}。}
 % \changes{v4.4}{2008/06/04}{本科生目录缩进要求不同。}
 % \changes{v4.4}{2008/06/18}{本科章目录项一直用黑体 (Arial)。}
-% \begin{macro}{\tableofcontents}
-%   目录生成命令。
+% 目录生成命令。
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
   \thu@chapter*[]{\contentsname}
   \ifthu@bachelor\xiaosi[1.8]\else\xiaosi[1.65]\fi\@starttoc{toc}\normalsize}
+%    \end{macrocode}
+% 调整目录样式，允许指定目录字体。
+% \changes{v5.2.2}{2016/01/23}{用 \cs{patchcmd} 修改 \cs{@dottedtocline}。}
+%    \begin{macrocode}
 \ifthu@arialtoc
   \def\thu@toc@font{\sffamily}
 \fi
-\def\@pnumwidth{2em} % 这个参数没用了
-\def\@tocrmarg{2em}
-\def\@dotsep{1} % 目录点间的距离
-\def\@dottedtocline#1#2#3#4#5{%
-  \ifnum #1>\c@tocdepth \else
-    \vskip \z@ \@plus.2\p@
-    {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
-    \parindent #2\relax\@afterindenttrue
-    \interlinepenalty\@M
-    \leavevmode
-    \@tempdima #3\relax
-    \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
-    {\csname thu@toc@font\endcsname #4}\nobreak
-    \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
-    \nobreak{\normalfont \normalcolor #5}%
-    \par}%
-  \fi}
+\def\@pnumwidth{2em}
+\def\@tocrmarg{\@pnumwidth}
+\def\@dotsep{1}
+\patchcmd{\@dottedtocline}{#4}{\csname thu@toc@font\endcsname #4}{}{}
+\patchcmd{\@dottedtocline}{\hb@xt@\@pnumwidth}{\hbox}{}{}
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
