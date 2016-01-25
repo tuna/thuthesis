@@ -128,7 +128,7 @@
 % \changes{v2.4.2}{2006/04/18}{去掉参考文献第二个作者后面烦人的逗号。}
 % \changes{v2.5}{2006/05/19}{对本科论文进行大幅度的重写，因为教务处修改了格式要求。}
 % \changes{v2.5}{2006/05/19}{重新整理代码，使其布局更易读。}
-% \changes{v2.5.1}{2006/05/24}{如果选项设置了 dvips，但是用 pdflatex 编译，报错。}
+% \changes{v2.5.1}{2006/05/24}{如果选项设置了 dvips，但是用 PDF\LaTeX\ 编译，报错。}
 % \changes{v2.5.1}{2006/05/24}{根据教务处的新要求调整附录部分。}
 % \changes{v2.5.1}{2006/05/25}{参考文献中杂志文章如果没有卷号，那么页码直接跟在
 % 年份后面，并用句点分割。在 \file*{thubib.bst} 中增加 output.year 函数。}
@@ -138,14 +138,14 @@
 % \changes{v3.0}{2007/05/12}{不用专门为本科论文生成“\textbf{提交}”版本了。}
 % \changes{v3.0}{2007/05/12}{没有了综合论文训练页面，很多本科论文专用命令就消失了。}
 % \changes{v4.4}{2008/05/12}{修复网址断字。}
-% \changes{v4.5}{2008/01/03}{加入 XeTeX 支持，需要 \pkg*{xeCJK}。}
-% \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 xelatex。}
+% \changes{v4.5}{2008/01/03}{加入 \XeTeX\ 支持，需要 \pkg*{xeCJK}。}
+% \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 \XeLaTeX。}
 % \changes{v4.5}{2009/01/03}{增加 xetex, pdftex 选项。}
 % \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
 % \changes{v4.6}{2011/10/22}{使用手册更新。}
 % \changes{v4.7}{2012/06/12}{去掉 \pkg*{hypernat} 依赖，\pkg*{hyperref} 和 \pkg*{natbib} 可以很好配合了。}
 % \changes{v4.8}{2013/03/02}{no need to load \pkg*{indentfirst} directly since we use \pkg*{ctex}.}
-% \changes{v4.8}{2013/03/02}{内部调用 ctex 宏包，自动检测编译引擎。}
+% \changes{v4.8}{2013/03/02}{内部调用 \pkg*{ctex} 宏包，自动检测编译引擎。}
 % \changes{v4.8}{2013/03/04}{dvips method is deprecated. We ask their users to load it manually.}
 % \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \CTeX。}
 %
@@ -304,7 +304,7 @@
 % $ xelatex thuthesis.dtx  % 生成说明文档 thuthesis.pdf
 % \end{shell}
 %
-% \subsubsection{xelatex}
+% \subsubsection{\XeLaTeX}
 % \label{sec:xelatex}
 % 很多用户对 \LaTeX{} 命令执行的次数不太清楚，一个基本的原则是多次运行 \LaTeX{}命
 % 令直至不再出现警告。下面给出生成示例文档的详细过程（\texttt{\#} 开头的行为注
@@ -341,12 +341,12 @@
 % $ dvipdfmx main
 % \end{shell}
 %
-% \subsubsection{pdflatex}
+% \subsubsection{PDF\LaTeX}
 % \label{sec:pdflatex}
 % 如果使用 PDF\LaTeX，按照第~\ref{sec:xelatex} 节的顺序执行即可，只是将命令中
-% xelatex 替换为 pdflatex。
+% \texttt{xelatex} 替换为 \texttt{pdflatex}。
 %
-% 需要注意的是 PDF\LaTeX\ 不能处理常见的 EPS 图形，需要先用 epstopdf 将其转化
+% 需要注意的是 PDF\LaTeX\ 不能处理常见的 EPS 图形，需要先用 \texttt{epstopdf} 将其转化
 % 成 PDF。不过 PDF\LaTeX\ 增加了对 png，jpg 等标量图形的支持，比较方便。TeX Live
 % 自从 2010 版本起自动调用 \texttt{epstopdf} 将 EPS 图形转化为 PDF。
 %
@@ -374,7 +374,7 @@
 % \end{shell}
 %
 % \thuthesis{} 的 Makefile 默认用 \texttt{latexmk} 调用
-% \texttt{xelatex} 编译，此外还支持采用 \texttt{xelatex}、\texttt{pdflatex} 和
+% \texttt{xelatex} 编译，此外还支持直接用 \texttt{xelatex}、\texttt{pdflatex} 和
 % \texttt{dvipdfmx} 方式编译，如有需要可以修
 % 改 \file{Makefile} 开头的参数设置或通过命令行传递参数（请参看 \file{README.md}），
 % 进一步还可以修改 \file{latexmkrc} 进行定制。
@@ -459,8 +459,8 @@
 % 正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \option{openright}，也
 % 是 \thuthesis\ 的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么模板
 % 会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎更倾向
-% 于页面连续，那就是通常所说的 \option{openany}。\footnote{目前所有论文都
-% 是 \option{openany}。}这两个选项不用设置，\thuthesis{} 会根据当前论文类型自动选
+% 于页面连续，那就是通常所说的 \option{openany}\footnote{目前所有论文都
+% 是 \option{openany}。}。这两个选项不用设置，\thuthesis{} 会根据当前论文类型自动选
 % 择。
 %
 % \DescribeOption{arial}
@@ -486,14 +486,15 @@
 % \label{sec:font-config}
 % 正确配置中文字体是使用模板的第一步。模板调用 \CTeX\ 宏包，提供如下字体使用方式：
 % \begin{itemize}
-%   \item 基于传统 \pkg{CJK} 包，使用 latex、pdflatex 编译。
-%   \item 基于 \pkg{xeCJK} 包，使用 xelatex 编译。（推荐方法）
+%   \item 基于传统 \pkg{CJK} 包，使用 \LaTeX、PDF\LaTeX\ 编译。
+%   \item 基于 \pkg{xeCJK} 包，使用 \XeLaTeX\ 编译。（推荐方法）
 % \end{itemize}
 %
-% 第一种方式的字体配置比较繁琐，建议使用 \emph{donated@newsmth} 制作的中文字体包
-% （自包含安装方法），请用户自行下载安装，此处不再赘述。本模板推荐使用第二种方法，
-% 只要把所需字体放入系统字体文件夹（也可以指定自定义文件夹）即可。用户可以使用
-% \file{ctex-fontset-thuthesis.def} 文件配置所需字体。使用中易六种字体的配置如下：
+% 第一种方式中文字体配置比较繁琐，建议使用 \CTeX\ 套装，已经自带中文字体配置。或
+% 者使用 \CTeX-Fonts 生成中文字体包，此处不再赘述。本模板推荐使用第二种方法，只要
+% 把所需字体放入系统字体文件夹（也可以指定自定义文件夹）即可。用户可以使
+% 用\file{ctex-fontset-thuthesis.def} 文件配置所需字体。使用中易六种字体的配置如
+% 下：
 %
 % \begin{latex}
 % \ProvidesFile{ctex-fontset-thuthesis.def}
@@ -1277,7 +1278,7 @@
 \ProcessKeyvalOptions*
 %    \end{macrocode}
 %
-% 使用 XeTeX 引擎时，\pkg{fontspec} 宏包会被 \pkg{xeCJK} 自动
+% 使用 \XeTeX\ 引擎时，\pkg{fontspec} 宏包会被 \pkg{xeCJK} 自动
 % 调用。传递给 \pkg{fontspec} 宏包 \option{no-math} 选项，避免部分数学符号字体自动调整为 CMR。
 % 其他引擎下没有这个问题，这一行会被无视。
 %    \begin{macrocode}
@@ -1384,17 +1385,17 @@
 \renewcommand{\baselinestretch}{1.0} % todo:?
 %    \end{macrocode}
 %
-% XeTeX 环境下独立配置，包括零对应的圆圈符号和字体。
+% \XeTeX\ 环境下独立配置，包括零对应的圆圈符号和字体。
 %    \begin{macrocode}
 \ifxetex
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
   \defaultfontfeatures{Mapping=tex-text}
 %    \end{macrocode}
 % 默认采用中易的六款免费字体。缺少上述字体的用户可以通过
-% \file{ctex-fontset-thuthesis.def} 文件自定义字体。非 XeTeX 环境下利用
+% \file{ctex-fontset-thuthesis.def} 文件自定义字体。非 \XeTeX\ 环境下利用
 % \pkg{CJKspace} 来控制中英文之间的间距。
 % \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg*{CJKspace} 保留中英文间空格。}
-% \changes{v5.0.0}{2015/04/17}{固定字体设置，同时改善与 ctex 兼容性。}
+% \changes{v5.0.0}{2015/04/17}{固定字体设置，同时改善与 \pkg*{ctex} 兼容性。}
 % \changes{v5.2.1}{2016/01/14}{使用 \pkg*{newtx} 字体。}
 %    \begin{macrocode}
   \IfFileExists{ctex-fontset-thuthesis.def}%
@@ -3369,7 +3370,7 @@
 % \label{sec:shuji}
 % \begin{macro}{\shuji}
 % 单独使用书脊命令会在新的一页产生竖排书脊。
-% \changes{v4.5}{2009/01/04}{简化代码，同时支持 xelatex。}
+% \changes{v4.5}{2009/01/04}{简化代码，同时支持 \XeLaTeX。}
 % \changes{v5.0.0}{2015/12/21}{扩展 \cs{shuji}\oarg{标题}\oarg{作者}。}
 %    \begin{macrocode}
 %<*cls>
@@ -3427,6 +3428,7 @@
 \RequirePackage{xcolor}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
+\RequirePackage{metalogo}
 
 \colorlet{thu@macro}{blue!60!black}
 \colorlet{thu@env}{blue!70!black}
