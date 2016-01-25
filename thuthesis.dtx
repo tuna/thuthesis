@@ -1261,7 +1261,7 @@
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 %    \end{macrocode}
 %
-% \changes{v2.5.1}{2006/05/24}{ft，研究生院目录要 times，而教务处要 arial。}
+% \changes{v2.5.1}{2006/05/24}{研究生院目录要 times，而教务处要 arial。}
 % \changes{v2.5.1}{2006/05/26}{本科 openright，研究生 openany。}
 % \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
 % \changes{v4.8}{2013/05/29}{添加 nocap 选项，恢复默认标题样式，模板会进一步定制。}
@@ -1439,6 +1439,7 @@
 %
 % 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
 % \changes{v2.6}{2006/06/09}{去除 hyperref 选项，等待全局传递。}
+% \changes{v5.2.2}{2016/01/25}{目录中标题和页码都是链接。}
 %    \begin{macrocode}
 \RequirePackage{hyperref}
 \ifxetex
@@ -1450,6 +1451,7 @@
     CJKbookmarks=false}
 \fi
 \hypersetup{%
+  linktoc=all,
   bookmarksnumbered=true,
   bookmarksopen=true,
   bookmarksopenlevel=1,
@@ -1830,12 +1832,11 @@
 %
 % 公式改成 (1-1) 的形式，本科还要在前面加上\textbf{公式}二字，我不知道他们是怎么想的，这
 % 忒不好看了。
-% \changes{v2.5.1}{2006/05/24}{本科公式编号前添加\textbf{公式}二字。ft，这个需要修 \pkg*{amsmath} 极其深入的一个命令。}
+% \changes{v2.5.1}{2006/05/24}{本科公式编号前添加\textbf{公式}二字。需要修 \pkg*{amsmath} 极其深的一个命令。}
 % \changes{v2.5.1}{2006/05/24}{教务处居然要本科论文公式全文编号！}
 % \changes{v2.5.2}{2006/05/29}{上一个版本忘了把研究生的公式编号排除。}
-% \changes{v3.0}{2007/05/12}{本科公式又要取消全文统一编号了，这帮家伙，早就告诉
-% 过他们，就是不听。}
-% 本科的公式编号太变态了，不得不修改 \pkg{amsmath} 中很深的一个命令 \cs{tagform@}。
+% \changes{v3.0}{2007/05/12}{本科公式又要取消全文统一编号了。}
+% 本科的公式编号要求很诡异，不得不修改 \pkg{amsmath} 中很深的一个命令 \cs{tagform@}。
 % \changes{v2.6.2}{2006/06/19}{根据不同论文格式显示不同公式编号，并自动加入索引。}
 % \changes{v4.2}{2008/01/23}{\cs{eqref} 加括号。}
 % 同时为了让 \pkg{amsmath} 的 \cs{tag*} 命令得到正确的格式，我们必须修改这些代
@@ -1846,7 +1847,7 @@
 % \def\make@df@tag@@#1{%
 %   \gdef\df@tag{\maketag@@@{#1}\def\@currentlabel{#1}}}
 % \end{latex}
-% \changes{v4.4}{2008/05/30}{变态的本科论文终于去掉了\textbf{公式}二字。}
+% \changes{v4.4}{2008/05/30}{本科论文终于去掉了\textbf{公式}二字。}
 % \changes{v4.4.4}{2008/06/12}{修复了一个从 v4.3 升级到 v4.4 过程中的丢失公式索引的 bug，原修改代码保留备忘。}
 %    \begin{macrocode}
 \def\make@df@tag{\@ifstar\thu@make@df@tag@@\make@df@tag@@@}
@@ -2144,8 +2145,8 @@
 % 默认的 \cs{chapter*} 很难同时满足研究生院和本科生的论文要求。本科论文要求所有
 % 的章都出现在目录里，比如摘要、Abstract、主要符号表等，所以可以简单的扩展默认
 %  \cs{chapter*} 实现这个目的。但是研究生又不要这些出现在目录中，而且致谢和声明
-% 部分的章名、页眉和目录都不同，所以我想定义一个功能强悍的 \cs{thu@chapter*} 专
-% 门处理他们的变态要求。
+% 部分的章名、页眉和目录都不同，所以我想定义一个灵活的 \cs{thu@chapter*} 专
+% 门处理他们的这些要求。
 %
 % \cs{thu@chapter*}\oarg{tocline}\marg{title}\oarg{header}: tocline 是出现在目录
 % 中的条目，如果为空则此 chapter 不出现在目录中，如果省略表示目录出现 title；
@@ -2924,7 +2925,7 @@
 %
 % \begin{macro}{\thu@makeabstract}
 % 中文摘要部分的标题为\textbf{摘要}，用黑体三号字。
-% \changes{v2.5.1}{2006/05/24}{我靠，教务处又不要正文前的页眉了，ft！}
+% \changes{v2.5.1}{2006/05/24}{教务处又不要正文前的页眉了。}
 % \changes{v2.5.1}{2006/05/24}{不管是哪种论文格式，摘要都要右开。}
 % \changes{v2.5.2}{2006/05/29}{在研究生论文中，摘要不出现在目录中，但是要在书签中出现。}
 % \changes{v2.5.3}{2006/06/03}{\cs{pagenumber} 会自动设置页码为 1。}
@@ -3051,7 +3052,7 @@
 %  \cs{cleardoublepage}，使新开章节的页码到达正确的状态。否则会因为 \cs{addcontentsline}
 % 在 chapter 之前而导致目录页码错误。}
 % 定义致谢与声明环境。
-% \changes{v2.5}{2006/05/16}{ft，本科论文要求致谢声明分页，但是研究生的不分！}
+% \changes{v2.5}{2006/05/16}{本科论文要求致谢声明分页，但是研究生的不分。}
 % \changes{v2.5.2}{2006/05/29}{研究生致谢右开。}
 % \changes{v2.5.2}{2006/05/30}{研究生致谢题目是致谢，目录是致谢与声明。}
 % \changes{v2.6.3}{2006/07/01}{重画双虚线，自适应页面宽度。}
@@ -3195,7 +3196,7 @@
 % 只好定义一个东西来拙劣地处理了，
 % 本来这个命令通过 \texttt{@preamble} 命令放到 bib 文件中是最省事的，但是那
 % 样的话很多人肯定不知道该怎么做了。
-% \changes{v3.1}{2007/06/19}{引入 cs{thudot} 来自动完成参考文献最后的点。}
+% \changes{v3.1}{2007/06/19}{引入 \cs{thudot} 来自动完成参考文献最后的点。}
 %    \begin{macrocode}
 \def\thudot{\ifthu@bachelor\else\unskip.\fi}
 %</cls>
@@ -3299,7 +3300,7 @@
 % 定义 \cs{cleardoublepage} 和自己写 \cs{markboth}，\cs{addcontentsline} 的部分。}
 % \changes{v2.0}{2005/12/18}{最后决定将 resume 定义为环境。这样与前面的主要符号
 % 表、致谢等对应。}
-% \changes{v2.5.1}{2006/05/23}{ft，教务处和研究生院非要搞的不一样！}
+% \changes{v2.5.1}{2006/05/23}{教务处和研究生院非要搞的不一样！}
 % \changes{v2.5.2}{2006/05/29}{研究生的个人介绍要右开。}
 % \changes{v4.6}{2011/05/02}{支持可选参数，自己定义简历章节标题。}
 % 个人简历发表文章等。
