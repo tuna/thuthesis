@@ -2395,7 +2395,8 @@
 % \end{macro}
 % \begin{macro}{\ckeywords}
 % \begin{macro}{\ekeywords}
-% 利用 \cs{thu@parse@keywords} 来定义，内部通过 \cs{thu@ckeywords} 来引用。
+% 利用 \cs{thu@parse@keywords} 来定义，内部通过 \cs{thu@ckeywords} 和
+% \cs{thu@ekeywords} 来引用。
 % \changes{v3.1}{2007/06/16}{增强的关键词命令。}
 %    \begin{macrocode}
 \thu@parse@keywords{ckeywords}
@@ -2886,6 +2887,20 @@
 % \subsubsection{摘要}
 % \label{sec:abstractformat}
 %
+% \begin{macro}{\thu@put@keywords}
+% 排版关键字。
+%    \begin{macrocode}
+%<*cls>
+\newbox\thu@kw
+\newcommand\thu@put@keywords[2]{%
+  \begingroup
+    \setbox\thu@kw=\hbox{#1}
+    \ifthu@bachelor\indent\else\noindent\hangindent\wd\thu@kw\hangafter1\fi%
+    \box\thu@kw#2\par
+  \endgroup}
+%    \end{macrocode}
+% \end{macro}
+%
 % \begin{macro}{\thu@makeabstract}
 % 中文摘要部分的标题为\textbf{摘要}，用黑体三号字。
 % \changes{v2.5.1}{2006/05/24}{教务处又不要正文前的页眉了。}
@@ -2895,7 +2910,6 @@
 % \changes{v2.6.3}{2006/06/30}{为本科正确设置目录及以后的页码。}
 % \changes{v4.5.2}{2010/05/29}{本科论文摘要亦无需右开。}
 %    \begin{macrocode}
-%<*cls>
 \newcommand{\thu@makeabstract}{%
   \ifthu@bachelor\clearpage\else\cleardoublepage\fi
   \thu@chapter*[]{\cabstractname} % no tocline
@@ -2913,16 +2927,14 @@
 %    \begin{macrocode}
   \thu@cabstract
 %    \end{macrocode}
-% 每个关键词之间空两个汉字符宽度， 且为悬挂缩进
+% 每个关键词之间空两个汉字符宽度， 且为悬挂缩进。
 % \changes{v2.6.2}{2006/06/17}{取消最后一列的空白。}
 % \changes{v2.6.2}{2006/06/20}{取消 tabular 环境，用 \cs{hangindent} 实现关键词
 % 悬挂缩进，英文摘要同。}
 % \changes{v4.4.2}{2008/06/05}{本科生格式中文关键词采用首行缩进且无悬挂缩进。}
 %    \begin{macrocode}
   \vskip12bp
-  \setbox0=\hbox{{\heiti\thu@ckeywords@title}}
-  \ifthu@bachelor\indent\else\noindent\hangindent\wd0\hangafter1\fi
-    \box0\thu@ckeywords
+  \thu@put@keywords{\heiti\thu@ckeywords@title}{\thu@ckeywords}
 %    \end{macrocode}
 %
 % 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
@@ -2937,7 +2949,7 @@
   \thu@eabstract
 %    \end{macrocode}
 %
-% 每个关键词之间空四个英文字符宽度
+% 每个关键词之间空四个英文字符宽度。
 % \changes{v2.4}{2006/04/14}{It is \textbf{Key words}, but not \textbf{Key
 % Words}.}
 % \changes{v2.6.2}{2006/06/17}{取消最后一列的空白。}
@@ -2949,9 +2961,8 @@
 % \changes{v4.7}{2012/06/02}{Bachelor sample uses Keywords w/o space \texttt{-\_-}}
 %    \begin{macrocode}
   \vskip12bp
-  \setbox0=\hbox{\textbf{\ifthu@bachelor Keywords:\else Key words:\fi\enskip}}
-  \ifthu@bachelor\indent\else\noindent\hangindent\wd0\hangafter1\fi
-    \box0\thu@ekeywords}
+  \thu@put@keywords{%
+    \textbf{\ifthu@bachelor Keywords:\else Key words:\fi\enskip}}{\thu@ekeywords}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -3362,8 +3373,7 @@
 % \subsection{其它}
 % \label{sec:other}
 %
-% 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改，否则
-% 必须在 document 开始后才能，感觉不好。
+% 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改。
 % \changes{v2.5}{2006/05/13}{不用 \cs{CJKcaption}，在导言区直接引入配置文件。}
 %    \begin{macrocode}
 %<*cls>
