@@ -1361,8 +1361,10 @@
 % \option{newenum} 选项，因为默认是打开的。}
 % \changes{v2.6.4}{2006/10/23}{增加 \option{neverdecrease} 选项。}
 % \changes{v5.0.0}{2012/12/13}{删除 \pkg{paralist} 选项。}
+% \changes{v5.2.2}{2016/01/31}{利用 \pkg{environ} 的 \cs{Collect@Body}。}
 %    \begin{macrocode}
 \RequirePackage[shortlabels]{enumitem}
+\RequirePackage{environ}
 %    \end{macrocode}
 %
 % 禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
@@ -2361,31 +2363,15 @@
 % \begin{environment}{cabstract}
 % \begin{environment}{eabstract}
 % 摘要最好以环境的形式出现（否则命令的形式会导致开始结束的括号距离太远，我不喜
-% 欢），这就必须让环境能够自己保存内容留待以后使用。ctt 上找到两种方法：
-% \begin{itemize}
-% \item 使用 \pkg{amsmath} 中的 \cs{collect@body}，但是此宏没有定义
-%   为 \texttt{long}，不能直接用。
-% \item 利用 \LaTeX{} 中环境和对应命令间的命名关系以及参数分隔符的特点非常巧妙地
-%   实现了这个功能，其不足是不能嵌套环境。
-% \end{itemize}
-% 由于摘要部分经常会用到诸如 \texttt{itemize} 类似的环境，所以我们不得不选择第一
-% 种复杂的方法。以下是修改 \pkg{amsmath} 代码部分：
+% 欢），这就必须让环境能够自己保存内容留待以后使用。使用 \pkg{environ} 的
+% \cs{Collect@Body} 来实现。
 % \changes{v3.1}{2006/06/17}{重新定义摘要成为环境。}
-%    \begin{macrocode}
-\long\@xp\def\@xp\collect@@body\@xp#\@xp1\@xp\end\@xp#\@xp2\@xp{%
-  \collect@@body{#1}\end{#2}}
-\long\@xp\def\@xp\push@begins\@xp#\@xp1\@xp\begin\@xp#\@xp2\@xp{%
-  \push@begins{#1}\begin{#2}}
-\long\@xp\def\@xp\addto@envbody\@xp#\@xp1\@xp{%
-  \addto@envbody{#1}}
-%    \end{macrocode}
-%
-% 使用 \cs{collect@body} 来构建摘要环境。
+% \changes{v5.2.2}{2016/01/31}{用 \pkg*{environ} 封装的 \cs{Collect@Body}。}
 %    \begin{macrocode}
 \newcommand{\thu@@cabstract}[1]{\long\gdef\thu@cabstract{#1}}
-\newenvironment{cabstract}{\collect@body\thu@@cabstract}{}
+\newenvironment{cabstract}{\Collect@Body\thu@@cabstract}{}
 \newcommand{\thu@@eabstract}[1]{\long\gdef\thu@eabstract{#1}}
-\newenvironment{eabstract}{\collect@body\thu@@eabstract}{}
+\newenvironment{eabstract}{\Collect@Body\thu@@eabstract}{}
 %    \end{macrocode}
 % \end{environment}
 % \end{environment}
