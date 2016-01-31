@@ -135,6 +135,7 @@
 % \changes{v2.6}{2006/06/09}{增加 dvipdfm 选项。}
 % \changes{v2.6.1}{2006/06/16}{取消 \file*{thubib.bst} 中 inbook 类 volume 后的页
 % 码。}
+% \changes{v2.6.2}{2006/06/18}{改正 groupmembers 的拼写错误。}
 % \changes{v3.0}{2007/05/12}{不用专门为本科论文生成“\textbf{提交}”版本了。}
 % \changes{v3.0}{2007/05/12}{没有了综合论文训练页面，很多本科论文专用命令就消失了。}
 % \changes{v4.4}{2008/05/12}{修复网址断字。}
@@ -560,8 +561,11 @@
 %
 % \myentry{字号}
 % \DescribeMacro{\chuhao}
+% \DescribeMacro{\xiaochu}
+% \DescribeMacro{\yihao}
+% \DescribeMacro{\xiaoyi}
 % \DescribeMacro{\bahao}
-% 等命令定义一组字体大小，分别为：
+% 定义字体大小，分别为：
 %
 % \begin{center}
 % \begin{tabular}{llllll}
@@ -591,7 +595,7 @@
 % 盖前面的）。以 \texttt{c} 开头的命令跟中文相关，\texttt{e} 开头则为对应的英文。
 %
 % \DescribeMacro{\thusetup}
-% 用法与常见 \emph{key=value} 命令相同，如下：
+% \cs{thusetup} 用法与常见 \emph{key=value} 命令相同，如下：
 % \begin{latex}
 % \thusetup{
 %   key1 = value1,
@@ -1600,96 +1604,63 @@
     \thu@choosefont{##1}{#2}}}
 %    \end{macrocode}
 % \end{macro}
+%
 % \begin{macro}{\chuhao}
-% 初号
+% \begin{macro}{\xiaochu}
+% \begin{macro}{\yihao}
+% \begin{macro}{\xiaoyi}
+% \begin{macro}{\erhao}
+% \begin{macro}{\xiaoer}
+% \begin{macro}{\sanhao}
+% \begin{macro}{\xiaosan}
+% \begin{macro}{\sihao}
+% \begin{macro}{\banxiaosi}
+% \begin{macro}{\xiaosi}
+% \begin{macro}{\dawu}
+% \begin{macro}{\wuhao}
+% \begin{macro}{\xiaowu}
+% \begin{macro}{\liuhao}
+% \begin{macro}{\xiaoliu}
+% \begin{macro}{\qihao}
+% \begin{macro}{\bahao}
+% 一组字号定义。TODO：用 \cs{zihao} 替代。
 %    \begin{macrocode}
 \thu@def@fontsize{chuhao}{42bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\xiaochu}
-%    \begin{macrocode}
 \thu@def@fontsize{xiaochu}{36bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\yihao}
-%    \begin{macrocode}
 \thu@def@fontsize{yihao}{26bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\xiaoyi}
-%    \begin{macrocode}
 \thu@def@fontsize{xiaoyi}{24bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\erhao}
-%    \begin{macrocode}
 \thu@def@fontsize{erhao}{22bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\xiaoer}
-%    \begin{macrocode}
 \thu@def@fontsize{xiaoer}{18bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\sanhao}
-%    \begin{macrocode}
 \thu@def@fontsize{sanhao}{16bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\xiaosan}
-%    \begin{macrocode}
 \thu@def@fontsize{xiaosan}{15bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\sihao}
-%    \begin{macrocode}
 \thu@def@fontsize{sihao}{14bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\banxiaosi}
-%    \begin{macrocode}
 \thu@def@fontsize{banxiaosi}{13bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\xiaosi}
-%    \begin{macrocode}
 \thu@def@fontsize{xiaosi}{12bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\dawu}
-%    \begin{macrocode}
 \thu@def@fontsize{dawu}{11bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\wuhao}
-%    \begin{macrocode}
 \thu@def@fontsize{wuhao}{10.5bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\xiaowu}
-%    \begin{macrocode}
 \thu@def@fontsize{xiaowu}{9bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\liuhao}
-%    \begin{macrocode}
 \thu@def@fontsize{liuhao}{7.5bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\xiaoliu}
-%    \begin{macrocode}
 \thu@def@fontsize{xiaoliu}{6.5bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\qihao}
-%    \begin{macrocode}
 \thu@def@fontsize{qihao}{5.5bp}
-%    \end{macrocode}
-% \end{macro}
-% \begin{macro}{\bahao}
-%    \begin{macrocode}
 \thu@def@fontsize{bahao}{5bp}
 %    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
 % \end{macro}
 %
 % \begin{macro}{\normalsize}
@@ -1709,8 +1680,7 @@
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
 %
-% 定义页眉和页脚。\cs{chapter} 自动调用
-% \cs{thispagestyle\{thu@plain\}}，所以要重新定义 \cs{thu@plain}。
+% 定义页眉和页脚。
 % \begin{macro}{\ps@thu@empty}
 % \begin{macro}{\ps@thu@plain}
 % \begin{macro}{\ps@thu@headings}
@@ -1723,7 +1693,8 @@
 % 定义三种页眉页脚格式：
 % \begin{itemize}
 % \item \texttt{thu@empty}：页眉页脚都没有
-% \item \texttt{thu@plain}：只显示页脚的页码
+% \item \texttt{thu@plain}：只显示页脚的页码。\cs{chapter} 自动调用
+% \cs{thispagestyle\{thu@plain\}}。
 % \item \texttt{thu@headings}：页眉页脚同时显示
 % \end{itemize}
 %    \begin{macrocode}
@@ -1866,25 +1837,6 @@
 %\fi
 %    \end{macrocode}
 %
-% TODO：解决证明环境中方块乱跑的问题。
-%    \begin{macrocode}
-\gdef\@endtrivlist#1{%  % from \endtrivlist
-  \if@inlabel \indent\fi
-  \if@newlist \@noitemerr\fi
-  \ifhmode
-    \ifdim\lastskip >\z@ #1\unskip \par
-      \else #1\unskip \par \fi
-  \fi
-  \if@noparlist \else
-    \ifdim\lastskip >\z@
-       \@tempskipa\lastskip \vskip -\lastskip
-      \advance\@tempskipa\parskip \advance\@tempskipa -\@outerparskip
-      \vskip\@tempskipa
-    \fi
-    \@endparenv
-  \fi #1}
-%    \end{macrocode}
-%
 % 定理字样使用黑体，正文使用宋体，冒号隔开
 % \changes{v2.6.2}{2006/06/17}{增加问题和猜想两个数学环境。}
 % \changes{v4.2}{2008/03/07}{调整证明环境的编号和结尾的方块。}
@@ -1894,9 +1846,7 @@
 \theoremheaderfont{\rmfamily\heiti}
 %</cls>
 %<*cfg>
-% \theoremsymbol{\ensuremath{\blacksquare}}
 \theoremsymbol{\ensuremath{\square}}
-%\theoremstyle{nonumberplain}
 \newtheorem*{proof}{证明}
 \theoremstyle{plain}
 \theoremsymbol{}
@@ -2280,79 +2230,44 @@
 % \changes{v2.0}{2005/12/18}{增加了封面密级，增加博士封面支持}
 % \changes{v4.6}{2011/04/27}{增加博士后相关指令。}
 %
-% \begin{macro}{\id}
-% \begin{macro}{\udc}
-% \begin{macro}{\catalognumber}
 % \begin{macro}{\secretlevel}
 % \begin{macro}{\secretyear}
+% 定义密级参数。
+%    \begin{macrocode}
+\thu@def@term{secretlevel}
+\thu@def@term{secretyear}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
 % \begin{macro}{\ctitle}
-% \begin{macro}{\cdegree}
-% \begin{macro}{\cdepartment}
-% \begin{macro}{\cmajor}
-% \begin{macro}{\cfirstdiscipline}
-% \begin{macro}{\cseconddiscipline}
+% \begin{macro}{\etitle}
+% 论文中英文题目。
+%    \begin{macrocode}
+\thu@def@term{ctitle}
+\thu@def@term{etitle}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
 % \begin{macro}{\cauthor}
+% \begin{macro}{\eauthor}
 % \begin{macro}{\csupervisor}
 % \begin{macro}{\cassosupervisor}
 % \begin{macro}{\ccosupervisor}
-% \begin{macro}{\cdate}
-% \begin{macro}{\postdoctordate}
-% \begin{macro}{\etitle}
-% \begin{macro}{\edegree}
-% \begin{macro}{\edepartment}
-% \begin{macro}{\emajor}
-% \begin{macro}{\eauthor}
 % \begin{macro}{\esupervisor}
 % \begin{macro}{\eassosupervisor}
 % \begin{macro}{\ecosupervisor}
-% \begin{macro}{\edate}
-% 定义一批封面参数。
-%   \changes{v2.5}{2006/05/20}{院系和专业分别改名用 department 和 major，代替原来
-%     的 affil 和 subject。}
-% \changes{v2.6.2}{2006/06/18}{改正 groupmembers 的拼写错误。}
+% 作者、导师、副导师、联合指导老师。
 %    \begin{macrocode}
-\thu@def@term{id}
-\thu@def@term{udc}
-\thu@def@term{catalognumber}
-\thu@def@term{secretlevel}
-\thu@def@term{secretyear}
-\thu@def@term{ctitle}
-\thu@def@term{cdegree}
-\thu@def@term{cdepartment}
-\def\caffil{% for compatibility
-  \ClassWarning{thuthesis}
-    {'\string\caffil' is deprecated, please use '\string\cdepartment' instead.}{}%
-  \cdepartment}
-\thu@def@term{cmajor}
-\def\csubject{% for compatibility
-  \ClassWarning{thuthesis}
-    {'\string\csubject' is deprecated, please use '\string\cmajor' instead.}{}%
-  \cmajor}
-\thu@def@term{cfirstdiscipline}
-\thu@def@term{cseconddiscipline}
 \thu@def@term{cauthor}
 \thu@def@term{csupervisor}
 \thu@def@term{cassosupervisor}
 \thu@def@term{ccosupervisor}
-\thu@def@term{cdate}
-\thu@def@term{postdoctordate}
-\thu@def@term{etitle}
-\thu@def@term{edegree}
-\thu@def@term{edepartment}
-\def\eaffil{% for compability
-  \ClassWarning{thuthesis}
-    {'\string\eaffil' is deprecated, please use '\string\edepartment' instead.}{}%
-  \edepartment}
-\thu@def@term{emajor}
-\def\esubject{%for compability
-  \ClassWarning{thuthesis}
-    {'\string\esubject' is deprecated, please use '\string\emajor' instead.}{}%
-  \emajor}
 \thu@def@term{eauthor}
 \thu@def@term{esupervisor}
 \thu@def@term{eassosupervisor}
 \thu@def@term{ecosupervisor}
-\thu@def@term{edate}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -2362,18 +2277,80 @@
 % \end{macro}
 % \end{macro}
 % \end{macro}
+%
+% \begin{macro}{\cdegree}
+% \begin{macro}{\edegree}
+% 学位中英文。
+%    \begin{macrocode}
+\thu@def@term{cdegree}
+\thu@def@term{edegree}
+%    \end{macrocode}
 % \end{macro}
 % \end{macro}
+%
+% \begin{macro}{\cdepartment}
+% \begin{macro}{\edepartment}
+% 院系中英文名称。
+%    \begin{macrocode}
+\thu@def@term{cdepartment}
+\def\caffil{% for compatibility
+  \ClassWarning{thuthesis}
+    {'\string\caffil' is deprecated, please use '\string\cdepartment' instead.}{}%
+  \cdepartment}
+\thu@def@term{edepartment}
+\def\eaffil{% for compability
+  \ClassWarning{thuthesis}
+    {'\string\eaffil' is deprecated, please use '\string\edepartment' instead.}{}%
+  \edepartment}
+%    \end{macrocode}
 % \end{macro}
 % \end{macro}
+%
+% \begin{macro}{\cmajor}
+% \begin{macro}{\emajor}
+% 学位中英文名称。
+% \changes{v2.5}{2006/05/20}{院系和专业分别改名用 department 和 major，代替原来
+% 的 affil 和 subject。}
+%    \begin{macrocode}
+\thu@def@term{cmajor}
+\def\csubject{% for compatibility
+  \ClassWarning{thuthesis}
+    {'\string\csubject' is deprecated, please use '\string\cmajor' instead.}{}%
+  \cmajor}
+\thu@def@term{emajor}
+\def\esubject{%for compability
+  \ClassWarning{thuthesis}
+    {'\string\esubject' is deprecated, please use '\string\emajor' instead.}{}%
+  \emajor}
+%    \end{macrocode}
 % \end{macro}
 % \end{macro}
+%
+% \begin{macro}{\cdate}
+% \begin{macro}{\edate}
+% 论文成文日期。
+%    \begin{macrocode}
+\thu@def@term{cdate}
+\thu@def@term{edate}
+%    \end{macrocode}
 % \end{macro}
 % \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
+%
+% \begin{macro}{\id}
+% \begin{macro}{\udc}
+% \begin{macro}{\catalognumber}
+% \begin{macro}{\cfirstdiscipline}
+% \begin{macro}{\cseconddiscipline}
+% \begin{macro}{\postdoctordate}
+% 博士后专用封面参数。
+%    \begin{macrocode}
+\thu@def@term{id}
+\thu@def@term{udc}
+\thu@def@term{catalognumber}
+\thu@def@term{cfirstdiscipline}
+\thu@def@term{cseconddiscipline}
+\thu@def@term{postdoctordate}
+%    \end{macrocode}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -3415,7 +3392,6 @@
 %<*dtx-style>
 \ProvidesPackage{dtx-style}
 \RequirePackage{hypdoc}
-\hypersetup{linktoc=all}
 \RequirePackage[UTF8,scheme=chinese]{ctex}
 \RequirePackage{newpxtext}
 \RequirePackage{newpxmath}

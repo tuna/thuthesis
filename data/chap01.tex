@@ -81,11 +81,11 @@
     \begin{tabularx}{\linewidth}{lX}
       \toprule[1.5pt]
       {\heiti 文件名} & {\heiti 描述} \\\midrule[1pt]
-      thuthesis.ins & \LaTeX{} 安装文件，docstrip\footnote{表格中的脚注} \\
+      thuthesis.ins & \LaTeX{} 安装文件，\textsc{DocStrip}\footnote{表格中的脚注} \\
       thuthesis.dtx & 所有的一切都在这里面\footnote{再来一个}。\\
       thuthesis.cls & 模板类文件。\\
       thuthesis.cfg & 模板配置文。cls 和 cfg 由前两个文件生成。\\
-      thuthesis.bst    & 参考文献 Bibtex 样式文件。\\
+      thuthesis.bst    & 参考文献 BIB\TeX\ 样式文件。\\
       thuthesis.sty   & 常用的包和命令写在这里，减轻主文件的负担。\\
       \bottomrule[1.5pt]
     \end{tabularx}
@@ -101,7 +101,7 @@
 \label{sec:complicatedtable}
 
 我们经常会在表格下方标注数据来源，或者对表格里面的条目进行解释。前面的脚注是一种
-不错的方法，如果你不喜欢脚注。那么完全可以在表格后面自己写注释，比如表~\ref{tab:tabexamp1}。
+不错的方法，如果不喜欢脚注，可以在表格后面写注释，比如表~\ref{tab:tabexamp1}。
 \begin{table}[htbp]
   \centering
   \caption{复杂表格示例 1}
@@ -204,7 +204,7 @@
 }
 \end{table}
 
-不可否认 \LaTeX{} 的表格功能没有想象中的那么强大，不过只要你足够认真，足够细致，那么
+不可否认 \LaTeX{} 的表格功能没有想象中的那么强大，不过只要足够认真，足够细致，
 同样可以排出来非常复杂非常漂亮的表格。请参看表~\ref{tab:tabexamp2}。
 \begin{table}[htbp]
   \centering\dawu[1.3]
@@ -298,8 +298,8 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 这个命令不会给表格编号，也就是出来的只有标题文字而没有“表~XX”，“图~XX”，否则
 索引里面序号不连续就显得不伦不类，这也是 \LaTeX{} 里星号命令默认的规则。
 
-有这种需求的多是本科同学的英文资料翻译部分，如果你觉得附录中英文原文中的表格和图
-片显示成“  表”和“图”很不协调的话，一个很好的办法就是用 \cs{caption*}，参数
+有这种需求的多是本科同学的英文资料翻译部分，如果觉得附录中英文原文中的表格和图
+片显示成“表”和“图”不协调的话，一个很好的办法就是用 \cs{caption*}，参数
 随便自己写，比如不守规矩的表~1.111 和图~1.111 能满足这种特殊需要（可以参看附录部
 分）。
 \begin{table}[ht]
@@ -318,8 +318,7 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
   \end{minipage}
 \end{table}
 
-如果你的确想让它编号，但又不想让它出现在索引中的话，那就自己看看代码改一改吧，我
-目前不打算给模板增加这种另类命令。
+如果的确想让它编号，但又不想让它出现在索引中的话，目前模板上不支持。
 
 最后，虽然大家不一定会独立使用小页，但是关于小页中的脚注还是有必要提一下。请看下
 面的例子。
@@ -497,7 +496,7 @@ V_j & = v_j, & \qquad X_j & = x_j,
 
 \section{参考文献}
 \label{sec:bib}
-当然参考文献可以直接写 bibitem，虽然费点功夫，但是好控制，各种格式可以自己随意改
+当然参考文献可以直接写 \cs{bibitem}，虽然费点功夫，但是好控制，各种格式可以自己随意改
 写。
 
 本模板推荐使用 BIB\TeX，样式文件为 \texttt{thuthesis.bst}，基本符合学校的参考文献格
