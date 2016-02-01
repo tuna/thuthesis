@@ -1748,9 +1748,7 @@
 %
 % \subsubsection{脚注}
 % \label{sec:footnote}
-% 脚注字体：宋体小五，单倍行距。悬挂缩进 1.5 字符。标号在正文中是上标，在脚注中为
-% 正体。默认情况下 \cs{@makefnmark} 显示为上标，同时为脚标和正文所用，所以如果要区
-% 分，必须分别定义脚注的标号和正文的标号。
+% 脚注符合中文习惯，数字带圈。
 % \changes{v2.1}{2006/03/01}{让脚注它悬挂起来，而且中文中用上标，脚注中用正体。}
 % \changes{v2.5}{2006/05/13}{修正 minipage 中的脚注。}
 % \begin{macro}{\thu@textcircled}
@@ -1762,21 +1760,25 @@
   \ifnum \value{#1} <10 \textcircled{\xiaoliu\arabic{#1}}
   \else\ifnum \value{#1} <100 \textcircled{\qihao\arabic{#1}}\fi
   \fi}
+\renewcommand{\thefootnote}{\thu@textcircled{footnote}}
+\renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
 %    \end{macrocode}
 % \end{macro}
 %
-% 修改脚注内部命令。\cs{@makefnmark} 默认是上标样式，而在脚注部分要求为正文大小。
-% 利用\cs{patchcmd} 动态调整 \cs{@makefnmark} 的定义。
-% \changes{v2.6}{2006/06/09}{脚注改成 1.5 倍行距，漂亮。}
-% \changes{v5.2.2}{2016/02/01}{基于 \pkg*{footmisc} 来设置不同位置 footnote
-% marker 样式。}
+% 定义脚注分割线，字号（宋体小五），以及悬挂缩进（1.5字符）。
 %    \begin{macrocode}
-\renewcommand{\thefootnote}{\thu@textcircled{footnote}}
-\renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
 \def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@}
 \let\thu@footnotesize\footnotesize
 \renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.5]}
 \footnotemargin1.5em\relax
+%    \end{macrocode}
+%
+% \cs{@makefnmark} 默认是上标样式，而在脚注部分要求为正文大小。利用\cs{patchcmd}
+% 动态调整 \cs{@makefnmark} 的定义。
+% \changes{v2.6}{2006/06/09}{脚注改成 1.5 倍行距，漂亮。}
+% \changes{v5.2.2}{2016/02/01}{基于 \pkg*{footmisc} 来设置不同位置 footnote
+% marker 样式。}
+%    \begin{macrocode}
 \let\thu@makefnmark\@makefnmark
 \def\thu@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
 \pretocmd{\@makefntext}{\let\@makefnmark\thu@@makefnmark}{}{}
