@@ -1212,6 +1212,7 @@
   prefix=thu@,
   setkeys=\kvsetkeys}
 %    \end{macrocode}
+%
 % 用 \pkg{kvoptions} 的 key=value 方式来设置论文类型。
 % \changes{v5.0.0}{2015/12/13}{使用 \pkg*{kvoptions} 简化选项 type。}
 %    \begin{macrocode}
@@ -1238,17 +1239,17 @@
 \DeclareBoolOption{secret}
 %    \end{macrocode}
 %
-% 如果需要使用 arial 字体，请打开 [arial] 选项
+% 正文 Sans 字体是否使用 Arial 字体（默认打开）。
 %    \begin{macrocode}
 \DeclareBoolOption{arial}
 %    \end{macrocode}
 %
-% 目录中英文是否用 arial
+% 目录中英文是否用 Arial 字体（默认关闭）。
 %    \begin{macrocode}
 \DeclareBoolOption{arialtoc}
 %    \end{macrocode}
 %
-% 章节标题中的英文是否用 arial
+% 章节标题中的英文是否用 Arial 字体（默认打开）。
 %    \begin{macrocode}
 \DeclareBoolOption{arialtitle}
 %    \end{macrocode}
@@ -1328,8 +1329,9 @@
 % \pkg{newtx} 设置 Times New Roman，Helvetica。
 % \changes{v3.1}{2007/06/16}{replace \pkg*{mathptmx} with \pkg*{txfonts}.}
 % \changes{v5.2.1}{2016/01/14}{使用 \pkg*{newtx} 替换 \pkg*{txfonts}。}
+% \changes{v5.2.2}{2016/02/01}{不希望 \pkg*{newtx} 修改 \cs{@makefnmark}。 }
 %    \begin{macrocode}
-\RequirePackage{newtxtext}
+\RequirePackage[defaultsups]{newtxtext}
 \RequirePackage{newtxmath}
 %    \end{macrocode}
 %
@@ -1371,10 +1373,10 @@
 % 脚注按页编号。
 %    \begin{macrocode}
 \ifthu@raggedbottom
-  \RequirePackage[bottom,perpage]{footmisc}
+  \RequirePackage[bottom,perpage,hang]{footmisc}
   \raggedbottom
 \else
-  \RequirePackage[perpage]{footmisc}
+  \RequirePackage[perpage,hang]{footmisc}
 \fi
 %    \end{macrocode}
 %
@@ -1751,10 +1753,9 @@
 % 分，必须分别定义脚注的标号和正文的标号。
 % \changes{v2.1}{2006/03/01}{让脚注它悬挂起来，而且中文中用上标，脚注中用正体。}
 % \changes{v2.5}{2006/05/13}{修正 minipage 中的脚注。}
-% \changes{v2.5.1}{2006/05/21}{脚注编号使用 \cs{textcircled} 命令，每页允许至多 99 个
-% 脚注条目。}
 % \begin{macro}{\thu@textcircled}
-% 生成带圈的脚注数字。最多处理到 99，当然这个很容易扩展了。
+% \changes{v2.5.1}{2006/05/21}{脚注编号使用 \cs{textcircled} 命令，每页允许至多 99 个。}
+% 生成带圈的脚注数字。最多处理到 99。
 %    \begin{macrocode}
 %<*cls>
 \def\thu@textcircled#1{%
@@ -1763,31 +1764,23 @@
   \fi}
 %    \end{macrocode}
 % \end{macro}
-% 修改脚注内部命令。
+%
+% 修改脚注内部命令。\cs{@makefnmark} 默认是上标样式，而在脚注部分要求为正文大小。
+% 利用\cs{patchcmd} 动态调整 \cs{@makefnmark} 的定义。
 % \changes{v2.6}{2006/06/09}{脚注改成 1.5 倍行距，漂亮。}
+% \changes{v5.2.2}{2016/02/01}{基于 \pkg*{footmisc} 来设置不同位置 footnote
+% marker 样式。}
 %    \begin{macrocode}
 \renewcommand{\thefootnote}{\thu@textcircled{footnote}}
 \renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
 \def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@}
 \let\thu@footnotesize\footnotesize
 \renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.5]}
-\def\@makefnmark{\textsuperscript{\hbox{\normalfont\@thefnmark}}}
-\long\def\@makefntext#1{
-  \bgroup
-    \newbox\thu@tempboxa
-    \setbox\thu@tempboxa\hbox{%
-      \hb@xt@ 2em{\@thefnmark\hss}}
-    \leftmargin\wd\thu@tempboxa
-    \rightmargin\z@
-    \linewidth \columnwidth
-    \advance \linewidth -\leftmargin
-    \parshape \@ne \leftmargin \linewidth
-    \footnotesize
-    \@setpar{{\@@par}}%
-    \leavevmode
-    \llap{\box\thu@tempboxa}%
-    #1
-  \par\egroup}
+\footnotemargin1.5em\relax
+\let\thu@makefnmark\@makefnmark
+\def\thu@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
+\pretocmd{\@makefntext}{\let\@makefnmark\thu@@makefnmark}{}{}
+\apptocmd{\@makefntext}{\let\@makefnmark\thu@makefnmark}{}{}
 %</cls>
 %    \end{macrocode}
 %
