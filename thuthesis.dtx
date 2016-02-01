@@ -454,6 +454,14 @@
 % \secretyear{2020}
 % \end{latex}
 %
+% \DescribeOption{pifootnote}
+% 是否使用 \pkg{pifont} 的带圈字符标记脚注编号。默认关闭，即使用\cs{textcircled}
+% 命令，效果不太好，但是符合学校样式要求。不管使用哪种方式，一页的脚注建议控制
+% 在 9 个以内，否则大于 10的数字带圈的效果不太好。建议使用时打开此选项，脚注编号
+% 很漂亮，如下：
+% \begin{latex}
+% \documentclass[pifootnote]{thuthesis}
+% \end{latex}
 %
 % \DescribeOption{openany}
 % \DescribeOption{openright}
@@ -581,7 +589,10 @@
 % 是 \cs{dawu}，模板已经设置好了。
 %
 % \begin{latex}
-% {\erhao 二号 \sanhao 三号 \sihao 四号  \qihao 七号}
+% {\erhao 二号}
+% {\sanhao[1.5] 三号}
+% {\sihao 四号}
+% {\qihao[2] 七号}
 % \end{latex}
 %
 % 也可以使用 \CTeX\ 定义的 \cs{zihao}\marg{num} 来切换字号，具体用法参看其文
@@ -886,7 +897,7 @@
 % \DescribeMacro{\listofequations}
 % \DescribeMacro{\listofequations*}
 % \begin{center}
-% \begin{tabular}{ll}
+% \begin{longtable}{ll}
 % \toprule
 %   {\heiti 用途} & {\heiti 命令} \\\midrule
 % 目录     & \cs{tableofcontents} \\\midrule
@@ -896,7 +907,7 @@
 %          & \cs{listoftables*}   \\\midrule
 % 公式索引 & \cs{listofequations} \\
 %          & \cs{listofequations*}\\\bottomrule
-% \end{tabular}
+% \end{longtable}
 % \end{center}
 %
 % \LaTeX{} 默认支持插图和表格索引，是通过 \cs{caption} 命令完成的，因此它们必须出
@@ -1226,7 +1237,6 @@
   \thu@doctorfalse
   \thu@postdoctorfalse
   \expandafter\csname thu@#1true\endcsname}
-
 \def\thu@deprecated@type@option{%
   \kvsetkeys{thu}{type=\CurrentOption} % for compatability.
   \ClassError{thuthesis}{Option '\CurrentOption' is deprecated, \MessageBreak
@@ -1235,7 +1245,10 @@
 \DeclareVoidOption{master}{\thu@deprecated@type@option}
 \DeclareVoidOption{doctor}{\thu@deprecated@type@option}
 \DeclareVoidOption{postdoctor}{\thu@deprecated@type@option}
-
+%    \end{macrocode}
+%
+% 论文是否保密。
+%    \begin{macrocode}
 \DeclareBoolOption{secret}
 %    \end{macrocode}
 %
@@ -1254,11 +1267,16 @@
 \DeclareBoolOption{arialtitle}
 %    \end{macrocode}
 %
-% \option{raggedbottom} 选项
+% \option{raggedbottom} 选项（默认打开）
 % \changes{v4.8}{2013/03/05}{增加 noraggedbottom 选项。}
 % \changes{v5.0.0}{2015/12/13}{norggedbottom 选项修改为 raggedbottom。}
 %    \begin{macrocode}
 \DeclareBoolOption{raggedbottom}
+%    \end{macrocode}
+%
+% 在脚注标记中使用 \pkg{pifont} 的带圈数字（默认关闭）
+%    \begin{macrocode}
+\DeclareBoolOption{pifootnote}
 %    \end{macrocode}
 %
 % 将选项传递给 \pkg{ctexbook}。
@@ -1380,6 +1398,11 @@
 \fi
 %    \end{macrocode}
 %
+%    \begin{macrocode}
+\ifthu@pifootnote
+  \RequirePackage{pifont}
+\fi
+%    \end{macrocode}
 % 利用 \pkg{CJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
 % \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
 %    \begin{macrocode}
@@ -1418,7 +1441,7 @@
   \ifthu@arial
     \IfFileExists{arial.sty}%
                  {\RequirePackage{arial}}%
-                 {\ClassWarning{thuthesis}{no arial.sty availiable!}}
+                 {\ClassWarning{thuthesis}{arial.sty is not availiable!}}
   \fi
 \fi
 %    \end{macrocode}
@@ -1753,12 +1776,19 @@
 % \changes{v2.5}{2006/05/13}{修正 minipage 中的脚注。}
 % \begin{macro}{\thu@textcircled}
 % \changes{v2.5.1}{2006/05/21}{脚注编号使用 \cs{textcircled} 命令，每页允许至多 99 个。}
-% 生成带圈的脚注数字。最多处理到 99。
+% \changes{v5.2.2}{2016/02/01}{脚注编号每页允许至多 9 个。}
+% 生成带圈的脚注数字，最多处理到 10。
 %    \begin{macrocode}
 %<*cls>
 \def\thu@textcircled#1{%
-  \ifnum \value{#1} <10 \textcircled{\xiaoliu\arabic{#1}}
-  \else\ifnum \value{#1} <100 \textcircled{\qihao\arabic{#1}}\fi
+  \ifnum\value{#1} >9
+    \ClassError{thuthesis}%
+      {Too many footnotes in this page.}{Keep footnote less than 10.}
+  \fi
+  \ifthu@pifootnote%
+    \ding{\numexpr171+\value{#1}}%
+  \else%
+    \textcircled{\xiaoliu\arabic{#1}}%
   \fi}
 \renewcommand{\thefootnote}{\thu@textcircled{footnote}}
 \renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
@@ -1834,7 +1864,7 @@
 %\fi
 %    \end{macrocode}
 %
-% 定理字样使用黑体，正文使用宋体，冒号隔开
+% 定理标题使用黑体，正文使用宋体，冒号隔开。
 % \changes{v2.6.2}{2006/06/17}{增加问题和猜想两个数学环境。}
 % \changes{v4.2}{2008/03/07}{调整证明环境的编号和结尾的方块。}
 % \changes{v5.0.0}{2015/04/18}{修正定理字样为黑体 (\#104)。}
