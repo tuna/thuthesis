@@ -76,23 +76,23 @@
 % \changes{v1.0}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
 % \changes{v1.1}{2005/11/03}{Initial version, migrate from the old ``Bao--Pan''
 % version. Make the template a class instead of package.}
-% \changes{v1.2}{2005/11/04}{Remove \pkg*{fancyref}; Remove \pkg*{ucite} and implement
-% \cs{onlinecite}; use package \pkg*{arial} or \pkg*{helvet} selectively.}
-% \changes{v1.3}{2005/11/14}{Replace \pkg*{subfigure} with \pkg*{subfig}, replace \pkg*{caption2}
-% with \pkg*{caption}, add details about using figure are in the example.}
+% \changes{v1.2}{2005/11/04}{Remove \pkg{fancyref}; Remove \pkg{ucite} and implement
+% \cs{onlinecite}; use package \pkg{arial} or \pkg{helvet} selectively.}
+% \changes{v1.3}{2005/11/14}{Replace \pkg{subfigure} with \pkg{subfig}, replace \pkg{caption2}
+% with \pkg{caption}, add details about using figure are in the example.}
 % \changes{v1.4rc1}{2005/11/20}{I do not know why \cs{thu@authorizationaddon} does not work
 % now for v1.3, while it's fine in v1.2. Temporarily, I remove the directive
 % :(. There might be better solution. Other changes: add \option{config} option to
-% subfig to be compatible with subfigure. add \pkg*{courier} package for tt font.}
+% subfig to be compatible with subfigure. add \pkg{courier} package for tt font.}
 % \changes{v1.4}{2005/12/05}{Fix the problem of \textbf{chinese}, which is
 % because both CJK and everysel redefine the \cs{selectfont}. So, a not so good
-% workaround is merge them up. Add \file*{shuji.tex} example. Add \cs{pozhehao} command.}
+% workaround is merge them up. Add \file{shuji.tex} example. Add \cs{pozhehao} command.}
 % \changes{v2.1}{2006/02/27}{Add support to bachelor thesis.}
-% \changes{v2.1}{2006/03/01}{Remove \pkg*{fancyhdr} and \pkg*{geometry}.}
+% \changes{v2.1}{2006/03/01}{Remove \pkg{fancyhdr} and \pkg{geometry}.}
 % \changes{v2.1}{2006/03/01}{Redefine footnote marks.}
-% \changes{v2.1}{2006/03/01}{Replace \file*{thubib.bst} with \file*{chinesebst.bst}.}
-% \changes{v2.1}{2006/03/02}{Merge the modification of \pkg*{ntheorem}.}
-% \changes{v2.1}{2006/03/02}{Remove \pkg*{footmisc} and refine the document.}
+% \changes{v2.1}{2006/03/01}{Replace \file{thubib.bst} with \file{chinesebst.bst}.}
+% \changes{v2.1}{2006/03/02}{Merge the modification of \pkg{ntheorem}.}
+% \changes{v2.1}{2006/03/02}{Remove \pkg{footmisc} and refine the document.}
 % \changes{v2.1}{2006/03/03}{Work very hard on the document.}
 % \changes{v2.1}{2006/03/03}{Add \cs{checklab} code to reduce ``unresolved labels'' warning}
 % \changes{v2.2}{2006/03/26}{Adjust margins. How bad it is to simulate MS WORD!.}
@@ -114,7 +114,7 @@
 % \changes{v2.4}{2006/04/14}{自动隐藏密级为内部时后面的五角星。}
 % \changes{v2.4}{2006/04/14}{增加“注释 (Remark)”环境。}
 % \changes{v2.4}{2006/04/14}{压缩 item 之间的距离。}
-% \changes{v2.4}{2006/04/14}{\file*{thubib.bst} 文献标题取消自动小写。}
+% \changes{v2.4}{2006/04/14}{\file{thubib.bst} 文献标题取消自动小写。}
 % \changes{v2.4}{2006/04/14}{中文参考文献取消 In: Proceedings。}
 % \changes{v2.4}{2006/04/14}{英文文参考文献调整 In: editor, Proceedings。}
 % \changes{v2.4}{2006/04/14}{参考文献为学位论文时，加方括号，作者后面为实心点。}
@@ -131,22 +131,22 @@
 % \changes{v2.5.1}{2006/05/24}{如果选项设置了 dvips，但是用 PDF\LaTeX\ 编译，报错。}
 % \changes{v2.5.1}{2006/05/24}{根据教务处的新要求调整附录部分。}
 % \changes{v2.5.1}{2006/05/25}{参考文献中杂志文章如果没有卷号，那么页码直接跟在
-% 年份后面，并用句点分割。在 \file*{thubib.bst} 中增加 output.year 函数。}
+% 年份后面，并用句点分割。在 \file{thubib.bst} 中增加 output.year 函数。}
 % \changes{v2.6}{2006/06/09}{增加 dvipdfm 选项。}
-% \changes{v2.6.1}{2006/06/16}{取消 \file*{thubib.bst} 中 inbook 类 volume 后的页
+% \changes{v2.6.1}{2006/06/16}{取消 \file{thubib.bst} 中 inbook 类 volume 后的页
 % 码。}
 % \changes{v2.6.2}{2006/06/18}{改正 groupmembers 的拼写错误。}
 % \changes{v3.0}{2007/05/12}{不用专门为本科论文生成“\textbf{提交}”版本了。}
 % \changes{v3.0}{2007/05/12}{没有了综合论文训练页面，很多本科论文专用命令就消失了。}
 % \changes{v4.4}{2008/05/12}{修复网址断字。}
-% \changes{v4.5}{2008/01/03}{加入 \XeTeX\ 支持，需要 \pkg*{xeCJK}。}
+% \changes{v4.5}{2008/01/03}{加入 \XeTeX\ 支持，需要 \pkg{xeCJK}。}
 % \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 \XeLaTeX。}
 % \changes{v4.5}{2009/01/03}{增加 xetex, pdftex 选项。}
 % \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
 % \changes{v4.6}{2011/10/22}{使用手册更新。}
-% \changes{v4.7}{2012/06/12}{去掉 \pkg*{hypernat} 依赖，\pkg*{hyperref} 和 \pkg*{natbib} 可以很好配合了。}
-% \changes{v4.8}{2013/03/02}{no need to load \pkg*{indentfirst} directly since we use \pkg*{ctex}.}
-% \changes{v4.8}{2013/03/02}{内部调用 \pkg*{ctex} 宏包，自动检测编译引擎。}
+% \changes{v4.7}{2012/06/12}{去掉 \pkg{hypernat} 依赖，\pkg{hyperref} 和 \pkg{natbib} 可以很好配合了。}
+% \changes{v4.8}{2013/03/02}{no need to load \pkg{indentfirst} directly since we use \pkg{ctex}.}
+% \changes{v4.8}{2013/03/02}{内部调用 \pkg{ctex} 宏包，自动检测编译引擎。}
 % \changes{v4.8}{2013/03/04}{dvips method is deprecated. We ask their users to load it manually.}
 % \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \CTeX。}
 %
@@ -1225,7 +1225,7 @@
 %    \end{macrocode}
 %
 % 用 \pkg{kvoptions} 的 key=value 方式来设置论文类型。
-% \changes{v5.0.0}{2015/12/13}{使用 \pkg*{kvoptions} 简化选项 type。}
+% \changes{v5.0.0}{2015/12/13}{使用 \pkg{kvoptions} 简化选项 type。}
 %    \begin{macrocode}
 \newif\ifthu@bachelor
 \newif\ifthu@master
@@ -1345,9 +1345,9 @@
 %    \end{macrocode}
 %
 % \pkg{newtx} 设置 Times New Roman，Helvetica。
-% \changes{v3.1}{2007/06/16}{replace \pkg*{mathptmx} with \pkg*{txfonts}.}
-% \changes{v5.2.1}{2016/01/14}{使用 \pkg*{newtx} 替换 \pkg*{txfonts}。}
-% \changes{v5.2.2}{2016/02/01}{不希望 \pkg*{newtx} 修改 \cs{@makefnmark}。 }
+% \changes{v3.1}{2007/06/16}{replace \pkg{mathptmx} with \pkg{txfonts}.}
+% \changes{v5.2.1}{2016/01/14}{使用 \pkg{newtx} 替换 \pkg{txfonts}。}
+% \changes{v5.2.2}{2016/02/01}{不希望 \pkg{newtx} 修改 \cs{@makefnmark}。 }
 %    \begin{macrocode}
 \RequirePackage[defaultsups]{newtxtext}
 \RequirePackage{newtxmath}
@@ -1377,7 +1377,7 @@
 %    \end{macrocode}
 %
 % 更好的列表环境。
-% \changes{v2.6.2}{2006/06/18}{去掉 \pkg*{paralist} 的 \option{newitem} 和
+% \changes{v2.6.2}{2006/06/18}{去掉 \pkg{paralist} 的 \option{newitem} 和
 % \option{newenum} 选项，因为默认是打开的。}
 % \changes{v2.6.4}{2006/10/23}{增加 \option{neverdecrease} 选项。}
 % \changes{v5.0.0}{2012/12/13}{删除 \pkg{paralist} 选项。}
@@ -1425,9 +1425,9 @@
 % 默认采用中易的六款免费字体。缺少上述字体的用户可以通过
 % \file{ctex-fontset-thuthesis.def} 文件自定义字体。非 \XeTeX\ 环境下利用
 % \pkg{CJKspace} 来控制中英文之间的间距。
-% \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg*{CJKspace} 保留中英文间空格。}
-% \changes{v5.0.0}{2015/04/17}{固定字体设置，同时改善与 \pkg*{ctex} 兼容性。}
-% \changes{v5.2.1}{2016/01/14}{使用 \pkg*{newtx} 字体。}
+% \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
+% \changes{v5.0.0}{2015/04/17}{固定字体设置，同时改善与 \pkg{ctex} 兼容性。}
+% \changes{v5.2.1}{2016/01/14}{使用 \pkg{newtx} 字体。}
 %    \begin{macrocode}
   \IfFileExists{ctex-fontset-thuthesis.def}%
     {\ctexset{fontset=thuthesis}}%
@@ -1452,7 +1452,7 @@
 %    \end{macrocode}
 %
 % 表格控制
-% \changes{v2.6}{2006/06/09}{增加 \pkg*{longtable}。}
+% \changes{v2.6}{2006/06/09}{增加 \pkg{longtable}。}
 %    \begin{macrocode}
 \RequirePackage{array}
 \RequirePackage{longtable}
@@ -1510,7 +1510,7 @@
 % \changes{v4.7}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
 % \changes{v5.0.0}{2015/03/10}{不再将页面尺寸写入 dvi，因为已不支持 dvips，
 % 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。}
-% \changes{v5.0.0}{2015/12/14}{用 \pkg*{geometry} 简化设置。}
+% \changes{v5.0.0}{2015/12/14}{用 \pkg{geometry} 简化设置。}
 %    \begin{macrocode}
 \RequirePackage{geometry}
 \geometry{
@@ -1716,7 +1716,7 @@
 % \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
 % \changes{v2.5}{2006/05/20}{增加 empty 页面样式。}
 % \changes{v4.7}{2012/05/29}{本科页码用小五号字。}
-% \changes{v5.0.0}{2015/12/20}{利用 \pkg*{fancyhdr} 设置页眉页脚。}
+% \changes{v5.0.0}{2015/12/20}{利用 \pkg{fancyhdr} 设置页眉页脚。}
 % 定义三种页眉页脚格式：
 % \begin{itemize}
 % \item \texttt{thu@empty}：页眉页脚都没有
@@ -1806,7 +1806,7 @@
 % \cs{@makefnmark} 默认是上标样式，而在脚注部分要求为正文大小。利用\cs{patchcmd}
 % 动态调整 \cs{@makefnmark} 的定义。
 % \changes{v2.6}{2006/06/09}{脚注改成 1.5 倍行距，漂亮。}
-% \changes{v5.2.2}{2016/02/01}{基于 \pkg*{footmisc} 来设置不同位置 footnote
+% \changes{v5.2.2}{2016/02/01}{基于 \pkg{footmisc} 来设置不同位置 footnote
 % marker 样式。}
 %    \begin{macrocode}
 \let\thu@makefnmark\@makefnmark
@@ -1830,7 +1830,7 @@
 %
 % 公式改成 (1-1) 的形式，本科还要在前面加上\textbf{公式}二字，我不知道他们是怎么想的，这
 % 忒不好看了。
-% \changes{v2.5.1}{2006/05/24}{本科公式编号前添加\textbf{公式}二字。需要修 \pkg*{amsmath} 极其深的一个命令。}
+% \changes{v2.5.1}{2006/05/24}{本科公式编号前添加\textbf{公式}二字。需要修 \pkg{amsmath} 极其深的一个命令。}
 % \changes{v2.5.1}{2006/05/24}{教务处居然要本科论文公式全文编号！}
 % \changes{v2.5.2}{2006/05/29}{上一个版本忘了把研究生的公式编号排除。}
 % \changes{v3.0}{2007/05/12}{本科公式又要取消全文统一编号了。}
@@ -1926,7 +1926,7 @@
 % \changes{v2.4}{2006/04/14}{表格内容为 11 磅。}
 % \changes{v2.4}{2006/04/14}{图表标题左对齐，取消原先漂亮的 hang 模式。}
 % \changes{v2.5}{2006/05/13}{标题上下间距重调，以前没有考虑 \cs{intextsep} 的影响。}
-% \changes{v2.5.1}{2006/05/23}{增加 \pkg*{subfigure} 和 \pkg*{subtable} 的 caption 配置。}
+% \changes{v2.5.1}{2006/05/23}{增加 \pkg{subfigure} 和 \pkg{subtable} 的 caption 配置。}
 % \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
 % \changes{v2.5.3}{2006/06/07}{不管 caption 出现在什么位置，\cs{aboveskip} 总是出现在标题和浮动体之间的距离。}
 % \changes{v4.3}{2008/03/11}{子图引用时加括号。}
@@ -1950,8 +1950,8 @@
 % \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
 % 我们采用 \pkg{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
-% \changes{v2.5.3}{2006/06/08}{增加对 \pkg*{longtable} 的处理。}
-% \changes{v4.5.1}{2009/01/06}{太好了，不用处理 \pkg*{longtable} 的 \cs{caption}
+% \changes{v2.5.3}{2006/06/08}{增加对 \pkg{longtable} 的处理。}
+% \changes{v4.5.1}{2009/01/06}{太好了，不用处理 \pkg{longtable} 的 \cs{caption}
 % 了。}
 %    \begin{macrocode}
 \let\thu@LT@array\LT@array
@@ -1959,7 +1959,7 @@
 %    \end{macrocode}
 %
 % \begin{macro}{\hlinewd}
-% 简单的表格使用三线表推荐用 \cs{hlinewd}。如果表格比较复杂还是用 \pkg*{booktabs} 的命
+% 简单的表格使用三线表推荐用 \cs{hlinewd}。如果表格比较复杂还是用 \pkg{booktabs} 的命
 % 令好一些。
 %    \begin{macrocode}
 \def\hlinewd#1{%
@@ -2053,7 +2053,7 @@
 %   前空 24 磅，段后空 18 磅。本科要求：段前段后间距 30/20 pt，行距 20pt。但正文
 %   章节 30pt 的话和样例效果不一致。
 %
-% \changes{v2.5}{2006/05/13}{取消 \pkg*{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
+% \changes{v2.5}{2006/05/13}{取消 \pkg{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
 % \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
 % \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化。}
 % \changes{v5.0.0}{2015/04/17}{修正章节间距问题(\#57)}
@@ -2176,7 +2176,7 @@
 % 章节名中英文用 Arial 字体，页码仍用 Times。
 % \begin{macro}{\tableofcontents}
 % \changes{v2.0}{2005/12/18}{附录的目录项需要调整一下。以及公式编号方式等等。}
-% \changes{v2.5}{2006/05/13}{取消 \pkg*{titletoc} 宏包，用 \cs{dottedtocline} 调整
+% \changes{v2.5}{2006/05/13}{取消 \pkg{titletoc} 宏包，用 \cs{dottedtocline} 调整
 %   目录。}
 % \changes{v2.5.1}{2006/05/23}{减小目录项中的导引小点跟页码之间的留白。}
 % \changes{v2.5.2}{2006/05/29}{用 \cs{thu@chapter*} 改写目录命令。}
@@ -2391,7 +2391,7 @@
 % 欢），这就必须让环境能够自己保存内容留待以后使用。使用 \pkg{environ} 的
 % \cs{Collect@Body} 来实现。
 % \changes{v3.1}{2006/06/17}{重新定义摘要成为环境。}
-% \changes{v5.2.2}{2016/01/31}{用 \pkg*{environ} 封装的 \cs{Collect@Body}。}
+% \changes{v5.2.2}{2016/01/31}{用 \pkg{environ} 封装的 \cs{Collect@Body}。}
 %    \begin{macrocode}
 \newcommand{\thu@@cabstract}[1]{\long\gdef\thu@cabstract{#1}}
 \newenvironment{cabstract}{\Collect@Body\thu@@cabstract}{}
@@ -2875,7 +2875,7 @@
 % \changes{v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
 % \changes{v4.5.2}{2010/05/29}{本科封面和授权说明之间不要空白页。}
 % \changes{v4.6}{2011/05/29}{博士后报告无授权说明。}
-% \changes{v5.0.0}{2015/06/05}{使用 \pkg*{pdfpages} 宏包支持本硕博论文授权说明扫描版(\#36)。}
+% \changes{v5.0.0}{2015/06/05}{使用 \pkg{pdfpages} 宏包支持本硕博论文授权说明扫描版(\#36)。}
 %    \begin{macrocode}
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
@@ -2998,7 +2998,7 @@
 % 主要符号对照表。
 % \changes{v2.0e}{2005/12/18}{主要符号表定义为一个 list，用起来方便。}
 % \changes{v2.4}{2006/04/14}{为主要符号表环境增加一个可选参数，调节符号列的宽度。}
-% \changes{v5.2.1}{2016/01/11}{利用 \pkg*{enumitem} 改造环境定义，更直观。}
+% \changes{v5.2.1}{2016/01/11}{利用 \pkg{enumitem} 改造环境定义，更直观。}
 %    \begin{macrocode}
 %<*cfg>
 \newcommand{\thu@denotation@name}{主要符号对照表}
@@ -3104,7 +3104,7 @@
 % \changes{v2.5}{2006/05/19}{为了让索引中能出现\textbf{图 xxx}，不得不修改 \LaTeX
 %   内部命令 \cs{@caption}。}
 % \changes{v2.6.4}{2006/10/23}{增加 \cs{listoffigures*}，\cs{listoftables*}。}
-% \changes{v4.5.1}{2009/01/06}{更优雅的插图/表格索引，避免跟 \pkg*{caption} 包冲
+% \changes{v4.5.1}{2009/01/06}{更优雅的插图/表格索引，避免跟 \pkg{caption} 包冲
 % 突。\cs{thu@listof} 相应修改。}
 %    \begin{macrocode}
 %<*cls>
@@ -3128,7 +3128,7 @@
 % \end{macro}
 %
 % \begin{macro}{\equcaption}
-% \changes{v2.6.2}{2006/06/19}{此命令配合 \pkg*{amsmath} 命令基本可以满足所有
+% \changes{v2.6.2}{2006/06/19}{此命令配合 \pkg{amsmath} 命令基本可以满足所有
 % 公式需要。}
 %   本命令只是为了生成公式列表，所以这个 caption 是假的。如果要编号最好用
 %    equation 环境，如果是其它编号环境，请手动添加添加 \cs{equcaption}。
