@@ -185,7 +185,7 @@ distclean: cleanall
 	-@$(RM) $(CLSFILES)
 	-@$(RM) -r dist
 
-dist:
+dist: all
 	@if [ -z "$(version)" ]; then \
 		echo "Usage: make dist version=[x.y.z | ctan]"; \
 	else \
