@@ -37,9 +37,8 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 
 # Makefile的用法
 
-    make [{all|thesis|shuji|doc|clean|distclean}] \
-         [METHOD={latexmk|xelatex|pdflatex|dvipdfmx}] \
-         [TEXI2DVI=<tex2dvi>]
+    make [{all|thesis|shuji|doc|clean|cleanall|distclean}] \
+         [METHOD={latexmk|xelatex|pdflatex}]
 
 ## 目标
 * `make all`       等于 `make thesis && make shuji && make doc`；
@@ -47,18 +46,12 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 * `make thesis`    生成论文 main.pdf；
 * `make shuji`     生成书脊 shuji.pdf；
 * `make doc`       生成使用说明书 thuthesis.pdf；
-* `make clean`     删除示例文件的中间文件（不含main.pdf）；
-* `make cleanall`  删除示例文件的中间文件和main.pdf；
-* `make distclean` 删除示例文件和模板的所有中间文件和PDF。
+* `make clean`     删除示例文件的中间文件（不含 main.pdf）；
+* `make cleanall`  删除示例文件的中间文件和 main.pdf；
+* `make distclean` 删除示例文件和模板的所有中间文件和 PDF。
 
 ## 参数
 * **METHOD**：指定生成 pdf 的方式，缺省采用 latexmk。
-  * METHOD=latexmk  表示使用 latexmk 的方式生成 pdf。
+  * METHOD=latexmk  表示使用 latexmk 的方式生成 pdf（使用 xelatex）。
   * METHOD=xelatex  表示使用 xelatex 引擎编译生成 pdf；
-  * METHOD=pdflatex 表示使用 pdflatex 引擎编译生成 pdf；
-  * METHOD=dvipdfmx 表示使用 texi2dvi -> dvipdfmx 的方式生成 pdf。
-* **TEXI2DVI**： `texi2dvi` 实用工具的文件名，该工具的作用是自动重复运行latex 若
-        干遍，直至所有交叉引用都正确为止。在有的发行版中该工具的文件名不叫
-        `texi2dvi`，譬如 CTeX 下的这个工具就叫 `texify`。遇到这种情况可以在命令
-        行通过 `TEXI2DVI=texify` 命令指定使用其它的 `texi2dvi` 工具。
-
+  * METHOD=pdflatex 表示使用 pdflatex 引擎编译生成 pdf。

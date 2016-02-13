@@ -325,20 +325,6 @@
 % 和幼圆字体，如果系统上没有它们，可以直接将 \file{ctex-fontset-thuthesis.def} 文
 % 件以及论文中相应行删除。字体配置参考第~\ref{sec:font-config} 节。
 %
-% \subsubsection{dvipdfmx}
-% \label{sec:dvipdfmx}
-% 如果使用 \texttt{dvipdfmx}，那么需要先生成完整的 dvi 文件：
-% \begin{shell}%
-% $ latex main
-% $ bibtex main
-% $ latex main
-% $ latex main
-% \end{shell}
-% 在生成完整的 dvi 文件之后，可以用 dvipdfmx 直接得到 pdf 文件：
-% \begin{shell}%
-% $ dvipdfmx main
-% \end{shell}
-%
 % \subsubsection{PDF\LaTeX}
 % \label{sec:pdflatex}
 % 如果使用 PDF\LaTeX，按照第~\ref{sec:xelatex} 节的顺序执行即可，只是将命令中
@@ -371,10 +357,9 @@
 % $ make shuji     # 生成书脊 shuji.pdf
 % \end{shell}
 %
-% \thuthesis{} 的 Makefile 默认用 \texttt{latexmk} 调用
-% \texttt{xelatex} 编译，此外还支持直接用 \texttt{xelatex}、\texttt{pdflatex} 和
-% \texttt{dvipdfmx} 方式编译，如有需要可以修
-% 改 \file{Makefile} 开头的参数设置或通过命令行传递参数（请参看 \file{README.md}），
+% \thuthesis{} 的 \file{Makefile} 默认用 \texttt{latexmk} 调用\texttt{xelatex} 编
+% 译，此外还支持直接用 \texttt{xelatex} 和\texttt{pdflatex} 编译。如有需要可修
+% 改 \file{Makefile} 开头的参数或通过命令行传递参数（请参看 \file{README.md}），
 % 进一步还可以修改 \file{latexmkrc} 进行定制。
 %
 % \subsection{升级}
@@ -1188,7 +1173,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2016/01/18 5.2.1 Tsinghua University Thesis Template]
+%<cls|cfg>[2016/02/01 5.2.2 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
