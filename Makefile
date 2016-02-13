@@ -9,10 +9,6 @@ THESISMAIN = main
 # Basename of shuji
 SHUJIMAIN = shuji
 
-ifeq ($(MAKE),)
-	override MAKE = make
-endif
-
 PACKAGE=thuthesis
 SOURCES=$(PACKAGE).ins $(PACKAGE).dtx
 THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(FIGURES)
@@ -24,11 +20,11 @@ CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
 # make deletion work on Windows
 ifdef SystemRoot
-   RM = del /Q
-   SLASH = \\
+	RM = del /Q
+	OPEN = start
 else
-   RM = rm -f
-   SLASH = /
+	RM = rm -f
+	OPEN = open
 endif
 
 .PHONY: all clean distclean dist thesis viewthesis shuji viewshuji doc viewdoc cls FORCE_MAKE
@@ -41,17 +37,17 @@ $(CLSFILES): $(SOURCES)
 	latex $(PACKAGE).ins
 
 viewdoc: doc
-	open $(PACKAGE).pdf
+	$(OPEN) $(PACKAGE).pdf
 
 doc: $(PACKAGE).pdf
 
 viewthesis: thesis
-	open $(THESISMAIN).pdf
+	$(OPEN) $(THESISMAIN).pdf
 
 thesis: $(THESISMAIN).pdf
 
 viewshuji: shuji
-	open $(SHUJIMAIN).pdf
+	$(OPEN) $(SHUJIMAIN).pdf
 
 shuji: $(SHUJIMAIN).pdf
 
