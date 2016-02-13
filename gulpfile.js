@@ -47,6 +47,11 @@ function usage() {
     util.log('\t gulp build --version=[x.y.z | ctan]');
 }
 
+function check_notification() {
+    util.log(util.colors.yellow('⚠️  Double check versions: 3 in thuthesis.dtx and 1 in package.json.'));
+    util.log(util.colors.yellow('⚠️  Ensure all files are generated.'));
+}
+
 gulp.task('default', function(callback) {
     usage();
 
@@ -63,7 +68,7 @@ gulp.task('bootstrap', function(callback) {
     const version = util.env.version.toString().toLowerCase();
     config.isCTAN = version === 'ctan';
 
-    util.log(util.colors.yellow('⚠️  Ensure all files are generated.'));
+    check_notification();
 
     if (config.isCTAN) {
         config.dist.build = `${packageName}`;
@@ -105,6 +110,8 @@ gulp.task('build', ['zip'], function(callback) {
     del.sync([path.join(config.dist.root, config.dist.build)]);
 
     util.log(util.colors.green.bold('🍺  Build Succeeded.'));
+
+    check_notification();
 
     callback();
 });
