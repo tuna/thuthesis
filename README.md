@@ -33,12 +33,12 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 * [TeX@newsmth](http://www.newsmth.net/nForum/#!board/TeX)
 * [ThuThesis@Google Groups](http://groups.google.com/group/thuthesis)
 
----
-
 # Makefile的用法
 
-    make [{all|thesis|shuji|doc|clean|cleanall|distclean}] \
-         [METHOD={latexmk|xelatex|pdflatex}]
+```shell
+make [{all|thesis|shuji|doc|clean|cleanall|distclean}] \
+     [METHOD={latexmk|xelatex|pdflatex}]
+```
 
 ## 目标
 * `make all`       等于 `make thesis && make shuji && make doc`；
