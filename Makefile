@@ -27,7 +27,7 @@ else
 	OPEN = open
 endif
 
-.PHONY: all clean distclean dist thesis viewthesis shuji viewshuji doc viewdoc cls FORCE_MAKE
+.PHONY: all clean distclean dist thesis viewthesis shuji viewshuji doc viewdoc cls check FORCE_MAKE
 
 all: doc thesis shuji
 
@@ -98,6 +98,9 @@ cleanall: clean
 distclean: cleanall
 	-@$(RM) $(CLSFILES)
 	-@$(RM) -r dist
+
+check: FORCE_MAKE
+	ag '\\def\\thuversion|\\def\\version|<cls\|cfg>|"version":' thuthesis.dtx package.json
 
 dist: all
 	@if [ -z "$(version)" ]; then \
