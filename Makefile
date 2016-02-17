@@ -84,7 +84,7 @@ $(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
 	$(METHOD) $(SHUJIMAIN)
 
 else
-$(error Unknown METHOD.)
+$(error Unknown METHOD: $(METHOD))
 
 endif
 
