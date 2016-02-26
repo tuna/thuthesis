@@ -1604,6 +1604,7 @@
 % \cs{thu@def@fontsize}\marg{字号名称}\marg{磅数}
 %
 % 避免了字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
+% \changes{v5.2.3}{2016/02/13}{改写字体定义命令。}
 %    \begin{macrocode}
 \def\thu@def@fontsize#1#2{%
   \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
@@ -1812,6 +1813,7 @@
 % \end{latex}
 % \changes{v4.4}{2008/05/30}{本科论文终于去掉了\textbf{公式}二字。}
 % \changes{v4.4.4}{2008/06/12}{修复了一个从 v4.3 升级到 v4.4 过程中的丢失公式索引的 bug，原修改代码保留备忘。}
+% \changes{v5.2.3}{2016/02/13}{安全注释本科公式部分。}
 %    \begin{macrocode}
 \def\make@df@tag{\@ifstar\thu@make@df@tag@@\make@df@tag@@@}
 \def\thu@make@df@tag@@#1{\gdef\df@tag{\thu@maketag{#1}\def\@currentlabel{#1}}}
