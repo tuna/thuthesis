@@ -1,6 +1,6 @@
 {
   "name": "thuthesis",
-  "version": "5.2.2",
+  "version": "5.2.3",
   "description": "Tsinghua University Thesis LaTex Template",
   "main": "gulpfile.js",
   "scripts": {
@@ -24,6 +24,6 @@
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
-    "gulp-zip": "^3.1.0"
+    "gulp-zip": "^3.2.0"
   }
 }

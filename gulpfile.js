@@ -48,7 +48,7 @@ function usage() {
 }
 
 function check_notification() {
-    util.log(util.colors.yellow('⚠️  Double check versions: `make check`, 3 in thuthesis.dtx and 1 in package.json.'));
+    util.log(util.colors.yellow('⚠️  Double check versions and dates: `make check`, 3 in thuthesis.dtx and 1 in package.json.'));
     util.log(util.colors.yellow('⚠️  Ensure all files are generated.'));
 }
 

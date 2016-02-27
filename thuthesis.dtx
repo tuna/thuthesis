@@ -16,9 +16,7 @@
 %
 % \iffalse
 %<*driver>
-\def\thudate{\the\year/\the\month/\the\day}
-\def\thuversion{5.2.2}
-\ProvidesFile{thuthesis.dtx}[{\thudate} {\thuversion} Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2016/02/27 5.2.3 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -1174,7 +1172,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2016/02/01 5.2.2 Tsinghua University Thesis Template]
+%<cls|cfg>[2016/02/27 5.2.3 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1193,7 +1191,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{5.2.2}
+\def\version{5.2.3}
 
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
@@ -2088,11 +2086,11 @@
 %
 % \begin{macro}{\thu@chapter*}
 % \changes{v2.5.2}{2006/05/29}{定义自己的 \cs{thu@chapter*}。}
-% 默认的 \cs{chapter*} 很难同时满足研究生院和本科生的论文要求。本科论文要求所有
-% 的章都出现在目录里，比如摘要、Abstract、主要符号表等，所以可以简单的扩展默认
-%  \cs{chapter*} 实现这个目的。但是研究生又不要这些出现在目录中，而且致谢和声明
-% 部分的章名、页眉和目录都不同，所以我想定义一个灵活的 \cs{thu@chapter*} 专
-% 门处理他们的这些要求。
+% 默认的 \cs{chapter*} 很难同时满足研究生院和本科生的论文要求。本科论文要求所有的
+% 章都出现在目录里，比如摘要、Abstract、主要符号表等，所以可以简单的扩展默
+% 认\cs{chapter*} 实现这个目的。但是研究生又不要这些出现在目录中，而且致谢和声明
+% 部分的章名、页眉和目录都不同，所以定义一个灵活的 \cs{thu@chapter*} 专门处理这些
+% 要求。
 %
 % \cs{thu@chapter*}\oarg{tocline}\marg{title}\oarg{header}: tocline 是出现在目录
 % 中的条目，如果为空则此 chapter 不出现在目录中，如果省略表示目录出现 title；
@@ -2131,8 +2129,8 @@
 %
 % \subsubsection{目录}
 % \label{sec:toc}
-% 最多涉及 4 层，即: x.x.x.x。\par
-% chapter(0), section(1), subsection(2), subsubsection(3)
+% 最多 4 层，即: x.x.x.x，对应的命令和层序号分别是：
+% \cs{chapter}(0), \cs{section}(1), \cs{subsection}(2), \cs{subsubsection}(3)。
 % \changes{v3.1}{2007/10/09}{博士论文目录只出现到第 3 级标题即可。}
 % \changes{v5.0.0}{2015/05/21}{硕士博士论文目录只出现到第 3 级标题即可。其他未明确要求。}
 %    \begin{macrocode}
