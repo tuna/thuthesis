@@ -2452,10 +2452,10 @@
 \fi
 \def\thu@postdoctor@first@discipline@title{流动站（一级学科）名称}
 \def\thu@postdoctor@second@discipline@title{专\hspace{1em}业（二级学科）名称}
-\def\thu@secretlevel@inner{内部}
 \def\thu@secret@content{%
-  \ifx\thu@secretlevel\thu@secretlevel@inner\relax\else ★\fi%
-  \hspace{2em}\thu@secretyear\hspace{1em}年}
+  \unskip\ifthu@master$\bigstar$ \fi%
+  \ifthu@doctor$\bigstar$ \fi%
+  \thu@secretyear 年}
 \def\thu@apply{（申请清华大学\thu@cdegree 学位论文）}
 \ifthu@bachelor
   \def\thu@department@title{系别}
@@ -2583,7 +2583,7 @@
   \begin{center}
     \vspace*{-1.6cm}
     \parbox[b][2.4cm][t]{\textwidth}{%
-      \ifthu@secret\hfill{\sihao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
+      \ifthu@secret{\heiti\sanhao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
       \vskip0.45cm
       {\yihao\lishu\ziju{0.3846}\thu@schoolname}
