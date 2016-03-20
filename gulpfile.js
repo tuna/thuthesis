@@ -12,8 +12,6 @@ const config = {
                 'thuthesis.dtx',
                 'thuthesis.bst',
                 'thuthesis.sty',
-                'ctex-fontset-thuthesis.def',
-                'zhfonts.py',
                 'Makefile',
                 'latexmkrc',
                 'README.md',
