@@ -243,7 +243,6 @@
 % thuthesis.dtx & \textsc{DocStrip} 源文件（开发用）\\\midrule
 % thuthesis.cls & 模板类文件\\
 % thuthesis.cfg & 模板配置文件\\
-% ctex-fontset-thuthesis.def & 中文字体配置文件\\
 % thuthesis.bst & 参考文献样式文件\\\midrule
 % main.tex & 示例文档主文件\\
 % shuji.tex & 书脊示例文档\\
@@ -284,8 +283,7 @@
 % 样式 \file{thuthesis.bst}，示例文档
 % （\file{main.tex}，\file{shuji.tex}，\file{thuthesis.sty}\footnote{可能用到的包
 % 以及一些命令定义都放在这里，以免 \file{thuthesis.cls} 过分臃
-% 肿。}，\file{ctex-fontset-thuthesis.def}\footnote{Xe\LaTeX 中文字体配置文
-% 件。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
+% 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
 % 板文件和配置文件（具体命令细节请参考 \file{README.md} 和 \file{Makefile}）：
 %
 % \begin{shell}
@@ -317,12 +315,6 @@
 % $ xelatex main
 % $ xelatex main   # 此时生成完整的 pdf 文件
 % \end{shell}
-% \XeTeX\ 最大的优势就是不再需要繁琐的字体配置。\thuthesis{} 通过 \pkg{xeCJK} 来控
-% 制中文字体和标点压缩。模板里默认用的是中易的六款免费字体（宋，黑，楷，仿宋，隶
-% 书和幼圆），因学位论文需求不建议替换为其他字体。如果实在必要，可以通过定
-% 制 \file{ctex-fontset-thuthesis.def} 文件中的字体自行替换。研究生一般用不到隶书
-% 和幼圆字体，如果系统上没有它们，可以直接将 \file{ctex-fontset-thuthesis.def} 文
-% 件以及论文中相应行删除。字体配置参考第~\ref{sec:font-config} 节。
 %
 % \subsubsection{PDF\LaTeX}
 % \label{sec:pdflatex}
@@ -393,13 +385,12 @@
 %
 % \subsection{示例文件}
 % \label{sec:userguide}
-% 模板核心文件有四
-% 个：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{ctex-fontset-thuthesis.def} 和
-% \file{thuthesis.bst}，但是如果没有示例文档用户会发现很难下手。所以推荐新用户从模板
-% 自带的示例文档入手，里面包括了论文写作用到的所有命令及其使用方法，只需要用自己
-% 的内容进行相应替换就可以。对于不清楚的命令可以查阅本手册。下面的例子描述了模板
-% 中章节的组织形式，来自于示例文档，具体内容可以参考模板附带
-% 的 \file{main.tex} 和 \file{data/}。
+% 模板核心文件有三
+% 个：\file{thuthesis.cls}，\file{thuthesis.cfg} 和\file{thuthesis.bst}，但是如果
+% 没有示例文档用户会发现很难下手。所以推荐新用户从模板自带的示例文档入手，里面包
+% 括了论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。
+% 对于不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示
+% 例文档，具体内容可以参考模板附带的 \file{main.tex} 和 \file{data/}。
 %
 % \lstinputlisting[style=lstStyleLaTeX]{main.tex}
 %
@@ -453,15 +444,6 @@
 % 是 \option{openany}。}。这两个选项不用设置，\thuthesis{} 会根据当前论文类型自动选
 % 择。
 %
-% \DescribeOption{arial}
-% 使用真正的 \emph{Arial} 字体。此选项会装载 \pkg{Arial} 字体宏包，如果不存
-% 在，就装
-% 载 \pkg{Helvet}。\option{arialtoc} 和 \option{arialtitle} 不受 \option{arial}
-% 选项的影响。因为一般的 \TeX{} 发行都没有 \emph{Arial} 字体，所以默认采
-% 用 \pkg{Helvet}，二者效果非常相似。如果一定要用 \emph{Arial} 字体，请参
-% 看：\href{http://www.mail-archive.com/ctan-ann@dante.de/msg00627.html}{Arial字
-% 体}。
-%
 % \DescribeOption{arialtoc}
 % 目录项（章目录项除外）中的英文是否用 \emph{Arial} 字体。本选项
 % 和 \option{arialtitle} 都不用用户干预，模板根据当前论文类型自动设置。
@@ -480,51 +462,8 @@
 %   \item 基于 \pkg{xeCJK} 包，使用 \XeLaTeX\ 编译。（推荐方法）
 % \end{itemize}
 %
-% 第一种方式中文字体配置比较繁琐，建议使用 \CTeX\ 套装，已经自带中文字体配置。或
-% 者使用 \CTeX-Fonts 生成中文字体包，此处不再赘述。本模板推荐使用第二种方法，只要
-% 把所需字体放入系统字体文件夹（也可以指定自定义文件夹）即可。用户可以使
-% 用\file{ctex-fontset-thuthesis.def} 文件配置所需字体。使用中易六种字体的配置如
-% 下：
-%
-% \begin{latex}
-% \ProvidesFile{ctex-fontset-thuthesis.def}
-%
-% \setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
-% \setCJKsansfont{SimHei}
-% \setCJKmonofont{FangSong}
-% \setCJKfamilyfont{zhsong}{SimSun}
-% \setCJKfamilyfont{zhhei}{SimHei}
-% \setCJKfamilyfont{zhkai}{KaiTi}
-% \setCJKfamilyfont{zhfs}{FangSong}
-% \setCJKfamilyfont{zhli}{LiSu}
-% \setCJKfamilyfont{zhyou}{YouYuan}
-%
-% \newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
-% \newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
-% \newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
-% \newcommand*{\fangsong}{\CJKfamily{zhfs}} % 仿宋
-% \newcommand*{\lishu}{\CJKfamily{zhli}}    % 隶书
-% \newcommand*{\youyuan}{\CJKfamily{zhyou}} % 幼圆
-% \end{latex}
-%
-% 对 Windows XP 来说如下，\texttt{KaiTi} 需要替换为
-% \texttt{KaiTi\_GB2312}，\texttt{FangSong} 需要替换
-% 为 \texttt{FangSong\_GB2312}。
-%
-% 研究生一般用不到隶书和幼圆字体。如果系统中没有导致报错，可以
-% 将\file{ctex-fontset-thuthesis.def} 文件中 \texttt{zhli} 和 \texttt{zhyou} 相应
-% 行删除，并将论文中引用 \cs{lishu} 和 \cs{youyuan} 的文字删除。
-%
-% 宏包中包含了 \file{zhfonts.py} 脚本，为 Linux/Mac 用户提供一种交互式的方式从系
-% 统中文字体中选择合适的六种字体，最终生成对应
-% 的\file{ctex-fontset-thuthesis.def} 文件。要使用它，只需在命令行输入该脚本的完
-% 整路径即可。
-%
-% 另外，用户也可以通过命令
-% \begin{shell}
-% $ fc-list :lang=zh file family style > zhfonts.txt
-% \end{shell}
-% 得到系统中现有的中文字体列表，并相应替换上述配置。
+% 模板默认使用 \CTeX\ 的字体配置。关于中文字体安装、配置的所有问题不在本模板讨论
+% 范围。
 %
 % \subsubsection{字体命令}
 % \label{sec:fontcmds}
@@ -533,19 +472,13 @@
 % \DescribeMacro{\fangsong}
 % \DescribeMacro{\heiti}
 % \DescribeMacro{\kaishu}
-% \DescribeMacro{\lishu}
-% \DescribeMacro{\youyuan}
-% 用来切换宋体、仿宋、黑体、楷体、隶书和幼圆字体。
+% 用来切换宋体、仿宋、黑体、楷体四种基本字体。
 %
 % \begin{latex}
 % {\songti 乾：元，亨，利贞}
 % {\fangsong 初九，潜龙勿用}
 % {\heiti 九二，见龙在田，利见大人}
 % {\kaishu 九三，君子终日乾乾，夕惕若，厉，无咎}
-% {\lishu 九四，或跃在渊，无咎}
-% {\heiti 九五，飞龙在天，利见大人}
-% {\songti 上九，亢龙有悔}
-% {\youyuan 用九，见群龙无首，吉}
 % \end{latex}
 %
 % \myentry{字号}
@@ -1228,11 +1161,6 @@
 \DeclareBoolOption{secret}
 %    \end{macrocode}
 %
-% 正文 Sans 字体是否使用 Arial 字体（默认打开）。
-%    \begin{macrocode}
-\DeclareBoolOption{arial}
-%    \end{macrocode}
-%
 % 目录中英文是否用 Arial 字体（默认关闭）。
 %    \begin{macrocode}
 \DeclareBoolOption{arialtoc}
@@ -1268,7 +1196,6 @@
 %    \begin{macrocode}
 \kvsetkeys{thu}{%
   raggedbottom,
-  arial,
   arialtitle}
 %    \end{macrocode}
 %
@@ -1277,16 +1204,17 @@
 \ProcessKeyvalOptions*
 %    \end{macrocode}
 %
-% 使用 \XeTeX\ 引擎时，\pkg{fontspec} 宏包会被 \pkg{xeCJK} 自动
-% 调用。传递给 \pkg{fontspec} 宏包 \option{no-math} 选项，避免部分数学符号字体自动调整为 CMR。
-% 其他引擎下没有这个问题，这一行会被无视。
+% 使用 \XeTeX\ 引擎时，\pkg{fontspec} 宏包会被 \pkg{xeCJK} 自动调用。传递
+% 给 \pkg{fontspec} 宏包 \option{no-math} 选项，避免部分数学符号字体自动调整
+% 为 CMR。其他引擎下没有这个问题，这一行会被无视。
 %    \begin{macrocode}
 \PassOptionsToPackage{no-math}{fontspec}
 %    \end{macrocode}
 %
+% \changes{v5.3.1}{2016/03/20}{使用 \CTeX\ 默认中文字体配置，支持不同引擎。}
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
 %    \begin{macrocode}
-\LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain,fontset=none]{ctexbook}
+\LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain]{ctexbook}
 %    \end{macrocode}
 %
 % 用户至少要提供一个选项，指定论文类型。
@@ -1385,35 +1313,18 @@
 \RequirePackage{CJKfntef}
 %    \end{macrocode}
 %
-% \XeTeX\ 环境下独立配置，包括零对应的圆圈符号和字体。
+% \XeTeX\ 环境下独立配置，包括零对应的圆圈符号。
 %    \begin{macrocode}
 \ifxetex
   \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
   \defaultfontfeatures{Mapping=tex-text}
+\fi
 %    \end{macrocode}
-% 默认采用中易的六款免费字体。缺少上述字体的用户可以通过
-% \file{ctex-fontset-thuthesis.def} 文件自定义字体。非 \XeTeX\ 环境下利用
-% \pkg{CJKspace} 来控制中英文之间的间距。
 % \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 % \changes{v5.0.0}{2015/04/17}{固定字体设置，同时改善与 \pkg{ctex} 兼容性。}
 % \changes{v5.2.1}{2016/01/14}{使用 \pkg{newtx} 字体。}
-%    \begin{macrocode}
-  \IfFileExists{ctex-fontset-thuthesis.def}%
-    {\ctexset{fontset=thuthesis}}%
-    {\ctexset{fontset=windows}}
-\else
-  \RequirePackage{CJKspace}
-%    \end{macrocode}
-% arial 字体需要单独安装，如果不使用 arial 字体，可以用 helvet 字体
-% \cs{textsf} 模拟，二者基本没有差别。
-%    \begin{macrocode}
-  \ifthu@arial
-    \IfFileExists{arial.sty}%
-                 {\RequirePackage{arial}}%
-                 {\ClassWarning{thuthesis}{arial.sty is not availiable!}}
-  \fi
-\fi
-%    \end{macrocode}
+% \changes{v5.3.1}{2016/03/20}{\pkg{ctex} 默认加载 \pkg{CJKspace}。}
+% \changes{v5.3.1}{2016/03/20}{几乎没人主动安装 Arial 字体。}
 %
 % 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX{} 的宏包
 %    \begin{macrocode}
@@ -2587,7 +2498,7 @@
       \ifthu@secret{\heiti\sanhao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
       \vskip0.45cm
-      {\yihao\lishu\ziju{0.3846}\thu@schoolname}
+      {\includegraphics{tsinghua}}
       \par\vskip1.5cm
       {\xiaochu\heiti\ziju{0.5}\thu@bachelor@subtitle}
       \vskip2.2cm
