@@ -1312,13 +1312,6 @@
 \RequirePackage{CJKfntef}
 %    \end{macrocode}
 %
-% \XeTeX\ 环境下独立配置，包括零对应的圆圈符号。
-%    \begin{macrocode}
-\ifxetex
-  \def\CJK@null{\kern\CJKnullspace\Unicode{48}{7}\kern\CJKnullspace}
-  \defaultfontfeatures{Mapping=tex-text}
-\fi
-%    \end{macrocode}
 % \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
 % \changes{v5.0.0}{2015/04/17}{固定字体设置，同时改善与 \pkg{ctex} 兼容性。}
 % \changes{v5.2.1}{2016/01/14}{使用 \pkg{newtx} 字体。}
@@ -2518,9 +2511,9 @@
       \parbox[t][9cm][t]{\paperwidth-8cm}{
       \renewcommand{\baselinestretch}{1.3}
       \begin{center}
-      \yihao[1.2]{\sffamily\heiti\thu@ctitle}\par
-      \par\vskip 18bp
-      \xiaoer[1] \textrm{\thu@apply}
+        \yihao[1.2]{\sffamily\heiti\thu@ctitle}\par%
+        \par\vskip 18bp%
+        \xiaoer[1]\textrm{\thu@apply}%
       \end{center}}
     \fi
 %    \end{macrocode}
@@ -2636,37 +2629,38 @@
     \parbox[t][5.2cm][t]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.5}
       \begin{center}
-        \erhao[1.1]\bfseries\sffamily\thu@etitle
+        \erhao[1.1]\bfseries\sffamily\thu@etitle%
       \end{center}}
     \parbox[t][][t]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.3}
       \begin{center}
-        \sanhao
+        \sanhao%
         \ifthu@master Thesis \else Dissertation \fi
         Submitted to\\
         {\bfseries Tsinghua University}\\
         in partial fulfillment of the requirement\\
         for the \ifthu@professional professional \fi
         degree of\\
-        {\bfseries\sffamily\thu@edegree}
+        {\bfseries\sffamily\thu@edegree}%
         \ifthu@professional\relax\else
           \\in\\[3bp]
-          {\bfseries\sffamily\thu@emajor}
+          {\bfseries\sffamily\thu@emajor}%
         \fi
       \end{center}}
     \parbox[t][][b]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.3}
       \begin{center}
         \sanhao\sffamily by\\[3bp]
-        \bfseries\thu@eauthor
+        \bfseries\thu@eauthor%
         \ifthu@professional
           \ifx\thu@emajor\empty\relax\else
-            \\(~\thu@emajor~)
+            \\(~\thu@emajor~)%
         \fi\fi
       \end{center}}
     \par\vspace{0.9cm}
     \parbox[t][2.1cm][t]{\paperwidth-7.2cm}{
-      \renewcommand{\baselinestretch}{1.2}\xiaosan\centering
+      \renewcommand{\baselinestretch}{1.2}
+      \xiaosan\centering
       \begin{tabular}{rl}
         \ifthu@master Thesis \else Dissertation \fi
         Supervisor : & \thu@esupervisor\\
