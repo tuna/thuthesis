@@ -170,7 +170,7 @@
 % \begin{abstract}
 % \noindent
 % \begin{enumerate}
-% \item 本模板的发布遵守 \LaTeX{} Project Public License，使用前请认真阅读协议内
+% \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内
 %   容。
 % \item 本模板为作者根据清华大学教务处颁发的《综合论文训练写作指南》，清华大学研
 %   究生院颁发的《研究生学位论文写作指南》，清华大学《编写“清华大学博士后研究报
@@ -179,7 +179,7 @@
 %   权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格式审查老师
 %   不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
 % \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
-%   守 \LaTeX{} Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
+%   守 \LaTeX\ Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
 %   本模板作者无关。
 % \end{enumerate}
 % \end{abstract}
@@ -195,40 +195,35 @@
 % \clearpage
 %
 % \section{模板介绍}
-% \thuthesis\ (\textbf{T}sing\textbf{h}ua \textbf{U}niversity \LaTeX{}
+% \thuthesis\ (\textbf{T}sing\textbf{h}ua \textbf{U}niversity \LaTeX\
 % \textbf{Thesis} Template) 是为了帮助清华大学毕业生撰写毕业论文而编写
-% 的 \LaTeX{} 论文模板。
+% 的 \LaTeX\ 论文模板。
 %
 % 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据
 % 第~\ref{sec:howtoask} 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
 % 码的贡献。
 %
-% \note{模板的作用在于减少论文写作过程中格式调整的时间，前提是遵守模板的用法，否
-% 则即便用了 \thuthesis{} 也难以保证输出的论文符合学校规范。}
+% \note[注意：]{模板的作用在于减少论文写作过程中格式调整的时间。前提是遵守模板的
+% 用法，否则即便用了 \thuthesis\ 也难以保证输出的论文符合学校规范。}
 %
 %
 % \section{安装}
 % \label{sec:installation}
 %
-% \subsection{下载}
-% \thuthesis{} 已经包含在主要的 \TeX{} 发行版中，一般不需要安装，可以利用发行版自
+% \thuthesis\ 已经包含在主要的 \TeX\ 发行版中，一般不需要安装，可以利用发行版自
 % 带更新工具自动更新。阅读文档可以使用以下命令：
 % \begin{shell}
 % $ texdoc thuthesis
 % \end{shell}
 %
-% 如果要使用开发版，需自己安装，请继续阅读。
-% \thuthesis{} 相关链接：
+% 如果要使用开发版，需自己下载，\thuthesis\ 相关链接：
 % \begin{itemize}
 % \item 主页：\href{https://github.com/xueruini/thuthesis}{GitHub}
 % \item 下载：\href{http://www.ctan.org/pkg/thuthesis}{CTAN}
 % \end{itemize}
 %
-% 除此之外，不再维护任何镜像。
-%
-%
-% \subsection{模板的组成部分}
-% 下表列出了 \thuthesis{} 的主要文件及其功能介绍：
+% \subsection{模板的组成}
+% 下表列出了 \thuthesis\ 的主要文件及其功能介绍：
 %
 % \begin{longtable}{l|p{8cm}}
 % \toprule
@@ -258,24 +253,17 @@
 %
 % 几点说明：
 % \begin{itemize}
-% \item \file{thuthesis.cls} 和 \file{thuthesis.cfg} 可以由 \file{thuthesis.ins}
+% \item \file{thuthesis.cls} 和 \file{thuthesis.cfg} 可由 \file{thuthesis.ins}
 %   和 \file{thuthesis.dtx} 生成，但为了降低新手用户的使用难度，故
 %   将 \file{thuthesis.cls} 和 \file{thuthesis.cfg} 文件一起发布。
 % \item 使用前阅读文档：\file{thuthesis.pdf}。
 % \end{itemize}
 %
-% \subsection{准备工作}
-% \label{sec:prepare}
-% 本模板用到的宏包比较多，这些包在常见的 \TeX{} 系统中都有，如果没有安装请优先使用发
-% 行版自带的升级工具下载。现在的发行版都可以自动解决依赖，很少需要手动。
-%
-% \subsection{开始安装}
-% \label{sec:install}
-%
-% \subsubsection{生成模板}
+% \subsection{生成模板}
 % \label{sec:generate-cls}
-% \note{默认的发行包中已经包含了所有文件，可以直接使用。如果对如何生成模板文件以
-% 及模板文档不感兴趣，请跳过本小节。}
+% \note[提示：]{若使用 \TeX 发行版自带的 \thuthesis\ 或 Github 上发布的版本，可忽
+% 略此节，直接阅读第~\ref{sec:generate-thesis} 节。若下载 CTAN 包或者 Github 开发
+% 代码，请阅读本节了解生成模板文件的步骤。}
 %
 % 模板解压缩后生成文件夹 \file{thuthesis-vX.Y.Z}\footnote{\texttt{vX.Y.Z} 为版本号。}，
 % 其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参考文献
@@ -298,9 +286,13 @@
 % $ xelatex thuthesis.dtx  % 生成说明文档 thuthesis.pdf
 % \end{shell}
 %
+% \subsection{生成论文}
+% \label{sec:generate-thesis}
+% 本节介绍几种常见的生成论文的方法。用户可根据自己的情况选择。
+%
 % \subsubsection{\XeLaTeX}
 % \label{sec:xelatex}
-% 很多用户对 \LaTeX{} 命令执行的次数不太清楚，一个基本的原则是多次运行 \LaTeX{}命
+% 很多用户对 \LaTeX\ 命令执行的次数不太清楚。一个基本的原则是多次运行 \LaTeX\ 命
 % 令直至不再出现警告。下面给出生成示例文档的详细过程（\texttt{\#} 开头的行为注
 % 释），首先来看推荐的 \texttt{xelatex} 方式：
 % \begin{shell}
@@ -321,12 +313,12 @@
 % \texttt{xelatex} 替换为 \texttt{pdflatex}。
 %
 % 需要注意的是 PDF\LaTeX\ 不能处理常见的 EPS 图形，需要先用 \texttt{epstopdf} 将其转化
-% 成 PDF。不过 PDF\LaTeX\ 增加了对 png，jpg 等标量图形的支持，比较方便。TeX Live
+% 成 PDF。不过 PDF\LaTeX\ 增加了对 png，jpg 等格式的支持，比较方便。\TeX Live
 % 自从 2010 版本起自动调用 \texttt{epstopdf} 将 EPS 图形转化为 PDF。
 %
 % \subsubsection{latexmk}
 % \label{sec:latexmk}
-% \texttt{latexmk} 命令支持全自动生成 \LaTeX{} 编写的文档，并且支持使用不同的工具
+% \texttt{latexmk} 命令支持全自动生成 \LaTeX\ 编写的文档，并且支持使用不同的工具
 % 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。下面给出了一个用
 % \texttt{latexmk} 调用 \texttt{xelatex} 生成最终文档的示例：
 % \begin{shell}
@@ -336,8 +328,11 @@
 %
 % \subsubsection{make}
 % \label{sec:make}
-% 上面的例子只是给出一般情况下的使用方法。虽然命令很简单，但是每次都输入的话还是
-% 非常罗嗦的，所以 \thuthesis{} 提供了一个 \file{Makefile}：
+% \note[提示：]{若要使用 \texttt{make} 编译，需自行下载模板。因为 \TeX\ 发行版中
+% 的 \file{Makefile} 不在当前目录。}
+%
+% 上面的方法虽然不复杂，但是每次都输入还是非常罗嗦，所以 \thuthesis\ 提供了一
+% 个 \file{Makefile}：
 %
 % \begin{shell}
 % $ make clean
@@ -347,14 +342,14 @@
 % $ make shuji     # 生成书脊 shuji.pdf
 % \end{shell}
 %
-% \thuthesis{} 的 \file{Makefile} 默认用 \texttt{latexmk} 调用\texttt{xelatex} 编
+% \thuthesis\ 的 \file{Makefile} 默认用 \texttt{latexmk} 调用\texttt{xelatex} 编
 % 译，此外还支持直接用 \texttt{xelatex} 和\texttt{pdflatex} 编译。如有需要可修
 % 改 \file{Makefile} 开头的参数或通过命令行传递参数（请参看 \file{README.md}），
 % 进一步还可以修改 \file{latexmkrc} 进行定制。
 %
 % \subsection{升级}
 % \label{sec:updgrade}
-% \thuthesis{} 升级非常简单，可以通过 TeX 发行版的包管理工具自动更新发行版，也可
+% \thuthesis\ 升级非常简单，可以通过 \TeX 发行版的包管理工具自动更新发行版，也可
 % 以下载最新的开发版，
 % 将 \file{thuthesis.ins}，\file{thuthesis.dtx} 和 \file{thuthesis.bst} 拷贝至工作目
 % 录覆盖相应的文件，然后运行：
@@ -369,8 +364,8 @@
 %
 % \section{使用说明}
 % \label{sec:usage}
-% 本手册假定用户已经能处理一般的 \LaTeX{} 文档，并对 \BibTeX{} 有一定了解。如果
-% 从来没有接触过 \TeX 和 \LaTeX，建议先学习相关的基础知识。磨刀不误砍柴工！
+% 本手册假定用户已经能处理一般的 \LaTeX\ 文档，并对 \BibTeX\ 有一定了解。如果
+% 从来没有接触过 \TeX\ 和 \LaTeX，建议先学习相关的基础知识。
 %
 % \subsection{关于提问}
 % \label{sec:howtoask}
@@ -440,7 +435,7 @@
 % 是 \thuthesis\ 的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么模板
 % 会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎更倾向
 % 于页面连续，那就是通常所说的 \option{openany}\footnote{目前所有论文都
-% 是 \option{openany}。}。这两个选项不用设置，\thuthesis{} 会根据当前论文类型自动选
+% 是 \option{openany}。}。这两个选项不用设置，\thuthesis\ 会根据当前论文类型自动选
 % 择。
 %
 % \DescribeOption{arialtoc}
@@ -532,7 +527,7 @@
 % }
 % \end{latex}
 %
-% \note{\cs{thusetup} 使用 \pkg{kvoptions} 机制，所以配置项之间不能有空行，否则
+% \note[注意：]{\cs{thusetup} 使用 \pkg{kvoptions} 机制，所以配置项之间不能有空行，否则
 % 会报错。}
 %
 % 大多数命令的使用方法都是： \cs{command}\marg{arg}，例外者将具体指出。这些命令都
@@ -579,7 +574,7 @@
 %   ctitle={论文中文题目},
 %   etitle={Thesis English Title}
 % }
-% % 等价命令形式：
+% % 等价：
 % \ctitle{论文中文题目}
 % \etitle{Thesis English Title}
 % \end{latex}
@@ -735,7 +730,7 @@
 % \myentry{摘要正文}
 % \DescribeEnv{cabstract}
 % \DescribeEnv{eabstract}
-% \note{摘要正文只能用环境命令的形式，不支持 \cs{thusetup}。}
+% \note[说明：]{摘要正文只能用环境命令的形式，不支持 \cs{thusetup}。}
 %
 % \begin{latex}
 % \begin{cabstract}
@@ -818,12 +813,12 @@
 %          & \cs{listofequations*}\\\bottomrule
 % \end{longtable}
 %
-% \LaTeX{} 默认支持插图和表格索引，是通过 \cs{caption} 命令完成的，因此它们必须出
+% \LaTeX\ 默认支持插图和表格索引，是通过 \cs{caption} 命令完成的，因此它们必须出
 % 现在浮动环境中，否则不被计数。
 %
 % 如果不想让某个表格或者图片出现在索引里面，那么请使用命令 \cs{caption*}，这
 % 个命令不会给表格编号，也就是出来的只有标题文字而没有``表~xx''，``图~xx''，否则
-% 索引里面序号不连续就显得不伦不类，这也是 \LaTeX{} 里星号命令默认的规则。
+% 索引里面序号不连续就显得不伦不类，这也是 \LaTeX\ 里星号命令默认的规则。
 %
 % 有这种需求的多是本科同学的英文资料翻译部分，如果你觉得附录中英文原文中的表格和
 % 图片显示成``表''和``图''很不协调的话，一个很好的办法还是用 \cs{caption*}，参数
@@ -839,7 +834,7 @@
 % 么个名字是因为图表就是通过 \cs{caption} 加入索引的，\cs{equcaption} 完全就是为
 % 了生成公式列表，不产生什么标题。
 %
-% 使用方法如下。假如有一个非 equation 数学环境 mymath，只要在其中写一
+% 使用方法如下。假如有一个非 equation 数学环境 \texttt{mymath}，只要在其中写一
 % 句 \cs{equcaption} 就可以将它加入公式列表。
 % \begin{latex}
 % \begin{mymath}
@@ -848,7 +843,7 @@
 % \end{mymath}
 % \end{latex}
 %
-% 当然 mymath 正文中公式的编号需要自己来做。
+% \texttt{mymath} 中公式的编号需要自己来做。
 %
 % 同图表一样，附录中的公式有时候也不希望它跟全文统一编号，而且不希望它出现在公式
 % 索引中，目前的解决办法就是利用 \cs{tag*}\marg{公式编号} 来解决。用法很简单，此
@@ -863,7 +858,7 @@
 % \begin{latex}
 % \begin{acknowledgement}
 %   …
-%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
+%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX\ 编译等方面给我的很多帮助！
 % \end{acknowledgement}
 % \end{latex}
 %
@@ -873,7 +868,7 @@
 % \begin{acknowledgement}[scan-statement.pdf]
 %   加了扫描文件后，这里面的文字就没用了。
 %
-%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！
+%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX\ 编译等方面给我的很多帮助！
 % \end{acknowledgement}
 % \end{latex}
 %
@@ -974,7 +969,7 @@
 %
 % \subsubsection{数学环境}
 % \label{sec:math}
-% \thuthesis{} 定义了常用的数学环境：
+% \thuthesis\ 定义了常用的数学环境：
 %
 % \begin{center}
 % \begin{tabular}{*{7}{l}}\toprule
@@ -1021,8 +1016,8 @@
 % 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
 % 的 \cs{cite}\marg{key}，而 \cs{inlinecite}\marg{key} 则用来生成正文模式。
 %
-% 关于参考文献模板推荐使用 \BibTeX{}，关于中文参考文献需要额外增加一个 Entry:
-% lang，将其设置为 \texttt{zh}用来指示此参考文献为中文，以
+% 关于参考文献模板推荐使用 \BibTeX，关于中文参考文献需要额外增加一个 Entry:
+% \texttt{lang}，将其设置为 \texttt{zh} 用来指示此参考文献为中文，以
 % 便 \file{thuthesis.bst} 处理。如：
 % \begin{latex}
 % @INPROCEEDINGS{cnproceed,
@@ -1089,7 +1084,7 @@
 %
 % \section{致谢}
 % \label{sec:thanks}
-% 感谢这些年来一直陪伴 \thuthesis{} 成长的新老同学，大家的需求是模板前进的动力，
+% 感谢这些年来一直陪伴 \thuthesis\ 成长的新老同学，大家的需求是模板前进的动力，
 % 大家的反馈是模板提高的机会。
 %
 % 热烈欢迎各位到 \href{http://github.com/xueruini/thuthesis/}{\thuthesis\ Github 主页}贡献！
@@ -1241,7 +1236,7 @@
 \RequirePackage{xparse}
 %    \end{macrocode}
 %
-% \AmSTeX{} 宏包，用来排出更加漂亮的公式。
+% \AmSTeX\ 宏包，用来排出更加漂亮的公式。
 % \changes{v4.8}{2013/03/02}{no need to load amssymb since we use txfonts.}
 %    \begin{macrocode}
 \RequirePackage{amsmath}
@@ -1318,7 +1313,7 @@
 % \changes{v5.3.1}{2016/03/20}{\pkg{ctex} 默认加载 \pkg{CJKspace}。}
 % \changes{v5.3.1}{2016/03/20}{几乎没人主动安装 Arial 字体。}
 %
-% 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX{} 的宏包
+% 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX\ 的宏包
 %    \begin{macrocode}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 %    \end{macrocode}
@@ -1923,7 +1918,7 @@
 %   前空 24 磅，段后空 18 磅。本科要求：段前段后间距 30/20 pt，行距 20pt。但正文
 %   章节 30pt 的话和样例效果不一致。
 %
-% \changes{v2.5}{2006/05/13}{取消 \pkg{titlesec} 宏包，用基本 \LaTeX{} 命令格式化标题。}
+% \changes{v2.5}{2006/05/13}{取消 \pkg{titlesec} 宏包，用基本 \LaTeX\ 命令格式化标题。}
 % \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
 % \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化。}
 % \changes{v5.0.0}{2015/04/17}{修正章节间距问题(\#57)}
@@ -1998,7 +1993,7 @@
 % \cs{thu@chapter*}\oarg{tocline}\marg{title}\oarg{header}: tocline 是出现在目录
 % 中的条目，如果为空则此 chapter 不出现在目录中，如果省略表示目录出现 title；
 % title 是章标题；header 是页眉出现的标题，如果忽略则取 title。通过这个宏我才真
-% 正体会到 \TeX{} macro 的力量！
+% 正体会到 \TeX\ macro 的力量！
 %    \begin{macrocode}
 \newcounter{thu@bookmark}
 \NewDocumentCommand\thu@chapter{s o m o}{
@@ -2304,7 +2299,7 @@
 % \changes{v5.1.0}{2015/12/26}{通过 \cs{thusetup} 统一设置封面信息。}
 % 由上可见，封面和封底有一大堆信息需要设置，为了简化操作界面，提供一
 % 个 \cs{thusetup} 命令支持 key/value 的方式来设置。key 就是前面各个设置项的
-% 名字。\note{只能设置普通项，不支持环境项，
+% 名字。\note[说明：]{只能设置普通项，不支持环境项，
 % 如 \texttt{cabstract} 和 \texttt{eabstract}。} 由于这些设置项被 \cs{makecover}
 % 调用，所以此命令需要在 \cs{makecover} 之前被调用。
 %    \begin{macrocode}
@@ -3024,7 +3019,7 @@
 %
 % \begin{macro}{\listofequations}
 % \begin{macro}{\listofequations*}
-% \LaTeX{}默认没有公式索引，此处定义自己的 \cs{listofequations}。
+% \LaTeX\ 默认没有公式索引，此处定义自己的 \cs{listofequations}。
 % \changes{v2.5}{2006/05/19}{增加公式索引命令。}
 % \changes{v2.5.1}{2006/05/26}{公式索引项 numwidth 增加。}
 % \changes{v2.6.4}{2006/10/23}{增加 \cs{listofequations*}。}
@@ -3387,8 +3382,8 @@
   \texttt{#2}\IfBooleanF#1{\thu@special@index{file}{#2}}}
 \newcommand{\myentry}[1]{%
   \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
-\newcommand{\note}[1]{{%
-  \color{magenta}{\bfseries 说明：}\emph{#1}}}
+\newcommand{\note}[2][Note]{{%
+  \color{magenta}{\bfseries #1}\emph{#2}}}
 
 \def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
 %</dtx-style>
