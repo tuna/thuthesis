@@ -1650,7 +1650,7 @@
       {Too many footnotes in this page.}{Keep footnote less than 10.}
   \fi
   \ifthu@pifootnote%
-    \ding{\numexpr171+\value{#1}}%
+    \ding{\the\numexpr\value{#1}+171\relax}%
   \else%
     \textcircled{\xiaoliu\arabic{#1}}%
   \fi}
