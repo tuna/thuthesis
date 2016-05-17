@@ -7,7 +7,7 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 此宏包旨在建立一个简单易用的清华大学学位论文LaTeX模板，包括本科综合论文训练、硕士论文、博士论文、博士哲学论文以及博士后出站报告。现在支持本科、硕士、博士论文、博士后出站报告格式，对其它格式（还有么？）的支持会陆续加入。
 
 # 文档
-请下载模板，里面包括具体使用说明以及示例文档：
+请[下载](https://github.com/xueruini/thuthesis/releases)模板，里面包括具体使用说明以及示例文档：
 
 * 模板使用说明 (thuthesis.pdf)
 * 示例文档 (main.pdf)
@@ -22,13 +22,16 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 通过TeX发行版工具自动从[CTAN](http://www.ctan.org/pkg/thuthesis)更新。
 
 ## 手动更新
-从 [GitHub](https://github.com/xueruini/thuthesis)下载放入论文目录，执行命令：
+从 [GitHub](https://github.com/xueruini/thuthesis)下载放入论文目录，执行命令（Windows 用户在文件夹空白处按`Shift+鼠标右键`，点击“在此处打开命令行窗口”）：
 
-    $ latex thuthesis.ins
+    latex thuthesis.ins
+
+即可得到 `thuthesis.cls` 和 `thuthesis.cfg` 等模板文件。
 
 # 提问
 按推荐顺序排序：
 
+* 先到 [FAQ](https://github.com/xueruini/thuthesis/wiki/FAQ) 看看常见问题
 * [Github Issues](http://github.com/xueruini/thuthesis/issues)
 * [TeX@newsmth](http://www.newsmth.net/nForum/#!board/TeX)
 * [ThuThesis@Google Groups](http://groups.google.com/group/thuthesis)
