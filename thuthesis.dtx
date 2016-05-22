@@ -1252,9 +1252,12 @@
 %    \end{macrocode}
 %
 % \pkg{newtx} 的 Mono 字体虽然很好看，但是在论文中不常见。学校固然未要求 Mono 字
-% 体，还是选择常见的 Courier 字体，采用比较新的实现 TEX Gyre Cursor。
+% 体，还是选择常见的 Courier 字体，采用比较新的实现 \TeX\ Gyre Cursor。不幸地是，
+% \pkg{tgcursor} 会修改 \cs{bfdefault}，导致中文加粗出问题，所以要恢复一下。
 %    \begin{macrocode}
+\let\thu@oldbfdefault\bfdefault
 \RequirePackage{tgcursor}
+\let\bfdefault\thu@oldbfdefault
 %    \end{macrocode}
 %
 % 图形支持宏包。
