@@ -2525,7 +2525,12 @@
 %    \begin{macrocode}
     \ifthu@bachelor
       \vskip1cm
-      \parbox[t][7.0cm][t]{\textwidth}{%
+      \ifx\thu@cassosupervisor\@empty%
+        \def\thu@tempa{7.0cm}
+      \else%
+        \def\thu@tempa{8.0cm}
+      \fi%
+      \parbox[t][\thu@tempa][t]{\textwidth}{%
         {\fangsong\sanhao[1.8]%
          \hspace*{1.65cm}
          \setlength{\thu@title@width}{4em}
