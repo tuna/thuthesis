@@ -1337,6 +1337,12 @@
 \RequirePackage[numbers,super,sort&compress]{natbib}
 %    \end{macrocode}
 %
+% 删除默认模板（\file{book.cls}）在章之间引入的垂直间隔。要放在 \pkg{hyperref}
+% 之前。
+%    \begin{macrocode}
+\patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} % lof
+\patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
+%    \end{macrocode}
 % 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
 % \changes{v2.6}{2006/06/09}{去除 hyperref 选项，等待全局传递。}
 % \changes{v5.2.2}{2016/01/25}{目录中标题和页码都是链接。}
@@ -2995,11 +3001,6 @@
 \renewcommand*\l@figure{\addvspace{6bp}\@dottedtocline{1}{0em}{4em}}
 \renewcommand\listoftables{\thu@listof{table}}
 \let\l@table\l@figure
-%    \end{macrocode}
-% 删除默认模板（\file{book.cls}）在章之间引入的垂直间隔：
-%    \begin{macrocode}
-\patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} % lof
-\patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
