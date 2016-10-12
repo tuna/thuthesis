@@ -1747,22 +1747,22 @@
 %</cls>
 %<*cfg>
 \theoremsymbol{\ensuremath{\square}}
-\newtheorem*{proof}{证明}
+\newtheorem*{proof}{Proof}
 \theoremstyle{plain}
 \theoremsymbol{}
 \theoremseparator{：}
-\newtheorem{assumption}{假设}[chapter]
-\newtheorem{definition}{定义}[chapter]
-\newtheorem{proposition}{命题}[chapter]
-\newtheorem{lemma}{引理}[chapter]
-\newtheorem{theorem}{定理}[chapter]
-\newtheorem{axiom}{公理}[chapter]
-\newtheorem{corollary}{推论}[chapter]
-\newtheorem{exercise}{练习}[chapter]
-\newtheorem{example}{例}[chapter]
-\newtheorem{remark}{注释}[chapter]
-\newtheorem{problem}{问题}[chapter]
-\newtheorem{conjecture}{猜想}[chapter]
+\newtheorem{assumption}{Assumption}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{axiom}{Axiom}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{exercise}{Exercise}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{remark}{Remark}[chapter]
+\newtheorem{problem}{Problem}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
 %</cfg>
 %    \end{macrocode}
 %
@@ -1849,18 +1849,18 @@
 %    \begin{macrocode}
 %<*cfg>
 \ctexset{%
-  chapter/name={第,章},
-  appendixname=附录,
-  contentsname={目\hspace{\ccwd}录},
-  listfigurename=插图索引,
-  listtablename=表格索引,
-  figurename=图,
-  tablename=表,
-  bibname=参考文献,
-  indexname=索引,
+  chapter/name={Chapter ,},
+  appendixname=Appendix,
+  contentsname={Contents},
+  listfigurename=List of Figures,
+  listtablename=List of Tables,
+  figurename=Figure,
+  tablename= Table,
+  bibname=Bibliography,
+  indexname=Index,
 }
-\newcommand\listequationname{公式索引}
-\newcommand\equationname{公式}
+\newcommand\listequationname{List of Equations}
+\newcommand\equationname{Equation}
 \ifthu@bachelor
   \newcommand{\cabstractname}{中文摘要}
   \newcommand{\eabstractname}{ABSTRACT}
@@ -2881,7 +2881,7 @@
 % \changes{v5.2.1}{2016/01/11}{利用 \pkg{enumitem} 改造环境定义，更直观。}
 %    \begin{macrocode}
 %<*cfg>
-\newcommand{\thu@denotation@name}{主要符号对照表}
+\newcommand{\thu@denotation@name}{Nomenclature}
 %</cfg>
 %<*cls>
 \newenvironment{denotation}[1][2.5cm]{%
