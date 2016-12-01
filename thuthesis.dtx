@@ -3057,8 +3057,8 @@
 %<*cls>
 \bibpunct{[}{]}{,}{s}{}{,}
 \renewcommand\NAT@citesuper[3]{\ifNAT@swa%
-  \unskip\kern\p@\textsuperscript{\NAT@@open #1\NAT@@close}%
-  \if*#3*\else\ (#3)\fi\else #1\fi\endgroup}
+  \unskip\kern\p@\textsuperscript{\NAT@@open #1\NAT@@close\if*#3*\else\ #3\fi\else #1\fi}%
+  \endgroup}
 \DeclareRobustCommand\inlinecite{\@inlinecite}
 \def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
 \let\onlinecite\inlinecite
