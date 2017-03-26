@@ -106,5 +106,5 @@ dist: all
 	@if [ -z "$(version)" ]; then \
 		echo "Usage: make dist version=[x.y.z | ctan]"; \
 	else \
-		gulp build --version=$(version); \
+		npm run build -- --version=$(version); \
 	fi
