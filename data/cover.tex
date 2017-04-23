@@ -1,42 +1,40 @@
-\thusetup{
-  %******************************
-  % 注意：
-  %   1. 配置里面不要出现空行
-  %   2. 不需要的配置信息可以删除
-  %******************************
+% !Mode:: "TeX:UTF-8"
+% Author: Kohaku
+%\secretlevel{绝密} \secretyear{10}
+
+\ctitle{北京师范大学珠海分校学术论文\LaTeX{}模版}
+%\makeatletter
+\cdegree{学士}
+
+\makeatother
+
+\cauthor{Kohaku} 
+\csupervisor{XX \;教授}
+%\cassosupervisor={某某教授}, % 副指导老师
+%\ccosupervisor={某某某教授}, % 联合指导老师
+\cdepartment[]{信息技术学院}
+\cmajor{电子信息科学与技术}
+\cnum{13XXXXXXXX}
+  % 日期自动生成，若需指定按如下方式修改：
+  % edate={December, 2005}
   %
-  %=====
-  % 秘级
-  %=====
-  secretlevel={秘密},
-  secretyear={10},
-  %
-  %=========
-  % 中文信息
-  %=========
-  ctitle={清华大学学位论文 \LaTeX\ 模板\\使用示例文档 v\version},
-  cdegree={工学硕士},
-  cdepartment={计算机科学与技术系},
-  cmajor={计算机科学与技术},
-  cauthor={薛瑞尼},
-  csupervisor={郑纬民教授},
-  cassosupervisor={陈文光教授}, % 副指导老师
-  ccosupervisor={某某某教授}, % 联合指导老师
+  % 关键词用“英文逗号”分割
+\cdate{2017年3月}
+
   % 日期自动使用当前时间，若需指定按如下方式修改：
   % cdate={超新星纪元},
   %
   % 博士后专有部分
-  cfirstdiscipline={计算机科学与技术},
-  cseconddiscipline={系统结构},
-  postdoctordate={2009年7月——2011年7月},
-  id={编号}, % 可以留空： id={},
-  udc={UDC}, % 可以留空
-  catalognumber={分类号}, % 可以留空
-  %
-  %=========
-  % 英文信息
-  %=========
-  etitle={An Introduction to \LaTeX{} Thesis Template of Tsinghua University v\version},
+  %cfirstdiscipline={计算机科学与技术},
+  %cseconddiscipline={系统结构},
+  %postdoctordate={2009年7月——2011年7月},
+  %id={编号}, % 可以留空： id={},
+  %udc={UDC}, % 可以留空
+  %catalognumber={分类号}, % 可以留空
+
+\etitle{An Introduction to \LaTeX{} Thesis Template of Beijing Normal University. Zhuhai v\version} 
+
+
   % 这块比较复杂，需要分情况讨论：
   % 1. 学术型硕士
   %    edegree：必须为Master of Arts或Master of Science（注意大小写）
@@ -52,18 +50,6 @@
   % 4. 专业型博士
   %    edegree：“填写专业学位英文名称全称”
   %    emajor：不填写此项
-  edegree={Doctor of Engineering},
-  emajor={Computer Science and Technology},
-  eauthor={Xue Ruini},
-  esupervisor={Professor Zheng Weimin},
-  eassosupervisor={Chen Wenguang},
-  % 日期自动生成，若需指定按如下方式修改：
-  % edate={December, 2005}
-  %
-  % 关键词用“英文逗号”分割
-  ckeywords={\TeX, \LaTeX, CJK, 模板, 论文},
-  ekeywords={\TeX, \LaTeX, CJK, template, thesis}
-}
 
 % 定义中英文摘要和关键字
 \begin{cabstract}
@@ -75,8 +61,7 @@
   论文摘要的书写应力求精确、简明。切忌写成对论文书写内容进行提要的形式，尤其要避
   免“第 1 章……；第 2 章……；……”这种或类似的陈述方式。
 
-  本文介绍清华大学论文模板 \thuthesis{} 的使用方法。本模板符合学校的本科、硕士、
-  博士论文格式要求。
+  本文介绍京师范大学珠海分校论文模板 \bnuthesis{} 的使用方法。本模板符合学校的本科毕业生论文格式要求。
 
   本文的创新点主要有：
   \begin{itemize}

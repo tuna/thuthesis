@@ -15,21 +15,21 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 \subsection{绘图}
 \label{sec:draw}
 
-本模板不再预先装载任何绘图包（如 \pkg{pstricks，pgf} 等），完全由用户来决定。
-个人觉得 \pkg{pgf} 不错，不依赖于 Postscript。此外还有很多针对 \LaTeX{} 的
+本模板不再预先装载任何绘图包（如 \textsf{pstricks，pgf} 等），完全由用户来决定。
+个人觉得 \textsf{pgf} 不错，不依赖于 Postscript。此外还有很多针对 \LaTeX{} 的
  GUI 作图工具，如 XFig(jFig), WinFig, Tpx, Ipe, Dia, Inkscape, LaTeXPiX,
 jPicEdt, jaxdraw 等等。
 
 \subsection{插图}
 \label{sec:graphs}
 
-强烈推荐《\LaTeXe\ 插图指南》！关于子图形的使用细节请参看 \pkg{subcaption} 宏包的说明文档。
+强烈推荐《\LaTeXe\ 插图指南》！关于子图形的使用细节请参看 \textsf{subcaption} 宏包的说明文档。
 
 \subsubsection{一个图形}
 \label{sec:onefig}
 一般图形都是处在浮动环境中。之所以称为浮动是指最终排版效果图形的位置不一定与源文
 件中的位置对应\footnote{This is not a bug, but a feature of \LaTeX!}，这也是刚使
-用 \LaTeX{} 同学可能遇到的问题。如果要强制固定浮动图形的位置，请使用 \pkg{float} 宏包，
+用 \LaTeX{} 同学可能遇到的问题。如果要强制固定浮动图形的位置，请使用 \textsf{float} 宏包，
 它提供了 \texttt{[H]} 参数，比如图~\ref{fig:xfig1}。
 \begin{figure}[H] % use float package if you want it here
   \centering
@@ -52,55 +52,37 @@ jPicEdt, jaxdraw 等等。
 \subsubsection{多个图形}
 \label{sec:multifig}
 
-如果多个图形相互独立，并不共用一个图形计数器，那么
-用 \texttt{minipage} 或者\texttt{parbox} 就可以。否则，请参看
-图~\ref{fig:big1-subcaptionbox}，它包含两个小图，分别是图~\ref{fig:subfig1}和
-图~\ref{fig:subfig2}。推荐使用\cs{subcaptionbox}，因为可以像
-图~\ref{fig:big1-subcaptionbox} 那样对齐子图的标题，也可以使
-用\pkg{subcaption}宏包的\cs{subcaption}（放在 minipage中，用法同\cs{caption}）
-或是 \pkg{subfigure} 、 \pkg{subtable}环境，像图~\ref{fig:big1-subfigure}，
-不要再用 \cs{subfloat}、\cs{subfigure} 和 \cs{subtable}。
+%如果多个图形相互独立，并不共用一个图形计数器，那么
+%用 \texttt{minipage} 或者\texttt{parbox} 就可以。否则，请参看
+%图~\ref{fig:big1-subfloat}，它包含两个小图，分别是图~\ref{fig:subfig1}和
+%图~\ref{fig:subfig2}。推荐使用\verb|subfloat|，因为可以像
+%图~\ref{fig:big1-subfloat} 那样对齐子图的标题，也可以使
+%用\textsf{subcaption}宏包的\verb|subcaption|（放在 minipage中，用法同\verb|caption|）。
 
-\begin{figure}[h]
-  \centering%
-  \subcaptionbox{第一个小图形\label{fig:subfig1}}[3cm] %标题的长度，超过则会换行，如下一个小图。
-    {\includegraphics[height=3cm]{thu-fig-logo}}%
-  \hspace{4em}%
-  \subcaptionbox{第二个小图形，注意这个图略矮些。如果标题很长的话，它会自动换行\label{fig:subfig2}}
-      {\includegraphics[height=2cm]{thu-text-logo}}
-  \caption{包含子图形的大图形(subcaptionbox示例)}
-  \label{fig:big1-subcaptionbox}
-\end{figure}
-\begin{figure}[h]
-  \centering%
-  \begin{subfigure}{3cm}
-    \includegraphics[height=3cm]{thu-fig-logo}
-    \caption{第一个小图形}
-  \end{subfigure}%
-  \hspace{4em}%
-  \begin{subfigure}{0.5\textwidth}
-    \includegraphics[height=2cm]{thu-text-logo}
-    \caption{第二个小图形，注意这个图略矮些。subfigure中同一行的子图在顶端对齐。}
-  \end{subfigure}
-  \caption{包含子图形的大图形(subfigure示例)}
-  \label{fig:big1-subfigure}
-\end{figure}
-
-古之学者必有师。师者，所以传道受业解惑也。人非生而知之者，孰能无惑？惑而不从师，
-其为惑也，终不解矣。生乎吾前，其闻道也固先乎吾，吾从而师之；生乎吾後，其闻道也亦
-先乎吾，吾从而师之。吾师道也，夫庸知其年之先後生於吾乎！是故无贵无贱无长无少，道
-之所存，师之所存也。
-
-嗟乎！师道之不传也久矣，欲人之无惑也难矣。古之圣人，其出人也远矣，犹且从师而问焉；
-今之众人，其下圣人也亦远矣，而耻学於师。是故圣益圣，愚益愚。圣人之所以为圣，愚
-人之所以为愚，其皆出於此乎？爱其子，择师而教之，於其身也，则耻师焉，惑焉。彼童子
-之师，授之书而习其句读者，非吾所谓传其道、解其惑者也。句读之不知，惑之不解，或师
-焉，或不焉，小学而大遗，吾未见其明也。巫医、乐师、百工之人不耻相师，  士大夫之族
-曰“师”曰“弟子”之云者，则群聚而笑之。问之，则曰：彼与彼年相若也，道相似也，位
-卑则足羞，官盛则近谀。呜呼！师道之不复，可知矣。巫医、乐师、百工之人。吾子不齿，
-今其智乃反不能及，其可怪也欤！圣人无常师。孔子师郯子、苌子、师襄、老聃。郯子之徒，
-其贤不及孔子。孔子曰：“三人行，必有我师。”是故弟子不必不如师，师不必贤於弟子。
-闻道有先後，术业有专攻，如是而已。
+%\begin{figure}[h]
+  %\centering%
+  %\subfloat{第一个小图形\label{fig:subfig1}}[3cm] %标题的长度，超过则会换行，如下一个小图。
+    %{\includegraphics[height=3cm]{thu-fig-logo}}%
+  %\hspace{4em}%
+  %\subfloat{第二个小图形，注意这个图略矮些。如果标题很长的话，它会自动换行\label{fig:subfig2}}
+      %{\includegraphics[height=2cm]{thu-text-logo}}
+  %\caption{包含子图形的大图形(subfloat示例)}
+  %\label{fig:big1-subfloat}
+%\end{figure}
+%\begin{figure}[h]
+  %\centering%
+  %\begin{subfigure}{3cm}
+    %\includegraphics[height=3cm]{thu-fig-logo}
+    %\caption{第一个小图形}
+  %\end{subfigure}%
+  %\hspace{4em}%
+  %\begin{subfigure}{0.5\textwidth}
+    %\includegraphics[height=2cm]{thu-text-logo}
+    %\caption{第二个小图形，注意这个图略矮些。subfigure中同一行的子图在顶端对齐。}
+  %\end{subfigure}
+  %\caption{包含子图形的大图形(subfigure示例)}
+  %\label{fig:big1-subfigure}
+%\end{figure}
 
 如果要把编号的两个图形并排，那么小页就非常有用了：
 \begin{figure}
@@ -117,8 +99,3 @@ jPicEdt, jaxdraw 等等。
   \label{fig:parallel2}
 \end{minipage}
 \end{figure}
-
-李氏子蟠，年十七，好古文、六艺，经传皆通习之，不拘於时，学於余。余嘉其能行古
-道，作师说以贻之。
-
-\hfill —— 韩愈（唐）
