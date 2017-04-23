@@ -2,6 +2,8 @@
 
 此宏包是基于薛瑞尼的清华大学学位论文LaTeX模板[thuthesis](https://github.com/xueruini/thuthesis)的基础上，依据北京师范大学珠海分校的本科生学位论文排版要求，修改部分排版宏而成。适用于北京师范大学珠海分校的毕业学位论文格式。其编译与使用方法均与[thuthesis](https://github.com/xueruini/thuthesis)相同。以下请参照[thuthesis](https://github.com/xueruini/thuthesis)的编译与使用方法。
 
+使用手册请看默认参考文档main.pdf，测试环境请编译使用手册。推荐使用**pdfLaTeX**或**XeLaTeX**
+
 -----
 
 <!--# What's ThuThesis?-->
@@ -33,9 +35,9 @@
 ## 手动更新
 从 [GitHub](https://github.com/ScarlettCanaan/bnuzthesis)下载放入论文目录，执行命令（Windows 用户在文件夹空白处按`Shift+鼠标右键`，点击“在此处打开命令行窗口”）：
 
-    latex thuthesis.ins
+    latex bnuthesis.ins
 
-即可得到 `thuthesis.cls` 和 `thuthesis.cfg` 等模板文件。
+即可得到 `bnuthesis.cls` 和 `bnuthesis.cfg` 等模板文件。
 
 # 提问
 按推荐顺序排序：
