@@ -1,0 +1,168 @@
+%& -no-cctspace
+%
+% $Id: ccmap.sty,v 1.6 2006/11/19 02:25:22 zlb Exp $
+%
+%
+%  ChangeLog:
+%
+%    2006/11/18   Sun: \CCT@cmap@hook:  always execute 
+%                        \csname cmap@set@\cmap@f@encoding\endcsname  
+%    2006/08/13:  Sun: give a warning message if a cmap file is not found.
+%
+%    2005/07/14:  ZLB: load ifpdf.sty only if it exists.
+%
+%    2005/07/14:  Sun: move "\csname cmap@set@\cmap@f@encoding\endcsname"
+%
+%    2005/07/09:  ZLB: use ifpdf.sty for more consistent detection of PDFTeX
+%         (testing pdffontattr fails with teTeX-3).
+%
+%    2005/02/27:  save \@CCT@CJKfont to a global macro
+%         \global\let\saved@CCT@CJKfont\@CCT@CJKfont
+%                 and use the global macro \saved@CCT@CJKfont in \CCT@cmap@load.
+%
+%                 Add support for GB encoding
+%
+%
+%  This is ccmap.sty.
+%     By Sun Wenchang 2004-12-03
+%
+%  Support CCT/CJK.
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  The followings are copied from cmap.sty
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+% Copyright (c) 2003 Vladimir Volovich <vvv@vsu.ru>
+% cmap package -- download CMap files into PDF
+%   to make "search" and "cut-n-paste" functions work properly
+% You may distribute and/or modify this program under the terms of LPPL
+% the program consists of cmap.sty and {t1,t2a,t2b,t2c,t5}.cmap
+% Usage: put \usepackage{cmap} immediately after the \documentclass line
+% Thanks to:
+%   Han The Thanh
+%   Maxim I. Tishin
+%   Petr Sojka
+%   Werner Lemberg
+% TODO:
+%   add *.cmap files for other font encodings (contributions are welcome):
+%     TS1, OT1, OT2, LY1, IL2, OML, OMS, ...
+%   support dvips?
+% History:
+% 2003/03/07 private version
+% 2003/03/11 version 1.0: first public version
+% 2003/03/13 version 1.0a:
+%   change error to warning for non-pdftex
+%   added warnings if cmap is loaded after fontenc or babel
+%   added t5.cmap - thanks to Han The Thanh
+% 2003/03/19 version 1.0b:
+%   minor refinements
+% 2003/05/22 version 1.0c:
+%   fixed a typo due to which the package had no effect at all
+% 2004/06/16 version 1.0d (wl):
+%   add support for subfonts as used in the CJK package
+
+\ProvidesPackage{ccmap}[2006/11/18]
+
+\def\ifpdf@hack{\newif\ifpdf\@ifundefined{pdffontattr}{\pdffalse}{\pdftrue}}
+\IfFileExists{ifpdf.sty}{\RequirePackage{ifpdf}}{\ifpdf@hack}
+\ifpdf\else
+  \PackageWarningNoLine{ccmap}{not running PDFLaTeX - package not loaded}%
+  \endinput
+\fi
+
+\edef\reserved@a{\noexpand\in@{,fontenc.sty,}{\@filelist}}% enc.def
+\reserved@a
+\ifin@
+\PackageWarningNoLine{ccmap}{fontenc already loaded - some fonts may be unprocessed}
+\fi
+%\@ifpackageloaded{babel}{%
+%\PackageWarningNoLine{cmap}{babel already loaded - some fonts may be unprocessed}%
+%}\relax
+
+\def\extract@font{%
+  \get@external@font
+  \global\expandafter\font\font@name\external@font\relax
+  \font@name\relax
+  \cmap@hook
+  \csname\f@encoding+\f@family\endcsname
+  \csname\curr@fontshape\endcsname
+  \relax
+}
+
+
+\def\cmap@load{%
+  \edef\reserved@f{\lowercase{\def\noexpand\reserved@f{\cmap@f@encoding.cmap}}}%
+  \reserved@f
+  \IfFileExists{\reserved@f}{%
+    \immediate\pdfobj stream
+      %attr {/Type /CIDFile}
+      file {\reserved@f}%
+    \expandafter\xdef\csname cmap@set@\cmap@f@encoding\endcsname{%
+      \noexpand\expandafter\pdffontattr\noexpand\font@name{/ToUnicode \the\pdflastobj\space 0 R}}%
+  }{%
+    \@latex@warning{File \reserved@f\space not found}% 20060813
+    \global\expandafter\let\csname cmap@set@\cmap@f@encoding\endcsname\empty
+  }%
+}
+
+\def\cmap@hook{%
+  \@ifundefined{CJK@plane}{%
+    \edef\cmap@f@encoding{\f@encoding}%
+  }{%
+    \edef\cmap@f@encoding{\f@encoding\CJK@plane}%
+  }%
+  \@ifundefined{cmap@set@\cmap@f@encoding}{\cmap@load}\relax
+  \csname cmap@set@\cmap@f@encoding\endcsname
+}
+
+%
+% End of cmap.sty
+%============================================================
+% Macros for CCT
+%
+%
+\endlinechar \m@ne
+
+\if0\csname CCTGBKencoding\endcsname
+  \newcommand{\CCTCJK@@@enc}{c10}
+\else
+  \newcommand{\CCTCJK@@@enc}{c19}
+\fi
+
+
+\ifx\CCT@hooka@@\undefined
+   \newtoks\CCT@hooka@@
+   \CCT@hooka@@{}
+   \def\CCT@hooka{\the\CCT@hooka@@}
+\fi
+
+
+\addto@hook\CCT@hooka@@{\global\let\saved@CCT@CJKfont\@CCT@CJKfont}
+
+\def\CCT@cmap@load{%
+  \edef\reserved@f{\lowercase{\def\noexpand\reserved@f{\cmap@f@encoding.cmap}}}%
+  \reserved@f
+  \IfFileExists{\reserved@f}{%
+    \immediate\pdfobj stream
+      %attr {/Type /CIDFile}
+      file {\reserved@f}%
+    \expandafter\xdef\csname cmap@set@\cmap@f@encoding\endcsname{%
+      \noexpand\expandafter\pdffontattr\noexpand\saved@CCT@CJKfont{/ToUnicode \the\pdflastobj\space 0 R}}%
+  }{%
+    \@latex@warning{File \reserved@f\space not found}% 20060813
+    \global\expandafter\let\csname cmap@set@\cmap@f@encoding\endcsname\empty
+  }%
+}
+
+\def\CCT@cmap@hook{%
+   \edef\cmap@f@encoding{\CCTCJK@@@enc\CCT@fontno}%
+   \@ifundefined{cmap@set@\cmap@f@encoding}{\CCT@cmap@load}\relax
+   \csname cmap@set@\cmap@f@encoding\endcsname
+}
+\endlinechar `\^^M
+\endinput

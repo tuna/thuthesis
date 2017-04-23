@@ -1,0 +1,198 @@
+\ProvidesPackage{bnutils}[2017/04/03 1.53 put any packages you would like to use here]
+
+% 显示代码的宏包
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+    numbers=left,
+    numberstyle= \tiny,
+    keywordstyle= \color{ blue!70},
+    commentstyle= \color{red!50!green!50!blue!50},
+    frame=shadowbox, % 阴影效果
+    rulesepcolor= \color{ red!20!green!20!blue!20} ,
+    escapeinside=``, % 英文分号中可写入中文
+    xleftmargin=1em,xrightmargin=1em, aboveskip=1em,
+    framexleftmargin=1em
+} 
+
+% 设置精确缩进
+\usepackage{paralist}
+
+% 处理数学公式中的黑斜体的宏包
+%\RequirePackage{bm}
+
+% 设置矢量图形绘制的宏包
+\usepackage{amsmath,amssymb}
+\usepackage{pst-blur}
+\usepackage{pstricks-add}
+\definecolor{Blue}{rgb}{1.,0.75,0.8}
+\pagestyle{empty}
+
+% 所有图片，表格连续编号，否则按章节编号
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+%\usepackage{graphicx}
+%\usepackage[includemp,body={398pt,550pt},footskip=30pt,%
+            %marginparwidth=60pt,marginparsep=10pt]{geometry}
+
+%\usepackage{subfigure}
+
+%\makeatletter \renewcommand{\@subcaption}[2]{% 
+%\begingroup \let\label\@gobble \def\protect{\string\string\string}% 
+%\xdef\@subfigcaptionlist{% 
+	%\@subfigcaptionlist,% 
+	%{\numberline {\@currentlabel}% 
+	%\noexpand{\ignorespaces #2}}}% 
+	%\endgroup \@nameuse{@make#1caption}{\@nameuse{@the#1}}{#2}} \makeatother
+
+% 不同于~|\mathcal| or |\mathfrak| 之类的英文花体字体
+%\RequirePackage{mathrsfs}
+
+% 表格中支持跨行
+\RequirePackage{multirow}
+
+% 跨页表格
+\RequirePackage{longtable}
+
+% 固定宽度的表格
+\RequirePackage{tabularx}
+
+% 确定浮动对象的位置，可以使用~H，强制将浮动对象放到这里（可能效果很差）
+\RequirePackage{float}
+
+% 浮动图形控制宏包。
+% 允许上一个~section 的浮动图形出现在下一个~section 的开始部分
+% 该宏包提供处理浮动对象的~|\FloatBarrier| 命令，使所有未处
+% 理的浮动图形立即被处理。这三个宏包仅供参考，未必使用：
+ % \RequirePackage[below]{placeins}
+ % \RequirePackage{floatflt} % 图文混排用宏包
+ % \RequirePackage{rotating} % 图形和表格的控制旋转
+
+% 给自定义的宏后面自动加空白
+% \RequirePackage{xspace}
+
+% 定义自己常用的东西
+\newcommand{\china}{中华人民共和国}
+
+% 定义代码环境
+\RequirePackage{verbatim}
+\newenvironment{myverbatim}{\small \verbatim}{\endverbatim}
+
+	
+
+%===============================================================================
+% standard abbreviations of the current astron./astrophys-journals 天文期刊缩写
+%===============================================================================
+\let\jnl@style=\rmfamily 
+\def\ref@jnl#1{{\jnl@style#1}}% 
+\newcommand\aj{\ref@jnl{AJ}}% 
+          % Astronomical Journal 
+\newcommand\araa{\ref@jnl{ARA\&A}}% 
+          % Annual Review of Astron and Astrophys 
+\newcommand\apj{\ref@jnl{ApJ}}% 
+          % Astrophysical Journal 
+\newcommand\apjl{\ref@jnl{ApJ}}% 
+          % Astrophysical Journal, Letters 
+\newcommand\apjs{\ref@jnl{ApJS}}% 
+          % Astrophysical Journal, Supplement Series
+\newcommand\ao{\ref@jnl{Appl.~Opt.}}% 
+          % Applied Optics 
+\newcommand\apss{\ref@jnl{Ap\&SS}}% 
+          % Astrophysics and Space Science 
+\newcommand\aap{\ref@jnl{A\&A}}% 
+          % Astronomy and Astrophysics           
+\newcommand\aapr{\ref@jnl{A\&A~Rev.}}% 
+          % Astronomy and Astrophysics Reviews 
+\newcommand\aaps{\ref@jnl{A\&AS}}% 
+          % Astronomy and Astrophysics, Supplement Series
+\newcommand\azh{\ref@jnl{AZh}}% 
+          % Astronomicheskii Zhurnal 
+\newcommand\baas{\ref@jnl{BAAS}}% 
+          % Bulletin of the AAS 
+\newcommand\chjaa{\ref@jnl{ChJAA\,(Chin. J. Astron. Astrophys.)}}
+\newcommand\cjaa {\ref@jnl{ChJAA\,(Chin. J. Astron. Astrophys.)}}
+          % Chinese Journal Astronomy Astrophysics   
+\newcommand\ibvs{\ref@jnl{IBVS}}                 
+          % Infoormation Bulletin on Variable Stars 
+\newcommand\jrasc{\ref@jnl{JRASC}}% 
+          % Journal of the RAS of Canada 
+\newcommand\memras{\ref@jnl{MmRAS}}% 
+          % Memoirs of the RAS 
+\newcommand\mnras{\ref@jnl{MNRAS}}% 
+          % Monthly Notices of the RAS 
+\newcommand\pra{\ref@jnl{Phys.~Rev.~A}}% 
+          % Physical Review A: General Physics 
+\newcommand\prb{\ref@jnl{Phys.~Rev.~B}}% 
+          % Physical Review B: Solid State 
+\newcommand\prc{\ref@jnl{Phys.~Rev.~C}}% 
+          % Physical Review C 
+\newcommand\prd{\ref@jnl{Phys.~Rev.~D}}% 
+          % Physical Review D 
+\newcommand\pre{\ref@jnl{Phys.~Rev.~E}}% 
+          % Physical Review E 
+\newcommand\prl{\ref@jnl{Phys.~Rev.~Lett.}}% 
+          % Physical Review Letters 
+\newcommand\pasp{\ref@jnl{PASP}}% 
+          % Publications of the ASP 
+\newcommand\pasj{\ref@jnl{PASJ}}% 
+          % Publications of the ASJ 
+\newcommand\qjras{\ref@jnl{QJRAS}}% 
+          % Quarterly Journal of the RAS 
+\newcommand\raa {\ref@jnl{Research in Astron. Astrophys.\,(RAA)}}
+          % Research in Astronomy Astrophysics 
+\newcommand\skytel{\ref@jnl{S\&T}}% 
+          % Sky and Telescope 
+\newcommand\solphys{\ref@jnl{Sol.~Phys.}}% 
+          % Solar Physics 
+\newcommand\sovast{\ref@jnl{Soviet~Ast.}}% 
+          % Soviet Astronomy 
+\newcommand\ssr{\ref@jnl{Space~Sci.~Rev.}}% 
+          % Space Science Reviews 
+\newcommand\zap{\ref@jnl{ZAp}}% 
+          % Zeitschrift fuer Astrophysik 
+\newcommand\nat{\ref@jnl{Nature}}% 
+          % Nature 
+\newcommand\iaucirc{\ref@jnl{IAU~Circ.}}% 
+          % IAU Cirulars 
+\newcommand\aplett{\ref@jnl{Astrophys.~Lett.}}% 
+          % Astrophysics Letters 
+\newcommand\apspr{\ref@jnl{Astrophys.~Space~Phys.~Res.}}% 
+          % Astrophysics Space Physics Research 
+\newcommand\bain{\ref@jnl{Bull.~Astron.~Inst.~Netherlands}}% 
+          % Bulletin Astronomical Institute of the Netherlands 
+\newcommand\fcp{\ref@jnl{Fund.~Cosmic~Phys.}}% 
+          % Fundamental Cosmic Physics 
+\newcommand\gca{\ref@jnl{Geochim.~Cosmochim.~Acta}}% 
+          % Geochimica Cosmochimica Acta 
+\newcommand\grl{\ref@jnl{Geophys.~Res.~Lett.}}% 
+          % Geophysics Research Letters 
+\newcommand\jcp{\ref@jnl{J.~Chem.~Phys.}}% 
+          % Journal of Chemical Physics 
+\newcommand\jgr{\ref@jnl{J.~Geophys.~Res.}}% 
+          % Journal of Geophysics Research 
+\newcommand\jqsrt{\ref@jnl{J.~Quant.~Spec.~Radiat.~Transf.}}% 
+          % Journal of Quantitiative Spectroscopy and Radiative Trasfer 
+\newcommand\memsai{\ref@jnl{Mem.~Soc.~Astron.~Italiana}}% 
+          % Mem. Societa Astronomica Italiana 
+\newcommand\nphysa{\ref@jnl{Nucl.~Phys.~A}}% 
+          % Nuclear Physics A 
+\newcommand\physrep{\ref@jnl{Phys.~Rep.}}% 
+          % Physics Reports 
+\newcommand\physscr{\ref@jnl{Phys.~Scr}}% 
+          % Physica Scripta 
+\newcommand\planss{\ref@jnl{Planet.~Space~Sci.}}% 
+          % Planetary Space Science 
+\newcommand\procspie{\ref@jnl{Proc.~SPIE}}% 
+          % Proceedings of the SPIE 
+\newcommand\sci{\ref@jnl{Sci.}}          
+          % Science
+\let\astap=\aap 
+\let\aas=\aaps
+\let\apjlett=\apjl 
+\let\apjsupp=\apjs 
+\let\applopt=\ao
+
+
+\endinput
