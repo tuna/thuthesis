@@ -444,3 +444,35 @@ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 \end{array}\right.
 \end{equation}
 这些跟规划相关的公式都来自于刘宝碇老师《不确定规划》的课件。
+
+\section{插入源代码}
+对于需要在论文中放入源代码的同学，可以使用宏包\textsf{listings}，设置代码语法高亮显示、缩进，以及代码的显示框。下面给出一个用\textsf{listings}显示C++语言的快速排序的例子。
+
+\lstset{language=C}
+\begin{lstlisting}[title=QuickSort]
+void QuickSort(vector<int> &nums) {
+	if (nums.empty())
+		return;
+	QuickSortHelper(nums, 0, nums.size() - 1);
+}
+
+void QuickSortHelper(vector<int> &nums, int start, int end) {
+	int left = start, right = end;
+	int pivot = nums[(left + right) / 2];
+	whlie (left <= rihgt) {
+		while (left <= right && nums[left] < pivot)
+			++left;
+		while  (left <= right && nums[right] >= pivot)
+			--right;
+		if (left <= right) {
+			int mid = nums[left];
+			nums[left] = nums[right];
+			nums[right] = mid;
+			++left;
+			--right;
+		}
+	}
+	QuickSortHelper(nums, start, right);
+	QuickSortHelper(nums, left, end);
+}
+\end{lstlisting}
