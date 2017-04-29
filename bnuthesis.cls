@@ -86,6 +86,7 @@
   % todo: minor fix of CJKnumb
   \def\CJK@null{\kern\CJKnullspace\hskip \f@size \p@\kern\CJKnullspace}
   \defaultfontfeatures{Mapping=tex-text} % use TeX --
+  % todo: cannot find font on Windows
   %\newcommand{\fontsong}{Adobe Song Std}
   %\newcommand{\fonthei}{Adobe Heiti Std}
   %\newcommand{\fontkai}{Adobe Kaiti Std}
