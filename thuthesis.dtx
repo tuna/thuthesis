@@ -1609,7 +1609,7 @@
   \renewcommand{\footrulewidth}{0pt}}
 \fancypagestyle{thu@headings}{%
   \fancyhead{}
-  \fancyhead[C]{\wuhao\songti\leftmark}
+  \fancyhead[C]{\wuhao\normalfont\leftmark}
   \fancyfoot{}
   \fancyfoot[C]{\wuhao\thepage}
   \renewcommand{\headrulewidth}{0.4pt}
@@ -1735,17 +1735,18 @@
 % 修改 \cs{tagform} 会影响 \cs{eqref}。
 %    \begin{macrocode}
 \renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
+%</cls>
 %    \end{macrocode}
 %
 % 定理标题使用黑体，正文使用宋体，冒号隔开。
 % \changes{v2.6.2}{2006/06/17}{增加问题和猜想两个数学环境。}
 % \changes{v4.2}{2008/03/07}{调整证明环境的编号和结尾的方块。}
 % \changes{v5.0.0}{2015/04/18}{修正定理字样为黑体 (\#104)。}
+% \changes{v5.3.2}{2017/05/01}{定理环境格式设置（环境标题和环境正文字体设置）统一放置到 .cfg 文件中。}
 %    \begin{macrocode}
-\theorembodyfont{\rmfamily\songti}
-\theoremheaderfont{\rmfamily\heiti}
-%</cls>
 %<*cfg>
+\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\heiti}
 \theoremsymbol{\ensuremath{\square}}
 \newtheorem*{proof}{证明}
 \theoremstyle{plain}
@@ -1811,7 +1812,7 @@
 \fi
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
-\DeclareCaptionLabelFormat{thu}{{\dawu[1.5]\songti #1~\rmfamily #2}}
+\DeclareCaptionLabelFormat{thu}{{\dawu[1.5]\normalfont #1~#2}}
 \DeclareCaptionLabelSeparator{thu}{\hspace{1em}}
 \DeclareCaptionFont{thu}{\dawu[1.5]}
 \captionsetup{labelformat=thu,labelsep=thu,font=thu}
@@ -1887,7 +1888,7 @@
 %    \begin{macrocode}
 %<*cls>
 \def\thu@title@font{%
-  \ifthu@arialtitle\sffamily\else\relax\fi}
+  \ifthu@arialtitle\sffamily\else\heiti\fi}
 %    \end{macrocode}
 %
 % \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。通过 \pkg{fancyhdr}
@@ -1963,7 +1964,7 @@
     beforeskip={\ifthu@bachelor 13bp\else 9bp\fi},
     aftername=\hskip\ccwd,
     afterskip={\ifthu@bachelor 20bp\else 24bp\fi},
-    format={\centering\thu@title@font\heiti\ifthu@bachelor\xiaosan\else\sanhao[1]\fi},
+    format={\centering\thu@title@font\ifthu@bachelor\xiaosan\else\sanhao[1]\fi},
     nameformat=\relax,
     numberformat=\relax,
     titleformat=\thu@chapter@titleformat,
@@ -1972,19 +1973,19 @@
     afterindent=true,
     beforeskip={\ifthu@bachelor 25bp\else 24bp\fi\@plus 1ex \@minus .2ex},
     afterskip={\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex},
-    format={\thu@title@font\heiti\sihao[1.429]},
+    format={\thu@title@font\sihao[1.429]},
   },
   subsection={
     afterindent=true,
     beforeskip={\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
     afterskip={6bp \@plus .2ex},
-    format={\thu@title@font\heiti\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi},
+    format={\thu@title@font\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi},
   },
   subsubsection={
     afterindent=true,
     beforeskip={\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
     afterskip={6bp \@plus .2ex},
-    format={\csname thu@title@font\endcsname\heiti\xiaosi[1.667]},
+    format={\thu@title@font\xiaosi[1.667]},
   },
   paragraph/afterindent=true,
   subparagraph/afterindent=true}
@@ -2514,7 +2515,7 @@
       \parbox[t][9cm][t]{\paperwidth-8cm}{
       \renewcommand{\baselinestretch}{1.3}
       \begin{center}
-        \yihao[1.2]{\sffamily\heiti\thu@ctitle}\par%
+        \yihao[1.2]{\sffamily\thu@ctitle}\par%
         \par\vskip 18bp%
         \xiaoer[1]\textrm{\thu@apply}%
       \end{center}}
