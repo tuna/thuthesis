@@ -86,19 +86,19 @@
   % todo: minor fix of CJKnumb
   \def\CJK@null{\kern\CJKnullspace\hskip \f@size \p@\kern\CJKnullspace}
   \defaultfontfeatures{Mapping=tex-text} % use TeX --
-  % todo: cannot find font on Windows
   %\newcommand{\fontsong}{Adobe Song Std}
   %\newcommand{\fonthei}{Adobe Heiti Std}
   %\newcommand{\fontkai}{Adobe Kaiti Std}
   %\newcommand{\fontfs}{Adobe Fangsong Std}
   %\newcommand{\fontli}{Adobe Kaiti Std}
   %\newcommand{\fontyou}{Adobe Kaiti Std}
-  \newcommand{\fontsong}{STSongti-SC-Regular}
-  \newcommand{\fonthei}{STHeitiSC-Light}
-  \newcommand{\fontkai}{STKaitiSC-Regular}
-  \newcommand{\fontfs}{STFangsong}
-  \newcommand{\fontli}{STKaiti}
-  \newcommand{\fontyou}{STKaiti}
+  % todo: 目前还没法解决Windows和Linux下找不到不同字体名字的问题
+  \newcommand{\fontsong}{宋体}
+  \newcommand{\fonthei}{黑体}
+  \newcommand{\fontkai}{楷体}
+  \newcommand{\fontfs}{仿宋}
+  \newcommand{\fontli}{隶书}
+  \newcommand{\fontyou}{幼圆}
 
   \setCJKmainfont[BoldFont={\fonthei}, ItalicFont={\fontkai}]{\fontsong}
   \setCJKsansfont{\fonthei}
@@ -629,23 +629,6 @@
 		  \bnu@csupervisortitle \bnu@title@sep  { \kai {\bnu@csupervisor}}\\
 		  \bnu@csupervisorstitutetitle \bnu@title@sep { \kai{\bnu@cdepartment}}\\
 		}
-%        \parbox[t][7.8cm][t]{0.6\textwidth}{{\sihao[2.0] \song \bf
-%         \begin{center}\fs
-%           \setlength{\bnu@title@width}{7em}
-%           \setlength{\extrarowheight}{4pt}
-%           \ifxetex % todo: ugly codes
-%             \begin{tabular}{p{\bnu@title@width}@{\extracolsep{8pt}}l}
-%           \else
-%             \begin{tabular}{p{\bnu@title@width}@{\extracolsep{4pt}}l}
-%           \fi
-%               \bnu@cauthortitle      \bnu@title@sep & \bnu@cauthor\\
-%               \bnu@csupervisortitle   \bnu@title@sep & \bnu@csupervisor\\
-%               \bnu@cdepartmenttitle   \bnu@title@sep & \bnu@cdepartment\\
-%               \bnu@cmajortitle        \bnu@title@sep & \bnu@cmajor\\
-%               \bnu@cdatetitle        \bnu@title@sep & \bnu@cdate\\
-%             \end{tabular}
-%         \end{center}}}
-
      \begin{center}
        %{\xiaosan \ziju{0bp} \fs \bnu@org}
 		{\xiaosan \song \textbf \bnu@today}
