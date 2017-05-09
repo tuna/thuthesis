@@ -371,10 +371,12 @@ FUNCTION {format.editors}
 }
 
 FUNCTION {format.title}
-{ title empty$
-    { "" }
-    { title "t" change.case$ }
-  if$
+{ 
+   %title empty$
+   % { "" }
+   % { title "t" change.case$ }
+   %if$
+   title
 }
 
 FUNCTION {n.dashify}
