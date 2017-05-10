@@ -1334,7 +1334,7 @@
 %
 % 参考文献引用宏包。
 %    \begin{macrocode}
-\RequirePackage[numbers,super,sort&compress]{natbib}
+\RequirePackage[sort&compress]{natbib}
 %    \end{macrocode}
 %
 % 删除默认模板（\file{book.cls}）在章之间引入的垂直间隔。要放在 \pkg{hyperref}
@@ -3050,19 +3050,21 @@
 % \label{sec:ref}
 %
 % \begin{macro}{\inlinecite}
-% 正文引用模式。依赖于 \pkg{natbib} 宏包，修改其中的命令。旧命令 \cs{onlinecite}
-% 依然可用。
+% 定义正文引用模式，可用 \cs{citestyle} 调用 \texttt{numerical}  或
+% \texttt{authoryear}，默认 \texttt{numerical}。
+% 依赖于 \pkg{natbib} 宏包，修改其中的命令。 旧命令 \cs{onlinecite} 依然可用。
 % \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
 % 容性，\cs{onlinecite} 会保留。}
 %    \begin{macrocode}
 %<*cls>
-\bibpunct{[}{]}{,}{s}{}{,}
-\renewcommand\NAT@citesuper[3]{\ifNAT@swa%
-  \unskip\kern\p@\textsuperscript{\NAT@@open #1\NAT@@close}%
-  \if*#3*\else\ (#3)\fi\else #1\fi\endgroup}
+\newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+\newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
+\newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{,}}
+\citestyle{numerical}
 \DeclareRobustCommand\inlinecite{\@inlinecite}
 \def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
 \let\onlinecite\inlinecite
+%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -3070,18 +3072,6 @@
 % 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
 % 本科生要求固定行距 17pt，段前后间距 3pt。
 %
-% \begin{macro}{\thudot}
-% 研究生参考文献条目最后可加点，图书文献一般不加。
-% 本科生未作说明。
-% 只好定义一个东西来拙劣地处理了，
-% 本来这个命令通过 \texttt{@preamble} 命令放到 bib 文件中是最省事的，但是那
-% 样的话很多人肯定不知道该怎么做了。
-% \changes{v3.1}{2007/06/19}{引入 \cs{thudot} 来自动完成参考文献最后的点。}
-%    \begin{macrocode}
-\def\thudot{\ifthu@bachelor\else\unskip.\fi}
-%</cls>
-%    \end{macrocode}
-% \end{macro}
 % \begin{macro}{\thumasterbib}
 % \begin{macro}{\thuphdbib}
 %   本科生和研究生模板要求外文硕士论文参考文献显示``[Master Thesis]''，而博士模板
@@ -3094,8 +3084,8 @@
 % \changes{v4.7}{2012/05/29}{修改两个宏使其对应不同的中文论文需求。}
 %    \begin{macrocode}
 %<*cfg>
-\def\thumasterbib{\ifthu@bachelor [D]\else [硕士学位论文]\fi}
-\def\thuphdbib{\ifthu@bachelor [D]\else [博士学位论文]\fi}
+\def\thumasterbib{\ifthu@bachelor D\else 硕士学位论文\fi}
+\def\thuphdbib{\ifthu@bachelor D\else 博士学位论文\fi}
 %</cfg>
 %    \end{macrocode}
 % \end{macro}
@@ -3130,10 +3120,51 @@
    {\def\@noitemerr
      {\@latex@warning{Empty `thebibliography' environment}}%
     \endlist\frenchspacing}
-%</cls>
 %    \end{macrocode}
 % \end{environment}
 %
+% 下面修改 \pkg{natbib} 的引用格式，主要是将页码写在上标位置。
+% Numerical 模式的 \cs{citet} 的页码：
+%    \begin{macrocode}
+\patchcmd\NAT@citexnum{%
+  \@ifnum{\NAT@ctype=\z@}{%
+    \if*#2*\else\NAT@cmt#2\fi
+  }{}%
+  \NAT@mbox{\NAT@@close}%
+}{%
+  \NAT@mbox{\NAT@@close}%
+  \@ifnum{\NAT@ctype=\z@}{%
+    \if*#2*\else\textsuperscript{#2}\fi
+  }{}%
+}{}{}
+%    \end{macrocode}
+%
+% Numerical 模式的 \cs{citep} 的页码：
+%    \begin{macrocode}
+\renewcommand\NAT@citesuper[3]{\ifNAT@swa
+  \if*#2*\else#2\NAT@spacechar\fi
+\unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
+   \else #1\fi\endgroup}
+%    \end{macrocode}
+%
+% Author-year 模式的 \cs{citet} 的页码：
+%    \begin{macrocode}
+\patchcmd{\NAT@citex}{%
+  \if*#2*\else\NAT@cmt#2\fi
+  \if\relax\NAT@date\relax\else\NAT@@close\fi
+}{%
+  \if\relax\NAT@date\relax\else\NAT@@close\fi
+  \if*#2*\else\textsuperscript{#2}\fi
+}{}{}
+%    \end{macrocode}
+%
+% Author-year 模式的 \cs{citep} 的页码：
+%    \begin{macrocode}
+\renewcommand\NAT@cite%
+    [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+        #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
+%</cls>
+%    \end{macrocode}
 %
 % \subsection{附录}
 % \label{sec:appendix}
