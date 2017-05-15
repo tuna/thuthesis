@@ -11,7 +11,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{bnuthesis}
-[2017/3/20 1.53 Beijing Normal University.Zhuhai Thesis Template]
+[2015/9/20 1.53 Beijing Normal University.Zhuhai Thesis Template]
 \newif\ifbnu@UTF
 \newif\ifbnu@GBK
 \DeclareOption{utf}{\bnu@UTFtrue\bnu@GBKfalse}
@@ -92,7 +92,13 @@
   %\newcommand{\fontfs}{Adobe Fangsong Std}
   %\newcommand{\fontli}{Adobe Kaiti Std}
   %\newcommand{\fontyou}{Adobe Kaiti Std}
-  % todo: 目前还没法解决Windows和Linux下找不到不同字体名字的问题
+  %\newcommand{\fontsong}{STSongti-SC-Regular}
+  %\newcommand{\fonthei}{STHeitiSC-Light}
+  %\newcommand{\fontkai}{STKaitiSC-Regular}
+  %\newcommand{\fontfs}{STFangsong}
+  %\newcommand{\fontli}{STKaiti}
+  %\newcommand{\fontyou}{STKaiti}
+  % todo: 目前还没解决Windows和Linux下找不到不同字体名字的问题
   \newcommand{\fontsong}{宋体}
   \newcommand{\fonthei}{黑体}
   \newcommand{\fontkai}{楷体}
@@ -184,7 +190,7 @@
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmatterfalse
   \pagenumbering{Roman}
-  \pagestyle{bnu@headings}}
+  \pagestyle{bnu@empty}}
 \renewcommand\mainmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue
@@ -275,8 +281,12 @@
   \let\@oddfoot\@empty%
   \let\@evenfoot\@empty}
 \def\ps@bnu@plain{%
-  \let\@oddhead\@empty%
-  \let\@evenhead\@empty%
+  \def\@oddhead{\vbox to\headheight{%
+	  \hb@xt@\textwidth{\hfill\wuhao\song\bnu@schoolename\bnu@cdepartment\hfill}%　% 学院名称
+      \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
+  \def\@evenhead{\vbox to\headheight{%
+	  \hb@xt@\textwidth{\hfill\wuhao\song\bnu@schoolename\bnu@cdepartment\hfill}%　% 学院名称
+      \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
   \def\@oddfoot{\hfil\wuhao\thepage\hfil}%
   \let\@evenfoot=\@oddfoot}
 \def\ps@bnu@headings{%
@@ -290,7 +300,7 @@
       %\hb@xt@\textwidth{\wuhao\song\hfill\bnu@ctitle\hfill}%　　　论文标题
 	  \hb@xt@\textwidth{\hfill\wuhao\song\bnu@schoolename\bnu@cdepartment\hfill}%　% 学院名称
       \vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
-  \def\@oddfoot{\hfil\wuhao\thepage\hfil}
+  \def\@oddfoot{\hfil\wuhao\bnu@footpage\hfil}
   \let\@evenfoot=\@oddfoot}
 \renewcommand{\chaptermark}[1]{\@mkboth{\@chapapp\  ~~#1}{}}
 \newlength\CJK@twochars
@@ -413,7 +423,7 @@
 \fi
 \renewcommand\chapter{\clpage\phantomsection%
                     \if@openright\cleardoublepage\else\clearpage\fi\phantomsection%
- 					\thispagestyle{bnu@headings}%
+                     %\thispagestyle{bnu@plain}%
                     \global\@topnum\z@%
                     \@afterindenttrue%
                     \secdef\@chapter\@schapter}
@@ -631,7 +641,7 @@
 		}
      \begin{center}
        %{\xiaosan \ziju{0bp} \fs \bnu@org}
-		{\xiaosan \song \textbf \bnu@today}
+		{\xiaosan \song \textbf \bnu@cdate}
      \end{center}
     \end{center}} % end of titlepage
 
@@ -665,16 +675,19 @@
   \normalsize%
   \begin{titlepage}
     \bnu@first@titlepage
-    \clpage\bnu@authorization@mk
+    \clpage
+	\bnu@authorization@mk
+	\clpage
   \end{titlepage}
   \normalsize
   \bnu@makeabstract
   \let\@tabular\bnu@tabular}
 \newcommand{\bnu@makeabstract}{%
-  \cleardoublepage % always openright for Abstract
+  %\cleardoublepage % always openright for Abstract
+	\clpage
 
   \bnu@chapter*[\cabstractname]{} % no tocline
-  \pagestyle{bnu@headings}
+  \pagestyle{bnu@plain}
   \pagenumbering{Roman}
   \begin{center}
   	\sanhao[1.5] \bf \bnu@ctitle \par
