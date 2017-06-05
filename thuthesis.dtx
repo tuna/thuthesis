@@ -1398,9 +1398,9 @@
     left=32mm,
     headheight=5mm,
     headsep=5mm,
-    textheight=220mm,
-    bottom=37mm,
-    footskip=17mm}
+    textheight=227mm,
+    bottom=32mm,
+    footskip=12mm}
 \else
   \geometry{
     left=30mm,
@@ -1962,9 +1962,9 @@
   chapter={
     afterindent=true,
     pagestyle={\ifthu@bachelor thu@plain\else thu@headings\fi},
-    beforeskip={\ifthu@bachelor 8bp\else 9bp\fi},
+    beforeskip={\ifthu@bachelor 15bp\else 9bp\fi},
     aftername=\hskip\ccwd,
-    afterskip={\ifthu@bachelor 25bp\else 24bp\fi},
+    afterskip={\ifthu@bachelor 20bp\else 24bp\fi},
     format={\centering\thu@title@font\ifthu@bachelor\xiaosan[1.333]\else\sanhao[1]\fi},
     nameformat=\relax,
     numberformat=\relax,
@@ -2065,7 +2065,7 @@
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
   \thu@chapter*[]{\contentsname}
-  \ifthu@bachelor\xiaosi[1.8]\else\xiaosi[1.65]\fi\@starttoc{toc}\normalsize}
+  \ifthu@bachelor\xiaosi[1.667]\else\xiaosi[1.65]\fi\@starttoc{toc}\normalsize}
 %    \end{macrocode}
 % 调整目录样式，允许指定目录字体。
 % \changes{v5.2.2}{2016/01/23}{用 \cs{patchcmd} 修改 \cs{@dottedtocline}。}
@@ -2081,7 +2081,7 @@
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
-    \vskip 4bp \@plus\p@
+    \ifthu@bachelor \vskip 6bp \else \vskip 4bp \fi \@plus\p@
     \setlength\@tempdima{4em}%
     \begingroup
       \parindent \z@ \rightskip \@pnumwidth
@@ -3102,7 +3102,7 @@
 %<*cls>
 \renewenvironment{thebibliography}[1]{%
    \thu@chapter*{\bibname}%
-   \wuhao[1.5]
+   \ifthu@bachelor \wuhao[1.619]\else \wuhao[1.5]\fi
    \list{\@biblabel{\@arabic\c@enumiv}}%
         {\renewcommand{\makelabel}[1]{##1\hfill}
          \settowidth\labelwidth{1.1cm}
@@ -3190,7 +3190,7 @@
 \let\title\@gobble
 \newcommand{\thu@appendix@title}[1]{%
   \begin{center}
-    \bfseries\xiaosi #1
+    \xiaosi[1.667] #1
   \end{center}}
 %    \end{macrocode}
 % \end{macro}
