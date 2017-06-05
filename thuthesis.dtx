@@ -1938,8 +1938,9 @@
 %
 % \changes{v4.4}{2008/06/04}{调整段前距为 -20bp 而不是原来的 -24bp。}
 %
-% \item[subsection] 二级节标题，例如：\fbox{2.1.1 实验装置}。采用黑体 13pt (本科
-%   生是 14pt) 字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
+% \item[subsection] 二级节标题，例如：\fbox{2.1.1 实验装置}。采用黑体 13pt 字居左
+%   书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。本科：中文黑体 12pt 字，
+%   英文 13pt 字，段间距 12/6 pt，行距 15pt。
 %
 % \changes{v4.4}{2008/06/04}{修改本科生模板的二级节标题为小四而不是半小四。}
 % \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
@@ -1961,10 +1962,10 @@
   chapter={
     afterindent=true,
     pagestyle={\ifthu@bachelor thu@plain\else thu@headings\fi},
-    beforeskip={\ifthu@bachelor 13bp\else 9bp\fi},
+    beforeskip={\ifthu@bachelor 8bp\else 9bp\fi},
     aftername=\hskip\ccwd,
-    afterskip={\ifthu@bachelor 20bp\else 24bp\fi},
-    format={\centering\thu@title@font\ifthu@bachelor\xiaosan\else\sanhao[1]\fi},
+    afterskip={\ifthu@bachelor 25bp\else 24bp\fi},
+    format={\centering\thu@title@font\ifthu@bachelor\xiaosan[1.333]\else\sanhao[1]\fi},
     nameformat=\relax,
     numberformat=\relax,
     titleformat=\thu@chapter@titleformat,
@@ -1973,19 +1974,20 @@
     afterindent=true,
     beforeskip={\ifthu@bachelor 25bp\else 24bp\fi\@plus 1ex \@minus .2ex},
     afterskip={\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex},
-    format={\thu@title@font\sihao[1.429]},
+    format={\thu@title@font\ifthu@bachelor\sihao[1.286]\else\sihao[1.429]\fi},
   },
   subsection={
     afterindent=true,
     beforeskip={\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
     afterskip={6bp \@plus .2ex},
-    format={\thu@title@font\ifthu@bachelor\xiaosi[1.667]\else\banxiaosi[1.538]\fi},
+    format={\thu@title@font\ifthu@bachelor\xiaosi[1.25]\else\banxiaosi[1.538]\fi},
+    numberformat={\thu@title@font\ifthu@bachelor\banxiaosi[1.154]\else\banxiaosi[1.538]\fi},
   },
   subsubsection={
     afterindent=true,
     beforeskip={\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
     afterskip={6bp \@plus .2ex},
-    format={\thu@title@font\xiaosi[1.667]},
+    format={\thu@title@font\ifthu@bachelor\xiaosi[1.25]\else\xiaosi[1.667]\fi},
   },
   paragraph/afterindent=true,
   subparagraph/afterindent=true}
