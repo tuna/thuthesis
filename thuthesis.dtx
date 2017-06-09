@@ -2438,8 +2438,13 @@
 %<*cls>
 \newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \newlength{\thu@title@width}
-\newcommand{\thu@put@title}[2][\thu@title@width]{%
+\ifxetex % todo: ugly codes
+  \newcommand{\thu@put@title}[2][\thu@title@width]{%
   \begin{CJKfilltwosides}[b]{#1}#2\end{CJKfilltwosides}}
+\else
+  \newcommand{\thu@put@title}[2][\thu@title@width]{%
+  \begin{CJKfilltwosides}{#1}#2\end{CJKfilltwosides}}
+\fi
 \def\thu@first@titlepage{%
   \ifthu@postdoctor\thu@first@titlepage@postdoctor\else\thu@first@titlepage@other\fi}
 \newcommand{\thu@first@titlepage@postdoctor}{
