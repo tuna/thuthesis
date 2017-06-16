@@ -2090,7 +2090,8 @@
       \advance\leftskip\@tempdima
       \hskip -\leftskip
       % numberline is called here, and it uses \@tempdima
-      {\ifthu@bachelor\sffamily\else\csname thu@toc@font\endcsname\fi\heiti #1}
+      % UPDATE: 本科目录西文全用 Times New Roman。
+      {\csname thu@toc@font\endcsname\heiti #1}
       \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
       \nobreak{\normalfont\normalcolor #2}\par
       \penalty\@highpenalty
@@ -2501,9 +2502,11 @@
       \ifthu@secret{\heiti\sanhao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
       \vskip0.45cm
-      {\includegraphics{tsinghua}}
+      % UPDATE: 本科学校名采用隶书，原来插入的图片格式不正确。
+      {\yihao\lishu\ziju{0.5}{\thu@schoolname}}
       \par\vskip1.5cm
-      {\xiaochu\heiti\ziju{0.5}\thu@bachelor@subtitle}
+      % UPDATE: 本科“综合论文训练”虽然已经是黑体，但依然要加粗。请注意在 main.tex 中设置 AutoFakeBold=2.5。
+      {\xiaochu\heiti\ziju{0.5}\textbf{\thu@bachelor@subtitle}}
       \vskip2.2cm
       \noindent\heiti\xiaoer\thu@bachelor@title@pre\thu@title@sep
       \parbox[t]{12cm}{%
@@ -2847,14 +2850,15 @@
 % \changes{v4.4.2}{2008/06/05}{本科生格式中文关键词采用首行缩进且无悬挂缩进。}
 %    \begin{macrocode}
   \vskip12bp
-  \thu@put@keywords{\heiti\thu@ckeywords@title}{\thu@ckeywords}
+  % UPDATE: 本科“关键字”为宋体加粗，不是黑体。
+  \thu@put@keywords{\songti\textbf{\thu@ckeywords@title}}{\thu@ckeywords}
 %    \end{macrocode}
 %
-% 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
+% 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体小三号字。研究生的英文摘要要求
 % 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连
 % 续。\changes{v2.5.1}{2006/05/28}{研究生封面英文摘要连续。}
 %    \begin{macrocode}
-  \thu@chapter*[]{\eabstractname} % no tocline
+  \thu@chapter*[]{\xiaosan\eabstractname} % no tocline
 %    \end{macrocode}
 %
 % 摘要内容用小四号 Times New Roman。
