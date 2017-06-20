@@ -2497,14 +2497,14 @@
     \parbox[b][2.4cm][t]{\textwidth}{%
       \ifthu@secret{\heiti\sanhao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
-      \vskip0.45cm
-      {\includegraphics{tsinghua}}
+      \vskip0.65cm
+      {\yihao\lishu\ziju{0.5}\thu@schoolname}
       \par\vskip1.5cm
-      {\xiaochu\heiti\ziju{0.5}\thu@bachelor@subtitle}
-      \vskip2.2cm
+      {\xiaochu\heiti\ziju{0.5}\textbf\thu@bachelor@subtitle}
+      \vskip2.2cm\hskip0.8cm
       \noindent\heiti\xiaoer\thu@bachelor@title@pre\thu@title@sep
       \parbox[t]{12cm}{%
-      \ignorespaces\yihao[1.55]%
+      \ignorespaces\yihao[1.51]%
       \renewcommand{\CJKunderlinebasesep}{0.25cm}%
       \renewcommand{\ULthickness}{1.3pt}%
       \ifxetex
@@ -2535,15 +2535,15 @@
 % \changes{v5.1.0}{2015/12/27}{修改联合指导教师显示问题。}
 %    \begin{macrocode}
     \ifthu@bachelor
-      \vskip1cm
+      \vskip0.75cm
       \ifx\thu@cassosupervisor\@empty%
-        \def\thu@tempa{7.0cm}
+        \def\thu@tempa{7.15cm}
       \else%
-        \def\thu@tempa{8.0cm}
+        \def\thu@tempa{8.15cm}
       \fi%
       \parbox[t][\thu@tempa][t]{\textwidth}{%
-        {\fangsong\sanhao[1.8]%
-         \hspace*{1.65cm}
+        {\fangsong\sanhao[1.95]%
+         \hspace*{1.9cm}
          \setlength{\thu@title@width}{4em}
          \setlength{\extrarowheight}{6pt}
          \ifxetex % todo: ugly codes
@@ -2602,7 +2602,7 @@
 % \changes{v4.4.3}{2008/06/09}{修改本科生论文封面日期格式以符合新样例。}
 %    \begin{macrocode}
      \begin{center}
-       {\ifthu@bachelor\vskip-1.0cm\hskip-1.2cm\xiaosi\else%
+       {\ifthu@bachelor\vskip-1.0cm\xiaosi\else%
          \vskip-0.5cm\sanhao\fi%
          \songti\thu@cdate}
      \end{center}
@@ -2844,7 +2844,7 @@
 % \changes{v4.4.2}{2008/06/05}{本科生格式中文关键词采用首行缩进且无悬挂缩进。}
 %    \begin{macrocode}
   \vskip12bp
-  \thu@put@keywords{\heiti\thu@ckeywords@title}{\thu@ckeywords}
+  \thu@put@keywords{\textbf\thu@ckeywords@title}{\thu@ckeywords}
 %    \end{macrocode}
 %
 % 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
