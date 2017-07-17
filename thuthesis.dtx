@@ -1340,8 +1340,6 @@
 % 删除默认模板（\file{book.cls}）在章之间引入的垂直间隔。要放在 \pkg{hyperref}
 % 之前。
 %    \begin{macrocode}
-\patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} % lof
-\patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
 %    \end{macrocode}
 % 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
 % \changes{v2.6}{2006/06/09}{去除 hyperref 选项，等待全局传递。}
@@ -1398,9 +1396,9 @@
     left=32mm,
     headheight=5mm,
     headsep=5mm,
-    textheight=220mm,
-    bottom=37mm,
-    footskip=17mm}
+    textheight=227mm,
+    bottom=32mm,
+    footskip=12mm}
 \else
   \geometry{
     left=30mm,
@@ -1962,13 +1960,15 @@
   chapter={
     afterindent=true,
     pagestyle={\ifthu@bachelor thu@plain\else thu@headings\fi},
-    beforeskip={\ifthu@bachelor 8bp\else 9bp\fi},
+    beforeskip={\ifthu@bachelor 15bp\else 9bp\fi},
     aftername=\hskip\ccwd,
-    afterskip={\ifthu@bachelor 25bp\else 24bp\fi},
+    afterskip={\ifthu@bachelor 20bp\else 24bp\fi},
     format={\centering\thu@title@font\ifthu@bachelor\xiaosan[1.333]\else\sanhao[1]\fi},
     nameformat=\relax,
     numberformat=\relax,
     titleformat=\thu@chapter@titleformat,
+    lofskip=0pt,
+    lotskip=0pt,
   },
   section={
     afterindent=true,
@@ -2022,7 +2022,9 @@
   }{%
     \addcontentsline{toc}{chapter}{#3}
   }%
+  \ifthu@bachelor \ctexset{chapter/beforeskip=25bp} \fi
   \chapter*{#3}%
+  \ifthu@bachelor \ctexset{chapter/beforeskip=15bp} \fi
   \IfValueTF{#4}{%
     \ifthenelse{\equal{#4}{}}
     {\@mkboth{}{}}
@@ -2065,7 +2067,7 @@
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
   \thu@chapter*[]{\contentsname}
-  \ifthu@bachelor\xiaosi[1.8]\else\xiaosi[1.65]\fi\@starttoc{toc}\normalsize}
+  \ifthu@bachelor\xiaosi[1.667]\else\xiaosi[1.65]\fi\@starttoc{toc}\normalsize}
 %    \end{macrocode}
 % 调整目录样式，允许指定目录字体。
 % \changes{v5.2.2}{2016/01/23}{用 \cs{patchcmd} 修改 \cs{@dottedtocline}。}
@@ -2081,7 +2083,7 @@
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
-    \vskip 4bp \@plus\p@
+    \ifthu@bachelor \vskip 6bp \else \vskip 4bp \fi \@plus\p@
     \setlength\@tempdima{4em}%
     \begingroup
       \parindent \z@ \rightskip \@pnumwidth
@@ -2500,14 +2502,14 @@
     \parbox[b][2.4cm][t]{\textwidth}{%
       \ifthu@secret{\heiti\sanhao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
-      \vskip0.45cm
-      {\includegraphics{tsinghua}}
+      \vskip0.65cm
+      {\yihao\lishu\ziju{0.5}\thu@schoolname}
       \par\vskip1.5cm
-      {\xiaochu\heiti\ziju{0.5}\thu@bachelor@subtitle}
-      \vskip2.2cm
+      {\xiaochu\heiti\ziju{0.5}\textbf\thu@bachelor@subtitle}
+      \vskip2.2cm\hskip0.8cm
       \noindent\heiti\xiaoer\thu@bachelor@title@pre\thu@title@sep
       \parbox[t]{12cm}{%
-      \ignorespaces\yihao[1.55]%
+      \ignorespaces\yihao[1.51]%
       \renewcommand{\CJKunderlinebasesep}{0.25cm}%
       \renewcommand{\ULthickness}{1.3pt}%
       \ifxetex
@@ -2538,15 +2540,15 @@
 % \changes{v5.1.0}{2015/12/27}{修改联合指导教师显示问题。}
 %    \begin{macrocode}
     \ifthu@bachelor
-      \vskip1cm
+      \vskip0.75cm
       \ifx\thu@cassosupervisor\@empty%
-        \def\thu@tempa{7.0cm}
+        \def\thu@tempa{7.15cm}
       \else%
-        \def\thu@tempa{8.0cm}
+        \def\thu@tempa{8.15cm}
       \fi%
       \parbox[t][\thu@tempa][t]{\textwidth}{%
-        {\fangsong\sanhao[1.8]%
-         \hspace*{1.65cm}
+        {\fangsong\sanhao[1.95]%
+         \hspace*{1.9cm}
          \setlength{\thu@title@width}{4em}
          \setlength{\extrarowheight}{6pt}
          \ifxetex % todo: ugly codes
@@ -2605,7 +2607,7 @@
 % \changes{v4.4.3}{2008/06/09}{修改本科生论文封面日期格式以符合新样例。}
 %    \begin{macrocode}
      \begin{center}
-       {\ifthu@bachelor\vskip-1.0cm\hskip-1.2cm\xiaosi\else%
+       {\ifthu@bachelor\vskip-1.0cm\xiaosi\else%
          \vskip-0.5cm\sanhao\fi%
          \songti\thu@cdate}
      \end{center}
@@ -2847,7 +2849,7 @@
 % \changes{v4.4.2}{2008/06/05}{本科生格式中文关键词采用首行缩进且无悬挂缩进。}
 %    \begin{macrocode}
   \vskip12bp
-  \thu@put@keywords{\heiti\thu@ckeywords@title}{\thu@ckeywords}
+  \thu@put@keywords{\textbf\thu@ckeywords@title}{\thu@ckeywords}
 %    \end{macrocode}
 %
 % 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
@@ -3006,7 +3008,7 @@
     {\thu@chapter*[]{\csname list#1name\endcsname}\thu@starttoc{#1}}
     {\thu@chapter*{\csname list#1name\endcsname}\thu@starttoc{#1}}}
 \renewcommand\listoffigures{\thu@listof{figure}}
-\renewcommand*\l@figure{\addvspace{6bp}\@dottedtocline{1}{0em}{4em}}
+\renewcommand*\l@figure{\ifthu@bachelor\relax\else\addvspace{6bp}\fi\@dottedtocline{1}{0em}{4em}}
 \renewcommand\listoftables{\thu@listof{table}}
 \let\l@table\l@figure
 %    \end{macrocode}
@@ -3107,7 +3109,7 @@
 %<*cls>
 \renewenvironment{thebibliography}[1]{%
    \thu@chapter*{\bibname}%
-   \wuhao[1.5]
+   \ifthu@bachelor \wuhao[1.619]\else \wuhao[1.5]\fi
    \list{\@biblabel{\@arabic\c@enumiv}}%
         {\renewcommand{\makelabel}[1]{##1\hfill}
          \settowidth\labelwidth{1.1cm}
@@ -3195,7 +3197,7 @@
 \let\title\@gobble
 \newcommand{\thu@appendix@title}[1]{%
   \begin{center}
-    \bfseries\xiaosi #1
+    \xiaosi[1.667] #1
   \end{center}}
 %    \end{macrocode}
 % \end{macro}
