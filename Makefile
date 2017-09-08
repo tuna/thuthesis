@@ -3,7 +3,7 @@
 # Compiling method: latexmk/xelatex/pdflatex
 METHOD = latexmk
 # Set opts for latexmk if you use it
-LATEXMKOPTS = -xelatex
+LATEXMKOPTS = -xelatex -halt-on-error -interaction=nonstopmode
 # Basename of thesis
 THESISMAIN = main
 # Basename of shuji
