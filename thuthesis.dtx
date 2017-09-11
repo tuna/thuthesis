@@ -1165,6 +1165,12 @@
 \DeclareBoolOption{arialtitle}
 %    \end{macrocode}
 %
+% 在 Windows Vista 或之后系统下时，默认使用微软雅黑，这可能会导致审查不合格。
+% 下面设置默认不使用微软雅黑，同时保持跨平台兼容性。
+%    \begin{macrocode}
+\IfFileExists{/dev/null}{}{\PassOptionsToClass{fontset=windowsold}{ctexbook}}
+%    \end{macrocode}
+%
 % \option{raggedbottom} 选项（默认打开）
 % \changes{v4.8}{2013/03/05}{增加 noraggedbottom 选项。}
 % \changes{v5.0.0}{2015/12/13}{norggedbottom 选项修改为 raggedbottom。}
@@ -3296,7 +3302,9 @@
 %    \begin{macrocode}
 %<*cls>
 \NewDocumentCommand{\shuji}{O{\thu@ctitle} O{\thu@cauthor}}{%
-  \newpage\thispagestyle{empty}\fangsong\xiaosan\ziju{0.4}%
+  \newpage\thispagestyle{empty}%
+  \fangsong\ifxetex\addCJKfontfeatures*{RawFeature={vertical:}}\fi
+  \xiaosan\ziju{0.4}%
   \noindent\hfill\rotatebox[origin=lt]{-90}{\makebox[\textheight]{#1\hfill#2}}}
 %</cls>
 %    \end{macrocode}
