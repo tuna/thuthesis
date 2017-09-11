@@ -1,0 +1,41 @@
+os:
+  - linux
+
+sudo: required
+
+install:
+  - REMOTE="http://mirror.ctan.org/systems/texlive/tlnet"
+  - INSTALL="/tmp/install-texlive"
+  - mkdir -p $INSTALL
+  - curl -sSL $REMOTE/install-tl-unx.tar.gz | tar -xzv -C $INSTALL --strip-components=1
+
+  - echo "selected_scheme scheme-basic" >> $INSTALL/tl.profile
+  - echo "collection-basic 1" >> $INSTALL/tl.profile
+  - echo "collection-fontsrecommended 1" >> $INSTALL/tl.profile
+  - echo "collection-langchinese 1" >> $INSTALL/tl.profile
+  - echo "collection-latex 1" >> $INSTALL/tl.profile
+  - echo "collection-latexextra 1" >> $INSTALL/tl.profile
+  - echo "collection-latexrecommended 1" >> $INSTALL/tl.profile
+  - echo "collection-xetex 1" >> $INSTALL/tl.profile
+  - echo "tlpdbopt_autobackup 0" >> $INSTALL/tl.profile
+  - echo "tlpdbopt_install_docfiles 0" >> $INSTALL/tl.profile
+  - echo "tlpdbopt_install_srcfiles 0" >> $INSTALL/tl.profile
+
+  - sudo $INSTALL/install-tl -profile $INSTALL/tl.profile
+
+  - VERSION=$($INSTALL/install-tl --version | grep 'version' | grep -o '[0-9]\{4\}')
+  - PLATFORM=$($INSTALL/install-tl --print-platform)
+  - TEXBIN="/usr/local/texlive/${VERSION}/bin/${PLATFORM}"
+  - export "PATH=$TEXBIN:$PATH"
+
+  - sudo $TEXBIN/tlmgr install boondox latexmk ulem newpx newtx
+
+before_script:
+  - sed -i 's/type=bachelor/type=doctor/' main.tex
+  - sed -i 's/,fontset=windowsold//' main.tex
+  - sed -i 's/\[RawFeature={vertical:}\]{FangSong}/\[Extension=.otf,RawFeature={vertical:}\]{FandolFang-Regular}/' shuji.tex
+
+script:
+  - make thesis
+  - make shuji
+  - make doc
