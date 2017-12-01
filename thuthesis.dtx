@@ -1,16 +1,16 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2005-2016 by Ruini Xue <xueruini@gmail.com>
+% Copyright (C) 2005-2017 by Ruini Xue <xueruini@gmail.com>
 %
-% This file may be distributed and/or modified under the
-% conditions of the LaTeX Project Public License, either version 1.3a
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
 % of this license or (at your option) any later version.
-% The latest version of this license is in:
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
 %
-% http://www.latex-project.org/lppl.txt
-%
-% and version 1.3a or later is part of all distributions of LaTeX
-% version 2004/10/01 or later.
+% This work has the LPPL maintenance status `maintained'.
 %
 % \fi
 %
@@ -401,6 +401,14 @@
 %
 % % 硕士论文
 % \documentclass[type=master]{thuthesis}
+% \end{latex}
+%
+%
+% \DescribeOption{citestyle}
+%   选择引用风格类型，当前支持：\option{numerical}（默认值），\option{authoryear}。
+% \begin{latex}
+% % 理工科一般用 numerical；文科一般用 authoryear。
+% \documentclass[citestyle=authoryear]{thuthesis}
 % \end{latex}
 %
 % \DescribeOption{secret}
@@ -853,12 +861,11 @@
 %
 % \subsubsection{致谢声明}
 % \DescribeEnv{acknowledgement}
-% 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！下面是数学系一位同
-% 学致谢里的话，拿过来做个广告。希望每个人都能写这么一句 :)
+% 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦。
 % \begin{latex}
 % \begin{acknowledgement}
 %   …
-%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX\ 编译等方面给我的很多帮助！
+%   还要特别感谢 \thuthesis\ 节省了论文排版时间！
 % \end{acknowledgement}
 % \end{latex}
 %
@@ -1099,7 +1106,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2017/03/26 5.3.2 Tsinghua University Thesis Template]
+%<cls|cfg>[2017/12/1 5.4.0 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1118,7 +1125,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{5.3.2}
+\def\version{5.4.0}
 
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
@@ -1127,7 +1134,7 @@
   setkeys=\kvsetkeys}
 %    \end{macrocode}
 %
-% 用 \pkg{kvoptions} 的 key=value 方式来设置论文类型。
+% 用 \pkg{kvoptions} 的 \texttt{key=value} 方式来设置论文类型。
 % \changes{v5.0.0}{2015/12/13}{使用 \pkg{kvoptions} 简化选项 type。}
 %    \begin{macrocode}
 \newif\ifthu@bachelor
@@ -1139,7 +1146,18 @@
   \thu@masterfalse
   \thu@doctorfalse
   \thu@postdoctorfalse
-  \expandafter\csname thu@#1true\endcsname}
+  \expandafter\csname thu@#1true\endcsname
+  \ifthu@bachelor\relax\else
+    \ifthu@master\relax\else
+      \ifthu@doctor\relax\else
+        \ifthu@postdoctor\relax\else
+          \ClassError{thuthesis}%
+                     {Please specify thesis type in option: \MessageBreak
+                      type=[bachelor | master | doctor | postdoctor]}{}
+        \fi
+      \fi
+    \fi
+  \fi}
 \def\thu@deprecated@type@option{%
   \kvsetkeys{thu}{type=\CurrentOption} % for compatability.
   \ClassError{thuthesis}{Option '\CurrentOption' is deprecated, \MessageBreak
@@ -1148,6 +1166,26 @@
 \DeclareVoidOption{master}{\thu@deprecated@type@option}
 \DeclareVoidOption{doctor}{\thu@deprecated@type@option}
 \DeclareVoidOption{postdoctor}{\thu@deprecated@type@option}
+%    \end{macrocode}
+%
+% 通过 citestyle 控制引用文献显示方式。
+% \changes{v5.4.0}{2017/12/1}{支持不同引用类型。}
+%    \begin{macrocode}
+\newif\ifthu@cite@numerical
+\newif\ifthu@cite@authoryear
+\define@key{thu}{citestyle}{%
+  \thu@cite@numericalfalse
+  \thu@cite@authoryearfalse
+  \expandafter\csname thu@cite@#1true\endcsname
+  \ifthu@cite@numerical\relax\else
+    \ifthu@cite@authoryear\relax\else
+      \ClassError{thuthesis}%
+                 {Allowed cite style: \MessageBreak
+                  citestyle=[numberical | authoryear]}{}
+
+    \fi
+  \fi
+  \gdef\thu@citestyle{#1}}
 %    \end{macrocode}
 %
 % 论文是否保密。
@@ -1195,6 +1233,7 @@
 % 打开默认选项。
 %    \begin{macrocode}
 \kvsetkeys{thu}{%
+  citestyle=numerical,
   raggedbottom,
   arialtitle}
 %    \end{macrocode}
@@ -1217,20 +1256,6 @@
 \LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain]{ctexbook}
 %    \end{macrocode}
 %
-% 用户至少要提供一个选项，指定论文类型。
-%    \begin{macrocode}
-\ifthu@bachelor\relax\else
-  \ifthu@master\relax\else
-    \ifthu@doctor\relax\else
-      \ifthu@postdoctor\relax\else
-        \ClassError{thuthesis}%
-                   {Please specify thesis type in option: \MessageBreak
-                    type=[bachelor | master | doctor | postdoctor]}{}
-      \fi
-    \fi
-  \fi
-\fi
-%    \end{macrocode}
 %
 % \subsection{装载宏包}
 % \label{sec:loadpackage}
@@ -3065,8 +3090,6 @@
 % \label{sec:ref}
 %
 % \begin{macro}{\inlinecite}
-% 定义正文引用模式，可用 \cs{citestyle} 调用 \texttt{numerical}  或
-% \texttt{authoryear}，默认 \texttt{numerical}。
 % 依赖于 \pkg{natbib} 宏包，修改其中的命令。 旧命令 \cs{onlinecite} 依然可用。
 % \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
 % 容性，\cs{onlinecite} 会保留。}
@@ -3075,7 +3098,7 @@
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
 \newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
 \newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{,}}
-\citestyle{numerical}
+\citestyle{\thu@citestyle}
 \DeclareRobustCommand\inlinecite{\@inlinecite}
 \def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
 \let\onlinecite\inlinecite
@@ -3115,17 +3138,27 @@
 %<*cls>
 \renewenvironment{thebibliography}[1]{%
    \thu@chapter*{\bibname}%
-   \ifthu@bachelor \wuhao[1.619]\else \wuhao[1.5]\fi
-   \list{\@biblabel{\@arabic\c@enumiv}}%
-        {\renewcommand{\makelabel}[1]{##1\hfill}
-         \settowidth\labelwidth{1.1cm}
-         \setlength{\labelsep}{0.4em}
-         \setlength{\itemindent}{0pt}
+   \ifthu@bachelor\wuhao[1.619]\else\wuhao[1.5]\fi
+   \list{\ifthu@cite@numerical\@biblabel{\@arabic\c@enumiv}\else\@empty\fi}%
+        {\ifthu@cite@numerical
+             \renewcommand{\makelabel}[1]{##1\hfil}
+             \settowidth\labelwidth{1.1cm}
+             \setlength{\labelsep}{0.4em}
+             \setlength{\itemindent}{0pt}
+             \usecounter{enumiv}%
+             \let\p@enumiv\@empty
+             \renewcommand\theenumiv{\@arabic\c@enumiv}
+         \else % author year
+             \newsavebox\thu@label
+             \renewcommand{\makelabel}[1]{%
+               \sbox\thu@label{##1}% TODO: too dirty...
+               \usebox\thu@label\llap{\textcolor{white}{\rule[-0.2em]{\wd\thu@label}{1.2em}}}}
+             \settowidth\labelwidth{0cm}
+             \setlength{\labelsep}{0em}
+             \setlength{\itemindent}{-2\ccwd}
+         \fi
          \setlength{\leftmargin}{\labelwidth+\labelsep}
-         \addtolength{\itemsep}{-0.7em}
-         \usecounter{enumiv}%
-         \let\p@enumiv\@empty
-         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+         \addtolength{\itemsep}{-0.7em}}%
     \sloppy\frenchspacing
     \clubpenalty4000
     \@clubpenalty \clubpenalty
