@@ -238,7 +238,7 @@
 % thuthesis.dtx & \textsc{DocStrip} 源文件（开发用）\\\midrule
 % thuthesis.cls & 模板类文件\\
 % thuthesis.cfg & 模板配置文件\\
-% thuthesis-numerical.bst & 参考文献样式文件\\
+% thuthesis-numeric.bst & 参考文献样式文件\\
 % thuthesis-authoryear.bst & 参考文献样式文件\\\midrule
 % main.tex & 示例文档主文件\\
 % shuji.tex & 书脊示例文档\\
@@ -406,9 +406,9 @@
 %
 %
 % \DescribeOption{citestyle}
-%   选择引用风格类型，当前支持：\option{numerical}（默认值），\option{authoryear}。
+%   选择引用风格类型，当前支持：\option{numeric}（默认值），\option{authoryear}。
 % \begin{latex}
-% % 理工科一般用 numerical；文科一般用 authoryear。
+% % 理工科一般用 numeric；文科一般用 authoryear。
 % \documentclass[citestyle=authoryear]{thuthesis}
 % \end{latex}
 %
@@ -1171,17 +1171,17 @@
 % 通过 citestyle 控制引用文献显示方式。
 % \changes{v5.4.0}{2017/12/1}{支持不同引用类型。}
 %    \begin{macrocode}
-\newif\ifthu@cite@numerical
+\newif\ifthu@cite@numeric
 \newif\ifthu@cite@authoryear
 \define@key{thu}{citestyle}{%
-  \thu@cite@numericalfalse
+  \thu@cite@numericfalse
   \thu@cite@authoryearfalse
   \expandafter\csname thu@cite@#1true\endcsname
-  \ifthu@cite@numerical\relax\else
+  \ifthu@cite@numeric\relax\else
     \ifthu@cite@authoryear\relax\else
       \ClassError{thuthesis}%
                  {Allowed cite style: \MessageBreak
-                  citestyle=[numberical | authoryear]}{}
+                  citestyle=[numeric | authoryear]}{}
 
     \fi
   \fi
@@ -1233,7 +1233,7 @@
 % 打开默认选项。
 %    \begin{macrocode}
 \kvsetkeys{thu}{%
-  citestyle=numerical,
+  citestyle=numeric,
   raggedbottom,
   arialtitle}
 %    \end{macrocode}
@@ -3095,7 +3095,7 @@
 % 容性，\cs{onlinecite} 会保留。}
 %    \begin{macrocode}
 %<*cls>
-\newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+\newcommand\bibstyle@numeric{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
 \newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
 \newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{,}}
 \citestyle{\thu@citestyle}
@@ -3139,8 +3139,8 @@
 \renewenvironment{thebibliography}[1]{%
    \thu@chapter*{\bibname}%
    \ifthu@bachelor\wuhao[1.619]\else\wuhao[1.5]\fi
-   \list{\ifthu@cite@numerical\@biblabel{\@arabic\c@enumiv}\else\@empty\fi}%
-        {\ifthu@cite@numerical
+   \list{\ifthu@cite@numeric\@biblabel{\@arabic\c@enumiv}\else\@empty\fi}%
+        {\ifthu@cite@numeric
              \renewcommand{\makelabel}[1]{##1\hfil}
              \settowidth\labelwidth{1.1cm}
              \setlength{\labelsep}{0.4em}
@@ -3172,7 +3172,7 @@
 % \end{environment}
 %
 % 下面修改 \pkg{natbib} 的引用格式，主要是将页码写在上标位置。
-% Numerical 模式的 \cs{citet} 的页码：
+% numeric 模式的 \cs{citet} 的页码：
 %    \begin{macrocode}
 \patchcmd\NAT@citexnum{%
   \@ifnum{\NAT@ctype=\z@}{%
@@ -3187,7 +3187,7 @@
 }{}{}
 %    \end{macrocode}
 %
-% Numerical 模式的 \cs{citep} 的页码：
+% numeric 模式的 \cs{citep} 的页码：
 %    \begin{macrocode}
 \renewcommand\NAT@citesuper[3]{\ifNAT@swa
   \if*#2*\else#2\NAT@spacechar\fi
