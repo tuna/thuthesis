@@ -1,6 +1,6 @@
 {
   "name": "thuthesis",
-  "version": "5.3.2",
+  "version": "5.4.0",
   "description": "Tsinghua University Thesis LaTex Template",
   "main": "gulpfile.js",
   "scripts": {
@@ -15,11 +15,11 @@
     "ThuThesis"
   ],
   "author": "Ruini Xue",
-  "license": "MIT",
+  "license": "LPPL",
   "bugs": {
     "url": "https://github.com/xueruini/thuthesis/issues"
   },
-  "homepage": "https://github.com/xueruini/thuthesis#readme",
+  "homepage": "https://github.com/xueruini/thuthesis",
   "devDependencies": {
     "del": "^3.0.0",
     "gulp": "^3.9.1",

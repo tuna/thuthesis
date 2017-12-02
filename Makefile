@@ -100,7 +100,7 @@ distclean: cleanall
 	-@$(RM) -r dist
 
 check: FORCE_MAKE
-	ag 'Tsinghua University Thesis Template|\\def\\version|"version":' thuthesis.dtx package.json
+	@ag 'Tsinghua University Thesis Template|\\def\\version|"version":' thuthesis.dtx package.json
 
 dist: all
 	@if [ -z "$(version)" ]; then \
