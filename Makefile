@@ -15,7 +15,7 @@ THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(FIGURES)
 # NOTE: update this to reflect your local file types.
 FIGURES=$(wildcard figures/*.eps figures/*.pdf)
 BIBFILE=ref/*.bib
-BSTFILE=*.bst
+BSTFILE=bst/*.bst
 SHUJICONTENTS=$(SHUJIMAIN).tex
 CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
