@@ -15,6 +15,7 @@ THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(FIGURES)
 # NOTE: update this to reflect your local file types.
 FIGURES=$(wildcard figures/*.eps figures/*.pdf)
 BIBFILE=ref/*.bib
+BSTFILE=bst/*.bst
 SHUJICONTENTS=$(SHUJIMAIN).tex
 CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
@@ -53,10 +54,10 @@ shuji: $(SHUJIMAIN).pdf
 
 ifeq ($(METHOD),latexmk)
 
-$(PACKAGE).pdf: $(CLSFILES) FORCE_MAKE
+$(PACKAGE).pdf: $(CLSFILES) $(THESISMAIN).tex FORCE_MAKE
 	$(METHOD) $(LATEXMKOPTS) $(PACKAGE).dtx
 
-$(THESISMAIN).pdf: $(CLSFILES) FORCE_MAKE
+$(THESISMAIN).pdf: $(CLSFILES) $(BSTFILE) FORCE_MAKE
 	$(METHOD) $(LATEXMKOPTS) $(THESISMAIN)
 
 $(SHUJIMAIN).pdf: $(CLSFILES) FORCE_MAKE
@@ -64,7 +65,7 @@ $(SHUJIMAIN).pdf: $(CLSFILES) FORCE_MAKE
 
 else ifneq (,$(filter $(METHOD),xelatex pdflatex))
 
-$(PACKAGE).pdf: $(CLSFILES)
+$(PACKAGE).pdf: $(CLSFILES) $(THESISMAIN).tex
 	$(METHOD) $(PACKAGE).dtx
 	makeindex -s gind.ist -o $(PACKAGE).ind $(PACKAGE).idx
 	makeindex -s gglo.ist -o $(PACKAGE).gls $(PACKAGE).glo
@@ -75,7 +76,7 @@ $(THESISMAIN).pdf: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
 	$(METHOD) $(THESISMAIN)
 	$(METHOD) $(THESISMAIN)
 
-$(THESISMAIN).bbl: $(BIBFILE)
+$(THESISMAIN).bbl: $(BIBFILE) $(BSTFILE)
 	$(METHOD) $(THESISMAIN)
 	-bibtex $(THESISMAIN)
 	$(RM) $(THESISMAIN).pdf
@@ -100,7 +101,7 @@ distclean: cleanall
 	-@$(RM) -r dist
 
 check: FORCE_MAKE
-	ag 'Tsinghua University Thesis Template|\\def\\version|"version":' thuthesis.dtx package.json
+	@ag 'Tsinghua University Thesis Template|\\def\\version|"version":' thuthesis.dtx package.json
 
 dist: all
 	@if [ -z "$(version)" ]; then \

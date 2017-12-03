@@ -10,8 +10,8 @@ const config = {
     template: {
         files: ['thuthesis.ins',
                 'thuthesis.dtx',
-                'thuthesis.bst',
-                'thuthesis.sty',
+                'bst/numeric.bst',
+                'bst/author-year.bst',
                 'Makefile',
                 'latexmkrc',
                 'README.md',
@@ -25,6 +25,7 @@ const config = {
                 'shuji.tex',
                 'main.pdf',
                 'shuji.pdf',
+                'thuthesis.sty',
                 'data/*.tex',
                 'figures/*.*',
                 'ref/*.bib']

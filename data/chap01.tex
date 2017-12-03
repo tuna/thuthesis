@@ -1,8 +1,9 @@
 \chapter{带 English 的标题}
 \label{cha:intro}
 
-这是 \thuthesis{} 的示例文档，基本上覆盖了模板中所有格式的设置。建议大家在使用模
-板之前，除了阅读《\thuthesis{}用户手册》，这个示例文档也最好能看一看。
+这是 \thuthesis\cite{thuthesis} 的示例文档，基本上覆盖了模板中所有格式的设置。建
+议大家在使用模板之前，除了阅读《\thuthesis{}用户手册》，这个示例文档也最好能看一
+看。
 
 小老鼠偷吃热凉粉；短长虫环绕矮高粱\footnote{韩愈（768-824），字退之，河南河阳（
   今河南孟县）人，自称郡望昌黎，世称韩昌黎。幼孤贫刻苦好学，德宗贞元八年进士。曾
@@ -12,8 +13,9 @@
 
 
 \section{封面相关}
-封面的例子请参看 cover.tex。主要符号表参看 denation.tex，附录和个人简历分别参看 appendix01.tex
-和 resume.tex。里面的命令都很直观，一看即会\footnote{你说还是看不懂？怎么会呢？}。
+封面的例子请参看 \texttt{cover.tex}。主要符号表参看 \texttt{denation.tex}，附录和
+个人简历分别参看 \texttt{appendix01.tex} 和 \texttt{resume.tex}。里面的命令都很直
+观，一看即会\footnote{你说还是看不懂？怎么会呢？}。
 
 \section{字体命令}
 \label{sec:first}
@@ -66,11 +68,10 @@
 \subsection{基本表格}
 \label{sec:basictable}
 
-模板中关于表格的宏包有三个： \pkg{booktabs}、\pkg{array} 和
-\pkg{longtabular}，命令有一个 \cs{hlinewd}。三线表可以用 \pkg{booktabs}
-提供的 \cs{toprule}、\cs{midrule} 和 \cs{bottomrule}。它们与
-\pkg{longtable} 能很好的配合使用。如果表格比较简单的话可以直接用命令
-\cs{hlinewd}\marg{width} 控制。
+模板中关于表格的宏包有三个：\pkg{booktabs}、\pkg{array} 和 \pkg{longtabular}，命
+令有一个 \cs{hlinewd}。三线表可以用 \pkg{booktabs} 提供
+的 \cs{toprule}、\cs{midrule} 和 \cs{bottomrule}。它们与 \pkg{longtable} 能很好的
+配合使用。如果表格比较简单的话可以直接用命令 \cs{hlinewd}\marg{width} 控制。
 \begin{table}[htb]
   \centering
   \begin{minipage}[t]{0.8\linewidth} % 如果想在表格中使用脚注，minipage是个不错的办法
@@ -85,7 +86,8 @@
       thuthesis.dtx & 所有的一切都在这里面\footnote{再来一个}。\\
       thuthesis.cls & 模板类文件。\\
       thuthesis.cfg & 模板配置文。cls 和 cfg 由前两个文件生成。\\
-      thuthesis.bst    & 参考文献 BIB\TeX\ 样式文件。\\
+      bst/numeric.bst    & 参考文献 BIB\TeX\ 样式文件。\\
+      bst/author-year.bst    & 参考文献 BIB\TeX\ 样式文件。\\
       thuthesis.sty   & 常用的包和命令写在这里，减轻主文件的负担。\\
       \bottomrule[1.5pt]
     \end{tabularx}
@@ -109,7 +111,7 @@
   \begin{minipage}[t]{0.8\textwidth} 
     \begin{tabularx}{\linewidth}{|l|X|X|X|X|}
       \hline
- \multirow{2}*{\diagbox[width=5em]{x}{y}} & \multicolumn{2}{c|}{First Half} & \multicolumn{2}{c|}{Second Half}\\\cline{2-5}
+      \multirow{2}*{\diagbox[width=5em]{x}{y}} & \multicolumn{2}{c|}{First Half} & \multicolumn{2}{c|}{Second Half}\\\cline{2-5}
       & 1st Qtr &2nd Qtr&3rd Qtr&4th Qtr \\ \hline
       East$^{*}$ &   20.4&   27.4&   90&     20.4 \\
       West$^{**}$ &   30.6 &   38.6 &   34.6 &  31.6 \\ \hline
@@ -140,8 +142,9 @@
 张旭草书为三绝云。集三十卷。今编诗二十五卷。\hfill —— 《全唐诗》诗人小传
 
 浮动体的并排放置一般有两种情况：1）二者没有关系，为两个独立的浮动体；2）二者隶属
-于同一个浮动体。对表格来说并排表格既可以像图~\ref{tab:parallel1}、图~\ref{tab:parallel2} 
-使用小页环境，也可以如图~\ref{tab:subtable} 使用子表格来做。图的例子参见第~\ref{sec:multifig} 节。
+于同一个浮动体。对表格来说并排表格既可以像图~\ref{tab:parallel1}、
+图~\ref{tab:parallel2} 使用小页环境，也可以如图~\ref{tab:subtable} 使用子表格来做。
+图的例子参见第~\ref{sec:multifig} 节。
 
 \begin{table}[htbp]
 \noindent\begin{minipage}{0.5\textwidth}
@@ -499,8 +502,9 @@ V_j & = v_j, & \qquad X_j & = x_j,
 当然参考文献可以直接写 \cs{bibitem}，虽然费点功夫，但是好控制，各种格式可以自己随意改
 写。
 
-本模板推荐使用 BIB\TeX，样式文件为 \texttt{thuthesis.bst}，基本符合学校的参考文献格
-式（如专利等引用未加详细测试）。看看这个例子，关于书的~\cite{tex, companion,
+本模板推荐使用 BIB\TeX，分别提供数字引用（\texttt{thuthesis-numeric.bst}）和作
+者年份引用（\texttt{thuthesis-authoryear.bst}）样式，基本符合学校的参考文献格式
+（如专利等引用未加详细测试）。看看这个例子，关于书的~\cite{tex, companion,
   ColdSources}，还有这些~\cite{Krasnogor2004e, clzs, zjsw}，关于杂志
 的~\cite{ELIDRISSI94, MELLINGER96, SHELL02}，硕士论文~\cite{zhubajie,
   metamori2004}，博士论文~\cite{shaheshang, FistSystem01}，标准文

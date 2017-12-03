@@ -1,22 +1,22 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2005-2016 by Ruini Xue <xueruini@gmail.com>
+% Copyright (C) 2005-2017 by Ruini Xue <xueruini@gmail.com>
 %
-% This file may be distributed and/or modified under the
-% conditions of the LaTeX Project Public License, either version 1.3a
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
 % of this license or (at your option) any later version.
-% The latest version of this license is in:
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
 %
-% http://www.latex-project.org/lppl.txt
-%
-% and version 1.3a or later is part of all distributions of LaTeX
-% version 2004/10/01 or later.
+% This work has the LPPL maintenance status `maintained'.
 %
 % \fi
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2017/03/26 5.3.2 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2017/12/2 5.4.0 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -238,7 +238,8 @@
 % thuthesis.dtx & \textsc{DocStrip} 源文件（开发用）\\\midrule
 % thuthesis.cls & 模板类文件\\
 % thuthesis.cfg & 模板配置文件\\
-% thuthesis.bst & 参考文献样式文件\\\midrule
+% bst/numeric.bst & 参考文献样式文件\\
+% bst/author-year.bst & 参考文献样式文件\\\midrule
 % main.tex & 示例文档主文件\\
 % shuji.tex & 书脊示例文档\\
 % ref/ & 示例文档参考文献目录\\
@@ -265,9 +266,9 @@
 % 略此节，直接阅读第~\ref{sec:generate-thesis} 节。若下载 CTAN 包或者 Github 开发
 % 代码，请阅读本节了解生成模板文件的步骤。}
 %
-% 模板解压缩后生成文件夹 \file{thuthesis-vX.Y.Z}\footnote{\texttt{vX.Y.Z} 为版本号。}，
-% 其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参考文献
-% 样式 \file{thuthesis.bst}，示例文档
+% 模板解压缩后生成文件夹 \file{thuthesis-vX.Y.Z}\footnote{\texttt{vX.Y.Z} 为版本
+% 号。}，其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参
+% 考文献样式 \file{bst/numeric.bst} 和 \file{bst/author-year.bst}，示例文档
 % （\file{main.tex}，\file{shuji.tex}，\file{thuthesis.sty}\footnote{可能用到的包
 % 以及一些命令定义都放在这里，以免 \file{thuthesis.cls} 过分臃
 % 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
@@ -351,15 +352,15 @@
 % \label{sec:updgrade}
 % \thuthesis\ 升级非常简单，可以通过 \TeX 发行版的包管理工具自动更新发行版，也可
 % 以下载最新的开发版，
-% 将 \file{thuthesis.ins}，\file{thuthesis.dtx} 和 \file{thuthesis.bst} 拷贝至工作目
-% 录覆盖相应的文件，然后运行：
+% 将 \file{thuthesis.ins}，\file{thuthesis.dtx} 和 \file{bst/} 拷贝至工作目录覆盖
+% 相应的文件，然后运行：
 % \begin{shell}
 % $ latex thuthesis.ins
 % \end{shell}
 %
 % 生成新的类文件和配置文件即可。也可以直接拷
-% 贝 \file{thuthesis.cls}，\file{thuthesis.cfg} 和 \file{thuthesis.bst}，免去上面命令
-% 的执行。
+% 贝 \file{thuthesis.cls}，\file{thuthesis.cfg} 和 \file{bst/}，免去上面命令的执
+% 行。
 %
 %
 % \section{使用说明}
@@ -379,12 +380,11 @@
 %
 % \subsection{示例文件}
 % \label{sec:userguide}
-% 模板核心文件有三
-% 个：\file{thuthesis.cls}，\file{thuthesis.cfg} 和\file{thuthesis.bst}，但是如果
-% 没有示例文档用户会发现很难下手。所以推荐新用户从模板自带的示例文档入手，里面包
-% 括了论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。
-% 对于不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示
-% 例文档，具体内容可以参考模板附带的 \file{main.tex} 和 \file{data/}。
+% 模板核心文件有：\file{thuthesis.cls}，\file{thuthesis.cfg} 和 \file{bst/}，但是
+% 如果没有示例文档用户会发现很难下手。所以推荐新用户从模板自带的示例文档入手，里
+% 面包括了论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可
+% 以。对于不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自
+% 于示例文档，具体内容可以参考模板附带的 \file{main.tex} 和 \file{data/}。
 %
 % \lstinputlisting[style=lstStyleLaTeX]{main.tex}
 %
@@ -444,6 +444,52 @@
 %
 % \DescribeOption{arialtitle}
 % 章节标题中英文是否用 \emph{Arial} 字体（默认打开）。
+%
+% \subsection{引用方式}
+% \label{sec:citestyle}
+% 模板支持两种引用方式，分别为理工科常用的“数字式 [1]”和文科常用
+% 的“作者-年份 (Zhang, 2008)”。使用者可通过 \cs{bibliographystyle} 来选择：
+% \begin{latex}
+% % 两个样式文件都置于 bst/，故引用时许注意路径。
+% % 数字式
+% \bibliographystyle{bst/numeric}
+%
+% % 作者-年份
+% \bibliographystyle{bst/author-year}
+% \end{latex}
+%
+% \DescribeMacro{\inlinecite}
+% 学校要求的参考文献引用有两种模式：（1）上标模式。比如``同样的工作有很
+% 多$^{[1,2]}$\ldots''。（2）正文模式。比如``文[3] 中详细说明了\ldots''。其中上标
+% 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
+% 的 \cs{cite}\marg{key}，而 \cs{inlinecite}\marg{key} 则用来生成正文模式。
+%
+% 关于参考文献模板推荐使用 \BibTeX，关于中文参考文献需要额外增加一个 Entry:
+% \texttt{lang}，将其设置为 \texttt{zh} 用来指示此参考文献为中文。如：
+% \begin{latex}
+% @INPROCEEDINGS{cnproceed,
+%   author    = {王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝},
+%   title     = {武林高手从入门到精通},
+%   booktitle = {第~$N$~次华山论剑},
+%   year      = 2006,
+%   address   = {西安, 中国},
+%   month     = sep,
+%   lang      = "zh",
+% }
+%
+% @ARTICLE{cnarticle,
+%   AUTHOR  = "贾宝玉 and 林黛玉 and 薛宝钗 and 贾探春",
+%   TITLE   = "论刘姥姥食量大如牛之现实意义",
+%   JOURNAL = "红楼梦杂谈",
+%   PAGES   = "260--266",
+%   VOLUME  = "224",
+%   YEAR    = "1800",
+%   LANG    = "zh",
+% }
+% \end{latex}
+%
+% 注意如果不需要引用参考文献，请删除 \file{main.tex} 中 \cs{bibliography} 开头的两行，
+% 以避免可能的编译错误。
 %
 % \subsection{中文字体}
 % \label{sec:chinese-fonts}
@@ -853,12 +899,11 @@
 %
 % \subsubsection{致谢声明}
 % \DescribeEnv{acknowledgement}
-% 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！下面是数学系一位同
-% 学致谢里的话，拿过来做个广告。希望每个人都能写这么一句 :)
+% 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦。
 % \begin{latex}
 % \begin{acknowledgement}
 %   …
-%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX\ 编译等方面给我的很多帮助！
+%   还要特别感谢 \thuthesis\ 节省了论文排版时间！
 % \end{acknowledgement}
 % \end{latex}
 %
@@ -964,6 +1009,32 @@
 %
 % 具体用法请参看示例文档 \file{data/resume.tex}。
 %
+% \subsection{书脊}
+% \DescribeMacro{\shuji}
+% 生成装订的书脊，为竖排格式，命令格式：\cs{shuji}\oarg{标题}\oarg{作者}。默认参
+% 数为论文中文题目和中文作者。如果中文题目中没有英文字母，那么直接调用此命令即可。
+% 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{shuji.tex}）。下面是一
+% 个例子：
+% \begin{latex}
+% \documentclass[type=master]{thuthesis}
+% % 此处 type 无所谓
+%
+% \begin{document}
+% \thuset{
+%   ctitle={论文中文题目},
+%   cauthor={中文姓名}}
+%
+% \shuji % 使用默认标题和默认作者
+%
+% \shuji[使用默认作者的标题]
+%
+% \shuji[同时修改标题和作者的标题][尼瑞薛]
+%
+% % 如果标题中有英文，那可以参考如下方法进行微调：
+% \shuji[清华大学 \raisebox{-5pt}{\LaTeX} 论文模板 \raisebox{-5pt}{v\version} 样例]
+% \end{document}
+% \end{latex}
+%
 % \subsection{自定义}
 % \label{sec:othercmd}
 %
@@ -1008,42 +1079,6 @@
 % \medskip
 % \noindent\framebox[\linewidth][l]{{\heiti 胡说~1.1~~~} % {契丹武士要来中原夺武林秘笈。—— 慕容博}}
 %
-% \subsubsection{引用方式}
-%
-% \DescribeMacro{\inlinecite}
-% 学校要求的参考文献引用有两种模式：（1）上标模式。比如``同样的工作有很
-% 多$^{[1,2]}$\ldots''。（2）正文模式。比如``文[3] 中详细说明了\ldots''。其中上标
-% 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
-% 的 \cs{cite}\marg{key}，而 \cs{inlinecite}\marg{key} 则用来生成正文模式。
-%
-% 关于参考文献模板推荐使用 \BibTeX，关于中文参考文献需要额外增加一个 Entry:
-% \texttt{lang}，将其设置为 \texttt{zh} 用来指示此参考文献为中文，以
-% 便 \file{thuthesis.bst} 处理。如：
-% \begin{latex}
-% @INPROCEEDINGS{cnproceed,
-%   author    = {王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝},
-%   title     = {武林高手从入门到精通},
-%   booktitle = {第~$N$~次华山论剑},
-%   year      = 2006,
-%   address   = {西安, 中国},
-%   month     = sep,
-%   lang      = "zh",
-% }
-%
-% @ARTICLE{cnarticle,
-%   AUTHOR  = "贾宝玉 and 林黛玉 and 薛宝钗 and 贾探春",
-%   TITLE   = "论刘姥姥食量大如牛之现实意义",
-%   JOURNAL = "红楼梦杂谈",
-%   PAGES   = "260--266",
-%   VOLUME  = "224",
-%   YEAR    = "1800",
-%   LANG    = "zh",
-% }
-% \end{latex}
-%
-% 注意如果不需要引用参考文献，请删除 \file{main.tex} 中 \cs{bibliography} 开头的两行，
-% 以避免可能的编译错误。
-%
 % \subsubsection{列表环境}
 % \DescribeEnv{itemize}
 % \DescribeEnv{enumerate}
@@ -1052,42 +1087,15 @@
 % 缩。一方面清除了多余空间，另一方面用户可以自己指定列表环境的样式（如标签符号，
 % 缩进等）。细节请参看 \pkg{enumitem} 文档，此处不再赘述。
 %
-% \subsubsection{书脊}
-% \DescribeMacro{\shuji}
-% 生成装订的书脊，为竖排格式，命令格式：\cs{shuji}\oarg{标题}\oarg{作者}。默认参
-% 数为论文中文题目和中文作者。如果中文题目中没有英文字母，那么直接调用此命令即可。
-% 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{shuji.tex}）。下面是一
-% 个例子：
-% \begin{latex}
-% \documentclass[type=master]{thuthesis}
-% % 此处 type 无所谓
-%
-% \begin{document}
-% \thuset{
-%   ctitle={论文中文题目},
-%   cauthor={中文姓名}}
-%
-% \shuji % 使用默认标题和默认作者
-%
-% \shuji[使用默认作者的标题]
-%
-% \shuji[同时修改标题和作者的标题][尼瑞薛]
-%
-% % 如果标题中有英文，那可以参考如下方法进行微调：
-% \shuji[清华大学 \raisebox{-5pt}{\LaTeX} 论文模板 \raisebox{-5pt}{v\version} 样例]
-% \end{document}
-% \end{latex}
-%
 % \subsection{其它}
 % 模板的配置文件 \file{thuthesis.cfg} 中定义了很多固定词汇，一般无须修改。如果有特殊需求，
 % 推荐在导言区使用 \cs{renewcommand}。
 %
 % \section{致谢}
 % \label{sec:thanks}
-% 感谢这些年来一直陪伴 \thuthesis\ 成长的新老同学，大家的需求是模板前进的动力，
-% 大家的反馈是模板提高的机会。
+% 感谢这些年来一直陪伴 \thuthesis\ 成长的新老同学！
 %
-% 热烈欢迎各位到 \href{http://github.com/xueruini/thuthesis/}{\thuthesis\ Github 主页}贡献！
+% 欢迎各位到 \href{http://github.com/xueruini/thuthesis/}{\thuthesis\ Github 主页}贡献！
 %
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
@@ -1099,7 +1107,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2017/03/26 5.3.2 Tsinghua University Thesis Template]
+%<cls|cfg>[2017/12/2 5.4.0 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1118,7 +1126,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{5.3.2}
+\def\version{5.4.0}
 
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
@@ -1127,7 +1135,7 @@
   setkeys=\kvsetkeys}
 %    \end{macrocode}
 %
-% 用 \pkg{kvoptions} 的 key=value 方式来设置论文类型。
+% 用 \pkg{kvoptions} 的 \texttt{key=value} 方式来设置论文类型。
 % \changes{v5.0.0}{2015/12/13}{使用 \pkg{kvoptions} 简化选项 type。}
 %    \begin{macrocode}
 \newif\ifthu@bachelor
@@ -1139,7 +1147,18 @@
   \thu@masterfalse
   \thu@doctorfalse
   \thu@postdoctorfalse
-  \expandafter\csname thu@#1true\endcsname}
+  \expandafter\csname thu@#1true\endcsname
+  \ifthu@bachelor\relax\else
+    \ifthu@master\relax\else
+      \ifthu@doctor\relax\else
+        \ifthu@postdoctor\relax\else
+          \ClassError{thuthesis}%
+                     {Please specify thesis type in option: \MessageBreak
+                      type=[bachelor | master | doctor | postdoctor]}{}
+        \fi
+      \fi
+    \fi
+  \fi}
 \def\thu@deprecated@type@option{%
   \kvsetkeys{thu}{type=\CurrentOption} % for compatability.
   \ClassError{thuthesis}{Option '\CurrentOption' is deprecated, \MessageBreak
@@ -1217,20 +1236,6 @@
 \LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain]{ctexbook}
 %    \end{macrocode}
 %
-% 用户至少要提供一个选项，指定论文类型。
-%    \begin{macrocode}
-\ifthu@bachelor\relax\else
-  \ifthu@master\relax\else
-    \ifthu@doctor\relax\else
-      \ifthu@postdoctor\relax\else
-        \ClassError{thuthesis}%
-                   {Please specify thesis type in option: \MessageBreak
-                    type=[bachelor | master | doctor | postdoctor]}{}
-      \fi
-    \fi
-  \fi
-\fi
-%    \end{macrocode}
 %
 % \subsection{装载宏包}
 % \label{sec:loadpackage}
@@ -3065,17 +3070,14 @@
 % \label{sec:ref}
 %
 % \begin{macro}{\inlinecite}
-% 定义正文引用模式，可用 \cs{citestyle} 调用 \texttt{numerical}  或
-% \texttt{authoryear}，默认 \texttt{numerical}。
 % 依赖于 \pkg{natbib} 宏包，修改其中的命令。 旧命令 \cs{onlinecite} 依然可用。
 % \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
 % 容性，\cs{onlinecite} 会保留。}
+% \changes{v5.4.0}{2017/12/3}{\cs{bibliographystyle}\marg{newbib} will cause \cs{bibstyle@newbib} to
+% be called on THE NEXT LATEX RUN (via the aux file).}
 %    \begin{macrocode}
 %<*cls>
-\newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
-\newcommand\bibstyle@authoryear{\bibpunct{(}{)}{;}{a}{,}{,}}
 \newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{,}}
-\citestyle{numerical}
 \DeclareRobustCommand\inlinecite{\@inlinecite}
 \def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
 \let\onlinecite\inlinecite
@@ -3105,41 +3107,32 @@
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
-% \begin{environment}{thebibliography}
-% 修改默认的 thebibliography 环境，增加一些调整代码。
+%
+% 复用 \pkg{natbib} 的 \texttt{thebibliography} 环境，调整距离。
 % \changes{v2.4}{2006/04/15}{参考文献间距调小一点，label 长度增加一点，以便让超过
 %  100 的参考文献更好地对齐。}
 % \changes{v2.5}{2006/05/13}{参考文献序号靠左，而不是靠右。}
 % \changes{v2.6.4}{2006/10/23}{调整参考文献标签宽度，使得条目增多时仍能对齐。}
+% \changes{v5.4.0}{2017/12/03}{基于 \pkg{natbib} 的环境调整距离兼容性更好。}
 %    \begin{macrocode}
 %<*cls>
-\renewenvironment{thebibliography}[1]{%
-   \thu@chapter*{\bibname}%
-   \ifthu@bachelor \wuhao[1.619]\else \wuhao[1.5]\fi
-   \list{\@biblabel{\@arabic\c@enumiv}}%
-        {\renewcommand{\makelabel}[1]{##1\hfill}
-         \settowidth\labelwidth{1.1cm}
-         \setlength{\labelsep}{0.4em}
-         \setlength{\itemindent}{0pt}
-         \setlength{\leftmargin}{\labelwidth+\labelsep}
-         \addtolength{\itemsep}{-0.7em}
-         \usecounter{enumiv}%
-         \let\p@enumiv\@empty
-         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-    \sloppy\frenchspacing
-    \clubpenalty4000
-    \@clubpenalty \clubpenalty
-    \widowpenalty4000%
-    \interlinepenalty4000%
-    \sfcode`\.\@m}
-   {\def\@noitemerr
-     {\@latex@warning{Empty `thebibliography' environment}}%
-    \endlist\frenchspacing}
+\renewcommand\bibsection{\thu@chapter*{\bibname}}
+\renewcommand\bibfont{\ifthu@bachelor\wuhao[1.619]\else\wuhao[1.5]\fi}
+\setlength\bibhang{2\ccwd}
+\addtolength{\bibsep}{-0.7em}
+\setlength{\labelsep}{0.4em}
 %    \end{macrocode}
-% \end{environment}
+%
+% 两种引用样式：
+%    \begin{macrocode}
+\expandafter\newcommand\csname bibstyle@numeric\endcsname{%
+  \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+\expandafter\newcommand\csname bibstyle@author-year\endcsname{%
+  \bibpunct{(}{)}{;}{a}{,}{,}}
+%    \end{macrocode}
 %
 % 下面修改 \pkg{natbib} 的引用格式，主要是将页码写在上标位置。
-% Numerical 模式的 \cs{citet} 的页码：
+% numeric 模式的 \cs{citet} 的页码：
 %    \begin{macrocode}
 \patchcmd\NAT@citexnum{%
   \@ifnum{\NAT@ctype=\z@}{%
@@ -3154,7 +3147,7 @@
 }{}{}
 %    \end{macrocode}
 %
-% Numerical 模式的 \cs{citep} 的页码：
+% Numeric 模式的 \cs{citep} 的页码：
 %    \begin{macrocode}
 \renewcommand\NAT@citesuper[3]{\ifNAT@swa
   \if*#2*\else#2\NAT@spacechar\fi
