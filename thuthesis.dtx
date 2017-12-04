@@ -16,7 +16,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2017/12/3 5.4.0 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2017/12/4 5.4.1 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -238,8 +238,8 @@
 % thuthesis.dtx & \textsc{DocStrip} 源文件（开发用）\\\midrule
 % thuthesis.cls & 模板类文件\\
 % thuthesis.cfg & 模板配置文件\\
-% bst/numeric.bst & 参考文献样式文件\\
-% bst/author-year.bst & 参考文献样式文件\\\midrule
+% thuthesis-numeric.bst & 参考文献样式文件\\
+% thuthesis-author-year.bst & 参考文献样式文件\\\midrule
 % main.tex & 示例文档主文件\\
 % shuji.tex & 书脊示例文档\\
 % ref/ & 示例文档参考文献目录\\
@@ -268,7 +268,7 @@
 %
 % 模板解压缩后生成文件夹 \file{thuthesis-vX.Y.Z}\footnote{\texttt{vX.Y.Z} 为版本
 % 号。}，其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参
-% 考文献样式 \file{bst/numeric.bst} 和 \file{bst/author-year.bst}，示例文档
+% 考文献样式 \file{thuthesis-numeric.bst} 和 \file{thuthesis-author-year.bst}，示例文档
 % （\file{main.tex}，\file{shuji.tex}，\file{thuthesis.sty}\footnote{可能用到的包
 % 以及一些命令定义都放在这里，以免 \file{thuthesis.cls} 过分臃
 % 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
@@ -452,10 +452,10 @@
 % \begin{latex}
 % % 两个样式文件都置于 bst/，故引用时许注意路径。
 % % 数字式
-% \bibliographystyle{bst/numeric}
+% \bibliographystyle{thuthesis-numeric}
 %
 % % 作者-年份
-% \bibliographystyle{bst/author-year}
+% \bibliographystyle{thuthesis-author-year}
 % \end{latex}
 %
 % \DescribeMacro{\inlinecite}
@@ -1107,7 +1107,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
 %<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2017/12/3 5.4.0 Tsinghua University Thesis Template]
+%<cls|cfg>[2017/12/4 5.4.1 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -1126,7 +1126,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{\textsc{ThuThesis}}
-\def\version{5.4.0}
+\def\version{5.4.1}
 
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
@@ -3124,10 +3124,11 @@
 %    \end{macrocode}
 %
 % 两种引用样式：
+% \changes{v5.4.1}{2017/12/04}{bst 在 ctan 上不分路径，故加前缀。}
 %    \begin{macrocode}
-\expandafter\newcommand\csname bibstyle@numeric\endcsname{%
+\expandafter\newcommand\csname bibstyle@thuthesis-numeric\endcsname{%
   \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
-\expandafter\newcommand\csname bibstyle@author-year\endcsname{%
+\expandafter\newcommand\csname bibstyle@thuthesis-author-year\endcsname{%
   \bibpunct{(}{)}{;}{a}{,}{,}}
 %    \end{macrocode}
 %

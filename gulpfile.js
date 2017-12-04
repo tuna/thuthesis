@@ -10,8 +10,8 @@ const config = {
     template: {
         files: ['thuthesis.ins',
                 'thuthesis.dtx',
-                'bst/numeric.bst',
-                'bst/author-year.bst',
+                'thuthesis-numeric.bst',
+                'thuthesis-author-year.bst',
                 'Makefile',
                 'latexmkrc',
                 'README.md',
