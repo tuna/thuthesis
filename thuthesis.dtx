@@ -84,7 +84,7 @@
 % subfig to be compatible with subfigure. add \pkg{courier} package for tt font.}
 % \changes{v1.4}{2005/12/05}{Fix the problem of \textbf{chinese}, which is
 % because both CJK and everysel redefine the \cs{selectfont}. So, a not so good
-% workaround is merge them up. Add \file{shuji.tex} example. Add \cs{pozhehao} command.}
+% workaround is to merge them up. Add \file{shuji.tex} example. Add \cs{pozhehao} command.}
 % \changes{v2.1}{2006/02/27}{Add support to bachelor thesis.}
 % \changes{v2.1}{2006/03/01}{Remove \pkg{fancyhdr} and \pkg{geometry}.}
 % \changes{v2.1}{2006/03/01}{Redefine footnote marks.}
@@ -148,6 +148,7 @@
 % \changes{v4.8}{2013/03/04}{dvips method is deprecated. We ask their users to load it manually.}
 % \changes{v4.8}{2013/03/09}{reset baselinestretch after ctex's change.}
 % \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \CTeX。}
+% \changes{v5.4.2}{2017/12/16}{删除 \cs{pozhehao}。}
 %
 % \def\indexname{索引}
 % \def\glossaryname{修改记录}
@@ -3301,19 +3302,6 @@
   \xiaosan\ziju{0.4}%
   \noindent\hfill\rotatebox[origin=lt]{-90}{\makebox[\textheight]{#1\hfill#2}}}
 %</cls>
-%    \end{macrocode}
-% \end{macro}
-%
-% \subsection{自定义命令和环境}
-% \label{sec:userdefine}
-%
-% \begin{macro}{\pozhehao}
-% 为了兼容性保留之，推荐直接输入“——”。
-% \changes{v2.1}{2006/01/12}{稍微加宽一点。同时把名字改为\textbf{破折号}：\cs{pozhehao}}
-%    \begin{macrocode}
-%<*cfg>
-\newcommand{\pozhehao}{——}
-%</cfg>
 %    \end{macrocode}
 % \end{macro}
 %
