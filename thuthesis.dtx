@@ -1148,18 +1148,7 @@
   \thu@masterfalse
   \thu@doctorfalse
   \thu@postdoctorfalse
-  \expandafter\csname thu@#1true\endcsname
-  \ifthu@bachelor\relax\else
-    \ifthu@master\relax\else
-      \ifthu@doctor\relax\else
-        \ifthu@postdoctor\relax\else
-          \ClassError{thuthesis}%
-                     {Please specify thesis type in option: \MessageBreak
-                      type=[bachelor | master | doctor | postdoctor]}{}
-        \fi
-      \fi
-    \fi
-  \fi}
+  \expandafter\csname thu@#1true\endcsname}
 \def\thu@deprecated@type@option{%
   \kvsetkeys{thu}{type=\CurrentOption} % for compatability.
   \ClassError{thuthesis}{Option '\CurrentOption' is deprecated, \MessageBreak
@@ -1222,6 +1211,17 @@
 % 解析用户传递过来的选项，并加载 \pkg{ctexbook}。
 %    \begin{macrocode}
 \ProcessKeyvalOptions*
+\ifthu@bachelor\relax\else
+  \ifthu@master\relax\else
+    \ifthu@doctor\relax\else
+      \ifthu@postdoctor\relax\else
+        \ClassError{thuthesis}%
+                   {Please specify thesis type in option: \MessageBreak
+                    type=[bachelor | master | doctor | postdoctor]}{}
+      \fi
+    \fi
+  \fi
+\fi
 %    \end{macrocode}
 %
 % 使用 \XeTeX\ 引擎时，\pkg{fontspec} 宏包会被 \pkg{xeCJK} 自动调用。传递
