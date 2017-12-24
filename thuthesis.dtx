@@ -353,15 +353,15 @@
 % \label{sec:updgrade}
 % \thuthesis\ 升级非常简单，可以通过 \TeX 发行版的包管理工具自动更新发行版，也可
 % 以下载最新的开发版，
-% 将 \file{thuthesis.ins}，\file{thuthesis.dtx} 和 \file{bst/} 拷贝至工作目录覆盖
-% 相应的文件，然后运行：
+% 将 \file{thuthesis.ins}，\file{thuthesis.dtx}，\file{thuthesis-author-year.bst}
+% 和 \file{thuthesis-numeric.bst} 拷贝至工作目录覆盖相应的文件，然后运行：
 % \begin{shell}
 % $ latex thuthesis.ins
 % \end{shell}
 %
 % 生成新的类文件和配置文件即可。也可以直接拷
-% 贝 \file{thuthesis.cls}，\file{thuthesis.cfg} 和 \file{bst/}，免去上面命令的执
-% 行。
+% 贝 \file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thuthesis-author-year.bst}
+% 和 \file{thuthesis-numeric.bst}，免去上面命令的执行。
 %
 %
 % \section{使用说明}
@@ -381,11 +381,13 @@
 %
 % \subsection{示例文件}
 % \label{sec:userguide}
-% 模板核心文件有：\file{thuthesis.cls}，\file{thuthesis.cfg} 和 \file{bst/}，但是
-% 如果没有示例文档用户会发现很难下手。所以推荐新用户从模板自带的示例文档入手，里
-% 面包括了论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可
-% 以。对于不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自
-% 于示例文档，具体内容可以参考模板附带的 \file{main.tex} 和 \file{data/}。
+% 模板核心文件
+% 有：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thuthesis-numeric.bst} 和
+% \file{thuthesis-author-year.bst}，但是如果没有示例文档用户会发现很难下手。所以推
+% 荐新用户从模板自带的示例文档入手，里面包括了论文写作用到的所有命令及其使用方法，
+% 只需要用自己的内容进行相应替换就可以。对于不清楚的命令可以查阅本手册。下面的例
+% 子描述了模板中章节的组织形式，来自于示例文档，具体内容可以参考模板附带
+% 的 \file{main.tex} 和 \file{data/}。
 %
 % \lstinputlisting[style=lstStyleLaTeX]{main.tex}
 %
@@ -451,7 +453,6 @@
 % 模板支持两种引用方式，分别为理工科常用的“数字式 [1]”和文科常用
 % 的“作者-年份 (Zhang, 2008)”。使用者可通过 \cs{bibliographystyle} 来选择：
 % \begin{latex}
-% % 两个样式文件都置于 bst/，故引用时许注意路径。
 % % 数字式
 % \bibliographystyle{thuthesis-numeric}
 %
