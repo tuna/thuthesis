@@ -2608,9 +2608,17 @@
                 \thu@put@title{\thu@assosuper@title} & \thu@title@sep
                 & {\ziju{0.6875}\thu@cassosupervisor}\\
               \fi
-              \ifx\thu@ccosupervisor\@empty\else
-                \hfill\makebox[0pt][r]{\thu@cosuper@title} & \thu@title@sep
-                & {\ziju{0.6875}\thu@ccosupervisor}\\
+              \ifthu@master
+                \ifx\thu@ccosupervisor\@empty\else
+                  \hfill\makebox[0pt][r]{\thu@cosuper@title} & \thu@title@sep
+                  & {\ziju{0.6875}\thu@ccosupervisor}\\
+                \fi
+              \fi
+              \ifthu@doctor
+                \ifx\thu@ccosupervisor\@empty\else
+                  \thu@put@title{\thu@cosuper@title} & \thu@title@sep
+                  & {\ziju{0.6875}\thu@ccosupervisor}\\
+                \fi
               \fi
             \end{tabular}
         \end{center}}}
