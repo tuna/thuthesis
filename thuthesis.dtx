@@ -2608,14 +2608,12 @@
                 \thu@put@title{\thu@assosuper@title} & \thu@title@sep
                 & {\ziju{0.6875}\thu@cassosupervisor}\\
               \fi
-              \ifthu@master
-                \ifx\thu@ccosupervisor\@empty\else
+              \ifx\thu@ccosupervisor\@empty\else
+                \ifthu@master
                   \hfill\makebox[0pt][r]{\thu@cosuper@title} & \thu@title@sep
                   & {\ziju{0.6875}\thu@ccosupervisor}\\
                 \fi
-              \fi
-              \ifthu@doctor
-                \ifx\thu@ccosupervisor\@empty\else
+                \ifthu@doctor
                   \thu@put@title{\thu@cosuper@title} & \thu@title@sep
                   & {\ziju{0.6875}\thu@ccosupervisor}\\
                 \fi
