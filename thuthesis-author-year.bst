@@ -859,7 +859,7 @@ FUNCTION {format.address}
 
 FUNCTION {format.sine.nomine}
 { is.in.chinese
-    { "[出版地不详]" }
+    { "[出版者不详]" }
     { "[s.n.]" }
   if$
 }
