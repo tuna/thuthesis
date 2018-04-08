@@ -2869,7 +2869,7 @@
 % 悬挂缩进，英文摘要同。}
 % \changes{v4.4.2}{2008/06/05}{本科生格式中文关键词采用首行缩进且无悬挂缩进。}
 %    \begin{macrocode}
-  \vskip12bp
+  \ifthu@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{\textbf\thu@ckeywords@title}{\thu@ckeywords}
 %    \end{macrocode}
 %
@@ -2896,7 +2896,7 @@
 % indent and no hang-indent.}
 % \changes{v4.7}{2012/06/02}{Bachelor sample uses Keywords w/o space \texttt{-\_-}}
 %    \begin{macrocode}
-  \vskip12bp
+  \ifthu@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{%
     \textbf{\ifthu@bachelor Keywords:\else Key words:\fi\enskip}}{\thu@ekeywords}}
 %</cls>
