@@ -31,8 +31,7 @@ install:
   - sudo $TEXBIN/tlmgr install boondox latexmk ulem newpx newtx
 
 before_script:
-  - sed -i 's/type=bachelor/type=doctor/' main.tex
-  - sed -i 's/,fontset=windowsold//' main.tex
+  - sed -i 's/degree=bachelor/degree=doctor/' main.tex
   - sed -i 's/\[RawFeature={vertical:}\]{FangSong}/\[Extension=.otf,RawFeature={vertical:}\]{FandolFang-Regular}/' shuji.tex
 
 script:
