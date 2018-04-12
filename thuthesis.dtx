@@ -3079,12 +3079,12 @@
 % \subsection{参考文献}
 % \label{sec:ref}
 %
+% \changes{v5.4.4}{2018/04/12}{参考文献列表的页码使用 hyphen 取代 en dash。}
+%
 % \begin{macro}{\inlinecite}
 % 依赖于 \pkg{natbib} 宏包，修改其中的命令。 旧命令 \cs{onlinecite} 依然可用。
 % \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
 % 容性，\cs{onlinecite} 会保留。}
-% \changes{v5.4.0}{2017/12/3}{\cs{bibliographystyle}\marg{newbib} will cause \cs{bibstyle@newbib} to
-% be called on THE NEXT LATEX RUN (via the aux file).}
 %    \begin{macrocode}
 %<*cls>
 \newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{,}}
@@ -3134,6 +3134,8 @@
 %    \end{macrocode}
 %
 % 两种引用样式：
+% \changes{v5.4.0}{2017/12/3}{\cs{bibliographystyle}\marg{newbib} will cause \cs{bibstyle@newbib} to
+% be called on THE NEXT LATEX RUN (via the aux file).}
 % \changes{v5.4.1}{2017/12/04}{bst 在 ctan 上不分路径，故加前缀。}
 %    \begin{macrocode}
 \expandafter\newcommand\csname bibstyle@thuthesis-numeric\endcsname{%
