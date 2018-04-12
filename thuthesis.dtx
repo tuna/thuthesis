@@ -3184,6 +3184,21 @@
 \renewcommand\NAT@cite%
     [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
         #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
+%    \end{macrocode}
+%
+% 在顺序编码制下，\pkg{natbib} 只有在三个以上连续文献引用才会使用连接号，
+% 这里修改为允许两个引用使用连接号。
+% \changes{v5.4.4}{2018/04/12}{允许连续两个文献引用使用连接号。}
+%    \begin{macrocode}
+\patchcmd{\NAT@citexnum}{%
+  \ifx\NAT@last@yr\relax
+    \def@NAT@last@yr{\@citea}%
+  \else
+    \def@NAT@last@yr{--\NAT@penalty}%
+  \fi
+}{%
+  \def@NAT@last@yr{-\NAT@penalty}%
+}{}{}
 %</cls>
 %    \end{macrocode}
 %
