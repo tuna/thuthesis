@@ -25,6 +25,10 @@ dist
 *.hd
 *.fdb_latexmk
 *.fls
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
 *.xdv
 dtx-style.sty
 thuthesis.cls
