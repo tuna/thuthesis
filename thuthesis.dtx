@@ -3130,6 +3130,7 @@
 % \changes{v2.5}{2006/05/13}{参考文献序号靠左，而不是靠右。}
 % \changes{v2.6.4}{2006/10/23}{调整参考文献标签宽度，使得条目增多时仍能对齐。}
 % \changes{v5.4.0}{2017/12/03}{基于 \pkg{natbib} 的环境调整距离兼容性更好。}
+% \changes{v5.4.4}{2018/04/14}{参考文献标号左对齐。
 %    \begin{macrocode}
 %<*cls>
 \renewcommand\bibsection{\thu@chapter*{\bibname}}
@@ -3137,6 +3138,7 @@
 \setlength\bibhang{2\ccwd}
 \addtolength{\bibsep}{-0.7em}
 \setlength{\labelsep}{0.4em}
+\def\@biblabel#1{[#1]\hfill}
 %    \end{macrocode}
 %
 % 两种引用样式：
