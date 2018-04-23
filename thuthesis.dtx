@@ -241,7 +241,9 @@
 % thuthesis.cls & 模板类文件\\
 % thuthesis.cfg & 模板配置文件\\
 % thuthesis-numeric.bst & 参考文献样式文件\\
-% thuthesis-author-year.bst & 参考文献样式文件\\\midrule
+% thuthesis-author-year.bst & 参考文献样式文件\\
+% tsinghua.pdf & 校名 logo，系统无隶书字体时使用 \\
+% tsinghua.eps & 同上 \\\midrule
 % main.tex & 示例文档主文件\\
 % shuji.tex & 书脊示例文档\\
 % ref/ & 示例文档参考文献目录\\
@@ -352,17 +354,17 @@
 %
 % \subsection{升级}
 % \label{sec:updgrade}
-% \thuthesis\ 升级非常简单，可以通过 \TeX 发行版的包管理工具自动更新发行版，也可
+% \thuthesis\ 升级非常简单，可以通过 \TeX\ 发行版的包管理工具自动更新发行版，也可
 % 以下载最新的开发版，
-% 将 \file{thuthesis.ins}，\file{thuthesis.dtx}，\file{thuthesis-author-year.bst}
-% 和 \file{thuthesis-numeric.bst} 拷贝至工作目录覆盖相应的文件，然后运行：
+% 将 \file{thuthesis.ins}，\file{thuthesis.dtx}，\file{tsinghua.pdf}，\file{tsinghua.eps}，
+% \file{thuthesis-author-year.bst} 和 \file{thuthesis-numeric.bst} 拷贝至工作目录覆盖相应
+% 的文件，然后运行：
 % \begin{shell}
 % $ latex thuthesis.ins
 % \end{shell}
 %
 % 生成新的类文件和配置文件即可。也可以直接拷
-% 贝 \file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thuthesis-author-year.bst}
-% 和 \file{thuthesis-numeric.bst}，免去上面命令的执行。
+% 贝 \file{thuthesis.cls}，\file{thuthesis.cfg}，免去上面命令的执行。
 %
 %
 % \section{使用说明}
@@ -382,13 +384,14 @@
 %
 % \subsection{示例文件}
 % \label{sec:userguide}
+
 % 模板核心文件
-% 有：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thuthesis-numeric.bst} 和
-% \file{thuthesis-author-year.bst}，但是如果没有示例文档用户会发现很难下手。所以推
-% 荐新用户从模板自带的示例文档入手，里面包括了论文写作用到的所有命令及其使用方法，
-% 只需要用自己的内容进行相应替换就可以。对于不清楚的命令可以查阅本手册。下面的例
-% 子描述了模板中章节的组织形式，来自于示例文档，具体内容可以参考模板附带
-% 的 \file{main.tex} 和 \file{data/}。
+% 有：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thuthesis-numeric.bst}，
+% \file{thuthesis-author-year.bst}，\file{tsinghua.pdf} 和 \file{tsinghua.eps}，
+% 但如果没有示例文档会很难下手，所以推荐从模板自带的示例文档入手，其中包括了论文
+% 写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于不清
+% 楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文档，
+% 具体内容可以参考模板附带的 \file{main.tex} 和 \file{data/}。
 %
 % \lstinputlisting[style=lstStyleLaTeX]{main.tex}
 %
@@ -2519,7 +2522,7 @@
       \ifthu@secret{\heiti\sanhao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
       \vskip0.65cm
-      {\yihao\lishu\ziju{0.5}\thu@schoolname}
+      {\ifcsname lishu\endcsname\yihao\lishu\ziju{0.5}\thu@schoolname\else\includegraphics{tsinghua}\fi}
       \par\vskip1.5cm
       {\xiaochu\heiti\ziju{0.5}\textbf\thu@bachelor@subtitle}
       \vskip2.2cm\hskip0.8cm
