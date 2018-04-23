@@ -10,6 +10,8 @@ const config = {
     template: {
         files: ['thuthesis.ins',
                 'thuthesis.dtx',
+                'tsinghua.pdf',
+                'tsinghua.eps',
                 'thuthesis-numeric.bst',
                 'thuthesis-author-year.bst',
                 'Makefile',
