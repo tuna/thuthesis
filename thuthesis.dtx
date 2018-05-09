@@ -1489,39 +1489,34 @@
 % 下面设置适合印刷的黑体，同时保持跨平台兼容性。
 %    \begin{macrocode}
 %<*cls>
-\ExplSyntaxOn
-\str_if_eq:onT { \g__ctex_fontset_tl } { windows }
-  {
-    \sys_if_engine_pdftex:TF
-      {
-        \setCJKsansfont { simhei.ttf }
-        \ctex_punct_map_family:nn { \CJKsfdefault } { zhhei }
-      }
-      { \setCJKsansfont { SimHei } }
-  }
+\newcommand\thu@fontset{\csname g__ctex_fontset_tl\endcsname}
+\ifthenelse{\equal{\thu@fontset}{windows}}{
+  \ifxetex
+    \setCJKsansfont{SimHei}
+  \else
+    \setCJKsansfont{simhei.ttf}
+    \csname ctex_punct_map_family:nn\endcsname{\CJKsfdefault}{zhhei}
+  \fi
+}{}
 %    \end{macrocode}
 %
 % 类似地，ctex 2.4.14 开始在 macOS 下自动调用苹方黑体，所以必进行调整。
 %    \begin{macrocode}
-\str_if_eq:onT { \g__ctex_fontset_tl } { mac }
-  {
-    \setCJKmainfont
-      [
-           UprightFont = *~Light,
-              BoldFont = *~Bold,
-            ItalicFont = Kaiti~SC,
-        BoldItalicFont = Kaiti~SC~Bold
-      ] { Songti~SC }
-    \setCJKsansfont { Heiti~SC }
-    \setCJKfamilyfont { zhsong }
-      [
-           UprightFont = *~Light,
-              BoldFont = *~Bold,
-      ] { Songti~SC }
-    \setCJKfamilyfont { zhhei } { Heiti~SC }
-    \setCJKfamilyfont { zhkai } { Kaiti~SC }
-  }
-\ExplSyntaxOff
+\ifthenelse{\equal{\thu@fontset}{mac}}{
+  \setCJKmainfont[
+         UprightFont = * Light,
+            BoldFont = * Bold,
+          ItalicFont = Kaiti SC,
+      BoldItalicFont = Kaiti SC Bold
+    ]{Songti SC}
+  \setCJKsansfont{Heiti SC}
+  \setCJKfamilyfont{zhsong}[
+         UprightFont = * Light,
+            BoldFont = * Bold,
+    ]{Songti SC}
+  \setCJKfamilyfont{zhhei}{Heiti SC}
+  \setCJKfamilyfont{zhkai}{Kaiti SC}
+}{}
 %    \end{macrocode}
 %
 % \begin{macro}{\normalsize}
