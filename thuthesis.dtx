@@ -1491,7 +1491,14 @@
 %<*cls>
 \ExplSyntaxOn
 \str_if_eq:onT { \g__ctex_fontset_tl } { windows }
-  { \setCJKsansfont { SimHei } }
+  {
+    \sys_if_engine_pdftex:TF
+      {
+        \setCJKsansfont { simhei.ttf }
+        \ctex_punct_map_family:nn { \CJKsfdefault } { zhhei }
+      }
+      { \setCJKsansfont { SimHei } }
+  }
 %    \end{macrocode}
 %
 % 类似地，ctex 2.4.14 开始在 macOS 下自动调用苹方黑体，所以必进行调整。
