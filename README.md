@@ -1,8 +1,9 @@
 [![Build Status](https://travis-ci.org/xueruini/thuthesis.svg?branch=master)](https://travis-ci.org/xueruini/thuthesis) [![Join the chat at https://gitter.im/thuthesis/Lobby](https://badges.gitter.im/thuthesis/Lobby.svg)](https://gitter.im/thuthesis/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # What's ThuThesis?
+ThuThesis is an abbreviation of <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Template.
 
-ThuThesis is a LaTeX thesis template package for Tsinghua University supporting from bachelor, master, doctor dissertations to post-doc report. Since the users of this package are supposed to be Chinese or those understand Chinese, the following of this file and all other documents are written in Chinese only.
+This package establishes a simple and easy-to-use LaTeX template for Tsinghua dissertations, including general undergraduate research papers, masters theses, doctoral theses, doctoral dissertations, and post-doc reports. Additional support for other formats (what else is there?) will be added continuously. An English translation of this README follows the Chinese below.  
 
 # ThuThesis是什么？
 ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Template之缩写。
@@ -16,7 +17,6 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 * 示例文档 (main.pdf)
 
 # 下载
-
 * 发行版：[CTAN](http://www.ctan.org/pkg/thuthesis)
 * 开发版：[GitHub](https://github.com/xueruini/thuthesis)
 
@@ -61,3 +61,54 @@ make [{all|thesis|shuji|doc|clean|cleanall|distclean}] \
   * METHOD=latexmk  表示使用 latexmk 的方式生成 pdf（使用 xelatex）。
   * METHOD=xelatex  表示使用 xelatex 引擎编译生成 pdf；
   * METHOD=pdflatex 表示使用 pdflatex 引擎编译生成 pdf。
+
+# Documentation
+Download and unzip the template. Specific usage documentation and examples can be found in the files below. At present, these documents are <b>only available in Chinese</b>:
+* Template usage (thuthesis.pdf)
+* Template example (main.pdf)
+
+# Downloads
+* Published version: [CTAN](http://www.ctan.org/pkg/thuthesis)
+* Developer version: [GitHub](https://github.com/xueruini/thuthesis)
+
+# Updates
+## Automatic
+Get the most up-to-date published version of the TeX tools from [CTAN](http://www.ctan.org/pkg/thuthesis).
+
+## Manual
+Download the package from [GitHub](https://github.com/xueruini/thuthesis) to the root directory of your thesis, then execute the command (Windows users `Shift + right click` white area in the file window and click "Open command line window here from the popup menu"):
+
+    latex thuthesis.ins
+
+You'll get `thuthesis.cls` and `thuthesis.cfg` along with other template files.
+
+# Reporting Issues
+Please follow the procedure below:
+
+* Check the  [FAQ](https://github.com/xueruini/thuthesis/wiki/FAQ)
+* [Github Issues](http://github.com/xueruini/thuthesis/issues)
+* [TeX@newsmth](http://www.newsmth.net/nForum/#!board/TeX)
+* [ThuThesis@Google Groups](http://groups.google.com/group/thuthesis)
+
+# Makefile Usage
+
+```shell
+make [{all|thesis|shuji|doc|clean|cleanall|distclean}] \
+     [METHOD={latexmk|xelatex|pdflatex}]
+```
+
+## Targets
+* `make all`       same as `make thesis && make shuji && make doc`;
+* `make cls`       generate template file;
+* `make thesis`    generate thesis main.pdf;
+* `make shuji`     generate book spine for printing shuji.pdf;
+* `make doc`       generate documentation thuthesis.pdf;
+* `make clean`     delete all examples' files (excluding main.pdf);
+* `make cleanall`  delete all examples' files and main.pdf;
+* `make distclean` delete all examples' and templates' files and PDFs.
+
+## Parameters
+* **METHOD**：define the method used to generate the pdfs, the default is `latexmk`.
+*  `METHOD=latexmk` use latexmk to generate pdfs (uses xelatex).
+* `METHOD=xelatex` use xelatex engine to compile and build pdfs;
+* `METHOD=pdflatex` use pdflatex engine to compile and build pdfs.
