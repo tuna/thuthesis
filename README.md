@@ -109,6 +109,6 @@ make [{all|thesis|shuji|doc|clean|cleanall|distclean}] \
 
 ## Parameters
 * **METHOD**：define the method used to generate the pdfs, the default is `latexmk`.
-*  `METHOD=latexmk` use latexmk to generate pdfs (uses xelatex).
-* `METHOD=xelatex` use xelatex engine to compile and build pdfs;
-* `METHOD=pdflatex` use pdflatex engine to compile and build pdfs.
+  * `METHOD=latexmk` use latexmk to generate pdfs (uses xelatex).
+  * `METHOD=xelatex` use xelatex engine to compile and build pdfs;
+  * `METHOD=pdflatex` use pdflatex engine to compile and build pdfs.
