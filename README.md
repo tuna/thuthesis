@@ -1,4 +1,8 @@
-[![Build Status](https://travis-ci.org/xueruini/thuthesis.svg?branch=master)](https://travis-ci.org/xueruini/thuthesis) [![Join the chat at https://gitter.im/thuthesis/Lobby](https://badges.gitter.im/thuthesis/Lobby.svg)](https://gitter.im/thuthesis/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/xueruini/thuthesis.svg?branch=master)](https://travis-ci.org/xueruini/thuthesis)
+[![Join the chat at https://gitter.im/thuthesis/Lobby](https://badges.gitter.im/thuthesis/Lobby.svg)](https://gitter.im/thuthesis/Lobby)
+[![Github downloads](https://img.shields.io/github/downloads/xueruini/thuthesis/total.svg)](https://github.com/xueruini/thuthesis/releases)
+[![GitHub release](https://img.shields.io/github/release/xueruini/thuthesis/all.svg)](https://github.com/xueruini/thuthesis/releases/latest)
+[![GitHub commits](https://img.shields.io/github/commits-since/xueruini/thuthesis/latest.svg)](https://github.com/xueruini/thuthesis/commits/master)
 
 # What's ThuThesis?
 ThuThesis is an abbreviation of <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Template.
