@@ -63,7 +63,7 @@
   离；离者丽也。}
 
 \section{表格样本}
-\label{chap1:sample:table} 
+\label{chap1:sample:table}
 
 \subsection{基本表格}
 \label{sec:basictable}
@@ -108,7 +108,7 @@
   \centering
   \caption{复杂表格示例 1。这个引用 \cite{tex} 不会导致编号混乱。}
   \label{tab:tabexamp1}
-  \begin{minipage}[t]{0.8\textwidth} 
+  \begin{minipage}[t]{0.8\textwidth}
     \begin{tabularx}{\linewidth}{|l|X|X|X|X|}
       \hline
       \multirow{2}*{\diagbox[width=5em]{x}{y}} & \multicolumn{2}{c|}{First Half} & \multicolumn{2}{c|}{Second Half}\\\cline{2-5}
@@ -214,7 +214,7 @@
   \caption{复杂表格示例 2}
   \label{tab:tabexamp2}
   \begin{tabular}[c]{|m{1.5cm}|c|c|c|c|c|c|}\hline
-    \multicolumn{2}{|c|}{Network Topology} & \# of nodes & 
+    \multicolumn{2}{|c|}{Network Topology} & \# of nodes &
     \multicolumn{3}{c|}{\# of clients} & Server \\\hline
     GT-ITM & Waxman Transit-Stub & 600 &
     \multirow{2}{1em}{2\%}&
@@ -375,7 +375,7 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 \begin{remark}
 天不言自高，水不言自流。
 \begin{gather*}
-\begin{split} 
+\begin{split}
 \varphi(x,z)
 &=z-\gamma_{10}x-\gamma_{mn}x^mz^n\\
 &=z-Mr^{-1}x-Mr^{-(m+n)}x^mz^n
@@ -394,7 +394,7 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 业。易简，而天下矣之理矣；天下之理得，而成位乎其中矣。
 
 \begin{axiom}
-两点间直线段距离最短。  
+两点间直线段距离最短。
 \begin{align}
 x&\equiv y+1\pmod{m^2}\\
 x&\equiv y+1\mod{m^2}\\
@@ -409,13 +409,14 @@ x&\equiv y+1\pod{m^2}
 乾，反复道也。或跃在渊，进无咎也。飞龙在天，大人造也。亢龙有悔，盈不可久也。用九，
 天德不可为首也。 　　
 
+\newcommand\dif{\mathop{}\!\mathrm{d}}
 \begin{lemma}
 《猫和老鼠》是我最爱看的动画片。
 \begin{multline*}%\tag*{[a]} % 这个不出现在索引中
 \int_a^b\biggl\{\int_a^b[f(x)^2g(y)^2+f(y)^2g(x)^2]
- -2f(x)g(x)f(y)g(y)\,dx\biggr\}\,dy \\
+ -2f(x)g(x)f(y)g(y)\dif x\biggr\}\dif y \\
  =\int_a^b\biggl\{g(y)^2\int_a^bf^2+f(y)^2
-  \int_a^b g^2-2f(y)g(y)\int_a^b fg\biggr\}\,dy
+  \int_a^b g^2-2f(y)g(y)\int_a^b fg\biggr\}\dif y
 \end{multline*}
 \end{lemma}
 
@@ -488,7 +489,7 @@ V_j & = v_j, & \qquad X_j & = x_j,
 \end{conjecture}
 
 \begin{problem}
- 回答还是不回答，是个问题。 
+ 回答还是不回答，是个问题。
 \end{problem}
 
 如何引用定理~\ref{the:theorem1} 呢？加上 \cs{label} 使用 \cs{ref} 即可。妾发
@@ -530,29 +531,31 @@ V_j & = v_j, & \qquad X_j & = x_j,
 
 \section{公式}
 \label{sec:equation}
-贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中 $p(y|\mathbf{x})$ 为后验；
-$p(\mathbf{x})$ 为先验；分母 $p(\mathbf{x})$ 为归一化因子。
+\renewcommand\vec{\symbf}
+\newcommand\mat{\symbf}
+贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中 $p(y|\vec{x})$ 为后验；
+$p(\vec{x})$ 为先验；分母 $p(\vec{x})$ 为归一化因子。
 \begin{equation}
 \label{equ:chap1:bayes}
-p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
-\frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})} 
+p(y|\vec{x}) = \frac{p(\vec{x},y)}{p(\vec{x})}=
+\frac{p(\vec{x}|y)p(y)}{p(\vec{x})}
 \end{equation}
 
 论文里面公式越多，\TeX{} 就越 happy。再看一个 \pkg{amsmath} 的例子：
-\newcommand{\envert}[1]{\left\lvert#1\right\rvert} 
+\newcommand{\envert}[1]{\left\lvert#1\right\rvert}
 \begin{equation}\label{detK2}
-\det\mathbf{K}(t=1,t_1,\dots,t_n)=\sum_{I\in\mathbf{n}}(-1)^{\envert{I}}
-\prod_{i\in I}t_i\prod_{j\in I}(D_j+\lambda_jt_j)\det\mathbf{A}
+\det\mat{K}(t=1,t_1,\dots,t_n)=\sum_{I\in\vec{n}}(-1)^{\envert{I}}
+\prod_{i\in I}t_i\prod_{j\in I}(D_j+\lambda_jt_j)\det\vec{A}
 ^{(\lambda)}(\overline{I}|\overline{I})=0.
-\end{equation} 
+\end{equation}
 
 前面定理示例部分列举了很多公式环境，可以说把常见的情况都覆盖了，大家在写公式的时
 候一定要好好看 \pkg{amsmath} 的文档，并参考模板中的用法：
 \begin{multline*}%\tag{[b]} % 这个出现在索引中的
 \int_a^b\biggl\{\int_a^b[f(x)^2g(y)^2+f(y)^2g(x)^2]
- -2f(x)g(x)f(y)g(y)\,dx\biggr\}\,dy \\
+ -2f(x)g(x)f(y)g(y)\dif x\biggr\}\dif y \\
  =\int_a^b\biggl\{g(y)^2\int_a^bf^2+f(y)^2
-  \int_a^b g^2-2f(y)g(y)\int_a^b fg\biggr\}\,dy
+  \int_a^b g^2-2f(y)g(y)\int_a^b fg\biggr\}\dif y
 \end{multline*}
 
 其实还可以看看这个多级规划：

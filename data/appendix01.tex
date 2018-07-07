@@ -31,13 +31,14 @@ as follows,
 which maximizes a real-valued function $f$ of
 $x=(x_1,x_2,\cdots,x_n)$ subject to a set of constraints.
 
+\newcommand\Real{\mathbf{R}}
 \newtheorem{mpdef}{Definition}[chapter]
 \begin{mpdef}
 In SOP, we call $x$ a decision vector, and
 $x_1,x_2,\cdots,x_n$ decision variables. The function
 $f$ is called the objective function. The set
 \begin{equation}\tag*{(456)} % 这里同理，其它不再一一指定。
-S=\left\{x\in\Re^n\bigm|g_j(x)\le 0,\,j=1,2,\cdots,p\right\}
+S=\left\{x\in\Real^n\bigm|g_j(x)\le 0,\,j=1,2,\cdots,p\right\}
 \end{equation}
 is called the feasible set. An element $x$ in $S$ is called a
 feasible solution.
@@ -134,8 +135,8 @@ concerned with analyzing the structure of problems.
 \end{figure}
 
 Now we consider a nonlinear programming which is confronted solely with
-maximizing a real-valued function with domain $\Re^n$.  Whether derivatives are
-available or not, the usual strategy is first to select a point in $\Re^n$ which
+maximizing a real-valued function with domain $\Real^n$.  Whether derivatives are
+available or not, the usual strategy is first to select a point in $\Real^n$ which
 is thought to be the most likely place where the maximum exists. If there is no
 information available on which to base such a selection, a point is chosen at
 random. From this first point an attempt is made to construct a sequence of
