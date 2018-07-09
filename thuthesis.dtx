@@ -1226,13 +1226,6 @@
 \fi
 %    \end{macrocode}
 %
-% 使用 \XeTeX\ 引擎时，\pkg{fontspec} 宏包会被 \pkg{xeCJK} 自动调用。传递
-% 给 \pkg{fontspec} 宏包 \option{no-math} 选项，避免部分数学符号字体自动调整
-% 为 CMR。其他引擎下没有这个问题，这一行会被无视。
-%    \begin{macrocode}
-\PassOptionsToPackage{no-math}{fontspec}
-%    \end{macrocode}
-%
 % \changes{v5.3.1}{2016/03/20}{使用 \CTeX\ 默认中文字体配置，支持不同引擎。}
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
 %    \begin{macrocode}
@@ -1256,21 +1249,13 @@
 \RequirePackage{amsmath}
 %    \end{macrocode}
 %
-% \pkg{newtx} 设置 Times New Roman，Helvetica。
+% 使用 \pkg{unicode-math} 处理数学字体。
 % \changes{v3.1}{2007/06/16}{replace \pkg{mathptmx} with \pkg{txfonts}.}
 % \changes{v5.2.1}{2016/01/14}{使用 \pkg{newtx} 替换 \pkg{txfonts}。}
 % \changes{v5.2.2}{2016/02/01}{不希望 \pkg{newtx} 修改 \cs{@makefnmark}。 }
+% \changes{v5.5}{2018/07/07}{使用 \pkg{unicode-math} 处理数学字体。}
 %    \begin{macrocode}
-\RequirePackage[defaultsups]{newtxtext}
-\RequirePackage{newtxmath}
-%    \end{macrocode}
-%
-% \pkg{newtx} 的 Mono 字体虽然很好看，但在论文中不常见。学校虽未要求 Mono 字体，
-% 还是选择常见的 Courier 字体。由于比较新的实现 \TeX\ Gyre Cursor 会修
-% 改\cs{bfdefault}，导致中文加粗出问题，所以选用标准 \pkg{courier}。
-% \changes{v5.3.2}{2016/5/24}{替换 \pkg{tgcursor} 为 \pkg{courier}。}
-%    \begin{macrocode}
-\RequirePackage{courier}
+\RequirePackage{unicode-math}
 %    \end{macrocode}
 %
 % 图形支持宏包。
@@ -1494,11 +1479,70 @@
 %
 % \subsubsection{字体}
 % \label{sec:font}
-% 在使用 Windows Vista 或之后版本的系统时，\pkg{ctex} 宏包会默认使用微软雅黑字体，
-% 这可能会导致审查不合格。 下面设置适合印刷的黑体，同时保持跨平台兼容性。
+% 使用 \pkg{fontspec} 配置字体。
 %    \begin{macrocode}
 %<*cls>
 \newcommand\thu@fontset{\csname g__ctex_fontset_tl\endcsname}
+\ifthenelse{\equal{\thu@fontset}{fandol}}{
+  \setmainfont[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]{texgyretermes}
+  \setsansfont[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+    Scale          = MatchLowercase,
+  ]{texgyreheros}
+  \setmonofont[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+    Scale          = MatchLowercase,
+  ]{texgyrecursor}
+}{
+  \setmainfont{Times New Roman}
+  \setsansfont[Scale=MatchLowercase]{Arial}
+  \ifthenelse{\equal{\thu@fontset}{mac}}{
+    \setmonofont[Scale=MatchLowercase]{Menlo}
+  }{
+    \setmonofont[Scale=MatchLowercase]{Courier}
+  }
+}
+%    \end{macrocode}
+%
+% 使用 \pkg{unicode-math} 配置数学字体
+%    \begin{macrocode}
+\unimathsetup{
+  math-style = ISO,
+  bold-style = ISO,
+  nabla      = upright,
+  partial    = upright,
+}
+\IfFontExistsTF{STIX2Math.otf}{
+  \setmathfont[StylisticSet={2,8}]{STIX2Math.otf}
+  \setmathfont[range={scr,bfscr},StylisticSet=1]{STIX2Math.otf}
+  \setmathfont[range=\partial]{xits-math.otf}
+}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = *bold,
+    StylisticSet = 8,
+  ]{xits-math}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
+}
+%    \end{macrocode}
+%
+% 在使用 Windows Vista 或之后版本的系统时，\pkg{ctex} 宏包会默认使用微软雅黑字体，
+% 这可能会导致审查不合格。下面设置适合印刷的黑体，同时保持跨平台兼容性。
+%    \begin{macrocode}
 \ifthenelse{\equal{\thu@fontset}{windows}}{
   \ifxetex
     \setCJKsansfont{SimHei}
@@ -1754,9 +1798,67 @@
 %
 % \subsubsection{数学相关}
 % \label{sec:equation}
-% 允许太长的公式断行、分页等。
+% \begin{macro}{\ldots}
+% 省略号一律居中，所以 \cs{ldots} 不再居于底部。
 %    \begin{macrocode}
 %<*cls>
+\def\mathellipsis{\cdots}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\le}
+% \begin{macro}{\ge}
+% \begin{macro}{\leq}
+% \begin{macro}{\geq}
+% 小于等于号要使用倾斜的形式。
+%    \begin{macrocode}
+\protected\def\le{\leqslant}
+\protected\def\ge{\geqslant}
+\AtBeginDocument{%
+  \renewcommand\leq{\leqslant}%
+  \renewcommand\geq{\geqslant}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\int}
+% 积分号 \cs{int} 使用正体，并且上下限默认置于积分号上下两侧。
+%    \begin{macrocode}
+% \removenolimits{%
+%   \int\iint\iiint\iiiint\oint\oiint\oiiint
+%   \intclockwise\varointclockwise\ointctrclockwise\sumint
+%   \intbar\intBar\fint\cirfnint\awint\rppolint
+%   \scpolint\npolint\pointint\sqint\intlarhk\intx
+%   \intcap\intcup\upint\lowint
+% }
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\nabla}
+% \cs{nabla} 使用粗正体。
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \renewcommand\nabla{\mbfnabla}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\bm}
+% \begin{macro}{\boldsymbol}
+% 兼容旧的粗体命令：\pkg{bm} 的 \cs{bm} 和 \pkg{amsmath} 的 \cs{boldsymbol}。
+%    \begin{macrocode}
+\newcommand\bm{\symbf}
+\renewcommand\boldsymbol{\symbf}
+\newcommand\square{\mdlgblksquare}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% 允许太长的公式断行、分页等。
+%    \begin{macrocode}
 \allowdisplaybreaks[4]
 \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
 %    \end{macrocode}

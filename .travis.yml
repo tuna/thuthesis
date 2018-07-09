@@ -1,7 +1,4 @@
-os:
-  - linux
-
-sudo: required
+language: generic
 
 install:
   - REMOTE="http://mirror.ctan.org/systems/texlive/tlnet"
@@ -10,28 +7,30 @@ install:
   - curl -sSL $REMOTE/install-tl-unx.tar.gz | tar -xzv -C $INSTALL --strip-components=1
 
   - echo "selected_scheme scheme-basic" >> $INSTALL/tl.profile
-  - echo "collection-basic 1" >> $INSTALL/tl.profile
-  - echo "collection-fontsrecommended 1" >> $INSTALL/tl.profile
-  - echo "collection-langchinese 1" >> $INSTALL/tl.profile
-  - echo "collection-latex 1" >> $INSTALL/tl.profile
-  - echo "collection-latexextra 1" >> $INSTALL/tl.profile
-  - echo "collection-latexrecommended 1" >> $INSTALL/tl.profile
-  - echo "collection-xetex 1" >> $INSTALL/tl.profile
+  - echo "TEXDIR /tmp/texlive" >> $INSTALL/tl.profile
+  - echo "TEXMFLOCAL /tmp/texlive/texmf-local" >> $INSTALL/tl.profile
+  - echo "TEXMFSYSCONFIG /tmp/texlive/texmf-config" >> $INSTALL/tl.profile
+  - echo "TEXMFSYSVAR /tmp/texlive/texmf-var" >> $INSTALL/tl.profile
   - echo "tlpdbopt_autobackup 0" >> $INSTALL/tl.profile
   - echo "tlpdbopt_install_docfiles 0" >> $INSTALL/tl.profile
   - echo "tlpdbopt_install_srcfiles 0" >> $INSTALL/tl.profile
 
-  - sudo $INSTALL/install-tl -profile $INSTALL/tl.profile
-
-  - VERSION=$($INSTALL/install-tl --version | grep 'version' | grep -o '[0-9]\{4\}')
+  - $INSTALL/install-tl -profile $INSTALL/tl.profile
   - PLATFORM=$($INSTALL/install-tl --print-platform)
-  - TEXBIN="/usr/local/texlive/${VERSION}/bin/${PLATFORM}"
-  - export "PATH=$TEXBIN:$PATH"
+  - export PATH="/tmp/texlive/bin/$PLATFORM:$PATH"
 
-  - sudo $TEXBIN/tlmgr install boondox latexmk ulem newpx newtx
+
+
+  - tlmgr install latexmk
+    fandol tex-gyre stix2-otf xits
+    fontspec l3kernel l3packages xetex
+    cjk ctex environ ms trimspaces ulem xecjk zhnumber
+    booktabs caption diagbox enumitem eso-pic etoolbox filehook float footmisc
+    fp multirow notoccite ntheorem pdfpages pict2e unicode-math xcolor zapfding
+    fontaxes kastrup listings lm metalogo newtx newpx palatino pxfonts thumbpdf
+    txfonts xkeyval
 
 before_script:
-  - sed -i 's/degree=bachelor/degree=doctor/' main.tex
   - sed -i 's/\[RawFeature={vertical:}\]{FangSong}/\[Extension=.otf,RawFeature={vertical:}\]{FandolFang-Regular}/' shuji.tex
 
 script:
