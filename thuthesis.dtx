@@ -1827,14 +1827,27 @@
 % \begin{macro}{\int}
 % 积分号 \cs{int} 使用正体，并且上下限默认置于积分号上下两侧。
 %    \begin{macrocode}
-% \removenolimits{%
-%   \int\iint\iiint\iiiint\oint\oiint\oiiint
-%   \intclockwise\varointclockwise\ointctrclockwise\sumint
-%   \intbar\intBar\fint\cirfnint\awint\rppolint
-%   \scpolint\npolint\pointint\sqint\intlarhk\intx
-%   \intcap\intcup\upint\lowint
-% }
+\removenolimits{%
+  \int\iint\iiint\iiiint\oint\oiint\oiiint
+  \intclockwise\varointclockwise\ointctrclockwise\sumint
+  \intbar\intBar\fint\cirfnint\awint\rppolint
+  \scpolint\npolint\pointint\sqint\intlarhk\intx
+  \intcap\intcup\upint\lowint
+}
 %    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\Re}
+% \begin{macro}{\Im}
+% 实部、虚部操作符使用罗马体 $\mathrm{Re}$、$\mathrm{Im}$ 而不是 fraktur 体
+% $\Re$、$\Im$。
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \renewcommand{\Re}{\operatorname{Re}}%
+  \renewcommand{\Im}{\operatorname{Im}}%
+}
+%    \end{macrocode}
+% \end{macro}
 % \end{macro}
 %
 % \begin{macro}{\nabla}
@@ -1852,9 +1865,15 @@
 %    \begin{macrocode}
 \newcommand\bm{\symbf}
 \renewcommand\boldsymbol{\symbf}
-\newcommand\square{\mdlgblksquare}
 %    \end{macrocode}
 % \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\square}
+% 兼容 \pkg{amssymb} 中的命令。
+%    \begin{macrocode}
+\newcommand\square{\mdlgblksquare}
+%    \end{macrocode}
 % \end{macro}
 %
 % 允许太长的公式断行、分页等。
