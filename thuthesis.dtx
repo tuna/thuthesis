@@ -474,32 +474,40 @@
 % 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
 % 的 \cs{cite}\marg{key}，而 \cs{inlinecite}\marg{key} 则用来生成正文模式。
 %
-% 关于参考文献模板推荐使用 \BibTeX，关于中文参考文献需要额外增加一个 Entry:
-% \texttt{language}，将其设置为 \texttt{chinese} 用来指示此参考文献为中文。如：
+% 关于参考文献表推荐使用 \BibTeX，默认情况下可以自动识别文献语言，
+% 并自动处理文献类型和载体类型标识，也可以手动指定，如：
 % \begin{latex}
-% @INPROCEEDINGS{cnproceed,
-%   author    = {王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝},
-%   title     = {武林高手从入门到精通},
-%   booktitle = {第~$N$~次华山论剑},
-%   year      = 2006,
-%   address   = {西安, 中国},
-%   month     = sep,
-%   language  = "chinese",
-% }
-%
-% @ARTICLE{cnarticle,
-%   author    = "贾宝玉 and 林黛玉 and 薛宝钗 and 贾探春",
-%   title     = "论刘姥姥食量大如牛之现实意义",
-%   journal   = "红楼梦杂谈",
-%   pages     = "260--266",
-%   volume    = "224",
-%   year      = "1800",
-%   language  = "chinese",
-% }
+% @misc{citekey,
+%   language = {japanese},
+%   mark     = {Z},
+%   medium   = {DK},
+%   ...
 % \end{latex}
+% 可选的语言有 english, chinese, japanese, russian。
 %
 % 注意如果不需要引用参考文献，请删除 \file{main.tex} 中 \cs{bibliography} 开头的两行，
 % 以避免可能的编译错误。
+%
+% 国标规定参考文献表采用著者-出版年制组织时，各篇文献首先按文种集中，
+% 然后按著者字顺和出版年排列；
+% 中文文献可以按著者汉语拼音字顺排列，也可以按著者的笔画笔顺排列。
+% 然而由于 \BibTeX{} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺，
+% 所以\emph{必须}在 bib 数据库中的 key 域手动录入著者姓名的拼音，如：
+% \begin{latex}
+% @book{capital,
+%   author = {马克思 and 恩格斯},
+%   key    = {ma3 ke4 si1   en1 ge2 si1},
+%   ...
+% \end{latex}
+%
+% \BibTeX{} 对自定义样式的支持比较有限，
+% 所以用户只能通过修改 \file{bst} 文件来修改文献列表的格式。
+% 本宏包提供了一些接口供用户更方便地修改，
+% 在 \file{bst} 文件开始处的 |load.config| 函数中，
+% 有一组配置参数用来控制样式。
+% 若变量被设为 |#1| 则表示该项被启用，设为 |#0| 则不启用。
+% 默认的值是严格遵循学校规定的配置。
+%
 %
 % \subsection{中文字体}
 % \label{sec:chinese-fonts}
