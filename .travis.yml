@@ -1,33 +1,38 @@
 language: generic
 
+cache:
+  directories:
+    - /tmp/texlive
+
 install:
-  - REMOTE="http://mirror.ctan.org/systems/texlive/tlnet"
-  - INSTALL="/tmp/install-texlive"
-  - mkdir -p $INSTALL
-  - curl -sSL $REMOTE/install-tl-unx.tar.gz | tar -xzv -C $INSTALL --strip-components=1
+  - export PATH="/tmp/texlive/bin/x86_64-linux:$PATH";
+  - |
+    if ! command -v tlmgr > /dev/null; then
+        REMOTE="http://mirror.ctan.org/systems/texlive/tlnet";
+        INSTALL="/tmp/install-texlive";
+        mkdir -p $INSTALL;
+        curl -sSL $REMOTE/install-tl-unx.tar.gz | tar -xzv -C $INSTALL \
+            --strip-components=1;
+        echo "selected_scheme scheme-basic" >> $INSTALL/tl.profile;
+        echo "TEXDIR /tmp/texlive" >> $INSTALL/tl.profile;
+        echo "TEXMFLOCAL /tmp/texlive/texmf-local" >> $INSTALL/tl.profile;
+        echo "TEXMFSYSCONFIG /tmp/texlive/texmf-config" >> $INSTALL/tl.profile;
+        echo "TEXMFSYSVAR /tmp/texlive/texmf-var" >> $INSTALL/tl.profile;
+        echo "tlpdbopt_autobackup 0" >> $INSTALL/tl.profile;
+        echo "tlpdbopt_install_docfiles 0" >> $INSTALL/tl.profile;
+        echo "tlpdbopt_install_srcfiles 0" >> $INSTALL/tl.profile;
+        $INSTALL/install-tl -profile $INSTALL/tl.profile;
+    fi
 
-  - echo "selected_scheme scheme-basic" >> $INSTALL/tl.profile
-  - echo "TEXDIR /tmp/texlive" >> $INSTALL/tl.profile
-  - echo "TEXMFLOCAL /tmp/texlive/texmf-local" >> $INSTALL/tl.profile
-  - echo "TEXMFSYSCONFIG /tmp/texlive/texmf-config" >> $INSTALL/tl.profile
-  - echo "TEXMFSYSVAR /tmp/texlive/texmf-var" >> $INSTALL/tl.profile
-  - echo "tlpdbopt_autobackup 0" >> $INSTALL/tl.profile
-  - echo "tlpdbopt_install_docfiles 0" >> $INSTALL/tl.profile
-  - echo "tlpdbopt_install_srcfiles 0" >> $INSTALL/tl.profile
-
-  - $INSTALL/install-tl -profile $INSTALL/tl.profile
-  - PLATFORM=$($INSTALL/install-tl --print-platform)
-  - export PATH="/tmp/texlive/bin/$PLATFORM:$PATH"
-
-
+  - tlmgr update --self --all −−no−auto−install;
 
   - tlmgr install latexmk
-    fandol tex-gyre stix2-otf xits
-    fontspec l3kernel l3packages xetex
+    fontname fontspec l3kernel l3packages xetex
     cjk ctex environ ms trimspaces ulem xecjk zhnumber
+    fandol tex-gyre stix2-otf xits
     booktabs caption diagbox enumitem eso-pic etoolbox filehook float footmisc
     fp multirow notoccite ntheorem pdfpages pict2e unicode-math xcolor zapfding
-    fontaxes kastrup listings lm metalogo newtx newpx palatino pxfonts thumbpdf
+    fontaxes kastrup listings lm metalogo newpx newtx palatino pxfonts thumbpdf
     txfonts xkeyval
 
 before_script:
