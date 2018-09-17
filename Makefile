@@ -35,7 +35,7 @@ all: doc thesis shuji
 cls: $(CLSFILES)
 
 $(CLSFILES): $(SOURCES)
-	latex $(PACKAGE).ins
+	xetex $(PACKAGE).ins
 
 viewdoc: doc
 	$(OPEN) $(PACKAGE).pdf
