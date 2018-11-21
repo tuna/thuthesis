@@ -1505,7 +1505,6 @@
     BoldFont       = *-bold,
     ItalicFont     = *-italic,
     BoldItalicFont = *-bolditalic,
-    Scale          = MatchLowercase,
   ]{texgyreheros}
   \setmonofont[
     Extension      = .otf,
@@ -1517,7 +1516,7 @@
   ]{texgyrecursor}
 }{
   \setmainfont{Times New Roman}
-  \setsansfont[Scale=MatchLowercase]{Arial}
+  \setsansfont{Arial}
   \ifthenelse{\equal{\thu@fontset}{mac}}{
     \setmonofont[Scale=MatchLowercase]{Menlo}
   }{
@@ -1574,13 +1573,14 @@
           ItalicFont = Kaiti SC,
       BoldItalicFont = Kaiti SC Bold
     ]{Songti SC}
-  \setCJKsansfont{Heiti SC}
+  \setCJKsansfont[BoldFont=* Medium]{Heiti SC}
   \setCJKfamilyfont{zhsong}[
          UprightFont = * Light,
             BoldFont = * Bold,
     ]{Songti SC}
-  \setCJKfamilyfont{zhhei}{Heiti SC}
-  \setCJKfamilyfont{zhkai}{Kaiti SC}
+  \setCJKfamilyfont{zhhei}[BoldFont=* Medium]{Heiti SC}
+  \setCJKfamilyfont{zhkai}[BoldFont=* Bold]{Kaiti SC}
+  \xeCJKsetwidth{‘’“”}{1em}
 }{}
 %    \end{macrocode}
 %
@@ -3529,6 +3529,7 @@
 %<*dtx-style>
 \ProvidesPackage{dtx-style}
 \RequirePackage{hypdoc}
+\RequirePackage{ifthen}
 \RequirePackage[UTF8,scheme=chinese]{ctex}
 \RequirePackage{newpxtext}
 \RequirePackage{newpxmath}
@@ -3543,6 +3544,10 @@
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
 \RequirePackage{metalogo}
+
+\ifthenelse{\equal{\@nameuse{g__ctex_fontset_tl}}{mac}}{%
+  \xeCJKsetwidth{‘’“”}{1em}
+}{}
 
 \colorlet{thu@macro}{blue!60!black}
 \colorlet{thu@env}{blue!70!black}
