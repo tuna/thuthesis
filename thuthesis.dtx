@@ -174,9 +174,11 @@
 % \begin{enumerate}
 % \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内
 %   容。
-% \item 本模板为作者根据清华大学教务处颁发的《综合论文训练写作指南》，清华大学研
-%   究生院颁发的《研究生学位论文写作指南》，清华大学《编写“清华大学博士后研究报
-%   告”参考意见》编写而成，旨在供清华大学毕业生撰写学位论文使用。
+% \item 本模板为作者根据清华大学教务处颁发的《综合论文训练写作指南》，
+%   清华大学研究生院颁发的
+%   \href{http://yjsy.cic.tsinghua.edu.cn/docinfo/board/boarddetail.jsp?columnId=001050603&parentColumnId=0010506&itemSeq=5365}{《研究生学位论文写作指南》}，
+%   清华大学《编写“清华大学博士后研究报告”参考意见》编写而成，
+%   旨在供清华大学毕业生撰写学位论文使用。
 % \item 清华大学教务处和研究生院只提供毕业论文写作指南，不提供官方模板，也不会授
 %   权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格式审查老师
 %   不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
@@ -1178,6 +1180,13 @@
 \DeclareVoidOption{postdoctor}{\thu@deprecated@degree@option}
 %    \end{macrocode}
 %
+% 论文是使用英文。
+% \changes{v5.4.6}{2018/12/09}{增加选项使用英文模板。}
+%    \begin{macrocode}
+\DeclareBoolOption{chinese}
+\DeclareComplementaryOption{english}{chinese}
+%    \end{macrocode}
+%
 % 论文是否保密。
 %    \begin{macrocode}
 \DeclareBoolOption{secret}
@@ -1215,6 +1224,7 @@
 % 打开默认选项。
 %    \begin{macrocode}
 \kvsetkeys{thu}{%
+  chinese,%
   raggedbottom}
 %    \end{macrocode}
 %
@@ -1695,6 +1705,45 @@
 % \end{macro}
 %
 %
+% \subsubsection{语言设置}
+%
+% \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
+% 由于 Unicode 的一些标点符号是中西文混用的：
+% \unicodechar{00B7}、
+% \unicodechar{2013}、
+% \unicodechar{2014}、
+% \unicodechar{2018}、
+% \unicodechar{2019}、
+% \unicodechar{201C}、
+% \unicodechar{201D}、
+% \unicodechar{2025}、
+% \unicodechar{2026}、
+% \unicodechar{2E3A}，
+% 所以要根据语言设置正确的字体。
+% \footnote{\url{https://github.com/CTeX-org/ctex-kit/issues/389}}
+% 所以要根据语言设置正确的字体。
+%    \begin{macrocode}
+%<*cls>
+\newcommand\thu@setchinese{%
+  \xeCJKResetPunctClass
+}
+\newcommand\thu@setenglish{%
+  \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
+  \xeCJKDeclareCharClass{HalfRight}{%
+    "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A%
+  }%
+}
+\newcommand\thu@setdefaultlanguage{%
+  \ifthu@chinese
+    \thu@setchinese
+  \else
+    \thu@setenglish
+  \fi
+}
+%</cls>
+%    \end{macrocode}
+%
+%
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
 %
@@ -1814,7 +1863,9 @@
 % 省略号一律居中，所以 \cs{ldots} 不再居于底部。
 %    \begin{macrocode}
 %<*cls>
-\def\mathellipsis{\cdots}
+\ifthu@chinese
+  \def\mathellipsis{\cdots}
+\fi
 %    \end{macrocode}
 % \end{macro}
 %
@@ -1948,18 +1999,45 @@
 \theoremstyle{plain}
 \theoremsymbol{}
 \theoremseparator{：}
-\newtheorem{assumption}{假设}[chapter]
-\newtheorem{definition}{定义}[chapter]
-\newtheorem{proposition}{命题}[chapter]
-\newtheorem{lemma}{引理}[chapter]
-\newtheorem{theorem}{定理}[chapter]
-\newtheorem{axiom}{公理}[chapter]
-\newtheorem{corollary}{推论}[chapter]
-\newtheorem{exercise}{练习}[chapter]
-\newtheorem{example}{例}[chapter]
-\newtheorem{remark}{注释}[chapter]
-\newtheorem{problem}{问题}[chapter]
-\newtheorem{conjecture}{猜想}[chapter]
+\ifthu@chinese
+  \newcommand\thu@assumption@name{假设}
+  \newcommand\thu@definition@name{定义}
+  \newcommand\thu@proposition@name{命题}
+  \newcommand\thu@lemma@name{引理}
+  \newcommand\thu@theorem@name{定理}
+  \newcommand\thu@axiom@name{公理}
+  \newcommand\thu@corollary@name{推论}
+  \newcommand\thu@exercise@name{练习}
+  \newcommand\thu@example@name{例}
+  \newcommand\thu@remark@name{注释}
+  \newcommand\thu@problem@name{问题}
+  \newcommand\thu@conjecture@name{猜想}
+\else
+  \newcommand\thu@assumption@name{Assumption}
+  \newcommand\thu@definition@name{Definition}
+  \newcommand\thu@proposition@name{Proposition}
+  \newcommand\thu@lemma@name{Lemma}
+  \newcommand\thu@theorem@name{Theorem}
+  \newcommand\thu@axiom@name{Axiom}
+  \newcommand\thu@corollary@name{Corollary}
+  \newcommand\thu@exercise@name{Exercise}
+  \newcommand\thu@example@name{Example}
+  \newcommand\thu@remark@name{Remark}
+  \newcommand\thu@problem@name{Problem}
+  \newcommand\thu@conjecture@name{Conjecture}
+\fi
+\newtheorem{assumption}{\thu@assumption@name}[chapter]
+\newtheorem{definition}{\thu@definition@name}[chapter]
+\newtheorem{proposition}{\thu@proposition@name}[chapter]
+\newtheorem{lemma}{\thu@lemma@name}[chapter]
+\newtheorem{theorem}{\thu@theorem@name}[chapter]
+\newtheorem{axiom}{\thu@axiom@name}[chapter]
+\newtheorem{corollary}{\thu@corollary@name}[chapter]
+\newtheorem{exercise}{\thu@exercise@name}[chapter]
+\newtheorem{example}{\thu@example@name}[chapter]
+\newtheorem{remark}{\thu@remark@name}[chapter]
+\newtheorem{problem}{\thu@problem@name}[chapter]
+\newtheorem{conjecture}{\thu@conjecture@name}[chapter]
 %</cfg>
 %    \end{macrocode}
 %
@@ -2045,19 +2123,24 @@
 % \changes{v2.5}{2006/05/19}{增加索引名称定义。}
 %    \begin{macrocode}
 %<*cfg>
-\ctexset{%
-  chapter/name={第,章},
-  appendixname=附录,
-  contentsname={目\hspace{\ccwd}录},
-  listfigurename=插图索引,
-  listtablename=表格索引,
-  figurename=图,
-  tablename=表,
-  bibname=参考文献,
-  indexname=索引,
-}
-\newcommand\listequationname{公式索引}
-\newcommand\equationname{公式}
+\ifthu@chinese
+  \ctexset{%
+    chapter/name={第,章},
+    appendixname=附录,
+    contentsname={目\hspace{\ccwd}录},
+    listfigurename=插图索引,
+    listtablename=表格索引,
+    figurename=图,
+    tablename=表,
+    bibname=参考文献,
+    indexname=索引,
+  }
+  \newcommand\listequationname{公式索引}
+  \newcommand\equationname{公式}
+\else
+  \newcommand\listequationname{List of Equations}
+  \newcommand\equationname{Equation}
+\fi
 \ifthu@bachelor
   \newcommand{\cabstractname}{中文摘要}
   \newcommand{\eabstractname}{ABSTRACT}
@@ -2929,11 +3012,22 @@
 \def\makecover{%
   \thu@setup@pdfinfo\thu@makecover}
 \def\thu@setup@pdfinfo{%
-  \hypersetup{%
-    pdftitle={\thu@ctitle},
-    pdfauthor={\thu@cauthor},
-    pdfsubject={\thu@cdegree},
-    pdfkeywords={\thu@ckeywords},
+  \ifthu@chinese
+    \hypersetup{
+      pdftitle    = \thu@ctitle,
+      pdfauthor   = \thu@cauthor,
+      pdfsubject  = \thu@cdegree,
+      pdfkeywords = \thu@ckeywords,
+    }%
+  \else
+    \hypersetup{
+      pdftitle    = \thu@etitle,
+      pdfauthor   = \thu@eauthor,
+      pdfsubject  = \thu@edegree,
+      pdfkeywords = \thu@ekeywords,
+    }%
+  \fi
+  \hypersetup{
     pdfcreator={\thuthesis-v\version}}}
 \NewDocumentCommand{\thu@makecover}{o}{
   \phantomsection
@@ -3025,6 +3119,7 @@
 %    \begin{macrocode}
 \newcommand{\thu@makeabstract}{%
   \ifthu@bachelor\clearpage\else\cleardoublepage\fi
+  \thu@setchinese
   \thu@chapter*[]{\cabstractname} % no tocline
   \ifthu@bachelor
     \pagestyle{thu@plain}
@@ -3054,6 +3149,7 @@
 % 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连
 % 续。\changes{v2.5.1}{2006/05/28}{研究生封面英文摘要连续。}
 %    \begin{macrocode}
+  \thu@setenglish
   \thu@chapter*[]{\eabstractname} % no tocline
 %    \end{macrocode}
 %
@@ -3075,7 +3171,9 @@
 %    \begin{macrocode}
   \ifthu@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{%
-    \textbf{\ifthu@bachelor Keywords:\else Key Words:\fi\enskip}}{\thu@ekeywords}}
+    \textbf{\ifthu@bachelor Keywords:\else Key Words:\fi\enskip}}{\thu@ekeywords}%
+  \thu@setdefaultlanguage
+}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -3089,7 +3187,11 @@
 % \changes{v5.2.1}{2016/01/11}{利用 \pkg{enumitem} 改造环境定义，更直观。}
 %    \begin{macrocode}
 %<*cfg>
-\newcommand{\thu@denotation@name}{主要符号对照表}
+\ifthu@chinese
+  \newcommand\thu@denotation@name{主要符号对照表}
+\else
+  \newcommand\thu@denotation@name{Nomenclature}
+\fi
 %</cfg>
 %<*cls>
 \newenvironment{denotation}[1][2.5cm]{%
@@ -3122,8 +3224,12 @@
 % \changes{v2.4}{2006/04/14}{调整\textbf{致谢}等中间的距离。}
 %    \begin{macrocode}
 %<*cfg>
-\newcommand{\thu@ackname}{致\hspace{1em}谢}
-\newcommand{\thu@declarename}{声\hspace{1em}明}
+\ifthu@chinese
+  \newcommand\thu@ack@name{致\hspace{\ccwd}谢}
+\else
+  \newcommand\thu@ack@name{Acknowledgments}
+\fi
+\newcommand\thu@declarename{声\hspace{\ccwd}明}
 \newcommand{\thu@declaretext}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
   ，独立进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容外，本学位论
   文的研究成果不包含任何他人享有著作权的内容。对本论文所涉及的研究工作做出贡献的
@@ -3148,7 +3254,7 @@
 %    \begin{macrocode}
 %<*cls>
 \NewDocumentEnvironment{acknowledgement}{o}{%
-    \thu@chapter*{\thu@ackname}
+    \thu@chapter*{\thu@ack@name}
   }
 %    \end{macrocode}
 %
@@ -3432,13 +3538,25 @@
 % 个人简历发表文章等。
 %    \begin{macrocode}
 %<*cfg>
-\ifthu@bachelor
-  \newcommand{\thu@resume@title}{在学期间参加课题的研究成果}
-\else
-  \ifthu@postdoctor
-    \newcommand{\thu@resume@title}{个人简历、发表的学术论文与科研成果}
+\ifthu@chinese
+  \ifthu@bachelor
+    \newcommand{\thu@resume@title}{在学期间参加课题的研究成果}
   \else
-    \newcommand{\thu@resume@title}{个人简历、在学期间发表的学术论文与研究成果}
+    \ifthu@postdoctor
+      \newcommand{\thu@resume@title}{个人简历、发表的学术论文与科研成果}
+    \else
+      \newcommand{\thu@resume@title}{个人简历、在学期间发表的学术论文与研究成果}
+    \fi
+  \fi
+\else
+  \ifthu@bachelor
+    \newcommand{\thu@resume@title}{在学期间参加课题的研究成果}
+  \else
+    \ifthu@postdoctor
+      \newcommand{\thu@resume@title}{个人简历、发表的学术论文与科研成果}
+    \else
+      \newcommand{\thu@resume@title}{个人简历、在学期间发表的学术论文与研究成果}
+    \fi
   \fi
 \fi
 %</cfg>
