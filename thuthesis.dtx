@@ -840,6 +840,18 @@
 % \end{denotation}
 % \end{latex}
 %
+% 另外一种方法是调用 \pkg{nomencl} 宏包，需要在导言区设置：
+% \begin{latex}
+% \usepackage{nomencl}
+% \makenomenclature
+% \end{latex}
+% 然后在正文中任意位置使用 \cs{nomenclature} 声明需要添加到主要符号表的符号：
+% \begin{latex}
+% \nomenclature{$m$}{The mass of one angel}
+% \end{latex}
+% 最后使用 \cs{printnomenclature} 命令生成符号表。
+% 更详细的使用方法参见 \pkg{nomencl} 宏包的文档。
+%
 % \subsection{目录和索引表}
 % 目录、插图、表格和公式等索引命令分别如下，将其插入到期望的位置即可（带星号的命令表
 % 示对应的索引表不会出现在目录中）：
@@ -3572,6 +3584,26 @@
 %</cls>
 %    \end{macrocode}
 % \end{macro}
+%
+% \subsection{其他宏包的设置}
+%
+% 这些宏包并非格式要求，但是为了方便同学们使用，在这里进行简单设置。
+%    \begin{macrocode}
+%<*cls>
+\newcommand\thu@atendpackage{\csname ctex_at_end_package:nn\endcsname}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{nomencl} 宏包}
+%
+% \changes{v5.4.6}{2018/12/09}{增加 \pkg{nomencl} 宏包的支持。}
+%    \begin{macrocode}
+\thu@atendpackage{nomencl}{
+  \let\nomname\thu@denotation@name
+  \def\thenomenclature{\begin{denotation}[\nom@tempdim]}
+  \def\endthenomenclature{\end{denotation}}
+}
+%</cls>
+%    \end{macrocode}
 %
 % \subsection{书脊}
 % \label{sec:shuji}
