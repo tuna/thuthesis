@@ -244,8 +244,7 @@
 % thuthesis.cfg & 模板配置文件\\
 % thuthesis-numeric.bst & 参考文献样式文件\\
 % thuthesis-author-year.bst & 参考文献样式文件\\
-% tsinghua.pdf & 校名 logo，系统无隶书字体时使用 \\
-% tsinghua.eps & 同上 \\\midrule
+% tsinghua.pdf & 校名 logo，系统无隶书字体时使用 \\\midrule
 % main.tex & 示例文档主文件\\
 % shuji.tex & 书脊示例文档\\
 % ref/ & 示例文档参考文献目录\\
@@ -314,15 +313,6 @@
 % $ xelatex main   # 此时生成完整的 pdf 文件
 % \end{shell}
 %
-% \subsubsection{PDF\LaTeX}
-% \label{sec:pdflatex}
-% 如果使用 PDF\LaTeX，按照第~\ref{sec:xelatex} 节的顺序执行即可，只是将命令中
-% \texttt{xelatex} 替换为 \texttt{pdflatex}。
-%
-% 需要注意的是 PDF\LaTeX\ 不能处理常见的 EPS 图形，需要先用 \texttt{epstopdf} 将其转化
-% 成 PDF。不过 PDF\LaTeX\ 增加了对 png，jpg 等格式的支持，比较方便。\TeX Live
-% 自从 2010 版本起自动调用 \texttt{epstopdf} 将 EPS 图形转化为 PDF。
-%
 % \subsubsection{latexmk}
 % \label{sec:latexmk}
 % \texttt{latexmk} 命令支持全自动生成 \LaTeX\ 编写的文档，并且支持使用不同的工具
@@ -358,7 +348,7 @@
 % \label{sec:updgrade}
 % \thuthesis\ 升级非常简单，可以通过 \TeX\ 发行版的包管理工具自动更新发行版，也可
 % 以下载最新的开发版，
-% 将 \file{thuthesis.ins}，\file{thuthesis.dtx}，\file{tsinghua.pdf}，\file{tsinghua.eps}，
+% 将 \file{thuthesis.ins}，\file{thuthesis.dtx}，\file{tsinghua.pdf}，
 % \file{thuthesis-author-year.bst} 和 \file{thuthesis-numeric.bst} 拷贝至工作目录覆盖相应
 % 的文件，然后运行：
 % \begin{shell}
@@ -389,7 +379,7 @@
 
 % 模板核心文件
 % 有：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thuthesis-numeric.bst}，
-% \file{thuthesis-author-year.bst}，\file{tsinghua.pdf} 和 \file{tsinghua.eps}，
+% \file{thuthesis-author-year.bst} 和 \file{tsinghua.pdf}，
 % 但如果没有示例文档会很难下手，所以推荐从模板自带的示例文档入手，其中包括了论文
 % 写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于不清
 % 楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文档，
@@ -2750,7 +2740,7 @@
       \ifthu@secret{\heiti\sanhao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifthu@bachelor
       \vskip0.65cm
-      {\ifcsname lishu\endcsname\yihao\lishu\ziju{0.5}\thu@schoolname\else\includegraphics{tsinghua}\fi}
+      {\ifcsname lishu\endcsname\yihao\lishu\ziju{0.5}\thu@schoolname\else\includegraphics{tsinghua.pdf}\fi}
       \par\vskip1.5cm
       {\xiaochu\heiti\ziju{0.5}\textbf\thu@bachelor@subtitle}
       \vskip2.2cm\hskip0.8cm
