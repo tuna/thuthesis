@@ -412,6 +412,9 @@
 % \documentclass[degree=master]{thuthesis}
 % \end{latex}
 %
+% \DescribeOption{language}
+% 论文的主要语言（默认：中文）。可选：\option{chinese}，\option{english}。
+%
 % \DescribeOption{secret}
 %   涉秘论文开关（默认：关闭）。第 \ref{sec:setup-secret} 节两个配置（或命
 %   令）\cs{secretlevel}\marg{级别} 和 \cs{secretyear}\marg{年数} 分别用来指定保
@@ -1158,33 +1161,13 @@
 % \changes{v5.0.0}{2015/12/13}{使用 \pkg{kvoptions} 简化选项 type。}
 % \changes{v5.4.2}{2017/12/18}{使用 degree 取代 type 选项。}
 %    \begin{macrocode}
-\newif\ifthu@bachelor
-\newif\ifthu@master
-\newif\ifthu@doctor
-\newif\ifthu@postdoctor
-\define@key{thu}{degree}{%
-  \thu@bachelorfalse
-  \thu@masterfalse
-  \thu@doctorfalse
-  \thu@postdoctorfalse
-  \expandafter\csname thu@#1true\endcsname}
-\define@key{thu}{type}{%
-  \ClassError{thuthesis}{'type' is deprecated, \MessageBreak
-                         please use 'degree=#1' instead}{}}
-\def\thu@deprecated@degree@option{%
-  \ClassError{thuthesis}{Option '\CurrentOption' is deprecated, \MessageBreak
-                         please use 'degree=\CurrentOption' instead}{}}
-\DeclareVoidOption{bachelor}{\thu@deprecated@degree@option}
-\DeclareVoidOption{master}{\thu@deprecated@degree@option}
-\DeclareVoidOption{doctor}{\thu@deprecated@degree@option}
-\DeclareVoidOption{postdoctor}{\thu@deprecated@degree@option}
+\DeclareStringOption[doctor]{degree}[doctor]
 %    \end{macrocode}
 %
 % 论文是使用英文。
 % \changes{v5.4.6}{2018/12/09}{增加选项使用英文模板。}
 %    \begin{macrocode}
-\DeclareBoolOption{chinese}
-\DeclareComplementaryOption{english}{chinese}
+\DeclareStringOption[chinese]{language}[chinese]
 %    \end{macrocode}
 %
 % 论文是否保密。
@@ -1204,7 +1187,7 @@
 % \changes{v4.8}{2013/03/05}{增加 noraggedbottom 选项。}
 % \changes{v5.0.0}{2015/12/13}{norggedbottom 选项修改为 raggedbottom。}
 %    \begin{macrocode}
-\DeclareBoolOption{raggedbottom}
+\DeclareBoolOption[true]{raggedbottom}
 %    \end{macrocode}
 %
 % 在脚注标记中使用 \pkg{pifont} 的带圈数字（默认关闭）
@@ -1221,27 +1204,24 @@
 % \changes{v2.5.1}{2006/05/26}{本科 openright，研究生 openany。}
 % \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
 % \changes{v4.8}{2013/05/29}{添加 nocap 选项，恢复默认标题样式，模板会进一步定制。}
-% 打开默认选项。
-%    \begin{macrocode}
-\kvsetkeys{thu}{%
-  chinese,%
-  raggedbottom}
-%    \end{macrocode}
-%
 % 解析用户传递过来的选项，并加载 \pkg{ctexbook}。
 %    \begin{macrocode}
 \ProcessKeyvalOptions*
-\ifthu@bachelor\relax\else
-  \ifthu@master\relax\else
-    \ifthu@doctor\relax\else
-      \ifthu@postdoctor\relax\else
-        \ClassError{thuthesis}%
-                   {Please specify thesis degree in option: \MessageBreak
-                    degree=[bachelor | master | doctor | postdoctor]}{}
-      \fi
-    \fi
-  \fi
-\fi
+\newcommand\thu@validate@key[1]{%
+  \@ifundefined{thu@\csname thu@#1\endcsname true}{%
+    \ClassError{thuthesis}{Invalid value '\csname thu@#1\endcsname'}{}%
+  }{%
+    \csname thu@\csname thu@#1\endcsname true\endcsname
+  }%
+}
+\newif\ifthu@bachelor
+\newif\ifthu@master
+\newif\ifthu@doctor
+\newif\ifthu@postdoctor
+\thu@validate@key{degree}
+\newif\ifthu@chinese
+\newif\ifthu@english
+\thu@validate@key{language}
 %    \end{macrocode}
 %
 % \changes{v5.3.1}{2016/03/20}{使用 \CTeX\ 默认中文字体配置，支持不同引擎。}
@@ -1729,8 +1709,8 @@
 }
 \newcommand\thu@setenglish{%
   \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
-  \xeCJKDeclareCharClass{HalfRight}{%
-    "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A%
+  \xeCJKDeclareCharClass{HalfRight}{
+    "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
   }%
 }
 \newcommand\thu@setdefaultlanguage{%
