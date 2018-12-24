@@ -177,8 +177,10 @@
 % \item 本模板为作者根据清华大学教务处颁发的《综合论文训练写作指南》，
 %   清华大学研究生院颁发的
 %   \href{http://yjsy.cic.tsinghua.edu.cn/docinfo/board/boarddetail.jsp?columnId=001050603&parentColumnId=0010506&itemSeq=5365}{《研究生学位论文写作指南》}，
-%   清华大学《编写“清华大学博士后研究报告”参考意见》编写而成，
-%   旨在供清华大学毕业生撰写学位论文使用。
+%   清华大学
+%   \href{http://postdoctor.tsinghua.edu.cn/info/czxz/1283}{%
+%     《编写“清华大学博士后研究报告”参考意见》}
+%   编写而成，旨在供清华大学毕业生撰写学位论文使用。
 % \item 清华大学教务处和研究生院只提供毕业论文写作指南，不提供官方模板，也不会授
 %   权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格式审查老师
 %   不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
@@ -3514,22 +3516,26 @@
 %<*cfg>
 \ifthu@chinese
   \ifthu@bachelor
-    \newcommand{\thu@resume@title}{在学期间参加课题的研究成果}
+    \newcommand\thu@resume@title{在学期间参加课题的研究成果}
   \else
     \ifthu@postdoctor
-      \newcommand{\thu@resume@title}{个人简历、发表的学术论文与科研成果}
+      \newcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
     \else
-      \newcommand{\thu@resume@title}{个人简历、在学期间发表的学术论文与研究成果}
+      \newcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
     \fi
   \fi
 \else
   \ifthu@bachelor
-    \newcommand{\thu@resume@title}{在学期间参加课题的研究成果}
+    \newcommand\thu@resume@title{Research Achievements}
   \else
     \ifthu@postdoctor
-      \newcommand{\thu@resume@title}{个人简历、发表的学术论文与科研成果}
+      \newcommand\thu@resume@title{%
+        Resume, Publications and Research Achievements%
+      }
     \else
-      \newcommand{\thu@resume@title}{个人简历、在学期间发表的学术论文与研究成果}
+      \newcommand\thu@resume@title{%
+        Resume, Publications and Research Achievements%
+      }
     \fi
   \fi
 \fi
