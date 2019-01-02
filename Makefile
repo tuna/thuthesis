@@ -13,7 +13,7 @@ PACKAGE=thuthesis
 SOURCES=$(PACKAGE).ins $(PACKAGE).dtx
 THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(FIGURES)
 # NOTE: update this to reflect your local file types.
-FIGURES=$(wildcard figures/*.eps figures/*.pdf)
+FIGURES=$(wildcard figures/*.pdf)
 BIBFILE=ref/*.bib
 BSTFILE=*.bst
 SHUJICONTENTS=$(SHUJIMAIN).tex
