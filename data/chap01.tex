@@ -2,7 +2,7 @@
 \label{cha:intro}
 
 这是 \thuthesis\cite{thuthesis} 的示例文档，基本上覆盖了模板中所有格式的设置。建
-议大家在使用模板之前，除了阅读《\thuthesis{}用户手册》，这个示例文档也最好能看一
+议大家在使用模板之前，除了阅读《\thuthesis{} 用户手册》，这个示例文档也最好能看一
 看。
 
 小老鼠偷吃热凉粉；短长虫环绕矮高粱\footnote{韩愈（768-824），字退之，河南河阳（
@@ -82,12 +82,12 @@
     \begin{tabularx}{\linewidth}{lX}
       \toprule[1.5pt]
       {\heiti 文件名} & {\heiti 描述} \\\midrule[1pt]
-      thuthesis.ins & \LaTeX{} 安装文件，\textsc{DocStrip}\footnote{表格中的脚注} \\
+      thuthesis.ins & \LaTeX{} 安装文件，DocStrip\footnote{表格中的脚注} \\
       thuthesis.dtx & 所有的一切都在这里面\footnote{再来一个}。\\
       thuthesis.cls & 模板类文件。\\
       thuthesis.cfg & 模板配置文。cls 和 cfg 由前两个文件生成。\\
-      thuthesis-numeric.bst    & 参考文献 BIB\TeX\ 样式文件。\\
-      thuthesis-author-year.bst    & 参考文献 BIB\TeX\ 样式文件。\\
+      thuthesis-numeric.bst    & 参考文献 Bib\TeX\ 样式文件。\\
+      thuthesis-author-year.bst    & 参考文献 Bib\TeX\ 样式文件。\\
       thuthesis.sty   & 常用的包和命令写在这里，减轻主文件的负担。\\
       \bottomrule[1.5pt]
     \end{tabularx}
@@ -217,9 +217,9 @@
     \multicolumn{2}{|c|}{Network Topology} & \# of nodes &
     \multicolumn{3}{c|}{\# of clients} & Server \\\hline
     GT-ITM & Waxman Transit-Stub & 600 &
-    \multirow{2}{1em}{2\%}&
-    \multirow{2}{1.5em}{10\%}&
-    \multirow{2}{1.5em}{50\%}&
+    \multirow{2}{1.5em}{2\%}&
+    \multirow{2}{2em}{10\%}&
+    \multirow{2}{2em}{50\%}&
     \multirow{2}{1.2in}{Max. Connectivity}\\\cline{1-3}
     \multicolumn{2}{|c|}{Inet-2.1} & 6000 & & & &\\\hline
     \multirow{2}{1.5cm}{Xue} & Rui  & Ni &\multicolumn{4}{c|}{\multirow{2}*{\thuthesis}}\\\cline{2-3}
@@ -470,12 +470,13 @@ V_j & = v_j, & \qquad X_j & = x_j,
 \begin{example}
   大家来看这个例子。
 \begin{equation}
-\label{ktc}
-\left\{\begin{array}{l}
-\nabla f({\mbox{\boldmath $x$}}^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j({\mbox{\boldmath $x$}}^*)=0\\[0.3cm]
-\lambda_jg_j({\mbox{\boldmath $x$}}^*)=0,\quad j=1,2,\cdots,p\\[0.2cm]
-\lambda_j\ge 0,\quad j=1,2,\cdots,p.
-\end{array}\right.
+  \label{ktc}
+  \begin{cases}
+    \nabla f(\bm{x}^*) - \sum_{j=1}^p \lambda_j \nabla g_j(\bm{x}^*)
+      = 0 \\[0.3cm]
+    \lambda_j g_j(\bm{x}^*) = 0, \quad j = 1, 2, \dots, p \\[0.2cm]
+    \lambda_j \ge 0, \quad j = 1, 2, \dots, p.
+  \end{cases}
 \end{equation}
 \end{example}
 
@@ -559,17 +560,20 @@ p(y|\vec{x}) = \frac{p(\vec{x},y)}{p(\vec{x})}=
 \end{multline*}
 
 其实还可以看看这个多级规划：
-\begin{equation}\label{bilevel}
-\left\{\begin{array}{l}
-\max\limits_{{\mbox{\footnotesize\boldmath $x$}}} F(x,y_1^*,y_2^*,\cdots,y_m^*)\\[0.2cm]
-\mbox{subject to:}\\[0.1cm]
-\qquad G(x)\le 0\\[0.1cm]
-\qquad(y_1^*,y_2^*,\cdots,y_m^*)\mbox{ solves problems }(i=1,2,\cdots,m)\\[0.1cm]
-\qquad\left\{\begin{array}{l}
-    \max\limits_{{\mbox{\footnotesize\boldmath $y_i$}}}f_i(x,y_1,y_2,\cdots,y_m)\\[0.2cm]
-    \mbox{subject to:}\\[0.1cm]
-    \qquad g_i(x,y_1,y_2,\cdots,y_m)\le 0.
-    \end{array}\right.
-\end{array}\right.
+\begin{equation}
+  \label{bilevel}
+  \begin{cases}
+    \max_{\bm{x}} F(\bm{x}, y_1^*, y_2^*, \dots, y_m^*) \\
+      \text{subject to:} \\
+      \qquad G(\bm{x}) \le 0 \\
+      \qquad (y_1^*, y_2^*, \dots, y_m^*) \text{ solves problems }
+        (i = 1, 2, \dots, m) \\
+      \qquad
+        \begin{cases}
+          \max_{\bm{x}} f_i(\bm{x}, y_1, y_2, \dots, y_m) \\
+          \text{subject to:} \\
+          \qquad g_i(\bm{x}, y_1, y_2, \dots, y_m) \le 0.
+        \end{cases}
+  \end{cases}
 \end{equation}
 这些跟规划相关的公式都来自于刘宝碇老师《不确定规划》的课件。

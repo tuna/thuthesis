@@ -20,14 +20,14 @@ throughout the book$^{[2,3]}$.
 \section{Single-Objective Programming}
 The general form of single-objective programming (SOP) is written
 as follows,
-\begin{equation}\tag*{(123)} % 如果附录中的公式不想让它出现在公式索引中，那就请
-                             % 用 \tag*{xxxx}
+\begin{equation*} % 如果附录中的公式不想让它出现在公式索引中，那就请
+                             % 用 equation*
 \left\{\begin{array}{l}
 \max \,\,f(x)\\[0.1 cm]
 \mbox{subject to:} \\ [0.1 cm]
 \qquad g_j(x)\le 0,\quad j=1,2,\cdots,p
 \end{array}\right.
-\end{equation}
+\end{equation*}
 which maximizes a real-valued function $f$ of
 $x=(x_1,x_2,\cdots,x_n)$ subject to a set of constraints.
 
@@ -37,9 +37,9 @@ $x=(x_1,x_2,\cdots,x_n)$ subject to a set of constraints.
 In SOP, we call $x$ a decision vector, and
 $x_1,x_2,\cdots,x_n$ decision variables. The function
 $f$ is called the objective function. The set
-\begin{equation}\tag*{(456)} % 这里同理，其它不再一一指定。
+\begin{equation*}
 S=\left\{x\in\Real^n\bigm|g_j(x)\le 0,\,j=1,2,\cdots,p\right\}
-\end{equation}
+\end{equation*}
 is called the feasible set. An element $x$ in $S$ is called a
 feasible solution.
 \end{mpdef}

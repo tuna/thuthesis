@@ -1145,7 +1145,7 @@
 %    \begin{macrocode}
 %<*cls>
 \hyphenation{Thu-Thesis}
-\def\thuthesis{\textsc{ThuThesis}}
+\def\thuthesis{ThuThesis}
 \def\version{5.4.5}
 
 \RequirePackage{kvoptions}
@@ -1220,6 +1220,7 @@
 % \changes{v5.3.1}{2016/03/20}{使用 \CTeX\ 默认中文字体配置，支持不同引擎。}
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
 %    \begin{macrocode}
+\PassOptionsToPackage{quiet}{xeCJK}
 \LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain]{ctexbook}
 %    \end{macrocode}
 %
@@ -1339,6 +1340,10 @@
   plainpages         = false,
   hidelinks,
 }
+\pdfstringdefDisableCommands{
+  \let\\\@empty
+  \let\hspace\@gobble
+}
 %    \end{macrocode}
 %
 % 设置 url 样式，与上下文一致
@@ -1438,7 +1443,7 @@
 \renewcommand\frontmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmatterfalse
-  \pagenumbering{Roman}
+  \pagenumbering{Alph}
   \pagestyle{thu@empty}}
 \renewcommand\mainmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
