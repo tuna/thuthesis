@@ -26,12 +26,12 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 
 # 升级
 ## 自动更新
-通过TeX发行版工具自动从[CTAN](http://www.ctan.org/pkg/thuthesis)更新。
+通过 TeX 发行版工具自动从 [CTAN](http://www.ctan.org/pkg/thuthesis) 更新。
 
 ## 手动更新
-从 [GitHub](https://github.com/xueruini/thuthesis)下载放入论文目录，执行命令（Windows 用户在文件夹空白处按`Shift+鼠标右键`，点击“在此处打开命令行窗口”）：
+从 [GitHub](https://github.com/xueruini/thuthesis) 下载放入论文目录，执行命令（Windows 用户在文件夹空白处按`Shift+鼠标右键`，点击“在此处打开命令行窗口”）：
 
-    latex thuthesis.ins
+    xetex thuthesis.ins
 
 即可得到 `thuthesis.cls` 和 `thuthesis.cfg` 等模板文件。
 
@@ -46,8 +46,7 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 # Makefile的用法
 
 ```shell
-make [{all|thesis|shuji|doc|clean|cleanall|distclean}] \
-     [METHOD={latexmk|xelatex|pdflatex}]
+make [{all|thesis|shuji|doc|clean|cleanall|distclean}]
 ```
 
 ## 目标
@@ -59,12 +58,6 @@ make [{all|thesis|shuji|doc|clean|cleanall|distclean}] \
 * `make clean`     删除示例文件的中间文件（不含 main.pdf）；
 * `make cleanall`  删除示例文件的中间文件和 main.pdf；
 * `make distclean` 删除示例文件和模板的所有中间文件和 PDF。
-
-## 参数
-* **METHOD**：指定生成 pdf 的方式，缺省采用 latexmk。
-  * METHOD=latexmk  表示使用 latexmk 的方式生成 pdf（使用 xelatex）。
-  * METHOD=xelatex  表示使用 xelatex 引擎编译生成 pdf；
-  * METHOD=pdflatex 表示使用 pdflatex 引擎编译生成 pdf。
 
 # Documentation
 Download and unzip the template. Specific usage documentation and examples can be found in the files below. At present, these documents are <b>only available in Chinese</b>:
@@ -82,7 +75,7 @@ Get the most up-to-date published version of the TeX tools from [CTAN](http://ww
 ## Manual
 Download the package from [GitHub](https://github.com/xueruini/thuthesis) to the root directory of your thesis, then execute the command (Windows users `Shift + right click` white area in the file window and click "Open command line window here from the popup menu"):
 
-    latex thuthesis.ins
+    xetex thuthesis.ins
 
 You'll get `thuthesis.cls` and `thuthesis.cfg` along with other template files.
 
@@ -97,8 +90,7 @@ Please follow the procedure below:
 # Makefile Usage
 
 ```shell
-make [{all|thesis|shuji|doc|clean|cleanall|distclean}] \
-     [METHOD={latexmk|xelatex|pdflatex}]
+make [{all|thesis|shuji|doc|clean|cleanall|distclean}]
 ```
 
 ## Targets
@@ -110,9 +102,3 @@ make [{all|thesis|shuji|doc|clean|cleanall|distclean}] \
 * `make clean`     delete all examples' files (excluding main.pdf);
 * `make cleanall`  delete all examples' files and main.pdf;
 * `make distclean` delete all examples' and templates' files and PDFs.
-
-## Parameters
-* **METHOD**：define the method used to generate the pdfs, the default is `latexmk`.
-  * `METHOD=latexmk` use latexmk to generate pdfs (uses xelatex).
-  * `METHOD=xelatex` use xelatex engine to compile and build pdfs;
-  * `METHOD=pdflatex` use pdflatex engine to compile and build pdfs.

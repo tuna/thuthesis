@@ -342,7 +342,7 @@
 % \end{shell}
 %
 % \thuthesis\ 的 \file{Makefile} 默认用 \texttt{latexmk} 调用\texttt{xelatex} 编
-% 译，此外还支持直接用 \texttt{xelatex} 和\texttt{pdflatex} 编译。如有需要可修
+% 译。如有需要可修
 % 改 \file{Makefile} 开头的参数或通过命令行传递参数（请参看 \file{README.md}），
 % 进一步还可以修改 \file{latexmkrc} 进行定制。
 %
@@ -502,12 +502,6 @@
 %
 % \subsubsection{字体配置}
 % \label{sec:font-config}
-% 正确配置中文字体是使用模板的第一步。模板调用 \CTeX\ 宏包，提供如下字体使用方式：
-% \begin{itemize}
-%   \item 基于传统 \pkg{CJK} 包，使用 \LaTeX、PDF\LaTeX\ 编译。
-%   \item 基于 \pkg{xeCJK} 包，使用 \XeLaTeX\ 编译。（推荐方法）
-% \end{itemize}
-%
 % 模板默认使用 \CTeX\ 的字体配置。关于中文字体安装、配置的所有问题不在本模板讨论
 % 范围。
 %
@@ -1127,6 +1121,15 @@
 %<cls|cfg>[2018/05/17 5.4.5 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
+% 检查编译引擎，要求使用 XeLaTeX。
+%    \begin{macrocode}
+\RequirePackage{ifxetex}
+\ifxetex\else
+  \ClassError{thuthesis}{You should use XeLaTeX}{}
+  \end{document}
+\fi
+%    \end{macrocode}
+%
 % \subsection{定义选项}
 % \label{sec:defoption}
 % 定义论文类型以及是否涉密
@@ -1227,7 +1230,6 @@
 % 引用的宏包和相应的定义。
 %    \begin{macrocode}
 \RequirePackage{etoolbox}
-\RequirePackage{ifxetex}
 \RequirePackage{xparse}
 %    \end{macrocode}
 %
@@ -1328,23 +1330,15 @@
 % \changes{v5.2.2}{2016/01/25}{目录中标题和页码都是链接。}
 %    \begin{macrocode}
 \RequirePackage{hyperref}
-\ifxetex
-  \hypersetup{%
-    CJKbookmarks=true}
-\else
-  \hypersetup{%
-    unicode=true,
-    CJKbookmarks=false}
-\fi
-\hypersetup{%
-  linktoc=all,
-  bookmarksnumbered=true,
-  bookmarksopen=true,
-  bookmarksopenlevel=1,
-  breaklinks=true,
-  colorlinks=false,
-  plainpages=false,
-  pdfborder=0 0 0}
+\hypersetup{
+  linktoc            = all,
+  bookmarksnumbered  = true,
+  bookmarksopen      = true,
+  bookmarksopenlevel = 1,
+  breaklinks         = true,
+  plainpages         = false,
+  hidelinks,
+}
 %    \end{macrocode}
 %
 % 设置 url 样式，与上下文一致
@@ -1530,12 +1524,7 @@
 % 这可能会导致审查不合格。下面设置适合印刷的黑体，同时保持跨平台兼容性。
 %    \begin{macrocode}
 \ifthenelse{\equal{\thu@fontset}{windows}}{
-  \ifxetex
-    \setCJKsansfont{SimHei}
-  \else
-    \setCJKsansfont{simhei.ttf}
-    \csname ctex_punct_map_family:nn\endcsname{\CJKsfdefault}{zhhei}
-  \fi
+  \setCJKsansfont{SimHei}
 }{}
 %    \end{macrocode}
 %
@@ -2691,13 +2680,8 @@
 %<*cls>
 \newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \newlength{\thu@title@width}
-\ifxetex % todo: ugly codes
-  \newcommand{\thu@put@title}[2][\thu@title@width]{%
-  \begin{CJKfilltwosides}[b]{#1}#2\end{CJKfilltwosides}}
-\else
-  \newcommand{\thu@put@title}[2][\thu@title@width]{%
-  \begin{CJKfilltwosides}{#1}#2\end{CJKfilltwosides}}
-\fi
+\newcommand{\thu@put@title}[2][\thu@title@width]{%
+\begin{CJKfilltwosides}[b]{#1}#2\end{CJKfilltwosides}}
 \def\thu@first@titlepage{%
   \ifthu@postdoctor\thu@first@titlepage@postdoctor\else\thu@first@titlepage@other\fi}
 \newcommand{\thu@first@titlepage@postdoctor}{
@@ -2726,11 +2710,7 @@
     \parbox[t][7cm][b]{\textwidth-6cm}{\sihao[1.5]%
       \setlength{\thu@title@width}{11em}
       \setlength{\extrarowheight}{6pt}
-      \ifxetex % todo: ugly codes
-        \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
-      \else
-        \begin{tabular}{p{\thu@title@width}l@{}l}
-      \fi
+      \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
           \thu@put@title{\thu@author@title}
             & \thu@title@sep
             & \thu@cauthor \\
@@ -2763,11 +2743,7 @@
       \ignorespaces\yihao[1.51]%
       \renewcommand{\CJKunderlinebasesep}{0.25cm}%
       \renewcommand{\ULthickness}{1.3pt}%
-      \ifxetex
-        \xeCJKsetup{underline/format=\color{black}}%
-      \else
-        \def\CJKunderlinecolor{\color{black}}%
-      \fi
+      \xeCJKsetup{underline/format=\color{black}}%
       \CJKunderline*{\thu@ctitle}}%
       \vskip1.3cm
     \else
@@ -2802,11 +2778,7 @@
          \hspace*{1.9cm}
          \setlength{\thu@title@width}{4em}
          \setlength{\extrarowheight}{6pt}
-         \ifxetex % todo: ugly codes
-           \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
-         \else
-           \begin{tabular}{p{\thu@title@width}l@{}l}
-         \fi
+         \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
              \thu@put@title{\thu@department@title} & \thu@title@sep
                & \thu@cdepartment\\
              \thu@put@title{\thu@major@title}      & \thu@title@sep
@@ -2827,11 +2799,7 @@
         \begin{center}\fangsong
           \setlength{\thu@title@width}{5em}
           \setlength{\extrarowheight}{4pt}
-          \ifxetex % todo: ugly codes
-            \begin{tabular}{p{\thu@title@width}@{}c@{\extracolsep{8pt}}l}
-          \else
-            \begin{tabular}{p{\thu@title@width}c@{\extracolsep{4pt}}l}
-          \fi
+          \begin{tabular}{p{\thu@title@width}@{}c@{\extracolsep{8pt}}l}
               \thu@put@title{\thu@department@title}  & \thu@title@sep
                 & {\ziju{0.1875}\thu@cdepartment}\\
               \thu@put@title{\thu@major@title}       & \thu@title@sep
@@ -3621,7 +3589,7 @@
 %<*cls>
 \NewDocumentCommand{\shuji}{O{\thu@ctitle} O{\thu@cauthor}}{%
   \newpage\thispagestyle{empty}%
-  \fangsong\ifxetex\addCJKfontfeatures*{RawFeature={vertical:}}\fi
+  \fangsong\addCJKfontfeatures*{RawFeature={vertical:}}
   \xiaosan\ziju{0.4}%
   \noindent\hfill\rotatebox[origin=lt]{-90}{\makebox[\textheight]{#1\hfill#2}}}
 %</cls>

@@ -1,7 +1,5 @@
 # Makefile for ThuThesis
 
-# Compiling method: latexmk/xelatex/pdflatex
-METHOD = latexmk
 # Set opts for latexmk if you use it
 LATEXMKOPTS = -xelatex -file-line-error -halt-on-error -interaction=nonstopmode
 # Basename of thesis
@@ -52,42 +50,14 @@ viewshuji: shuji
 
 shuji: $(SHUJIMAIN).pdf
 
-ifeq ($(METHOD),latexmk)
-
 $(PACKAGE).pdf: $(CLSFILES) $(THESISMAIN).tex FORCE_MAKE
-	$(METHOD) $(LATEXMKOPTS) $(PACKAGE).dtx
+	latexmk $(LATEXMKOPTS) $(PACKAGE).dtx
 
 $(THESISMAIN).pdf: $(CLSFILES) $(BSTFILE) FORCE_MAKE
-	$(METHOD) $(LATEXMKOPTS) $(THESISMAIN)
+	latexmk $(LATEXMKOPTS) $(THESISMAIN)
 
 $(SHUJIMAIN).pdf: $(CLSFILES) FORCE_MAKE
-	$(METHOD) $(LATEXMKOPTS) $(SHUJIMAIN)
-
-else ifneq (,$(filter $(METHOD),xelatex pdflatex))
-
-$(PACKAGE).pdf: $(CLSFILES) $(THESISMAIN).tex
-	$(METHOD) $(PACKAGE).dtx
-	makeindex -s gind.ist -o $(PACKAGE).ind $(PACKAGE).idx
-	makeindex -s gglo.ist -o $(PACKAGE).gls $(PACKAGE).glo
-	$(METHOD) $(PACKAGE).dtx
-	$(METHOD) $(PACKAGE).dtx
-
-$(THESISMAIN).pdf: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN).bbl
-	$(METHOD) $(THESISMAIN)
-	$(METHOD) $(THESISMAIN)
-
-$(THESISMAIN).bbl: $(BIBFILE) $(BSTFILE)
-	$(METHOD) $(THESISMAIN)
-	-bibtex $(THESISMAIN)
-	$(RM) $(THESISMAIN).pdf
-
-$(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
-	$(METHOD) $(SHUJIMAIN)
-
-else
-$(error Unknown METHOD: $(METHOD))
-
-endif
+	latexmk $(LATEXMKOPTS) $(SHUJIMAIN)
 
 clean:
 	latexmk -c $(PACKAGE).dtx $(THESISMAIN) $(SHUJIMAIN)
