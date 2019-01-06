@@ -1163,7 +1163,7 @@
 %    \end{macrocode}
 %
 % 论文是使用英文。
-% \changes{v5.4.6}{2018/12/09}{增加选项使用英文模板。}
+% \changes{v5.5}{2018/12/09}{增加选项使用英文模板。}
 %    \begin{macrocode}
 \DeclareStringOption[chinese]{language}[chinese]
 %    \end{macrocode}
@@ -1527,9 +1527,20 @@
 %
 % 在使用 Windows Vista 或之后版本的系统时，\pkg{ctex} 宏包会默认使用微软雅黑字体，
 % 这可能会导致审查不合格。下面设置适合印刷的黑体，同时保持跨平台兼容性。
+% \changes{v5.5}{2019/01/06}{Windows 的中文字体开启伪粗。}
 %    \begin{macrocode}
 \ifthenelse{\equal{\thu@fontset}{windows}}{
-  \setCJKsansfont{SimHei}
+  \xeCJKsetup{EmboldenFactor=2}
+  \IfFileExists{C:/bootfont.bin}{
+    \setCJKmainfont[AutoFakeBold,ItalicFont=KaiTi_GB2312]{SimSun}
+    \setCJKfamilyfont{zhkai}[AutoFakeBold]{KaiTi_GB2312}
+  }{
+    \setCJKmainfont[AutoFakeBold,ItalicFont=KaiTi]{SimSun}
+    \setCJKfamilyfont{zhkai}[AutoFakeBold]{KaiTi}
+  }
+  \setCJKsansfont[AutoFakeBold]{SimHei}
+  \setCJKfamilyfont{zhsong}[AutoFakeBold]{SimSun}
+  \setCJKfamilyfont{zhhei}[AutoFakeBold]{SimHei}
 }{}
 %    \end{macrocode}
 %
@@ -1540,7 +1551,7 @@
          UprightFont = * Light,
             BoldFont = * Bold,
           ItalicFont = Kaiti SC,
-      BoldItalicFont = Kaiti SC Bold
+      BoldItalicFont = Kaiti SC Bold,
     ]{Songti SC}
   \setCJKsansfont[BoldFont=* Medium]{Heiti SC}
   \setCJKfamilyfont{zhsong}[
@@ -1776,7 +1787,7 @@
 % \begin{macro}{\thu@textcircled}
 % \changes{v2.5.1}{2006/05/21}{脚注编号使用 \cs{textcircled} 命令，每页允许至多 99 个。}
 % \changes{v5.2.2}{2016/02/01}{脚注编号每页允许至多 9 个。}
-% \changes{v5.4.6}{2018/12/10}{去掉 \option{pifootnote} 选项。}
+% \changes{v5.5}{2018/12/10}{去掉 \option{pifootnote} 选项。}
 % 生成带圈的脚注数字，最多处理到 10。
 %    \begin{macrocode}
 %<*cls>
@@ -3574,7 +3585,7 @@
 %
 % \subsubsection{\pkg{nomencl} 宏包}
 %
-% \changes{v5.4.6}{2018/12/09}{增加 \pkg{nomencl} 宏包的支持。}
+% \changes{v5.5}{2018/12/09}{增加 \pkg{nomencl} 宏包的支持。}
 %    \begin{macrocode}
 \thu@atendpackage{nomencl}{
   \let\nomname\thu@denotation@name
