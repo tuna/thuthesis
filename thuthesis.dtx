@@ -762,9 +762,11 @@
 % 默认为当前时间，也可以自己指定。
 % \begin{latex}
 % \thusetup{
-%   cdate={中文日期},
-%   edate={English Date},
-%   postdoctordate={2009年7月——2011年7月} % 博士后研究起止日期
+%   cdate            = {中文日期},
+%   edate            = {English Date},
+%   postdoctordate   = {2009 年 7 月——2011 年 7 月},  % 博士后工作完成日期
+%   postdocstartdate = {2009 年 7 月 1 日},  % 博士后研究工作起始时间
+%   postdocenddate   = {2011 年 7 月 1 日},  % 博士后研究工作期满时间
 % }
 % % 等价：
 % \cdate{中文日期}
@@ -2511,6 +2513,8 @@
 \thu@def@term{cfirstdiscipline}
 \thu@def@term{cseconddiscipline}
 \thu@def@term{postdoctordate}
+\thu@def@term{postdocstartdate}
+\thu@def@term{postdocenddate}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -2595,8 +2599,6 @@
 %<*cfg>
 \def\thu@ckeywords@separator{；}
 \def\thu@ekeywords@separator{;}
-\def\thu@catalog@number@title{分类号}
-\def\thu@id@title{编号}
 \def\thu@title@sep{：}
 \ifthu@postdoctor
   \def\thu@secretlevel{密级}
@@ -2605,7 +2607,6 @@
 \fi
 \def\thu@secretyear{\the\year}
 \def\thu@schoolname{清华大学}
-\def\thu@postdoctor@report@title{博士后研究报告}
 \def\thu@bachelor@subtitle{综合论文训练}
 \def\thu@bachelor@title@pre{题目}
 \def\thu@postdoctor@date@title{研究起止日期}
@@ -2644,7 +2645,7 @@
 \fi
 \def\thu@cosuper@title{%
   \ifthu@doctor 联合导师\else \ifthu@master 联合指导教师\fi\fi}
-\cdate{\ifthu@bachelor\CJK@todaysmall\else\CJK@todaybig@short\fi}
+\cdate{\ifthu@bachelor\CJK@todaysmall\else\ifthu@postdoctor\CJK@todaysmall@short\else\CJK@todaybig@short\fi\fi}
 \edate{\ifcase \month \or January\or February\or March\or April\or May%
        \or June\or July \or August\or September\or October\or November
        \or December\fi\unskip,\ \ \the\year}
@@ -2691,58 +2692,81 @@
 % \changes{v4.7}{2011/11/28}{硕士中文封面不再需要英文标题。}
 % \changes{v4.7}{2012/05/30}{本科生题目下划线长度自动适应字数。}
 % \changes{v5.1.0}{2015/12/27}{利用 \env{CJKfilltwosides} 优化封面排版。}
+% \changes{v5.5}{2019/01/08}{修正博士后封面的格式。}
 %
 %    \begin{macrocode}
 %<*cls>
 \newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newcommand\thu@CJKunderline[2][6em]{\CJKunderline*{\hb@xt@ #1{\hss#2\hss}}}
 \newlength{\thu@title@width}
 \newcommand{\thu@put@title}[2][\thu@title@width]{%
-\begin{CJKfilltwosides}[b]{#1}#2\end{CJKfilltwosides}}
+  \begin{CJKfilltwosides}[b]{#1}#2\end{CJKfilltwosides}}
 \def\thu@first@titlepage{%
   \ifthu@postdoctor\thu@first@titlepage@postdoctor\else\thu@first@titlepage@other\fi}
-\newcommand{\thu@first@titlepage@postdoctor}{
-  \begin{center}
-    \setlength{\thu@title@width}{3em}
-    \vspace*{0.7cm}
-    \begingroup\wuhao[1.5]%
-    \thu@put@title{\thu@catalog@number@title}\thu@underline\thu@catalognumber\hfill%
-    \thu@put@title{\thu@secretlevel}%
-      \expandafter\thu@underline\ifthu@secret\thu@secret@content\else\relax\fi\par
-    \thu@put@title{U D C}\thu@underline\thu@udc\hfill%
-    \thu@put@title{\thu@id@title}\thu@underline\thu@id\par\vskip3cm\endgroup
-    \begingroup\heiti
-      {\xiaochu\ziju{1}\thu@schoolname}\par\vskip2cm
-      {\xiaoyi\ziju{1}\thu@postdoctor@report@title}\par\vskip3cm
-      {\sanhao[1.5]\thu@ctitle}\par\vskip2cm
-      {\xiaoer\thu@cauthor}
-    \endgroup
-    \par\vskip3cm
-    {\xiaosan[1.5]\ziju{1}\thu@schoolname\par\vskip0.5em\CJK@todaysmall@short}
-  \end{center}
+\newcommand\thu@first@titlepage@postdoctor{%
+  \begin{center}%
+    \setlength{\thu@title@width}{3.5em}%
+    \renewcommand\ULthickness{0.7pt}%
+    \vspace*{0.35cm}%
+    {\sihao[2.6]%
+      \thu@put@title{分类号}\thu@underline[3.7cm]{\thu@catalognumber}\hfill
+      密级\thu@underline[3.7cm]{\ifthu@secret\thu@secret@content\fi}\par
+      \thu@put@title{U D C}\thu@underline[3.7cm]{\thu@udc}\hfill
+      编号\thu@underline[3.7cm]{\thu@id}\par
+    }%
+    \vskip 3.15cm%
+    {\sffamily\bfseries\xiaoer[2.6]%
+      {\ziju{1.5}\thu@schoolname\par}%
+      {\ziju{0.5}博士后研究工作报告\par}%
+    }%
+    \vskip 0.2cm%
+    \parbox[t][4.0cm][c]{\textwidth}{%
+      \centering\sihao[3.46]\CJKunderline*[depth=1em]{\thu@ctitle}\par
+    }\par
+    \vskip 0.4cm%
+    {\xiaosi\thu@cauthor\par}%
+    \vskip 1.4cm%
+    {\xiaosi[1.58]\xeCJKsetup{underline/depth=0.9em}%
+      工作完成日期\quad\thu@CJKunderline[5.9cm]{\thu@postdoctordate}\par
+      \vskip 0.55cm%
+      报告提交日期\quad\thu@CJKunderline[5.9cm]{\thu@cdate}\par
+    }%
+    \vskip 0.45cm%
+    {\xiaosi[2]{\ziju{1}\thu@schoolname}\quad （北京）\par}%
+    \vskip 0.25cm%
+    {\xiaosi[2]\thu@cdate\par}%
+  \end{center}%
   \cleardoublepage
-  \begin{center}
-    \vspace*{2cm}
-    {\sihao\heiti\thu@ctitle\par\thu@etitle}\par
-    \parbox[t][7cm][b]{\textwidth-6cm}{\sihao[1.5]%
-      \setlength{\thu@title@width}{11em}
-      \setlength{\extrarowheight}{6pt}
-      \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
-          \thu@put@title{\thu@author@title}
-            & \thu@title@sep
-            & \thu@cauthor \\
-          \thu@put@title{\thu@postdoctor@first@discipline@title}
-            & \thu@title@sep
-            & \thu@cfirstdiscipline\\
-          \thu@put@title{\thu@postdoctor@second@discipline@title}
-            & \thu@title@sep
-            & \thu@cseconddiscipline\\
-          \thu@put@title{\thu@supervisor@title}
-            & \thu@title@sep
-            & \thu@csupervisor\\
-        \end{tabular}}
-    \vskip2cm
-    {\sihao\thu@postdoctor@date@title\hskip1em\underline\thu@postdoctordate}
-  \end{center}}
+  \begin{center}%
+    \vspace*{1.5cm}%
+    \parbox[t][3cm][c]{\textwidth}{%
+      \centering\sanhao[1.95]\thu@ctitle\par
+    }\par
+    \vskip 0.15cm%
+    \parbox[t][3cm][c]{\textwidth}{%
+      \centering\sihao[1.36]\thu@etitle\par
+    }\par
+    \vskip 0.4cm%
+    {\xiaosi[2.6]%
+      \setlength{\thu@title@width}{11em}%
+      \begin{tabular}{l@{\quad}l}%
+        \thu@put@title{博士后姓名}                  & \thu@cauthor           \\
+        \thu@put@title{流动站（一级学科）名称}      & \thu@cfirstdiscipline  \\
+        \thu@put@title{专\quad{}业（二级学科）名称} & \thu@cseconddiscipline \\
+      \end{tabular}\par
+    }%
+    \vskip 2.7cm%
+    {\xiaosi[2.6]%
+      研究工作起始时间\quad\thu@postdocstartdate\par
+      \vskip 0.1cm%
+      研究工作期满时间\quad\thu@postdocenddate\par
+    }%
+    \vskip 2.1cm%
+    {\xiaosi[2.6]\thu@schoolname{}人事部（北京）\par}%
+    \vskip 0.6cm%
+    {\wuhao\thu@cdate\par}%
+  \end{center}%
+}
 \newcommand{\thu@first@titlepage@other}{
   \begin{center}
     \vspace*{-1.6cm}
