@@ -30,24 +30,6 @@
 %</driver>
 % \fi
 %
-% \CheckSum{0}
-%
-% \CharacterTable
-%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
-%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-%   Digits        \0\1\2\3\4\5\6\7\8\9
-%   Exclamation   \!     Double quote  \"     Hash (number) \#
-%   Dollar        \$     Percent       \%     Ampersand     \&
-%   Acute accent  \'     Left paren    \(     Right paren   \)
-%   Asterisk      \*     Plus          \+     Comma         \,
-%   Minus         \-     Point         \.     Solidus       \/
-%   Colon         \:     Semicolon     \;     Less than     \<
-%   Equals        \=     Greater than  \>     Question mark \?
-%   Commercial at \@     Left bracket  \[     Backslash     \\
-%   Right bracket \]     Circumflex    \^     Underscore    \_
-%   Grave accent  \`     Left brace    \{     Vertical bar  \|
-%   Right brace   \}     Tilde         \~}
-%
 % \DoNotIndex{\newenvironment,\@bsphack,\@empty,\@esphack,\sfcode}
 % \DoNotIndex{\addtocounter,\label,\let,\linewidth,\newcounter}
 % \DoNotIndex{\noindent,\normalfont,\par,\parskip,\phantomsection}
@@ -581,68 +563,44 @@
 %
 % \subsubsection{密级}
 % \label{sec:setup-secret}
-% \DescribeMacro{\secretlevel}
-% \DescribeMacro{\secretyear}
 % 定义秘密级别和年限，需要打开论文的 \option{secret} 选项。
 % \begin{latex}
 % \thusetup{
-%   secretyear=10,
-%   secretlevel={内部},
+%   secretyear  = 10,
+%   secretlevel = {内部},
 % }
-% % 以下命令方式与上面的等价：
-% \secretyear{10}
-% \secretlevel{内部}
 % \end{latex}
 %
 % \subsubsection{博士后专用参数}
-% \DescribeMacro{\id}
-% \DescribeMacro{\udc}
-% \DescribeMacro{\catalognumber}
 % 只见过，没用过，不知道具体是什么意思。
 % \begin{latex}
 % \thusetup{
-%   catalognumber={分类号},
-%   udc={udc},
-%   id={id}
+%   catalognumber = {分类号},
+%   udc           = {udc},
+%   id            = {id},
 % }
-% % 等价：
-% \catalognumber{分类号}
-% \udc{udc}
-% \id{编号}
 % \end{latex}
 %
 % \subsubsection{论文标题}
-% \DescribeMacro{\ctitle}
-% \DescribeMacro{\etitle}
 % 中英文标题。可以在标题内部使用换行|\\|。
 % \begin{latex}
 % \thusetup{
-%   ctitle={论文中文题目},
-%   etitle={Thesis English Title}
+%   ctitle = {论文中文题目},
+%   etitle = {Thesis English Title},
 % }
-% % 等价：
-% \ctitle{论文中文题目}
-% \etitle{Thesis English Title}
 % \end{latex}
 %
 % \subsubsection{作者姓名}
-% \DescribeMacro{\cauthor}
-% \DescribeMacro{\eauthor}
 % 作者姓名。
 % \begin{latex}
 % \thusetup{
-%   cauthor={中文姓名},
-%   eauthor={Name in Pinyin}
+%   cauthor = {中文姓名},
+%   eauthor = {Name in Pinyin},
 % }
-% % 等价：
-% \cauthor{中文姓名}
-% \eauthor{Name in PinYin}
 % \end{latex}
 %
 % \subsubsection{申请学位名称}
 % \label{sec:degree}
-% \DescribeMacro{\cdegree}
-% \DescribeMacro{\edegree}
 % 学位和专业的设置比想象的要复杂一些：
 %
 % \begin{longtable}{p{2cm}p{8cm}p{4cm}}
@@ -663,102 +621,66 @@
 %
 % \begin{latex}
 % \thusetup{
-%   cdegree={您要申请什么学位},
-%   edegree={degree in English}
+%   cdegree = {您要申请什么学位},
+%   edegree = {Degree in English},
 % }
-% % 等价：
-% \cdegree{您要申请什么学位}
-% \edegree{degree in English}
 % \end{latex}
 %
 % \subsubsection{院系名称}
-% \DescribeMacro{\cdepartment}
-% \DescribeMacro{\edepartment}
 % 院系名称。
 % \begin{latex}
 % \thusetup{
-%   cdepartment={系名全称},
-%   edepartment={Deparment of CS}
+%   cdepartment = {系名全称},
+%   edepartment = {Deparment of CS},
 % }
-% % 等价：
-% \cdepartment{系名全称}
-% \edepartment{Department of CS}
 % \end{latex}
 %
 % \subsubsection{专业名称}
-% \DescribeMacro{\cmajor}
-% \DescribeMacro{\emajor}
 % 参见第 \ref{sec:degree} 节。
 % \begin{latex}
 % \thusetup{
-%   cmajor={专业名称},
-%   emajor={Major in English}
+%   cmajor = {专业名称},
+%   emajor = {Major in English},
 % }
-% % 等价：
-% \cmajor{专业名称}
-% \emajor{Major in English}
 % \end{latex}
 %
-% \DescribeMacro{\cfirstdiscipline}
-% \DescribeMacro{\cseconddiscipline}
 % 博士后专用。
 % \begin{latex}
 % \thusetup{
-%   cfirstdiscipline={博士后一级学科},
-%   cseconddiscipline={博士后二级学科}
+%   cfirstdiscipline  = {流动站（一级学科）名称},
+%   cseconddiscipline = {专业（二级学科）名称},
 % }
-% % 等价：
-% \cfirstdiscipline{博士后一级学科}
-% \cseconddiscipline{博士后二级学科}
 % \end{latex}
 %
 % \subsubsection{导师}
 % \myentry{导师}
-% \DescribeMacro{\csupervisor}
-% \DescribeMacro{\esupervisor}
 % 直接导师。
 % \begin{latex}
 % \thusetup{
-%   csupervisor={导师~教授},
-%   esupervisor={Supervisor}
+%   csupervisor = {导师~教授},
+%   esupervisor = {Supervisor},
 % }
-% % 等价：
-% \csupervisor{导师~教授}
-% \esupervisor{Supervisor}
 % \end{latex}
 %
 % \myentry{副导师}
-% \DescribeMacro{\cassosupervisor}
-% \DescribeMacro{\eassosupervisor}
 % 本科生的辅导教师，硕士的副指导教师。
 % \begin{latex}
 % \thusetup{
-%   cassosupervisor={副导师~副教授},
-%   eassosupervisor={2nd Boss}
+%   cassosupervisor = {副导师~副教授},
+%   eassosupervisor = {2nd Boss},
 % }
-% % 等价：
-% \cassosupervisor{副导师~副教授}
-% \eassosupervisor{2nd Boss}
 % \end{latex}
 %
 % \myentry{联合导师}
-% \DescribeMacro{\ccosupervisor}
-% \DescribeMacro{\ecosupervisor}
 % 硕士生联合指导教师，博士生联合导师。
 % \begin{latex}
 % \thusetup{
-%   ccosupervisor={联合导师~教授},
-%   ecosupervisor={3rd Boss}
+%   ccosupervisor = {联合导师~教授},
+%   ecosupervisor = {3rd Boss},
 % }
-% % 等价：
-% \ccosupervisor{联合导师~教授}
-% \ecosupervisor{3rd Boss}
 % \end{latex}
 %
 % \subsubsection{成文日期}
-% \DescribeMacro{\cdate}
-% \DescribeMacro{\edate}
-% \DescribeMacro{\postdoctordate}
 % 默认为当前时间，也可以自己指定。
 % \begin{latex}
 % \thusetup{
@@ -768,10 +690,6 @@
 %   postdocstartdate = {2009 年 7 月 1 日},  % 博士后研究工作起始时间
 %   postdocenddate   = {2011 年 7 月 1 日},  % 博士后研究工作期满时间
 % }
-% % 等价：
-% \cdate{中文日期}
-% \edate{English Date}
-% \postdoctordate{2009年7月——2011年7月} % 博士后研究起止日期
 % \end{latex}
 %
 % \subsubsection{摘要}
@@ -791,18 +709,13 @@
 % \end{latex}
 %
 % \myentry{关键词}
-% \DescribeMacro{\ckeywords}
-% \DescribeMacro{\ekeywords}
 % 关键词用英文逗号分割写入相应的命令中，模板会解析各关键词并生成符合不同论文格式
 % 要求的关键词格式。
 % \begin{latex}
 % \thusetup{
-%   ckeywords={关键词 1, 关键词 2},
-%   ekeywords={keyword 1, keyword 2}
+%   ckeywords = {关键词 1, 关键词 2},
+%   ekeywords = {keyword 1, keyword 2},
 % }
-% % 等价：
-% \ckeywords{关键词 1, 关键词 2}
-% \ekeywords{keyword 1, keyword 2}
 % \end{latex}
 %
 % \myentry{生成封面}
@@ -2393,34 +2306,18 @@
 % \changes{v2.0}{2005/12/18}{增加了封面密级，增加博士封面支持}
 % \changes{v4.6}{2011/04/27}{增加博士后相关指令。}
 %
-% \begin{macro}{\secretlevel}
-% \begin{macro}{\secretyear}
 % 定义密级参数。
 %    \begin{macrocode}
 \thu@def@term{secretlevel}
 \thu@def@term{secretyear}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
 %
-% \begin{macro}{\ctitle}
-% \begin{macro}{\etitle}
 % 论文中英文题目。
 %    \begin{macrocode}
 \thu@def@term{ctitle}
 \thu@def@term{etitle}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
 %
-% \begin{macro}{\cauthor}
-% \begin{macro}{\eauthor}
-% \begin{macro}{\csupervisor}
-% \begin{macro}{\cassosupervisor}
-% \begin{macro}{\ccosupervisor}
-% \begin{macro}{\esupervisor}
-% \begin{macro}{\eassosupervisor}
-% \begin{macro}{\ecosupervisor}
 % 作者、导师、副导师、联合指导老师。
 %    \begin{macrocode}
 \thu@def@term{cauthor}
@@ -2432,79 +2329,33 @@
 \thu@def@term{eassosupervisor}
 \thu@def@term{ecosupervisor}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
 %
-% \begin{macro}{\cdegree}
-% \begin{macro}{\edegree}
 % 学位中英文。
 %    \begin{macrocode}
 \thu@def@term{cdegree}
 \thu@def@term{edegree}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
 %
-% \begin{macro}{\cdepartment}
-% \begin{macro}{\edepartment}
 % 院系中英文名称。
 %    \begin{macrocode}
 \thu@def@term{cdepartment}
-\def\caffil{% for compatibility
-  \ClassWarning{thuthesis}
-    {'\string\caffil' is deprecated, please use '\string\cdepartment' instead.}{}%
-  \cdepartment}
 \thu@def@term{edepartment}
-\def\eaffil{% for compability
-  \ClassWarning{thuthesis}
-    {'\string\eaffil' is deprecated, please use '\string\edepartment' instead.}{}%
-  \edepartment}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
 %
-% \begin{macro}{\cmajor}
-% \begin{macro}{\emajor}
 % 学位中英文名称。
 % \changes{v2.5}{2006/05/20}{院系和专业分别改名用 department 和 major，代替原来
 % 的 affil 和 subject。}
 %    \begin{macrocode}
 \thu@def@term{cmajor}
-\def\csubject{% for compatibility
-  \ClassWarning{thuthesis}
-    {'\string\csubject' is deprecated, please use '\string\cmajor' instead.}{}%
-  \cmajor}
 \thu@def@term{emajor}
-\def\esubject{%for compability
-  \ClassWarning{thuthesis}
-    {'\string\esubject' is deprecated, please use '\string\emajor' instead.}{}%
-  \emajor}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
 %
-% \begin{macro}{\cdate}
-% \begin{macro}{\edate}
 % 论文成文日期。
 %    \begin{macrocode}
 \thu@def@term{cdate}
 \thu@def@term{edate}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
 %
-% \begin{macro}{\id}
-% \begin{macro}{\udc}
-% \begin{macro}{\catalognumber}
-% \begin{macro}{\cfirstdiscipline}
-% \begin{macro}{\cseconddiscipline}
-% \begin{macro}{\postdoctordate}
 % 博士后专用封面参数。
 %    \begin{macrocode}
 \thu@def@term{id}
@@ -2516,15 +2367,7 @@
 \thu@def@term{postdocstartdate}
 \thu@def@term{postdocenddate}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
 %
-% \begin{environment}{cabstract}
-% \begin{environment}{eabstract}
 % 摘要最好以环境的形式出现（否则命令的形式会导致开始结束的括号距离太远，我不喜
 % 欢），这就必须让环境能够自己保存内容留待以后使用。使用 \pkg{environ} 的
 % \cs{Collect@Body} 来实现。
@@ -2536,8 +2379,6 @@
 \newcommand{\thu@@eabstract}[1]{\long\gdef\thu@eabstract{#1}}
 \newenvironment{eabstract}{\Collect@Body\thu@@eabstract}{}
 %    \end{macrocode}
-% \end{environment}
-% \end{environment}
 %
 % \begin{macro}{\thu@parse@keywords}
 %   不同论文格式关键词之间的分割不太相同，我们用 \cs{ckeywords} 和
@@ -2556,8 +2397,6 @@
         \expandafter\csname thu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
 %    \end{macrocode}
 % \end{macro}
-% \begin{macro}{\ckeywords}
-% \begin{macro}{\ekeywords}
 % 利用 \cs{thu@parse@keywords} 来定义，内部通过 \cs{thu@ckeywords} 和
 % \cs{thu@ekeywords} 来引用。
 % \changes{v3.1}{2007/06/16}{增强的关键词命令。}
@@ -2565,8 +2404,6 @@
 \thu@parse@keywords{ckeywords}
 \thu@parse@keywords{ekeywords}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
 %
 % \begin{macro}{\thusetup}
 % \changes{v5.1.0}{2015/12/26}{通过 \cs{thusetup} 统一设置封面信息。}
