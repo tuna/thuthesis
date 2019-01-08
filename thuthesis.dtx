@@ -225,7 +225,6 @@
 % thuthesis.ins & \textsc{DocStrip} 驱动文件（开发用） \\
 % thuthesis.dtx & \textsc{DocStrip} 源文件（开发用）\\\midrule
 % thuthesis.cls & 模板类文件\\
-% thuthesis.cfg & 模板配置文件\\
 % thuthesis-numeric.bst & 参考文献样式文件\\
 % thuthesis-author-year.bst & 参考文献样式文件\\
 % tsinghua.pdf & 校名 logo，系统无隶书字体时使用 \\\midrule
@@ -243,9 +242,9 @@
 %
 % 几点说明：
 % \begin{itemize}
-% \item \file{thuthesis.cls} 和 \file{thuthesis.cfg} 可由 \file{thuthesis.ins}
+% \item \file{thuthesis.cls} 可由 \file{thuthesis.ins}
 %   和 \file{thuthesis.dtx} 生成，但为了降低新手用户的使用难度，故
-%   将 \file{thuthesis.cls} 和 \file{thuthesis.cfg} 文件一起发布。
+%   将 \file{thuthesis.cls} 文件一起发布。
 % \item 使用前阅读文档：\file{thuthesis.pdf}。
 % \end{itemize}
 %
@@ -265,7 +264,7 @@
 %
 % \begin{shell}
 % $ cd thuthesis-vX.Y.Z
-% # 生成 thuthesis.cls 和 thuthesis.cfg
+% # 生成 thuthesis.cls
 % $ xetex thuthesis.ins
 %
 % # 下面的命令用来生成用户手册，可以不执行
@@ -317,7 +316,7 @@
 %
 % \begin{shell}
 % $ make clean
-% $ make cls       # 生成 thuthesis.cls 和 thuthesis.cfg
+% $ make cls       # 生成 thuthesis.cls
 % $ make doc       # 生成说明文档 thuthesis.pdf
 % $ make thesis    # 生成示例文档 main.pdf
 % $ make shuji     # 生成书脊 shuji.pdf
@@ -340,7 +339,7 @@
 % \end{shell}
 %
 % 生成新的类文件和配置文件即可。也可以直接拷
-% 贝 \file{thuthesis.cls}，\file{thuthesis.cfg}，免去上面命令的执行。
+% 贝 \file{thuthesis.cls}，免去上面命令的执行。
 %
 %
 % \section{使用说明}
@@ -360,9 +359,9 @@
 %
 % \subsection{示例文件}
 % \label{sec:userguide}
-
+%
 % 模板核心文件
-% 有：\file{thuthesis.cls}，\file{thuthesis.cfg}，\file{thuthesis-numeric.bst}，
+% 有：\file{thuthesis.cls}，\file{thuthesis-numeric.bst}，
 % \file{thuthesis-author-year.bst} 和 \file{tsinghua.pdf}，
 % 但如果没有示例文档会很难下手，所以推荐从模板自带的示例文档入手，其中包括了论文
 % 写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于不清
@@ -1013,10 +1012,6 @@
 % 缩。一方面清除了多余空间，另一方面用户可以自己指定列表环境的样式（如标签符号，
 % 缩进等）。细节请参看 \pkg{enumitem} 文档，此处不再赘述。
 %
-% \subsection{其它}
-% 模板的配置文件 \file{thuthesis.cfg} 中定义了很多固定词汇，一般无须修改。如果有特殊需求，
-% 推荐在导言区使用 \cs{renewcommand}。
-%
 % \section{致谢}
 % \label{sec:thanks}
 % 感谢这些年来一直陪伴 \thuthesis\ 成长的新老同学！
@@ -1032,8 +1027,7 @@
 %    \begin{macrocode}
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
-%<cfg>\ProvidesFile{thuthesis.cfg}
-%<cls|cfg>[2018/05/17 5.4.5 Tsinghua University Thesis Template]
+%<cls>[2018/05/17 5.4.5 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % 检查编译引擎，要求使用 XeLaTeX。
@@ -1062,7 +1056,6 @@
 \hyphenation{Thu-Thesis}
 \def\thuthesis{ThuThesis}
 \def\version{5.4.5}
-
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=thu,
@@ -1326,7 +1319,6 @@
 % \changes{v5.4.4}{2018/04/13}{让目录中的引用不影响正文中引用序号。}
 %    \begin{macrocode}
 \RequirePackage{notoccite}
-%</cls>
 %    \end{macrocode}
 %
 % \subsection{主文档格式}
@@ -1337,7 +1329,6 @@
 % 对于 \textsl{openright} 选项，必须保证章首页右开，且如果前章末页无内容须
 % 清空其页眉页脚。
 %    \begin{macrocode}
-%<*cls>
 \let\thu@cleardoublepage\cleardoublepage
 \newcommand{\thu@clearemptydoublepage}{%
   \clearpage{\pagestyle{thu@empty}\thu@cleardoublepage}}
@@ -1368,7 +1359,6 @@
 \renewcommand\backmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue}
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -1378,7 +1368,6 @@
 % \label{sec:font}
 % 使用 \pkg{fontspec} 配置字体。
 %    \begin{macrocode}
-%<*cls>
 \newcommand\thu@fontset{\csname g__ctex_fontset_tl\endcsname}
 \ifthenelse{\equal{\thu@fontset}{fandol}}{
   \setmainfont[
@@ -1568,7 +1557,6 @@
 \thu@def@fontsize{xiaoliu}{6.5bp}
 \thu@def@fontsize{qihao}{5.5bp}
 \thu@def@fontsize{bahao}{5bp}
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -1608,7 +1596,6 @@
 % \footnote{\url{https://github.com/CTeX-org/ctex-kit/issues/389}}
 % 所以要根据语言设置正确的字体。
 %    \begin{macrocode}
-%<*cls>
 \newcommand\thu@setchinese{%
   \xeCJKResetPunctClass
 }
@@ -1625,7 +1612,81 @@
     \thu@setenglish
   \fi
 }
-%</cls>
+%    \end{macrocode}
+%
+% 中英文翻译：
+%    \begin{macrocode}
+\ifthu@chinese
+  \ctexset{
+    chapter/name   = {第,章},
+    appendixname   = 附录,
+    contentsname   = {目\hspace{\ccwd}录},
+    listfigurename = 插图索引,
+    listtablename  = 表格索引,
+    figurename     = 图,
+    tablename      = 表,
+    bibname        = 参考文献,
+    indexname      = 索引,
+  }
+  \newcommand\thu@denotation@name{主要符号对照表}
+  \newcommand\listequationname{公式索引}
+  \newcommand\equationname{公式}
+  \newcommand\thu@assumption@name{假设}
+  \newcommand\thu@definition@name{定义}
+  \newcommand\thu@proposition@name{命题}
+  \newcommand\thu@lemma@name{引理}
+  \newcommand\thu@theorem@name{定理}
+  \newcommand\thu@axiom@name{公理}
+  \newcommand\thu@corollary@name{推论}
+  \newcommand\thu@exercise@name{练习}
+  \newcommand\thu@example@name{例}
+  \newcommand\thu@remark@name{注释}
+  \newcommand\thu@problem@name{问题}
+  \newcommand\thu@conjecture@name{猜想}
+  \newcommand\thu@proof@name{证明}
+  \newcommand\thu@theorem@separator{：}
+  \newcommand\thu@ack@name{致\hspace{\ccwd}谢}
+  \ifthu@bachelor
+    \newcommand\thu@resume@title{在学期间参加课题的研究成果}
+  \else
+    \ifthu@postdoctor
+      \newcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
+    \else
+      \newcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
+    \fi
+  \fi
+\else
+  \newcommand\thu@denotation@name{Nomenclature}
+  \newcommand\listequationname{List of Equations}
+  \newcommand\equationname{Equation}
+  \newcommand\thu@assumption@name{Assumption}
+  \newcommand\thu@definition@name{Definition}
+  \newcommand\thu@proposition@name{Proposition}
+  \newcommand\thu@lemma@name{Lemma}
+  \newcommand\thu@theorem@name{Theorem}
+  \newcommand\thu@axiom@name{Axiom}
+  \newcommand\thu@corollary@name{Corollary}
+  \newcommand\thu@exercise@name{Exercise}
+  \newcommand\thu@example@name{Example}
+  \newcommand\thu@remark@name{Remark}
+  \newcommand\thu@problem@name{Problem}
+  \newcommand\thu@proof@name{proof}
+  \newcommand\thu@theorem@separator{: }
+  \newcommand\thu@ack@name{Acknowledgments}
+  \ifthu@bachelor
+    \newcommand\thu@resume@title{Research Achievements}
+  \else
+    \ifthu@postdoctor
+      \newcommand\thu@resume@title{%
+        Resume, Publications and Research Achievements%
+      }
+    \else
+      \newcommand\thu@resume@title{%
+        Resume, Publications and Research Achievements%
+      }
+    \fi
+  \fi
+\fi
 %    \end{macrocode}
 %
 %
@@ -1650,7 +1711,6 @@
 % \item \texttt{thu@headings}：页眉页脚同时显示
 % \end{itemize}
 %    \begin{macrocode}
-%<*cls>
 \fancypagestyle{thu@empty}{%
   \fancyhf{}
   \renewcommand{\headrulewidth}{0pt}
@@ -1667,7 +1727,6 @@
   \fancyfoot[C]{\wuhao\thepage}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0pt}}
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -1679,7 +1738,6 @@
 %
 % 全文首行缩进 2 字符，标点符号用全角
 %    \begin{macrocode}
-%<*cls>
 \ctexset{%
   punct=quanjiao,
   space=auto,
@@ -1690,7 +1748,6 @@
 % \changes{v2.5.2}{2006/06/01}{更改默认列表距离。}
 %    \begin{macrocode}
 \setlist{nosep}
-%</cls>
 %    \end{macrocode}
 %
 %
@@ -1705,7 +1762,6 @@
 % \changes{v5.5}{2018/12/10}{去掉 \option{pifootnote} 选项。}
 % 生成带圈的脚注数字，最多处理到 10。
 %    \begin{macrocode}
-%<*cls>
 \ifthenelse{\equal{\thu@fontset}{mac}}{
   \newfontfamily\thu@circlefont{Songti SC Light}
 }{
@@ -1749,7 +1805,6 @@
 \def\thu@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
 \pretocmd{\@makefntext}{\let\@makefnmark\thu@@makefnmark}{}{}
 \apptocmd{\@makefntext}{\let\@makefnmark\thu@makefnmark}{}{}
-%</cls>
 %    \end{macrocode}
 %
 %
@@ -1758,7 +1813,6 @@
 % \begin{macro}{\ldots}
 % 省略号一律居中，所以 \cs{ldots} 不再居于底部。
 %    \begin{macrocode}
-%<*cls>
 \ifthu@chinese
   \def\mathellipsis{\cdots}
 \fi
@@ -1878,7 +1932,6 @@
 % 修改 \cs{tagform} 会影响 \cs{eqref}。
 %    \begin{macrocode}
 \renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
-%</cls>
 %    \end{macrocode}
 %
 % 定理标题使用黑体，正文使用宋体，冒号隔开。
@@ -1886,42 +1939,15 @@
 % \changes{v4.2}{2008/03/07}{调整证明环境的编号和结尾的方块。}
 % \changes{v5.0.0}{2015/04/18}{修正定理字样为黑体 (\#104)。}
 % \changes{v5.3.2}{2017/05/01}{定理环境格式设置（环境标题和环境正文字体设置）统一放置到 .cfg 文件中。}
+% \changes{v5.5}{2019/01/08}{移除 cfg 文件。}
 %    \begin{macrocode}
-%<*cfg>
 \theorembodyfont{\normalfont}
-\theoremheaderfont{\normalfont\heiti}
+\theoremheaderfont{\normalfont\sffamily}
 \theoremsymbol{\ensuremath{\square}}
-\newtheorem*{proof}{证明}
+\newtheorem*{proof}{\thu@proof@name}
 \theoremstyle{plain}
 \theoremsymbol{}
-\theoremseparator{：}
-\ifthu@chinese
-  \newcommand\thu@assumption@name{假设}
-  \newcommand\thu@definition@name{定义}
-  \newcommand\thu@proposition@name{命题}
-  \newcommand\thu@lemma@name{引理}
-  \newcommand\thu@theorem@name{定理}
-  \newcommand\thu@axiom@name{公理}
-  \newcommand\thu@corollary@name{推论}
-  \newcommand\thu@exercise@name{练习}
-  \newcommand\thu@example@name{例}
-  \newcommand\thu@remark@name{注释}
-  \newcommand\thu@problem@name{问题}
-  \newcommand\thu@conjecture@name{猜想}
-\else
-  \newcommand\thu@assumption@name{Assumption}
-  \newcommand\thu@definition@name{Definition}
-  \newcommand\thu@proposition@name{Proposition}
-  \newcommand\thu@lemma@name{Lemma}
-  \newcommand\thu@theorem@name{Theorem}
-  \newcommand\thu@axiom@name{Axiom}
-  \newcommand\thu@corollary@name{Corollary}
-  \newcommand\thu@exercise@name{Exercise}
-  \newcommand\thu@example@name{Example}
-  \newcommand\thu@remark@name{Remark}
-  \newcommand\thu@problem@name{Problem}
-  \newcommand\thu@conjecture@name{Conjecture}
-\fi
+\theoremseparator{\thu@theorem@separator}
 \newtheorem{assumption}{\thu@assumption@name}[chapter]
 \newtheorem{definition}{\thu@definition@name}[chapter]
 \newtheorem{proposition}{\thu@proposition@name}[chapter]
@@ -1934,7 +1960,6 @@
 \newtheorem{remark}{\thu@remark@name}[chapter]
 \newtheorem{problem}{\thu@problem@name}[chapter]
 \newtheorem{conjecture}{\thu@conjecture@name}[chapter]
-%</cfg>
 %    \end{macrocode}
 %
 % \subsubsection{浮动对象以及表格}
@@ -1942,7 +1967,6 @@
 % 设置浮动对象和文字之间的距离
 % \changes{v2.6}{2006/06/09}{增加 \cs{floatsep}，\cs{@fptop}，\cs{@fpsep} 和 \cs{@fpbot}。}
 %    \begin{macrocode}
-%<*cls>
 \setlength{\floatsep}{20bp \@plus4pt \@minus1pt}
 \setlength{\intextsep}{20bp \@plus4pt \@minus2pt}
 \setlength{\textfloatsep}{20bp \@plus4pt \@minus2pt}
@@ -2009,7 +2033,6 @@
 \def\hlinewd#1{%
   \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet
     \reserved@a\@xhline}
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2018,25 +2041,6 @@
 % \label{sec:theor}
 % \changes{v2.5}{2006/05/19}{增加索引名称定义。}
 %    \begin{macrocode}
-%<*cfg>
-\ifthu@chinese
-  \ctexset{%
-    chapter/name={第,章},
-    appendixname=附录,
-    contentsname={目\hspace{\ccwd}录},
-    listfigurename=插图索引,
-    listtablename=表格索引,
-    figurename=图,
-    tablename=表,
-    bibname=参考文献,
-    indexname=索引,
-  }
-  \newcommand\listequationname{公式索引}
-  \newcommand\equationname{公式}
-\else
-  \newcommand\listequationname{List of Equations}
-  \newcommand\equationname{Equation}
-\fi
 \ifthu@bachelor
   \newcommand{\cabstractname}{中文摘要}
   \newcommand{\eabstractname}{ABSTRACT}
@@ -2056,7 +2060,6 @@
     \or\def\CJK@today{\CJK@todaysmall}
     \or\def\CJK@today{\CJK@todaybig}
   \fi}
-%</cfg>
 %    \end{macrocode}
 %
 % \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。通过 \pkg{fancyhdr}
@@ -2083,7 +2086,6 @@
 % 而覆盖我们的 \cs{chaptermark} 定义（后续样式再激活不会重复覆盖）。所以我们采用如下
 % 方法解决：
 %    \begin{macrocode}
-%<*cls>
 \AtBeginDocument{%
   \pagestyle{thu@empty}
   \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}}
@@ -2204,7 +2206,6 @@
     \@mkboth{#3}{#3}
   }
 }
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2216,7 +2217,6 @@
 % \changes{v3.1}{2007/10/09}{博士论文目录只出现到第 3 级标题即可。}
 % \changes{v5.0.0}{2015/05/21}{硕士博士论文目录只出现到第 3 级标题即可。其他未明确要求。}
 %    \begin{macrocode}
-%<*cls>
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
 %    \end{macrocode}
@@ -2282,7 +2282,6 @@
   \@dottedtocline{2}{\ifthu@bachelor 1.5\ccwd\else 2\ccwd\fi}{3em}}
 \renewcommand*\l@subsubsection{%
   \@dottedtocline{3}{\ifthu@bachelor 2.4em\else 3.5em\fi}{3.8em}}
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2294,7 +2293,6 @@
 % \changes{v2.6.2}{2006/06/18}{引入 \cs{thu@def@term} 定义封面命令。}
 % \changes{v3.1}{2006/06/16}{重新定义摘要为环境，long 选项不需要了。}
 %    \begin{macrocode}
-%<*cls>
 \def\thu@def@term#1{%
   \define@key{thu}{#1}{\csname #1\endcsname{##1}}
   \expandafter\gdef\csname #1\endcsname##1{%
@@ -2414,7 +2412,6 @@
 % 调用，所以此命令需要在 \cs{makecover} 之前被调用。
 %    \begin{macrocode}
 \def\thusetup{\kvsetkeys{thu}}
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2433,7 +2430,6 @@
 % \changes{v5.3.0}{2016/03/11}{更新到研究生院 2016.3 指南。}
 % 定义封面用到的各种文字。
 %    \begin{macrocode}
-%<*cfg>
 \def\thu@ckeywords@separator{；}
 \def\thu@ekeywords@separator{;}
 \def\thu@title@sep{：}
@@ -2511,7 +2507,6 @@
 \newcommand{\thu@frontdate}{%
   日\ifthu@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
 \newcommand{\thu@ckeywords@title}{关键词：}
-%</cfg>
 %    \end{macrocode}
 %
 %
@@ -2532,7 +2527,6 @@
 % \changes{v5.5}{2019/01/08}{修正博士后封面的格式。}
 %
 %    \begin{macrocode}
-%<*cls>
 \newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \newcommand\thu@CJKunderline[2][6em]{\CJKunderline*{\hb@xt@ #1{\hss#2\hss}}}
 \newlength{\thu@title@width}
@@ -2714,7 +2708,6 @@
          \songti\thu@cdate}
      \end{center}
     \end{center}} % end of titlepage
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2724,12 +2717,9 @@
 % \changes{v4.7}{2011/11/28}{硕士生新增英文封面。}
 % 研究生论文使用。
 %    \begin{macrocode}
-%<*cfg>
 \def\thu@master@art{Master of Arts}
 \def\thu@master@sci{Master of Science}
 \def\thu@doctor@phi{Doctor of Philosophy}
-%</cfg>
-%<*cls>
 \newcommand{\thu@engcover}{%
   \newif\ifthu@professional\thu@professionalfalse
   \ifthu@master
@@ -2908,7 +2898,6 @@
   \normalsize
   \thu@makeabstract
   \let\@tabular\thu@tabular}
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2918,7 +2907,6 @@
 % \begin{macro}{\thu@put@keywords}
 % 排版关键字。
 %    \begin{macrocode}
-%<*cls>
 \newbox\thu@kw
 \newcommand\thu@put@keywords[2]{%
   \begingroup
@@ -2995,7 +2983,6 @@
     \textbf{\ifthu@bachelor Keywords:\else Key Words:\fi\enskip}}{\thu@ekeywords}%
   \thu@setdefaultlanguage
 }
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -3007,14 +2994,6 @@
 % \changes{v2.4}{2006/04/14}{为主要符号表环境增加一个可选参数，调节符号列的宽度。}
 % \changes{v5.2.1}{2016/01/11}{利用 \pkg{enumitem} 改造环境定义，更直观。}
 %    \begin{macrocode}
-%<*cfg>
-\ifthu@chinese
-  \newcommand\thu@denotation@name{主要符号对照表}
-\else
-  \newcommand\thu@denotation@name{Nomenclature}
-\fi
-%</cfg>
-%<*cls>
 \newenvironment{denotation}[1][2.5cm]{%
   \thu@chapter*[]{\thu@denotation@name} % no tocline
   \vskip-30bp\xiaosi[1.6]\begin{thu@denotation}[labelwidth=#1]
@@ -3032,7 +3011,6 @@
   labelsep*=0.5cm,
   itemindent=0pt,
 }
-%</cls>
 %    \end{macrocode}
 % \end{environment}
 %
@@ -3044,12 +3022,6 @@
 % 支持扫描文件替换。
 % \changes{v2.4}{2006/04/14}{调整\textbf{致谢}等中间的距离。}
 %    \begin{macrocode}
-%<*cfg>
-\ifthu@chinese
-  \newcommand\thu@ack@name{致\hspace{\ccwd}谢}
-\else
-  \newcommand\thu@ack@name{Acknowledgments}
-\fi
 \newcommand\thu@declarename{声\hspace{\ccwd}明}
 \newcommand{\thu@declaretext}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
   ，独立进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容外，本学位论
@@ -3057,7 +3029,6 @@
   其他个人和集体，均已在文中以明确方式标明。}
 \newcommand{\thu@signature}{签\hspace{1em}名：}
 \newcommand{\thu@backdate}{日\hspace{1em}期：}
-%</cfg>
 %    \end{macrocode}
 %
 % \changes{v2.0}{2005/12/19}{将致谢定义为一个环境更合适，里面也不用像以前段首需
@@ -3073,7 +3044,6 @@
 % \changes{v4.5.2}{2010/09/19}{研究生论文的致谢和声明终于分开了。}
 % \changes{v5.2.1}{2016/01/11}{用 \env{acknowledgement} 替换 \env{ack}。}
 %    \begin{macrocode}
-%<*cls>
 \NewDocumentEnvironment{acknowledgement}{o}{%
     \thu@chapter*{\thu@ack@name}
   }
@@ -3104,7 +3074,6 @@
 %    \begin{macrocode}
 \let\ack\acknowledgement
 \let\endack\endacknowledgement
-%</cls>
 %    \end{macrocode}
 % \end{environment}
 %
@@ -3122,7 +3091,6 @@
 % \changes{v4.5.1}{2009/01/06}{更优雅的插图/表格索引，避免跟 \pkg{caption} 包冲
 % 突。\cs{thu@listof} 相应修改。}
 %    \begin{macrocode}
-%<*cls>
 \def\thu@starttoc#1{% #1: float type, prepend type name in \listof*** entry.
   \let\oldnumberline\numberline
   \def\numberline##1{\oldnumberline{\csname #1name\endcsname\hskip.4em ##1}}
@@ -3174,7 +3142,6 @@
 %    \begin{macrocode}
 \newcommand\listofequations{\thu@listof{equation}}
 \let\l@equation\l@figure
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -3190,12 +3157,10 @@
 % \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
 % 容性，\cs{onlinecite} 会保留。}
 %    \begin{macrocode}
-%<*cls>
 \newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{,}}
 \DeclareRobustCommand\inlinecite{\@inlinecite}
 \def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
 \let\onlinecite\inlinecite
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -3214,10 +3179,8 @@
 %   本科生写作指南未指定，参考文献著录格式文档中对中外文学位论文都标注``[D]''。
 % \changes{v4.7}{2012/05/29}{修改两个宏使其对应不同的中文论文需求。}
 %    \begin{macrocode}
-%<*cfg>
-\def\thumasterbib{\ifthu@bachelor D\else 硕士学位论文\fi}
-\def\thuphdbib{\ifthu@bachelor D\else 博士学位论文\fi}
-%</cfg>
+\newcommand\thumasterbib{\ifthu@bachelor D\else 硕士学位论文\fi}
+\newcommand\thuphdbib{\ifthu@bachelor D\else 博士学位论文\fi}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -3230,7 +3193,6 @@
 % \changes{v5.4.0}{2017/12/03}{基于 \pkg{natbib} 的环境调整距离兼容性更好。}
 % \changes{v5.4.4}{2018/04/14}{参考文献标号左对齐。}
 %    \begin{macrocode}
-%<*cls>
 \renewcommand\bibsection{\thu@chapter*{\bibname}}
 \renewcommand\bibfont{\ifthu@bachelor\wuhao[1.619]\else\wuhao[1.5]\fi}
 \setlength\bibhang{2\ccwd}
@@ -3305,7 +3267,6 @@
 }{%
   \def@NAT@last@yr{-\NAT@penalty}%
 }{}{}
-%</cls>
 %    \end{macrocode}
 %
 % \subsection{附录}
@@ -3313,7 +3274,6 @@
 % \begin{environment}{appendix}
 % 主要给本科做外文翻译用。
 %    \begin{macrocode}
-%<*cls>
 \let\thu@appendix\appendix
 \renewenvironment{appendix}{%
   \let\title\thu@appendix@title
@@ -3342,7 +3302,6 @@
 \newlist{translationbib}{enumerate}{1}
 \setlist[translationbib]{label=[\arabic*],align=left,nosep,itemsep=6bp,
   leftmargin=10mm,labelsep=!,before=\vspace{0.5\baselineskip}\wuhao[1.3]}
-%</cls>
 %    \end{macrocode}
 % \end{environment}
 %
@@ -3358,34 +3317,6 @@
 % \changes{v4.6}{2011/05/02}{支持可选参数，自己定义简历章节标题。}
 % 个人简历发表文章等。
 %    \begin{macrocode}
-%<*cfg>
-\ifthu@chinese
-  \ifthu@bachelor
-    \newcommand\thu@resume@title{在学期间参加课题的研究成果}
-  \else
-    \ifthu@postdoctor
-      \newcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
-    \else
-      \newcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
-    \fi
-  \fi
-\else
-  \ifthu@bachelor
-    \newcommand\thu@resume@title{Research Achievements}
-  \else
-    \ifthu@postdoctor
-      \newcommand\thu@resume@title{%
-        Resume, Publications and Research Achievements%
-      }
-    \else
-      \newcommand\thu@resume@title{%
-        Resume, Publications and Research Achievements%
-      }
-    \fi
-  \fi
-\fi
-%</cfg>
-%<*cls>
 \newenvironment{resume}[1][\thu@resume@title]{%
   \thu@chapter*{#1}}{}
 %    \end{macrocode}
@@ -3432,7 +3363,6 @@
 % 用 \cs{publicationskip}。
 %    \begin{macrocode}
 \def\publicationskip{\bigskip\bigskip}
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -3440,7 +3370,6 @@
 %
 % 这些宏包并非格式要求，但是为了方便同学们使用，在这里进行简单设置。
 %    \begin{macrocode}
-%<*cls>
 \newcommand\thu@atendpackage{\csname ctex_at_end_package:nn\endcsname}
 %    \end{macrocode}
 %
@@ -3453,7 +3382,6 @@
   \def\thenomenclature{\begin{denotation}[\nom@tempdim]}
   \def\endthenomenclature{\end{denotation}}
 }
-%</cls>
 %    \end{macrocode}
 %
 % \subsection{书脊}
@@ -3463,13 +3391,11 @@
 % \changes{v4.5}{2009/01/04}{简化代码，同时支持 \XeLaTeX。}
 % \changes{v5.0.0}{2015/12/21}{扩展 \cs{shuji}\oarg{标题}\oarg{作者}。}
 %    \begin{macrocode}
-%<*cls>
 \NewDocumentCommand{\shuji}{O{\thu@ctitle} O{\thu@cauthor}}{%
   \newpage\thispagestyle{empty}%
   \fangsong\addCJKfontfeatures*{RawFeature={vertical:}}
   \xiaosan\ziju{0.4}%
   \noindent\hfill\rotatebox[origin=lt]{-90}{\makebox[\textheight]{#1\hfill#2}}}
-%</cls>
 %    \end{macrocode}
 % \end{macro}
 %
@@ -3480,8 +3406,6 @@
 % 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改。
 % \changes{v2.5}{2006/05/13}{不用 \cs{CJKcaption}，在导言区直接引入配置文件。}
 %    \begin{macrocode}
-%<*cls>
-\AtEndOfClass{\input{thuthesis.cfg}}
 \AtEndOfClass{\sloppy}
 %</cls>
 %    \end{macrocode}

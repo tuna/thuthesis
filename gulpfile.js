@@ -17,8 +17,7 @@ const config = {
                 'latexmkrc',
                 'README.md',
                 'thuthesis.pdf'],
-        generated: ['thuthesis.cls',
-                    'thuthesis.cfg']
+        generated: ['thuthesis.cls']
     },
 
     example: {

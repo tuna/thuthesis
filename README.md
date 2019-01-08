@@ -33,7 +33,7 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 
     xetex thuthesis.ins
 
-即可得到 `thuthesis.cls` 和 `thuthesis.cfg` 等模板文件。
+即可得到 `thuthesis.cls` 等模板文件。
 
 # 提问
 按推荐顺序排序：
@@ -77,7 +77,7 @@ Download the package from [GitHub](https://github.com/xueruini/thuthesis) to the
 
     xetex thuthesis.ins
 
-You'll get `thuthesis.cls` and `thuthesis.cfg` along with other template files.
+You'll get `thuthesis.cls` along with other template files.
 
 # Reporting Issues
 Please follow the procedure below:

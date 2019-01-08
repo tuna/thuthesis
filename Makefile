@@ -15,7 +15,7 @@ FIGURES=$(wildcard figures/*.pdf)
 BIBFILE=ref/*.bib
 BSTFILE=*.bst
 SHUJICONTENTS=$(SHUJIMAIN).tex
-CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
+CLSFILES=dtx-style.sty $(PACKAGE).cls
 
 # make deletion work on Windows
 ifdef SystemRoot
