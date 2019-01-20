@@ -3168,23 +3168,6 @@
 % 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
 % 本科生要求固定行距 17pt，段前后间距 3pt。
 %
-% \begin{macro}{\thumasterbib}
-% \begin{macro}{\thuphdbib}
-%   本科生和研究生模板要求外文硕士论文参考文献显示``[Master Thesis]''，而博士模板
-%   则于 2007 年冬要求显示为``[M]''。对应的外文博士论文参考文献分别显示为``[Phd
-%   Thesis]''和``[D]''。
-%   研究生写作指南(201109)要求：
-%   中文硕士学位论文标注``[硕士学位论文]''，
-%   中文博士学位论文标注``[博士学位论文]''，外文学位论文标注``[D]''。
-%   本科生写作指南未指定，参考文献著录格式文档中对中外文学位论文都标注``[D]''。
-% \changes{v4.7}{2012/05/29}{修改两个宏使其对应不同的中文论文需求。}
-%    \begin{macrocode}
-\newcommand\thumasterbib{\ifthu@bachelor D\else 硕士学位论文\fi}
-\newcommand\thuphdbib{\ifthu@bachelor D\else 博士学位论文\fi}
-%    \end{macrocode}
-% \end{macro}
-% \end{macro}
-%
 % 复用 \pkg{natbib} 的 \texttt{thebibliography} 环境，调整距离。
 % \changes{v2.4}{2006/04/15}{参考文献间距调小一点，label 长度增加一点，以便让超过
 %  100 的参考文献更好地对齐。}

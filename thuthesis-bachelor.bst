@@ -1,10 +1,10 @@
 %%
-%% This is file `versions/thu/thuthesis-numeric.bst',
+%% This is file `versions/thu/thuthesis-bachelor.bst',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% gbt7714.dtx  (with options: `thu,2005,numerical')
+%% gbt7714.dtx  (with options: `2015,numerical')
 %% -------------------------------------------------------------------
 %% GB/T 7714-2015 BibTeX Style
 %% https://github.com/CTeX-org/gbt7714-bibtex-style
@@ -40,10 +40,8 @@ INTEGERS {
 FUNCTION {load.config}
 {
   #1 'uppercase.name :=
-  #0 'uppercase.name :=
   #3 'max.num.authors :=
   #0 'period.between.author.year :=
-  #1 'period.between.author.year :=
   #1 'sentence.case.title :=
   #0 'link.title :=
   #1 'show.mark :=
@@ -54,7 +52,6 @@ FUNCTION {load.config}
   #1 'show.missing.address.publisher :=
   #1 'show.url :=
   #1 'show.doi :=
-  #0 'show.doi :=
   #0 'show.note :=
 }
 
@@ -143,7 +140,7 @@ FUNCTION {citation.et.al}
 
 FUNCTION {bbl.colon} { ": " }
 
-FUNCTION {bbl.wide.space} { "\ " }
+FUNCTION {bbl.wide.space} { "\quad " }
 
 FUNCTION {bbl.slash} { "//\allowbreak " }
 
@@ -261,13 +258,7 @@ FUNCTION {output.check}
 }
 
 FUNCTION {fin.entry}
-{ type$ "book" =
-  type$ "inbook" = or
-  type$ "incollection" = or
-  type$ "collection" = or
-    'skip$
-    'add.period$
-  if$
+{ add.period$
   write$
   newline$
 }
@@ -1520,11 +1511,7 @@ FUNCTION {map}
 FUNCTION {manual} { monograph }
 
 FUNCTION {mastersthesis}
-{ lang.zh entry.lang =
-    { "硕士学位论文" }
-    { "D" }
-  if$
-  set.entry.mark
+{ "D" set.entry.mark
   monograph
 }
 
@@ -1538,14 +1525,7 @@ FUNCTION {online}
   electronic
 }
 
-FUNCTION {phdthesis}
-{ lang.zh entry.lang =
-    { "博士学位论文" }
-    { "D" }
-  if$
-  set.entry.mark
-  monograph
-}
+FUNCTION {phdthesis} { mastersthesis }
 
 FUNCTION {proceedings}
 { "C" set.entry.mark
