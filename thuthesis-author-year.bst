@@ -35,6 +35,11 @@ INTEGERS {
   show.url
   show.doi
   show.note
+  lang.zh.order
+  lang.ja.order
+  lang.en.order
+  lang.ru.order
+  lang.other.order
 }
 
 FUNCTION {load.config}
@@ -56,6 +61,11 @@ FUNCTION {load.config}
   #1 'show.doi :=
   #0 'show.doi :=
   #0 'show.note :=
+  #1 'lang.zh.order :=
+  #2 'lang.ja.order :=
+  #3 'lang.en.order :=
+  #4 'lang.ru.order :=
+  #5 'lang.other.order :=
 }
 
 ENTRY
@@ -1781,14 +1791,14 @@ FUNCTION {calc.label}
 
 FUNCTION {sort.language.label}
 { entry.lang lang.zh =
-    { "a zh " }
+    { lang.zh.order }
     { entry.lang lang.ja =
-        { "b ja " }
+        { lang.ja.order }
         { entry.lang lang.en =
-            { "c en " }
+            { lang.en.order }
             { entry.lang lang.ru =
-                { "d ru " }
-                { "e other " }
+                { lang.ru.order }
+                { lang.other.order }
               if$
             }
           if$
@@ -1796,6 +1806,7 @@ FUNCTION {sort.language.label}
       if$
     }
   if$
+  int.to.chr$
 }
 
 FUNCTION {sort.format.names}
