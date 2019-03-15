@@ -2378,8 +2378,9 @@
 %    \begin{macrocode}
 \newcommand{\thu@@cabstract}[1]{\long\gdef\thu@cabstract{#1}}
 \newenvironment{cabstract}{\Collect@Body\thu@@cabstract}{}
-\newcommand{\thu@@eabstract}[1]{\long\gdef\thu@eabstract{#1}}
-\newenvironment{eabstract}{\Collect@Body\thu@@eabstract}{}
+
+%\newcommand{\thu@@eabstract}[1]{\long\gdef\thu@eabstract{#1}}
+%\newenvironment{eabstract}{\Collect@Body\thu@@eabstract}{}
 %    \end{macrocode}
 %
 % \begin{macro}{\thu@parse@keywords}
@@ -2447,13 +2448,9 @@
 \def\thu@bachelor@subtitle{综合论文训练}
 \def\thu@bachelor@title@pre{题目}
 \def\thu@postdoctor@date@title{研究起止日期}
-\ifthu@postdoctor
-  \def\thu@author@title{博士后姓名}
-\else
-  \ifthu@bachelor
-    \def\thu@author@title{姓名}
-  \else
-    \def\thu@author@title{研究生}
+
+\def\thu@author@title{作者姓名}
+
   \fi
 \fi
 \def\thu@postdoctor@first@discipline@title{流动站（一级学科）名称}
@@ -2486,31 +2483,31 @@
 \edate{\ifcase \month \or January\or February\or March\or April\or May%
        \or June\or July \or August\or September\or October\or November
        \or December\fi\unskip,\ \ \the\year}
-\newcommand{\thu@authtitle}{关于学位论文使用授权的说明}
-\newcommand{\thu@authorization}{%
-\ifthu@bachelor
-本人完全了解清华大学有关保留、使用学位论文的规定，即：学校有权保留学位
-论文的复印件，允许该论文被查阅和借阅；学校可以公布该论文的全部或部分内
-容，可以采用影印、缩印或其他复制手段保存该论文。
-\else
-本人完全了解清华大学有关保留、使用学位论文的规定，即：
+% \newcommand{\thu@authtitle}{关于学位论文使用授权的说明}
+% \newcommand{\thu@authorization}{%
+% \ifthu@bachelor
+% 本人完全了解清华大学有关保留、使用学位论文的规定，即：学校有权保留学位
+% 论文的复印件，允许该论文被查阅和借阅；学校可以公布该论文的全部或部分内
+% 容，可以采用影印、缩印或其他复制手段保存该论文。
+% \else
+% 本人完全了解清华大学有关保留、使用学位论文的规定，即：
 
-清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：（1）已获学位的研究生
-必须按学校规定提交学位论文，学校可以采用影印、缩印或其他复制手段保存研究生上交的
-学位论文；（2）为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料
-室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容\ifthu@master 。\else ；
-（3）根据《中华人民共和国学位条例暂行实施办法》，向国家图书馆报送可以公开的学位
-论文。\fi
+% 清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：（1）已获学位的研究生
+% 必须按学校规定提交学位论文，学校可以采用影印、缩印或其他复制手段保存研究生上交的
+% 学位论文；（2）为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料
+% 室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容\ifthu@master 。\else ；
+% （3）根据《中华人民共和国学位条例暂行实施办法》，向国家图书馆报送可以公开的学位
+% 论文。\fi
 
-本人保证遵守上述规定。
-\fi}
-\newcommand{\thu@authorizationaddon}{%
-  \ifthu@bachelor(涉密的学位论文在解密后应遵守此规定)\else （保密的论文在解密后应遵守此规定）\fi}
-\newcommand{\thu@authorsig}{\ifthu@bachelor 签\hskip1em名：\else 作者签名：\fi}
-\newcommand{\thu@teachersig}{导师签名：}
-\newcommand{\thu@frontdate}{%
-  日\ifthu@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
-\newcommand{\thu@ckeywords@title}{关键词：}
+% 本人保证遵守上述规定。
+% \fi}
+% \newcommand{\thu@authorizationaddon}{%
+%  \ifthu@bachelor(涉密的学位论文在解密后应遵守此规定)\else （保密的论文在解密后应遵守此规定）\fi}
+% \newcommand{\thu@authorsig}{\ifthu@bachelor 签\hskip1em名：\else 作者签名：\fi}
+% \newcommand{\thu@teachersig}{导师签名：}
+% \newcommand{\thu@frontdate}{%
+%  日\ifthu@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
+%\newcommand{\thu@ckeywords@title}{关键词：}
 %    \end{macrocode}
 %
 %
@@ -2641,65 +2638,22 @@
 % \changes{v4.4.3}{2008/06/09}{修改本科生论文封面格式以符合新样例。}
 % \changes{v5.1.0}{2015/12/27}{修改联合指导教师显示问题。}
 %    \begin{macrocode}
-    \ifthu@bachelor
-      \vskip0.75cm
-      \ifx\thu@cassosupervisor\@empty%
-        \def\thu@tempa{7.15cm}
-      \else%
-        \def\thu@tempa{8.15cm}
-      \fi%
-      \parbox[t][\thu@tempa][t]{\textwidth}{%
-        {\fangsong\sanhao[1.95]%
-         \hspace*{1.9cm}
-         \setlength{\thu@title@width}{4em}
-         \setlength{\extrarowheight}{6pt}
-         \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
-             \thu@put@title{\thu@department@title} & \thu@title@sep
-               & \thu@cdepartment\\
-             \thu@put@title{\thu@major@title}      & \thu@title@sep
-               & \thu@cmajor\\
-             \thu@put@title{\thu@author@title}     & \thu@title@sep
-               & \thu@cauthor \\
-             \thu@put@title{\thu@supervisor@title} & \thu@title@sep
-               & \thu@csupervisor\\
-             \ifx\thu@cassosupervisor\@empty\else%
-               \thu@put@title{\thu@assosuper@title} & \thu@title@sep
-               & \thu@cassosupervisor\\
-             \fi
-           \end{tabular}
-        }}
-    \else
-      \vskip 5bp
-      \parbox[t][7.8cm][t]{\textwidth}{{\sanhao[1.5]
-        \begin{center}\fangsong
-          \setlength{\thu@title@width}{5em}
-          \setlength{\extrarowheight}{4pt}
-          \begin{tabular}{p{\thu@title@width}@{}c@{\extracolsep{8pt}}l}
-              \thu@put@title{\thu@department@title}  & \thu@title@sep
-                & {\ziju{0.1875}\thu@cdepartment}\\
-              \thu@put@title{\thu@major@title}       & \thu@title@sep
-                & {\ziju{0.1875}\thu@cmajor}\\
-              \thu@put@title{\thu@author@title}      & \thu@title@sep
-                & {\ziju{0.6875}\thu@cauthor}\\
-              \thu@put@title{\thu@supervisor@title}  & \thu@title@sep
-                & {\ziju{0.6875}\thu@csupervisor}\\
-              \ifx\thu@cassosupervisor\@empty\else
-                \thu@put@title{\thu@assosuper@title} & \thu@title@sep
-                & {\ziju{0.6875}\thu@cassosupervisor}\\
-              \fi
-              \ifx\thu@ccosupervisor\@empty\else
-                \ifthu@master
-                  \hfill\makebox[0pt][r]{\thu@cosuper@title} & \thu@title@sep
-                  & {\ziju{0.6875}\thu@ccosupervisor}\\
-                \fi
-                \ifthu@doctor
-                  \thu@put@title{\thu@cosuper@title} & \thu@title@sep
-                  & {\ziju{0.6875}\thu@ccosupervisor}\\
-                \fi
-              \fi
-            \end{tabular}
-        \end{center}}}
-      \fi
+	  \vskip0.75cm
+	  \ifx\thu@cassosupervisor\@empty%
+	    \def\thu@tempa{7.15cm}
+	  \else%
+	    \def\thu@tempa{8.15cm}
+	  \fi%
+	  \parbox[t][\thu@tempa][t]{\textwidth}{%
+	    {\fangsong\sanhao[1.95]%
+	     \hspace*{1.9cm}
+	     \setlength{\thu@title@width}{4em}
+	     \setlength{\extrarowheight}{6pt}
+	     \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
+	         \thu@put@title{\thu@author@title}     & \thu@title@sep
+	           & \thu@cauthor 
+	       \end{tabular}
+	    }}
 %    \end{macrocode}
 %
 % 论文成文打印的日期，用三号宋体汉字，不用阿拉伯数字
@@ -2724,70 +2678,70 @@
 \def\thu@master@art{Master of Arts}
 \def\thu@master@sci{Master of Science}
 \def\thu@doctor@phi{Doctor of Philosophy}
-\newcommand{\thu@engcover}{%
-  \newif\ifthu@professional\thu@professionalfalse
-  \ifthu@master
-    \ifthenelse{\equal{\thu@edegree}{\thu@master@art}}
-      {\relax}
-      {\ifthenelse{\equal{\thu@edegree}{\thu@master@sci}}
-        {\relax}
-        {\thu@professionaltrue}}
-  \fi
-  \ifthu@doctor
-    \ifthenelse{\equal{\thu@edegree}{\thu@doctor@phi}}
-      {\relax}
-      {\thu@professionaltrue}
-  \fi
-  \begin{center}
-    \vspace*{-5pt}
-    \parbox[t][5.2cm][t]{\paperwidth-7.2cm}{
-      \renewcommand{\baselinestretch}{1.5}
-      \begin{center}
-        \erhao[1.1]\bfseries\sffamily\thu@etitle%
-      \end{center}}
-    \parbox[t][][t]{\paperwidth-7.2cm}{
-      \renewcommand{\baselinestretch}{1.3}
-      \begin{center}
-        \sanhao%
-        \ifthu@master Thesis \else Dissertation \fi
-        Submitted to\\
-        {\bfseries Tsinghua University}\\
-        in partial fulfillment of the requirement\\
-        for the \ifthu@professional professional \fi
-        degree of\\
-        {\bfseries\sffamily\thu@edegree}%
-        \ifthu@professional\relax\else
-          \\in\\[3bp]
-          {\bfseries\sffamily\thu@emajor}%
-        \fi
-      \end{center}}
-    \parbox[t][][b]{\paperwidth-7.2cm}{
-      \renewcommand{\baselinestretch}{1.3}
-      \begin{center}
-        \sanhao\sffamily by\\[3bp]
-        \bfseries\thu@eauthor%
-        \ifthu@professional
-          \ifx\thu@emajor\empty\relax\else
-            \\(~\thu@emajor~)%
-        \fi\fi
-      \end{center}}
-    \par\vspace{0.9cm}
-    \parbox[t][2.1cm][t]{\paperwidth-7.2cm}{
-      \renewcommand{\baselinestretch}{1.2}
-      \xiaosan\centering
-      \begin{tabular}{rl}
-        \ifthu@master Thesis \else Dissertation \fi
-        Supervisor : & \thu@esupervisor\\
-        \ifx\thu@eassosupervisor\@empty
-          \else Associate Supervisor : & \thu@eassosupervisor\\\fi
-        \ifx\thu@ecosupervisor\@empty
-          \else Cooperate Supervisor : & \thu@ecosupervisor\\\fi
-      \end{tabular}}
-    \parbox[t][2cm][b]{\paperwidth-7.2cm}{
-    \begin{center}
-      \sanhao\bfseries\sffamily\thu@edate
-    \end{center}}
-  \end{center}}
+% \newcommand{\thu@engcover}{%
+%   \newif\ifthu@professional\thu@professionalfalse
+%   \ifthu@master
+%     \ifthenelse{\equal{\thu@edegree}{\thu@master@art}}
+%       {\relax}
+%       {\ifthenelse{\equal{\thu@edegree}{\thu@master@sci}}
+%         {\relax}
+%         {\thu@professionaltrue}}
+%   \fi
+%   \ifthu@doctor
+%     \ifthenelse{\equal{\thu@edegree}{\thu@doctor@phi}}
+%       {\relax}
+%       {\thu@professionaltrue}
+%   \fi
+%   \begin{center}
+%     \vspace*{-5pt}
+%     \parbox[t][5.2cm][t]{\paperwidth-7.2cm}{
+%       \renewcommand{\baselinestretch}{1.5}
+%       \begin{center}
+%         \erhao[1.1]\bfseries\sffamily\thu@etitle%
+%       \end{center}}
+%     \parbox[t][][t]{\paperwidth-7.2cm}{
+%       \renewcommand{\baselinestretch}{1.3}
+%       \begin{center}
+%         \sanhao%
+%         \ifthu@master Thesis \else Dissertation \fi
+%         Submitted to\\
+%         {\bfseries Tsinghua University}\\
+%         in partial fulfillment of the requirement\\
+%         for the \ifthu@professional professional \fi
+%         degree of\\
+%         {\bfseries\sffamily\thu@edegree}%
+%         \ifthu@professional\relax\else
+%           \\in\\[3bp]
+%           {\bfseries\sffamily\thu@emajor}%
+%         \fi
+%       \end{center}}
+%     \parbox[t][][b]{\paperwidth-7.2cm}{
+%       \renewcommand{\baselinestretch}{1.3}
+%       \begin{center}
+%         \sanhao\sffamily by\\[3bp]
+%         \bfseries\thu@eauthor%
+%         \ifthu@professional
+%           \ifx\thu@emajor\empty\relax\else
+%             \\(~\thu@emajor~)%
+%         \fi\fi
+%       \end{center}}
+%     \par\vspace{0.9cm}
+%     \parbox[t][2.1cm][t]{\paperwidth-7.2cm}{
+%       \renewcommand{\baselinestretch}{1.2}
+%       \xiaosan\centering
+%       \begin{tabular}{rl}
+%         \ifthu@master Thesis \else Dissertation \fi
+%         Supervisor : & \thu@esupervisor\\
+%         \ifx\thu@eassosupervisor\@empty
+%           \else Associate Supervisor : & \thu@eassosupervisor\\\fi
+%         \ifx\thu@ecosupervisor\@empty
+%           \else Cooperate Supervisor : & \thu@ecosupervisor\\\fi
+%       \end{tabular}}
+%     \parbox[t][2cm][b]{\paperwidth-7.2cm}{
+%     \begin{center}
+%       \sanhao\bfseries\sffamily\thu@edate
+%     \end{center}}
+%   \end{center}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2798,25 +2752,27 @@
 % \changes{v4.4.2}{2008/06/07}{修改本科生的授权部分，按照 2008 年的新样例。}
 % 支持扫描文件替换。
 %    \begin{macrocode}
-\newcommand{\thu@authorization@mk}{%
-  \ifthu@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
-  \begin{center}\erhao\heiti\thu@authtitle\end{center}
-  \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
-  \thu@authorization\par
-  \textbf{\thu@authorizationaddon}\par
-  \ifthu@bachelor\vskip0.7cm\else\vskip1.0cm\fi
-  \ifthu@bachelor
-    \indent\mbox{\thu@authorsig\thu@underline\relax%
-    \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax}
-  \else
-    \begingroup
-      \parindent0pt\xiaosi
-      \hspace*{1.5cm}\thu@authorsig\thu@underline[7em]\relax\hfill%
-                     \thu@teachersig\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]
-      \hspace*{1.5cm}\thu@frontdate\thu@underline[7em]\relax\hfill%
-                     \thu@frontdate\thu@underline[7em]\relax\hspace*{1cm}
-    \endgroup
-  \fi}
+
+% \newcommand{\thu@authorization@mk}{%
+%   \ifthu@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
+%   \begin{center}\erhao\heiti\thu@authtitle\end{center}
+%   \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
+%   % \thu@authorization\par
+%   \textbf{\thu@authorizationaddon}\par
+%   \ifthu@bachelor\vskip0.7cm\else\vskip1.0cm\fi
+%   \ifthu@bachelor
+%     \indent\mbox{\thu@authorsig\thu@underline\relax%
+%     \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax}
+%   \else
+%     \begingroup
+%       \parindent0pt\xiaosi
+%       \hspace*{1.5cm}\thu@authorsig\thu@underline[7em]\relax\hfill%
+%                      \thu@teachersig\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]
+%       \hspace*{1.5cm}\thu@frontdate\thu@underline[7em]\relax\hfill%
+%                      \thu@frontdate\thu@underline[7em]\relax\hspace*{1cm}
+%     \endgroup
+%   \fi}
+
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2827,20 +2783,20 @@
 \def\makecover{%
   \thu@setup@pdfinfo\thu@makecover}
 \def\thu@setup@pdfinfo{%
-  \ifthu@chinese
+  %\ifthu@chinese
     \hypersetup{
       pdftitle    = \thu@ctitle,
       pdfauthor   = \thu@cauthor,
       pdfsubject  = \thu@cdegree,
       pdfkeywords = \thu@ckeywords,
     }%
-  \else
-    \hypersetup{
-      pdftitle    = \thu@etitle,
-      pdfauthor   = \thu@eauthor,
-      pdfsubject  = \thu@edegree,
-      pdfkeywords = \thu@ekeywords,
-    }%
+  %\else
+  %  \hypersetup{
+  %    pdftitle    = \thu@etitle,
+  %    pdfauthor   = \thu@eauthor,
+  %    pdfsubject  = \thu@edegree,
+  %    pdfkeywords = \thu@ekeywords,
+  %  }%
   \fi
   \hypersetup{
     pdfcreator={\thuthesis-v\version}}}
@@ -2862,10 +2818,10 @@
 %
 % 研究生论文需要增加英文封面
 %    \begin{macrocode}
-    \ifthu@bachelor\relax\else
-      \ifthu@postdoctor\relax\else
-        \cleardoublepage\thu@engcover
-    \fi\fi
+    % \ifthu@bachelor\relax\else
+    %   \ifthu@postdoctor\relax\else
+    %     \cleardoublepage\thu@engcover
+    % \fi\fi
 %    \end{macrocode}
 %
 % 授权说明
@@ -2874,23 +2830,23 @@
 % \changes{v4.6}{2011/05/29}{博士后报告无授权说明。}
 % \changes{v5.0.0}{2015/06/05}{使用 \pkg{pdfpages} 宏包支持本硕博论文授权说明扫描版(\#36)。}
 %    \begin{macrocode}
-    \ifthu@postdoctor\relax\else%
-      \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
-      \IfNoValueTF{#1}{%
-        \ifthu@bachelor\thu@authorization@mk\else%
-          \begin{list}{}{%
-            \topsep\z@%
-            \listparindent\parindent%
-            \parsep\parskip%
-            \setlength{\leftmargin}{0.9mm}%
-            \setlength{\rightmargin}{0.9mm}}%
-          \item[]\thu@authorization@mk%
-          \end{list}%
-        \fi%
-      }{%
-        \includepdf{#1}%
-      }%
-    \fi
+    % \ifthu@postdoctor\relax\else%
+    %   \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
+    %   \IfNoValueTF{#1}{%
+    %     \ifthu@bachelor\thu@authorization@mk\else%
+    %       \begin{list}{}{%
+    %         \topsep\z@%
+    %         \listparindent\parindent%
+    %         \parsep\parskip%
+    %         \setlength{\leftmargin}{0.9mm}%
+    %         \setlength{\rightmargin}{0.9mm}}%
+    %       \item[]\thu@authorization@mk%
+    %       \end{list}%
+    %     \fi%
+    %   }{%
+    %     \includepdf{#1}%
+    %   }%
+    % \fi
   \end{titlepage}
 %    \end{macrocode}
 %
@@ -2962,13 +2918,13 @@
 % 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连
 % 续。\changes{v2.5.1}{2006/05/28}{研究生封面英文摘要连续。}
 %    \begin{macrocode}
-  \thu@setenglish
-  \thu@chapter*[]{\eabstractname} % no tocline
+  % \thu@setenglish
+  % \thu@chapter*[]{\eabstractname} % no tocline
 %    \end{macrocode}
 %
 % 摘要内容用小四号 Times New Roman。
 %    \begin{macrocode}
-  \thu@eabstract
+  % \thu@eabstract
 %    \end{macrocode}
 %
 % 每个关键词之间空四个英文字符宽度。
