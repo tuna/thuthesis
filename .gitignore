@@ -5,6 +5,9 @@ main.pdf
 shuji.pdf
 *.hd
 
+.DS_Store
+
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
