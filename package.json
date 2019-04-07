@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/xueruini/thuthesis",
   "devDependencies": {
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "del": "^4.1.0",
+    "gulp": "^4.0.0",
     "gulp-util": "^3.0.8",
-    "gulp-zip": "^4.0.0"
+    "gulp-zip": "^4.2.0"
   },
   "dependencies": {}
 }

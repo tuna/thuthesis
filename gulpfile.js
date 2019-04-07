@@ -51,13 +51,13 @@ function check_notification() {
     util.log(util.colors.yellow('⚠️  Ensure all files are generated.'));
 }
 
-gulp.task('default', function(callback) {
+function doDefault(callback) {
     usage();
 
     callback();
-});
+}
 
-gulp.task('bootstrap', function(callback) {
+function bootstrap(callback) {
     if (!util.env.hasOwnProperty('version')) {
         usage();
 
@@ -82,9 +82,9 @@ gulp.task('bootstrap', function(callback) {
               path.join(config.dist.root, config.dist.zip)]);
 
     callback();
-});
+}
 
-gulp.task('copy', ['bootstrap'], function() {
+const copy = gulp.series(bootstrap, function() {
     const src = [...config.template.files, ...config.example.files];
     const dest = path.join(config.dist.root, config.dist.build);
 
@@ -94,7 +94,7 @@ gulp.task('copy', ['bootstrap'], function() {
         .pipe(gulp.dest(dest));
 });
 
-gulp.task('zip', ['copy'], function() {
+const doZip = gulp.series(copy, function() {
     const src = path.join(config.dist.build, '**/*');
 
     return gulp.src(src, {
@@ -105,7 +105,7 @@ gulp.task('zip', ['copy'], function() {
         .pipe(gulp.dest(config.dist.root));
 });
 
-gulp.task('build', ['zip'], function(callback) {
+const build = gulp.series(doZip, function(callback) {
     del.sync([path.join(config.dist.root, config.dist.build)]);
 
     util.log(util.colors.green.bold('🍺  Build Succeeded.'));
@@ -114,3 +114,6 @@ gulp.task('build', ['zip'], function(callback) {
 
     callback();
 });
+
+exports.default = doDefault;
+exports.build = build;
