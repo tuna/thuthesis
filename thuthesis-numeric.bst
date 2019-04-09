@@ -8,7 +8,7 @@
 %% -------------------------------------------------------------------
 %% GB/T 7714-2015 BibTeX Style
 %% https://github.com/CTeX-org/gbt7714-bibtex-style
-%% Version: 2019/01/02 v1.1
+%% Version: 2019/03/21 v1.1.1
 %% -------------------------------------------------------------------
 %% Copyright (C) 2016-2019 by Zeping Lee <zepinglee AT gmail.com>
 %% -------------------------------------------------------------------
@@ -35,11 +35,6 @@ INTEGERS {
   show.url
   show.doi
   show.note
-  lang.zh.order
-  lang.ja.order
-  lang.en.order
-  lang.ru.order
-  lang.other.order
 }
 
 FUNCTION {load.config}
@@ -47,8 +42,6 @@ FUNCTION {load.config}
   #1 'uppercase.name :=
   #0 'uppercase.name :=
   #3 'max.num.authors :=
-  #0 'period.between.author.year :=
-  #1 'period.between.author.year :=
   #1 'sentence.case.title :=
   #0 'link.title :=
   #1 'show.mark :=
@@ -61,11 +54,6 @@ FUNCTION {load.config}
   #1 'show.doi :=
   #0 'show.doi :=
   #0 'show.note :=
-  #1 'lang.zh.order :=
-  #2 'lang.ja.order :=
-  #3 'lang.en.order :=
-  #4 'lang.ru.order :=
-  #5 'lang.other.order :=
 }
 
 ENTRY
@@ -271,13 +259,7 @@ FUNCTION {output.check}
 }
 
 FUNCTION {fin.entry}
-{ type$ "book" =
-  type$ "inbook" = or
-  type$ "incollection" = or
-  type$ "collection" = or
-    'skip$
-    'add.period$
-  if$
+{ add.period$
   write$
   newline$
 }
