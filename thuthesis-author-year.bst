@@ -8,7 +8,7 @@
 %% -------------------------------------------------------------------
 %% GB/T 7714-2015 BibTeX Style
 %% https://github.com/CTeX-org/gbt7714-bibtex-style
-%% Version: 2019/01/02 v1.1
+%% Version: 2019/03/21 v1.1.1
 %% -------------------------------------------------------------------
 %% Copyright (C) 2016-2019 by Zeping Lee <zepinglee AT gmail.com>
 %% -------------------------------------------------------------------
@@ -271,13 +271,7 @@ FUNCTION {output.check}
 }
 
 FUNCTION {fin.entry}
-{ type$ "book" =
-  type$ "inbook" = or
-  type$ "incollection" = or
-  type$ "collection" = or
-    'skip$
-    'add.period$
-  if$
+{ add.period$
   write$
   newline$
 }
