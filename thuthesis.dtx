@@ -16,7 +16,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2018/05/17 5.4.5 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2019/04/10 5.5.0 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -1023,7 +1023,7 @@
 %    \begin{macrocode}
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
-%<cls>[2018/05/17 5.4.5 Tsinghua University Thesis Template]
+%<cls>[2019/04/10 5.5.0 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % 检查编译引擎，要求使用 XeLaTeX。
@@ -1067,7 +1067,7 @@
 %    \end{macrocode}
 %
 % 论文是使用英文。
-% \changes{v5.5}{2018/12/09}{增加选项使用英文模板。}
+% \changes{v5.5.0}{2018/12/09}{增加选项使用英文模板。}
 %    \begin{macrocode}
 \DeclareStringOption[chinese]{language}[chinese]
 %    \end{macrocode}
@@ -1148,7 +1148,7 @@
 % \changes{v3.1}{2007/06/16}{replace \pkg{mathptmx} with \pkg{txfonts}.}
 % \changes{v5.2.1}{2016/01/14}{使用 \pkg{newtx} 替换 \pkg{txfonts}。}
 % \changes{v5.2.2}{2016/02/01}{不希望 \pkg{newtx} 修改 \cs{@makefnmark}。 }
-% \changes{v5.5}{2018/07/07}{使用 \pkg{unicode-math} 处理数学字体。}
+% \changes{v5.5.0}{2018/07/07}{使用 \pkg{unicode-math} 处理数学字体。}
 %    \begin{macrocode}
 \RequirePackage{unicode-math}
 %    \end{macrocode}
@@ -1427,7 +1427,7 @@
 %
 % 在使用 Windows Vista 或之后版本的系统时，\pkg{ctex} 宏包会默认使用微软雅黑字体，
 % 这可能会导致审查不合格。下面设置适合印刷的黑体，同时保持跨平台兼容性。
-% \changes{v5.5}{2019/01/06}{Windows 的中文字体开启伪粗。}
+% \changes{v5.5.0}{2019/01/06}{Windows 的中文字体开启伪粗。}
 %    \begin{macrocode}
 \ifthenelse{\equal{\thu@fontset}{windows}}{
   \xeCJKsetup{EmboldenFactor=2}
@@ -1755,7 +1755,7 @@
 % \begin{macro}{\thu@textcircled}
 % \changes{v2.5.1}{2006/05/21}{脚注编号使用 \cs{textcircled} 命令，每页允许至多 99 个。}
 % \changes{v5.2.2}{2016/02/01}{脚注编号每页允许至多 9 个。}
-% \changes{v5.5}{2018/12/10}{去掉 \option{pifootnote} 选项。}
+% \changes{v5.5.0}{2018/12/10}{去掉 \option{pifootnote} 选项。}
 % 生成带圈的脚注数字，最多处理到 10。
 %    \begin{macrocode}
 \ifthenelse{\equal{\thu@fontset}{mac}}{
@@ -1935,7 +1935,7 @@
 % \changes{v4.2}{2008/03/07}{调整证明环境的编号和结尾的方块。}
 % \changes{v5.0.0}{2015/04/18}{修正定理字样为黑体 (\#104)。}
 % \changes{v5.3.2}{2017/05/01}{定理环境格式设置（环境标题和环境正文字体设置）统一放置到 .cfg 文件中。}
-% \changes{v5.5}{2019/01/08}{移除 cfg 文件。}
+% \changes{v5.5.0}{2019/01/08}{移除 cfg 文件。}
 %    \begin{macrocode}
 \theorembodyfont{\normalfont}
 \theoremheaderfont{\normalfont\sffamily}
@@ -1962,7 +1962,7 @@
 % \label{sec:float}
 % 设置浮动对象和文字之间的距离
 % \changes{v2.6}{2006/06/09}{增加 \cs{floatsep}，\cs{@fptop}，\cs{@fpsep} 和 \cs{@fpbot}。}
-% \changes{v5.5}{2019/03/15}{修正图表标题与文字之间的距离。}
+% \changes{v5.5.0}{2019/03/15}{修正图表标题与文字之间的距离。}
 %    \begin{macrocode}
 \setlength{\floatsep}{12bp \@plus 2bp \@minus 4bp}
 \setlength{\textfloatsep}{12bp}
@@ -2524,7 +2524,7 @@
 % \changes{v4.7}{2011/11/28}{硕士中文封面不再需要英文标题。}
 % \changes{v4.7}{2012/05/30}{本科生题目下划线长度自动适应字数。}
 % \changes{v5.1.0}{2015/12/27}{利用 \env{CJKfilltwosides} 优化封面排版。}
-% \changes{v5.5}{2019/01/08}{修正博士后封面的格式。}
+% \changes{v5.5.0}{2019/01/08}{修正博士后封面的格式。}
 %
 %    \begin{macrocode}
 \newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
@@ -3358,7 +3358,7 @@
 %
 % \subsubsection{\pkg{nomencl} 宏包}
 %
-% \changes{v5.5}{2018/12/09}{增加 \pkg{nomencl} 宏包的支持。}
+% \changes{v5.5.0}{2018/12/09}{增加 \pkg{nomencl} 宏包的支持。}
 %    \begin{macrocode}
 \thu@atendpackage{nomencl}{
   \let\nomname\thu@denotation@name
