@@ -389,9 +389,8 @@
 % 论文的主要语言（默认：中文）。可选：\option{chinese}，\option{english}。
 %
 % \DescribeOption{secret}
-%   涉秘论文开关（默认：关闭）。第 \ref{sec:setup-secret} 节两个配置（或命
-%   令）\cs{secretlevel}\marg{级别} 和 \cs{secretyear}\marg{年数} 分别用来指定保
-%   密级别和时限。若不设置，则二者取默认值，分别为“\textbf{秘密}”和当前年份。
+% 涉秘论文开关（默认：关闭）。第 \ref{sec:setup-secret} 节两个配置分别用来指定保
+% 密级别和时限。若不设置，则二者取默认值，分别为“\textbf{秘密}”和当前年份。
 % \begin{latex}
 % \documentclass[secret]{thuthesis} % 打开保密
 % \documentclass[secret=false]{thuthesis} % 关闭保密
@@ -400,9 +399,6 @@
 %   secretlevel=公开,
 %   secretyear=10
 % }
-% % 或者
-% \secretlevel{保密}
-% \secretyear{10}
 % \end{latex}
 %
 % \DescribeOption{openany}
