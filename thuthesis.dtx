@@ -16,7 +16,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2019/04/10 5.5.0 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2019/04/16 5.5.1 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -1023,7 +1023,7 @@
 %    \begin{macrocode}
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{thuthesis}
-%<cls>[2019/04/10 5.5.0 Tsinghua University Thesis Template]
+%<cls>[2019/04/16 5.5.1 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % 检查编译引擎，要求使用 XeLaTeX。
@@ -1051,7 +1051,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{ThuThesis}
-\def\version{5.5.0}
+\def\version{5.5.1}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=thu,
@@ -1756,6 +1756,7 @@
 % \changes{v2.5.1}{2006/05/21}{脚注编号使用 \cs{textcircled} 命令，每页允许至多 99 个。}
 % \changes{v5.2.2}{2016/02/01}{脚注编号每页允许至多 9 个。}
 % \changes{v5.5.0}{2018/12/10}{去掉 \option{pifootnote} 选项。}
+% \changes{v5.5.1}{2019/04/16}{修复 minipage 中 footnote 编号问题。}
 % 生成带圈的脚注数字，最多处理到 10。
 %    \begin{macrocode}
 \ifthenelse{\equal{\thu@fontset}{mac}}{
@@ -1776,7 +1777,7 @@
     \ClassError{thuthesis}%
       {Too many footnotes in this page.}{Keep footnote less than 10.}%
   \fi
-  {\thu@circlefont\symbol{\numexpr\value{#1}+"245F\relax}}%
+  {\thu@circlefont\symbol{\the\numexpr\value{#1}+"245F\relax}}%
 }
 \renewcommand{\thefootnote}{\thu@textcircled{footnote}}
 \renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
