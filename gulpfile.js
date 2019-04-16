@@ -108,7 +108,7 @@ const doZip = gulp.series(copy, function() {
 const build = gulp.series(doZip, function(callback) {
     del.sync([path.join(config.dist.root, config.dist.build)]);
 
-    util.log(util.colors.green.bold('🍺  Build Succeeded.'));
+    util.log(util.colors.green.bold('🍺 Build Succeeded.'));
 
     callback();
 });
