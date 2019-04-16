@@ -71,9 +71,10 @@ distclean: cleanall
 	-@$(RM) -r dist
 
 check: FORCE_MAKE
-	@ag 'Tsinghua University Thesis Template|\\def\\version|"version":' thuthesis.dtx package.json
+	@[[ $(shell grep -E -c 'Tsinghua University Thesis Template|\\def\\version' thuthesis.dtx) -eq 3 ]] || (echo "update version in thuthesis.dtx before release"; exit 1)
+	@[[ $(shell grep -E -c '"version":' package.json) -eq 1 ]] || (echo "update version in package.json before release"; exit 1)
 
-dist: all
+dist: check all
 	@if [ -z "$(version)" ]; then \
 		echo "Usage: make dist version=[x.y.z | ctan]"; \
 	else \

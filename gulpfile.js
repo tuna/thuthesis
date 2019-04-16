@@ -77,7 +77,7 @@ function bootstrap(callback) {
     }
     config.dist.zip = `${config.dist.build}.zip`;
 
-    util.log(`Removing ${config.dist.build}...`);
+    util.log(`Removing old ${config.dist.build}...`);
     del.sync([path.join(config.dist.root, config.dist.build),
               path.join(config.dist.root, config.dist.zip)]);
 
@@ -109,8 +109,6 @@ const build = gulp.series(doZip, function(callback) {
     del.sync([path.join(config.dist.root, config.dist.build)]);
 
     util.log(util.colors.green.bold('🍺  Build Succeeded.'));
-
-    check_notification();
 
     callback();
 });
