@@ -1407,14 +1407,13 @@
   nabla      = upright,
   partial    = upright,
 }
-\IfFontExistsTF{STIX2Math.otf}{
-  \setmathfont[StylisticSet=8]{STIX2Math.otf}
-  \setmathfont[range={scr,bfscr},StylisticSet=1]{STIX2Math.otf}
-  \IfFontExistsTF{XITSMath-Regular.otf}{
-    \setmathfont[range={\partial,\lbrace,\rbrace}]{XITSMath-Regular.otf}
-  }{
-    \setmathfont[range={\partial,\lbrace,\rbrace}]{xits-math.otf}
-  }
+\IfFontExistsTF{XITSMath-Regular.otf}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = XITSMath-Bold,
+    StylisticSet = 8,
+  ]{XITSMath-Regular}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{XITSMath-Regular.otf}
 }{
   \setmathfont[
     Extension    = .otf,

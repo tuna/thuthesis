@@ -29,7 +29,7 @@ install:
   - tlmgr install latexmk
     fontname fontspec l3kernel l3packages xetex
     cjk ctex environ ms trimspaces ulem xecjk zhnumber
-    fandol tex-gyre stix2-otf xits
+    fandol tex-gyre xits
     booktabs caption diagbox enumitem eso-pic etoolbox filehook float footmisc
     fp multirow notoccite ntheorem pdfpages pict2e unicode-math xcolor zapfding
     fontaxes kastrup listings lm metalogo newpx newtx palatino pxfonts thumbpdf
