@@ -1,6 +1,8 @@
+const argv = require('minimist')(process.argv.slice(2))
 const path = require('path');
 const gulp = require('gulp');
-const util = require('gulp-util');
+const log = require('fancy-log');
+const color = require('ansi-colors');
 const del = require('del');
 const zip = require('gulp-zip');
 
@@ -13,10 +15,12 @@ const config = {
                 'tsinghua.pdf',
                 'thuthesis-numeric.bst',
                 'thuthesis-author-year.bst',
+                'thuthesis-bachelor.bst',
                 'Makefile',
                 'latexmkrc',
                 'README.md',
                 'thuthesis.pdf'],
+        // generated shold not be included for ctan archive
         generated: ['thuthesis.cls']
     },
 
@@ -33,68 +37,52 @@ const config = {
 
     dist: {
         root: './dist',
+        files: [],
         build: '',
         zip: ''
     },
-
-    isCTAN: false
 };
 
 function usage() {
-    util.log('Usage:');
-    util.log('\t make dist version=[x.y.z | ctan]');
-    util.log('\t gulp build --version=[x.y.z | ctan]');
+    log('Usage:');
+    log('\t make dist version=x.y.z');
 }
 
-function check_notification() {
-    util.log(util.colors.yellow('⚠️  Double check versions and dates: `make check`, 3 in thuthesis.dtx and 1 in package.json.'));
-    util.log(util.colors.yellow('⚠️  Ensure all files are generated.'));
-}
-
-function doDefault(callback) {
+function _default(callback) {
     usage();
 
     callback();
 }
 
 function bootstrap(callback) {
-    if (!util.env.hasOwnProperty('version')) {
+    if (!argv.hasOwnProperty('version')) {
         usage();
 
         process.exit(1);
     }
 
-    const version = util.env.version.toString().toLowerCase();
-    config.isCTAN = version === 'ctan';
+    callback();
+}
 
-    check_notification();
+function cleanup(callback) {
+    del.sync([path.join(config.dist.root, config.dist.build)]);
 
-    if (config.isCTAN) {
-        config.dist.build = `${packageName}`;
-    } else {
-        config.template.files.push(...config.template.generated);
-        config.dist.build = `${packageName}-v${version}`;
-    }
-    config.dist.zip = `${config.dist.build}.zip`;
-
-    util.log(`Removing old ${config.dist.build}...`);
-    del.sync([path.join(config.dist.root, config.dist.build),
-              path.join(config.dist.root, config.dist.zip)]);
+    log(color.green.bold(`🍺  ${config.dist.zip} generated`));
 
     callback();
 }
 
-const copy = gulp.series(bootstrap, function() {
-    const src = [...config.template.files, ...config.example.files];
+function copy(callback) {
+    const src = config.dist.files;
     const dest = path.join(config.dist.root, config.dist.build);
 
     return gulp.src(src, {
         cwdbase: true
     })
         .pipe(gulp.dest(dest));
-});
+}
 
-const doZip = gulp.series(copy, function() {
+function compress(callback) {
     const src = path.join(config.dist.build, '**/*');
 
     return gulp.src(src, {
@@ -103,15 +91,36 @@ const doZip = gulp.series(copy, function() {
     })
         .pipe(zip(config.dist.zip))
         .pipe(gulp.dest(config.dist.root));
-});
+}
 
-const build = gulp.series(doZip, function(callback) {
-    del.sync([path.join(config.dist.root, config.dist.build)]);
+function init_self(callback) {
+    config.dist.files = [...config.template.files, ...config.example.files, ...config.template.generated];
+    config.dist.build = `${packageName}-v${argv.version}`;
+    config.dist.zip = `${config.dist.build}.zip`;
 
-    util.log(util.colors.green.bold('🍺 Build Succeeded.'));
+    log(`Removing old ${config.dist.build}...`);
+    del.sync([path.join(config.dist.root, config.dist.build),
+              path.join(config.dist.root, config.dist.zip)]);
 
     callback();
-});
+}
 
-exports.default = doDefault;
+function init_ctan(callback) {
+    config.dist.files = [...config.template.files, ...config.example.files];
+    config.dist.build = `${packageName}`;
+    config.dist.zip = `${config.dist.build}.zip`;
+
+    log(`Removing old ${config.dist.build}...`);
+    del.sync([path.join(config.dist.root, config.dist.build),
+              path.join(config.dist.root, config.dist.zip)]);
+
+    callback();
+}
+
+const build_self = gulp.series(init_self, copy, compress, cleanup);
+const build_ctan = gulp.series(init_ctan, copy, compress, cleanup);
+
+const build = gulp.series(bootstrap, build_self, build_ctan);
+
+exports.default = _default;
 exports.build = build;
