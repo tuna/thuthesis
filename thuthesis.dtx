@@ -3200,15 +3200,18 @@
 \def\@biblabel#1{[#1]\hfill}
 %    \end{macrocode}
 %
-% 两种引用样式：
+% 几种种引用样式：
 % \changes{v5.4.0}{2017/12/3}{\cs{bibliographystyle}\marg{newbib} will cause \cs{bibstyle@newbib} to
 % be called on THE NEXT LATEX RUN (via the aux file).}
 % \changes{v5.4.1}{2017/12/04}{bst 在 ctan 上不分路径，故加前缀。}
+% \changes{v5.5.3}{2019/05/22}{修正本科生的文献引用样式。}
 %    \begin{macrocode}
 \expandafter\newcommand\csname bibstyle@thuthesis-numeric\endcsname{%
   \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
 \expandafter\newcommand\csname bibstyle@thuthesis-author-year\endcsname{%
   \bibpunct{(}{)}{;}{a}{,}{,}}
+\expandafter\newcommand\csname bibstyle@thuthesis-bachelor\endcsname{%
+  \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
 %    \end{macrocode}
 %
 % 下面修改 \pkg{natbib} 的引用格式，主要是将页码写在上标位置。
