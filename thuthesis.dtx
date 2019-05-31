@@ -201,7 +201,7 @@
 % \thuthesis\ 已经包含在主要的 \TeX\ 发行版中，一般不需要安装，可以利用发行版自
 % 带更新工具自动更新。阅读文档可以使用以下命令：
 % \begin{shell}
-% $ texdoc thuthesis
+%   $ texdoc thuthesis
 % \end{shell}
 %
 % 如果要使用开发版，需自己下载，\thuthesis\ 相关链接：
@@ -263,16 +263,16 @@
 % 板文件和配置文件（具体命令细节请参考 \file{README.md} 和 \file{Makefile}）：
 %
 % \begin{shell}
-% $ cd thuthesis-vX.Y.Z
-% # 生成 thuthesis.cls
-% $ xetex thuthesis.ins
+%   $ cd thuthesis-vX.Y.Z
+%   # 生成 thuthesis.cls
+%   $ xetex thuthesis.ins
 %
-% # 下面的命令用来生成用户手册，可以不执行
-% $ xelatex thuthesis.dtx
-% $ makeindex -s gind.ist -o thuthesis.ind thuthesis.idx
-% $ makeindex -s gglo.ist -o thuthesis.gls thuthesis.glo
-% $ xelatex thuthesis.dtx
-% $ xelatex thuthesis.dtx  % 生成说明文档 thuthesis.pdf
+%   # 下面的命令用来生成用户手册，可以不执行
+%   $ xelatex thuthesis.dtx
+%   $ makeindex -s gind.ist -o thuthesis.ind thuthesis.idx
+%   $ makeindex -s gglo.ist -o thuthesis.gls thuthesis.glo
+%   $ xelatex thuthesis.dtx
+%   $ xelatex thuthesis.dtx  % 生成说明文档 thuthesis.pdf
 % \end{shell}
 %
 % \subsection{生成论文}
@@ -285,15 +285,15 @@
 % 令直至不再出现警告。下面给出生成示例文档的详细过程（\texttt{\#} 开头的行为注
 % 释），首先来看推荐的 \texttt{xelatex} 方式：
 % \begin{shell}
-% # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
-% $ xelatex main
+%  # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
+%  $ xelatex main
 %
-% # 2. 编译参考文件源文件，生成 bbl 文件
-% $ bibtex main
+%  # 2. 编译参考文件源文件，生成 bbl 文件
+%  $ bibtex main
 %
-% # 3. 下面解决引用
-% $ xelatex main
-% $ xelatex main   # 此时生成完整的 pdf 文件
+%  # 3. 下面解决引用
+%  $ xelatex main
+%  $ xelatex main   # 此时生成完整的 pdf 文件
 % \end{shell}
 %
 % \subsubsection{latexmk}
@@ -302,8 +302,8 @@
 % 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。下面给出了一个用
 % \texttt{latexmk} 调用 \texttt{xelatex} 生成最终文档的示例：
 % \begin{shell}
-% # 一句话就够了！
-% $ latexmk -xelatex main
+%   # 一句话就够了！
+%   $ latexmk -xelatex main
 % \end{shell}
 %
 % \subsubsection{make}
@@ -315,11 +315,11 @@
 % 个 \file{Makefile}：
 %
 % \begin{shell}
-% $ make clean
-% $ make cls       # 生成 thuthesis.cls
-% $ make doc       # 生成说明文档 thuthesis.pdf
-% $ make thesis    # 生成示例文档 main.pdf
-% $ make spine     # 生成书脊 spine.pdf
+%   $ make clean
+%   $ make cls       # 生成 thuthesis.cls
+%   $ make doc       # 生成说明文档 thuthesis.pdf
+%   $ make thesis    # 生成示例文档 main.pdf
+%   $ make spine     # 生成书脊 spine.pdf
 % \end{shell}
 %
 % \thuthesis\ 的 \file{Makefile} 默认用 \texttt{latexmk} 调用\texttt{xelatex} 编
@@ -335,7 +335,7 @@
 % \file{thuthesis-author-year.bst} 和 \file{thuthesis-numeric.bst} 拷贝至工作目录覆盖相应
 % 的文件，然后运行：
 % \begin{shell}
-% $ xetex thuthesis.ins
+%   $ xetex thuthesis.ins
 % \end{shell}
 %
 % 生成新的类文件和配置文件即可。也可以直接拷
@@ -378,11 +378,11 @@
 %   持：\option{bachelor}，\option{master}，\option{doctor}，\option{postdoctor}。
 %   为必选项。
 % \begin{latex}
-% % 博士论文
-% \documentclass[degree=doctor]{thuthesis}
+%   % 博士论文
+%   \documentclass[degree=doctor]{thuthesis}
 %
-% % 硕士论文
-% \documentclass[degree=master]{thuthesis}
+%   % 硕士论文
+%   \documentclass[degree=master]{thuthesis}
 % \end{latex}
 %
 % \DescribeOption{language}
@@ -392,13 +392,13 @@
 % 涉秘论文开关（默认：关闭）。第 \ref{sec:setup-secret} 节两个配置分别用来指定保
 % 密级别和时限。若不设置，则二者取默认值，分别为“\textbf{秘密}”和当前年份。
 % \begin{latex}
-% \documentclass[secret]{thuthesis} % 打开保密
-% \documentclass[secret=false]{thuthesis} % 关闭保密
+%   \documentclass[secret]{thuthesis} % 打开保密
+%   \documentclass[secret=false]{thuthesis} % 关闭保密
 %
-% \thusetup{
-%   secretlevel=公开,
-%   secretyear=10
-% }
+%   \thusetup{
+%     secretlevel=公开,
+%     secretyear=10
+%   }
 % \end{latex}
 %
 % \DescribeOption{openany}
@@ -426,11 +426,11 @@
 % 模板支持两种引用方式，分别为理工科常用的“数字式 [1]”和文科常用
 % 的“作者-年份 (Zhang, 2008)”。使用者可通过 \cs{bibliographystyle} 来选择：
 % \begin{latex}
-% % 数字式
-% \bibliographystyle{thuthesis-numeric}
+%   % 数字式
+%   \bibliographystyle{thuthesis-numeric}
 %
-% % 作者-年份
-% \bibliographystyle{thuthesis-author-year}
+%   % 作者-年份
+%   \bibliographystyle{thuthesis-author-year}
 % \end{latex}
 %
 % \DescribeMacro{\inlinecite}
@@ -442,11 +442,11 @@
 % 关于参考文献表推荐使用 \BibTeX，默认情况下可以自动识别文献语言，
 % 并自动处理文献类型和载体类型标识，也可以手动指定，如：
 % \begin{latex}
-% @misc{citekey,
-%   language = {japanese},
-%   mark     = {Z},
-%   medium   = {DK},
-%   ...
+%   @misc{citekey,
+%     language = {japanese},
+%     mark     = {Z},
+%     medium   = {DK},
+%     ...
 % \end{latex}
 % 可选的语言有 english, chinese, japanese, russian。
 %
@@ -459,10 +459,10 @@
 % 然而由于 \BibTeX{} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺，
 % 所以\emph{必须}在 bib 数据库中的 key 域手动录入著者姓名的拼音，如：
 % \begin{latex}
-% @book{capital,
-%   author = {马克思 and 恩格斯},
-%   key    = {ma3 ke4 si1   en1 ge2 si1},
-%   ...
+%   @book{capital,
+%     author = {马克思 and 恩格斯},
+%     key    = {ma3 ke4 si1   en1 ge2 si1},
+%     ...
 % \end{latex}
 %
 % \BibTeX{} 对自定义样式的支持比较有限，
@@ -492,10 +492,10 @@
 % 用来切换宋体、仿宋、黑体、楷体四种基本字体。
 %
 % \begin{latex}
-% {\songti 乾：元，亨，利贞}
-% {\fangsong 初九，潜龙勿用}
-% {\heiti 九二，见龙在田，利见大人}
-% {\kaishu 九三，君子终日乾乾，夕惕若，厉，无咎}
+%   {\songti 乾：元，亨，利贞}
+%   {\fangsong 初九，潜龙勿用}
+%   {\heiti 九二，见龙在田，利见大人}
+%   {\kaishu 九三，君子终日乾乾，夕惕若，厉，无咎}
 % \end{latex}
 %
 % \myentry{字号}
@@ -520,10 +520,10 @@
 % 是 \cs{dawu}，模板已经设置好了。
 %
 % \begin{latex}
-% {\erhao 二号}
-% {\sanhao[1.5] 三号}
-% {\sihao 四号}
-% {\qihao[2] 七号}
+%   {\erhao 二号}
+%   {\sanhao[1.5] 三号}
+%   {\sihao 四号}
+%   {\qihao[2] 七号}
 % \end{latex}
 %
 % 也可以使用 \CTeX\ 定义的 \cs{zihao}\marg{num} 来切换字号，具体用法参看其文
@@ -539,15 +539,15 @@
 % \DescribeMacro{\thusetup}
 % \cs{thusetup} 用法与常见 \emph{key=value} 命令相同，如下：
 % \begin{latex}
-% \thusetup{
-%   key1 = value1,
-%   key2 = {a value, with comma},
-% }
-% % 可以多次调用
-% \thusetup{
-%   key3 = value3,
-%   key1 = value11, % 覆盖 value1
-% }
+%   \thusetup{
+%     key1 = value1,
+%     key2 = {a value, with comma},
+%   }
+%   % 可以多次调用
+%   \thusetup{
+%     key3 = value3,
+%     key1 = value11, % 覆盖 value1
+%   }
 % \end{latex}
 %
 % \note[注意：]{\cs{thusetup} 使用 \pkg{kvoptions} 机制，所以配置项之间不能有空行，否则
@@ -560,38 +560,38 @@
 % \label{sec:setup-secret}
 % 定义秘密级别和年限，需要打开论文的 \option{secret} 选项。
 % \begin{latex}
-% \thusetup{
-%   secretyear  = 10,
-%   secretlevel = {内部},
-% }
+%   \thusetup{
+%     secretyear  = 10,
+%     secretlevel = {内部},
+%   }
 % \end{latex}
 %
 % \subsubsection{博士后专用参数}
 % 只见过，没用过，不知道具体是什么意思。
 % \begin{latex}
-% \thusetup{
-%   catalognumber = {分类号},
-%   udc           = {udc},
-%   id            = {id},
-% }
+%   \thusetup{
+%     catalognumber = {分类号},
+%     udc           = {udc},
+%     id            = {id},
+%   }
 % \end{latex}
 %
 % \subsubsection{论文标题}
 % 中英文标题。可以在标题内部使用换行|\\|。
 % \begin{latex}
-% \thusetup{
-%   ctitle = {论文中文题目},
-%   etitle = {Thesis English Title},
-% }
+%   \thusetup{
+%     ctitle = {论文中文题目},
+%     etitle = {Thesis English Title},
+%   }
 % \end{latex}
 %
 % \subsubsection{作者姓名}
 % 作者姓名。
 % \begin{latex}
-% \thusetup{
-%   cauthor = {中文姓名},
-%   eauthor = {Name in Pinyin},
-% }
+%   \thusetup{
+%     cauthor = {中文姓名},
+%     eauthor = {Name in Pinyin},
+%   }
 % \end{latex}
 %
 % \subsubsection{申请学位名称}
@@ -615,76 +615,76 @@
 % \end{longtable}
 %
 % \begin{latex}
-% \thusetup{
-%   cdegree = {您要申请什么学位},
-%   edegree = {Degree in English},
-% }
+%   \thusetup{
+%     cdegree = {您要申请什么学位},
+%     edegree = {Degree in English},
+%   }
 % \end{latex}
 %
 % \subsubsection{院系名称}
 % 院系名称。
 % \begin{latex}
-% \thusetup{
-%   cdepartment = {系名全称},
-%   edepartment = {Deparment of CS},
-% }
+%   \thusetup{
+%     cdepartment = {系名全称},
+%     edepartment = {Deparment of CS},
+%   }
 % \end{latex}
 %
 % \subsubsection{专业名称}
 % 参见第 \ref{sec:degree} 节。
 % \begin{latex}
-% \thusetup{
-%   cmajor = {专业名称},
-%   emajor = {Major in English},
-% }
+%   \thusetup{
+%     cmajor = {专业名称},
+%     emajor = {Major in English},
+%   }
 % \end{latex}
 %
 % 博士后专用。
 % \begin{latex}
-% \thusetup{
-%   cfirstdiscipline  = {流动站（一级学科）名称},
-%   cseconddiscipline = {专业（二级学科）名称},
-% }
+%   \thusetup{
+%     cfirstdiscipline  = {流动站（一级学科）名称},
+%     cseconddiscipline = {专业（二级学科）名称},
+%   }
 % \end{latex}
 %
 % \subsubsection{导师}
 % \myentry{导师}
 % 直接导师。
 % \begin{latex}
-% \thusetup{
-%   csupervisor = {导师~教授},
-%   esupervisor = {Supervisor},
-% }
+%   \thusetup{
+%     csupervisor = {导师~教授},
+%     esupervisor = {Supervisor},
+%   }
 % \end{latex}
 %
 % \myentry{副导师}
 % 本科生的辅导教师，硕士的副指导教师。
 % \begin{latex}
-% \thusetup{
-%   cassosupervisor = {副导师~副教授},
-%   eassosupervisor = {2nd Boss},
-% }
+%   \thusetup{
+%     cassosupervisor = {副导师~副教授},
+%     eassosupervisor = {2nd Boss},
+%   }
 % \end{latex}
 %
 % \myentry{联合导师}
 % 硕士生联合指导教师，博士生联合导师。
 % \begin{latex}
-% \thusetup{
-%   ccosupervisor = {联合导师~教授},
-%   ecosupervisor = {3rd Boss},
-% }
+%   \thusetup{
+%     ccosupervisor = {联合导师~教授},
+%     ecosupervisor = {3rd Boss},
+%   }
 % \end{latex}
 %
 % \subsubsection{成文日期}
 % 默认为当前时间，也可以自己指定。
 % \begin{latex}
-% \thusetup{
-%   cdate            = {中文日期},
-%   edate            = {English Date},
-%   postdoctordate   = {2009 年 7 月——2011 年 7 月},  % 博士后工作完成日期
-%   postdocstartdate = {2009 年 7 月 1 日},  % 博士后研究工作起始时间
-%   postdocenddate   = {2011 年 7 月 1 日},  % 博士后研究工作期满时间
-% }
+%   \thusetup{
+%     cdate            = {中文日期},
+%     edate            = {English Date},
+%     postdoctordate   = {2009 年 7 月——2011 年 7 月},  % 博士后工作完成日期
+%     postdocstartdate = {2009 年 7 月 1 日},  % 博士后研究工作起始时间
+%     postdocenddate   = {2011 年 7 月 1 日},  % 博士后研究工作期满时间
+%   }
 % \end{latex}
 %
 % \subsubsection{摘要}
@@ -694,23 +694,23 @@
 % \note[说明：]{摘要正文只能用环境命令的形式，不支持 \cs{thusetup}。}
 %
 % \begin{latex}
-% \begin{cabstract}
-%  摘要请写在这里...
-% \end{cabstract}
+%   \begin{cabstract}
+%     摘要请写在这里...
+%   \end{cabstract}
 %
-% \begin{eabstract}
-%  Here comes the abstract in English...
-% \end{eabstract}
+%   \begin{eabstract}
+%     Here comes the abstract in English...
+%   \end{eabstract}
 % \end{latex}
 %
 % \myentry{关键词}
 % 关键词用英文逗号分割写入相应的命令中，模板会解析各关键词并生成符合不同论文格式
 % 要求的关键词格式。
 % \begin{latex}
-% \thusetup{
-%   ckeywords = {关键词 1, 关键词 2},
-%   ekeywords = {keyword 1, keyword 2},
-% }
+%   \thusetup{
+%     ckeywords = {关键词 1, 关键词 2},
+%     ekeywords = {keyword 1, keyword 2},
+%   }
 % \end{latex}
 %
 % \myentry{生成封面}
@@ -718,11 +718,11 @@
 % 生成封面，包括首页，授权，摘要等。用法：\cs{makecover}\oarg{file}。如果使用授权
 % 说明扫描页，将可选参数中指定为扫描得到的 PDF 文件名，例如：
 % \begin{latex}
-% % 直接生成封面
-% \makecover
+%   % 直接生成封面
+%   \makecover
 %
-% % 将签字扫描后授权文件 scan-auth.pdf 替换原始页面
-% \makecover[scan-auth.pdf]
+%   % 将签字扫描后授权文件 scan-auth.pdf 替换原始页面
+%   \makecover[scan-auth.pdf]
 % \end{latex}
 %
 % \subsubsection{符号对照表}
@@ -730,30 +730,30 @@
 % 主要符号表环境，跟 \env{description} 类似，使用方法参见示例文件。带一个可选参数，
 % 用来指定符号列的宽度（默认为 2.5cm）。
 % \begin{latex}
-% \begin{denotation}
-%   \item[E] 能量
-%   \item[m] 质量
-%   \item[c] 光速
-% \end{denotation}
+%   \begin{denotation}
+%     \item[E] 能量
+%     \item[m] 质量
+%     \item[c] 光速
+%   \end{denotation}
 % \end{latex}
 %
 % 如果默认符号列的宽度不满意，可以通过参数来调整：
 % \begin{latex}
-% \begin{denotation}[1.5cm] % 设置为 1.5cm
-%   \item[E] 能量
-%   \item[m] 质量
-%   \item[c] 光速
-% \end{denotation}
+%   \begin{denotation}[1.5cm] % 设置为 1.5cm
+%     \item[E] 能量
+%     \item[m] 质量
+%     \item[c] 光速
+%   \end{denotation}
 % \end{latex}
 %
 % 另外一种方法是调用 \pkg{nomencl} 宏包，需要在导言区设置：
 % \begin{latex}
-% \usepackage{nomencl}
-% \makenomenclature
+%   \usepackage{nomencl}
+%   \makenomenclature
 % \end{latex}
 % 然后在正文中任意位置使用 \cs{nomenclature} 声明需要添加到主要符号表的符号：
 % \begin{latex}
-% \nomenclature{$m$}{The mass of one angel}
+%   \nomenclature{$m$}{The mass of one angel}
 % \end{latex}
 % 最后使用 \cs{printnomenclature} 命令生成符号表。
 % 更详细的使用方法参见 \pkg{nomencl} 宏包的文档。
@@ -805,10 +805,10 @@
 % 使用方法如下。假如有一个非 equation 数学环境 \texttt{mymath}，只要在其中写一
 % 句 \cs{equcaption} 就可以将它加入公式列表。
 % \begin{latex}
-% \begin{mymath}
-%   \label{eq:emc2}\equcaption{\ref{eq:emc2}}
-%   E=mc^2
-% \end{mymath}
+%   \begin{mymath}
+%     \label{eq:emc2}\equcaption{\ref{eq:emc2}}
+%     E=mc^2
+%   \end{mymath}
 % \end{latex}
 %
 % \texttt{mymath} 中公式的编号需要自己来做。
@@ -823,20 +823,20 @@
 % \DescribeEnv{acknowledgement}
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦。
 % \begin{latex}
-% \begin{acknowledgement}
-%   …
-%   还要特别感谢 \thuthesis\ 节省了论文排版时间！
-% \end{acknowledgement}
+%   \begin{acknowledgement}
+%     …
+%     还要特别感谢 \thuthesis\ 节省了论文排版时间！
+%   \end{acknowledgement}
 % \end{latex}
 %
 % 本科论文在此处还有一节“声明”，提交版本时需要替换为签字扫描文件，同样我们也提供：
 % 如果使用声明扫描页，将可选参数指定为扫描后的 PDF 文件名，例如：
 % \begin{latex}
-% \begin{acknowledgement}[scan-statement.pdf]
-%   加了扫描文件后，这里面的文字就没用了。
+%   \begin{acknowledgement}[scan-statement.pdf]
+%     加了扫描文件后，这里面的文字就没用了。
 %
-%   还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX\ 编译等方面给我的很多帮助！
-% \end{acknowledgement}
+%     还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX\ 编译等方面给我的很多帮助！
+%   \end{acknowledgement}
 % \end{latex}
 %
 % \subsubsection{附录}
@@ -844,10 +844,10 @@
 % 所有的附录都插到这里来。因为附录会更改默认的 chapter 属性，而后面的{\heiti 个人简
 %   历}又需要恢复，所以实现为环境可以保证全局的属性不受影响。
 % \begin{latex}
-% \begin{appendix}
-%  \input{data/appendix01}
-%  \input{data/appendix02}
-% \end{appendix}
+%   \begin{appendix}
+%     \input{data/appendix01}
+%     \input{data/appendix02}
+%   \end{appendix}
 % \end{latex}
 %
 % \DescribeMacro{\title}
@@ -858,12 +858,12 @@
 % \DescribeEnv{translationbib}
 % 本环境用来描述外文资料中的参考文献，例子：
 % \begin{latex}
-% \begin{translationbib}
-%   \item Donald E. Knuth. The \TeX book. Addison-Wesley, 1984. ISBN: 0-201-13448-9
-%   \item Paul W. Abrahams, Karl Berry and Kathryn A. Hargreaves. \TeX\ for the
-%     Impatient. Addison-Wesley, 1990. ISBN: 0-201-51375-7
-%   \item David Salomon. The advanced \TeX book.  New York : Springer, 1995. ISBN:0-387-94556-3
-% \end{translationbib}
+%   \begin{translationbib}
+%     \item Donald E. Knuth. The \TeX book. Addison-Wesley, 1984. ISBN: 0-201-13448-9
+%     \item Paul W. Abrahams, Karl Berry and Kathryn A. Hargreaves. \TeX\ for the
+%       Impatient. Addison-Wesley, 1990. ISBN: 0-201-51375-7
+%     \item David Salomon. The advanced \TeX book.  New York : Springer, 1995. ISBN:0-387-94556-3
+%   \end{translationbib}
 % \end{latex}
 %
 % \subsubsection{简历}
@@ -894,35 +894,35 @@
 % \env{publications} 环境支持每一部分分别编写，逻辑上更清楚，为了在环境之间支持
 % 空行，需要利用 \cs{publicationskip} 控制。示例：
 % \begin{latex}
-%  \researchitem{发表的学术论文}
+%   \researchitem{发表的学术论文}
 %
-%  % 1. 已经刊载的学术论文
-%  \begin{publications}
-%    \item Yang Y, Ren T L, Zhang L T, et al. Miniature microphone with silicon-
-%      based ferroelectric thin films. Integrated Ferroelectrics, 2003,
-%      52:229-235. (SCI 收录, 检索号:758FZ.)
-%    \item 杨轶, 张宁欣, 任天令, 等. 硅基铁电微声学器件中薄膜残余应力的研究. 中国机
-%      械工程, 2005, 16(14):1289-1291. (EI 收录, 检索号:0534931 2907.)
-%    \item 杨轶, 张宁欣, 任天令, 等. 集成铁电器件中的关键工艺研究. 仪器仪表学报,
-%      2003, 24(S4):192-193. (EI 源刊.)
-%  \end{publications}
+%   % 1. 已经刊载的学术论文
+%   \begin{publications}
+%     \item Yang Y, Ren T L, Zhang L T, et al. Miniature microphone with silicon-
+%       based ferroelectric thin films. Integrated Ferroelectrics, 2003,
+%       52:229-235. (SCI 收录, 检索号:758FZ.)
+%     \item 杨轶, 张宁欣, 任天令, 等. 硅基铁电微声学器件中薄膜残余应力的研究. 中国机
+%       械工程, 2005, 16(14):1289-1291. (EI 收录, 检索号:0534931 2907.)
+%     \item 杨轶, 张宁欣, 任天令, 等. 集成铁电器件中的关键工艺研究. 仪器仪表学报,
+%       2003, 24(S4):192-193. (EI 源刊.)
+%   \end{publications}
 %
-%  % 2. 尚未刊载，但已经接到正式录用函的学术论文
-%  \begin{publications}[before=\publicationskip,after=\publicationskip]
-%    \item Yang Y, Ren T L, Zhu Y P, et al. PMUTs for handwriting recognition. In
-%      press. (已被 Integrated Ferroelectrics 录用. SCI 源刊.)
-%  \end{publications}
+%   % 2. 尚未刊载，但已经接到正式录用函的学术论文
+%   \begin{publications}[before=\publicationskip,after=\publicationskip]
+%     \item Yang Y, Ren T L, Zhu Y P, et al. PMUTs for handwriting recognition. In
+%       press. (已被 Integrated Ferroelectrics 录用. SCI 源刊.)
+%   \end{publications}
 %
-%  % 3. 其他学术论文。
-%  \begin{publications}
-%    \item Wu X M, Yang Y, Cai J, et al. Measurements of ferroelectric MEMS
-%      microphones. Integrated Ferroelectrics, 2005, 69:417-429. (SCI 收录, 检索号
-%      :896KM)
-%    \item 贾泽, 杨轶, 陈兢, 等. 用于压电和电容微麦克风的体硅腐蚀相关研究. 压电与声
-%      光, 2006, 28(1):117-119. (EI 收录, 检索号:06129773469)
-%    \item 伍晓明, 杨轶, 张宁欣, 等. 基于MEMS技术的集成铁电硅微麦克风. 中国集成电路,
-%      2003, 53:59-61.
-%  \end{publications}
+%   % 3. 其他学术论文。
+%   \begin{publications}
+%     \item Wu X M, Yang Y, Cai J, et al. Measurements of ferroelectric MEMS
+%       microphones. Integrated Ferroelectrics, 2005, 69:417-429. (SCI 收录, 检索号
+%       :896KM)
+%     \item 贾泽, 杨轶, 陈兢, 等. 用于压电和电容微麦克风的体硅腐蚀相关研究. 压电与声
+%       光, 2006, 28(1):117-119. (EI 收录, 检索号:06129773469)
+%     \item 伍晓明, 杨轶, 张宁欣, 等. 基于MEMS技术的集成铁电硅微麦克风. 中国集成电路,
+%       2003, 53:59-61.
+%   \end{publications}
 % \end{latex}
 %
 % \DescribeEnv{achievements}
@@ -938,22 +938,22 @@
 % 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{spine.tex}）。下面是一
 % 个例子：
 % \begin{latex}
-% \documentclass[degree=master]{thuthesis}
+%   \documentclass[degree=master]{thuthesis}
 %
-% \begin{document}
-% \thuset{
-%   ctitle={论文中文题目},
-%   cauthor={中文姓名}}
+%   \begin{document}
+%   \thuset{
+%     ctitle={论文中文题目},
+%     cauthor={中文姓名}}
 %
-% \spine % 使用默认标题和默认作者
+%   \spine % 使用默认标题和默认作者
 %
-% \spine[使用默认作者的标题]
+%   \spine[使用默认作者的标题]
 %
-% \spine[同时修改标题和作者的标题][尼瑞薛]
+%   \spine[同时修改标题和作者的标题][尼瑞薛]
 %
-% % 如果标题中有英文，那可以参考如下方法进行微调：
-% \spine[清华大学 \raisebox{-5pt}{\LaTeX} 论文模板 \raisebox{-5pt}{v\version} 样例]
-% \end{document}
+%   % 如果标题中有英文，那可以参考如下方法进行微调：
+%   \spine[清华大学 \raisebox{-5pt}{\LaTeX} 论文模板 \raisebox{-5pt}{v\version} 样例]
+%   \end{document}
 % \end{latex}
 %
 % \subsection{自定义}
@@ -974,9 +974,9 @@
 %
 % 比如：
 % \begin{latex}
-% \begin{definition}
-%   道千乘之国，敬事而信，节用而爱人，使民以时。
-% \end{definition}
+%   \begin{definition}
+%     道千乘之国，敬事而信，节用而爱人，使民以时。
+%   \end{definition}
 % \end{latex}
 % 产生（自动编号）：
 % \medskip
@@ -986,14 +986,14 @@
 % \smallskip
 % 列举出来的数学环境毕竟是有限的，如果想用\emph{胡说}这样的数学环境，那么可以定义：
 % \begin{latex}
-% \newtheorem{nonsense}{胡说}[chapter]
+%   \newtheorem{nonsense}{胡说}[chapter]
 % \end{latex}
 %
 % 然后这样使用：
 % \begin{latex}
-% \begin{nonsense}
-%   契丹武士要来中原夺武林秘笈。—— 慕容博
-% \end{nonsense}
+%   \begin{nonsense}
+%     契丹武士要来中原夺武林秘笈。—— 慕容博
+%   \end{nonsense}
 % \end{latex}
 % 产生（自动编号）：
 %
@@ -1920,9 +1920,9 @@
 % 码。\cs{make@df@tag} 是定义 \cs{tag*} 和 \cs{tag} 内部命令的。
 % \cs{make@df@tag@@} 处理 \cs{tag*}，我们就改它！
 % \begin{latex}
-% \def\make@df@tag{\@ifstar\make@df@tag@@\make@df@tag@@@}
-% \def\make@df@tag@@#1{%
-%   \gdef\df@tag{\maketag@@@{#1}\def\@currentlabel{#1}}}
+%   \def\make@df@tag{\@ifstar\make@df@tag@@\make@df@tag@@@}
+%   \def\make@df@tag@@#1{%
+%     \gdef\df@tag{\maketag@@@{#1}\def\@currentlabel{#1}}}
 % \end{latex}
 % \changes{v4.4}{2008/05/30}{本科论文终于去掉了\textbf{公式}二字。}
 % \changes{v4.4.4}{2008/06/12}{修复了一个从 v4.3 升级到 v4.4 过程中的丢失公式索引的 bug，原修改代码保留备忘。}
@@ -2082,21 +2082,21 @@
 % 定义的样式在第一次被调用时会修改 \cs{chaptermark}，这会导致页眉信息错误（多余
 % 章号并且英文大写）。这是因为在原始的 \file{book.cls} 中定义如下（大意）：
 % \begin{latex}
-% \newcommand\chaptername{Chapter}
-% \newcommand\@chapapp{\chaptername}
-% \def\chaptermark#1{
-%   \markboth{\MakeUppercase{\@chapapp\ \thechapter}}{}}
+%   \newcommand\chaptername{Chapter}
+%   \newcommand\@chapapp{\chaptername}
+%   \def\chaptermark#1{
+%     \markboth{\MakeUppercase{\@chapapp\ \thechapter}}{}}
 % \end{latex}
 % 很显然这个 \cs{\@chapapp} 不适合中文，因此我们使用\cs{CTEXthechapter}（
 % 如，“第 x 章”），同时会将 \cs{MakeUppercase} 去掉。也就是说我们会做如下动作：
 % \begin{latex}
-% \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}
+%   \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}
 % \end{latex}
 % 但，\pkg{fancyhdr} 不知何故在 \cs{ps@fancy} 中对 \cs{chaptermark} 进行重定义
 % （其实一模一样），而这个 \cs{ps@fancy} 会在 \cs{fancypagestyle} 中使用，如下：
 % \begin{latex}
-% \newcommand{\fancypagestyle}[2]{%
-%   \@namedef{ps@#1}{\let\fancy@gbl\relax#2\relax\ps@fancy}}
+%   \newcommand{\fancypagestyle}[2]{%
+%     \@namedef{ps@#1}{\let\fancy@gbl\relax#2\relax\ps@fancy}}
 % \end{latex}
 % 这样的话，\cs{ps@fancy} 会在 \pkg{fancyhdr} 定义的任何样式首次样被激活时调用，从
 % 而覆盖我们的 \cs{chaptermark} 定义（后续样式再激活不会重复覆盖）。所以我们采用如下
@@ -3493,7 +3493,7 @@
    breakautoindent=true,
    columns=flexible,
    keepspaces=true,
-   gobble=2,
+   gobble=4,
    framesep=3pt,
    rulesep=1pt,
    framerule=1pt,
