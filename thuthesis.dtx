@@ -73,7 +73,9 @@
 % \begin{enumerate}
 % \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内
 %   容。
-% \item 本模板为作者根据清华大学教务处颁发的《综合论文训练写作指南》，
+% \item 本模板为作者根据
+%   清华大学教务处颁发的
+%   \href{http://www.law.tsinghua.edu.cn/publish/law/7024/2012/20120216153516317135347/20120216153516317135347_.html}{《综合论文训练写作指南》}，
 %   清华大学研究生院颁发的
 %   \href{http://yjsy.cic.tsinghua.edu.cn/docinfo/board/boarddetail.jsp?columnId=001050603&parentColumnId=0010506&itemSeq=5365}{《研究生学位论文写作指南》}，
 %   清华大学
@@ -2306,6 +2308,11 @@
 \def\thu@first@titlepage{%
   \ifthu@postdoctor\thu@first@titlepage@postdoctor\else\thu@first@titlepage@other\fi}
 \newcommand\thu@first@titlepage@postdoctor{%
+  \thu@cover@postdoc
+  \cleardoublepage
+  \thu@titlepage@postdoc
+}
+\newcommand\thu@cover@postdoc{%
   \begin{center}%
     \setlength{\thu@title@width}{3.5em}%
     \renewcommand\ULthickness{0.7pt}%
@@ -2338,7 +2345,8 @@
     \vskip 0.25cm%
     {\xiaosi[2]\thu@cdate\par}%
   \end{center}%
-  \cleardoublepage
+}
+\newcommand\thu@titlepage@postdoc{%
   \begin{center}%
     \vspace*{1.5cm}%
     \parbox[t][3cm][c]{\textwidth}{%
@@ -2668,6 +2676,10 @@
 % 中文摘要部分的标题为“\textbf{摘要}”，用黑体三号字。
 %    \begin{macrocode}
 \newcommand{\thu@makeabstract}{%
+  \thu@makeabstract@zh
+  \thu@makeabstract@en
+}
+\newcommand\thu@makeabstract@zh{%
   \ifthu@bachelor\clearpage\else\cleardoublepage\fi
   \thu@setchinese
   \thu@chapter*[]{\cabstractname} % no tocline
@@ -2688,11 +2700,13 @@
 %    \begin{macrocode}
   \ifthu@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{\textbf\thu@ckeywords@title}{\thu@ckeywords}
+}
 %    \end{macrocode}
 %
 % 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
 % 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连续。
 %    \begin{macrocode}
+\newcommand\thu@makeabstract@en{%
   \thu@setenglish
   \thu@chapter*[]{\eabstractname} % no tocline
 %    \end{macrocode}
@@ -2755,27 +2769,26 @@
 %
 % 定义致谢与声明环境。
 %    \begin{macrocode}
-\NewDocumentEnvironment{acknowledgement}{o}{%
-    \thu@chapter*{\thu@ack@name}
-  }
+\newenvironment{acknowledgement}{%
+  \thu@chapter*{\thu@ack@name}%
+}{}
 %    \end{macrocode}
 %
 % 声明部分
 %    \begin{macrocode}
-  {
-    \ifthu@postdoctor\relax\else%
-      \IfNoValueTF{#1}{%
-        \thu@chapter*{\thu@declarename}
-        \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
-        {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
-         \thu@backdate\thu@underline[2.5cm]\relax}%
-      }{%
-        \includepdf[pagecommand={\thispagestyle{thu@empty}%
-          \phantomsection\addcontentsline{toc}{chapter}{\thu@declarename}%
-        }]{#1}%
-      }%
-    \fi
-  }
+\newcommand\statement[1][]{%
+  \def\thu@@tmp{#1}%
+  \ifx\thu@@tmp\@empty
+    \thu@chapter*{\thu@declarename}%
+    \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm%
+    {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax
+      \thu@backdate\thu@underline[2.5cm]\relax}%
+  \else
+    \includepdf[pagecommand={\thispagestyle{thu@empty}%
+      \phantomsection\addcontentsline{toc}{chapter}{\thu@declarename}%
+    }]{#1}%
+  \fi
+}
 %    \end{macrocode}
 % \end{environment}
 % \begin{environment}{ack}

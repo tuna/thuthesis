@@ -24,9 +24,9 @@ install:
         $INSTALL/install-tl -profile $INSTALL/tl.profile;
     fi
 
-  - tlmgr update --self --all −−no−auto−install;
+  - tlmgr update --self --all −−no−auto−install
 
-  - tlmgr install latexmk
+  - tlmgr install latexmk l3build
     fontname fontspec l3kernel l3packages xetex
     cjk ctex environ ms trimspaces ulem xecjk zhnumber
     fandol tex-gyre xits
@@ -34,6 +34,7 @@ install:
     fp multirow notoccite ntheorem pdfpages pict2e unicode-math xcolor zapfding
     fontaxes kastrup listings lm metalogo newpx newtx palatino pxfonts thumbpdf
     txfonts xkeyval
+    nomencl
 
 before_script:
   - sed -i 's/\[RawFeature={vertical:}\]{FangSong}/\[Extension=.otf,RawFeature={vertical:}\]{FandolFang-Regular}/' spine.tex
@@ -42,3 +43,4 @@ script:
   - make thesis
   - make spine
   - make doc
+  - make test
