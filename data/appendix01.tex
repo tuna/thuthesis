@@ -1,6 +1,18 @@
 \chapter{外文资料原文}
 \label{cha:engorg}
 
+% 部分院系要求附录的内部章节不列入目录，但这些章节仍需要编号。
+% 仅使用\section*{}命令无法完成编号，为此可采用以下组合命令：
+% \newcommand{\hiddensection}[1]{
+%   \stepcounter{section}
+%   \section*{\Alph{chapter}.\arabic{section}\hspace{1em}{#1}}
+% }
+% \newcommand{\hiddensubsection}[1]{
+%   \stepcounter{subsection}
+%   \subsection*{\Alph{chapter}.\arabic{section}.\arabic{subsection}\hspace{1em}{#1}}
+% }
+% 这样，采用\hiddensection{}命令就能给章节编号但又不列入目录。
+
 \title{The title of the English paper}
 
 \textbf{Abstract:} As one of the most widely used techniques in operations
