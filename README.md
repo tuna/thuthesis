@@ -50,11 +50,11 @@ make [{all|thesis|shuji|doc|clean|cleanall|distclean}]
 ```
 
 ## 目标
-* `make all`       等于 `make thesis && make shuji && make doc`；
+* `make all`       生成论文和书籍，相当于 `make thesis && make shuji`；
 * `make cls`       生成模板文件；
 * `make thesis`    生成论文 main.pdf；
 * `make shuji`     生成书脊 shuji.pdf；
-* `make doc`       生成使用说明书 thuthesis.pdf；
+* `make doc`       生成模板使用说明书 thuthesis.pdf；
 * `make clean`     删除示例文件的中间文件（不含 main.pdf）；
 * `make cleanall`  删除示例文件的中间文件和 main.pdf；
 * `make distclean` 删除示例文件和模板的所有中间文件和 PDF。
@@ -94,11 +94,11 @@ make [{all|thesis|shuji|doc|clean|cleanall|distclean}]
 ```
 
 ## Targets
-* `make all`       same as `make thesis && make shuji && make doc`;
+* `make all`       generate thesis and spine, same as `make thesis && make shuji`;
 * `make cls`       generate template file;
 * `make thesis`    generate thesis main.pdf;
 * `make shuji`     generate book spine for printing shuji.pdf;
-* `make doc`       generate documentation thuthesis.pdf;
+* `make doc`       generate template documentation thuthesis.pdf;
 * `make clean`     delete all examples' files (excluding main.pdf);
 * `make cleanall`  delete all examples' files and main.pdf;
 * `make distclean` delete all examples' and templates' files and PDFs.
