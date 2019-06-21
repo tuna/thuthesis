@@ -22,7 +22,6 @@
 
 \EnableCrossrefs
 \CodelineIndex
-\RecordChanges
 
 \begin{document}
   \DocInput{\jobname.dtx}
@@ -53,90 +52,8 @@
 %
 % \GetFileInfo{\jobname.dtx}
 %
-% \changes{v1.0}{2005/07/06}{Please refer to ``Bao--Pan'' version.}
-% \changes{v1.1}{2005/11/03}{Initial version, migrate from the old ``Bao--Pan''
-% version. Make the template a class instead of package.}
-% \changes{v1.2}{2005/11/04}{Remove \pkg{fancyref}; Remove \pkg{ucite} and implement
-% \cs{onlinecite}; use package \pkg{arial} or \pkg{helvet} selectively.}
-% \changes{v1.3}{2005/11/14}{Replace \pkg{subfigure} with \pkg{subfig}, replace \pkg{caption2}
-% with \pkg{caption}, add details about using figure are in the example.}
-% \changes{v1.4rc1}{2005/11/20}{I do not know why \cs{thu@authorizationaddon} does not work
-% now for v1.3, while it's fine in v1.2. Temporarily, I remove the directive
-% :(. There might be better solution. Other changes: add \option{config} option to
-% subfig to be compatible with subfigure. add \pkg{courier} package for tt font.}
-% \changes{v1.4}{2005/12/05}{Fix the problem of \textbf{chinese}, which is
-% because both CJK and everysel redefine the \cs{selectfont}. So, a not so good
-% workaround is to merge them up. Add \file{shuji.tex} example. Add \cs{pozhehao} command.}
-% \changes{v2.1}{2006/02/27}{Add support to bachelor thesis.}
-% \changes{v2.1}{2006/03/01}{Remove \pkg{fancyhdr} and \pkg{geometry}.}
-% \changes{v2.1}{2006/03/01}{Redefine footnote marks.}
-% \changes{v2.1}{2006/03/01}{Replace \file{thubib.bst} with \file{chinesebst.bst}.}
-% \changes{v2.1}{2006/03/02}{Merge the modification of \pkg{ntheorem}.}
-% \changes{v2.1}{2006/03/02}{Remove \pkg{footmisc} and refine the document.}
-% \changes{v2.1}{2006/03/03}{Work very hard on the document.}
-% \changes{v2.1}{2006/03/03}{Add \cs{checklab} code to reduce ``unresolved labels'' warning}
-% \changes{v2.2}{2006/03/26}{Adjust margins. How bad it is to simulate MS WORD!.}
-% \changes{v2.2}{2006/03/26}{Add bachelor training overview details supporting.}
-% \changes{v2.2}{2006/03/26}{CJK support in preamble.}
-% \changes{v2.2}{2006/03/26}{Adjust hyperref to avoid boxes around links.}
-% \changes{v2.3}{2006/04/07}{Fix a great bug: \cs{PassOptionsToClass} and \cs{LoadClass}
-% rather than \cs{PassOptionToPackage} and \cs{LoadPackage}.}
-% \changes{v2.3}{2006/04/07}{Reorganize the codes in cover, make the pagestyle more readable.}
-% \changes{v2.3}{2006/04/07}{Add gbk2uni into the document.}
-% \changes{v2.3}{2006/04/07}{Support \option{openright} and openany.}
-% \changes{v2.3}{2006/04/09}{Adjust \cs{hypersetup} to remove color and box.}
-% \changes{v2.3}{2006/04/09}{Adjust margins again.}
-% \changes{v2.3}{2006/04/09}{Adjust references formats.}
-% \changes{v2.3}{2006/04/09}{Redefine frontmatter and mainmatter to fit our case.}
-% \changes{v2.3}{2006/04/09}{Add assumption environment.}
-% \changes{v2.3}{2006/04/09}{Change the brace in the cover.}
-% \changes{v2.4}{2006/04/14}{Fill more pdf info. with \cs{hypersetup}.}
-% \changes{v2.4}{2006/04/14}{自动隐藏密级为内部时后面的五角星。}
-% \changes{v2.4}{2006/04/14}{增加“注释 (Remark)”环境。}
-% \changes{v2.4}{2006/04/14}{压缩 item 之间的距离。}
-% \changes{v2.4}{2006/04/14}{\file{thubib.bst} 文献标题取消自动小写。}
-% \changes{v2.4}{2006/04/14}{中文参考文献取消 In: Proceedings。}
-% \changes{v2.4}{2006/04/14}{英文文参考文献调整 In: editor, Proceedings。}
-% \changes{v2.4}{2006/04/14}{参考文献为学位论文时，加方括号，作者后面为实心点。}
-% \changes{v2.4}{2006/04/14}{中文参考文献作者超过三个加等。}
-% \changes{v2.4}{2006/04/14}{中文参考文献需要在 bib 中指定 |lang="chinese"|。}
-% \changes{v2.4}{2006/04/14}{学位论文不在需要 type 字段。}
-% \changes{v2.4}{2006/04/14}{为摘要等条目增加书签。}
-% \changes{v2.4}{2006/04/14}{章节的编号用黑体，也就是自动打开 \option{arialtitle} 选项。}
-% \changes{v2.4.1}{2006/04/17}{2.4 忘了把关键词的 tabular 改成 thu@tabular。}
-% \changes{v2.4.1}{2006/04/17}{参考文献最后一个作者前是逗号而不是 and。}
-% \changes{v2.4.2}{2006/04/18}{去掉参考文献第二个作者后面烦人的逗号。}
-% \changes{v2.5}{2006/05/19}{对本科论文进行大幅度的重写，因为教务处修改了格式要求。}
-% \changes{v2.5}{2006/05/19}{重新整理代码，使其布局更易读。}
-% \changes{v2.5.1}{2006/05/24}{如果选项设置了 dvips，但是用 PDF\LaTeX\ 编译，报错。}
-% \changes{v2.5.1}{2006/05/24}{根据教务处的新要求调整附录部分。}
-% \changes{v2.5.1}{2006/05/25}{参考文献中杂志文章如果没有卷号，那么页码直接跟在
-% 年份后面，并用句点分割。在 \file{thubib.bst} 中增加 output.year 函数。}
-% \changes{v2.6}{2006/06/09}{增加 dvipdfm 选项。}
-% \changes{v2.6.1}{2006/06/16}{取消 \file{thubib.bst} 中 inbook 类 volume 后的页
-% 码。}
-% \changes{v2.6.2}{2006/06/18}{改正 groupmembers 的拼写错误。}
-% \changes{v3.0}{2007/05/12}{不用专门为本科论文生成“\textbf{提交}”版本了。}
-% \changes{v3.0}{2007/05/12}{没有了综合论文训练页面，很多本科论文专用命令就消失了。}
-% \changes{v4.4}{2008/05/12}{修复网址断字。}
-% \changes{v4.5}{2008/01/03}{加入 \XeTeX\ 支持，需要 \pkg{xeCJK}。}
-% \changes{v4.5}{2008/01/04}{彻底转向 UTF-8，并支持 \XeLaTeX。}
-% \changes{v4.5}{2009/01/03}{增加 xetex, pdftex 选项。}
-% \changes{v4.6}{2011/04/27}{增加博士后文档部分。}
-% \changes{v4.6}{2011/10/22}{使用手册更新。}
-% \changes{v4.7}{2012/06/12}{去掉 \pkg{hypernat} 依赖，\pkg{hyperref} 和 \pkg{natbib} 可以很好配合了。}
-% \changes{v4.8}{2013/03/02}{no need to load \pkg{indentfirst} directly since we use \pkg{ctex}.}
-% \changes{v4.8}{2013/03/02}{内部调用 \pkg{ctex} 宏包，自动检测编译引擎。}
-% \changes{v4.8}{2013/03/04}{dvips method is deprecated. We ask their users to load it manually.}
-% \changes{v4.8}{2013/03/09}{reset baselinestretch after ctex's change.}
-% \changes{v4.8}{2014/11/25}{好几年累积的一些更新，最重要的是切换到 \CTeX。}
-% \changes{v5.4.2}{2017/12/16}{删除 \cs{pozhehao}。}
-% \changes{v5.4.4}{2018/04/22}{删除 \option{arialtitle}，所有论文格式都一样。}
-%
 % \def\indexname{索引}
-% \def\glossaryname{修改记录}
 % \IndexPrologue{\section{\indexname}}
-% \GlossaryPrologue{\section{\glossaryname}}
 %
 % \title{\bfseries\color{violet}\thuthesis：清华大学学位论文模板}
 % \author{{\fangsong 薛瑞尼}\\[5pt]\texttt{xueruini@gmail.com}}
@@ -1014,7 +931,7 @@
 %
 % 欢迎各位到 \href{http://github.com/xueruini/thuthesis/}{\thuthesis\ Github 主页}贡献！
 %
-% \StopEventually{\PrintChanges\PrintIndex}
+% \StopEventually{\PrintIndex}
 % \clearpage
 %
 % \section{实现细节}
@@ -1038,15 +955,6 @@
 % \subsection{定义选项}
 % \label{sec:defoption}
 % 定义论文类型以及是否涉密
-% \changes{v2.4}{2006/04/14}{添加模板名称命令。}
-% \changes{v2.5}{2006/05/19}{增加本科论文的提交选项 submit。}
-% \changes{v2.5.1}{2006/05/24}{如果没有设置格式选项，报错。}
-% \changes{v2.5.1}{2006/05/26}{submit 只能由本科用。}
-% \changes{v2.5.3}{2006/06/03}{submit 选项的一个笔误。}
-% \changes{v3.0}{2007/05/12}{删除 submit 选项。}
-% \changes{v4.6}{2011/04/26}{增加 postdoctor 选项。}
-% \changes{v4.8}{2014/11/25}{v4.7曾经想发布，但是一直没有做，于是就被跳过了，算是造一个段子吧。}
-% \changes{v4.8.1}{2014/12/09}{按照 CTAN 的要求整理一下文件。}
 %    \begin{macrocode}
 %<*cls>
 \hyphenation{Thu-Thesis}
@@ -1060,14 +968,11 @@
 %    \end{macrocode}
 %
 % 用 \pkg{kvoptions} 的 \texttt{key=value} 方式来设置论文类型。
-% \changes{v5.0.0}{2015/12/13}{使用 \pkg{kvoptions} 简化选项 type。}
-% \changes{v5.4.2}{2017/12/18}{使用 degree 取代 type 选项。}
 %    \begin{macrocode}
 \DeclareStringOption[doctor]{degree}[doctor]
 %    \end{macrocode}
 %
 % 论文是使用英文。
-% \changes{v5.5.0}{2018/12/09}{增加选项使用英文模板。}
 %    \begin{macrocode}
 \DeclareStringOption[chinese]{language}[chinese]
 %    \end{macrocode}
@@ -1086,8 +991,6 @@
 %
 %
 % \option{raggedbottom} 选项（默认打开）
-% \changes{v4.8}{2013/03/05}{增加 noraggedbottom 选项。}
-% \changes{v5.0.0}{2015/12/13}{norggedbottom 选项修改为 raggedbottom。}
 %    \begin{macrocode}
 \DeclareBoolOption[true]{raggedbottom}
 %    \end{macrocode}
@@ -1097,10 +1000,6 @@
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 %    \end{macrocode}
 %
-% \changes{v2.5.1}{2006/05/24}{研究生院目录要 times，而教务处要 arial。}
-% \changes{v2.5.1}{2006/05/26}{本科 openright，研究生 openany。}
-% \changes{v3.1}{2007/10/09}{本科的目录又不要 arial 字体了。}
-% \changes{v4.8}{2013/05/29}{添加 nocap 选项，恢复默认标题样式，模板会进一步定制。}
 % 解析用户传递过来的选项，并加载 \pkg{ctexbook}。
 %    \begin{macrocode}
 \ProcessKeyvalOptions*
@@ -1121,7 +1020,6 @@
 \thu@validate@key{language}
 %    \end{macrocode}
 %
-% \changes{v5.3.1}{2016/03/20}{使用 \CTeX\ 默认中文字体配置，支持不同引擎。}
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
 %    \begin{macrocode}
 \PassOptionsToPackage{quiet}{xeCJK}
@@ -1139,16 +1037,11 @@
 %    \end{macrocode}
 %
 % \AmSTeX\ 宏包，用来排出更加漂亮的公式。
-% \changes{v4.8}{2013/03/02}{no need to load amssymb since we use txfonts.}
 %    \begin{macrocode}
 \RequirePackage{amsmath}
 %    \end{macrocode}
 %
 % 使用 \pkg{unicode-math} 处理数学字体。
-% \changes{v3.1}{2007/06/16}{replace \pkg{mathptmx} with \pkg{txfonts}.}
-% \changes{v5.2.1}{2016/01/14}{使用 \pkg{newtx} 替换 \pkg{txfonts}。}
-% \changes{v5.2.2}{2016/02/01}{不希望 \pkg{newtx} 修改 \cs{@makefnmark}。 }
-% \changes{v5.5.0}{2018/07/07}{使用 \pkg{unicode-math} 处理数学字体。}
 %    \begin{macrocode}
 \RequirePackage{unicode-math}
 %    \end{macrocode}
@@ -1171,11 +1064,6 @@
 %    \end{macrocode}
 %
 % 更好的列表环境。
-% \changes{v2.6.2}{2006/06/18}{去掉 \pkg{paralist} 的 \option{newitem} 和
-% \option{newenum} 选项，因为默认是打开的。}
-% \changes{v2.6.4}{2006/10/23}{增加 \option{neverdecrease} 选项。}
-% \changes{v5.0.0}{2012/12/13}{删除 \pkg{paralist} 选项。}
-% \changes{v5.2.2}{2016/01/31}{利用 \pkg{environ} 的 \cs{Collect@Body}。}
 %    \begin{macrocode}
 \RequirePackage[shortlabels]{enumitem}
 \RequirePackage{environ}
@@ -1198,19 +1086,12 @@
 \RequirePackage{CJKfntef}
 %    \end{macrocode}
 %
-% \changes{v4.8}{2013/05/28}{在 CJK 模式下用 \pkg{CJKspace} 保留中英文间空格。}
-% \changes{v5.0.0}{2015/04/17}{固定字体设置，同时改善与 \pkg{ctex} 兼容性。}
-% \changes{v5.2.1}{2016/01/14}{使用 \pkg{newtx} 字体。}
-% \changes{v5.3.1}{2016/03/20}{\pkg{ctex} 默认加载 \pkg{CJKspace}。}
-% \changes{v5.3.1}{2016/03/20}{几乎没人主动安装 Arial 字体。}
-%
 % 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX\ 的宏包
 %    \begin{macrocode}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 %    \end{macrocode}
 %
 % 表格控制
-% \changes{v2.6}{2006/06/09}{增加 \pkg{longtable}。}
 %    \begin{macrocode}
 \RequirePackage{array}
 \RequirePackage{longtable}
@@ -1231,10 +1112,6 @@
 %    \begin{macrocode}
 %    \end{macrocode}
 % 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
-% \changes{v2.6}{2006/06/09}{去除 hyperref 选项，等待全局传递。}
-% \changes{v5.2.2}{2016/01/25}{目录中标题和页码都是链接。}
-% \changes{v5.5.3}{2019/05/01}{处理 \pkg{hyperref} 与 \pkg{unicode-math}
-%   的兼容性问题。}
 %    \begin{macrocode}
 \RequirePackage{hyperref}
 \hypersetup{
@@ -1287,13 +1164,6 @@
 % \label{sec:layout}
 % 本来这部分应该是最容易设置的，但根据格式规定出来的结果跟学校的 WORD 样例相差很
 % 大，所以只能微调。
-% \changes{v2.4}{2006/04/14}{把页面尺寸写入 dvi，避免有的用户通
-%   过 dvips 不指定页面类型而得到古怪的结果。}
-% \changes{v4.5.2}{2010/09/19}{研究生页面边距由 3.2cm 改为 3cm。}
-% \changes{v4.7}{2012/05/29}{修改本科生页脚间距与样例基本一致。}
-% \changes{v5.0.0}{2015/03/10}{不再将页面尺寸写入 dvi，因为已不支持 dvips，
-% 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。}
-% \changes{v5.0.0}{2015/12/14}{用 \pkg{geometry} 简化设置。}
 %    \begin{macrocode}
 \RequirePackage{geometry}
 \geometry{
@@ -1326,7 +1196,6 @@
 %    \end{macrocode}
 %
 % 利用 \pkg{notoccite} 避免目录中引用编号混乱。
-% \changes{v5.4.4}{2018/04/13}{让目录中的引用不影响正文中引用序号。}
 %    \begin{macrocode}
 \RequirePackage{notoccite}
 %    \end{macrocode}
@@ -1350,11 +1219,6 @@
 % \begin{macro}{\mainmatter}
 % \begin{macro}{\backmatter}
 % 我们的单面和双面模式与常规的不太一样。
-% \changes{v2.5.1}{2006/05/23}{本科正文之后页码即用罗马数字，研究生不变。}
-% \changes{v2.5.3}{2006/06/03}{第一章永远右开。}
-% \changes{v4.4}{2008/05/30}{本科正文后的页码延续前面的阿拉伯数字，不再用罗马数
-% 字。}
-% \changes{v4.4}{2008/05/30}{本科取消了所有页眉。}
 %    \begin{macrocode}
 \renewcommand\frontmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
@@ -1414,7 +1278,6 @@
 %    \end{macrocode}
 %
 % 使用 \pkg{unicode-math} 配置数学字体
-% \changes{v5.5.2}{2019/04/21}{使用 XITS 数学字体。}
 %    \begin{macrocode}
 \unimathsetup{
   math-style = ISO,
@@ -1441,7 +1304,6 @@
 %
 % 在使用 Windows Vista 或之后版本的系统时，\pkg{ctex} 宏包会默认使用微软雅黑字体，
 % 这可能会导致审查不合格。下面设置适合印刷的黑体，同时保持跨平台兼容性。
-% \changes{v5.5.0}{2019/01/06}{Windows 的中文字体开启伪粗。}
 %    \begin{macrocode}
 \ifthenelse{\equal{\thu@fontset}{windows}}{
   \xeCJKsetup{EmboldenFactor=2}
@@ -1480,7 +1342,6 @@
 %
 % \begin{macro}{\normalsize}
 % 正文小四号 (12bp) 字，行距为固定值 20 bp。
-% \changes{v5.4.5}{2018/05/17}{调整公式和正文间距。}
 %    \begin{macrocode}
 \renewcommand\normalsize{%
   \@setfontsize\normalsize{12bp}{20bp}%
@@ -1515,13 +1376,11 @@
 % \end{center}
 %
 % \begin{macro}{\thu@def@fontsize}
-% \changes{v2.6.2}{2006/06/18}{引入此命令重新定义字号。}
 % 根据习惯定义字号。用法：
 %
 % \cs{thu@def@fontsize}\marg{字号名称}\marg{磅数}
 %
 % 避免了字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
-% \changes{v5.2.3}{2016/02/13}{改写字体定义命令。}
 %    \begin{macrocode}
 \def\thu@def@fontsize#1#2{%
   \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
@@ -1708,12 +1567,6 @@
 % \begin{macro}{\ps@thu@empty}
 % \begin{macro}{\ps@thu@plain}
 % \begin{macro}{\ps@thu@headings}
-% \changes{v2.0}{2005/12/18}{以前的太乱了，重新整理过清晰多了。}
-% \changes{v2.1}{2006/03/01}{彻底放弃 fancyhdr，定义自己的样式。}
-% \changes{v2.5}{2006/05/13}{本科的奇偶页眉不同。}
-% \changes{v2.5}{2006/05/20}{增加 empty 页面样式。}
-% \changes{v4.7}{2012/05/29}{本科页码用小五号字。}
-% \changes{v5.0.0}{2015/12/20}{利用 \pkg{fancyhdr} 设置页眉页脚。}
 % 定义三种页眉页脚格式：
 % \begin{itemize}
 % \item \texttt{thu@empty}：页眉页脚都没有
@@ -1756,7 +1609,6 @@
 %    \end{macrocode}
 %
 % 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
-% \changes{v2.5.2}{2006/06/01}{更改默认列表距离。}
 %    \begin{macrocode}
 \setlist{nosep}
 %    \end{macrocode}
@@ -1765,13 +1617,7 @@
 % \subsubsection{脚注}
 % \label{sec:footnote}
 % 脚注符合中文习惯，数字带圈。
-% \changes{v2.1}{2006/03/01}{让脚注它悬挂起来，而且中文中用上标，脚注中用正体。}
-% \changes{v2.5}{2006/05/13}{修正 minipage 中的脚注。}
 % \begin{macro}{\thu@textcircled}
-% \changes{v2.5.1}{2006/05/21}{脚注编号使用 \cs{textcircled} 命令，每页允许至多 99 个。}
-% \changes{v5.2.2}{2016/02/01}{脚注编号每页允许至多 9 个。}
-% \changes{v5.5.0}{2018/12/10}{去掉 \option{pifootnote} 选项。}
-% \changes{v5.5.1}{2019/04/16}{修复 minipage 中 footnote 编号问题。}
 % 生成带圈的脚注数字，最多处理到 10。
 %    \begin{macrocode}
 \ifthenelse{\equal{\thu@fontset}{mac}}{
@@ -1809,9 +1655,6 @@
 %
 % \cs{@makefnmark} 默认是上标样式，而在脚注部分要求为正文大小。利用\cs{patchcmd}
 % 动态调整 \cs{@makefnmark} 的定义。
-% \changes{v2.6}{2006/06/09}{脚注改成 1.5 倍行距，漂亮。}
-% \changes{v5.2.2}{2016/02/01}{基于 \pkg{footmisc} 来设置不同位置 footnote
-% marker 样式。}
 %    \begin{macrocode}
 \let\thu@makefnmark\@makefnmark
 \def\thu@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
@@ -1909,13 +1752,7 @@
 %
 % 公式距前后文的距离由 4 个参数控制，参见 \cs{normalsize} 的定义。
 %
-% \changes{v2.5.1}{2006/05/24}{本科公式编号前添加\textbf{公式}二字。需要修 \pkg{amsmath} 极其深的一个命令。}
-% \changes{v2.5.1}{2006/05/24}{教务处居然要本科论文公式全文编号！}
-% \changes{v2.5.2}{2006/05/29}{上一个版本忘了把研究生的公式编号排除。}
-% \changes{v3.0}{2007/05/12}{本科公式又要取消全文统一编号了。}
 % 本科的公式编号要求很诡异，不得不修改 \pkg{amsmath} 中很深的一个命令 \cs{tagform@}。
-% \changes{v2.6.2}{2006/06/19}{根据不同论文格式显示不同公式编号，并自动加入索引。}
-% \changes{v4.2}{2008/01/23}{\cs{eqref} 加括号。}
 % 同时为了让 \pkg{amsmath} 的 \cs{tag*} 命令得到正确的格式，我们必须修改这些代
 % 码。\cs{make@df@tag} 是定义 \cs{tag*} 和 \cs{tag} 内部命令的。
 % \cs{make@df@tag@@} 处理 \cs{tag*}，我们就改它！
@@ -1924,9 +1761,6 @@
 %   \def\make@df@tag@@#1{%
 %     \gdef\df@tag{\maketag@@@{#1}\def\@currentlabel{#1}}}
 % \end{latex}
-% \changes{v4.4}{2008/05/30}{本科论文终于去掉了\textbf{公式}二字。}
-% \changes{v4.4.4}{2008/06/12}{修复了一个从 v4.3 升级到 v4.4 过程中的丢失公式索引的 bug，原修改代码保留备忘。}
-% \changes{v5.2.3}{2016/02/13}{安全注释本科公式部分。}
 %    \begin{macrocode}
 \def\make@df@tag{\@ifstar\thu@make@df@tag@@\make@df@tag@@@}
 \def\thu@make@df@tag@@#1{\gdef\df@tag{\thu@maketag{#1}\def\@currentlabel{#1}}}
@@ -1947,11 +1781,6 @@
 %    \end{macrocode}
 %
 % 定理标题使用黑体，正文使用宋体，冒号隔开。
-% \changes{v2.6.2}{2006/06/17}{增加问题和猜想两个数学环境。}
-% \changes{v4.2}{2008/03/07}{调整证明环境的编号和结尾的方块。}
-% \changes{v5.0.0}{2015/04/18}{修正定理字样为黑体 (\#104)。}
-% \changes{v5.3.2}{2017/05/01}{定理环境格式设置（环境标题和环境正文字体设置）统一放置到 .cfg 文件中。}
-% \changes{v5.5.0}{2019/01/08}{移除 cfg 文件。}
 %    \begin{macrocode}
 \theorembodyfont{\normalfont}
 \theoremheaderfont{\normalfont\sffamily}
@@ -1977,8 +1806,6 @@
 % \subsubsection{浮动对象以及表格}
 % \label{sec:float}
 % 设置浮动对象和文字之间的距离
-% \changes{v2.6}{2006/06/09}{增加 \cs{floatsep}，\cs{@fptop}，\cs{@fpsep} 和 \cs{@fpbot}。}
-% \changes{v5.5.0}{2019/03/15}{修正图表标题与文字之间的距离。}
 %    \begin{macrocode}
 \setlength{\floatsep}{12bp \@plus 2bp \@minus 4bp}
 \setlength{\textfloatsep}{12bp}
@@ -2004,14 +1831,6 @@
 %   \item 图：caption 在下，段前空 6 磅，段后空 12 磅
 %   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
 % \end{itemize}
-% \changes{v2.4}{2006/04/14}{表格内容为 11 磅。}
-% \changes{v2.4}{2006/04/14}{图表标题左对齐，取消原先漂亮的 hang 模式。}
-% \changes{v2.5}{2006/05/13}{标题上下间距重调，以前没有考虑 \cs{intextsep} 的影响。}
-% \changes{v2.5.1}{2006/05/23}{增加 \pkg{subfigure} 和 \pkg{subtable} 的 caption 配置。}
-% \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
-% \changes{v2.5.3}{2006/06/07}{不管 caption 出现在什么位置，\cs{aboveskip} 总是出现在标题和浮动体之间的距离。}
-% \changes{v4.3}{2008/03/11}{子图引用时加括号。}
-% \changes{v5.0.0}{2015/06/27}{本科附录图表编号用-不用.（如图A-1，表A-2）。}
 %    \begin{macrocode}
 \ifthu@bachelor
   \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
@@ -2034,9 +1853,6 @@
 % \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
 % 我们采用 \pkg{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
-% \changes{v2.5.3}{2006/06/08}{增加对 \pkg{longtable} 的处理。}
-% \changes{v4.5.1}{2009/01/06}{太好了，不用处理 \pkg{longtable} 的 \cs{caption}
-% 了。}
 %    \begin{macrocode}
 \let\thu@LT@array\LT@array
 \def\LT@array{\dawu[1.5]\thu@LT@array} % set default font size
@@ -2055,7 +1871,6 @@
 %
 % \subsubsection{章节标题}
 % \label{sec:theor}
-% \changes{v2.5}{2006/05/19}{增加索引名称定义。}
 %    \begin{macrocode}
 \ifthu@bachelor
   \newcommand{\cabstractname}{中文摘要}
@@ -2108,34 +1923,22 @@
 %    \end{macrocode}
 %
 % 各级标题格式设置。
-% \changes{v5.0.0}{2012/12/23}{用 \cs{ctexset} 来设置，替换复杂的 \cs{@startsection}。}
 % \begin{description}
 % \item[chapter] 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段
 %   前空 24 磅，段后空 18 磅。本科要求：段前段后间距 30/20 pt，行距 20pt。但正文
 %   章节 30pt 的话和样例效果不一致。
 %
-% \changes{v2.5}{2006/05/13}{取消 \pkg{titlesec} 宏包，用基本 \LaTeX\ 命令格式化标题。}
-% \changes{v2.5.1}{2006/05/23}{让 \cs{chapter*} 自动 \cs{markboth}。}
-% \changes{v3.1}{2006/06/16}{英文摘要标题要搞特殊化。}
-% \changes{v5.0.0}{2015/04/17}{修正章节间距问题(\#57)}
-%
 % \item[section] 一级节标题，例如：\fbox{2.1 实验装置与实验方法}。节标题序号与标
 %   题名之间空一个汉字符（下同）。采用黑体四号（14pt）字居左书写，行距为固定
 %   值 20 磅，段前空 24 磅，段后空 6 磅。本科：25/12 pt，行距 18pt。
-%
-% \changes{v4.4}{2008/06/04}{调整段前距为 -20bp 而不是原来的 -24bp。}
 %
 % \item[subsection] 二级节标题，例如：\fbox{2.1.1 实验装置}。采用黑体 13pt 字居左
 %   书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。本科：中文黑体 12pt 字，
 %   英文 13pt 字，段间距 12/6 pt，行距 15pt。
 %
-% \changes{v4.4}{2008/06/04}{修改本科生模板的二级节标题为小四而不是半小四。}
-% \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
-%
 % \item[subsubsection] 三级节标题，例如：\fbox{2.1.2.1 归纳法}。采用黑体小四号
 %   （12pt）字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
 %
-% \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
 % \end{description}
 %    \begin{macrocode}
 \newcommand\thu@chapter@titleformat[1]{%
@@ -2183,7 +1986,6 @@
 %    \end{macrocode}
 %
 % \begin{macro}{\thu@chapter*}
-% \changes{v2.5.2}{2006/05/29}{定义自己的 \cs{thu@chapter*}。}
 % 默认的 \cs{chapter*} 很难同时满足研究生院和本科生的论文要求。本科论文要求所有的
 % 章都出现在目录里，比如摘要、Abstract、主要符号表等，所以可以简单的扩展默
 % 认\cs{chapter*} 实现这个目的。但是研究生又不要这些出现在目录中，而且致谢和声明
@@ -2230,8 +2032,6 @@
 % \label{sec:toc}
 % 最多 4 层，即: x.x.x.x，对应的命令和层序号分别是：
 % \cs{chapter}(0), \cs{section}(1), \cs{subsection}(2), \cs{subsubsection}(3)。
-% \changes{v3.1}{2007/10/09}{博士论文目录只出现到第 3 级标题即可。}
-% \changes{v5.0.0}{2015/05/21}{硕士博士论文目录只出现到第 3 级标题即可。其他未明确要求。}
 %    \begin{macrocode}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
@@ -2239,16 +2039,6 @@
 %
 % 每章标题行前空 6 磅，后空 0 磅。章节名中英文用 Arial 字体，页码仍用 Times。
 % \begin{macro}{\tableofcontents}
-% \changes{v2.0}{2005/12/18}{附录的目录项需要调整一下。以及公式编号方式等等。}
-% \changes{v2.5}{2006/05/13}{取消 \pkg{titletoc} 宏包，用 \cs{dottedtocline} 调整
-%   目录。}
-% \changes{v2.5.1}{2006/05/23}{减小目录项中的导引小点跟页码之间的留白。}
-% \changes{v2.5.2}{2006/05/29}{用 \cs{thu@chapter*} 改写目录命令。}
-% \changes{v3.0}{2007/05/12}{缩小目录中标题与页码之间\textbf{点}之间的距离。}
-% \changes{v4.0}{2007/11/08}{本科研究生目录字号行距都不同。}
-% \changes{v4.4}{2008/06/04}{本科生目录字号改回\cs{xiaosi}\oarg{1.8}。}
-% \changes{v4.4}{2008/06/04}{本科生目录缩进要求不同。}
-% \changes{v4.4}{2008/06/18}{本科章目录项一直用黑体 (Arial)。}
 % 目录生成命令。
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
@@ -2256,7 +2046,6 @@
   \ifthu@bachelor\xiaosi[1.667]\else\xiaosi[1.65]\fi\@starttoc{toc}\normalsize}
 %    \end{macrocode}
 % 调整目录样式，允许指定目录字体。
-% \changes{v5.2.2}{2016/01/23}{用 \cs{patchcmd} 修改 \cs{@dottedtocline}。}
 %    \begin{macrocode}
 \def\@pnumwidth{2em}
 \def\@tocrmarg{\@pnumwidth}
@@ -2288,7 +2077,6 @@
 % 研究生学位论文写作指南中规定：目录中的章标题行居左书写，一级节标题行缩进 1 个
 % 汉字符，二级节标题行缩进 2 个汉字符（但示例文件中为 1.5 个汉字符）。本科生指
 % 南中未作明确规定，示例文件中对于一级和二级节标题分别缩进 1 和 1.5 个汉字符。
-% \changes{v5.0.0}{2015/04/28}{修正学位论文中目录里节前缩进(\#103)}
 %    \begin{macrocode}
 % \patchcmd{\@dottedtocline}{#4}{\csname thu@toc@font\endcsname #4}{}{}
 \patchcmd{\@dottedtocline}{\hb@xt@\@pnumwidth}{\hbox}{}{}
@@ -2306,8 +2094,6 @@
 % \label{sec:cover}
 % \begin{macro}{\thu@def@term}
 % 方便的定义封面的一些替换命令。
-% \changes{v2.6.2}{2006/06/18}{引入 \cs{thu@def@term} 定义封面命令。}
-% \changes{v3.1}{2006/06/16}{重新定义摘要为环境，long 选项不需要了。}
 %    \begin{macrocode}
 \def\thu@def@term#1{%
   \define@key{thu}{#1}{\csname #1\endcsname{##1}}
@@ -2316,9 +2102,6 @@
   \csname #1\endcsname{}}
 %    \end{macrocode}
 % \end{macro}
-%
-% \changes{v2.0}{2005/12/18}{增加了封面密级，增加博士封面支持}
-% \changes{v4.6}{2011/04/27}{增加博士后相关指令。}
 %
 % 定义密级参数。
 %    \begin{macrocode}
@@ -2357,8 +2140,6 @@
 %    \end{macrocode}
 %
 % 学位中英文名称。
-% \changes{v2.5}{2006/05/20}{院系和专业分别改名用 department 和 major，代替原来
-% 的 affil 和 subject。}
 %    \begin{macrocode}
 \thu@def@term{cmajor}
 \thu@def@term{emajor}
@@ -2385,8 +2166,6 @@
 % 摘要最好以环境的形式出现（否则命令的形式会导致开始结束的括号距离太远，我不喜
 % 欢），这就必须让环境能够自己保存内容留待以后使用。使用 \pkg{environ} 的
 % \cs{Collect@Body} 来实现。
-% \changes{v3.1}{2006/06/17}{重新定义摘要成为环境。}
-% \changes{v5.2.2}{2016/01/31}{用 \pkg{environ} 封装的 \cs{Collect@Body}。}
 %    \begin{macrocode}
 \newcommand{\thu@@cabstract}[1]{\long\gdef\thu@cabstract{#1}}
 \newenvironment{cabstract}{\Collect@Body\thu@@cabstract}{}
@@ -2413,14 +2192,12 @@
 % \end{macro}
 % 利用 \cs{thu@parse@keywords} 来定义，内部通过 \cs{thu@ckeywords} 和
 % \cs{thu@ekeywords} 来引用。
-% \changes{v3.1}{2007/06/16}{增强的关键词命令。}
 %    \begin{macrocode}
 \thu@parse@keywords{ckeywords}
 \thu@parse@keywords{ekeywords}
 %    \end{macrocode}
 %
 % \begin{macro}{\thusetup}
-% \changes{v5.1.0}{2015/12/26}{通过 \cs{thusetup} 统一设置封面信息。}
 % 由上可见，封面和封底有一大堆信息需要设置，为了简化操作界面，提供一
 % 个 \cs{thusetup} 命令支持 key/value 的方式来设置。key 就是前面各个设置项的
 % 名字。\note[说明：]{只能设置普通项，不支持环境项，
@@ -2431,19 +2208,6 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \changes{v1.4rc1}{2005/12/14}{I have to put all chinese chars into cfg,
-% otherwise they would not appear.}
-% \changes{v2.5.1}{2006/05/25}{硕士封面的冒号前居然有点小距离！}
-% \changes{v3.1}{2007/10/09}{去掉配置文件中的 \cs{hfill}。}
-% \changes{v3.1}{2007/10/09}{\textbf{内部}密级前面要五角星了。}
-% \changes{v4.0}{2007/11/08}{\textbf{内部}密级前面终究还是不要五角星了。}
-% \changes{v4.4.2}{2008/06/05}{本科生格式终于也开始用空格作为关键字分隔符了。}
-% \changes{v4.4.2}{2008/06/07}{本科生签名之间距离改为 \cs{hskip1em}。}
-% \changes{v4.5.2}{2010/05/29}{本科论文日期具体到日。}
-% \changes{v4.6}{2011/04/26}{增加博士后相关配置。}
-% \changes{v4.7}{2012/05/27}{修正本科生作者信息名称。}
-% \changes{v4.7}{2012/05/27}{本科生关键字也用分号分割了。}
-% \changes{v5.3.0}{2016/03/11}{更新到研究生院 2016.3 指南。}
 % 定义封面用到的各种文字。
 %    \begin{macrocode}
 \def\thu@ckeywords@separator{；}
@@ -2532,15 +2296,6 @@
 % 申请学位的学科门类: 小二号宋体字。
 % 中文封面页边距：
 %  上- 6.0 厘米，下- 5.5 厘米，左- 4.0 厘米，右- 4.0 厘米，装订线 0 厘米；
-% \changes{v2.5.1}{2006/05/21}{本科封面标题调整微小的空隙。}
-% \changes{v2.5.1}{2006/05/21}{本科封面标题第二行的横线上移一点。}
-% \changes{v2.5.2}{2006/05/29}{研究生论文标题中英文用 arial 字体。}
-% \changes{v2.6}{2006/06/09}{本科生题目加长，最多 24 个字。}
-% \changes{v4.6}{2011/04/26}{增加博士后封面。}
-% \changes{v4.7}{2011/11/28}{硕士中文封面不再需要英文标题。}
-% \changes{v4.7}{2012/05/30}{本科生题目下划线长度自动适应字数。}
-% \changes{v5.1.0}{2015/12/27}{利用 \env{CJKfilltwosides} 优化封面排版。}
-% \changes{v5.5.0}{2019/01/08}{修正博士后封面的格式。}
 %
 %    \begin{macrocode}
 \newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
@@ -2646,12 +2401,6 @@
 %    \end{macrocode}
 %
 % 作者及导师信息部分使用三号仿宋字
-% \changes{v2.0}{2005/12/20}{封面的培养单位，学科等内容字距自动调整。}
-% \changes{v2.1}{2006/02/29}{增加本科部分。}
-% \changes{v2.6.2}{2006/06/17}{如果本科生没有辅导教师则不显示。}
-% \changes{v3.1}{2007/10/09}{重新放置封面表格的提示元素。}
-% \changes{v4.4.3}{2008/06/09}{修改本科生论文封面格式以符合新样例。}
-% \changes{v5.1.0}{2015/12/27}{修改联合指导教师显示问题。}
 %    \begin{macrocode}
     \ifthu@bachelor
       \vskip0.75cm
@@ -2716,7 +2465,6 @@
 %
 % 论文成文打印的日期，用三号宋体汉字，不用阿拉伯数字
 % 本科：论文成文打印的日期用阿拉伯数字，采用小四号宋体
-% \changes{v4.4.3}{2008/06/09}{修改本科生论文封面日期格式以符合新样例。}
 %    \begin{macrocode}
      \begin{center}
        {\ifthu@bachelor\vskip-1.0cm\xiaosi\else%
@@ -2729,8 +2477,6 @@
 %
 % \myentry{英文封面}
 % \begin{macro}{\thu@doctor@engcover}
-% \changes{v4.2}{2008/01/23}{博士英文封面补充联合导师。}
-% \changes{v4.7}{2011/11/28}{硕士生新增英文封面。}
 % 研究生论文使用。
 %    \begin{macrocode}
 \def\thu@master@art{Master of Arts}
@@ -2805,9 +2551,6 @@
 %
 % \myentry{授权页面}
 % \begin{macro}{\thu@authorization@mk}
-% \changes{v4.0}{2007/11/08}{研究生的授权部分调整了一下，不知道老师为什么总爱修改
-% 那些无关紧要的格式，郁闷。感谢 PMHT@newsmth 的认真比对。}
-% \changes{v4.4.2}{2008/06/07}{修改本科生的授权部分，按照 2008 年的新样例。}
 % 支持扫描文件替换。
 %    \begin{macrocode}
 \newcommand{\thu@authorization@mk}{%
@@ -2834,7 +2577,6 @@
 %
 % \begin{macro}{\makecover}
 % 生成封面总命令。
-% \changes{v2.1}{2006/02/29}{分成几个小模块来搞，不然这个 macro 太大了，看不过来。}
 %    \begin{macrocode}
 \def\makecover{%
   \thu@setup@pdfinfo\thu@makecover}
@@ -2868,10 +2610,6 @@
     \thu@first@titlepage
 %    \end{macrocode}
 %
-% \changes{v2.5}{2006/05/19}{本科论文评语位置调整。}
-% \changes{v3.0}{2007/05/12}{本科论文评语取消。}
-% \changes{v4.7}{2011/11/28}{硕士论文也需要英文封面。}
-%
 % 研究生论文需要增加英文封面
 %    \begin{macrocode}
     \ifthu@bachelor\relax\else
@@ -2881,10 +2619,6 @@
 %    \end{macrocode}
 %
 % 授权说明
-% \changes{v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
-% \changes{v4.5.2}{2010/05/29}{本科封面和授权说明之间不要空白页。}
-% \changes{v4.6}{2011/05/29}{博士后报告无授权说明。}
-% \changes{v5.0.0}{2015/06/05}{使用 \pkg{pdfpages} 宏包支持本硕博论文授权说明扫描版(\#36)。}
 %    \begin{macrocode}
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
@@ -2905,9 +2639,6 @@
     \fi
   \end{titlepage}
 %    \end{macrocode}
-%
-% \changes{v2.5}{2006/05/16}{综合论文训练在授权说明之后。}
-% \changes{v3.0}{2007/05/12}{本科综合论文训练在电子版中取消。}
 %
 % 中英文摘要
 %    \begin{macrocode}
@@ -2935,12 +2666,6 @@
 %
 % \begin{macro}{\thu@makeabstract}
 % 中文摘要部分的标题为“\textbf{摘要}”，用黑体三号字。
-% \changes{v2.5.1}{2006/05/24}{教务处又不要正文前的页眉了。}
-% \changes{v2.5.1}{2006/05/24}{不管是哪种论文格式，摘要都要右开。}
-% \changes{v2.5.2}{2006/05/29}{在研究生论文中，摘要不出现在目录中，但是要在书签中出现。}
-% \changes{v2.5.3}{2006/06/03}{\cs{pagenumber} 会自动设置页码为 1。}
-% \changes{v2.6.3}{2006/06/30}{为本科正确设置目录及以后的页码。}
-% \changes{v4.5.2}{2010/05/29}{本科论文摘要亦无需右开。}
 %    \begin{macrocode}
 \newcommand{\thu@makeabstract}{%
   \ifthu@bachelor\clearpage\else\cleardoublepage\fi
@@ -2956,23 +2681,17 @@
 %
 % 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用 Times New Roman 体，
 % 标点符号一律用中文输入状态下的标点符号。
-% \changes{v3.1}{2007/06/16}{研究生关键词不再沉底。}
 %    \begin{macrocode}
   \thu@cabstract
 %    \end{macrocode}
 % 每个关键词之间空两个汉字符宽度， 且为悬挂缩进。
-% \changes{v2.6.2}{2006/06/17}{取消最后一列的空白。}
-% \changes{v2.6.2}{2006/06/20}{取消 tabular 环境，用 \cs{hangindent} 实现关键词
-% 悬挂缩进，英文摘要同。}
-% \changes{v4.4.2}{2008/06/05}{本科生格式中文关键词采用首行缩进且无悬挂缩进。}
 %    \begin{macrocode}
   \ifthu@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{\textbf\thu@ckeywords@title}{\thu@ckeywords}
 %    \end{macrocode}
 %
 % 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
-% 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连
-% 续。\changes{v2.5.1}{2006/05/28}{研究生封面英文摘要连续。}
+% 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连续。
 %    \begin{macrocode}
   \thu@setenglish
   \thu@chapter*[]{\eabstractname} % no tocline
@@ -2984,15 +2703,6 @@
 %    \end{macrocode}
 %
 % 每个关键词之间空四个英文字符宽度。
-% \changes{v2.4}{2006/04/14}{It is \textbf{Key words}, but not \textbf{Key
-% Words}.}
-% \changes{v2.6.2}{2006/06/17}{取消最后一列的空白。}
-% \changes{v2.6.4}{2006/10/23}{\textbf{Keywords} but not \textbf{Key words}.}
-% \changes{v3.0}{2007/05/13}{\textbf{Key words} but not
-% \textbf{Keywords}. What are you doing?}
-% \changes{v4.4.2}{2008/06/05}{Bachelor English abstract format requires
-% indent and no hang-indent.}
-% \changes{v4.7}{2012/06/02}{Bachelor sample uses Keywords w/o space \texttt{-\_-}}
 %    \begin{macrocode}
   \ifthu@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{%
@@ -3006,9 +2716,6 @@
 % \label{sec:denotationfmt}
 % \begin{environment}{denotation}
 % 主要符号对照表。
-% \changes{v2.0e}{2005/12/18}{主要符号表定义为一个 list，用起来方便。}
-% \changes{v2.4}{2006/04/14}{为主要符号表环境增加一个可选参数，调节符号列的宽度。}
-% \changes{v5.2.1}{2016/01/11}{利用 \pkg{enumitem} 改造环境定义，更直观。}
 %    \begin{macrocode}
 \newenvironment{denotation}[1][2.5cm]{%
   \thu@chapter*[]{\thu@denotation@name} % no tocline
@@ -3036,7 +2743,6 @@
 %
 % \begin{environment}{acknowledgement}
 % 支持扫描文件替换。
-% \changes{v2.4}{2006/04/14}{调整\textbf{致谢}等中间的距离。}
 %    \begin{macrocode}
 \newcommand\thu@declarename{声\hspace{\ccwd}明}
 \newcommand{\thu@declaretext}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
@@ -3047,18 +2753,7 @@
 \newcommand{\thu@backdate}{日\hspace{1em}期：}
 %    \end{macrocode}
 %
-% \changes{v2.0}{2005/12/19}{将致谢定义为一个环境更合适，里面也不用像以前段首需
-% 要自己缩进。}
-% \changes{v1.5}{2005/12/16}{在那些不显示编号的章节前面先执行一次
-%  \cs{cleardoublepage}，使新开章节的页码到达正确的状态。否则会因为 \cs{addcontentsline}
-% 在 chapter 之前而导致目录页码错误。}
 % 定义致谢与声明环境。
-% \changes{v2.5}{2006/05/16}{本科论文要求致谢声明分页，但是研究生的不分。}
-% \changes{v2.5.2}{2006/05/29}{研究生致谢右开。}
-% \changes{v2.5.2}{2006/05/30}{研究生致谢题目是致谢，目录是致谢与声明。}
-% \changes{v2.6.3}{2006/07/01}{重画双虚线，自适应页面宽度。}
-% \changes{v4.5.2}{2010/09/19}{研究生论文的致谢和声明终于分开了。}
-% \changes{v5.2.1}{2016/01/11}{用 \env{acknowledgement} 替换 \env{ack}。}
 %    \begin{macrocode}
 \NewDocumentEnvironment{acknowledgement}{o}{%
     \thu@chapter*{\thu@ack@name}
@@ -3066,8 +2761,6 @@
 %    \end{macrocode}
 %
 % 声明部分
-% \changes{v3.0}{2007/05/12}{本科论文声明部分图片扫描取消。}
-% \changes{v5.0.0}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文声明扫描版(\#36)。}
 %    \begin{macrocode}
   {
     \ifthu@postdoctor\relax\else%
@@ -3100,12 +2793,6 @@
 % \begin{macro}{\listoftables}
 % \begin{macro}{\listoftables*}
 % 定义图表以及公式目录样式。
-% \changes{v2.5}{2006/05/18}{增加插图、表格和公式索引。}
-% \changes{v2.5}{2006/05/19}{为了让索引中能出现\textbf{图 xxx}，不得不修改 \LaTeX
-%   内部命令 \cs{@caption}。}
-% \changes{v2.6.4}{2006/10/23}{增加 \cs{listoffigures*}，\cs{listoftables*}。}
-% \changes{v4.5.1}{2009/01/06}{更优雅的插图/表格索引，避免跟 \pkg{caption} 包冲
-% 突。\cs{thu@listof} 相应修改。}
 %    \begin{macrocode}
 \def\thu@starttoc#1{% #1: float type, prepend type name in \listof*** entry.
   \let\oldnumberline\numberline
@@ -3127,8 +2814,6 @@
 % \end{macro}
 %
 % \begin{macro}{\equcaption}
-% \changes{v2.6.2}{2006/06/19}{此命令配合 \pkg{amsmath} 命令基本可以满足所有
-% 公式需要。}
 %   本命令只是为了生成公式列表，所以这个 caption 是假的。如果要编号最好用
 %    equation 环境，如果是其它编号环境，请手动添加 \cs{equcaption}。
 % 用法如下：
@@ -3139,8 +2824,6 @@
 %  \pkg{amsmath} 的 \cs{tag}，那么默认是 \cs{tag} 的参数；除此之外可能需要你
 % 手工指定。
 %
-% \changes{v2.5}{2006/05/19}{将公式编号写入临时文件以便生成公式列表。}
-% \changes{v2.5.3}{2006/06/03}{取消 \cs{equcaption} 的参数}
 %    \begin{macrocode}
 \def\ext@equation{loe}
 \def\equcaption#1{%
@@ -3152,9 +2835,6 @@
 % \begin{macro}{\listofequations}
 % \begin{macro}{\listofequations*}
 % \LaTeX\ 默认没有公式索引，此处定义自己的 \cs{listofequations}。
-% \changes{v2.5}{2006/05/19}{增加公式索引命令。}
-% \changes{v2.5.1}{2006/05/26}{公式索引项 numwidth 增加。}
-% \changes{v2.6.4}{2006/10/23}{增加 \cs{listofequations*}。}
 %    \begin{macrocode}
 \newcommand\listofequations{\thu@listof{equation}}
 \let\l@equation\l@figure
@@ -3166,12 +2846,8 @@
 % \subsection{参考文献}
 % \label{sec:ref}
 %
-% \changes{v5.4.4}{2018/04/12}{参考文献列表的页码使用 hyphen 取代 en dash。}
-%
 % \begin{macro}{\inlinecite}
 % 依赖于 \pkg{natbib} 宏包，修改其中的命令。 旧命令 \cs{onlinecite} 依然可用。
-% \changes{v5.0.0}{2015/11/23}{用 \cs{inlinecite} 替换 \cs{onlinecite}。为保证兼
-% 容性，\cs{onlinecite} 会保留。}
 %    \begin{macrocode}
 \newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{,}}
 \DeclareRobustCommand\inlinecite{\@inlinecite}
@@ -3185,12 +2861,6 @@
 % 本科生要求固定行距 17pt，段前后间距 3pt。
 %
 % 复用 \pkg{natbib} 的 \texttt{thebibliography} 环境，调整距离。
-% \changes{v2.4}{2006/04/15}{参考文献间距调小一点，label 长度增加一点，以便让超过
-%  100 的参考文献更好地对齐。}
-% \changes{v2.5}{2006/05/13}{参考文献序号靠左，而不是靠右。}
-% \changes{v2.6.4}{2006/10/23}{调整参考文献标签宽度，使得条目增多时仍能对齐。}
-% \changes{v5.4.0}{2017/12/03}{基于 \pkg{natbib} 的环境调整距离兼容性更好。}
-% \changes{v5.4.4}{2018/04/14}{参考文献标号左对齐。}
 %    \begin{macrocode}
 \renewcommand\bibsection{\thu@chapter*{\bibname}}
 \renewcommand\bibfont{\ifthu@bachelor\wuhao[1.619]\else\wuhao[1.5]\fi}
@@ -3201,10 +2871,6 @@
 %    \end{macrocode}
 %
 % 几种种引用样式：
-% \changes{v5.4.0}{2017/12/3}{\cs{bibliographystyle}\marg{newbib} will cause \cs{bibstyle@newbib} to
-% be called on THE NEXT LATEX RUN (via the aux file).}
-% \changes{v5.4.1}{2017/12/04}{bst 在 ctan 上不分路径，故加前缀。}
-% \changes{v5.5.3}{2019/05/22}{修正本科生的文献引用样式。}
 %    \begin{macrocode}
 \expandafter\newcommand\csname bibstyle@thuthesis-numeric\endcsname{%
   \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
@@ -3258,7 +2924,6 @@
 %
 % 在顺序编码制下，\pkg{natbib} 只有在三个以上连续文献引用才会使用连接号，
 % 这里修改为允许两个引用使用连接号。
-% \changes{v5.4.4}{2018/04/12}{允许连续两个文献引用使用连接号。}
 %    \begin{macrocode}
 \patchcmd{\NAT@citexnum}{%
   \ifx\NAT@last@yr\relax
@@ -3285,7 +2950,6 @@
 % \end{environment}
 %
 % \begin{macro}{\title}
-% \changes{v5.2.0}{2016/01/11}{增加 \cs{title} 排版翻译标题。}
 % 本科外文翻译文章的标题，用法：\cs{title}\marg{资料标题}。这个命令只能在附录环
 % 境下使用。
 %    \begin{macrocode}
@@ -3298,7 +2962,6 @@
 % \end{macro}
 %
 % \begin{environment}{translationbib}
-% \changes{v5.2.0}{2016/01/11}{增加翻译文献环境 \env{translationbib}。}
 % 外文资料的参考文用宋体五号字，取固定行距17pt，段前后3pt。
 %    \begin{macrocode}
 \newlist{translationbib}{enumerate}{1}
@@ -3310,13 +2973,6 @@
 % \subsection{个人简历}
 %
 % \begin{environment}{resume}
-% \changes{v1.5}{2005/12/16}{增加个人简历章节的命令，去掉主文件中需要重新
-% 定义 \cs{cleardoublepage} 和自己写 \cs{markboth}，\cs{addcontentsline} 的部分。}
-% \changes{v2.0}{2005/12/18}{最后决定将 resume 定义为环境。这样与前面的主要符号
-% 表、致谢等对应。}
-% \changes{v2.5.1}{2006/05/23}{教务处和研究生院非要搞的不一样！}
-% \changes{v2.5.2}{2006/05/29}{研究生的个人介绍要右开。}
-% \changes{v4.6}{2011/05/02}{支持可选参数，自己定义简历章节标题。}
 % 个人简历发表文章等。
 %    \begin{macrocode}
 \newenvironment{resume}[1][\thu@resume@title]{%
@@ -3346,8 +3002,6 @@
 % 二者分别通过两个环境 \env{publications} 和 \env{achievements} 罗
 % 列。
 %
-% \changes{v5.0.0}{2015/04/18}{博士后就不提在学期间了，不合适(\#100)}
-% \changes{v5.0.0}{2015/05/17}{让简历部分更符合格式指南和示例文件(\#122)}
 %    \begin{macrocode}
 \newlist{publications}{enumerate}{1}
 \setlist[publications]{label=[\arabic*],align=left,nosep,itemsep=8bp,
@@ -3360,7 +3014,6 @@
 % \end{environment}
 %
 % \begin{macro}{\publicationskip}
-% \changes{v5.2.0}{2016/01/11}{增加 \cs{publicationskip}。}
 % \env{publications} 环境可以连续出现多次，第二类论文列表前后要空一行，使
 % 用 \cs{publicationskip}。
 %    \begin{macrocode}
@@ -3377,7 +3030,6 @@
 %
 % \subsubsection{\pkg{nomencl} 宏包}
 %
-% \changes{v5.5.0}{2018/12/09}{增加 \pkg{nomencl} 宏包的支持。}
 %    \begin{macrocode}
 \thu@atendpackage{nomencl}{
   \let\nomname\thu@denotation@name
@@ -3390,9 +3042,6 @@
 % \label{sec:spine}
 % \begin{macro}{\spine}
 % 单独使用书脊命令会在新的一页产生竖排书脊。
-% \changes{v4.5}{2009/01/04}{简化代码，同时支持 \XeLaTeX。}
-% \changes{v5.0.0}{2015/12/21}{扩展 \cs{shuji}\oarg{标题}\oarg{作者}。}
-% \changes{v5.5.3}{2015/12/21}{修改 \cs{shuji} 为 \cs{spine}。}
 %    \begin{macrocode}
 \NewDocumentCommand{\spine}{O{\thu@ctitle} O{\thu@cauthor}}{%
   \newpage\thispagestyle{empty}%
@@ -3408,7 +3057,6 @@
 % \label{sec:other}
 %
 % 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改。
-% \changes{v2.5}{2006/05/13}{不用 \cs{CJKcaption}，在导言区直接引入配置文件。}
 %    \begin{macrocode}
 \AtEndOfClass{\sloppy}
 %</cls>
