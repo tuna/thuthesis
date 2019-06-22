@@ -36,9 +36,9 @@ install:
     txfonts xkeyval
 
 before_script:
-  - sed -i 's/\[RawFeature={vertical:}\]{FangSong}/\[Extension=.otf,RawFeature={vertical:}\]{FandolFang-Regular}/' shuji.tex
+  - sed -i 's/\[RawFeature={vertical:}\]{FangSong}/\[Extension=.otf,RawFeature={vertical:}\]{FandolFang-Regular}/' spine.tex
 
 script:
   - make thesis
-  - make shuji
+  - make spine
   - make doc

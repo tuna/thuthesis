@@ -46,14 +46,14 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 # Makefile的用法
 
 ```shell
-make [{all|thesis|shuji|doc|clean|cleanall|distclean}]
+make [{all|thesis|spine|doc|clean|cleanall|distclean}]
 ```
 
 ## 目标
-* `make all`       生成论文和书籍，相当于 `make thesis && make shuji`；
+* `make all`       生成论文和书籍，相当于 `make thesis && make spine`；
 * `make cls`       生成模板文件；
 * `make thesis`    生成论文 main.pdf；
-* `make shuji`     生成书脊 shuji.pdf；
+* `make spine`     生成书脊 spine.pdf；
 * `make doc`       生成模板使用说明书 thuthesis.pdf；
 * `make clean`     删除示例文件的中间文件（不含 main.pdf）；
 * `make cleanall`  删除示例文件的中间文件和 main.pdf；
@@ -90,14 +90,14 @@ Please follow the procedure below:
 # Makefile Usage
 
 ```shell
-make [{all|thesis|shuji|doc|clean|cleanall|distclean}]
+make [{all|thesis|spine|doc|clean|cleanall|distclean}]
 ```
 
 ## Targets
-* `make all`       generate thesis and spine, same as `make thesis && make shuji`;
+* `make all`       generate thesis and spine, same as `make thesis && make spine`;
 * `make cls`       generate template file;
 * `make thesis`    generate thesis main.pdf;
-* `make shuji`     generate book spine for printing shuji.pdf;
+* `make spine`     generate book spine for printing spine.pdf;
 * `make doc`       generate template documentation thuthesis.pdf;
 * `make clean`     delete all examples' files (excluding main.pdf);
 * `make cleanall`  delete all examples' files and main.pdf;

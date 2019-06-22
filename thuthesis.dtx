@@ -229,7 +229,7 @@
 % thuthesis-author-year.bst & 参考文献样式文件\\
 % tsinghua.pdf & 校名 logo，系统无隶书字体时使用 \\\midrule
 % main.tex & 示例文档主文件\\
-% shuji.tex & 书脊示例文档\\
+% spine.tex & 书脊示例文档\\
 % ref/ & 示例文档参考文献目录\\
 % data/ & 示例文档章节具体内容\\
 % figures/ & 示例文档图片路径\\
@@ -257,7 +257,7 @@
 % 模板解压缩后生成文件夹 \file{thuthesis-vX.Y.Z}\footnote{\texttt{vX.Y.Z} 为版本
 % 号。}，其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参
 % 考文献样式 \file{thuthesis-numeric.bst} 和 \file{thuthesis-author-year.bst}，示例文档
-% （\file{main.tex}，\file{shuji.tex}，\file{thuthesis.sty}\footnote{可能用到的包
+% （\file{main.tex}，\file{spine.tex}，\file{thuthesis.sty}\footnote{可能用到的包
 % 以及一些命令定义都放在这里，以免 \file{thuthesis.cls} 过分臃
 % 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
 % 板文件和配置文件（具体命令细节请参考 \file{README.md} 和 \file{Makefile}）：
@@ -319,7 +319,7 @@
 % $ make cls       # 生成 thuthesis.cls
 % $ make doc       # 生成说明文档 thuthesis.pdf
 % $ make thesis    # 生成示例文档 main.pdf
-% $ make shuji     # 生成书脊 shuji.pdf
+% $ make spine     # 生成书脊 spine.pdf
 % \end{shell}
 %
 % \thuthesis\ 的 \file{Makefile} 默认用 \texttt{latexmk} 调用\texttt{xelatex} 编
@@ -932,10 +932,10 @@
 % 具体用法请参看示例文档 \file{data/resume.tex}。
 %
 % \subsection{书脊}
-% \DescribeMacro{\shuji}
-% 生成装订的书脊，为竖排格式，命令格式：\cs{shuji}\oarg{标题}\oarg{作者}。默认参
+% \DescribeMacro{\spine}
+% 生成装订的书脊，为竖排格式，命令格式：\cs{spine}\oarg{标题}\oarg{作者}。默认参
 % 数为论文中文题目和中文作者。如果中文题目中没有英文字母，那么直接调用此命令即可。
-% 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{shuji.tex}）。下面是一
+% 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{spine.tex}）。下面是一
 % 个例子：
 % \begin{latex}
 % \documentclass[degree=master]{thuthesis}
@@ -945,14 +945,14 @@
 %   ctitle={论文中文题目},
 %   cauthor={中文姓名}}
 %
-% \shuji % 使用默认标题和默认作者
+% \spine % 使用默认标题和默认作者
 %
-% \shuji[使用默认作者的标题]
+% \spine[使用默认作者的标题]
 %
-% \shuji[同时修改标题和作者的标题][尼瑞薛]
+% \spine[同时修改标题和作者的标题][尼瑞薛]
 %
 % % 如果标题中有英文，那可以参考如下方法进行微调：
-% \shuji[清华大学 \raisebox{-5pt}{\LaTeX} 论文模板 \raisebox{-5pt}{v\version} 样例]
+% \spine[清华大学 \raisebox{-5pt}{\LaTeX} 论文模板 \raisebox{-5pt}{v\version} 样例]
 % \end{document}
 % \end{latex}
 %
@@ -3387,17 +3387,19 @@
 %    \end{macrocode}
 %
 % \subsection{书脊}
-% \label{sec:shuji}
-% \begin{macro}{\shuji}
+% \label{sec:spine}
+% \begin{macro}{\spine}
 % 单独使用书脊命令会在新的一页产生竖排书脊。
 % \changes{v4.5}{2009/01/04}{简化代码，同时支持 \XeLaTeX。}
 % \changes{v5.0.0}{2015/12/21}{扩展 \cs{shuji}\oarg{标题}\oarg{作者}。}
+% \changes{v5.5.3}{2015/12/21}{修改 \cs{shuji} 为 \cs{spine}。}
 %    \begin{macrocode}
-\NewDocumentCommand{\shuji}{O{\thu@ctitle} O{\thu@cauthor}}{%
+\NewDocumentCommand{\spine}{O{\thu@ctitle} O{\thu@cauthor}}{%
   \newpage\thispagestyle{empty}%
   \fangsong\addCJKfontfeatures*{RawFeature={vertical:}}
   \xiaosan\ziju{0.4}%
   \noindent\hfill\rotatebox[origin=lt]{-90}{\makebox[\textheight]{#1\hfill#2}}}
+\let\shuji\spine % TODO: for compatibility, remove the other day
 %    \end{macrocode}
 % \end{macro}
 %
