@@ -315,8 +315,8 @@
 %   \documentclass[secret=false]{thuthesis} % 关闭保密
 %
 %   \thusetup{
-%     secretlevel=公开,
-%     secretyear=10
+%     secret-level=公开,
+%     secret-year=10
 %   }
 % \end{latex}
 %
@@ -480,8 +480,8 @@
 % 定义秘密级别和年限，需要打开论文的 \option{secret} 选项。
 % \begin{latex}
 %   \thusetup{
-%     secretyear  = 10,
-%     secretlevel = {内部},
+%     secret-year  = 10,
+%     secret-level = {内部},
 %   }
 % \end{latex}
 %
@@ -499,8 +499,8 @@
 % 中英文标题。可以在标题内部使用换行|\\|。
 % \begin{latex}
 %   \thusetup{
-%     ctitle = {论文中文题目},
-%     etitle = {Thesis English Title},
+%     title  = {论文中文题目},
+%     title* = {Thesis English Title},
 %   }
 % \end{latex}
 %
@@ -508,8 +508,8 @@
 % 作者姓名。
 % \begin{latex}
 %   \thusetup{
-%     cauthor = {中文姓名},
-%     eauthor = {Name in Pinyin},
+%     author  = {中文姓名},
+%     author* = {Name in Pinyin},
 %   }
 % \end{latex}
 %
@@ -519,7 +519,7 @@
 %
 % \begin{longtable}{p{2cm}p{8cm}p{4cm}}
 %   \toprule
-%   学位类型 & edegree & emajor \\\midrule
+%   学位类型 & degree-name* & discipline* \\\midrule
 %   学术型硕士
 %     & 必须为“Master of Art”或“Master of Science”（注意大
 %       小写），其中 “哲学、文学、历史学、法学、教育学、艺术学门类，公共
@@ -535,8 +535,8 @@
 %
 % \begin{latex}
 %   \thusetup{
-%     cdegree = {您要申请什么学位},
-%     edegree = {Degree in English},
+%     degree-name  = {您要申请什么学位},
+%     degree-name* = {Degree in English},
 %   }
 % \end{latex}
 %
@@ -544,8 +544,7 @@
 % 院系名称。
 % \begin{latex}
 %   \thusetup{
-%     cdepartment = {系名全称},
-%     edepartment = {Deparment of CS},
+%     department = {系名全称},
 %   }
 % \end{latex}
 %
@@ -553,8 +552,8 @@
 % 参见第 \ref{sec:degree} 节。
 % \begin{latex}
 %   \thusetup{
-%     cmajor = {专业名称},
-%     emajor = {Major in English},
+%     discipline  = {专业名称},
+%     discipline* = {Major in English},
 %   }
 % \end{latex}
 %
@@ -571,8 +570,8 @@
 % 直接导师。
 % \begin{latex}
 %   \thusetup{
-%     csupervisor = {导师~教授},
-%     esupervisor = {Supervisor},
+%     supervisor = {导师~教授},
+%     supervisor* = {Supervisor},
 %   }
 % \end{latex}
 %
@@ -580,8 +579,8 @@
 % 本科生的辅导教师，硕士的副指导教师。
 % \begin{latex}
 %   \thusetup{
-%     cassosupervisor = {副导师~副教授},
-%     eassosupervisor = {2nd Boss},
+%     associate-supervisor  = {副导师~副教授},
+%     associate-supervisor* = {2nd Boss},
 %   }
 % \end{latex}
 %
@@ -589,8 +588,8 @@
 % 硕士生联合指导教师，博士生联合导师。
 % \begin{latex}
 %   \thusetup{
-%     ccosupervisor = {联合导师~教授},
-%     ecosupervisor = {3rd Boss},
+%     joint-supervisor  = {联合导师~教授},
+%     joint-supervisor* = {3rd Boss},
 %   }
 % \end{latex}
 %
@@ -598,8 +597,7 @@
 % 默认为当前时间，也可以自己指定。
 % \begin{latex}
 %   \thusetup{
-%     cdate            = {中文日期},
-%     edate            = {English Date},
+%     date             = {2011-07-01},
 %     postdoctordate   = {2009 年 7 月——2011 年 7 月},  % 博士后工作完成日期
 %     postdocstartdate = {2009 年 7 月 1 日},  % 博士后研究工作起始时间
 %     postdocenddate   = {2011 年 7 月 1 日},  % 博士后研究工作期满时间
@@ -627,8 +625,8 @@
 % 要求的关键词格式。
 % \begin{latex}
 %   \thusetup{
-%     ckeywords = {关键词 1, 关键词 2},
-%     ekeywords = {keyword 1, keyword 2},
+%     keywords  = {关键词 1, 关键词 2},
+%     keywords* = {keyword 1, keyword 2},
 %   }
 % \end{latex}
 %
@@ -861,8 +859,8 @@
 %
 %   \begin{document}
 %   \thuset{
-%     ctitle={论文中文题目},
-%     cauthor={中文姓名}}
+%     title  = {论文中文题目},
+%     author = {中文姓名}}
 %
 %   \spine % 使用默认标题和默认作者
 %
@@ -962,6 +960,8 @@
 \hyphenation{Thu-Thesis}
 \def\thuthesis{ThuThesis}
 \def\version{5.5.2}
+\RequirePackage{keyval}
+\RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=thu,
@@ -971,17 +971,111 @@
 %
 % 用 \pkg{kvoptions} 的 \texttt{key=value} 方式来设置论文类型。
 %    \begin{macrocode}
-\DeclareStringOption[doctor]{degree}[doctor]
+\newcommand\thu@error[1]{%
+  \ClassError{thuthesis}{#1}{}%
+}
+\kv@set@family@handler{thu@key}{%
+  \@namedef{thu@#1@@name}{}%
+  \@namedef{thu@#1@@code}{}%
+  \def\thu@@default{}%
+  \def\thu@@choices{}%
+  \@namedef{thu@#1@@choice@hook}{}%
+  \define@key{thu@value}{name}{%
+    \@namedef{thu@#1@@name}{##1}%
+  }%
+  \define@key{thu@value}{code}{%
+    \@namedef{thu@#1@@code}{##1}%
+  }%
+  \define@key{thu@value}{choices}{%
+    \def\thu@@choices{##1}%
+    \@namedef{thu@#1@@choice@reset}{}%
+    \@namedef{thu@#1@@choice@hook}{%
+      \@ifundefined{thu@#1@@choice@\@nameuse{thu@\@nameuse{thu@#1@@name}}@@code}{%
+        \thu@error{Invalid value "#1 = \@nameuse{thu@\@nameuse{thu@#1@@name}}"}%
+      }%
+      \@nameuse{thu@#1@@choice@reset}%
+      \@nameuse{thu@\@nameuse{thu@\@nameuse{thu@#1@@name}}true}%
+      \@nameuse{thu@#1@@choice@\@nameuse{thu@\@nameuse{thu@#1@@name}}@@code}%
+    }%
+  }%
+  \define@key{thu@value}{default}{%
+    \def\thu@@default{##1}%
+  }%
+  \kvsetkeys{thu@value}{#2}%
+  \expandafter\ifx\csname thu@#1@@name\endcsname\@empty
+    \@namedef{thu@#1@@name}{#1}%
+  \fi
+  \@namedef{thu@\@nameuse{thu@#1@@name}}{}%
+  \kv@set@family@handler{thu@choice}{%
+    \ifx\thu@@default\@empty
+      \def\thu@@default{##1}%
+    \fi
+    \@namedef{thu@#1@@choice@##1@@code}{##2}%
+    \expandafter\newif\csname ifthu@##1\endcsname
+    \expandafter\g@addto@macro\csname thu@#1@@choice@reset\endcsname{%
+      \@nameuse{thu@##1false}%
+    }%
+  }%
+  \kvsetkeys@expandafter{thu@choice}{\thu@@choices}%
+  \ifx\thu@@default\@empty\else
+    \expandafter\let\csname thu@\@nameuse{thu@#1@@name}\endcsname\thu@@default
+    \@nameuse{thu@#1@@choice@hook}%
+    \@nameuse{thu@#1@@code}%
+  \fi
+  \define@key{thu}{#1}{%
+    \@namedef{thu@\@nameuse{thu@#1@@name}}{##1}%
+    \@nameuse{thu@#1@@choice@hook}%
+    \@nameuse{thu@#1@@code}%
+  }%
+}
+\newcommand\thu@define@key[1]{%
+  \kvsetkeys{thu@key}{#1}%
+}
+\newif\ifthu@graduate
+\newcommand\thu@set@today[1]{%
+  \edef\thu@@date{#1}%
+  \def\thu@@process@date##1-##2-##3\@nil{%
+      \year=\number ##1\relax
+      \month=\number ##2\relax
+      \day=\number ##3\relax
+  }%
+  \expandafter\thu@@process@date\thu@@date\@nil
+}
+\newcommand\thu@format@date[2]{%
+  \edef\thu@@date{#2}%
+  \def\thu@@process@date##1-##2-##3\@nil{%
+    #1{\number ##1}{\number ##2}{\number ##3}%
+  }%
+  \expandafter\thu@@process@date\thu@@date\@nil
+}
+\thu@define@key{
+  degree = {
+    choices = {
+      bachelor = \thu@graduatefalse,
+      master   = \thu@graduatetrue,
+      doctor   = \thu@graduatetrue,
+      postdoc  = \thu@graduatefalse,
+    },
+    default = doctor,
+  },
+  degree-type = {
+    choices = {
+      academic,
+      professional
+    },
+    name = degree@type,
+  },
 %    \end{macrocode}
 %
-% 论文是使用英文。
+% 论文是否使用英文。
 %    \begin{macrocode}
-\DeclareStringOption[chinese]{language}[chinese]
-%    \end{macrocode}
-%
-% 论文是否保密。
-%    \begin{macrocode}
-\DeclareBoolOption{secret}
+  language = {
+    choices = {
+      chinese,
+      english,
+    },
+  },
+}
 %    \end{macrocode}
 %
 % 章目录中的英文是否用 Arial 字体（默认关闭），可以分别控制内容和页码部分。
@@ -1005,21 +1099,6 @@
 % 解析用户传递过来的选项，并加载 \pkg{ctexbook}。
 %    \begin{macrocode}
 \ProcessKeyvalOptions*
-\newcommand\thu@validate@key[1]{%
-  \@ifundefined{thu@\csname thu@#1\endcsname true}{%
-    \ClassError{thuthesis}{Invalid value '\csname thu@#1\endcsname'}{}%
-  }{%
-    \csname thu@\csname thu@#1\endcsname true\endcsname
-  }%
-}
-\newif\ifthu@bachelor
-\newif\ifthu@master
-\newif\ifthu@doctor
-\newif\ifthu@postdoctor
-\thu@validate@key{degree}
-\newif\ifthu@chinese
-\newif\ifthu@english
-\thu@validate@key{language}
 %    \end{macrocode}
 %
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
@@ -1225,8 +1304,14 @@
 \renewcommand\frontmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmatterfalse
-  \pagenumbering{Alph}
-  \pagestyle{thu@empty}}
+  \ifthu@bachelor
+    \pagestyle{thu@plain}
+  \else
+    \pagestyle{thu@headings}
+  \fi
+  \pagenumbering{Roman}%
+  \let\@tabular\thu@tabular
+}
 \renewcommand\mainmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue
@@ -1520,7 +1605,7 @@
   \ifthu@bachelor
     \newcommand\thu@resume@title{在学期间参加课题的研究成果}
   \else
-    \ifthu@postdoctor
+    \ifthu@postdoc
       \newcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
     \else
       \newcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
@@ -1548,7 +1633,7 @@
   \ifthu@bachelor
     \newcommand\thu@resume@title{Research Achievements}
   \else
-    \ifthu@postdoctor
+    \ifthu@postdoc
       \newcommand\thu@resume@title{%
         Resume, Publications and Research Achievements%
       }
@@ -1881,18 +1966,6 @@
   \newcommand{\cabstractname}{摘\hspace{\ccwd}要}
   \newcommand{\eabstractname}{Abstract}
 \fi
-\let\CJK@todaysave=\today
-\def\CJK@todaysmall@short{\the\year 年 \the\month 月}
-\def\CJK@todaysmall{\the\year 年 \the\month 月 \the\day 日}
-\def\CJK@todaybig@short{\zhdigits{\the\year}年\zhnumber{\the\month}月}
-\def\CJK@todaybig{\zhdigits{\the\year}年\zhnumber{\the\month}月\zhnumber{\the\day}日}
-\def\CJK@today{\CJK@todaysmall}
-\renewcommand\today{\CJK@today}
-\newcommand\CJKtoday[1][1]{%
-  \ifcase#1\def\CJK@today{\CJK@todaysave}
-    \or\def\CJK@today{\CJK@todaysmall}
-    \or\def\CJK@today{\CJK@todaybig}
-  \fi}
 %    \end{macrocode}
 %
 % \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。通过 \pkg{fancyhdr}
@@ -2094,117 +2167,148 @@
 %
 % \subsubsection{封面和封底}
 % \label{sec:cover}
-% \begin{macro}{\thu@def@term}
-% 方便的定义封面的一些替换命令。
-%    \begin{macrocode}
-\def\thu@def@term#1{%
-  \define@key{thu}{#1}{\csname #1\endcsname{##1}}
-  \expandafter\gdef\csname #1\endcsname##1{%
-    \expandafter\gdef\csname thu@#1\endcsname{##1}}
-  \csname #1\endcsname{}}
-%    \end{macrocode}
-% \end{macro}
-%
 % 定义密级参数。
 %    \begin{macrocode}
-\thu@def@term{secretlevel}
-\thu@def@term{secretyear}
+\thu@define@key{
+  secret-level = {
+    name = secret@level,
+  },
+  secret-year = {
+    name = secret@year,
+  },
 %    \end{macrocode}
 %
 % 论文中英文题目。
 %    \begin{macrocode}
-\thu@def@term{ctitle}
-\thu@def@term{etitle}
+  title = {
+    default = {标题},
+  },
+  title* = {
+    default = {Title},
+    name    = title@en,
+  },
 %    \end{macrocode}
 %
 % 作者、导师、副导师、联合指导老师。
 %    \begin{macrocode}
-\thu@def@term{cauthor}
-\thu@def@term{csupervisor}
-\thu@def@term{cassosupervisor}
-\thu@def@term{ccosupervisor}
-\thu@def@term{eauthor}
-\thu@def@term{esupervisor}
-\thu@def@term{eassosupervisor}
-\thu@def@term{ecosupervisor}
+  author = {
+    default = {姓名},
+  },
+  author* = {
+    default = {Name of author},
+    name    = author@en,
+  },
+  supervisor = {
+    default = {导师姓名},
+  },
+  supervisor* = {
+    default = {Name of supervisor},
+    name    = supervisor@en,
+  },
+  associate-supervisor = {
+    name = associate@supervisor,
+  },
+  associate-supervisor* = {
+    name = associate@supervisor@en,
+  },
+  joint-supervisor = {
+    name = joint@supervisor,
+  },
+  joint-supervisor* = {
+    name = joint@supervisor@en,
+  },
 %    \end{macrocode}
 %
 % 学位中英文。
 %    \begin{macrocode}
-\thu@def@term{cdegree}
-\thu@def@term{edegree}
+  degree-name = {
+    default = {工学博士},
+    name    = degree@name,
+  },
+  degree-name* = {
+    default = {Doctor of Philosophy},
+    name    = degree@name@en,
+  },
 %    \end{macrocode}
 %
 % 院系中英文名称。
 %    \begin{macrocode}
-\thu@def@term{cdepartment}
-\thu@def@term{edepartment}
+  department = {
+    default = {计算机科学与技术系},
+  },
 %    \end{macrocode}
 %
-% 学位中英文名称。
+% 专业中英文名称。
 %    \begin{macrocode}
-\thu@def@term{cmajor}
-\thu@def@term{emajor}
+  discipline = {
+    % default = {计算机科学与技术},
+  },
+  discipline* = {
+    % default = {Computer Science and Technology},
+    name    = discipline@en,
+  },
 %    \end{macrocode}
 %
 % 论文成文日期。
 %    \begin{macrocode}
-\thu@def@term{cdate}
-\thu@def@term{edate}
+  date = {
+    code = {\thu@set@today{\thu@date}},
+  },
 %    \end{macrocode}
 %
 % 博士后专用封面参数。
 %    \begin{macrocode}
-\thu@def@term{id}
-\thu@def@term{udc}
-\thu@def@term{catalognumber}
-\thu@def@term{cfirstdiscipline}
-\thu@def@term{cseconddiscipline}
-\thu@def@term{postdoctordate}
-\thu@def@term{postdocstartdate}
-\thu@def@term{postdocenddate}
+  clc,
+  udc,
+  id,
+  discipline-level-1 = {
+    default = {一级学科名称},
+    name    = discipline@level@i,
+  },
+  discipline-level-2 = {
+    default = {二级学科名称},
+    name    = discipline@level@ii,
+  },
+  start-date = {
+    name    = start@date,
+  },
+  end-date = {
+    name    = end@date,
+  },
+}
 %    \end{macrocode}
 %
-% 摘要最好以环境的形式出现（否则命令的形式会导致开始结束的括号距离太远，我不喜
-% 欢），这就必须让环境能够自己保存内容留待以后使用。使用 \pkg{environ} 的
-% \cs{Collect@Body} 来实现。
+% \begin{macro}{\thu@clist@use}
+% 不同论文格式关键词之间的分割不太相同，我们用 \option{keywords} 和
+% \option{keywords*} 来收集关键词列表，然后用本命令来生成符合要求的格式，
+% 类似于 \LaTeX3 的 \cs{clist\_use:Nn}。
 %    \begin{macrocode}
-\newcommand{\thu@@cabstract}[1]{\long\gdef\thu@cabstract{#1}}
-\newenvironment{cabstract}{\Collect@Body\thu@@cabstract}{}
-\newcommand{\thu@@eabstract}[1]{\long\gdef\thu@eabstract{#1}}
-\newenvironment{eabstract}{\Collect@Body\thu@@eabstract}{}
-%    \end{macrocode}
-%
-% \begin{macro}{\thu@parse@keywords}
-%   不同论文格式关键词之间的分割不太相同，我们用 \cs{ckeywords} 和
-%    \cs{ekeywords} 来收集关键词列表，然后用本命令来生成符合要求的格式。
-%    \begin{macrocode}
-\def\thu@parse@keywords#1{
-  \define@key{thu}{#1}{\csname #1\endcsname{##1}}
-  \expandafter\gdef\csname thu@#1\endcsname{}
-  \expandafter\gdef\csname #1\endcsname##1{
-    \@for\reserved@a:=##1\do{
-      \expandafter\ifx\csname thu@#1\endcsname\@empty\else
-        \expandafter\g@addto@macro\csname thu@#1\endcsname{%
-          \ignorespaces\csname thu@#1@separator\endcsname}
-      \fi
-      \expandafter\expandafter\expandafter\g@addto@macro%
-        \expandafter\csname thu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
+\thu@define@key{
+  keywords,
+  keywords* = {
+    name = keywords@en,
+  },
+}
+\newcommand\thu@clist@use[2]{%
+  \def\thu@@tmp{}%
+  \kv@set@family@handler{thu@clist}{%
+    \ifx\thu@@tmp\@empty
+      \def\thu@@tmp{#2}%
+    \else
+      #2%
+    \fi
+    ##1%
+  }%
+  \kvsetkeys@expandafter{thu@clist}{#1}%
+}
 %    \end{macrocode}
 % \end{macro}
-% 利用 \cs{thu@parse@keywords} 来定义，内部通过 \cs{thu@ckeywords} 和
-% \cs{thu@ekeywords} 来引用。
-%    \begin{macrocode}
-\thu@parse@keywords{ckeywords}
-\thu@parse@keywords{ekeywords}
-%    \end{macrocode}
 %
 % \begin{macro}{\thusetup}
 % 由上可见，封面和封底有一大堆信息需要设置，为了简化操作界面，提供一
 % 个 \cs{thusetup} 命令支持 key/value 的方式来设置。key 就是前面各个设置项的
-% 名字。\note[说明：]{只能设置普通项，不支持环境项，
-% 如 \texttt{cabstract} 和 \texttt{eabstract}。} 由于这些设置项被 \cs{makecover}
-% 调用，所以此命令需要在 \cs{makecover} 之前被调用。
+% 名字。 由于这些设置项被 \cs{maketitle}
+% 调用，所以此命令需要在 \cs{maketitle} 之前被调用。
 %    \begin{macrocode}
 \def\thusetup{\kvsetkeys{thu}}
 %    \end{macrocode}
@@ -2212,20 +2316,12 @@
 %
 % 定义封面用到的各种文字。
 %    \begin{macrocode}
-\def\thu@ckeywords@separator{；}
-\def\thu@ekeywords@separator{;}
 \def\thu@title@sep{：}
-\ifthu@postdoctor
-  \def\thu@secretlevel{密级}
-\else
-  \def\thu@secretlevel{秘密}
-\fi
-\def\thu@secretyear{\the\year}
 \def\thu@schoolname{清华大学}
 \def\thu@bachelor@subtitle{综合论文训练}
 \def\thu@bachelor@title@pre{题目}
-\def\thu@postdoctor@date@title{研究起止日期}
-\ifthu@postdoctor
+\def\thu@postdoc@date@title{研究起止日期}
+\ifthu@postdoc
   \def\thu@author@title{博士后姓名}
 \else
   \ifthu@bachelor
@@ -2234,13 +2330,13 @@
     \def\thu@author@title{研究生}
   \fi
 \fi
-\def\thu@postdoctor@first@discipline@title{流动站（一级学科）名称}
-\def\thu@postdoctor@second@discipline@title{专\hspace{1em}业（二级学科）名称}
+\def\thu@postdoc@first@discipline@title{流动站（一级学科）名称}
+\def\thu@postdoc@second@discipline@title{专\hspace{1em}业（二级学科）名称}
 \def\thu@secret@content{%
   \unskip\ifthu@master$\bigstar$ \fi%
   \ifthu@doctor$\bigstar$ \fi%
-  \thu@secretyear 年}
-\def\thu@apply{（申请清华大学\thu@cdegree 学位论文）}
+  \thu@secret@year 年}
+\def\thu@apply{（申请清华大学\thu@degree@name\ifthu@professional 专业\fi 学位论文）}
 \ifthu@bachelor
   \def\thu@department@title{系别}
   \def\thu@major@title{专业}
@@ -2248,7 +2344,7 @@
   \def\thu@department@title{培养单位}
   \def\thu@major@title{学科}
 \fi
-\ifthu@postdoctor
+\ifthu@postdoc
   \def\thu@supervisor@title{合作导师}
 \else
   \def\thu@supervisor@title{指导教师}
@@ -2260,10 +2356,30 @@
 \fi
 \def\thu@cosuper@title{%
   \ifthu@doctor 联合导师\else \ifthu@master 联合指导教师\fi\fi}
-\cdate{\ifthu@bachelor\CJK@todaysmall\else\ifthu@postdoctor\CJK@todaysmall@short\else\CJK@todaybig@short\fi\fi}
-\edate{\ifcase \month \or January\or February\or March\or April\or May%
-       \or June\or July \or August\or September\or October\or November
-       \or December\fi\unskip,\ \ \the\year}
+\newcommand\thu@date@zh@digit{\the\year{} 年 \the\month{} 月 \the\day{} 日}
+\newcommand\thu@date@zh@digit@short{\the\year{} 年 \the\month{} 月}
+\newcommand\thu@date@zh{\zhdigits{\the\year}年\zhnumber{\the\month}月\zhnumber{\the\day}日}
+\newcommand\thu@date@zh@short{\zhdigits{\the\year}年\zhnumber{\the\month}月}
+\newcommand\thu@date@month{%
+  \ifcase\month\or
+    January\or February\or March\or April\or May\or June\or
+    July\or August\or September\or October\or November\or December%
+  \fi
+}
+\newcommand\thu@date@en{\thu@date@month\space\number\day, \number\year}
+\newcommand\thu@date@en@short{\thu@date@month, \number\year}
+\newcommand\thu@cdate{%
+  \ifthu@bachelor
+    \thu@date@zh@digit
+  \else
+    \ifthu@postdoc
+      \thu@date@zh@digit@short
+    \else
+      \thu@date@zh@short
+    \fi
+  \fi
+}
+\newcommand\thu@edate{\thu@date@en@short}
 \newcommand{\thu@authtitle}{关于学位论文使用授权的说明}
 \newcommand{\thu@authorization}{%
 \ifthu@bachelor
@@ -2288,7 +2404,7 @@
 \newcommand{\thu@teachersig}{导师签名：}
 \newcommand{\thu@frontdate}{%
   日\ifthu@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
-\newcommand{\thu@ckeywords@title}{关键词：}
+\newcommand{\thu@keywords@title}{关键词：}
 %    \end{macrocode}
 %
 %
@@ -2306,7 +2422,7 @@
 \newcommand{\thu@put@title}[2][\thu@title@width]{%
   \begin{CJKfilltwosides}[b]{#1}#2\end{CJKfilltwosides}}
 \def\thu@first@titlepage{%
-  \ifthu@postdoctor\thu@first@titlepage@postdoctor\else\thu@first@titlepage@other\fi}
+  \ifthu@postdoc\thu@first@titlepage@postdoctor\else\thu@first@titlepage@other\fi}
 \newcommand\thu@first@titlepage@postdoctor{%
   \thu@cover@postdoc
   \cleardoublepage
@@ -2318,8 +2434,8 @@
     \renewcommand\ULthickness{0.7pt}%
     \vspace*{0.35cm}%
     {\sihao[2.6]%
-      \thu@put@title{分类号}\thu@underline[3.7cm]{\thu@catalognumber}\hfill
-      密级\thu@underline[3.7cm]{\ifthu@secret\thu@secret@content\fi}\par
+      \thu@put@title{分类号}\thu@underline[3.7cm]{\thu@clc}\hfill
+      密级\thu@underline[3.7cm]{\ifx\thu@secret@level\@empty\else\thu@secret@content\fi}\par
       \thu@put@title{U D C}\thu@underline[3.7cm]{\thu@udc}\hfill
       编号\thu@underline[3.7cm]{\thu@id}\par
     }%
@@ -2330,15 +2446,21 @@
     }%
     \vskip 0.2cm%
     \parbox[t][4.0cm][c]{\textwidth}{%
-      \centering\sihao[3.46]\CJKunderline*[depth=1em]{\thu@ctitle}\par
+      \centering\sihao[3.46]\CJKunderline*[depth=1em]{\thu@title}\par
     }\par
     \vskip 0.4cm%
-    {\xiaosi\thu@cauthor\par}%
+    {\xiaosi\thu@author\par}%
     \vskip 1.4cm%
     {\xiaosi[1.58]\xeCJKsetup{underline/depth=0.9em}%
-      工作完成日期\quad\thu@CJKunderline[5.9cm]{\thu@postdoctordate}\par
+      \def\thu@date@fmt##1##2##3{##1 年 ##2 月}
+      工作完成日期\quad
+      \thu@CJKunderline[5.9cm]{%
+        \thu@format@date{\thu@date@fmt}{\thu@start@date}—%
+        \thu@format@date{\thu@date@fmt}{\thu@end@date}
+      }\par
       \vskip 0.55cm%
-      报告提交日期\quad\thu@CJKunderline[5.9cm]{\thu@cdate}\par
+      报告提交日期\quad
+      \thu@CJKunderline[5.9cm]{\the\year{} 年 \the\month{} 月}\par
     }%
     \vskip 0.45cm%
     {\xiaosi[2]{\ziju{1}\thu@schoolname}\quad （北京）\par}%
@@ -2350,26 +2472,27 @@
   \begin{center}%
     \vspace*{1.5cm}%
     \parbox[t][3cm][c]{\textwidth}{%
-      \centering\sanhao[1.95]\thu@ctitle\par
+      \centering\sanhao[1.95]\thu@title\par
     }\par
     \vskip 0.15cm%
     \parbox[t][3cm][c]{\textwidth}{%
-      \centering\sihao[1.36]\thu@etitle\par
+      \centering\sihao[1.36]\thu@title@en\par
     }\par
     \vskip 0.4cm%
     {\xiaosi[2.6]%
       \setlength{\thu@title@width}{11em}%
       \begin{tabular}{l@{\quad}l}%
-        \thu@put@title{博士后姓名}                  & \thu@cauthor           \\
-        \thu@put@title{流动站（一级学科）名称}      & \thu@cfirstdiscipline  \\
-        \thu@put@title{专\quad{}业（二级学科）名称} & \thu@cseconddiscipline \\
+        \thu@put@title{博士后姓名}                  & \thu@author           \\
+        \thu@put@title{流动站（一级学科）名称}      & \thu@discipline@level@i  \\
+        \thu@put@title{专\quad{}业（二级学科）名称} & \thu@discipline@level@ii \\
       \end{tabular}\par
     }%
     \vskip 2.7cm%
     {\xiaosi[2.6]%
-      研究工作起始时间\quad\thu@postdocstartdate\par
+      \def\thu@date@fmt##1##2##3{##1 年 ##2 月 ##3 日}
+      研究工作起始时间\quad\thu@format@date{\thu@date@fmt}{\thu@start@date}\par
       \vskip 0.1cm%
-      研究工作期满时间\quad\thu@postdocenddate\par
+      研究工作期满时间\quad\thu@format@date{\thu@date@fmt}{\thu@end@date}\par
     }%
     \vskip 2.1cm%
     {\xiaosi[2.6]\thu@schoolname{}人事部（北京）\par}%
@@ -2381,7 +2504,7 @@
   \begin{center}
     \vspace*{-1.6cm}
     \parbox[b][2.4cm][t]{\textwidth}{%
-      \ifthu@secret{\heiti\sanhao\thu@secretlevel\thu@secret@content}\else\rule{1cm}{0cm}\fi}
+      \ifx\thu@secret@level\@empty\rule{1cm}{0cm}\else{\heiti\sanhao\thu@secret@level\thu@secret@content}\fi}
     \ifthu@bachelor
       \vskip0.65cm
       {\ifcsname lishu\endcsname\yihao\lishu\ziju{0.5}\thu@schoolname\else\includegraphics{tsinghua.pdf}\fi}
@@ -2394,14 +2517,14 @@
       \renewcommand{\CJKunderlinebasesep}{0.25cm}%
       \renewcommand{\ULthickness}{1.3pt}%
       \xeCJKsetup{underline/format=\color{black}}%
-      \CJKunderline*{\thu@ctitle}}%
+      \CJKunderline*{\thu@title}}%
       \vskip1.3cm
     \else
       \vskip0.8cm
       \parbox[t][9cm][t]{\paperwidth-8cm}{
       \renewcommand{\baselinestretch}{1.3}
       \begin{center}
-        \yihao[1.2]{\sffamily\thu@ctitle}\par%
+        \yihao[1.2]{\sffamily\thu@title}\par%
         \par\vskip 18bp%
         \xiaoer[1]\textrm{\thu@apply}%
       \end{center}}
@@ -2412,7 +2535,7 @@
 %    \begin{macrocode}
     \ifthu@bachelor
       \vskip0.75cm
-      \ifx\thu@cassosupervisor\@empty%
+      \ifx\thu@associate@supervisor\@empty%
         \def\thu@tempa{7.15cm}
       \else%
         \def\thu@tempa{8.15cm}
@@ -2424,16 +2547,16 @@
          \setlength{\extrarowheight}{6pt}
          \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
              \thu@put@title{\thu@department@title} & \thu@title@sep
-               & \thu@cdepartment\\
+               & \thu@department\\
              \thu@put@title{\thu@major@title}      & \thu@title@sep
-               & \thu@cmajor\\
+               & \thu@discipline\\
              \thu@put@title{\thu@author@title}     & \thu@title@sep
-               & \thu@cauthor \\
+               & \thu@author \\
              \thu@put@title{\thu@supervisor@title} & \thu@title@sep
-               & \thu@csupervisor\\
-             \ifx\thu@cassosupervisor\@empty\else%
+               & \thu@supervisor\\
+             \ifx\thu@associate@supervisor\@empty\else%
                \thu@put@title{\thu@assosuper@title} & \thu@title@sep
-               & \thu@cassosupervisor\\
+               & \thu@associate@supervisor\\
              \fi
            \end{tabular}
         }}
@@ -2445,25 +2568,25 @@
           \setlength{\extrarowheight}{4pt}
           \begin{tabular}{p{\thu@title@width}@{}c@{\extracolsep{8pt}}l}
               \thu@put@title{\thu@department@title}  & \thu@title@sep
-                & {\ziju{0.1875}\thu@cdepartment}\\
+                & {\ziju{0.1875}\thu@department}\\
               \thu@put@title{\thu@major@title}       & \thu@title@sep
-                & {\ziju{0.1875}\thu@cmajor}\\
+                & {\ziju{0.1875}\thu@discipline}\\
               \thu@put@title{\thu@author@title}      & \thu@title@sep
-                & {\ziju{0.6875}\thu@cauthor}\\
+                & {\ziju{0.6875}\thu@author}\\
               \thu@put@title{\thu@supervisor@title}  & \thu@title@sep
-                & {\ziju{0.6875}\thu@csupervisor}\\
-              \ifx\thu@cassosupervisor\@empty\else
+                & {\ziju{0.6875}\thu@supervisor}\\
+              \ifx\thu@associate@supervisor\@empty\else
                 \thu@put@title{\thu@assosuper@title} & \thu@title@sep
-                & {\ziju{0.6875}\thu@cassosupervisor}\\
+                & {\ziju{0.6875}\thu@associate@supervisor}\\
               \fi
-              \ifx\thu@ccosupervisor\@empty\else
+              \ifx\thu@joint@supervisor\@empty\else
                 \ifthu@master
                   \hfill\makebox[0pt][r]{\thu@cosuper@title} & \thu@title@sep
-                  & {\ziju{0.6875}\thu@ccosupervisor}\\
+                  & {\ziju{0.6875}\thu@joint@supervisor}\\
                 \fi
                 \ifthu@doctor
                   \thu@put@title{\thu@cosuper@title} & \thu@title@sep
-                  & {\ziju{0.6875}\thu@ccosupervisor}\\
+                  & {\ziju{0.6875}\thu@joint@supervisor}\\
                 \fi
               \fi
             \end{tabular}
@@ -2491,25 +2614,12 @@
 \def\thu@master@sci{Master of Science}
 \def\thu@doctor@phi{Doctor of Philosophy}
 \newcommand{\thu@engcover}{%
-  \newif\ifthu@professional\thu@professionalfalse
-  \ifthu@master
-    \ifthenelse{\equal{\thu@edegree}{\thu@master@art}}
-      {\relax}
-      {\ifthenelse{\equal{\thu@edegree}{\thu@master@sci}}
-        {\relax}
-        {\thu@professionaltrue}}
-  \fi
-  \ifthu@doctor
-    \ifthenelse{\equal{\thu@edegree}{\thu@doctor@phi}}
-      {\relax}
-      {\thu@professionaltrue}
-  \fi
   \begin{center}
     \vspace*{-5pt}
     \parbox[t][5.2cm][t]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.5}
       \begin{center}
-        \erhao[1.1]\bfseries\sffamily\thu@etitle%
+        \erhao[1.1]\bfseries\sffamily\thu@title@en%
       \end{center}}
     \parbox[t][][t]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.3}
@@ -2521,20 +2631,20 @@
         in partial fulfillment of the requirement\\
         for the \ifthu@professional professional \fi
         degree of\\
-        {\bfseries\sffamily\thu@edegree}%
+        {\bfseries\sffamily\thu@degree@name@en}%
         \ifthu@professional\relax\else
           \\in\\[3bp]
-          {\bfseries\sffamily\thu@emajor}%
+          {\bfseries\sffamily\thu@discipline@en}%
         \fi
       \end{center}}
     \parbox[t][][b]{\paperwidth-7.2cm}{
       \renewcommand{\baselinestretch}{1.3}
       \begin{center}
         \sanhao\sffamily by\\[3bp]
-        \bfseries\thu@eauthor%
+        \bfseries\thu@author@en%
         \ifthu@professional
-          \ifx\thu@emajor\empty\relax\else
-            \\(~\thu@emajor~)%
+          \ifx\thu@discipline@en\empty\relax\else
+            \\(~\thu@discipline@en~)%
         \fi\fi
       \end{center}}
     \par\vspace{0.9cm}
@@ -2543,11 +2653,11 @@
       \xiaosan\centering
       \begin{tabular}{rl}
         \ifthu@master Thesis \else Dissertation \fi
-        Supervisor : & \thu@esupervisor\\
-        \ifx\thu@eassosupervisor\@empty
-          \else Associate Supervisor : & \thu@eassosupervisor\\\fi
-        \ifx\thu@ecosupervisor\@empty
-          \else Cooperate Supervisor : & \thu@ecosupervisor\\\fi
+        Supervisor : & \thu@supervisor@en\\
+        \ifx\thu@associate@supervisor@en\@empty
+          \else Associate Supervisor : & \thu@associate@supervisor@en\\\fi
+        \ifx\thu@joint@supervisor@en\@empty
+          \else Cooperate Supervisor : & \thu@joint@supervisor@en\\\fi
       \end{tabular}}
     \parbox[t][2cm][b]{\paperwidth-7.2cm}{
     \begin{center}
@@ -2558,7 +2668,31 @@
 % \end{macro}
 %
 % \myentry{授权页面}
-% \begin{macro}{\thu@authorization@mk}
+% \begin{macro}{\copyrightpage}
+% 授权说明
+%    \begin{macrocode}
+\newcommand\copyrightpage[1][]{%
+  \ifthu@postdoc\relax\else
+    \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
+    \def\thu@@tmp{#1}
+    \ifx\thu@@tmp\@empty
+      \ifthu@bachelor\thu@authorization@mk\else%
+        \begin{list}{}{%
+          \topsep\z@%
+          \listparindent\parindent%
+          \parsep\parskip%
+          \setlength{\leftmargin}{0.9mm}%
+          \setlength{\rightmargin}{0.9mm}}%
+        \item[]\thu@authorization@mk%
+        \end{list}%
+      \fi%
+    \else
+      \includepdf{#1}%
+    \fi
+  \fi
+}
+%    \end{macrocode}
+%
 % 支持扫描文件替换。
 %    \begin{macrocode}
 \newcommand{\thu@authorization@mk}{%
@@ -2583,34 +2717,16 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\makecover}
+% \begin{macro}{\maketitle}
 % 生成封面总命令。
 %    \begin{macrocode}
-\def\makecover{%
-  \thu@setup@pdfinfo\thu@makecover}
-\def\thu@setup@pdfinfo{%
-  \ifthu@chinese
-    \hypersetup{
-      pdftitle    = \thu@ctitle,
-      pdfauthor   = \thu@cauthor,
-      pdfsubject  = \thu@cdegree,
-      pdfkeywords = \thu@ckeywords,
-    }%
-  \else
-    \hypersetup{
-      pdftitle    = \thu@etitle,
-      pdfauthor   = \thu@eauthor,
-      pdfsubject  = \thu@edegree,
-      pdfkeywords = \thu@ekeywords,
-    }%
-  \fi
-  \hypersetup{
-    pdfcreator={\thuthesis-v\version}}}
-\NewDocumentCommand{\thu@makecover}{o}{
+\renewcommand\maketitle{%
+  \thu@setup@pdfinfo
+  \pagenumbering{Alph}%
   \phantomsection
-  \pdfbookmark[-1]{\thu@ctitle}{ctitle}
+  \pdfbookmark[-1]{\thu@title}{title}%
   \normalsize%
-  \begin{titlepage}
+  \begin{titlepage}%
 %    \end{macrocode}
 %
 % 论文封面第一页！
@@ -2621,40 +2737,35 @@
 % 研究生论文需要增加英文封面
 %    \begin{macrocode}
     \ifthu@bachelor\relax\else
-      \ifthu@postdoctor\relax\else
+      \ifthu@postdoc\relax\else
         \cleardoublepage\thu@engcover
     \fi\fi
-%    \end{macrocode}
-%
-% 授权说明
-%    \begin{macrocode}
-    \ifthu@postdoctor\relax\else%
-      \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
-      \IfNoValueTF{#1}{%
-        \ifthu@bachelor\thu@authorization@mk\else%
-          \begin{list}{}{%
-            \topsep\z@%
-            \listparindent\parindent%
-            \parsep\parskip%
-            \setlength{\leftmargin}{0.9mm}%
-            \setlength{\rightmargin}{0.9mm}}%
-          \item[]\thu@authorization@mk%
-          \end{list}%
-        \fi%
-      }{%
-        \includepdf{#1}%
-      }%
-    \fi
   \end{titlepage}
-%    \end{macrocode}
-%
-% 中英文摘要
-%    \begin{macrocode}
   \normalsize
-  \thu@makeabstract
-  \let\@tabular\thu@tabular}
+}
 %    \end{macrocode}
 % \end{macro}
+%
+%    \begin{macrocode}
+\def\thu@setup@pdfinfo{%
+  \ifthu@chinese
+    \hypersetup{
+      pdftitle    = \thu@title,
+      pdfauthor   = \thu@author,
+      pdfsubject  = \thu@degree@name,
+      pdfkeywords = \thu@keywords,
+    }%
+  \else
+    \hypersetup{
+      pdftitle    = \thu@title@en,
+      pdfauthor   = \thu@author@en,
+      pdfsubject  = \thu@degree@name@en,
+      pdfkeywords = \thu@keywords@en,
+    }%
+  \fi
+  \hypersetup{
+    pdfcreator={\thuthesis-v\version}}}
+%    \end{macrocode}
 %
 % \subsubsection{摘要}
 % \label{sec:abstractformat}
@@ -2672,59 +2783,57 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\thu@makeabstract}
+% \begin{environment}{abstract}
 % 中文摘要部分的标题为“\textbf{摘要}”，用黑体三号字。
 %    \begin{macrocode}
-\newcommand{\thu@makeabstract}{%
-  \thu@makeabstract@zh
-  \thu@makeabstract@en
-}
-\newcommand\thu@makeabstract@zh{%
+\newenvironment{abstract}{%
   \ifthu@bachelor\clearpage\else\cleardoublepage\fi
   \thu@setchinese
   \thu@chapter*[]{\cabstractname} % no tocline
-  \ifthu@bachelor
-    \pagestyle{thu@plain}
-  \else
-    \pagestyle{thu@headings}
-  \fi
-  \pagenumbering{Roman}
+}{
 %    \end{macrocode}
 %
 % 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用 Times New Roman 体，
 % 标点符号一律用中文输入状态下的标点符号。
 %    \begin{macrocode}
-  \thu@cabstract
 %    \end{macrocode}
 % 每个关键词之间空两个汉字符宽度， 且为悬挂缩进。
 %    \begin{macrocode}
   \ifthu@doctor\vfill\else\vskip12bp\fi
-  \thu@put@keywords{\textbf\thu@ckeywords@title}{\thu@ckeywords}
+  \thu@put@keywords{\textbf\thu@keywords@title}{%
+    \thu@clist@use{\thu@keywords}{；}%
+  }%
+  \thu@setdefaultlanguage
 }
 %    \end{macrocode}
+% \end{environment}
 %
+% \begin{environment}{abstract*}
 % 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
 % 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连续。
 %    \begin{macrocode}
-\newcommand\thu@makeabstract@en{%
+\newenvironment{abstract*}{%
   \thu@setenglish
   \thu@chapter*[]{\eabstractname} % no tocline
+}{%
 %    \end{macrocode}
 %
 % 摘要内容用小四号 Times New Roman。
 %    \begin{macrocode}
-  \thu@eabstract
 %    \end{macrocode}
 %
 % 每个关键词之间空四个英文字符宽度。
 %    \begin{macrocode}
   \ifthu@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{%
-    \textbf{\ifthu@bachelor Keywords:\else Key Words:\fi\enskip}}{\thu@ekeywords}%
+    \textbf{\ifthu@bachelor Keywords:\else Key Words:\fi\enskip}%
+  }{%
+    \thu@clist@use{\thu@keywords@en}{; }%
+  }%
   \thu@setdefaultlanguage
 }
 %    \end{macrocode}
-% \end{macro}
+% \end{environment}
 %
 % \subsubsection{主要符号表}
 % \label{sec:denotationfmt}
@@ -3056,7 +3165,7 @@
 % \begin{macro}{\spine}
 % 单独使用书脊命令会在新的一页产生竖排书脊。
 %    \begin{macrocode}
-\NewDocumentCommand{\spine}{O{\thu@ctitle} O{\thu@cauthor}}{%
+\NewDocumentCommand{\spine}{O{\thu@title} O{\thu@author}}{%
   \newpage\thispagestyle{empty}%
   \fangsong\addCJKfontfeatures*{RawFeature={vertical:}}
   \xiaosan\ziju{0.4}%

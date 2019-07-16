@@ -6,11 +6,9 @@
 \START
 \showoutput
 
-\thusetup{
-  ckeywords = {关键词 1, 关键词 2, 关键词 3, 关键词 4, 关键词 5},
-}
+\frontmatter
 
-\begin{cabstract}
+\begin{abstract}
   论文的摘要是对论文研究内容和成果的高度概括。摘要应对论文所研究的问题及其研究目的进行描述，对研究方法和过程进行简单介绍，对研究成果和所得结论进行概括。
   摘要应具有独立性和自明性，其内容应包含与论文全文同等量的主要信息。
   使读者即使不阅读全文，通过摘要就能了解论文的总体内容和主要成果。
@@ -20,10 +18,11 @@
 
   关键词是为了文献标引工作、用以表示全文主要内容信息的单词或术语。
   关键词不超过 5 个，每个关键词中间用分号分隔。
-\end{cabstract}
 
-\makeatletter
-\thu@makeabstract@zh
+  \thusetup{
+    keywords = {关键词 1, 关键词 2, 关键词 3, 关键词 4, 关键词 5},
+  }
+\end{abstract}
 
 \clearpage
 \OMIT

@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 ### Changed
+- 重新设计 `\thusetup` 的接口。
+- `\makecover` 拆分为 `\maketitle`、`\copyrightpage`。
+- 中英文摘分别用 `abstract`、`abstract*` 环境生成。
 - 处理 `hyperref` 与 `unicode-math` 的兼容性问题。
 - 修正本科生的文献引用样式。
 - 修改 `shuji` 为 `spine`。

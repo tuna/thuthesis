@@ -29,7 +29,7 @@ const config = {
                 'spine.tex',
                 'main.pdf',
                 'spine.pdf',
-                'thuthesis.sty',
+                'thusetup.tex',
                 'data/*.tex',
                 'figures/*.*',
                 'ref/*.bib']

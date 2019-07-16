@@ -12,7 +12,7 @@ Completed box being shipped out [2]
 ...\kern 0.0
 ...\kern 18.77882
 ...\kern -1.00374
-...\special{pdf:dest (page.2) [@thispage /XYZ @xpos @ypos null]}
+...\special{pdf:dest (page.II) [@thispage /XYZ @xpos @ypos null]}
 ...\penalty 10000
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 ..\glue 0.0 plus 1.0fil minus 1.0fil
@@ -86,6 +86,8 @@ Completed box being shipped out [2]
 ....\write1{\protect \providecommand {\protect \FN@pp@footnote@aux }[2]{}}
 ....\special{pdf:docview<</OpenAction[@page1/Fit]/PageMode/UseOutlines>>}
 ....\special{pdf:dest (Doc-Start) [@thispage /XYZ @xpos @ypos null]}
+....\write1{\protect \FN@pp@footnotehinttrue }
+....\write-{}
 ....\write1{\protect \FN@pp@footnotehinttrue }
 ....\write-{}
 ....\special{pdf:dest (section*.1) [@thispage /XYZ @xpos @ypos null]}
@@ -727,10 +729,10 @@ Completed box being shipped out [2]
 .........\glue 0.0 plus 1.0fil minus 1.0fil
 ........\glue 0.0 plus 1.0fill
 ........\vbox(8.22067+3.5232)x415.41025
-.........\hbox(8.22067+3.5232)x415.41025, glue set 205.44669fil
+.........\hbox(8.22067+3.5232)x415.41025, glue set 204.6969fil
 ..........\glue(\leftskip) 0.0 plus 1.0fil
 ..........\hbox(0.0+0.0)x0.0
-..........\TU/texgyretermes(0)/m/n/9.03374 2
+..........\TU/texgyretermes(0)/m/n/9.03374 II
 ..........\kern -0.0002
 ..........\kern 0.0002
 ..........\rule(8.22067+3.5232)x0.0

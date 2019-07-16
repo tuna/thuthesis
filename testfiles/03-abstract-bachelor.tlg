@@ -90,6 +90,8 @@ Completed box being shipped out [1]
 ....\write-{}
 ....\write1{\protect \FN@pp@footnotehinttrue }
 ....\write-{}
+....\write1{\protect \FN@pp@footnotehinttrue }
+....\write-{}
 ....\special{pdf:dest (section*.1) [@thispage /XYZ @xpos @ypos null]}
 ....\write3{\protect \BOOKMARK [0][]{thuchapter.1.0}{\376\377\116\055\145\207\144\ETC.}
 ....\special{pdf:dest (thuchapter.1.0) [@thispage /XYZ @xpos @ypos null]}
@@ -656,10 +658,6 @@ Completed box being shipped out [1]
 .....\penalty 10000
 .....\TU/FandolSong-Regular(0)/m/n/12.045 ；
 .....\rule(0.0+0.0)x-8.32309
-.....\kern 0.0005
-.....\kern -0.0005
-.....\kern -0.9965
-.....\kern 0.9965
 .....\glue 8.32309 minus 6.02249
 .....\TU/texgyretermes(0)/m/n/12.045 ThuSPAC-Wheat
 .....\kern -0.0002
@@ -667,10 +665,6 @@ Completed box being shipped out [1]
 .....\penalty 10000
 .....\TU/FandolSong-Regular(0)/m/n/12.045 ；
 .....\rule(0.0+0.0)x-8.32309
-.....\kern 0.0005
-.....\kern -0.0005
-.....\kern -0.9965
-.....\kern 0.9965
 .....\glue 8.32309 minus 6.02249
 .....\TU/texgyretermes(0)/m/n/12.045 CERES-Wheat
 .....\kern -0.0002

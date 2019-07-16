@@ -6,13 +6,10 @@
 \START
 \showoutput
 
+\frontmatter
 \setcounter{page}{2}
 
-\thusetup{
-  ekeywords = {Climate change, yield, winter wheat, ThuSPAC-Wheat, CERES-Wheat},
-}
-
-\begin{eabstract}
+\begin{abstract*}
   Climate change has raised attention worldwide, whose impact on crop yield is closely concerning to food security.
   So it is vital to assess its impact by numerical simulation.
 
@@ -20,10 +17,11 @@
   In addition, yields in different climate change scenarios are simulated.
 
   Model simulation using genetic parameters of Jingdong No. 8 shows that in ThuSPAC-Wheat Model, the wheat yield, the top weight and the LAI are well simulated, and in CERES-Wheat Model, the growth period and yield are well simulated.
-\end{eabstract}
 
-\makeatletter
-\thu@makeabstract@en
+  \thusetup{
+    keywords* = {Climate change, yield, winter wheat, ThuSPAC-Wheat, CERES-Wheat},
+  }
+\end{abstract*}
 
 \clearpage
 \OMIT

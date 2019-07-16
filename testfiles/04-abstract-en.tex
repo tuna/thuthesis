@@ -6,11 +6,10 @@
 \START
 \showoutput
 
-\thusetup{
-  ekeywords = {keyword 1, keyword 2, keyword 3, keyword 4, keyword 5},
-}
+\frontmatter
+\setcounter{page}{2}
 
-\begin{eabstract}
+\begin{abstract*}
   An abstract of a dissertation is a summary and extraction of research work and contributions.
   Included in an abstract should be description of research topic and research objective, brief introduction to methodology and research process, and summarization of conclusion and contributions of the research.
   An abstract should be characterized by independence and clarity and carry identical information with the dissertation.
@@ -21,11 +20,11 @@
 
   Key words are terms used in a dissertation for indexing, reflecting core information of the dissertation.
   An abstract may contain a maximum of 5 key words, with semi-colons used in between to separate one another.
-\end{eabstract}
 
-\setcounter{page}{2}
-\makeatletter
-\thu@makeabstract@en
+  \thusetup{
+    keywords* = {keyword 1, keyword 2, keyword 3, keyword 4, keyword 5},
+  }
+\end{abstract*}
 
 \clearpage
 \OMIT
