@@ -1031,23 +1031,18 @@
 \newcommand\thu@define@key[1]{%
   \kvsetkeys{thu@key}{#1}%
 }
+%    \end{macrocode}
+%
+% \begin{macro}{\thusetup}
+% 提供一个 \cs{thusetup} 命令支持 key/value 的方式来设置。
+% key 就是前面各个设置项的名字。
+%    \begin{macrocode}
+\def\thusetup{\kvsetkeys{thu}}
+%    \end{macrocode}
+% \end{macro}
+%
+%    \begin{macrocode}
 \newif\ifthu@graduate
-\newcommand\thu@set@today[1]{%
-  \edef\thu@@date{#1}%
-  \def\thu@@process@date##1-##2-##3\@nil{%
-      \year=\number ##1\relax
-      \month=\number ##2\relax
-      \day=\number ##3\relax
-  }%
-  \expandafter\thu@@process@date\thu@@date\@nil
-}
-\newcommand\thu@format@date[2]{%
-  \edef\thu@@date{#2}%
-  \def\thu@@process@date##1-##2-##3\@nil{%
-    #1{\number ##1}{\number ##2}{\number ##3}%
-  }%
-  \expandafter\thu@@process@date\thu@@date\@nil
-}
 \thu@define@key{
   degree = {
     choices = {
@@ -1993,6 +1988,7 @@
 % 方法解决：
 %    \begin{macrocode}
 \AtBeginDocument{%
+  \thu@setup@pdfinfo
   \pagestyle{thu@empty}
   \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}}
 %    \end{macrocode}
@@ -2252,7 +2248,7 @@
 % 论文成文日期。
 %    \begin{macrocode}
   date = {
-    code = {\thu@set@today{\thu@date}},
+    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
   },
 %    \end{macrocode}
 %
@@ -2271,116 +2267,572 @@
   },
   start-date = {
     name    = start@date,
+    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
   },
   end-date = {
     name    = end@date,
+    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
   },
 }
 %    \end{macrocode}
 %
-% \begin{macro}{\thu@clist@use}
-% 不同论文格式关键词之间的分割不太相同，我们用 \option{keywords} 和
-% \option{keywords*} 来收集关键词列表，然后用本命令来生成符合要求的格式，
-% 类似于 \LaTeX3 的 \cs{clist\_use:Nn}。
+% 输出日期的给定格式：\cs{thu@format@date}\marg{format}\marg{date}，
+% 其中格式 \meta{format} 接受三个参数分别对应年、月、日，
+% \meta{date} 是 ISO 格式的日期（yyyy-mm-dd）。
 %    \begin{macrocode}
-\thu@define@key{
-  keywords,
-  keywords* = {
-    name = keywords@en,
-  },
-}
-\newcommand\thu@clist@use[2]{%
-  \def\thu@@tmp{}%
-  \kv@set@family@handler{thu@clist}{%
-    \ifx\thu@@tmp\@empty
-      \def\thu@@tmp{#2}%
-    \else
-      #2%
-    \fi
-    ##1%
+\newcommand\thu@format@date[2]{%
+  \edef\thu@@date{#2}%
+  \def\thu@@process@date##1-##2-##3\@nil{%
+    #1{##1}{##2}{##3}%
   }%
-  \kvsetkeys@expandafter{thu@clist}{#1}%
+  \expandafter\thu@@process@date\thu@@date\@nil
 }
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\thusetup}
-% 由上可见，封面和封底有一大堆信息需要设置，为了简化操作界面，提供一
-% 个 \cs{thusetup} 命令支持 key/value 的方式来设置。key 就是前面各个设置项的
-% 名字。 由于这些设置项被 \cs{maketitle}
-% 调用，所以此命令需要在 \cs{maketitle} 之前被调用。
-%    \begin{macrocode}
-\def\thusetup{\kvsetkeys{thu}}
-%    \end{macrocode}
-% \end{macro}
-%
-% 定义封面用到的各种文字。
-%    \begin{macrocode}
-\def\thu@title@sep{：}
-\def\thu@schoolname{清华大学}
-\def\thu@bachelor@subtitle{综合论文训练}
-\def\thu@bachelor@title@pre{题目}
-\def\thu@postdoc@date@title{研究起止日期}
-\ifthu@postdoc
-  \def\thu@author@title{博士后姓名}
-\else
-  \ifthu@bachelor
-    \def\thu@author@title{姓名}
-  \else
-    \def\thu@author@title{研究生}
-  \fi
-\fi
-\def\thu@postdoc@first@discipline@title{流动站（一级学科）名称}
-\def\thu@postdoc@second@discipline@title{专\hspace{1em}业（二级学科）名称}
-\def\thu@secret@content{%
-  \unskip\ifthu@master$\bigstar$ \fi%
-  \ifthu@doctor$\bigstar$ \fi%
-  \thu@secret@year 年}
-\def\thu@apply{（申请清华大学\thu@degree@name\ifthu@professional 专业\fi 学位论文）}
-\ifthu@bachelor
-  \def\thu@department@title{系别}
-  \def\thu@major@title{专业}
-\else
-  \def\thu@department@title{培养单位}
-  \def\thu@major@title{学科}
-\fi
-\ifthu@postdoc
-  \def\thu@supervisor@title{合作导师}
-\else
-  \def\thu@supervisor@title{指导教师}
-\fi
-\ifthu@bachelor
-  \def\thu@assosuper@title{辅导教师}
-\else
-  \def\thu@assosuper@title{副指导教师}
-\fi
-\def\thu@cosuper@title{%
-  \ifthu@doctor 联合导师\else \ifthu@master 联合指导教师\fi\fi}
-\newcommand\thu@date@zh@digit{\the\year{} 年 \the\month{} 月 \the\day{} 日}
-\newcommand\thu@date@zh@digit@short{\the\year{} 年 \the\month{} 月}
-\newcommand\thu@date@zh{\zhdigits{\the\year}年\zhnumber{\the\month}月\zhnumber{\the\day}日}
-\newcommand\thu@date@zh@short{\zhdigits{\the\year}年\zhnumber{\the\month}月}
-\newcommand\thu@date@month{%
-  \ifcase\month\or
+\newcommand\thu@date@zh@digit[3]{#1 年 \number#2 月 \number#3 日}
+\newcommand\thu@date@zh@digit@short[3]{#1 年 \number#2 月}
+\newcommand\thu@date@zh@short[3]{\zhdigits{#1}年\zhnumber{#2}月}
+\newcommand\thu@date@month[1]{%
+  \ifcase\number#1\or
     January\or February\or March\or April\or May\or June\or
     July\or August\or September\or October\or November\or December%
   \fi
 }
-\newcommand\thu@date@en{\thu@date@month\space\number\day, \number\year}
-\newcommand\thu@date@en@short{\thu@date@month, \number\year}
-\newcommand\thu@cdate{%
-  \ifthu@bachelor
-    \thu@date@zh@digit
+\newcommand\thu@date@en@short[3]{\thu@date@month{#2}, #1}
+%    \end{macrocode}
+%
+% 下划线命令
+%    \begin{macrocode}
+\newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newcommand\thu@CJKunderline[2][6em]{\CJKunderline*{\hb@xt@ #1{\hss#2\hss}}}
+%    \end{macrocode}
+%
+% 将内容拉伸或压缩到固定宽度。
+%    \begin{macrocode}
+\newcommand\thu@fixed@box[2]{%
+  \begingroup
+    \def\CJKglue{\hskip 0pt plus 2filll minus 1filll}%
+    \makebox[#1][l]{#2}%
+  \endgroup
+}
+%    \end{macrocode}
+%
+% 如果内容小于给定宽度，则拉伸至该宽度，否则取自然宽度。
+%    \begin{macrocode}
+\newbox\thu@stretch@box
+\newcommand\thu@stretch[2]{%
+  \sbox\thu@stretch@box{#2}%
+  \ifdim \wd\thu@stretch@box < #1\relax
+    \begingroup
+      \def\CJKglue{\hskip 0pt plus 2filll}%
+      \makebox[#1][l]{#2}%
+    \endgroup
   \else
-    \ifthu@postdoc
-      \thu@date@zh@digit@short
+    \box\thu@stretch@box
+  \fi
+}
+%    \end{macrocode}
+%
+% 如果内容小于给定宽度，则在右侧填充空白至该宽度，否则取自然宽度。
+%    \begin{macrocode}
+\newbox\thu@pad@box
+\newcommand\thu@pad[2]{%
+  \sbox\thu@pad@box{#2}%
+  \ifdim \wd\thu@pad@box < #1\relax
+    \makebox[#1][l]{\box\thu@pad@box}%
+  \else
+    \box\thu@pad@box
+  \fi
+}
+%    \end{macrocode}
+%
+% 导师的姓名和职称使用“,”分开，所以这里用 \pkg{kvsetkeys} 的 \cs{comma@parse} 来处理。
+%    \begin{macrocode}
+\newcounter{thu@csl@count}
+\newcommand\thu@name@title@process[1]{%
+  \ifcase\c@thu@csl@count  % == 0
+    \gdef\thu@@name{#1}%
+  \or  % == 1
+    \gdef\thu@@title{#1}%
+  \fi
+  \stepcounter{thu@csl@count}%
+}
+\newcommand\thu@name@title@format[2]{%
+  \thu@pad{3cm}{\thu@stretch{4em}{#1}}%
+  \thu@stretch{3em}{#2}%
+}
+\newcommand\thu@name@title[1]{%
+  \setcounter{thu@csl@count}{0}%
+  \gdef\thu@@name{}%
+  \gdef\thu@@title{}%
+  \expandafter\comma@parse\expandafter{#1}{\thu@name@title@process}%
+  \thu@name@title@format{\thu@@name}{\thu@@title}%
+}
+%    \end{macrocode}
+%
+% \myentry{封面}
+% \begin{macro}{\maketitle}
+% 生成封面（题名页）总命令。
+%    \begin{macrocode}
+\renewcommand\maketitle{%
+  \cleardoublepage
+  \pagestyle{thu@empty}%
+  \pagenumbering{Alph}%
+  \phantomsection
+  \pdfbookmark[-1]{\thu@title}{title}%
+  \thu@titlepage
+  \ifthu@graduate
+    \cleardoublepage
+    \thu@titlepage@en
+  \fi
+  \clearpage
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\thu@titlepage}
+% 中文封面（题名页）
+%
+% 研究生的中文封面分“学术型”和“专业型”两种 layout，但是“工程硕士”跟“学术型” 的
+% layout 一样，所以按照 \cs{thu@discipline}（工程领域）是否为空来区分“工程硕士”。
+%    \begin{macrocode}
+\newcommand\thu@titlepage{%
+  \ifthu@graduate
+    \ifthu@academic
+      \thu@titlepage@graduate@academic
     \else
-      \thu@date@zh@short
+      \ifx\thu@discipline\@empty
+        \thu@titlepage@graduate@professional
+      \else
+        \thu@titlepage@graduate@academic
+      \fi
+    \fi
+  \else
+    \ifthu@bachelor
+      \thu@titlepage@bachelor
+    \else
+      \ifthu@postdoc
+        \thu@cover@postdoc
+        \cleardoublepage
+        \thu@titlepage@postdoc
+      \fi
     \fi
   \fi
 }
-\newcommand\thu@edate{\thu@date@en@short}
-\newcommand{\thu@authtitle}{关于学位论文使用授权的说明}
+%    \end{macrocode}
+% \end{macro}
+%
+% \myentry{研究生中文封面}
+% 《写作指南》规定中文封面页边距：
+% 上—6. 0 厘米，下—5.5 厘米，左—4.0 厘米，右—4.0 厘米，装订线 0 厘米。
+% 然而作为事实标准的 Word 模板的页边距是上下 6.0 厘米，左右 4.0 厘米。
+% 这里缩小上边距以方便排版保密信息。
+%    \begin{macrocode}
+\newcommand\thu@titlepage@graduate@academic{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \null\vskip 0.2cm%
+  \begingroup
+    \centering
+    \parbox[t][2cm][t]{\textwidth}{%
+      \hskip -0.69cm%
+      \thu@titlepage@secret
+    }\par
+    \vskip 1.5cm%
+    {\thu@titlepage@title}%
+    \vskip 0.85cm%
+    \thu@titlepage@degree
+    \vfill
+    \parbox[t][7.25cm][t]{\textwidth}{\centering\thu@titlepage@info}\par
+    \parbox[t][1.03cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+% 专业型学位论文中文封面
+%    \begin{macrocode}
+\newcommand\thu@titlepage@graduate@professional{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \null\vskip 0.45cm%
+  \begingroup
+    \centering
+    \parbox[t][1.52cm][t]{\textwidth}{%
+      \hskip -0.69cm%
+      \thu@titlepage@secret
+    }\par
+    \vskip 1.5cm%
+    {\sffamily\yihao[1.575]\thu@title\par}%
+    \vskip 0.9cm%
+    \thu@titlepage@degree
+    \vfill
+    \parbox[t][5.28cm][t]{\textwidth}{\centering\thu@titlepage@info}\par
+    \parbox[t][1.25cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\thu@titlepage@secret{%
+  \sffamily\CJKfamily+{}\sanhao
+  \ifx\thu@secret@level\@empty
+    \phantom{秘密}%
+  \else
+    \thu@secret@level★\makebox[3em][c]{\thu@secret@year}年%
+  \fi\par
+}
+%    \end{macrocode}
+%
+% 题名使用一号黑体字，一行写不下时可分两行写。
+% 由于 Word 模板这里设置了“对齐到网格”，所以实际行距不是 1.25 倍。
+%    \begin{macrocode}
+\newcommand\thu@titlepage@title{%
+  \sffamily\yihao[1.8]\thu@title\par
+}
+%    \end{macrocode}
+%
+% 申请学位的学科门类: 小二号宋体字，字距延伸 0.5bp，
+% 所以 \cs{CJKglue} 应该设为 1 bp。
+%    \begin{macrocode}
+\newcommand\thu@titlepage@degree{%
+  \begingroup
+    \def\CJKglue{\hskip 1bp}%
+    \CJKfamily+{}\xiaoer
+    (申请清华大学\thu@degree@name\ifthu@professional 专业\fi 学位论文)\par
+  \endgroup
+}
+%    \end{macrocode}
+%
+% 作者及导师信息部分使用三号仿宋字
+%    \begin{macrocode}
+\newcommand\thu@titlepage@info{%
+  \ifthu@doctor
+    \thu@titlepage@info@doctor
+  \else
+    \thu@titlepage@info@master
+  \fi
+}
+\newcommand\thu@cover@info@tabular[4]{%
+  \def\thu@cover@item##1##2##3{%
+    \ifx##3\@empty\else
+      \thu@pad{#2}{\thu@fixed@box{#1}{##1}}%
+      \thu@pad{#3}{：}%
+      ##2{##3}\\
+    \fi
+  }%
+  \begin{tabular}{l}%
+    #4%
+  \end{tabular}
+}
+\newcommand\thu@titlepage@info@doctor{%
+  \fangsong\sanhao[1.95]%
+  \thu@cover@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
+    \thu@cover@item{培养单位}{}{\thu@department}%
+    \ifthu@academic
+      \thu@cover@item{学科}{}{\thu@discipline}%
+      \thu@cover@item{研究生}{\thu@name@title}{\thu@author}%
+    \else
+      \thu@cover@item{申请人}{\thu@name@title}{\thu@author}%
+    \fi
+    \thu@cover@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+    \thu@cover@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    \thu@cover@item{联合导师}{\thu@name@title}{\thu@joint@supervisor}%
+  }\par
+}
+\newcommand\thu@titlepage@info@master{%
+  \fangsong\sanhao[1.95]%
+  \thu@cover@info@tabular{5.5em}{3.6cm}{0.82cm}{%
+    \thu@cover@item{培养单位}{}{\thu@department}%
+    \ifthu@academic
+      \thu@cover@item{学科}{}{\thu@discipline}%
+      \thu@cover@item{研究生}{\thu@name@title}{\thu@author}%
+    \else
+      \thu@cover@item{工程领域}{}{\thu@discipline}%
+      \thu@cover@item{申请人}{\thu@name@title}{\thu@author}%
+    \fi
+    \thu@cover@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+    \thu@cover@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    \thu@cover@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
+  }\par
+}
+%    \end{macrocode}
+%
+% 论文成文打印的日期，用三号宋体汉字，字距延伸 0.5bp，
+% 所以 \cs{CJKglue} 应该设为 1 bp。
+%    \begin{macrocode}
+\newcommand\thu@titlepage@date{%
+  \begingroup
+    \def\CJKglue{\hskip 1bp}%
+    \sanhao\thu@format@date{\thu@date@zh@short}{\thu@date}\par
+  \endgroup
+}
+%    \end{macrocode}
+%
+% \myentry{研究生英文封面}
+% \begin{macro}{\thu@titlepage@en}
+%    \begin{macrocode}
+\newcommand{\thu@titlepage@en}{%
+  \newgeometry{
+    top     = 5.5cm,
+    bottom  = 5cm,
+    hmargin = 3.6cm,
+  }%
+  \ifthu@academic
+    \thu@titlepage@en@graduate@academic
+  \else
+    \thu@titlepage@en@graduate@professional
+  \fi
+  \clearpage
+  \restoregeometry
+}
+\newcommand\thu@titlepage@en@graduate@academic{%
+  \begingroup
+    \centering
+    \null\vskip -0.7cm%
+    \thu@titlepage@en@title
+    \vfill
+    \sanhao[1.725]%
+    \thu@titlepage@en@degree
+    \vskip 0.13cm%
+    in\par
+    \vskip 0.1cm%
+    {\bfseries\sffamily\thu@discipline@en\par}
+    \vskip 0.7cm%
+    {\sffamily by\par}
+    \vskip 0.24cm%
+    {\sffamily\bfseries\thu@author@en\par}%
+    \vskip 0.14cm%
+    \parbox[t][3.07cm][t]{\textwidth}{%
+      \centering\xiaosan[2.1]%
+      \thu@titlepage@en@supervisor
+    }\par
+    \thu@titlepage@en@date
+    \vskip 0.65cm%
+  \endgroup
+}
+\newcommand\thu@titlepage@en@graduate@professional{%
+  \begingroup
+    \centering
+    \null\vskip -0.7cm%
+    \thu@titlepage@en@title
+    \vfill
+    \sanhao[1.725]%
+    \thu@titlepage@en@degree
+    \vskip 1.1cm%
+    {\sffamily by\par}
+    \vskip 0.24cm%
+    {\sffamily\bfseries\thu@author@en\par}%
+    \ifx\thu@discipline@en\empty
+      \vskip 1.95cm%
+    \else
+      \vskip -0.1cm%
+      {\sffamily\bfseries(\thu@discipline@en)\par}%
+      \vskip 1.1cm%
+    \fi
+    \parbox[t][3.37cm][t]{\textwidth}{%
+      \centering\xiaosan[1.82]%
+      \thu@titlepage@en@supervisor
+    }\par
+    \thu@titlepage@en@date
+    \vskip 0.3cm%
+  \endgroup
+}
+\newcommand\thu@titlepage@en@title{%
+  \begingroup
+    \sffamily\bfseries\fontsize{20bp}{31bp}\selectfont
+    \thu@title@en\par
+  \endgroup
+}
+\newcommand\thu@thesis@name@en{%
+  \ifthu@master
+    Thesis%
+  \else
+    Dissertation%
+  \fi
+}
+\newcommand\thu@titlepage@en@degree{%
+  \thu@thesis@name@en{} Submitted to\par
+  {\bfseries Tsinghua University\par}%
+  in partial fulfillment of the requirement\par
+  for the
+  \ifthu@professional
+    professional
+  \fi
+  degree of\par
+  {\sffamily\bfseries\thu@degree@name@en\par}%
+}
+\newcommand\thu@titlepage@en@supervisor{%
+  \begin{tabular}{r@{\makebox[0.71cm][l]{:}}l}%
+    \thu@thesis@name@en{} Supervisor & \thu@supervisor@en     \\
+    \ifx\thu@associate@supervisor@en\@empty\else
+      Associate Supervisor            & \thu@associate@supervisor@en \\
+    \fi
+    \ifx\thu@joint@supervisor@en\@empty\else
+      Cooperate Supervisor            & \thu@joint@supervisor@en   \\
+    \fi
+  \end{tabular}%
+}
+\newcommand\thu@titlepage@en@date{%
+  \begingroup
+    \sffamily\bfseries\sanhao
+    \thu@format@date{\thu@date@en@short}{\thu@date}\par
+  \endgroup
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \myentry{本科生封面}
+%    \begin{macrocode}
+\newcommand\thu@titlepage@bachelor{%
+  \newgeometry{
+    vmargin = 2.54cm,
+    hmargin = 3.17cm,
+  }%
+  \null\vskip 0.44cm%
+  \begingroup
+    \centering
+    \parbox[t][2cm][t]{\textwidth}{%
+      \hfill
+      \sffamily\CJKfamily+{}\xiaosi
+      \ifx\thu@secret@level\@empty
+        \phantom{秘密}%
+      \else
+        \thu@secret@level\makebox[3em][c]{\thu@secret@year}年%
+      \fi\par
+    }\par
+    \begingroup
+      \ifcsname lishu\endcsname
+        \lishu\yihao\ziju{0.5}清华大学%
+      \else
+        \includegraphics{tsinghua.pdf}%
+      \fi
+      \par
+    \endgroup
+    \vskip 0.94cm%
+    {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
+    \vskip 2.3cm%
+    \parbox[t][2.4cm][t]{\textwidth}{%
+      \heiti\xiaoer[1.56]%
+      \parindent=2em%
+      \hangindent=5em%
+      \makebox[3em][l]{题目：}%
+      \yihao[1.56]%
+      \CJKunderline[skip=false, thickness=0.05em, depth=0.12em]{\thu@title}\par
+    }\par
+    \vskip 2.5cm%
+    \parbox[t][6.0cm][t]{\textwidth}{%
+      \fangsong\sanhao[2.3]%
+      \leftskip=2.5cm%
+      \parindent=\z@
+      \def\thu@cover@item##1##2##3{%
+        \ifx##3\@empty\else
+          \thu@fixed@box{4em}{##1}：##2{##3}\\
+        \fi
+      }%
+      \def\thu@name@title@format##1##2{%
+        \thu@stretch{3em}{##1}\quad ##2%
+      }
+      \thu@cover@item{系别}{}{\thu@department}%
+      \thu@cover@item{专业}{}{\thu@discipline}%
+      \thu@cover@item{姓名}{\thu@name@title}{\thu@author}%
+      \thu@cover@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+      \thu@cover@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    }\par
+    {\xiaosi\thu@format@date{\thu@date@zh@digit}{\thu@date}\par}%
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+% \myentry{博士后封面}
+%    \begin{macrocode}
+\newcommand\thu@cover@postdoc{%
+  \begin{center}%
+    \renewcommand\ULthickness{0.7pt}%
+    \vspace*{0.35cm}%
+    {\sihao[2.6]%
+      \thu@stretch{3.1em}{分类号}\thu@underline[3.7cm]{\thu@clc}\hfill
+      密级\thu@underline[3.7cm]{\thu@secret@level}\par
+      \thu@stretch{3.1em}{U D C}\thu@underline[3.7cm]{\thu@udc}\hfill
+      编号\thu@underline[3.7cm]{\thu@id}\par
+    }%
+    \vskip 3.15cm%
+    {\sffamily\bfseries\xiaoer[2.6]%
+      {\ziju{1.5}清华大学\par}%
+      {\ziju{0.5}博士后研究工作报告\par}%
+    }%
+    \vskip 0.2cm%
+    \parbox[t][4.0cm][c]{\textwidth}{%
+      \centering\sihao[3.46]\CJKunderline*[depth=1em]{\thu@title}\par
+    }\par
+    \vskip 0.4cm%
+    {\xiaosi\thu@author\par}%
+    \vskip 1.4cm%
+    {\xiaosi[1.58]\xeCJKsetup{underline/depth=0.9em}%
+      工作完成日期\quad
+      \thu@CJKunderline[5.9cm]{%
+        \thu@format@date{\thu@date@zh@digit@short}{\thu@start@date}—%
+        \thu@format@date{\thu@date@zh@digit@short}{\thu@end@date}
+      }\par
+      \vskip 0.55cm%
+      报告提交日期\quad
+      \thu@CJKunderline[5.9cm]{\thu@format@date{\thu@date@zh@digit@short}{\thu@date}}\par
+    }%
+    \vskip 0.45cm%
+    {\xiaosi[2]{\ziju{1}清华大学}\quad （北京）\par}%
+    \vskip 0.25cm%
+    {\xiaosi[2]\thu@format@date{\thu@date@zh@digit@short}{\thu@date}\par}%
+  \end{center}%
+}
+%    \end{macrocode}
+%
+% \myentry{博士后题名页}
+%    \begin{macrocode}
+\newcommand\thu@titlepage@postdoc{%
+  \begin{center}%
+    \vspace*{1.5cm}%
+    \parbox[t][3cm][c]{\textwidth}{%
+      \centering\sanhao[1.95]\thu@title\par
+    }\par
+    \vskip 0.15cm%
+    \parbox[t][3cm][c]{\textwidth}{%
+      \centering\sihao[1.36]\thu@title@en\par
+    }\par
+    \vskip 0.4cm%
+    {\xiaosi[2.6]%
+      \begin{tabular}{l@{\quad}l}%
+        \thu@stretch{11em}{博士后姓名}                  & \thu@author           \\
+        \thu@stretch{11em}{流动站（一级学科）名称}      & \thu@discipline@level@i  \\
+        \thu@stretch{11em}{专\quad{}业（二级学科）名称} & \thu@discipline@level@ii \\
+      \end{tabular}\par
+    }%
+    \vskip 2.7cm%
+    {\xiaosi[2.6]%
+      研究工作起始时间\quad\thu@format@date{\thu@date@zh@digit}{\thu@start@date}\par
+      \vskip 0.1cm%
+      研究工作期满时间\quad\thu@format@date{\thu@date@zh@digit}{\thu@end@date}\par
+    }%
+    \vskip 2.1cm%
+    {\xiaosi[2.6]清华大学人事部（北京）\par}%
+    \vskip 0.6cm%
+    {\wuhao\thu@format@date{\thu@date@zh@digit@short}{\thu@date}\par}%
+  \end{center}%
+}
+%    \end{macrocode}
+%
+% \myentry{授权页面}
+% \begin{macro}{\copyrightpage}
+% 授权说明
+%    \begin{macrocode}
 \newcommand{\thu@authorization}{%
 \ifthu@bachelor
 本人完全了解清华大学有关保留、使用学位论文的规定，即：学校有权保留学位
@@ -2404,319 +2856,6 @@
 \newcommand{\thu@teachersig}{导师签名：}
 \newcommand{\thu@frontdate}{%
   日\ifthu@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
-\newcommand{\thu@keywords@title}{关键词：}
-%    \end{macrocode}
-%
-%    \begin{macrocode}
-\newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
-\newcommand\thu@CJKunderline[2][6em]{\CJKunderline*{\hb@xt@ #1{\hss#2\hss}}}
-\newlength{\thu@title@width}
-\newcommand{\thu@put@title}[2][\thu@title@width]{%
-  \begin{CJKfilltwosides}[b]{#1}#2\end{CJKfilltwosides}}
-%    \end{macrocode}
-%
-% \myentry{封面}
-% \begin{macro}{\maketitle}
-% 生成封面（题名页）总命令。
-%    \begin{macrocode}
-\renewcommand\maketitle{%
-  \thu@setup@pdfinfo
-  \pagestyle{thu@empty}%
-  \pagenumbering{Alph}%
-  \phantomsection
-  \pdfbookmark[-1]{\thu@title}{title}%
-  \thu@titlepage
-  \ifthu@graduate
-    \cleardoublepage
-    \thu@titlepage@en
-  \fi
-}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\thu@titlepage}
-% 中文封面（题名页）
-%    \begin{macrocode}
-\newcommand\thu@titlepage{%
-  \ifthu@graduate
-    \thu@titlepage@graduate
-  \else
-    \ifthu@bachelor
-      \thu@titlepage@bachelor
-    \else
-      \ifthu@postdoc
-        \thu@cover@postdoc
-        \cleardoublepage
-        \thu@titlepage@postdoc
-      \fi
-    \fi
-  \fi
-}
-%    \end{macrocode}
-% \end{macro}
-%
-% \myentry{研究生中文封面}
-% 题名使用一号黑体字，一行写不下时可分两行写，并采用 1.25 倍行距。
-% 申请学位的学科门类: 小二号宋体字。
-% 中文封面页边距：
-% 上- 6.0 厘米，下- 5.5 厘米，左- 4.0 厘米，右- 4.0 厘米，装订线 0 厘米；
-%    \begin{macrocode}
-\newcommand\thu@titlepage@graduate{%
-  \begin{center}
-    \vspace*{-1.6cm}
-    \parbox[b][2.4cm][t]{\textwidth}{%
-      \ifx\thu@secret@level\@empty\rule{1cm}{0cm}\else{\heiti\sanhao\thu@secret@level\thu@secret@content}\fi}
-    \vskip0.8cm
-    \parbox[t][9cm][t]{\paperwidth-8cm}{
-    \renewcommand{\baselinestretch}{1.3}
-    \begin{center}
-      \yihao[1.2]{\sffamily\thu@title}\par%
-      \par\vskip 18bp%
-      \xiaoer[1]\textrm{\thu@apply}%
-    \end{center}}
-%    \end{macrocode}
-%
-% 作者及导师信息部分使用三号仿宋字
-%    \begin{macrocode}
-    \vskip 5bp
-    \parbox[t][7.8cm][t]{\textwidth}{{\sanhao[1.5]
-      \begin{center}\fangsong
-        \setlength{\thu@title@width}{5em}
-        \setlength{\extrarowheight}{4pt}
-        \begin{tabular}{p{\thu@title@width}@{}c@{\extracolsep{8pt}}l}
-            \thu@put@title{\thu@department@title}  & \thu@title@sep
-              & {\ziju{0.1875}\thu@department}\\
-            \thu@put@title{\thu@major@title}       & \thu@title@sep
-              & {\ziju{0.1875}\thu@discipline}\\
-            \thu@put@title{\thu@author@title}      & \thu@title@sep
-              & {\ziju{0.6875}\thu@author}\\
-            \thu@put@title{\thu@supervisor@title}  & \thu@title@sep
-              & {\ziju{0.6875}\thu@supervisor}\\
-            \ifx\thu@associate@supervisor\@empty\else
-              \thu@put@title{\thu@assosuper@title} & \thu@title@sep
-              & {\ziju{0.6875}\thu@associate@supervisor}\\
-            \fi
-            \ifx\thu@joint@supervisor\@empty\else
-              \ifthu@master
-                \hfill\makebox[0pt][r]{\thu@cosuper@title} & \thu@title@sep
-                & {\ziju{0.6875}\thu@joint@supervisor}\\
-              \fi
-              \ifthu@doctor
-                \thu@put@title{\thu@cosuper@title} & \thu@title@sep
-                & {\ziju{0.6875}\thu@joint@supervisor}\\
-              \fi
-            \fi
-          \end{tabular}
-      \end{center}}}
-%    \end{macrocode}
-%
-% 论文成文打印的日期，用三号宋体汉字，不用阿拉伯数字
-% 本科：论文成文打印的日期用阿拉伯数字，采用小四号宋体
-%    \begin{macrocode}
-     \begin{center}
-       {\ifthu@bachelor\vskip-1.0cm\xiaosi\else%
-         \vskip-0.5cm\sanhao\fi%
-         \songti\thu@cdate}
-     \end{center}
-    \end{center}} % end of titlepage
-%    \end{macrocode}
-%
-% \myentry{研究生英文封面}
-% \begin{macro}{\thu@titlepage@en}
-% 研究生论文使用。
-%    \begin{macrocode}
-\newcommand{\thu@titlepage@en}{%
-  \begin{center}
-    \vspace*{-5pt}
-    \parbox[t][5.2cm][t]{\paperwidth-7.2cm}{
-      \renewcommand{\baselinestretch}{1.5}
-      \begin{center}
-        \erhao[1.1]\bfseries\sffamily\thu@title@en%
-      \end{center}}
-    \parbox[t][][t]{\paperwidth-7.2cm}{
-      \renewcommand{\baselinestretch}{1.3}
-      \begin{center}
-        \sanhao%
-        \ifthu@master Thesis \else Dissertation \fi
-        Submitted to\\
-        {\bfseries Tsinghua University}\\
-        in partial fulfillment of the requirement\\
-        for the \ifthu@professional professional \fi
-        degree of\\
-        {\bfseries\sffamily\thu@degree@name@en}%
-        \ifthu@professional\relax\else
-          \\in\\[3bp]
-          {\bfseries\sffamily\thu@discipline@en}%
-        \fi
-      \end{center}}
-    \parbox[t][][b]{\paperwidth-7.2cm}{
-      \renewcommand{\baselinestretch}{1.3}
-      \begin{center}
-        \sanhao\sffamily by\\[3bp]
-        \bfseries\thu@author@en%
-        \ifthu@professional
-          \ifx\thu@discipline@en\empty\relax\else
-            \\(~\thu@discipline@en~)%
-        \fi\fi
-      \end{center}}
-    \par\vspace{0.9cm}
-    \parbox[t][2.1cm][t]{\paperwidth-7.2cm}{
-      \renewcommand{\baselinestretch}{1.2}
-      \xiaosan\centering
-      \begin{tabular}{rl}
-        \ifthu@master Thesis \else Dissertation \fi
-        Supervisor : & \thu@supervisor@en\\
-        \ifx\thu@associate@supervisor@en\@empty
-          \else Associate Supervisor : & \thu@associate@supervisor@en\\\fi
-        \ifx\thu@joint@supervisor@en\@empty
-          \else Cooperate Supervisor : & \thu@joint@supervisor@en\\\fi
-      \end{tabular}}
-    \parbox[t][2cm][b]{\paperwidth-7.2cm}{
-    \begin{center}
-      \sanhao\bfseries\sffamily\thu@edate
-    \end{center}}
-  \end{center}}
-%    \end{macrocode}
-% \end{macro}
-%
-% \myentry{本科生封面}
-%    \begin{macrocode}
-\newcommand\thu@titlepage@bachelor{%
-  \begin{center}
-    \vspace*{-1.6cm}
-    \parbox[b][2.4cm][t]{\textwidth}{%
-      \ifx\thu@secret@level\@empty\rule{1cm}{0cm}\else{\heiti\sanhao\thu@secret@level\thu@secret@content}\fi}
-    \vskip0.65cm
-    {\ifcsname lishu\endcsname\yihao\lishu\ziju{0.5}\thu@schoolname\else\includegraphics{tsinghua.pdf}\fi}
-    \par\vskip1.5cm
-    {\xiaochu\heiti\ziju{0.5}\textbf\thu@bachelor@subtitle}
-    \vskip2.2cm\hskip0.8cm
-    \noindent\heiti\xiaoer\thu@bachelor@title@pre\thu@title@sep
-    \parbox[t]{12cm}{%
-    \ignorespaces\yihao[1.51]%
-    \renewcommand{\CJKunderlinebasesep}{0.25cm}%
-    \renewcommand{\ULthickness}{1.3pt}%
-    \xeCJKsetup{underline/format=\color{black}}%
-    \CJKunderline*{\thu@title}}%
-    \vskip1.3cm
-    \vskip0.75cm
-    \ifx\thu@associate@supervisor\@empty%
-      \def\thu@tempa{7.15cm}
-    \else%
-      \def\thu@tempa{8.15cm}
-    \fi%
-    \parbox[t][\thu@tempa][t]{\textwidth}{%
-      {\fangsong\sanhao[1.95]%
-        \hspace*{1.9cm}
-        \setlength{\thu@title@width}{4em}
-        \setlength{\extrarowheight}{6pt}
-        \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{8pt}}l}
-            \thu@put@title{\thu@department@title} & \thu@title@sep
-              & \thu@department\\
-            \thu@put@title{\thu@major@title}      & \thu@title@sep
-              & \thu@discipline\\
-            \thu@put@title{\thu@author@title}     & \thu@title@sep
-              & \thu@author \\
-            \thu@put@title{\thu@supervisor@title} & \thu@title@sep
-              & \thu@supervisor\\
-            \ifx\thu@associate@supervisor\@empty\else%
-              \thu@put@title{\thu@assosuper@title} & \thu@title@sep
-              & \thu@associate@supervisor\\
-            \fi
-          \end{tabular}
-      }}
-     \begin{center}
-       {\ifthu@bachelor\vskip-1.0cm\xiaosi\else%
-         \vskip-0.5cm\sanhao\fi%
-         \songti\thu@cdate}
-     \end{center}
-    \end{center}} % end of titlepage
-%    \end{macrocode}
-%
-% \myentry{博士后封面}
-%    \begin{macrocode}
-\newcommand\thu@cover@postdoc{%
-  \begin{center}%
-    \setlength{\thu@title@width}{3.5em}%
-    \renewcommand\ULthickness{0.7pt}%
-    \vspace*{0.35cm}%
-    {\sihao[2.6]%
-      \thu@put@title{分类号}\thu@underline[3.7cm]{\thu@clc}\hfill
-      密级\thu@underline[3.7cm]{\ifx\thu@secret@level\@empty\else\thu@secret@content\fi}\par
-      \thu@put@title{U D C}\thu@underline[3.7cm]{\thu@udc}\hfill
-      编号\thu@underline[3.7cm]{\thu@id}\par
-    }%
-    \vskip 3.15cm%
-    {\sffamily\bfseries\xiaoer[2.6]%
-      {\ziju{1.5}\thu@schoolname\par}%
-      {\ziju{0.5}博士后研究工作报告\par}%
-    }%
-    \vskip 0.2cm%
-    \parbox[t][4.0cm][c]{\textwidth}{%
-      \centering\sihao[3.46]\CJKunderline*[depth=1em]{\thu@title}\par
-    }\par
-    \vskip 0.4cm%
-    {\xiaosi\thu@author\par}%
-    \vskip 1.4cm%
-    {\xiaosi[1.58]\xeCJKsetup{underline/depth=0.9em}%
-      \def\thu@date@fmt##1##2##3{##1 年 ##2 月}
-      工作完成日期\quad
-      \thu@CJKunderline[5.9cm]{%
-        \thu@format@date{\thu@date@fmt}{\thu@start@date}—%
-        \thu@format@date{\thu@date@fmt}{\thu@end@date}
-      }\par
-      \vskip 0.55cm%
-      报告提交日期\quad
-      \thu@CJKunderline[5.9cm]{\the\year{} 年 \the\month{} 月}\par
-    }%
-    \vskip 0.45cm%
-    {\xiaosi[2]{\ziju{1}\thu@schoolname}\quad （北京）\par}%
-    \vskip 0.25cm%
-    {\xiaosi[2]\thu@cdate\par}%
-  \end{center}%
-}
-%    \end{macrocode}
-%
-% \myentry{博士后题名页}
-%    \begin{macrocode}
-\newcommand\thu@titlepage@postdoc{%
-  \begin{center}%
-    \vspace*{1.5cm}%
-    \parbox[t][3cm][c]{\textwidth}{%
-      \centering\sanhao[1.95]\thu@title\par
-    }\par
-    \vskip 0.15cm%
-    \parbox[t][3cm][c]{\textwidth}{%
-      \centering\sihao[1.36]\thu@title@en\par
-    }\par
-    \vskip 0.4cm%
-    {\xiaosi[2.6]%
-      \setlength{\thu@title@width}{11em}%
-      \begin{tabular}{l@{\quad}l}%
-        \thu@put@title{博士后姓名}                  & \thu@author           \\
-        \thu@put@title{流动站（一级学科）名称}      & \thu@discipline@level@i  \\
-        \thu@put@title{专\quad{}业（二级学科）名称} & \thu@discipline@level@ii \\
-      \end{tabular}\par
-    }%
-    \vskip 2.7cm%
-    {\xiaosi[2.6]%
-      \def\thu@date@fmt##1##2##3{##1 年 ##2 月 ##3 日}
-      研究工作起始时间\quad\thu@format@date{\thu@date@fmt}{\thu@start@date}\par
-      \vskip 0.1cm%
-      研究工作期满时间\quad\thu@format@date{\thu@date@fmt}{\thu@end@date}\par
-    }%
-    \vskip 2.1cm%
-    {\xiaosi[2.6]\thu@schoolname{}人事部（北京）\par}%
-    \vskip 0.6cm%
-    {\wuhao\thu@cdate\par}%
-  \end{center}%
-}
-%    \end{macrocode}
-%
-% \myentry{授权页面}
-% \begin{macro}{\copyrightpage}
-% 授权说明
-%    \begin{macrocode}
 \newcommand\copyrightpage[1][]{%
   \ifthu@postdoc\relax\else
     \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
@@ -2743,7 +2882,7 @@
 %    \begin{macrocode}
 \newcommand{\thu@authorization@mk}{%
   \ifthu@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
-  \begin{center}\erhao\heiti\thu@authtitle\end{center}
+  \begin{center}\erhao\heiti 关于学位论文使用授权的说明\end{center}
   \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
   \thu@authorization\par
   \textbf{\thu@authorizationaddon}\par
@@ -2787,6 +2926,32 @@
 % \subsubsection{摘要}
 % \label{sec:abstractformat}
 %
+% \begin{macro}{\thu@clist@use}
+% 不同论文格式关键词之间的分割不太相同，我们用 \option{keywords} 和
+% \option{keywords*} 来收集关键词列表，然后用本命令来生成符合要求的格式，
+% 类似于 \LaTeX3 的 \cs{clist\_use:Nn}。
+%    \begin{macrocode}
+\thu@define@key{
+  keywords,
+  keywords* = {
+    name = keywords@en,
+  },
+}
+\newcommand\thu@clist@use[2]{%
+  \def\thu@@tmp{}%
+  \kv@set@family@handler{thu@clist}{%
+    \ifx\thu@@tmp\@empty
+      \def\thu@@tmp{#2}%
+    \else
+      #2%
+    \fi
+    ##1%
+  }%
+  \kvsetkeys@expandafter{thu@clist}{#1}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
 % \begin{macro}{\thu@put@keywords}
 % 排版关键字。
 %    \begin{macrocode}
@@ -2802,22 +2967,20 @@
 %
 % \begin{environment}{abstract}
 % 中文摘要部分的标题为“\textbf{摘要}”，用黑体三号字。
+% 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用 Times New Roman 体，
+% 标点符号一律用中文输入状态下的标点符号。
 %    \begin{macrocode}
 \newenvironment{abstract}{%
   \ifthu@bachelor\clearpage\else\cleardoublepage\fi
   \thu@setchinese
   \thu@chapter*[]{\cabstractname} % no tocline
-}{
+}{%
 %    \end{macrocode}
 %
-% 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用 Times New Roman 体，
-% 标点符号一律用中文输入状态下的标点符号。
-%    \begin{macrocode}
-%    \end{macrocode}
 % 每个关键词之间空两个汉字符宽度， 且为悬挂缩进。
 %    \begin{macrocode}
   \ifthu@doctor\vfill\else\vskip12bp\fi
-  \thu@put@keywords{\textbf\thu@keywords@title}{%
+  \thu@put@keywords{\textbf{关键词：}}{%
     \thu@clist@use{\thu@keywords}{；}%
   }%
   \thu@setdefaultlanguage
@@ -2828,19 +2991,12 @@
 % \begin{environment}{abstract*}
 % 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
 % 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连续。
+% 摘要内容用小四号 Times New Roman。
 %    \begin{macrocode}
 \newenvironment{abstract*}{%
   \thu@setenglish
   \thu@chapter*[]{\eabstractname} % no tocline
 }{%
-%    \end{macrocode}
-%
-% 摘要内容用小四号 Times New Roman。
-%    \begin{macrocode}
-%    \end{macrocode}
-%
-% 每个关键词之间空四个英文字符宽度。
-%    \begin{macrocode}
   \ifthu@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{%
     \textbf{\ifthu@bachelor Keywords:\else Key Words:\fi\enskip}%

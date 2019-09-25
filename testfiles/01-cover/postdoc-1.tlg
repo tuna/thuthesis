@@ -15,7 +15,7 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 Completed box being shipped out [1]
 \vbox(707.33551+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
-..\special{pdf:docinfo<</Title()/Subject()/Creator(LaTeX with hyperref)/Author()\ETC.}
+..\special{pdf:docinfo<</Title(\376\377\145\260\127\213\147\011\147\072\227\136\\ETC.}
 .\vbox(0.0+0.0)x0.0, glue set 13.5229fil
 ..\kern 0.0
 ..\kern -12.51917
@@ -105,7 +105,7 @@ Completed box being shipped out [1]
 ....\glue 0.0
 ....\glue(\parskip) 0.0 plus 1.0
 ....\glue(\baselineskip) 25.4913
-....\hbox(11.04526+4.63684)x426.79135, glue set 140.97868fill
+....\hbox(11.04526+4.63684)x426.79135, glue set 139.57336fill
 .....\glue(\leftskip) 0.0 plus 1.0fil
 .....\hbox(0.0+0.0)x0.0
 ......\glue 0.0
@@ -116,19 +116,15 @@ Completed box being shipped out [1]
 .......\special{color pop}
 ......\glue 4.81792
 .....\penalty 0
-.....\vbox(10.96094+2.44511)x42.15749
-......\hbox(10.96094+2.44511)x42.15749, glue set 0.00002filll
-.......\hbox(0.0+0.0)x0.0
-.......\TU/FandolSong-Regular(0)/m/n/14.05249 分
-.......\glue 0.0 plus 1.0filll
-.......\TU/FandolSong-Regular(0)/m/n/14.05249 类
-.......\glue 0.0 plus 1.0filll
-.......\TU/FandolSong-Regular(0)/m/n/14.05249 号
-.......\kern -0.00017
-.......\kern 0.00017
-.......\penalty 10000
-.......\glue(\parfillskip) 0.0 plus 1.0fil
-.......\glue(\rightskip) 0.0
+.....\hbox(10.96094+2.44511)x43.5628, glue set 0.35133filll
+......\TU/FandolSong-Regular(0)/m/n/14.05249 分
+......\glue 0.0 plus 2.0filll
+......\TU/FandolSong-Regular(0)/m/n/14.05249 类
+......\glue 0.0 plus 2.0filll
+......\TU/FandolSong-Regular(0)/m/n/14.05249 号
+......\kern -0.00017
+......\kern 0.00017
+......\glue 0.0 plus 1.0fil minus 1.0fil
 .....\glue 1.0
 .....\mathon
 .....\vbox(0.0+4.63684)x105.2751
@@ -161,26 +157,22 @@ Completed box being shipped out [1]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\glue(\parskip) 0.0 plus 1.0
 ....\glue(\baselineskip) 21.06525
-....\hbox(10.83447+4.63684)x426.79135, glue set 140.97868fill
+....\hbox(10.83447+4.63684)x426.79135, glue set 139.57336fill
 .....\glue(\leftskip) 0.0 plus 1.0fil
 .....\hbox(0.0+0.0)x0.0
-.....\vbox(9.49948+0.19672)x42.15749
-......\hbox(9.49948+0.19672)x42.15749, glue set 5.46642fil
-.......\hbox(0.0+0.0)x0.0
-.......\TU/texgyretermes(0)/m/n/14.05249 U
-.......\kern -0.00021
-.......\kern 0.00021
-.......\glue 3.51312 plus 1.75479 minus 1.1722
-.......\TU/texgyretermes(0)/m/n/14.05249 D
-.......\kern -0.00021
-.......\kern 0.00021
-.......\glue 3.51312 plus 1.75479 minus 1.1722
-.......\TU/texgyretermes(0)/m/n/14.05249 C
-.......\kern -0.0002
-.......\kern 0.0002
-.......\penalty 10000
-.......\glue(\parfillskip) 0.0 plus 1.0fil
-.......\glue(\rightskip) 0.0
+.....\hbox(9.49948+0.19672)x43.5628, glue set 6.87173fil
+......\TU/texgyretermes(0)/m/n/14.05249 U
+......\kern -0.00021
+......\kern 0.00021
+......\glue 3.51312 plus 1.75479 minus 1.1722
+......\TU/texgyretermes(0)/m/n/14.05249 D
+......\kern -0.00021
+......\kern 0.00021
+......\glue 3.51312 plus 1.75479 minus 1.1722
+......\TU/texgyretermes(0)/m/n/14.05249 C
+......\kern -0.0002
+......\kern 0.0002
+......\glue 0.0 plus 1.0fil minus 1.0fil
 .....\glue 1.0
 .....\mathon
 .....\vbox(0.0+4.63684)x105.2751
@@ -991,6 +983,8 @@ Completed box being shipped out [1]
 ......\hbox(9.29874+2.04764)x167.87108, glue set 13.17119fil
 .......\glue 0.0 plus 1.0fil minus 1.0fil
 .......\TU/texgyretermes(0)/m/n/12.045 1992
+.......\kern -0.00021
+.......\kern 0.00021
 .......\glue 3.01125 plus 1.50562 minus 1.00374
 .......\TU/FandolSong-Regular(0)/m/n/12.045 年
 .......\glue 3.01125 plus 1.50562 minus 1.00374
@@ -1005,6 +999,8 @@ Completed box being shipped out [1]
 .......\rule(0.0+0.0)x0.0
 .......\glue 0.0
 .......\TU/texgyretermes(0)/m/n/12.045 1994
+.......\kern -0.00021
+.......\kern 0.00021
 .......\glue 3.01125 plus 1.50562 minus 1.00374
 .......\TU/FandolSong-Regular(0)/m/n/12.045 年
 .......\glue 3.01125 plus 1.50562 minus 1.00374
@@ -1055,14 +1051,12 @@ Completed box being shipped out [1]
 ......\hbox(9.29874+2.04764)x167.87108, glue set 52.31743fil
 .......\glue 0.0 plus 1.0fil minus 1.0fil
 .......\TU/texgyretermes(0)/m/n/12.045 1994
-.......\kern -0.0002
-.......\kern 0.0002
+.......\kern -0.00021
+.......\kern 0.00021
 .......\glue 3.01125 plus 1.50562 minus 1.00374
 .......\TU/FandolSong-Regular(0)/m/n/12.045 年
 .......\glue 3.01125 plus 1.50562 minus 1.00374
 .......\TU/texgyretermes(0)/m/n/12.045 4
-.......\kern -0.0002
-.......\kern 0.0002
 .......\glue 3.01125 plus 1.50562 minus 1.00374
 .......\TU/FandolSong-Regular(0)/m/n/12.045 月
 .......\kern -0.00017
@@ -1109,14 +1103,12 @@ Completed box being shipped out [1]
 .....\glue(\leftskip) 0.0 plus 1.0fil
 .....\hbox(0.0+0.0)x0.0
 .....\TU/texgyretermes(0)/m/n/12.045 1994
-.....\kern -0.0002
-.....\kern 0.0002
+.....\kern -0.00021
+.....\kern 0.00021
 .....\glue 3.01125 plus 1.50562 minus 1.00374
 .....\TU/FandolSong-Regular(0)/m/n/12.045 年
 .....\glue 3.01125 plus 1.50562 minus 1.00374
 .....\TU/texgyretermes(0)/m/n/12.045 4
-.....\kern -0.0002
-.....\kern 0.0002
 .....\glue 3.01125 plus 1.50562 minus 1.00374
 .....\TU/FandolSong-Regular(0)/m/n/12.045 月
 .....\kern -0.00017
