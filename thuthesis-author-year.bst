@@ -44,10 +44,8 @@ INTEGERS {
 
 FUNCTION {load.config}
 {
-  #1 'uppercase.name :=
   #0 'uppercase.name :=
   #3 'max.num.authors :=
-  #0 'period.between.author.year :=
   #1 'period.between.author.year :=
   #1 'sentence.case.title :=
   #0 'link.title :=
@@ -58,7 +56,6 @@ FUNCTION {load.config}
   #0 'bold.journal.volume :=
   #0 'show.missing.address.publisher :=
   #1 'show.url :=
-  #1 'show.doi :=
   #0 'show.doi :=
   #0 'show.note :=
   #1 'lang.zh.order :=
@@ -155,7 +152,7 @@ FUNCTION {bbl.colon} { ": " }
 
 FUNCTION {bbl.wide.space} { "\ " }
 
-FUNCTION {bbl.slash} { "//\allowbreak " }
+FUNCTION {bbl.slash} { " // " }
 
 FUNCTION {bbl.sine.loco}
 { entry.lang lang.zh =
@@ -629,19 +626,15 @@ FUNCTION {make.full.names}
 FUNCTION {output.bibitem}
 { newline$
   "\bibitem[" write$
-  label write$
-  ")" make.full.names duplicate$ short.list =
+  label ")" *
+  make.full.names duplicate$ short.list =
      { pop$ }
      { * }
   if$
   's :=
   s text.length$ 'charptr :=
-    { charptr #0 > }
-    { s charptr #1 substring$ "]" =
-        { #0 'charptr := }
-        { charptr #1 - 'charptr := }
-      if$
-    }
+    { charptr #0 > s charptr #1 substring$ "[" = not and }
+    { charptr #1 - 'charptr := }
   while$
   charptr #0 >
     { "{" s * "}" * }
@@ -889,6 +882,9 @@ FUNCTION {set.entry.mark}
 
 FUNCTION {format.mark}
 { show.mark
+  type$ "phdthesis" = type$ "mastersthesis" = or type$ "patent" = or
+  medium empty$ not or entry.is.electronic or
+  and
     { medium empty$ not
         { entry.mark "/" * medium * 'entry.mark := }
         { entry.is.electronic
@@ -897,7 +893,7 @@ FUNCTION {format.mark}
           if$
         }
       if$
-      "\allowbreak[" entry.mark * "]" *
+      " [" entry.mark * "]" *
     }
     { "" }
   if$
