@@ -204,15 +204,15 @@
 % 令直至不再出现警告。下面给出生成示例文档的详细过程（\texttt{\#} 开头的行为注
 % 释），首先来看推荐的 \texttt{xelatex} 方式：
 % \begin{shell}
-%  # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
-%  $ xelatex main
+%   # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
+%   $ xelatex main
 %
-%  # 2. 编译参考文件源文件，生成 bbl 文件
-%  $ bibtex main
+%   # 2. 编译参考文件源文件，生成 bbl 文件
+%   $ bibtex main
 %
-%  # 3. 下面解决引用
-%  $ xelatex main
-%  $ xelatex main   # 此时生成完整的 pdf 文件
+%   # 3. 下面解决引用
+%   $ xelatex main
+%   $ xelatex main   # 此时生成完整的 pdf 文件
 % \end{shell}
 %
 % \subsubsection{latexmk}
@@ -3108,14 +3108,14 @@
 % \end{macro}
 %
 % \begin{macro}{\equcaption}
-%   本命令只是为了生成公式列表，所以这个 caption 是假的。如果要编号最好用
-%    equation 环境，如果是其它编号环境，请手动添加 \cs{equcaption}。
+% 本命令只是为了生成公式列表，所以这个 caption 是假的。如果要编号最好用
+% \env{equation} 环境，如果是其它编号环境，请手动添加 \cs{equcaption}。
 % 用法如下：
 %
 % \cs{equcaption}\marg{counter}
 %
 % \marg{counter} 指定出现在索引中的编号，一般取 \cs{theequation}，如果你是用
-%  \pkg{amsmath} 的 \cs{tag}，那么默认是 \cs{tag} 的参数；除此之外可能需要你
+% \pkg{amsmath} 的 \cs{tag}，那么默认是 \cs{tag} 的参数；除此之外可能需要你
 % 手工指定。
 %
 %    \begin{macrocode}
