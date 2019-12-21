@@ -1,0 +1,25 @@
+name: build
+
+on:
+  push:
+  schedule:
+  - cron:  '0 0 * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container: danteev/texlive
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Test thesis
+      run: make thesis
+    - name: Test spine
+      run: |
+        sed -i 's/\[RawFeature={vertical:}\]{FangSong}/\[Extension=.otf,RawFeature={vertical:}\]{FandolFang-Regular}/' spine.tex
+        make spine
+    - name: Test doc
+      run: make doc
+    - name: Test formats
+      run: make test
