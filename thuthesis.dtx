@@ -3363,9 +3363,10 @@
 \ProvidesPackage{dtx-style}
 \RequirePackage{hypdoc}
 \RequirePackage{ifthen}
+\RequirePackage{fontspec}
+\RequirePackage{amsmath}
+\RequirePackage{unicode-math}
 \RequirePackage[UTF8,scheme=chinese]{ctex}
-\RequirePackage{newpxtext}
-\RequirePackage{newpxmath}
 \RequirePackage[
   top=2.5cm, bottom=2.5cm,
   left=4cm, right=2cm,
@@ -3378,9 +3379,54 @@
 \RequirePackage{etoolbox}
 \RequirePackage{metalogo}
 
-\ifthenelse{\equal{\@nameuse{g__ctex_fontset_tl}}{mac}}{%
+\ifthenelse{\equal{\@nameuse{g__ctex_fontset_tl}}{mac}}{
+  \setmainfont{Palatino}
+  \setsansfont[Scale=MatchLowercase]{Helvetica}
+  \setmonofont[Scale=MatchLowercase]{Menlo}
   \xeCJKsetwidth{‘’“”}{1em}
-}{}
+}{
+  \setmainfont[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]{texgyrepagella}
+  \setsansfont[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]{texgyreheros}
+  \setmonofont[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+    Scale          = MatchLowercase,
+  ]{texgyrecursor}
+}
+\unimathsetup{
+  math-style=ISO,
+  bold-style=ISO,
+}
+\IfFontExistsTF{XITSMath-Regular.otf}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = XITSMath-Bold,
+    StylisticSet = 8,
+  ]{XITSMath-Regular}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{XITSMath-Regular.otf}
+}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = *bold,
+    StylisticSet = 8,
+  ]{xits-math}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
+}
 
 \colorlet{thu@macro}{blue!60!black}
 \colorlet{thu@env}{blue!70!black}
