@@ -1208,12 +1208,14 @@
 %    \end{macrocode}
 %
 % \pkg{hyperref} 与 \pkg{unicode-math} 存在一些兼容性问题，见
-% \href{https://github.com/ustctug/ustcthesis/issues/223}{
-%   ustctug/ustcthesis\#223} 和
-% \href{https://github.com/ho-tex/hyperref/pull/90}{ho-tex/hyperref\#90}。
+% \href{https://github.com/ustctug/ustcthesis/issues/223}{%
+%   ustctug/ustcthesis\#223}，
+% \href{https://github.com/ho-tex/hyperref/pull/90}{ho-tex/hyperref\#90} 和
+% \href{https://github.com/ustctug/ustcthesis/issues/235}{%
+%   ustctug/ustcthesis/\#235}。
 %    \begin{macrocode}
-\@ifpackagelater{hyperref}{2019/04/27}{}{%
-  \g@addto@macro\psdmapshortnames{\let\mu\textmugreek}%
+\@ifpackagelater{hyperref}{2019/04/27}{}{
+  \g@addto@macro\psdmapshortnames{\let\mu\textmu}
 }
 %    \end{macrocode}
 %
