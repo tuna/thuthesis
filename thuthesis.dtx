@@ -329,17 +329,6 @@
 % 是 \option{openany}。}。这两个选项不用设置，\thuthesis\ 会根据当前论文类型自动选
 % 择。
 %
-% \DescribeOption{tocarialchapter}
-% 章目录项（内容和页码）是否用 \textsf{Arial} 字体。如果想分别控制内容和页码的字体，
-% 用下面两个开关。
-%
-% \DescribeOption{tocarialchapterentry}
-% 章目录项内容中的英文和数字是否用 \textsf{Arial} 字体。中文强制黑体，为了协调这个选
-% 项应该默认打开，不过从目前的反馈来看各学院的标准不一致。
-%
-% \DescribeOption{tocarialchapterpage}
-% 章目录项页码是否用 \textsf{Arial} 字体。
-%
 % \subsection{引用方式}
 % \label{sec:citestyle}
 % 模板支持两种引用方式，分别为理工科常用的“数字式 [1]”和文科常用
@@ -1072,14 +1061,6 @@
   },
 }
 %    \end{macrocode}
-%
-% 章目录中的英文是否用 Arial 字体（默认关闭），可以分别控制内容和页码部分。
-%    \begin{macrocode}
-\DeclareBoolOption{tocarialchapter}
-\DeclareBoolOption{tocarialchapterentry}
-\DeclareBoolOption{tocarialchapterpage}
-%    \end{macrocode}
-%
 %
 % \option{raggedbottom} 选项（默认打开）
 %    \begin{macrocode}
@@ -2122,11 +2103,6 @@
 \def\@pnumwidth{2em}
 \def\@tocrmarg{\@pnumwidth}
 \def\@dotsep{1}
-\ifthu@tocarialchapter
-  \thu@tocarialchapterentrytrue\thu@tocarialchapterpagetrue
-\fi
-\def\thu@toc@chapter@entry@font{\ifthu@tocarialchapterentry\sffamily\fi}
-\def\thu@toc@chapter@page@font{\ifthu@tocarialchapterpage\sffamily\fi}
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
@@ -2138,9 +2114,18 @@
       \leavevmode
       \advance\leftskip\@tempdima
       \hskip -\leftskip
-      {\thu@toc@chapter@entry@font #1}%
+      \begingroup
+        \ifthu@graduate
+          \sffamily
+        \else
+          \ifthu@bachelor
+            \heiti
+          \fi
+        \fi
+        #1%
+      \endgroup
       \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill%
-      \nobreak{\thu@toc@chapter@page@font #2}\par
+      \nobreak #2\par
       \penalty\@highpenalty
     \endgroup
   \fi}
@@ -2150,7 +2135,6 @@
 % 汉字符，二级节标题行缩进 2 个汉字符（但示例文件中为 1.5 个汉字符）。本科生指
 % 南中未作明确规定，示例文件中对于一级和二级节标题分别缩进 1 和 1.5 个汉字符。
 %    \begin{macrocode}
-% \patchcmd{\@dottedtocline}{#4}{\csname thu@toc@font\endcsname #4}{}{}
 \patchcmd{\@dottedtocline}{\hb@xt@\@pnumwidth}{\hbox}{}{}
 \renewcommand*\l@section{%
   \@dottedtocline{1}{\ccwd}{2.1em}}

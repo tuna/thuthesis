@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 修正本科生的文献引用样式。
 - 修改 `shuji` 为 `spine`。
 
+### Fixed
+- 修正本科生目录章标题的字体。
+
 ## [v5.5.2] - 2019-04-21
 ### Changed
 - 使用 XITS 数学字体。
