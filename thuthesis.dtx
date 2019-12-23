@@ -2145,6 +2145,20 @@
 %    \end{macrocode}
 % \end{macro}
 %
+% 研究生和本科生的写作指南均未规定附录的节标题是否加入目录，
+% 但是从示例来看，目录中只出现附录的 chapter 标题，
+% 不出现附录中的 section 及 subsection 的标题。
+% 部分院系（例如自动化系）的格式审查的老师甚至一致口头如此要求。
+% （\href{https://github.com/xueruini/thuthesis/pull/425}{\#425}）
+%    \begin{macrocode}
+\thu@define@key{
+  toc-depth = {
+    name = toc@depth,
+    code = {\addtocontents{toc}{\protect\setcounter{tocdepth}{\thu@toc@depth}}},
+  },
+}
+%    \end{macrocode}
+%
 %
 % \subsubsection{封面和封底}
 % \label{sec:cover}
