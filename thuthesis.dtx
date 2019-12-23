@@ -746,30 +746,30 @@
 % \end{latex}
 %
 % \subsubsection{附录}
-% \DescribeEnv{appendix}
-% 所有的附录都插到这里来。因为附录会更改默认的 chapter 属性，而后面的{\heiti 个人简
-%   历}又需要恢复，所以实现为环境可以保证全局的属性不受影响。
+% \DescribeEnv{survey}
+% \DescribeEnv{translation}
+% 本科生《写作指南》要求附录 A 为外文资料的调研阅读报告或书面翻译，二者择一。
+% 由于调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇子文章；
+% 所以模板定义了 \env{survey} 和 \env{translation} ，
+% 在这两个环境内部可以像论文正文一样使用标题和参考文献的命令，但不会影响外部：
 % \begin{latex}
-%   \begin{appendix}
-%     \input{data/appendix01}
-%     \input{data/appendix02}
-%   \end{appendix}
+%   \begin{survey}
+%     \title{...}
+%     \maketitle
+%     ... \cite{...}
+%     \bibliographystyle{...}
+%     \bibliography{...}
+%   \end{survey}
 % \end{latex}
 %
-% \DescribeMacro{\title}
-% 附录里主要是本科的外文资料以及翻译，在这种情况下，\cs{chapter} 的标题是固定的
-% （即“外文资料的调研阅读报告或书面翻译”），所以用 \cs{title}\marg{标题} 开排版外
-% 文资料以及翻译的标题。这个命令只能在附录环境下使用。
-%
-% \DescribeEnv{translationbib}
-% 本环境用来描述外文资料中的参考文献，例子：
+% 书面翻译对应的原文索引的实际作用更接近参考文献，所以也用参考文献的机制来生成，
+% 但是在正文中并不引用。
 % \begin{latex}
-%   \begin{translationbib}
-%     \item Donald E. Knuth. The \TeX book. Addison-Wesley, 1984. ISBN: 0-201-13448-9
-%     \item Paul W. Abrahams, Karl Berry and Kathryn A. Hargreaves. \TeX\ for the
-%       Impatient. Addison-Wesley, 1990. ISBN: 0-201-51375-7
-%     \item David Salomon. The advanced \TeX book.  New York : Springer, 1995. ISBN:0-387-94556-3
-%   \end{translationbib}
+%   \begin{translation}
+%     ... \nocite{...}
+%     \bibliographystyle{...}
+%     \bibliography{...}
+%   \end{translation}
 % \end{latex}
 %
 % \subsubsection{简历}
@@ -1162,6 +1162,7 @@
 % 参考文献引用宏包。
 %    \begin{macrocode}
 \RequirePackage[sort&compress]{natbib}
+\RequirePackage{bibunits}
 %    \end{macrocode}
 %
 % 删除默认模板（\file{book.cls}）在章之间引入的垂直间隔。要放在 \pkg{hyperref}
@@ -3232,37 +3233,78 @@
 %
 % \subsection{附录}
 % \label{sec:appendix}
-% \begin{environment}{appendix}
-% 主要给本科做外文翻译用。
+%
+% 本科生《写作指南》有独特的要求：附录 A 为外文资料的调研阅读报告或书面翻译，
+% 并且要分别附上独立的参考文献和外文资料的原文索引。
+% 所以这里定义 \env{survey} 和 \env{translation} 专门处理这两种情况，
+% 其中参考文献使用了 \pkg{bibunits} 宏包的功能。
+%
+% \begin{environment}{survey}
+% 外文资料的调研阅读报告。
 %    \begin{macrocode}
-\let\thu@appendix\appendix
-\renewenvironment{appendix}{%
+\newenvironment{survey}{%
+  \chapter{外文资料的调研阅读报告}%
+  \thu@setenglish
   \let\title\thu@appendix@title
-  \thu@appendix}{%
-  \let\title\@gobble}
+  \let\maketitle\thu@appendix@maketitle
+  \renewcommand\bibname{参考文献}%
+  \let\bibsection\thu@appendix@bibsection
+  \renewcommand\@bibunitname{main-survey}%
+  \let\bibliographystyle\defaultbibliographystyle
+  \let\bibliography\thu@appendix@bibliography
+  \begin{bibunit}%
+}{%
+  \end{bibunit}%
+}
 %    \end{macrocode}
 % \end{environment}
 %
-% \begin{macro}{\title}
-% 本科外文翻译文章的标题，用法：\cs{title}\marg{资料标题}。这个命令只能在附录环
-% 境下使用。
+% \begin{environment}{translation}
+% 外文资料的书面翻译。
 %    \begin{macrocode}
-\let\title\@gobble
-\newcommand{\thu@appendix@title}[1]{%
-  \begin{center}
-    \xiaosi[1.667] #1
-  \end{center}}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{environment}{translationbib}
-% 外文资料的参考文用宋体五号字，取固定行距17pt，段前后3pt。
-%    \begin{macrocode}
-\newlist{translationbib}{enumerate}{1}
-\setlist[translationbib]{label=[\arabic*],align=left,nosep,itemsep=6bp,
-  leftmargin=10mm,labelsep=!,before=\vspace{0.5\baselineskip}\wuhao[1.3]}
+\newenvironment{translation}{%
+  \chapter{外文资料的书面翻译}%
+  \thu@setenglish
+  \let\title\thu@appendix@title
+  \let\maketitle\thu@appendix@maketitle
+  \renewcommand\bibname{书面翻译对应的原文索引}%
+  \let\bibsection\thu@appendix@bibsection
+  \renewcommand\@bibunitname{main-translation}%
+  \let\bibliographystyle\defaultbibliographystyle
+  \let\bibliography\thu@appendix@bibliography
+  \begin{bibunit}%
+}{%
+  \end{bibunit}%
+}
 %    \end{macrocode}
 % \end{environment}
+%
+% 调研阅读报告需要独立的标题，这里仿照了标准文档类的用法 \cs{title}, \cs{maketitle}。
+%    \begin{macrocode}
+\DeclareRobustCommand\thu@appendix@title[1]{\gdef\thu@appendix@@title{#1}}
+\newcommand\thu@appendix@maketitle{%
+  \par
+  \begin{center}%
+    \xiaosi[1.667]\thu@appendix@@title
+  \end{center}%
+  \par
+}
+%    \end{macrocode}
+%
+% 调研阅读报告的参考文献(或书面翻译对应的外文资料的原文索引)标题用宋体小四号字，段前 20pt，段后 6pt，行距 20pt。
+%    \begin{macrocode}
+\newcommand\thu@appendix@bibsection{%
+  \par
+  \vskip 20bp%
+  \begingroup
+    \centering
+    \xiaosi[1.667]\bibname\par
+  \endgroup
+  \vskip 6bp%
+}%
+\newcommand\thu@appendix@bibliography[1]{\putbib[#1]}
+%    \end{macrocode}
+%
 %
 % \subsection{个人简历}
 %

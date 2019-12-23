@@ -36,11 +36,11 @@
 
 %% 本科生要这几个索引，研究生不要。选择性留下。
 % 插图索引
-\listoffigures
+% \listoffigures
 % 表格索引
-\listoftables
+% \listoftables
 % 公式索引
-\listofequations
+% \listofequations
 
 
 %% 参考文献
@@ -56,16 +56,17 @@
 \statement
 
 %% 附录
-\begin{appendix}
+\appendix
 % 目录中只出现附录的章标题
 \thusetup{toc-depth=0}
-\input{data/appendix01}
-\end{appendix}
+\input{data/appendix-survey}
+% \input{data/appendix-translation}
 
 %% 个人简历
 \input{data/resume}
 
 %% 本科生进行格式审查是需要下面这个表格，答辩可能不需要。选择性留下。
 % 综合论文训练记录表
-\includepdf[pages=-]{scan-record.pdf}
+% \includepdf[pages=-]{scan-record.pdf}
+
 \end{document}

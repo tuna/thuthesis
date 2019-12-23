@@ -117,7 +117,7 @@ Completed box being shipped out [1]
 ....\write1{\protect \FN@pp@footnotehinttrue }
 ....\write-{}
 ....\special{pdf:dest (section*.1) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{section*.1}{\376\377\123\302\200\003\145\207\ETC.}
+....\write4{\protect \BOOKMARK [0][]{section*.1}{\376\377\123\302\200\003\145\207\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{参考文献}{\thepage \E
 TC.}
 ....\write1{\protect \FN@pp@footnotehinttrue }
@@ -4611,7 +4611,7 @@ Completed box being shipped out [2]
 ....\glue 1.56854 plus 5.0 minus 2.0
 ....\glue(\parskip) 0.0
 ....\glue(\baselineskip) 8.37878
-....\hbox(7.1984+2.29756)x404.41484, glue set 0.38855, shifted 22.37651
+....\hbox(7.1984+2.29756)x404.41484, glue set 0.87688, shifted 22.37651
 .....\hbox(7.12462+1.64412)x0.0
 ......\glue 0.0
 ......\glue -17.5586
@@ -4623,7 +4623,7 @@ Completed box being shipped out [2]
 .......\penalty 10000
 .......\hbox(0.0+0.0)x0.0
 ........\hbox(0.0+0.0)x0.0, shifted -15.80905
-.........\special{pdf:dest (cite.oclc2000about) [@thispage /XYZ @xpos @ypos null]}
+.........\special{pdf:dest (cite.\)) [@thispage /XYZ @xpos @ypos null]}
 .........\penalty 10000
 .......\TU/texgyretermes(0)/m/n/10.53937 [33]
 .......\kern -0.0002
@@ -4632,6 +4632,13 @@ Completed box being shipped out [2]
 .......\special{color pop}
 ......\glue 4.81792
 .....\penalty 0
+.....\TU/texgyretermes(0)/m/n/10.53937 ]
+.....\kern -0.0002
+.....\kern 0.0002
+.....\TU/texgyretermes(0)/m/n/10.53937 oclc2000about
+.....\kern -0.0002
+.....\kern 0.0002
+.....\glue 2.63484 plus 1.31741 minus 0.87828
 .....\TU/texgyretermes(0)/m/n/10.53937 Online
 .....\kern -0.00021
 .....\kern 0.00021
@@ -4677,21 +4684,18 @@ Completed box being shipped out [2]
 .....\glue 2.63484 plus 1.31741 minus 0.87828
 .....\TU/texgyretermes(0)/m/n/10.53937 cooperation
 .....\kern -0.00021
-.....\kern 0.00021
-.....\glue 2.63484 plus 1.31741 minus 0.87828
+.....\kern 0.0
+.....\glue(\rightskip) 0.0
+....\penalty 4150
+....\glue(\baselineskip) 6.3131
+....\hbox(7.1984+2.29758)x404.41484, glue set 99.71118fil, shifted 22.37651
 .....\TU/texgyretermes(0)/m/n/10.53937 [EB/OL].
 .....\kern -0.00021
 .....\kern 0.00021
 .....\glue 2.63484 plus 1.31741 minus 0.87828
 .....\glue 1.15933 plus 3.478 minus 0.73782
 .....\penalty 0
-.....\TU/texgyretermes(0)/m/n/10.53937 [2000-
-.....\discretionary
-.....\glue(\rightskip) 0.0
-....\penalty 4250
-....\glue(\baselineskip) 6.3131
-....\hbox(7.1984+2.29758)x404.41484, glue set 171.7056fil, shifted 22.37651
-.....\TU/texgyretermes(0)/m/n/10.53937 01-08].
+.....\TU/texgyretermes(0)/m/n/10.53937 [....-..-..].
 .....\kern -0.00021
 .....\kern 0.00021
 .....\glue 2.63484 plus 1.31741 minus 0.87828
