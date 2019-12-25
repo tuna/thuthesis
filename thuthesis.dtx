@@ -949,7 +949,7 @@
 \hyphenation{Thu-Thesis}
 \def\thuthesis{ThuThesis}
 \def\version{5.5.2}
-\RequirePackage{keyval}
+\RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
@@ -963,62 +963,140 @@
 \newcommand\thu@error[1]{%
   \ClassError{thuthesis}{#1}{}%
 }
+%    \end{macrocode}
+%
+% 同时用 key-value 的方式来定义这些接口，如
+% \begin{latex}
+%   \thu@define@key{
+%     <key> = {
+%       name = <name>,
+%       choices = {
+%         <choice1>,
+%         <choice2>,
+%       },
+%       default = <default>,
+%       code = <code>,
+%     },
+%   }
+% \end{latex}
+%
+% 其中 |choices| 设置允许使用的值，默认为第一个（或者 \meta{default}）；
+% \meta{code} 是相应的内容被设置时执行的代码。
+%
+%    \begin{macrocode}
+\newcommand\thu@define@key[1]{%
+  \kvsetkeys{thu@key}{#1}%
+}
 \kv@set@family@handler{thu@key}{%
-  \@namedef{thu@#1@@name}{}%
-  \@namedef{thu@#1@@code}{}%
+%    \end{macrocode}
+%
+% \cs{thusetup} 会将 \meta{value} 存到 \cs{thu@\meta{key}}，
+% 但是宏的名字包含 “-” 这样的特殊字符时不方便直接调用，比如 |key = math-style|，
+% 这时可以用 |name| 设置 \meta{key} 的别称，比如 |key = math@style|，
+% 这样就可以通过 \cs{thu@math@style} 来引用。
+% |default| 是定义该 \meta{key} 时默认的值，缺省为空。
+%
+%    \begin{macrocode}
+  \@namedef{thu@#1@@name}{#1}%
   \def\thu@@default{}%
   \def\thu@@choices{}%
-  \@namedef{thu@#1@@choice@hook}{}%
-  \define@key{thu@value}{name}{%
+  \kv@define@key{thu@value}{name}{%
     \@namedef{thu@#1@@name}{##1}%
   }%
-  \define@key{thu@value}{code}{%
+  \kv@define@key{thu@value}{code}{%
     \@namedef{thu@#1@@code}{##1}%
   }%
-  \define@key{thu@value}{choices}{%
+%    \end{macrocode}
+%
+% 由于在定义接口时，\cs{thu@\meta{key}@@code} 不一定有定义，
+% 而且在文档类/宏包中还有可能对该 |key| 的 |code| 进行添加。
+% 所以 \cs{thu@\meta{key}@@code} 会检查如果在定义文档类/宏包时则推迟执行，否则立即执行。
+%
+%    \begin{macrocode}
+  \@namedef{thu@#1@@check}{}%
+  \@namedef{thu@#1@@code}{}%
+  \@namedef{thu@#1@@hook}{%
+    \expandafter\ifx\csname\@currname.\@currext-h@@k\endcsname\relax
+      \@nameuse{thu@#1@@code}%
+    \else
+      \AtEndOfClass{%
+        \@nameuse{thu@#1@@code}%
+      }%
+    \fi
+  }%
+%    \end{macrocode}
+%
+% 保存下 |choices = {}| 定义的内容，在定义 \cs{thu@\meta{name}} 后再执行。
+%
+%    \begin{macrocode}
+  \kv@define@key{thu@value}{choices}{%
     \def\thu@@choices{##1}%
-    \@namedef{thu@#1@@choice@reset}{}%
-    \@namedef{thu@#1@@choice@hook}{%
-      \@ifundefined{thu@#1@@choice@\@nameuse{thu@\@nameuse{thu@#1@@name}}@@code}{%
+    \@namedef{thu@#1@@reset}{}%
+%    \end{macrocode}
+%
+% \cs{thu@\meta{key}@check} 检查 |value| 是否有效，
+% 并设置 \cs{ifthu@\meta{name}@\meta{value}}。
+%
+%    \begin{macrocode}
+    \@namedef{thu@#1@@check}{%
+      \@ifundefined{%
+        ifthu@\@nameuse{thu@#1@@name}@\@nameuse{thu@\@nameuse{thu@#1@@name}}%
+      }{%
         \thu@error{Invalid value "#1 = \@nameuse{thu@\@nameuse{thu@#1@@name}}"}%
       }%
-      \@nameuse{thu@#1@@choice@reset}%
-      \@nameuse{thu@\@nameuse{thu@\@nameuse{thu@#1@@name}}true}%
-      \@nameuse{thu@#1@@choice@\@nameuse{thu@\@nameuse{thu@#1@@name}}@@code}%
+      \@nameuse{thu@#1@@reset}%
+      \@nameuse{thu@\@nameuse{thu@#1@@name}@\@nameuse{thu@\@nameuse{thu@#1@@name}}true}%
     }%
   }%
-  \define@key{thu@value}{default}{%
+  \kv@define@key{thu@value}{default}{%
     \def\thu@@default{##1}%
   }%
   \kvsetkeys{thu@value}{#2}%
-  \expandafter\ifx\csname thu@#1@@name\endcsname\@empty
-    \@namedef{thu@#1@@name}{#1}%
-  \fi
   \@namedef{thu@\@nameuse{thu@#1@@name}}{}%
+%    \end{macrocode}
+%
+% 第一个 \meta{choice} 设为 \meta{default}，
+% 并且对每个 \meta{choice} 定义 \cs{ifthu@\meta{name}@\meta{choice}}。
+%
+%    \begin{macrocode}
   \kv@set@family@handler{thu@choice}{%
     \ifx\thu@@default\@empty
       \def\thu@@default{##1}%
     \fi
-    \@namedef{thu@#1@@choice@##1@@code}{##2}%
-    \expandafter\newif\csname ifthu@##1\endcsname
-    \expandafter\g@addto@macro\csname thu@#1@@choice@reset\endcsname{%
-      \@nameuse{thu@##1false}%
+    \expandafter\newif\csname ifthu@\@nameuse{thu@#1@@name}@##1\endcsname
+    \expandafter\g@addto@macro\csname thu@#1@@reset\endcsname{%
+      \@nameuse{thu@\@nameuse{thu@#1@@name}@##1false}%
     }%
   }%
   \kvsetkeys@expandafter{thu@choice}{\thu@@choices}%
-  \ifx\thu@@default\@empty\else
-    \expandafter\let\csname thu@\@nameuse{thu@#1@@name}\endcsname\thu@@default
-    \@nameuse{thu@#1@@choice@hook}%
-    \@nameuse{thu@#1@@code}%
+%    \end{macrocode}
+%
+% 将 \meta{default} 赋值到 \cs{thu@\meta{name}}，如果非空则执行相应的代码。
+%
+%    \begin{macrocode}
+  \expandafter\let\csname thu@\@nameuse{thu@#1@@name}\endcsname\thu@@default
+  \expandafter\ifx\csname thu@\@nameuse{thu@#1@@name}\endcsname\@empty\else
+    \@nameuse{thu@#1@@check}%
+    \@nameuse{thu@#1@@hook}%
   \fi
-  \define@key{thu}{#1}{%
+%    \end{macrocode}
+%
+% 定义 \cs{thusetup} 接口。
+%
+%    \begin{macrocode}
+  \kv@define@key{thu}{#1}{%
     \@namedef{thu@\@nameuse{thu@#1@@name}}{##1}%
-    \@nameuse{thu@#1@@choice@hook}%
-    \@nameuse{thu@#1@@code}%
+    \@nameuse{thu@#1@@check}%
+    \@nameuse{thu@#1@@hook}%
   }%
 }
-\newcommand\thu@define@key[1]{%
-  \kvsetkeys{thu@key}{#1}%
+%    \end{macrocode}
+%
+% 定义接口向 |key| 添加 |code|：
+%
+%    \begin{macrocode}
+\newcommand\thu@addto[2]{%
+  \expandafter\g@addto@macro\csname thu@#1@code\endcsname{#2}%
 }
 %    \end{macrocode}
 %
@@ -1031,21 +1109,31 @@
 % \end{macro}
 %
 %    \begin{macrocode}
-\newif\ifthu@graduate
+\newif\ifthu@degree@graduate
+\newcommand\thu@set@graduate{%
+  \thu@degree@graduatefalse
+  \ifthu@degree@doctor
+    \thu@degree@graduatetrue
+  \fi
+  \ifthu@degree@master
+    \thu@degree@graduatetrue
+  \fi
+}
 \thu@define@key{
   degree = {
     choices = {
-      bachelor = \thu@graduatefalse,
-      master   = \thu@graduatetrue,
-      doctor   = \thu@graduatetrue,
-      postdoc  = \thu@graduatefalse,
+      bachelor,
+      master,
+      doctor,
+      postdoc,
     },
     default = doctor,
+    code = {\thu@set@graduate},
   },
   degree-type = {
     choices = {
       academic,
-      professional
+      professional,
     },
     name = degree@type,
   },
@@ -1230,7 +1318,7 @@
   hcentering,
   ignoreall,
   nomarginpar}
-\ifthu@bachelor
+\ifthu@degree@bachelor
   \geometry{
     left=32mm,
     headheight=5mm,
@@ -1282,7 +1370,7 @@
 \renewcommand\frontmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmatterfalse
-  \ifthu@bachelor
+  \ifthu@degree@bachelor
     \pagestyle{thu@plain}
   \else
     \pagestyle{thu@headings}
@@ -1294,7 +1382,7 @@
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue
   \pagenumbering{arabic}
-  \ifthu@bachelor\pagestyle{thu@plain}\else\pagestyle{thu@headings}\fi}
+  \ifthu@degree@bachelor\pagestyle{thu@plain}\else\pagestyle{thu@headings}\fi}
 \renewcommand\backmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue}
@@ -1540,7 +1628,7 @@
   }%
 }
 \newcommand\thu@setdefaultlanguage{%
-  \ifthu@chinese
+  \ifthu@language@chinese
     \thu@setchinese
   \else
     \thu@setenglish
@@ -1550,7 +1638,7 @@
 %
 % 中英文翻译：
 %    \begin{macrocode}
-\ifthu@chinese
+\ifthu@language@chinese
   \ctexset{
     chapter/name   = {第,章},
     appendixname   = 附录,
@@ -1580,10 +1668,10 @@
   \newcommand\thu@proof@name{证明}
   \newcommand\thu@theorem@separator{：}
   \newcommand\thu@ack@name{致\hspace{\ccwd}谢}
-  \ifthu@bachelor
+  \ifthu@degree@bachelor
     \newcommand\thu@resume@title{在学期间参加课题的研究成果}
   \else
-    \ifthu@postdoc
+    \ifthu@degree@postdoc
       \newcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
     \else
       \newcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
@@ -1608,10 +1696,10 @@
   \newcommand\thu@proof@name{proof}
   \newcommand\thu@theorem@separator{: }
   \newcommand\thu@ack@name{Acknowledgments}
-  \ifthu@bachelor
+  \ifthu@degree@bachelor
     \newcommand\thu@resume@title{Research Achievements}
   \else
-    \ifthu@postdoc
+    \ifthu@degree@postdoc
       \newcommand\thu@resume@title{%
         Resume, Publications and Research Achievements%
       }
@@ -1733,7 +1821,7 @@
 % \begin{macro}{\ldots}
 % 省略号一律居中，所以 \cs{ldots} 不再居于底部。
 %    \begin{macrocode}
-\ifthu@chinese
+\ifthu@language@chinese
   \def\mathellipsis{\cdots}
 \fi
 %    \end{macrocode}
@@ -1830,7 +1918,7 @@
 \def\make@df@tag{\@ifstar\thu@make@df@tag@@\make@df@tag@@@}
 \def\thu@make@df@tag@@#1{\gdef\df@tag{\thu@maketag{#1}\def\@currentlabel{#1}}}
 \iffalse
-\ifthu@bachelor
+\ifthu@degree@bachelor
   \def\thu@maketag#1{\maketag@@@{%
     (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)}}
   \def\tagform@#1{\maketag@@@{%
@@ -1897,7 +1985,7 @@
 %   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
 % \end{itemize}
 %    \begin{macrocode}
-\ifthu@bachelor
+\ifthu@degree@bachelor
   \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
   \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
 \fi
@@ -1937,7 +2025,7 @@
 % \subsubsection{章节标题}
 % \label{sec:theor}
 %    \begin{macrocode}
-\ifthu@bachelor
+\ifthu@degree@bachelor
   \newcommand{\cabstractname}{中文摘要}
   \newcommand{\eabstractname}{ABSTRACT}
 \else
@@ -1996,7 +2084,7 @@
 % \end{description}
 %    \begin{macrocode}
 \newcommand\thu@chapter@titleformat[1]{%
-  \ifthu@bachelor #1\else%
+  \ifthu@degree@bachelor #1\else%
     \ifthenelse%
       {\equal{#1}{\eabstractname}}%
       {\bfseries #1}%
@@ -2005,11 +2093,11 @@
 \ctexset{%
   chapter={
     afterindent=true,
-    pagestyle={\ifthu@bachelor thu@plain\else thu@headings\fi},
-    beforeskip={\ifthu@bachelor 15bp\else 9bp\fi},
+    pagestyle={\ifthu@degree@bachelor thu@plain\else thu@headings\fi},
+    beforeskip={\ifthu@degree@bachelor 15bp\else 9bp\fi},
     aftername=\hskip\ccwd,
-    afterskip={\ifthu@bachelor 20bp\else 24bp\fi},
-    format={\centering\sffamily\ifthu@bachelor\xiaosan[1.333]\else\sanhao[1]\fi},
+    afterskip={\ifthu@degree@bachelor 20bp\else 24bp\fi},
+    format={\centering\sffamily\ifthu@degree@bachelor\xiaosan[1.333]\else\sanhao[1]\fi},
     nameformat=\relax,
     numberformat=\relax,
     titleformat=\thu@chapter@titleformat,
@@ -2018,22 +2106,22 @@
   },
   section={
     afterindent=true,
-    beforeskip={\ifthu@bachelor 25bp\else 24bp\fi\@plus 1ex \@minus .2ex},
-    afterskip={\ifthu@bachelor 12bp\else 6bp\fi \@plus .2ex},
-    format={\sffamily\ifthu@bachelor\sihao[1.286]\else\sihao[1.429]\fi},
+    beforeskip={\ifthu@degree@bachelor 25bp\else 24bp\fi\@plus 1ex \@minus .2ex},
+    afterskip={\ifthu@degree@bachelor 12bp\else 6bp\fi \@plus .2ex},
+    format={\sffamily\ifthu@degree@bachelor\sihao[1.286]\else\sihao[1.429]\fi},
   },
   subsection={
     afterindent=true,
-    beforeskip={\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
+    beforeskip={\ifthu@degree@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
     afterskip={6bp \@plus .2ex},
-    format={\sffamily\ifthu@bachelor\xiaosi[1.25]\else\banxiaosi[1.538]\fi},
-    numberformat={\sffamily\ifthu@bachelor\banxiaosi[1.154]\else\banxiaosi[1.538]\fi},
+    format={\sffamily\ifthu@degree@bachelor\xiaosi[1.25]\else\banxiaosi[1.538]\fi},
+    numberformat={\sffamily\ifthu@degree@bachelor\banxiaosi[1.154]\else\banxiaosi[1.538]\fi},
   },
   subsubsection={
     afterindent=true,
-    beforeskip={\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
+    beforeskip={\ifthu@degree@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
     afterskip={6bp \@plus .2ex},
-    format={\sffamily\ifthu@bachelor\xiaosi[1.25]\else\xiaosi[1.667]\fi},
+    format={\sffamily\ifthu@degree@bachelor\xiaosi[1.25]\else\xiaosi[1.667]\fi},
   },
   paragraph/afterindent=true,
   subparagraph/afterindent=true}
@@ -2067,9 +2155,9 @@
   }{%
     \addcontentsline{toc}{chapter}{#3}
   }%
-  \ifthu@bachelor \ctexset{chapter/beforeskip=25bp} \fi
+  \ifthu@degree@bachelor \ctexset{chapter/beforeskip=25bp} \fi
   \chapter*{#3}%
-  \ifthu@bachelor \ctexset{chapter/beforeskip=15bp} \fi
+  \ifthu@degree@bachelor \ctexset{chapter/beforeskip=15bp} \fi
   \IfValueTF{#4}{%
     \ifthenelse{\equal{#4}{}}
     {\@mkboth{}{}}
@@ -2097,7 +2185,7 @@
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
   \thu@chapter*[]{\contentsname}
-  \ifthu@bachelor\xiaosi[1.667]\else\xiaosi[1.65]\fi\@starttoc{toc}\normalsize}
+  \ifthu@degree@bachelor\xiaosi[1.667]\else\xiaosi[1.65]\fi\@starttoc{toc}\normalsize}
 %    \end{macrocode}
 % 调整目录样式，允许指定目录字体。
 %    \begin{macrocode}
@@ -2107,7 +2195,7 @@
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
-    \ifthu@bachelor\vskip 6bp\else\vskip 4bp\fi \@plus\p@
+    \ifthu@degree@bachelor\vskip 6bp\else\vskip 4bp\fi \@plus\p@
     \setlength\@tempdima{4em}%
     \begingroup
       \parindent \z@ \rightskip \@pnumwidth
@@ -2116,10 +2204,10 @@
       \advance\leftskip\@tempdima
       \hskip -\leftskip
       \begingroup
-        \ifthu@graduate
+        \ifthu@degree@graduate
           \sffamily
         \else
-          \ifthu@bachelor
+          \ifthu@degree@bachelor
             \heiti
           \fi
         \fi
@@ -2140,9 +2228,9 @@
 \renewcommand*\l@section{%
   \@dottedtocline{1}{\ccwd}{2.1em}}
 \renewcommand*\l@subsection{%
-  \@dottedtocline{2}{\ifthu@bachelor 1.5\ccwd\else 2\ccwd\fi}{3em}}
+  \@dottedtocline{2}{\ifthu@degree@bachelor 1.5\ccwd\else 2\ccwd\fi}{3em}}
 \renewcommand*\l@subsubsection{%
-  \@dottedtocline{3}{\ifthu@bachelor 2.4em\else 3.5em\fi}{3.8em}}
+  \@dottedtocline{3}{\ifthu@degree@bachelor 2.4em\else 3.5em\fi}{3.8em}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2379,7 +2467,7 @@
   \phantomsection
   \pdfbookmark[-1]{\thu@title}{title}%
   \thu@titlepage
-  \ifthu@graduate
+  \ifthu@degree@graduate
     \cleardoublepage
     \thu@titlepage@en
   \fi
@@ -2395,8 +2483,8 @@
 % layout 一样，所以按照 \cs{thu@discipline}（工程领域）是否为空来区分“工程硕士”。
 %    \begin{macrocode}
 \newcommand\thu@titlepage{%
-  \ifthu@graduate
-    \ifthu@academic
+  \ifthu@degree@graduate
+    \ifthu@degree@type@academic
       \thu@titlepage@graduate@academic
     \else
       \ifx\thu@discipline\@empty
@@ -2406,10 +2494,10 @@
       \fi
     \fi
   \else
-    \ifthu@bachelor
+    \ifthu@degree@bachelor
       \thu@titlepage@bachelor
     \else
-      \ifthu@postdoc
+      \ifthu@degree@postdoc
         \thu@cover@postdoc
         \cleardoublepage
         \thu@titlepage@postdoc
@@ -2506,7 +2594,7 @@
   \begingroup
     \def\CJKglue{\hskip 1bp}%
     \CJKfamily+{}\xiaoer
-    (申请清华大学\thu@degree@name\ifthu@professional 专业\fi 学位论文)\par
+    (申请清华大学\thu@degree@name\ifthu@degree@type@professional 专业\fi 学位论文)\par
   \endgroup
 }
 %    \end{macrocode}
@@ -2514,7 +2602,7 @@
 % 作者及导师信息部分使用三号仿宋字
 %    \begin{macrocode}
 \newcommand\thu@titlepage@info{%
-  \ifthu@doctor
+  \ifthu@degree@doctor
     \thu@titlepage@info@doctor
   \else
     \thu@titlepage@info@master
@@ -2536,7 +2624,7 @@
   \fangsong\sanhao[1.95]%
   \thu@cover@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
     \thu@cover@item{培养单位}{}{\thu@department}%
-    \ifthu@academic
+    \ifthu@degree@type@academic
       \thu@cover@item{学科}{}{\thu@discipline}%
       \thu@cover@item{研究生}{\thu@name@title}{\thu@author}%
     \else
@@ -2551,7 +2639,7 @@
   \fangsong\sanhao[1.95]%
   \thu@cover@info@tabular{5.5em}{3.6cm}{0.82cm}{%
     \thu@cover@item{培养单位}{}{\thu@department}%
-    \ifthu@academic
+    \ifthu@degree@type@academic
       \thu@cover@item{学科}{}{\thu@discipline}%
       \thu@cover@item{研究生}{\thu@name@title}{\thu@author}%
     \else
@@ -2585,7 +2673,7 @@
     bottom  = 5cm,
     hmargin = 3.6cm,
   }%
-  \ifthu@academic
+  \ifthu@degree@type@academic
     \thu@titlepage@en@graduate@academic
   \else
     \thu@titlepage@en@graduate@professional
@@ -2652,7 +2740,7 @@
   \endgroup
 }
 \newcommand\thu@thesis@name@en{%
-  \ifthu@master
+  \ifthu@degree@master
     Thesis%
   \else
     Dissertation%
@@ -2663,7 +2751,7 @@
   {\bfseries Tsinghua University\par}%
   in partial fulfillment of the requirement\par
   for the
-  \ifthu@professional
+  \ifthu@degree@type@professional
     professional
   \fi
   degree of\par
@@ -2834,7 +2922,7 @@
 % 授权说明
 %    \begin{macrocode}
 \newcommand{\thu@authorization}{%
-\ifthu@bachelor
+\ifthu@degree@bachelor
 本人完全了解清华大学有关保留、使用学位论文的规定，即：学校有权保留学位
 论文的复印件，允许该论文被查阅和借阅；学校可以公布该论文的全部或部分内
 容，可以采用影印、缩印或其他复制手段保存该论文。
@@ -2844,24 +2932,24 @@
 清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：（1）已获学位的研究生
 必须按学校规定提交学位论文，学校可以采用影印、缩印或其他复制手段保存研究生上交的
 学位论文；（2）为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料
-室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容\ifthu@master 。\else ；
+室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容\ifthu@degree@master 。\else ；
 （3）根据《中华人民共和国学位条例暂行实施办法》，向国家图书馆报送可以公开的学位
 论文。\fi
 
 本人保证遵守上述规定。
 \fi}
 \newcommand{\thu@authorizationaddon}{%
-  \ifthu@bachelor(涉密的学位论文在解密后应遵守此规定)\else （保密的论文在解密后应遵守此规定）\fi}
-\newcommand{\thu@authorsig}{\ifthu@bachelor 签\hskip1em名：\else 作者签名：\fi}
+  \ifthu@degree@bachelor(涉密的学位论文在解密后应遵守此规定)\else （保密的论文在解密后应遵守此规定）\fi}
+\newcommand{\thu@authorsig}{\ifthu@degree@bachelor 签\hskip1em名：\else 作者签名：\fi}
 \newcommand{\thu@teachersig}{导师签名：}
 \newcommand{\thu@frontdate}{%
-  日\ifthu@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
+  日\ifthu@degree@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
 \newcommand\copyrightpage[1][]{%
-  \ifthu@postdoc\relax\else
-    \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
+  \ifthu@degree@postdoc\relax\else
+    \ifthu@degree@bachelor\clearpage\else\cleardoublepage\fi%
     \def\thu@@tmp{#1}
     \ifx\thu@@tmp\@empty
-      \ifthu@bachelor\thu@authorization@mk\else%
+      \ifthu@degree@bachelor\thu@authorization@mk\else%
         \begin{list}{}{%
           \topsep\z@%
           \listparindent\parindent%
@@ -2881,13 +2969,13 @@
 % 支持扫描文件替换。
 %    \begin{macrocode}
 \newcommand{\thu@authorization@mk}{%
-  \ifthu@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
+  \ifthu@degree@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
   \begin{center}\erhao\heiti 关于学位论文使用授权的说明\end{center}
-  \ifthu@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
+  \ifthu@degree@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
   \thu@authorization\par
   \textbf{\thu@authorizationaddon}\par
-  \ifthu@bachelor\vskip0.7cm\else\vskip1.0cm\fi
-  \ifthu@bachelor
+  \ifthu@degree@bachelor\vskip0.7cm\else\vskip1.0cm\fi
+  \ifthu@degree@bachelor
     \indent\mbox{\thu@authorsig\thu@underline\relax%
     \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax}
   \else
@@ -2904,7 +2992,7 @@
 %
 %    \begin{macrocode}
 \def\thu@setup@pdfinfo{%
-  \ifthu@chinese
+  \ifthu@language@chinese
     \hypersetup{
       pdftitle    = \thu@title,
       pdfauthor   = \thu@author,
@@ -2959,7 +3047,7 @@
 \newcommand\thu@put@keywords[2]{%
   \begingroup
     \setbox\thu@kw=\hbox{#1}
-    \ifthu@bachelor\indent\else\noindent\hangindent\wd\thu@kw\hangafter1\fi%
+    \ifthu@degree@bachelor\indent\else\noindent\hangindent\wd\thu@kw\hangafter1\fi%
     \box\thu@kw#2\par
   \endgroup}
 %    \end{macrocode}
@@ -2971,7 +3059,7 @@
 % 标点符号一律用中文输入状态下的标点符号。
 %    \begin{macrocode}
 \newenvironment{abstract}{%
-  \ifthu@bachelor\clearpage\else\cleardoublepage\fi
+  \ifthu@degree@bachelor\clearpage\else\cleardoublepage\fi
   \thu@setchinese
   \thu@chapter*[]{\cabstractname} % no tocline
 }{%
@@ -2979,7 +3067,7 @@
 %
 % 每个关键词之间空两个汉字符宽度， 且为悬挂缩进。
 %    \begin{macrocode}
-  \ifthu@doctor\vfill\else\vskip12bp\fi
+  \ifthu@degree@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{\textbf{关键词：}}{%
     \thu@clist@use{\thu@keywords}{；}%
   }%
@@ -2997,9 +3085,9 @@
   \thu@setenglish
   \thu@chapter*[]{\eabstractname} % no tocline
 }{%
-  \ifthu@doctor\vfill\else\vskip12bp\fi
+  \ifthu@degree@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{%
-    \textbf{\ifthu@bachelor Keywords:\else Key Words:\fi\enskip}%
+    \textbf{\ifthu@degree@bachelor Keywords:\else Key Words:\fi\enskip}%
   }{%
     \thu@clist@use{\thu@keywords@en}{; }%
   }%
@@ -3099,7 +3187,7 @@
     {\thu@chapter*[]{\csname list#1name\endcsname}\thu@starttoc{#1}}
     {\thu@chapter*{\csname list#1name\endcsname}\thu@starttoc{#1}}}
 \renewcommand\listoffigures{\thu@listof{figure}}
-\renewcommand*\l@figure{\ifthu@bachelor\relax\else\addvspace{6bp}\fi\@dottedtocline{1}{0em}{4em}}
+\renewcommand*\l@figure{\ifthu@degree@bachelor\relax\else\addvspace{6bp}\fi\@dottedtocline{1}{0em}{4em}}
 \renewcommand\listoftables{\thu@listof{table}}
 \let\l@table\l@figure
 %    \end{macrocode}
@@ -3158,7 +3246,7 @@
 % 复用 \pkg{natbib} 的 \texttt{thebibliography} 环境，调整距离。
 %    \begin{macrocode}
 \renewcommand\bibsection{\thu@chapter*{\bibname}}
-\renewcommand\bibfont{\ifthu@bachelor\wuhao[1.619]\else\wuhao[1.5]\fi}
+\renewcommand\bibfont{\ifthu@degree@bachelor\wuhao[1.619]\else\wuhao[1.5]\fi}
 \setlength\bibhang{2\ccwd}
 \addtolength{\bibsep}{-0.7em}
 \setlength{\labelsep}{0.4em}
