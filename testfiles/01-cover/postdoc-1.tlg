@@ -13,12 +13,12 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 7.52731pt on input line ....
 Completed box being shipped out [1]
-\vbox(707.33551+0.0)x439.87962
+\vbox(710.18088+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
 ..\special{pdf:docinfo<</Title(\376\377\145\260\127\213\147\011\147\072\227\136\\ETC.}
-.\vbox(0.0+0.0)x0.0, glue set 13.5229fil
+.\vbox(0.0+0.0)x0.0, glue set 10.67773fil
 ..\kern 0.0
-..\kern -12.51917
+..\kern -9.674
 ..\kern -1.00374
 ..\hbox(0.0+0.0)x0.0, glue set - 12.08453fil
 ...\kern 0.0
@@ -29,7 +29,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 ..\glue 0.0 plus 1.0fil minus 1.0fil
 .\glue(\lineskip) 0.0
-.\vbox(707.33551+0.0)x439.87962
+.\vbox(710.18088+0.0)x439.87962
 ..\hbox(0.0+0.0)x0.0
 ...\kern -72.27
 ...\vbox(0.0+0.0)x426.79135, glue set 72.27fil
@@ -49,8 +49,8 @@ Completed box being shipped out [1]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
-..\glue -12.51917
-..\vbox(719.85468+0.0)x426.79135, shifted 13.08827
+..\glue -9.674
+..\vbox(719.85487+0.0)x426.79135, shifted 13.08827
 ...\vbox(14.22636+0.0)x426.79135, glue set 14.22636fil
 ....\glue 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x426.79135
@@ -89,9 +89,9 @@ Completed box being shipped out [1]
 ........\glue 0.0
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 .....\special{color pop}
-...\glue 14.22636
+...\glue 8.5359
 ...\glue(\lineskip) 0.0
-...\vbox(674.3303+0.0)x426.79135, glue set 56.76845fil
+...\vbox(674.33032+0.0)x426.79135, glue set 56.76846fil
 ....\write-{}
 ....\special{color push gray 0}
 ....\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
@@ -1123,7 +1123,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
-...\glue(\baselineskip) 11.04909
+...\glue(\baselineskip) 16.73973
 ...\hbox(6.02255+0.0)x426.79135
 ....\special{color push gray 0}
 ....\hbox(6.02255+0.0)x426.79135
@@ -1161,7 +1161,7 @@ Completed box being shipped out [1]
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\special{color pop}
 ..\kern 0.0
-..\kern -707.33551
+..\kern -710.18088
 ..\hbox(0.0+0.0)x0.0
 ...\kern -72.27
 ...\vbox(0.0+0.0)x426.79135, glue set 72.27fil
@@ -1181,5 +1181,5 @@ Completed box being shipped out [1]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
-..\kern 707.33551
+..\kern 710.18088
 .\kern 0.0

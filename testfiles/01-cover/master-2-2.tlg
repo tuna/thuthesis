@@ -14,11 +14,11 @@ Don't change this file in any respect.
 * \textheight=546.29292pt
 * \oddsidemargin=30.1601pt
 * \evensidemargin=30.1601pt
-* \topmargin=55.76743pt
+* \topmargin=61.45789pt
 * \headheight=14.22636pt
-* \headsep=14.22636pt
+* \headsep=8.5359pt
 * \topskip=12.0pt
-* \footskip=17.07164pt
+* \footskip=22.76228pt
 * \marginparwidth=0.0pt
 * \marginparsep=0.0pt
 * \columnsep=10.0pt
@@ -44,12 +44,12 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 9.03276pt on input line ....
 Completed box being shipped out [1]
-\vbox(647.58472+0.0)x422.8078
+\vbox(653.27536+0.0)x422.8078
 .\hbox(0.0+0.0)x0.0
 ..\special{pdf:docinfo<</Title(\376\377\150\007\230\230)/Subject(\376\377\135\34\ETC.}
-.\vbox(0.0+0.0)x0.0, glue set - 54.76369fil
+.\vbox(0.0+0.0)x0.0, glue set - 60.45415fil
 ..\kern 0.0
-..\kern 55.76743
+..\kern 61.45789
 ..\kern -1.00374
 ..\hbox(0.0+0.0)x0.0, glue set - 29.15636fil
 ...\kern 0.0
@@ -60,7 +60,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 ..\glue 0.0 plus 1.0fil minus 1.0fil
 .\glue(\lineskip) 0.0
-.\vbox(647.58472+0.0)x422.8078
+.\vbox(653.27536+0.0)x422.8078
 ..\hbox(0.0+0.0)x0.0
 ...\kern -72.27
 ...\vbox(0.0+0.0)x392.6477, glue set 72.27fil
@@ -80,8 +80,8 @@ Completed box being shipped out [1]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
-..\glue 55.76743
-..\vbox(591.81729+0.0)x392.6477, shifted 30.1601
+..\glue 61.45789
+..\vbox(591.81747+0.0)x392.6477, shifted 30.1601
 ...\vbox(14.22636+0.0)x392.6477, glue set 14.22636fil
 ....\glue 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x392.6477
@@ -120,7 +120,7 @@ Completed box being shipped out [1]
 ........\glue 0.0
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 .....\special{color pop}
-...\glue 14.22636
+...\glue 8.5359
 ...\glue(\lineskip) 0.0
 ...\vbox(546.29292+0.0)x392.6477, glue set 51.02226fill
 ....\write-{}
@@ -472,7 +472,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
-...\glue(\baselineskip) 11.04909
+...\glue(\baselineskip) 16.73973
 ...\hbox(6.02255+0.0)x392.6477
 ....\special{color push gray 0}
 ....\hbox(6.02255+0.0)x392.6477, glue set - 34.14365fil
@@ -510,7 +510,7 @@ Completed box being shipped out [1]
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\special{color pop}
 ..\kern 0.0
-..\kern -647.58472
+..\kern -653.27536
 ..\hbox(0.0+0.0)x0.0
 ...\kern -72.27
 ...\vbox(0.0+0.0)x392.6477, glue set 72.27fil
@@ -530,5 +530,5 @@ Completed box being shipped out [1]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
-..\kern 647.58472
+..\kern 653.27536
 .\kern 0.0

@@ -1309,31 +1309,39 @@
 %
 % \subsection{页面设置}
 % \label{sec:layout}
-% 本来这部分应该是最容易设置的，但根据格式规定出来的结果跟学校的 WORD 样例相差很
-% 大，所以只能微调。
+%
+% 研究生《写作指南》：
+% 页边距：上下左右均为 3.0 厘米，装订线 0 厘米；
+% 页眉距边界：2.2 厘米，页脚距边界：2.2 厘米。
+%
+% 本科生《写作指南》：
+% 页边距：上：3.8 厘米，下：3.2 厘米，左右：3 厘米，装订线：左 0.2 厘米。
+% 本科生 Word 模板：
+% 页眉距边界：1.5 厘米，页脚距边界：1.75 厘米。
+%
 %    \begin{macrocode}
 \RequirePackage{geometry}
 \geometry{
   a4paper, % 210 * 297mm
-  hcentering,
-  ignoreall,
-  nomarginpar}
+  nomarginpar,
+}
 \ifthu@degree@bachelor
   \geometry{
-    left=32mm,
-    headheight=5mm,
-    headsep=5mm,
-    textheight=227mm,
-    bottom=32mm,
-    footskip=12mm}
+    top        = 3.8cm,
+    bottom     = 3.2cm,
+    left       = 3.2cm,
+    right      = 3cm,
+    headheight = 0.5cm,
+    headsep    = 1.8cm,
+    footskip   = 1.45cm,
+  }
 \else
   \geometry{
-    left=30mm,
-    headheight=5mm,
-    headsep=5mm,
-    textheight=237mm,
-    bottom=29mm,
-    footskip=6mm}
+    margin     = 3cm,
+    headheight = 0.5cm,
+    headsep    = 0.3cm,
+    footskip   = 0.8cm,
+  }
 \fi
 %    \end{macrocode}
 %
