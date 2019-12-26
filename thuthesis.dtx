@@ -1247,40 +1247,8 @@
 \RequirePackage{bibunits}
 %    \end{macrocode}
 %
-% 删除默认模板（\file{book.cls}）在章之间引入的垂直间隔。要放在 \pkg{hyperref}
-% 之前。
 %    \begin{macrocode}
-%    \end{macrocode}
-% 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
-%    \begin{macrocode}
-\RequirePackage{hyperref}
-\hypersetup{
-  linktoc            = all,
-  bookmarksnumbered  = true,
-  bookmarksopen      = true,
-  bookmarksopenlevel = 1,
-  unicode            = true,
-  psdextra           = true,
-  breaklinks         = true,
-  plainpages         = false,
-  hidelinks,
-}
-\pdfstringdefDisableCommands{
-  \let\\\@empty
-  \let\hspace\@gobble
-}
-%    \end{macrocode}
-%
-% \pkg{hyperref} 与 \pkg{unicode-math} 存在一些兼容性问题，见
-% \href{https://github.com/ustctug/ustcthesis/issues/223}{%
-%   ustctug/ustcthesis\#223}，
-% \href{https://github.com/ho-tex/hyperref/pull/90}{ho-tex/hyperref\#90} 和
-% \href{https://github.com/ustctug/ustcthesis/issues/235}{%
-%   ustctug/ustcthesis/\#235}。
-%    \begin{macrocode}
-\@ifpackagelater{hyperref}{2019/04/27}{}{
-  \g@addto@macro\psdmapshortnames{\let\mu\textmu}
-}
+\RequirePackage{url}
 %    \end{macrocode}
 %
 % 设置 url 样式，与上下文一致
@@ -2033,7 +2001,6 @@
 % 方法解决：
 %    \begin{macrocode}
 \AtBeginDocument{%
-  \thu@setup@pdfinfo
   \pagestyle{thu@empty}
   \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}}
 %    \end{macrocode}
@@ -2113,16 +2080,15 @@
 % title 是章标题；header 是页眉出现的标题，如果忽略则取 title。通过这个宏我才真
 % 正体会到 \TeX\ macro 的力量！
 %    \begin{macrocode}
-\newcounter{thu@bookmark}
+\newcommand\thu@pdfbookmark[2]{}
 \NewDocumentCommand\thu@chapter{s o m o}{
   \IfBooleanF{#1}{%
     \ClassError{thuthesis}{You have to use the star form: \string\thu@chapter*}{}
   }%
-  \if@openright\cleardoublepage\else\clearpage\fi\phantomsection%
+  \if@openright\cleardoublepage\else\clearpage\fi%
   \IfValueTF{#2}{%
     \ifthenelse{\equal{#2}{}}{%
-      \addtocounter{thu@bookmark}\@ne
-      \pdfbookmark[0]{#3}{thuchapter.\thethu@bookmark}
+      \thu@pdfbookmark{0}{#3}%
     }{%
       \addcontentsline{toc}{chapter}{#3}
     }
@@ -2438,8 +2404,7 @@
   \cleardoublepage
   \pagestyle{thu@empty}%
   \pagenumbering{Alph}%
-  \phantomsection
-  \pdfbookmark[-1]{\thu@title}{title}%
+  \thu@pdfbookmark{-1}{\thu@title}%
   \thu@titlepage
   \ifthu@degree@graduate
     \cleardoublepage
@@ -2964,27 +2929,6 @@
 %    \end{macrocode}
 % \end{macro}
 %
-%    \begin{macrocode}
-\def\thu@setup@pdfinfo{%
-  \ifthu@language@chinese
-    \hypersetup{
-      pdftitle    = \thu@title,
-      pdfauthor   = \thu@author,
-      pdfsubject  = \thu@degree@name,
-      pdfkeywords = \thu@keywords,
-    }%
-  \else
-    \hypersetup{
-      pdftitle    = \thu@title@en,
-      pdfauthor   = \thu@author@en,
-      pdfsubject  = \thu@degree@name@en,
-      pdfkeywords = \thu@keywords@en,
-    }%
-  \fi
-  \hypersetup{
-    pdfcreator={\thuthesis-v\version}}}
-%    \end{macrocode}
-%
 % \subsubsection{摘要}
 % \label{sec:abstractformat}
 %
@@ -3129,7 +3073,7 @@
       \thu@backdate\thu@underline[2.5cm]\relax}%
   \else
     \includepdf[pagecommand={\thispagestyle{thu@empty}%
-      \phantomsection\addcontentsline{toc}{chapter}{\thu@declarename}%
+      \addcontentsline{toc}{chapter}{\thu@declarename}%
     }]{#1}%
   \fi
 }
@@ -3426,6 +3370,65 @@
 \newcommand\thu@atendpackage{\csname ctex_at_end_package:nn\endcsname}
 %    \end{macrocode}
 %
+% \subsubsection{\pkg{hyperref} 宏包}
+%
+%    \begin{macrocode}
+\thu@atendpackage{hyperref}{
+  \hypersetup{
+    linktoc            = all,
+    bookmarksnumbered  = true,
+    bookmarksopen      = true,
+    bookmarksopenlevel = 1,
+    unicode            = true,
+    psdextra           = true,
+    breaklinks         = true,
+    plainpages         = false,
+    hidelinks,
+  }%
+  \newcounter{thu@bookmark}
+  \renewcommand\thu@pdfbookmark[2]{%
+    \phantomsection
+    \stepcounter{thu@bookmark}%
+    \pdfbookmark[#1]{#2}{thuchapter.\thethu@bookmark}%
+  }
+  \pdfstringdefDisableCommands{
+    \let\\\@empty
+    \let\hspace\@gobble
+  }%
+%    \end{macrocode}
+%
+% \pkg{hyperref} 与 \pkg{unicode-math} 存在一些兼容性问题，见
+% \href{https://github.com/ustctug/ustcthesis/issues/223}{%
+%   ustctug/ustcthesis\#223}，
+% \href{https://github.com/ho-tex/hyperref/pull/90}{ho-tex/hyperref\#90} 和
+% \href{https://github.com/ustctug/ustcthesis/issues/235}{%
+%   ustctug/ustcthesis/\#235}。
+%    \begin{macrocode}
+  \@ifpackagelater{hyperref}{2019/04/27}{}{%
+    \g@addto@macro\psdmapshortnames{\let\mu\textmu}
+  }%
+  \AtBeginDocument{%
+    \ifthu@language@chinese
+      \hypersetup{
+        pdftitle    = \thu@title,
+        pdfauthor   = \thu@author,
+        pdfsubject  = \thu@degree@name,
+        pdfkeywords = \thu@keywords,
+      }%
+    \else
+      \hypersetup{
+        pdftitle    = \thu@title@en,
+        pdfauthor   = \thu@author@en,
+        pdfsubject  = \thu@degree@name@en,
+        pdfkeywords = \thu@keywords@en,
+      }%
+    \fi
+    \hypersetup{
+      pdfcreator={\thuthesis-v\version}}
+  }%
+}
+%    \end{macrocode}
+%
 % \subsubsection{\pkg{nomencl} 宏包}
 %
 %    \begin{macrocode}
@@ -3440,7 +3443,7 @@
 %
 % 我们采用 \pkg{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
 %    \begin{macrocode}
-\thu@atendpackage{longtable}{
+\AtBeginDocument{%
   \let\thu@LT@array\LT@array
   \def\LT@array{\dawu[1.5]\thu@LT@array} % set default font size
 }
