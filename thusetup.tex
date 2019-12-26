@@ -103,27 +103,30 @@
 }
 
 % 表格中支持跨行
-\RequirePackage{multirow}
+\usepackage{multirow}
+
+% 跨页表格
+\usepackage{longtable}
 
 % 固定宽度的表格
-\RequirePackage{tabularx}
+\usepackage{tabularx}
 
 % 表格中的反斜线
-\RequirePackage{diagbox}
+\usepackage{diagbox}
 
 % 确定浮动对象的位置，可以使用 H，强制将浮动对象放到这里（可能效果很差）
-\RequirePackage{float}
+\usepackage{float}
 
 % 浮动图形控制宏包。
 % 允许上一个 section 的浮动图形出现在下一个 section 的开始部分
 % 该宏包提供处理浮动对象的 \FloatBarrier 命令，使所有未处
 % 理的浮动图形立即被处理。这三个宏包仅供参考，未必使用：
-% \RequirePackage[below]{placeins}
-% \RequirePackage{floatflt} % 图文混排用宏包
-% \RequirePackage{rotating} % 图形和表格的控制旋转
+% \usepackage[below]{placeins}
+% \usepackage{floatflt} % 图文混排用宏包
+% \usepackage{rotating} % 图形和表格的控制旋转
 
 % 给自定义的宏后面自动加空白
-% \RequirePackage{xspace}
+% \usepackage{xspace}
 
 % 借用 ltxdoc 里面的几个命令。
 \def\cmd#1{\cs{\expandafter\cmd@to@cs\string#1}}

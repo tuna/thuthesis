@@ -1239,7 +1239,6 @@
 % 表格控制
 %    \begin{macrocode}
 \RequirePackage{array}
-\RequirePackage{longtable}
 %    \end{macrocode}
 %
 % 使用三线表：\cs{toprule}，\cs{midrule}，\cs{bottomrule}。
@@ -2012,11 +2011,6 @@
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \renewcommand{\thesubtable}{(\alph{subtable})}
 % \renewcommand{\p@subfigure}{:}
-%    \end{macrocode}
-% 我们采用 \pkg{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
-%    \begin{macrocode}
-\let\thu@LT@array\LT@array
-\def\LT@array{\dawu[1.5]\thu@LT@array} % set default font size
 %    \end{macrocode}
 %
 % \begin{macro}{\hlinewd}
@@ -3467,6 +3461,16 @@
   \let\nomname\thu@denotation@name
   \def\thenomenclature{\begin{denotation}[\nom@tempdim]}
   \def\endthenomenclature{\end{denotation}}
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{longtable} 宏包}
+%
+% 我们采用 \pkg{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
+%    \begin{macrocode}
+\thu@atendpackage{longtable}{
+  \let\thu@LT@array\LT@array
+  \def\LT@array{\dawu[1.5]\thu@LT@array} % set default font size
 }
 %    \end{macrocode}
 %
