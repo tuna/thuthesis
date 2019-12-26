@@ -1231,11 +1231,6 @@
 \RequirePackage{CJKfntef}
 %    \end{macrocode}
 %
-% 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX\ 的宏包
-%    \begin{macrocode}
-\RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
-%    \end{macrocode}
-%
 % 表格控制
 %    \begin{macrocode}
 \RequirePackage{array}
@@ -1938,29 +1933,6 @@
 % 修改 \cs{tagform} 会影响 \cs{eqref}。
 %    \begin{macrocode}
 \renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
-%    \end{macrocode}
-%
-% 定理标题使用黑体，正文使用宋体，冒号隔开。
-%    \begin{macrocode}
-\theorembodyfont{\normalfont}
-\theoremheaderfont{\normalfont\sffamily}
-\theoremsymbol{\ensuremath{\square}}
-\newtheorem*{proof}{\thu@proof@name}
-\theoremstyle{plain}
-\theoremsymbol{}
-\theoremseparator{\thu@theorem@separator}
-\newtheorem{assumption}{\thu@assumption@name}[chapter]
-\newtheorem{definition}{\thu@definition@name}[chapter]
-\newtheorem{proposition}{\thu@proposition@name}[chapter]
-\newtheorem{lemma}{\thu@lemma@name}[chapter]
-\newtheorem{theorem}{\thu@theorem@name}[chapter]
-\newtheorem{axiom}{\thu@axiom@name}[chapter]
-\newtheorem{corollary}{\thu@corollary@name}[chapter]
-\newtheorem{exercise}{\thu@exercise@name}[chapter]
-\newtheorem{example}{\thu@example@name}[chapter]
-\newtheorem{remark}{\thu@remark@name}[chapter]
-\newtheorem{problem}{\thu@problem@name}[chapter]
-\newtheorem{conjecture}{\thu@conjecture@name}[chapter]
 %    \end{macrocode}
 %
 % \subsubsection{浮动对象以及表格}
@@ -3471,6 +3443,33 @@
 \thu@atendpackage{longtable}{
   \let\thu@LT@array\LT@array
   \def\LT@array{\dawu[1.5]\thu@LT@array} % set default font size
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{ntheorem} 宏包}
+%
+% 定理标题使用黑体，正文使用宋体，冒号隔开。
+%    \begin{macrocode}
+\thu@atendpackage{ntheorem}{%
+  \theorembodyfont{\normalfont}%
+  \theoremheaderfont{\normalfont\sffamily}%
+  \theoremsymbol{\ensuremath{\square}}%
+  \newtheorem*{proof}{\thu@proof@name}%
+  \theoremstyle{plain}%
+  \theoremsymbol{}%
+  \theoremseparator{\thu@theorem@separator}%
+  \newtheorem{assumption}{\thu@assumption@name}[chapter]%
+  \newtheorem{definition}{\thu@definition@name}[chapter]%
+  \newtheorem{proposition}{\thu@proposition@name}[chapter]%
+  \newtheorem{lemma}{\thu@lemma@name}[chapter]%
+  \newtheorem{theorem}{\thu@theorem@name}[chapter]%
+  \newtheorem{axiom}{\thu@axiom@name}[chapter]%
+  \newtheorem{corollary}{\thu@corollary@name}[chapter]%
+  \newtheorem{exercise}{\thu@exercise@name}[chapter]%
+  \newtheorem{example}{\thu@example@name}[chapter]%
+  \newtheorem{remark}{\thu@remark@name}[chapter]%
+  \newtheorem{problem}{\thu@problem@name}[chapter]%
+  \newtheorem{conjecture}{\thu@conjecture@name}[chapter]%
 }
 %    \end{macrocode}
 %

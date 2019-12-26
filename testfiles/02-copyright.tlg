@@ -879,7 +879,6 @@ Completed box being shipped out [1]
 .....\rule(*+*)x0.0
 .....\penalty 10000
 .....\glue 28.45274
-.....\glue 0.0
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
@@ -950,7 +949,6 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ..\kern 710.18088
 .\kern 0.0
-\tf@thm=\write...
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line ....
 Package atveryend Info: Empty hook `AfterLastShipout' on input line ....
 (02-copyright.aux)
