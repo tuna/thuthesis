@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Removed
 - 移除 `translationbib` 环境。
+- 移除 `tocarialchapter`、`tocarialchapterentry` 和 `tocarialchapterpage` 选项。
 
 ### Fixed
 - 修正本科生目录章标题的字体。
