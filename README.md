@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/xueruini/thuthesis.svg?branch=master)](https://travis-ci.org/xueruini/thuthesis)
+[![Actions Status](https://github.com/xueruini/thuthesis/workflows/build/badge.svg)](https://github.com/xueruini/thuthesis/actions)
 [![Join the chat at https://gitter.im/thuthesis/Lobby](https://badges.gitter.im/thuthesis/Lobby.svg)](https://gitter.im/thuthesis/Lobby)
 [![Github downloads](https://img.shields.io/github/downloads/xueruini/thuthesis/total)](https://github.com/xueruini/thuthesis/releases)
 [![GitHub commits](https://img.shields.io/github/commits-since/xueruini/thuthesis/latest)](https://github.com/xueruini/thuthesis/commits/master)
