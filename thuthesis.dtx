@@ -1096,7 +1096,7 @@
 %
 %    \begin{macrocode}
 \newcommand\thu@addto[2]{%
-  \expandafter\g@addto@macro\csname thu@#1@code\endcsname{#2}%
+  \expandafter\g@addto@macro\csname thu@#1@@code\endcsname{#2}%
 }
 %    \end{macrocode}
 %
@@ -1146,6 +1146,7 @@
       chinese,
       english,
     },
+    default = chinese,
   },
 }
 %    \end{macrocode}
@@ -1285,26 +1286,31 @@
 \RequirePackage{geometry}
 \geometry{
   a4paper, % 210 * 297mm
+  hcentering,
+  ignoreall,
   nomarginpar,
 }
-\ifthu@degree@bachelor
-  \geometry{
-    top        = 3.8cm,
-    bottom     = 3.2cm,
-    left       = 3.2cm,
-    right      = 3cm,
-    headheight = 0.5cm,
-    headsep    = 1.8cm,
-    footskip   = 1.45cm,
-  }
-\else
-  \geometry{
-    margin     = 3cm,
-    headheight = 0.5cm,
-    headsep    = 0.3cm,
-    footskip   = 0.8cm,
-  }
-\fi
+\thu@addto{degree}{\thu@set@geometry}
+\newcommand\thu@set@geometry{%
+  \ifthu@degree@bachelor
+    \geometry{
+      top        = 3.8cm,
+      bottom     = 3.2cm,
+      left       = 3.2cm,
+      right      = 3cm,
+      headheight = 0.5cm,
+      headsep    = 1.8cm,
+      footskip   = 1.45cm,
+    }%
+  \else
+    \geometry{
+      margin     = 3cm,
+      headheight = 0.5cm,
+      headsep    = 0.3cm,
+      footskip   = 0.8cm,
+    }%
+  \fi
+}
 %    \end{macrocode}
 %
 % 利用 \pkg{fancyhdr} 设置页眉页脚。
@@ -1608,7 +1614,37 @@
 %
 % 中英文翻译：
 %    \begin{macrocode}
-\ifthu@language@chinese
+\thu@addto{language}{\thu@set@language}
+\thu@addto{degree}{\thu@set@language}
+\newcommand\thu@set@language{%
+  \ifthu@language@chinese
+    \thu@set@language@chinese
+  \else
+    \ifthu@language@english
+      \thu@set@language@english
+    \fi
+  \fi
+}
+\newcommand\thu@denotation@name{主要符号对照表}
+\newcommand\listequationname{公式索引}
+\newcommand\equationname{公式}
+\newcommand\thu@assumption@name{假设}
+\newcommand\thu@definition@name{定义}
+\newcommand\thu@proposition@name{命题}
+\newcommand\thu@lemma@name{引理}
+\newcommand\thu@theorem@name{定理}
+\newcommand\thu@axiom@name{公理}
+\newcommand\thu@corollary@name{推论}
+\newcommand\thu@exercise@name{练习}
+\newcommand\thu@example@name{例}
+\newcommand\thu@remark@name{注释}
+\newcommand\thu@problem@name{问题}
+\newcommand\thu@conjecture@name{猜想}
+\newcommand\thu@proof@name{证明}
+\newcommand\thu@theorem@separator{：}
+\newcommand\thu@ack@name{致\hspace{\ccwd}谢}
+\newcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
+\newcommand\thu@set@language@chinese{%
   \ctexset{
     chapter/name   = {第,章},
     appendixname   = 附录,
@@ -1620,66 +1656,67 @@
     bibname        = 参考文献,
     indexname      = 索引,
   }
-  \newcommand\thu@denotation@name{主要符号对照表}
-  \newcommand\listequationname{公式索引}
-  \newcommand\equationname{公式}
-  \newcommand\thu@assumption@name{假设}
-  \newcommand\thu@definition@name{定义}
-  \newcommand\thu@proposition@name{命题}
-  \newcommand\thu@lemma@name{引理}
-  \newcommand\thu@theorem@name{定理}
-  \newcommand\thu@axiom@name{公理}
-  \newcommand\thu@corollary@name{推论}
-  \newcommand\thu@exercise@name{练习}
-  \newcommand\thu@example@name{例}
-  \newcommand\thu@remark@name{注释}
-  \newcommand\thu@problem@name{问题}
-  \newcommand\thu@conjecture@name{猜想}
-  \newcommand\thu@proof@name{证明}
-  \newcommand\thu@theorem@separator{：}
-  \newcommand\thu@ack@name{致\hspace{\ccwd}谢}
+  \renewcommand\thu@denotation@name{主要符号对照表}
+  \renewcommand\listequationname{公式索引}
+  \renewcommand\equationname{公式}
+  \renewcommand\thu@assumption@name{假设}
+  \renewcommand\thu@definition@name{定义}
+  \renewcommand\thu@proposition@name{命题}
+  \renewcommand\thu@lemma@name{引理}
+  \renewcommand\thu@theorem@name{定理}
+  \renewcommand\thu@axiom@name{公理}
+  \renewcommand\thu@corollary@name{推论}
+  \renewcommand\thu@exercise@name{练习}
+  \renewcommand\thu@example@name{例}
+  \renewcommand\thu@remark@name{注释}
+  \renewcommand\thu@problem@name{问题}
+  \renewcommand\thu@conjecture@name{猜想}
+  \renewcommand\thu@proof@name{证明}
+  \renewcommand\thu@theorem@separator{：}
+  \renewcommand\thu@ack@name{致\hspace{\ccwd}谢}
   \ifthu@degree@bachelor
-    \newcommand\thu@resume@title{在学期间参加课题的研究成果}
+    \renewcommand\thu@resume@title{在学期间参加课题的研究成果}
   \else
     \ifthu@degree@postdoc
-      \newcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
+      \renewcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
     \else
-      \newcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
+      \renewcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
     \fi
   \fi
-\else
-  \newcommand\thu@denotation@name{Nomenclature}
-  \newcommand\listequationname{List of Equations}
-  \newcommand\equationname{Equation}
-  \newcommand\thu@assumption@name{Assumption}
-  \newcommand\thu@definition@name{Definition}
-  \newcommand\thu@proposition@name{Proposition}
-  \newcommand\thu@lemma@name{Lemma}
-  \newcommand\thu@theorem@name{Theorem}
-  \newcommand\thu@axiom@name{Axiom}
-  \newcommand\thu@corollary@name{Corollary}
-  \newcommand\thu@exercise@name{Exercise}
-  \newcommand\thu@example@name{Example}
-  \newcommand\thu@remark@name{Remark}
-  \newcommand\thu@problem@name{Problem}
-  \newcommand\thu@conjecture@name{Conjecture}
-  \newcommand\thu@proof@name{proof}
-  \newcommand\thu@theorem@separator{: }
-  \newcommand\thu@ack@name{Acknowledgments}
+}
+\newcommand\thu@set@language@english{%
+  \renewcommand\thu@denotation@name{Nomenclature}
+  \renewcommand\listequationname{List of Equations}
+  \renewcommand\equationname{Equation}
+  \renewcommand\thu@assumption@name{Assumption}
+  \renewcommand\thu@definition@name{Definition}
+  \renewcommand\thu@proposition@name{Proposition}
+  \renewcommand\thu@lemma@name{Lemma}
+  \renewcommand\thu@theorem@name{Theorem}
+  \renewcommand\thu@axiom@name{Axiom}
+  \renewcommand\thu@corollary@name{Corollary}
+  \renewcommand\thu@exercise@name{Exercise}
+  \renewcommand\thu@example@name{Example}
+  \renewcommand\thu@remark@name{Remark}
+  \renewcommand\thu@problem@name{Problem}
+  \renewcommand\thu@conjecture@name{Conjecture}
+  \renewcommand\thu@proof@name{proof}
+  \renewcommand\thu@theorem@separator{: }
+  \renewcommand\thu@ack@name{Acknowledgments}
   \ifthu@degree@bachelor
-    \newcommand\thu@resume@title{Research Achievements}
+    \renewcommand\thu@resume@title{Research Achievements}
   \else
     \ifthu@degree@postdoc
-      \newcommand\thu@resume@title{%
+      \renewcommand\thu@resume@title{%
         Resume, Publications and Research Achievements%
       }
     \else
-      \newcommand\thu@resume@title{%
+      \renewcommand\thu@resume@title{%
         Resume, Publications and Research Achievements%
       }
     \fi
   \fi
-\fi
+}
 %    \end{macrocode}
 %
 %
@@ -1791,9 +1828,16 @@
 % \begin{macro}{\ldots}
 % 省略号一律居中，所以 \cs{ldots} 不再居于底部。
 %    \begin{macrocode}
-\ifthu@language@chinese
-  \def\mathellipsis{\cdots}
-\fi
+\thu@addto{language}{\thu@set@ellipsis}
+\newcommand\thu@set@ellipsis{%
+  \ifthu@language@chinese
+    \DeclareRobustCommand\mathellipsis{\cdots}%
+  \else
+    \ifthu@language@english
+      \DeclareRobustCommand\mathellipsis{\mathinner{\ldotp\ldotp\ldotp}}%
+    \fi
+  \fi
+}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -1932,10 +1976,12 @@
 %   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
 % \end{itemize}
 %    \begin{macrocode}
-\ifthu@degree@bachelor
-  \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
-  \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
-\fi
+\g@addto@macro\appendix{%
+  \ifthu@degree@bachelor
+    \renewcommand*{\thefigure}{\thechapter-\arabic{figure}}%
+    \renewcommand*{\thetable}{\thechapter-\arabic{table}}%
+  \fi
+}
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
 \DeclareCaptionFont{thu}{\dawu[1.3]}
@@ -1967,13 +2013,18 @@
 % \subsubsection{章节标题}
 % \label{sec:theor}
 %    \begin{macrocode}
-\ifthu@degree@bachelor
-  \newcommand{\cabstractname}{中文摘要}
-  \newcommand{\eabstractname}{ABSTRACT}
-\else
-  \newcommand{\cabstractname}{摘\hspace{\ccwd}要}
-  \newcommand{\eabstractname}{Abstract}
-\fi
+\newcommand{\cabstractname}{摘\hspace{\ccwd}要}%
+\newcommand{\eabstractname}{Abstract}%
+\newcommand\thu@set@abstract@name{%
+  \ifthu@degree@bachelor
+    \renewcommand{\cabstractname}{中文摘要}%
+    \renewcommand{\eabstractname}{ABSTRACT}%
+  \else
+    \renewcommand{\cabstractname}{摘\hspace{\ccwd}要}%
+    \renewcommand{\eabstractname}{Abstract}%
+  \fi
+}
+\thu@addto{degree}{\thu@set@abstract@name}
 %    \end{macrocode}
 %
 % \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。通过 \pkg{fancyhdr}
@@ -2860,23 +2911,38 @@
 % \begin{macro}{\copyrightpage}
 % 授权说明
 %    \begin{macrocode}
-\newcommand{\thu@authorization}{%
-\ifthu@degree@bachelor
-本人完全了解清华大学有关保留、使用学位论文的规定，即：学校有权保留学位
-论文的复印件，允许该论文被查阅和借阅；学校可以公布该论文的全部或部分内
-容，可以采用影印、缩印或其他复制手段保存该论文。
-\else
-本人完全了解清华大学有关保留、使用学位论文的规定，即：
-
-清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：（1）已获学位的研究生
-必须按学校规定提交学位论文，学校可以采用影印、缩印或其他复制手段保存研究生上交的
-学位论文；（2）为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料
-室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容\ifthu@degree@master 。\else ；
-（3）根据《中华人民共和国学位条例暂行实施办法》，向国家图书馆报送可以公开的学位
-论文。\fi
-
-本人保证遵守上述规定。
-\fi}
+\newcommand\thu@authorization{%
+  \ifthu@degree@graduate
+    \thu@authorization@graduate
+  \else
+    \ifthu@degree@bachelor
+      \thu@authorization@bachelor
+    \fi
+  \fi
+}
+\newcommand\thu@authorization@graduate{%
+  本人完全了解清华大学有关保留、使用学位论文的规定，即：\par
+  清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：%
+  （1）已获学位的研究生必须按学校规定提交学位论文，%
+  学校可以采用影印、缩印或其他复制手段保存研究生上交的学位论文；%
+  （2）为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、%
+  资料室等场所供校内师生阅读，或在校园网上供校内师生浏览部分内容%
+  \ifthu@degree@master
+    。%
+  \else
+    ；%
+    （3）根据《中华人民共和国学位条例暂行实施办法》，%
+    向国家图书馆报送可以公开的学位论文。%
+  \fi
+  \par
+  本人保证遵守上述规定。%
+}
+\newcommand\thu@authorization@bachelor{%
+  本人完全了解清华大学有关保留、使用学位论文的规定，即：%
+  学校有权保留学位论文的复印件，允许该论文被查阅和借阅；%
+  学校可以公布该论文的全部或部分内容，%
+  可以采用影印、缩印或其他复制手段保存该论文。%
+}
 \newcommand{\thu@authorizationaddon}{%
   \ifthu@degree@bachelor(涉密的学位论文在解密后应遵守此规定)\else （保密的论文在解密后应遵守此规定）\fi}
 \newcommand{\thu@authorsig}{\ifthu@degree@bachelor 签\hskip1em名：\else 作者签名：\fi}
