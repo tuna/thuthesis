@@ -3531,6 +3531,37 @@
 }
 %    \end{macrocode}
 %
+% \subsubsection{\pkg{siunitx} 宏包}
+%
+%    \begin{macrocode}
+\thu@atendpackage{siunitx}{%
+  \sisetup{
+    group-minimum-digits = 4,
+    separate-uncertainty = true,
+    inter-unit-product   = \ensuremath{{}\cdot{}},
+  }
+  \newcommand\thu@set@siunitx@language{%
+    \ifthu@language@chinese
+      \sisetup{
+        list-final-separator = { 和 },
+        list-pair-separator  = { 和 },
+        range-phrase         = {～},
+      }%
+    \else
+      \ifthu@language@english
+        \sisetup{
+          list-final-separator = { and },
+          list-pair-separator  = { and },
+          range-phrase         = { to },
+        }%
+      \fi
+    \fi
+  }
+  \thu@set@siunitx@language
+  \thu@addto{language}{\thu@set@siunitx@language}
+}
+%    \end{macrocode}
+%
 % \subsubsection{\pkg{ntheorem} 宏包}
 %
 % 定理标题使用黑体，正文使用宋体，冒号隔开。
