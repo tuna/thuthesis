@@ -62,7 +62,7 @@ test:
 
 clean:
 	$(LATEXMK) -c $(PACKAGE).dtx $(THESIS) $(SPINE)
-	-@$(RM) *~
+	-@$(RM) *~ main-survey.*
 
 cleanall: clean
 	-@$(RM) $(PACKAGE).pdf $(THESIS).pdf $(SPINE).pdf
