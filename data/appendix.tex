@@ -1,0 +1,237 @@
+\chapter{单目标规划}
+
+As one of the most widely used techniques in operations
+research, \emph{ mathematical programming} is defined as a means of maximizing a
+quantity known as \emph{bjective function}, subject to a set of constraints
+represented by equations and inequalities. Some known subtopics of mathematical
+programming are linear programming, nonlinear programming, multiobjective
+programming, goal programming, dynamic programming, and multilevel
+programming.
+
+It is impossible to cover in a single chapter every concept of mathematical
+programming. This chapter introduces only the basic concepts and techniques of
+mathematical programming such that readers gain an understanding of them
+throughout the book.
+
+
+\section{Single-Objective Programming}
+The general form of single-objective programming (SOP) is written
+as follows,
+\begin{equation*} % 如果附录中的公式不想让它出现在公式索引中，那就请
+                             % 用 equation*
+\left\{\begin{array}{l}
+\max \,\,f(x)\\[0.1 cm]
+\mbox{subject to:} \\ [0.1 cm]
+\qquad g_j(x)\le 0,\quad j=1,2,\cdots,p
+\end{array}\right.
+\end{equation*}
+which maximizes a real-valued function $f$ of
+$x=(x_1,x_2,\cdots,x_n)$ subject to a set of constraints.
+
+\newcommand\Real{\mathbf{R}}
+\newtheorem{mpdef}{Definition}[chapter]
+\begin{mpdef}
+In SOP, we call $x$ a decision vector, and
+$x_1,x_2,\cdots,x_n$ decision variables. The function
+$f$ is called the objective function. The set
+\begin{equation*}
+S=\left\{x\in\Real^n\bigm|g_j(x)\le 0,\,j=1,2,\cdots,p\right\}
+\end{equation*}
+is called the feasible set. An element $x$ in $S$ is called a
+feasible solution.
+\end{mpdef}
+
+\newtheorem{mpdefop}[mpdef]{Definition}
+\begin{mpdefop}
+A feasible solution $x^*$ is called the optimal
+solution of SOP if and only if
+\begin{equation}
+f(x^*)\ge f(x)
+\end{equation}
+for any feasible solution $x$.
+\end{mpdefop}
+
+One of the outstanding contributions to mathematical programming was known as
+the Kuhn-Tucker conditions\ref{eq:ktc}. In order to introduce them, let us give
+some definitions. An inequality constraint $g_j(x)\le 0$ is said to be active at
+a point $x^*$ if $g_j(x^*)=0$. A point $x^*$ satisfying $g_j(x^*)\le 0$ is said
+to be regular if the gradient vectors $\nabla g_j(x)$ of all active constraints
+are linearly independent.
+
+Let $x^*$ be a regular point of the constraints of SOP and assume that all the
+functions $f(x)$ and $g_j(x),j=1,2,\cdots,p$ are differentiable. If $x^*$ is a
+local optimal solution, then there exist Lagrange multipliers
+$\lambda_j,j=1,2,\cdots,p$ such that the following Kuhn-Tucker conditions hold,
+\begin{equation}
+\label{eq:ktc}
+\left\{\begin{array}{l}
+    \nabla f(x^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j(x^*)=0\\[0.3cm]
+    \lambda_jg_j(x^*)=0,\quad j=1,2,\cdots,p\\[0.2cm]
+    \lambda_j\ge 0,\quad j=1,2,\cdots,p.
+\end{array}\right.
+\end{equation}
+If all the functions $f(x)$ and $g_j(x),j=1,2,\cdots,p$ are convex and
+differentiable, and the point $x^*$ satisfies the Kuhn-Tucker conditions
+(\ref{eq:ktc}), then it has been proved that the point $x^*$ is a global optimal
+solution of SOP.
+
+\subsection{Linear Programming}
+\label{sec:lp}
+
+If the functions $f(x),g_j(x),j=1,2,\cdots,p$ are all linear, then SOP is called
+a {\em linear programming}.
+
+The feasible set of linear is always convex. A point $x$ is called an extreme
+point of convex set $S$ if $x\in S$ and $x$ cannot be expressed as a convex
+combination of two points in $S$. It has been shown that the optimal solution to
+linear programming corresponds to an extreme point of its feasible set provided
+that the feasible set $S$ is bounded. This fact is the basis of the {\em simplex
+  algorithm} which was developed by Dantzig as a very efficient method for
+solving linear programming.
+\begin{table}[ht]
+\centering
+  \centering
+  \caption*{Table~1\hskip1em This is an example for manually numbered table, which
+    would not appear in the list of tables}
+  \label{tab:badtabular2}
+  \begin{tabular}[c]{|m{1.5cm}|c|c|c|c|c|c|}\hline
+    \multicolumn{2}{|c|}{Network Topology} & \# of nodes &
+    \multicolumn{3}{c|}{\# of clients} & Server \\\hline
+    GT-ITM & Waxman Transit-Stub & 600 &
+    \multirow{2}{2em}{2\%}&
+    \multirow{2}{2em}{10\%}&
+    \multirow{2}{2em}{50\%}&
+    \multirow{2}{1.2in}{Max. Connectivity}\\\cline{1-3}
+    \multicolumn{2}{|c|}{Inet-2.1} & 6000 & & & &\\\hline
+    \multirow{2}{1.5cm}{Xue} & Rui  & Ni &\multicolumn{4}{c|}{\multirow{2}*{\thuthesis}}\\\cline{2-3}
+    & \multicolumn{2}{c|}{ABCDEF} &\multicolumn{4}{c|}{} \\\hline
+\end{tabular}
+\end{table}
+
+Roughly speaking, the simplex algorithm examines only the extreme points of the
+feasible set, rather than all feasible points. At first, the simplex algorithm
+selects an extreme point as the initial point. The successive extreme point is
+selected so as to improve the objective function value. The procedure is
+repeated until no improvement in objective function value can be made. The last
+extreme point is the optimal solution.
+
+\subsection{Nonlinear Programming}
+
+If at least one of the functions $f(x),g_j(x),j=1,2,\cdots,p$ is nonlinear, then
+SOP is called a {\em nonlinear programming}.
+
+A large number of classical optimization methods have been developed to treat
+special-structural nonlinear programming based on the mathematical theory
+concerned with analyzing the structure of problems.
+\begin{figure}[h]
+  \centering
+  \includegraphics{thu-lib-logo.pdf}
+  \caption*{Figure~1\quad This is an example for manually numbered figure,
+    which would not appear in the list of figures}
+  \label{tab:badfigure2}
+\end{figure}
+
+Now we consider a nonlinear programming which is confronted solely with
+maximizing a real-valued function with domain $\Real^n$.  Whether derivatives are
+available or not, the usual strategy is first to select a point in $\Real^n$ which
+is thought to be the most likely place where the maximum exists. If there is no
+information available on which to base such a selection, a point is chosen at
+random. From this first point an attempt is made to construct a sequence of
+points, each of which yields an improved objective function value over its
+predecessor. The next point to be added to the sequence is chosen by analyzing
+the behavior of the function at the previous points. This construction continues
+until some termination criterion is met. Methods based upon this strategy are
+called {\em ascent methods}, which can be classified as {\em direct methods},
+{\em gradient methods}, and {\em Hessian methods} according to the information
+about the behavior of objective function $f$. Direct methods require only that
+the function can be evaluated at each point. Gradient methods require the
+evaluation of first derivatives of $f$. Hessian methods require the evaluation
+of second derivatives. In fact, there is no superior method for all
+problems. The efficiency of a method is very much dependent upon the objective
+function.
+
+\subsection{Integer Programming}
+
+{\em Integer programming} is a special mathematical programming in which all of
+the variables are assumed to be only integer values. When there are not only
+integer variables but also conventional continuous variables, we call it {\em
+  mixed integer programming}. If all the variables are assumed either 0 or 1,
+then the problem is termed a {\em zero-one programming}. Although integer
+programming can be solved by an {\em exhaustive enumeration} theoretically, it
+is impractical to solve realistically sized integer programming problems. The
+most successful algorithm so far found to solve integer programming is called
+the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
+(1965). The other technique to integer programming is the {\em cutting plane
+  method} developed by Gomory (1959).
+
+\hfill\textit{Uncertain Programming\/}\quad(\textsl{BaoDing Liu, 2006.2})
+
+\section{单目标规划}
+北冥有鱼，其名为鲲。鲲之大，不知其几千里也。化而为鸟，其名为鹏。鹏之背，不知其几
+千里也。怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。
+\begin{equation}\tag*{(123)}
+ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
+\frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})}
+\end{equation}
+
+吾生也有涯，而知也无涯。以有涯随无涯，殆已！已而为知者，殆而已矣！为善无近名，为
+恶无近刑，缘督以为经，可以保身，可以全生，可以养亲，可以尽年。
+
+\subsection{线性规划}
+庖丁为文惠君解牛，手之所触，肩之所倚，足之所履，膝之所倚，砉然响然，奏刀騞然，莫
+不中音，合于桑林之舞，乃中经首之会。
+\begin{table}[ht]
+\centering
+  \centering
+  \caption*{表~1\hskip1em 这是手动编号但不出现在索引中的一个表格例子}
+  \label{tab:badtabular3}
+  \begin{tabular}[c]{|m{1.5cm}|c|c|c|c|c|c|}\hline
+    \multicolumn{2}{|c|}{Network Topology} & \# of nodes &
+    \multicolumn{3}{c|}{\# of clients} & Server \\\hline
+    GT-ITM & Waxman Transit-Stub & 600 &
+    \multirow{2}{2em}{2\%}&
+    \multirow{2}{2em}{10\%}&
+    \multirow{2}{2em}{50\%}&
+    \multirow{2}{1.2in}{Max. Connectivity}\\\cline{1-3}
+    \multicolumn{2}{|c|}{Inet-2.1} & 6000 & & & &\\\hline
+    \multirow{2}{1.5cm}{Xue} & Rui  & Ni &\multicolumn{4}{c|}{\multirow{2}*{\thuthesis}}\\\cline{2-3}
+    & \multicolumn{2}{c|}{ABCDEF} &\multicolumn{4}{c|}{} \\\hline
+\end{tabular}
+\end{table}
+
+文惠君曰：“嘻，善哉！技盖至此乎？”庖丁释刀对曰：“臣之所好者道也，进乎技矣。始臣之
+解牛之时，所见无非全牛者；三年之后，未尝见全牛也；方今之时，臣以神遇而不以目视，
+官知止而神欲行。依乎天理，批大郤，导大窾，因其固然。技经肯綮之未尝，而况大坬乎！
+良庖岁更刀，割也；族庖月更刀，折也；今臣之刀十九年矣，所解数千牛矣，而刀刃若新发
+于硎。彼节者有间而刀刃者无厚，以无厚入有间，恢恢乎其于游刃必有余地矣。是以十九年
+而刀刃若新发于硎。虽然，每至于族，吾见其难为，怵然为戒，视为止，行为迟，动刀甚微，
+謋然已解，如土委地。提刀而立，为之而四顾，为之踌躇满志，善刀而藏之。”
+
+文惠君曰：“善哉！吾闻庖丁之言，得养生焉。”
+
+
+\subsection{非线性规划}
+孔子与柳下季为友，柳下季之弟名曰盗跖。盗跖从卒九千人，横行天下，侵暴诸侯。穴室枢
+户，驱人牛马，取人妇女。贪得忘亲，不顾父母兄弟，不祭先祖。所过之邑，大国守城，小
+国入保，万民苦之。孔子谓柳下季曰：“夫为人父者，必能诏其子；为人兄者，必能教其弟。
+若父不能诏其子，兄不能教其弟，则无贵父子兄弟之亲矣。今先生，世之才士也，弟为盗
+跖，为天下害，而弗能教也，丘窃为先生羞之。丘请为先生往说之。”
+\begin{figure}[h]
+  \centering
+  \includegraphics{thu-whole-logo.pdf}
+  \caption*{图~1\hskip1em 这是手动编号但不出现索引中的图片的例子}
+  \label{tab:badfigure3}
+\end{figure}
+
+柳下季曰：“先生言为人父者必能诏其子，为人兄者必能教其弟，若子不听父之诏，弟不受
+兄之教，虽今先生之辩，将奈之何哉？且跖之为人也，心如涌泉，意如飘风，强足以距敌，
+辩足以饰非。顺其心则喜，逆其心则怒，易辱人以言。先生必无往。”
+
+孔子不听，颜回为驭，子贡为右，往见盗跖。
+
+\subsection{整数规划}
+盗跖乃方休卒徒大山之阳，脍人肝而餔之。孔子下车而前，见谒者曰：“鲁人孔丘，闻将军
+高义，敬再拜谒者。”谒者入通。盗跖闻之大怒，目如明星，发上指冠，曰：“此夫鲁国之
+巧伪人孔丘非邪？为我告之：尔作言造语，妄称文、武，冠枝木之冠，带死牛之胁，多辞缪
+说，不耕而食，不织而衣，摇唇鼓舌，擅生是非，以迷天下之主，使天下学士不反其本，妄
+作孝弟，而侥幸于封侯富贵者也。子之罪大极重，疾走归！不然，我将以子肝益昼餔之膳。”

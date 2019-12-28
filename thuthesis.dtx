@@ -244,18 +244,8 @@
 %
 % \section{使用说明}
 % \label{sec:usage}
-% 本手册假定用户已经能处理一般的 \LaTeX\ 文档，并对 \BibTeX\ 有一定了解。如果
-% 从来没有接触过 \TeX\ 和 \LaTeX，建议先学习相关的基础知识。
-%
-% \subsection{关于提问}
-% \label{sec:howtoask}
-% 按照优先级推荐提问的位置如下：
-%
-% \begin{itemize}
-% \item \href{http://github.com/xueruini/thuthesis/issues}{Github Issues}
-% \item \href{http://www.newsmth.net/nForum/#!board/TeX}{Tex@newsmth}
-% \item \href{http://groups.google.com/group/thuthesis}{ThuThesis@Google Groups}
-% \end{itemize}
+% 本手册假定用户已经能处理一般的 \LaTeX{} 文档，并对 \hologo{BibTeX} 有一定了解。如果
+% 从来没有接触过 \TeX{} 和 \LaTeX，建议先学习相关的基础知识。
 %
 % \subsection{示例文件}
 % \label{sec:userguide}
@@ -274,156 +264,74 @@
 % \label{sec:option}
 %
 % \DescribeOption{degree}
-%   选择论文类型，当前支
-%   持：\option{bachelor}，\option{master}，\option{doctor}，\option{postdoctor}。
-%   为必选项。
+% 选择学位，可选：
+% \option{bachelor}，\option{master}，\option{doctor}（默认），\option{postdoc}。
+% 该选项既可以在文档类的选项中进行设置，也可以在导言区中使用 \cs{thusetup} 命令进行设置。
 % \begin{latex}
 %   % 博士论文
 %   \documentclass[degree=doctor]{thuthesis}
-%
+% \end{latex}
+% 或
+% \begin{latex}
 %   % 硕士论文
-%   \documentclass[degree=master]{thuthesis}
+%   \documentclass{thuthesis}
+%   \thusetup{degree=master}
 % \end{latex}
 %
 % \DescribeOption{language}
-% 论文的主要语言（默认：中文）。可选：\option{chinese}，\option{english}。
+% 论文全文的主要语言。可选：\option{chinese}（默认），\option{english}。
 %
-% \DescribeOption{secret}
-% 涉秘论文开关（默认：关闭）。第 \ref{sec:setup-secret} 节两个配置分别用来指定保
-% 密级别和时限。若不设置，则二者取默认值，分别为“\textbf{秘密}”和当前年份。
+% 注意，本科生《写作指南》要求“本科生(含国外来华留学本科生)非外语专业论文统一要求用中文书写。”
+% 研究生《写作指南》要求“外国人来华留学生可以用英文撰写学位论文，但须采用中文封面”，
+% “除留学生外，学位论文一律须用汉语书写”，
+% 用户须提前与导师和院系的审查教师协商使用何种语言书写论文。
 % \begin{latex}
-%   \documentclass[secret]{thuthesis} % 打开保密
-%   \documentclass[secret=false]{thuthesis} % 关闭保密
-%
-%   \thusetup{
-%     secret-level=公开,
-%     secret-year=10
-%   }
+%   \thusetup{language=english}
 % \end{latex}
 %
-% \DescribeOption{openany}
-% \DescribeOption{openright}
-% 正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \option{openright}，也
-% 是 \thuthesis\ 的默认选项。在这种情况下，如果前一章的最后一页也是奇数，那么模板
-% 会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎更倾向
-% 于页面连续，那就是通常所说的 \option{openany}\footnote{目前所有论文都
-% 是 \option{openany}。}。这两个选项不用设置，\thuthesis\ 会根据当前论文类型自动选
-% 择。
-%
-% \subsection{引用方式}
-% \label{sec:citestyle}
-% 模板支持两种引用方式，分别为理工科常用的“数字式 [1]”和文科常用
-% 的“作者-年份 (Zhang, 2008)”。使用者可通过 \cs{bibliographystyle} 来选择：
-% \begin{latex}
-%   % 数字式
-%   \bibliographystyle{thuthesis-numeric}
-%
-%   % 作者-年份
-%   \bibliographystyle{thuthesis-author-year}
-% \end{latex}
-%
-% \DescribeMacro{\inlinecite}
-% 学校要求的参考文献引用有两种模式：（1）上标模式。比如``同样的工作有很
-% 多$^{[1,2]}$\ldots''。（2）正文模式。比如``文[3] 中详细说明了\ldots''。其中上标
-% 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
-% 的 \cs{cite}\marg{key}，而 \cs{inlinecite}\marg{key} 则用来生成正文模式。
-%
-% 关于参考文献表推荐使用 \BibTeX，默认情况下可以自动识别文献语言，
-% 并自动处理文献类型和载体类型标识，也可以手动指定，如：
-% \begin{latex}
-%   @misc{citekey,
-%     language = {japanese},
-%     mark     = {Z},
-%     medium   = {DK},
-%     ...
-% \end{latex}
-% 可选的语言有 english, chinese, japanese, russian。
-%
-% 注意如果不需要引用参考文献，请删除 \file{main.tex} 中 \cs{bibliography} 开头的两行，
-% 以避免可能的编译错误。
-%
-% 国标规定参考文献表采用著者-出版年制组织时，各篇文献首先按文种集中，
-% 然后按著者字顺和出版年排列；
-% 中文文献可以按著者汉语拼音字顺排列，也可以按著者的笔画笔顺排列。
-% 然而由于 \BibTeX{} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺，
-% 所以\emph{必须}在 bib 数据库中的 key 域手动录入著者姓名的拼音，如：
-% \begin{latex}
-%   @book{capital,
-%     author = {马克思 and 恩格斯},
-%     key    = {ma3 ke4 si1   en1 ge2 si1},
-%     ...
-% \end{latex}
-%
-% \BibTeX{} 对自定义样式的支持比较有限，
-% 所以用户只能通过修改 \file{bst} 文件来修改文献列表的格式。
-% 本宏包提供了一些接口供用户更方便地修改，
-% 在 \file{bst} 文件开始处的 |load.config| 函数中，
-% 有一组配置参数用来控制样式。
-% 若变量被设为 |#1| 则表示该项被启用，设为 |#0| 则不启用。
-% 默认的值是严格遵循学校规定的配置。
-%
-%
-% \subsection{中文字体}
-% \label{sec:chinese-fonts}
-%
-% \subsubsection{字体配置}
+% \subsection{字体配置}
 % \label{sec:font-config}
-% 模板默认使用 \CTeX\ 的字体配置。关于中文字体安装、配置的所有问题不在本模板讨论
-% 范围。
+% 模板默认可以自动检测操作系统，并配置改平台上合适的字体，
+% 具体的配置策略如表~\ref{tab:font}。
+% \begin{table}[htb]
+%   \centering
+%   \caption{\thuthesis{} 自动配置字体策略}
+%   \label{tab:font}
+%   \begin{tabular}{ccc}
+%     \toprule
+%     Windows         & macOS           & 其他            \\
+%     \midrule
+%     Times New Roman & Times New Roman & TeX Gyre Termes \\
+%     Arial           & Arial           & TeX Gyre Heros  \\
+%     Courier         & Menlo           & TeX Gyre Cursor \\
+%     中易宋体        & 华文宋体        & Fandol 宋体     \\
+%     中易黑体        & 华文黑体        & Fandol 黑体     \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
 %
-% \subsubsection{字体命令}
-% \label{sec:fontcmds}
-% \myentry{字体}
-% \DescribeMacro{\songti}
-% \DescribeMacro{\fangsong}
-% \DescribeMacro{\heiti}
-% \DescribeMacro{\kaishu}
-% 用来切换宋体、仿宋、黑体、楷体四种基本字体。
+% 然而自动配置的字体只能保证编译通过，但是还存在一些问题：
+% \begin{enumerate}
+%   \item 在其他平台上配置的 TeX Gyre 系列字体，虽然在风格上比较接近 Times 和 Arial，
+%     但是毕竟跟《写作指南》要求的字体不完全一致；
+%   \item Fandol 字库的字形较少，常常出现缺字的情况；
+%   \item 华文字库和 Fandol 字库虽然不违反《写作指南》的要求，
+%     但是其字形跟中易字库有所差别，这导致封面、标题的视觉效果与学校的 Word 示例不一致，
+%     可能被审查老师认为格式不符合要求。
+% \end{enumerate}
+% 所以建议在提交最终版前使用 Windows 平台的字体进行编译。
 %
+% 用户也可以在调用 \thuthesis{} 时手动指定使用的字库，如：
 % \begin{latex}
-%   {\songti 乾：元，亨，利贞}
-%   {\fangsong 初九，潜龙勿用}
-%   {\heiti 九二，见龙在田，利见大人}
-%   {\kaishu 九三，君子终日乾乾，夕惕若，厉，无咎}
+%   \documentclass[fontset=windows]{thuthesis}
 % \end{latex}
-%
-% \myentry{字号}
-% \DescribeMacro{\chuhao}
-% \DescribeMacro{\xiaochu}
-% \DescribeMacro{\yihao}
-% \DescribeMacro{\xiaoyi}
-% \DescribeMacro{\bahao}
-% 定义字体大小，分别为：
-%
-% \begin{center}
-% \begin{tabular}{llllll}
-% \toprule
-% \cs{chuhao} & \cs{xiaochu} & \cs{yihao}  & \cs{xiaoyi}    & \cs{erhao}  & \cs{xiaoer}\\
-% \cs{sanhao} & \cs{xiaosan} & \cs{sihao}  & \cs{banxiaosi} & \cs{xiaosi} & \cs{dawu}\\
-% \cs{wuhao}  & \cs{xiaowu}  & \cs{liuhao} & \cs{xiaoliu}   & \cs{qihao}  & \cs{bahao}\\\bottomrule
-% \end{tabular}
-% \end{center}
-%
-% 使用方法为：\cs{command}\oarg{num}，其中 command 为字号命令，num 为行距。比
-% 如 \cs{xiaosi}[1.5] 表示选择小四字体，行距 1.5 倍。写作指南要求表格中的字体
-% 是 \cs{dawu}，模板已经设置好了。
-%
-% \begin{latex}
-%   {\erhao 二号}
-%   {\sanhao[1.5] 三号}
-%   {\sihao 四号}
-%   {\qihao[2] 七号}
-% \end{latex}
-%
-% 也可以使用 \CTeX\ 定义的 \cs{zihao}\marg{num} 来切换字号，具体用法参看其文
-% 档。
+% 允许的选项有 \option{windows}、\option{mac}、\option{fandol}，
+% 详见 \pkg{ctex}、\pkg{xeCJK}、\pkg{fontspec} 等宏包的使用说明。
 %
 % \subsection{封面信息}
 % \label{sec:titlepage}
-% 封面信息提供两种配置方法：一是通过统一设置命
-% 令 \cs{thusetup} 通过\emph{key=value} 形式完成；二是每个信息利用命令独立设置，
-% 其中命令的名字跟 \emph{key} 相同。两种方式可以交叉使用，并按顺序执行（即后来的设置会覆
-% 盖前面的）。以 \texttt{c} 开头的命令跟中文相关，\texttt{e} 开头则为对应的英文。
+% 封面信息可以通过统一设置命令 \cs{thusetup} 设置 \emph{key=value} 形式完成；
+% 带 * 号的键通常是对应的英文。
 %
 % \DescribeMacro{\thusetup}
 % \cs{thusetup} 用法与常见 \emph{key=value} 命令相同，如下：
@@ -435,33 +343,20 @@
 %   % 可以多次调用
 %   \thusetup{
 %     key3 = value3,
-%     key1 = value11, % 覆盖 value1
+%     key1 = value11,  % 覆盖 value1
 %   }
 % \end{latex}
 %
-% \note[注意：]{\cs{thusetup} 使用 \pkg{kvoptions} 机制，所以配置项之间不能有空行，否则
+% \note[注意：]{\cs{thusetup} 使用 \pkg{kvsetkeys} 机制，所以配置项之间不能有空行，否则
 % 会报错。}
 %
-% 大多数命令的使用方法都是： \cs{command}\marg{arg}，例外者将具体指出。这些命令都
-% 在示例文档的 \file{data/cover.tex} 中。
-%
-% \subsubsection{密级}
-% \label{sec:setup-secret}
-% 定义秘密级别和年限，需要打开论文的 \option{secret} 选项。
+% \subsubsection{学位类型}
+% \label{sec:degree-type}
+% 定义研究生学位的类型，可选：\option{academic}（默认）、\option{professional}，
+% 本科生不受影响。
 % \begin{latex}
 %   \thusetup{
-%     secret-year  = 10,
-%     secret-level = {内部},
-%   }
-% \end{latex}
-%
-% \subsubsection{博士后专用参数}
-% 只见过，没用过，不知道具体是什么意思。
-% \begin{latex}
-%   \thusetup{
-%     catalognumber = {分类号},
-%     udc           = {udc},
-%     id            = {id},
+%     degree-type = professional,
 %   }
 % \end{latex}
 %
@@ -474,33 +369,28 @@
 %   }
 % \end{latex}
 %
-% \subsubsection{作者姓名}
-% 作者姓名。
-% \begin{latex}
-%   \thusetup{
-%     author  = {中文姓名},
-%     author* = {Name in Pinyin},
-%   }
-% \end{latex}
-%
 % \subsubsection{申请学位名称}
-% \label{sec:degree}
-% 学位和专业的设置比想象的要复杂一些：
+% \label{sec:degree-name}
+% 学位的设置比想象的要复杂一些：
 %
-% \begin{longtable}{p{2cm}p{8cm}p{4cm}}
+% \begin{longtable}{p{2cm}p{6cm}p{6cm}}
 %   \toprule
-%   学位类型 & degree-name* & discipline* \\\midrule
-%   学术型硕士
-%     & 必须为“Master of Art”或“Master of Science”（注意大
-%       小写），其中 “哲学、文学、历史学、法学、教育学、艺术学门类，公共
-%       管理学科填写“Master of Arts”，其它填写“Master of Science”。
-%     & “获得一级学科授权的学科填写一级学科名称，其它填写二级学
-%       科名称”。\\\midrule
-%   专业型硕士
-%     & 专业学位英文名称全称 & %     工程硕士填写工程领域，其它专业学位不填写此项。\\\midrule
-%   学术型博士 & Doctor of Philosophy（注意大小写）
-%     & 获得一级学科授权的学科填写一级学科名称，其它填写二级学科名称。\\\midrule
-%   专业型博士 & 专业学位英文名称全称 & 不填写此项。\\\bottomrule
+%   学位类型 & degree-name & degree-name* \\
+%   \midrule
+%   学术型博士 & 需注明所属的学科门类，例如：
+%       哲学、经济学、法学、教育学、文学、历史学、理学、工学、农学、医学、
+%       军事学、管理学、艺术学
+%     & Doctor of Philosophy \\
+%   \midrule
+%   学术型硕士 & 同上
+%     & 哲学、文学、历史学、法学、教育学、艺术学门类，公共管理学科
+%       填写“Master of Arts“，其它填写“Master of Science” \\
+%   \midrule
+%   专业型研究生学位 & 专业学位的名称，例如：教育博士、工程硕士
+%     & 专业学位的名称，例如：Doctor of Education, Master of Engineering \\
+%   \midrule
+%   本科生 & - & - \\
+%   \bottomrule
 % \end{longtable}
 %
 % \begin{latex}
@@ -518,29 +408,37 @@
 %   }
 % \end{latex}
 %
-% \subsubsection{专业名称}
-% 参见第 \ref{sec:degree} 节。
+% \subsubsection{学科名称}
+%
+% \begin{itemize}
+%   \item 学术型学位：获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称
+%   \item 工程硕士：工程领域名称
+%   \item 其他专业型学位：-
+%   \item 本科生：-
+% \end{itemize}
+%
 % \begin{latex}
 %   \thusetup{
-%     discipline  = {专业名称},
-%     discipline* = {Major in English},
+%     discipline  = {学科名称},
+%     discipline* = {Discipline in English},
 %   }
 % \end{latex}
 %
-% 博士后专用。
+% \subsubsection{作者姓名}
+% 作者姓名。
 % \begin{latex}
 %   \thusetup{
-%     cfirstdiscipline  = {流动站（一级学科）名称},
-%     cseconddiscipline = {专业（二级学科）名称},
+%     author  = {中文姓名},
+%     author* = {Name in Pinyin},
 %   }
 % \end{latex}
 %
 % \subsubsection{导师}
 % \myentry{导师}
-% 直接导师。
+% 导师的中文姓名与职称之间以“,”（西文逗号，U+002C）隔开，下同。
 % \begin{latex}
 %   \thusetup{
-%     supervisor = {导师~教授},
+%     supervisor  = {导师,教授},
 %     supervisor* = {Supervisor},
 %   }
 % \end{latex}
@@ -549,7 +447,7 @@
 % 本科生的辅导教师，硕士的副指导教师。
 % \begin{latex}
 %   \thusetup{
-%     associate-supervisor  = {副导师~副教授},
+%     associate-supervisor  = {副导师,副教授},
 %     associate-supervisor* = {2nd Boss},
 %   }
 % \end{latex}
@@ -558,41 +456,82 @@
 % 硕士生联合指导教师，博士生联合导师。
 % \begin{latex}
 %   \thusetup{
-%     joint-supervisor  = {联合导师~教授},
+%     joint-supervisor  = {联合导师,教授},
 %     joint-supervisor* = {3rd Boss},
 %   }
 % \end{latex}
 %
 % \subsubsection{成文日期}
-% 默认为当前时间，也可以自己指定。
+% 默认为当前日期，也可以自己指定，要求使用 ISO 格式。
 % \begin{latex}
 %   \thusetup{
-%     date             = {2011-07-01},
-%     postdoctordate   = {2009 年 7 月——2011 年 7 月},  % 博士后工作完成日期
-%     postdocstartdate = {2009 年 7 月 1 日},  % 博士后研究工作起始时间
-%     postdocenddate   = {2011 年 7 月 1 日},  % 博士后研究工作期满时间
+%     date = {2011-07-01},
 %   }
+% \end{latex}
+%
+% \subsubsection{密级}
+% \label{sec:setup-secret}
+% 定义秘密级别和年限。
+% \begin{latex}
+%   \thusetup{
+%     secret-year  = 10,
+%     secret-level = {内部},
+%   }
+% \end{latex}
+%
+% \subsubsection{博士后专用参数}
+% \begin{latex}
+%   \thusetup{
+%     clc                = {分类号},
+%     udc                = {udc},
+%     id                 = {id},
+%     discipline-level-1 = {流动站（一级学科）名称},
+%     discipline-level-2 = {专业（二级学科）名称},
+%     start-date         = {2011-07-01}, % 研究工作起始时间
+%   }
+% \end{latex}
+%
+% \myentry{生成封面}
+% \DescribeMacro{\maketitle}
+% 生成封面，不含授权说明，摘要等。
+% \begin{latex}
+%   % 直接生成封面
+%   \maketitle
+% \end{latex}
+%
+% \subsection{前言部分}
+%
+% \subsubsection{授权说明}
+% \myentry{授权说明}
+% \DescribeMacro{\copyrightpage}
+% 生成授权说明。用法：\cs{copyrightpage}\oarg{file}。
+% 可选参数为扫描得到的 PDF 文件名，例如：
+% \begin{latex}
+%   % 将签字扫描后授权文件 scan-auth.pdf 替换原始页面
+%   \copyrightpage[scan-auth.pdf]
 % \end{latex}
 %
 % \subsubsection{摘要}
 % \myentry{摘要正文}
-% \DescribeEnv{cabstract}
-% \DescribeEnv{eabstract}
-% \note[说明：]{摘要正文只能用环境命令的形式，不支持 \cs{thusetup}。}
+% \DescribeEnv{abstract}
+% \DescribeEnv{abstract*}
+%
+% 摘要直接在正文中使用 \env{abstract}、\env{abstract*} 环境生成。
 %
 % \begin{latex}
-%   \begin{cabstract}
+%   \begin{abstract}
 %     摘要请写在这里...
-%   \end{cabstract}
+%   \end{abstract}
 %
-%   \begin{eabstract}
+%   \begin{abstract*}
 %     Here comes the abstract in English...
-%   \end{eabstract}
+%   \end{abstract*}
 % \end{latex}
 %
 % \myentry{关键词}
-% 关键词用英文逗号分割写入相应的命令中，模板会解析各关键词并生成符合不同论文格式
-% 要求的关键词格式。
+% 关键词需要使用 \cs{thusetup} 命令进行设置，
+% 关键词之间以西文逗号隔开，模板会自动调整为要求的格式。
+% 关键词的设置只要在摘要环境结束前即可。
 % \begin{latex}
 %   \thusetup{
 %     keywords  = {关键词 1, 关键词 2},
@@ -600,17 +539,64 @@
 %   }
 % \end{latex}
 %
-% \myentry{生成封面}
-% \DescribeMacro{\makecover}
-% 生成封面，包括首页，授权，摘要等。用法：\cs{makecover}\oarg{file}。如果使用授权
-% 说明扫描页，将可选参数中指定为扫描得到的 PDF 文件名，例如：
-% \begin{latex}
-%   % 直接生成封面
-%   \makecover
+% \subsubsection{目录和索引表}
+% 目录、插图、表格和公式等索引命令分别如下，将其插入到期望的位置即可（带星号的命令表
+% 示对应的索引表不会出现在目录中）：
 %
-%   % 将签字扫描后授权文件 scan-auth.pdf 替换原始页面
-%   \makecover[scan-auth.pdf]
+% \DescribeMacro{\tableofcontents}
+% \DescribeMacro{\listoffigures}
+% \DescribeMacro{\listoffigures*}
+% \DescribeMacro{\listoftables}
+% \DescribeMacro{\listoftables*}
+% \DescribeMacro{\listofequations}
+% \DescribeMacro{\listofequations*}
+% \begin{longtable}{ll}
+% \toprule
+%   {\heiti 用途} & {\heiti 命令} \\\midrule
+% 目录     & \cs{tableofcontents} \\\midrule
+% 插图索引 & \cs{listoffigures}   \\
+%          & \cs{listoffigures*}  \\\midrule
+% 表格索引 & \cs{listoftables}    \\
+%          & \cs{listoftables*}   \\\midrule
+% 公式索引 & \cs{listofequations} \\
+%          & \cs{listofequations*}\\\bottomrule
+% \end{longtable}
+%
+% \LaTeX{} 默认支持插图和表格索引，是通过 \cs{caption} 命令完成的，因此它们必须出
+% 现在浮动环境中，否则不被计数。
+%
+% 如果不想让某个表格或者图片出现在索引里面，那么请使用命令 \cs{caption*}，这
+% 个命令不会给表格编号，也就是出来的只有标题文字而没有“表~xx”，“图~xx”，否则
+% 索引里面序号不连续就显得不伦不类，这也是 \LaTeX{} 里星号命令默认的规则。
+%
+% 有这种需求的多是本科同学的英文资料翻译部分，如果你觉得附录中英文原文中的表格和
+% 图片显示成“表”和“图”很不协调的话，一个很好的办法还是用 \cs{caption*}，参数
+% 随便自己写，具体用法请参看示例文档。
+%
+% 如果的确想让其编号，但又不想出现在索引中的话，目前模板暂不支持。
+%
+% 公式索引为本模板扩展，模板扩展了 \pkg{amsmath} 几个内部命令，使得公式编号样式和
+% 自动索引功能非常方便。一般来说，你用到的所有数学环境编号都没问题了，这个可以参
+% 看示例文档。如果你有个非常特殊的数学环境需要加入公式索引，那么请使
+% 用 \cs{equcaption}\marg{编号}。此命令表示 equation caption，带一个参数，即显示
+% 在索引中的编号。因为公式与图表不同，我们很少给一个公式附加一个标题，之所以起这
+% 么个名字是因为图表就是通过 \cs{caption} 加入索引的，\cs{equcaption} 完全就是为
+% 了生成公式列表，不产生什么标题。
+%
+% 使用方法如下。假如有一个非 equation 数学环境 \texttt{mymath}，只要在其中写一
+% 句 \cs{equcaption} 就可以将它加入公式列表。
+% \begin{latex}
+%   \begin{mymath}
+%     \label{eq:emc2}\equcaption{\ref{eq:emc2}}
+%     E=mc^2
+%   \end{mymath}
 % \end{latex}
+%
+% \texttt{mymath} 中公式的编号需要自己来做。
+%
+% 同图表一样，附录中的公式有时候也不希望它跟全文统一编号，而且不希望它出现在公式
+% 索引中，目前的解决办法就是利用 \cs{tag*}\marg{公式编号} 来解决。用法很简单，此
+% 处不再罗嗦，实例请参看示例文档附录 A 的前两个公式。
 %
 % \subsubsection{符号对照表}
 % \DescribeEnv{denotation}
@@ -645,93 +631,180 @@
 % 最后使用 \cs{printnomenclature} 命令生成符号表。
 % 更详细的使用方法参见 \pkg{nomencl} 宏包的文档。
 %
-% \subsection{目录和索引表}
-% 目录、插图、表格和公式等索引命令分别如下，将其插入到期望的位置即可（带星号的命令表
-% 示对应的索引表不会出现在目录中）：
+% \subsection{正文部分}
 %
-% \DescribeMacro{\tableofcontents}
-% \DescribeMacro{\listoffigures}
-% \DescribeMacro{\listoffigures*}
-% \DescribeMacro{\listoftables}
-% \DescribeMacro{\listoftables*}
-% \DescribeMacro{\listofequations}
-% \DescribeMacro{\listofequations*}
-% \begin{longtable}{ll}
-% \toprule
-%   {\heiti 用途} & {\heiti 命令} \\\midrule
-% 目录     & \cs{tableofcontents} \\\midrule
-% 插图索引 & \cs{listoffigures}   \\
-%          & \cs{listoffigures*}  \\\midrule
-% 表格索引 & \cs{listoftables}    \\
-%          & \cs{listoftables*}   \\\midrule
-% 公式索引 & \cs{listofequations} \\
-%          & \cs{listofequations*}\\\bottomrule
-% \end{longtable}
+% \subsubsection{数学环境}
+% \label{sec:math}
+% \thuthesis{} 定义了常用的数学环境：
 %
-% \LaTeX\ 默认支持插图和表格索引，是通过 \cs{caption} 命令完成的，因此它们必须出
-% 现在浮动环境中，否则不被计数。
+% \begin{center}
+% \begin{tabular}{*{7}{l}}\toprule
+%   axiom & theorem & definition & proposition & lemma & conjecture &\\
+%   公理 & 定理 & 定义 & 命题 & 引理 & 猜想 &\\\midrule
+%   proof & corollary & example & exercise & assumption & remark & problem \\
+%   证明 & 推论 & 例子& 练习 & 假设 & 注释 & 问题\\\bottomrule
+% \end{tabular}
+% \end{center}
 %
-% 如果不想让某个表格或者图片出现在索引里面，那么请使用命令 \cs{caption*}，这
-% 个命令不会给表格编号，也就是出来的只有标题文字而没有``表~xx''，``图~xx''，否则
-% 索引里面序号不连续就显得不伦不类，这也是 \LaTeX\ 里星号命令默认的规则。
-%
-% 有这种需求的多是本科同学的英文资料翻译部分，如果你觉得附录中英文原文中的表格和
-% 图片显示成``表''和``图''很不协调的话，一个很好的办法还是用 \cs{caption*}，参数
-% 随便自己写，具体用法请参看示例文档。
-%
-% 如果的确想让其编号，但又不想出现在索引中的话，目前模板暂不支持。
-%
-% 公式索引为本模板扩展，模板扩展了 \pkg{amsmath} 几个内部命令，使得公式编号样式和
-% 自动索引功能非常方便。一般来说，你用到的所有数学环境编号都没问题了，这个可以参
-% 看示例文档。如果你有个非常特殊的数学环境需要加入公式索引，那么请使
-% 用 \cs{equcaption}\marg{编号}。此命令表示 equation caption，带一个参数，即显示
-% 在索引中的编号。因为公式与图表不同，我们很少给一个公式附加一个标题，之所以起这
-% 么个名字是因为图表就是通过 \cs{caption} 加入索引的，\cs{equcaption} 完全就是为
-% 了生成公式列表，不产生什么标题。
-%
-% 使用方法如下。假如有一个非 equation 数学环境 \texttt{mymath}，只要在其中写一
-% 句 \cs{equcaption} 就可以将它加入公式列表。
+% 比如：
 % \begin{latex}
-%   \begin{mymath}
-%     \label{eq:emc2}\equcaption{\ref{eq:emc2}}
-%     E=mc^2
-%   \end{mymath}
+%   \begin{definition}
+%     道千乘之国，敬事而信，节用而爱人，使民以时。
+%   \end{definition}
+% \end{latex}
+% 产生（自动编号）：
+% \medskip
+%
+% \noindent\framebox[\linewidth][l]{{\heiti 定义~1.1~~~} % {道千乘之国，敬事而信，节用而爱人，使民以时。}}
+%
+% \smallskip
+% 列举出来的数学环境毕竟是有限的，如果想用\emph{胡说}这样的数学环境，那么可以定义：
+% \begin{latex}
+%   \newtheorem{nonsense}{胡说}[chapter]
 % \end{latex}
 %
-% \texttt{mymath} 中公式的编号需要自己来做。
+% 然后这样使用：
+% \begin{latex}
+%   \begin{nonsense}
+%     契丹武士要来中原夺武林秘笈。—— 慕容博
+%   \end{nonsense}
+% \end{latex}
+% 产生（自动编号）：
 %
-% 同图表一样，附录中的公式有时候也不希望它跟全文统一编号，而且不希望它出现在公式
-% 索引中，目前的解决办法就是利用 \cs{tag*}\marg{公式编号} 来解决。用法很简单，此
-% 处不再罗嗦，实例请参看示例文档附录 A 的前两个公式。
+% \medskip
+% \noindent\framebox[\linewidth][l]{{\heiti 胡说~1.1~~~} % {契丹武士要来中原夺武林秘笈。—— 慕容博}}
 %
-% \subsection{封底部分}
+% \subsubsection{列表环境}
+% \DescribeEnv{itemize}
+% \DescribeEnv{enumerate}
+% \DescribeEnv{description}
+% 为了适合中文习惯，模板将这三个常用的列表环境用 \pkg{enumitem} 进行了纵向间距压
+% 缩。一方面清除了多余空间，另一方面用户可以自己指定列表环境的样式（如标签符号，
+% 缩进等）。细节请参看 \pkg{enumitem} 文档，此处不再赘述。
 %
-% \subsubsection{致谢声明}
-% \DescribeEnv{acknowledgments}
+% \subsubsection{引用方式}
+% \label{sec:citestyle}
+% 模板支持两种引用方式，分别为理工科常用的“顺序编码制\textsuperscript{[1]}”和文科常用
+% 的“著者-出版年制 (Zhang, 2008)”。
+% 使用者在设置参考文献表的格式
+% （\cs{bibliographystyle}，见第~\ref{sec:bibliography} 节）时，
+% 正文中引用文献的标注会自动调整为对应的格式：
+% \begin{latex}
+%   % 顺序编码制
+%   \bibliographystyle{thuthesis-numeric}
+% \end{latex}
+% 或
+% \begin{latex}
+%   % 著者-出版年制
+%   \bibliographystyle{thuthesis-author-year}
+% \end{latex}
+%
+% \DescribeMacro{\inlinecite}
+% 顺序编码制的参考文献引用也有两种模式：
+% \begin{enumerate}
+%   \item 上标模式。比如“同样的工作有很多\textsuperscript{[1,2]}\dots”。
+%   \item 正文模式。比如“文 [3] 中详细说明了\dots”。
+% \end{enumerate}
+% \DescribeOption{cite-style}
+% 用户可以将引用标注的格式设为正文模式：
+% \begin{latex}
+%   \thusetup{
+%     cite-style = inline,
+%   }
+% \end{latex}
+% 也可以使用 \cs{inlinecite}\marg{key} 临时使用正文模式的引用标注。
+%
+% \subsection{其他部分}
+%
+% \subsubsection{参考文献}
+% \label{sec:bibliography}
+%
+% 模板支持使用 \hologo{BibTeX} 处理生成参考文献表，
+% 用户需要在文中设置参考文献格式并调用 \file{.bib} 数据库：
+% \begin{latex}
+%   \bibliographystyle{thuthesis-numeric}        % 顺序编码制
+%   % \bibliographystyle{thuthesis-author-year}  % 著者-出版年制
+%   % \bibliographystyle{thuthesis-bachelor}     % 本科生参考文献的著录格式
+%   \bibliographystyle{ref1,ref2}                % 载入 ref1.bib 和 ref2.bib
+% \end{latex}
+% 注意，\cs{bibliographystyle} 命令只能出现一次。
+%
+% \hologo{BibTeX} 可以自动识别数据库中每条文献的语言，
+% 并自动处理文献类型和载体类型标识，
+% 用户也可以手动指定，如：
+% \begin{latex}
+%   @misc{citekey,
+%     language = {japanese},
+%     mark     = {Z},
+%     medium   = {DK},
+%     ...
+%   }
+% \end{latex}
+% 可选的语言有 english, chinese, japanese, russian。
+%
+% 国标规定参考文献表采用著者-出版年制组织时，各篇文献首先按文种集中，
+% 然后按著者字顺和出版年排列；
+% 中文文献可以按著者汉语拼音字顺排列，也可以按著者的笔画笔顺排列。
+% 然而由于 \hologo{BibTeX} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺，
+% 所以\emph{必须}在 \file{.bib} 数据库中的 |key| 域手动录入著者姓名的拼音，如：
+% \begin{latex}
+%   @book{capital,
+%     author = {马克思 and 恩格斯},
+%     key    = {ma3 ke4 si1   en1 ge2 si1},
+%     ...
+%   }
+% \end{latex}
+%
+% \hologo{BibTeX} 对自定义样式的支持比较有限，
+% 所以用户只能通过修改 \file{bst} 文件来修改文献列表的格式。
+% 本宏包提供了一些接口供用户更方便地修改，
+% 在 \file{bst} 文件开始处的 |load.config| 函数中，
+% 有一组配置参数用来控制样式。
+% 若变量被设为 |#1| 则表示该项被启用，设为 |#0| 则不启用。
+% 默认的值是严格遵循学校规定的配置。
+%
+%
+% \subsubsection{致谢}
+% \DescribeEnv{acknowledgement}
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦。
 % \begin{latex}
 %   \begin{acknowledgments}
 %     …
-%     还要特别感谢 \thuthesis\ 节省了论文排版时间！
+%     还要特别感谢 \thuthesis{} 节省了论文排版时间！
 %   \end{acknowledgments}
 % \end{latex}
 %
-% 本科论文在此处还有一节“声明”，提交版本时需要替换为签字扫描文件，同样我们也提供：
+% \subsubsection{声明}
+% \DescribeMacro{\statement}
 % 如果使用声明扫描页，将可选参数指定为扫描后的 PDF 文件名，例如：
 % \begin{latex}
-%   \begin{acknowledgement}[scan-statement.pdf]
-%     加了扫描文件后，这里面的文字就没用了。
-%
-%     还要特别感谢计算机系薛瑞尼同学在论文格式和 \LaTeX\ 编译等方面给我的很多帮助！
-%   \end{acknowledgement}
+%   \statement[scan-statement.pdf]
 % \end{latex}
 %
 % \subsubsection{附录}
+%
+% 附录由 \cs{appendix} 命令开启，然后像正文一样书写。
+% \begin{latex}
+%   \appendix
+%   \chapter{...}
+%   ...
+% \end{latex}
+%
+% \DescribeOption{toc-depth}
+% 一些院系要求目录中只出现附录的章标题，
+% 不出现附录中的一级、二级节标题。
+% 模板默认如此设置，用户也可以在 \cs{appendix} 命令后手动控制加入目录的标题层级，
+% 其中 |0| 表示章标题，|1| 表示一级节标题……
+% \begin{latex}
+%   \appendix
+%   \thusetup{toc-depth=0}  % 目录只出现章标题
+% \end{latex}
+%
 % \DescribeEnv{survey}
 % \DescribeEnv{translation}
 % 本科生《写作指南》要求附录 A 为外文资料的调研阅读报告或书面翻译，二者择一。
-% 由于调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇子文章；
-% 所以模板定义了 \env{survey} 和 \env{translation} ，
+% 由于调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章；
+% 所以模板定义了 \env{survey} 和 \env{translation}，
 % 在这两个环境内部可以像论文正文一样使用标题和参考文献的命令，但不会影响外部：
 % \begin{latex}
 %   \begin{survey}
@@ -825,12 +898,14 @@
 % 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{spine.tex}）。下面是一
 % 个例子：
 % \begin{latex}
-%   \documentclass[degree=master]{thuthesis}
+%   \documentclass{thuthesis}
+%   \thusetup{
+%     degree = master,
+%     title  = {论文中文题目},
+%     author = {中文姓名},
+%   }
 %
 %   \begin{document}
-%   \thuset{
-%     title  = {论文中文题目},
-%     author = {中文姓名}}
 %
 %   \spine % 使用默认标题和默认作者
 %
@@ -843,63 +918,11 @@
 %   \end{document}
 % \end{latex}
 %
-% \subsection{自定义}
-% \label{sec:othercmd}
-%
-% \subsubsection{数学环境}
-% \label{sec:math}
-% \thuthesis\ 定义了常用的数学环境：
-%
-% \begin{center}
-% \begin{tabular}{*{7}{l}}\toprule
-%   axiom & theorem & definition & proposition & lemma & conjecture &\\
-%   公理 & 定理 & 定义 & 命题 & 引理 & 猜想 &\\\midrule
-%   proof & corollary & example & exercise & assumption & remark & problem \\
-%   证明 & 推论 & 例子& 练习 & 假设 & 注释 & 问题\\\bottomrule
-% \end{tabular}
-% \end{center}
-%
-% 比如：
-% \begin{latex}
-%   \begin{definition}
-%     道千乘之国，敬事而信，节用而爱人，使民以时。
-%   \end{definition}
-% \end{latex}
-% 产生（自动编号）：
-% \medskip
-%
-% \noindent\framebox[\linewidth][l]{{\heiti 定义~1.1~~~} % {道千乘之国，敬事而信，节用而爱人，使民以时。}}
-%
-% \smallskip
-% 列举出来的数学环境毕竟是有限的，如果想用\emph{胡说}这样的数学环境，那么可以定义：
-% \begin{latex}
-%   \newtheorem{nonsense}{胡说}[chapter]
-% \end{latex}
-%
-% 然后这样使用：
-% \begin{latex}
-%   \begin{nonsense}
-%     契丹武士要来中原夺武林秘笈。—— 慕容博
-%   \end{nonsense}
-% \end{latex}
-% 产生（自动编号）：
-%
-% \medskip
-% \noindent\framebox[\linewidth][l]{{\heiti 胡说~1.1~~~} % {契丹武士要来中原夺武林秘笈。—— 慕容博}}
-%
-% \subsubsection{列表环境}
-% \DescribeEnv{itemize}
-% \DescribeEnv{enumerate}
-% \DescribeEnv{description}
-% 为了适合中文习惯，模板将这三个常用的列表环境用 \pkg{enumitem} 进行了纵向间距压
-% 缩。一方面清除了多余空间，另一方面用户可以自己指定列表环境的样式（如标签符号，
-% 缩进等）。细节请参看 \pkg{enumitem} 文档，此处不再赘述。
-%
 % \section{致谢}
 % \label{sec:thanks}
-% 感谢这些年来一直陪伴 \thuthesis\ 成长的新老同学！
+% 感谢这些年来一直陪伴 \thuthesis{} 成长的新老同学！
 %
-% 欢迎各位到 \href{http://github.com/xueruini/thuthesis/}{\thuthesis\ Github 主页}贡献！
+% 欢迎各位到 \href{http://github.com/xueruini/thuthesis/}{\thuthesis{} GitHub 主页}贡献！
 %
 % \StopEventually{\PrintIndex}
 % \clearpage
@@ -1184,7 +1207,7 @@
 \RequirePackage[labelformat=simple]{subcaption}
 %    \end{macrocode}
 %
-% \pkg{pdfpages} 宏包便于我们插入扫描后的授权页和声明页 PDF 文档。
+% \pkg{pdfpages} 宏包便于我们插入扫描后的授权说明和声明页 PDF 文档。
 %    \begin{macrocode}
 \RequirePackage{pdfpages}
 \includepdfset{fitpaper=true}
@@ -1196,7 +1219,7 @@
 \RequirePackage{environ}
 %    \end{macrocode}
 %
-% 禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
+% 禁止 \LaTeX{} 自动调整多余的页面底部空白，并保持脚注仍然在底部。
 % 脚注按页编号。
 %    \begin{macrocode}
 \ifthu@raggedbottom
@@ -2110,7 +2133,7 @@
 % \cs{thu@chapter*}\oarg{tocline}\marg{title}\oarg{header}: tocline 是出现在目录
 % 中的条目，如果为空则此 chapter 不出现在目录中，如果省略表示目录出现 title；
 % title 是章标题；header 是页眉出现的标题，如果忽略则取 title。通过这个宏我才真
-% 正体会到 \TeX\ macro 的力量！
+% 正体会到 \TeX{} macro 的力量！
 %    \begin{macrocode}
 \newcommand\thu@pdfbookmark[2]{}
 \NewDocumentCommand\thu@chapter{s o m o}{
@@ -2874,7 +2897,7 @@
 }
 %    \end{macrocode}
 %
-% \myentry{授权页面}
+% \myentry{授权说明}
 % \begin{macro}{\copyrightpage}
 % 授权说明
 %    \begin{macrocode}
@@ -3167,7 +3190,7 @@
 %
 % \begin{macro}{\listofequations}
 % \begin{macro}{\listofequations*}
-% \LaTeX\ 默认没有公式索引，此处定义自己的 \cs{listofequations}。
+% \LaTeX{} 默认没有公式索引，此处定义自己的 \cs{listofequations}。
 %    \begin{macrocode}
 \newcommand\listofequations{\thu@listof{equation}}
 \let\l@equation\l@figure
@@ -3574,6 +3597,7 @@
   top=2.5cm, bottom=2.5cm,
   left=4cm, right=2cm,
   headsep=3mm]{geometry}
+\RequirePackage{hologo}
 \RequirePackage{array,longtable,booktabs}
 \RequirePackage{listings}
 \RequirePackage{fancyhdr}
