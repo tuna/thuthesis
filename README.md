@@ -1,6 +1,6 @@
 [![Actions Status](https://github.com/xueruini/thuthesis/workflows/build/badge.svg)](https://github.com/xueruini/thuthesis/actions)
 [![Join the chat at https://gitter.im/thuthesis/Lobby](https://badges.gitter.im/thuthesis/Lobby.svg)](https://gitter.im/thuthesis/Lobby)
-[![Github downloads](https://img.shields.io/github/downloads/xueruini/thuthesis/total)](https://github.com/xueruini/thuthesis/releases)
+[![GitHub downloads](https://img.shields.io/github/downloads/xueruini/thuthesis/total)](https://github.com/xueruini/thuthesis/releases)
 [![GitHub commits](https://img.shields.io/github/commits-since/xueruini/thuthesis/latest)](https://github.com/xueruini/thuthesis/commits/master)
 [![GitHub release](https://img.shields.io/github/v/release/xueruini/thuthesis)](https://github.com/xueruini/thuthesis/releases/latest)
 [![CTAN](https://img.shields.io/ctan/v/thuthesis)](https://www.ctan.org/pkg/thuthesis)
@@ -41,9 +41,7 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 按推荐顺序排序：
 
 * 先到 [FAQ](https://github.com/xueruini/thuthesis/wiki/FAQ) 看看常见问题
-* [Github Issues](https://github.com/xueruini/thuthesis/issues)
-* [TeX@newsmth](https://www.newsmth.net/nForum/#!board/TeX)
-* [ThuThesis@Google Groups](https://groups.google.com/group/thuthesis)
+* [GitHub Issues](https://github.com/xueruini/thuthesis/issues)
 
 # Makefile的用法
 
@@ -52,11 +50,10 @@ make [{all|thesis|spine|doc|clean|cleanall|distclean}]
 ```
 
 ## 目标
-* `make all`       生成论文和书籍，相当于 `make thesis && make spine`；
-* `make cls`       生成模板文件；
 * `make thesis`    生成论文 main.pdf；
 * `make spine`     生成书脊 spine.pdf；
 * `make doc`       生成模板使用说明书 thuthesis.pdf；
+* `make all`       生成论文和书籍，相当于 `make thesis && make spine`；
 * `make clean`     删除示例文件的中间文件（不含 main.pdf）；
 * `make cleanall`  删除示例文件的中间文件和 main.pdf；
 * `make distclean` 删除示例文件和模板的所有中间文件和 PDF。
@@ -84,10 +81,8 @@ You'll get `thuthesis.cls` along with other template files.
 # Reporting Issues
 Please follow the procedure below:
 
-* Check the  [FAQ](https://github.com/xueruini/thuthesis/wiki/FAQ)
-* [Github Issues](https://github.com/xueruini/thuthesis/issues)
-* [TeX@newsmth](https://www.newsmth.net/nForum/#!board/TeX)
-* [ThuThesis@Google Groups](https://groups.google.com/group/thuthesis)
+* Check the [FAQ](https://github.com/xueruini/thuthesis/wiki/FAQ)
+* [GitHub Issues](https://github.com/xueruini/thuthesis/issues)
 
 # Makefile Usage
 
@@ -96,11 +91,10 @@ make [{all|thesis|spine|doc|clean|cleanall|distclean}]
 ```
 
 ## Targets
-* `make all`       generate thesis and spine, same as `make thesis && make spine`;
-* `make cls`       generate template file;
 * `make thesis`    generate thesis main.pdf;
 * `make spine`     generate book spine for printing spine.pdf;
 * `make doc`       generate template documentation thuthesis.pdf;
+* `make all`       generate thesis and spine, same as `make thesis && make spine`;
 * `make clean`     delete all examples' files (excluding main.pdf);
 * `make cleanall`  delete all examples' files and main.pdf;
 * `make distclean` delete all examples' and templates' files and PDFs.

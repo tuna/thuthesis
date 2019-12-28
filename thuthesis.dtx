@@ -71,7 +71,7 @@
 % \begin{abstract}
 % \noindent
 % \begin{enumerate}
-% \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内
+% \item 本模板的发布遵守 \LaTeX{} Project Public License，使用前请认真阅读协议内
 %   容。
 % \item 本模板为作者根据
 %   清华大学教务处颁发的
@@ -86,7 +86,7 @@
 %   权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格式审查老师
 %   不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
 % \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
-%   守 \LaTeX\ Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
+%   守 \LaTeX{} Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
 %   本模板作者无关。
 % \end{enumerate}
 % \end{abstract}
@@ -102,35 +102,39 @@
 % \clearpage
 %
 % \section{模板介绍}
-% \thuthesis\ (\textbf{T}sing\textbf{h}ua \textbf{U}niversity \LaTeX\
+% \thuthesis{} (\textbf{T}sing\textbf{h}ua \textbf{U}niversity \LaTeX{}
 % \textbf{Thesis} Template) 是为了帮助清华大学毕业生撰写毕业论文而编写
-% 的 \LaTeX\ 论文模板。
+% 的 \LaTeX{} 论文模板。
 %
-% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据
-% 第~\ref{sec:howtoask} 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
-% 码的贡献。
+% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处，或者想提出改进建议，
+% 可以在 \href{https://github.com/xueruini/thuthesis/issues/}{GitHub Issues}
+% 参与讨论或提问。
+% 有兴趣者都可以参与完善此手册，也非常欢迎对代码的贡献。
 %
 % \note[注意：]{模板的作用在于减少论文写作过程中格式调整的时间。前提是遵守模板的
-% 用法，否则即便用了 \thuthesis\ 也难以保证输出的论文符合学校规范。}
+% 用法，否则即便用了 \thuthesis{} 也难以保证输出的论文符合学校规范。}
 %
+% 用户如果遇到 bug，或者发现与学校《写作指南》 的要求不一致，可以尝试以下办法：
+% \begin{enumerate}
+%   \item 将模板升级到最新，见第~\ref{sec:upgrade} 节；
+%   \item 阅读 \href{https://github.com/xueruini/thuthesis/wiki/FAQ}{FAQ}；
+%   \item 在 GitHub Issues 中按照说明
+%     \href{https://github.com/xueruini/thuthesis/issues/new?template=bug_report.md}{报告 bug}。
+% \end{enumerate}
 %
 % \section{安装}
 % \label{sec:installation}
 %
-% \thuthesis\ 已经包含在主要的 \TeX\ 发行版中，一般不需要安装，可以利用发行版自
-% 带更新工具自动更新。阅读文档可以使用以下命令：
-% \begin{shell}
-%   $ texdoc thuthesis
-% \end{shell}
+% \thuthesis{} 已经包含在主要的 \TeX{} 发行版中，但是通常版本较旧，
+% 而且不方便更新。
+% 建议使用 GitHub 上的最新版：
+% \url{https://github.com/xueruini/thuthesis}。
 %
-% 如果要使用开发版，需自己下载，\thuthesis\ 相关链接：
-% \begin{itemize}
-% \item 主页：\href{https://github.com/xueruini/thuthesis}{GitHub}
-% \item 下载：\href{http://www.ctan.org/pkg/thuthesis}{CTAN}
-% \end{itemize}
+% 模板支持在 TeX Live、MacTeX 和 MiKTeX 平台下进行编译，但要求 2017 年或更新的发行版。
+% 当然，尽可能使用最新的版本可以避免 bug。
 %
 % \subsection{模板的组成}
-% 下表列出了 \thuthesis\ 的主要文件及其功能介绍：
+% 下表列出了 \thuthesis{} 的主要文件及其功能介绍：
 %
 % \begin{longtable}{l|p{8cm}}
 % \toprule
@@ -169,24 +173,58 @@
 %
 % \subsection{生成模板}
 % \label{sec:generate-cls}
-% \note[提示：]{若使用 \TeX 发行版自带的 \thuthesis\ 或 Github 上发布的版本，可忽
-% 略此节，直接阅读第~\ref{sec:generate-thesis} 节。若下载 CTAN 包或者 Github 开发
-% 代码，请阅读本节了解生成模板文件的步骤。}
-%
-% 模板解压缩后生成文件夹 \file{thuthesis-vX.Y.Z}\footnote{\texttt{vX.Y.Z} 为版本
-% 号。}，其中包括：模板源文件（\file{thuthesis.ins} 和 \file{thuthesis.dtx}），参
-% 考文献样式 \file{thuthesis-numeric.bst} 和 \file{thuthesis-author-year.bst}，示例文档
-% （\file{main.tex}，\file{spine.tex}，\file{thuthesis.sty}\footnote{可能用到的包
-% 以及一些命令定义都放在这里，以免 \file{thuthesis.cls} 过分臃
-% 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
-% 板文件和配置文件（具体命令细节请参考 \file{README.md} 和 \file{Makefile}）：
+% 模板的源文件（\file{thuthesis.dtx}）中包含了大量的注释，
+% 需要将注释去掉生成轻量级的 \file{.cls} 文件供 \cs{documentclass} 调用。
 %
 % \begin{shell}
-%   $ cd thuthesis-vX.Y.Z
-%   # 生成 thuthesis.cls
 %   $ xetex thuthesis.ins
+% \end{shell}
 %
-%   # 下面的命令用来生成用户手册，可以不执行
+% \note[注意：]{如果没有生成的模板 \file{thuthesis.cls} 文件
+%   （跟 \file{main.tex} 同一目录下），
+%   \LaTeX{} 在编译时可能找到发行版中较旧版本的 \file{.cls}，从而造成冲突。}
+%
+% \subsection{编译论文}
+% \label{sec:generate-thesis}
+% 本节介绍几种常见的生成论文的方法。用户可根据自己的情况选择。
+%
+% \subsubsection{GNU make}
+% \label{sec:make}
+% 如果用户可以使用 GNU make 工具，这是最方便的办法。
+% 所以 \thuthesis{} 提供了 \file{Makefile}：
+% \begin{shell}
+%   $ make thesis    # 生成论文 main.pdf
+%   $ make spine     # 生成书脊 spine.pdf
+%   $ make doc       # 生成说明文档 thuthesis.pdf
+%   $ make clean     # 清理编译生成的辅助文件
+% \end{shell}
+%
+% \subsubsection{latexmk}
+% \label{sec:latexmk}
+% \texttt{latexmk} 命令支持全自动生成 \LaTeX{} 编写的文档，并且支持使用不同的工具
+% 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。
+% \begin{shell}
+%   $ latexmk main.tex       # 生成论文 main.pdf
+%   $ latexmk spine.tex      # 生成书脊 spine.pdf
+%   $ latexmk thuthesis.dtx  # 生成说明文档 thuthesis.pdf
+%   $ latexmk -c             # 清理编译生成的辅助文件
+% \end{shell}
+% \texttt{latexmk} 的编译过程是通过 \file{latexmk} 文件来配置的，
+% 如果要进一步了解，可以参考 \pkg{latexmk} 的文档。
+%
+% \subsubsection{\XeLaTeX}
+% \label{sec:xelatex}
+% 如果用户无法使用以上两种较为方便的编译方法，就只能按照以下复杂的办法手动编译。
+% \begin{shell}
+%   $ xetex thuthesis.ins  # 生成 thuthesis.cls
+%   $ xelatex main.tex
+%   $ bibtex main.tex      # 生成 bbl 文件
+%   $ xelatex main.tex     # 解决引用
+%   $ xelatex main.tex     # 生成完整的 pdf 文件
+% \end{shell}
+%
+% 下面的命令用来生成用户手册，
+% \begin{shell}
 %   $ xelatex thuthesis.dtx
 %   $ makeindex -s gind.ist -o thuthesis.ind thuthesis.idx
 %   $ makeindex -s gglo.ist -o thuthesis.gls thuthesis.glo
@@ -194,72 +232,15 @@
 %   $ xelatex thuthesis.dtx  % 生成说明文档 thuthesis.pdf
 % \end{shell}
 %
-% \subsection{生成论文}
-% \label{sec:generate-thesis}
-% 本节介绍几种常见的生成论文的方法。用户可根据自己的情况选择。
-%
-% \subsubsection{\XeLaTeX}
-% \label{sec:xelatex}
-% 很多用户对 \LaTeX\ 命令执行的次数不太清楚。一个基本的原则是多次运行 \LaTeX\ 命
-% 令直至不再出现警告。下面给出生成示例文档的详细过程（\texttt{\#} 开头的行为注
-% 释），首先来看推荐的 \texttt{xelatex} 方式：
-% \begin{shell}
-%   # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
-%   $ xelatex main
-%
-%   # 2. 编译参考文件源文件，生成 bbl 文件
-%   $ bibtex main
-%
-%   # 3. 下面解决引用
-%   $ xelatex main
-%   $ xelatex main   # 此时生成完整的 pdf 文件
-% \end{shell}
-%
-% \subsubsection{latexmk}
-% \label{sec:latexmk}
-% \texttt{latexmk} 命令支持全自动生成 \LaTeX\ 编写的文档，并且支持使用不同的工具
-% 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。下面给出了一个用
-% \texttt{latexmk} 调用 \texttt{xelatex} 生成最终文档的示例：
-% \begin{shell}
-%   # 一句话就够了！
-%   $ latexmk -xelatex main
-% \end{shell}
-%
-% \subsubsection{make}
-% \label{sec:make}
-% \note[提示：]{若要使用 \texttt{make} 编译，需自行下载模板。因为 \TeX\ 发行版中
-% 的 \file{Makefile} 不在当前目录。}
-%
-% 上面的方法虽然不复杂，但是每次都输入还是非常罗嗦，所以 \thuthesis\ 提供了一
-% 个 \file{Makefile}：
-%
-% \begin{shell}
-%   $ make clean
-%   $ make cls       # 生成 thuthesis.cls
-%   $ make doc       # 生成说明文档 thuthesis.pdf
-%   $ make thesis    # 生成示例文档 main.pdf
-%   $ make spine     # 生成书脊 spine.pdf
-% \end{shell}
-%
-% \thuthesis\ 的 \file{Makefile} 默认用 \texttt{latexmk} 调用\texttt{xelatex} 编
-% 译。如有需要可修
-% 改 \file{Makefile} 开头的参数或通过命令行传递参数（请参看 \file{README.md}），
-% 进一步还可以修改 \file{latexmkrc} 进行定制。
-%
 % \subsection{升级}
-% \label{sec:updgrade}
-% \thuthesis\ 升级非常简单，可以通过 \TeX\ 发行版的包管理工具自动更新发行版，也可
-% 以下载最新的开发版，
-% 将 \file{thuthesis.ins}，\file{thuthesis.dtx}，\file{tsinghua.pdf}，
-% \file{thuthesis-author-year.bst} 和 \file{thuthesis-numeric.bst} 拷贝至工作目录覆盖相应
-% 的文件，然后运行：
-% \begin{shell}
-%   $ xetex thuthesis.ins
-% \end{shell}
+% \label{sec:upgrade}
+% 如果需要升级 \thuthesis{}，应当从 GitHub 下载最新的版本，，
+% 将 \file{thuthesis.dtx}，\file{thuthesis.ins}，\file{tsinghua.pdf}
+% 和 \file{thuthesis-*.bst} 拷贝至工作目录覆盖相应的文件，
+% 然后按照第~\ref{sec:generate-cls} 节的内容生成新的模板和使用说明。
 %
-% 生成新的类文件和配置文件即可。也可以直接拷
-% 贝 \file{thuthesis.cls}，免去上面命令的执行。
-%
+% 有时模板可能进行了重要的修改，不兼容已写好的正文内容，
+% 用户应当按照 GitHub 上的示例文档的格式重新调整。
 %
 % \section{使用说明}
 % \label{sec:usage}
