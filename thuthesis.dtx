@@ -3215,7 +3215,6 @@
 % \begin{macro}{\inlinecite}
 % 依赖于 \pkg{natbib} 宏包，修改其中的命令。 旧命令 \cs{onlinecite} 依然可用。
 %    \begin{macrocode}
-\newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{,}}
 \DeclareRobustCommand\inlinecite{\@inlinecite}
 \def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
 \let\onlinecite\inlinecite
@@ -3244,6 +3243,19 @@
   \bibpunct{(}{)}{;}{a}{,}{,}}
 \expandafter\newcommand\csname bibstyle@thuthesis-bachelor\endcsname{%
   \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+%    \end{macrocode}
+%
+% 设置 \option{cite-style} 的接口：
+%    \begin{macrocode}
+\@namedef{bibstyle@thuthesis-inline}{\bibpunct{[}{]}{,}{n}{,}{,}}
+\thu@define@key{
+  cite-style = {
+    name = cite@style,
+    code = {
+      \@nameuse{bibstyle@thuthesis-\thu@cite@style}
+    },
+  }
+}
 %    \end{macrocode}
 %
 % 下面修改 \pkg{natbib} 的引用格式，主要是将页码写在上标位置。
