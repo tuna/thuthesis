@@ -156,7 +156,7 @@
 % ref/ & 示例文档参考文献目录\\
 % data/ & 示例文档章节具体内容\\
 % figures/ & 示例文档图片路径\\
-% thuthesis.sty & 为示例文档加载其它宏包\\\midrule
+% thusetup.tex & 示例文档基本配置\\\midrule
 % Makefile & Makefile\\
 % latexmkrc & latexmk 配置文件 \\
 % README.md & Readme\\
@@ -173,8 +173,8 @@
 %
 % \subsection{生成模板}
 % \label{sec:generate-cls}
-% 模板的源文件（\file{thuthesis.dtx}）中包含了大量的注释，
-% 需要将注释去掉生成轻量级的 \file{.cls} 文件供 \cs{documentclass} 调用。
+% 模板的源文件（\file{thuthesis.dtx}）中包含了大量的注释，需要将注释去掉生成轻量
+% 级的 \file{.cls} 文件供 \cs{documentclass} 调用。
 %
 % \begin{shell}
 %   $ xetex thuthesis.ins
@@ -209,8 +209,8 @@
 %   $ latexmk thuthesis.dtx  # 生成说明文档 thuthesis.pdf
 %   $ latexmk -c             # 清理编译生成的辅助文件
 % \end{shell}
-% \texttt{latexmk} 的编译过程是通过 \file{latexmk} 文件来配置的，
-% 如果要进一步了解，可以参考 \pkg{latexmk} 的文档。
+% \texttt{latexmk} 的编译过程是通过 \file{latexmk} 文件来配置的，如果要进一步了解，
+% 可以参考 \pkg{latexmk} 的文档。
 %
 % \subsubsection{\XeLaTeX}
 % \label{sec:xelatex}
@@ -234,10 +234,10 @@
 %
 % \subsection{升级}
 % \label{sec:upgrade}
-% 如果需要升级 \thuthesis{}，应当从 GitHub 下载最新的版本，，
-% 将 \file{thuthesis.dtx}，\file{thuthesis.ins}，\file{tsinghua.pdf}
-% 和 \file{thuthesis-*.bst} 拷贝至工作目录覆盖相应的文件，
-% 然后按照第~\ref{sec:generate-cls} 节的内容生成新的模板和使用说明。
+% 如果需要升级 \thuthesis{}，应当从 GitHub 下载最新的版本，
+% 将 \file{thuthesis.dtx}，\file{thuthesis.ins}，\file{tsinghua.pdf}和
+% \file{thuthesis-*.bst} 拷贝至工作目录覆盖相应的文件，然后按照
+% 第~\ref{sec:generate-cls} 节的内容生成新的模板和使用说明。
 %
 % 有时模板可能进行了重要的修改，不兼容已写好的正文内容，
 % 用户应当按照 GitHub 上的示例文档的格式重新调整。
@@ -245,7 +245,7 @@
 % \section{使用说明}
 % \label{sec:usage}
 % 本手册假定用户已经能处理一般的 \LaTeX{} 文档，并对 \hologo{BibTeX} 有一定了解。如果
-% 从来没有接触过 \TeX{} 和 \LaTeX，建议先学习相关的基础知识。
+% 从未接触过 \TeX{} 和 \LaTeX，建议先学习相关的基础知识。
 %
 % \subsection{示例文件}
 % \label{sec:userguide}
@@ -253,12 +253,16 @@
 % 模板核心文件
 % 有：\file{thuthesis.cls}，\file{thuthesis-numeric.bst}，
 % \file{thuthesis-author-year.bst} 和 \file{tsinghua.pdf}，
-% 但如果没有示例文档会很难下手，所以推荐从模板自带的示例文档入手，其中包括了论文
-% 写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于不清
+% 但如果没有示例文档会较难下手，所以推荐从模板自带的示例文档入手。其中包括了论文
+% 写作用到的所有命令及其使用方法，只需用自己的内容进行相应替换就可以。对于不清
 % 楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文档，
 % 具体内容可以参考模板附带的 \file{main.tex} 和 \file{data/}。
 %
 % \lstinputlisting[style=lstStyleLaTeX]{main.tex}
+%
+% 其中 \file{thusetup.tex} 包括了论文基本信息的配置样例：
+%
+% \lstinputlisting[style=lstStyleLaTeX]{thusetup.tex}
 %
 % \subsection{论文选项}
 % \label{sec:option}
@@ -281,10 +285,10 @@
 % \DescribeOption{language}
 % 论文全文的主要语言。可选：\option{chinese}（默认），\option{english}。
 %
-% 注意，本科生《写作指南》要求“本科生(含国外来华留学本科生)非外语专业论文统一要求用中文书写。”
-% 研究生《写作指南》要求“外国人来华留学生可以用英文撰写学位论文，但须采用中文封面”，
-% “除留学生外，学位论文一律须用汉语书写”，
-% 用户须提前与导师和院系的审查教师协商使用何种语言书写论文。
+% 注意，本科生《写作指南》要求“本科生(含国外来华留学本科生)非外语专业论文统一要求
+% 用中文书写。”研究生《写作指南》要求“外国人来华留学生可以用英文撰写学位论文，但
+% 须采用中文封面”，“除留学生外，学位论文一律须用汉语书写”，用户须提前与导师和院系
+% 的审查教师协商使用何种语言书写论文。
 % \begin{latex}
 %   \thusetup{language=english}
 % \end{latex}
@@ -319,14 +323,17 @@
 %     但是其字形跟中易字库有所差别，这导致封面、标题的视觉效果与学校的 Word 示例不一致，
 %     可能被审查老师认为格式不符合要求。
 % \end{enumerate}
+%
 % 所以建议在提交最终版前使用 Windows 平台的字体进行编译。
 %
 % 用户也可以在调用 \thuthesis{} 时手动指定使用的字库，如：
+%
 % \begin{latex}
 %   \documentclass[fontset=windows]{thuthesis}
 % \end{latex}
-% 允许的选项有 \option{windows}、\option{mac}、\option{fandol}，
-% 详见 \pkg{ctex}、\pkg{xeCJK}、\pkg{fontspec} 等宏包的使用说明。
+%
+% 允许的选项有 \option{windows}、\option{mac}、\option{fandol}，详
+% 见 \pkg{ctex}、\pkg{xeCJK}、\pkg{fontspec} 等宏包的使用说明。
 %
 % \subsection{封面信息}
 % \label{sec:titlepage}
@@ -371,7 +378,7 @@
 %
 % \subsubsection{申请学位名称}
 % \label{sec:degree-name}
-% 学位的设置比想象的要复杂一些：
+% 学位的设置要复杂一些：
 %
 % \begin{longtable}{p{2cm}p{6cm}p{6cm}}
 %   \toprule
@@ -411,8 +418,8 @@
 % \subsubsection{学科名称}
 %
 % \begin{itemize}
-%   \item 学术型学位：获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称
-%   \item 工程硕士：工程领域名称
+%   \item 学术型学位：获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称；
+%   \item 工程硕士：工程领域名称；
 %   \item 其他专业型学位：-
 %   \item 本科生：-
 % \end{itemize}
@@ -435,11 +442,11 @@
 %
 % \subsubsection{导师}
 % \myentry{导师}
-% 导师的中文姓名与职称之间以“,”（西文逗号，U+002C）隔开，下同。
+% 导师的姓名与职称之间以“,”（西文逗号，U+002C）隔开，下同。
 % \begin{latex}
 %   \thusetup{
-%     supervisor  = {导师,教授},
-%     supervisor* = {Supervisor},
+%     supervisor  = {导师姓名, 教授},
+%     supervisor* = {Supervisor Name, Professor},
 %   }
 % \end{latex}
 %
@@ -447,8 +454,8 @@
 % 本科生的辅导教师，硕士的副指导教师。
 % \begin{latex}
 %   \thusetup{
-%     associate-supervisor  = {副导师,副教授},
-%     associate-supervisor* = {2nd Boss},
+%     associate-supervisor  = {副导师姓名, 副教授},
+%     associate-supervisor* = {Assoc-Supervisor Name, Professor},
 %   }
 % \end{latex}
 %
@@ -456,8 +463,8 @@
 % 硕士生联合指导教师，博士生联合导师。
 % \begin{latex}
 %   \thusetup{
-%     joint-supervisor  = {联合导师,教授},
-%     joint-supervisor* = {3rd Boss},
+%     joint-supervisor  = {联合导师姓名, 教授},
+%     joint-supervisor* = {Join-Supervisor Name, Professor},
 %   }
 % \end{latex}
 %
@@ -529,9 +536,8 @@
 % \end{latex}
 %
 % \myentry{关键词}
-% 关键词需要使用 \cs{thusetup} 命令进行设置，
-% 关键词之间以西文逗号隔开，模板会自动调整为要求的格式。
-% 关键词的设置只要在摘要环境结束前即可。
+% 关键词需要使用 \cs{thusetup} 进行设置。关键词之间以\emph{西文逗号}隔开，模板会
+% 自动调整为要求的格式。关键词的设置只要在摘要环境结束前即可。
 % \begin{latex}
 %   \thusetup{
 %     keywords  = {关键词 1, 关键词 2},
@@ -540,7 +546,7 @@
 % \end{latex}
 %
 % \subsubsection{目录和索引表}
-% 目录、插图、表格和公式等索引命令分别如下，将其插入到期望的位置即可（带星号的命令表
+% 目录、插图、表格和公式等索引命令分别如下，将其插入到期望的位置即可（带*的命令表
 % 示对应的索引表不会出现在目录中）：
 %
 % \DescribeMacro{\tableofcontents}
@@ -594,8 +600,8 @@
 %
 % \texttt{mymath} 中公式的编号需要自己来做。
 %
-% 同图表一样，附录中的公式有时候也不希望它跟全文统一编号，而且不希望它出现在公式
-% 索引中，目前的解决办法就是利用 \cs{tag*}\marg{公式编号} 来解决。用法很简单，此
+% 同图表一样，附录中的公式有时也不希望它跟全文统一编号，而且不希望它出现在公式
+% 索引中。目前的办法是利用 \cs{tag*}\marg{公式编号} 来解决。用法比较简单，此
 % 处不再罗嗦，实例请参看示例文档附录 A 的前两个公式。
 %
 % \subsubsection{符号对照表}
@@ -619,17 +625,21 @@
 %   \end{denotation}
 % \end{latex}
 %
-% 另外一种方法是调用 \pkg{nomencl} 宏包，需要在导言区设置：
+% 符号对照表的另外一种方法是调用 \pkg{nomencl} 宏包，需要在导言区设置：
+%
 % \begin{latex}
 %   \usepackage{nomencl}
 %   \makenomenclature
 % \end{latex}
+%
 % 然后在正文中任意位置使用 \cs{nomenclature} 声明需要添加到主要符号表的符号：
+%
 % \begin{latex}
 %   \nomenclature{$m$}{The mass of one angel}
 % \end{latex}
-% 最后使用 \cs{printnomenclature} 命令生成符号表。
-% 更详细的使用方法参见 \pkg{nomencl} 宏包的文档。
+%
+% 最后使用 \cs{printnomenclature} 命令生成符号表。更详细的使用方法参
+% 见 \pkg{nomencl} 宏包的文档。
 %
 % \subsection{正文部分}
 %
@@ -669,6 +679,7 @@
 %     契丹武士要来中原夺武林秘笈。—— 慕容博
 %   \end{nonsense}
 % \end{latex}
+%
 % 产生（自动编号）：
 %
 % \medskip
@@ -689,11 +700,14 @@
 % 使用者在设置参考文献表的格式
 % （\cs{bibliographystyle}，见第~\ref{sec:bibliography} 节）时，
 % 正文中引用文献的标注会自动调整为对应的格式：
+%
 % \begin{latex}
 %   % 顺序编码制
 %   \bibliographystyle{thuthesis-numeric}
 % \end{latex}
+%
 % 或
+%
 % \begin{latex}
 %   % 著者-出版年制
 %   \bibliographystyle{thuthesis-author-year}
@@ -705,13 +719,16 @@
 %   \item 上标模式。比如“同样的工作有很多\textsuperscript{[1,2]}\dots”。
 %   \item 正文模式。比如“文 [3] 中详细说明了\dots”。
 % \end{enumerate}
+%
 % \DescribeOption{cite-style}
 % 用户可以将引用标注的格式设为正文模式：
+%
 % \begin{latex}
 %   \thusetup{
 %     cite-style = inline,
 %   }
 % \end{latex}
+%
 % 也可以使用 \cs{inlinecite}\marg{key} 临时使用正文模式的引用标注。
 %
 % \subsection{其他部分}
@@ -727,11 +744,12 @@
 %   % \bibliographystyle{thuthesis-bachelor}     % 本科生参考文献的著录格式
 %   \bibliographystyle{ref1,ref2}                % 载入 ref1.bib 和 ref2.bib
 % \end{latex}
-% 注意，\cs{bibliographystyle} 命令只能出现一次。
 %
-% \hologo{BibTeX} 可以自动识别数据库中每条文献的语言，
-% 并自动处理文献类型和载体类型标识，
-% 用户也可以手动指定，如：
+% \note[注意：]{\cs{bibliographystyle} 命令只能出现一次。}
+%
+% \hologo{BibTeX} 可以自动识别数据库中每条文献的语言，并自动处理文献类型和载体类
+% 型标识，用户也可以手动指定，如：
+%
 % \begin{latex}
 %   @misc{citekey,
 %     language = {japanese},
@@ -740,33 +758,33 @@
 %     ...
 %   }
 % \end{latex}
-% 可选的语言有 english, chinese, japanese, russian。
 %
-% 国标规定参考文献表采用著者-出版年制组织时，各篇文献首先按文种集中，
-% 然后按著者字顺和出版年排列；
-% 中文文献可以按著者汉语拼音字顺排列，也可以按著者的笔画笔顺排列。
-% 然而由于 \hologo{BibTeX} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺，
-% 所以\emph{必须}在 \file{.bib} 数据库中的 |key| 域手动录入著者姓名的拼音，如：
+% 可选的语言有 \option{english}, \option{chinese}, \option{japanese} 和 \option{russian}。
+%
+% 国标规定参考文献表采用著者-出版年制组织时，各篇文献首先按文种集中，然后按著者字
+% 顺和出版年排列；中文文献可以按著者汉语拼音字顺排列，也可以按著者的笔画笔顺排列。
+% 由于 \hologo{BibTeX} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺，所
+% 以\emph{必须}在 \file{.bib} 数据库中的 |key| 域手动录入著者姓名的拼音，如：
 % \begin{latex}
 %   @book{capital,
 %     author = {马克思 and 恩格斯},
-%     key    = {ma3 ke4 si1   en1 ge2 si1},
+%     key    = {ma3 ke4 si1 en1 ge2 si1},
 %     ...
 %   }
 % \end{latex}
 %
-% \hologo{BibTeX} 对自定义样式的支持比较有限，
-% 所以用户只能通过修改 \file{bst} 文件来修改文献列表的格式。
-% 本宏包提供了一些接口供用户更方便地修改，
-% 在 \file{bst} 文件开始处的 |load.config| 函数中，
-% 有一组配置参数用来控制样式。
-% 若变量被设为 |#1| 则表示该项被启用，设为 |#0| 则不启用。
-% 默认的值是严格遵循学校规定的配置。
+% \hologo{BibTeX} 对自定义样式的支持比较有限，所以用户只能通过修改 \file{bst} 文
+% 件来修改文献列表的格式。本宏包提供了一些接口供用户更方便地修改，在 \file{bst}
+% 文件开始处的 |load.config| 函数中，有一组配置参数用来控制样式。若变量被设
+% 为 |#1| 则表示该项被启用，设为 |#0| 则不启用。默认的值是严格遵循学校规定的配
+% 置。
 %
 %
 % \subsubsection{致谢}
+%
 % \DescribeEnv{acknowledgement}
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦。
+%
 % \begin{latex}
 %   \begin{acknowledgments}
 %     …
@@ -777,6 +795,7 @@
 % \subsubsection{声明}
 % \DescribeMacro{\statement}
 % 如果使用声明扫描页，将可选参数指定为扫描后的 PDF 文件名，例如：
+%
 % \begin{latex}
 %   \statement[scan-statement.pdf]
 % \end{latex}
@@ -791,10 +810,10 @@
 % \end{latex}
 %
 % \DescribeOption{toc-depth}
-% 一些院系要求目录中只出现附录的章标题，
-% 不出现附录中的一级、二级节标题。
-% 模板默认如此设置，用户也可以在 \cs{appendix} 命令后手动控制加入目录的标题层级，
-% 其中 |0| 表示章标题，|1| 表示一级节标题……
+% 一些院系要求目录中只出现附录的章标题，不出现附录中的一级、二级节标题。模板默认
+% 如此设置，用户也可以在 \cs{appendix} 命令后手动控制加入目录的标题层级，其
+% 中 |0| 表示章标题，|1| 表示一级节标题，以此类推。
+%
 % \begin{latex}
 %   \appendix
 %   \thusetup{toc-depth=0}  % 目录只出现章标题
@@ -806,6 +825,7 @@
 % 由于调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章；
 % 所以模板定义了 \env{survey} 和 \env{translation}，
 % 在这两个环境内部可以像论文正文一样使用标题和参考文献的命令，但不会影响外部：
+%
 % \begin{latex}
 %   \begin{survey}
 %     \title{...}
@@ -818,6 +838,7 @@
 %
 % 书面翻译对应的原文索引的实际作用更接近参考文献，所以也用参考文献的机制来生成，
 % 但是在正文中并不引用。
+%
 % \begin{latex}
 %   \begin{translation}
 %     ... \nocite{...}
@@ -897,6 +918,7 @@
 % 数为论文中文题目和中文作者。如果中文题目中没有英文字母，那么直接调用此命令即可。
 % 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{spine.tex}）。下面是一
 % 个例子：
+%
 % \begin{latex}
 %   \documentclass{thuthesis}
 %   \thusetup{
@@ -936,7 +958,7 @@
 %<cls>[2019/04/27 5.5.2 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
-% 检查编译引擎，要求使用 XeLaTeX。
+% 检查编译引擎，要求使用 \XeLaTeX。
 %    \begin{macrocode}
 \RequirePackage{ifxetex}
 \ifxetex\else
@@ -962,14 +984,14 @@
   setkeys=\kvsetkeys}
 %    \end{macrocode}
 %
-% 用 \pkg{kvoptions} 的 \texttt{key=value} 方式来设置论文类型。
+% 用 \pkg{kvoptions} 的 \emph{key=value} 方式来设置论文类型。
 %    \begin{macrocode}
 \newcommand\thu@error[1]{%
   \ClassError{thuthesis}{#1}{}%
 }
 %    \end{macrocode}
 %
-% 同时用 key-value 的方式来定义这些接口，如
+% 同时用 \emph{key-value} 的方式来定义这些接口：
 % \begin{latex}
 %   \thu@define@key{
 %     <key> = {

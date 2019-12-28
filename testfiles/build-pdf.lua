@@ -5,7 +5,7 @@ module = "thuthesis"
 supportdir = "./testfiles/support-pdf"
 
 checksuppfiles = {"fontset.tex"}
-demofiles = {"main.tex", "thuthesis.sty", "data", "figures", "ref"}
+demofiles = {"main.tex", "thusetup.tex", "data", "figures", "ref"}
 installfiles = {"*.cls", "*.bst", "tsinghua.pdf"}
 sourcefiles = {"*.dtx", "*.ins", "*.bst", "tsinghua.pdf"}
 
