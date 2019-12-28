@@ -726,13 +726,13 @@
 % \subsection{封底部分}
 %
 % \subsubsection{致谢声明}
-% \DescribeEnv{acknowledgement}
+% \DescribeEnv{acknowledgments}
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦。
 % \begin{latex}
-%   \begin{acknowledgement}
+%   \begin{acknowledgments}
 %     …
 %     还要特别感谢 \thuthesis\ 节省了论文排版时间！
-%   \end{acknowledgement}
+%   \end{acknowledgments}
 % \end{latex}
 %
 % 本科论文在此处还有一节“声明”，提交版本时需要替换为签字扫描文件，同样我们也提供：
@@ -3109,7 +3109,7 @@
 % \subsubsection{致谢以及声明}
 % \label{sec:ackanddeclare}
 %
-% \begin{environment}{acknowledgement}
+% \begin{environment}{acknowledgments}
 % 支持扫描文件替换。
 %    \begin{macrocode}
 \newcommand\thu@declarename{声\hspace{\ccwd}明}
@@ -3123,7 +3123,7 @@
 %
 % 定义致谢与声明环境。
 %    \begin{macrocode}
-\newenvironment{acknowledgement}{%
+\newenvironment{acknowledgments}{%
   \thu@chapter*{\thu@ack@name}%
 }{}
 %    \end{macrocode}
@@ -3145,13 +3145,12 @@
 }
 %    \end{macrocode}
 % \end{environment}
-% \begin{environment}{ack}
-% 兼容旧版本保留 \env{ack}。
+%
+% 兼容旧版本保留 \env{acknowledgement}。
 %    \begin{macrocode}
-\let\ack\acknowledgement
-\let\endack\endacknowledgement
+\let\acknowledgement\acknowledgments
+\let\endacknowledgement\endacknowledgments
 %    \end{macrocode}
-% \end{environment}
 %
 % \subsubsection{图表索引}
 % \label{sec:threeindex}

@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 修正本科生的文献引用样式。
 - 附录使用 `\appendix` 命令开始，不再使用 `appendix` 环境。
 - 修改 `shuji` 为 `spine`。
+- `acknowledgement` 环境 `acknowledgments`。
 
 ## Removed
 - 移除 `translationbib` 环境。
