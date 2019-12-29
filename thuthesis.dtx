@@ -2222,6 +2222,8 @@
 % 保存为论文的主要语言；
 % \cs{thu@reset@main@language} 则用于正文中恢复为主要语言。
 %    \begin{macrocode}
+\thusetup{main-language=\thu@language}%
+\let\thu@main@language\thu@language
 \thu@option@hook{language}{%
   \ifx\@begindocumenthook\@undefined\else
     \thusetup{main-language=\thu@language}%
@@ -2276,21 +2278,31 @@
       \ctexset{
         chapter/name   = \chaptername\space,
       }%
-      \def\contentsname{Contents}%
-      \def\listfigurename{List of Figures}%
-      \def\listtablename{List of Tables}%
-      \def\thu@list@figure@table@name{List of Figures and Tables}%
-      \def\thu@list@algorithm@name{List of Algorithms}%
-      \def\listequationname{List of Equations}%
-      \def\thu@denotation@name{Nomenclature}%
-      \def\bibname{Bibliography}%
-      \def\appendixname{Appendix}%
-      \def\thu@acknowledgements@name{Acknowledgements}%
       \def\indexname{Index}%
       \ifthu@degree@bachelor
-        \def\thu@resume@name{Research Achievements}%
+        \def\contentsname{CONTENTS}%
+        \def\listfigurename{FIGURES}%
+        \def\listtablename{TABLES}%
+        \def\thu@list@figure@table@name{FIGURES AND TABLES}%
+        \def\thu@list@algorithm@name{ALGORITHMS}%
+        \def\listequationname{EQUATIONS}%
+        \def\thu@denotation@name{ABBREVIATIONS}%
+        \def\bibname{REFERENCES}%
+        \def\appendixname{APPENDIX}%
+        \def\thu@acknowledgements@name{ACKNOWLEDGEMENTS}%
+        \def\thu@resume@name{PUBLICATIONS}%
       \else
+        \def\contentsname{Contents}%
         \def\thu@toc@contents@name{Contents}%
+        \def\listfigurename{List of Figures}%
+        \def\listtablename{List of Tables}%
+        \def\thu@list@figure@table@name{List of Figures and Tables}%
+        \def\thu@list@algorithm@name{List of Algorithms}%
+        \def\listequationname{List of Equations}%
+        \def\thu@denotation@name{Nomenclature}%
+        \def\bibname{Bibliography}%
+        \def\appendixname{Appendix}%
+        \def\thu@acknowledgements@name{Acknowledgements}%
         \def\thu@resume@name{Resume and Academic Achievements}%
       \fi
     \fi
@@ -4040,7 +4052,6 @@
 % \begin{environment}{acknowledgements}
 % 定义致谢环境
 %    \begin{macrocode}
-\newcommand\thu@statement@name{声\hspace{\ccwd}明}
 \newcommand{\thu@statement@text}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
   ，独立进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容外，本学位论
   文的研究成果不包含任何他人享有著作权的内容。对本论文所涉及的研究工作做出贡献的
@@ -4099,6 +4110,9 @@
 \newcommand\statement[1][]{%
   \ifthu@degree@bachelor
     \cleardoublepage
+    \def\thu@statement@name{声\hspace{2em}明}%
+  \else
+    \def\thu@statement@name{声\hspace{1em}明}%
   \fi
   \let\thu@statement@file\@empty
   \kv@define@key{thu@statement}{page-style}{\thusetup{statement-page-style=##1}}%
