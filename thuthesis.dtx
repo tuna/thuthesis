@@ -961,10 +961,7 @@
 % 检查编译引擎，要求使用 \XeLaTeX。
 %    \begin{macrocode}
 \RequirePackage{ifxetex}
-\ifxetex\else
-  \ClassError{thuthesis}{You should use XeLaTeX}{}
-  \end{document}
-\fi
+\RequireXeTeX
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -990,6 +987,15 @@
   \ClassError{thuthesis}{#1}{}%
 }
 %    \end{macrocode}
+%
+% \begin{macro}{\thusetup}
+% 提供一个 \cs{thusetup} 命令支持 \emph{key-value} 的方式来设置。
+%    \begin{macrocode}
+\newcommand\thusetup{%
+  \kvsetkeys{thu}%
+}
+%    \end{macrocode}
+% \end{macro}
 %
 % 同时用 \emph{key-value} 的方式来定义这些接口：
 % \begin{latex}
@@ -1125,14 +1131,6 @@
   \expandafter\g@addto@macro\csname thu@#1@@code\endcsname{#2}%
 }
 %    \end{macrocode}
-%
-% \begin{macro}{\thusetup}
-% 提供一个 \cs{thusetup} 命令支持 key/value 的方式来设置。
-% key 就是前面各个设置项的名字。
-%    \begin{macrocode}
-\def\thusetup{\kvsetkeys{thu}}
-%    \end{macrocode}
-% \end{macro}
 %
 %    \begin{macrocode}
 \newif\ifthu@degree@graduate

@@ -16,9 +16,7 @@ jobs:
     - name: Test thesis
       run: make thesis
     - name: Test spine
-      run: |
-        sed -i 's/\[RawFeature={vertical:}\]{FangSong}/\[Extension=.otf,RawFeature={vertical:}\]{FandolFang-Regular}/' spine.tex
-        make spine
+      run: make spine
     - name: Test formats
       run: make test
     - name: Test doc
