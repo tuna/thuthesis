@@ -19,7 +19,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 附录使用 `\appendix` 命令开始，不再使用 `appendix` 环境。
 - 修改 `shuji` 为 `spine`。
 - `acknowledgement` 环境改为 `acknowledgments`。
-- 允许在导言区中设置 `degree` 和 `langauge`。
 
 ## Removed
 - 移除 `secret` 选项。

@@ -7,7 +7,7 @@ about: 报告模板中的 bug
 ## 编译环境
 编译的系统：macOS 10.14 / Windows 10 / Ubuntu 18.04 / Overleaf
 TeX 发行版：TeX Live 2019 / MacTeX 2019 / MiKTeX 2.9.6753
-模板版本：v6.0
+模板版本：v5.5.2
 模板类型：doctor / master / bachelor
 
 ## 描述问题
@@ -18,7 +18,7 @@ TeX 发行版：TeX Live 2019 / MacTeX 2019 / MiKTeX 2.9.6753
 
 复现上述问题的代码：
 ```TeX
-\documentclass{thuthesis}
+\documentclass[degree=doctor]{thuthesis}
 \begin{document}
 abc
 \end{document}
