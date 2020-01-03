@@ -779,10 +779,10 @@
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦。
 %
 % \begin{latex}
-%   \begin{acknowledgments}
+%   \begin{acknowledgements}
 %     …
 %     还要特别感谢 \thuthesis{} 节省了论文排版时间！
-%   \end{acknowledgments}
+%   \end{acknowledgements}
 % \end{latex}
 %
 % \subsubsection{声明}
@@ -1681,7 +1681,7 @@
   \newcommand\thu@conjecture@name{Conjecture}
   \newcommand\thu@proof@name{proof}
   \newcommand\thu@theorem@separator{: }
-  \newcommand\thu@ack@name{Acknowledgments}
+  \newcommand\thu@ack@name{Acknowledgements}
   \ifthu@degree@bachelor
     \newcommand\thu@resume@title{Research Achievements}
   \else
@@ -3045,7 +3045,7 @@
 % \subsubsection{致谢以及声明}
 % \label{sec:ackanddeclare}
 %
-% \begin{environment}{acknowledgments}
+% \begin{environment}{acknowledgements}
 % 支持扫描文件替换。
 %    \begin{macrocode}
 \newcommand\thu@declarename{声\hspace{\ccwd}明}
@@ -3059,7 +3059,7 @@
 %
 % 定义致谢与声明环境。
 %    \begin{macrocode}
-\newenvironment{acknowledgments}{%
+\newenvironment{acknowledgements}{%
   \thu@chapter*{\thu@ack@name}%
 }{}
 %    \end{macrocode}
@@ -3084,8 +3084,8 @@
 %
 % 兼容旧版本保留 \env{acknowledgement}。
 %    \begin{macrocode}
-\let\acknowledgement\acknowledgments
-\let\endacknowledgement\endacknowledgments
+\let\acknowledgement\acknowledgements
+\let\endacknowledgement\endacknowledgements
 %    \end{macrocode}
 %
 % \subsubsection{图表索引}
