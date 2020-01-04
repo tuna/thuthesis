@@ -4,9 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+
+## [v6.0.0] - 2020-01-06
 ### Added
 - 新增 `survey`（调研阅读报告）和 `translation`（书面翻译）环境用于本科生的附录，
   其中的参考文献引用独立于论文正文（#343）。
+- 新增论文语言选项。
+- 增加 `l3build` 测试。
 
 ### Changed
 - 重新设计 `\thusetup` 的接口。
@@ -14,19 +18,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 重新设计封面（题名页）。
 - `\makecover` 拆分为 `\maketitle`、`\copyrightpage`。
 - 中英文摘分别用 `abstract`、`abstract*` 环境生成。
-- 处理 `hyperref` 与 `unicode-math` 的兼容性问题。
-- 修正本科生的文献引用样式。
 - 附录使用 `\appendix` 命令开始，不再使用 `appendix` 环境。
 - 修改 `shuji` 为 `spine`。
-- `acknowledgement` 环境改为 `acknowledgements`。
+- 修改 `acknowledgement` 为 `acknowledgements`。
+- 从 travis 切换到 github actions。
+- 更改日志从 `thuthesis.dtx` 挪到 `CHANGELOG.md`。
+- 整理 Makefile，便于日常使用。
 
 ## Removed
 - 移除 `secret` 选项。
 - 移除 `translationbib` 环境。
 - 移除 `tocarialchapter`、`tocarialchapterentry` 和 `tocarialchapterpage` 选项。
+- 只保留 xelatex 编译方式。
 
 ### Fixed
+- 修正本科生的文献引用样式。
 - 修正本科生目录章标题的字体。
+- 处理 `hyperref` 与 `unicode-math` 的兼容性问题。
 
 ## [v5.5.2] - 2019-04-21
 ### Changed
@@ -499,8 +507,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Please refer to “Bao--Pan“ version.
 
-[Unreleased]: https://github.com/xueruini/thuthesis/compare/v5.5.3...HEAD
-[v5.5.3]: https://github.com/xueruini/thuthesis/compare/v5.5.2...v5.5.3
+[Unreleased]: https://github.com/xueruini/thuthesis/compare/v6.0.0...HEAD
+[v6.0.0]: https://github.com/xueruini/thuthesis/compare/v5.5.2...v6.0.0
 [v5.5.2]: https://github.com/xueruini/thuthesis/compare/v5.5.1...v5.5.2
 [v5.5.1]: https://github.com/xueruini/thuthesis/compare/v5.5.0...v5.5.1
 [v5.5.0]: https://github.com/xueruini/thuthesis/compare/v5.4.5...v5.5.0
