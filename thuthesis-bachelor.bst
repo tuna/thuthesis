@@ -4,7 +4,7 @@
 %%
 %% The original source files were:
 %%
-%% gbt7714.dtx  (with options: `2015,numerical')
+%% gbt7714.dtx  (with options: `2015,numerical,noslsn')
 %% -------------------------------------------------------------------
 %% GB/T 7714-2015 BibTeX Style
 %% https://github.com/CTeX-org/gbt7714-bibtex-style
@@ -615,19 +615,15 @@ FUNCTION {make.full.names}
 FUNCTION {output.bibitem}
 { newline$
   "\bibitem[" write$
-  label write$
-  ")" make.full.names duplicate$ short.list =
+  label ")" *
+  make.full.names duplicate$ short.list =
      { pop$ }
      { * }
   if$
   's :=
   s text.length$ 'charptr :=
-    { charptr #0 > }
-    { s charptr #1 substring$ "]" =
-        { #0 'charptr := }
-        { charptr #1 - 'charptr := }
-      if$
-    }
+    { charptr #0 > s charptr #1 substring$ "[" = not and }
+    { charptr #1 - 'charptr := }
   while$
   charptr #0 >
     { "{" s * "}" * }

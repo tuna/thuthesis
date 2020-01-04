@@ -4,10 +4,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Added
+- 新增 `survey`（调研阅读报告）和 `translation`（书面翻译）环境用于本科生的附录，
+  其中的参考文献引用独立于论文正文（#343）。
+
 ### Changed
+- 重新设计 `\thusetup` 的接口。
+- 指导教师的姓名和职称用英文逗号分开（#424）。
+- 重新设计封面（题名页）。
+- `\makecover` 拆分为 `\maketitle`、`\copyrightpage`。
+- 中英文摘分别用 `abstract`、`abstract*` 环境生成。
 - 处理 `hyperref` 与 `unicode-math` 的兼容性问题。
 - 修正本科生的文献引用样式。
+- 附录使用 `\appendix` 命令开始，不再使用 `appendix` 环境。
 - 修改 `shuji` 为 `spine`。
+- `acknowledgement` 环境改为 `acknowledgements`。
+
+## Removed
+- 移除 `secret` 选项。
+- 移除 `translationbib` 环境。
+- 移除 `tocarialchapter`、`tocarialchapterentry` 和 `tocarialchapterpage` 选项。
+
+### Fixed
+- 修正本科生目录章标题的字体。
 
 ## [v5.5.2] - 2019-04-21
 ### Changed

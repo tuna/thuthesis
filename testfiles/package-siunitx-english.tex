@@ -1,0 +1,31 @@
+\input{regression-test.tex}
+\input{fontset.tex}
+\documentclass{thuthesis}
+
+\thusetup{
+  language = english,
+}
+
+\usepackage{siunitx}
+
+\begin{document}
+\START
+\showoutput
+
+\noindent
+\num{12345.67890} \\
+\num{1+-2i} \\
+\num{.3e45} \\
+\num{1.654 x 2.34 x 3.430} \\
+\si{kg.m.s^{-1}} \\
+\si{\micro\meter} $\si{\micro\meter}$ \\
+\si{\ohm} $\si{\ohm}$ \\
+\numlist{10;20} \\
+\numlist{10;20;30} \\
+\SIlist{0.13;0.67;0.80}{\milli\metre} \\
+\numrange{10}{20} \\
+\SIrange{10}{20}{\degreeCelsius}
+
+\clearpage
+\OMIT
+\end{document}

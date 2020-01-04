@@ -29,7 +29,8 @@ const config = {
                 'spine.tex',
                 'main.pdf',
                 'spine.pdf',
-                'thuthesis.sty',
+                'thusetup.tex',
+                'math_commands.tex',
                 'data/*.tex',
                 'figures/*.*',
                 'ref/*.bib']

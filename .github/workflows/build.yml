@@ -1,0 +1,23 @@
+name: build
+
+on:
+  push:
+  schedule:
+  - cron:  '0 0 * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container: danteev/texlive
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Test thesis
+      run: make thesis
+    - name: Test spine
+      run: make spine
+    - name: Test formats
+      run: make test
+    - name: Test doc
+      run: make doc

@@ -16,7 +16,7 @@ else
 	RM = rm -f
 endif
 
-.PHONY: all all-dev clean distclean dist thesis viewthesis spine viewspine doc viewdoc cls check FORCE_MAKE
+.PHONY: all all-dev clean distclean dist thesis viewthesis spine viewspine doc viewdoc cls check save savepdf test FORCE_MAKE
 
 thesis: $(THESIS).pdf
 
@@ -51,9 +51,18 @@ viewthesis: thesis
 viewspine: spine
 	$(LATEXMK) -pv $(SPINE)
 
+save:
+	bash testfiles/save.sh
+
+savepdf:
+	bash testfiles/save-pdf.sh
+
+test:
+	l3build check
+
 clean:
 	$(LATEXMK) -c $(PACKAGE).dtx $(THESIS) $(SPINE)
-	-@$(RM) *~
+	-@$(RM) *~ main-survey.*
 
 cleanall: clean
 	-@$(RM) $(PACKAGE).pdf $(THESIS).pdf $(SPINE).pdf

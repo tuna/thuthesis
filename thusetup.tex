@@ -1,0 +1,154 @@
+% !TeX root = ../main.tex
+
+% 论文基本信息配置
+
+\thusetup{
+  %******************************
+  % 注意：
+  %   1. 配置里面不要出现空行
+  %   2. 不需要的配置信息可以删除
+  %******************************
+  %
+  % 标题
+  %   可使用“\\”命令手动控制换行
+  %
+  title  = {清华大学学位论文 \LaTeX{} 模板\\使用示例文档 v\version},
+  title* = {An Introduction to \LaTeX{} Thesis Template of Tsinghua
+            University v\version},
+  %
+  % 学位
+  %   1. 学术型
+  %      - 中文
+  %        需注明所属的学科门类，例如：
+  %        哲学、经济学、法学、教育学、文学、历史学、理学、工学、农学、医学、
+  %        军事学、管理学、艺术学
+  %      - 英文
+  %        博士：Doctor of Philosophy
+  %        硕士：
+  %          哲学、文学、历史学、法学、教育学、艺术学门类，公共管理学科
+  %          填写“Master of Arts“，其它填写“Master of Science”
+  %   2. 专业型
+  %      直接填写专业学位的名称，例如：
+  %      教育博士、工程硕士等
+  %      Doctor of Education, Master of Engineering
+  %   3. 本科生不需要填写
+  %
+  degree-name  = {工学硕士},
+  degree-name* = {Master of Science},
+  %
+  % 培养单位
+  %   填写所属院系的全名
+  %
+  department = {计算机科学与技术系},
+  %
+  % 学科
+  %   1. 学术型学位
+  %      获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称
+  %   2. 工程硕士
+  %      工程领域名称
+  %   3. 其他专业型学位
+  %      不填写此项
+  %   4. 本科生不需要填写
+  %
+  discipline  = {计算机科学与技术},
+  discipline* = {Computer Science and Technology},
+  %
+  % 姓名
+  %
+  author  = {薛瑞尼},
+  author* = {Xue Ruini},
+  %
+  % 指导教师
+  %   中文姓名和职称之间以英文逗号“,”分开，下同
+  %
+  supervisor  = {郑纬民教授},
+  supervisor* = {Professor Zheng Weimin},
+  %
+  % 副指导教师
+  %
+  associate-supervisor  = {陈文光教授},
+  associate-supervisor* = {Professor Chen Wenguang},
+  %
+  % 联合指导教师
+  %
+  % joint-supervisor  = {某某某教授},
+  % joint-supervisor* = {Professor Mou Moumou},
+  %
+  % 日期
+  %   使用 ISO 格式；默认为当前时间
+  %
+  % date = {2019-07-07},
+  %
+  % 密级和年限
+  %   秘密, 机密, 绝密
+  %
+  % secret-level = {秘密},
+  % secret-year  = {10},
+  %
+  % 博士后专有部分
+  %
+  % clc                = {分类号},
+  % udc                = {UDC},
+  % id                 = {编号},
+  % discipline-level-1 = {计算机科学与技术},  % 流动站（一级学科）名称
+  % discipline-level-2 = {系统结构},          % 专业（二级学科）名称
+  % start-date         = {2011-07-01},        % 研究工作起始时间
+}
+
+%% Put any packages you would like to use here
+
+% 表格中支持跨行
+\usepackage{multirow}
+
+% 跨页表格
+\usepackage{longtable}
+
+% 固定宽度的表格
+\usepackage{tabularx}
+
+% 表格中的反斜线
+\usepackage{diagbox}
+
+% 确定浮动对象的位置，可以使用 H，强制将浮动对象放到这里（可能效果很差）
+\usepackage{float}
+
+% 浮动图形控制宏包。
+% 允许上一个 section 的浮动图形出现在下一个 section 的开始部分
+% 该宏包提供处理浮动对象的 \FloatBarrier 命令，使所有未处
+% 理的浮动图形立即被处理。这三个宏包仅供参考，未必使用：
+% \usepackage[below]{placeins}
+% \usepackage{floatflt} % 图文混排用宏包
+% \usepackage{rotating} % 图形和表格的控制旋转
+
+% 定理类环境宏包
+\usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+
+% 给自定义的宏后面自动加空白
+% \usepackage{xspace}
+
+% 借用 ltxdoc 里面的几个命令。
+\def\cmd#1{\cs{\expandafter\cmd@to@cs\string#1}}
+\def\cmd@to@cs#1#2{\char\number`#2\relax}
+\DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
+
+\newcommand*{\meta}[1]{{%
+  \ensuremath{\langle}\rmfamily\itshape#1\/\ensuremath{\rangle}}}
+\providecommand\marg[1]{%
+  {\ttfamily\char`\{}\meta{#1}{\ttfamily\char`\}}}
+\providecommand\oarg[1]{%
+  {\ttfamily[}\meta{#1}{\ttfamily]}}
+\providecommand\parg[1]{%
+  {\ttfamily(}\meta{#1}{\ttfamily)}}
+\providecommand\pkg[1]{{\sffamily#1}}
+
+% 定义所有的图片文件在 figures 子目录下
+\graphicspath{{figures/}}
+
+% 数学命令
+\input{math_commands.tex}
+
+% 定义自己常用的东西
+% \def\myname{薛瑞尼}
+
+% hyperref 宏包在最后调用
+\usepackage{hyperref}
