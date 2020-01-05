@@ -1,75 +1,72 @@
-\documentclass[degree=master,tocarialchapter]{thuthesis}
-% 选项
-%   degree=[bachelor|master|doctor|postdoctor], % 必选，学位类型
-%   language=[chinese|english], % 可选（默认：chinese），论文的主要语言
-%   secret,                % 可选（默认：关闭），是否有密级
-%   tocarialchapter,       % 可选（默认：关闭），章目录中使用黑体（这项表示同时打开下面两项）
-%   tocarialchapterentry,  % 可选（默认：关闭），单独控制章标题在目录中使用黑体
-%   tocarialchapterpage,   % 可选（默认：关闭），单独控制章页码在目录中使用黑体
+% !TeX encoding = UTF-8
+% !TeX program = xelatex
+% !TeX spellcheck = en_US
 
-% 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
-\usepackage{thuthesis}
+\documentclass[degree=master]{thuthesis}
+  % 学位 degree:
+  %   doctor | master | bachelor | postdoc
+  % 学位类型 degree-type:
+  %   academic（默认）| professional
 
-% 定义所有的图片文件在 figures 子目录下
-\graphicspath{{figures/}}
 
-% 可以在这里修改配置文件中的定义。导言区可以使用中文。
-% \def\myname{薛瑞尼}
+% 论文基本配置，加载宏包等全局配置
+\input{thusetup.tex}
+
 
 \begin{document}
 
-%%% 封面部分
-\frontmatter
-\input{data/cover}
-% 如果使用授权说明扫描页，将可选参数中指定为扫描得到的 PDF 文件名，例如：
-% \makecover[scan-auth.pdf]
-\makecover
+% 封面
+\maketitle
 
-%% 目录
+% 使用授权的说明
+\copyrightpage
+
+\frontmatter
+\input{data/abstract.tex}
+
+% 目录
 \tableofcontents
 
-%% 符号对照表
+% 符号对照表
 \input{data/denotation}
 
 
-%%% 正文部分
+% 正文部分
 \mainmatter
 \input{data/chap01}
 \input{data/chap02}
 
 
-%%% 其它部分
+% 其它部分
 \backmatter
 
-%% 本科生要这几个索引，研究生不要。选择性留下。
-% 插图索引
-\listoffigures
-% 表格索引
-\listoftables
-% 公式索引
-\listofequations
+%% 本科生要求的几个索引。
+% \listoffigures    % 插图索引
+% \listoftables     % 表格索引
+% \listofequations  % 公式索引
 
-
-%% 参考文献
-% 只能选择一种参考文献格式
+% 参考文献
 \bibliographystyle{thuthesis-numeric}      % 顺序编码制
 % \bibliographystyle{thuthesis-author-year}  % 著者-出版年制
 % \bibliographystyle{thuthesis-bachelor}     % 本科生参考文献的著录格式
 \bibliography{ref/refs}
 
+% 致谢
+\input{data/acknowledgements}
 
-%% 致谢
-\input{data/ack}
+% 声明
+\statement
 
-%% 附录
-\begin{appendix}
-\input{data/appendix01}
-\end{appendix}
+% 附录
+\appendix
+% \input{data/appendix-survey}       % 本科生：外文资料的调研阅读报告
+% \input{data/appendix-translation}  % 本科生：外文资料的书面翻译
+\input{data/appendix}
 
-%% 个人简历
+% 个人简历
 \input{data/resume}
 
-%% 本科生进行格式审查是需要下面这个表格，答辩可能不需要。选择性留下。
-% 综合论文训练记录表
-\includepdf[pages=-]{scan-record.pdf}
+% 本科生的综合论文训练记录表
+% \includepdf[pages=-]{scan-record.pdf}
+
 \end{document}

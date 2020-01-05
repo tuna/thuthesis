@@ -1,73 +1,74 @@
 # Makefile for ThuThesis
 
-# Set opts for latexmk if you use it
-LATEXMKOPTS = -xelatex -file-line-error -halt-on-error -interaction=nonstopmode
-# Basename of thesis
-THESISMAIN = main
-# Basename of shuji
-SHUJIMAIN = shuji
+PACKAGE = thuthesis
+THESIS  = main
+SPINE   = spine
 
-PACKAGE=thuthesis
-SOURCES=$(PACKAGE).ins $(PACKAGE).dtx
-THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(FIGURES)
-# NOTE: update this to reflect your local file types.
-FIGURES=$(wildcard figures/*.pdf)
-BIBFILE=ref/*.bib
-BSTFILE=*.bst
-SHUJICONTENTS=$(SHUJIMAIN).tex
-CLSFILES=dtx-style.sty $(PACKAGE).cls
+SOURCES = $(PACKAGE).ins $(PACKAGE).dtx
+CLSFILE = dtx-style.sty $(PACKAGE).cls
+
+LATEXMK = latexmk
 
 # make deletion work on Windows
 ifdef SystemRoot
 	RM = del /Q
-	OPEN = start
 else
 	RM = rm -f
-	OPEN = open
 endif
 
-.PHONY: all clean distclean dist thesis viewthesis shuji viewshuji doc viewdoc cls check FORCE_MAKE
+.PHONY: all all-dev clean distclean dist thesis viewthesis spine viewspine doc viewdoc cls check save savepdf test FORCE_MAKE
 
-all: doc thesis shuji
+thesis: $(THESIS).pdf
 
-cls: $(CLSFILES)
+all: thesis spine
 
-$(CLSFILES): $(SOURCES)
+all-dev: doc all
+
+cls: $(CLSFILE)
+
+$(CLSFILE): $(SOURCES)
 	xetex $(PACKAGE).ins
-
-viewdoc: doc
-	$(OPEN) $(PACKAGE).pdf
 
 doc: $(PACKAGE).pdf
 
+spine: $(SPINE).pdf
+
+$(PACKAGE).pdf: cls FORCE_MAKE
+	$(LATEXMK) $(PACKAGE).dtx
+
+$(THESIS).pdf: cls FORCE_MAKE
+	$(LATEXMK) $(THESIS)
+
+$(SPINE).pdf: cls FORCE_MAKE
+	$(LATEXMK) $(SPINE)
+
+viewdoc: doc
+	$(LATEXMK) -pv $(PACKAGE).dtx
+
 viewthesis: thesis
-	$(OPEN) $(THESISMAIN).pdf
+	$(LATEXMK) -pv $(THESIS)
 
-thesis: $(THESISMAIN).pdf
+viewspine: spine
+	$(LATEXMK) -pv $(SPINE)
 
-viewshuji: shuji
-	$(OPEN) $(SHUJIMAIN).pdf
+save:
+	bash testfiles/save.sh
 
-shuji: $(SHUJIMAIN).pdf
+savepdf:
+	bash testfiles/save-pdf.sh
 
-$(PACKAGE).pdf: $(CLSFILES) $(THESISMAIN).tex FORCE_MAKE
-	latexmk $(LATEXMKOPTS) $(PACKAGE).dtx
-
-$(THESISMAIN).pdf: $(CLSFILES) $(BSTFILE) FORCE_MAKE
-	latexmk $(LATEXMKOPTS) $(THESISMAIN)
-
-$(SHUJIMAIN).pdf: $(CLSFILES) FORCE_MAKE
-	latexmk $(LATEXMKOPTS) $(SHUJIMAIN)
+test:
+	l3build check
 
 clean:
-	latexmk -c $(PACKAGE).dtx $(THESISMAIN) $(SHUJIMAIN)
-	-@$(RM) *~
+	$(LATEXMK) -c $(PACKAGE).dtx $(THESIS) $(SPINE)
+	-@$(RM) *~ main-survey.*
 
 cleanall: clean
-	-@$(RM) $(PACKAGE).pdf $(THESISMAIN).pdf $(SHUJIMAIN).pdf
+	-@$(RM) $(PACKAGE).pdf $(THESIS).pdf $(SPINE).pdf
 
 distclean: cleanall
-	-@$(RM) $(CLSFILES)
+	-@$(RM) $(CLSFILE)
 	-@$(RM) -r dist
 
 check: FORCE_MAKE
@@ -78,5 +79,5 @@ else
 	@[[ $(shell grep -E -c '"version": "$(version)"' package.json) -eq 1 ]] || (echo "update version in package.json before release"; exit 1)
 endif
 
-dist: check all
+dist: check all-dev
 	npm run build -- --version=$(version)

@@ -1,3 +1,5 @@
+% !TeX root = ../main.tex
+
 \chapter{带 English 的标题}
 \label{cha:intro}
 
@@ -68,7 +70,7 @@
 \subsection{基本表格}
 \label{sec:basictable}
 
-模板中关于表格的宏包有三个：\pkg{booktabs}、\pkg{array} 和 \pkg{longtabular}，命
+模板中关于表格的宏包有三个：\pkg{booktabs}、\pkg{array} 和 \pkg{longtable}，命
 令有一个 \cs{hlinewd}。三线表可以用 \pkg{booktabs} 提供
 的 \cs{toprule}、\cs{midrule} 和 \cs{bottomrule}。它们与 \pkg{longtable} 能很好的
 配合使用。如果表格比较简单的话可以直接用命令 \cs{hlinewd}\marg{width} 控制。
@@ -85,9 +87,9 @@
       thuthesis.ins & \LaTeX{} 安装文件，DocStrip\footnote{表格中的脚注} \\
       thuthesis.dtx & 所有的一切都在这里面\footnote{再来一个}。\\
       thuthesis.cls & 模板类文件。\\
-      thuthesis-numeric.bst    & 参考文献 Bib\TeX\ 样式文件。\\
-      thuthesis-author-year.bst    & 参考文献 Bib\TeX\ 样式文件。\\
-      thuthesis.sty   & 常用的包和命令写在这里，减轻主文件的负担。\\
+      thuthesis-numeric.bst    & 参考文献 BibTeX 样式文件。\\
+      thuthesis-author-year.bst    & 参考文献 BibTeX 样式文件。\\
+      thusetup.tex   & 基本配置和常用的包、命令，减轻主文件的负担。\\
       \bottomrule[1.5pt]
     \end{tabularx}
   \end{minipage}
@@ -286,9 +288,9 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 \bottomrule[1.5pt]
 \end{longtable}
 
-要想用好论文模板还是得提前学习一些 \TeX/\LaTeX{}的相关知识，具备一些基本能力，掌
+要想用好论文模板还是得提前学习一些 \TeX/\LaTeX{} 的相关知识，具备一些基本能力，掌
 握一些常见技巧，否则一旦遇到问题还真是比较麻烦。我们见过很多这样的同学，一直以来
-都是使用 Word 等字处理工具，以为 \LaTeX{}模板的用法也应该类似，所以就沿袭同样的思
+都是使用 Word 等字处理工具，以为 \LaTeX{} 模板的用法也应该类似，所以就沿袭同样的思
 路来对待这种所见非所得的排版工具，结果被折腾的焦头烂额，疲惫不堪。
 
 如果您要排版的表格长度超过一页，那么推荐使用 \pkg{longtable} 或者 \pkg{supertabular}
@@ -331,6 +333,7 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
   杰出的文学家，哲学家，同时也是一位政治改革家。与韩愈共同倡导唐代古文运动，并称
   韩柳\footnote{唐宋八大家之首二位。}。
 \end{minipage}
+\\
 
 唐朝安史之乱后，宦官专权，藩镇割据，土地兼并日渐严重，社会生产破坏严重，民不聊生。柳宗
 元对这种社会现实极为不满，他积极参加了王叔文领导的“永济革新”，并成为这一
@@ -504,7 +507,7 @@ V_j & = v_j, & \qquad X_j & = x_j,
 当然参考文献可以直接写 \cs{bibitem}，虽然费点功夫，但是好控制，各种格式可以自己随意改
 写。
 
-本模板推荐使用 BIB\TeX，分别提供数字引用（\texttt{thuthesis-numeric.bst}）和作
+本模板推荐使用 BibTeX，分别提供数字引用（\texttt{thuthesis-numeric.bst}）和作
 者年份引用（\texttt{thuthesis-author-year.bst}）样式，基本符合学校的参考文献格式
 （如专利等引用未加详细测试）。看看这个例子，关于书的~\cite{tex, companion,
   ColdSources}，还有这些~\cite{Krasnogor2004e, clzs, zjsw}，关于杂志
@@ -532,21 +535,19 @@ V_j & = v_j, & \qquad X_j & = x_j,
 
 \section{公式}
 \label{sec:equation}
-\renewcommand\vec{\symbf}
-\newcommand\mat{\symbf}
-贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中 $p(y|\vec{x})$ 为后验；
-$p(\vec{x})$ 为先验；分母 $p(\vec{x})$ 为归一化因子。
+贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中 $p(y|\vx)$ 为后验；
+$p(\vx)$ 为先验；分母 $p(\vx)$ 为归一化因子。
 \begin{equation}
 \label{equ:chap1:bayes}
-p(y|\vec{x}) = \frac{p(\vec{x},y)}{p(\vec{x})}=
-\frac{p(\vec{x}|y)p(y)}{p(\vec{x})}
+p(y|\vx) = \frac{p(\vx,y)}{p(\vx)}=
+\frac{p(\vx|y)p(y)}{p(\vx)}
 \end{equation}
 
 论文里面公式越多，\TeX{} 就越 happy。再看一个 \pkg{amsmath} 的例子：
 \newcommand{\envert}[1]{\left\lvert#1\right\rvert}
 \begin{equation}\label{detK2}
-\det\mat{K}(t=1,t_1,\dots,t_n)=\sum_{I\in\vec{n}}(-1)^{\envert{I}}
-\prod_{i\in I}t_i\prod_{j\in I}(D_j+\lambda_jt_j)\det\vec{A}
+\det\mK(t=1,t_1,\dots,t_n)=\sum_{I\in\vn}(-1)^{\envert{I}}
+\prod_{i\in I}t_i\prod_{j\in I}(D_j+\lambda_jt_j)\det\mA
 ^{(\lambda)}(\overline{I}|\overline{I})=0.
 \end{equation}
 

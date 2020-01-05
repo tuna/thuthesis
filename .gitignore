@@ -1,15 +1,20 @@
+## distribution files
 .DS_Store
 package-lock.json
 node_modules/
 dist/
 
+## generated files:
 dtx-style.sty
 thuthesis.cls
-thuthesis.cfg
 thuthesis.pdf
 main.pdf
-shuji.pdf
+spine.pdf
 *.hd
+
+## test files:
+build/
+testfiles/**/*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
@@ -24,6 +29,10 @@ shuji.pdf
 *.cb
 *.cb2
 .*.lb
+!testfiles/**/*.aux
+!testfiles/**/*.toc
+!testfiles/**/*.lof
+!testfiles/**/*.lot
 
 ## Intermediate documents:
 *.dvi
@@ -123,6 +132,9 @@ acs-*.bib
 *.gls
 *.glsdefs
 
+# uncomment this for glossaries-extra (will ignore makeindex's style files!)
+# *.ist
+
 # gnuplottex
 *-gnuplottex-*
 
@@ -150,11 +162,13 @@ acs-*.bib
 # listings
 *.lol
 
+# luatexja-ruby
+*.ltjruby
+
 # makeidx
 *.idx
 *.ilg
 *.ind
-*.ist
 
 # minitoc
 *.maf
@@ -234,8 +248,9 @@ pythontex-files-*/
 # xindy
 *.xdy
 
-# xypic precompiled matrices
+# xypic precompiled matrices and outlines
 *.xyc
+*.xyd
 
 # endfloat
 *.ttt

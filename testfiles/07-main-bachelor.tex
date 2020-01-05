@@ -1,0 +1,166 @@
+\input{regression-test.tex}
+\input{fontset.tex}
+\documentclass[degree=bachelor]{thuthesis}
+
+\begin{document}
+\START
+\showoutput
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{引言}
+
+\section{研究背景}
+
+2007 年初，政府间气候变化专门委员会（IPCC）第一工作组发布第四次主报告，《气候变化 2007：自然科学基础》，提出全球气候变暖并引发全球范围内气候要素变化已经成为不容置疑的事实\cite{xinximeng1994xinxi}。
+全球温室气体浓度已远超出工业化前几千 年来的浓度值，其中 CO2 浓度值从工业化前的约 280ppm 增加到 2005 年的 379ppm；全球气候呈现以变暖为主要特征的显著变化，最近 12 年中有 11 年位于 1850 年以来最暖的 12 个年份之列，最近 50 年的线性增温速率为每 10 年 0.13°C，几乎是近 100 年的 2 倍；至少从 1980 年以来，陆地和海洋上空以及对流层上层的平均大气水汽含量已有所增加；已在许多大的地区观测到降水量在 1901～2005 年间存在显著增加或减少的长期趋势。
+中国是全球气候变暖特征最为显著的国家之一，近 100 年来，中国年平均气温升高 0.65±0.15°C，略高于全球平均增温幅度，尤其是华北、内蒙古东部及东北地区升温显著。
+
+
+\section{研究现状}
+
+\subsection{作物模型发展概述}
+
+作物模型从定性的概念模型发展为定量的模拟模型，已成为农业生产与研究领域最有力的工具之一。
+20 世纪 60 年代中后期，美国和荷兰率先开始研究作物生长模拟模型。
+荷兰的作物模型研究主要强调作物的机理性、研究性、数学性，从生理生化的角度深入研究基本生理过程，适用于不同种类的作物，较为深入地进行了评价农业生态系统生产力和农场决策方面的研究工作。
+1965 年，de Wit 发表“叶冠层的光合作用”，奠定了作物生长动态模拟模型的基础。
+1970 年，在光合作用模型的基础上引入呼吸作用，提出了早期完整的作物模拟模型 ELCROS，1978 年在其基础上做出碳平衡和蒸腾方面的机理性阐述，提出BACROS 模型， 后来进一步建立了 PHOTO 模型。
+由于这些综合模型将许多过程描述过细，需要大量数据，不适合 1980 年～1990 年阶段的农业生态规划、定量土地评价和产量预报等研究。
+实际生产的需要促进了面向应用的 SUCROS 概要模型的出现。
+值得一提的是，模拟潜在生产情形的 SUCROS1 与土壤水平衡模块 SAHEL 联结而成的 SUCROS2 可用于模拟水分限制生产情形。
+此后 SUCROS 成为面向特定目标模型 进一步简化和发展的前导模型，导出了 WOFOST，之后又开发出 MACROS。
+
+
+
+\chapter{资料与试验}
+
+\section{气象资料}
+
+在对气候变化下过去 55 年冬小麦生长趋势进行分析时，采用的气象数据取自北京气象站（No.54511）（表~\ref{tab:beijing}）。
+
+\begin{table}[htb]
+  \centering
+  \caption{北京气象站基本信息}
+  \label{tab:beijing}
+  \begin{tabular}{ccccc}
+    \toprule
+    站点 & 站号 & 纬度 & 经度 & 高度 \\
+    Station & No. & Latitude & Longitude & Altitude \\
+    && (°) & (°) & (m) \\
+    \midrule
+    北京 Beijing & 54511 & 39.8 & 116.5 & 31.3 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+气象资料包括:日期、气压、日平均气温、日最高气温、日最低气温、相对湿度、降水、日平均风速、日照时数。
+
+因缺少辐射监测资料，由纬度、儒略日、日照时数，依世界粮农组织 FAO（Food and Agriculture Organization）提供的方法，进行日平均净辐射和净短波辐射的推算。
+
+1. 太阳的磁偏角
+\begin{equation}
+  \delta = 0.409 \sin \left( \frac{2\uppi}{365} J - 1.39 \right)
+\end{equation}
+其中，$J$——在年内的天数。
+
+2. 日落时角度
+\begin{equation}
+  \omega_s =\arccos\left( -\tan\varphi \tan\delta \right)
+\end{equation}
+
+\newpage
+
+在该模型的研究中，依据 CERES 模型与 WheatGrow 模型的基本原理，分别建立了生理发育时间与干物质积累的模拟模型，并根据田间观测资料建立了冬小麦各部分干物质分配的子模型。
+模型的基本框架如图~\ref{fig:winter} 所示:
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics{tsinghua.pdf}
+  \caption{冬小麦生长发育模型基本结构}
+  \label{fig:winter}
+\end{figure}
+
+
+\section{原料结构变化趋势}
+
+随着我国工业化程度提高、社会经济高速稳定发展，我国对纸及纸制品的消费量近年来呈现增速上升趋势。
+\footnote{本节各类纸浆及纸制品产量、进口数量数据如无特殊说明均来源与《中国造纸年鉴 2002》及《中国造纸年鉴 2006》}
+纸制品消费大幅增加，推动我国制浆造纸业产能快速扩张。
+\footnote{本节各类纸浆及纸制品产量、进口数量数据}
+
+1995 年至 2001 年间，纸浆消费总量平均年增长 4.9\%，2001 年为 2980 万吨；此后纸浆消费增速大幅提高(实际反映的是全社会作为最终产品的纸及纸板消费量剧增)，2001 年至 2004 年间，年均增幅高达 14.3\%，2004 年总消费量为 4455 万吨。
+造纸工业加速发展势头明显。
+
+
+\backmatter
+\listoffigures
+\listoftables
+
+\citestyle{thuthesis-bachelor}
+\begin{thebibliography}{6}
+
+\bibitem[辛希孟(1994)]{xinximeng1994xinxi}
+辛希孟.
+\newblock 信息技术与信息服务国际研讨会论文集: A
+  集\allowbreak[C].
+\newblock 北京: 中国社会科学出版社, 1994.
+
+\bibitem[程根伟(1999)]{chenggenwei1998changjiang}
+程根伟.
+\newblock 1998
+  年长江洪水的成因与减灾对策\allowbreak[M]//\allowbreak
+许厚泽, 赵其国.
+\newblock 长江流域洪涝灾害与科技对策.
+\newblock 北京: 科学出版社, 1999: 32-36.
+
+\bibitem[李晓东\ 等(1999)李晓东, 张庆红, 叶瑾琳, and
+  罗云]{lixiaodong1999qihou}
+李晓东, 张庆红, 叶瑾琳, 等.
+\newblock 气候学研究的若干理论问题\allowbreak[J].
+\newblock 北京大学学报: 自然科学版, 1999, 35\penalty0 (1):\penalty0
+  101-106.
+
+\bibitem[张志祥(1998)]{zhangzhixiang1998jianduan}
+张志祥.
+\newblock
+  间断动力系统的随机扰动及其在守恒律方程中的应用\allowbreak[D].
+\newblock 北京: 北京大学数学学院, 1998: 5-10.
+
+\bibitem[198(1989)]{1989pacsl}
+{PACS-L}: the public-access computer systems forum\allowbreak[EB/OL].
+\newblock Houston, Tex: University of Houston Libraries,
+  1989\allowbreak[1995-05-17].
+\newblock \url{http://info.lib.uh.edu/pacsl.html}.
+
+\bibitem[Dubeck(1990)]{dubeck1990science}
+DUBECK~L.
+\newblock Science fiction aids science teaching\allowbreak[J].
+\newblock Physics Teacher, 1990, 28:\penalty0 316-318.
+
+\end{thebibliography}
+
+
+\begin{acknowledgements}
+  致谢对象，原则上仅限于在学术方面对学位论文的完成有较重要帮助的团体和人士。
+\end{acknowledgements}
+
+\statement
+
+\appendix
+
+\begin{survey}
+
+\title{调研阅读报告题目}
+\maketitle
+
+写出至少 5000 外文印刷字符的调研阅读报告或者书面翻译 1-2 篇(不少于 2 万外文印刷符)。
+
+\end{survey}
+
+
+\clearpage
+\OMIT
+\end{document}

@@ -1,0 +1,54 @@
+{
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.intellisense.unimathsymbols.enabled": true,
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk for thuthesis",
+            "tools": [
+                "xetex-thuthesis",
+                "latexmk-xelatex"
+            ]
+        },
+        {
+            "name": "make thesis",
+            "tools": [
+                "make-thesis"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xetex-thuthesis",
+            "command": "xetex",
+            "args": [
+                "-file-line-error",
+                "-halt-on-error",
+                "-interaction=nonstopmode",
+                "thuthesis.ins"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk-xelatex",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-file-line-error",
+                "-halt-on-error",
+                "-interaction=nonstopmode",
+                "-synctex=1",
+                "-pv-",
+                "-pvc-",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "make-thesis",
+            "command": "make",
+            "args": [],
+            "env": {}
+        }
+    ]
+}

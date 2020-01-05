@@ -26,10 +26,11 @@ const config = {
 
     example: {
         files: ['main.tex',
-                'shuji.tex',
+                'spine.tex',
                 'main.pdf',
-                'shuji.pdf',
-                'thuthesis.sty',
+                'spine.pdf',
+                'thusetup.tex',
+                'math_commands.tex',
                 'data/*.tex',
                 'figures/*.*',
                 'ref/*.bib']
@@ -67,7 +68,7 @@ function bootstrap(callback) {
 function cleanup(callback) {
     del.sync([path.join(config.dist.root, config.dist.build)]);
 
-    log(color.green.bold(`🍺  ${config.dist.zip} generated`));
+    log(color.green.bold(`🍺 ${config.dist.zip} generated`));
 
     callback();
 }

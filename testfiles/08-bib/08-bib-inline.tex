@@ -1,0 +1,23 @@
+\input{regression-test.tex}
+\input{fontset.tex}
+\documentclass[degree=doctor]{thuthesis}
+
+\begin{document}
+\START
+\showoutput
+
+\mainmatter
+\thusetup{
+  cite-style = inline,
+}
+Test \cite{zhangkun1994},
+Test \cite{zhukezhen1973},
+\nocite{*}
+
+\backmatter
+\bibliographystyle{thuthesis-numeric}
+\bibliography{refs}
+
+\clearpage
+\OMIT
+\end{document}
