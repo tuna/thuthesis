@@ -6,7 +6,13 @@
             "name": "latexmk for thuthesis",
             "tools": [
                 "xetex-thuthesis",
-                "latexmk-xelatex",
+                "latexmk-xelatex"
+            ]
+        },
+        {
+            "name": "make thesis",
+            "tools": [
+                "make-thesis"
             ]
         }
     ],
@@ -38,5 +44,11 @@
             ],
             "env": {}
         },
+        {
+            "name": "make-thesis",
+            "command": "make",
+            "args": [],
+            "env": {}
+        }
     ]
 }
