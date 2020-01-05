@@ -815,9 +815,9 @@
 % \DescribeEnv{survey}
 % \DescribeEnv{translation}
 % 本科生《写作指南》要求附录 A 为外文资料的调研阅读报告或书面翻译，二者择一。
-% 由于调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章；
-% 所以模板定义了 \env{survey} 和 \env{translation}，
-% 在这两个环境内部可以像论文正文一样使用标题和参考文献的命令，但不会影响外部：
+% 调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章，
+% 所以模板相应定义了 \env{survey} 和 \env{translation}。在这两个环境内部可以
+% 像论文正文一样使用标题和参考文献的命令，但不会影响外部：
 %
 % \begin{latex}
 %   \begin{survey}
@@ -872,9 +872,9 @@
 %
 %   % 1. 已经刊载的学术论文
 %   \begin{publications}
-%     \item Yang Y, Ren T L, Zhang L T, et al. Miniature microphone with silicon-
-%       based ferroelectric thin films. Integrated Ferroelectrics, 2003,
-%       52:229-235. (SCI 收录, 检索号:758FZ.)
+%     \item Yang Y, Ren T L, Zhang L T, et al. Miniature microphone with
+%       silicon-based ferroelectric thin films. Integrated Ferroelectrics,
+%       2003, 52:229-235. (SCI 收录, 检索号:758FZ.)
 %     \item 杨轶, 张宁欣, 任天令, 等. 硅基铁电微声学器件中薄膜残余应力的研究. 中国机
 %       械工程, 2005, 16(14):1289-1291. (EI 收录, 检索号:0534931 2907.)
 %     \item 杨轶, 张宁欣, 任天令, 等. 集成铁电器件中的关键工艺研究. 仪器仪表学报,
@@ -883,15 +883,15 @@
 %
 %   % 2. 尚未刊载，但已经接到正式录用函的学术论文
 %   \begin{publications}[before=\publicationskip,after=\publicationskip]
-%     \item Yang Y, Ren T L, Zhu Y P, et al. PMUTs for handwriting recognition. In
-%       press. (已被 Integrated Ferroelectrics 录用. SCI 源刊.)
+%     \item Yang Y, Ren T L, Zhu Y P, et al. PMUTs for handwriting
+%       recognition. In press. (已被 Integrated Ferroelectrics 录用. SCI 源刊.)
 %   \end{publications}
 %
 %   % 3. 其他学术论文。
 %   \begin{publications}
-%     \item Wu X M, Yang Y, Cai J, et al. Measurements of ferroelectric MEMS
-%       microphones. Integrated Ferroelectrics, 2005, 69:417-429. (SCI 收录, 检索号
-%       :896KM)
+%     \item Wu X M, Yang Y, Cai J, et al. Measurements of ferroelectric
+%       MEMS microphones. Integrated Ferroelectrics, 2005, 69:417-429.
+%       (SCI 收录, 检索号:896KM)
 %     \item 贾泽, 杨轶, 陈兢, 等. 用于压电和电容微麦克风的体硅腐蚀相关研究. 压电与声
 %       光, 2006, 28(1):117-119. (EI 收录, 检索号:06129773469)
 %     \item 伍晓明, 杨轶, 张宁欣, 等. 基于MEMS技术的集成铁电硅微麦克风. 中国集成电路,
@@ -909,28 +909,10 @@
 % \DescribeMacro{\spine}
 % 生成装订的书脊，为竖排格式，命令格式：\cs{spine}\oarg{标题}\oarg{作者}。默认参
 % 数为论文中文题目和中文作者。如果中文题目中没有英文字母，那么直接调用此命令即可。
-% 否则，就要像例子里面那样做一些微调（参看模板自带的 \file{spine.tex}）。下面是一
-% 个例子：
+% 否则，可参考参看模板示例文件 \file{spine.tex} 进行微调：
 %
-% \begin{latex}
-%   \documentclass[degree=master]{thuthesis}
-%   \thusetup{
-%     title  = {论文中文题目},
-%     author = {中文姓名},
-%   }
+% \lstinputlisting[style=lstStyleLaTeX]{spine.tex}
 %
-%   \begin{document}
-%
-%   \spine % 使用默认标题和默认作者
-%
-%   \spine[使用默认作者的标题]
-%
-%   \spine[同时修改标题和作者的标题][尼瑞薛]
-%
-%   % 如果标题中有英文，那可以参考如下方法进行微调：
-%   \spine[清华大学 \raisebox{-5pt}{\LaTeX} 论文模板 \raisebox{-5pt}{v\version} 样例]
-%   \end{document}
-% \end{latex}
 %
 % \section{致谢}
 % \label{sec:thanks}
