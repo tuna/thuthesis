@@ -13,10 +13,10 @@ checkengines = {"xetex"}
 stdengine = "xetex"
 
 checkconfigs = {
-    "build",
-    "testfiles/config-cover",
+    -- "build",
+    -- "testfiles/config-cover",
     "testfiles/config-nomencl",
-    "testfiles/config-bib",
+    -- "testfiles/config-bib",
 }
 
 typesetexe = "xelatex"
