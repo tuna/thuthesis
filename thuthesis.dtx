@@ -2071,6 +2071,7 @@
 % 正体会到 \TeX{} macro 的力量！
 %    \begin{macrocode}
 \newcommand\thu@pdfbookmark[2]{}
+\newcommand\thu@phantomsection{}
 \NewDocumentCommand\thu@chapter{s o m o}{
   \IfBooleanF{#1}{%
     \ClassError{thuthesis}{You have to use the star form: \string\thu@chapter*}{}
@@ -2080,21 +2081,25 @@
     \ifthenelse{\equal{#2}{}}{%
       \thu@pdfbookmark{0}{#3}%
     }{%
-      \addcontentsline{toc}{chapter}{#3}
-    }
+      \thu@phantomsection
+      \addcontentsline{toc}{chapter}{#3}%
+    }%
   }{%
-    \addcontentsline{toc}{chapter}{#3}
+    \thu@phantomsection
+    \addcontentsline{toc}{chapter}{#3}%
   }%
-  \ifthu@degree@bachelor \ctexset{chapter/beforeskip=25bp} \fi
+  \ifthu@degree@bachelor \ctexset{chapter/beforeskip=25bp}\fi
   \chapter*{#3}%
-  \ifthu@degree@bachelor \ctexset{chapter/beforeskip=15bp} \fi
+  \ifthu@degree@bachelor \ctexset{chapter/beforeskip=15bp}\fi
   \IfValueTF{#4}{%
-    \ifthenelse{\equal{#4}{}}
-    {\@mkboth{}{}}
-    {\@mkboth{#4}{#4}}
+    \ifthenelse{\equal{#4}{}}{%
+      \@mkboth{}{}%
+    }{%
+      \@mkboth{#4}{#4}%
+    }%
   }{%
-    \@mkboth{#3}{#3}
-  }
+    \@mkboth{#3}{#3}%
+  }%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3392,6 +3397,9 @@
     \phantomsection
     \stepcounter{thu@bookmark}%
     \pdfbookmark[#1]{#2}{thuchapter.\thethu@bookmark}%
+  }
+  \renewcommand\thu@phantomsection{%
+    \phantomsection
   }
   \pdfstringdefDisableCommands{
     \let\\\@empty
