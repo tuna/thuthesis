@@ -2088,9 +2088,9 @@
     \thu@phantomsection
     \addcontentsline{toc}{chapter}{#3}%
   }%
-  \ifthu@degree@bachelor \ctexset{chapter/beforeskip=25bp}\fi
+  \ifthu@degree@bachelor\ctexset{chapter/beforeskip=25bp}\fi
   \chapter*{#3}%
-  \ifthu@degree@bachelor \ctexset{chapter/beforeskip=15bp}\fi
+  \ifthu@degree@bachelor\ctexset{chapter/beforeskip=15bp}\fi
   \IfValueTF{#4}{%
     \ifthenelse{\equal{#4}{}}{%
       \@mkboth{}{}%
