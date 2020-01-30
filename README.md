@@ -6,7 +6,7 @@
 [![CTAN](https://img.shields.io/ctan/v/thuthesis)](https://www.ctan.org/pkg/thuthesis)
 
 # What's ThuThesis?
-ThuThesis is an abbreviation of <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Template.
+**ThuThesis** is an abbreviation of **T**sing**h**ua **U**niversity **Thesis** LaTeX Template.
 
 This package establishes a simple and easy-to-use LaTeX template for Tsinghua dissertations, including general undergraduate research papers, masters theses, doctoral dissertations, and postdoctoral reports. An English translation of this README follows the Chinese below.
 
