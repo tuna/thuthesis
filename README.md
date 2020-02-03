@@ -6,15 +6,15 @@
 [![CTAN](https://img.shields.io/ctan/v/thuthesis)](https://www.ctan.org/pkg/thuthesis)
 
 # What's ThuThesis?
-ThuThesis is an abbreviation of <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Template.
+**ThuThesis** is an abbreviation of **T**sing**h**ua **U**niversity **Thesis** LaTeX Template.
 
 This package establishes a simple and easy-to-use LaTeX template for Tsinghua dissertations, including general undergraduate research papers, masters theses, doctoral dissertations, and postdoctoral reports. An English translation of this README follows the Chinese below.
 
 
-# ThuThesis是什么？
-ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Template之缩写。
+# ThuThesis 是什么？
+**ThuThesis** 是 **T**sing**h**ua **U**niversity **Thesis** LaTeX Template 的缩写。
 
-此宏包旨在建立一个简单易用的清华大学学位论文LaTeX模板，包括本科综合论文训练、硕士论文、博士论文以及博士后出站报告。
+此宏包旨在建立一个简单易用的清华大学学位论文 LaTeX 模板，包括本科综合论文训练、硕士论文、博士论文以及博士后出站报告。
 
 # 文档
 请[下载](https://github.com/xueruini/thuthesis/releases)模板，里面包括具体使用说明以及示例文档：
@@ -31,9 +31,11 @@ ThuThesis为 <b>T</b>sing<b>h</b>ua <b>U</b>niversity <b>Thesis</b> LaTeX Templa
 通过 TeX 发行版工具自动从 [CTAN](https://www.ctan.org/pkg/thuthesis) 更新。
 
 ## 手动更新
-从 [GitHub](https://github.com/xueruini/thuthesis) 下载放入论文目录，执行命令（Windows 用户在文件夹空白处按`Shift+鼠标右键`，点击“在此处打开命令行窗口”）：
+从 [GitHub](https://github.com/xueruini/thuthesis) 下载放入论文目录，执行命令（Windows 用户在文件夹空白处按 `Shift + 鼠标右键`，点击“在此处打开命令行窗口”）：
 
-    xetex thuthesis.ins
+```shell
+xetex thuthesis.ins
+```
 
 即可得到 `thuthesis.cls` 等模板文件。
 
@@ -58,6 +60,8 @@ make [{all|thesis|spine|doc|clean|cleanall|distclean}]
 * `make cleanall`  删除示例文件的中间文件和 main.pdf；
 * `make distclean` 删除示例文件和模板的所有中间文件和 PDF。
 
+---
+
 # Documentation
 Download and unzip the template. Specific usage documentation and examples can be found in the files below. At present, these documents are <b>only available in Chinese</b>:
 * Template usage (thuthesis.pdf)
@@ -69,12 +73,14 @@ Download and unzip the template. Specific usage documentation and examples can b
 
 # Updates
 ## Automatic
-Get the most up-to-date published version of the TeX tools from [CTAN](https://www.ctan.org/pkg/thuthesis).
+Get the most up-to-date published version with your TeX distribution from [CTAN](https://www.ctan.org/pkg/thuthesis).
 
 ## Manual
-Download the package from [GitHub](https://github.com/xueruini/thuthesis) to the root directory of your thesis, then execute the command (Windows users `Shift + right click` white area in the file window and click "Open command line window here from the popup menu"):
+Download the package from [GitHub](https://github.com/xueruini/thuthesis) to the root directory of your thesis, then execute the command (Windows users `Shift + right click` white area in the file window and click "Open command line window here" from the popup menu):
 
-    xetex thuthesis.ins
+```shell
+xetex thuthesis.ins
+```
 
 You'll get `thuthesis.cls` along with other template files.
 

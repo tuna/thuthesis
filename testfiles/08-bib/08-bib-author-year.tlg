@@ -3584,7 +3584,7 @@ Completed box being shipped out [2]
 ...\glue 1.56854 plus 5.0 minus 2.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 6.3131
-...\hbox(7.1984+2.29756)x402.70135, glue set 0.21309, shifted 24.09
+...\hbox(7.1984+2.29756)x402.70135, glue set 0.1944, shifted 24.09
 ....\hbox(0.0+0.0)x-24.09
 .....\glue -24.09
 .....\glue -24.0
@@ -3597,13 +3597,6 @@ Completed box being shipped out [2]
 ......\special{color pop}
 .....\glue 4.81792
 ....\penalty 0
-....\TU/texgyretermes(0)/m/n/10.53937 ]
-....\kern -0.0002
-....\kern 0.0002
-....\TU/texgyretermes(0)/m/n/10.53937 oclc2000about
-....\kern -0.0002
-....\kern 0.0002
-....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 Online
 ....\kern -0.00021
 ....\kern 0.00021
@@ -3627,7 +3620,7 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 [2000].
+....\TU/texgyretermes(0)/m/n/10.53937 2000.
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -3653,18 +3646,21 @@ Completed box being shipped out [2]
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 cooperation
 ....\kern -0.00021
-....\kern 0.0
-....\glue(\rightskip) 0.0
-...\penalty 4150
-...\glue(\baselineskip) 6.3131
-...\hbox(7.1984+2.29758)x402.70135, glue set 97.9977fil, shifted 24.09
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 [EB/OL].
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\glue 1.15933 plus 3.478 minus 0.73782
 ....\penalty 0
-....\TU/texgyretermes(0)/m/n/10.53937 [....-..-..].
+....\TU/texgyretermes(0)/m/n/10.53937 [2000-
+....\discretionary
+....\glue(\rightskip) 0.0
+...\penalty 4250
+...\glue(\baselineskip) 6.3131
+...\hbox(7.1984+2.29758)x402.70135, glue set 169.99211fil, shifted 24.09
+....\TU/texgyretermes(0)/m/n/10.53937 01-08].
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828

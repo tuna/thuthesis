@@ -16,7 +16,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2020/01/06 6.0.0 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2020/02/03 6.0.1 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -150,6 +150,7 @@
 % thuthesis.cls & 模板类文件\\
 % thuthesis-numeric.bst & 参考文献样式文件\\
 % thuthesis-author-year.bst & 参考文献样式文件\\
+% thuthesis-bachelor.bst & 参考文献样式文件\\
 % tsinghua.pdf & 校名 logo，系统无隶书字体时使用 \\\midrule
 % main.tex & 示例文档主文件\\
 % spine.tex & 书脊示例文档\\
@@ -929,7 +930,7 @@
 %    \begin{macrocode}
 %<cls>\NeedsTeXFormat{LaTeX2e}
 %<cls>\ProvidesClass{thuthesis}
-%<cls>[2020/01/06 6.0.0 Tsinghua University Thesis Template]
+%<cls>[2020/02/03 6.0.1 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % 检查编译引擎，要求使用 \XeLaTeX。
@@ -945,7 +946,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{ThuThesis}
-\def\version{6.0.0}
+\def\version{6.0.1}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -2071,6 +2072,7 @@
 % 正体会到 \TeX{} macro 的力量！
 %    \begin{macrocode}
 \newcommand\thu@pdfbookmark[2]{}
+\newcommand\thu@phantomsection{}
 \NewDocumentCommand\thu@chapter{s o m o}{
   \IfBooleanF{#1}{%
     \ClassError{thuthesis}{You have to use the star form: \string\thu@chapter*}{}
@@ -2080,21 +2082,25 @@
     \ifthenelse{\equal{#2}{}}{%
       \thu@pdfbookmark{0}{#3}%
     }{%
-      \addcontentsline{toc}{chapter}{#3}
-    }
+      \thu@phantomsection
+      \addcontentsline{toc}{chapter}{#3}%
+    }%
   }{%
-    \addcontentsline{toc}{chapter}{#3}
+    \thu@phantomsection
+    \addcontentsline{toc}{chapter}{#3}%
   }%
-  \ifthu@degree@bachelor \ctexset{chapter/beforeskip=25bp} \fi
+  \ifthu@degree@bachelor\ctexset{chapter/beforeskip=25bp}\fi
   \chapter*{#3}%
-  \ifthu@degree@bachelor \ctexset{chapter/beforeskip=15bp} \fi
+  \ifthu@degree@bachelor\ctexset{chapter/beforeskip=15bp}\fi
   \IfValueTF{#4}{%
-    \ifthenelse{\equal{#4}{}}
-    {\@mkboth{}{}}
-    {\@mkboth{#4}{#4}}
+    \ifthenelse{\equal{#4}{}}{%
+      \@mkboth{}{}%
+    }{%
+      \@mkboth{#4}{#4}%
+    }%
   }{%
-    \@mkboth{#3}{#3}
-  }
+    \@mkboth{#3}{#3}%
+  }%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3378,6 +3384,7 @@
 \thu@atendpackage{hyperref}{
   \hypersetup{
     linktoc            = all,
+    bookmarksdepth     = 2,
     bookmarksnumbered  = true,
     bookmarksopen      = true,
     bookmarksopenlevel = 1,
@@ -3392,6 +3399,9 @@
     \phantomsection
     \stepcounter{thu@bookmark}%
     \pdfbookmark[#1]{#2}{thuchapter.\thethu@bookmark}%
+  }
+  \renewcommand\thu@phantomsection{%
+    \phantomsection
   }
   \pdfstringdefDisableCommands{
     \let\\\@empty
