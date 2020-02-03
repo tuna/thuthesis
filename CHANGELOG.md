@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 修正研究生目录的行距
 - 调整本科生封面有辅导教师时的格式（#522）
 - 修正本科生封面日期的字体（#532）
+- 设置三线表横线的默认粗度
 
 ## Added
 - 允许使用边注

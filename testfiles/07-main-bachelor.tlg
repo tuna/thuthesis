@@ -3065,7 +3065,7 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 121.26985fil
+..\vbox(645.87758+0.0)x421.10089, glue set 119.78455fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\mark{{第2章\hskip \ccwd 资料与试验}{}}
@@ -3249,9 +3249,9 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 12.045
-...\vbox(114.1073+0.0)x421.10089
+...\vbox(115.59277+0.0)x421.10089
 ....\special{color push gray 0}
-....\vbox(114.1073+0.0)x421.10089
+....\vbox(115.59277+0.0)x421.10089
 .....\write1{\@writefile{lot}{\protect \contentsline {table}{\protect \numberline \ETC.}
 .....\special{color push gray 0}
 .....\glue 0.0
@@ -3308,14 +3308,14 @@ Completed box being shipped out [3]
 .....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
 .....\write1{\newlabel{tab:beijing}{{2.1}{\thepage }}}
 .....\glue(\parskip) 0.0
-.....\hbox(49.87717+43.85402)x421.10089, glue set 69.84483fil
+.....\hbox(50.6199+44.59676)x421.10089, glue set 69.84483fil
 ......\glue(\leftskip) 0.0 plus 1.0fil
 ......\hbox(0.0+0.0)x0.0
-......\hbox(49.87717+43.85402)x281.41124
+......\hbox(50.6199+44.59676)x281.41124
 .......\mathon
-.......\vbox(49.87717+43.85402)x281.41124
+.......\vbox(50.6199+44.59676)x281.41124
 ........\glue 0.0
-........\rule(0.96361+0.0)x281.41124
+........\rule(1.50562+0.0)x281.41124
 ........\glue 3.37436
 ........\hbox(14.05243+6.02255)x281.41124
 .........\glue(\tabskip) 0.0
@@ -3481,7 +3481,7 @@ Completed box being shipped out [3]
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0
 ........\glue 2.07652
-........\rule(0.60228+0.0)x281.41124
+........\rule(1.00374+0.0)x281.41124
 ........\glue 3.37436
 ........\hbox(14.05243+6.02255)x281.41124
 .........\glue(\tabskip) 0.0
@@ -3541,7 +3541,7 @@ Completed box being shipped out [3]
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0
 ........\glue 2.07652
-........\rule(0.96361+0.0)x281.41124
+........\rule(1.50562+0.0)x281.41124
 ........\glue 0.0
 .......\mathoff
 ......\penalty 10000

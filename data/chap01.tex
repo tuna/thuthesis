@@ -70,15 +70,15 @@
     引中。}
   \label{tab:template-files}
     \begin{tabularx}{\linewidth}{lX}
-      \toprule[1.5pt]
-      {\heiti 文件名} & {\heiti 描述} \\\midrule[1pt]
+      \toprule
+      {\heiti 文件名} & {\heiti 描述} \\\midrule
       thuthesis.ins & \LaTeX{} 安装文件，DocStrip。\footnote{表格中的脚注} \\
       thuthesis.dtx & 所有的一切都在这里面。\footnote{再来一个}\\
       thuthesis.cls & 模板类文件。\\
       thuthesis-numeric.bst    & 参考文献 BibTeX 样式文件。\\
       thuthesis-author-year.bst    & 参考文献 BibTeX 样式文件。\\
       thusetup.tex   & 基本配置和常用的包、命令，减轻主文件的负担。\\
-      \bottomrule[1.5pt]
+      \bottomrule
     \end{tabularx}
   \end{minipage}
 \end{table}
@@ -141,9 +141,9 @@
 \caption{第一个并排子表格}
 \label{tab:parallel1}
 \begin{tabular}{p{2cm}p{2cm}}
-\toprule[1.5pt]
-111 & 222 \\\midrule[1pt]
-222 & 333 \\\bottomrule[1.5pt]
+\toprule
+111 & 222 \\\midrule
+222 & 333 \\\bottomrule
 \end{tabular}
 \end{minipage}%
 \begin{minipage}{0.5\textwidth}
@@ -151,9 +151,9 @@
 \caption{第二个并排子表格}
 \label{tab:parallel2}
 \begin{tabular}{p{2cm}p{2cm}}
-\toprule[1.5pt]
-111 & 222 \\\midrule[1pt]
-222 & 333 \\\bottomrule[1.5pt]
+\toprule
+111 & 222 \\\midrule
+222 & 333 \\\bottomrule
 \end{tabular}
 \end{minipage}
 \end{table}
@@ -180,18 +180,18 @@
 \subcaptionbox{第一个子表格}
 {
 \begin{tabular}{p{2cm}p{2cm}}
-\toprule[1.5pt]
-111 & 222 \\\midrule[1pt]
-222 & 333 \\\bottomrule[1.5pt]
+\toprule
+111 & 222 \\\midrule
+222 & 333 \\\bottomrule
 \end{tabular}
 }
 \hskip2cm
 \subcaptionbox{第二个子表格}
 {
 \begin{tabular}{p{2cm}p{2cm}}
-\toprule[1.5pt]
-111 & 222 \\\midrule[1pt]
-222 & 333 \\\bottomrule[1.5pt]
+\toprule
+111 & 222 \\\midrule
+222 & 333 \\\bottomrule
 \end{tabular}
 }
 \end{table}
@@ -230,20 +230,20 @@
 
 \begin{longtable}[c]{c*{6}{r}}
 \caption{实验数据}\label{tab:performance}\\
-\toprule[1.5pt]
+\toprule
  测试程序 & \multicolumn{1}{c}{正常运行} & \multicolumn{1}{c}{同步} & \multicolumn{1}{c}{检查点} & \multicolumn{1}{c}{卷回恢复}
 & \multicolumn{1}{c}{进程迁移} & \multicolumn{1}{c}{检查点} \\
 & \multicolumn{1}{c}{时间 (s)}& \multicolumn{1}{c}{时间 (s)}&
 \multicolumn{1}{c}{时间 (s)}& \multicolumn{1}{c}{时间 (s)}& \multicolumn{1}{c}{
-  时间 (s)}&  文件（KB）\\\midrule[1pt]
+  时间 (s)}&  文件（KB）\\\midrule
 \endfirsthead
 \multicolumn{7}{c}{续表~\thetable\hskip1em 实验数据}\\
-\toprule[1.5pt]
+\toprule
  测试程序 & \multicolumn{1}{c}{正常运行} & \multicolumn{1}{c}{同步} & \multicolumn{1}{c}{检查点} & \multicolumn{1}{c}{卷回恢复}
 & \multicolumn{1}{c}{进程迁移} & \multicolumn{1}{c}{检查点} \\
 & \multicolumn{1}{c}{时间 (s)}& \multicolumn{1}{c}{时间 (s)}&
 \multicolumn{1}{c}{时间 (s)}& \multicolumn{1}{c}{时间 (s)}& \multicolumn{1}{c}{
-  时间 (s)}&  文件（KB）\\\midrule[1pt]
+  时间 (s)}&  文件（KB）\\\midrule
 \endhead
 \hline
 \multicolumn{7}{r}{续下页}
@@ -273,7 +273,7 @@ EP.A.8 & 31.06 & 0.004 & 0.017 & 0.005 & 0.073 & 1661 \\
 EP.B.2 & 495.49 & 0.001 & 0.009 & 0.003 & 0.196 & 2011 \\
 EP.B.4 & 247.69 & 0.002 & 0.012 & 0.004 & 0.122 & 1663 \\
 EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
-\bottomrule[1.5pt]
+\bottomrule
 \end{longtable}
 
 要想用好论文模板还是得提前学习一些 \TeX/\LaTeX{} 的相关知识，具备一些基本能力，掌

@@ -2075,6 +2075,14 @@
 % \renewcommand{\p@subfigure}{:}
 %    \end{macrocode}
 %
+% 研究生和本科生都推荐使用三线表，并且要求表的上、下边线为单直线，线粗为 1.5 磅；
+% 第三条线为单直线，线粗为 1 磅。
+% 这里设置 \pkg{booktabs} 线粗的默认值。
+%    \begin{macrocode}
+\heavyrulewidth=1.5bp
+\lightrulewidth=1bp
+%    \end{macrocode}
+%
 % \begin{macro}{\hlinewd}
 % 简单的表格使用三线表推荐用 \cs{hlinewd}。如果表格比较复杂还是用 \pkg{booktabs} 的命
 % 令好一些。
