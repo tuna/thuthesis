@@ -13,7 +13,9 @@ checkengines = {"xetex"}
 stdengine = "xetex"
 
 checkconfigs = {
-    "build", "testfiles/config-cover", -- "testfiles/config-nomencl",
+    "build",
+    "testfiles/config-cover",
+    "testfiles/config-nomencl",
     "testfiles/config-bib",
 }
 
