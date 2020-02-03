@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [v6.0.1] - 2020-02-03
+### Changed
+- 更新文档
+- 更新 bib 测试用例
+
+### Fixed
+- 修复 PDF 目录层级问题 (#457)
+- 修复 PDF 中章节连接问题 (#453)
+
 ## [v6.0.0] - 2020-01-06
 ### Added
 - 新增 `survey`（调研阅读报告）和 `translation`（书面翻译）环境用于本科生的附录，
@@ -507,7 +516,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Please refer to “Bao--Pan“ version.
 
-[Unreleased]: https://github.com/xueruini/thuthesis/compare/v6.0.0...HEAD
+[Unreleased]: https://github.com/xueruini/thuthesis/compare/v6.0.1...HEAD
+[v6.0.1]: https://github.com/xueruini/thuthesis/compare/v6.0.0...v6.0.1
 [v6.0.0]: https://github.com/xueruini/thuthesis/compare/v5.5.2...v6.0.0
 [v5.5.2]: https://github.com/xueruini/thuthesis/compare/v5.5.1...v5.5.2
 [v5.5.1]: https://github.com/xueruini/thuthesis/compare/v5.5.0...v5.5.1
