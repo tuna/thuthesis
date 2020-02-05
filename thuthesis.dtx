@@ -3392,6 +3392,7 @@
     psdextra           = true,
     breaklinks         = true,
     plainpages         = false,
+    pdfdisplaydoctitle = true,
     hidelinks,
   }%
   \newcounter{thu@bookmark}
@@ -3426,6 +3427,7 @@
         pdfauthor   = \thu@author,
         pdfsubject  = \thu@degree@name,
         pdfkeywords = \thu@keywords,
+        pdflang     = zh-CN,
       }%
     \else
       \hypersetup{
@@ -3433,6 +3435,7 @@
         pdfauthor   = \thu@author@en,
         pdfsubject  = \thu@degree@name@en,
         pdfkeywords = \thu@keywords@en,
+        pdflang     = en-US,
       }%
     \fi
     \hypersetup{
