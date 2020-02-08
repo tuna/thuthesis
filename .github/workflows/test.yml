@@ -1,0 +1,32 @@
+name: Test
+
+on:
+  push:
+  schedule:
+  - cron:  '0 0 * * *'
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install TeX Live
+      run:  bash .github/workflows/install-texlive.sh
+    - name: Test thesis
+      run: |
+        export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
+        make thesis
+    - name: Test spine
+      run: |
+        export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
+        make spine
+    - name: l3build check
+      run: |
+        export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
+        make test
+    - name: Test doc
+      run: |
+        export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
+        make doc
