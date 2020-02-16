@@ -3081,6 +3081,7 @@
   \@starttoc{\csname ext@#1\endcsname}
   \let\numberline\oldnumberline}
 \def\thu@listof#1{% #1: float type
+  \setcounter{tocdepth}{2} % restore tocdepth in case being modified
   \@ifstar
     {\thu@chapter*[]{\csname list#1name\endcsname}\thu@starttoc{#1}}
     {\thu@chapter*{\csname list#1name\endcsname}\thu@starttoc{#1}}}
