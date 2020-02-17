@@ -689,29 +689,18 @@
 %
 % \subsubsection{引用方式}
 % \label{sec:citestyle}
-% 模板支持两种引用方式，分别为理工科常用的“顺序编码制\textsuperscript{[1]}”和文科常用
-% 的“著者-出版年制 (Zhang, 2008)”。
+% 模板支持两种引用方式，分别为理工科常用的“顺序编码制”和文科常用
+% 的“著者-出版年制”。
 % 使用者在设置参考文献表的格式
 % （\cs{bibliographystyle}，见第~\ref{sec:bibliography} 节）时，
-% 正文中引用文献的标注会自动调整为对应的格式：
+% 正文中引用文献的标注会自动调整为对应的格式。
 %
-% \begin{latex}
-%   % 顺序编码制
-%   \bibliographystyle{thuthesis-numeric}
-% \end{latex}
-%
-% 或
-%
-% \begin{latex}
-%   % 著者-出版年制
-%   \bibliographystyle{thuthesis-author-year}
-% \end{latex}
-%
+% \paragraph{顺序编码制}
 % \DescribeMacro{\inlinecite}
-% 顺序编码制的参考文献引用也有两种模式：
+% 顺序编码制的参考文献引用分为两种模式：
 % \begin{enumerate}
-%   \item 上标模式。比如“同样的工作有很多\textsuperscript{[1-2]}……”。
-%   \item 正文模式。比如“文 [3] 中详细说明了……”。
+%   \item 上标模式，比如“同样的工作有很多\textsuperscript{[1-2]}……”；
+%   \item 正文模式，比如“文 [3] 中详细说明了……”。
 % \end{enumerate}
 %
 % \DescribeOption{cite-style}
@@ -725,14 +714,13 @@
 %
 % 也可以使用 \cs{inlinecite}\marg{key} 临时使用正文模式的引用标注。
 %
-% \DescribeMacro{\citep}
+% \paragraph{著者-出版年制}
 % 著者-出版年制的参考文献引用同样也有两种模式：
 % \begin{enumerate}
-%   \item 著者与年份。比如“(Zhang, 2008)”。
-%   \item 仅年份。比如“(2008)”。
+%   \item \cs{citep}：著者与年份均在括号中，比如“(Zhang, 2008)”，
+%     同默认的 \cs{cite} 命令；
+%   \item \cs{citet}：著者姓名作为正文的一部分，比如“Zhang (2008)”。
 % \end{enumerate}
-%
-% 使用 \cs{cite}\marg{key} 可以生成包括著者与年份的引用，使用 \cs{citep}\marg{key} 则会生成仅包括年份的引用。
 %
 % \subsection{其他部分}
 %
