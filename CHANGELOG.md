@@ -6,10 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 ## Fixed
 - 修复图表公式目录内容缺失 (#467)
-- 修复 Github Actions 执行 l3build check 问题
 
 ## Added
 - 补充 PDF 原信息：文档标题，语言。
+- 增加著者-年份引用命令用法。
 
 ## [v6.0.1] - 2020-02-03
 ### Changed
