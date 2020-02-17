@@ -710,8 +710,8 @@
 % \DescribeMacro{\inlinecite}
 % 顺序编码制的参考文献引用也有两种模式：
 % \begin{enumerate}
-%   \item 上标模式。比如“同样的工作有很多\textsuperscript{[1,2]}\dots”。
-%   \item 正文模式。比如“文 [3] 中详细说明了\dots”。
+%   \item 上标模式。比如“同样的工作有很多\textsuperscript{[1-2]}……”。
+%   \item 正文模式。比如“文 [3] 中详细说明了……”。
 % \end{enumerate}
 %
 % \DescribeOption{cite-style}
@@ -745,7 +745,7 @@
 %   \bibliographystyle{thuthesis-numeric}        % 顺序编码制
 %   % \bibliographystyle{thuthesis-author-year}  % 著者-出版年制
 %   % \bibliographystyle{thuthesis-bachelor}     % 本科生参考文献的著录格式
-%   \bibliographystyle{ref1,ref2}                % 载入 ref1.bib 和 ref2.bib
+%   \bibliography{ref1,ref2}                     % 载入 ref1.bib 和 ref2.bib
 % \end{latex}
 %
 % \note[注意：]{\cs{bibliographystyle} 命令只能出现一次。}
@@ -771,7 +771,7 @@
 % \begin{latex}
 %   @book{capital,
 %     author = {马克思 and 恩格斯},
-%     key    = {ma3 ke4 si1 en1 ge2 si1},
+%     key    = {ma3 ke4 si1   en1 ge2 si1},
 %     ...
 %   }
 % \end{latex}
