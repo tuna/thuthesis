@@ -755,14 +755,14 @@
 %
 % 可选的语言有 \option{english}, \option{chinese}, \option{japanese} 和 \option{russian}。
 %
-% 国标规定参考文献表采用著者-出版年制组织时，各篇文献首先按文种集中，然后按著者字
+% 国标规定参考文献表采用“著者-出版年”制组织时，各篇文献首先按文种集中，然后按著者字
 % 顺和出版年排列；中文文献可以按著者汉语拼音字顺排列，也可以按著者的笔画笔顺排列。
 % 由于 \hologo{BibTeX} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺，所
-% 以\emph{必须}在 \file{.bib} 数据库中的 |key| 域手动录入著者姓名的拼音，如：
+% 以\emph{必须}在 \file{.bib} 数据库中的 |key| 字段手动录入著者姓名的拼音，如：
 % \begin{latex}
 %   @book{capital,
 %     author = {马克思 and 恩格斯},
-%     key    = {ma3 ke4 si1   en1 ge2 si1},
+%     key    = {ma3 ke4 si1   en1 ge2 si1}, % 名字之间用 2 或 3 个空格
 %     ...
 %   }
 % \end{latex}
