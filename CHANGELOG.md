@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [v6.0.2] - 2020-02-23
+## Fixed
+- 修复图表公式目录内容缺失 (#467)
+- 修复 Github Actions 执行 l3build check 问题
+- 文本模式使用 `\checkmark`
+
+## Added
+- 补充 PDF 原信息：文档标题，语言。
+
+## Changed
+- 补充“著者-出版年”引用命令使用方法。
+- 使用 `xeCJKfntef` 替换 `CJKfntef`
+
 ## [v6.0.1] - 2020-02-03
 ### Changed
 - 更新文档
@@ -516,7 +529,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Please refer to “Bao--Pan“ version.
 
-[Unreleased]: https://github.com/xueruini/thuthesis/compare/v6.0.1...HEAD
+[Unreleased]: https://github.com/xueruini/thuthesis/compare/v6.0.2...HEAD
+[v6.0.2]: https://github.com/xueruini/thuthesis/compare/v6.0.1...v6.0.2
 [v6.0.1]: https://github.com/xueruini/thuthesis/compare/v6.0.0...v6.0.1
 [v6.0.0]: https://github.com/xueruini/thuthesis/compare/v5.5.2...v6.0.0
 [v5.5.2]: https://github.com/xueruini/thuthesis/compare/v5.5.1...v5.5.2

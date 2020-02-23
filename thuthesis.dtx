@@ -230,18 +230,18 @@
 %   $ makeindex -s gind.ist -o thuthesis.ind thuthesis.idx
 %   $ makeindex -s gglo.ist -o thuthesis.gls thuthesis.glo
 %   $ xelatex thuthesis.dtx
-%   $ xelatex thuthesis.dtx  % 生成说明文档 thuthesis.pdf
+%   $ xelatex thuthesis.dtx  # 生成说明文档 thuthesis.pdf
 % \end{shell}
 %
 % \subsection{升级}
 % \label{sec:upgrade}
 % 如果需要升级 \thuthesis{}，应当从 GitHub 下载最新的版本，
-% 将 \file{thuthesis.dtx}，\file{thuthesis.ins}，\file{tsinghua.pdf}和
+% 将 \file{thuthesis.dtx}，\file{thuthesis.ins}，\file{tsinghua.pdf} 和
 % \file{thuthesis-*.bst} 拷贝至工作目录覆盖相应的文件，然后按照
 % 第~\ref{sec:generate-cls} 节的内容生成新的模板和使用说明。
 %
-% 有时模板可能进行了重要的修改，不兼容已写好的正文内容，
-% 用户应当按照 GitHub 上的示例文档的格式重新调整。
+% 有时模板可能进行了重要的修改，不兼容已写好的正文内容，用户应按照示例
+% 文档重新调整。
 %
 % \section{使用说明}
 % \label{sec:usage}
@@ -689,29 +689,18 @@
 %
 % \subsubsection{引用方式}
 % \label{sec:citestyle}
-% 模板支持两种引用方式，分别为理工科常用的“顺序编码制\textsuperscript{[1]}”和文科常用
-% 的“著者-出版年制 (Zhang, 2008)”。
+% 模板支持两种引用方式，分别为理工科常用的“顺序编码制”和文科常用
+% 的“著者-出版年制”。
 % 使用者在设置参考文献表的格式
 % （\cs{bibliographystyle}，见第~\ref{sec:bibliography} 节）时，
-% 正文中引用文献的标注会自动调整为对应的格式：
+% 正文中引用文献的标注会自动调整为对应的格式。
 %
-% \begin{latex}
-%   % 顺序编码制
-%   \bibliographystyle{thuthesis-numeric}
-% \end{latex}
-%
-% 或
-%
-% \begin{latex}
-%   % 著者-出版年制
-%   \bibliographystyle{thuthesis-author-year}
-% \end{latex}
-%
+% \paragraph{顺序编码制}
 % \DescribeMacro{\inlinecite}
-% 顺序编码制的参考文献引用也有两种模式：
+% 顺序编码制的参考文献引用分为两种模式：
 % \begin{enumerate}
-%   \item 上标模式。比如“同样的工作有很多\textsuperscript{[1,2]}\dots”。
-%   \item 正文模式。比如“文 [3] 中详细说明了\dots”。
+%   \item 上标模式，比如“同样的工作有很多\textsuperscript{[1-2]}……”；
+%   \item 正文模式，比如“文 [3] 中详细说明了……”。
 % \end{enumerate}
 %
 % \DescribeOption{cite-style}
@@ -725,6 +714,17 @@
 %
 % 也可以使用 \cs{inlinecite}\marg{key} 临时使用正文模式的引用标注。
 %
+% \paragraph{著者-出版年制}
+% 著者-出版年制的参考文献引用有三种模式：
+% \begin{enumerate}
+%   \item \cs{citep}：著者与年份均在括号中，比如“(Zhang, 2008)”，
+%     同默认的 \cs{cite} 命令；
+%   \item \cs{citet}：著者姓名作为正文的一部分，比如“Zhang (2008)”；
+%   \item \cs{citeyear}：只插入年份，但不含括号，比如“2008”。
+% \end{enumerate}
+%
+% 关于参考文献引用的更多细节参考 \pkg{natbib} 的文档。
+%
 % \subsection{其他部分}
 %
 % \subsubsection{参考文献}
@@ -736,7 +736,7 @@
 %   \bibliographystyle{thuthesis-numeric}        % 顺序编码制
 %   % \bibliographystyle{thuthesis-author-year}  % 著者-出版年制
 %   % \bibliographystyle{thuthesis-bachelor}     % 本科生参考文献的著录格式
-%   \bibliographystyle{ref1,ref2}                % 载入 ref1.bib 和 ref2.bib
+%   \bibliography{ref1,ref2}                     % 载入 ref1.bib 和 ref2.bib
 % \end{latex}
 %
 % \note[注意：]{\cs{bibliographystyle} 命令只能出现一次。}
@@ -755,14 +755,14 @@
 %
 % 可选的语言有 \option{english}, \option{chinese}, \option{japanese} 和 \option{russian}。
 %
-% 国标规定参考文献表采用著者-出版年制组织时，各篇文献首先按文种集中，然后按著者字
+% 国标规定参考文献表采用“著者-出版年”制组织时，各篇文献首先按文种集中，然后按著者字
 % 顺和出版年排列；中文文献可以按著者汉语拼音字顺排列，也可以按著者的笔画笔顺排列。
 % 由于 \hologo{BibTeX} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺，所
-% 以\emph{必须}在 \file{.bib} 数据库中的 |key| 域手动录入著者姓名的拼音，如：
+% 以\emph{必须}在 \file{.bib} 数据库中的 |key| 字段手动录入著者姓名的拼音，如：
 % \begin{latex}
 %   @book{capital,
 %     author = {马克思 and 恩格斯},
-%     key    = {ma3 ke4 si1 en1 ge2 si1},
+%     key    = {ma3 ke4 si1   en1 ge2 si1}, % 名字之间用 2 或 3 个空格
 %     ...
 %   }
 % \end{latex}
@@ -1224,10 +1224,10 @@
 \fi
 %    \end{macrocode}
 %
-% 利用 \pkg{CJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
+% 利用 \pkg{xeCJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
 % \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
 %    \begin{macrocode}
-\RequirePackage{CJKfntef}
+\RequirePackage{xeCJKfntef}
 %    \end{macrocode}
 %
 % 表格控制
@@ -1855,6 +1855,15 @@
 % 兼容 \pkg{amssymb} 中的命令。
 %    \begin{macrocode}
 \newcommand\square{\mdlgwhtsquare}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\checkmark}
+% 允许在文本模式中使用 \cs{checkmark}。
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \renewcommand\checkmark{\ensuremath{✓}}%
+}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -3082,6 +3091,7 @@
   \@starttoc{\csname ext@#1\endcsname}
   \let\numberline\oldnumberline}
 \def\thu@listof#1{% #1: float type
+  \setcounter{tocdepth}{2} % restore tocdepth in case being modified
   \@ifstar
     {\thu@chapter*[]{\csname list#1name\endcsname}\thu@starttoc{#1}}
     {\thu@chapter*{\csname list#1name\endcsname}\thu@starttoc{#1}}}
@@ -3392,6 +3402,7 @@
     psdextra           = true,
     breaklinks         = true,
     plainpages         = false,
+    pdfdisplaydoctitle = true,
     hidelinks,
   }%
   \newcounter{thu@bookmark}
@@ -3426,6 +3437,7 @@
         pdfauthor   = \thu@author,
         pdfsubject  = \thu@degree@name,
         pdfkeywords = \thu@keywords,
+        pdflang     = zh-CN,
       }%
     \else
       \hypersetup{
@@ -3433,6 +3445,7 @@
         pdfauthor   = \thu@author@en,
         pdfsubject  = \thu@degree@name@en,
         pdfkeywords = \thu@keywords@en,
+        pdflang     = en-US,
       }%
     \fi
     \hypersetup{
