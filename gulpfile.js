@@ -1,4 +1,4 @@
-const argv = require('minimist')(process.argv.slice(2))
+const argv = require('minimist')(process.argv.slice(2));
 const path = require('path');
 const gulp = require('gulp');
 const log = require('fancy-log');
