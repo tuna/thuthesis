@@ -29,27 +29,25 @@ which maximizes a real-valued function $f$ of
 $x=(x_1,x_2,\cdots,x_n)$ subject to a set of constraints.
 
 \newcommand\Real{\mathbf{R}}
-\newtheorem{mpdef}{Definition}[chapter]
-\begin{mpdef}
-In SOP, we call $x$ a decision vector, and
-$x_1,x_2,\cdots,x_n$ decision variables. The function
-$f$ is called the objective function. The set
-\begin{equation*}
-S=\left\{x\in\Real^n\bigm|g_j(x)\le 0,\,j=1,2,\cdots,p\right\}
-\end{equation*}
-is called the feasible set. An element $x$ in $S$ is called a
-feasible solution.
-\end{mpdef}
+\begin{definition}
+  In SOP, we call $x$ a decision vector, and
+  $x_1, x_2, \dots, x_n$ decision variables. The function
+  $f$ is called the objective function. The set
+  \begin{equation*}
+    S = \left\{x \in \Real^n \mid g_j(x) \le 0, \ j = 1, 2, \dots, p\right\}
+  \end{equation*}
+  is called the feasible set. An element $x$ in $S$ is called a
+  feasible solution.
+\end{definition}
 
-\newtheorem{mpdefop}[mpdef]{Definition}
-\begin{mpdefop}
-A feasible solution $x^*$ is called the optimal
-solution of SOP if and only if
-\begin{equation}
-f(x^*)\ge f(x)
-\end{equation}
-for any feasible solution $x$.
-\end{mpdefop}
+\begin{definition}
+  A feasible solution $x^*$ is called the optimal
+  solution of SOP if and only if
+  \begin{equation}
+    f(x^*) \ge f(x)
+  \end{equation}
+  for any feasible solution $x$.
+\end{definition}
 
 One of the outstanding contributions to mathematical programming was known as
 the Kuhn-Tucker conditions\ref{eq:ktc}. In order to introduce them, let us give
