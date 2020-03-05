@@ -4,16 +4,23 @@ INSTALL="/tmp/install-texlive";
 mkdir -p "$INSTALL";
 curl -sSL "$REMOTE/install-tl-unx.tar.gz" | tar -xz -C "$INSTALL" \
     --strip-components=1;
-"$INSTALL/install-tl" -profile .github/workflows/texlive.profile;
+"$INSTALL/install-tl" -no-gui -repository $REMOTE \
+    -profile .github/workflows/texlive.profile;
 
 export PATH="/tmp/texlive/bin/x86_64-linux:$PATH";
 
-tlmgr install latexmk l3build \
-    fontname fontspec l3packages xetex \
-    cjk ctex environ ms trimspaces ulem xecjk zhnumber \
-    fandol tex-gyre xits \
-    bibunits caption enumitem etoolbox footmisc notoccite pdfpages unicode-math \
-    booktabs koma-script nomencl ntheorem siunitx xkeyval \
-    bitset letltxmacro pdfescape pdflscape \
-    hologo listings xcolor \
-    diagbox float fp metalogo multirow pict2e
+XETEX_PKGS="fontname fontspec l3packages xetex";
+CTEX_PKGS="cjk ctex environ ms trimspaces ulem xecjk zhnumber";
+HYPERREF_PKGS="bitset letltxmacro pdfescape pdflscape";
+NOMENCL_PKGS="nomencl koma-script xkeyval";
+
+BIN_PKGS="latexmk l3build";
+REQUIRED_PKGS="$XETEX_PKGS $CTEX_PKGS bibunits caption enumitem etoolbox \
+    footmisc notoccite pdfpages unicode-math";
+FONT_PKGS="fandol tex-gyre xits";
+EXTRA_PKGS="booktabs $HYPERREF_PKGS $NOMENCL_PKGS ntheorem siunitx";
+DOC_PKGS="hologo listings xcolor";
+EXAMPLE_PKGS="diagbox float fp metalogo multirow pict2e"
+
+tlmgr install $BIN_PKGS $REQUIRED_PKGS $FONT_PKGS $EXTRA_PKGS $DOC_PKGS \
+    $EXAMPLE_PKGS;
