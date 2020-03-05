@@ -79,13 +79,13 @@ solution of SOP.
 \label{sec:lp}
 
 If the functions $f(x),g_j(x),j=1,2,\cdots,p$ are all linear, then SOP is called
-a {\em linear programming}.
+a \emph{linear programming}.
 
 The feasible set of linear is always convex. A point $x$ is called an extreme
 point of convex set $S$ if $x\in S$ and $x$ cannot be expressed as a convex
 combination of two points in $S$. It has been shown that the optimal solution to
 linear programming corresponds to an extreme point of its feasible set provided
-that the feasible set $S$ is bounded. This fact is the basis of the {\em simplex
+that the feasible set $S$ is bounded. This fact is the basis of the \emph{simplex
   algorithm} which was developed by Dantzig as a very efficient method for
 solving linear programming.
 \begin{table}[ht]
@@ -118,7 +118,7 @@ extreme point is the optimal solution.
 \subsection{Nonlinear Programming}
 
 If at least one of the functions $f(x),g_j(x),j=1,2,\cdots,p$ is nonlinear, then
-SOP is called a {\em nonlinear programming}.
+SOP is called a \emph{nonlinear programming}.
 
 A large number of classical optimization methods have been developed to treat
 special-structural nonlinear programming based on the mathematical theory
@@ -141,8 +141,8 @@ points, each of which yields an improved objective function value over its
 predecessor. The next point to be added to the sequence is chosen by analyzing
 the behavior of the function at the previous points. This construction continues
 until some termination criterion is met. Methods based upon this strategy are
-called {\em ascent methods}, which can be classified as {\em direct methods},
-{\em gradient methods}, and {\em Hessian methods} according to the information
+called \emph{ascent methods}, which can be classified as \emph{direct methods},
+\emph{gradient methods}, and \emph{Hessian methods} according to the information
 about the behavior of objective function $f$. Direct methods require only that
 the function can be evaluated at each point. Gradient methods require the
 evaluation of first derivatives of $f$. Hessian methods require the evaluation
@@ -152,16 +152,16 @@ function.
 
 \subsection{Integer Programming}
 
-{\em Integer programming} is a special mathematical programming in which all of
+\emph{Integer programming} is a special mathematical programming in which all of
 the variables are assumed to be only integer values. When there are not only
-integer variables but also conventional continuous variables, we call it {\em
+integer variables but also conventional continuous variables, we call it \emph{
   mixed integer programming}. If all the variables are assumed either 0 or 1,
-then the problem is termed a {\em zero-one programming}. Although integer
-programming can be solved by an {\em exhaustive enumeration} theoretically, it
+then the problem is termed a \emph{zero-one programming}. Although integer
+programming can be solved by an \emph{exhaustive enumeration} theoretically, it
 is impractical to solve realistically sized integer programming problems. The
 most successful algorithm so far found to solve integer programming is called
-the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
-(1965). The other technique to integer programming is the {\em cutting plane
+the \emph{branch-and-bound enumeration} developed by Balas (1965) and Dakin
+(1965). The other technique to integer programming is the \emph{cutting plane
   method} developed by Gomory (1959).
 
 \hfill\textit{Uncertain Programming\/}\quad(\textsl{BaoDing Liu, 2006.2})
