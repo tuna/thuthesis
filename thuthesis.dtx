@@ -3430,6 +3430,15 @@
   \@ifpackagelater{hyperref}{2019/04/27}{}{%
     \g@addto@macro\psdmapshortnames{\let\mu\textmu}
   }%
+  \ifthu@language@chinese
+    \hypersetup{
+      pdflang = zh-CN,
+    }%
+  \else
+    \hypersetup{
+      pdflang = en-US,
+    }%
+  \fi
   \AtBeginDocument{%
     \ifthu@language@chinese
       \hypersetup{
@@ -3437,7 +3446,6 @@
         pdfauthor   = \thu@author,
         pdfsubject  = \thu@degree@name,
         pdfkeywords = \thu@keywords,
-        pdflang     = zh-CN,
       }%
     \else
       \hypersetup{
@@ -3445,7 +3453,6 @@
         pdfauthor   = \thu@author@en,
         pdfsubject  = \thu@degree@name@en,
         pdfkeywords = \thu@keywords@en,
-        pdflang     = en-US,
       }%
     \fi
     \hypersetup{
