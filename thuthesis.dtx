@@ -293,6 +293,10 @@
 % 用中文书写。”研究生《写作指南》要求“外国人来华留学生可以用英文撰写学位论文，但
 % 须采用中文封面”，“除留学生外，学位论文一律须用汉语书写”，用户须提前与导师和院系
 % 的审查教师协商使用何种语言书写论文。
+%
+% 在正文中，随时可以使用 \cs{thusetup} 更改 \option{language} 选项，以更改接下来部分的书写语言。
+% 标点格式、章节标题、图表、证明环境名称等将会随语言设置相应改变。
+%
 % \begin{latex}
 %   \documentclass[degree=bachelor, language=english]{thuthesis}
 % \end{latex}
@@ -818,7 +822,8 @@
 % 本科生《写作指南》要求附录 A 为外文资料的调研阅读报告或书面翻译，二者择一。
 % 调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章，
 % 所以模板相应定义了 \env{survey} 和 \env{translation}。在这两个环境内部可以
-% 像论文正文一样使用标题和参考文献的命令，但不会影响外部：
+% 像论文正文一样使用标题和参考文献的命令，但不会影响外部。同时，阅读报告默认切换书写语言为英语，
+% 书面翻译默认切换为中文。如有需要，可以通过 \cs{thusetup} 再次更改。
 %
 % \begin{latex}
 %   \begin{survey}
@@ -964,10 +969,11 @@
 %    \end{macrocode}
 %
 % \begin{macro}{\thusetup}
-% 提供一个 \cs{thusetup} 命令支持 \emph{key-value} 的方式来设置。
+% 提供一个 \cs{thusetup} 命令支持 \emph{key-value} 的方式来设置。为了支持在文章中切换语言，改变设置后需要调用 \cs{setlanguage}。
 %    \begin{macrocode}
-\newcommand\thusetup{%
-  \kvsetkeys{thu}%
+\newcommand\thusetup[1]{%
+  \kvsetkeys{thu}{#1}%
+  \thu@setlanguage%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1585,29 +1591,10 @@
 % \unicodechar{2E3A}，
 % 所以要根据语言设置正确的字体。
 % \footnote{\url{https://github.com/CTeX-org/ctex-kit/issues/389}}
-% 所以要根据语言设置正确的字体。
+% 同时，也需要根据语言切换各种环境和对象的名称。
 %    \begin{macrocode}
 \newcommand\thu@setchinese{%
   \xeCJKResetPunctClass
-}
-\newcommand\thu@setenglish{%
-  \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
-  \xeCJKDeclareCharClass{HalfRight}{
-    "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
-  }%
-}
-\newcommand\thu@setdefaultlanguage{%
-  \ifthu@language@chinese
-    \thu@setchinese
-  \else
-    \thu@setenglish
-  \fi
-}
-%    \end{macrocode}
-%
-% 中英文翻译：
-%    \begin{macrocode}
-\ifthu@language@chinese
   \ctexset{
     chapter/name   = {第,章},
     appendixname   = 附录,
@@ -1619,60 +1606,114 @@
     bibname        = 参考文献,
     indexname      = 索引,
   }
-  \newcommand\thu@denotation@name{主要符号对照表}
-  \newcommand\listequationname{公式索引}
-  \newcommand\equationname{公式}
-  \newcommand\thu@assumption@name{假设}
-  \newcommand\thu@definition@name{定义}
-  \newcommand\thu@proposition@name{命题}
-  \newcommand\thu@lemma@name{引理}
-  \newcommand\thu@theorem@name{定理}
-  \newcommand\thu@axiom@name{公理}
-  \newcommand\thu@corollary@name{推论}
-  \newcommand\thu@exercise@name{练习}
-  \newcommand\thu@example@name{例}
-  \newcommand\thu@remark@name{注释}
-  \newcommand\thu@problem@name{问题}
-  \newcommand\thu@conjecture@name{猜想}
-  \newcommand\thu@proof@name{证明}
-  \newcommand\thu@theorem@separator{：}
-  \newcommand\thu@ack@name{致\hspace{\ccwd}谢}
+  \renewcommand\thu@denotation@name{主要符号对照表}
+  \renewcommand\listequationname{公式索引}
+  \renewcommand\equationname{公式}
+  \renewcommand\thu@assumption@name{假设}
+  \renewcommand\thu@definition@name{定义}
+  \renewcommand\thu@proposition@name{命题}
+  \renewcommand\thu@lemma@name{引理}
+  \renewcommand\thu@theorem@name{定理}
+  \renewcommand\thu@axiom@name{公理}
+  \renewcommand\thu@corollary@name{推论}
+  \renewcommand\thu@exercise@name{练习}
+  \renewcommand\thu@example@name{例}
+  \renewcommand\thu@remark@name{注释}
+  \renewcommand\thu@problem@name{问题}
+  \renewcommand\thu@conjecture@name{猜想}
+  \renewcommand\thu@proof@name{证明}
+  \renewcommand\thu@theorem@separator{：}
+  \renewcommand\thu@ack@name{致\hspace{\ccwd}谢}
   \ifthu@degree@bachelor
-    \newcommand\thu@resume@title{在学期间参加课题的研究成果}
+    \renewcommand\thu@resume@title{在学期间参加课题的研究成果}
   \else
     \ifthu@degree@postdoc
-      \newcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
+      \renewcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
     \else
-      \newcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
+      \renewcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
     \fi
   \fi
-\else
-  \newcommand\thu@denotation@name{Nomenclature}
-  \newcommand\listequationname{List of Equations}
-  \newcommand\equationname{Equation}
-  \newcommand\thu@assumption@name{Assumption}
-  \newcommand\thu@definition@name{Definition}
-  \newcommand\thu@proposition@name{Proposition}
-  \newcommand\thu@lemma@name{Lemma}
-  \newcommand\thu@theorem@name{Theorem}
-  \newcommand\thu@axiom@name{Axiom}
-  \newcommand\thu@corollary@name{Corollary}
-  \newcommand\thu@exercise@name{Exercise}
-  \newcommand\thu@example@name{Example}
-  \newcommand\thu@remark@name{Remark}
-  \newcommand\thu@problem@name{Problem}
-  \newcommand\thu@conjecture@name{Conjecture}
-  \newcommand\thu@proof@name{proof}
-  \newcommand\thu@theorem@separator{: }
-  \newcommand\thu@ack@name{Acknowledgements}
+}
+\newcommand\thu@setenglish{%
+  \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
+  \xeCJKDeclareCharClass{HalfRight}{
+    "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
+  }%
+  \renewcommand\thu@denotation@name{Nomenclature}
+  \renewcommand\listequationname{List of Equations}
+  \renewcommand\equationname{Equation}
+  \renewcommand\thu@assumption@name{Assumption}
+  \renewcommand\thu@definition@name{Definition}
+  \renewcommand\thu@proposition@name{Proposition}
+  \renewcommand\thu@lemma@name{Lemma}
+  \renewcommand\thu@theorem@name{Theorem}
+  \renewcommand\thu@axiom@name{Axiom}
+  \renewcommand\thu@corollary@name{Corollary}
+  \renewcommand\thu@exercise@name{Exercise}
+  \renewcommand\thu@example@name{Example}
+  \renewcommand\thu@remark@name{Remark}
+  \renewcommand\thu@problem@name{Problem}
+  \renewcommand\thu@conjecture@name{Conjecture}
+  \renewcommand\thu@proof@name{proof}
+  \renewcommand\thu@theorem@separator{: }
+  \renewcommand\thu@ack@name{Acknowledgements}
   \ifthu@degree@bachelor
-    \newcommand\thu@resume@title{Research Achievements}
+    \renewcommand\thu@resume@title{Research Achievements}
   \else
-    \newcommand\thu@resume@title{Resume, Publications and Research Achievements}
+    \renewcommand\thu@resume@title{Resume, Publications and Research Achievements}
   \fi
-\fi
+}
+%    \end{macrocode}
+% 
+% 同时为了使得切换语言时不报错，需要预先定义命令占位符：
+%    \begin{macrocode}
+\providecommand\thu@denotation@name{}
+\providecommand\listequationname{}
+\providecommand\equationname{}
+\providecommand\thu@assumption@name{}
+\providecommand\thu@definition@name{}
+\providecommand\thu@definition@name{}
+\providecommand\thu@proposition@name{}
+\providecommand\thu@proposition@name{}
+\providecommand\thu@lemma@name{}
+\providecommand\thu@lemma@name{}
+\providecommand\thu@theorem@name{}
+\providecommand\thu@theorem@name{}
+\providecommand\thu@axiom@name{}
+\providecommand\thu@axiom@name{}
+\providecommand\thu@corollary@name{}
+\providecommand\thu@corollary@name{}
+\providecommand\thu@exercise@name{}
+\providecommand\thu@exercise@name{}
+\providecommand\thu@example@name{}
+\providecommand\thu@example@name{}
+\providecommand\thu@remark@name{}
+\providecommand\thu@remark@name{}
+\providecommand\thu@problem@name{}
+\providecommand\thu@problem@name{}
+\providecommand\thu@conjecture@name{}
+\providecommand\thu@conjecture@name{}
+\providecommand\thu@proof@name{}
+\providecommand\thu@proof@name{}
+\providecommand\thu@theorem@separator{}
+\providecommand\thu@theorem@separator{}
+\providecommand\thu@ack@name{}
+\providecommand\thu@ack@name{}
+\providecommand\thu@resume@title{}
 %    \end{macrocode}
 %
+% 提供一个切换语言的命令，并主动调用一次以进行默认配置。
+%    \begin{macrocode}
+\newcommand\thu@setlanguage{%
+  \ifthu@language@chinese
+    \thu@setchinese
+  \else
+    \thu@setenglish
+  \fi
+}
+
+\thu@setlanguage
+%    \end{macrocode}
 %
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
@@ -2969,7 +3010,7 @@
 %    \begin{macrocode}
 \newenvironment{abstract}{%
   \ifthu@degree@bachelor\clearpage\else\cleardoublepage\fi
-  \thu@setchinese
+  \thu@setchinese  % temporarily switch to Chinese
   \thu@chapter*[]{\cabstractname} % no tocline
 }{%
 %    \end{macrocode}
@@ -2980,7 +3021,7 @@
   \thu@put@keywords{\textbf{关键词：}}{%
     \thu@clist@use{\thu@keywords}{；}%
   }%
-  \thu@setdefaultlanguage
+  \thu@setlanguage % switch back to user defined language
 }
 %    \end{macrocode}
 % \end{environment}
@@ -2991,7 +3032,7 @@
 % 摘要内容用小四号 Times New Roman。
 %    \begin{macrocode}
 \newenvironment{abstract*}{%
-  \thu@setenglish
+  \thu@setenglish % temporarily switch to English
   \thu@chapter*[]{\eabstractname} % no tocline
 }{%
   \ifthu@degree@doctor\vfill\else\vskip12bp\fi
@@ -3000,7 +3041,7 @@
   }{%
     \thu@clist@use{\thu@keywords@en}{; }%
   }%
-  \thu@setdefaultlanguage
+  \thu@setlanguage % switch back to user defined language
 }
 %    \end{macrocode}
 % \end{environment}
@@ -3288,7 +3329,7 @@
 %    \begin{macrocode}
 \newenvironment{translation}{%
   \chapter{外文资料的书面翻译}%
-  \thu@setenglish
+  \thu@setchinese
   \let\title\thu@appendix@title
   \let\maketitle\thu@appendix@maketitle
   \renewcommand\bibname{书面翻译对应的原文索引}%
