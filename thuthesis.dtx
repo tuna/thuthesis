@@ -1924,17 +1924,26 @@
 \renewcommand{\floatpagefraction}{0.60}
 %    \end{macrocode}
 %
-% 定制浮动图形和表格标题样式
+% 定制浮动图形和表格标题样式，以及改变附录中浮动体的编号规则：
 % \begin{itemize}
 %   \item 图表标题字体为 11pt， 这里写作大五号
-%   \item 去掉图表号后面的冒号。图序与图名文字之间空一个汉字符宽度。
+%   \item 去掉图表号后面的冒号，图序与图名文字之间空一个汉字符宽度
+%   \item 本科生附录中的各种浮动体需要编号为类似 A-1 的形式
 %   \item 图：caption 在下，段前空 6 磅，段后空 12 磅
 %   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
 % \end{itemize}
 %    \begin{macrocode}
 \ifthu@degree@bachelor
-  \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
-  \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
+  \AtBeginDocument{ % delay the check until all packages are loaded
+    \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
+    \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
+    \ifcsname thealgorithm\endcsname
+      \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}} % from algorithm
+    \fi
+    \ifcsname thelisting\endcsname
+      \g@addto@macro\appendix{\renewcommand*{\thelisting}{\thechapter-\arabic{listing}}} % from minted
+    \fi
+  }
 \fi
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
