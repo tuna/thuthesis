@@ -295,7 +295,7 @@
 % 的审查教师协商使用何种语言书写论文。
 %
 % 在正文中，随时可以使用 \cs{thusetup} 更改 \option{language} 选项，以更改接下来部分的书写语言。
-% 标点格式、章节标题、图表、证明环境名称等将会随语言设置相应改变。
+% 标点格式、图表名称、环境名称等将会随语言设置相应改变。但章节标题等框架语言不会改变。
 %
 % \begin{latex}
 %   \documentclass[degree=bachelor, language=english]{thuthesis}
@@ -493,6 +493,14 @@
 %     discipline-level-1 = {流动站（一级学科）名称},
 %     discipline-level-2 = {专业（二级学科）名称},
 %     start-date         = {2011-07-01}, % 研究工作起始时间
+%   }
+% \end{latex}
+%
+% \subsubsection{书写语言}
+% 关于此选项的作用，请参见模板的 \option{language} 选项。
+% \begin{latex}
+%   \thusetup{
+%     language = {english},
 %   }
 % \end{latex}
 %
@@ -823,7 +831,7 @@
 % 调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章，
 % 所以模板相应定义了 \env{survey} 和 \env{translation}。在这两个环境内部可以
 % 像论文正文一样使用标题和参考文献的命令，但不会影响外部。同时，阅读报告默认切换书写语言为英语，
-% 书面翻译默认切换为中文。如有需要，可以通过 \cs{thusetup} 再次更改。
+% 书面翻译默认切换为中文。如有需要，可以通过 \cs{thusetup} 的 \option{language} 参数再次更改。
 %
 % \begin{latex}
 %   \begin{survey}
@@ -1577,6 +1585,42 @@
 %
 % \subsubsection{语言设置}
 %
+% 首先根据语言定义各种不会变化的名称。
+%    \begin{macrocode}
+
+\ifthu@language@chinese
+  \ctexset{
+    chapter/name   = {第,章},
+    appendixname   = 附录,
+    contentsname   = {目\hspace{\ccwd}录},
+    listfigurename = 插图索引,
+    listtablename  = 表格索引,
+    bibname        = 参考文献,
+    indexname      = 索引,
+  }
+  \newcommand\thu@denotation@name{主要符号对照表}
+  \newcommand\listequationname{公式索引}
+  \newcommand\thu@ack@name{致\hspace{\ccwd}谢}
+  \ifthu@degree@bachelor
+    \newcommand\thu@resume@title{在学期间参加课题的研究成果}
+  \else
+    \ifthu@degree@postdoc
+      \newcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
+    \else
+      \newcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
+    \fi
+  \fi
+\else
+  \newcommand\thu@denotation@name{Nomenclature}
+  \newcommand\listequationname{List of Equations}
+  \newcommand\thu@ack@name{Acknowledgements}
+  \ifthu@degree@bachelor
+    \newcommand\thu@resume@title{Research Achievements}
+  \else
+    \newcommand\thu@resume@title{Resume, Publications and Research Achievements}
+  \fi
+\fi
+%    \end{macrocode}
 % \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
 % 由于 Unicode 的一些标点符号是中西文混用的：
 % \unicodechar{00B7}、
@@ -1591,23 +1635,14 @@
 % \unicodechar{2E3A}，
 % 所以要根据语言设置正确的字体。
 % \footnote{\url{https://github.com/CTeX-org/ctex-kit/issues/389}}
-% 同时，也需要根据语言切换各种环境和对象的名称。
+% 此外切换语言时，有一部分名称是需要被重新定义的。
 %    \begin{macrocode}
 \newcommand\thu@setchinese{%
   \xeCJKResetPunctClass
   \ctexset{
-    chapter/name   = {第,章},
-    appendixname   = 附录,
-    contentsname   = {目\hspace{\ccwd}录},
-    listfigurename = 插图索引,
-    listtablename  = 表格索引,
     figurename     = 图,
     tablename      = 表,
-    bibname        = 参考文献,
-    indexname      = 索引,
   }
-  \renewcommand\thu@denotation@name{主要符号对照表}
-  \renewcommand\listequationname{公式索引}
   \renewcommand\equationname{公式}
   \renewcommand\thu@assumption@name{假设}
   \renewcommand\thu@definition@name{定义}
@@ -1623,16 +1658,6 @@
   \renewcommand\thu@conjecture@name{猜想}
   \renewcommand\thu@proof@name{证明}
   \renewcommand\thu@theorem@separator{：}
-  \renewcommand\thu@ack@name{致\hspace{\ccwd}谢}
-  \ifthu@degree@bachelor
-    \renewcommand\thu@resume@title{在学期间参加课题的研究成果}
-  \else
-    \ifthu@degree@postdoc
-      \renewcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
-    \else
-      \renewcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
-    \fi
-  \fi
 }
 \newcommand\thu@setenglish{%
   \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
@@ -1640,18 +1665,9 @@
     "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
   }%
   \ctexset{
-    chapter/name   = {Chapter\ ,},
-    appendixname   = Appendix,
-    contentsname   = {Table of Contents},
-    listfigurename = {List of Figures},
-    listtablename  = {List of Tables},
     figurename     = {Figure},
     tablename      = {Table},
-    bibname        = {References},
-    indexname      = {Index},
   }
-  \renewcommand\thu@denotation@name{Nomenclature}
-  \renewcommand\listequationname{List of Equations}
   \renewcommand\equationname{Equation}
   \renewcommand\thu@assumption@name{Assumption}
   \renewcommand\thu@definition@name{Definition}
@@ -1667,50 +1683,26 @@
   \renewcommand\thu@conjecture@name{Conjecture}
   \renewcommand\thu@proof@name{proof}
   \renewcommand\thu@theorem@separator{: }
-  \renewcommand\thu@ack@name{Acknowledgements}
-  \ifthu@degree@bachelor
-    \renewcommand\thu@resume@title{Research Achievements}
-  \else
-    \renewcommand\thu@resume@title{Resume, Publications and Research Achievements}
-  \fi
 }
 %    \end{macrocode}
 % 
-% 同时为了使得切换语言时不报错，需要预先定义命令占位符：
+% 同时为了使得切换语言时不产生重复定义的错误，需要预先定义这些可变命令的占位符：
 %    \begin{macrocode}
-\providecommand\thu@denotation@name{}
-\providecommand\listequationname{}
 \providecommand\equationname{}
 \providecommand\thu@assumption@name{}
 \providecommand\thu@definition@name{}
-\providecommand\thu@definition@name{}
-\providecommand\thu@proposition@name{}
 \providecommand\thu@proposition@name{}
 \providecommand\thu@lemma@name{}
-\providecommand\thu@lemma@name{}
-\providecommand\thu@theorem@name{}
 \providecommand\thu@theorem@name{}
 \providecommand\thu@axiom@name{}
-\providecommand\thu@axiom@name{}
-\providecommand\thu@corollary@name{}
 \providecommand\thu@corollary@name{}
 \providecommand\thu@exercise@name{}
-\providecommand\thu@exercise@name{}
-\providecommand\thu@example@name{}
 \providecommand\thu@example@name{}
 \providecommand\thu@remark@name{}
-\providecommand\thu@remark@name{}
-\providecommand\thu@problem@name{}
 \providecommand\thu@problem@name{}
 \providecommand\thu@conjecture@name{}
-\providecommand\thu@conjecture@name{}
-\providecommand\thu@proof@name{}
 \providecommand\thu@proof@name{}
 \providecommand\thu@theorem@separator{}
-\providecommand\thu@theorem@separator{}
-\providecommand\thu@ack@name{}
-\providecommand\thu@ack@name{}
-\providecommand\thu@resume@title{}
 %    \end{macrocode}
 %
 % 提供一个切换语言的命令，并主动调用一次以进行默认配置。
