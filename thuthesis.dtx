@@ -2007,12 +2007,6 @@
   \AtBeginDocument{ % delay the check until all packages are loaded
     \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
     \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
-    \ifcsname thealgorithm\endcsname
-      \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}} % from algorithm
-    \fi
-    \ifcsname thelisting\endcsname
-      \g@addto@macro\appendix{\renewcommand*{\thelisting}{\thechapter-\arabic{listing}}} % from minted
-    \fi
   }
 \fi
 \let\old@tabular\@tabular
@@ -3617,6 +3611,40 @@
   \newtheorem{remark}{\thu@remark@name}[chapter]%
   \newtheorem{problem}{\thu@problem@name}[chapter]%
   \newtheorem{conjecture}{\thu@conjecture@name}[chapter]%
+}
+%    \end{macrocode}
+% 
+% \subsubsection{\pkg{algorithm} 宏包}
+%
+%    \begin{macrocode}
+\thu@at@end@package{algorithm}{
+  \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}} % unify numbering in appendix
+  \newcommand\thu@set@algorithm@language{%
+    \ifthu@language@chinese
+      \floatname{algorithm}{算法}%
+    \else
+      \floatname{algorithm}{Algorithm}%
+    \fi
+  }
+  \thu@set@algorithm@language
+  \thu@add@code{language}{\thu@set@algorithm@language}
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{minted} 宏包}
+%
+%    \begin{macrocode}
+\thu@at@end@package{minted}{
+  \g@addto@macro\appendix{\renewcommand*{\thelisting}{\thechapter-\arabic{listing}}} % unify numbering in appendix
+  \newcommand\thu@set@listing@language{%
+    \ifthu@language@chinese
+      \floatname{listing}{代码}%
+    \else
+      \floatname{listing}{Listing}%
+    \fi
+  }
+  \thu@set@listing@language
+  \thu@add@code{language}{\thu@set@listing@language}
 }
 %    \end{macrocode}
 %
