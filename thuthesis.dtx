@@ -3614,11 +3614,14 @@
 }
 %    \end{macrocode}
 % 
-% \subsubsection{\pkg{algorithm} 宏包}
+% \subsubsection{\pkg{algorithm} 与 \package{minted} 宏包}
+%
+% 使 \cs{algorithm} 和 \cs{listing} 环境的名称随语言设置而改变，
+% 并使其在附录中的编号规则与图、表等一致。
 %
 %    \begin{macrocode}
 \thu@at@end@package{algorithm}{
-  \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}} % unify numbering in appendix
+  \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}}%
   \newcommand\thu@set@algorithm@language{%
     \ifthu@language@chinese
       \floatname{algorithm}{算法}%
@@ -3629,13 +3632,9 @@
   \thu@set@algorithm@language
   \thu@option@hook{language}{\thu@set@algorithm@language}
 }
-%    \end{macrocode}
-%
-% \subsubsection{\pkg{minted} 宏包}
-%
-%    \begin{macrocode}
+
 \thu@at@end@package{minted}{
-  \g@addto@macro\appendix{\renewcommand*{\thelisting}{\thechapter-\arabic{listing}}} % unify numbering in appendix
+  \g@addto@macro\appendix{\renewcommand*{\thelisting}{\thechapter-\arabic{listing}}}%
   \newcommand\thu@set@listing@language{%
     \ifthu@language@chinese
       \floatname{listing}{代码}%
