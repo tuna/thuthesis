@@ -12,6 +12,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 允许使用边注
 - 新增 `amsthm` 支持
 
+## Changed
+- 附录的图、表不再加入索引
+
 ## [v6.0.2] - 2020-02-23
 ## Fixed
 - 修复图表公式目录内容缺失 (#467)

@@ -7505,6 +7505,9 @@ Completed box being shipped out [10]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\write1{\@writefile{toc}{\protect \setcounter {tocdepth}{0}}}
+...\write1{\@writefile{lof}{\protect \setcounter {tocdepth}{0}}}
+...\write1{\@writefile{lot}{\protect \setcounter {tocdepth}{0}}}
+...\write1{\@writefile{loe}{\protect \setcounter {tocdepth}{0}}}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -3.97446
 ...\glue 0.0 plus 1.0fil

@@ -3361,8 +3361,15 @@
 }
 \thu@option@hook{toc-depth}{%
   \addtocontents{toc}{\protect\setcounter{tocdepth}{\thu@toc@depth}}%
+  \addtocontents{lof}{\protect\setcounter{tocdepth}{\thu@toc@depth}}%
+  \addtocontents{lot}{\protect\setcounter{tocdepth}{\thu@toc@depth}}%
+  \addtocontents{loe}{\protect\setcounter{tocdepth}{\thu@toc@depth}}%
 }
-\g@addto@macro\appendix{\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}}
+\g@addto@macro\appendix{%
+  \thusetup{
+    toc-depth = 0,
+  }
+}
 %    \end{macrocode}
 %
 % 本科生《写作指南》有独特的要求：附录 A 为外文资料的调研阅读报告或书面翻译，
