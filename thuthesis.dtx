@@ -217,11 +217,13 @@
 % \label{sec:xelatex}
 % 如果用户无法使用以上两种较为方便的编译方法，就只能按照以下复杂的办法手动编译。
 % \begin{shell}
-%   $ xetex thuthesis.ins  # 生成 thuthesis.cls
+%   $ xetex thuthesis.ins         # 生成 thuthesis.cls
 %   $ xelatex main.tex
-%   $ bibtex main.tex      # 生成 bbl 文件
-%   $ xelatex main.tex     # 解决引用
-%   $ xelatex main.tex     # 生成完整的 pdf 文件
+%   $ bibtex main.aux             # 生成 bbl 文件
+%   $ bibtex main-survey.aux      # 本科生的调研报告的参考文献
+%   $ bibtex main-translation.aux # 本科生的外文资料翻译的索引
+%   $ xelatex main.tex            # 解决引用
+%   $ xelatex main.tex            # 生成完整的 pdf 文件
 % \end{shell}
 %
 % 下面的命令用来生成用户手册，

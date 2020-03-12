@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+## Fixed
+- 本科生附录的调研报告使用英文（#479）
+- 修正本科生附录的 `algorithm` 和 `listings` 环境的编号格式
+
+## Added
+- 允许使用边注
 
 ## [v6.0.2] - 2020-02-23
 ## Fixed
