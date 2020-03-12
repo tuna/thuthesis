@@ -1103,7 +1103,7 @@
 % 定义接口向 |key| 添加 |code|：
 %
 %    \begin{macrocode}
-\newcommand\thu@add@code[2]{%
+\newcommand\thu@option@hook[2]{%
   \expandafter\g@addto@macro\csname thu@#1@@code\endcsname{#2}%
 }
 %    \end{macrocode}
@@ -1148,7 +1148,7 @@
   \fi
 }
 \thu@set@graduate
-\thu@add@code{degree}{%
+\thu@option@hook{degree}{%
   \thu@set@graduate
 }
 %    \end{macrocode}
@@ -1581,7 +1581,7 @@
 % \cs{thu@reset@main@language} 则用于正文中恢复为主要言语。
 %    \begin{macrocode}
 \let\thu@main@language\thu@language
-\thu@add@code{language}{%
+\thu@option@hook{language}{%
   \ifx\@begindocumenthook\@undefined
     \let\thu@main@language\thu@language
   \fi
@@ -1643,8 +1643,8 @@
 % 仅在导言区设置 \option{language} 时才会修改不同语言的章节名称。
 %    \begin{macrocode}
 \thu@set@chapter@names
-\thu@add@code{degree}{\thu@set@chapter@names}
-\thu@add@code{language}{%
+\thu@option@hook{degree}{\thu@set@chapter@names}
+\thu@option@hook{language}{%
   \ifx\@begindocumenthook\@undefined
     \thu@set@chapter@names
   \fi
@@ -1683,7 +1683,7 @@
   \fi
 }
 \thu@set@punctuations
-\thu@add@code{language}{\thu@set@punctuations}
+\thu@option@hook{language}{\thu@set@punctuations}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -1733,7 +1733,7 @@
   \fi
 }
 \thu@set@names
-\thu@add@code{language}{\thu@set@names}
+\thu@option@hook{language}{\thu@set@names}
 %    \end{macrocode}
 %
 % \subsubsection{页眉页脚}
@@ -1854,7 +1854,7 @@
   \fi
 }
 \thu@set@math@ellipsis
-\thu@add@code{language}{\thu@set@math@ellipsis}
+\thu@option@hook{language}{\thu@set@math@ellipsis}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2007,12 +2007,6 @@
   \AtBeginDocument{ % delay the check until all packages are loaded
     \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
     \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
-    \ifcsname thealgorithm\endcsname
-      \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}} % from algorithm
-    \fi
-    \ifcsname thelisting\endcsname
-      \g@addto@macro\appendix{\renewcommand*{\thelisting}{\thechapter-\arabic{listing}}} % from minted
-    \fi
   }
 \fi
 \let\old@tabular\@tabular
@@ -3258,7 +3252,7 @@
     name = cite@style,
   }
 }
-\thu@add@code{cite-style}{\@nameuse{bibstyle@thuthesis-\thu@cite@style}}
+\thu@option@hook{cite-style}{\@nameuse{bibstyle@thuthesis-\thu@cite@style}}
 %    \end{macrocode}
 %
 % 下面修改 \pkg{natbib} 的引用格式，主要是将页码写在上标位置。
@@ -3331,7 +3325,7 @@
     name = toc@depth,
   },
 }
-\thu@add@code{toc-depth}{%
+\thu@option@hook{toc-depth}{%
   \addtocontents{toc}{\protect\setcounter{tocdepth}{\thu@toc@depth}}%
 }
 \g@addto@macro\appendix{\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}}
@@ -3589,7 +3583,7 @@
     \fi
   }
   \thu@set@siunitx@language
-  \thu@add@code{language}{\thu@set@siunitx@language}
+  \thu@option@hook{language}{\thu@set@siunitx@language}
 }
 %    \end{macrocode}
 %
@@ -3617,6 +3611,39 @@
   \newtheorem{remark}{\thu@remark@name}[chapter]%
   \newtheorem{problem}{\thu@problem@name}[chapter]%
   \newtheorem{conjecture}{\thu@conjecture@name}[chapter]%
+}
+%    \end{macrocode}
+% 
+% \subsubsection{\pkg{algorithm} 与 \pkg{minted} 宏包}
+%
+% 使 \env{algorithm} 和 \env{listing} 环境的名称随语言设置而改变，
+% 并使其在附录中的编号规则与图、表等一致。
+%
+%    \begin{macrocode}
+\thu@at@end@package{algorithm}{
+  \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}}%
+  \newcommand\thu@set@algorithm@language{%
+    \ifthu@language@chinese
+      \floatname{algorithm}{算法}%
+    \else
+      \floatname{algorithm}{Algorithm}%
+    \fi
+  }
+  \thu@set@algorithm@language
+  \thu@option@hook{language}{\thu@set@algorithm@language}
+}
+
+\thu@at@end@package{minted}{
+  \g@addto@macro\appendix{\renewcommand*{\thelisting}{\thechapter-\arabic{listing}}}%
+  \newcommand\thu@set@listing@language{%
+    \ifthu@language@chinese
+      \floatname{listing}{代码}%
+    \else
+      \floatname{listing}{Listing}%
+    \fi
+  }
+  \thu@set@listing@language
+  \thu@option@hook{language}{\thu@set@listing@language}
 }
 %    \end{macrocode}
 %
