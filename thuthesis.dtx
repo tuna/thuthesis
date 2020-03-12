@@ -981,7 +981,7 @@
 %    \begin{macrocode}
 \newcommand\thusetup[1]{%
   \kvsetkeys{thu}{#1}%
-  \thu@setlanguage%
+  \thu@set@language@default%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1116,7 +1116,7 @@
 % 定义接口向 |key| 添加 |code|：
 %
 %    \begin{macrocode}
-\newcommand\thu@addto[2]{%
+\newcommand\thu@add@code[2]{%
   \expandafter\g@addto@macro\csname thu@#1@@code\endcsname{#2}%
 }
 %    \end{macrocode}
@@ -1600,25 +1600,25 @@
     indexname      = 索引,
   }
   \newcommand\thu@denotation@name{主要符号对照表}
-  \newcommand\listequationname{公式索引}
-  \newcommand\thu@ack@name{致\hspace{\ccwd}谢}
+  \newcommand\thu@list@equation@name{公式索引}
+  \newcommand\thu@acknowledgements@name{致\hspace{\ccwd}谢}
   \ifthu@degree@bachelor
-    \newcommand\thu@resume@title{在学期间参加课题的研究成果}
+    \newcommand\thu@resume@name{在学期间参加课题的研究成果}
   \else
     \ifthu@degree@postdoc
-      \newcommand\thu@resume@title{个人简历、发表的学术论文与科研成果}
+      \newcommand\thu@resume@name{个人简历、发表的学术论文与科研成果}
     \else
-      \newcommand\thu@resume@title{个人简历、在学期间发表的学术论文与研究成果}
+      \newcommand\thu@resume@name{个人简历、在学期间发表的学术论文与研究成果}
     \fi
   \fi
 \else
   \newcommand\thu@denotation@name{Nomenclature}
-  \newcommand\listequationname{List of Equations}
-  \newcommand\thu@ack@name{Acknowledgements}
+  \newcommand\thu@list@equation@name{List of Equations}
+  \newcommand\thu@acknowledgements@name{Acknowledgements}
   \ifthu@degree@bachelor
-    \newcommand\thu@resume@title{Research Achievements}
+    \newcommand\thu@resume@name{Research Achievements}
   \else
-    \newcommand\thu@resume@title{Resume, Publications and Research Achievements}
+    \newcommand\thu@resume@name{Resume, Publications and Research Achievements}
   \fi
 \fi
 %    \end{macrocode}
@@ -1638,13 +1638,13 @@
 % \footnote{\url{https://github.com/CTeX-org/ctex-kit/issues/389}}
 % 此外切换语言时，有一部分名称是需要被重新定义的。
 %    \begin{macrocode}
-\newcommand\thu@setchinese{%
+\newcommand\thu@set@language@chinese{%
   \xeCJKResetPunctClass
   \ctexset{
     figurename     = 图,
     tablename      = 表,
   }
-  \renewcommand\equationname{公式}
+  \renewcommand\thu@equation@name{公式}
   \renewcommand\thu@assumption@name{假设}
   \renewcommand\thu@definition@name{定义}
   \renewcommand\thu@proposition@name{命题}
@@ -1660,7 +1660,7 @@
   \renewcommand\thu@proof@name{证明}
   \renewcommand\thu@theorem@separator{：}
 }
-\newcommand\thu@setenglish{%
+\newcommand\thu@set@language@english{%
   \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
   \xeCJKDeclareCharClass{HalfRight}{
     "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
@@ -1669,7 +1669,7 @@
     figurename     = {Figure},
     tablename      = {Table},
   }
-  \renewcommand\equationname{Equation}
+  \renewcommand\thu@equation@name{Equation}
   \renewcommand\thu@assumption@name{Assumption}
   \renewcommand\thu@definition@name{Definition}
   \renewcommand\thu@proposition@name{Proposition}
@@ -1686,10 +1686,10 @@
   \renewcommand\thu@theorem@separator{: }
 }
 %    \end{macrocode}
-% 
+%
 % 同时为了使得切换语言时不产生重复定义的错误，需要预先定义这些可变命令的占位符：
 %    \begin{macrocode}
-\providecommand\equationname{}
+\providecommand\thu@equation@name{}
 \providecommand\thu@assumption@name{}
 \providecommand\thu@definition@name{}
 \providecommand\thu@proposition@name{}
@@ -1708,15 +1708,15 @@
 %
 % 提供一个切换语言的命令，并主动调用一次以进行默认配置。
 %    \begin{macrocode}
-\newcommand\thu@setlanguage{%
+\newcommand\thu@set@language@default{%
   \ifthu@language@chinese
-    \thu@setchinese
+    \thu@set@language@chinese
   \else
-    \thu@setenglish
+    \thu@set@language@english
   \fi
 }
 
-\thu@setlanguage
+\thu@set@language@default
 %    \end{macrocode}
 %
 % \subsubsection{页眉页脚}
@@ -1935,9 +1935,9 @@
 \iffalse
 \ifthu@degree@bachelor
   \def\thu@maketag#1{\maketag@@@{%
-    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)}}
+    (\ignorespaces\text{\thu@equation@name\hskip0.5em}#1\unskip\@@italiccorr)}}
   \def\tagform@#1{\maketag@@@{%
-    (\ignorespaces\text{\equationname\hskip0.5em}#1\unskip\@@italiccorr)\equcaption{#1}}}
+    (\ignorespaces\text{\thu@equation@name\hskip0.5em}#1\unskip\@@italiccorr)\equcaption{#1}}}
 \fi
 \fi
 \def\thu@maketag#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)}}
@@ -2022,11 +2022,11 @@
 % \label{sec:theor}
 %    \begin{macrocode}
 \ifthu@degree@bachelor
-  \newcommand{\cabstractname}{中文摘要}
-  \newcommand{\eabstractname}{ABSTRACT}
+  \newcommand{\thu@abstract@name}{中文摘要}
+  \newcommand{\thu@abstract@name@en}{ABSTRACT}
 \else
-  \newcommand{\cabstractname}{摘\hspace{\ccwd}要}
-  \newcommand{\eabstractname}{Abstract}
+  \newcommand{\thu@abstract@name}{摘\hspace{\ccwd}要}
+  \newcommand{\thu@abstract@name@en}{Abstract}
 \fi
 %    \end{macrocode}
 %
@@ -2081,7 +2081,7 @@
 \newcommand\thu@chapter@titleformat[1]{%
   \ifthu@degree@bachelor #1\else%
     \ifthenelse%
-      {\equal{#1}{\eabstractname}}%
+      {\equal{#1}{\thu@abstract@name@en}}%
       {\bfseries #1}%
       {#1}%
   \fi}
@@ -3023,8 +3023,8 @@
 %    \begin{macrocode}
 \newenvironment{abstract}{%
   \ifthu@degree@bachelor\clearpage\else\cleardoublepage\fi
-  \thu@setchinese  % temporarily switch to Chinese
-  \thu@chapter*[]{\cabstractname} % no tocline
+  \thu@set@language@chinese  % temporarily switch to Chinese
+  \thu@chapter*[]{\thu@abstract@name} % no tocline
 }{%
 %    \end{macrocode}
 %
@@ -3034,7 +3034,7 @@
   \thu@put@keywords{\textbf{关键词：}}{%
     \thu@clist@use{\thu@keywords}{；}%
   }%
-  \thu@setlanguage % switch back to user defined language
+  \thu@set@language@default % switch back to main language
 }
 %    \end{macrocode}
 % \end{environment}
@@ -3045,8 +3045,8 @@
 % 摘要内容用小四号 Times New Roman。
 %    \begin{macrocode}
 \newenvironment{abstract*}{%
-  \thu@setenglish % temporarily switch to English
-  \thu@chapter*[]{\eabstractname} % no tocline
+  \thu@set@language@english % temporarily switch to English
+  \thu@chapter*[]{\thu@abstract@name@en} % no tocline
 }{%
   \ifthu@degree@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{%
@@ -3054,7 +3054,7 @@
   }{%
     \thu@clist@use{\thu@keywords@en}{; }%
   }%
-  \thu@setlanguage % switch back to user defined language
+  \thu@set@language@default % switch back to main language
 }
 %    \end{macrocode}
 % \end{environment}
@@ -3091,8 +3091,8 @@
 % \begin{environment}{acknowledgements}
 % 支持扫描文件替换。
 %    \begin{macrocode}
-\newcommand\thu@declarename{声\hspace{\ccwd}明}
-\newcommand{\thu@declaretext}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
+\newcommand\thu@statement@name{声\hspace{\ccwd}明}
+\newcommand{\thu@statement@text}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
   ，独立进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容外，本学位论
   文的研究成果不包含任何他人享有著作权的内容。对本论文所涉及的研究工作做出贡献的
   其他个人和集体，均已在文中以明确方式标明。}
@@ -3103,7 +3103,7 @@
 % 定义致谢与声明环境。
 %    \begin{macrocode}
 \newenvironment{acknowledgements}{%
-  \thu@chapter*{\thu@ack@name}%
+  \thu@chapter*{\thu@acknowledgements@name}%
 }{}
 %    \end{macrocode}
 %
@@ -3112,13 +3112,13 @@
 \newcommand\statement[1][]{%
   \def\thu@@tmp{#1}%
   \ifx\thu@@tmp\@empty
-    \thu@chapter*{\thu@declarename}%
-    \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm%
+    \thu@chapter*{\thu@statement@name}%
+    \par{\xiaosi\parindent2em\thu@statement@text}\vskip2cm%
     {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax
       \thu@backdate\thu@underline[2.5cm]\relax}%
   \else
     \includepdf[pagecommand={\thispagestyle{thu@empty}%
-      \addcontentsline{toc}{chapter}{\thu@declarename}%
+      \addcontentsline{toc}{chapter}{\thu@statement@name}%
     }]{#1}%
   \fi
 }
@@ -3322,7 +3322,7 @@
 %    \begin{macrocode}
 \newenvironment{survey}{%
   \chapter{外文资料的调研阅读报告}%
-  \thu@setenglish
+  \thu@set@language@english
   \let\title\thu@appendix@title
   \let\maketitle\thu@appendix@maketitle
   \renewcommand\bibname{参考文献}%
@@ -3333,7 +3333,7 @@
   \begin{bibunit}%
 }{%
   \end{bibunit}%
-  \thu@setlanguage % restore language
+  \thu@set@language@default % restore language
 }
 %    \end{macrocode}
 % \end{environment}
@@ -3343,7 +3343,7 @@
 %    \begin{macrocode}
 \newenvironment{translation}{%
   \chapter{外文资料的书面翻译}%
-  \thu@setchinese
+  \thu@set@language@chinese
   \let\title\thu@appendix@title
   \let\maketitle\thu@appendix@maketitle
   \renewcommand\bibname{书面翻译对应的原文索引}%
@@ -3354,7 +3354,7 @@
   \begin{bibunit}%
 }{%
   \end{bibunit}%
-  \thu@setlanguage % restore language
+  \thu@set@language@default % restore language
 }
 %    \end{macrocode}
 % \end{environment}
@@ -3391,7 +3391,7 @@
 % \begin{environment}{resume}
 % 个人简历发表文章等。
 %    \begin{macrocode}
-\newenvironment{resume}[1][\thu@resume@title]{%
+\newenvironment{resume}[1][\thu@resume@name]{%
   \thu@chapter*{#1}}{}
 %    \end{macrocode}
 % \end{environment}
@@ -3441,13 +3441,13 @@
 %
 % 这些宏包并非格式要求，但是为了方便同学们使用，在这里进行简单设置。
 %    \begin{macrocode}
-\newcommand\thu@atendpackage{\csname ctex_at_end_package:nn\endcsname}
+\newcommand\thu@at@end@package{\csname ctex_at_end_package:nn\endcsname}
 %    \end{macrocode}
 %
 % \subsubsection{\pkg{hyperref} 宏包}
 %
 %    \begin{macrocode}
-\thu@atendpackage{hyperref}{
+\thu@at@end@package{hyperref}{
   \hypersetup{
     linktoc            = all,
     bookmarksdepth     = 2,
@@ -3520,7 +3520,7 @@
 % \subsubsection{\pkg{nomencl} 宏包}
 %
 %    \begin{macrocode}
-\thu@atendpackage{nomencl}{
+\thu@at@end@package{nomencl}{
   \let\nomname\thu@denotation@name
   \def\thenomenclature{\begin{denotation}[\nom@tempdim]}
   \def\endthenomenclature{\end{denotation}}
@@ -3540,7 +3540,7 @@
 % \subsubsection{\pkg{siunitx} 宏包}
 %
 %    \begin{macrocode}
-\thu@atendpackage{siunitx}{%
+\thu@at@end@package{siunitx}{%
   \sisetup{
     group-minimum-digits = 4,
     separate-uncertainty = true,
@@ -3564,7 +3564,7 @@
     \fi
   }
   \thu@set@siunitx@language
-  \thu@addto{language}{\thu@set@siunitx@language}
+  \thu@add@code{language}{\thu@set@siunitx@language}
 }
 %    \end{macrocode}
 %
@@ -3572,7 +3572,7 @@
 %
 % 定理标题使用黑体，正文使用宋体，冒号隔开。
 %    \begin{macrocode}
-\thu@atendpackage{ntheorem}{%
+\thu@at@end@package{ntheorem}{%
   \theorembodyfont{\normalfont}%
   \theoremheaderfont{\normalfont\sffamily}%
   \theoremsymbol{\ensuremath{\square}}%
