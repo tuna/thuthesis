@@ -2606,52 +2606,86 @@
 %    \begin{macrocode}
 \newcommand\thu@titlepage@info{%
   \ifthu@degree@doctor
-    \thu@titlepage@info@doctor
+    \ifthu@degree@type@academic
+      \thu@titlepage@info@doctor@academic
+    \else
+      \thu@titlepage@info@doctor@professional
+    \fi
   \else
-    \thu@titlepage@info@master
+    \ifthu@degree@type@academic
+      \thu@titlepage@info@master@academic
+    \else
+      \ifx\thu@discipline\@empty
+        \thu@titlepage@info@master@other
+      \else
+        \thu@titlepage@info@master@engineer
+      \fi
+    \fi
   \fi
 }
-\newcommand\thu@cover@info@tabular[4]{%
-  \def\thu@cover@item##1##2##3{%
+%    \end{macrocode}
+%
+% 标题页作者信息表
+%    \begin{macrocode}
+\newcommand\thu@titlepage@info@tabular[4]{%
+  \def\thu@info@item##1##2##3{%
     \ifx##3\@empty\else
-      \thu@pad{#2}{\thu@fixed@box{#1}{##1}}%
+      \thu@pad{#1}{\thu@fixed@box{#2}{##1}}%
       \thu@pad{#3}{：}%
       ##2{##3}\\
     \fi
   }%
+  \fangsong\sanhao[1.95]%
   \begin{tabular}{l}%
     #4%
-  \end{tabular}
+  \end{tabular}%
 }
-\newcommand\thu@titlepage@info@doctor{%
-  \fangsong\sanhao[1.95]%
-  \thu@cover@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
-    \thu@cover@item{培养单位}{}{\thu@department}%
-    \ifthu@degree@type@academic
-      \thu@cover@item{学科}{}{\thu@discipline}%
-      \thu@cover@item{研究生}{\thu@name@title}{\thu@author}%
-    \else
-      \thu@cover@item{申请人}{\thu@name@title}{\thu@author}%
-    \fi
-    \thu@cover@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@cover@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@cover@item{联合导师}{\thu@name@title}{\thu@joint@supervisor}%
+\newcommand\thu@titlepage@info@doctor@academic{%
+  \thu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
+    \thu@info@item{培养单位}{}{\thu@department}%
+    \thu@info@item{学科}{}{\thu@discipline}%
+    \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
+    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    \thu@info@item{联合导师}{\thu@name@title}{\thu@joint@supervisor}%
   }\par
 }
-\newcommand\thu@titlepage@info@master{%
-  \fangsong\sanhao[1.95]%
-  \thu@cover@info@tabular{5.5em}{3.6cm}{0.82cm}{%
-    \thu@cover@item{培养单位}{}{\thu@department}%
-    \ifthu@degree@type@academic
-      \thu@cover@item{学科}{}{\thu@discipline}%
-      \thu@cover@item{研究生}{\thu@name@title}{\thu@author}%
-    \else
-      \thu@cover@item{工程领域}{}{\thu@discipline}%
-      \thu@cover@item{申请人}{\thu@name@title}{\thu@author}%
-    \fi
-    \thu@cover@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@cover@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@cover@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
+\newcommand\thu@titlepage@info@doctor@professional{%
+  \thu@titlepage@info@tabular{3.03cm}{5em}{1.52cm}{%
+    \thu@info@item{培养单位}{}{\thu@department}%
+    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    \thu@info@item{联合导师}{\thu@name@title}{\thu@joint@supervisor}%
+  }\par
+}
+\newcommand\thu@titlepage@info@master@academic{%
+  \thu@titlepage@info@tabular{3.59cm}{5.5em}{0.82cm}{%
+    \thu@info@item{培养单位}{}{\thu@department}%
+    \thu@info@item{学科}{}{\thu@discipline}%
+    \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
+    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
+  }\par
+}
+\newcommand\thu@titlepage@info@master@engineer{%
+  \thu@titlepage@info@tabular{2.8cm}{2.8cm}{1.34cm}{%
+    \thu@info@item{培养单位}{}{\thu@department}%
+    \thu@info@item{工程领域}{}{\thu@discipline}%
+    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
+  }\par
+}
+\newcommand\thu@titlepage@info@master@other{%
+  \thu@titlepage@info@tabular{3.28cm}{5em}{1.52cm}{%
+    \thu@info@item{培养单位}{}{\thu@department}%
+    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
   }\par
 }
 %    \end{macrocode}
@@ -2823,7 +2857,7 @@
       \fangsong\sanhao[2.3]%
       \leftskip=2.5cm%
       \parindent=\z@
-      \def\thu@cover@item##1##2##3{%
+      \def\thu@info@item##1##2##3{%
         \ifx##3\@empty\else
           \thu@fixed@box{4em}{##1}：##2{##3}\\
         \fi
@@ -2831,11 +2865,11 @@
       \def\thu@name@title@format##1##2{%
         \thu@stretch{3em}{##1}\quad ##2%
       }
-      \thu@cover@item{系别}{}{\thu@department}%
-      \thu@cover@item{专业}{}{\thu@discipline}%
-      \thu@cover@item{姓名}{\thu@name@title}{\thu@author}%
-      \thu@cover@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-      \thu@cover@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
+      \thu@info@item{系别}{}{\thu@department}%
+      \thu@info@item{专业}{}{\thu@discipline}%
+      \thu@info@item{姓名}{\thu@name@title}{\thu@author}%
+      \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+      \thu@info@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
     }\par
     {\xiaosi\thu@format@date{\thu@date@zh@digit}{\thu@date}\par}%
   \endgroup
