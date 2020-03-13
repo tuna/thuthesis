@@ -3621,6 +3621,45 @@
 }
 %    \end{macrocode}
 %
+% \subsubsection{\pkg{amsthm} 宏包}
+%
+% 定理标题使用黑体，正文使用宋体，冒号隔开。
+%    \begin{macrocode}
+\thu@at@end@package{amsthm}{%
+  \newtheoremstyle{thu}
+    {\z@}{\z@}
+    {\normalfont}{\z@}
+    {\normalfont\sffamily}{\thu@theorem@separator}
+    {0.5em}{}
+  \theoremstyle{thu}
+  \newtheorem{assumption}{\thu@assumption@name}[chapter]%
+  \newtheorem{definition}{\thu@definition@name}[chapter]%
+  \newtheorem{proposition}{\thu@proposition@name}[chapter]%
+  \newtheorem{lemma}{\thu@lemma@name}[chapter]%
+  \newtheorem{theorem}{\thu@theorem@name}[chapter]%
+  \newtheorem{axiom}{\thu@axiom@name}[chapter]%
+  \newtheorem{corollary}{\thu@corollary@name}[chapter]%
+  \newtheorem{exercise}{\thu@exercise@name}[chapter]%
+  \newtheorem{example}{\thu@example@name}[chapter]%
+  \newtheorem{remark}{\thu@remark@name}[chapter]%
+  \newtheorem{problem}{\thu@problem@name}[chapter]%
+  \newtheorem{conjecture}{\thu@conjecture@name}[chapter]%
+  \renewenvironment{proof}[1][\thu@proof@name]{\par
+    \pushQED{\qed}%
+    % \normalfont \topsep6\p@\@plus6\p@\relax
+    \normalfont \topsep\z@\relax
+    \trivlist
+    \item[\hskip\labelsep
+          \itshape
+      % #1\@addpunct{.}]\ignorespaces
+      \textsf{#1}\@addpunct{\thu@theorem@separator}]\ignorespaces
+  }{%
+    \popQED\endtrivlist\@endpefalse
+  }
+  \renewcommand\qedsymbol{\ensuremath{\square}}
+}
+%    \end{macrocode}
+%
 % \subsubsection{\pkg{ntheorem} 宏包}
 %
 % 定理标题使用黑体，正文使用宋体，冒号隔开。
@@ -3647,7 +3686,7 @@
   \newtheorem{conjecture}{\thu@conjecture@name}[chapter]%
 }
 %    \end{macrocode}
-% 
+%
 % \subsubsection{\pkg{algorithm} 与 \pkg{minted} 宏包}
 %
 % 使 \env{algorithm} 和 \env{listing} 环境的名称随语言设置而改变，

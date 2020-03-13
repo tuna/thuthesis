@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Added
 - 允许使用边注
+- 新增 `amsthm` 支持
 
 ## [v6.0.2] - 2020-02-23
 ## Fixed
