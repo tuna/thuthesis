@@ -832,6 +832,9 @@
 % 调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章，
 % 所以模板相应定义了 \env{survey} 和 \env{translation}。在这两个环境内部可以
 % 像论文正文一样使用标题和参考文献的命令，但不会影响外部。
+% 但是需要使用 BibTeX 对 \file{main-survey.aux} 或者
+% \file{main-translation.aux} 进行编译，才能生成参考文献（见 \ref{sec:xelatex}）。
+%
 % 同时，阅读报告默认切换书写语言为英语，书面翻译默认切换为中文。
 % 如有需要，可以通过 \cs{thusetup} 的 \option{language} 参数再次更改。
 %
