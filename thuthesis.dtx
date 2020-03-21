@@ -1198,6 +1198,20 @@
 \RequirePackage{xparse}
 %    \end{macrocode}
 %
+%    \begin{macrocode}
+\RequirePackage{geometry}%
+%    \end{macrocode}
+%
+% 利用 \pkg{fancyhdr} 设置页眉页脚。
+%    \begin{macrocode}
+\RequirePackage{fancyhdr}
+%    \end{macrocode}
+%
+% 利用 \pkg{notoccite} 避免目录中引用编号混乱。
+%    \begin{macrocode}
+\RequirePackage{notoccite}
+%    \end{macrocode}
+%
 % \AmSTeX\ 宏包，用来排出更加漂亮的公式。
 %    \begin{macrocode}
 \RequirePackage{amsmath}
@@ -1268,21 +1282,22 @@
 \RequirePackage{url}
 %    \end{macrocode}
 %
-% 设置 url 样式，与上下文一致
+% 对冲突的宏包报错。
 %    \begin{macrocode}
-\urlstyle{same}
-%    \end{macrocode}
-%
-% 使用 \pkg{xurl} 的方法，增加 URL 可断行的位置。
-%    \begin{macrocode}
-\g@addto@macro\UrlBreaks{%
-  \do0\do1\do2\do3\do4\do5\do6\do7\do8\do9%
-  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M
-  \do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z
-  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m
-  \do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z
+\RequirePackage{filehook}
+\newcommand\thu@package@conflict[2]{
+  \AtBeginOfPackageFile*{#2}{
+    \thu@error{The "#2" package is incompatible with required "#1"}
+  }
 }
-\Urlmuskip=0mu plus 0.1mu
+\thu@package@conflict{unicode-math}{amscd}
+\thu@package@conflict{unicode-math}{amsfonts}
+\thu@package@conflict{unicode-math}{amssymb}
+\thu@package@conflict{unicode-math}{bbm}
+\thu@package@conflict{unicode-math}{bm}
+\thu@package@conflict{unicode-math}{eucal}
+\thu@package@conflict{unicode-math}{eufrak}
+\thu@package@conflict{unicode-math}{mathrsfs}
 %    \end{macrocode}
 %
 %
@@ -1299,7 +1314,6 @@
 % 页眉距边界：1.5 厘米，页脚距边界：1.75 厘米。
 %
 %    \begin{macrocode}
-\RequirePackage{geometry}
 \geometry{
   a4paper, % 210 * 297mm
   marginparwidth = 2cm,
@@ -1323,16 +1337,6 @@
     footskip   = 0.8cm,
   }
 \fi
-%    \end{macrocode}
-%
-% 利用 \pkg{fancyhdr} 设置页眉页脚。
-%    \begin{macrocode}
-\RequirePackage{fancyhdr}
-%    \end{macrocode}
-%
-% 利用 \pkg{notoccite} 避免目录中引用编号混乱。
-%    \begin{macrocode}
-\RequirePackage{notoccite}
 %    \end{macrocode}
 %
 % \subsection{主文档格式}
@@ -1854,6 +1858,23 @@
 \apptocmd{\@makefntext}{\let\@makefnmark\thu@makefnmark}{}{}
 %    \end{macrocode}
 %
+% 设置 url 样式，与上下文一致
+%    \begin{macrocode}
+\urlstyle{same}
+%    \end{macrocode}
+%
+% 使用 \pkg{xurl} 的方法，增加 URL 可断行的位置。
+%    \begin{macrocode}
+\g@addto@macro\UrlBreaks{%
+  \do0\do1\do2\do3\do4\do5\do6\do7\do8\do9%
+  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M
+  \do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m
+  \do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z
+}
+\Urlmuskip=0mu plus 0.1mu
+%    \end{macrocode}
+%
 %
 % \subsubsection{数学相关}
 % \label{sec:equation}
@@ -1931,8 +1952,8 @@
 % \begin{macro}{\boldsymbol}
 % 兼容旧的粗体命令：\pkg{bm} 的 \cs{bm} 和 \pkg{amsmath} 的 \cs{boldsymbol}。
 %    \begin{macrocode}
-\newcommand\bm{\symbf}
-\renewcommand\boldsymbol{\symbf}
+\DeclareRobustCommand\bm[1]{{\symbf{#1}}}
+\DeclareRobustCommand\boldsymbol[1]{{\symbf{#1}}}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -3516,14 +3537,11 @@
 % \subsection{其他宏包的设置}
 %
 % 这些宏包并非格式要求，但是为了方便同学们使用，在这里进行简单设置。
-%    \begin{macrocode}
-\newcommand\thu@at@end@package{\csname ctex_at_end_package:nn\endcsname}
-%    \end{macrocode}
 %
 % \subsubsection{\pkg{hyperref} 宏包}
 %
 %    \begin{macrocode}
-\thu@at@end@package{hyperref}{
+\AtEndOfPackageFile*{hyperref}{
   \hypersetup{
     linktoc            = all,
     bookmarksdepth     = 2,
@@ -3596,7 +3614,7 @@
 % \subsubsection{\pkg{nomencl} 宏包}
 %
 %    \begin{macrocode}
-\thu@at@end@package{nomencl}{
+\AtEndOfPackageFile*{nomencl}{
   \let\nomname\thu@denotation@name
   \def\thenomenclature{\begin{denotation}[\nom@tempdim]}
   \def\endthenomenclature{\end{denotation}}
@@ -3616,7 +3634,7 @@
 % \subsubsection{\pkg{siunitx} 宏包}
 %
 %    \begin{macrocode}
-\thu@at@end@package{siunitx}{%
+\AtEndOfPackageFile*{siunitx}{%
   \sisetup{
     group-minimum-digits = 4,
     separate-uncertainty = true,
@@ -3648,7 +3666,7 @@
 %
 % 定理标题使用黑体，正文使用宋体，冒号隔开。
 %    \begin{macrocode}
-\thu@at@end@package{amsthm}{%
+\AtEndOfPackageFile*{amsthm}{%
   \newtheoremstyle{thu}
     {\z@}{\z@}
     {\normalfont}{\z@}
@@ -3687,7 +3705,7 @@
 %
 % 定理标题使用黑体，正文使用宋体，冒号隔开。
 %    \begin{macrocode}
-\thu@at@end@package{ntheorem}{%
+\AtEndOfPackageFile*{ntheorem}{%
   \theorembodyfont{\normalfont}%
   \theoremheaderfont{\normalfont\sffamily}%
   \theoremsymbol{\ensuremath{\QED}}%
@@ -3716,7 +3734,7 @@
 % 并使其在附录中的编号规则与图、表等一致。
 %
 %    \begin{macrocode}
-\thu@at@end@package{algorithm}{
+\AtEndOfPackageFile*{algorithm}{
   \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}}%
   \newcommand\thu@set@algorithm@language{%
     \ifthu@language@chinese
@@ -3729,7 +3747,7 @@
   \thu@option@hook{language}{\thu@set@algorithm@language}
 }
 
-\thu@at@end@package{minted}{
+\AtEndOfPackageFile*{minted}{
   \g@addto@macro\appendix{\renewcommand*{\thelisting}{\thechapter-\arabic{listing}}}%
   \newcommand\thu@set@listing@language{%
     \ifthu@language@chinese
