@@ -946,15 +946,33 @@
 %
 % \subsection{基本信息}
 %    \begin{macrocode}
-%<cls>\NeedsTeXFormat{LaTeX2e}
+%<cls>\NeedsTeXFormat{LaTeX2e}[2017/04/15]
 %<cls>\ProvidesClass{thuthesis}
 %<cls>[2020/02/23 6.0.2 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
+% 报错
+%    \begin{macrocode}
+\newcommand\thu@error[1]{%
+  \ClassError{thuthesis}{#1}{}%
+}
+%    \end{macrocode}
+%
+% 检查 \LaTeXe{} kernel 版本
+%    \begin{macrocode}
+\@ifl@t@r\fmtversion{2017/04/15}{}{
+  \thu@error{%
+    TeX Live 2017 or later version is required to compile this document%
+  }
+}
+%    \end{macrocode}
+%
 % 检查编译引擎，要求使用 \XeLaTeX。
 %    \begin{macrocode}
-\RequirePackage{ifxetex}
-\RequireXeTeX
+\RequirePackage{iftex}
+\ifXeTeX\else
+  \thu@error{XeLaTeX is required to compile this document}
+\fi
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -972,13 +990,6 @@
   family=thu,
   prefix=thu@,
   setkeys=\kvsetkeys}
-%    \end{macrocode}
-%
-% 用 \pkg{kvoptions} 的 \emph{key=value} 方式来设置论文类型。
-%    \begin{macrocode}
-\newcommand\thu@error[1]{%
-  \ClassError{thuthesis}{#1}{}%
-}
 %    \end{macrocode}
 %
 % \begin{macro}{\thusetup}
@@ -1174,7 +1185,7 @@
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
 %    \begin{macrocode}
 \PassOptionsToPackage{quiet}{xeCJK}
-\LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain]{ctexbook}
+\LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain]{ctexbook}[2017/04/01]
 %    \end{macrocode}
 %
 %
@@ -1814,8 +1825,10 @@
 }
 \def\thu@textcircled#1{%
   \ifnum\value{#1} >9%
-    \ClassError{thuthesis}%
-      {Too many footnotes in this page.}{Keep footnote less than 10.}%
+    \thu@error{%
+      Too many footnotes in this page.
+      Keep footnote less than 10%
+    }%
   \fi
   {\thu@circlefont\symbol{\the\numexpr\value{#1}+"245F\relax}}%
 }
@@ -2160,7 +2173,7 @@
 \newcommand\thu@phantomsection{}
 \NewDocumentCommand\thu@chapter{s o m o}{
   \IfBooleanF{#1}{%
-    \ClassError{thuthesis}{You have to use the star form: \string\thu@chapter*}{}
+    \thu@error{You have to use the star form: \string\thu@chapter*}%
   }%
   \if@openright\cleardoublepage\else\clearpage\fi%
   \IfValueTF{#2}{%
