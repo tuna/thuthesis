@@ -1166,6 +1166,64 @@
       english,
     },
   },
+%    \end{macrocode}
+%
+% 字体
+%    \begin{macrocode}
+  fontset = {
+    choices = {
+      windows,
+      mac,
+      ubuntu,
+      fandol,
+      none,
+    },
+    default = none,
+  },
+  system = {
+    choices = {
+      mac,
+      unix,
+      windows,
+      auto,
+    },
+    default = auto,
+  },
+  font = {
+    choices = {
+      times,
+      termes,
+      xits,
+      libertinus,
+      lm,
+      auto,
+      none,
+    },
+    default = auto,
+  },
+  cjk-font = {
+    name = cjk@font,
+    choices = {
+      windows,
+      mac,
+      noto,
+      fandol,
+      auto,
+      none,
+    },
+    default = auto,
+  },
+  math-font = {
+    name = math@font,
+    choices = {
+      xits,
+      stix,
+      libertinus,
+      lm,
+      none,
+    },
+    default = xits,
+  },
 }
 \newif\ifthu@degree@graduate
 \newcommand\thu@set@graduate{%
@@ -1216,7 +1274,7 @@
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
 %    \begin{macrocode}
 \PassOptionsToPackage{quiet}{xeCJK}
-\LoadClass[a4paper,UTF8,zihao=-4,scheme=plain]{ctexbook}[2017/04/01]
+\LoadClass[a4paper,UTF8,zihao=-4,scheme=plain,fontset=none]{ctexbook}[2017/04/01]
 %    \end{macrocode}
 %
 %
@@ -1422,39 +1480,214 @@
 % \label{sec:font}
 % 使用 \pkg{fontspec} 配置字体。
 %    \begin{macrocode}
-\newcommand\thu@fontset{\csname g__ctex_fontset_tl\endcsname}
-\ifthenelse{\equal{\thu@fontset}{fandol}}{
-  \setmainfont[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-italic,
-    BoldItalicFont = *-bolditalic,
-  ]{texgyretermes}
-  \setsansfont[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-italic,
-    BoldItalicFont = *-bolditalic,
-  ]{texgyreheros}
-  \setmonofont[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-italic,
-    BoldItalicFont = *-bolditalic,
-    Scale          = MatchLowercase,
-  ]{texgyrecursor}
-}{
-  \setmainfont{Times New Roman}
-  \setsansfont{Arial}
-  \ifthenelse{\equal{\thu@fontset}{mac}}{
-    \setmonofont[Scale=MatchLowercase]{Menlo}
-  }{
-    \setmonofont[Scale=MatchLowercase]{Courier New}
+\ifthu@fontset@mac
+  \thusetup{
+    font     = times,
+    cjk-font = mac,
   }
+\else
+  \ifthu@fontset@windows
+    \thusetup{
+      font     = times,
+      cjk-font = windows,
+    }
+  \else
+    \ifthu@fontset@fandol
+      \thusetup{
+        font     = termes,
+        cjk-font = fandol,
+      }
+    \else
+      \ifthu@fontset@ubuntu
+        \thusetup{
+          font     = termes,
+          cjk-font = noto,
+        }
+      \fi
+    \fi
+  \fi
+\fi
+%    \end{macrocode}
+%
+% 检测系统
+%    \begin{macrocode}
+\ifthu@system@auto
+  \IfFileExists{/System/Library/Fonts/Menlo.ttc}{
+    \thusetup{system = mac}
+  }{
+    \IfFileExists{/dev/null}{
+      \IfFileExists{null:}{
+        \thusetup{system = windows}
+      }{
+        \thusetup{system = unix}
+      }
+    }{
+      \thusetup{system = windows}
+    }
+  }
+\fi
+%    \end{macrocode}
+%
+% XITS 字体于 2018-10-03 更改了字体的文件名，所以需要判断。
+% 原文件名为 \file{xits-regular.otf}、\file{xits-math.otf} 等，
+% 后改为 \file{XITS-Regular.otf}、\file{XITSMath-Regular.otf} 等。
+%
+% Libertinus 字体同样。
+%    \begin{macrocode}
+\let\thu@font@family@xits\@empty
+\newcommand\thu@set@xits@names{%
+  \ifx\thu@font@family@xits\@empty
+    \IfFontExistsTF{XITSMath-Regular.otf}{%
+      \gdef\thu@font@family@xits{XITS}%
+      \gdef\thu@font@style@xits@rm{Regular}%
+      \gdef\thu@font@style@xits@bf{Bold}%
+      \gdef\thu@font@style@xits@it{Italic}%
+      \gdef\thu@font@style@xits@bfit{BoldItalic}%
+      \gdef\thu@font@name@xits@math@rm{XITSMath-Regular}%
+      \gdef\thu@font@name@xits@math@bf{XITSMath-Bold}%
+    }{%
+      \gdef\thu@font@family@xits{xits}%
+      \gdef\thu@font@style@xits@rm{regular}%
+      \gdef\thu@font@style@xits@bf{bold}%
+      \gdef\thu@font@style@xits@it{italic}%
+      \gdef\thu@font@style@xits@bfit{bolditalic}%
+      \gdef\thu@font@name@xits@math@rm{xits-math}%
+      \gdef\thu@font@name@xits@math@bf{xits-mathbold}%
+    }%
+  \fi
 }
+\let\thu@font@family@libertinus\@empty
+\newcommand\thu@set@libertinus@names{%
+  \ifx\thu@font@family@libertinus\@empty
+    \IfFontExistsTF{LibertinusSerif-Regular.otf}{%
+      \gdef\thu@font@family@libertinus@serif{LibertinusSerif}%
+      \gdef\thu@font@family@libertinus@sans{LibertinusSans}%
+      \gdef\thu@font@name@libertinus@math{LibertinusMath-Regular}%
+      \gdef\thu@font@style@libertinus@rm{Regular}%
+      \gdef\thu@font@style@libertinus@bf{Bold}%
+      \gdef\thu@font@style@libertinus@it{Italic}%
+      \gdef\thu@font@style@libertinus@bfit{BoldItalic}%
+    }{%
+      \gdef\thu@font@family@libertinus@serif{libertinusserif}%
+      \gdef\thu@font@family@libertinus@sans{libertinussans}%
+      \gdef\thu@font@name@libertinus@math{libertinusmath-regular}%
+      \gdef\thu@font@style@libertinus@rm{regular}%
+      \gdef\thu@font@style@libertinus@bf{bold}%
+      \gdef\thu@font@style@libertinus@it{italic}%
+      \gdef\thu@font@style@libertinus@bfit{bolditalic}%
+    }%
+  \fi
+}
+%    \end{macrocode}
+%
+% 《撰写手册》要求西文字体使用 Times New Roman 和 Arial，
+% 但是在 Linux 下没有这两个字体，所以使用它们的克隆版 TeX Gyre Termes 和
+% TeX Gyre Heros。
+%    \begin{macrocode}
+\ifthu@font@auto
+  \ifthu@system@unix
+    \thusetup{font=termes}
+  \else
+    \thusetup{font=times}
+  \fi
+\fi
+\newcommand\thu@load@font@times{%
+  \setmainfont{Times New Roman}%
+  \setsansfont{Arial}%
+  \ifthu@system@mac
+    \setmonofont{Menlo}[Scale = MatchLowercase]%
+  \else
+    \setmonofont{Courier New}[Scale = MatchLowercase]%
+  \fi
+}
+\newcommand\thu@load@font@termes{%
+  \setmainfont{texgyretermes}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \thu@load@texgyre@sans@mono
+}
+\newcommand\thu@load@texgyre@sans@mono{%
+  \setsansfont{texgyreheros}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setmonofont{texgyrecursor}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+}
+\newcommand\thu@load@font@xits{%
+  \thu@set@xits@names
+  \setmainfont{\thu@font@family@xits}[
+    Extension      = .otf,
+    UprightFont    = *-\thu@font@style@xits@rm,
+    BoldFont       = *-\thu@font@style@xits@bf,
+    ItalicFont     = *-\thu@font@style@xits@it,
+    BoldItalicFont = *-\thu@font@style@xits@bfit,
+  ]%
+  \thu@load@texgyre@sans@mono
+}
+\newcommand\thu@load@font@libertinus{%
+  \thu@set@libertinus@names
+  \setmainfont{\thu@font@family@libertinus@serif}[
+    Extension      = .otf,
+    UprightFont    = *-\thu@font@style@libertinus@rm,
+    BoldFont       = *-\thu@font@style@libertinus@bf,
+    ItalicFont     = *-\thu@font@style@libertinus@it,
+    BoldItalicFont = *-\thu@font@style@libertinus@bfit,
+  ]%
+  \setsansfont{\thu@font@family@libertinus@sans}[
+    Extension      = .otf,
+    UprightFont    = *-\thu@font@style@libertinus@rm,
+    BoldFont       = *-\thu@font@style@libertinus@bf,
+    ItalicFont     = *-\thu@font@style@libertinus@it,
+  ]%
+  \setmonofont{lmmonolt10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-oblique,
+    BoldItalicFont = *-boldoblique,
+  ]%
+}
+\@namedef{thu@load@font@lm}{%
+  \setmainfont{lmroman10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setsansfont{lmsans10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-oblique,
+    BoldItalicFont = *-boldoblique,
+  ]%
+  \setmonofont{lmmonolt10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-oblique,
+    BoldItalicFont = *-boldoblique,
+  ]%
+}
+\newcommand\thu@load@font{%
+  \@nameuse{thu@load@font@\thu@font}%
+}
+\thu@load@font
+\thu@option@hook{font}{\thu@load@font}
 %    \end{macrocode}
 %
 % 使用 \pkg{unicode-math} 配置数学字体
@@ -1465,59 +1698,177 @@
   nabla      = upright,
   partial    = upright,
 }
-\IfFontExistsTF{XITSMath-Regular.otf}{
-  \setmathfont[
+\newcommand\thu@load@math@font@xits{%
+  \thu@set@xits@names
+  \setmathfont{\thu@font@name@xits@math@rm}[
     Extension    = .otf,
-    BoldFont     = XITSMath-Bold,
+    BoldFont     = \thu@font@name@xits@math@bf,
     StylisticSet = 8,
-  ]{XITSMath-Regular}
-  \setmathfont[range={cal,bfcal},StylisticSet=1]{XITSMath-Regular.otf}
-}{
-  \setmathfont[
+  ]%
+  \setmathfont{\thu@font@name@xits@math@rm}[
     Extension    = .otf,
-    BoldFont     = *bold,
+    StylisticSet = 1,
+    range        = {cal,bfcal},
+  ]%
+}
+\newcommand\thu@load@math@font@stix{%
+  \setmathfont{STIX2Math}[
+    Extension    = .otf,
     StylisticSet = 8,
-  ]{xits-math}
-  \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
+  ]%
+  \setmathfont{STIX2Math}[
+    Extension    = .otf,
+    StylisticSet = 1,
+    range        = {cal,bfcal},
+  ]%
+}
+\newcommand\thu@load@math@font@libertinus{%
+  \thu@set@libertinus@names
+  \setmathfont{\thu@font@name@libertinus@math .otf}%
+}
+\newcommand\thu@load@math@font@lm{%
+  \setmathfont{latinmodern-math.otf}%
+}
+\newcommand\thu@load@math@font{%
+  \csname thu@load@math@font@\thu@math@font\endcsname
+}
+\thu@load@math@font
+\thu@option@hook{math-font}{\thu@load@math@font}
+%    \end{macrocode}
+%
+% 中文字体
+%    \begin{macrocode}
+\ifthu@cjk@font@auto
+  \ifthu@system@mac
+    \thusetup{cjk-font = mac}
+  \else
+    \ifthu@system@windows
+      \thusetup{cjk-font = windows}
+    \else
+      \IfFontExistsTF{Noto Serif CJK SC}{
+        \thusetup{cjk-font = noto}
+      }{
+        \thusetup{cjk-font = fandol}
+      }
+    \fi
+  \fi
+\fi
+\newcommand\thu@load@cjk@font@windows{%
+  \xeCJKsetup{EmboldenFactor=2}
+  \setCJKmainfont{SimSun}[
+    AutoFakeBold = true,
+    ItalicFont   = KaiTi,
+  ]%
+  \setCJKsansfont{SimHei}[AutoFakeBold]%
+  \setCJKmonofont{FangSong}%
+  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold]%
+  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold]%
+  \setCJKfamilyfont{zhkai}{KaiTi}%
+  \setCJKfamilyfont{zhfs}{FangSong}%
+}
+\newcommand\thu@load@cjk@font@mac{%
+  \setCJKmainfont{Songti SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+    ItalicFont     = Kaiti SC,
+    BoldItalicFont = Kaiti SC Bold,
+  ]%
+  \setCJKsansfont{Heiti SC}[BoldFont=* Medium]%
+  \setCJKmonofont{STFangsong}
+  \setCJKfamilyfont{zhsong}{Songti SC}[
+    UprightFont = * Light,
+      BoldFont  = * Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{Heiti SC}[
+    UprightFont = * Light,
+    BoldFont    = * Medium,
+  ]%
+  \setCJKfamilyfont{zhfs}{STFangsong}%
+  \setCJKfamilyfont{zhkai}{Kaiti SC}[BoldFont = * Bold]%
+  \setCJKfamilyfont{zhli}{Baoli SC}%
+  \setCJKfamilyfont{zhyuan}{Yuanyi SC}[
+    UprightFont = * Light,
+    BoldFont    = * Bold,
+  ]%
+  \xeCJKsetwidth{‘’“”}{1em}%
 }
 %    \end{macrocode}
 %
-% 在使用 Windows Vista 或之后版本的系统时，\pkg{ctex} 宏包会默认使用微软雅黑字体，
-% 这可能会导致审查不合格。下面设置适合印刷的黑体，同时保持跨平台兼容性。
+% 注意 Noto CJK 的 regular 字重名字不带“Regular”。
 %    \begin{macrocode}
-\ifthenelse{\equal{\thu@fontset}{windows}}{
-  \xeCJKsetup{EmboldenFactor=2}
-  \IfFileExists{C:/bootfont.bin}{
-    \setCJKmainfont[AutoFakeBold,ItalicFont=KaiTi_GB2312]{SimSun}
-    \setCJKfamilyfont{zhkai}[AutoFakeBold]{KaiTi_GB2312}
-  }{
-    \setCJKmainfont[AutoFakeBold,ItalicFont=KaiTi]{SimSun}
-    \setCJKfamilyfont{zhkai}[AutoFakeBold]{KaiTi}
-  }
-  \setCJKsansfont[AutoFakeBold]{SimHei}
-  \setCJKfamilyfont{zhsong}[AutoFakeBold]{SimSun}
-  \setCJKfamilyfont{zhhei}[AutoFakeBold]{SimHei}
-}{}
-%    \end{macrocode}
-%
-% 类似地，\pkg{ctex} 2.4.14 开始在 macOS 下自动调用苹方黑体，所以必进行调整。
-%    \begin{macrocode}
-\ifthenelse{\equal{\thu@fontset}{mac}}{
-  \setCJKmainfont[
-         UprightFont = * Light,
-            BoldFont = * Bold,
-          ItalicFont = Kaiti SC,
-      BoldItalicFont = Kaiti SC Bold,
-    ]{Songti SC}
-  \setCJKsansfont[BoldFont=* Medium]{Heiti SC}
-  \setCJKfamilyfont{zhsong}[
-         UprightFont = * Light,
-            BoldFont = * Bold,
-    ]{Songti SC}
-  \setCJKfamilyfont{zhhei}[BoldFont=* Medium]{Heiti SC}
-  \setCJKfamilyfont{zhkai}[BoldFont=* Bold]{Kaiti SC}
-  \xeCJKsetwidth{‘’“”}{1em}
-}{}
+\newcommand\thu@load@cjk@font@noto{%
+  \setCJKmainfont{Noto Serif CJK SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+    ItalicFont     = FandolKai-Regular,
+    ItalicFeatures = {Extension = .otf},
+  ]%
+  \setCJKsansfont{Noto Sans CJK SC}[
+    BoldFont    = * Medium,
+  ]%
+  \setCJKmonofont{Noto Sans Mono CJK SC}%
+  \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
+    UprightFont = * Light,
+    UprightFont = * Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
+    BoldFont    = * Medium,
+  ]%
+  \setCJKfamilyfont{zhfs}{FandolFang}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhkai}{FandolKai}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+}
+\newcommand\thu@load@cjk@font@fandol{%
+  \setCJKmainfont{FandolSong}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+    ItalicFont  = FandolKai-Regular,
+  ]%
+  \setCJKsansfont{FandolHei}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+  ]%
+  \setCJKmonofont{FandolFang}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhsong}{FandolSong}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{FandolHei}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+  ]%
+  \setCJKfamilyfont{zhfs}{FandolFang}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhkai}{FandolKai}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+}
+\ifthu@cjk@font@none\else
+  \providecommand\songti{\CJKfamily{zhsong}}
+  \providecommand\heiti{\CJKfamily{zhhei}}
+  \providecommand\fangsong{\CJKfamily{zhfs}}
+  \providecommand\kaishu{\CJKfamily{zhkai}}
+\fi
+\newcommand\thu@load@cjk@font{%
+  \@nameuse{thu@load@cjk@font@\thu@cjk@font}%
+}
+\thu@load@cjk@font
+\thu@option@hook{cjk-font}{\thu@load@cjk@font}
 %    \end{macrocode}
 %
 % \begin{macro}{\normalsize}
@@ -1852,19 +2203,28 @@
 % \begin{macro}{\thu@textcircled}
 % 生成带圈的脚注数字，最多处理到 10。
 %    \begin{macrocode}
-\ifthenelse{\equal{\thu@fontset}{mac}}{
-  \newfontfamily\thu@circlefont{Songti SC Light}
-}{
-  \ifthenelse{\equal{\thu@fontset}{windows}}{
-    \newfontfamily\thu@circlefont{SimSun}
-  }{
-    \IfFontExistsTF{XITS-Regular.otf}{
-      \newfontfamily\thu@circlefont{XITS-Regular.otf}
-    }{
-      \newfontfamily\thu@circlefont{xits-regular.otf}
-    }
-  }
-}
+\ifthu@font@times
+  \ifthu@cjk@font@mac
+    \newfontfamily\thu@circlefont{Songti SC Light}
+  \else
+    \ifthu@cjk@font@windows
+      \newfontfamily\thu@circlefont{SimSun}
+    \fi
+  \fi
+\else
+  \ifthu@font@xits
+    \let\thu@circlefont\relax
+  \else
+    \ifthu@font@libertinus
+      \let\thu@circlefont\relax
+    \else
+      \thu@set@xits@names
+      \newfontfamily\thu@circlefont{%
+        \thu@font@family@xits-\thu@font@style@xits@rm .otf%
+      }
+    \fi
+  \fi
+\fi
 \def\thu@textcircled#1{%
   \ifnum\value{#1} >9%
     \thu@error{%
