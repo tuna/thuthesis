@@ -1730,7 +1730,7 @@
   \setmathfont{latinmodern-math.otf}%
 }
 \newcommand\thu@load@math@font{%
-  \csname thu@load@math@font@\thu@math@font\endcsname
+  \@nameuse{thu@load@math@font@\thu@math@font}
 }
 \thu@load@math@font
 \thu@option@hook{math-font}{\thu@load@math@font}
