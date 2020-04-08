@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Added
 - 允许使用边注
 - 新增 `amsthm` 支持
+- 支持单个关键词设置样式
 
 ## Changed
 - 附录的图、表不再加入索引
