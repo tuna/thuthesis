@@ -3081,7 +3081,7 @@
 }
 \newcommand\thu@clist@use[2]{%
   \def\thu@@tmp{}%
-  \kv@set@family@handler{thu@clist}{%
+  \def\thu@clist@processor##1{%
     \ifx\thu@@tmp\@empty
       \def\thu@@tmp{#2}%
     \else
@@ -3089,7 +3089,7 @@
     \fi
     ##1%
   }%
-  \kvsetkeys@expandafter{thu@clist}{#1}%
+  \comma@parse{#1}{\thu@clist@processor}%
 }
 %    \end{macrocode}
 % \end{macro}
