@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 本科生附录的调研报告使用英文（#479）
 - 修正本科生附录的 `algorithm` 和 `listings` 环境的编号格式
 - 研究生的“使用授权说明”增加一空白页（#504）
+- 修正 publication 列表行距问题 (#507)
 
 ## Added
 - 允许使用边注
