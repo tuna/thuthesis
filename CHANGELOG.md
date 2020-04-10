@@ -25,7 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 文本模式使用 `\checkmark`
 
 ## Added
-- 补充 PDF 原信息：文档标题，语言。
+- 补充 PDF 元信息：文档标题，语言。
 
 ## Changed
 - 补充“著者-出版年”引用命令使用方法。
