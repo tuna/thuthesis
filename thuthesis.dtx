@@ -736,8 +736,38 @@
 %
 % \subsection{正文部分}
 %
-% \subsubsection{数学环境}
+% \subsubsection{数学符号}
 % \label{sec:math}
+% 数学符号应遵循 GB/T 3102.11-1993《物理科学和技术中使用的数学符号》
+% \footnote{原 GB 3102.11-1993，根据2017年第7号公告和强制性标准整合精简结论，
+%   自2017年3月23日起,该标准转化为推荐性标准。}，
+% 模板中使用 \pkg{unicode-math} 宏包来配置数学符号，
+% 与 \LaTeX{} 默认的英美国家的符号习惯有所差异：
+% \newcommand\dif{\mathop{}\!\mathrm{d}}
+% \begin{enumerate}
+%   \item 大写希腊字母默认为斜体，如 \cs{Delta}：$\Delta$。
+%   \item 有限增量符号 $\increment$（U+2206）应使用 \pkg{unicode-math} 宏包提供的
+%     \cs{increment} 命令。
+%   \item 向量、矩阵和张量要求粗斜体，应使用 \cs{symbf} 命令，
+%     如 \verb|\symbf{A}|、\verb|\symbf{\alpha}|。
+%   \item 数学常数和特殊函数要求用正体，应使用 \cs{symup} 命令，
+%     如 $\symup{\pi} = 3.14\dots$; $\symup{e} = 2.718\dots$，
+%   \item 微分号和积分号使用使用正体，比如 $\int f(x) \dif x$。
+% \end{enumerate}
+%
+% 关于数学符号更多的用法，参考
+% \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
+% 宏包的使用说明，
+% 全部数学符号命的令参考
+% \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unimath-symbols.pdf}{\pkg{unimath-symbols}}。
+%
+% 注意，\pkg{unicode-math} 宏包与 \pkg{amsfonts}、\pkg{amssymb}、\pkg{bm}、
+% \pkg{mathrsfs}、\pkg{upgreek} 等宏包\emph{不}兼容。
+% 模板作了处理，用户可以直接使用这些宏包的命令，如 \cs{bm}、\cs{mathscr}、
+% \cs{uppi}。
+%
+% \subsubsection{定理环境}
+% \label{sec:theorem}
 % \thuthesis{} 定义了常用的数学环境：
 %
 % \begin{center}

@@ -331,6 +331,85 @@ EP.B.8 & 126.74 & 0.003 & 0.017 & 0.005 & 0.083 & 1656 \\
 运动的中坚人物。他们革除弊政，打击权奸，触犯了宦官和官僚贵族利益，在他们的联合反
 扑下，改革失败了，柳宗元被贬为永州司马。
 
+\section{数学符号和公式}
+
+\subsection{数学符号}
+数学符号应遵循 GB/T 3102.11-1993《物理科学和技术中使用的数学符号》
+（原 GB 3102.11-1993），
+模板中使用 \pkg{unicode-math} 宏包来配置数学符号，
+与 \LaTeX{} 默认的英美国家的符号习惯有所差异：
+\begin{enumerate}
+  \item 大写希腊字母默认为斜体，如 \cs{Delta}：$\Delta$。
+  \item 有限增量符号 $\increment$（U+2206）应使用 \pkg{unicode-math} 宏包提供的
+    \cs{increment} 命令。
+  \item 向量、矩阵和张量要求粗斜体，应使用 \cs{symbf} 命令，
+    如 \verb|\symbf{A}|、\verb|\symbf{\alpha}|。
+  \item 数学常数和特殊函数要求用正体，应使用 \cs{symup} 命令，
+    如 $\symup{\pi} = 3.14\dots$; $\symup{e} = 2.718\dots$，
+  \item 微分号和积分号使用使用正体，比如 $\int f(x) \dif x$。
+\end{enumerate}
+
+关于数学符号更多的用法，参考
+\href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
+宏包的使用说明，
+全部数学符号命的令参考
+\href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unimath-symbols.pdf}{\pkg{unimath-symbols}}。
+
+关于量和单位推荐使用
+\href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{\pkg{siunitx}}
+宏包，比如：
+\SI{6.4e6}{m}，
+\SI{9}{\micro\meter}，
+\si{kg.m.s^{-1}}，
+\SIrange{10}{20}{\degreeCelsius}。
+
+\subsection{数学公式}
+\label{sec:equation}
+
+贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中 $p(y|\vx)$ 为后验；
+$p(\vx)$ 为先验；分母 $p(\vx)$ 为归一化因子。
+\begin{equation}
+\label{equ:chap1:bayes}
+p(y|\vx) = \frac{p(\vx,y)}{p(\vx)}=
+\frac{p(\vx|y)p(y)}{p(\vx)}
+\end{equation}
+
+论文里面公式越多，\TeX{} 就越 happy。再看一个 \pkg{amsmath} 的例子：
+\newcommand{\envert}[1]{\left\lvert#1\right\rvert}
+\begin{equation}\label{detK2}
+\det\mK(t=1,t_1,\dots,t_n)=\sum_{I\in\vn}(-1)^{\envert{I}}
+\prod_{i\in I}t_i\prod_{j\in I}(D_j+\lambda_jt_j)\det\mA
+^{(\lambda)}(\overline{I}|\overline{I})=0.
+\end{equation}
+
+前面定理示例部分列举了很多公式环境，可以说把常见的情况都覆盖了，大家在写公式的时
+候一定要好好看 \pkg{amsmath} 的文档，并参考模板中的用法：
+\begin{multline*}%\tag{[b]} % 这个出现在索引中的
+\int_a^b\biggl\{\int_a^b[f(x)^2g(y)^2+f(y)^2g(x)^2]
+ -2f(x)g(x)f(y)g(y)\dif x\biggr\}\dif y \\
+ =\int_a^b\biggl\{g(y)^2\int_a^bf^2+f(y)^2
+  \int_a^b g^2-2f(y)g(y)\int_a^b fg\biggr\}\dif y
+\end{multline*}
+
+其实还可以看看这个多级规划：
+\begin{equation}
+  \label{bilevel}
+  \begin{cases}
+    \max_{\bm{x}} F(\bm{x}, y_1^*, y_2^*, \dots, y_m^*) \\
+      \text{subject to:} \\
+      \qquad G(\bm{x}) \le 0 \\
+      \qquad (y_1^*, y_2^*, \dots, y_m^*) \text{ solves problems }
+        (i = 1, 2, \dots, m) \\
+      \qquad
+        \begin{cases}
+          \max_{\bm{x}} f_i(\bm{x}, y_1, y_2, \dots, y_m) \\
+          \text{subject to:} \\
+          \qquad g_i(\bm{x}, y_1, y_2, \dots, y_m) \le 0.
+        \end{cases}
+  \end{cases}
+\end{equation}
+这些跟规划相关的公式都来自于刘宝碇老师《不确定规划》的课件。
+
 \section{定理环境}
 \label{sec:theorem}
 
@@ -525,48 +604,3 @@ V_j & = v_j, & \qquad X_j & = x_j,
 % \RequirePackage{hyperref}
 % \end{verbatim}
 % 使得连字符处可以断行。更多设置可以参考 \texttt{url} 宏包文档。
-
-\section{公式}
-\label{sec:equation}
-贝叶斯公式如式~(\ref{equ:chap1:bayes})，其中 $p(y|\vx)$ 为后验；
-$p(\vx)$ 为先验；分母 $p(\vx)$ 为归一化因子。
-\begin{equation}
-\label{equ:chap1:bayes}
-p(y|\vx) = \frac{p(\vx,y)}{p(\vx)}=
-\frac{p(\vx|y)p(y)}{p(\vx)}
-\end{equation}
-
-论文里面公式越多，\TeX{} 就越 happy。再看一个 \pkg{amsmath} 的例子：
-\begin{equation}\label{detK2}
-\det\mK(t=1,t_1,\dots,t_n)=\sum_{I\in\vn}(-1)^{\abs{I}}
-\prod_{i\in I}t_i\prod_{j\in I}(D_j+\lambda_jt_j)\det\mA
-^{(\lambda)}(\overline{I}|\overline{I})=0.
-\end{equation}
-
-前面定理示例部分列举了很多公式环境，可以说把常见的情况都覆盖了，大家在写公式的时
-候一定要好好看 \pkg{amsmath} 的文档，并参考模板中的用法：
-\begin{multline*}%\tag{[b]} % 这个出现在索引中的
-\int_a^b\biggl\{\int_a^b[f(x)^2g(y)^2+f(y)^2g(x)^2]
- -2f(x)g(x)f(y)g(y)\dif x\biggr\}\dif y \\
- =\int_a^b\biggl\{g(y)^2\int_a^bf^2+f(y)^2
-  \int_a^b g^2-2f(y)g(y)\int_a^b fg\biggr\}\dif y
-\end{multline*}
-
-其实还可以看看这个多级规划：
-\begin{equation}
-  \label{bilevel}
-  \begin{cases}
-    \max_{\bm{x}} F(\bm{x}, y_1^*, y_2^*, \dots, y_m^*) \\
-      \text{subject to:} \\
-      \qquad G(\bm{x}) \le 0 \\
-      \qquad (y_1^*, y_2^*, \dots, y_m^*) \text{ solves problems }
-        (i = 1, 2, \dots, m) \\
-      \qquad
-        \begin{cases}
-          \max_{\bm{x}} f_i(\bm{x}, y_1, y_2, \dots, y_m) \\
-          \text{subject to:} \\
-          \qquad g_i(\bm{x}, y_1, y_2, \dots, y_m) \le 0.
-        \end{cases}
-  \end{cases}
-\end{equation}
-这些跟规划相关的公式都来自于刘宝碇老师《不确定规划》的课件。
