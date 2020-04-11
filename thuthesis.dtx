@@ -824,6 +824,9 @@
 % （\cs{bibliographystyle}，见第~\ref{sec:bibliography} 节）时，
 % 正文中引用文献的标注会自动调整为对应的格式。
 %
+% 如果需要标出引文的页码，可以写在 \cs{cite} 的可选参数中，如
+% |\cite[42]{knuth84}|。
+%
 % \paragraph{顺序编码制}
 % \DescribeMacro{\inlinecite}
 % 顺序编码制的参考文献引用分为两种模式：
@@ -834,13 +837,11 @@
 %
 % \DescribeOption{cite-style}
 % 用户可以将引用标注的格式设为正文模式：
-%
 % \begin{latex}
 %   \thusetup{
 %     cite-style = inline,
 %   }
 % \end{latex}
-%
 % 也可以使用 \cs{inlinecite}\marg{key} 临时使用正文模式的引用标注。
 %
 % \paragraph{著者-出版年制}
@@ -851,8 +852,9 @@
 %   \item \cs{citet}：著者姓名作为正文的一部分，比如“Zhang (2008)”；
 % \end{enumerate}
 %
-% 另外还有 \cs{citeauthor}、\cs{citeyear} 等命令分别标注文献的著者姓名和年份，
-% 更多的引用文献标注法参考 \pkg{natbib} 的文档。
+% 另外，\pkg{natbib} 还提供了其他方便引用的命令，
+% 比如 \cs{citeauthor}、\cs{citeyear} 等，
+% 更多细节参考 \pkg{natbib} 的文档。
 %
 % \subsection{其他部分}
 %

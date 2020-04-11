@@ -576,13 +576,11 @@ V_j & = v_j, & \qquad X_j & = x_j,
 
 \section{参考文献}
 \label{sec:bib}
-当然参考文献可以直接写 \cs{bibitem}，虽然费点功夫，但是好控制，各种格式可以自己随意改
-写。
 
 本模板推荐使用 BibTeX，分别提供数字引用（\texttt{thuthesis-numeric.bst}）和作
-者年份引用（\texttt{thuthesis-author-year.bst}）样式，基本符合学校的参考文献格式
-（如专利等引用未加详细测试）。看看这个例子，关于书的~\cite{tex, companion,
-  ColdSources}，还有这些~\cite{Krasnogor2004e, clzs, zjsw}，关于杂志
+者年份引用（\texttt{thuthesis-author-year.bst}）样式。
+看看这个例子，关于书的~\cite{tex, companion,
+  ColdSources}，还有这些~\cite{Krasnogor2004e, clzs, zjsw}，关于期刊
 的~\cite{ELIDRISSI94, MELLINGER96, SHELL02}，硕士论文~\cite{zhubajie,
   metamori2004}，博士论文~\cite{shaheshang, FistSystem01}，标准文
 件~\cite{IEEE-1363}，会议论文~\cite{DPMG,kocher99}，技术报告~\cite{NPB2}，电子文
@@ -591,16 +589,6 @@ V_j & = v_j, & \qquad X_j & = x_j,
 \texttt{key=\{pinyin\}} 字段，以便正确进行排序~\cite{cnproceed}。
 另外，如果对参考文献有不如意的地方，请手动修改 \texttt{bbl} 文件。
 
-有时候不想要上标，那么可以这样~\inlinecite{shaheshang}，这个非常重要。
+如果需要标出引文页码\cite[42]{tex}，引文页码放在方括号外\cite[73]{tex}。
 
-% 有时候一些参考文献没有纸质出处，需要标注 URL。缺省情况下，URL 不会在连字符处断行，
-% 这可能使得用连字符代替空格的网址分行很难看。如果需要，可以将模板类文件中
-% \begin{verbatim}
-% \RequirePackage{hyperref}
-% \end{verbatim}
-% 一行改为：
-% \begin{verbatim}
-% \PassOptionsToPackage{hyphens}{url}
-% \RequirePackage{hyperref}
-% \end{verbatim}
-% 使得连字符处可以断行。更多设置可以参考 \texttt{url} 宏包文档。
+有时候不想要上标，那么可以这样~\inlinecite{shaheshang}。
