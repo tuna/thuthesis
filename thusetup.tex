@@ -103,9 +103,6 @@
 % 跨页表格
 \usepackage{longtable}
 
-% 固定宽度的表格
-\usepackage{tabularx}
-
 % 表格中的反斜线
 \usepackage{diagbox}
 
@@ -154,3 +151,7 @@
 
 % hyperref 宏包在最后调用
 \usepackage{hyperref}
+
+% 固定宽度的表格。放在 hyperref 之前的话，tabularx 里的 footnote 显示不出来。
+\usepackage{tabularx}
+
