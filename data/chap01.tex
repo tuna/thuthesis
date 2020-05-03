@@ -72,8 +72,8 @@
     \begin{tabularx}{\linewidth}{lX}
       \toprule[1.5pt]
       {\heiti 文件名} & {\heiti 描述} \\\midrule[1pt]
-      thuthesis.ins & \LaTeX{} 安装文件，DocStrip\footnote{表格中的脚注} \\
-      thuthesis.dtx & 所有的一切都在这里面\footnote{再来一个}。\\
+      thuthesis.ins & \LaTeX{} 安装文件，DocStrip。\footnote{表格中的脚注} \\
+      thuthesis.dtx & 所有的一切都在这里面。\footnote{再来一个}\\
       thuthesis.cls & 模板类文件。\\
       thuthesis-numeric.bst    & 参考文献 BibTeX 样式文件。\\
       thuthesis-author-year.bst    & 参考文献 BibTeX 样式文件。\\
@@ -512,17 +512,17 @@ V_j & = v_j, & \qquad X_j & = x_j,
 
 有时候不想要上标，那么可以这样~\inlinecite{shaheshang}，这个非常重要。
 
-有时候一些参考文献没有纸质出处，需要标注 URL。缺省情况下，URL 不会在连字符处断行，
-这可能使得用连字符代替空格的网址分行很难看。如果需要，可以将模板类文件中
-\begin{verbatim}
-\RequirePackage{hyperref}
-\end{verbatim}
-一行改为：
-\begin{verbatim}
-\PassOptionsToPackage{hyphens}{url}
-\RequirePackage{hyperref}
-\end{verbatim}
-使得连字符处可以断行。更多设置可以参考 \texttt{url} 宏包文档。
+% 有时候一些参考文献没有纸质出处，需要标注 URL。缺省情况下，URL 不会在连字符处断行，
+% 这可能使得用连字符代替空格的网址分行很难看。如果需要，可以将模板类文件中
+% \begin{verbatim}
+% \RequirePackage{hyperref}
+% \end{verbatim}
+% 一行改为：
+% \begin{verbatim}
+% \PassOptionsToPackage{hyphens}{url}
+% \RequirePackage{hyperref}
+% \end{verbatim}
+% 使得连字符处可以断行。更多设置可以参考 \texttt{url} 宏包文档。
 
 \section{公式}
 \label{sec:equation}
