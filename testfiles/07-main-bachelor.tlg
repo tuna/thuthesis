@@ -5229,18 +5229,7 @@ Completed box being shipped out [4]
 ....\glue(\rightskip) 0.0
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
-(07-main-bachelor.lof
-Overfull \hbox (6.0225pt too wide) detected at line 1
- []\TU/texgyretermes(0)/m/n/12.045 4
-\hbox(8.14243+0.0)x0.0
-.\glue 0.0 plus 1.0fil
-.\special{color push gray 0}
-.\TU/texgyretermes(0)/m/n/12.045 4
-.\kern -0.0002
-.\kern 0.0002
-.\kern -1.0
-.\kern 1.0
-)
+(07-main-bachelor.lof)
 \tf@lof=\write...
 Completed box being shipped out [5]
 \vbox(722.98454+3.5232)x439.87962
@@ -5305,7 +5294,7 @@ Completed box being shipped out [5]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 528.43254fil
+..\vbox(645.87758+0.0)x421.10089, glue set 542.461fil
 ...\write-{}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
@@ -5338,20 +5327,25 @@ C.}
 ...\glue 20.075
 ...\mark{{插图索引}{插图索引}}
 ...\penalty 10000
-...\glue 0.0 plus 0.2
+...\glue 0.0 plus 0.1
+...\penalty 10000
+...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 8.12335
-...\hbox(9.40715+2.2283)x421.10089, glue set 216.33592fill
+...\glue(\baselineskip) 3.47807
+...\hbox(14.05243+6.02255)x421.10089, glue set 211.31717fill
 ....\glue(\leftskip) 48.18
 ....\hbox(0.0+0.0)x0.0
-....\hbox(0.0+0.0)x0.0
+....\rule(14.05243+6.02255)x0.0
+....\rule(*+*)x0.0
 ....\penalty 10000
 ....\glue -48.18
-....\hbox(8.84103+1.73447)x48.18, glue set 16.26083fil
+....\glue 0.0
+....\hbox(8.84103+1.73447)x48.18, glue set 18.0675fil
 .....\TU/FandolSong-Regular(0)/m/n/12.045 图
 .....\kern -0.00017
 .....\kern 0.00017
-.....\glue 4.81792
+.....\penalty 10000
+.....\glue 3.01125 plus 1.50562 minus 1.00374
 .....\TU/texgyretermes(0)/m/n/12.045 2.1
 .....\kern -0.0002
 .....\kern 0.0002
@@ -5383,45 +5377,29 @@ C.}
 ....\TU/FandolSong-Regular(0)/m/n/12.045 构
 ....\kern -0.00017
 ....\kern 0.00017
-....\penalty 10000
+....\rule(14.05243+6.02255)x0.0
+....\kern 0.0
+....\glue -4.015
+....\glue 3.01125
 ....\leaders 0.0 plus 1.0fill
-.....\hbox(1.2045+0.13248)x9.03435
-......\mathon
-......\kern 3.01155
+.....\hbox(1.2045+0.13248)x4.015, glue set 1.00375fil
+......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\hbox(1.2045+0.13248)x3.01125
+.......\special{color push gray 0}
 .......\TU/texgyretermes(0)/m/n/12.045 .
 .......\kern -0.0002
 .......\kern 0.0002
-......\kern 3.01155
-......\mathoff
-....\penalty 10000
-....\hbox(8.14243+0.0)x0.0
-.....\glue 0.0 plus 1.0fil
-.....\special{color push gray 0}
-.....\TU/texgyretermes(0)/m/n/12.045 4
-.....\kern -0.0002
-.....\kern 0.0002
-.....\kern -1.0
-.....\kern 1.0
-....\special{color pop}
-....\penalty 10000
-....\glue(\parfillskip) -30.71477
-....\glue(\rightskip) 30.71477
-...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 9.61996
-...\hbox(8.22673+2.6258)x421.10089, glue set 312.3707fil
-....\hbox(0.0+0.0)x24.09
-....\TU/texgyretermes(0)/m/n/12.045 figure.caption.4
+.......\special{color pop}
+....\kern 0.0
+....\TU/texgyretermes(0)/m/n/12.045 4
 ....\kern -0.0002
 ....\kern 0.0002
-....\glue 3.01125 plus 1.50562 minus 1.00374
-....\glue 3.01125 plus 1.50562 minus 1.00374
-....\glue 3.01125 plus 1.50562 minus 1.00374
-....\write1{\protect \FN@pp@footnotehinttrue }
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\glue -2.6258
+...\penalty 10000
+...\write1{\protect \FN@pp@footnotehinttrue }
+...\glue -6.0
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -5488,18 +5466,7 @@ C.}
 ....\glue(\rightskip) 0.0
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
-(07-main-bachelor.lot
-Overfull \hbox (6.0225pt too wide) detected at line 1
- []\TU/texgyretermes(0)/m/n/12.045 3
-\hbox(8.14243+0.16861)x0.0
-.\glue 0.0 plus 1.0fil
-.\special{color push gray 0}
-.\TU/texgyretermes(0)/m/n/12.045 3
-.\kern -0.0002
-.\kern 0.0002
-.\kern -1.0
-.\kern 1.0
-)
+(07-main-bachelor.lot)
 \tf@lot=\write...
 Completed box being shipped out [6]
 \vbox(722.98454+3.5232)x434.18916
@@ -5564,7 +5531,7 @@ Completed box being shipped out [6]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 528.43254fil
+..\vbox(645.87758+0.0)x421.10089, glue set 542.461fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{表格索引}{\thepage \ET
 C.}
@@ -5595,20 +5562,25 @@ C.}
 ...\glue 20.075
 ...\mark{{表格索引}{表格索引}}
 ...\penalty 10000
-...\glue 0.0 plus 0.2
+...\glue 0.0 plus 0.1
+...\penalty 10000
+...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 7.96979
-...\hbox(9.3951+2.13194)x421.10089, glue set 264.51591fill
+...\glue(\baselineskip) 3.31245
+...\hbox(14.05243+6.02255)x421.10089, glue set 259.49716fill
 ....\glue(\leftskip) 48.18
 ....\hbox(0.0+0.0)x0.0
-....\hbox(0.0+0.0)x0.0
+....\rule(14.05243+6.02255)x0.0
+....\rule(*+*)x0.0
 ....\penalty 10000
-....\glue -48.18
-....\hbox(9.31079+2.09581)x48.18, glue set 16.26083fil
+....\glue -54.20248
+....\glue 0.0
+....\hbox(9.31079+2.09581)x54.20248, glue set 24.09fil
 .....\TU/FandolSong-Regular(0)/m/n/12.045 表
 .....\kern -0.00017
 .....\kern 0.00017
-.....\glue 4.81792
+.....\penalty 10000
+.....\glue 3.01125 plus 1.50562 minus 1.00374
 .....\TU/texgyretermes(0)/m/n/12.045 2.1
 .....\kern -0.0002
 .....\kern 0.0002
@@ -5632,42 +5604,29 @@ C.}
 ....\TU/FandolSong-Regular(0)/m/n/12.045 息
 ....\kern -0.00017
 ....\kern 0.00017
-....\penalty 10000
+....\rule(14.05243+6.02255)x0.0
+....\kern 0.0
+....\glue -4.015
+....\glue 3.01125
 ....\leaders 0.0 plus 1.0fill
-.....\hbox(1.2045+0.13248)x9.03435
-......\mathon
-......\kern 3.01155
+.....\hbox(1.2045+0.13248)x4.015, glue set 1.00375fil
+......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\hbox(1.2045+0.13248)x3.01125
+.......\special{color push gray 0}
 .......\TU/texgyretermes(0)/m/n/12.045 .
 .......\kern -0.0002
 .......\kern 0.0002
-......\kern 3.01155
-......\mathoff
-....\penalty 10000
-....\hbox(8.14243+0.16861)x0.0
-.....\glue 0.0 plus 1.0fil
-.....\special{color push gray 0}
-.....\TU/texgyretermes(0)/m/n/12.045 3
-.....\kern -0.0002
-.....\kern 0.0002
-.....\kern -1.0
-.....\kern 1.0
-....\special{color pop}
-....\penalty 10000
-....\glue(\parfillskip) -30.71477
-....\glue(\rightskip) 30.71477
-...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 9.71632
-...\hbox(8.22673+2.61375)x421.10089, glue set 326.08994fil
-....\hbox(0.0+0.0)x24.09
-....\TU/texgyretermes(0)/m/n/12.045 table.caption.3
+.......\special{color pop}
+....\kern 0.0
+....\TU/texgyretermes(0)/m/n/12.045 3
 ....\kern -0.0002
 ....\kern 0.0002
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
+...\penalty 10000
 ...\write1{\protect \FN@pp@footnotehinttrue }
-...\glue -2.61375
+...\glue -6.0
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -7374,9 +7333,9 @@ Completed box being shipped out [9]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\write1{\ttl@writefile{toc}{\protect \setcounter {tocdepth}{0}}}
-...\write1{\ttl@writefile{lof}{\protect \setcounter {tocdepth}{0}}}
-...\write1{\ttl@writefile{lot}{\protect \setcounter {tocdepth}{0}}}
-...\write1{\ttl@writefile{loe}{\protect \setcounter {tocdepth}{0}}}
+...\write1{\@writefile{lof}{\let\contentsline\ttl@gobblecontents}}
+...\write1{\@writefile{lot}{\let\contentsline\ttl@gobblecontents}}
+...\write1{\@writefile{loe}{\let\contentsline\ttl@gobblecontents}}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -3.97446
 ...\glue 0.0 plus 1.0fil

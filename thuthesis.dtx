@@ -3246,20 +3246,22 @@
 % \begin{macro}{\listoftables*}
 % 定义图表以及公式目录样式。
 %    \begin{macrocode}
-\def\thu@starttoc#1{% #1: float type, prepend type name in \listof*** entry.
-  \let\oldnumberline\numberline
-  \def\numberline##1{\oldnumberline{\csname #1name\endcsname\hskip.4em ##1}}
-  \@starttoc{\csname ext@#1\endcsname}
-  \let\numberline\oldnumberline}
 \def\thu@listof#1{% #1: float type
   \setcounter{tocdepth}{2} % restore tocdepth in case being modified
   \@ifstar
-    {\thu@chapter*[]{\csname list#1name\endcsname}\thu@starttoc{#1}}
-    {\thu@chapter*{\csname list#1name\endcsname}\thu@starttoc{#1}}}
+    {\thu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}
+    {\thu@chapter*{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
+}
 \renewcommand\listoffigures{\thu@listof{figure}}
-\renewcommand*\l@figure{\ifthu@degree@bachelor\relax\else\addvspace{6bp}\fi\@dottedtocline{1}{0em}{4em}}
+\titlecontents{figure}
+  [4em]{\addvspace{6bp}}
+  {\contentslabel[\figurename~\thecontentslabel]{4em}}{}
+  {\thu@leaders\thecontentspage}
 \renewcommand\listoftables{\thu@listof{table}}
-\let\l@table\l@figure
+\titlecontents{table}
+  [4em]{\addvspace{6bp}}
+  {\contentslabel[\tablename~\thecontentslabel]{4.5em}}{}
+  {\thu@leaders\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -3290,7 +3292,11 @@
 % \LaTeX{} 默认没有公式索引，此处定义自己的 \cs{listofequations}。
 %    \begin{macrocode}
 \newcommand\listofequations{\thu@listof{equation}}
-\let\l@equation\l@figure
+\titlecontents{equation}
+  [4em]{\addvspace{6bp}}
+  {\contentslabel[\thu@equation@name~\thecontentslabel]{4em}}{}
+  {\thu@leaders\thecontentspage}
+\contentsuse{equation}{loe}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -3425,21 +3431,9 @@
       \protect\setcounter{tocdepth}{\thu@toc@depth}%
     }%
   }%
-  \protected@write\@auxout{}{%
-    \string\ttl@writefile{lof}{%
-      \protect\setcounter{tocdepth}{\thu@toc@depth}%
-    }%
-  }%
-  \protected@write\@auxout{}{%
-    \string\ttl@writefile{lot}{%
-      \protect\setcounter{tocdepth}{\thu@toc@depth}%
-    }%
-  }%
-  \protected@write\@auxout{}{%
-    \string\ttl@writefile{loe}{%
-      \protect\setcounter{tocdepth}{\thu@toc@depth}%
-    }%
-  }%
+  \addtocontents{lof}{\string\let\string\contentsline\string\ttl@gobblecontents}
+  \addtocontents{lot}{\string\let\string\contentsline\string\ttl@gobblecontents}
+  \addtocontents{loe}{\string\let\string\contentsline\string\ttl@gobblecontents}
 }
 \g@addto@macro\appendix{%
   \thusetup{
