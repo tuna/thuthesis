@@ -1207,6 +1207,10 @@
 \RequirePackage{fancyhdr}
 %    \end{macrocode}
 %
+%    \begin{macrocode}
+\RequirePackage{titletoc}
+%    \end{macrocode}
+%
 % 利用 \pkg{notoccite} 避免目录中引用编号混乱。
 %    \begin{macrocode}
 \RequirePackage{notoccite}
@@ -2235,58 +2239,70 @@
 \setcounter{tocdepth}{2}
 %    \end{macrocode}
 %
-% 每章标题行前空 6 磅，后空 0 磅。章节名中英文用 Arial 字体，页码仍用 Times。
 % \begin{macro}{\tableofcontents}
 % 目录生成命令。
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
-  \thu@chapter*[]{\contentsname}
-  \ifthu@degree@bachelor\xiaosi[1.667]\else\xiaosi[1.65]\fi\@starttoc{toc}\normalsize}
-%    \end{macrocode}
-% 调整目录样式，允许指定目录字体。
-%    \begin{macrocode}
-\def\@pnumwidth{2em}
-\def\@tocrmarg{\@pnumwidth}
-\def\@dotsep{1}
-\renewcommand*\l@chapter[2]{%
-  \ifnum \c@tocdepth >\m@ne
-    \addpenalty{-\@highpenalty}%
-    \ifthu@degree@bachelor\vskip 6bp\else\vskip 4bp\fi \@plus\p@
-    \setlength\@tempdima{4em}%
-    \begingroup
-      \parindent \z@ \rightskip \@pnumwidth
-      \parfillskip -\@pnumwidth
-      \leavevmode
-      \advance\leftskip\@tempdima
-      \hskip -\leftskip
-      \begingroup
-        \ifthu@degree@graduate
-          \sffamily
-        \else
-          \ifthu@degree@bachelor
-            \heiti
-          \fi
-        \fi
-        #1%
-      \endgroup
-      \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill%
-      \nobreak #2\par
-      \penalty\@highpenalty
-    \endgroup
-  \fi}
+  \thu@chapter*[]{\contentsname}%
+  \@starttoc{toc}%
+}
+\newcommand\thu@leaders{\titlerule*[4bp]{.}}
+\newcommand\thu@set@toc@format{%
+  \contentsmargin{\z@}%
 %    \end{macrocode}
 %
-% 研究生学位论文写作指南中规定：目录中的章标题行居左书写，一级节标题行缩进 1 个
-% 汉字符，二级节标题行缩进 2 个汉字符（但示例文件中为 1.5 个汉字符）。本科生指
-% 南中未作明确规定，示例文件中对于一级和二级节标题分别缩进 1 和 1.5 个汉字符。
+% 本科生：
+% 目录从第 1 章开始，每章标题用黑体小四号字，行间距为 20pt，
+% 行前空 6pt，行后空 0pt。
+% 其它级节标题用宋体小四字，行间距为 20pt。
+%
+% 注意示例中章标题的字母和数字是衬线体，所以这里用 \cs{heiti}。
+% 示例中的一级和二级节标题分别缩进 1 和 1.5 个汉字符。
 %    \begin{macrocode}
-\patchcmd{\@dottedtocline}{\hb@xt@\@pnumwidth}{\hbox}{}{}
-\renewcommand*\l@section{%
-  \@dottedtocline{1}{\ccwd}{2.1em}}
-\renewcommand*\l@subsection{%
-  \@dottedtocline{2}{\ifthu@degree@bachelor 1.5\ccwd\else 2\ccwd\fi}{3em}}
-\renewcommand*\l@subsubsection{%
-  \@dottedtocline{3}{\ifthu@degree@bachelor 2.4em\else 3.5em\fi}{3.8em}}
+  \ifthu@degree@bachelor
+    \titlecontents{chapter}
+      [\z@]{\addvspace{6bp}\heiti}
+      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+      {\rmfamily\thu@leaders\thecontentspage}%
+    \titlecontents{section}
+      [1\ccwd]{}
+      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+      {\thu@leaders\thecontentspage}%
+    \titlecontents{subsection}
+      [1.5\ccwd]{}
+      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+      {\thu@leaders\thecontentspage}%
+%    \end{macrocode}
+%
+% 研究生：
+% \begin{enumerate}
+%   \item 目录中的章标题行采用黑体小四号字，固定行距 20 磅，段前空 6 磅，
+%     段后 0 磅；其他内容采用宋体小四号字，行距为固定值 20 磅，
+%     段前、段后均为 0 磅。
+%   \item 目录中的章标题行居左书写，一级节标题行缩进 1 个汉字符，
+%     二级节标题行缩进 2 个汉字符。
+% \end{enumerate}
+%
+% 注意示例中章标题的字母和数字是无衬线体，所以用这里用 \cs{sffamily}，
+% 但是页码仍然用 \cs{rmfamily}。
+%    \begin{macrocode}
+  \else
+    \titlecontents{chapter}
+      [\z@]{\addvspace{6bp}\sffamily}
+      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+      {\rmfamily\thu@leaders\thecontentspage}%
+    \titlecontents{section}
+      [1\ccwd]{}
+      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+      {\thu@leaders\thecontentspage}%
+    \titlecontents{subsection}
+      [2\ccwd]{}
+      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+      {\thu@leaders\thecontentspage}%
+  \fi
+}
+\thu@set@toc@format
+\thu@option@hook{degree}{\thu@set@toc@format}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -3397,11 +3413,33 @@
     name = toc@depth,
   },
 }
+%    \end{macrocode}
+%
+% 这里不要使用 \cs{addcontentsline}，
+% 避免写入 \pkg{titletoc} 的 \file(.ptc) 文件中，
+% 造成 \env{survey} 的子目录中 |tocdepth| 为 0。
+%    \begin{macrocode}
 \thu@option@hook{toc-depth}{%
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{\thu@toc@depth}}%
-  \addtocontents{lof}{\protect\setcounter{tocdepth}{\thu@toc@depth}}%
-  \addtocontents{lot}{\protect\setcounter{tocdepth}{\thu@toc@depth}}%
-  \addtocontents{loe}{\protect\setcounter{tocdepth}{\thu@toc@depth}}%
+  \protected@write\@auxout{}{%
+    \string\ttl@writefile{toc}{%
+      \protect\setcounter{tocdepth}{\thu@toc@depth}%
+    }%
+  }%
+  \protected@write\@auxout{}{%
+    \string\ttl@writefile{lof}{%
+      \protect\setcounter{tocdepth}{\thu@toc@depth}%
+    }%
+  }%
+  \protected@write\@auxout{}{%
+    \string\ttl@writefile{lot}{%
+      \protect\setcounter{tocdepth}{\thu@toc@depth}%
+    }%
+  }%
+  \protected@write\@auxout{}{%
+    \string\ttl@writefile{loe}{%
+      \protect\setcounter{tocdepth}{\thu@toc@depth}%
+    }%
+  }%
 }
 \g@addto@macro\appendix{%
   \thusetup{
@@ -3423,13 +3461,21 @@
   \thusetup{language = english}%
   \let\title\thu@appendix@title
   \let\maketitle\thu@appendix@maketitle
+  \thu@set@partial@toc@format
+  \renewcommand\tableofcontents{%
+    \section*{Contents}%
+    \thu@pdfbookmark{1}{Contents}%
+    \printcontents[survey]{l}{1}[2]{}%
+  }%
   \renewcommand\bibname{参考文献}%
   \let\bibsection\thu@appendix@bibsection
   \renewcommand\@bibunitname{main-survey}%
   \let\bibliographystyle\defaultbibliographystyle
   \let\bibliography\thu@appendix@bibliography
   \begin{bibunit}%
+  \startcontents[survey]%
 }{%
+  \stopcontents[survey]%
   \end{bibunit}%
   \thu@reset@main@language % restore language
 }
@@ -3444,13 +3490,21 @@
   \thusetup{language = chinese}%
   \let\title\thu@appendix@title
   \let\maketitle\thu@appendix@maketitle
+  \thu@set@partial@toc@format
+  \renewcommand\tableofcontents{%
+    \section*{目录}%
+    \thu@pdfbookmark{1}{目录}%
+    \printcontents[translation]{l}{1}[2]{}%
+  }%
   \renewcommand\bibname{书面翻译对应的原文索引}%
   \let\bibsection\thu@appendix@bibsection
   \renewcommand\@bibunitname{main-translation}%
   \let\bibliographystyle\defaultbibliographystyle
   \let\bibliography\thu@appendix@bibliography
   \begin{bibunit}%
+  \startcontents[translation]%
 }{%
+  \stopcontents[translation]%
   \end{bibunit}%
   \thu@reset@main@language % restore language
 }
@@ -3469,11 +3523,29 @@
 }
 %    \end{macrocode}
 %
+%    \begin{macrocode}
+\newcommand\thu@set@partial@toc@format{%
+  \titlecontents{section}
+    [\z@]{}
+    {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+    {\thu@leaders\thecontentspage}%
+  \titlecontents{subsection}
+    [1\ccwd]{}
+    {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+    {\thu@leaders\thecontentspage}%
+  \titlecontents{subsubsection}
+    [2\ccwd]{}
+    {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+    {\thu@leaders\thecontentspage}%
+}
+%    \end{macrocode}
+%
 % 调研阅读报告的参考文献(或书面翻译对应的外文资料的原文索引)标题用宋体小四号字，段前 20pt，段后 6pt，行距 20pt。
 %    \begin{macrocode}
 \newcommand\thu@appendix@bibsection{%
   \par
   \vskip 20bp%
+  \thu@pdfbookmark{1}{\bibname}%
   \begingroup
     \centering
     \xiaosi[1.667]\bibname\par

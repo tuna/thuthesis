@@ -9,11 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 修正本科生附录的 `algorithm` 和 `listings` 环境的编号格式
 - 研究生的“使用授权说明”增加一空白页（#504）
 - 修正 publication 列表行距问题 (#507)
+- 修正研究生目录的行距
 
 ## Added
 - 允许使用边注
 - 新增 `amsthm` 支持
 - 支持单个关键词设置样式
+- 在 `survey` 和 `translation` 环境中生成独立目录
 
 ## Changed
 - 附录的图、表不再加入索引
