@@ -2869,6 +2869,15 @@
 % \end{macro}
 %
 % \myentry{本科生封面}
+% 本科生封面要求：
+% \begin{itemize}
+%   \item 题目：1 号黑体字，1.2 倍行距。
+%   \item 系别、专业、姓名及指导教师信息部分使用三号仿宋\_GB2312 字。
+%   \item 论文成文打印的日期用阿拉伯数字，采用小四号宋体。
+%   \item 涉密的论文在封面右上角处注明论文密级，采用小四号宋体。
+% \end{itemize}
+%
+% 外文系英语专业要求题目先写中文标题，再写英文标题，字号 26pt，32 磅行距。
 %    \begin{macrocode}
 \newcommand\thu@titlepage@bachelor{%
   \newgeometry{
@@ -2907,7 +2916,7 @@
       \CJKunderline[skip=false, thickness=0.05em, depth=0.12em]{\thu@title}\par
     }\par
     \vskip 2.5cm%
-    \parbox[t][6.0cm][t]{\textwidth}{%
+    \begingroup
       \fangsong\sanhao[2.3]%
       \leftskip=2.5cm%
       \parindent=\z@
@@ -2924,7 +2933,9 @@
       \thu@info@item{姓名}{\thu@name@title}{\thu@author}%
       \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
       \thu@info@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    }\par
+      \par
+    \endgroup
+    \vskip 1.5cm%
     {\xiaosi\thu@format@date{\thu@date@zh@digit}{\thu@date}\par}%
   \endgroup
   \clearpage
