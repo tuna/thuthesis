@@ -7,7 +7,7 @@ $xdvipdfmx = "xdvipdfmx -q -E -o %D %O %S";
 
 $bibtex_use = 1.5;
 
-$clean_ext = "hd loe synctex.gz thm xdv";
+$clean_ext = "hd loe ptc synctex.gz thm xdv";
 
 $makeindex = "makeindex -s gind.ist %O -o %D %S";
 add_cus_dep('glo', 'gls', 0, 'glo2gls');
