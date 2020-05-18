@@ -221,7 +221,8 @@
 %   $ xelatex main.tex
 %   $ bibtex main.aux             # 生成 bbl 文件
 %   $ bibtex main-survey.aux      # 本科生的调研报告的参考文献
-%   $ bibtex main-translation.aux # 本科生的外文资料翻译的索引
+%   $ bibtex main-translation.aux # 本科生的外文资料翻译的参考文献
+%   $ bibtex main-index.aux       # 本科生的书面翻译对应的原文索引
 %   $ xelatex main.tex            # 解决引用
 %   $ xelatex main.tex            # 生成完整的 pdf 文件
 % \end{shell}
@@ -842,20 +843,26 @@
 %   \begin{survey}
 %     \title{...}
 %     \maketitle
+%     \tableofcontents
 %     ... \cite{...}
 %     \bibliographystyle{...}
 %     \bibliography{...}
 %   \end{survey}
 % \end{latex}
 %
-% 书面翻译对应的原文索引的实际作用更接近参考文献，所以也用参考文献的机制来生成，
-% 但是在正文中并不引用。
+% “书面翻译对应的原文索引”区别于译文的参考文献，需要使用 \env{translation-index}
+% 环境，另外需要使用 BibTeX 编译 \file{main-index.aux}。
 %
 % \begin{latex}
 %   \begin{translation}
-%     ... \nocite{...}
+%     ... \cite{...}
 %     \bibliographystyle{...}
-%     \bibliography{...}
+%     \bibliography{...}  % 书面翻译的参考文献
+%     \begin{translation-index}
+%       \nocite{...}
+%       \bibliographystyle{...}
+%       \bibliography{...}  % 书面翻译对应的原文索引
+%     \end{translation-index}
 %   \end{translation}
 % \end{latex}
 %
@@ -3501,8 +3508,12 @@
     \thu@pdfbookmark{1}{目录}%
     \printcontents[translation]{l}{1}[2]{}%
   }%
-  \renewcommand\bibname{书面翻译对应的原文索引}%
-  \let\bibsection\thu@appendix@bibsection
+  \def\bibsection{%
+    \begingroup
+      \ctexset{section/numbering=false}%
+      \section{\bibname}%
+    \endgroup
+  }%
   \renewcommand\@bibunitname{main-translation}%
   \let\bibliographystyle\defaultbibliographystyle
   \let\bibliography\thu@appendix@bibliography
@@ -3512,6 +3523,20 @@
   \stopcontents[translation]%
   \end{bibunit}%
   \thu@reset@main@language % restore language
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{translation}
+% 书面翻译对应的原文索引，区别于译文的参考文献。
+%    \begin{macrocode}
+\newenvironment{translation-index}{%
+  \begin{bibunit}%
+    \renewcommand\@bibunitname{main-index}%
+    \renewcommand\bibname{书面翻译对应的原文索引}%
+    \let\bibsection\thu@appendix@bibsection
+}{%
+  \end{bibunit}%
 }
 %    \end{macrocode}
 % \end{environment}

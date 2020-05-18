@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+## Changed
+- 在`translation` 环境中使用 `\bibliography` 改为生成参考文献，
+  对应的原文索引改为 `translation-index` 环境（#529）
+- 附录的图、表不再加入索引
+
 ## Fixed
 - 本科生附录的调研报告使用英文（#479）
 - 修正本科生附录的 `algorithm` 和 `listings` 环境的编号格式
@@ -18,9 +23,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 新增 `amsthm` 支持
 - 支持单个关键词设置样式
 - 在 `survey` 和 `translation` 环境中生成独立目录
-
-## Changed
-- 附录的图、表不再加入索引
 
 ## [v6.0.2] - 2020-02-23
 ## Fixed
