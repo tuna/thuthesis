@@ -2026,9 +2026,9 @@
 % \label{sec:float}
 % 设置浮动对象和文字之间的距离
 %    \begin{macrocode}
-\setlength{\floatsep}{12bp \@plus 2bp \@minus 4bp}
-\setlength{\textfloatsep}{12bp}
-\setlength{\intextsep}{12bp}
+\setlength{\floatsep}{6bp}
+\setlength{\textfloatsep}{6bp}
+\setlength{\intextsep}{6bp}
 \setlength{\@fptop}{0bp \@plus1.0fil}
 \setlength{\@fpsep}{12bp \@plus2.0fil}
 \setlength{\@fpbot}{0bp \@plus1.0fil}
@@ -2060,12 +2060,14 @@
 \fi
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
-\DeclareCaptionFont{thu}{\dawu[1.3]}
+\DeclareCaptionFont{thu}{\dawu}
 \DeclareCaptionLabelSeparator{thu}{\hspace{\ccwd}}
 \captionsetup{
+  format         = hang,
   font           = thu,
   labelsep       = thu,
-  skip           = 6bp,
+  aboveskip      = 6bp,
+  belowskip      = 6bp,
   figureposition = bottom,
   tableposition  = top,
 }
