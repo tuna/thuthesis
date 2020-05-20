@@ -2939,7 +2939,13 @@
       \parindent=\z@
       \def\thu@info@item##1##2##3{%
         \ifx##3\@empty\else
-          \thu@fixed@box{4em}{##1}：##2{##3}\\
+          \thu@fixed@box{%
+            \ifx\thu@joint@supervisor\@empty
+              4em%
+            \else
+              5.5em%
+            \fi
+          }{##1}：##2{##3}\\
         \fi
       }%
       \def\thu@name@title@format##1##2{%
@@ -2950,6 +2956,7 @@
       \thu@info@item{姓名}{\thu@name@title}{\thu@author}%
       \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
       \thu@info@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
+      \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
       \par
     \endgroup
     \vskip 1.5cm%
