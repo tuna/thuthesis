@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 在`translation` 环境中使用 `\bibliography` 改为生成参考文献，
   对应的原文索引改为 `translation-index` 环境（#529）。
 - 附录的图、表不再加入索引。
+- 使用 `threeparttable` 示例表内脚注。
 
 ## Fixed
 - 本科生附录的调研报告使用英文（#479）。

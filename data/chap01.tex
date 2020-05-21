@@ -64,23 +64,28 @@
 配合使用。如果表格比较简单的话可以直接用命令 \cs{hlinewd}\marg{width} 控制。
 \begin{table}[htb]
   \centering
-  \begin{minipage}[t]{0.85\linewidth} % 如果想在表格中使用脚注，minipage是个不错的办法
+  \begin{threeparttable}[b]
   \caption[模板文件]{模板文件。如果表格的标题很长，那么在表格索引中就会很不美
     观，所以要像 chapter 那样在前面用中括号写一个简短的标题。这个标题会出现在索
     引中。}
   \label{tab:template-files}
-    \begin{tabularx}{\linewidth}{lX}
+    \begin{tabular}{ll}
       \toprule
       {\heiti 文件名} & {\heiti 描述} \\\midrule
-      thuthesis.ins & \LaTeX{} 安装文件，DocStrip。\footnote{表格中的脚注} \\
-      thuthesis.dtx & 所有的一切都在这里面。\footnote{再来一个}\\
+      thuthesis.ins & \LaTeX{} 安装文件，DocStrip。\tnote{1} \\
+      thuthesis.dtx & 所有的一切都在这里面。\tnote{b}\\
       thuthesis.cls & 模板类文件。\\
       thuthesis-numeric.bst    & 参考文献 BibTeX 样式文件。\\
       thuthesis-author-year.bst    & 参考文献 BibTeX 样式文件。\\
       thusetup.tex   & 基本配置和常用的包、命令，减轻主文件的负担。\\
       \bottomrule
-    \end{tabularx}
-  \end{minipage}
+    \end{tabular}
+    \begin{tablenotes}
+    \item [1] 表格中的脚注。如果脚注比较长，那么换行后的效果是这样的，需要更多的文字。
+              现在能看到么？
+    \item [b] 再来一个。可以使用不同的 symbol。
+    \end{tablenotes}
+  \end{threeparttable}
 \end{table}
 
 首先来看一个最简单的表格。表 \ref{tab:template-files} 列举了本模板主要文件及其功
