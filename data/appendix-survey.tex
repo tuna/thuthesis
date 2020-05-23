@@ -15,17 +15,17 @@
 \section{Single-Objective Programming}
 
 It is impossible to cover in a single chapter every concept of mathematical
-programming.\cite{tex} This chapter introduces only the basic concepts and techniques of
+programming.~\cite{tex} This chapter introduces only the basic concepts and techniques of
 mathematical programming such that readers gain an understanding of them
-throughout the book\cite{abrahams99tex,salomon1995advanced}.
+throughout the book.~\cite{abrahams99tex,salomon1995advanced}.
 
 The general form of single-objective programming (SOP) is written
 as follows,
 \begin{equation*} % 如果附录中的公式不想让它出现在公式索引中，那就请
                              % 用 equation*
 \left\{\begin{array}{l}
-\max \,\,f(x)\\[0.1 cm]
-\mbox{subject to:} \\ [0.1 cm]
+\max \,\,f(x)\\%[0.1 cm]
+\mbox{subject to:} \\%[0.1 cm]
 \qquad g_j(x)\le 0,\quad j=1,2,\cdots,p
 \end{array}\right.
 \end{equation*}
@@ -56,7 +56,7 @@ for any feasible solution $x$.
 \end{mpdefop}
 
 One of the outstanding contributions to mathematical programming was known as
-the Kuhn-Tucker conditions\ref{eq:ktc}. In order to introduce them, let us give
+the Kuhn-Tucker conditions~\eqref{eq:ktc}. In order to introduce them, let us give
 some definitions. An inequality constraint $g_j(x)\le 0$ is said to be active at
 a point $x^*$ if $g_j(x^*)=0$. A point $x^*$ satisfying $g_j(x^*)\le 0$ is said
 to be regular if the gradient vectors $\nabla g_j(x)$ of all active constraints
@@ -69,14 +69,14 @@ $\lambda_j,j=1,2,\cdots,p$ such that the following Kuhn-Tucker conditions hold,
 \begin{equation}
 \label{eq:ktc}
 \left\{\begin{array}{l}
-    \nabla f(x^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j(x^*)=0\\[0.3cm]
-    \lambda_jg_j(x^*)=0,\quad j=1,2,\cdots,p\\[0.2cm]
+    \nabla f(x^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j(x^*)=0\\%[0.3cm]
+    \lambda_jg_j(x^*)=0,\quad j=1,2,\cdots,p\\%[0.2cm]
     \lambda_j\ge 0,\quad j=1,2,\cdots,p.
 \end{array}\right.
 \end{equation}
 If all the functions $f(x)$ and $g_j(x),j=1,2,\cdots,p$ are convex and
 differentiable, and the point $x^*$ satisfies the Kuhn-Tucker conditions
-(\ref{eq:ktc}), then it has been proved that the point $x^*$ is a global optimal
+\eqref{eq:ktc}, then it has been proved that the point $x^*$ is a global optimal
 solution of SOP.
 
 \subsection{Linear Programming}
@@ -129,7 +129,7 @@ concerned with analyzing the structure of problems.
 \begin{figure}[h]
   \centering
   \includegraphics{thu-lib-logo.pdf}
-  \caption{This is an example for figure}
+  \caption{This is an example for figure.}
   \label{tab:badfigure2}
 \end{figure}
 

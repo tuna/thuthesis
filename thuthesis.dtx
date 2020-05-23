@@ -829,8 +829,8 @@
 % 调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章，
 % 所以模板相应定义了 \env{survey} 和 \env{translation}。在这两个环境内部可以
 % 像论文正文一样使用标题和参考文献的命令，但不会影响外部。
-% 但是需要使用 BibTeX 对 \file{main-survey.aux} 或者
-% \file{main-translation.aux} 进行编译，才能生成参考文献（见 \ref{sec:xelatex}）。
+% 但是需要使用 \hologo{BibTeX} 对 \file{main-survey.aux} 或者
+% \file{main-translation.aux} 进行编译，才能生成参考文献（见 \ref{sec:xelatex} 节）。
 %
 % 同时，阅读报告默认切换书写语言为英语，书面翻译默认切换为中文。
 % 如有需要，可以通过 \cs{thusetup} 的 \option{language} 参数再次更改。
@@ -847,7 +847,7 @@
 % \end{latex}
 %
 % “书面翻译对应的原文索引”区别于译文的参考文献，需要使用 \env{translation-index}
-% 环境，另外需要使用 BibTeX 编译 \file{main-index.aux}。
+% 环境，另外需要使用 \hologo{BibTeX} 编译 \file{main-index.aux}。
 %
 % \begin{latex}
 %   \begin{translation}
@@ -1716,8 +1716,8 @@
 \newcommand\thu@set@names{%
   \ifthu@language@chinese
     \ctexset{
-      figurename     = 图,
-      tablename      = 表,
+      figurename = 图,
+      tablename  = 表,
     }
     \def\thu@equation@name{公式}
     \def\thu@assumption@name{假设}
@@ -1737,8 +1737,8 @@
   \else
     \ifthu@language@english
       \ctexset{
-        figurename     = {Figure},
-        tablename      = {Table},
+        figurename = {Figure},
+        tablename  = {Table},
       }
       \def\thu@equation@name{Equation}
       \def\thu@assumption@name{Assumption}
@@ -2049,7 +2049,7 @@
 % \end{itemize}
 %    \begin{macrocode}
 \ifthu@degree@bachelor
-  \AtBeginDocument{ % delay the check until all packages are loaded
+  \AtBeginDocument{% delay the check until all packages are loaded
     \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
     \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
   }
@@ -3291,7 +3291,7 @@
 \renewcommand\listoftables{\thu@listof{table}}
 \titlecontents{table}
   [4em]{\addvspace{6bp}}
-  {\contentslabel[\tablename~\thecontentslabel]{4.5em}}{}
+  {\contentslabel[\tablename~\thecontentslabel]{4em}}{}
   {\thu@leaders\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
