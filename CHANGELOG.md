@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   对应的原文索引改为 `translation-index` 环境（#529）。
 - 附录的图、表不再加入索引。
 - 使用 `threeparttable` 示例表内脚注。
+- 本科生的目录章标题的西文字母和数字默认使用 Arial。
 
 ## Fixed
 - 本科生附录的调研报告使用英文（#479）。
@@ -26,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 新增 `amsthm` 支持。
 - 支持单个关键词设置样式。
 - 在 `survey` 和 `translation` 环境中生成独立目录。
+- 添加选项 `toc-chapter-style` 控制本科生的目录章标题的西文字体。
 
 ## [v6.0.2] - 2020-02-23
 ## Fixed
