@@ -1183,6 +1183,12 @@
 }
 %    \end{macrocode}
 %
+% 设置默认 \option{openany}。
+%    \begin{macrocode}
+\DeclareBoolOption[false]{openright}
+\DeclareComplementaryOption{openany}{openright}
+%    \end{macrocode}
+%
 % \option{raggedbottom} 选项（默认打开）
 %    \begin{macrocode}
 \DeclareBoolOption[true]{raggedbottom}
@@ -1198,10 +1204,19 @@
 \ProcessKeyvalOptions*
 %    \end{macrocode}
 %
+% 设置默认 \option{openany}。
+%    \begin{macrocode}
+\ifthu@openright
+  \PassOptionsToClass{openright}{book}
+\else
+  \PassOptionsToClass{openany}{book}
+\fi
+%    \end{macrocode}
+%
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
 %    \begin{macrocode}
 \PassOptionsToPackage{quiet}{xeCJK}
-\LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain]{ctexbook}[2017/04/01]
+\LoadClass[a4paper,UTF8,zihao=-4,scheme=plain]{ctexbook}[2017/04/01]
 %    \end{macrocode}
 %
 %

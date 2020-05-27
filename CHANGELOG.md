@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 修正本科生封面日期的字体（#532）。
 - 设置三线表横线的默认粗度。
 - 修正文档中关于本科生学科（专业）名称的说明。
+- 允许用户使用文档类选项 `openright`。
 
 ## Added
 - 允许使用边注。
