@@ -3328,14 +3328,30 @@
     {\thu@chapter*{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
 }
 \renewcommand\listoffigures{\thu@listof{figure}}
+%    \end{macrocode}
+%
+% 英文的图序“Figure X-X”比中文略宽，所以根据语言设置不同宽度。
+%    \begin{macrocode}
+\newlength{\thu@list@label@width}
+\newcommand\thu@set@list@label@width{%
+  \ifthu@language@chinese
+    \setlength{\thu@list@label@width}{3.5em}%
+  \else
+    \ifthu@language@english
+      \setlength{\thu@list@label@width}{4.5em}%
+    \fi
+  \fi
+}
+\thu@set@list@label@width
+\thu@option@hook{language}{\thu@set@list@label@width}
 \titlecontents{figure}
-  [4em]{\addvspace{6bp}}
-  {\contentslabel[\figurename~\thecontentslabel]{4em}}{}
+  [\thu@list@label@width]{\addvspace{6bp}}
+  {\contentslabel[\figurename~\thecontentslabel]{\thu@list@label@width}}{}
   {\thu@leaders\thecontentspage}
 \renewcommand\listoftables{\thu@listof{table}}
 \titlecontents{table}
-  [4em]{\addvspace{6bp}}
-  {\contentslabel[\tablename~\thecontentslabel]{4em}}{}
+  [\thu@list@label@width]{\addvspace{6bp}}
+  {\contentslabel[\tablename~\thecontentslabel]{\thu@list@label@width}}{}
   {\thu@leaders\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
@@ -3365,11 +3381,12 @@
 % \begin{macro}{\listofequations}
 % \begin{macro}{\listofequations*}
 % \LaTeX{} 默认没有公式索引，此处定义自己的 \cs{listofequations}。
+% 公式索引没有名称，所以不设置固定的 label 宽度。
 %    \begin{macrocode}
 \newcommand\listofequations{\thu@listof{equation}}
 \titlecontents{equation}
-  [4em]{\addvspace{6bp}}
-  {\contentslabel[\thu@equation@name~\thecontentslabel]{4em}}{}
+  [0pt]{\addvspace{6bp}}
+  {\thu@equation@name~\thecontentslabel}{}
   {\thu@leaders\thecontentspage}
 \contentsuse{equation}{loe}
 %    \end{macrocode}
