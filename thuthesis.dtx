@@ -1645,7 +1645,8 @@
 }
 %    \end{macrocode}
 %
-% 首先根据语言定义各种不会变化的名称。
+% 根据语言设置各章节的名称，只有在导言区设置 \option{degree} 和
+% \option{language} 时会修改，而在正文局部切换语言时则不变。
 %    \begin{macrocode}
 \newcommand\thu@set@chapter@names{%
   \ifthu@language@chinese
@@ -1657,45 +1658,43 @@
       listtablename  = 表格索引,
       bibname        = 参考文献,
       indexname      = 索引,
-    }
-    \def\thu@denotation@name{主要符号对照表}
-    \def\listequationname{公式索引}
-    \def\thu@acknowledgements@name{致\hspace{\ccwd}谢}
+    }%
+    \def\thu@denotation@name{主要符号对照表}%
+    \def\thu@list@algorithm@name{算法索引}%
+    \def\listequationname{公式索引}%
+    \def\thu@acknowledgements@name{致\hspace{\ccwd}谢}%
     \ifthu@degree@bachelor
-      \def\thu@resume@name{在学期间参加课题的研究成果}
+      \def\thu@resume@name{在学期间参加课题的研究成果}%
     \else
       \ifthu@degree@postdoc
-        \def\thu@resume@name{个人简历、发表的学术论文与科研成果}
+        \def\thu@resume@name{个人简历、发表的学术论文与科研成果}%
       \else
-        \def\thu@resume@name{个人简历、在学期间发表的学术论文与研究成果}
+        \def\thu@resume@name{个人简历、在学期间发表的学术论文与研究成果}%
       \fi
     \fi
   \else
-    \ctexset{
-      chapter/name   = \chaptername\space,
-      appendixname   = Appendix,
-      contentsname   = Contents,
-      listfigurename = List of Figures,
-      listtablename  = List of Tables,
-      bibname        = Bibliography,
-      indexname      = Index,
-    }
     \ifthu@language@english
-      \def\thu@denotation@name{Nomenclature}
-      \def\listequationname{List of Equations}
-      \def\thu@acknowledgements@name{Acknowledgements}
+      \ctexset{
+        chapter/name   = \chaptername\space,
+        appendixname   = Appendix,
+        contentsname   = Contents,
+        listfigurename = List of Figures,
+        listtablename  = List of Tables,
+        bibname        = Bibliography,
+        indexname      = Index,
+      }%
+      \def\thu@denotation@name{Nomenclature}%
+      \def\thu@list@algorithm@name{List of Algorithms}%
+      \def\listequationname{List of Equations}%
+      \def\thu@acknowledgements@name{Acknowledgements}%
       \ifthu@degree@bachelor
-        \def\thu@resume@name{Research Achievements}
+        \def\thu@resume@name{Research Achievements}%
       \else
-        \def\thu@resume@name{Resume, Publications and Research Achievements}
+        \def\thu@resume@name{Resume, Publications and Research Achievements}%
       \fi
     \fi
   \fi
 }
-%    \end{macrocode}
-%
-% 仅在导言区设置 \option{language} 时才会修改不同语言的章节名称。
-%    \begin{macrocode}
 \thu@set@chapter@names
 \thu@option@hook{degree}{\thu@set@chapter@names}
 \thu@option@hook{language}{%
@@ -1703,6 +1702,60 @@
     \thu@set@chapter@names
   \fi
 }
+%    \end{macrocode}
+%
+% 这部分名称在正文中局部地修改语言时会发生变化，比如英文摘要、
+% 本科生附录的阅读报告。
+%    \begin{macrocode}
+\newcommand\thu@set@names{%
+  \ifthu@language@chinese
+    \ctexset{
+      figurename = 图,
+      tablename  = 表,
+    }%
+    \def\thu@algorithm@name{算法}%
+    \def\thu@equation@name{公式}%
+    \def\thu@assumption@name{假设}%
+    \def\thu@definition@name{定义}%
+    \def\thu@proposition@name{命题}%
+    \def\thu@lemma@name{引理}%
+    \def\thu@theorem@name{定理}%
+    \def\thu@axiom@name{公理}%
+    \def\thu@corollary@name{推论}%
+    \def\thu@exercise@name{练习}%
+    \def\thu@example@name{例}%
+    \def\thu@remark@name{注释}%
+    \def\thu@problem@name{问题}%
+    \def\thu@conjecture@name{猜想}%
+    \def\thu@proof@name{证明}%
+    \def\thu@theorem@separator{：}%
+  \else
+    \ifthu@language@english
+      \ctexset{
+        figurename = {Figure},
+        tablename  = {Table},
+      }%
+      \def\thu@algorithm@name{Algorithm}%
+      \def\thu@equation@name{Equation}%
+      \def\thu@assumption@name{Assumption}%
+      \def\thu@definition@name{Definition}%
+      \def\thu@proposition@name{Proposition}%
+      \def\thu@lemma@name{Lemma}%
+      \def\thu@theorem@name{Theorem}%
+      \def\thu@axiom@name{Axiom}%
+      \def\thu@corollary@name{Corollary}%
+      \def\thu@exercise@name{Exercise}%
+      \def\thu@example@name{Example}%
+      \def\thu@remark@name{Remark}%
+      \def\thu@problem@name{Problem}%
+      \def\thu@conjecture@name{Conjecture}%
+      \def\thu@proof@name{Proof}%
+      \def\thu@theorem@separator{: }%
+    \fi
+  \fi
+}
+\thu@set@names
+\thu@option@hook{language}{\thu@set@names}
 %    \end{macrocode}
 %
 % \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
@@ -1738,56 +1791,6 @@
 }
 \thu@set@punctuations
 \thu@option@hook{language}{\thu@set@punctuations}
-%    \end{macrocode}
-%
-%    \begin{macrocode}
-\newcommand\thu@set@names{%
-  \ifthu@language@chinese
-    \ctexset{
-      figurename = 图,
-      tablename  = 表,
-    }
-    \def\thu@equation@name{公式}
-    \def\thu@assumption@name{假设}
-    \def\thu@definition@name{定义}
-    \def\thu@proposition@name{命题}
-    \def\thu@lemma@name{引理}
-    \def\thu@theorem@name{定理}
-    \def\thu@axiom@name{公理}
-    \def\thu@corollary@name{推论}
-    \def\thu@exercise@name{练习}
-    \def\thu@example@name{例}
-    \def\thu@remark@name{注释}
-    \def\thu@problem@name{问题}
-    \def\thu@conjecture@name{猜想}
-    \def\thu@proof@name{证明}
-    \def\thu@theorem@separator{：}
-  \else
-    \ifthu@language@english
-      \ctexset{
-        figurename = {Figure},
-        tablename  = {Table},
-      }
-      \def\thu@equation@name{Equation}
-      \def\thu@assumption@name{Assumption}
-      \def\thu@definition@name{Definition}
-      \def\thu@proposition@name{Proposition}
-      \def\thu@lemma@name{Lemma}
-      \def\thu@theorem@name{Theorem}
-      \def\thu@axiom@name{Axiom}
-      \def\thu@corollary@name{Corollary}
-      \def\thu@exercise@name{Exercise}
-      \def\thu@example@name{Example}
-      \def\thu@remark@name{Remark}
-      \def\thu@problem@name{Problem}
-      \def\thu@conjecture@name{Conjecture}
-      \def\thu@proof@name{Proof}
-      \def\thu@theorem@separator{: }
-    \fi
-  \fi
-}
-\thu@set@names
-\thu@option@hook{language}{\thu@set@names}
 %    \end{macrocode}
 %
 % \subsubsection{页眉页脚}
@@ -3327,28 +3330,27 @@
     {\thu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}
     {\thu@chapter*{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
 }
-\renewcommand\listoffigures{\thu@listof{figure}}
+\renewcommand\listoffigures{%
+  \thu@set@list@label@width{\figurename}%
+  \thu@listof{figure}%
+}
 %    \end{macrocode}
 %
-% 英文的图序“Figure X-X”比中文略宽，所以根据语言设置不同宽度。
+% 英文的图序“Figure X-X”比中文略宽，所以根据实际内容设置不同宽度。
 %    \begin{macrocode}
 \newlength{\thu@list@label@width}
-\newcommand\thu@set@list@label@width{%
-  \ifthu@language@chinese
-    \setlength{\thu@list@label@width}{3.5em}%
-  \else
-    \ifthu@language@english
-      \setlength{\thu@list@label@width}{4.5em}%
-    \fi
-  \fi
+\newcommand\thu@set@list@label@width[1]{%
+  \settowidth{\thu@list@label@width}{#1~8.8}%
+  \addtolength{\thu@list@label@width}{1em}%
 }
-\thu@set@list@label@width
-\thu@option@hook{language}{\thu@set@list@label@width}
 \titlecontents{figure}
   [\thu@list@label@width]{\addvspace{6bp}}
   {\contentslabel[\figurename~\thecontentslabel]{\thu@list@label@width}}{}
   {\thu@leaders\thecontentspage}
-\renewcommand\listoftables{\thu@listof{table}}
+\renewcommand\listoftables{%
+  \thu@set@list@label@width{\tablename}%
+  \thu@listof{table}%
+}
 \titlecontents{table}
   [\thu@list@label@width]{\addvspace{6bp}}
   {\contentslabel[\tablename~\thecontentslabel]{\thu@list@label@width}}{}
@@ -3906,25 +3908,33 @@
 }
 %    \end{macrocode}
 %
-% \subsubsection{\pkg{algorithm} 与 \pkg{minted} 宏包}
+% \subsubsection{\pkg{algorithm} 宏包}
 %
 % 使 \env{algorithm} 和 \env{listing} 环境的名称随语言设置而改变，
 % 并使其在附录中的编号规则与图、表等一致。
 %
 %    \begin{macrocode}
+\PassOptionsToPackage{chapter}{algorithm}
 \AtEndOfPackageFile*{algorithm}{
-  \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}}%
-  \newcommand\thu@set@algorithm@language{%
-    \ifthu@language@chinese
-      \floatname{algorithm}{算法}%
-    \else
-      \floatname{algorithm}{Algorithm}%
-    \fi
+  \floatname{algorithm}{\thu@algorithm@name}
+  \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}}
+  \renewcommand\listofalgorithms{%
+    \thu@set@list@label@width{\fname@algorithm}%
+    \thu@listof{algorithm}%
   }
-  \thu@set@algorithm@language
-  \thu@option@hook{language}{\thu@set@algorithm@language}
+  \renewcommand\listalgorithmname{\thu@list@algorithm@name}
+  \def\ext@algorithm{loa}
+  \contentsuse{algorithm}{loa}
+  \titlecontents{algorithm}
+    [\thu@list@label@width]{\addvspace{6bp}}
+    {\contentslabel[\fname@algorithm~\thecontentslabel]{\thu@list@label@width}}{}
+    {\thu@leaders\thecontentspage}
 }
-
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{minted} 宏包}
+%
+%    \begin{macrocode}
 \AtEndOfPackageFile*{minted}{
   \g@addto@macro\appendix{\renewcommand*{\thelisting}{\thechapter-\arabic{listing}}}%
   \newcommand\thu@set@listing@language{%
