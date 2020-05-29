@@ -3302,8 +3302,13 @@
   \def\thu@@tmp{#1}%
   \ifx\thu@@tmp\@empty
     \thu@chapter*{\thu@statement@name}%
-    \par{\xiaosi\parindent2em\thu@statement@text}\vskip2cm%
-    {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax
+    \thu@statement@text\par
+    \ifthu@degree@graduate
+      \vskip 2cm%
+    \else
+      \null\par
+    \fi
+    {\hfill\thu@signature\thu@underline[2.5cm]\relax
       \thu@backdate\thu@underline[2.5cm]\relax}%
   \else
     \includepdf[pagecommand={\thispagestyle{thu@empty}%
