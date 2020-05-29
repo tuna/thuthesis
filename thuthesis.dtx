@@ -2085,6 +2085,10 @@
     \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
   }
 \fi
+%    \end{macrocode}
+%
+% 研究生要求表单元格中的文字采用 11pt 宋体字，单倍行距，段前空 3 磅，段后空 3 磅。
+%    \begin{macrocode}
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
 \DeclareCaptionFont{thu}{\dawu}
@@ -3928,6 +3932,30 @@
   \titlecontents{algorithm}
     [\thu@list@label@width]{\addvspace{6bp}}
     {\contentslabel[\fname@algorithm~\thecontentslabel]{\thu@list@label@width}}{}
+    {\thu@leaders\thecontentspage}
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{algorithm2e} 宏包}
+%
+%    \begin{macrocode}
+\PassOptionsToPackage{algochapter}{algorithm2e}
+\AtEndOfPackageFile*{algorithm2e}{
+  \renewcommand\algorithmcfname{\thu@algorithm@name}
+  \SetAlgoCaptionLayout{dawu}
+  \SetAlCapSty{relax}
+  \SetAlgoCaptionSeparator{\hspace*{1em}}
+  \SetAlFnt{\dawu}
+  \renewcommand\listofalgorithms{%
+    \thu@set@list@label@width{\algorithmcfname}%
+    \thu@listof{algorithmcf}%
+  }
+  \renewcommand\listalgorithmcfname{\thu@list@algorithm@name}
+  \def\ext@algorithmcf{loa}
+  \contentsuse{algocf}{loa}
+  \titlecontents{algocf}
+    [\thu@list@label@width]{\addvspace{6bp}}
+    {\contentslabel[\algorithmcfname~\thecontentslabel]{\thu@list@label@width}}{}
     {\thu@leaders\thecontentspage}
 }
 %    \end{macrocode}
