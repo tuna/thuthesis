@@ -6962,7 +6962,7 @@ Completed box being shipped out [9]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 411.31456fil
+..\vbox(645.87758+0.0)x421.10089, glue set 448.14113fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{声\protect \hspace 
  \ETC.}
@@ -7069,7 +7069,7 @@ Completed box being shipped out [9]
 ....\glue 0.0 plus 0.73799
 ....\TU/FandolSong-Regular(0)/m/n/12.045 工
 ....\glue(\rightskip) 0.0
-...\penalty 150
+...\penalty 10000
 ...\glue(\baselineskip) 8.35522
 ...\hbox(9.3951+2.32468)x421.10089, glue set - 0.02623
 ....\TU/FandolSong-Regular(0)/m/n/12.045 作
@@ -7276,9 +7276,10 @@ Completed box being shipped out [9]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\glue 56.9055
+...\glue(\baselineskip) 17.75032
+...\hbox(0.0+0.0)x0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 8.42749
+...\glue(\baselineskip) 10.75217
 ...\hbox(9.32283+3.97446)x421.10089, glue set 153.38715fill
 ....\hbox(0.0+0.0)x24.09
 ....\glue 0.0 plus 1.0fill
