@@ -96,7 +96,7 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(700.50723+0.0)x417.11752, glue set 117.74823fil
+..\vbox(700.50723+0.0)x417.11752, glue set 120.75914fil
 ...\write-{}
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
@@ -125,21 +125,21 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\lineskip) 1.0
-...\hbox(21.07867+0.0)x417.11752, glue set 142.81331fil
+...\hbox(18.06744+0.0)x417.11752, glue set 136.79082fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
-....\hbox(21.07867+0.0)x131.49092
-.....\hbox(21.07875+0.0)x131.49126
-......\hbox(21.07875+0.0)x131.49126
-.......\hbox(21.07875+0.0)x0.0
+....\hbox(18.06744+0.0)x143.53589
+.....\hbox(18.0675+0.0)x143.53625
+......\hbox(18.0675+0.0)x143.53625
+.......\hbox(18.0675+0.0)x0.0
 ........\special{pdf:btrans}
 ........\special{x:scale 1 1}
-........\hbox(21.07875+0.0)x0.0, glue set - 131.49126fil
-.........\hbox(21.07875+0.0)x131.49126
+........\hbox(18.0675+0.0)x0.0, glue set - 143.53625fil
+.........\hbox(18.0675+0.0)x143.53625
 ..........\XeTeXpdffile "./tsinghua.pdf"
 .........\glue 0.0 plus 1.0fil minus 1.0fil
 ........\special{pdf:etrans}
-.......\kern 131.49126
+.......\kern 143.53625
 .......\glue 0.0 plus 1.0fil minus 1.0fil
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0

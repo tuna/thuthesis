@@ -4188,7 +4188,7 @@ Completed box being shipped out [4]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 293.25436fill
+..\vbox(645.87758+0.0)x421.10089, glue set 296.2656fill
 ...\glue(\topskip) 2.6049
 ...\hbox(9.3951+2.32468)x421.10089, glue set - 0.00252
 ....\hbox(0.0+0.0)x24.09
@@ -4397,24 +4397,24 @@ Completed box being shipped out [4]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 6.02249
-...\vbox(47.47728+0.0)x421.10089
+...\vbox(44.46605+0.0)x421.10089
 ....\special{color push gray 0}
-....\vbox(47.47728+0.0)x421.10089
-.....\hbox(21.07867+0.0)x421.10089, glue set 144.805fil
+....\vbox(44.46605+0.0)x421.10089
+.....\hbox(18.06744+0.0)x421.10089, glue set 138.7825fil
 ......\glue(\leftskip) 0.0 plus 1.0fil
 ......\hbox(0.0+0.0)x0.0
-......\hbox(21.07867+0.0)x131.49092
-.......\hbox(21.07875+0.0)x131.49126
-........\hbox(21.07875+0.0)x131.49126
-.........\hbox(21.07875+0.0)x0.0
+......\hbox(18.06744+0.0)x143.53589
+.......\hbox(18.0675+0.0)x143.53625
+........\hbox(18.0675+0.0)x143.53625
+.........\hbox(18.0675+0.0)x0.0
 ..........\special{pdf:btrans}
 ..........\special{x:scale 1 1}
-..........\hbox(21.07875+0.0)x0.0, glue set - 131.49126fil
-...........\hbox(21.07875+0.0)x131.49126
+..........\hbox(18.0675+0.0)x0.0, glue set - 143.53625fil
+...........\hbox(18.0675+0.0)x143.53625
 ............\XeTeXpdffile "./tsinghua.pdf"
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\special{pdf:etrans}
-.........\kern 131.49126
+.........\kern 143.53625
 .........\glue 0.0 plus 1.0fil minus 1.0fil
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0
