@@ -1395,11 +1395,10 @@
 % 我们的单面和双面模式与常规的不太一样。
 %    \begin{macrocode}
 \renewcommand\frontmatter{%
+  \cleardoublepage
   \ifthu@degree@bachelor
-    \clearpage
     \pagestyle{thu@plain}
   \else
-    \cleardoublepage
     \pagestyle{thu@headings}
   \fi
   \@mainmatterfalse
@@ -1407,7 +1406,7 @@
   \let\@tabular\thu@tabular
 }
 \renewcommand\mainmatter{%
-  \if@openright\cleardoublepage\else\clearpage\fi
+  \cleardoublepage
   \@mainmattertrue
   \pagenumbering{arabic}
   \ifthu@degree@bachelor\pagestyle{thu@plain}\else\pagestyle{thu@headings}\fi}
@@ -3119,7 +3118,7 @@
   日\ifthu@degree@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
 \newcommand\copyrightpage[1][]{%
   \ifthu@degree@postdoc\relax\else
-    \ifthu@degree@bachelor\clearpage\else\cleardoublepage\fi%
+    \cleardoublepage
     \def\thu@@tmp{#1}
     \ifx\thu@@tmp\@empty
       \ifthu@degree@bachelor\thu@authorization@mk\else%
@@ -3211,7 +3210,9 @@
 % 标点符号一律用中文输入状态下的标点符号。
 %    \begin{macrocode}
 \newenvironment{abstract}{%
-  \ifthu@degree@bachelor\clearpage\else\cleardoublepage\fi
+  \ifthu@degree@bachelor
+    \cleardoublepage
+  \fi
   \thusetup{language = chinese}%
   \thu@chapter*[]{\thu@abstract@name}%  %no tocline
 }{%
@@ -3223,6 +3224,9 @@
   \thu@put@keywords{\textbf{关键词：}}{%
     \thu@clist@use{\thu@keywords}{；}%
   }%
+  \ifthu@degree@bachelor
+    \cleardoublepage
+  \fi
   \thu@reset@main@language % switch back to main language
 }
 %    \end{macrocode}
@@ -3234,8 +3238,11 @@
 % 摘要内容用小四号 Times New Roman。
 %    \begin{macrocode}
 \newenvironment{abstract*}{%
-  \thusetup{language = english}
-  \thu@chapter*[]{\thu@abstract@name@en} % no tocline
+  \ifthu@degree@bachelor
+    \cleardoublepage
+  \fi
+  \thusetup{language = english}%
+  \thu@chapter*[]{\thu@abstract@name@en}%  no tocline
 }{%
   \ifthu@degree@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{%
@@ -3243,6 +3250,9 @@
   }{%
     \thu@clist@use{\thu@keywords@en}{; }%
   }%
+  \ifthu@degree@bachelor
+    \cleardoublepage
+  \fi
   \thu@reset@main@language % switch back to main language
 }
 %    \end{macrocode}
@@ -3254,6 +3264,9 @@
 % 主要符号对照表。
 %    \begin{macrocode}
 \newenvironment{denotation}[1][2.5cm]{%
+  \ifthu@degree@bachelor
+    \cleardoublepage
+  \fi
   \thu@chapter*[]{\thu@denotation@name} % no tocline
   \vskip-30bp\xiaosi[1.6]\begin{thu@denotation}[labelwidth=#1]
 }{%
@@ -3292,13 +3305,23 @@
 % 定义致谢与声明环境。
 %    \begin{macrocode}
 \newenvironment{acknowledgements}{%
+  \ifthu@degree@bachelor
+    \cleardoublepage
+  \fi
   \thu@chapter*{\thu@acknowledgements@name}%
-}{}
+}{%
+  \ifthu@degree@bachelor
+    \cleardoublepage
+  \fi
+}
 %    \end{macrocode}
 %
 % 声明部分
 %    \begin{macrocode}
 \newcommand\statement[1][]{%
+  \ifthu@degree@bachelor
+    \cleardoublepage
+  \fi
   \def\thu@@tmp{#1}%
   \ifx\thu@@tmp\@empty
     \thu@chapter*{\thu@statement@name}%
@@ -3314,6 +3337,9 @@
     \includepdf[pagecommand={\thispagestyle{thu@empty}%
       \addcontentsline{toc}{chapter}{\thu@statement@name}%
     }]{#1}%
+  \fi
+  \ifthu@degree@bachelor
+    \cleardoublepage
   \fi
 }
 %    \end{macrocode}
