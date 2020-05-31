@@ -973,11 +973,32 @@
 %
 % \subsection{书脊}
 % \DescribeMacro{\spine}
-% 生成装订的书脊，为竖排格式，命令格式：\cs{spine}\oarg{标题}\oarg{作者}。默认参
-% 数为论文中文题目和中文作者。如果中文题目中没有英文字母，那么直接调用此命令即可。
-% 否则，可参考参看模板示例文件 \file{spine.tex} 进行微调：
+% \DescribeOption{spine-font}
+% \DescribeOption{spine-title}
+% \DescribeOption{spine-author}
+% 生成装订的书脊，为竖排格式。内容默认使用论文的标题和作者。
+% 可以设置 \option{spine-title} 和 \option{spine-author} 来修改。
 %
-% \lstinputlisting[style=lstStyleLaTeX]{spine.tex}
+% 书脊字体默认为三号字，同研究生的示例一致。
+% 本科生要求字体大小根据论文的薄厚而定，可以使用 \option{spine-font} 设置字号。
+% \begin{latex}
+%   \thusetup{
+%     spine-font   = {\Huge},
+%     spine-title  = {书脊的标题},
+%     spine-author = {书脊的作者姓名},
+%   }
+% \end{latex}
+%
+% \DescribeOption{spine-in-title-page}
+% 一些院系要求把书脊插进论文里，可以在正文的 \cs{maketitle} 后使用 \cs{spine}
+% 插入书脊。
+% 如果封面分为中英文两部分，而书脊需要放在之间，则需要设置
+% \begin{latex}
+%   \thusetup{
+%     spine-in-title-page = true,
+%   }
+% \end{latex}
+% 然后 \cs{maketitle} 时会自动生成书脊页。
 %
 %
 % \section{致谢}
@@ -2859,6 +2880,18 @@
     name    = end@date,
     default = {\the\year-\two@digits{\month}-\two@digits{\day}},
   },
+%    \end{macrocode}
+%
+% 中文封面后是否生成书脊页。
+%    \begin{macrocode}
+  spine-in-title-page = {
+    name = spine@in@title@page,
+    choices = {
+      false,
+      true,
+    },
+    default = false,
+  },
 }
 %    \end{macrocode}
 %
@@ -2964,6 +2997,9 @@
   \pagenumbering{Alph}%
   \thu@pdfbookmark{-1}{\thu@title}%
   \thu@titlepage
+  \ifthu@spine@in@title@page@true
+    \spine
+  \fi
   \ifthu@degree@graduate
     \cleardoublepage
     \thu@titlepage@en
@@ -4392,13 +4428,83 @@
 % \subsection{书脊}
 % \label{sec:spine}
 % \begin{macro}{\spine}
-% 单独使用书脊命令会在新的一页产生竖排书脊。
+% 单独使用书脊命令会在新的一页产生竖排书脊，
+% 参考 \url{https://tex.stackexchange.com/a/38585}。
+%
+% 本科生：
+%   书脊的书写要求：用仿宋\_GB2312 字书写，字体大小根据论文的薄厚而定。
+%   书脊上方写论文题目，下方写本科生姓名，距上下页边均为 3cm。
+%
+% 研究生：
+%   示例中上下页边距为 5.5 cm，左右边距为 1 cm。
 %    \begin{macrocode}
-\NewDocumentCommand{\spine}{O{\thu@title} O{\thu@author}}{%
-  \newpage\thispagestyle{empty}%
-  \fangsong\addCJKfontfeatures*{RawFeature={vertical:}}
-  \xiaosan\ziju{0.4}%
-  \noindent\hfill\rotatebox[origin=lt]{-90}{\makebox[\textheight]{#1\hfill#2}}}
+\thu@define@key{
+  spine-font = {
+    name = spine@font,
+    default = {\sanhao},
+  },
+  spine-title = {
+    name = spine@title,
+  },
+  spine-author = {
+    name = spine@author,
+  },
+}
+\newcommand*\CJKmovesymbol[1]{\raise.3em\hbox{#1}}
+\newcommand*\CJKmove{%
+  \punctstyle{plain}%
+  \let\CJKsymbol\CJKmovesymbol
+  \let\CJKpunctsymbol\CJKsymbol
+}
+\NewDocumentCommand{\spine}{
+    O{
+      \ifx\thu@spine@title\@empty
+        \thu@title
+      \else
+        \thu@spine@title
+      \fi
+    }
+    O{
+      \ifx\thu@spine@author\@empty
+        \thu@author
+      \else
+        \thu@spine@author
+      \fi
+    }}{%
+  \clearpage
+  \ifthu@degree@bachelor
+    \newgeometry{
+      vmargin = 3cm,
+      hmargin = 1cm,
+    }%
+  \else
+    \newgeometry{
+      vmargin = 5.5cm,
+      hmargin = 1cm,
+    }%
+  \fi
+  \thispagestyle{empty}%
+  \ifthu@language@chinese
+    \thu@pdfbookmark{0}{书脊}%
+  \else
+    \thu@pdfbookmark{0}{Spine}%
+  \fi
+  \begingroup
+    \noindent\hfill
+    \rotatebox[origin=lt]{-90}{%
+      \makebox[\textheight]{%
+        \fangsong
+        \addCJKfontfeatures*{RawFeature={vertical}}%
+        \thu@spine@font
+        \CJKmove
+        #1\hfill
+        \thu@stretch{4.5em}{#2}%
+      }%
+    }%
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
 %    \end{macrocode}
 % \end{macro}
 %

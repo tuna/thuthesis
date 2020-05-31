@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 Click version names to see the code diff between versions on GitHub.
 
 ## [Unreleased]
+### Changed
+- 允许在正文中插入书脊页。（#551）
+- 书脊中的西文不再需要调整高度。
+
+### Fixed
+- 修正书脊页的边距。
 
 ## [v6.1.0] - 2020-06-08
 ### Changed
