@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 设置三线表横线的默认粗度。
 - 修正文档中关于本科生学科（专业）名称的说明。
 - 允许用户使用文档类选项 `openright`。
+- 修正本科生的“单设一页”格式（#545）。
+- 研究生的正文（main matter）起始于奇数页。
 
 ## Added
 - 允许使用边注。
