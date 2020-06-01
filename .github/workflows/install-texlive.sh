@@ -19,7 +19,7 @@ REQUIRED_PKGS="$XETEX_PKGS $CTEX_PKGS bibunits caption enumitem etoolbox \
     filehook footmisc notoccite pdfpages titlesec threeparttable unicode-math";
 FONT_PKGS="fandol tex-gyre xits";
 EXTRA_PKGS="booktabs $HYPERREF_PKGS $NOMENCL_PKGS ntheorem siunitx";
-MARKDOWN_PKGS="markdown csvsimple gobble"
+MARKDOWN_PKGS="markdown fancyvrb csvsimple gobble"
 DOC_PKGS="hologo listings xcolor $MARKDOWN_PKGS";
 EXAMPLE_PKGS="diagbox float fp metalogo multirow pict2e"
 
