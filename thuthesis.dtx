@@ -2204,7 +2204,7 @@
 % 生成带圈的脚注数字，最多处理到 10。
 %    \begin{macrocode}
 \def\thu@textcircled#1{%
-  \ifnum\value{#1} >9%
+  \ifnum\value{#1} >10\relax
     \thu@error{%
       Too many footnotes in this page.
       Keep footnote less than 10%
