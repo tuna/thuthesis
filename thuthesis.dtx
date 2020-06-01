@@ -2203,28 +2203,6 @@
 % \begin{macro}{\thu@textcircled}
 % 生成带圈的脚注数字，最多处理到 10。
 %    \begin{macrocode}
-\ifthu@font@times
-  \ifthu@cjk@font@mac
-    \newfontfamily\thu@circlefont{Songti SC Light}
-  \else
-    \ifthu@cjk@font@windows
-      \newfontfamily\thu@circlefont{SimSun}
-    \fi
-  \fi
-\else
-  \ifthu@font@xits
-    \let\thu@circlefont\relax
-  \else
-    \ifthu@font@libertinus
-      \let\thu@circlefont\relax
-    \else
-      \thu@set@xits@names
-      \newfontfamily\thu@circlefont{%
-        \thu@font@family@xits-\thu@font@style@xits@rm .otf%
-      }
-    \fi
-  \fi
-\fi
 \def\thu@textcircled#1{%
   \ifnum\value{#1} >9%
     \thu@error{%
@@ -2232,7 +2210,7 @@
       Keep footnote less than 10%
     }%
   \fi
-  {\thu@circlefont\symbol{\the\numexpr\value{#1}+"245F\relax}}%
+  {\CJKfamily+{}\symbol{\the\numexpr\value{#1}+"245F\relax}}%
 }
 \renewcommand{\thefootnote}{\thu@textcircled{footnote}}
 \renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
