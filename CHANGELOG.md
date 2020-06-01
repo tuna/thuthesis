@@ -3,19 +3,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+Click version names to see the code diff between versions on GitHub.
+
 ## [Unreleased]
-## Changed
+### Changed
 - 在`translation` 环境中使用 `\bibliography` 改为生成参考文献，
   对应的原文索引改为 `translation-index` 环境（#529）。
 - 附录的图、表不再加入索引。
 - 使用 `threeparttable` 示例表内脚注。
-- 本科生的目录章标题的西文字母和数字默认使用 Arial。
+- 本科生的目录章标题的西文字母和数字默认使用 Arial（#542）。
+- GitHub repo 所有者更改为清华大学 TUNA 协会。
 
-## Fixed
+### Fixed
 - 本科生附录的调研报告使用英文（#479）。
 - 修正本科生附录的 `algorithm` 和 `listings` 环境的编号格式。
 - 研究生的“使用授权说明”增加一空白页（#504）。
-- 修正 publication 列表行距问题 (#507)。
+- 修正 publication 列表行距问题（#507）。
 - 修正研究生目录的行距。
 - 调整本科生封面有辅导教师、联合指导教师时的格式（#522, #537）。
 - 修正本科生封面日期的字体（#532）。
@@ -25,7 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 修正本科生的“单设一页”格式（#545）。
 - 研究生的正文（main matter）起始于奇数页。
 
-## Added
+### Added
 - 允许使用边注。
 - 新增 `amsthm` 支持。
 - 支持单个关键词设置样式。
@@ -33,15 +36,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 添加选项 `toc-chapter-style` 控制本科生的目录章标题的西文字体。
 
 ## [v6.0.2] - 2020-02-23
-## Fixed
+### Fixed
 - 修复图表公式目录内容缺失 (#467)。
 - 修复 Github Actions 执行 l3build check 问题。
 - 文本模式使用 `\checkmark`。
 
-## Added
+### Added
 - 补充 PDF 元信息：文档标题，语言。
 
-## Changed
+### Changed
 - 补充“著者-出版年”引用命令使用方法。
 - 使用 `xeCJKfntef` 替换 `CJKfntef`。
 
@@ -556,64 +559,64 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Please refer to “Bao--Pan“ version.
 
-[Unreleased]: https://github.com/xueruini/thuthesis/compare/v6.0.2...HEAD
-[v6.0.2]: https://github.com/xueruini/thuthesis/compare/v6.0.1...v6.0.2
-[v6.0.1]: https://github.com/xueruini/thuthesis/compare/v6.0.0...v6.0.1
-[v6.0.0]: https://github.com/xueruini/thuthesis/compare/v5.5.2...v6.0.0
-[v5.5.2]: https://github.com/xueruini/thuthesis/compare/v5.5.1...v5.5.2
-[v5.5.1]: https://github.com/xueruini/thuthesis/compare/v5.5.0...v5.5.1
-[v5.5.0]: https://github.com/xueruini/thuthesis/compare/v5.4.5...v5.5.0
-[v5.4.5]: https://github.com/xueruini/thuthesis/compare/v5.4.4...v5.4.5
-[v5.4.4]: https://github.com/xueruini/thuthesis/compare/v5.4.2...v5.4.4
-[v5.4.2]: https://github.com/xueruini/thuthesis/compare/v5.4.1...v5.4.2
-[v5.4.1]: https://github.com/xueruini/thuthesis/compare/v5.4.0...v5.4.1
-[v5.4.0]: https://github.com/xueruini/thuthesis/compare/v5.3.2...v5.4.0
-[v5.3.2]: https://github.com/xueruini/thuthesis/compare/v5.3.1...v5.3.2
-[v5.3.1]: https://github.com/xueruini/thuthesis/compare/v5.3.0...v5.3.1
-[v5.3.0]: https://github.com/xueruini/thuthesis/compare/v5.2.3...v5.3.0
-[v5.2.3]: https://github.com/xueruini/thuthesis/compare/v5.2.2...v5.2.3
-[v5.2.2]: https://github.com/xueruini/thuthesis/compare/v5.2.1...v5.2.2
-[v5.2.1]: https://github.com/xueruini/thuthesis/compare/v5.2.0...v5.2.1
-[v5.2.0]: https://github.com/xueruini/thuthesis/compare/v5.1.0...v5.2.0
-[v5.1.0]: https://github.com/xueruini/thuthesis/compare/v5.0.0...v5.1.0
-[v5.0.0]: https://github.com/xueruini/thuthesis/compare/v4.8.1...v5.0.0
-[v4.8.1]: https://github.com/xueruini/thuthesis/compare/v4.8...v4.8.1
-[v4.8]: https://github.com/xueruini/thuthesis/compare/v4.7...v4.8
-[v4.7]: https://github.com/xueruini/thuthesis/compare/v4.6...v4.7
-[v4.6]: https://github.com/xueruini/thuthesis/compare/v4.5.2...v4.6
-[v4.5.2]: https://github.com/xueruini/thuthesis/compare/v4.5.1...v4.5.2
-[v4.5.1]: https://github.com/xueruini/thuthesis/compare/v4.5...v4.5.1
-[v4.5]: https://github.com/xueruini/thuthesis/compare/v4.4.4...v4.5
-[v4.4.4]: https://github.com/xueruini/thuthesis/compare/v4.4.3...v4.4.4
-[v4.4.3]: https://github.com/xueruini/thuthesis/compare/v4.4.2...v4.4.3
-[v4.4.2]: https://github.com/xueruini/thuthesis/compare/v4.4...v4.4.2
-[v4.4]: https://github.com/xueruini/thuthesis/compare/v4.3...v4.4
-[v4.3]: https://github.com/xueruini/thuthesis/compare/v4.2...v4.3
-[v4.2]: https://github.com/xueruini/thuthesis/compare/v4.0...v4.2
-[v4.0]: https://github.com/xueruini/thuthesis/compare/v3.1...v4.0
-[v3.1]: https://github.com/xueruini/thuthesis/compare/v3.0...v3.1
-[v3.0]: https://github.com/xueruini/thuthesis/compare/v2.6.4...v3.0
-[v2.6.4]: https://github.com/xueruini/thuthesis/compare/v2.6.3...v2.6.4
-[v2.6.3]: https://github.com/xueruini/thuthesis/compare/v2.6.2...v2.6.3
-[v2.6.2]: https://github.com/xueruini/thuthesis/compare/v2.6.1...v2.6.2
-[v2.6.1]: https://github.com/xueruini/thuthesis/compare/v2.6...v2.6.1
-[v2.6]: https://github.com/xueruini/thuthesis/compare/v2.5.3...v2.6
-[v2.5.3]: https://github.com/xueruini/thuthesis/compare/v2.5.2...v2.5.3
-[v2.5.2]: https://github.com/xueruini/thuthesis/compare/v2.5.1...v2.5.2
-[v2.5.1]: https://github.com/xueruini/thuthesis/compare/v2.5...v2.5.1
-[v2.5]: https://github.com/xueruini/thuthesis/compare/v2.4.2...v2.5
-[v2.4.2]: https://github.com/xueruini/thuthesis/compare/v2.4.1...v2.4.2
-[v2.4.1]: https://github.com/xueruini/thuthesis/compare/v2.4...v2.4.1
-[v2.4]: https://github.com/xueruini/thuthesis/compare/v2.3...v2.4
-[v2.3]: https://github.com/xueruini/thuthesis/compare/v2.2...v2.3
-[v2.2]: https://github.com/xueruini/thuthesis/compare/v2.1...v2.2
-[v2.1]: https://github.com/xueruini/thuthesis/compare/v2.0e...v2.1
-[v2.0e]: https://github.com/xueruini/thuthesis/compare/v2.0...v2.0e
-[v2.0]: https://github.com/xueruini/thuthesis/compare/v1.5...v2.0
-[v1.5]: https://github.com/xueruini/thuthesis/compare/v1.4rc1...v1.5
-[v1.4rc1]: https://github.com/xueruini/thuthesis/compare/v1.4...v1.4rc1
-[v1.4]: https://github.com/xueruini/thuthesis/compare/v1.3...v1.4
-[v1.3]: https://github.com/xueruini/thuthesis/compare/v1.2...v1.3
-[v1.2]: https://github.com/xueruini/thuthesis/compare/v1.1...v1.2
-[v1.1]: https://github.com/xueruini/thuthesis/compare/v1.0...v1.1
-[v1.0]: https://github.com/xueruini/thuthesis/releases/tag/v1.0
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.0.2...HEAD
+[v6.0.2]: https://github.com/tuna/thuthesis/compare/v6.0.1...v6.0.2
+[v6.0.1]: https://github.com/tuna/thuthesis/compare/v6.0.0...v6.0.1
+[v6.0.0]: https://github.com/tuna/thuthesis/compare/v5.5.2...v6.0.0
+[v5.5.2]: https://github.com/tuna/thuthesis/compare/v5.5.1...v5.5.2
+[v5.5.1]: https://github.com/tuna/thuthesis/compare/v5.5.0...v5.5.1
+[v5.5.0]: https://github.com/tuna/thuthesis/compare/v5.4.5...v5.5.0
+[v5.4.5]: https://github.com/tuna/thuthesis/compare/v5.4.4...v5.4.5
+[v5.4.4]: https://github.com/tuna/thuthesis/compare/v5.4.2...v5.4.4
+[v5.4.2]: https://github.com/tuna/thuthesis/compare/v5.4.1...v5.4.2
+[v5.4.1]: https://github.com/tuna/thuthesis/compare/v5.4.0...v5.4.1
+[v5.4.0]: https://github.com/tuna/thuthesis/compare/v5.3.2...v5.4.0
+[v5.3.2]: https://github.com/tuna/thuthesis/compare/v5.3.1...v5.3.2
+[v5.3.1]: https://github.com/tuna/thuthesis/compare/v5.3.0...v5.3.1
+[v5.3.0]: https://github.com/tuna/thuthesis/compare/v5.2.3...v5.3.0
+[v5.2.3]: https://github.com/tuna/thuthesis/compare/v5.2.2...v5.2.3
+[v5.2.2]: https://github.com/tuna/thuthesis/compare/v5.2.1...v5.2.2
+[v5.2.1]: https://github.com/tuna/thuthesis/compare/v5.2.0...v5.2.1
+[v5.2.0]: https://github.com/tuna/thuthesis/compare/v5.1.0...v5.2.0
+[v5.1.0]: https://github.com/tuna/thuthesis/compare/v5.0.0...v5.1.0
+[v5.0.0]: https://github.com/tuna/thuthesis/compare/v4.8.1...v5.0.0
+[v4.8.1]: https://github.com/tuna/thuthesis/compare/v4.8...v4.8.1
+[v4.8]:   https://github.com/tuna/thuthesis/compare/v4.7...v4.8
+[v4.7]:   https://github.com/tuna/thuthesis/compare/v4.6...v4.7
+[v4.6]:   https://github.com/tuna/thuthesis/compare/v4.5.2...v4.6
+[v4.5.2]: https://github.com/tuna/thuthesis/compare/v4.5.1...v4.5.2
+[v4.5.1]: https://github.com/tuna/thuthesis/compare/v4.5...v4.5.1
+[v4.5]:   https://github.com/tuna/thuthesis/compare/v4.4.4...v4.5
+[v4.4.4]: https://github.com/tuna/thuthesis/compare/v4.4.3...v4.4.4
+[v4.4.3]: https://github.com/tuna/thuthesis/compare/v4.4.2...v4.4.3
+[v4.4.2]: https://github.com/tuna/thuthesis/compare/v4.4...v4.4.2
+[v4.4]:   https://github.com/tuna/thuthesis/compare/v4.3...v4.4
+[v4.3]:   https://github.com/tuna/thuthesis/compare/v4.2...v4.3
+[v4.2]:   https://github.com/tuna/thuthesis/compare/v4.0...v4.2
+[v4.0]:   https://github.com/tuna/thuthesis/compare/v3.1...v4.0
+[v3.1]:   https://github.com/tuna/thuthesis/compare/v3.0...v3.1
+[v3.0]:   https://github.com/tuna/thuthesis/compare/v2.6.4...v3.0
+[v2.6.4]: https://github.com/tuna/thuthesis/compare/v2.6.3...v2.6.4
+[v2.6.3]: https://github.com/tuna/thuthesis/compare/v2.6.2...v2.6.3
+[v2.6.2]: https://github.com/tuna/thuthesis/compare/v2.6.1...v2.6.2
+[v2.6.1]: https://github.com/tuna/thuthesis/compare/v2.6...v2.6.1
+[v2.6]:   https://github.com/tuna/thuthesis/compare/v2.5.3...v2.6
+[v2.5.3]: https://github.com/tuna/thuthesis/compare/v2.5.2...v2.5.3
+[v2.5.2]: https://github.com/tuna/thuthesis/compare/v2.5.1...v2.5.2
+[v2.5.1]: https://github.com/tuna/thuthesis/compare/v2.5...v2.5.1
+[v2.5]:   https://github.com/tuna/thuthesis/compare/v2.4.2...v2.5
+[v2.4.2]: https://github.com/tuna/thuthesis/compare/v2.4.1...v2.4.2
+[v2.4.1]: https://github.com/tuna/thuthesis/compare/v2.4...v2.4.1
+[v2.4]:   https://github.com/tuna/thuthesis/compare/v2.3...v2.4
+[v2.3]:   https://github.com/tuna/thuthesis/compare/v2.2...v2.3
+[v2.2]:   https://github.com/tuna/thuthesis/compare/v2.1...v2.2
+[v2.1]:   https://github.com/tuna/thuthesis/compare/v2.0e...v2.1
+[v2.0e]:  https://github.com/tuna/thuthesis/compare/v2.0...v2.0e
+[v2.0]:   https://github.com/tuna/thuthesis/compare/v1.5...v2.0
+[v1.5]:   https://github.com/tuna/thuthesis/compare/v1.4rc1...v1.5
+[v1.4rc1]:https://github.com/tuna/thuthesis/compare/v1.4...v1.4rc1
+[v1.4]:   https://github.com/tuna/thuthesis/compare/v1.3...v1.4
+[v1.3]:   https://github.com/tuna/thuthesis/compare/v1.2...v1.3
+[v1.2]:   https://github.com/tuna/thuthesis/compare/v1.1...v1.2
+[v1.1]:   https://github.com/tuna/thuthesis/compare/v1.0...v1.1
+[v1.0]:   https://github.com/tuna/thuthesis/releases/tag/v1.0

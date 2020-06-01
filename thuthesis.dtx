@@ -971,6 +971,14 @@
 %
 % 欢迎各位到 \href{http://github.com/tuna/thuthesis/}{\thuthesis{} GitHub 主页}贡献！
 %
+%
+% % redefine some commands in markdown package to remove annoying section numbering
+% \renewcommand{\markdownRendererHeadingTwo}[1]{\subsection*{#1}}
+% \renewcommand{\markdownRendererHeadingThree}[1]{\subsubsection*{#1}}
+% % render changelog from markdown
+% \markdownInput{CHANGELOG.md}
+%
+%
 % \StopEventually{\PrintIndex}
 % \clearpage
 %
@@ -4070,6 +4078,13 @@
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
 \RequirePackage{metalogo}
+\RequirePackage[tightLists=false]{markdown}
+
+\markdownSetup{
+  renderers = {
+    link = {\href{#2}{#1}},
+  }
+}
 
 \ifthenelse{\equal{\@nameuse{g__ctex_fontset_tl}}{mac}}{
   \setmainfont{Palatino}

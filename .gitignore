@@ -170,6 +170,10 @@ acs-*.bib
 *.ilg
 *.ind
 
+# markdown
+_markdown_*/
+markdown.*.lua
+
 # minitoc
 *.maf
 *.mlf
