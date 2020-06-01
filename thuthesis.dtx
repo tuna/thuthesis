@@ -1,6 +1,7 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2005-2020 by Ruini Xue <xueruini@gmail.com>
+% Copyright (C) 2005-2020 by Tsinghua University TUNA Association <tuna@tsinghua.edu.cn>
+%
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -16,7 +17,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2020/02/23 6.0.2 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2020/06/01 6.1.0 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -56,7 +57,7 @@
 % \IndexPrologue{\section{\indexname}}
 %
 % \title{\bfseries\color{violet}\thuthesis：清华大学学位论文模板}
-% \author{{\fangsong 薛瑞尼}\\[5pt]\texttt{xueruini@gmail.com}}
+% \author{{\fangsong 清华大学 TUNA 协会}\\[5pt]\texttt{tuna@tsinghua.edu.cn}}
 % \date{v\fileversion\ (\filedate)}
 % \maketitle\thispagestyle{empty}
 %
@@ -107,7 +108,7 @@
 % 的 \LaTeX{} 论文模板。
 %
 % 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处，或者想提出改进建议，
-% 可以在 \href{https://github.com/xueruini/thuthesis/issues/}{GitHub Issues}
+% 可以在 \href{https://github.com/tuna/thuthesis/issues/}{GitHub Issues}
 % 参与讨论或提问。
 % 有兴趣者都可以参与完善此手册，也非常欢迎对代码的贡献。
 %
@@ -117,10 +118,25 @@
 % 用户如果遇到 bug，或者发现与学校《写作指南》 的要求不一致，可以尝试以下办法：
 % \begin{enumerate}
 %   \item 将模板升级到最新，见第~\ref{sec:upgrade} 节；
-%   \item 阅读 \href{https://github.com/xueruini/thuthesis/wiki/FAQ}{FAQ}；
+%   \item 阅读 \href{https://github.com/tuna/thuthesis/wiki/FAQ}{FAQ}；
 %   \item 在 GitHub Issues 中按照说明
-%     \href{https://github.com/xueruini/thuthesis/issues/new?template=bug_report.md}{报告 bug}。
+%     \href{https://github.com/tuna/thuthesis/issues/new?template=bug_report.md}{报告 bug}。
 % \end{enumerate}
+%
+% \section{贡献者}
+% \label{sec:contributors}
+%
+% \thuthesis{} 的开发过程中，主要的维护者包括：
+% 
+% \begin{itemize}
+%  \item 薛瑞尼（@xueruini）：最早的开发者，2005 年创建 \thuthesis{} 并长期进行维护工作。
+%  \item 赵涛（@alick）：2011-2015 年活跃，较早期阶段的开发者。
+%  \item 李泽平（@zepinglee）：2016 年至今活跃，为目前主要维护者。
+%  \item 陈晟祺（@Harry-Chen）：2020 年至今活跃，主要负责非开发性事宜。
+% \end{itemize}
+%
+% 同时，也要感谢所有在 GitHub 上提出问题与贡献代码的同学、老师们。
+% \thuthesis{} 的持续发展，离不开你们的帮助与支持。
 %
 % \section{安装}
 % \label{sec:installation}
@@ -128,7 +144,7 @@
 % \thuthesis{} 已经包含在主要的 \TeX{} 发行版中，但是通常版本较旧，
 % 而且不方便更新。
 % 建议使用 GitHub 上的最新版：
-% \url{https://github.com/xueruini/thuthesis}。
+% \url{https://github.com/tuna/thuthesis}。
 %
 % 模板支持在 TeX Live、MacTeX 和 MiKTeX 平台下进行编译，但要求 2017 年或更新的发行版。
 % 当然，尽可能使用最新的版本可以避免 bug。
@@ -953,7 +969,7 @@
 % \label{sec:thanks}
 % 感谢这些年来一直陪伴 \thuthesis{} 成长的新老同学！
 %
-% 欢迎各位到 \href{http://github.com/xueruini/thuthesis/}{\thuthesis{} GitHub 主页}贡献！
+% 欢迎各位到 \href{http://github.com/tuna/thuthesis/}{\thuthesis{} GitHub 主页}贡献！
 %
 % \StopEventually{\PrintIndex}
 % \clearpage
@@ -964,7 +980,7 @@
 %    \begin{macrocode}
 %<cls>\NeedsTeXFormat{LaTeX2e}[2017/04/15]
 %<cls>\ProvidesClass{thuthesis}
-%<cls>[2020/02/23 6.0.2 Tsinghua University Thesis Template]
+%<cls>[2020/06/21 6.1.0 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % 报错
@@ -998,7 +1014,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{ThuThesis}
-\def\version{6.0.2}
+\def\version{6.1.0}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -3541,7 +3557,7 @@
 % 但是从示例来看，目录中只出现附录的 chapter 标题，
 % 不出现附录中的 section 及 subsection 的标题。
 % 部分院系（例如自动化系）的格式审查的老师甚至一致口头如此要求。
-% （\href{https://github.com/xueruini/thuthesis/pull/425}{\#425}）
+% （\href{https://github.com/tuna/thuthesis/pull/425}{\#425}）
 %    \begin{macrocode}
 \thu@define@key{
   toc-depth = {
