@@ -19,7 +19,7 @@ REQUIRED_PKGS="$XETEX_PKGS $CTEX_PKGS bibunits caption enumitem etoolbox \
     filehook footmisc notoccite pdfpages titlesec threeparttable unicode-math";
 FONT_PKGS="fandol tex-gyre xits";
 EXTRA_PKGS="booktabs $HYPERREF_PKGS $NOMENCL_PKGS ntheorem siunitx";
-DOC_PKGS="hologo listings xcolor";
+DOC_PKGS="hologo listings xcolor markdown";
 EXAMPLE_PKGS="diagbox float fp metalogo multirow pict2e"
 
 tlmgr install $BIN_PKGS $REQUIRED_PKGS $FONT_PKGS $EXTRA_PKGS $DOC_PKGS \
