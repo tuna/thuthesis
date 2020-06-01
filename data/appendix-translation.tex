@@ -6,9 +6,12 @@
 \title{书面翻译题目}
 \maketitle
 
+\tableofcontents
+
+
 \section{单目标规划}
 北冥有鱼，其名为鲲。鲲之大，不知其几千里也。化而为鸟，其名为鹏。鹏之背，不知其几
-千里也。怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。
+千里也。怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。\cite{abrahams99tex}
 \begin{equation}\tag*{(123)}
  p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 \frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})}
@@ -23,7 +26,7 @@
 \begin{table}[ht]
 \centering
   \centering
-  \caption*{表~1\hskip1em 这是手动编号但不出现在索引中的一个表格例子}
+  \caption{这是一个表格例子}
   \label{tab:badtabular3}
   \begin{tabular}[c]{|m{1.5cm}|c|c|c|c|c|c|}\hline
     \multicolumn{2}{|c|}{Network Topology} & \# of nodes &
@@ -59,7 +62,7 @@
 \begin{figure}[h]
   \centering
   \includegraphics{thu-whole-logo.pdf}
-  \caption*{图~1\hskip1em 这是手动编号但不出现索引中的图片的例子}
+  \caption{这是图片的例子}
   \label{tab:badfigure3}
 \end{figure}
 
@@ -77,7 +80,7 @@
 作孝弟，而侥幸于封侯富贵者也。子之罪大极重，疾走归！不然，我将以子肝益昼餔之膳。”
 
 
-\nocite{abrahams99tex,salomon1995advanced}
+% 书面翻译的参考文献
 \bibliographystyle{plainnat}
 \bibliography{ref/appendix}
 
@@ -92,5 +95,11 @@
 %     New York: Springer, 1995.
 % \end{thebibliography}
 
+% 书面翻译对应的原文索引
+\begin{translation-index}
+  \nocite{salomon1995advanced}
+  \bibliographystyle{plainnat}
+  \bibliography{ref/appendix}
+\end{translation-index}
 
 \end{translation}

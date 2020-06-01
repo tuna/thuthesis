@@ -139,6 +139,8 @@ Completed box being shipped out [1]
 ...\write-{}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
+...\write1{\protect \FN@pp@footnotehinttrue }
+...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\mark{{第3章\hskip \ccwd 对等网络中宽松约束的一般性搜索的\ETC.}
 ...\glue(\topskip) 12.0
@@ -150,7 +152,6 @@ Completed box being shipped out [1]
 ...\glue(\baselineskip) 3.43684
 ...\hbox(12.62315+2.8426)x426.79135, glue set 19.77635fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\hbox(0.0+0.0)x0.0
 ....\TU/FandolHei-Regular(0)/m/n/16.06 第
 ....\glue 4.46468 plus 2.23233 minus 1.48822
 ....\TU/texgyreheros(0)/m/n/16.06 3
@@ -209,7 +210,6 @@ Completed box being shipped out [1]
 ...\glue(\baselineskip) 6.24936
 ...\hbox(10.98904+2.51538)x426.79135, glue set 336.99594fil
 ....\hbox(9.96321+0.21077)x33.58545
-.....\glue 0.0
 .....\TU/texgyreheros(0)/m/n/14.05249 3.1
 .....\kern -0.0002
 .....\kern 0.0002
@@ -4241,7 +4241,6 @@ Completed box being shipped out [2]
 ...\glue(\baselineskip) 7.03027
 ...\hbox(10.83447+2.51538)x426.79135, glue set 308.89096fil
 ....\hbox(9.96321+0.21077)x33.58545
-.....\glue 0.0
 .....\TU/texgyreheros(0)/m/n/14.05249 3.2
 .....\kern -0.0002
 .....\kern 0.0002
@@ -5617,7 +5616,6 @@ Completed box being shipped out [3]
 ...\glue(\baselineskip) 7.62341
 ...\hbox(10.21716+2.20522)x426.79135, glue set 306.42981fil
 ....\hbox(9.25156+0.19571)x42.06912
-.....\glue 0.0
 .....\TU/texgyreheros(0)/m/n/13.04874 3.2.1
 .....\kern -0.0002
 .....\kern 0.0002
@@ -6954,7 +6952,6 @@ Completed box being shipped out [3]
 ...\glue(\baselineskip) 7.68362
 ...\hbox(10.06058+2.38791)x426.79135, glue set 332.52728fil
 ....\hbox(9.25156+0.19571)x42.06912
-.....\glue 0.0
 .....\TU/texgyreheros(0)/m/n/13.04874 3.2.2
 .....\kern -0.0002
 .....\kern 0.0002
@@ -7681,7 +7678,6 @@ Completed box being shipped out [4]
 ...\glue(\baselineskip) 7.78903
 ...\hbox(10.09972+2.20522)x426.79135, glue set 319.47855fil
 ....\hbox(9.25156+0.19571)x42.06912
-.....\glue 0.0
 .....\TU/texgyreheros(0)/m/n/13.04874 3.2.3
 .....\kern -0.0002
 .....\kern 0.0002
@@ -8094,7 +8090,6 @@ Completed box being shipped out [4]
 ...\glue(\baselineskip) 7.56218
 ...\hbox(10.23021+2.27046)x426.79135, glue set 267.2836fil
 ....\hbox(9.25156+0.19571)x42.06912
-.....\glue 0.0
 .....\TU/texgyreheros(0)/m/n/13.04874 3.2.4
 .....\kern -0.0002
 .....\kern 0.0002
@@ -8611,7 +8606,6 @@ Completed box being shipped out [4]
 ...\glue(\baselineskip) 6.89175
 ...\hbox(11.04526+2.44511)x426.79135, glue set 168.36606fil
 ....\hbox(9.96321+0.21077)x33.58545
-.....\glue 0.0
 .....\TU/texgyreheros(0)/m/n/14.05249 3.3
 .....\kern -0.0002
 .....\kern 0.0002
@@ -8851,7 +8845,6 @@ Completed box being shipped out [4]
 ...\glue(\baselineskip) 7.57422
 ...\hbox(10.23021+2.38791)x426.79135, glue set 149.84497fil
 ....\hbox(9.25156+0.19571)x42.06912
-.....\glue 0.0
 .....\TU/texgyreheros(0)/m/n/13.04874 3.3.1
 .....\kern -0.0002
 .....\kern 0.0002
@@ -9651,12 +9644,12 @@ Completed box being shipped out [5]
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set >20000.0fil
-...\vbox(351.06795+0.0)x426.79135
+...\vbox(358.57591+0.0)x426.79135
 ....\special{color push gray 0}
-....\vbox(351.06795+0.0)x426.79135
+....\vbox(358.57591+0.0)x426.79135
 .....\write1{\@writefile{lot}{\protect \contentsline {table}{\protect \numberline \ETC.}
 .....\special{color push gray 0}
-.....\glue 0.0
+.....\glue 6.02249
 .....\glue(\parskip) 0.0
 .....\hbox(10.0475+4.30612)x426.79135
 ......\hbox(0.0+0.0)x0.0
@@ -9714,14 +9707,14 @@ Completed box being shipped out [5]
 .....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
 .....\write1{\newlabel{tab:notations}{{3.1}{\thepage }}}
 .....\glue(\parskip) 0.0
-.....\hbox(167.98103+162.7108)x426.79135, glue set 12.52916fil
+.....\hbox(168.72377+163.45354)x426.79135, glue set 12.52916fil
 ......\glue(\leftskip) 0.0 plus 1.0fil
 ......\hbox(0.0+0.0)x0.0
-......\hbox(167.98103+162.7108)x401.73305
+......\hbox(168.72377+163.45354)x401.73305
 .......\mathon
-.......\vbox(167.98103+162.7108)x401.73305
+.......\vbox(168.72377+163.45354)x401.73305
 ........\glue 0.0
-........\rule(0.96361+0.0)x401.73305
+........\rule(1.50562+0.0)x401.73305
 ........\glue 3.37436
 ........\hbox(8.85303+3.7942)x401.73305
 .........\glue(\tabskip) 0.0
@@ -9764,7 +9757,7 @@ Completed box being shipped out [5]
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0
 ........\glue 2.07652
-........\rule(0.60228+0.0)x401.73305
+........\rule(1.00374+0.0)x401.73305
 ........\glue 3.37436
 ........\hbox(8.85303+3.7942)x401.73305
 .........\glue(\tabskip) 0.0
@@ -11575,7 +11568,7 @@ Completed box being shipped out [5]
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0
 ........\glue 2.07652
-........\rule(0.96361+0.0)x401.73305
+........\rule(1.50562+0.0)x401.73305
 ........\glue 0.0
 .......\mathoff
 ......\penalty 10000
@@ -11583,9 +11576,9 @@ Completed box being shipped out [5]
 ......\glue(\rightskip) 0.0 plus 1.0fil
 .....\glue 0.0
 ....\special{color pop}
-...\glue 12.045 plus 2.00749 minus 4.015
-...\glue -12.045 plus -2.00749 minus -4.015
-...\glue 12.045
+...\glue 6.02249
+...\glue -6.02249
+...\glue 6.02249
 ...\glue(\topskip) 2.59285
 ...\hbox(9.40715+4.70088)x426.79135, glue set - 0.27238
 ....\TU/FandolSong-Regular(0)/m/n/12.045 索
@@ -13090,7 +13083,6 @@ Completed box being shipped out [6]
 ...\glue(\baselineskip) 6.6324
 ...\hbox(10.3346+2.23132)x426.79135, glue set 228.13739fil
 ....\hbox(9.25156+0.19571)x42.06912
-.....\glue 0.0
 .....\TU/texgyreheros(0)/m/n/13.04874 3.3.2
 .....\kern -0.0002
 .....\kern 0.0002
@@ -14293,7 +14285,6 @@ Completed box being shipped out [7]
 ...\glue(\baselineskip) 3.43684
 ...\hbox(12.62315+2.8426)x426.79135, glue set 19.77635fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\hbox(0.0+0.0)x0.0
 ....\TU/FandolHei-Regular(0)/m/n/16.06 第
 ....\glue 4.46468 plus 2.23233 minus 1.48822
 ....\TU/texgyreheros(0)/m/n/16.06 4

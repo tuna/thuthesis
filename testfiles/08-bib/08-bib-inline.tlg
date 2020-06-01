@@ -71,6 +71,8 @@ Completed box being shipped out [1]
 ...\write1{\protect \providecommand {\protect \FN@pp@footnote@aux }[2]{}}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
+...\write1{\protect \FN@pp@footnotehinttrue }
+...\write-{}
 ...\glue(\topskip) 3.85757
 ...\hbox(8.14243+1.879)x426.79135, glue set 320.4822fil
 ....\hbox(0.0+0.0)x24.09
@@ -279,7 +281,6 @@ C.}
 ...\glue(\baselineskip) 3.4529
 ...\hbox(12.6071+3.01927)x426.79135, glue set 181.27568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\hbox(0.0+0.0)x0.0
 ....\TU/FandolHei-Regular(0)/m/n/16.06 参
 ....\glue 0.0 plus 1.0538
 ....\TU/FandolHei-Regular(0)/m/n/16.06 考

@@ -1,171 +1,5 @@
 \chapter{单目标规划}
 
-As one of the most widely used techniques in operations
-research, \emph{ mathematical programming} is defined as a means of maximizing a
-quantity known as \emph{bjective function}, subject to a set of constraints
-represented by equations and inequalities. Some known subtopics of mathematical
-programming are linear programming, nonlinear programming, multiobjective
-programming, goal programming, dynamic programming, and multilevel
-programming.
-
-It is impossible to cover in a single chapter every concept of mathematical
-programming. This chapter introduces only the basic concepts and techniques of
-mathematical programming such that readers gain an understanding of them
-throughout the book.
-
-
-\section{Single-Objective Programming}
-The general form of single-objective programming (SOP) is written
-as follows,
-\begin{equation*} % 如果附录中的公式不想让它出现在公式索引中，那就请
-                             % 用 equation*
-\left\{\begin{array}{l}
-\max \,\,f(x)\\[0.1 cm]
-\mbox{subject to:} \\ [0.1 cm]
-\qquad g_j(x)\le 0,\quad j=1,2,\cdots,p
-\end{array}\right.
-\end{equation*}
-which maximizes a real-valued function $f$ of
-$x=(x_1,x_2,\cdots,x_n)$ subject to a set of constraints.
-
-\newcommand\Real{\mathbf{R}}
-\newtheorem{mpdef}{Definition}[chapter]
-\begin{mpdef}
-In SOP, we call $x$ a decision vector, and
-$x_1,x_2,\cdots,x_n$ decision variables. The function
-$f$ is called the objective function. The set
-\begin{equation*}
-S=\left\{x\in\Real^n\bigm|g_j(x)\le 0,\,j=1,2,\cdots,p\right\}
-\end{equation*}
-is called the feasible set. An element $x$ in $S$ is called a
-feasible solution.
-\end{mpdef}
-
-\newtheorem{mpdefop}[mpdef]{Definition}
-\begin{mpdefop}
-A feasible solution $x^*$ is called the optimal
-solution of SOP if and only if
-\begin{equation}
-f(x^*)\ge f(x)
-\end{equation}
-for any feasible solution $x$.
-\end{mpdefop}
-
-One of the outstanding contributions to mathematical programming was known as
-the Kuhn-Tucker conditions\ref{eq:ktc}. In order to introduce them, let us give
-some definitions. An inequality constraint $g_j(x)\le 0$ is said to be active at
-a point $x^*$ if $g_j(x^*)=0$. A point $x^*$ satisfying $g_j(x^*)\le 0$ is said
-to be regular if the gradient vectors $\nabla g_j(x)$ of all active constraints
-are linearly independent.
-
-Let $x^*$ be a regular point of the constraints of SOP and assume that all the
-functions $f(x)$ and $g_j(x),j=1,2,\cdots,p$ are differentiable. If $x^*$ is a
-local optimal solution, then there exist Lagrange multipliers
-$\lambda_j,j=1,2,\cdots,p$ such that the following Kuhn-Tucker conditions hold,
-\begin{equation}
-\label{eq:ktc}
-\left\{\begin{array}{l}
-    \nabla f(x^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j(x^*)=0\\[0.3cm]
-    \lambda_jg_j(x^*)=0,\quad j=1,2,\cdots,p\\[0.2cm]
-    \lambda_j\ge 0,\quad j=1,2,\cdots,p.
-\end{array}\right.
-\end{equation}
-If all the functions $f(x)$ and $g_j(x),j=1,2,\cdots,p$ are convex and
-differentiable, and the point $x^*$ satisfies the Kuhn-Tucker conditions
-(\ref{eq:ktc}), then it has been proved that the point $x^*$ is a global optimal
-solution of SOP.
-
-\subsection{Linear Programming}
-\label{sec:lp}
-
-If the functions $f(x),g_j(x),j=1,2,\cdots,p$ are all linear, then SOP is called
-a {\em linear programming}.
-
-The feasible set of linear is always convex. A point $x$ is called an extreme
-point of convex set $S$ if $x\in S$ and $x$ cannot be expressed as a convex
-combination of two points in $S$. It has been shown that the optimal solution to
-linear programming corresponds to an extreme point of its feasible set provided
-that the feasible set $S$ is bounded. This fact is the basis of the {\em simplex
-  algorithm} which was developed by Dantzig as a very efficient method for
-solving linear programming.
-\begin{table}[ht]
-\centering
-  \centering
-  \caption*{Table~1\hskip1em This is an example for manually numbered table, which
-    would not appear in the list of tables}
-  \label{tab:badtabular2}
-  \begin{tabular}[c]{|m{1.5cm}|c|c|c|c|c|c|}\hline
-    \multicolumn{2}{|c|}{Network Topology} & \# of nodes &
-    \multicolumn{3}{c|}{\# of clients} & Server \\\hline
-    GT-ITM & Waxman Transit-Stub & 600 &
-    \multirow{2}{2em}{2\%}&
-    \multirow{2}{2em}{10\%}&
-    \multirow{2}{2em}{50\%}&
-    \multirow{2}{1.2in}{Max. Connectivity}\\\cline{1-3}
-    \multicolumn{2}{|c|}{Inet-2.1} & 6000 & & & &\\\hline
-    \multirow{2}{1.5cm}{Xue} & Rui  & Ni &\multicolumn{4}{c|}{\multirow{2}*{\thuthesis}}\\\cline{2-3}
-    & \multicolumn{2}{c|}{ABCDEF} &\multicolumn{4}{c|}{} \\\hline
-\end{tabular}
-\end{table}
-
-Roughly speaking, the simplex algorithm examines only the extreme points of the
-feasible set, rather than all feasible points. At first, the simplex algorithm
-selects an extreme point as the initial point. The successive extreme point is
-selected so as to improve the objective function value. The procedure is
-repeated until no improvement in objective function value can be made. The last
-extreme point is the optimal solution.
-
-\subsection{Nonlinear Programming}
-
-If at least one of the functions $f(x),g_j(x),j=1,2,\cdots,p$ is nonlinear, then
-SOP is called a {\em nonlinear programming}.
-
-A large number of classical optimization methods have been developed to treat
-special-structural nonlinear programming based on the mathematical theory
-concerned with analyzing the structure of problems.
-\begin{figure}[h]
-  \centering
-  \includegraphics{thu-lib-logo.pdf}
-  \caption*{Figure~1\quad This is an example for manually numbered figure,
-    which would not appear in the list of figures}
-  \label{tab:badfigure2}
-\end{figure}
-
-Now we consider a nonlinear programming which is confronted solely with
-maximizing a real-valued function with domain $\Real^n$.  Whether derivatives are
-available or not, the usual strategy is first to select a point in $\Real^n$ which
-is thought to be the most likely place where the maximum exists. If there is no
-information available on which to base such a selection, a point is chosen at
-random. From this first point an attempt is made to construct a sequence of
-points, each of which yields an improved objective function value over its
-predecessor. The next point to be added to the sequence is chosen by analyzing
-the behavior of the function at the previous points. This construction continues
-until some termination criterion is met. Methods based upon this strategy are
-called {\em ascent methods}, which can be classified as {\em direct methods},
-{\em gradient methods}, and {\em Hessian methods} according to the information
-about the behavior of objective function $f$. Direct methods require only that
-the function can be evaluated at each point. Gradient methods require the
-evaluation of first derivatives of $f$. Hessian methods require the evaluation
-of second derivatives. In fact, there is no superior method for all
-problems. The efficiency of a method is very much dependent upon the objective
-function.
-
-\subsection{Integer Programming}
-
-{\em Integer programming} is a special mathematical programming in which all of
-the variables are assumed to be only integer values. When there are not only
-integer variables but also conventional continuous variables, we call it {\em
-  mixed integer programming}. If all the variables are assumed either 0 or 1,
-then the problem is termed a {\em zero-one programming}. Although integer
-programming can be solved by an {\em exhaustive enumeration} theoretically, it
-is impractical to solve realistically sized integer programming problems. The
-most successful algorithm so far found to solve integer programming is called
-the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
-(1965). The other technique to integer programming is the {\em cutting plane
-  method} developed by Gomory (1959).
-
-\hfill\textit{Uncertain Programming\/}\quad(\textsl{BaoDing Liu, 2006.2})
-
 \section{单目标规划}
 北冥有鱼，其名为鲲。鲲之大，不知其几千里也。化而为鸟，其名为鹏。鹏之背，不知其几
 千里也。怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。
@@ -183,7 +17,7 @@ the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
 \begin{table}[ht]
 \centering
   \centering
-  \caption*{表~1\hskip1em 这是手动编号但不出现在索引中的一个表格例子}
+  \caption{这是一个表格例子}
   \label{tab:badtabular3}
   \begin{tabular}[c]{|m{1.5cm}|c|c|c|c|c|c|}\hline
     \multicolumn{2}{|c|}{Network Topology} & \# of nodes &
@@ -219,7 +53,7 @@ the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
 \begin{figure}[h]
   \centering
   \includegraphics{thu-whole-logo.pdf}
-  \caption*{图~1\hskip1em 这是手动编号但不出现索引中的图片的例子}
+  \caption{这是图片的例子}
   \label{tab:badfigure3}
 \end{figure}
 

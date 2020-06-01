@@ -4,28 +4,55 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+## Changed
+- 在`translation` 环境中使用 `\bibliography` 改为生成参考文献，
+  对应的原文索引改为 `translation-index` 环境（#529）。
+- 附录的图、表不再加入索引。
+- 使用 `threeparttable` 示例表内脚注。
+- 本科生的目录章标题的西文字母和数字默认使用 Arial。
+
+## Fixed
+- 本科生附录的调研报告使用英文（#479）。
+- 修正本科生附录的 `algorithm` 和 `listings` 环境的编号格式。
+- 研究生的“使用授权说明”增加一空白页（#504）。
+- 修正 publication 列表行距问题 (#507)。
+- 修正研究生目录的行距。
+- 调整本科生封面有辅导教师、联合指导教师时的格式（#522, #537）。
+- 修正本科生封面日期的字体（#532）。
+- 设置三线表横线的默认粗度。
+- 修正文档中关于本科生学科（专业）名称的说明。
+- 允许用户使用文档类选项 `openright`。
+- 修正本科生的“单设一页”格式（#545）。
+- 研究生的正文（main matter）起始于奇数页。
+
+## Added
+- 允许使用边注。
+- 新增 `amsthm` 支持。
+- 支持单个关键词设置样式。
+- 在 `survey` 和 `translation` 环境中生成独立目录。
+- 添加选项 `toc-chapter-style` 控制本科生的目录章标题的西文字体。
 
 ## [v6.0.2] - 2020-02-23
 ## Fixed
-- 修复图表公式目录内容缺失 (#467)
-- 修复 Github Actions 执行 l3build check 问题
-- 文本模式使用 `\checkmark`
+- 修复图表公式目录内容缺失 (#467)。
+- 修复 Github Actions 执行 l3build check 问题。
+- 文本模式使用 `\checkmark`。
 
 ## Added
-- 补充 PDF 原信息：文档标题，语言。
+- 补充 PDF 元信息：文档标题，语言。
 
 ## Changed
 - 补充“著者-出版年”引用命令使用方法。
-- 使用 `xeCJKfntef` 替换 `CJKfntef`
+- 使用 `xeCJKfntef` 替换 `CJKfntef`。
 
 ## [v6.0.1] - 2020-02-03
 ### Changed
-- 更新文档
-- 更新 bib 测试用例
+- 更新文档。
+- 更新 bib 测试用例。
 
 ### Fixed
-- 修复 PDF 目录层级问题 (#457)
-- 修复 PDF 中章节连接问题 (#453)
+- 修复 PDF 目录层级问题 (#457)。
+- 修复 PDF 中章节连接问题 (#453)。
 
 ## [v6.0.0] - 2020-01-06
 ### Added

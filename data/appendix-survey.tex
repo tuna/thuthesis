@@ -8,20 +8,24 @@
 
 写出至少 5000 外文印刷字符的调研阅读报告或者书面翻译 1-2 篇(不少于 2 万外文印刷符)。
 
-It is impossible to cover in a single chapter every concept of mathematical
-programming.\cite{tex} This chapter introduces only the basic concepts and techniques of
-mathematical programming such that readers gain an understanding of them
-throughout the book\cite{abrahams99tex,salomon1995advanced}.
+
+\tableofcontents
 
 
 \section{Single-Objective Programming}
+
+It is impossible to cover in a single chapter every concept of mathematical
+programming\cite{tex}. This chapter introduces only the basic concepts and techniques of
+mathematical programming such that readers gain an understanding of them
+throughout the book.~\cite{abrahams99tex,salomon1995advanced}.
+
 The general form of single-objective programming (SOP) is written
 as follows,
 \begin{equation*} % 如果附录中的公式不想让它出现在公式索引中，那就请
                              % 用 equation*
 \left\{\begin{array}{l}
-\max \,\,f(x)\\[0.1 cm]
-\mbox{subject to:} \\ [0.1 cm]
+\max \,\,f(x)\\%[0.1 cm]
+\mbox{subject to:} \\%[0.1 cm]
 \qquad g_j(x)\le 0,\quad j=1,2,\cdots,p
 \end{array}\right.
 \end{equation*}
@@ -52,7 +56,7 @@ for any feasible solution $x$.
 \end{mpdefop}
 
 One of the outstanding contributions to mathematical programming was known as
-the Kuhn-Tucker conditions\ref{eq:ktc}. In order to introduce them, let us give
+the Kuhn-Tucker conditions~\eqref{eq:ktc}. In order to introduce them, let us give
 some definitions. An inequality constraint $g_j(x)\le 0$ is said to be active at
 a point $x^*$ if $g_j(x^*)=0$. A point $x^*$ satisfying $g_j(x^*)\le 0$ is said
 to be regular if the gradient vectors $\nabla g_j(x)$ of all active constraints
@@ -65,34 +69,33 @@ $\lambda_j,j=1,2,\cdots,p$ such that the following Kuhn-Tucker conditions hold,
 \begin{equation}
 \label{eq:ktc}
 \left\{\begin{array}{l}
-    \nabla f(x^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j(x^*)=0\\[0.3cm]
-    \lambda_jg_j(x^*)=0,\quad j=1,2,\cdots,p\\[0.2cm]
+    \nabla f(x^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j(x^*)=0\\%[0.3cm]
+    \lambda_jg_j(x^*)=0,\quad j=1,2,\cdots,p\\%[0.2cm]
     \lambda_j\ge 0,\quad j=1,2,\cdots,p.
 \end{array}\right.
 \end{equation}
 If all the functions $f(x)$ and $g_j(x),j=1,2,\cdots,p$ are convex and
 differentiable, and the point $x^*$ satisfies the Kuhn-Tucker conditions
-(\ref{eq:ktc}), then it has been proved that the point $x^*$ is a global optimal
+\eqref{eq:ktc}, then it has been proved that the point $x^*$ is a global optimal
 solution of SOP.
 
 \subsection{Linear Programming}
 \label{sec:lp}
 
 If the functions $f(x),g_j(x),j=1,2,\cdots,p$ are all linear, then SOP is called
-a {\em linear programming}.
+a \emph{linear programming}.
 
 The feasible set of linear is always convex. A point $x$ is called an extreme
 point of convex set $S$ if $x\in S$ and $x$ cannot be expressed as a convex
 combination of two points in $S$. It has been shown that the optimal solution to
 linear programming corresponds to an extreme point of its feasible set provided
-that the feasible set $S$ is bounded. This fact is the basis of the {\em simplex
+that the feasible set $S$ is bounded. This fact is the basis of the \emph{simplex
   algorithm} which was developed by Dantzig as a very efficient method for
 solving linear programming.
 \begin{table}[ht]
 \centering
   \centering
-  \caption*{Table~1\hskip1em This is an example for manually numbered table, which
-    would not appear in the list of tables}
+  \caption{This is an example for table}
   \label{tab:badtabular2}
   \begin{tabular}[c]{|m{1.5cm}|c|c|c|c|c|c|}\hline
     \multicolumn{2}{|c|}{Network Topology} & \# of nodes &
@@ -118,7 +121,7 @@ extreme point is the optimal solution.
 \subsection{Nonlinear Programming}
 
 If at least one of the functions $f(x),g_j(x),j=1,2,\cdots,p$ is nonlinear, then
-SOP is called a {\em nonlinear programming}.
+SOP is called a \emph{nonlinear programming}.
 
 A large number of classical optimization methods have been developed to treat
 special-structural nonlinear programming based on the mathematical theory
@@ -126,8 +129,7 @@ concerned with analyzing the structure of problems.
 \begin{figure}[h]
   \centering
   \includegraphics{thu-lib-logo.pdf}
-  \caption*{Figure~1\quad This is an example for manually numbered figure,
-    which would not appear in the list of figures}
+  \caption{This is an example for figure.}
   \label{tab:badfigure2}
 \end{figure}
 
@@ -141,8 +143,8 @@ points, each of which yields an improved objective function value over its
 predecessor. The next point to be added to the sequence is chosen by analyzing
 the behavior of the function at the previous points. This construction continues
 until some termination criterion is met. Methods based upon this strategy are
-called {\em ascent methods}, which can be classified as {\em direct methods},
-{\em gradient methods}, and {\em Hessian methods} according to the information
+called \emph{ascent methods}, which can be classified as \emph{direct methods},
+\emph{gradient methods}, and \emph{Hessian methods} according to the information
 about the behavior of objective function $f$. Direct methods require only that
 the function can be evaluated at each point. Gradient methods require the
 evaluation of first derivatives of $f$. Hessian methods require the evaluation
@@ -152,16 +154,16 @@ function.
 
 \subsection{Integer Programming}
 
-{\em Integer programming} is a special mathematical programming in which all of
+\emph{Integer programming} is a special mathematical programming in which all of
 the variables are assumed to be only integer values. When there are not only
-integer variables but also conventional continuous variables, we call it {\em
+integer variables but also conventional continuous variables, we call it \emph{
   mixed integer programming}. If all the variables are assumed either 0 or 1,
-then the problem is termed a {\em zero-one programming}. Although integer
-programming can be solved by an {\em exhaustive enumeration} theoretically, it
+then the problem is termed a \emph{zero-one programming}. Although integer
+programming can be solved by an \emph{exhaustive enumeration} theoretically, it
 is impractical to solve realistically sized integer programming problems. The
 most successful algorithm so far found to solve integer programming is called
-the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
-(1965). The other technique to integer programming is the {\em cutting plane
+the \emph{branch-and-bound enumeration} developed by Balas (1965) and Dakin
+(1965). The other technique to integer programming is the \emph{cutting plane
   method} developed by Gomory (1959).
 
 \hfill\textit{Uncertain Programming\/}\quad(\textsl{BaoDing Liu, 2006.2})

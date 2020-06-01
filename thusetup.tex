@@ -61,17 +61,17 @@
   % 指导教师
   %   中文姓名和职称之间以英文逗号“,”分开，下同
   %
-  supervisor  = {郑纬民教授},
+  supervisor  = {郑纬民, 教授},
   supervisor* = {Professor Zheng Weimin},
   %
   % 副指导教师
   %
-  associate-supervisor  = {陈文光教授},
+  associate-supervisor  = {陈文光, 教授},
   associate-supervisor* = {Professor Chen Wenguang},
   %
   % 联合指导教师
   %
-  % joint-supervisor  = {某某某教授},
+  % joint-supervisor  = {某某某, 教授},
   % joint-supervisor* = {Professor Mou Moumou},
   %
   % 日期
@@ -103,8 +103,12 @@
 % 跨页表格
 \usepackage{longtable}
 
-% 固定宽度的表格
+% 固定宽度的表格。放在 hyperref 之前的话，tabularx 里的 footnote 显示不出来。
 \usepackage{tabularx}
+
+% 表格加脚注
+\usepackage{threeparttable}
+\pretocmd{\TPTnoteSettings}{\footnotesize}{}{}
 
 % 表格中的反斜线
 \usepackage{diagbox}
@@ -121,7 +125,9 @@
 % \usepackage{rotating} % 图形和表格的控制旋转
 
 % 定理类环境宏包
-\usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\usepackage{amsthm}
+% 也可以使用 ntheorem
+% \usepackage[amsmath,thmmarks,hyperref]{ntheorem}
 
 % 给自定义的宏后面自动加空白
 % \usepackage{xspace}
