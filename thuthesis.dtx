@@ -129,10 +129,10 @@
 % \thuthesis{} 的开发过程中，主要的维护者包括：
 % 
 % \begin{itemize}
-%  \item 薛瑞尼（@xueruini）：最早的开发者，2005 年创建 \thuthesis{} 并长期进行维护工作。
-%  \item 赵涛（@alick）：2011-2015 年活跃，较早期阶段的开发者。
-%  \item 李泽平（@zepinglee）：2016 年至今活跃，为目前主要维护者。
-%  \item 陈晟祺（@Harry-Chen）：2020 年至今活跃，主要负责非开发性事宜。
+%  \item 薛瑞尼（\githubuser{xueruini}）：最早的开发者，2005 年创建 \thuthesis{} 并长期进行维护工作。
+%  \item 赵涛（\githubuser{alick}）：2011-2015 年活跃，较早期阶段的开发者。
+%  \item 李泽平（\githubuser{zepinglee}）：2016 年至今活跃，为目前主要维护者。
+%  \item 陈晟祺（\githubuser{Harry-Chen}）：2020 年至今活跃，主要负责非开发性事宜。
 % \end{itemize}
 %
 % 同时，也要感谢所有在 GitHub 上提出问题与贡献代码的同学、老师们。
@@ -4224,6 +4224,8 @@
   \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
 \newcommand{\note}[2][Note]{{%
   \color{magenta}{\bfseries #1}\emph{#2}}}
+
+\DeclareDocumentCommand{\githubuser}{m}{\href{https://github.com/#1}{@#1}}
 
 \def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
 %</dtx-style>

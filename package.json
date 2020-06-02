@@ -1,6 +1,6 @@
 {
   "name": "thuthesis",
-  "version": "6.0.2",
+  "version": "6.1.0",
   "description": "Tsinghua University Thesis LaTex Template",
   "main": "gulpfile.js",
   "scripts": {
@@ -8,18 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xueruini/thuthesis.git"
+    "url": "git+https://github.com/tuna/thuthesis.git"
   },
   "keywords": [
     "LaTeX",
     "ThuThesis"
   ],
-  "author": "Ruini Xue",
+  "author": "Tsinghua University TUNA Association",
   "license": "LPPL-1.3c",
   "bugs": {
-    "url": "https://github.com/xueruini/thuthesis/issues"
+    "url": "https://github.com/tuna/thuthesis/issues"
   },
-  "homepage": "https://github.com/xueruini/thuthesis",
+  "homepage": "https://github.com/tuna/thuthesis",
   "devDependencies": {
     "ansi-colors": "^4.1.1",
     "del": "^5.1.0",

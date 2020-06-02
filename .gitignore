@@ -172,7 +172,7 @@ acs-*.bib
 
 # markdown
 _markdown_*/
-markdown.*.lua
+*.markdown.lua
 
 # minitoc
 *.maf
