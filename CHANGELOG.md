@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 Click version names to see the code diff between versions on GitHub.
 
-## [Unreleased]
+## [v6.1.0] - 2020-06-08
 ### Changed
 - 在`translation` 环境中使用 `\bibliography` 改为生成参考文献，
   对应的原文索引改为 `translation-index` 环境（#529）。
@@ -13,6 +13,7 @@ Click version names to see the code diff between versions on GitHub.
 - 使用 `threeparttable` 示例表内脚注。
 - 本科生的目录章标题的西文字母和数字默认使用 Arial（#542）。
 - GitHub repo 所有者更改为清华大学 TUNA 协会。
+- 接管 `ctex` 的 `fontset` 选项，允许更灵活的字体配置（#498）。
 
 ### Fixed
 - 本科生附录的调研报告使用英文（#479）。
@@ -559,7 +560,8 @@ Click version names to see the code diff between versions on GitHub.
 ### Changed
 - Please refer to “Bao--Pan“ version.
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.0.2...HEAD
+
+[v6.1.0]: https://github.com/tuna/thuthesis/compare/v6.0.2...v6.1.0
 [v6.0.2]: https://github.com/tuna/thuthesis/compare/v6.0.1...v6.0.2
 [v6.0.1]: https://github.com/tuna/thuthesis/compare/v6.0.0...v6.0.1
 [v6.0.0]: https://github.com/tuna/thuthesis/compare/v5.5.2...v6.0.0
