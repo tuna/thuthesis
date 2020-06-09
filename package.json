@@ -1,7 +1,7 @@
 {
   "name": "thuthesis",
   "version": "6.1.0",
-  "description": "Tsinghua University Thesis LaTex Template",
+  "description": "Tsinghua University Thesis LaTeX Template",
   "main": "gulpfile.js",
   "scripts": {
     "build": "gulp build"
