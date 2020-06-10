@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 Click version names to see the code diff between versions on GitHub.
 
+## [Unreleased]
+
 ## [v6.1.0] - 2020-06-08
 ### Changed
 - 在`translation` 环境中使用 `\bibliography` 改为生成参考文献，
@@ -561,64 +563,66 @@ Click version names to see the code diff between versions on GitHub.
 - Please refer to “Bao--Pan“ version.
 
 
-[v6.1.0]: https://github.com/tuna/thuthesis/compare/v6.0.2...v6.1.0
-[v6.0.2]: https://github.com/tuna/thuthesis/compare/v6.0.1...v6.0.2
-[v6.0.1]: https://github.com/tuna/thuthesis/compare/v6.0.0...v6.0.1
-[v6.0.0]: https://github.com/tuna/thuthesis/compare/v5.5.2...v6.0.0
-[v5.5.2]: https://github.com/tuna/thuthesis/compare/v5.5.1...v5.5.2
-[v5.5.1]: https://github.com/tuna/thuthesis/compare/v5.5.0...v5.5.1
-[v5.5.0]: https://github.com/tuna/thuthesis/compare/v5.4.5...v5.5.0
-[v5.4.5]: https://github.com/tuna/thuthesis/compare/v5.4.4...v5.4.5
-[v5.4.4]: https://github.com/tuna/thuthesis/compare/v5.4.2...v5.4.4
-[v5.4.2]: https://github.com/tuna/thuthesis/compare/v5.4.1...v5.4.2
-[v5.4.1]: https://github.com/tuna/thuthesis/compare/v5.4.0...v5.4.1
-[v5.4.0]: https://github.com/tuna/thuthesis/compare/v5.3.2...v5.4.0
-[v5.3.2]: https://github.com/tuna/thuthesis/compare/v5.3.1...v5.3.2
-[v5.3.1]: https://github.com/tuna/thuthesis/compare/v5.3.0...v5.3.1
-[v5.3.0]: https://github.com/tuna/thuthesis/compare/v5.2.3...v5.3.0
-[v5.2.3]: https://github.com/tuna/thuthesis/compare/v5.2.2...v5.2.3
-[v5.2.2]: https://github.com/tuna/thuthesis/compare/v5.2.1...v5.2.2
-[v5.2.1]: https://github.com/tuna/thuthesis/compare/v5.2.0...v5.2.1
-[v5.2.0]: https://github.com/tuna/thuthesis/compare/v5.1.0...v5.2.0
-[v5.1.0]: https://github.com/tuna/thuthesis/compare/v5.0.0...v5.1.0
-[v5.0.0]: https://github.com/tuna/thuthesis/compare/v4.8.1...v5.0.0
-[v4.8.1]: https://github.com/tuna/thuthesis/compare/v4.8...v4.8.1
-[v4.8]:   https://github.com/tuna/thuthesis/compare/v4.7...v4.8
-[v4.7]:   https://github.com/tuna/thuthesis/compare/v4.6...v4.7
-[v4.6]:   https://github.com/tuna/thuthesis/compare/v4.5.2...v4.6
-[v4.5.2]: https://github.com/tuna/thuthesis/compare/v4.5.1...v4.5.2
-[v4.5.1]: https://github.com/tuna/thuthesis/compare/v4.5...v4.5.1
-[v4.5]:   https://github.com/tuna/thuthesis/compare/v4.4.4...v4.5
-[v4.4.4]: https://github.com/tuna/thuthesis/compare/v4.4.3...v4.4.4
-[v4.4.3]: https://github.com/tuna/thuthesis/compare/v4.4.2...v4.4.3
-[v4.4.2]: https://github.com/tuna/thuthesis/compare/v4.4...v4.4.2
-[v4.4]:   https://github.com/tuna/thuthesis/compare/v4.3...v4.4
-[v4.3]:   https://github.com/tuna/thuthesis/compare/v4.2...v4.3
-[v4.2]:   https://github.com/tuna/thuthesis/compare/v4.0...v4.2
-[v4.0]:   https://github.com/tuna/thuthesis/compare/v3.1...v4.0
-[v3.1]:   https://github.com/tuna/thuthesis/compare/v3.0...v3.1
-[v3.0]:   https://github.com/tuna/thuthesis/compare/v2.6.4...v3.0
-[v2.6.4]: https://github.com/tuna/thuthesis/compare/v2.6.3...v2.6.4
-[v2.6.3]: https://github.com/tuna/thuthesis/compare/v2.6.2...v2.6.3
-[v2.6.2]: https://github.com/tuna/thuthesis/compare/v2.6.1...v2.6.2
-[v2.6.1]: https://github.com/tuna/thuthesis/compare/v2.6...v2.6.1
-[v2.6]:   https://github.com/tuna/thuthesis/compare/v2.5.3...v2.6
-[v2.5.3]: https://github.com/tuna/thuthesis/compare/v2.5.2...v2.5.3
-[v2.5.2]: https://github.com/tuna/thuthesis/compare/v2.5.1...v2.5.2
-[v2.5.1]: https://github.com/tuna/thuthesis/compare/v2.5...v2.5.1
-[v2.5]:   https://github.com/tuna/thuthesis/compare/v2.4.2...v2.5
-[v2.4.2]: https://github.com/tuna/thuthesis/compare/v2.4.1...v2.4.2
-[v2.4.1]: https://github.com/tuna/thuthesis/compare/v2.4...v2.4.1
-[v2.4]:   https://github.com/tuna/thuthesis/compare/v2.3...v2.4
-[v2.3]:   https://github.com/tuna/thuthesis/compare/v2.2...v2.3
-[v2.2]:   https://github.com/tuna/thuthesis/compare/v2.1...v2.2
-[v2.1]:   https://github.com/tuna/thuthesis/compare/v2.0e...v2.1
-[v2.0e]:  https://github.com/tuna/thuthesis/compare/v2.0...v2.0e
-[v2.0]:   https://github.com/tuna/thuthesis/compare/v1.5...v2.0
-[v1.5]:   https://github.com/tuna/thuthesis/compare/v1.4rc1...v1.5
-[v1.4rc1]:https://github.com/tuna/thuthesis/compare/v1.4...v1.4rc1
-[v1.4]:   https://github.com/tuna/thuthesis/compare/v1.3...v1.4
-[v1.3]:   https://github.com/tuna/thuthesis/compare/v1.2...v1.3
-[v1.2]:   https://github.com/tuna/thuthesis/compare/v1.1...v1.2
-[v1.1]:   https://github.com/tuna/thuthesis/compare/v1.0...v1.1
-[v1.0]:   https://github.com/tuna/thuthesis/releases/tag/v1.0
+
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.1.0...HEAD
+[v6.1.0]:     https://github.com/tuna/thuthesis/compare/v6.0.2...v6.1.0
+[v6.0.2]:     https://github.com/tuna/thuthesis/compare/v6.0.1...v6.0.2
+[v6.0.1]:     https://github.com/tuna/thuthesis/compare/v6.0.0...v6.0.1
+[v6.0.0]:     https://github.com/tuna/thuthesis/compare/v5.5.2...v6.0.0
+[v5.5.2]:     https://github.com/tuna/thuthesis/compare/v5.5.1...v5.5.2
+[v5.5.1]:     https://github.com/tuna/thuthesis/compare/v5.5.0...v5.5.1
+[v5.5.0]:     https://github.com/tuna/thuthesis/compare/v5.4.5...v5.5.0
+[v5.4.5]:     https://github.com/tuna/thuthesis/compare/v5.4.4...v5.4.5
+[v5.4.4]:     https://github.com/tuna/thuthesis/compare/v5.4.2...v5.4.4
+[v5.4.2]:     https://github.com/tuna/thuthesis/compare/v5.4.1...v5.4.2
+[v5.4.1]:     https://github.com/tuna/thuthesis/compare/v5.4.0...v5.4.1
+[v5.4.0]:     https://github.com/tuna/thuthesis/compare/v5.3.2...v5.4.0
+[v5.3.2]:     https://github.com/tuna/thuthesis/compare/v5.3.1...v5.3.2
+[v5.3.1]:     https://github.com/tuna/thuthesis/compare/v5.3.0...v5.3.1
+[v5.3.0]:     https://github.com/tuna/thuthesis/compare/v5.2.3...v5.3.0
+[v5.2.3]:     https://github.com/tuna/thuthesis/compare/v5.2.2...v5.2.3
+[v5.2.2]:     https://github.com/tuna/thuthesis/compare/v5.2.1...v5.2.2
+[v5.2.1]:     https://github.com/tuna/thuthesis/compare/v5.2.0...v5.2.1
+[v5.2.0]:     https://github.com/tuna/thuthesis/compare/v5.1.0...v5.2.0
+[v5.1.0]:     https://github.com/tuna/thuthesis/compare/v5.0.0...v5.1.0
+[v5.0.0]:     https://github.com/tuna/thuthesis/compare/v4.8.1...v5.0.0
+[v4.8.1]:     https://github.com/tuna/thuthesis/compare/v4.8...v4.8.1
+[v4.8]:       https://github.com/tuna/thuthesis/compare/v4.7...v4.8
+[v4.7]:       https://github.com/tuna/thuthesis/compare/v4.6...v4.7
+[v4.6]:       https://github.com/tuna/thuthesis/compare/v4.5.2...v4.6
+[v4.5.2]:     https://github.com/tuna/thuthesis/compare/v4.5.1...v4.5.2
+[v4.5.1]:     https://github.com/tuna/thuthesis/compare/v4.5...v4.5.1
+[v4.5]:       https://github.com/tuna/thuthesis/compare/v4.4.4...v4.5
+[v4.4.4]:     https://github.com/tuna/thuthesis/compare/v4.4.3...v4.4.4
+[v4.4.3]:     https://github.com/tuna/thuthesis/compare/v4.4.2...v4.4.3
+[v4.4.2]:     https://github.com/tuna/thuthesis/compare/v4.4...v4.4.2
+[v4.4]:       https://github.com/tuna/thuthesis/compare/v4.3...v4.4
+[v4.3]:       https://github.com/tuna/thuthesis/compare/v4.2...v4.3
+[v4.2]:       https://github.com/tuna/thuthesis/compare/v4.0...v4.2
+[v4.0]:       https://github.com/tuna/thuthesis/compare/v3.1...v4.0
+[v3.1]:       https://github.com/tuna/thuthesis/compare/v3.0...v3.1
+[v3.0]:       https://github.com/tuna/thuthesis/compare/v2.6.4...v3.0
+[v2.6.4]:     https://github.com/tuna/thuthesis/compare/v2.6.3...v2.6.4
+[v2.6.3]:     https://github.com/tuna/thuthesis/compare/v2.6.2...v2.6.3
+[v2.6.2]:     https://github.com/tuna/thuthesis/compare/v2.6.1...v2.6.2
+[v2.6.1]:     https://github.com/tuna/thuthesis/compare/v2.6...v2.6.1
+[v2.6]:       https://github.com/tuna/thuthesis/compare/v2.5.3...v2.6
+[v2.5.3]:     https://github.com/tuna/thuthesis/compare/v2.5.2...v2.5.3
+[v2.5.2]:     https://github.com/tuna/thuthesis/compare/v2.5.1...v2.5.2
+[v2.5.1]:     https://github.com/tuna/thuthesis/compare/v2.5...v2.5.1
+[v2.5]:       https://github.com/tuna/thuthesis/compare/v2.4.2...v2.5
+[v2.4.2]:     https://github.com/tuna/thuthesis/compare/v2.4.1...v2.4.2
+[v2.4.1]:     https://github.com/tuna/thuthesis/compare/v2.4...v2.4.1
+[v2.4]:       https://github.com/tuna/thuthesis/compare/v2.3...v2.4
+[v2.3]:       https://github.com/tuna/thuthesis/compare/v2.2...v2.3
+[v2.2]:       https://github.com/tuna/thuthesis/compare/v2.1...v2.2
+[v2.1]:       https://github.com/tuna/thuthesis/compare/v2.0e...v2.1
+[v2.0e]:      https://github.com/tuna/thuthesis/compare/v2.0...v2.0e
+[v2.0]:       https://github.com/tuna/thuthesis/compare/v1.5...v2.0
+[v1.5]:       https://github.com/tuna/thuthesis/compare/v1.4rc1...v1.5
+[v1.4rc1]:    https://github.com/tuna/thuthesis/compare/v1.4...v1.4rc1
+[v1.4]:       https://github.com/tuna/thuthesis/compare/v1.3...v1.4
+[v1.3]:       https://github.com/tuna/thuthesis/compare/v1.2...v1.3
+[v1.2]:       https://github.com/tuna/thuthesis/compare/v1.1...v1.2
+[v1.1]:       https://github.com/tuna/thuthesis/compare/v1.0...v1.1
+[v1.0]:       https://github.com/tuna/thuthesis/releases/tag/v1.0
