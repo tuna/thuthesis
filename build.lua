@@ -13,7 +13,7 @@ docfiles = {
 }
 installfiles = {"*.cls", "*.bst", "tsinghua.pdf"}
 sourcefiles = {"*.dtx", "*.ins", "*.bst", "tsinghua.pdf"}
-tagfiles = {"*.dtx", "CHANGELOG.md"}
+tagfiles = {"*.dtx", "CHANGELOG.md", "package.json"}
 textfiles = {"*.md","LICENSE"}
 typesetdemofiles = {"main.tex", "spine.tex"}
 
@@ -74,6 +74,12 @@ function update_tag(file, content, tagname, tagdate)
       gittag .. "...HEAD\n" ..
       string.format("%-14s", "[" .. gittag .. "]:") .. url .. "/compare/"
         .. previous .. "..." .. gittag)
+
+  elseif string.match(file, "package.json") then
+    content = string.gsub(content,
+      "\"version\": \"[0-9.]+\"",
+      "\"version\": \"" .. tagname .. "\"")
   end
+
   return content
 end
