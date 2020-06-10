@@ -8,9 +8,12 @@
 ### Changed
 - 允许在正文中插入书脊页。（#551）
 - 书脊中的西文不再需要调整高度。
+- 修改预生成的隶书版本本科生封面学校名称的文件名为 `tsinghua-name-bachelor.pdf`，不再尝试使用系统字体生成。
+- 将论文示例的文件名更改为 `thuthesis-example.tex / pdf`，以符合 CTAN 的要求。
 
 ### Fixed
 - 修正书脊页的边距。
+- 修复文档中 Changelog 的格式问题。
 
 ## [v6.1.0] - 2020-06-08
 ### Changed

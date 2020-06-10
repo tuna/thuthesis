@@ -12,7 +12,7 @@ const config = {
     template: {
         files: ['thuthesis.ins',
                 'thuthesis.dtx',
-                'tsinghua.pdf',
+                'tsinghua-name-bachelor.pdf',
                 'thuthesis-numeric.bst',
                 'thuthesis-author-year.bst',
                 'thuthesis-bachelor.bst',
@@ -25,9 +25,9 @@ const config = {
     },
 
     example: {
-        files: ['main.tex',
+        files: ['thuthesis-example.tex',
                 'spine.tex',
-                'main.pdf',
+                'thuthesis-example.pdf',
                 'spine.pdf',
                 'thusetup.tex',
                 'math_commands.tex',

@@ -170,8 +170,8 @@
 % thuthesis-numeric.bst & 参考文献样式文件\\
 % thuthesis-author-year.bst & 参考文献样式文件\\
 % thuthesis-bachelor.bst & 参考文献样式文件\\
-% tsinghua.pdf & 校名 logo，系统无隶书字体时使用 \\\midrule
-% main.tex & 示例文档主文件\\
+% tsinghua-name-bachelor.pdf & 校名 logo，本科生封面使用 \\\midrule
+% thuthesis-example.tex & 示例文档主文件\\
 % spine.tex & 书脊示例文档\\
 % ref/ & 示例文档参考文献目录\\
 % data/ & 示例文档章节具体内容\\
@@ -201,33 +201,40 @@
 % \end{shell}
 %
 % \note[注意：]{如果没有生成的模板 \file{thuthesis.cls} 文件
-%   （跟 \file{main.tex} 同一目录下），
+%   （跟 \file{thuthesis-example.tex} 同一目录下），
 %   \LaTeX{} 在编译时可能找到发行版中较旧版本的 \file{.cls}，从而造成冲突。}
 %
 % \subsection{编译论文}
 % \label{sec:generate-thesis}
 % 本节介绍几种常见的生成论文的方法。用户可根据自己的情况选择。
 %
+% 在撰写论文时，我们\textbf{不推荐}使用原有的 \file{thuthesis-example.tex} 这一名称。
+% 建议将其复制一份，改为其他的名字（如 \file{thesis.tex} 或者 \file{main.tex}）。
+% 需要注意，如果使用了来自 \file{data} 目录中的 \file{tex} 文件，
+% 则重命名主文件后，其顶端的 \texttt{!TeX root} 选项也需要相应修改。
+%
 % \subsubsection{GNU make}
 % \label{sec:make}
 % 如果用户可以使用 GNU make 工具，这是最方便的办法。
 % 所以 \thuthesis{} 提供了 \file{Makefile}：
 % \begin{shell}
-%   $ make thesis    # 生成论文 main.pdf
+%   $ make thesis    # 生成论文示例 thuthesis-example.pdf
 %   $ make spine     # 生成书脊 spine.pdf
 %   $ make doc       # 生成说明文档 thuthesis.pdf
 %   $ make clean     # 清理编译生成的辅助文件
 % \end{shell}
+%
+% 需要注意，如果更改了主文件的名称，则需要修改 \file{Makefile} 顶端的 \texttt{THESIS} 变量定义。 
 %
 % \subsubsection{latexmk}
 % \label{sec:latexmk}
 % \texttt{latexmk} 命令支持全自动生成 \LaTeX{} 编写的文档，并且支持使用不同的工具
 % 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。
 % \begin{shell}
-%   $ latexmk main.tex       # 生成论文 main.pdf
-%   $ latexmk spine.tex      # 生成书脊 spine.pdf
-%   $ latexmk thuthesis.dtx  # 生成说明文档 thuthesis.pdf
-%   $ latexmk -c             # 清理编译生成的辅助文件
+%   $ latexmk thuthesis-example.tex  # 生成示例论文 thuthesis-example.pdf
+%   $ latexmk spine.tex              # 生成书脊 spine.pdf
+%   $ latexmk thuthesis.dtx          # 生成说明文档 thuthesis.pdf
+%   $ latexmk -c                     # 清理编译生成的辅助文件
 % \end{shell}
 % \texttt{latexmk} 的编译过程是通过 \file{latexmkrc} 文件来配置的，如果要进一步了解，
 % 可以参考 \pkg{latexmk} 文档。
@@ -243,13 +250,13 @@
 %
 % 然后，生成论文以及书脊：
 % \begin{shell}
-%   $ xelatex main.tex
-%   $ bibtex main.aux             # 生成 bbl 文件
-%   $ bibtex main-survey.aux      # 本科生的调研报告的参考文献
-%   $ bibtex main-translation.aux # 本科生的外文资料翻译的参考文献
-%   $ bibtex main-index.aux       # 本科生的书面翻译对应的原文索引
-%   $ xelatex main.tex            # 解决引用
-%   $ xelatex main.tex            # 生成论文 PDF
+%   $ xelatex thuthesis-example.tex
+%   $ bibtex thuthesis-example.aux  # 生成 bbl 文件
+%   $ bibtex main-survey.aux        # 本科生的调研报告的参考文献
+%   $ bibtex main-translation.aux   # 本科生的外文资料翻译的参考文献
+%   $ bibtex main-index.aux         # 本科生的书面翻译对应的原文索引
+%   $ xelatex thuthesis-example.tex            # 解决引用
+%   $ xelatex thuthesis-example.tex            # 生成论文 PDF
 %
 %   $ xelatex spine.tex           # 生成书脊 PDF
 % \end{shell}
@@ -266,7 +273,7 @@
 % \subsection{升级}
 % \label{sec:upgrade}
 % 如果需要升级 \thuthesis{}，应当从 GitHub 下载最新的版本，
-% 将 \file{thuthesis.dtx}，\file{thuthesis.ins}，\file{tsinghua.pdf} 和
+% 将 \file{thuthesis.dtx}，\file{thuthesis.ins}，\file{tsinghua-name-bachelor.pdf} 和
 % \file{thuthesis-*.bst} 拷贝至工作目录覆盖相应的文件，然后按照
 % 第~\ref{sec:generate-cls} 节的内容生成新的模板和使用说明。
 %
@@ -283,13 +290,13 @@
 %
 % 模板核心文件
 % 有：\file{thuthesis.cls}，\file{thuthesis-numeric.bst}，
-% \file{thuthesis-author-year.bst} 和 \file{tsinghua.pdf}，
+% \file{thuthesis-author-year.bst} 和 \file{tsinghua-name-bachelor.pdf}，
 % 但如果没有示例文档会较难下手，所以推荐从模板自带的示例文档入手。其中包括了论文
 % 写作用到的所有命令及其使用方法，只需用自己的内容进行相应替换就可以。对于不清
 % 楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文档，
-% 具体内容可以参考模板附带的 \file{main.tex} 和 \file{data/}。
+% 具体内容可以参考模板附带的 \file{thuthesis-example.tex} 和 \file{data/}。
 %
-% \lstinputlisting[style=lstStyleLaTeX]{main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{thuthesis-example.tex}
 %
 % 其中 \file{thusetup.tex} 包括了论文基本信息的配置样例：
 %
@@ -1009,10 +1016,10 @@
 % 欢迎各位到 \href{http://github.com/tuna/thuthesis/}{\thuthesis{} GitHub 主页}贡献！
 %
 %
-^^A redefine some commands in markdown package to remove annoying section numbering
+% ^^A redefine some commands in markdown package to remove annoying section numbering
 % \renewcommand{\markdownRendererHeadingTwo}[1]{\subsection*{#1}}
 % \renewcommand{\markdownRendererHeadingThree}[1]{\subsubsection*{#1}}
-^^A render changelog from markdown
+% ^^A render changelog from markdown
 % \markdownInput{CHANGELOG.md}
 %
 %
@@ -3374,11 +3381,7 @@
       \fi\par
     }\par
     \begingroup
-      \ifcsname lishu\endcsname
-        \lishu\yihao\ziju{0.5}清华大学%
-      \else
-        \includegraphics{tsinghua.pdf}%
-      \fi
+      \includegraphics{tsinghua-name-bachelor.pdf}%
       \par
     \endgroup
     \vskip 0.94cm%
