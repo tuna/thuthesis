@@ -875,6 +875,7 @@
 % 像论文正文一样使用标题和参考文献的命令，但不会影响外部。
 % 但是需要使用 \hologo{BibTeX} 对 \file{main-survey.aux} 或者
 % \file{main-translation.aux} 进行编译，才能生成参考文献（见 \ref{sec:xelatex} 节）。
+% 如果使用 \texttt{latexmk}，则无需额外处理。
 %
 % 同时，阅读报告默认切换书写语言为英语，书面翻译默认切换为中文。
 % 如有需要，可以通过 \cs{thusetup} 的 \option{language} 参数再次更改。
@@ -884,18 +885,18 @@
 %     \title{...}
 %     \maketitle
 %     \tableofcontents
-%     ... \cite{...}
+%     ... \cite{...} % 报告内容及其引用
 %     \bibliographystyle{...}
-%     \bibliography{...}
+%     \bibliography{...} % 报告的参考文献
 %   \end{survey}
 % \end{latex}
 %
 % “书面翻译对应的原文索引”区别于译文的参考文献，需要使用 \env{translation-index}
-% 环境，另外需要使用 \hologo{BibTeX} 编译 \file{main-index.aux}。
+% 环境，另外需要使用 \hologo{BibTeX} 编译 \file{main-index.aux}，\texttt{latexmk} 同样会自动处理。
 %
 % \begin{latex}
 %   \begin{translation}
-%     ... \cite{...}
+%     ... \cite{...} % 书面翻译内容及其引用
 %     \bibliographystyle{...}
 %     \bibliography{...}  % 书面翻译的参考文献
 %     \begin{translation-index}
@@ -1008,10 +1009,10 @@
 % 欢迎各位到 \href{http://github.com/tuna/thuthesis/}{\thuthesis{} GitHub 主页}贡献！
 %
 %
-% % redefine some commands in markdown package to remove annoying section numbering
+^^A redefine some commands in markdown package to remove annoying section numbering
 % \renewcommand{\markdownRendererHeadingTwo}[1]{\subsection*{#1}}
 % \renewcommand{\markdownRendererHeadingThree}[1]{\subsubsection*{#1}}
-% % render changelog from markdown
+^^A render changelog from markdown
 % \markdownInput{CHANGELOG.md}
 %
 %

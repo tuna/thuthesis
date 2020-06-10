@@ -1,9 +1,8 @@
 # Changelog
-All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+此处记载了 ThuThesis 中所有值得留意的改动，格式参照 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)。
 
-Click version names to see the code diff between versions on GitHub.
+点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
 ### Changed
@@ -562,11 +561,11 @@ Click version names to see the code diff between versions on GitHub.
 
 ## [v1.1] - 2005-11-03
 ### Changed
-- Initial version, migrate from the old “Bao--Pan“ version. Make the template a class instead of package.
+- Initial version, migrate from the old ``Bao--Pan'' version. Make the template a class instead of package.
 
 ## [v1.0] - 2005-07-06
 ### Changed
-- Please refer to “Bao--Pan“ version.
+- Please refer to ``Bao--Pan'' version.
 
 
 
