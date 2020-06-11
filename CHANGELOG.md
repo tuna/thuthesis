@@ -14,6 +14,7 @@
 - 添加选项 `include-spine`，允许在正文中插入书脊页。（#551）
 - 添加选项 `spine-title`、`spine-author` 控制书脊的内容。
 - 添加选项 `spine-font` 控制书脊的字号。
+- 添加选项 `output` 选择打印版或用于提交的电子版。
 
 ### Fixed
 - 修正书脊的格式。

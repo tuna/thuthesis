@@ -305,6 +305,7 @@
 % \subsection{论文选项}
 % \label{sec:option}
 %
+% \subsubsection{学位}
 % \DescribeOption{degree}
 % 选择学位，可选：
 % \option{bachelor}，\option{master}，\option{doctor}（默认），\option{postdoc}。
@@ -317,6 +318,7 @@
 %
 % \subsubsection{学位类型}
 % \label{sec:degree-type}
+% \DescribeOption{degree-type}
 % 定义研究生学位的类型，可选：\option{academic}（默认）、\option{professional}，
 % 本科生不受影响。
 % \begin{latex}
@@ -385,7 +387,22 @@
 % \note[注意：]{\cs{thusetup} 使用 \pkg{kvsetkeys} 机制，所以配置项之间不能有空行，否则
 % 会报错。}
 %
+% \subsubsection{输出格式}
+% \DescribeOption{output}
+% 选择输出的格式是打印版还是电子版，可选：\option{print}（默认）、\option{electronic}。
+% 一些院系要求提交的电子版不含空白页，但是这对打印并不友好，
+% 比如正文第一页可能会在左侧；以及一些部分需要单面打印，需要插入空白页。
+% \begin{latex}
+%   \thusetup{
+%     output = electronic,
+%   }
+% \end{latex}
+%
+% 另外本科生要求有 0.2cm 留给装订线的宽度，这只有在打印版中才会设置。
+%
+%
 % \subsubsection{书写语言}
+% \DescribeOption{language}
 % 在导言区设置 \option{language} 会修改论文的主要语言，如章节标题等。
 % 在正文中设置 \option{language} 只修改接下来部分的书写语言，
 % 如标点格式、图表名称，但不影响章节标题等。
@@ -1289,6 +1306,17 @@
     },
     default = xits,
   },
+%    \end{macrocode}
+%
+% 选择打印版还是用于上传的电子版。
+%    \begin{macrocode}
+  output = {
+    choices = {
+      print,
+      electronic,
+    },
+    default = print,
+  },
 }
 \newif\ifthu@degree@graduate
 \newcommand\thu@set@graduate{%
@@ -1477,24 +1505,39 @@
   marginparwidth = 2cm,
   marginparsep = 0.5cm
 }
-\ifthu@degree@bachelor
-  \geometry{
-    top        = 3.8cm,
-    bottom     = 3.2cm,
-    left       = 3.2cm,
-    right      = 3cm,
-    headheight = 0.5cm,
-    headsep    = 1.8cm,
-    footskip   = 1.45cm,
-  }
-\else
-  \geometry{
-    margin     = 3cm,
-    headheight = 0.5cm,
-    headsep    = 0.3cm,
-    footskip   = 0.8cm,
-  }
-\fi
+\newcommand\thu@set@geometry{%
+  \ifthu@degree@bachelor
+    \geometry{
+      top        = 3.8cm,
+      bottom     = 3.2cm,
+      left       = 3.2cm,
+      right      = 3cm,
+      headheight = 0.5cm,
+      headsep    = 1.8cm,
+      footskip   = 1.45cm,
+    }%
+    \ifthu@output@print
+      \geometry{
+        left       = 3.2cm,
+        right      = 3cm,
+      }%
+    \else
+      \geometry{
+        hmargin    = 3cm,
+      }%
+    \fi
+  \else
+    \geometry{
+      margin     = 3cm,
+      headheight = 0.5cm,
+      headsep    = 0.3cm,
+      footskip   = 0.8cm,
+    }%
+  \fi
+}
+\thu@set@geometry
+\thu@option@hook{degree}{\thu@set@geometry}
+\thu@option@hook{output}{\thu@set@geometry}
 %    \end{macrocode}
 %
 % \subsection{主文档格式}
@@ -1505,10 +1548,22 @@
 % 对于 \textsl{openright} 选项，必须保证章首页右开，且如果前章末页无内容须
 % 清空其页眉页脚。
 %    \begin{macrocode}
-\let\thu@cleardoublepage\cleardoublepage
-\newcommand{\thu@clearemptydoublepage}{%
-  \clearpage{\pagestyle{thu@empty}\thu@cleardoublepage}}
-\let\cleardoublepage\thu@clearemptydoublepage
+\def\cleardoublepage{%
+  \clearpage
+  \if@twoside
+    \ifthu@output@print
+      \ifodd\c@page
+      \else
+        \thispagestyle{empty}%
+        \hbox{}
+        \newpage
+        \if@twocolumn
+          \hbox{}\newpage
+        \fi
+      \fi
+    \fi
+  \fi
+}
 %    \end{macrocode}
 % \end{macro}
 %
