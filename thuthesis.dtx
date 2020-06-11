@@ -4377,9 +4377,10 @@
     \normalfont \topsep\z@\relax
     \trivlist
     \item[\hskip\labelsep
-          \itshape
+      %     \itshape
       % #1\@addpunct{.}]\ignorespaces
-      \textsf{#1}\@addpunct{\thu@theorem@separator}]\ignorespaces
+      \sffamily
+      #1\@addpunct{\thu@theorem@separator}]\ignorespaces
   }{%
     \popQED\endtrivlist\@endpefalse
   }
