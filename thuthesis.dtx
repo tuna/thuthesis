@@ -395,7 +395,8 @@
 % 选择输出的格式是打印版还是电子版（用于提交），可选：\option{print}（默认）、\option{electronic}。
 % 一些院系要求提交的电子版不含空白页，但是这对打印并不友好，
 % 比如正文第一页可能会在左侧；以及一些部分需要单面打印，需要插入空白页。
-% 注意在不同选项下，生成的\textbf{声明页码很可能不同}，需要打印签字并扫描后插入的用户请特别关注这一情况。
+% 注意在不同选项下，生成的声明页码很可能不同。为了避免页码错误，
+% \thuthesis{}将会在插入扫描的 PDF 文件时自动生成页码，因此\textbf{扫描声明页时请移除底部的页码}，以防重叠。
 %
 % \begin{latex}
 %   \thusetup{
@@ -877,6 +878,8 @@
 %   \statement[scan-statement.pdf]
 % \end{latex}
 %
+% 在插入声明页时，会自动生成页码，因此扫描页中不应该包含页码部分，防止重叠。
+%
 % \subsubsection{附录}
 %
 % 附录由 \cs{appendix} 命令开启，然后像正文一样书写。
@@ -1000,6 +1003,15 @@
 % 境罗列。
 %
 % 具体用法请参看示例文档 \file{data/resume.tex}。
+%
+% \subsubsection{综合论文训练记录表}
+% \DescribeMacro{\record}
+% 本科生需要在最后附上综合论文训练记录表，可以用如下命令：
+%
+% \begin{latex}
+%   \record{scan-record.pdf}
+% \end{latex}
+%
 %
 % \subsection{书脊}
 % \DescribeMacro{\spine}
@@ -3777,7 +3789,7 @@
 % \label{sec:ackanddeclare}
 %
 % \begin{environment}{acknowledgements}
-% 支持扫描文件替换。
+% 定义致谢环境
 %    \begin{macrocode}
 \newcommand\thu@statement@name{声\hspace{\ccwd}明}
 \newcommand{\thu@statement@text}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
@@ -3802,7 +3814,9 @@
 }
 %    \end{macrocode}
 %
-% 声明部分
+% \end{environment}
+% \begin{environment}{statement}
+% 声明部分（支持扫描文件替换）
 %    \begin{macrocode}
 \newcommand\statement[1][]{%
   \ifthu@degree@bachelor
@@ -3820,7 +3834,7 @@
     {\hfill\thu@signature\thu@underline[2.5cm]\relax
       \thu@backdate\thu@underline[2.5cm]\relax}%
   \else
-    \includepdf[pagecommand={\thispagestyle{thu@empty}%
+    \includepdf[pagecommand={\thispagestyle{thu@plain}%
       \addcontentsline{toc}{chapter}{\thu@statement@name}%
     }]{#1}%
   \fi
@@ -4232,6 +4246,20 @@
 %    \begin{macrocode}
 \def\publicationskip{\bigskip\bigskip}
 %    \end{macrocode}
+% \end{macro}
+%
+% \subsection{综合论文训练记录表}
+% 
+% \begin{macro}{\record}
+% （本科生专用）插入综合论文训练记录表的 PDF 版本，并加入书签。
+% 
+%    \begin{macrocode}
+\newcommand{\record}[1]{%
+  \thu@pdfbookmark{0}{综合论文训练记录表}%
+  \includepdf[pages=-]{#1}%
+}
+%    \end{macrocode}
+%
 % \end{macro}
 %
 % \subsection{其他宏包的设置}
