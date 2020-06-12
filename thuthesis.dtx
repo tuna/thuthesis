@@ -1582,7 +1582,7 @@
       \ifodd\c@page
       \else
         \thispagestyle{empty}%
-        \hbox{}
+        \hbox{}%
         \newpage
         \if@twocolumn
           \hbox{}\newpage
@@ -1601,11 +1601,6 @@
 %    \begin{macrocode}
 \renewcommand\frontmatter{%
   \cleardoublepage
-  \ifthu@degree@bachelor
-    \pagestyle{thu@plain}
-  \else
-    \pagestyle{thu@headings}
-  \fi
   \@mainmatterfalse
   \pagenumbering{Roman}%
   \let\@tabular\thu@tabular
@@ -1613,10 +1608,14 @@
 \renewcommand\mainmatter{%
   \cleardoublepage
   \@mainmattertrue
-  \pagenumbering{arabic}
-  \ifthu@degree@bachelor\pagestyle{thu@plain}\else\pagestyle{thu@headings}\fi}
+  \pagenumbering{arabic}%
+}
 \renewcommand\backmatter{%
-  \if@openright\cleardoublepage\else\clearpage\fi
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
   \@mainmattertrue}
 %    \end{macrocode}
 % \end{macro}
@@ -2293,38 +2292,57 @@
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
 %
-% 定义页眉和页脚。
-% \begin{macro}{\ps@thu@empty}
-% \begin{macro}{\ps@thu@plain}
-% \begin{macro}{\ps@thu@headings}
-% 定义三种页眉页脚格式：
-% \begin{itemize}
-% \item \texttt{thu@empty}：页眉页脚都没有
-% \item \texttt{thu@plain}：只显示页脚的页码。\cs{chapter} 自动调用
-% \cs{thispagestyle\{thu@plain\}}。
-% \item \texttt{thu@headings}：页眉页脚同时显示
-% \end{itemize}
+% \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。
+% 第一次调用 \pkg{fancyhdr} 定义的样式时会修改 \cs{chaptermark}，
+% 这会导致页眉信息错误（多余章号并且英文大写）。
+% 这是因为在 \cs{ps@fancy} 中对 \cs{chaptermark} 进行重定义，
+% 所以我们先调用 \cs{ps@fancy}，再修改 \cs{chaptermark}。
 %    \begin{macrocode}
-\fancypagestyle{thu@empty}{%
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}}
-\fancypagestyle{thu@plain}{%
-  \fancyhead{}
-  \fancyfoot[C]{\xiaowu\thepage}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}}
-\fancypagestyle{thu@headings}{%
-  \fancyhead{}
-  \fancyhead[C]{\wuhao\normalfont\leftmark}
-  \fancyfoot{}
-  \fancyfoot[C]{\wuhao\thepage}
-  \renewcommand{\headrulewidth}{0.4pt}
-  \renewcommand{\footrulewidth}{0pt}}
+\pagestyle{fancy}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
+%
+% 定义页眉和页脚。
+% 研究生要求：
+% 页眉宋体五号字，宋体五号字居中书写；
+% 页码五号 Times New Roman 体。
+%
+% 本科生要求：
+% 页眉：无；
+% 页码：位于页面底端，居中书写。
+%
+% 本科外文专业要求页码字号 12pt。
+%    \begin{macrocode}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \renewcommand\footrulewidth{0pt}%
+  \ifthu@degree@bachelor
+    \renewcommand\headrulewidth{0pt}%
+    \fancyfoot[C]{\xiaowu\thepage}%
+    \let\@mkboth\@gobbletwo
+  \else
+    \renewcommand\headrulewidth{0.75bp}%
+    \fancyhead[C]{\wuhao\leftmark}%
+    \fancyfoot[C]{\wuhao\thepage}%
+    \let\@mkboth\markboth
+  \fi
+  \def\chaptermark##1{%
+    \markboth{\CTEXifname{\CTEXthechapter\hskip\ccwd}{}##1}{}%
+  }%
+}
+\pagestyle{plain}
+%    \end{macrocode}
+%
+% 用于声明页，不含页脚。
+%    \begin{macrocode}
+\fancypagestyle{nofooter}{%
+  \fancyfoot{}%
+}
+%    \end{macrocode}
+%
+% \cs{chapter} 会调用特殊的 page style。
+%    \begin{macrocode}
+\ctexset{chapter/pagestyle = plain}
+%    \end{macrocode}
 %
 %
 % \subsubsection{段落}
@@ -2623,35 +2641,6 @@
 \fi
 %    \end{macrocode}
 %
-% \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。通过 \pkg{fancyhdr}
-% 定义的样式在第一次被调用时会修改 \cs{chaptermark}，这会导致页眉信息错误（多余
-% 章号并且英文大写）。这是因为在原始的 \file{book.cls} 中定义如下（大意）：
-% \begin{latex}
-%   \newcommand\chaptername{Chapter}
-%   \newcommand\@chapapp{\chaptername}
-%   \def\chaptermark#1{
-%     \markboth{\MakeUppercase{\@chapapp\ \thechapter}}{}}
-% \end{latex}
-% 很显然这个 \cs{\@chapapp} 不适合中文，因此我们使用\cs{CTEXthechapter}（
-% 如，“第 x 章”），同时会将 \cs{MakeUppercase} 去掉。也就是说我们会做如下动作：
-% \begin{latex}
-%   \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}
-% \end{latex}
-% 但，\pkg{fancyhdr} 不知何故在 \cs{ps@fancy} 中对 \cs{chaptermark} 进行重定义
-% （其实一模一样），而这个 \cs{ps@fancy} 会在 \cs{fancypagestyle} 中使用，如下：
-% \begin{latex}
-%   \newcommand{\fancypagestyle}[2]{%
-%     \@namedef{ps@#1}{\let\fancy@gbl\relax#2\relax\ps@fancy}}
-% \end{latex}
-% 这样的话，\cs{ps@fancy} 会在 \pkg{fancyhdr} 定义的任何样式首次样被激活时调用，从
-% 而覆盖我们的 \cs{chaptermark} 定义（后续样式再激活不会重复覆盖）。所以我们采用如下
-% 方法解决：
-%    \begin{macrocode}
-\AtBeginDocument{%
-  \pagestyle{thu@empty}
-  \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}}
-%    \end{macrocode}
-%
 % 各级标题格式设置。
 % \begin{description}
 % \item[chapter] 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段
@@ -2681,7 +2670,6 @@
 \ctexset{%
   chapter={
     afterindent=true,
-    pagestyle={\ifthu@degree@bachelor thu@plain\else thu@headings\fi},
     beforeskip={\ifthu@degree@bachelor 15bp\else 9bp\fi},
     aftername=\hskip\ccwd,
     afterskip={\ifthu@degree@bachelor 20bp\else 24bp\fi},
@@ -3080,7 +3068,6 @@
 %    \begin{macrocode}
 \renewcommand\maketitle{%
   \cleardoublepage
-  \pagestyle{thu@empty}%
   \pagenumbering{Alph}%
   \thu@pdfbookmark{-1}{\thu@title}%
   \thu@titlepage
@@ -3140,6 +3127,7 @@
     bottom  = 6cm,
     hmargin = 3.5cm,
   }%
+  \thispagestyle{empty}%
   \null\vskip 0.2cm%
   \begingroup
     \centering
@@ -3168,6 +3156,7 @@
     bottom  = 6cm,
     hmargin = 3.5cm,
   }%
+  \thispagestyle{empty}%
   \null\vskip 0.45cm%
   \begingroup
     \centering
@@ -3327,6 +3316,7 @@
     bottom  = 5cm,
     hmargin = 3.6cm,
   }%
+  \thispagestyle{empty}%
   \ifthu@degree@type@academic
     \thu@titlepage@en@graduate@academic
   \else
@@ -3447,6 +3437,7 @@
     vmargin = 2.54cm,
     hmargin = 3.17cm,
   }%
+  \thispagestyle{empty}%
   \null\vskip 0.44cm%
   \begingroup
     \centering
@@ -3512,6 +3503,7 @@
 % \myentry{博士后封面}
 %    \begin{macrocode}
 \newcommand\thu@cover@postdoc{%
+  \thispagestyle{empty}%
   \begin{center}%
     \renewcommand\ULthickness{0.7pt}%
     \vspace*{0.35cm}%
@@ -3554,6 +3546,7 @@
 % \myentry{博士后题名页}
 %    \begin{macrocode}
 \newcommand\thu@titlepage@postdoc{%
+  \thispagestyle{empty}%
   \begin{center}%
     \vspace*{1.5cm}%
     \parbox[t][3cm][c]{\textwidth}{%
@@ -3616,6 +3609,7 @@
 \newcommand\copyrightpage[1][]{%
   \ifthu@degree@postdoc\relax\else
     \cleardoublepage
+    \thispagestyle{empty}%
     \thu@pdfbookmark{0}{\thu@authorization@title}%
     \def\thu@@tmp{#1}
     \ifx\thu@@tmp\@empty
@@ -4249,10 +4243,10 @@
 % \end{macro}
 %
 % \subsection{综合论文训练记录表}
-% 
+%
 % \begin{macro}{\record}
 % （本科生专用）插入综合论文训练记录表的 PDF 版本，并加入书签。
-% 
+%
 %    \begin{macrocode}
 \newcommand{\record}[1]{%
   \thu@pdfbookmark{0}{综合论文训练记录表}%
