@@ -395,7 +395,7 @@
 % 选择输出的格式是打印版还是电子版（用于提交），可选：\option{print}（默认）、\option{electronic}。
 % 一些院系要求提交的电子版不含空白页，但是这对打印并不友好，
 % 比如正文第一页可能会在左侧；以及一些部分需要单面打印，需要插入空白页。
-% 注意在不同选项下，生成的\textbf{声明页码很可能不同}，需要打印签字并扫描后插入的用户需要关注这一情况。
+% 注意在不同选项下，生成的\textbf{声明页码很可能不同}，需要打印签字并扫描后插入的用户请特别关注这一情况。
 %
 % \begin{latex}
 %   \thusetup{
@@ -4648,6 +4648,15 @@
     link = {\href{#2}{#1}},
   }
 }
+
+\hypersetup{
+  pdflang     = zh-CN,
+  pdftitle    = {ThuThesis：清华大学学位论文模板},
+  pdfauthor   = {清华大学 TUNA 协会},
+  pdfsubject  = {清华大学学位论文模板使用说明},
+  pdfkeywords = {论文模板; 清华大学; 使用说明},
+  pdfdisplaydoctitle = true
+}%
 
 \ifthenelse{\equal{\@nameuse{g__ctex_fontset_tl}}{mac}}{
   \setmainfont{Palatino}
