@@ -5,6 +5,8 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
+## [v6.1.1] - 2020-06-12
 ### Changed
 - 书脊中的西文不再需要调整高度。
 - 修改预生成的隶书版本本科生封面学校名称的文件名为 `tsinghua-name-bachelor.pdf`，不再尝试使用系统字体生成。
@@ -577,7 +579,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.1.0...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.1.1...HEAD
+[v6.1.1]:     https://github.com/tuna/thuthesis/compare/v6.1.0...v6.1.1
 [v6.1.0]:     https://github.com/tuna/thuthesis/compare/v6.0.2...v6.1.0
 [v6.0.2]:     https://github.com/tuna/thuthesis/compare/v6.0.1...v6.0.2
 [v6.0.1]:     https://github.com/tuna/thuthesis/compare/v6.0.0...v6.0.1
