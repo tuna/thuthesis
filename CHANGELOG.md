@@ -5,6 +5,14 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+### Changed
+- `\statement` 命令插入 PDF 时在页脚生成页码，以解决打印版与电子版页码不一致的情况。
+
+### Added
+- 添加 `\record` 命令用于本科生插入综合论文训练记录表。
+
+### Fixed
+- 修正示例代码中关于 `\statement` 的 typo。
 
 ## [v6.1.1] - 2020-06-12
 ### Changed
@@ -24,7 +32,7 @@
 
 ## [v6.1.0] - 2020-06-08
 ### Changed
-- 在`translation` 环境中使用 `\bibliography` 改为生成参考文献，
+- 在 `translation` 环境中使用 `\bibliography` 改为生成参考文献，
   对应的原文索引改为 `translation-index` 环境（#529）。
 - 附录的图、表不再加入索引。
 - 使用 `threeparttable` 示例表内脚注。
