@@ -11,10 +11,10 @@
 - 将论文示例的文件名更改为 `thuthesis-example.tex / pdf`，以符合 CTAN 的要求。
 
 ### Added
-- 添加选项 `include-spine`，允许在正文中插入书脊页。（#551）
+- 添加选项 `include-spine`，允许在正文中插入书脊页（#551）。
 - 添加选项 `spine-title`、`spine-author` 控制书脊的内容。
 - 添加选项 `spine-font` 控制书脊的字号。
-- 添加选项 `output` 选择打印版或用于提交的电子版。
+- 添加选项 `output` 选择输出格式为打印版或用于提交的电子版（#553）。
 
 ### Fixed
 - 修正书脊的格式。

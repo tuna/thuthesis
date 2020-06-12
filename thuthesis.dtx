@@ -251,23 +251,26 @@
 % 然后，生成论文以及书脊：
 % \begin{shell}
 %   $ xelatex thuthesis-example.tex
-%   $ bibtex thuthesis-example.aux  # 生成 bbl 文件
-%   $ bibtex main-survey.aux        # 本科生的调研报告的参考文献
-%   $ bibtex main-translation.aux   # 本科生的外文资料翻译的参考文献
-%   $ bibtex main-index.aux         # 本科生的书面翻译对应的原文索引
-%   $ xelatex thuthesis-example.tex            # 解决引用
-%   $ xelatex thuthesis-example.tex            # 生成论文 PDF
+%   $ bibtex thuthesis-example.aux   # 生成 bbl 文件
+%   $ bibtex main-survey.aux         # 本科生的调研报告的参考文献
+%   $ bibtex main-translation.aux    # 本科生的外文资料翻译的参考文献
+%   $ bibtex main-index.aux          # 本科生的书面翻译对应的原文索引
+%   $ xelatex thuthesis-example.tex  # 解决引用
+%   $ xelatex thuthesis-example.tex  # 生成论文 PDF
 %
 %   $ xelatex spine.tex           # 生成书脊 PDF
 % \end{shell}
 %
+% 在调用 \XeLaTeX 时，如果设置了 \option{include-spine} 选项，
+% 则需要在文件名前加上 \texttt{-shell-scape} 的命令行选项。
+%
 % 下面的命令用来生成用户手册：
 % \begin{shell}
-%   $ xelatex thuthesis.dtx
+%   $ xelatex -shell-escape thuthesis.dtx
 %   $ makeindex -s gind.ist -o thuthesis.ind thuthesis.idx
 %   $ makeindex -s gglo.ist -o thuthesis.gls thuthesis.glo
-%   $ xelatex thuthesis.dtx
-%   $ xelatex thuthesis.dtx  # 生成说明文档 thuthesis.pdf
+%   $ xelatex -shell-escape thuthesis.dtx
+%   $ xelatex -shell-escape thuthesis.dtx  # 生成说明文档 thuthesis.pdf
 % \end{shell}
 %
 % \subsection{升级}
@@ -389,7 +392,7 @@
 %
 % \subsubsection{输出格式}
 % \DescribeOption{output}
-% 选择输出的格式是打印版还是电子版，可选：\option{print}（默认）、\option{electronic}。
+% 选择输出的格式是打印版还是电子版（用于提交），可选：\option{print}（默认）、\option{electronic}。
 % 一些院系要求提交的电子版不含空白页，但是这对打印并不友好，
 % 比如正文第一页可能会在左侧；以及一些部分需要单面打印，需要插入空白页。
 % \begin{latex}
@@ -398,7 +401,7 @@
 %   }
 % \end{latex}
 %
-% 另外本科生要求有 0.2cm 留给装订线的宽度，这只有在打印版中才会设置。
+% 另外本科生要求有 0.2cm 留给装订线的宽度，这只有在打印版中才会生效。
 %
 %
 % \subsubsection{书写语言}
@@ -1014,14 +1017,24 @@
 %   }
 % \end{latex}
 %
+% 由于 Fandol 字体在 \XeTeX 中的竖排存在一些问题，如果书脊使用的字体是 Fandol 仿宋
+%（\option{fontset} 为 \texttt{fandol} 或者 \texttt{ubuntu} 时），则它\textbf{必须作为独立文件生成}，
+% 否则可能导致后续内容文字方向错乱的问题。
+%
 % \DescribeOption{include-spine}
-% 一些院系要求把书脊插进论文里，需要在 \cs{maketitle} 前设置
+% 一些院系要求把书脊插进论文里，需要在 \cs{maketitle} 前设置。
 % \begin{latex}
 %   \thusetup{
 %     include-spine = true,
 %   }
 % \end{latex}
+% 打开此选项后，书籍会出现在中文封面后面的第一个空白页。如果有英文封面，则在英文封面之前。
+% 如果需要书籍出现在其他位置，请手工使用 \cs{spine} 生成，不要使用此命令。
 %
+% 在使用 Fandol 仿宋时，如果打开 \option{include-spine} 选项，
+% 模板将使用 \cs{write18} 来生成独立的 \file{spine.tex}，并调用 \XeLaTeX 进行排版后插入论文中。
+% 在这种情况下，请确保编译时打开了 shell escape 功能，或者在论文目录下放置编译完成的 \file{spine.pdf}，
+% 否则编译将因为无法正常生成书脊而失败。
 %
 % \section{致谢}
 % \label{sec:thanks}
