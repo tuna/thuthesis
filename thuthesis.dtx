@@ -3830,6 +3830,7 @@
       \thu@backdate\thu@underline[2.5cm]\relax}%
   \else
     \includepdf[pagecommand={%
+      \thu@phantomsection
       \addcontentsline{toc}{chapter}{\thu@statement@name}%
     }]{#1}%
   \fi
