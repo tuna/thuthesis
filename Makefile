@@ -8,6 +8,8 @@ SOURCES = $(PACKAGE).ins $(PACKAGE).dtx
 CLSFILE = dtx-style.sty $(PACKAGE).cls
 
 LATEXMK = latexmk
+SHELL  := /bin/bash
+NPM    ?= npm
 
 # make deletion work on Windows
 ifdef SystemRoot
@@ -80,4 +82,4 @@ else
 endif
 
 dist: check all-dev
-	npm run build -- --version=$(version)
+	$(NPM) run build -- --version=$(version)
