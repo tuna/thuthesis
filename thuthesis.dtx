@@ -878,7 +878,7 @@
 %   \statement[scan-statement.pdf]
 % \end{latex}
 %
-% 在插入声明页时，会自动生成页码，因此扫描页中不应该包含页码部分，防止重叠。
+% 编译生成的声明页不含页码，而插入扫描页时会自动补上页码，防止页码冲突。
 %
 % \subsubsection{附录}
 %
@@ -3819,6 +3819,7 @@
   \def\thu@@tmp{#1}%
   \ifx\thu@@tmp\@empty
     \thu@chapter*{\thu@statement@name}%
+    \thispagestyle{nofooter}%
     \thu@statement@text\par
     \ifthu@degree@graduate
       \vskip 2cm%
@@ -3828,7 +3829,7 @@
     {\hfill\thu@signature\thu@underline[2.5cm]\relax
       \thu@backdate\thu@underline[2.5cm]\relax}%
   \else
-    \includepdf[pagecommand={\thispagestyle{thu@plain}%
+    \includepdf[pagecommand={%
       \addcontentsline{toc}{chapter}{\thu@statement@name}%
     }]{#1}%
   \fi

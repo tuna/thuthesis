@@ -6,7 +6,8 @@
 
 ## [Unreleased]
 ### Changed
-- `\statement` 命令插入 PDF 时在页脚生成页码，以解决打印版与电子版页码不一致的情况。
+- `\statement` 命令编译生成声明页不含页码。
+- `\statement[xxx.pdf]` 插入扫描页时在页脚生成页码，以解决打印版与电子版页码不一致的情况。
 
 ### Added
 - 添加 `\record` 命令用于本科生插入综合论文训练记录表。
