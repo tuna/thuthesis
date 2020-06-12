@@ -11,11 +11,11 @@ docfiles = {
   "thusetup.tex", "math_commands.tex",
   "data", "figures", "ref",
 }
-installfiles = {"*.cls", "*.bst", "tsinghua.pdf"}
-sourcefiles = {"*.dtx", "*.ins", "*.bst", "tsinghua.pdf"}
+installfiles = {"*.cls", "*.bst", "tsinghua-name-bachelor.pdf"}
+sourcefiles = {"*.dtx", "*.ins", "*.bst", "tsinghua-name-bachelor.pdf"}
 tagfiles = {"*.dtx", "CHANGELOG.md", "package.json"}
 textfiles = {"*.md","LICENSE"}
-typesetdemofiles = {"main.tex", "spine.tex"}
+typesetdemofiles = {"thuthesis-example.tex", "spine.tex"}
 
 checkengines = {"xetex"}
 stdengine = "xetex"

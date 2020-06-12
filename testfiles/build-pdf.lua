@@ -5,9 +5,9 @@ module = "thuthesis"
 supportdir = "./testfiles/support-pdf"
 
 checksuppfiles = {"fontset.tex"}
-demofiles = {"main.tex", "thusetup.tex", "math_commands.tex", "data", "figures", "ref"}
-installfiles = {"*.cls", "*.bst", "tsinghua.pdf"}
-sourcefiles = {"*.dtx", "*.ins", "*.bst", "tsinghua.pdf"}
+demofiles = {"thuthesis-example.tex", "thusetup.tex", "math_commands.tex", "data", "figures", "ref"}
+installfiles = {"*.cls", "*.bst", "tsinghua-name-bachelor.pdf"}
+sourcefiles = {"*.dtx", "*.ins", "*.bst", "tsinghua-name-bachelor.pdf"}
 
 checkengines = {"xetex"}
 stdengine = "xetex"

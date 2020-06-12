@@ -1,7 +1,7 @@
 # Makefile for ThuThesis
 
 PACKAGE = thuthesis
-THESIS  = main
+THESIS  = thuthesis-example
 SPINE   = spine
 
 SOURCES = $(PACKAGE).ins $(PACKAGE).dtx
@@ -62,7 +62,7 @@ test:
 
 clean:
 	$(LATEXMK) -c $(PACKAGE).dtx $(THESIS) $(SPINE)
-	-@$(RM) *~ main-survey.*  _markdown_thuthesis*
+	-@$(RM) -rf *~ main-survey.* main-translation.* _markdown_thuthesis* thuthesis.markdown.*
 
 cleanall: clean
 	-@$(RM) $(PACKAGE).pdf $(THESIS).pdf $(SPINE).pdf

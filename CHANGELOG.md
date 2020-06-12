@@ -1,11 +1,26 @@
 # Changelog
-All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+此处记载了 ThuThesis 中所有值得留意的改动，格式参照 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)。
 
-Click version names to see the code diff between versions on GitHub.
+点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
+## [v6.1.1] - 2020-06-12
+### Changed
+- 书脊中的西文不再需要调整高度。
+- 修改预生成的隶书版本本科生封面学校名称的文件名为 `tsinghua-name-bachelor.pdf`，不再尝试使用系统字体生成。
+- 将论文示例的文件名更改为 `thuthesis-example.tex / pdf`，以符合 CTAN 的要求。
+
+### Added
+- 添加选项 `include-spine`，允许在正文中插入书脊页（#551）。
+- 添加选项 `spine-title`、`spine-author` 控制书脊的内容。
+- 添加选项 `spine-font` 控制书脊的字号。
+- 添加选项 `output` 选择输出格式为打印版或用于提交的电子版（#553）。
+
+### Fixed
+- 修正书脊的格式。
+- 修复文档中 Changelog 的格式问题。
 
 ## [v6.1.0] - 2020-06-08
 ### Changed
@@ -556,15 +571,16 @@ Click version names to see the code diff between versions on GitHub.
 
 ## [v1.1] - 2005-11-03
 ### Changed
-- Initial version, migrate from the old “Bao--Pan“ version. Make the template a class instead of package.
+- Initial version, migrate from the old ``Bao--Pan'' version. Make the template a class instead of package.
 
 ## [v1.0] - 2005-07-06
 ### Changed
-- Please refer to “Bao--Pan“ version.
+- Please refer to ``Bao--Pan'' version.
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.1.0...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.1.1...HEAD
+[v6.1.1]:     https://github.com/tuna/thuthesis/compare/v6.1.0...v6.1.1
 [v6.1.0]:     https://github.com/tuna/thuthesis/compare/v6.0.2...v6.1.0
 [v6.0.2]:     https://github.com/tuna/thuthesis/compare/v6.0.1...v6.0.2
 [v6.0.1]:     https://github.com/tuna/thuthesis/compare/v6.0.0...v6.0.1

@@ -17,7 +17,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2020/06/08 6.1.0 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2020/06/12 6.1.1 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -127,7 +127,7 @@
 % \label{sec:contributors}
 %
 % \thuthesis{} 的开发过程中，主要的维护者包括：
-% 
+%
 % \begin{itemize}
 %  \item 薛瑞尼（\githubuser{xueruini}）：最早的开发者，2005 年创建 \thuthesis{} 并长期进行维护工作。
 %  \item 赵涛（\githubuser{alick}）：2011-2015 年活跃，较早期阶段的开发者。
@@ -147,7 +147,7 @@
 %  \item[GitHub] \url{https://github.com/tuna/thuthesis}，从 Release 中下载 zip 文件。
 %  \item[TUNA 镜像站] \url{https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/}，也可在首页选择“获取下载链接——应用软件——\thuthesis{}论文模板”。
 % \end{description}
-% 
+%
 %
 % 模板支持在 TeX Live、MacTeX 和 MiKTeX 平台下进行编译，但要求 2017 年或更新的发行版。
 % 当然，尽可能使用最新的版本可以避免 bug。
@@ -170,8 +170,8 @@
 % thuthesis-numeric.bst & 参考文献样式文件\\
 % thuthesis-author-year.bst & 参考文献样式文件\\
 % thuthesis-bachelor.bst & 参考文献样式文件\\
-% tsinghua.pdf & 校名 logo，系统无隶书字体时使用 \\\midrule
-% main.tex & 示例文档主文件\\
+% tsinghua-name-bachelor.pdf & 校名 logo，本科生封面使用 \\\midrule
+% thuthesis-example.tex & 示例文档主文件\\
 % spine.tex & 书脊示例文档\\
 % ref/ & 示例文档参考文献目录\\
 % data/ & 示例文档章节具体内容\\
@@ -201,33 +201,40 @@
 % \end{shell}
 %
 % \note[注意：]{如果没有生成的模板 \file{thuthesis.cls} 文件
-%   （跟 \file{main.tex} 同一目录下），
+%   （跟 \file{thuthesis-example.tex} 同一目录下），
 %   \LaTeX{} 在编译时可能找到发行版中较旧版本的 \file{.cls}，从而造成冲突。}
 %
 % \subsection{编译论文}
 % \label{sec:generate-thesis}
 % 本节介绍几种常见的生成论文的方法。用户可根据自己的情况选择。
 %
+% 在撰写论文时，我们\textbf{不推荐}使用原有的 \file{thuthesis-example.tex} 这一名称。
+% 建议将其复制一份，改为其他的名字（如 \file{thesis.tex} 或者 \file{main.tex}）。
+% 需要注意，如果使用了来自 \file{data} 目录中的 \file{tex} 文件，
+% 则重命名主文件后，其顶端的 \texttt{!TeX root} 选项也需要相应修改。
+%
 % \subsubsection{GNU make}
 % \label{sec:make}
 % 如果用户可以使用 GNU make 工具，这是最方便的办法。
 % 所以 \thuthesis{} 提供了 \file{Makefile}：
 % \begin{shell}
-%   $ make thesis    # 生成论文 main.pdf
+%   $ make thesis    # 生成论文示例 thuthesis-example.pdf
 %   $ make spine     # 生成书脊 spine.pdf
 %   $ make doc       # 生成说明文档 thuthesis.pdf
 %   $ make clean     # 清理编译生成的辅助文件
 % \end{shell}
+%
+% 需要注意，如果更改了主文件的名称，则需要修改 \file{Makefile} 顶端的 \texttt{THESIS} 变量定义。
 %
 % \subsubsection{latexmk}
 % \label{sec:latexmk}
 % \texttt{latexmk} 命令支持全自动生成 \LaTeX{} 编写的文档，并且支持使用不同的工具
 % 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。
 % \begin{shell}
-%   $ latexmk main.tex       # 生成论文 main.pdf
-%   $ latexmk spine.tex      # 生成书脊 spine.pdf
-%   $ latexmk thuthesis.dtx  # 生成说明文档 thuthesis.pdf
-%   $ latexmk -c             # 清理编译生成的辅助文件
+%   $ latexmk thuthesis-example.tex  # 生成示例论文 thuthesis-example.pdf
+%   $ latexmk spine.tex              # 生成书脊 spine.pdf
+%   $ latexmk thuthesis.dtx          # 生成说明文档 thuthesis.pdf
+%   $ latexmk -c                     # 清理编译生成的辅助文件
 % \end{shell}
 % \texttt{latexmk} 的编译过程是通过 \file{latexmkrc} 文件来配置的，如果要进一步了解，
 % 可以参考 \pkg{latexmk} 文档。
@@ -243,30 +250,33 @@
 %
 % 然后，生成论文以及书脊：
 % \begin{shell}
-%   $ xelatex main.tex
-%   $ bibtex main.aux             # 生成 bbl 文件
-%   $ bibtex main-survey.aux      # 本科生的调研报告的参考文献
-%   $ bibtex main-translation.aux # 本科生的外文资料翻译的参考文献
-%   $ bibtex main-index.aux       # 本科生的书面翻译对应的原文索引
-%   $ xelatex main.tex            # 解决引用
-%   $ xelatex main.tex            # 生成论文 PDF
+%   $ xelatex thuthesis-example.tex
+%   $ bibtex thuthesis-example.aux   # 生成 bbl 文件
+%   $ bibtex main-survey.aux         # 本科生的调研报告的参考文献
+%   $ bibtex main-translation.aux    # 本科生的外文资料翻译的参考文献
+%   $ bibtex main-index.aux          # 本科生的书面翻译对应的原文索引
+%   $ xelatex thuthesis-example.tex  # 解决引用
+%   $ xelatex thuthesis-example.tex  # 生成论文 PDF
 %
 %   $ xelatex spine.tex           # 生成书脊 PDF
 % \end{shell}
 %
+% 在调用 \XeLaTeX 时，如果设置了 \option{include-spine} 选项，
+% 则需要在文件名前加上 \texttt{-shell-scape} 的命令行选项。
+%
 % 下面的命令用来生成用户手册：
 % \begin{shell}
-%   $ xelatex thuthesis.dtx
+%   $ xelatex -shell-escape thuthesis.dtx
 %   $ makeindex -s gind.ist -o thuthesis.ind thuthesis.idx
 %   $ makeindex -s gglo.ist -o thuthesis.gls thuthesis.glo
-%   $ xelatex thuthesis.dtx
-%   $ xelatex thuthesis.dtx  # 生成说明文档 thuthesis.pdf
+%   $ xelatex -shell-escape thuthesis.dtx
+%   $ xelatex -shell-escape thuthesis.dtx  # 生成说明文档 thuthesis.pdf
 % \end{shell}
 %
 % \subsection{升级}
 % \label{sec:upgrade}
 % 如果需要升级 \thuthesis{}，应当从 GitHub 下载最新的版本，
-% 将 \file{thuthesis.dtx}，\file{thuthesis.ins}，\file{tsinghua.pdf} 和
+% 将 \file{thuthesis.dtx}，\file{thuthesis.ins}，\file{tsinghua-name-bachelor.pdf} 和
 % \file{thuthesis-*.bst} 拷贝至工作目录覆盖相应的文件，然后按照
 % 第~\ref{sec:generate-cls} 节的内容生成新的模板和使用说明。
 %
@@ -283,13 +293,13 @@
 %
 % 模板核心文件
 % 有：\file{thuthesis.cls}，\file{thuthesis-numeric.bst}，
-% \file{thuthesis-author-year.bst} 和 \file{tsinghua.pdf}，
+% \file{thuthesis-author-year.bst} 和 \file{tsinghua-name-bachelor.pdf}，
 % 但如果没有示例文档会较难下手，所以推荐从模板自带的示例文档入手。其中包括了论文
 % 写作用到的所有命令及其使用方法，只需用自己的内容进行相应替换就可以。对于不清
 % 楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文档，
-% 具体内容可以参考模板附带的 \file{main.tex} 和 \file{data/}。
+% 具体内容可以参考模板附带的 \file{thuthesis-example.tex} 和 \file{data/}。
 %
-% \lstinputlisting[style=lstStyleLaTeX]{main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{thuthesis-example.tex}
 %
 % 其中 \file{thusetup.tex} 包括了论文基本信息的配置样例：
 %
@@ -298,6 +308,7 @@
 % \subsection{论文选项}
 % \label{sec:option}
 %
+% \subsubsection{学位}
 % \DescribeOption{degree}
 % 选择学位，可选：
 % \option{bachelor}，\option{master}，\option{doctor}（默认），\option{postdoc}。
@@ -310,6 +321,7 @@
 %
 % \subsubsection{学位类型}
 % \label{sec:degree-type}
+% \DescribeOption{degree-type}
 % 定义研究生学位的类型，可选：\option{academic}（默认）、\option{professional}，
 % 本科生不受影响。
 % \begin{latex}
@@ -378,7 +390,24 @@
 % \note[注意：]{\cs{thusetup} 使用 \pkg{kvsetkeys} 机制，所以配置项之间不能有空行，否则
 % 会报错。}
 %
+% \subsubsection{输出格式}
+% \DescribeOption{output}
+% 选择输出的格式是打印版还是电子版（用于提交），可选：\option{print}（默认）、\option{electronic}。
+% 一些院系要求提交的电子版不含空白页，但是这对打印并不友好，
+% 比如正文第一页可能会在左侧；以及一些部分需要单面打印，需要插入空白页。
+% 注意在不同选项下，生成的\textbf{声明页码很可能不同}，需要打印签字并扫描后插入的用户请特别关注这一情况。
+%
+% \begin{latex}
+%   \thusetup{
+%     output = electronic,
+%   }
+% \end{latex}
+%
+% 另外本科生要求有 0.2cm 留给装订线的宽度，这只有在打印版中才会生效。
+%
+%
 % \subsubsection{书写语言}
+% \DescribeOption{language}
 % 在导言区设置 \option{language} 会修改论文的主要语言，如章节标题等。
 % 在正文中设置 \option{language} 只修改接下来部分的书写语言，
 % 如标点格式、图表名称，但不影响章节标题等。
@@ -875,6 +904,7 @@
 % 像论文正文一样使用标题和参考文献的命令，但不会影响外部。
 % 但是需要使用 \hologo{BibTeX} 对 \file{main-survey.aux} 或者
 % \file{main-translation.aux} 进行编译，才能生成参考文献（见 \ref{sec:xelatex} 节）。
+% 如果使用 \texttt{latexmk}，则无需额外处理。
 %
 % 同时，阅读报告默认切换书写语言为英语，书面翻译默认切换为中文。
 % 如有需要，可以通过 \cs{thusetup} 的 \option{language} 参数再次更改。
@@ -884,18 +914,18 @@
 %     \title{...}
 %     \maketitle
 %     \tableofcontents
-%     ... \cite{...}
+%     ... \cite{...} % 报告内容及其引用
 %     \bibliographystyle{...}
-%     \bibliography{...}
+%     \bibliography{...} % 报告的参考文献
 %   \end{survey}
 % \end{latex}
 %
 % “书面翻译对应的原文索引”区别于译文的参考文献，需要使用 \env{translation-index}
-% 环境，另外需要使用 \hologo{BibTeX} 编译 \file{main-index.aux}。
+% 环境，另外需要使用 \hologo{BibTeX} 编译 \file{main-index.aux}，\texttt{latexmk} 同样会自动处理。
 %
 % \begin{latex}
 %   \begin{translation}
-%     ... \cite{...}
+%     ... \cite{...} % 书面翻译内容及其引用
 %     \bibliographystyle{...}
 %     \bibliography{...}  % 书面翻译的参考文献
 %     \begin{translation-index}
@@ -973,12 +1003,40 @@
 %
 % \subsection{书脊}
 % \DescribeMacro{\spine}
-% 生成装订的书脊，为竖排格式，命令格式：\cs{spine}\oarg{标题}\oarg{作者}。默认参
-% 数为论文中文题目和中文作者。如果中文题目中没有英文字母，那么直接调用此命令即可。
-% 否则，可参考参看模板示例文件 \file{spine.tex} 进行微调：
+% \DescribeOption{spine-font}
+% \DescribeOption{spine-title}
+% \DescribeOption{spine-author}
+% 生成装订的书脊，为竖排格式。内容默认使用论文的标题和作者。
+% 可以设置 \option{spine-title} 和 \option{spine-author} 来修改。
 %
-% \lstinputlisting[style=lstStyleLaTeX]{spine.tex}
+% 书脊字体默认为三号字，同研究生的示例一致。
+% 本科生要求字体大小根据论文的薄厚而定，可以使用 \option{spine-font} 设置字号。
+% \begin{latex}
+%   \thusetup{
+%     spine-font   = {\Huge},
+%     spine-title  = {书脊的标题},
+%     spine-author = {书脊的作者姓名},
+%   }
+% \end{latex}
 %
+% 由于 Fandol 字体在 \XeTeX 中的竖排存在一些问题，如果书脊使用的字体是 Fandol 仿宋
+%（\option{fontset} 为 \texttt{fandol} 或者 \texttt{ubuntu} 时），则它\textbf{必须作为独立文件生成}，
+% 否则可能导致后续内容文字方向错乱的问题。
+%
+% \DescribeOption{include-spine}
+% 一些院系要求把书脊插进论文里，需要在 \cs{maketitle} 前设置。
+% \begin{latex}
+%   \thusetup{
+%     include-spine = true,
+%   }
+% \end{latex}
+% 打开此选项后，书籍会出现在中文封面后面的第一个空白页。如果有英文封面，则在英文封面之前。
+% 如果需要书籍出现在其他位置，请手工使用 \cs{spine} 生成，不要使用此命令。
+%
+% 在使用 Fandol 仿宋时，如果打开 \option{include-spine} 选项，
+% 模板将使用 \cs{write18} 来生成独立的 \file{spine.tex}，并调用 \XeLaTeX 进行排版后插入论文中。
+% 在这种情况下，请确保编译时打开了 shell escape 功能，或者在论文目录下放置编译完成的 \file{spine.pdf}，
+% 否则编译将因为无法正常生成书脊而失败。
 %
 % \section{致谢}
 % \label{sec:thanks}
@@ -987,10 +1045,10 @@
 % 欢迎各位到 \href{http://github.com/tuna/thuthesis/}{\thuthesis{} GitHub 主页}贡献！
 %
 %
-% % redefine some commands in markdown package to remove annoying section numbering
+% ^^A redefine some commands in markdown package to remove annoying section numbering
 % \renewcommand{\markdownRendererHeadingTwo}[1]{\subsection*{#1}}
 % \renewcommand{\markdownRendererHeadingThree}[1]{\subsubsection*{#1}}
-% % render changelog from markdown
+% ^^A render changelog from markdown
 % \markdownInput{CHANGELOG.md}
 %
 %
@@ -1003,7 +1061,7 @@
 %    \begin{macrocode}
 %<cls>\NeedsTeXFormat{LaTeX2e}[2017/04/15]
 %<cls>\ProvidesClass{thuthesis}
-%<cls>[2020/06/08 6.1.0 Tsinghua University Thesis Template]
+%<cls>[2020/06/12 6.1.1 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % 报错
@@ -1037,7 +1095,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{ThuThesis}
-\def\version{6.1.0}
+\def\version{6.1.1}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -1263,6 +1321,17 @@
     },
     default = xits,
   },
+%    \end{macrocode}
+%
+% 选择打印版还是用于上传的电子版。
+%    \begin{macrocode}
+  output = {
+    choices = {
+      print,
+      electronic,
+    },
+    default = print,
+  },
 }
 \newif\ifthu@degree@graduate
 \newcommand\thu@set@graduate{%
@@ -1312,7 +1381,7 @@
 %
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
 %    \begin{macrocode}
-\PassOptionsToPackage{quiet}{xeCJK}
+\PassOptionsToPackage{quiet}{fontspec}
 \LoadClass[a4paper,UTF8,zihao=-4,scheme=plain,fontset=none]{ctexbook}[2017/04/01]
 %    \end{macrocode}
 %
@@ -1451,24 +1520,39 @@
   marginparwidth = 2cm,
   marginparsep = 0.5cm
 }
-\ifthu@degree@bachelor
-  \geometry{
-    top        = 3.8cm,
-    bottom     = 3.2cm,
-    left       = 3.2cm,
-    right      = 3cm,
-    headheight = 0.5cm,
-    headsep    = 1.8cm,
-    footskip   = 1.45cm,
-  }
-\else
-  \geometry{
-    margin     = 3cm,
-    headheight = 0.5cm,
-    headsep    = 0.3cm,
-    footskip   = 0.8cm,
-  }
-\fi
+\newcommand\thu@set@geometry{%
+  \ifthu@degree@bachelor
+    \geometry{
+      top        = 3.8cm,
+      bottom     = 3.2cm,
+      left       = 3.2cm,
+      right      = 3cm,
+      headheight = 0.5cm,
+      headsep    = 1.8cm,
+      footskip   = 1.45cm,
+    }%
+    \ifthu@output@print
+      \geometry{
+        left       = 3.2cm,
+        right      = 3cm,
+      }%
+    \else
+      \geometry{
+        hmargin    = 3cm,
+      }%
+    \fi
+  \else
+    \geometry{
+      margin     = 3cm,
+      headheight = 0.5cm,
+      headsep    = 0.3cm,
+      footskip   = 0.8cm,
+    }%
+  \fi
+}
+\thu@set@geometry
+\thu@option@hook{degree}{\thu@set@geometry}
+\thu@option@hook{output}{\thu@set@geometry}
 %    \end{macrocode}
 %
 % \subsection{主文档格式}
@@ -1479,10 +1563,22 @@
 % 对于 \textsl{openright} 选项，必须保证章首页右开，且如果前章末页无内容须
 % 清空其页眉页脚。
 %    \begin{macrocode}
-\let\thu@cleardoublepage\cleardoublepage
-\newcommand{\thu@clearemptydoublepage}{%
-  \clearpage{\pagestyle{thu@empty}\thu@cleardoublepage}}
-\let\cleardoublepage\thu@clearemptydoublepage
+\def\cleardoublepage{%
+  \clearpage
+  \if@twoside
+    \ifthu@output@print
+      \ifodd\c@page
+      \else
+        \thispagestyle{empty}%
+        \hbox{}
+        \newpage
+        \if@twocolumn
+          \hbox{}\newpage
+        \fi
+      \fi
+    \fi
+  \fi
+}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2859,6 +2955,18 @@
     name    = end@date,
     default = {\the\year-\two@digits{\month}-\two@digits{\day}},
   },
+%    \end{macrocode}
+%
+% 中文封面后是否生成书脊页。
+%    \begin{macrocode}
+  include-spine = {
+    name = include@spine,
+    choices = {
+      false,
+      true,
+    },
+    default = false,
+  },
 }
 %    \end{macrocode}
 %
@@ -2964,6 +3072,9 @@
   \pagenumbering{Alph}%
   \thu@pdfbookmark{-1}{\thu@title}%
   \thu@titlepage
+  \ifthu@include@spine@true
+    \thu@spine
+  \fi
   \ifthu@degree@graduate
     \cleardoublepage
     \thu@titlepage@en
@@ -3337,11 +3448,7 @@
       \fi\par
     }\par
     \begingroup
-      \ifcsname lishu\endcsname
-        \lishu\yihao\ziju{0.5}清华大学%
-      \else
-        \includegraphics{tsinghua.pdf}%
-      \fi
+      \includegraphics{tsinghua-name-bachelor.pdf}%
       \par
     \endgroup
     \vskip 0.94cm%
@@ -3470,7 +3577,8 @@
 % \begin{macro}{\copyrightpage}
 % 授权说明
 %    \begin{macrocode}
-\newcommand{\thu@authorization}{%
+\newcommand{\thu@authorization@title}{关于学位论文使用授权的说明}
+\newcommand{\thu@authorization@content}{%
 \ifthu@degree@bachelor
 本人完全了解清华大学有关保留、使用学位论文的规定，即：学校有权保留学位
 论文的复印件，允许该论文被查阅和借阅；学校可以公布该论文的全部或部分内
@@ -3487,15 +3595,16 @@
 
 本人保证遵守上述规定。
 \fi}
-\newcommand{\thu@authorizationaddon}{%
+\newcommand{\thu@authorization@addon}{%
   \ifthu@degree@bachelor(涉密的学位论文在解密后应遵守此规定)\else （保密的论文在解密后应遵守此规定）\fi}
-\newcommand{\thu@authorsig}{\ifthu@degree@bachelor 签\hskip1em名：\else 作者签名：\fi}
-\newcommand{\thu@teachersig}{导师签名：}
-\newcommand{\thu@frontdate}{%
+\newcommand{\thu@authorization@authorsig}{\ifthu@degree@bachelor 签\hskip1em名：\else 作者签名：\fi}
+\newcommand{\thu@authorization@teachersig}{导师签名：}
+\newcommand{\thu@authorization@frontdate}{%
   日\ifthu@degree@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
 \newcommand\copyrightpage[1][]{%
   \ifthu@degree@postdoc\relax\else
     \cleardoublepage
+    \thu@pdfbookmark{0}{\thu@authorization@title}%
     \def\thu@@tmp{#1}
     \ifx\thu@@tmp\@empty
       \ifthu@degree@bachelor\thu@authorization@mk\else%
@@ -3519,21 +3628,21 @@
 %    \begin{macrocode}
 \newcommand{\thu@authorization@mk}{%
   \ifthu@degree@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
-  \begin{center}\erhao\heiti 关于学位论文使用授权的说明\end{center}
+  \begin{center}\erhao\heiti \thu@authorization@title\end{center}
   \ifthu@degree@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
-  \thu@authorization\par
-  \textbf{\thu@authorizationaddon}\par
+  \thu@authorization@content\par
+  \textbf{\thu@authorization@addon}\par
   \ifthu@degree@bachelor\vskip0.7cm\else\vskip1.0cm\fi
   \ifthu@degree@bachelor
-    \indent\mbox{\thu@authorsig\thu@underline\relax%
-    \thu@teachersig\thu@underline\relax\thu@frontdate\thu@underline\relax}
+    \indent\mbox{\thu@authorization@authorsig\thu@underline\relax%
+    \thu@authorization@teachersig\thu@underline\relax\thu@authorization@frontdate\thu@underline\relax}
   \else
     \begingroup
       \parindent0pt\xiaosi
-      \hspace*{1.5cm}\thu@authorsig\thu@underline[7em]\relax\hfill%
-                     \thu@teachersig\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]
-      \hspace*{1.5cm}\thu@frontdate\thu@underline[7em]\relax\hfill%
-                     \thu@frontdate\thu@underline[7em]\relax\hspace*{1cm}
+      \hspace*{1.5cm}\thu@authorization@authorsig\thu@underline[7em]\relax\hfill%
+                     \thu@authorization@teachersig\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]
+      \hspace*{1.5cm}\thu@authorization@frontdate\thu@underline[7em]\relax\hfill%
+                     \thu@authorization@frontdate\thu@underline[7em]\relax\hspace*{1cm}
     \endgroup
   \fi}
 %    \end{macrocode}
@@ -4283,9 +4392,10 @@
     \normalfont \topsep\z@\relax
     \trivlist
     \item[\hskip\labelsep
-          \itshape
+      %     \itshape
       % #1\@addpunct{.}]\ignorespaces
-      \textsf{#1}\@addpunct{\thu@theorem@separator}]\ignorespaces
+      \sffamily
+      #1\@addpunct{\thu@theorem@separator}]\ignorespaces
   }{%
     \popQED\endtrivlist\@endpefalse
   }
@@ -4392,13 +4502,109 @@
 % \subsection{书脊}
 % \label{sec:spine}
 % \begin{macro}{\spine}
-% 单独使用书脊命令会在新的一页产生竖排书脊。
+% 单独使用书脊命令会在新的一页产生竖排书脊，
+% 参考 \url{https://tex.stackexchange.com/a/38585}。
+%
+% 本科生：
+%   书脊的书写要求：用仿宋\_GB2312 字书写，字体大小根据论文的薄厚而定。
+%   书脊上方写论文题目，下方写本科生姓名，距上下页边均为 3cm。
+%
+% 研究生：
+%   示例中上下页边距为 5.5 cm，左右边距为 1 cm。
 %    \begin{macrocode}
-\NewDocumentCommand{\spine}{O{\thu@title} O{\thu@author}}{%
-  \newpage\thispagestyle{empty}%
-  \fangsong\addCJKfontfeatures*{RawFeature={vertical:}}
-  \xiaosan\ziju{0.4}%
-  \noindent\hfill\rotatebox[origin=lt]{-90}{\makebox[\textheight]{#1\hfill#2}}}
+\thu@define@key{
+  spine-font = {
+    name = spine@font,
+    default = {\sanhao},
+  },
+  spine-title = {
+    name = spine@title,
+  },
+  spine-author = {
+    name = spine@author,
+  },
+}
+\newcommand*\CJKmovesymbol[1]{\raise.3em\hbox{#1}}
+\newcommand*\CJKmove{%
+  \punctstyle{plain}%
+  \let\CJKsymbol\CJKmovesymbol
+  \let\CJKpunctsymbol\CJKsymbol
+}
+\NewDocumentCommand{\spine}{
+    O{
+      \ifx\thu@spine@title\@empty
+        \thu@title
+      \else
+        \thu@spine@title
+      \fi
+    }
+    O{
+      \ifx\thu@spine@author\@empty
+        \thu@author
+      \else
+        \thu@spine@author
+      \fi
+    }}{%
+  \clearpage
+  \ifthu@degree@bachelor
+    \newgeometry{
+      vmargin = 3cm,
+      hmargin = 1cm,
+    }%
+  \else
+    \newgeometry{
+      vmargin = 5.5cm,
+      hmargin = 1cm,
+    }%
+  \fi
+  \thispagestyle{empty}%
+  \ifthu@language@chinese
+    \thu@pdfbookmark{0}{书脊}%
+  \else
+    \thu@pdfbookmark{0}{Spine}%
+  \fi
+  \begingroup
+    \noindent\hfill
+    \rotatebox[origin=lt]{-90}{%
+      \makebox[\textheight]{%
+        \fangsong
+        \addCJKfontfeatures*{RawFeature={vertical}}%
+        \thu@spine@font
+        \CJKmove
+        #1\hfill
+        \thu@stretch{4.5em}{#2}%
+      }%
+    }%
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+% Fandol 仿宋无法同时用于横排和竖排
+%（\href{https://github.com/tuna/thuthesis/issues/551}{\#551}），
+% 所以只能独立编译 \file{spine.pdf}，然后插入封面后。
+%    \begin{macrocode}
+\newcommand\thu@input@spine{%
+  \IfFileExists{spine.pdf}{}{%
+    \immediate\write18{xelatex spine.tex}%
+    \IfFileExists{spine.pdf}{}{%
+      \thu@error{Cannot find file "spine.pdf". Compile "spine.tex" first, or enable shell escape}%
+    }%
+  }%
+  \includepdf[pages=1]{spine.pdf}%
+}
+\newcommand\thu@spine{%
+  \ifthu@cjk@font@fandol
+    \thu@input@spine
+  \else
+    \ifthu@cjk@font@noto
+      \thu@input@spine
+    \else
+      \spine
+    \fi
+  \fi
+}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -4442,6 +4648,15 @@
     link = {\href{#2}{#1}},
   }
 }
+
+\hypersetup{
+  pdflang     = zh-CN,
+  pdftitle    = {ThuThesis：清华大学学位论文模板},
+  pdfauthor   = {清华大学 TUNA 协会},
+  pdfsubject  = {清华大学学位论文模板使用说明},
+  pdfkeywords = {论文模板; 清华大学; 使用说明},
+  pdfdisplaydoctitle = true
+}%
 
 \ifthenelse{\equal{\@nameuse{g__ctex_fontset_tl}}{mac}}{
   \setmainfont{Palatino}

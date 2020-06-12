@@ -24,7 +24,7 @@ Scroll down for the English version of README.
 推荐下载**发布版**模板，里面包括具体使用说明以及示例文档：
 
 * 模板使用说明 (thuthesis.pdf)
-* 示例文档 (main.pdf)
+* 示例文档 (thuthesis-example.pdf)
 
 开发版中不提供预生成的 `cls` 文件和文档，仅包含源码。其仅供开发者与需要尚未发布的功能的有经验的 TeX 用户使用，不提供任何保证。
 
@@ -73,12 +73,12 @@ make [{all|thesis|spine|doc|clean|cleanall|distclean}]
 ```
 
 ### 目标
-* `make thesis`    生成论文 main.pdf；
+* `make thesis`    生成论文 thuthesis-example.pdf；
 * `make spine`     生成书脊 spine.pdf；
 * `make doc`       生成模板使用说明书 thuthesis.pdf；
 * `make all`       生成论文和书脊，相当于 `make thesis && make spine`；
-* `make clean`     删除示例文件的中间文件（不含 main.pdf）；
-* `make cleanall`  删除示例文件的中间文件和 main.pdf；
+* `make clean`     删除示例文件的中间文件（不含 thuthesis-example.pdf）；
+* `make cleanall`  删除示例文件的中间文件和 thuthesis-example.pdf；
 * `make distclean` 删除示例文件和模板的所有中间文件和 PDF。
 
 ---
@@ -94,7 +94,7 @@ This package establishes a simple and easy-to-use LaTeX template for Tsinghua di
 
 **Published versions** are recommended. Specific usage documentation and examples can be found in the archive. At present, these documents are <b>only available in Chinese</b>:
 * Template usage documentation (thuthesis.pdf)
-* Template example (main.pdf)
+* Template example (thuthesis-example.pdf)
 
 Developer versions contain only source code but no pre-compiled `cls` file and documentations. They are only for the usage of developers and experienced TeX users in need of unpublished features. No warranties are provided.
 
@@ -141,10 +141,10 @@ make [{all|thesis|spine|doc|clean|cleanall|distclean}]
 ```
 
 ### Targets
-* `make thesis`    generate thesis main.pdf;
+* `make thesis`    generate thesis thuthesis-example.pdf;
 * `make spine`     generate book spine for printing spine.pdf;
 * `make doc`       generate template documentation thuthesis.pdf;
 * `make all`       generate thesis and spine, same as `make thesis && make spine`;
-* `make clean`     delete all examples' files (excluding main.pdf);
-* `make cleanall`  delete all examples' files and main.pdf;
+* `make clean`     delete all examples' files (excluding thuthesis-example.pdf);
+* `make cleanall`  delete all examples' files and thuthesis-example.pdf;
 * `make distclean` delete all examples' and templates' files and PDFs.
