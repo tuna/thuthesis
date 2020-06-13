@@ -121,7 +121,7 @@ function init_ctan(callback) {
 const build_self = gulp.series(init_self, copy, compress, cleanup);
 const build_ctan = gulp.series(init_ctan, copy, compress, cleanup);
 
-const build = gulp.series(bootstrap, build_self, build_ctan);
+const build = gulp.series(bootstrap, build_self);
 
 exports.default = _default;
 exports.build = build;

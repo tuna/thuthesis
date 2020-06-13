@@ -33,13 +33,6 @@ unpackexe = "xetex"
 checkopts = "-file-line-error -halt-on-error -interaction=nonstopmode"
 typesetopts = "-shell-escape -file-line-error -halt-on-error -interaction=nonstopmode"
 
-packtdszip = true
-
-tdslocations = {
-  "bibtex/bst/thuthesis/*.bst",
-  "tex/latex/thuthesis/tsinghua-name-bachelor.pdf",
-}
-
 lvtext = ".tex"
 
 function docinit_hook()
