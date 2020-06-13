@@ -878,7 +878,17 @@
 %   \statement[scan-statement.pdf]
 % \end{latex}
 %
-% 编译生成的声明页不含页码，而插入扫描页时会自动补上页码，防止页码冲突。
+% 由于打印版和电子版有空白页的差别，声明的页码可能不同，所以编译声明页时默认不加页码，
+% 在签字后插入扫描页时再补上页码，防止页码冲突。
+%
+% \DescribeOption{statement-page-number}
+% 如果需要编译时也加页码，可以在 \cs{statement} 前设置
+% \begin{latex}
+%   \thusetup{
+%     statement-page-number = true,
+%   }
+% \end{latex}
+% 注意，插入扫描页总是会加页码，不受该选项控制。
 %
 % \subsubsection{附录}
 %
@@ -3813,6 +3823,16 @@
 % \begin{environment}{statement}
 % 声明部分（支持扫描文件替换）
 %    \begin{macrocode}
+\thu@define@key{
+  statement-page-number = {
+    name = statement@page@number,
+    choices = {
+      false,
+      true,
+    },
+    default = false,
+  },
+}
 \newcommand\statement[1][]{%
   \ifthu@degree@bachelor
     \cleardoublepage
@@ -3820,7 +3840,9 @@
   \def\thu@@tmp{#1}%
   \ifx\thu@@tmp\@empty
     \thu@chapter*{\thu@statement@name}%
-    \thispagestyle{nofooter}%
+    \ifthu@statement@page@number@false
+      \thispagestyle{nofooter}%
+    \fi
     \thu@statement@text\par
     \ifthu@degree@graduate
       \vskip 2cm%
@@ -4064,7 +4086,7 @@
 \g@addto@macro\appendix{%
   \thusetup{
     toc-depth = 0,
-  }
+  }%
 }
 %    \end{macrocode}
 %
@@ -4253,7 +4275,7 @@
 %    \begin{macrocode}
 \newcommand{\record}[1]{%
   \clearpage
-  \thu@pdfbookmark{0}{综合论文训练记录表}
+  \thu@pdfbookmark{0}{综合论文训练记录表}%
   \includepdf[pages=-]{#1}%
 }
 %    \end{macrocode}

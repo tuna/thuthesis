@@ -6,12 +6,13 @@
 
 ## [Unreleased]
 ### Changed
-- `\statement` 命令编译生成声明页不含页码。
+- `\statement` 命令编译生成声明页默认不含页码。
 - `\statement[xxx.pdf]` 插入扫描页时在页脚生成页码，以解决打印版与电子版页码不一致的情况。
 - 使用 `l3build` 编译的版本，在提交到 CTAN 时提供 TDS 结构，以解决编译时 `tsinghua-name-bachelor.pdf` 找不到的问题。
 
 ### Added
 - 添加 `\record` 命令用于本科生插入综合论文训练记录表。
+- 添加选项 `statement-page-number` 控制编译声明页时是否含页码。
 
 ### Fixed
 - 修正示例代码中关于 `\statement` 的 typo。
