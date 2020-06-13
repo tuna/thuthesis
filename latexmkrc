@@ -10,11 +10,6 @@ $bibtex_use = 1.5;
 $clean_ext = "hd loe ptc synctex.gz thm xdv";
 
 $makeindex = "makeindex -s gind.ist %O -o %D %S";
-add_cus_dep('glo', 'gls', 0, 'glo2gls');
-sub glo2gls {
-    system("makeindex -s gglo.ist -o \"$_[0].gls\" \"$_[0].glo\"");
-}
-push @generated_exts, 'glo', 'gls';
 
 add_cus_dep('nlo', 'nls', 0, 'nlo2nls');
 sub nlo2nls {
