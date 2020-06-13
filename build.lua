@@ -37,6 +37,7 @@ packtdszip = true
 
 tdslocations = {
   "bibtex/bst/thuthesis/*.bst",
+  "tex/latex/thuthesis/tsinghua-name-bachelor.pdf",
 }
 
 lvtext = ".tex"
