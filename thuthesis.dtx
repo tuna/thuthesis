@@ -3624,6 +3624,7 @@
         \end{list}%
       \fi%
     \else
+      \thu@phantomsection
       \includepdf{#1}%
     \fi
   \fi
@@ -4251,7 +4252,9 @@
 %
 %    \begin{macrocode}
 \newcommand{\record}[1]{%
-  \thu@pdfbookmark{0}{综合论文训练记录表}%
+  \clearpage
+  \thu@phantomsection
+  \thu@pdfbookmark{0}{综合论文训练记录表}
   \includepdf[pages=-]{#1}%
 }
 %    \end{macrocode}
