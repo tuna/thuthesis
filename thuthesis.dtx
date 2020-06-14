@@ -877,11 +877,11 @@
 %   \statement[scan-statement.pdf]
 % \end{latex}
 %
-% 由于打印版和电子版有空白页的差别，声明的页码可能不同，所以编译声明页时默认不加页码，
+% 由于打印版和电子版有空白页的差别，声明的页码可能不同。所以编译声明页时默认不加页码，
 % 在签字后插入扫描页时再补上页码，防止页码冲突。
 %
 % \DescribeOption{statement-page-number}
-% 如果需要编译时也加页码，可以在 \cs{statement} 前设置
+% 如果需要编译时也加页码（如直接对电子版进行签名而不是插入扫描页），可以使用在 \cs{statement} 前设置
 % \begin{latex}
 %   \thusetup{
 %     statement-page-number = true,
