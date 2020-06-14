@@ -27,6 +27,15 @@ checkconfigs = {
   "testfiles/config-bib",
 }
 
+-- include .tds.zip in build output
+packtdszip = true
+
+-- specify some files of their correct TDS locations
+tdslocations = {
+  "bibtex/bst/thuthesis/*.bst",
+  "tex/latex/thuthesis/tsinghua-name-bachelor.pdf",
+}
+
 typesetexe = "xelatex"
 unpackexe = "xetex"
 
