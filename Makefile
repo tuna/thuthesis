@@ -81,5 +81,8 @@ else
 	@[[ $(shell grep -E -c '"version": "$(version)"' package.json) -eq 1 ]] || (echo "update version in package.json before release"; exit 1)
 endif
 
-dist: check all-dev
+dist: check
+	# use l3build for CTAN release (zip with .tds.zip)
+	l3build ctan --config build-ctan
+	# use gulp for GitHub release (zip with generated file)
 	$(NPM) run build -- --version=$(version)

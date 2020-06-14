@@ -7095,7 +7095,7 @@ Completed box being shipped out [10]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
 Completed box being shipped out [11]
-\vbox(722.98454+3.5232)x439.87962
+\vbox(722.98454+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.27
 ..\vbox(0.0+0.0)x421.10089, glue set 72.27fil
@@ -7116,7 +7116,7 @@ Completed box being shipped out [11]
 ....\glue(\rightskip) 0.0
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\glue -29.59085
-.\vbox(752.5754+3.5232)x421.10089, shifted 18.77873
+.\vbox(752.5754+0.0)x421.10089, shifted 18.77873
 ..\vbox(14.22636+0.0)x421.10089, glue set 14.22636fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x421.10089
@@ -7537,15 +7537,15 @@ Completed box being shipped out [11]
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
-..\glue(\baselineskip) 27.01318
-..\hbox(14.24323+3.5232)x421.10089
+..\glue(\baselineskip) 35.23386
+..\hbox(6.02255+0.0)x421.10089
 ...\special{color push gray 0}
-...\hbox(14.24323+3.5232)x421.10089
-....\hbox(14.24323+3.5232)x421.10089
-.....\vbox(14.24323+3.5232)x421.10089
+...\hbox(6.02255+0.0)x421.10089
+....\hbox(6.02255+0.0)x421.10089
+.....\vbox(6.02255+0.0)x421.10089
 ......\rule(0.0+0.0)x421.10089
 ......\glue 6.02255
-......\hbox(8.22067+3.5232)x421.10089
+......\hbox(0.0+0.0)x421.10089
 .......\hbox(0.0+0.0)x0.0, glue set - 421.10089fil
 ........\vbox(0.0+0.0)x421.10089
 .........\hbox(0.0+0.0)x421.10089, glue set 210.55045fil
@@ -7555,14 +7555,10 @@ Completed box being shipped out [11]
 ..........\glue(\rightskip) 0.0 plus 1.0fil
 ........\glue 0.0 plus 1.0fil minus 1.0fil
 .......\glue 0.0 plus 1.0fill
-.......\vbox(8.22067+3.5232)x421.10089
-........\hbox(8.22067+3.5232)x421.10089, glue set 206.03358fil
+.......\vbox(0.0+0.0)x421.10089
+........\hbox(0.0+0.0)x421.10089, glue set 210.55045fil
 .........\glue(\leftskip) 0.0 plus 1.0fil
 .........\hbox(0.0+0.0)x0.0
-.........\TU/texgyretermes(0)/m/n/9.03374 11
-.........\kern -0.0002
-.........\kern 0.0002
-.........\rule(8.22067+3.5232)x0.0
 .........\penalty 10000
 .........\glue(\parfillskip) 0.0
 .........\glue(\rightskip) 0.0 plus 1.0fil
@@ -7579,7 +7575,7 @@ Completed box being shipped out [11]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
 .\kern 0.0
-.\kern -726.50774
+.\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.27
 ..\vbox(0.0+0.0)x421.10089, glue set 72.27fil
@@ -7599,7 +7595,7 @@ Completed box being shipped out [11]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue 0.0 plus 1.0fil minus 1.0fil
-.\kern 726.50774
+.\kern 722.98454
 Completed box being shipped out [12]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
