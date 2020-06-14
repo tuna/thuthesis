@@ -5,13 +5,16 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
+## [v6.1.2] - 2020-06-14
 ### Changed
+- `\statement` 和 `\copyrightpage` 命令都会在 PDF 中生成相应位置的书签。
 - `\statement` 命令编译生成声明页默认不含页码。
 - `\statement[xxx.pdf]` 插入扫描页时在页脚生成页码，以解决打印版与电子版页码不一致的情况。
 - 使用 `l3build` 编译的版本，在提交到 CTAN 时提供 TDS 结构，以解决编译时 `tsinghua-name-bachelor.pdf` 找不到的问题。
 
 ### Added
-- 添加 `\record` 命令用于本科生插入综合论文训练记录表。
+- 添加 `\record` 命令用于本科生插入综合论文训练记录表，同时在 PDF 中生成对应书签。
 - 添加选项 `statement-page-number` 控制编译声明页时是否含页码。
 
 ### Fixed
@@ -590,7 +593,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.1.1...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.1.2...HEAD
+[v6.1.2]:     https://github.com/tuna/thuthesis/compare/v6.1.1...v6.1.2
 [v6.1.1]:     https://github.com/tuna/thuthesis/compare/v6.1.0...v6.1.1
 [v6.1.0]:     https://github.com/tuna/thuthesis/compare/v6.0.2...v6.1.0
 [v6.0.2]:     https://github.com/tuna/thuthesis/compare/v6.0.1...v6.0.2
