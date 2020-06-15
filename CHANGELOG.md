@@ -5,6 +5,8 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+### Fixed
+- `\record` 命令中，如果 `output` 配置为 `print`，则强制进行 `\cleardoublepage`，保证记录表独立成页。 
 
 ## [v6.1.2] - 2020-06-14
 ### Changed
