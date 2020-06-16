@@ -1779,6 +1779,7 @@
     BoldFont       = *-bold,
     ItalicFont     = *-italic,
     BoldItalicFont = *-bolditalic,
+    Ligatures      = CommonOff,
   ]%
 }
 \newcommand\thu@load@font@xits{%
@@ -4675,7 +4676,7 @@
 \RequirePackage{fontspec}[2017/01/20]
 \RequirePackage{amsmath}
 \RequirePackage{unicode-math}
-\RequirePackage[UTF8,scheme=chinese]{ctex}
+\RequirePackage[UTF8,scheme=chinese,fontset=fandol]{ctex}
 \RequirePackage[
   top=2.5cm, bottom=2.5cm,
   left=4cm, right=2cm,
@@ -4732,6 +4733,7 @@
     ItalicFont     = *-italic,
     BoldItalicFont = *-bolditalic,
     Scale          = MatchLowercase,
+    Ligatures      = CommonOff,
   ]{texgyrecursor}
 }
 \unimathsetup{
