@@ -2142,7 +2142,7 @@
 %    \begin{macrocode}
 \let\thu@main@language\thu@language
 \thu@option@hook{language}{%
-  \ifx\@begindocumenthook\@undefined
+  \ifx\@begindocumenthook\@undefined\else
     \let\thu@main@language\thu@language
   \fi
 }
@@ -2204,7 +2204,7 @@
 \thu@set@chapter@names
 \thu@option@hook{degree}{\thu@set@chapter@names}
 \thu@option@hook{language}{%
-  \ifx\@begindocumenthook\@undefined
+  \ifx\@begindocumenthook\@undefined\else
     \thu@set@chapter@names
   \fi
 }
