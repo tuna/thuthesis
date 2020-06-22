@@ -21,7 +21,7 @@ FONT_PKGS="fandol tex-gyre xits";
 EXTRA_PKGS="booktabs $HYPERREF_PKGS $NOMENCL_PKGS ntheorem siunitx";
 MARKDOWN_PKGS="markdown fancyvrb csvsimple gobble"
 DOC_PKGS="hologo listings xcolor $MARKDOWN_PKGS";
-EXAMPLE_PKGS="diagbox float fp metalogo multirow pict2e"
+EXAMPLE_PKGS="float fp metalogo multirow"
 
 tlmgr install $BIN_PKGS $REQUIRED_PKGS $FONT_PKGS $EXTRA_PKGS $DOC_PKGS \
     $EXAMPLE_PKGS;
