@@ -19,11 +19,11 @@ jobs:
       run: |
         export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
         make spine
-    - name: l3build check
-      run: |
-        export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
-        make test
     - name: Test doc
       run: |
         export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
         make doc
+    - name: l3build check
+      run: |
+        export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
+        make test
