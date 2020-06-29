@@ -145,29 +145,26 @@
 % 给自定义的宏后面自动加空白
 % \usepackage{xspace}
 
-% 借用 ltxdoc 里面的几个命令。
-\def\cmd#1{\cs{\expandafter\cmd@to@cs\string#1}}
-\def\cmd@to@cs#1#2{\char\number`#2\relax}
-\DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
-
-\newcommand*{\meta}[1]{{%
-  \ensuremath{\langle}\rmfamily\itshape#1\/\ensuremath{\rangle}}}
-\providecommand\marg[1]{%
-  {\ttfamily\char`\{}\meta{#1}{\ttfamily\char`\}}}
-\providecommand\oarg[1]{%
-  {\ttfamily[}\meta{#1}{\ttfamily]}}
-\providecommand\parg[1]{%
-  {\ttfamily(}\meta{#1}{\ttfamily)}}
-\providecommand\pkg[1]{{\sffamily#1}}
-
 % 定义所有的图片文件在 figures 子目录下
 \graphicspath{{figures/}}
 
-% 数学命令
-\input{math_commands.tex}
-
 % 定义自己常用的东西
 % \def\myname{薛瑞尼}
+
+% 数学命令
+\newcommand\dif{\mathop{}\!\mathrm{d}}  % 微分符号
+\newcommand\real{{\mathbf{R}}}  % 实数集
+\newcommand\abs[1]{\lvert#1\rvert}
+\newcommand\VECTOR{\symbf}  % 向量
+\newcommand\MATRIX{\symbf}  % 矩阵
+\newcommand\vn{{\VECTOR{n}}}
+\newcommand\vx{{\VECTOR{x}}}
+\newcommand\mA{{\MATRIX{A}}}
+\newcommand\mK{{\MATRIX{K}}}
+
+% 借用 ltxdoc 里面的几个命令方便写文档。
+\DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
+\providecommand\pkg[1]{{\sffamily#1}}
 
 % hyperref 宏包在最后调用
 \usepackage{hyperref}

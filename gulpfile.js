@@ -30,7 +30,6 @@ const config = {
                 'thuthesis-example.pdf',
                 'spine.pdf',
                 'thusetup.tex',
-                'math_commands.tex',
                 'data/*.tex',
                 'figures/*.*',
                 'ref/*.bib']
