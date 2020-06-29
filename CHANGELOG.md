@@ -5,9 +5,16 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+### Added
+- 新增选项 `statement-page-style = empty / plain` 同时控制声明的页眉和页脚。
+
 ### Fixed
 - `\record` 命令中，如果 `output` 配置为 `print`，则强制进行 `\cleardoublepage`，保证记录表独立成页。
 - 修正了在导言区设置论文主要语言无效的问题（#560）。
+- 修正了研究生插入扫描版声明页时的页眉。
+
+### Deprecated
+- 选项 `statement-page-number` 已过时。
 
 ## [v6.1.2] - 2020-06-14
 ### Changed

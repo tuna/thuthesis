@@ -877,14 +877,15 @@
 %   \statement[scan-statement.pdf]
 % \end{latex}
 %
-% 由于打印版和电子版有空白页的差别，声明的页码可能不同。所以编译声明页时默认不加页码，
-% 在签字后插入扫描页时再补上页码，防止页码冲突。
+% 由于打印版和电子版有空白页的差别，声明的页码可能不同。
+% 所以编译声明页时默认不加页眉和页脚，
+% 在签字后插入扫描页时再补上页眉和页脚，防止页码冲突。
 %
-% \DescribeOption{statement-page-number}
+% \DescribeOption{statement-page-style}
 % 如果需要编译时也加页码（如直接对电子版进行签名而不是插入扫描页），可以使用在 \cs{statement} 前设置
 % \begin{latex}
 %   \thusetup{
-%     statement-page-number = true,
+%     statement-page-style = plain,
 %   }
 % \end{latex}
 % 注意，插入扫描页总是会加页码，不受该选项控制。
@@ -1089,6 +1090,9 @@
 %    \begin{macrocode}
 \newcommand\thu@error[1]{%
   \ClassError{thuthesis}{#1}{}%
+}
+\newcommand\thu@warning[1]{%
+  \ClassWarning{thuthesis}{#1}%
 }
 %    \end{macrocode}
 %
@@ -2340,13 +2344,6 @@
   }%
 }
 \pagestyle{plain}
-%    \end{macrocode}
-%
-% 用于声明页，不含页脚。
-%    \begin{macrocode}
-\fancypagestyle{nofooter}{%
-  \fancyfoot{}%
-}
 %    \end{macrocode}
 %
 % \cs{chapter} 会调用特殊的 page style。
@@ -3824,6 +3821,14 @@
 % 声明部分（支持扫描文件替换）
 %    \begin{macrocode}
 \thu@define@key{
+  statement-page-style = {
+    name = statement@page@style,
+    choices = {
+      empty,
+      plain,
+    },
+    default = empty,
+  },
   statement-page-number = {
     name = statement@page@number,
     choices = {
@@ -3833,6 +3838,12 @@
     default = false,
   },
 }
+\thu@option@hook{statement-page-number}{%
+  \thu@warning{%
+    The "statement-page-number" option is deprecated.
+    Use "statement-page-style" instead%
+  }%
+}
 \newcommand\statement[1][]{%
   \ifthu@degree@bachelor
     \cleardoublepage
@@ -3841,7 +3852,7 @@
   \ifx\thu@@tmp\@empty
     \thu@chapter*{\thu@statement@name}%
     \ifthu@statement@page@number@false
-      \thispagestyle{nofooter}%
+      \thispagestyle{\thu@statement@page@style}%
     \fi
     \thu@statement@text\par
     \ifthu@degree@graduate
@@ -3853,6 +3864,7 @@
       \thu@backdate\thu@underline[2.5cm]\relax}%
   \else
     \includepdf[pagecommand={%
+      \markboth{\thu@statement@name}{}%
       \thu@phantomsection
       \addcontentsline{toc}{chapter}{\thu@statement@name}%
     }]{#1}%
