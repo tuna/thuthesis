@@ -1,13 +1,17 @@
+# download installer
 REMOTE="https://mirrors.rit.edu/CTAN/systems/texlive/tlnet";
 INSTALL="/tmp/install-texlive";
 
+# install TeX Live & remove installer
 mkdir -p "$INSTALL";
 curl -sSL "$REMOTE/install-tl-unx.tar.gz" | tar -xz -C "$INSTALL" \
     --strip-components=1;
 "$INSTALL/install-tl" -no-gui -repository $REMOTE \
-    -profile .github/workflows/texlive.profile;
+    -profile /tmp/texlive.profile;
+rm -rf "$INSTALL";
 
-export PATH="/tmp/texlive/bin/x86_64-linux:$PATH";
+# add packages with tlmgr
+export PATH="/opt/texlive/bin/x86_64-linux:$PATH";
 
 XETEX_PKGS="fontname fontspec l3packages xetex";
 CTEX_PKGS="cjk ctex environ ms trimspaces ulem xecjk zhnumber";
