@@ -1,0 +1,12 @@
+name: Trigger Docker update
+
+on:
+    schedule:
+      # every day at 00:00
+      - cron:  '0 0 * * *'
+
+jobs:
+    update:
+        runs-on: ubuntu-latest
+        steps:
+        - curl -X POST {{ secrets.DOCKER_UPDATE_URL }}
