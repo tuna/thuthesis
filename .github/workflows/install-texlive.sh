@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 # download installer
 REMOTE="https://mirrors.rit.edu/CTAN/systems/texlive/tlnet";
 INSTALL="/tmp/install-texlive";
