@@ -9,4 +9,5 @@ jobs:
     update:
         runs-on: ubuntu-latest
         steps:
-        - curl -X POST {{ secrets.DOCKER_UPDATE_URL }}
+        - name: Trigger hook
+          run: curl -X POST {{ secrets.DOCKER_UPDATE_URL }}
