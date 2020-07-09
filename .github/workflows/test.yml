@@ -22,7 +22,7 @@ jobs:
 
   build_release:
     runs-on: ubuntu-latest
-    if: "contains(github.ref, 'ref/head/v') || contains(github.event.head_commit.message, 'zip')"
+    if: "contains(github.ref, 'ref/head/v') || contains(github.event.head_commit.message, '[zip]')"
     container: tunathu/thuthesis-test-env
     steps:
     - uses: actions/checkout@v2
