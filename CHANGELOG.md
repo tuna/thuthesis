@@ -5,6 +5,8 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
+## [v6.1.3] - 2020-07-09
 ### Added
 - 新增选项 `statement-page-style = empty / plain` 同时控制声明的页眉和页脚。
 
@@ -603,7 +605,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.1.2...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.1.3...HEAD
+[v6.1.3]:     https://github.com/tuna/thuthesis/compare/v6.1.2...v6.1.3
 [v6.1.2]:     https://github.com/tuna/thuthesis/compare/v6.1.1...v6.1.2
 [v6.1.1]:     https://github.com/tuna/thuthesis/compare/v6.1.0...v6.1.1
 [v6.1.0]:     https://github.com/tuna/thuthesis/compare/v6.0.2...v6.1.0
