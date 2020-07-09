@@ -38,6 +38,7 @@ tdslocations = {
 
 typesetexe = "xelatex"
 unpackexe = "xetex"
+bibtexexe = "bibtex"
 
 checkopts = "-file-line-error -halt-on-error -interaction=nonstopmode"
 typesetopts = "-shell-escape -file-line-error -halt-on-error -interaction=nonstopmode"
