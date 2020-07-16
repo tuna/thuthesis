@@ -32,7 +32,7 @@ INTEGERS {
   show.medium.type
   slash.for.extraction
   in.booktitle
-  abbreviate.journal
+  short.journal
   italic.journal
   bold.journal.volume
   show.missing.address.publisher
@@ -53,11 +53,11 @@ FUNCTION {load.config}
   #0 'link.title :=
   #1 'title.in.journal :=
   #1 'show.mark :=
-  #1 'space.before.mark :=
+  #0 'space.before.mark :=
   #1 'show.medium.type :=
   #1 'slash.for.extraction :=
   #0 'in.booktitle :=
-  #0 'abbreviate.journal :=
+  #0 'short.journal :=
   #0 'italic.journal :=
   #0 'bold.journal.volume :=
   #0 'show.missing.address.publisher :=
@@ -80,11 +80,15 @@ ENTRY
     edition
     editor
     eprint
+    eprinttype
     howpublished
     institution
     journal
+    journaltitle
     key
+    langid
     language
+    location
     mark
     medium
     note
@@ -94,6 +98,7 @@ ENTRY
     publisher
     school
     series
+    shortjournal
     title
     translation
     translator
@@ -160,7 +165,7 @@ FUNCTION {bbl.colon} { ": " }
 
 FUNCTION {bbl.wide.space} { "\ " }
 
-FUNCTION {bbl.slash} { " // " }
+FUNCTION {bbl.slash} { "// " }
 
 FUNCTION {bbl.sine.loco}
 { entry.lang lang.zh =
@@ -449,16 +454,27 @@ FUNCTION {check.entry.lang}
   get.str.lang
 }
 
+STRINGS { entry.langid }
+
 FUNCTION {set.entry.lang}
-{ language empty$
+{ "" 'entry.langid :=
+  language empty$ not
+    { language 'entry.langid := }
+    'skip$
+  if$
+  langid empty$ not
+    { langid 'entry.langid := }
+    'skip$
+  if$
+  entry.langid empty$
     { check.entry.lang }
-    { language "english" = language "american" = or language "british" = or
+    { entry.langid "english" = entry.langid "american" = or entry.langid "british" = or
         { lang.en }
-        { language "chinese" =
+        { entry.langid "chinese" =
             { lang.zh }
-            { language "japanese" =
+            { entry.langid "japanese" =
                 { lang.ja }
-                { language "russian" =
+                { entry.langid "russian" =
                     { lang.ru }
                     { check.entry.lang }
                   if$
@@ -909,18 +925,38 @@ FUNCTION {abbreviate}
 }
 
 FUNCTION {format.journal}
-{ journal empty$ not
-    { journal
-      abbreviate.journal
-        'abbreviate
-        'skip$
+{ ""
+  short.journal
+    { shortjournal empty$ not
+        { shortjournal * }
+        { journal empty$ not
+            { journal * abbreviate }
+            { journaltitle empty$ not
+                { journaltitle * abbreviate }
+                'skip$
+              if$
+            }
+          if$
+        }
       if$
-      italic.journal entry.lang lang.en = and
+    }
+    { journal empty$ not
+        { journal * }
+        { journaltitle empty$ not
+            { journaltitle * }
+            'skip$
+          if$
+        }
+      if$
+    }
+  if$
+  duplicate$ empty$ not
+    { italic.journal entry.lang lang.en = and
         'italicize
         'skip$
       if$
     }
-    { "" }
+    'pop$
   if$
 }
 
@@ -937,9 +973,6 @@ FUNCTION {set.entry.mark}
 
 FUNCTION {format.mark}
 { show.mark
-  type$ "phdthesis" = type$ "mastersthesis" = or type$ "patent" = or
-  medium empty$ not or entry.is.electronic or
-  and
     { entry.mark
       show.medium.type
         { medium empty$ not
@@ -956,7 +989,7 @@ FUNCTION {format.mark}
       'entry.mark :=
       space.before.mark
         { " [" entry.mark * "]" * }
-        { "\allowbreak[" entry.mark * "]" * }
+        { "[" entry.mark * "]" * }
       if$
     }
     { "" }
@@ -1025,8 +1058,15 @@ FUNCTION {format.publisher}
 
 FUNCTION {format.address.publisher}
 { address empty$ not
-    { address
-      format.publisher empty$ not
+    { address }
+    { location empty$ not
+        { location }
+        { "" }
+      if$
+    }
+  if$
+  duplicate$ empty$ not
+    { format.publisher empty$ not
         { bbl.colon * format.publisher * }
         { entry.is.electronic not show.missing.address.publisher and
             { bbl.colon * bbl.sine.nomine * }
@@ -1035,7 +1075,8 @@ FUNCTION {format.address.publisher}
         }
       if$
     }
-    { entry.is.electronic not show.missing.address.publisher and
+    { pop$
+      entry.is.electronic not show.missing.address.publisher and
         { format.publisher empty$ not
             { bbl.sine.loco bbl.colon * format.publisher * }
             { bbl.sine.loco.sine.nomine }
@@ -1384,11 +1425,22 @@ FUNCTION {check.electronic}
 }
 
 FUNCTION {format.eprint}
-{ ""
-  archivePrefix empty$ not
-    { archivePrefix * ": " *
-      "\eprint{https://" *
-      archivePrefix "l" change.case$ * ".org/abs/" * eprint * "}{" *
+{ eprinttype empty$ not
+    { eprinttype }
+    { archivePrefix empty$ not
+        { archivePrefix }
+        { "" }
+      if$
+    }
+  if$
+  's :=
+  s empty$ not
+    { s ": \eprint{" *
+      url empty$ not
+        { url }
+        { "https://" s "l" change.case$ * ".org/abs/" * eprint * }
+      if$
+      * "}{" *
       eprint * "}" *
     }
     { eprint }
@@ -1621,7 +1673,7 @@ FUNCTION {preprint}
   new.block
   title.in.journal
     { format.series.vol.num.title "title" output.check
-      "Z" set.entry.mark
+      "M" set.entry.mark
       format.mark "" output.after
       new.block
     }
@@ -1652,7 +1704,8 @@ FUNCTION {misc}
                 'preprint
                 { entry.is.electronic
                     'electronic
-                    { "Z" set.entry.mark
+                    {
+                      "M" set.entry.mark
                       monograph
                     }
                   if$
@@ -1708,11 +1761,7 @@ FUNCTION {map}
 FUNCTION {manual} { monograph }
 
 FUNCTION {mastersthesis}
-{ lang.zh entry.lang =
-    { "硕士学位论文" }
-    { "D" }
-  if$
-  set.entry.mark
+{ "D" set.entry.mark
   monograph
 }
 
@@ -1726,14 +1775,7 @@ FUNCTION {online}
   electronic
 }
 
-FUNCTION {phdthesis}
-{ lang.zh entry.lang =
-    { "博士学位论文" }
-    { "D" }
-  if$
-  set.entry.mark
-  monograph
-}
+FUNCTION {phdthesis} { mastersthesis }
 
 FUNCTION {proceedings}
 { "C" set.entry.mark
