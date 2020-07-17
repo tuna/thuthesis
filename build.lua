@@ -2,8 +2,8 @@
 
 module = "thuthesis"
 
-supportdir = "./testfiles/support-main"
-checksuppfiles = {"fontset.tex"}
+supportdir = "./testfiles/support"
+checksuppfiles = {"*.tex"}
 
 demofiles = {"latexmkrc", "Makefile"}
 docfiles = {
@@ -17,11 +17,18 @@ tagfiles = {"*.dtx", "CHANGELOG.md", "package.json"}
 textfiles = {"*.md","LICENSE"}
 typesetdemofiles = {"thuthesis-example.tex", "spine.tex"}
 
+excludetests = {
+  "06-*",
+  "07-*",
+  "09-*",
+}
+
 checkengines = {"xetex"}
 stdengine = "xetex"
 
 checkconfigs = {
   "build",
+  "testfiles/config-crossref",
   "testfiles/config-cover",
   "testfiles/config-nomencl",
   "testfiles/config-bib",

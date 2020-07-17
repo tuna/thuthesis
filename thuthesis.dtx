@@ -1113,6 +1113,13 @@
 \fi
 %    \end{macrocode}
 %
+% 载入用于测试的配置。
+%    \begin{macrocode}
+\InputIfFileExists{thuthesis-pdf-test-config.tex}{}{
+  \InputIfFileExists{thuthesis-log-test-config.tex}{}{}
+}
+%    \end{macrocode}
+%
 % \subsection{定义选项}
 % \label{sec:defoption}
 % 定义论文类型以及是否涉密

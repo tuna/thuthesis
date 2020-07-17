@@ -54,13 +54,18 @@ viewspine: spine
 	$(LATEXMK) -pv $(SPINE)
 
 save:
+ifeq ($(target),)
 	bash testfiles/save.sh
-
-savepdf:
-	bash testfiles/save-pdf.sh
+else
+	bash testfiles/save.sh $(target)
+endif
 
 test:
+ifeq ($(target),)
 	l3build check
+else
+	bash testfiles/test.sh $(target)
+endif
 
 clean:
 	$(LATEXMK) -c $(PACKAGE).dtx $(THESIS) $(SPINE)

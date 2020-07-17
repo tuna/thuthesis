@@ -1,8 +1,15 @@
-testfiledir = "testfiles/08-bib"
+testfiledir = "testfiles/10-bib"
 testsuppdir = testfiledir .. "/support"
+
+includetests = {"*"}
+excludetests = {}
 
 checkruns = 3
 
-function runtest_tasks(name)
+function runtest_tasks(name, run)
+  if run == 1 then
     return "bibtex -terse " .. name
+  else
+    return ""
+  end
 end
