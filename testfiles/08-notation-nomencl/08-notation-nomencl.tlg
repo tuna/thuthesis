@@ -61,22 +61,24 @@ Completed box being shipped out [8]
 .........\glue 0.0 plus 1.0fil minus 1.0fil
 ........\glue 0.0 plus 1.0fill
 ........\vbox(9.59079+4.1104)x426.79135
-.........\hbox(9.59079+4.1104)x426.79135, glue set 176.50789fil
+.........\hbox(9.59079+4.1104)x426.79135, glue set 171.2382fil
 ..........\glue(\leftskip) 0.0 plus 1.0fil
 ..........\hbox(0.0+0.0)x0.0
-..........\TU/FandolSong(0)/m/n/10.53937 主
-..........\glue 0.0 plus 0.41463
-..........\TU/FandolSong(0)/m/n/10.53937 要
-..........\glue 0.0 plus 0.41463
 ..........\TU/FandolSong(0)/m/n/10.53937 符
 ..........\glue 0.0 plus 0.41463
 ..........\TU/FandolSong(0)/m/n/10.53937 号
 ..........\glue 0.0 plus 0.41463
-..........\TU/FandolSong(0)/m/n/10.53937 对
+..........\TU/FandolSong(0)/m/n/10.53937 和
 ..........\glue 0.0 plus 0.41463
-..........\TU/FandolSong(0)/m/n/10.53937 照
+..........\TU/FandolSong(0)/m/n/10.53937 缩
 ..........\glue 0.0 plus 0.41463
-..........\TU/FandolSong(0)/m/n/10.53937 表
+..........\TU/FandolSong(0)/m/n/10.53937 略
+..........\glue 0.0 plus 0.41463
+..........\TU/FandolSong(0)/m/n/10.53937 语
+..........\glue 0.0 plus 0.41463
+..........\TU/FandolSong(0)/m/n/10.53937 说
+..........\glue 0.0 plus 0.41463
+..........\TU/FandolSong(0)/m/n/10.53937 明
 ..........\kern -0.00017
 ..........\kern 0.00017
 ..........\rule(9.59079+4.1104)x0.0
@@ -107,6 +109,7 @@ Completed box being shipped out [8]
 ...\write-{}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{符号和缩略语说\ETC.}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
@@ -116,21 +119,23 @@ Completed box being shipped out [8]
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 3.62956
-...\hbox(12.43044+2.89078)x426.79135, glue set 157.18568fil
+...\hbox(12.43044+2.79442)x426.79135, glue set 149.15569fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 主
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 要
-....\glue 0.0 plus 1.0538
 ....\TU/FandolHei(0)/m/n/16.06 符
 ....\glue 0.0 plus 1.0538
 ....\TU/FandolHei(0)/m/n/16.06 号
 ....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 对
+....\TU/FandolHei(0)/m/n/16.06 和
 ....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 照
+....\TU/FandolHei(0)/m/n/16.06 缩
 ....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 表
+....\TU/FandolHei(0)/m/n/16.06 略
+....\glue 0.0 plus 1.0538
+....\TU/FandolHei(0)/m/n/16.06 语
+....\glue 0.0 plus 1.0538
+....\TU/FandolHei(0)/m/n/16.06 说
+....\glue 0.0 plus 1.0538
+....\TU/FandolHei(0)/m/n/16.06 明
 ....\kern -0.00017
 ....\kern 0.00017
 ....\penalty 10000
@@ -138,13 +143,13 @@ Completed box being shipped out [8]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 24.09
-...\mark{{主要符号对照表}{主要符号对照表}}
+...\mark{{符号和缩略语说明}{符号和缩略语说明}}
 ...\penalty 10000
 ...\glue -30.11249
 ...\glue 30.11249
 ...\glue 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 5.58243
+...\glue(\baselineskip) 5.67879
 ...\hbox(10.79886+2.6258)x327.20673, glue set 143.72527fil, shifted 99.58463
 ....\hbox(10.79886+0.14455)x0.0
 .....\glue 0.0
@@ -1827,22 +1832,24 @@ Completed box being shipped out [9]
 .........\glue 0.0 plus 1.0fil minus 1.0fil
 ........\glue 0.0 plus 1.0fill
 ........\vbox(9.59079+4.1104)x426.79135
-.........\hbox(9.59079+4.1104)x426.79135, glue set 176.50789fil
+.........\hbox(9.59079+4.1104)x426.79135, glue set 171.2382fil
 ..........\glue(\leftskip) 0.0 plus 1.0fil
 ..........\hbox(0.0+0.0)x0.0
-..........\TU/FandolSong(0)/m/n/10.53937 主
-..........\glue 0.0 plus 0.41463
-..........\TU/FandolSong(0)/m/n/10.53937 要
-..........\glue 0.0 plus 0.41463
 ..........\TU/FandolSong(0)/m/n/10.53937 符
 ..........\glue 0.0 plus 0.41463
 ..........\TU/FandolSong(0)/m/n/10.53937 号
 ..........\glue 0.0 plus 0.41463
-..........\TU/FandolSong(0)/m/n/10.53937 对
+..........\TU/FandolSong(0)/m/n/10.53937 和
 ..........\glue 0.0 plus 0.41463
-..........\TU/FandolSong(0)/m/n/10.53937 照
+..........\TU/FandolSong(0)/m/n/10.53937 缩
 ..........\glue 0.0 plus 0.41463
-..........\TU/FandolSong(0)/m/n/10.53937 表
+..........\TU/FandolSong(0)/m/n/10.53937 略
+..........\glue 0.0 plus 0.41463
+..........\TU/FandolSong(0)/m/n/10.53937 语
+..........\glue 0.0 plus 0.41463
+..........\TU/FandolSong(0)/m/n/10.53937 说
+..........\glue 0.0 plus 0.41463
+..........\TU/FandolSong(0)/m/n/10.53937 明
 ..........\kern -0.00017
 ..........\kern 0.00017
 ..........\rule(9.59079+4.1104)x0.0

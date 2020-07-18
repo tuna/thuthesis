@@ -859,7 +859,7 @@
 %
 % \subsubsection{致谢}
 %
-% \DescribeEnv{acknowledgement}
+% \DescribeEnv{acknowledgements}
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦。
 %
 % \begin{latex}
@@ -1636,7 +1636,8 @@
   \else
     \clearpage
   \fi
-  \@mainmattertrue}
+  \@mainmatterfalse
+}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -2169,24 +2170,36 @@
   \ifthu@language@chinese
     \ctexset{
       chapter/name   = {第,章},
-      appendixname   = 附录,
-      contentsname   = 目\hspace{\ccwd}录,
-      listfigurename = 插图索引,
-      listtablename  = 表格索引,
-      bibname        = 参考文献,
-      indexname      = 索引,
+      appendixname   = {附录},
+      contentsname   = {目\hspace{\ccwd}录},
+      bibname        = {参考文献},
+      indexname      = {索引},
     }%
-    \def\thu@denotation@name{主要符号对照表}%
-    \def\thu@list@algorithm@name{算法索引}%
     \def\listequationname{公式索引}%
     \def\thu@acknowledgements@name{致\hspace{\ccwd}谢}%
     \ifthu@degree@bachelor
+      \ctexset{
+        listfigurename = {插图索引},
+        listtablename  = {表格索引},
+      }%
+      \def\thu@denotation@name{主要符号对照表}%
+      \def\thu@list@algorithm@name{算法索引}%
       \def\thu@resume@name{在学期间参加课题的研究成果}%
     \else
-      \ifthu@degree@postdoc
+      \ctexset{
+        listfigurename = {插图清单},
+        listtablename  = {附表清单},
+      }%
+      \def\thu@list@figure@table@name{插图和附表清单}%
+      \ifthu@degree@graduate
+        \def\thu@denotation@name{符号和缩略语说明}%
+        \def\thu@resume@name{个人简历、在学期间完成的相关学术成果}%
+      \else  % degree = postdoc
+        \ctexset{
+          contentsname   = {目\hspace{2\ccwd}次},
+        }%
+        \def\thu@denotation@name{符号表}%
         \def\thu@resume@name{个人简历、发表的学术论文与科研成果}%
-      \else
-        \def\thu@resume@name{个人简历、在学期间发表的学术论文与研究成果}%
       \fi
     \fi
   \else
@@ -2777,7 +2790,11 @@
 % 目录生成命令。
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
-  \thu@chapter*[]{\contentsname}%
+  \ifthu@degree@graduate
+    \thu@chapter*{\contentsname}%
+  \else
+    \thu@chapter*[]{\contentsname}%
+  \fi
   \@starttoc{toc}%
 }
 \thu@define@key{
@@ -2838,7 +2855,7 @@
 %    \begin{macrocode}
   \else
     \titlecontents{chapter}
-      [\z@]{\addvspace{6bp}\sffamily}
+      [\z@]{\addvspace{6bp}\heiti}
       {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
       {\rmfamily\thu@leaders\thecontentspage}%
     \titlecontents{section}
@@ -3721,7 +3738,11 @@
     \cleardoublepage
   \fi
   \thusetup{language = chinese}%
-  \thu@chapter*[]{\thu@abstract@name}%  %no tocline
+  \ifthu@degree@graduate
+    \thu@chapter*{\thu@abstract@name}%
+  \else
+    \thu@chapter*[]{\thu@abstract@name}%
+  \fi
 }{%
 %    \end{macrocode}
 %
@@ -3749,7 +3770,11 @@
     \cleardoublepage
   \fi
   \thusetup{language = english}%
-  \thu@chapter*[]{\thu@abstract@name@en}%  no tocline
+  \ifthu@degree@graduate
+    \thu@chapter*{\thu@abstract@name@en}%
+  \else
+    \thu@chapter*[]{\thu@abstract@name@en}%
+  \fi
 }{%
   \ifthu@degree@doctor\vfill\else\vskip12bp\fi
   \thu@put@keywords{%
@@ -3774,7 +3799,11 @@
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
-  \thu@chapter*[]{\thu@denotation@name} % no tocline
+  \ifthu@degree@graduate
+    \thu@chapter*{\thu@denotation@name}%
+  \else
+    \thu@chapter*[]{\thu@denotation@name}%
+  \fi
   \vskip-30bp\xiaosi[1.6]\begin{thu@denotation}[labelwidth=#1]
 }{%
   \end{thu@denotation}
@@ -3889,12 +3918,8 @@
 \let\endacknowledgement\endacknowledgements
 %    \end{macrocode}
 %
-% \subsubsection{图表索引}
-% \label{sec:threeindex}
-% \begin{macro}{\listoffigures}
-% \begin{macro}{\listoffigures*}
-% \begin{macro}{\listoftables}
-% \begin{macro}{\listoftables*}
+% \subsubsection{插图和附表清单}
+% \label{sec:threelists}
 % 定义图表以及公式目录样式。
 %    \begin{macrocode}
 \def\thu@listof#1{% #1: float type
@@ -3903,35 +3928,49 @@
     {\thu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}
     {\thu@chapter*{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
 }
-\renewcommand\listoffigures{%
-  \thu@set@list@label@width{\figurename}%
-  \thu@listof{figure}%
-}
 %    \end{macrocode}
 %
-% 英文的图序“Figure X-X”比中文略宽，所以根据实际内容设置不同宽度。
+% \begin{macro}{\listoffigures}
+% \begin{macro}{\listoffigures*}
+% 插图清单。
 %    \begin{macrocode}
-\newlength{\thu@list@label@width}
-\newcommand\thu@set@list@label@width[1]{%
-  \settowidth{\thu@list@label@width}{#1~8.8}%
-  \addtolength{\thu@list@label@width}{1em}%
+\renewcommand\listoffigures{%
+  \thu@listof{figure}%
 }
 \titlecontents{figure}
-  [\thu@list@label@width]{\addvspace{6bp}}
-  {\contentslabel[\figurename~\thecontentslabel]{\thu@list@label@width}}{}
-  {\thu@leaders\thecontentspage}
+  [\z@]{}
+  {\contentspush{\figurename~\thecontentslabel\hspace{\ccwd}}}{}
+  {\nobreak\thu@leaders\nobreak\hfil\thecontentspage}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\listoftables}
+% \begin{macro}{\listoftables*}
+% 附表清单。
+%    \begin{macrocode}
 \renewcommand\listoftables{%
-  \thu@set@list@label@width{\tablename}%
   \thu@listof{table}%
 }
 \titlecontents{table}
-  [\thu@list@label@width]{\addvspace{6bp}}
-  {\contentslabel[\tablename~\thecontentslabel]{\thu@list@label@width}}{}
+  [\z@]{}
+  {\contentspush{\tablename~\thecontentslabel\hspace{\ccwd}}}{}
   {\thu@leaders\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
-% \end{macro}
+%
+% \begin{macro}{\listoffiguresandtables}
+% 将插图和附表合在一起列出“插图和附表清单”。
+%    \begin{macrocode}
+\newcommand\listoffiguresandtables{%
+  \thu@chapter*{\thu@list@figure@table@name}%
+  \@starttoc{lof}%
+  \par
+  \null\par
+  \@starttoc{lot}%
+}
+%    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\equcaption}
@@ -3962,7 +4001,7 @@
 \titlecontents{equation}
   [0pt]{\addvspace{6bp}}
   {\thu@equation@name~\thecontentslabel}{}
-  {\thu@leaders\thecontentspage}
+  {\nobreak\thu@leaders\nobreak\thecontentspage}
 \contentsuse{equation}{loe}
 %    \end{macrocode}
 % \end{macro}
@@ -4510,15 +4549,14 @@
   \floatname{algorithm}{\thu@algorithm@name}
   \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}}
   \renewcommand\listofalgorithms{%
-    \thu@set@list@label@width{\fname@algorithm}%
     \thu@listof{algorithm}%
   }
   \renewcommand\listalgorithmname{\thu@list@algorithm@name}
   \def\ext@algorithm{loa}
   \contentsuse{algorithm}{loa}
   \titlecontents{algorithm}
-    [\thu@list@label@width]{\addvspace{6bp}}
-    {\contentslabel[\fname@algorithm~\thecontentslabel]{\thu@list@label@width}}{}
+    [\z@]{}
+    {\contentspush{\fname@algorithm~\thecontentslabel\hspace{\ccwd}}}{}
     {\thu@leaders\thecontentspage}
 }
 %    \end{macrocode}
@@ -4536,15 +4574,14 @@
   \SetAlgoCaptionSeparator{\hspace*{1em}}
   \SetAlFnt{\dawu}
   \renewcommand\listofalgorithms{%
-    \thu@set@list@label@width{\algorithmcfname}%
     \thu@listof{algorithmcf}%
   }
   \renewcommand\listalgorithmcfname{\thu@list@algorithm@name}
   \def\ext@algorithmcf{loa}
   \contentsuse{algocf}{loa}
   \titlecontents{algocf}
-    [\thu@list@label@width]{\addvspace{6bp}}
-    {\contentslabel[\algorithmcfname~\thecontentslabel]{\thu@list@label@width}}{}
+    [\z@]{}
+    {\contentspush{\algorithmcfname~\thecontentslabel\hspace{\ccwd}}}{}
     {\thu@leaders\thecontentspage}
 }
 %    \end{macrocode}

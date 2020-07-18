@@ -29,6 +29,11 @@
 % 目录
 \tableofcontents
 
+% 插图和附表清单
+\listoffiguresandtables  % 插图和附表清单
+% \listoffigures           % 插图清单
+% \listoftables            % 附表清单
+
 % 符号对照表
 \input{data/denotation}
 
@@ -38,19 +43,21 @@
 \input{data/chap01}
 \input{data/chap02}
 
-
-% 其它部分
-\backmatter
-
-%% 本科生要求的几个索引。
-% \listoffigures    % 插图索引
-% \listoftables     % 表格索引
-
 % 参考文献
 \bibliographystyle{thuthesis-numeric}      % 顺序编码制
 % \bibliographystyle{thuthesis-author-year}  % 著者-出版年制
 % \bibliographystyle{thuthesis-bachelor}     % 本科生参考文献的著录格式
 \bibliography{ref/refs}
+
+% 附录
+\appendix
+\input{data/appendix}
+% \input{data/appendix-survey}       % 本科生：外文资料的调研阅读报告
+% \input{data/appendix-translation}  % 本科生：外文资料的书面翻译
+
+
+% 其他部分
+\backmatter
 
 % 致谢
 \input{data/acknowledgements}
@@ -60,13 +67,7 @@
 % 将签字扫描后的声明文件 scan-statement.pdf 替换原始页面
 % \statement[scan-statement.pdf]
 
-% 附录
-\appendix
-\input{data/appendix}
-% \input{data/appendix-survey}       % 本科生：外文资料的调研阅读报告
-% \input{data/appendix-translation}  % 本科生：外文资料的书面翻译
-
-% 个人简历
+% 个人简历、在学期间完成的相关学术成果
 \input{data/resume}
 
 % 本科生的综合论文训练记录表（扫描版）

@@ -5358,9 +5358,7 @@ Completed box being shipped out [5]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 542.461fil
-...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
+..\vbox(645.87758+0.0)x421.10089, glue set 548.48285fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{插图索引}{\thepage \ET
 C.}
@@ -5393,27 +5391,26 @@ C.}
 ...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 3.47807
 ...\hbox(14.05243+6.02255)x421.10089, glue set 217.33968fill
 ....\glue(\leftskip) 42.15749
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\rule(*+*)x0.0
-....\penalty 10000
-....\glue -42.15749
-....\glue 0.0
-....\hbox(8.84103+1.73447)x42.15749, glue set 12.045fil
-.....\TU/FandolSong(0)/m/n/12.045 图
-.....\kern -0.00017
-.....\kern 0.00017
-.....\penalty 10000
-.....\glue 3.01125 plus 1.50562 minus 1.00374
-.....\TU/texgyretermes(0)/m/n/12.045 2.1
-.....\kern -0.0002
-.....\kern 0.0002
-.....\glue 0.0 plus 1.0fil
+....\hbox(8.84103+1.73447)x0.0, glue set - 42.15749fil
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+.....\hbox(8.84103+1.73447)x42.15749
+......\special{color push gray 0}
+......\TU/FandolSong(0)/m/n/12.045 图
+......\kern -0.00017
+......\kern 0.00017
+......\penalty 10000
+......\glue 3.01125 plus 1.50562 minus 1.00374
+......\TU/texgyretermes(0)/m/n/12.045 2.1
+......\kern -0.0002
+......\kern 0.0002
+......\glue 12.045
+......\special{color pop}
 ....\TU/FandolSong(0)/m/n/12.045 冬
 ....\glue 0.0 plus 0.73799
 ....\TU/FandolSong(0)/m/n/12.045 小
@@ -5443,6 +5440,7 @@ C.}
 ....\kern 0.00017
 ....\rule(14.05243+6.02255)x0.0
 ....\kern 0.0
+....\penalty 10000
 ....\glue -4.015
 ....\glue 3.01125
 ....\leaders 0.0 plus 1.0fill
@@ -5455,6 +5453,8 @@ C.}
 .......\kern 0.0002
 .......\special{color pop}
 ....\kern 0.0
+....\penalty 10000
+....\glue 0.0 plus 1.0fil
 ....\TU/texgyretermes(0)/m/n/12.045 4
 ....\kern -0.0002
 ....\kern 0.0002
@@ -5595,7 +5595,7 @@ Completed box being shipped out [6]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 542.461fil
+..\vbox(645.87758+0.0)x421.10089, glue set 548.48285fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{表格索引}{\thepage \ET
 C.}
@@ -5628,27 +5628,26 @@ C.}
 ...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 3.31245
 ...\hbox(14.05243+6.02255)x421.10089, glue set 265.51967fill
 ....\glue(\leftskip) 42.15749
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\rule(*+*)x0.0
-....\penalty 10000
-....\glue -42.15749
-....\glue 0.0
-....\hbox(9.31079+2.09581)x42.15749, glue set 12.045fil
-.....\TU/FandolSong(0)/m/n/12.045 表
-.....\kern -0.00017
-.....\kern 0.00017
-.....\penalty 10000
-.....\glue 3.01125 plus 1.50562 minus 1.00374
-.....\TU/texgyretermes(0)/m/n/12.045 2.1
-.....\kern -0.0002
-.....\kern 0.0002
-.....\glue 0.0 plus 1.0fil
+....\hbox(9.31079+2.09581)x0.0, glue set - 42.15749fil
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+.....\hbox(9.31079+2.09581)x42.15749
+......\special{color push gray 0}
+......\TU/FandolSong(0)/m/n/12.045 表
+......\kern -0.00017
+......\kern 0.00017
+......\penalty 10000
+......\glue 3.01125 plus 1.50562 minus 1.00374
+......\TU/texgyretermes(0)/m/n/12.045 2.1
+......\kern -0.0002
+......\kern 0.0002
+......\glue 12.045
+......\special{color pop}
 ....\TU/FandolSong(0)/m/n/12.045 北
 ....\glue 0.0 plus 0.73799
 ....\TU/FandolSong(0)/m/n/12.045 京
