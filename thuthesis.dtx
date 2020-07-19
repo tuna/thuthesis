@@ -1094,6 +1094,9 @@
 \newcommand\thu@warning[1]{%
   \ClassWarning{thuthesis}{#1}%
 }
+\newcommand\thu@patch@error[1]{%
+  \thu@error{Failed to patch command \protect#1}%
+}
 %    \end{macrocode}
 %
 % 检查 \LaTeXe{} kernel 版本
@@ -4140,7 +4143,7 @@
   \@ifnum{\NAT@ctype=\z@}{%
     \if*#2*\else\textsuperscript{#2}\fi
   }{}%
-}{}{}
+}{}{\thu@patch@error{\NAT@citexnum}}
 %    \end{macrocode}
 %
 % Numeric 模式的 \cs{citep} 的页码：
@@ -4159,7 +4162,7 @@
 }{%
   \if\relax\NAT@date\relax\else\NAT@@close\fi
   \if*#2*\else\textsuperscript{#2}\fi
-}{}{}
+}{}{\thu@patch@error{\NAT@citex}}
 %    \end{macrocode}
 %
 % Author-year 模式的 \cs{citep} 的页码：
@@ -4180,7 +4183,7 @@
   \fi
 }{%
   \def@NAT@last@yr{-\NAT@penalty}%
-}{}{}
+}{}{\thu@patch@error{\NAT@citexnum}}
 %    \end{macrocode}
 %
 % \subsection{附录}
