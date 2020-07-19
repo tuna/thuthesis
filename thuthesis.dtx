@@ -2669,65 +2669,130 @@
 %    \end{macrocode}
 %
 % 各级标题格式设置。
-% \begin{description}
-% \item[chapter] 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段
-%   前空 24 磅，段后空 18 磅。本科要求：段前段后间距 30/20 pt，行距 20pt。但正文
-%   章节 30pt 的话和样例效果不一致。
-%
-% \item[section] 一级节标题，例如：\fbox{2.1 实验装置与实验方法}。节标题序号与标
-%   题名之间空一个汉字符（下同）。采用黑体四号（14pt）字居左书写，行距为固定
-%   值 20 磅，段前空 24 磅，段后空 6 磅。本科：25/12 pt，行距 18pt。
-%
-% \item[subsection] 二级节标题，例如：\fbox{2.1.1 实验装置}。采用黑体 13pt 字居左
-%   书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。本科：中文黑体 12pt 字，
-%   英文 13pt 字，段间距 12/6 pt，行距 15pt。
-%
-% \item[subsubsection] 三级节标题，例如：\fbox{2.1.2.1 归纳法}。采用黑体小四号
-%   （12pt）字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
-%
-% \end{description}
 %    \begin{macrocode}
-\newcommand\thu@chapter@titleformat[1]{%
-  \ifthu@degree@bachelor #1\else%
-    \ifthenelse%
-      {\equal{#1}{\thu@abstract@name@en}}%
-      {\bfseries #1}%
-      {#1}%
-  \fi}
 \ctexset{%
-  chapter={
-    afterindent=true,
-    beforeskip={\ifthu@degree@bachelor 15bp\else 9bp\fi},
-    aftername=\hskip\ccwd,
-    afterskip={\ifthu@degree@bachelor 20bp\else 24bp\fi},
-    format={\centering\sffamily\ifthu@degree@bachelor\xiaosan[1.333]\else\sanhao[1]\fi},
-    nameformat=\relax,
-    numberformat=\relax,
-    titleformat=\thu@chapter@titleformat,
-    lofskip=0pt,
-    lotskip=0pt,
+  chapter = {
+    nameformat   = {},
+    numberformat = {},
+    titleformat  = {},
+    aftername    = \hspace{\ccwd},
+    afterindent  = true,
+    lofskip      = 0pt,
+    lotskip      = 0pt,
   },
-  section={
-    afterindent=true,
-    beforeskip={\ifthu@degree@bachelor 25bp\else 24bp\fi\@plus 1ex \@minus .2ex},
-    afterskip={\ifthu@degree@bachelor 12bp\else 6bp\fi \@plus .2ex},
-    format={\sffamily\ifthu@degree@bachelor\sihao[1.286]\else\sihao[1.429]\fi},
+  section = {
+    aftername    = \hspace{\ccwd},
+    afterindent  = true,
   },
-  subsection={
-    afterindent=true,
-    beforeskip={\ifthu@degree@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
-    afterskip={6bp \@plus .2ex},
-    format={\sffamily\ifthu@degree@bachelor\xiaosi[1.25]\else\banxiaosi[1.538]\fi},
-    numberformat={\sffamily\ifthu@degree@bachelor\banxiaosi[1.154]\else\banxiaosi[1.538]\fi},
+  subsection = {
+    aftername    = \hspace{\ccwd},
+    afterindent  = true,
   },
-  subsubsection={
-    afterindent=true,
-    beforeskip={\ifthu@degree@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
-    afterskip={6bp \@plus .2ex},
-    format={\sffamily\ifthu@degree@bachelor\xiaosi[1.25]\else\xiaosi[1.667]\fi},
+  subsubsection = {
+    aftername    = \hspace{\ccwd},
+    afterindent  = true,
   },
-  paragraph/afterindent=true,
-  subparagraph/afterindent=true}
+  paragraph/afterindent = true,
+  subparagraph/afterindent = true,
+}
+%    \end{macrocode}
+%
+% 本科生要求：
+% \begin{center}
+%   \begin{tabular}{lclll}
+%     \toprule
+%     标题        & 中文       & 英文       & 段前/后间距 & 行距 \\
+%     \midrule
+%     一级节标题  & 黑体小三号 & Arial 15pt & 30/20 pt    & 20pt \\
+%     二级节标题  & 黑体四号   & Arial 14pt & 25/12 pt    & 18pt \\
+%     三级节标题  & 黑体小四号 & Arial 13pt & 12/6 pt     & 15pt \\
+%     四级节标题  & 黑体小四号 & Arial 12pt & 12/6 pt     &      \\
+%     \bottomrule
+%   \end{tabular}
+% \end{center}
+%
+% 这里三级节标题的“中文黑体小四号”和“英文 Arial 13pt”不一致，取 13pt。
+%    \begin{macrocode}
+\newcommand\thu@set@section@format{%
+  \ifthu@degree@bachelor
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\xiaosan[1.333],
+        beforeskip = 15bp,
+        afterskip  = 20bp,
+      },
+      section = {
+        format     = \sffamily\sihao[1.286],
+        beforeskip = 25bp\@plus 1ex \@minus .2ex,
+        afterskip  = 12bp\@plus .2ex,
+      },
+      subsection = {
+        format       = \sffamily\xiaosi[1.25],
+        numberformat = \sffamily\banxiaosi[1.154],
+        beforeskip   = 12bp\@plus 1ex \@minus .2ex,
+        afterskip    = 6bp\@plus .2ex,
+      },
+      subsubsection = {
+        format     = \sffamily\xiaosi[1.25],
+        beforeskip = 12bp\@plus 1ex \@minus .2ex,
+        afterskip  = 6bp\@plus .2ex,
+      },
+    }%
+%    \end{macrocode}
+%
+% 研究生要求：
+% \begin{itemize}
+%   \item 各章标题，例如：“\textsf{第 1 章 引言}”。
+%
+%     章序号与章名之间空一个汉字符。
+%     采用黑体三号字，居中书写，单倍行距，
+%     段前空 24 磅，段后空 18 磅。
+%
+%   \item 一级节标题，例如：“\textsf{2.1 实验装置与实验方法}”。
+%
+%     节标题序号与标题名之间空一个汉字符（下同）。
+%     采用黑体四号（14pt）字居左书写，行距为固定值 20 磅，
+%     段前空 24 磅，段后空 6 磅。
+%
+%   \item 二级节标题，例如：“\textsf{2.1.1 实验装置}”。
+%
+%     采用黑体 13pt 字居左书写，行距为固定值 20 磅，
+%     段前空 12 磅，段后空 6 磅。
+%
+%   \item 三级节标题，例如：“\textsf{2.1.2.1 归纳法}”。
+%
+%     采用黑体小四号（12pt）字居左书写，行距为固定值 20 磅，
+%     段前空 12 磅，段后空 6 磅。
+% \end{itemize}
+%
+%    \begin{macrocode}
+  \else
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\sanhao[1],
+        beforeskip = 9bp,
+        afterskip  = 24bp,
+      },
+      section = {
+        format     = \sffamily\sihao[1.429]\selectfont,
+        beforeskip = 24bp\@plus 1ex \@minus .2ex,
+        afterskip  = 6bp\@plus .2ex,
+      },
+      subsection = {
+        format     = \sffamily\banxiaosi[1.538],
+        beforeskip = 16bp\@plus 1ex \@minus .2ex,
+        afterskip  = 6bp\@plus .2ex,
+      },
+      subsubsection = {
+        format     = \sffamily\xiaosi[1.667],
+        beforeskip = 16bp\@plus 1ex \@minus .2ex,
+        afterskip  = 6bp\@plus .2ex,
+      },
+    }%
+  \fi
+}
+\thu@set@section@format
+\thu@option@hook{degree}{\thu@set@section@format}
 %    \end{macrocode}
 %
 % \begin{macro}{\thu@chapter*}
@@ -3775,7 +3840,10 @@
   \fi
   \thusetup{language = english}%
   \ifthu@degree@graduate
-    \thu@chapter*{\thu@abstract@name@en}%
+    \begingroup
+      \ctexset{chapter/format+=\bfseries}%
+      \thu@chapter*{\thu@abstract@name@en}%
+    \endgroup
   \else
     \thu@chapter*[]{\thu@abstract@name@en}%
   \fi

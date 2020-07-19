@@ -162,7 +162,7 @@ Completed box being shipped out [2]
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 con-
 ....\glue(\rightskip) 0.0
-...\penalty 10100
+...\penalty 250
 ...\glue(\baselineskip) 9.22247
 ...\hbox(8.22673+2.61375)x426.79135, glue set 0.54044
 ....\TU/texgyretermes(0)/m/n/12.045 tributions.
@@ -833,6 +833,7 @@ Completed box being shipped out [2]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\write1{\protect \FN@pp@footnotehinttrue }
+...\penalty 10000
 ...\glue -2.6258
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
