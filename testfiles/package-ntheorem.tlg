@@ -130,14 +130,14 @@ Completed box being shipped out [1]
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 7.77707
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.32335
-....\hbox(9.19034+1.89105)x61.04398
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
+....\hbox(9.19034+1.89105)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.19034+1.89105)x61.04398
+.....\glue -6.0
+.....\hbox(9.19034+1.89105)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 定
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 理
@@ -159,7 +159,7 @@ Completed box being shipped out [1]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -355,21 +355,21 @@ Completed box being shipped out [1]
 ...\write1{\@writefile{thm}{\protect \contentsline {proof}{{\thu@proof@name }{1}\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set - 0.48346
-....\hbox(8.9374+1.95128)x28.90791
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.51561
+....\hbox(8.9374+1.95128)x30.09
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(8.9374+1.95128)x28.90791
+.....\glue -6.0
+.....\hbox(8.9374+1.95128)x30.09
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 证
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 明
 ......\kern -0.00017
 ......\kern 0.00017
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -443,13 +443,12 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\TU/FandolSong(0)/m/n/12.045 ，
 ....\rule(0.0+0.0)x-8.33514
-....\glue 8.33514 minus 6.0225
-....\glue 0.0 plus 0.52307
-....\TU/FandolSong(0)/m/n/12.045 段
 ....\glue(\rightskip) 0.0
 ...\penalty 150
 ...\glue(\baselineskip) 8.24681
 ...\hbox(9.50351+2.32468)x426.79135, glue set 0.3217
+....\TU/FandolSong(0)/m/n/12.045 段
+....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 然
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 取
@@ -523,12 +522,12 @@ Completed box being shipped out [1]
 ....\TU/FandolSong(0)/m/n/12.045 管
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 据
-....\glue 0.0 plus 0.52307
-....\TU/FandolSong(0)/m/n/12.045 家
 ....\glue(\rightskip) 0.0
 ...\penalty 150
 ...\glue(\baselineskip) 8.2709
-...\hbox(9.47942+2.32468)x426.79135, glue set 319.57881fill
+...\hbox(9.47942+2.32468)x426.79135, glue set 307.53381fill
+....\TU/FandolSong(0)/m/n/12.045 家
+....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 元
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 写
@@ -571,14 +570,14 @@ Completed box being shipped out [1]
 ...\write1{\@writefile{thm}{\protect \contentsline {assumption}{{\thu@assumption\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.32335
-....\hbox(9.25056+2.07173)x61.04398
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
+....\hbox(9.25056+2.07173)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.25056+2.07173)x61.04398
+.....\glue -6.0
+.....\hbox(9.25056+2.07173)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 假
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 设
@@ -600,7 +599,7 @@ Completed box being shipped out [1]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -796,14 +795,14 @@ Completed box being shipped out [1]
 ...\write1{\@writefile{thm}{\protect \contentsline {axiom}{{\thu@axiom@name }{1.\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.32335
-....\hbox(8.92534+1.95128)x61.04398
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
+....\hbox(8.92534+1.95128)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(8.92534+1.95128)x61.04398
+.....\glue -6.0
+.....\hbox(8.92534+1.95128)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 公
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 理
@@ -825,7 +824,7 @@ Completed box being shipped out [1]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -1021,14 +1020,14 @@ Completed box being shipped out [1]
 ...\write1{\@writefile{thm}{\protect \contentsline {conjecture}{{\thu@conjecture\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.32335
-....\hbox(9.3951+2.13194)x61.04398
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
+....\hbox(9.3951+2.13194)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.3951+2.13194)x61.04398
+.....\glue -6.0
+.....\hbox(9.3951+2.13194)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 猜
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 想
@@ -1050,7 +1049,7 @@ Completed box being shipped out [1]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -1246,14 +1245,14 @@ Completed box being shipped out [1]
 ...\write1{\@writefile{thm}{\protect \contentsline {corollary}{{\thu@corollary@n\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.32335
-....\hbox(9.41919+2.07173)x61.04398
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
+....\hbox(9.41919+2.07173)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.41919+2.07173)x61.04398
+.....\glue -6.0
+.....\hbox(9.41919+2.07173)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 推
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 论
@@ -1275,7 +1274,7 @@ Completed box being shipped out [1]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -1471,14 +1470,14 @@ Completed box being shipped out [1]
 ...\write1{\@writefile{thm}{\protect \contentsline {definition}{{\thu@definition\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.32335
-....\hbox(9.25056+1.89105)x61.04398
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
+....\hbox(9.25056+1.89105)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.25056+1.89105)x61.04398
+.....\glue -6.0
+.....\hbox(9.25056+1.89105)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 定
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 义
@@ -1500,7 +1499,7 @@ Completed box being shipped out [1]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -1696,14 +1695,14 @@ Completed box being shipped out [1]
 ...\write1{\@writefile{thm}{\protect \contentsline {example}{{\thu@example@name \ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.31137
-....\hbox(9.20238+2.10786)x48.99898
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.22766
+....\hbox(9.20238+2.10786)x50.18106
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.20238+2.10786)x48.99898
+.....\glue -6.0
+.....\hbox(9.20238+2.10786)x50.18106
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 例
 ......\kern -0.00017
 ......\kern 0.00017
@@ -1723,7 +1722,7 @@ Completed box being shipped out [1]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -1919,14 +1918,14 @@ Completed box being shipped out [1]
 ...\write1{\@writefile{thm}{\protect \contentsline {exercise}{{\thu@exercise@nam\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.32335
-....\hbox(9.38306+1.95128)x61.04398
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
+....\hbox(9.38306+1.95128)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.38306+1.95128)x61.04398
+.....\glue -6.0
+.....\hbox(9.38306+1.95128)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 练
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 习
@@ -1948,7 +1947,7 @@ Completed box being shipped out [1]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -2283,14 +2282,14 @@ Completed box being shipped out [2]
 ..\vbox(674.33032+0.0)x426.79135, glue set 389.46376fil
 ...\write1{\@writefile{thm}{\protect \contentsline {lemma}{{\thu@lemma@name }{1.\ETC.}
 ...\glue(\topskip) 2.54468
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.32335
-....\hbox(9.0217+2.03558)x61.04398
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
+....\hbox(9.0217+2.03558)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.0217+2.03558)x61.04398
+.....\glue -6.0
+.....\hbox(9.0217+2.03558)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 引
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 理
@@ -2312,7 +2311,7 @@ Completed box being shipped out [2]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -2508,14 +2507,14 @@ Completed box being shipped out [2]
 ...\write1{\@writefile{thm}{\protect \contentsline {problem}{{\thu@problem@name \ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.32335
-....\hbox(9.03375+1.98741)x61.04398
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
+....\hbox(9.03375+1.98741)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.03375+1.98741)x61.04398
+.....\glue -6.0
+.....\hbox(9.03375+1.98741)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 问
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 题
@@ -2537,7 +2536,7 @@ Completed box being shipped out [2]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -2733,14 +2732,14 @@ Completed box being shipped out [2]
 ...\write1{\@writefile{thm}{\protect \contentsline {proposition}{{\thu@propositi\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.21068
-...\hbox(9.53964+2.32468)x426.79135, glue set 0.32335
-....\hbox(9.53964+2.144)x61.04398
+...\hbox(9.53964+2.32468)x426.79135, glue set 0.23642
+....\hbox(9.53964+2.144)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.53964+2.144)x61.04398
+.....\glue -6.0
+.....\hbox(9.53964+2.144)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 命
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 题
@@ -2762,7 +2761,7 @@ Completed box being shipped out [2]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
@@ -2958,14 +2957,14 @@ Completed box being shipped out [2]
 ...\write1{\@writefile{thm}{\protect \contentsline {remark}{{\thu@remark@name }{\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set 0.32335
-....\hbox(9.33487+2.144)x61.04398
+...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
+....\hbox(9.33487+2.144)x62.22606
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(9.33487+2.144)x61.04398
+.....\glue -6.0
+.....\hbox(9.33487+2.144)x62.22606
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 注
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 释
@@ -2987,7 +2986,7 @@ Completed box being shipped out [2]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307

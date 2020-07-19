@@ -341,14 +341,14 @@ Completed box being shipped out [1]
 ...\glue 3.0 plus 3.0 minus 2.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
-...\hbox(9.45532+2.32468)x426.79135, glue set - 0.18327
-....\hbox(8.9374+1.95128)x40.95291
+...\hbox(9.45532+2.32468)x426.79135, glue set - 0.2487
+....\hbox(8.9374+1.95128)x42.135
 .....\glue 0.0
 .....\glue 0.0
-.....\glue -4.81792
-.....\hbox(8.9374+1.95128)x40.95291
+.....\glue -6.0
+.....\hbox(8.9374+1.95128)x42.135
 ......\special{color push gray 0}
-......\glue 4.81792
+......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 证
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 明
@@ -363,7 +363,7 @@ Completed box being shipped out [1]
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
 ......\special{color pop}
-.....\glue 4.81792
+.....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307

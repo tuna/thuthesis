@@ -4101,21 +4101,8 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% 参考文献的正文部分用五号字。
-% 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
-% 本科生要求固定行距 17pt，段前后间距 3pt。
-%
-% 复用 \pkg{natbib} 的 \texttt{thebibliography} 环境，调整距离。
-%    \begin{macrocode}
-\renewcommand\bibsection{\thu@chapter*{\bibname}}
-\renewcommand\bibfont{\ifthu@degree@bachelor\wuhao[1.619]\else\wuhao[1.5]\fi}
-\setlength\bibhang{2\ccwd}
-\addtolength{\bibsep}{-0.7em}
-\setlength{\labelsep}{0.4em}
-\def\@biblabel#1{[#1]\hfill}
-%    \end{macrocode}
-%
-% 几种种引用样式：
+% 几种种引用样式，与 \file{bst} 文件名保持一致，
+% 这样在使用 \cs{bibliographystyle} 选择参考文献表的样式时也会设置对应的引用样式。
 %    \begin{macrocode}
 \expandafter\newcommand\csname bibstyle@thuthesis-numeric\endcsname{%
   \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
@@ -4190,6 +4177,57 @@
 }{%
   \def@NAT@last@yr{-\NAT@penalty}%
 }{}{\thu@patch@error{\NAT@citexnum}}
+%    \end{macrocode}
+%
+% 参考文献表的正文部分用五号字。
+% 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
+%
+% 本科生要求宋体五号/Times New Roman 10.5 pt，固定行距 17pt，段前后间距 3pt；
+% 英文专业要求悬挂缩进 0.5inch(1.27 厘米)。
+%
+% 复用 \pkg{natbib} 的 \texttt{thebibliography} 环境，调整距离。
+%    \begin{macrocode}
+\renewcommand\bibsection{\thu@chapter*{\bibname}}
+  \newcommand\thu@set@bibliography@format{%
+  \ifthu@degree@bachelor
+    \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
+    \setlength{\bibsep}{6bp}%
+    \ifthu@language@chinese
+      \setlength{\bibhang}{2em}%
+    \else
+      \setlength{\bibhang}{0.5in}%
+    \fi
+  \else
+    \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+    \setlength{\bibsep}{3bp}%
+    \setlength{\bibhang}{10em}%
+  \fi
+}
+\thu@set@bibliography@format
+\thu@option@hook{degree}{\thu@set@bibliography@format}
+\thu@option@hook{language}{\thu@set@bibliography@format}
+%    \end{macrocode}
+%
+% 参考文献表的编号居左，宽度 1 cm。
+%    \begin{macrocode}
+\def\@biblabel#1{[#1]\hfill}
+\renewcommand\NAT@bibsetnum[1]{%
+  % \settowidth\labelwidth{\@biblabel{#1}}%
+  % \setlength{\leftmargin}{\labelwidth}%
+  % \addtolength{\leftmargin}{\labelsep}%
+  \setlength{\leftmargin}{1cm}%
+  \setlength{\itemindent}{\z@}%
+  \setlength{\labelsep}{0.1cm}%
+  \setlength{\labelwidth}{0.9cm}%
+  \setlength{\itemsep}{\bibsep}
+  \setlength{\parsep}{\z@}%
+  \ifNAT@openbib
+    \addtolength{\leftmargin}{\bibindent}%
+    \setlength{\itemindent}{-\bibindent}%
+    \setlength{\listparindent}{\itemindent}%
+    \setlength{\parsep}{0pt}%
+  \fi
+}
 %    \end{macrocode}
 %
 % \subsection{附录}
