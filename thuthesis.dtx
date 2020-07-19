@@ -1626,7 +1626,6 @@
   \cleardoublepage
   \@mainmatterfalse
   \pagenumbering{Roman}%
-  \let\@tabular\thu@tabular
 }
 \renewcommand\mainmatter{%
   \cleardoublepage
@@ -2581,7 +2580,7 @@
 \renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
 %    \end{macrocode}
 %
-% \subsubsection{浮动对象以及表格}
+% \subsubsection{浮动对象：插图和表格}
 % \label{sec:float}
 % 设置浮动对象和文字之间的距离
 %    \begin{macrocode}
@@ -2602,6 +2601,16 @@
 \renewcommand{\floatpagefraction}{0.60}
 %    \end{macrocode}
 %
+% 研究生要求表单元格中的文字采用 11pt 宋体字，单倍行距，段前空 3 磅，段后空 3 磅。
+%    \begin{macrocode}
+\patchcmd\@floatboxreset{%
+  \normalsize
+}{%
+  \fontsize{11bp}{14.3bp}\selectfont
+  \renewcommand\arraystretch{1.2}%
+}{}{\thu@patch@error{\@floatboxreset}}
+%    \end{macrocode}
+%
 % 定制浮动图形和表格标题样式，以及改变附录中浮动体的编号规则：
 % \begin{itemize}
 %   \item 图表标题字体为 11pt， 这里写作大五号
@@ -2619,10 +2628,7 @@
 \fi
 %    \end{macrocode}
 %
-% 研究生要求表单元格中的文字采用 11pt 宋体字，单倍行距，段前空 3 磅，段后空 3 磅。
 %    \begin{macrocode}
-\let\old@tabular\@tabular
-\def\thu@tabular{\dawu[1.5]\old@tabular}
 \DeclareCaptionFont{thu}{\dawu}
 \DeclareCaptionLabelSeparator{thu}{\hspace{\ccwd}}
 \captionsetup{
