@@ -3689,7 +3689,27 @@
 }
 %    \end{macrocode}
 %
-% \myentry{授权说明}
+% \subsubsection{答辩委员会名单}
+% \begin{environment}{committee}
+% 学位论文指导小组、公开评阅人和答辩委员会名单。
+%    \begin{macrocode}
+\newenvironment{committee}[1][学位论文指导小组、公开评阅人和答辩委员会名单]{%
+  \cleardoublepage
+  \thu@chapter*[]{#1}%
+  \thispagestyle{empty}%
+  \ctexset{
+    section = {
+      format    += {\centering},
+      numbering = false,
+      afterindent = false,
+    },
+  }
+}{%
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \subsubsection{授权说明}
 % \begin{macro}{\copyrightpage}
 % 授权说明
 %    \begin{macrocode}
