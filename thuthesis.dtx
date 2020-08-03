@@ -1551,9 +1551,9 @@
 %
 %    \begin{macrocode}
 \geometry{
-  a4paper, % 210 * 297mm
+  paper          = a4paper,  % 210 * 297mm
   marginparwidth = 2cm,
-  marginparsep = 0.5cm
+  marginparsep   = 0.5cm,
 }
 \newcommand\thu@set@geometry{%
   \ifthu@degree@bachelor
@@ -4123,8 +4123,27 @@
 \thu@option@hook{cite-style}{\@nameuse{bibstyle@thuthesis-\thu@cite@style}}
 %    \end{macrocode}
 %
-% 下面修改 \pkg{natbib} 的引用格式，主要是将页码写在上标位置。
-% numeric 模式的 \cs{citet} 的页码：
+% 修改引用的样式。
+%
+% 将 \cs{citep} super 式引用的页码改为上标。
+%    \begin{macrocode}
+\renewcommand\NAT@citesuper[3]{\ifNAT@swa
+  \if*#2*\else#2\NAT@spacechar\fi
+  % \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close}%
+  %  \if*#3*\else\NAT@spacechar#3\fi\else #1\fi\endgroup}
+  \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
+  \else #1\fi\endgroup}
+%    \end{macrocode}
+%
+% 将 \cs{citep} numbers 式引用的页码改为上标并置于括号外。
+%    \begin{macrocode}
+\renewcommand\NAT@citenum%
+    [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+        % #1\if*#3*\else\NAT@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
+        #1\NAT@@close\textsuperscript{\if*#3*\else#3\fi}\else#1\fi\endgroup}
+%    \end{macrocode}
+%
+% 修改 \cs{citet} 引用的样式。
 %    \begin{macrocode}
 \patchcmd\NAT@citexnum{%
   \@ifnum{\NAT@ctype=\z@}{%
@@ -4137,32 +4156,6 @@
     \if*#2*\else\textsuperscript{#2}\fi
   }{}%
 }{}{\thu@patch@error{\NAT@citexnum}}
-%    \end{macrocode}
-%
-% Numeric 模式的 \cs{citep} 的页码：
-%    \begin{macrocode}
-\renewcommand\NAT@citesuper[3]{\ifNAT@swa
-  \if*#2*\else#2\NAT@spacechar\fi
-\unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
-   \else #1\fi\endgroup}
-%    \end{macrocode}
-%
-% Author-year 模式的 \cs{citet} 的页码：
-%    \begin{macrocode}
-\patchcmd{\NAT@citex}{%
-  \if*#2*\else\NAT@cmt#2\fi
-  \if\relax\NAT@date\relax\else\NAT@@close\fi
-}{%
-  \if\relax\NAT@date\relax\else\NAT@@close\fi
-  \if*#2*\else\textsuperscript{#2}\fi
-}{}{\thu@patch@error{\NAT@citex}}
-%    \end{macrocode}
-%
-% Author-year 模式的 \cs{citep} 的页码：
-%    \begin{macrocode}
-\renewcommand\NAT@cite%
-    [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
-        #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
 %    \end{macrocode}
 %
 % 在顺序编码制下，\pkg{natbib} 只有在三个以上连续文献引用才会使用连接号，
@@ -4179,6 +4172,25 @@
 }{}{\thu@patch@error{\NAT@citexnum}}
 %    \end{macrocode}
 %
+% 修改 \cs{citep} author-year 式的页码：
+%    \begin{macrocode}
+\renewcommand\NAT@cite%
+    [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+        % #1\if*#3*\else\NAT@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
+        #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
+%    \end{macrocode}
+%
+% 修改 \cs{citet} author-year 式的页码：
+%    \begin{macrocode}
+\patchcmd{\NAT@citex}{%
+  \if*#2*\else\NAT@cmt#2\fi
+  \if\relax\NAT@date\relax\else\NAT@@close\fi
+}{%
+  \if\relax\NAT@date\relax\else\NAT@@close\fi
+  \if*#2*\else\textsuperscript{#2}\fi
+}{}{\thu@patch@error{\NAT@citex}}
+%    \end{macrocode}
+%
 % 参考文献表的正文部分用五号字。
 % 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
 %
@@ -4193,14 +4205,14 @@
     \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
     \setlength{\bibsep}{6bp}%
     \ifthu@language@chinese
-      \setlength{\bibhang}{2em}%
+      \setlength{\bibhang}{21bp}%
     \else
       \setlength{\bibhang}{0.5in}%
     \fi
   \else
     \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
     \setlength{\bibsep}{3bp}%
-    \setlength{\bibhang}{10em}%
+    \setlength{\bibhang}{21bp}%
   \fi
 }
 \thu@set@bibliography@format
