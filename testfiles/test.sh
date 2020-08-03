@@ -19,7 +19,7 @@ do_test () {
         mkdir -p "$build_dir";
     fi
     l3build unpack;
-    cp build/local/* "$build_dir"/; 
+    cp build/local/* "$build_dir"/;
     file_path="$1";
     support_dir="$2";
     cp "$file_path" "$build_dir"/;
@@ -37,7 +37,7 @@ else
     for test_dir in testfiles/*; do
         if [ -d "$test_dir" ]; then
             file_path="$test_dir/$test_file";
-            support_dir="$test_dir/support";
+            # support_dir="$test_dir/support";
             if [ -f "$file_path" ]; then
                 echo $file_path;
                 do_test $file_path $support_dir;

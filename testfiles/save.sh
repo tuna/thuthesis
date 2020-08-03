@@ -27,12 +27,20 @@ save_config ()
             l3build save --quiet --config testfiles/config-nomencl "$test" || exit 1;
         done
 
-    elif [[ "$1" == "bib" ]]; then
-        for testfile in testfiles/10-bib/*.tex; do
+    elif [[ "$1" == "bibtex" ]]; then
+        for testfile in testfiles/10-bibtex/*.tex; do
             test="$(basename "$testfile" .tex)";
-            l3build save --quiet --config testfiles/config-bib "$test" || exit 1;
+            l3build save --quiet --config testfiles/config-bibtex "$test" || exit 1;
+        done
+
+    elif [[ "$1" == "biblatex" ]]; then
+        for testfile in testfiles/10-biblatex/*.tex; do
+            test="$(basename "$testfile" .tex)";
+            l3build save --quiet --config testfiles/config-biblatex "$test" || exit 1;
         done
     fi
+
+
 
 
 if [[ $# -eq 0 ]]; then

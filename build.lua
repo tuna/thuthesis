@@ -31,7 +31,8 @@ checkconfigs = {
   "testfiles/config-crossref",
   "testfiles/config-cover",
   "testfiles/config-nomencl",
-  "testfiles/config-bib",
+  "testfiles/config-bibtex",
+  "testfiles/config-biblatex",
 }
 
 -- include .tds.zip in build output
