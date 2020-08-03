@@ -8,7 +8,7 @@ checkruns = 3
 
 function runtest_tasks(name, run)
   if run == 1 then
-    return "bibtex " .. name
+    return "biber " .. name
   else
     return ""
   end

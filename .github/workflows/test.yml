@@ -10,6 +10,8 @@ jobs:
     container: tunathu/thuthesis-test-env
     steps:
     - uses: actions/checkout@v2
+    - name: Install required packages
+      run: bash .github/workflows/install-packages.sh
     - name: Test thesis
       run: make thesis
     - name: Test spine
@@ -33,4 +35,3 @@ jobs:
       with:
          name: thuthesis-ctan
          path: thuthesis-ctan.zip
-

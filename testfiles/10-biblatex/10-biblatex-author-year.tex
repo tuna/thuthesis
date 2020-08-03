@@ -1,7 +1,8 @@
 \input{regression-test.tex}
 \documentclass[degree=doctor]{thuthesis}
 
-\bibliographystyle{thuthesis-author-year}
+\usepackage[backend=biber,style=thuthesis-author-year]{biblatex}
+\addbibresource{refs.bib}
 
 \begin{document}
 \START
@@ -43,7 +44,7 @@ Citations:
 \citep{oclc2000about} \par
 \citep{scitor2000project} \par
 
-\bibliography{refs}
+\printbibliography
 
 \clearpage
 \OMIT

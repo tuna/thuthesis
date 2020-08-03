@@ -1,11 +1,12 @@
 \input{regression-test.tex}
 \documentclass[degree=doctor]{thuthesis}
 
-\bibliographystyle{thuthesis-numeric}
-
-\thusetup{
-  cite-style = inline,
-}
+\usepackage[
+  backend   = biber,
+  style     = thuthesis-numeric,
+  citestyle = thuthesis-inline,
+]{biblatex}
+\addbibresource{refs.bib}
 
 \begin{document}
 \START
@@ -47,7 +48,7 @@ Citations:
 \cite{oclc2000about}
 \cite{scitor2000project}
 
-\bibliography{refs}
+\printbibliography
 
 \clearpage
 \OMIT

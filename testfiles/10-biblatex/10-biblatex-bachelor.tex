@@ -1,7 +1,8 @@
 \input{regression-test.tex}
 \documentclass[degree=doctor]{thuthesis}
 
-\bibliographystyle{thuthesis-bachelor}
+\usepackage[backend=biber,style=thuthesis-bachelor]{biblatex}
+\addbibresource{refs-bachelor.bib}
 
 \begin{document}
 \START
@@ -35,7 +36,7 @@ Citations:
 \cite{liqiang2012huajie}
 \cite{oclc2012about}
 
-\bibliography{refs-bachelor}
+\printbibliography
 
 \clearpage
 \OMIT

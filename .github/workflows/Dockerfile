@@ -10,9 +10,9 @@ RUN apt-get update &&\
     apt-get clean -y &&\
     rm -rf /var/lib/apt/lists/*
 
-COPY install-texlive.sh texlive.profile /tmp/
+COPY install-texlive.sh install-packages.sh texlive.profile /tmp/
 RUN /tmp/install-texlive.sh
+RUN /tmp/install-packages.sh
 
 ENV PATH="/opt/texlive/bin/x86_64-linux:${PATH}"
 CMD /bin/bash
-
