@@ -1427,6 +1427,7 @@
 % 引用的宏包和相应的定义。
 %    \begin{macrocode}
 \RequirePackage{etoolbox}
+\RequirePackage{filehook}
 \RequirePackage{xparse}
 %    \end{macrocode}
 %
@@ -1508,19 +1509,24 @@
 \RequirePackage{booktabs}
 %    \end{macrocode}
 %
-% 参考文献引用宏包。
-%    \begin{macrocode}
-\RequirePackage[sort&compress]{natbib}
-\RequirePackage{bibunits}
-%    \end{macrocode}
-%
 %    \begin{macrocode}
 \RequirePackage{url}
 %    \end{macrocode}
 %
+% 如果用户在导言区未调用 \pkg{biblatex}，则自动调用 \pkg{natbib}。
+%    \begin{macrocode}
+\AtEndPreamble{
+  \@ifpackageloaded{biblatex}{}{
+    \RequirePackage[sort&compress]{natbib}
+  }
+}
+\AtEndOfPackageFile*{natbib}{
+  \RequirePackage{bibunits}
+}
+%    \end{macrocode}
+%
 % 对冲突的宏包报错。
 %    \begin{macrocode}
-\RequirePackage{filehook}
 \newcommand\thu@package@conflict[2]{
   \AtBeginOfPackageFile*{#2}{
     \thu@error{The "#2" package is incompatible with required "#1"}
@@ -4092,103 +4098,271 @@
 % \subsection{参考文献}
 % \label{sec:ref}
 %
+% 参考文献的格式根据用户选择的 \BibTeX{}/BibLaTeX 分别进行配置，
+% 所以使用 \pkg{filehook} 的方式。
+%
+% 设置 \option{cite-style} 的接口，只对 \BibTeX{} 的编译方式有效。
+%    \begin{macrocode}
+  \thu@define@key{
+    cite-style = {
+      name = cite@style,
+    }
+  }
+%    \end{macrocode}
+%
+% \subsubsection{BibTeX + \pkg{natbib} 宏包}
+%
+% \BibTeX{} 和 \pkg{natbib} 宏包的配置。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{natbib}{
+%    \end{macrocode}
 % \begin{macro}{\inlinecite}
 % 依赖于 \pkg{natbib} 宏包，修改其中的命令。 旧命令 \cs{onlinecite} 依然可用。
 %    \begin{macrocode}
-\DeclareRobustCommand\inlinecite{\@inlinecite}
-\def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
-\let\onlinecite\inlinecite
+  \DeclareRobustCommand\inlinecite{\@inlinecite}
+  \def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
+  \let\onlinecite\inlinecite
 %    \end{macrocode}
 % \end{macro}
 %
 % 几种种引用样式，与 \file{bst} 文件名保持一致，
 % 这样在使用 \cs{bibliographystyle} 选择参考文献表的样式时也会设置对应的引用样式。
 %    \begin{macrocode}
-\expandafter\newcommand\csname bibstyle@thuthesis-numeric\endcsname{%
-  \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
-\expandafter\newcommand\csname bibstyle@thuthesis-author-year\endcsname{%
-  \bibpunct{(}{)}{;}{a}{,}{,}}
-\expandafter\newcommand\csname bibstyle@thuthesis-bachelor\endcsname{%
-  \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
-%    \end{macrocode}
-%
-% 设置 \option{cite-style} 的接口：
-%    \begin{macrocode}
-\@namedef{bibstyle@thuthesis-inline}{\bibpunct{[}{]}{,}{n}{,}{,}}
-\thu@define@key{
-  cite-style = {
-    name = cite@style,
-  }
-}
-\thu@option@hook{cite-style}{\@nameuse{bibstyle@thuthesis-\thu@cite@style}}
+  \expandafter\newcommand\csname bibstyle@thuthesis-numeric\endcsname{%
+    \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+  \expandafter\newcommand\csname bibstyle@thuthesis-author-year\endcsname{%
+    \bibpunct{(}{)}{;}{a}{,}{,}}
+  \expandafter\newcommand\csname bibstyle@thuthesis-bachelor\endcsname{%
+    \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+  \@namedef{bibstyle@thuthesis-inline}{\bibpunct{[}{]}{,}{n}{,}{,}}
+  \thu@option@hook{cite-style}{\@nameuse{bibstyle@thuthesis-\thu@cite@style}}
 %    \end{macrocode}
 %
 % 修改引用的样式。
+% 这里在 filehook 中无法使用 \cs{patchcmd}，所以只能手动重定义。
 %
 % 将 \cs{citep} super 式引用的页码改为上标。
 %    \begin{macrocode}
-\renewcommand\NAT@citesuper[3]{\ifNAT@swa
-  \if*#2*\else#2\NAT@spacechar\fi
-  % \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close}%
-  %  \if*#3*\else\NAT@spacechar#3\fi\else #1\fi\endgroup}
-  \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
-  \else #1\fi\endgroup}
+  \renewcommand\NAT@citesuper[3]{\ifNAT@swa
+    \if*#2*\else#2\NAT@spacechar\fi
+    % \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close}%
+    %  \if*#3*\else\NAT@spacechar#3\fi\else #1\fi\endgroup}
+    \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
+    \else #1\fi\endgroup}
 %    \end{macrocode}
 %
 % 将 \cs{citep} numbers 式引用的页码改为上标并置于括号外。
 %    \begin{macrocode}
-\renewcommand\NAT@citenum%
-    [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
-        % #1\if*#3*\else\NAT@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
-        #1\NAT@@close\textsuperscript{\if*#3*\else#3\fi}\else#1\fi\endgroup}
+  \renewcommand\NAT@citenum%
+      [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+          % #1\if*#3*\else\NAT@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
+          #1\NAT@@close\textsuperscript{\if*#3*\else#3\fi}\else#1\fi\endgroup}
 %    \end{macrocode}
 %
 % 修改 \cs{citet} 引用的样式。
 %    \begin{macrocode}
-\patchcmd\NAT@citexnum{%
-  \@ifnum{\NAT@ctype=\z@}{%
-    \if*#2*\else\NAT@cmt#2\fi
-  }{}%
-  \NAT@mbox{\NAT@@close}%
-}{%
-  \NAT@mbox{\NAT@@close}%
-  \@ifnum{\NAT@ctype=\z@}{%
-    \if*#2*\else\textsuperscript{#2}\fi
-  }{}%
-}{}{\thu@patch@error{\NAT@citexnum}}
+  \def\NAT@citexnum[#1][#2]#3{%
+    \NAT@reset@parser
+    \NAT@sort@cites{#3}%
+    \NAT@reset@citea
+    \@cite{\def\NAT@num{-1}\let\NAT@last@yr\relax\let\NAT@nm\@empty
+      \@for\@citeb:=\NAT@cite@list\do
+      {\@safe@activestrue
+      \edef\@citeb{\expandafter\@firstofone\@citeb\@empty}%
+      \@safe@activesfalse
+      \@ifundefined{b@\@citeb\@extra@b@citeb}{%
+        {\reset@font\bfseries?}
+          \NAT@citeundefined\PackageWarning{natbib}%
+        {Citation `\@citeb' on page \thepage \space undefined}}%
+      {\let\NAT@last@num\NAT@num\let\NAT@last@nm\NAT@nm
+        \NAT@parse{\@citeb}%
+        \ifNAT@longnames\@ifundefined{bv@\@citeb\@extra@b@citeb}{%
+          \let\NAT@name=\NAT@all@names
+          \global\@namedef{bv@\@citeb\@extra@b@citeb}{}}{}%
+        \fi
+        \ifNAT@full\let\NAT@nm\NAT@all@names\else
+          \let\NAT@nm\NAT@name\fi
+        \ifNAT@swa
+        \@ifnum{\NAT@ctype>\@ne}{%
+          \@citea
+          \NAT@hyper@{\@ifnum{\NAT@ctype=\tw@}{\NAT@test{\NAT@ctype}}{\NAT@alias}}%
+        }{%
+          \@ifnum{\NAT@cmprs>\z@}{%
+          \NAT@ifcat@num\NAT@num
+            {\let\NAT@nm=\NAT@num}%
+            {\def\NAT@nm{-2}}%
+          \NAT@ifcat@num\NAT@last@num
+            {\@tempcnta=\NAT@last@num\relax}%
+            {\@tempcnta\m@ne}%
+          \@ifnum{\NAT@nm=\@tempcnta}{%
+            \@ifnum{\NAT@merge>\@ne}{}{\NAT@last@yr@mbox}%
+          }{%
+            \advance\@tempcnta by\@ne
+            \@ifnum{\NAT@nm=\@tempcnta}{%
 %    \end{macrocode}
 %
 % 在顺序编码制下，\pkg{natbib} 只有在三个以上连续文献引用才会使用连接号，
 % 这里修改为允许两个引用使用连接号。
 %    \begin{macrocode}
-\patchcmd{\NAT@citexnum}{%
-  \ifx\NAT@last@yr\relax
-    \def@NAT@last@yr{\@citea}%
-  \else
-    \def@NAT@last@yr{--\NAT@penalty}%
-  \fi
-}{%
-  \def@NAT@last@yr{-\NAT@penalty}%
-}{}{\thu@patch@error{\NAT@citexnum}}
+              % \ifx\NAT@last@yr\relax
+              %   \def@NAT@last@yr{\@citea}%
+              % \else
+              %   \def@NAT@last@yr{--\NAT@penalty}%
+              % \fi
+              \def@NAT@last@yr{-\NAT@penalty}%
+            }{%
+              \NAT@last@yr@mbox
+            }%
+          }%
+          }{%
+          \@tempswatrue
+          \@ifnum{\NAT@merge>\@ne}{\@ifnum{\NAT@last@num=\NAT@num\relax}{\@tempswafalse}{}}{}%
+          \if@tempswa\NAT@citea@mbox\fi
+          }%
+        }%
+        \NAT@def@citea
+        \else
+          \ifcase\NAT@ctype
+            \ifx\NAT@last@nm\NAT@nm \NAT@yrsep\NAT@penalty\NAT@space\else
+              \@citea \NAT@test{\@ne}\NAT@spacechar\NAT@mbox{\NAT@super@kern\NAT@@open}%
+            \fi
+            \if*#1*\else#1\NAT@spacechar\fi
+            \NAT@mbox{\NAT@hyper@{{\citenumfont{\NAT@num}}}}%
+            \NAT@def@citea@box
+          \or
+            \NAT@hyper@citea@space{\NAT@test{\NAT@ctype}}%
+          \or
+            \NAT@hyper@citea@space{\NAT@test{\NAT@ctype}}%
+          \or
+            \NAT@hyper@citea@space\NAT@alias
+          \fi
+        \fi
+      }%
+      }%
+        \@ifnum{\NAT@cmprs>\z@}{\NAT@last@yr}{}%
+        \ifNAT@swa\else
+%    \end{macrocode}
+%
+% 将页码放在括号外边，并且置于上标。
+%    \begin{macrocode}
+          % \@ifnum{\NAT@ctype=\z@}{%
+          %   \if*#2*\else\NAT@cmt#2\fi
+          % }{}%
+          \NAT@mbox{\NAT@@close}%
+          \@ifnum{\NAT@ctype=\z@}{%
+            \if*#2*\else\textsuperscript{#2}\fi
+          }{}%
+        \fi
+    }{#1}{#2}%
+  }%
 %    \end{macrocode}
 %
 % 修改 \cs{citep} author-year 式的页码：
 %    \begin{macrocode}
-\renewcommand\NAT@cite%
-    [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
-        % #1\if*#3*\else\NAT@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
-        #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
+  \renewcommand\NAT@cite%
+      [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+          % #1\if*#3*\else\NAT@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
+          #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
 %    \end{macrocode}
 %
 % 修改 \cs{citet} author-year 式的页码：
 %    \begin{macrocode}
-\patchcmd{\NAT@citex}{%
-  \if*#2*\else\NAT@cmt#2\fi
-  \if\relax\NAT@date\relax\else\NAT@@close\fi
-}{%
-  \if\relax\NAT@date\relax\else\NAT@@close\fi
-  \if*#2*\else\textsuperscript{#2}\fi
-}{}{\thu@patch@error{\NAT@citex}}
+  \def\NAT@citex%
+    [#1][#2]#3{%
+    \NAT@reset@parser
+    \NAT@sort@cites{#3}%
+    \NAT@reset@citea
+    \@cite{\let\NAT@nm\@empty\let\NAT@year\@empty
+      \@for\@citeb:=\NAT@cite@list\do
+      {\@safe@activestrue
+      \edef\@citeb{\expandafter\@firstofone\@citeb\@empty}%
+      \@safe@activesfalse
+      \@ifundefined{b@\@citeb\@extra@b@citeb}{\@citea%
+        {\reset@font\bfseries ?}\NAT@citeundefined
+                  \PackageWarning{natbib}%
+        {Citation `\@citeb' on page \thepage \space undefined}\def\NAT@date{}}%
+      {\let\NAT@last@nm=\NAT@nm\let\NAT@last@yr=\NAT@year
+        \NAT@parse{\@citeb}%
+        \ifNAT@longnames\@ifundefined{bv@\@citeb\@extra@b@citeb}{%
+          \let\NAT@name=\NAT@all@names
+          \global\@namedef{bv@\@citeb\@extra@b@citeb}{}}{}%
+        \fi
+      \ifNAT@full\let\NAT@nm\NAT@all@names\else
+        \let\NAT@nm\NAT@name\fi
+      \ifNAT@swa\ifcase\NAT@ctype
+        \if\relax\NAT@date\relax
+          \@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}\NAT@date}%
+        \else
+          \ifx\NAT@last@nm\NAT@nm\NAT@yrsep
+              \ifx\NAT@last@yr\NAT@year
+                \def\NAT@temp{{?}}%
+                \ifx\NAT@temp\NAT@exlab\PackageWarningNoLine{natbib}%
+                {Multiple citation on page \thepage: same authors and
+                year\MessageBreak without distinguishing extra
+                letter,\MessageBreak appears as question mark}\fi
+                \NAT@hyper@{\NAT@exlab}%
+              \else\unskip\NAT@spacechar
+                \NAT@hyper@{\NAT@date}%
+              \fi
+          \else
+            \@citea\NAT@hyper@{%
+              \NAT@nmfmt{\NAT@nm}%
+              \hyper@natlinkbreak{%
+                \NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb
+              }%
+              \NAT@date
+            }%
+          \fi
+        \fi
+      \or\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}}%
+      \or\@citea\NAT@hyper@{\NAT@date}%
+      \or\@citea\NAT@hyper@{\NAT@alias}%
+      \fi \NAT@def@citea
+      \else
+        \ifcase\NAT@ctype
+          \if\relax\NAT@date\relax
+            \@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}}%
+          \else
+          \ifx\NAT@last@nm\NAT@nm\NAT@yrsep
+              \ifx\NAT@last@yr\NAT@year
+                \def\NAT@temp{{?}}%
+                \ifx\NAT@temp\NAT@exlab\PackageWarningNoLine{natbib}%
+                {Multiple citation on page \thepage: same authors and
+                year\MessageBreak without distinguishing extra
+                letter,\MessageBreak appears as question mark}\fi
+                \NAT@hyper@{\NAT@exlab}%
+              \else
+                \unskip\NAT@spacechar
+                \NAT@hyper@{\NAT@date}%
+              \fi
+          \else
+            \@citea\NAT@hyper@{%
+              \NAT@nmfmt{\NAT@nm}%
+              \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+                {\@citeb\@extra@b@citeb}%
+              \NAT@date
+            }%
+          \fi
+          \fi
+        \or\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}}%
+        \or\@citea\NAT@hyper@{\NAT@date}%
+        \or\@citea\NAT@hyper@{\NAT@alias}%
+        \fi
+        \if\relax\NAT@date\relax
+          \NAT@def@citea
+        \else
+          \NAT@def@citea@close
+        \fi
+      \fi
+      }}\ifNAT@swa\else
+%    \end{macrocode}
+%
+% 将页码放在括号外边，并且置于上标。
+%    \begin{macrocode}
+        % \if*#2*\else\NAT@cmt#2\fi
+        \if\relax\NAT@date\relax\else\NAT@@close\fi
+        \if*#2*\else\textsuperscript{#2}\fi
+      \fi}{#1}{#2}}
 %    \end{macrocode}
 %
 % 参考文献表的正文部分用五号字。
@@ -4199,46 +4373,75 @@
 %
 % 复用 \pkg{natbib} 的 \texttt{thebibliography} 环境，调整距离。
 %    \begin{macrocode}
-\renewcommand\bibsection{\thu@chapter*{\bibname}}
+  \renewcommand\bibsection{\thu@chapter*{\bibname}}
   \newcommand\thu@set@bibliography@format{%
-  \ifthu@degree@bachelor
-    \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
-    \setlength{\bibsep}{6bp}%
-    \ifthu@language@chinese
-      \setlength{\bibhang}{21bp}%
+    \ifthu@degree@bachelor
+      \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
+      \setlength{\bibsep}{6bp}%
+      \ifthu@language@chinese
+        \setlength{\bibhang}{21bp}%
+      \else
+        \setlength{\bibhang}{0.5in}%
+      \fi
     \else
-      \setlength{\bibhang}{0.5in}%
+      \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+      \setlength{\bibsep}{3bp}%
+      \setlength{\bibhang}{21bp}%
     \fi
-  \else
-    \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
-    \setlength{\bibsep}{3bp}%
-    \setlength{\bibhang}{21bp}%
-  \fi
-}
-\thu@set@bibliography@format
-\thu@option@hook{degree}{\thu@set@bibliography@format}
-\thu@option@hook{language}{\thu@set@bibliography@format}
+  }
+  \thu@set@bibliography@format
+  \thu@option@hook{degree}{\thu@set@bibliography@format}
+  \thu@option@hook{language}{\thu@set@bibliography@format}
 %    \end{macrocode}
 %
 % 参考文献表的编号居左，宽度 1 cm。
 %    \begin{macrocode}
-\def\@biblabel#1{[#1]\hfill}
-\renewcommand\NAT@bibsetnum[1]{%
-  % \settowidth\labelwidth{\@biblabel{#1}}%
-  % \setlength{\leftmargin}{\labelwidth}%
-  % \addtolength{\leftmargin}{\labelsep}%
-  \setlength{\leftmargin}{1cm}%
-  \setlength{\itemindent}{\z@}%
-  \setlength{\labelsep}{0.1cm}%
-  \setlength{\labelwidth}{0.9cm}%
-  \setlength{\itemsep}{\bibsep}
-  \setlength{\parsep}{\z@}%
-  \ifNAT@openbib
-    \addtolength{\leftmargin}{\bibindent}%
-    \setlength{\itemindent}{-\bibindent}%
-    \setlength{\listparindent}{\itemindent}%
-    \setlength{\parsep}{0pt}%
-  \fi
+  \def\@biblabel#1{[#1]\hfill}
+  \renewcommand\NAT@bibsetnum[1]{%
+    % \settowidth\labelwidth{\@biblabel{#1}}%
+    % \setlength{\leftmargin}{\labelwidth}%
+    % \addtolength{\leftmargin}{\labelsep}%
+    \setlength{\leftmargin}{1cm}%
+    \setlength{\itemindent}{\z@}%
+    \setlength{\labelsep}{0.1cm}%
+    \setlength{\labelwidth}{0.9cm}%
+    \setlength{\itemsep}{\bibsep}
+    \setlength{\parsep}{\z@}%
+    \ifNAT@openbib
+      \addtolength{\leftmargin}{\bibindent}%
+      \setlength{\itemindent}{-\bibindent}%
+      \setlength{\listparindent}{\itemindent}%
+      \setlength{\parsep}{0pt}%
+    \fi
+  }
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{biblatex} 宏包}
+%
+%    \begin{macrocode}
+\AtEndOfPackageFile*{biblatex}{
+  \DeclareRobustCommand\inlinecite{\parencite}
+  \defbibheading{bibliography}[\bibname]{\thu@chapter*{\bibname}}
+  \newcommand\thu@set@bibliography@format{%
+    \ifthu@degree@bachelor
+      \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
+      \setlength{\bibitemsep}{6bp}%
+      \ifthu@language@chinese
+        \setlength{\bibhang}{21bp}%
+      \else
+        \setlength{\bibhang}{0.5in}%
+      \fi
+    \else
+      \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+      \setlength{\bibitemsep}{3bp}%
+      \setlength{\biblabelsep}{0.1cm}%
+      \setlength{\bibhang}{21bp}%
+    \fi
+  }
+  \thu@set@bibliography@format
+  \thu@option@hook{degree}{\thu@set@bibliography@format}
+  \thu@option@hook{language}{\thu@set@bibliography@format}
 }
 %    \end{macrocode}
 %

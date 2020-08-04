@@ -1,0 +1,20 @@
+\ProvidesFile{thuthesis-author-year.bbx}[2020/08/01 v1.0 ThuThesis biblatex
+  bibliography style]
+
+\RequireBibliographyStyle{gb7714-2015ay}
+
+\ExecuteBibliographyOptions{
+  gbnamefmt = lowercase,
+  gbpub     = false,
+  gbalign   = left,
+}
+
+\defbibenvironment{bibliography}
+  {\list
+     {}
+     {\setlength{\leftmargin}{\bibhang}%
+      \setlength{\itemindent}{-\leftmargin}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}}
+  {\endlist}
+  {\item}

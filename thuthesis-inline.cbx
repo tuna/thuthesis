@@ -1,0 +1,18 @@
+\ProvidesFile{thuthesis-inline.cbx}[2020/08/01 v1.0 ThuThesis biblatex
+  citation style]
+
+\RequireCitationStyle{gb7714-2015}
+
+\ExecuteBibliographyOptions{
+  autocite = inline ,
+}
+
+\DeclareCiteCommand{\cite}%[\mkbibbrackets]
+  {[\usebibmacro{cite:init}%]
+   \usebibmacro{prenote}}%
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}
+  {}
+  {%[
+  \usebibmacro{cite:dump}]%
+   \mkbibsuperscript{\printfield{postnote}}}

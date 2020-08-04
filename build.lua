@@ -11,8 +11,8 @@ docfiles = {
   "thusetup.tex",
   "data", "figures", "ref",
 }
-installfiles = {"*.cls", "*.bst", "tsinghua-name-bachelor.pdf"}
-sourcefiles = {"*.dtx", "*.ins", "*.bst", "tsinghua-name-bachelor.pdf"}
+installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "tsinghua-name-bachelor.pdf"}
+sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "tsinghua-name-bachelor.pdf"}
 tagfiles = {"*.dtx", "CHANGELOG.md", "package.json"}
 textfiles = {"*.md","LICENSE"}
 typesetdemofiles = {"thuthesis-example.tex", "spine.tex"}
