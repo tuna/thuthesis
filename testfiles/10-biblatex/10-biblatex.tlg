@@ -79,9 +79,6 @@ Completed box being shipped out [1]
 ..\vbox(674.33032+0.0)x426.79135, glue set 642.18674fil
 ...\write-{}
 ...\special{color push gray 0}
-...\write1{\@writefile{toc}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse \ETC.}
-...\write1{\@writefile{lof}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse \ETC.}
-...\write1{\@writefile{lot}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse \ETC.}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnote@aux }[2]{}}
 ...\write1{\protect \FN@pp@footnotehinttrue }
@@ -921,7 +918,10 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Bone
+....\TU/texgyretermes(0)/m/n/10.53937 B
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 one
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -1019,7 +1019,10 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Proceedings
+....\TU/texgyretermes(0)/m/n/10.53937 P
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 roceedings
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -1390,7 +1393,10 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 GB3100-3102.
+....\TU/texgyretermes(0)/m/n/10.53937 G
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 B3100-3102.
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
@@ -1480,7 +1486,7 @@ Completed box being shipped out [2]
 ...\glue 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 6.99615
-...\hbox(7.1984+2.29756)x398.33861, glue set 0.53513, shifted 28.45274
+...\hbox(7.1984+2.29756)x398.33861, glue set 0.51361, shifted 28.45274
 ....\hbox(6.97707+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -1541,7 +1547,10 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Rotational
+....\TU/texgyretermes(0)/m/n/10.53937 R
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 otational
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -1593,8 +1602,8 @@ Completed box being shipped out [2]
 ....\kern 0.0002
 ....\glue 2.63484 plus 1.32532 minus 0.87303
 ....\TU/texgyretermes(0)/m/n/10.53937 J
-....\kern -0.00021
-....\kern 0.00021
+....\kern -0.0002
+....\kern 0.0002
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 Chem
 ....\kern -0.00021
@@ -1687,7 +1696,10 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Laser
+....\TU/texgyretermes(0)/m/n/10.53937 L
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 aser
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -1784,7 +1796,7 @@ Completed box being shipped out [2]
 ....\kern 0.0002
 ....\glue 2.63484 plus 1.32532 minus 0.87303
 ....\TU/texgyretermes(0)/m/n/10.53937 J
-....\kern -0.00021
+....\kern -0.0002
 ....\kern 0.0
 ....\glue(\rightskip) 0.0
 ...\penalty 15000
@@ -1865,7 +1877,10 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 The
+....\TU/texgyretermes(0)/m/n/10.53937 T
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 he
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -1914,8 +1929,8 @@ Completed box being shipped out [2]
 ....\kern 0.0002
 ....\glue 2.63484 plus 1.32532 minus 0.87303
 ....\TU/texgyretermes(0)/m/n/10.53937 J
-....\kern -0.00021
-....\kern 0.00021
+....\kern -0.0002
+....\kern 0.0002
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 Chem
 ....\kern -0.00021
@@ -2099,7 +2114,7 @@ Completed box being shipped out [2]
 ...\glue 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 7.37556
-...\hbox(7.1984+2.29756)x398.33861, glue set 0.92552, shifted 28.45274
+...\hbox(7.1984+2.29756)x398.33861, glue set 0.8656, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -2176,7 +2191,10 @@ Completed box being shipped out [2]
 ....\kern -0.0002
 ....\kern 0.0002
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Two-step
+....\TU/texgyretermes(0)/m/n/10.53937 T
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 wo-step
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -2194,7 +2212,7 @@ Completed box being shipped out [2]
 ....\glue(\rightskip) 0.0
 ...\penalty 25000
 ...\glue(\baselineskip) 6.56404
-...\hbox(7.1984+2.29756)x398.33861, glue set 161.15439fil, shifted 28.45274
+...\hbox(7.1984+2.29756)x398.33861, glue set 161.15437fil, shifted 28.45274
 ....\TU/texgyretermes(0)/m/n/10.53937 excited
 ....\kern -0.00021
 ....\kern 0.00021
@@ -2223,7 +2241,10 @@ Completed box being shipped out [2]
 ....\kern -0.0002
 ....\kern 0.0002
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Phys
+....\TU/texgyretermes(0)/m/n/10.53937 P
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 hys
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -2328,7 +2349,10 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Scanning
+....\TU/texgyretermes(0)/m/n/10.53937 S
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 canning
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -2368,8 +2392,8 @@ Completed box being shipped out [2]
 ....\kern 0.0002
 ....\glue 2.63484 plus 1.32532 minus 0.87303
 ....\TU/texgyretermes(0)/m/n/10.53937 J
-....\kern -0.00021
-....\kern 0.00021
+....\kern -0.0002
+....\kern 0.0002
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 Opt
 ....\kern -0.00021
@@ -2477,8 +2501,8 @@ Completed box being shipped out [2]
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
 ....\TU/texgyretermes(0)/m/n/10.53937 A
-....\kern -0.00021
-....\kern 0.00021
+....\kern -0.0002
+....\kern 0.0002
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 study
 ....\kern -0.00021
@@ -2531,7 +2555,10 @@ Completed box being shipped out [2]
 ....\kern -0.0002
 ....\kern 0.0002
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Opt
+....\TU/texgyretermes(0)/m/n/10.53937 O
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 pt
 ....\kern -0.00021
 ....\kern 0.0
 ....\glue(\rightskip) 0.0
@@ -2609,7 +2636,10 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Laser
+....\TU/texgyretermes(0)/m/n/10.53937 L
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 aser
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -2699,8 +2729,8 @@ Completed box being shipped out [2]
 ....\kern 0.0002
 ....\glue 2.63484 plus 1.32532 minus 0.87303
 ....\TU/texgyretermes(0)/m/n/10.53937 J
-....\kern -0.00021
-....\kern 0.00021
+....\kern -0.0002
+....\kern 0.0002
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 Chem
 ....\kern -0.00021
@@ -2782,13 +2812,7 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32137 minus 0.87564
-....\TU/texgyretermes(0)/m/n/10.53937 Demtr
-....\kern -0.0002
-....\kern 0.0002
-....\TU/texgyretermes(0)/m/n/10.53937 ^^f6
-....\kern -0.0002
-....\kern 0.0002
-....\TU/texgyretermes(0)/m/n/10.53937 der
+....\TU/texgyretermes(0)/m/n/10.53937 Demtr^^f6der
 ....\kern -0.0002
 ....\kern 0.0002
 ....\penalty 25
@@ -2799,7 +2823,10 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Experimental
+....\TU/texgyretermes(0)/m/n/10.53937 E
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 xperimental
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -2857,7 +2884,10 @@ Completed box being shipped out [2]
 ...\penalty 25000
 ...\glue(\baselineskip) 6.57457
 ...\hbox(7.1984+2.29756)x398.33861, glue set 256.92543fil, shifted 28.45274
-....\TU/texgyretermes(0)/m/n/10.53937 Chem
+....\TU/texgyretermes(0)/m/n/10.53937 C
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 hem
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -2896,7 +2926,7 @@ Completed box being shipped out [2]
 ...\glue 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 6.51135
-...\hbox(7.25108+2.29756)x398.33861, glue set 0.49982, shifted 28.45274
+...\hbox(7.25108+2.29756)x398.33861, glue set 0.48807, shifted 28.45274
 ....\hbox(7.20892+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -2941,7 +2971,10 @@ Completed box being shipped out [2]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Perturbations
+....\TU/texgyretermes(0)/m/n/10.53937 P
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 erturbations
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -2993,8 +3026,8 @@ Completed box being shipped out [2]
 ....\kern 0.0002
 ....\glue 2.63484 plus 1.32532 minus 0.87303
 ....\TU/texgyretermes(0)/m/n/10.53937 J
-....\kern -0.00021
-....\kern 0.00021
+....\kern -0.0002
+....\kern 0.0002
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 Chem
 ....\kern -0.00021
@@ -3860,7 +3893,10 @@ Completed box being shipped out [3]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 GB/T
+....\TU/texgyretermes(0)/m/n/10.53937 G
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 B/T
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -4115,7 +4151,7 @@ Completed box being shipped out [3]
 ...\glue 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 6.96454
-...\hbox(7.1984+2.29756)x398.33861, glue set 0.05182, shifted 28.45274
+...\hbox(7.1984+2.29756)x398.33861, glue set 0.02638, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -4147,7 +4183,10 @@ Completed box being shipped out [3]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Factors
+....\TU/texgyretermes(0)/m/n/10.53937 F
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 actors
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -4270,7 +4309,10 @@ Completed box being shipped out [3]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Probability,
+....\TU/texgyretermes(0)/m/n/10.53937 P
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 robability,
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32137 minus 0.87564
@@ -4485,7 +4527,7 @@ Completed box being shipped out [3]
 ...\glue 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 6.9013
-...\hbox(7.20892+2.29756)x398.33861, glue set 0.73557, shifted 28.45274
+...\hbox(7.20892+2.29756)x398.33861, glue set 0.7178, shifted 28.45274
 ....\hbox(7.20892+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -4530,7 +4572,10 @@ Completed box being shipped out [3]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Pathogenic
+....\TU/texgyretermes(0)/m/n/10.53937 P
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 athogenic
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -4571,7 +4616,7 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0
 ...\penalty 15000
 ...\glue(\baselineskip) 6.56404
-...\hbox(7.1984+2.29756)x398.33861, glue set - 0.72728, shifted 28.45274
+...\hbox(7.1984+2.29756)x398.33861, glue set - 0.74731, shifted 28.45274
 ....\TU/texgyretermes(0)/m/n/10.53937 W
 ....\kern -0.0002
 ....\kern 0.0002
@@ -4606,7 +4651,10 @@ Completed box being shipped out [3]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Pathologic
+....\TU/texgyretermes(0)/m/n/10.53937 P
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 athologic
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -5106,7 +5154,10 @@ Completed box being shipped out [3]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Science
+....\TU/texgyretermes(0)/m/n/10.53937 S
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 cience
 ....\kern -0.0002
 ....\kern 0.0002
 ....\penalty 10000
@@ -5861,7 +5912,7 @@ Completed box being shipped out [3]
 ...\glue 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.62973
-...\hbox(7.1984+2.29756)x398.33861, glue set 0.65259, shifted 28.45274
+...\hbox(7.1984+2.29756)x398.33861, glue set 0.63661, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -5901,7 +5952,10 @@ Completed box being shipped out [3]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 About
+....\TU/texgyretermes(0)/m/n/10.53937 A
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 bout
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
@@ -6153,7 +6207,10 @@ Completed box being shipped out [3]
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.32532 minus 0.87303
-....\TU/texgyretermes(0)/m/n/10.53937 Project
+....\TU/texgyretermes(0)/m/n/10.53937 P
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 roject
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
