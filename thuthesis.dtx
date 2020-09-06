@@ -2848,7 +2848,7 @@
       \thu@pdfbookmark{0}{#3}%
     }{%
       \thu@phantomsection
-      \addcontentsline{toc}{chapter}{#3}%
+      \addcontentsline{toc}{chapter}{#2}%
     }%
   }{%
     \thu@phantomsection
@@ -3904,8 +3904,7 @@
 % \end{environment}
 %
 % \begin{environment}{abstract*}
-% 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。研究生的英文摘要要求
-% 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连续。
+% 英文摘要部分的标题为 \textbf{Abstract}，用 Arial 体三号字。
 % 摘要内容用小四号 Times New Roman。
 %    \begin{macrocode}
 \newenvironment{abstract*}{%
@@ -3916,7 +3915,7 @@
   \ifthu@degree@graduate
     \begingroup
       \ctexset{chapter/format+=\bfseries}%
-      \thu@chapter*{\thu@abstract@name@en}%
+      \thu@chapter*[\sffamily\bfseries\thu@abstract@name@en]{\thu@abstract@name@en}%
     \endgroup
   \else
     \thu@chapter*[]{\thu@abstract@name@en}%
