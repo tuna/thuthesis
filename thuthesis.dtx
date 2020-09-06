@@ -2192,34 +2192,32 @@
   \ifthu@language@chinese
     \ctexset{
       chapter/name   = {第,章},
-      appendixname   = {附录},
-      contentsname   = {目\hspace{\ccwd}录},
-      bibname        = {参考文献},
-      indexname      = {索引},
     }%
-    \def\listequationname{公式索引}%
+    \def\bibname{参考文献}%
+    \def\appendixname{附录}%
+    \def\indexname{索引}%
     \def\thu@acknowledgements@name{致\hspace{\ccwd}谢}%
     \ifthu@degree@bachelor
-      \ctexset{
-        listfigurename = {插图索引},
-        listtablename  = {表格索引},
-      }%
-      \def\thu@denotation@name{主要符号对照表}%
+      \def\contentsname{目\hspace{\ccwd}录}%
+      \def\listfigurename{插图索引}%
+      \def\listtablename{表格索引}%
       \def\thu@list@algorithm@name{算法索引}%
+      \def\listequationname{公式索引}%
+      \def\thu@denotation@name{主要符号对照表}%
       \def\thu@resume@name{在学期间参加课题的研究成果}%
     \else
-      \ctexset{
-        listfigurename = {插图清单},
-        listtablename  = {附表清单},
-      }%
+      \def\listfigurename{插图清单}%
+      \def\listtablename{附表清单}%
       \def\thu@list@figure@table@name{插图和附表清单}%
+      \def\thu@list@algorithm@name{算法清单}%
+      \def\listequationname{公式清单}%
       \ifthu@degree@graduate
+        \def\contentsname{目\hspace{\ccwd}录}%
+        \def\thu@toc@contents@name{目录}%
         \def\thu@denotation@name{符号和缩略语说明}%
         \def\thu@resume@name{个人简历、在学期间完成的相关学术成果}%
       \else  % degree = postdoc
-        \ctexset{
-          contentsname   = {目\hspace{2\ccwd}次},
-        }%
+        \def\contentsname{目\hspace{2\ccwd}次}%
         \def\thu@denotation@name{符号表}%
         \def\thu@resume@name{个人简历、发表的学术论文与科研成果}%
       \fi
@@ -2228,21 +2226,23 @@
     \ifthu@language@english
       \ctexset{
         chapter/name   = \chaptername\space,
-        appendixname   = Appendix,
-        contentsname   = Contents,
-        listfigurename = List of Figures,
-        listtablename  = List of Tables,
-        bibname        = Bibliography,
-        indexname      = Index,
       }%
-      \def\thu@denotation@name{Nomenclature}%
+      \def\contentsname{Contents}%
+      \def\listfigurename{List of Figures}%
+      \def\listtablename{List of Tables}%
+      \def\thu@list@figure@table@name{List of Figures and Tables}%
       \def\thu@list@algorithm@name{List of Algorithms}%
       \def\listequationname{List of Equations}%
+      \def\thu@denotation@name{Nomenclature}%
+      \def\bibname{Bibliography}%
+      \def\appendixname{Appendix}%
       \def\thu@acknowledgements@name{Acknowledgements}%
+      \def\indexname{Index}%
       \ifthu@degree@bachelor
         \def\thu@resume@name{Research Achievements}%
       \else
-        \def\thu@resume@name{Resume, Publications and Research Achievements}%
+        \def\thu@toc@contents@name{Contents}%
+        \def\thu@resume@name{Resume and Academic Achievements}%
       \fi
     \fi
   \fi
@@ -2885,7 +2885,7 @@
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
   \ifthu@degree@graduate
-    \thu@chapter*{\contentsname}%
+    \thu@chapter*[\thu@toc@contents@name]{\contentsname}%
   \else
     \thu@chapter*[]{\contentsname}%
   \fi
