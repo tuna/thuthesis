@@ -24,7 +24,7 @@
 % 使用授权的说明
 \copyrightpage
 % 将签字扫描后授权文件 scan-copyright.pdf 替换原始页面
-% \copyrightpage[scan-copyright.pdf]
+% \copyrightpage[file=scan-copyright.pdf]
 
 \frontmatter
 \input{data/abstract}
@@ -65,8 +65,12 @@
 
 % 声明
 \statement
+% 生成的声明页是否要插入页眉和页脚（默认 empty）
+% 仅在需要进行电子签名时，才需要打开这一选项
+% 插入的扫描声明页总是会生成页眉（研究生）和页脚，不受这一选项影响
+% \statement[page-style=plain]
 % 将签字扫描后的声明文件 scan-statement.pdf 替换原始页面
-% \statement[scan-statement.pdf]
+% \statement[file=scan-statement.pdf]
 
 % 个人简历、在学期间完成的相关学术成果
 \input{data/resume}
@@ -78,6 +82,6 @@
 \input{data/resolution}
 
 % 本科生的综合论文训练记录表（扫描版）
-% \record{scan-record.pdf}
+% \record{file=scan-record.pdf}
 
 \end{document}

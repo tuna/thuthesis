@@ -572,14 +572,30 @@
 %
 % \subsection{前言部分}
 %
+% \subsubsection{指导小组、公开评阅人和答辩委员会名单}
+% \myentry{答辩委员会名单}
+% \DescribeEnv{committee}
+% 学位论文指导小组、公开评阅人和答辩委员会名单可以由 \env{committee} 环境生成，
+% 其中的可选参数可以使用 \option{name} 根据是有无指导小组设置合适的标题，比如
+% \begin{latex}
+%   \begin{committee}[name={学位论文公开评阅人和答辩委员会名单}]
+%     ...
+%   \end{committee}
+% \end{latex}
+%
+% 答辩委员会名单中的表格使用 LaTeX 生成可能略麻烦，也可以导入 Word 版转成的 PDF 文件，
+% \begin{latex}
+%   \begin{committee}[file=figures/committee.pdf]
+%   \end{committee}
+% \end{latex}
+%
 % \subsubsection{授权说明}
 % \myentry{授权说明}
 % \DescribeMacro{\copyrightpage}
-% 生成授权说明。用法：\cs{copyrightpage}\oarg{file}。
 % 可选参数为扫描得到的 PDF 文件名，例如：
 % \begin{latex}
 %   % 将签字扫描后授权文件 scan-copyright.pdf 替换原始页面
-%   \copyrightpage[scan-copyright.pdf]
+%   \copyrightpage[file=scan-copyright.pdf]
 % \end{latex}
 %
 % \subsubsection{摘要}
@@ -874,19 +890,17 @@
 % 如果使用声明扫描页，将可选参数指定为扫描后的 PDF 文件名，例如：
 %
 % \begin{latex}
-%   \statement[scan-statement.pdf]
+%   \statement[file=scan-statement.pdf]
 % \end{latex}
 %
 % 由于打印版和电子版有空白页的差别，声明的页码可能不同。
-% 所以编译声明页时默认不加页眉和页脚，
+% 所以编译声明页时默认不加页眉和页脚（\texttt{page-style=empty}），
 % 在签字后插入扫描页时再补上页眉和页脚，防止页码冲突。
 %
-% \DescribeOption{statement-page-style}
-% 如果需要编译时也加页码（如直接对电子版进行签名而不是插入扫描页），可以使用在 \cs{statement} 前设置
+% 如果需要编译时也加页码（如直接对电子版进行签名而不是插入扫描页），
+% 可以使用在 \cs{statement} 命令设置
 % \begin{latex}
-%   \thusetup{
-%     statement-page-style = plain,
-%   }
+%   \statement[page-style=plain]
 % \end{latex}
 % 注意，插入扫描页总是会加页码，不受该选项控制。
 %
@@ -1019,7 +1033,7 @@
 % 本科生需要在最后附上综合论文训练记录表，可以用如下命令：
 %
 % \begin{latex}
-%   \record{scan-record.pdf}
+%   \record{file=scan-record.pdf}
 % \end{latex}
 %
 %
@@ -3693,9 +3707,26 @@
 % \begin{environment}{committee}
 % 学位论文指导小组、公开评阅人和答辩委员会名单。
 %    \begin{macrocode}
-\newenvironment{committee}[1][学位论文指导小组、公开评阅人和答辩委员会名单]{%
+\def\thu@committee@name{学位论文指导小组、公开评阅人和答辩委员会名单}
+\newenvironment{committee}[1][]{%
   \cleardoublepage
-  \thu@chapter*[]{#1}%
+  \let\thu@committee@file\@empty
+  \kv@define@key{thu@committee}{name}{\let\thu@committee@name\kv@value}%
+  \kv@define@key{thu@committee}{file}{\let\thu@committee@file\kv@value}%
+  \kv@set@family@handler{thu@committee}{%
+    \ifx\kv@value\relax
+      \let\thu@committee@file\kv@key
+    \else
+      \kv@handled@false
+    \fi
+  }%
+  \kvsetkeys{thu@committee}{#1}%
+  \ifx\thu@committee@file\@empty
+    \thu@chapter*[]{\thu@committee@name}%
+  \else
+    \thu@pdfbookmark{0}{\thu@committee@name}%
+    \includepdf{\thu@committee@file}%
+  \fi
   \thispagestyle{empty}%
   \ctexset{
     section = {
@@ -3703,7 +3734,7 @@
       numbering = false,
       afterindent = false,
     },
-  }
+  }%
 }{%
 }
 %    \end{macrocode}
@@ -3760,7 +3791,15 @@
       \fi%
     \else
       \thu@phantomsection
-      \includepdf{#1}%
+      \kv@define@key{thu@copyright}{file}{\includepdf{\kv@value}}%
+      \kv@set@family@handler{thu@copyright}{%
+        \ifx\kv@value\relax
+          \includepdf{\kv@key}%
+        \else
+          \kv@handled@false
+        \fi
+      }%
+      \kvsetkeys{thu@copyright}{#1}%
     \fi
   \fi
 }
@@ -3958,9 +3997,9 @@
   \fi
 }
 %    \end{macrocode}
-%
 % \end{environment}
-% \begin{environment}{statement}
+%
+% \begin{macro}{statement}
 % 声明部分（支持扫描文件替换）
 %    \begin{macrocode}
 \thu@define@key{
@@ -3982,21 +4021,34 @@
   },
 }
 \thu@option@hook{statement-page-number}{%
+  \ifthu@statement@page@number@false
+    \thusetup{statement-page-style=empty}%
+  \else
+    \thusetup{statement-page-style=plain}%
+  \fi
   \thu@warning{%
     The "statement-page-number" option is deprecated.
-    Use "statement-page-style" instead%
+    Use "page-style" option of \protect\statement command instead%
   }%
 }
 \newcommand\statement[1][]{%
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
-  \def\thu@@tmp{#1}%
-  \ifx\thu@@tmp\@empty
-    \thu@chapter*{\thu@statement@name}%
-    \ifthu@statement@page@number@false
-      \thispagestyle{\thu@statement@page@style}%
+  \let\thu@statement@file\@empty
+  \kv@define@key{thu@statement}{page-style}{\thusetup{statement-page-style=##1}}%
+  \kv@define@key{thu@statement}{file}{\let\thu@statement@file\kv@value}%
+  \kv@set@family@handler{thu@statement}{%
+    \ifx\kv@value\relax
+      \let\thu@statement@file\kv@key
+    \else
+      \kv@handled@false
     \fi
+  }%
+  \kvsetkeys{thu@statement}{#1}%
+  \ifx\thu@statement@file\@empty
+    \thu@chapter*{\thu@statement@name}%
+    \thispagestyle{\thu@statement@page@style}%
     \thu@statement@text\par
     \ifthu@degree@graduate
       \vskip 2cm%
@@ -4010,14 +4062,14 @@
       \markboth{\thu@statement@name}{}%
       \thu@phantomsection
       \addcontentsline{toc}{chapter}{\thu@statement@name}%
-    }]{#1}%
+    }]{\thu@statement@file}%
   \fi
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
 }
 %    \end{macrocode}
-% \end{environment}
+% \end{macro}
 %
 % 兼容旧版本保留 \env{acknowledgement}。
 %    \begin{macrocode}
@@ -4686,9 +4738,22 @@
 %
 %    \begin{macrocode}
 \newcommand{\record}[1]{%
+  \let\thu@record@file\@empty
+  \kv@define@key{thu@record}{file}{\let\thu@record@file\kv@value}%
+  \kv@set@family@handler{thu@record}{%
+    \ifx\kv@value\relax
+      \let\thu@record@file\kv@key
+    \else
+      \kv@handled@false
+    \fi
+  }%
+  \kvsetkeys{thu@record}{#1}%
+  \ifx\thu@record@file\@empty
+    \thu@error{File path of \protect\record\space is required}
+  \fi
   \cleardoublepage
   \thu@pdfbookmark{0}{综合论文训练记录表}%
-  \includepdf[pages=-]{#1}%
+  \includepdf[pages=-]{\thu@record@file}%
 }
 %    \end{macrocode}
 %
