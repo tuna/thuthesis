@@ -64,7 +64,7 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 395.9517fil
+..\vbox(645.87758+0.0)x421.10089, glue set 387.92258fil
 ...\write-{}
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
@@ -583,25 +583,22 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\glue 12.045
+...\glue(\baselineskip) 17.75032
+...\hbox(0.0+0.0)x0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 8.41545
+...\glue(\baselineskip) 10.74013
 ...\hbox(9.33487+2.20422)x421.10089, glue set 37.52792fil
 ....\hbox(0.0+0.0)x24.09
-....\hbox(9.23851+1.91515)x48.18
-.....\TU/FandolSong(0)/b/n/12.045 关
-.....\glue 0.0 plus 0.73799
-.....\TU/FandolSong(0)/b/n/12.045 键
-.....\glue 0.0 plus 0.73799
-.....\TU/FandolSong(0)/b/n/12.045 词
-.....\penalty 10000
-.....\TU/FandolSong(0)/b/n/12.045 ：
-.....\rule(0.0+0.0)x-8.09424
-.....\kern 0.00049
-.....\kern -0.00049
-.....\kern -0.99649
-.....\kern 0.99649
-.....\glue 8.09424 minus 6.02249
+....\TU/FandolSong(0)/b/n/12.045 关
+....\glue 0.0 plus 0.73799
+....\TU/FandolSong(0)/b/n/12.045 键
+....\glue 0.0 plus 0.73799
+....\TU/FandolSong(0)/b/n/12.045 词
+....\penalty 10000
+....\TU/FandolSong(0)/b/n/12.045 ：
+....\rule(0.0+0.0)x-8.09424
+....\glue 8.09424 minus 6.02249
+....\glue 0.0 plus 0.73799
 ....\TU/FandolSong(0)/m/n/12.045 气
 ....\glue 0.0 plus 0.73799
 ....\TU/FandolSong(0)/m/n/12.045 候
@@ -647,10 +644,10 @@ Completed box being shipped out [1]
 ....\TU/texgyretermes(0)/m/n/12.045 CERES-Wheat
 ....\kern -0.0002
 ....\kern 0.0002
+....\write1{\protect \FN@pp@footnotehinttrue }
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.20422
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0

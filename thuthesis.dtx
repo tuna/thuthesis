@@ -3858,19 +3858,6 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\thu@put@keywords}
-% 排版关键字。
-%    \begin{macrocode}
-\newbox\thu@kw
-\newcommand\thu@put@keywords[2]{%
-  \begingroup
-    \setbox\thu@kw=\hbox{#1}
-    \ifthu@degree@bachelor\indent\else\noindent\hangindent\wd\thu@kw\hangafter1\fi%
-    \box\thu@kw#2\par
-  \endgroup}
-%    \end{macrocode}
-% \end{macro}
-%
 % \begin{environment}{abstract}
 % 中文摘要部分的标题为“\textbf{摘要}”，用黑体三号字。
 % 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用 Times New Roman 体，
@@ -3891,10 +3878,19 @@
 %
 % 每个关键词之间空两个汉字符宽度， 且为悬挂缩进。
 %    \begin{macrocode}
-  \ifthu@degree@doctor\vfill\else\vskip12bp\fi
-  \thu@put@keywords{\textbf{关键词：}}{%
-    \thu@clist@use{\thu@keywords}{；}%
-  }%
+  \par
+  \ifthu@degree@graduate
+    \vspace*{\stretch{4}}%
+    \noindent
+    \textsf{关键词：}%
+  \else
+    \null\par
+    \textbf{关键词：}%
+  \fi
+  \thu@clist@use{\thu@keywords}{；}%
+  \ifthu@degree@graduate
+    \vspace*{\stretch{1}}%
+  \fi
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
@@ -3921,12 +3917,19 @@
     \thu@chapter*[]{\thu@abstract@name@en}%
   \fi
 }{%
-  \ifthu@degree@doctor\vfill\else\vskip12bp\fi
-  \thu@put@keywords{%
-    \textbf{\ifthu@degree@bachelor Keywords:\else Key Words:\fi\enskip}%
-  }{%
-    \thu@clist@use{\thu@keywords@en}{; }%
-  }%
+  \par
+  \ifthu@degree@graduate
+    \vspace*{\stretch{4}}%
+    \noindent
+    \textbf{Key Words:}\space
+  \else
+    \null\par
+    \textbf{Keywords:}\space
+  \fi
+  \thu@clist@use{\thu@keywords@en}{; }%
+  \ifthu@degree@graduate
+    \vspace*{\stretch{1}}%
+  \fi
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
