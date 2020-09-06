@@ -546,7 +546,7 @@
 % \begin{latex}
 %   \thusetup{
 %     secret-year  = 10,
-%     secret-level = {内部},
+%     secret-level = {秘密},
 %   }
 % \end{latex}
 %
@@ -1338,6 +1338,17 @@
 %
 % 论文的主要语言。
 %    \begin{macrocode}
+  main-language = {
+    name = main@language,
+    choices = {
+      chinese,
+      english,
+    },
+  },
+%    \end{macrocode}
+%
+% 用于设置局部语言。
+%    \begin{macrocode}
   language = {
     choices = {
       chinese,
@@ -1543,6 +1554,7 @@
 % \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
 %    \begin{macrocode}
 \RequirePackage{xeCJKfntef}
+\RequirePackage{soul}
 %    \end{macrocode}
 %
 % 表格控制
@@ -2206,14 +2218,15 @@
 % 保存为论文的主要语言；
 % \cs{thu@reset@main@language} 则用于正文中恢复为主要语言。
 %    \begin{macrocode}
-\let\thu@main@language\thu@language
 \thu@option@hook{language}{%
   \ifx\@begindocumenthook\@undefined\else
+    \thusetup{main-language=\thu@language}%
     \let\thu@main@language\thu@language
   \fi
 }
-\newcommand\thu@reset@main@language{
-  \thusetup{language = \thu@main@language}
+\newcommand\thu@reset@main@language{%
+    \thusetup{language = \thu@main@language}%
+    \let\thu@language\thu@main@language
 }
 %    \end{macrocode}
 %
@@ -2221,7 +2234,7 @@
 % \option{language} 时会修改，而在正文局部切换语言时则不变。
 %    \begin{macrocode}
 \newcommand\thu@set@chapter@names{%
-  \ifthu@language@chinese
+  \ifthu@main@language@chinese
     \ctexset{
       chapter/name   = {第,章},
     }%
@@ -2255,7 +2268,7 @@
       \fi
     \fi
   \else
-    \ifthu@language@english
+    \ifthu@main@language@english
       \ctexset{
         chapter/name   = \chaptername\space,
       }%
@@ -2281,11 +2294,7 @@
 }
 \thu@set@chapter@names
 \thu@option@hook{degree}{\thu@set@chapter@names}
-\thu@option@hook{language}{%
-  \ifx\@begindocumenthook\@undefined\else
-    \thu@set@chapter@names
-  \fi
-}
+\thu@option@hook{main-language}{\thu@set@chapter@names}
 %    \end{macrocode}
 %
 % 这部分名称在正文中局部地修改语言时会发生变化，比如英文摘要、
@@ -3247,6 +3256,7 @@
 % layout 一样，所以按照 \cs{thu@discipline}（工程领域）是否为空来区分“工程硕士”。
 %    \begin{macrocode}
 \newcommand\thu@titlepage{%
+  \thusetup{language = chinese}%
   \ifthu@degree@graduate
     \ifthu@degree@type@academic
       \thu@titlepage@graduate@academic
@@ -3268,6 +3278,7 @@
       \fi
     \fi
   \fi
+  \thu@reset@main@language
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3474,11 +3485,13 @@
     hmargin = 3.6cm,
   }%
   \thispagestyle{empty}%
+  \thusetup{language = english}%
   \ifthu@degree@type@academic
     \thu@titlepage@en@graduate@academic
   \else
     \thu@titlepage@en@graduate@professional
   \fi
+  \thu@reset@main@language
   \clearpage
   \restoregeometry
 }
@@ -3595,63 +3608,75 @@
     hmargin = 3.17cm,
   }%
   \thispagestyle{empty}%
-  \null\vskip 0.44cm%
   \begingroup
     \centering
-    \parbox[t][2cm][t]{\textwidth}{%
+    \parbox[t][0cm][t]{\textwidth}{%
       \hfill
       \CJKfamily+{}\xiaosi
-      \ifx\thu@secret@level\@empty
-        \phantom{秘密}%
-      \else
-        \thu@secret@level\makebox[3em][c]{\thu@secret@year}年%
-      \fi\par
-    }\par
-    \begingroup
-      \includegraphics{tsinghua-name-bachelor.pdf}%
-      \par
-    \endgroup
+      \ifx\thu@secret@level\@empty\else
+        \thu@secret@level\space\thu@secret@year 年\par
+      \fi
+    }%
+  \endgroup
+  \vfill
+  \begingroup
+    \centering
+    \includegraphics{tsinghua-name-bachelor.pdf}%
     \vskip 0.94cm%
     {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
-    \vskip 2.3cm%
-    \parbox[t][2.4cm][t]{\textwidth}{%
-      \heiti\xiaoer[1.56]%
-      \parindent=2em%
-      \hangindent=5em%
-      \makebox[3em][l]{题目：}%
+  \endgroup
+  \vskip 1.8cm%
+  \begingroup
+    \heiti
+    \ifthu@main@language@chinese
       \yihao[1.56]%
-      \CJKunderline[skip=false, thickness=0.05em, depth=0.12em]{\thu@title}\par
-    }\par
-    \vskip 2.5cm%
-    \begingroup
-      \fangsong\sanhao[2.3]%
-      \leftskip=2.5cm%
-      \parindent=\z@
-      \def\thu@info@item##1##2##3{%
-        \ifx##3\@empty\else
-          \thu@fixed@box{%
-            \ifx\thu@joint@supervisor\@empty
-              4em%
-            \else
-              5.5em%
-            \fi
-          }{##1}：##2{##3}\\
-        \fi
-      }%
-      \def\thu@name@title@format##1##2{%
-        \thu@stretch{3em}{##1}\quad ##2%
-      }
-      \thu@info@item{系别}{}{\thu@department}%
-      \thu@info@item{专业}{}{\thu@discipline}%
-      \thu@info@item{姓名}{\thu@name@title}{\thu@author}%
-      \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-      \thu@info@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
-      \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
-      \par
-    \endgroup
-    \vskip 1.5cm%
+    \else
+      \fontsize{26bp}{32bp}\selectfont
+    \fi
+    \parindent=18bp%
+    \hangindent=72bp%
+    \makebox[54bp]{\xiaoer[1.2]题目：}%
+    \CJKunderline*[skip=false, thickness=0.05em, depth=0.12em]{\thu@title}%
+    \ifthu@main@language@english
+      \\
+      \thusetup{language=english}%
+      \ul\thu@title@en
+      \thusetup{language=chinese}%
+    \fi
+    \par
+  \endgroup
+  \vskip 1.9cm%
+  \begingroup
+    \fangsong\sanhao[2.32]%
+    \leftskip=2.5cm%
+    \parindent=\z@
+    \def\thu@info@item##1##2##3{%
+      \ifx##3\@empty\else
+        \thu@fixed@box{%
+          \ifx\thu@joint@supervisor\@empty
+            4em%
+          \else
+            5.5em%
+          \fi
+        }{##1}：##2{##3}\par
+      \fi
+    }%
+    \def\thu@name@title@format##1##2{%
+      \thu@stretch{3em}{##1}\quad ##2%
+    }%
+    \thu@info@item{系别}{}{\thu@department}%
+    \thu@info@item{专业}{}{\thu@discipline}%
+    \thu@info@item{姓名}{\thu@name@title}{\thu@author}%
+    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+    \thu@info@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
+  \endgroup
+  \vskip 1.4cm%
+  \begingroup
+    \centering
     {\CJKfamily+{}\xiaosi\thu@format@date{\thu@date@zh@digit}{\thu@date}\par}%
   \endgroup
+  \vfill
   \clearpage
   \restoregeometry
 }

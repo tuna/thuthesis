@@ -1,5 +1,6 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
+LaTeX Info: Redefining \mathellipsis on input line ....
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: xetex
 * paper: a4paper
@@ -64,7 +65,7 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(700.50723+0.0)x417.11752, glue set 121.0241fil
+..\vbox(700.50723+0.0)x417.11752, glue set 101.74123fill
 ...\write-{}
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
@@ -72,27 +73,21 @@ Completed box being shipped out [1]
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
-...\hbox(0.0+0.0)x0.0
-...\glue 12.51927
-...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 10.60764
-...\hbox(9.46736+47.43814)x417.11752
-....\glue(\leftskip) 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x417.11752
 ....\hbox(0.0+0.0)x0.0
-....\vbox(9.46736+47.43814)x417.11752, glue set 45.24597fil
-.....\hbox(9.46736+2.19217)x417.11752, glue set 393.02753fill
+....\vbox(0.0+0.0)x417.11752
+.....\hbox(0.0+0.0)x417.11752, glue set 417.11752fil
 ......\hbox(0.0+0.0)x0.0
-......\glue 0.0 plus 1.0fill
-......\hbox(9.46736+2.19217)x24.09
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\penalty 10000
-....\glue(\parfillskip) 0.0
-....\glue(\rightskip) 0.0 plus 1.0fil
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue 0.0 plus 1.0fill
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\lineskip) 1.0
+...\glue(\baselineskip) 2.00755
 ...\hbox(18.06744+0.0)x417.11752, glue set 136.79082fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
@@ -134,465 +129,458 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 65.44142
+...\glue 51.21504
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\lineskip) 1.0
-...\hbox(20.38214+47.9043)x417.11752
-....\glue(\leftskip) 0.0 plus 1.0fil
-....\hbox(0.0+0.0)x0.0
-....\vbox(20.38214+47.9043)x417.11752, glue set 2.67744fil
-.....\hbox(20.38214+4.61925)x417.11752, glue set 0.3108
-......\hbox(0.0+0.0)x36.13498
-......\hbox(12.88213+2.90884)x54.20247
-.......\TU/FandolHei(0)/m/n/18.06749 题
-.......\glue 0.0 plus 0.93489
-.......\TU/FandolHei(0)/m/n/18.06749 目
-.......\penalty 10000
-.......\TU/FandolHei(0)/m/n/18.06749 ：
-.......\rule(0.0+0.0)x-12.79178
-.......\kern 0.00078
-.......\kern -0.00078
-.......\kern -0.99649
-.......\kern 0.99649
-.......\glue 12.79178 minus 9.03374
-.......\glue 0.0 plus 1.0fil minus 1.0fil
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(20.12117+4.51485)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 气
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(20.25165+4.43655)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 候
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(19.31215+4.17558)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 变
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(19.6775+4.41046)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 化
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(19.65141+4.33217)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 对
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(20.12117+4.61925)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 冬
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(19.57312+3.9668)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 小
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(20.12117+4.48875)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 麦
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(20.38214+4.30608)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 产
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(18.6858+3.54924)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 量
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(19.25995+4.48875)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 影
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(20.17336+4.12338)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 响
-......\glue(\rightskip) 0.0
-.....\penalty 300
-.....\glue(\baselineskip) 15.63232
-.....\hbox(20.46043+4.51485)x326.78008, glue set 144.09766fil, shifted 90.33745
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(20.46043+4.22778)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 的
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(20.01677+4.38437)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 数
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(20.30385+4.51485)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 值
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(20.12117+4.35826)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 模
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(19.33824+4.35826)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 拟
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(18.6336+3.9407)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 研
-......\glue -2.6097
-......\leaders 5.21939 plus 3.98097
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\rule(*+*)x0.0
-......\penalty 10000
-......\glue -2.6097
-......\leaders 31.31688
-.......\hbox(0.0+4.43651)x5.2194
-........\hbox(1.30495+0.0)x5.2194, shifted 4.43651
-.........\special{pdf:bc [0]}
-.........\rule(1.30495+0.0)x5.2194
-.........\special{pdf:ec}
-......\glue -2.6097
-......\kern -26.09749
-......\hbox(19.7036+4.30608)x26.09749
-.......\kern -0.00005
-.......\kern 0.00005
-.......\TU/FandolHei(0)/m/n/26.09749 究
-......\kern -0.00017
-......\kern 0.00017
-......\penalty 10000
-......\glue(\parfillskip) 0.0 plus 1.0fil
-......\glue(\rightskip) 0.0
+...\glue(\baselineskip) 14.25317
+...\hbox(20.46043+4.61925)x417.11752, glue set 0.1168
+....\hbox(0.0+0.0)x18.06749
+....\hbox(12.88213+2.90884)x54.2025, glue set 0.00002fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
+.....\TU/FandolHei(0)/m/n/18.06749 题
+.....\glue 0.0 plus 0.93489
+.....\TU/FandolHei(0)/m/n/18.06749 目
+.....\penalty 10000
+.....\TU/FandolHei(0)/m/n/18.06749 ：
+.....\rule(0.0+0.0)x-12.79178
+.....\kern 0.00078
+.....\kern -0.00078
+.....\kern -0.99649
+.....\kern 0.99649
+.....\glue 12.79178 minus 9.03374
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\rule(*+*)x0.0
 ....\penalty 10000
-....\glue(\parfillskip) 0.0
-....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 71.13188
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(20.12117+4.51485)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 气
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(20.25165+4.43655)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 候
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(19.31215+4.17558)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 变
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(19.6775+4.41046)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 化
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(19.65141+4.33217)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 对
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(20.12117+4.61925)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 冬
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(19.57312+3.9668)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 小
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(20.12117+4.48875)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 麦
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(20.38214+4.30608)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 产
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(18.6858+3.54924)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 量
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(19.25995+4.48875)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 影
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(20.17336+4.12338)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 响
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(20.46043+4.22778)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 的
+....\glue(\rightskip) 0.0
+...\penalty 300
+...\glue(\baselineskip) 15.78891
+...\hbox(20.30385+4.51485)x344.84753, glue set 188.2626fil, shifted 72.26999
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(20.01677+4.38437)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 数
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(20.30385+4.51485)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 值
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(20.12117+4.35826)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 模
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(19.33824+4.35826)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 拟
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(18.6336+3.9407)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 研
+....\glue -2.6097
+....\leaders 5.21939 plus 3.98097
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\rule(*+*)x0.0
+....\penalty 10000
+....\glue -2.6097
+....\leaders 31.31688
+.....\hbox(0.0+4.43651)x5.2194
+......\hbox(1.30495+0.0)x5.2194, shifted 4.43651
+.......\special{pdf:bc [0]}
+.......\rule(1.30495+0.0)x5.2194
+.......\special{pdf:ec}
+....\glue -2.6097
+....\kern -26.09749
+....\hbox(19.7036+4.30608)x26.09749
+.....\kern -0.00005
+.....\kern 0.00005
+.....\TU/FandolHei(0)/m/n/26.09749 究
+....\kern -0.00017
+....\kern 0.00017
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue 54.06006
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\lineskip) 1.0
+...\glue(\baselineskip) 20.10524
 ...\hbox(12.63922+2.74625)x417.11752, glue set 153.26567fil
 ....\glue(\leftskip) 71.13188
 ....\hbox(0.0+0.0)x0.0
@@ -624,11 +612,10 @@ Completed box being shipped out [1]
 ....\kern -0.00017
 ....\kern 0.00017
 ....\penalty 10000
-....\glue(\parfillskip) 0.0
-....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 21.39197
+...\glue(\baselineskip) 21.71324
 ...\hbox(12.79982+2.74625)x417.11752, glue set 169.32567fil
 ....\glue(\leftskip) 71.13188
 ....\hbox(0.0+0.0)x0.0
@@ -658,11 +645,10 @@ Completed box being shipped out [1]
 ....\kern -0.00017
 ....\kern 0.00017
 ....\penalty 10000
-....\glue(\parfillskip) 0.0
-....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 21.44016
+...\glue(\baselineskip) 21.76143
 ...\hbox(12.75163+2.82654)x417.11752, glue set 217.50566fil
 ....\glue(\leftskip) 71.13188
 ....\hbox(0.0+0.0)x0.0
@@ -692,11 +678,10 @@ Completed box being shipped out [1]
 .....\kern 0.00017
 .....\special{color pop}
 ....\penalty 10000
-....\glue(\parfillskip) 0.0
-....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 21.29562
+...\glue(\baselineskip) 21.6169
 ...\hbox(12.81587+3.05139)x417.11752, glue set 169.32567fil
 ....\glue(\leftskip) 71.13188
 ....\hbox(0.0+0.0)x0.0
@@ -736,10 +721,9 @@ Completed box being shipped out [1]
 ....\kern -0.00017
 ....\kern 0.00017
 ....\penalty 10000
-....\glue(\parfillskip) 0.0
-....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0
-...\glue 42.67912
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue 39.83368
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 3.3084
 ...\hbox(9.29874+2.04764)x417.11752, glue set 162.3963fil
@@ -763,6 +747,7 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue 0.0 plus 1.0fill
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.04764
 ...\glue 0.0 plus 1.0fil
@@ -795,3 +780,4 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 741.76346
+LaTeX Info: Redefining \mathellipsis on input line ....

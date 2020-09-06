@@ -11,7 +11,7 @@ NOMENCL_PKGS="nomencl koma-script xkeyval";
 
 BIN_PKGS="latexmk l3build";
 REQUIRED_PKGS="$XETEX_PKGS $CTEX_PKGS bibunits caption enumitem etoolbox \
-    filehook footmisc notoccite pdfpages titlesec threeparttable unicode-math";
+    filehook footmisc notoccite pdfpages soul titlesec threeparttable unicode-math";
 FONT_PKGS="fandol tex-gyre xits";
 EXTRA_PKGS="booktabs $HYPERREF_PKGS $BIBLATEX_PKGS $NOMENCL_PKGS ntheorem siunitx";
 MARKDOWN_PKGS="markdown fancyvrb csvsimple gobble"
