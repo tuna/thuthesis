@@ -2461,7 +2461,21 @@
 \ctexset{%
   punct=quanjiao,
   space=auto,
-  autoindent=true}
+}
+\newcommand\thu@set@indent{%
+  \ifthu@main@language@english
+    \ifthu@degree@bachelor
+      \ctexset{autoindent=0.8cm}%
+    \else
+      \ctexset{autoindent=2}%
+    \fi
+  \else
+    \ctexset{autoindent=2}%
+  \fi
+}
+\thu@set@indent
+\thu@option@hook{degree}{\thu@set@indent}
+\thu@option@hook{main-language}{\thu@set@indent}
 %    \end{macrocode}
 %
 % 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
