@@ -1575,11 +1575,15 @@
 %    \begin{macrocode}
 \AtEndPreamble{
   \@ifpackageloaded{biblatex}{}{
-    \RequirePackage[sort&compress]{natbib}
+    \@ifpackageloaded{apacite}{}{
+      \RequirePackage[sort&compress]{natbib}
+    }
   }
 }
 \AtEndOfPackageFile*{natbib}{
-  \RequirePackage{bibunits}
+  \@ifpackageloaded{apacite}{}{
+    \RequirePackage{bibunits}
+  }
 }
 %    \end{macrocode}
 %
@@ -2416,15 +2420,17 @@
     \renewcommand\headrulewidth{0pt}%
     \fancyfoot[C]{\xiaowu\thepage}%
     \let\@mkboth\@gobbletwo
+    \let\chaptermark\@gobble
   \else
     \renewcommand\headrulewidth{0.75bp}%
     \fancyhead[C]{\wuhao\leftmark}%
     \fancyfoot[C]{\wuhao\thepage}%
     \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markboth{\CTEXifname{\CTEXthechapter\hskip\ccwd}{}##1}{}%
+    }%
   \fi
-  \def\chaptermark##1{%
-    \markboth{\CTEXifname{\CTEXthechapter\hskip\ccwd}{}##1}{}%
-  }%
+  \let\sectionmark\@gobble
 }
 \pagestyle{plain}
 %    \end{macrocode}

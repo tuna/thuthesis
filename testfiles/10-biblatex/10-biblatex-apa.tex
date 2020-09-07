@@ -1,0 +1,39 @@
+\input{regression-test.tex}
+\documentclass[degree=bachelor,language=english]{thuthesis}
+
+\usepackage[style=apa]{biblatex}
+\addbibresource{refs-apa.bib}
+
+
+\begin{document}
+\START
+\showoutput
+
+% (刘宓庆, 2005)
+\parencite{liu2005dangdai}
+
+% Chih-Hua Kuo (1999)
+\textcite{kuo1999use}
+
+%(王克非 \& 胡显要, 2010)
+\parencite{wang2010hanyu}.
+
+% Harwood (2005)
+\textcite{harwood2005nowhere}
+
+%(Housley et al., 2010)
+\parencite{housley2010we}.
+
+% Borthen (2010)
+\textcite{borthen2010we}
+
+% Chen and Wu (2011)
+\textcite{chen2011less}
+
+
+\printbibliography
+
+
+\clearpage
+\OMIT
+\end{document}
