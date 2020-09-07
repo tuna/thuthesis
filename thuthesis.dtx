@@ -664,6 +664,7 @@
 %     toc-chapter-style = times,
 %   }
 % \end{latex}
+% 该选项只对本科生有效。
 %
 % \LaTeX{} 默认支持插图和表格索引，是通过 \cs{caption} 命令完成的，因此它们必须出
 % 现在浮动环境中，否则不被计数。
@@ -3023,24 +3024,45 @@
 % 示例中的一级和二级节标题分别缩进 1 和 1.5 个汉字符。
 %    \begin{macrocode}
   \ifthu@degree@bachelor
-    \titlecontents{chapter}
-      [\z@]{\addvspace{6bp}
-        \ifthu@toc@chapter@style@arial
-          \sffamily
-        \else
-          \heiti
-        \fi
-      }
-      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
-      {\rmfamily\thu@leaders\thecontentspage}%
-    \titlecontents{section}
-      [1\ccwd]{}
-      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
-      {\thu@leaders\thecontentspage}%
-    \titlecontents{subsection}
-      [1.5\ccwd]{}
-      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
-      {\thu@leaders\thecontentspage}%
+    \ifthu@main@language@chinese
+      \titlecontents{chapter}
+        [\z@]{\addvspace{6bp}
+          \ifthu@toc@chapter@style@arial
+            \sffamily
+          \else
+            \heiti
+          \fi
+        }
+        {\contentspush{\thecontentslabel\quad}}{}
+        {\rmfamily\thu@leaders\thecontentspage}%
+      \titlecontents{section}
+        [1em]{}
+        {\contentspush{\thecontentslabel\quad}}{}
+        {\thu@leaders\thecontentspage}%
+      \titlecontents{subsection}
+        [1.5em]{}
+        {\contentspush{\thecontentslabel\quad}}{}
+        {\thu@leaders\thecontentspage}%
+    \else
+%    \end{macrocode}
+%
+% 本科生英文专业要求“左侧按级依次缩进 0.5cm”。
+%    \begin{macrocode}
+      \ifthu@main@language@english
+        \titlecontents{chapter}
+          [\z@]{\addvspace{6bp}\sffamily}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\rmfamily\thu@leaders\thecontentspage}%
+        \titlecontents{section}
+          [0.5cm]{}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\thu@leaders\thecontentspage}%
+        \titlecontents{subsection}
+          [1cm]{}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\thu@leaders\thecontentspage}%
+      \fi
+    \fi
 %    \end{macrocode}
 %
 % 研究生：
@@ -3057,16 +3079,22 @@
 %    \begin{macrocode}
   \else
     \titlecontents{chapter}
-      [\z@]{\addvspace{6bp}\heiti}
-      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+      [\z@]{\addvspace{6bp}
+        \ifthu@main@language@chinese
+          \heiti
+        \else
+          \sffamily
+        \fi
+      }
+      {\contentspush{\thecontentslabel\quad}}{}
       {\rmfamily\thu@leaders\thecontentspage}%
     \titlecontents{section}
-      [1\ccwd]{}
-      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+      [1em]{}
+      {\contentspush{\thecontentslabel\quad}}{}
       {\thu@leaders\thecontentspage}%
     \titlecontents{subsection}
-      [2\ccwd]{}
-      {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+      [2em]{}
+      {\contentspush{\thecontentslabel\quad}}{}
       {\thu@leaders\thecontentspage}%
   \fi
 }
