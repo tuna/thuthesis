@@ -73,7 +73,7 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 82.47932fill
+..\vbox(674.33032+0.0)x426.79135, glue set 80.96951fill
 ...\write-{}
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
@@ -89,10 +89,9 @@ Completed box being shipped out [1]
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
-...\glue 9.03374
+...\glue 20.12 plus -1.0
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 3.6938
 ...\hbox(12.3662+2.79442)x426.79135, glue set 189.30568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\TU/FandolHei(0)/m/n/16.06 摘
@@ -106,11 +105,10 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
-...\glue 24.09
+...\glue 32.12 plus -1.0
 ...\mark{{摘\protect \hspace  {\ccwd }要}{摘\protect \hspace  {\ccwd }要}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 7.87343
 ...\hbox(9.40715+2.2283)x426.79135, glue set 0.3217
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 论

@@ -550,10 +550,9 @@ C.}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
-...\glue 9.03374
+...\glue 20.12 plus -1.0
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 3.4529
 ...\hbox(12.6071+3.01927)x426.79135, glue set 181.27568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\TU/FandolHei(0)/m/n/16.06 参
@@ -569,12 +568,11 @@ C.}
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
-...\glue 24.09
+...\glue 32.12 plus -1.0
 ...\mark{{参考文献}{参考文献}}
 ...\penalty 10000
 ...\glue 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 4.8411
 ...\hbox(8.19963+1.90761)x398.33861, glue set 138.9753fil, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
@@ -3477,29 +3475,7 @@ C.}
 ....\TU/texgyretermes(0)/m/n/10.53937 glyph#58
 ....\penalty 700
 ....\glue(\rightskip) 0.0
-...\penalty 4000
-...\glue(\baselineskip) 6.57455
-...\hbox(7.1984+0.23187)x398.33861, glue set 368.47003fil, shifted 28.45274
-....\TU/texgyretermes(0)/m/n/10.53937 glyph#79
-....\glue(\medmuskip) 0.0 plus 0.05855
-....\TU/texgyretermes(0)/m/n/10.53937 glyph#89
-....\penalty 700
-....\glue(\medmuskip) 0.0 plus 0.05855
-....\TU/texgyretermes(0)/m/n/10.53937 glyph#64
-....\glue(\medmuskip) 0.0 plus 0.05855
-....\TU/texgyretermes(0)/m/n/10.53937 glyph#106
-....\penalty 700
-....\glue(\medmuskip) 0.0 plus 0.05855
-....\TU/texgyretermes(0)/m/n/10.53937 glyph#76
-....\TU/texgyretermes(0)/m/n/10.53937 glyph#73
-....\mathoff
-....\TU/texgyretermes(0)/m/n/10.53937 .
-....\kern -0.00021
-....\kern 0.00021
-....\penalty 10000
-....\glue(\parfillskip) 0.0 plus 1.0fil
-....\glue(\rightskip) 0.0
-...\glue -0.23187
+...\glue -2.28705
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 7.14894
 ..\hbox(15.61334+4.1104)x426.79135
@@ -3729,8 +3705,32 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 349.12311fil
-...\glue(\topskip) 3.74768
+..\vbox(674.33032+0.0)x426.79135, glue set 330.05391fil
+...\glue(\topskip) 4.8016
+...\hbox(7.1984+0.23187)x398.33861, glue set 368.47003fil, shifted 28.45274
+....\TU/texgyretermes(0)/m/n/10.53937 glyph#79
+....\glue(\medmuskip) 0.0 plus 0.05855
+....\TU/texgyretermes(0)/m/n/10.53937 glyph#89
+....\penalty 700
+....\glue(\medmuskip) 0.0 plus 0.05855
+....\TU/texgyretermes(0)/m/n/10.53937 glyph#64
+....\glue(\medmuskip) 0.0 plus 0.05855
+....\TU/texgyretermes(0)/m/n/10.53937 glyph#106
+....\penalty 700
+....\glue(\medmuskip) 0.0 plus 0.05855
+....\TU/texgyretermes(0)/m/n/10.53937 glyph#76
+....\TU/texgyretermes(0)/m/n/10.53937 glyph#73
+....\mathoff
+....\TU/texgyretermes(0)/m/n/10.53937 .
+....\kern -0.00021
+....\kern 0.00021
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty -51
+...\glue 3.01125
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 7.5758
 ...\hbox(8.25232+2.03409)x398.33861, glue set 0.13223, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0

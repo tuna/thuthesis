@@ -2777,21 +2777,22 @@
     nameformat   = {},
     numberformat = {},
     titleformat  = {},
-    aftername    = \hspace{\ccwd},
+    aftername    = \quad,
+    fixskip      = true,
     afterindent  = true,
     lofskip      = 0pt,
     lotskip      = 0pt,
   },
   section = {
-    aftername    = \hspace{\ccwd},
+    aftername    = \quad,
     afterindent  = true,
   },
   subsection = {
-    aftername    = \hspace{\ccwd},
+    aftername    = \quad,
     afterindent  = true,
   },
   subsubsection = {
-    aftername    = \hspace{\ccwd},
+    aftername    = \quad,
     afterindent  = true,
   },
   paragraph/afterindent = true,
@@ -2819,27 +2820,31 @@
   \ifthu@degree@bachelor
     \ctexset{%
       chapter = {
-        format     = \centering\sffamily\xiaosan[1.333],
-        beforeskip = 15bp,
+        format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
+        beforeskip = 30bp,
         afterskip  = 20bp,
       },
       section = {
-        format     = \sffamily\sihao[1.286],
-        beforeskip = 25bp\@plus 1ex \@minus .2ex,
-        afterskip  = 12bp\@plus .2ex,
+        format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
+        beforeskip = 25bp,
+        afterskip  = 12bp,
       },
       subsection = {
-        format       = \sffamily\xiaosi[1.25],
-        numberformat = \sffamily\banxiaosi[1.154],
-        beforeskip   = 12bp\@plus 1ex \@minus .2ex,
-        afterskip    = 6bp\@plus .2ex,
+        format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        beforeskip = 12bp,
+        afterskip  = 6bp,
       },
       subsubsection = {
-        format     = \sffamily\xiaosi[1.25],
-        beforeskip = 12bp\@plus 1ex \@minus .2ex,
-        afterskip  = 6bp\@plus .2ex,
+        format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        beforeskip = 12bp,
+        afterskip  = 6bp,
       },
     }%
+    \ifthu@main@language@chinese
+      \ctexset{chapter/number = \thechapter}%
+    \else
+      \ctexset{chapter/number = \thu@english@number{chapter}}%
+    \fi
 %    \end{macrocode}
 %
 % 研究生要求：
@@ -2867,34 +2872,64 @@
 %     段前空 12 磅，段后空 6 磅。
 % \end{itemize}
 %
+% 由于 Word 模板中开启了“对齐到网格”，实际的段前段后距离有所调整。
 %    \begin{macrocode}
   \else
     \ctexset{%
       chapter = {
-        format     = \centering\sffamily\sanhao[1],
-        beforeskip = 9bp,
-        afterskip  = 24bp,
+        format     = \centering\sffamily\sanhao,
+        beforeskip = 32bp,
+        afterskip  = 32bp,
       },
       section = {
-        format     = \sffamily\sihao[1.429]\selectfont,
-        beforeskip = 24bp\@plus 1ex \@minus .2ex,
-        afterskip  = 6bp\@plus .2ex,
+        format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+        beforeskip = 24bp,
+        afterskip  = 6bp,
       },
       subsection = {
-        format     = \sffamily\banxiaosi[1.538],
-        beforeskip = 16bp\@plus 1ex \@minus .2ex,
-        afterskip  = 6bp\@plus .2ex,
+        format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
+        beforeskip = 12bp,
+        afterskip  = 6bp,
       },
       subsubsection = {
-        format     = \sffamily\xiaosi[1.667],
-        beforeskip = 16bp\@plus 1ex \@minus .2ex,
-        afterskip  = 6bp\@plus .2ex,
+        format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
+        beforeskip = 12bp,
+        afterskip  = 6bp,
       },
     }%
   \fi
 }
 \thu@set@section@format
 \thu@option@hook{degree}{\thu@set@section@format}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\thu@english@number[1]{%
+  \expandafter\ifcase\csname c@#1\endcsname
+    Zero\or
+    One\or
+    Two\or
+    Three\or
+    Four\or
+    Five\or
+    Six\or
+    Seven\or
+    Eight\or
+    Nine\or
+    Ten\or
+    Eleven\or
+    Twelve\or
+    Thirteen\or
+    Fourteen\or
+    Fifteen\or
+    Sixteen\or
+    Seventeen\or
+    Eighteen\or
+    Nineteen\or
+    Twenty\or
+    \thu@error{You are genius}%
+  \fi
+}
 %    \end{macrocode}
 %
 % \begin{macro}{\thu@chapter*}
@@ -2911,7 +2946,7 @@
 %    \begin{macrocode}
 \newcommand\thu@pdfbookmark[2]{}
 \newcommand\thu@phantomsection{}
-\NewDocumentCommand\thu@chapter{s o m o}{
+\NewDocumentCommand\thu@chapter{s o m o}{%
   \IfBooleanF{#1}{%
     \thu@error{You have to use the star form: \string\thu@chapter*}%
   }%
@@ -2927,9 +2962,9 @@
     \thu@phantomsection
     \addcontentsline{toc}{chapter}{#3}%
   }%
-  \ifthu@degree@bachelor\ctexset{chapter/beforeskip=25bp}\fi
+  \ifthu@degree@bachelor\ctexset{chapter/beforeskip=40bp}\fi
   \chapter*{#3}%
-  \ifthu@degree@bachelor\ctexset{chapter/beforeskip=15bp}\fi
+  \ifthu@degree@bachelor\ctexset{chapter/beforeskip=30bp}\fi
   \IfValueTF{#4}{%
     \ifthenelse{\equal{#4}{}}{%
       \@mkboth{}{}%

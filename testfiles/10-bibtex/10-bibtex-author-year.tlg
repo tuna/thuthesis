@@ -1269,10 +1269,9 @@ C.}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
-...\glue 9.03374
+...\glue 20.12 plus -1.0
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 3.4529
 ...\hbox(12.6071+3.01927)x426.79135, glue set 181.27568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\TU/FandolHei(0)/m/n/16.06 参
@@ -1288,12 +1287,11 @@ C.}
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
-...\glue 24.09
+...\glue 32.12 plus -1.0
 ...\mark{{参考文献}{参考文献}}
 ...\penalty 10000
 ...\glue 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 4.79893
 ...\hbox(8.24179+1.94977)x405.71262, glue set 18.42596fil, shifted 21.07874
 ....\hbox(0.0+0.0)x-21.07874
 .....\glue -21.07874
@@ -3867,95 +3865,6 @@ C.}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\penalty -51
-...\glue 3.01125
-...\glue(\parskip) 0.0
-...\glue(\baselineskip) 6.56404
-...\hbox(7.1984+2.29756)x405.71262, glue set 0.81677, shifted 21.07874
-....\hbox(0.0+0.0)x-21.07874
-.....\glue -21.07874
-.....\glue -24.0
-.....\glue -6.0
-.....\hbox(0.0+0.0)x24.0, glue set 24.0fill
-......\special{color push gray 0}
-......\glue 0.0 plus 1.0fil
-......\glue 0.0 plus 1.0fil
-......\glue 0.0 plus 1.0fill
-......\special{color pop}
-.....\glue 6.0
-....\penalty 0
-....\TU/texgyretermes(0)/m/n/10.53937 Carlson
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 N
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 W,
-....\kern -0.00021
-....\kern 0.00021
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 Taylor
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 A
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 J,
-....\kern -0.00021
-....\kern 0.00021
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 Jones
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 K
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 M,
-....\kern -0.00021
-....\kern 0.00021
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 et
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 al.
-....\kern -0.00021
-....\kern 0.00021
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 1981.
-....\kern -0.00021
-....\kern 0.00021
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\glue 1.15933 plus 3.478 minus 0.73782
-....\TU/texgyretermes(0)/m/n/10.53937 Two-step
-....\kern -0.00021
-....\kern 0.00021
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 polarization-labeling
-....\kern -0.00021
-....\kern 0.00021
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 spectroscopy
-....\kern -0.00021
-....\kern 0.00021
-....\glue 2.63484 plus 1.31741 minus 0.87828
-....\TU/texgyretermes(0)/m/n/10.53937 of
-....\kern -0.00021
-....\kern 0.0
-....\glue(\rightskip) 0.0
 ...\glue -2.29756
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 7.14894
@@ -4095,8 +4004,95 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 208.61316fil
+..\vbox(674.33032+0.0)x426.79135, glue set 192.55487fil
 ...\glue(\topskip) 4.8016
+...\hbox(7.1984+2.29756)x405.71262, glue set 0.81677, shifted 21.07874
+....\hbox(0.0+0.0)x-21.07874
+.....\glue -21.07874
+.....\glue -24.0
+.....\glue -6.0
+.....\hbox(0.0+0.0)x24.0, glue set 24.0fill
+......\special{color push gray 0}
+......\glue 0.0 plus 1.0fil
+......\glue 0.0 plus 1.0fil
+......\glue 0.0 plus 1.0fill
+......\special{color pop}
+.....\glue 6.0
+....\penalty 0
+....\TU/texgyretermes(0)/m/n/10.53937 Carlson
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 N
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 W,
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 Taylor
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 A
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 J,
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 Jones
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 K
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 M,
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 et
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 al.
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 1981.
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\glue 1.15933 plus 3.478 minus 0.73782
+....\TU/texgyretermes(0)/m/n/10.53937 Two-step
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 polarization-labeling
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 spectroscopy
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 of
+....\kern -0.00021
+....\kern 0.0
+....\glue(\rightskip) 0.0
+...\penalty 4150
+...\glue(\baselineskip) 6.56404
 ...\hbox(7.1984+2.29756)x405.71262, glue set 191.96017fil, shifted 21.07874
 ....\TU/texgyretermes(0)/m/n/10.53937 excited
 ....\kern -0.00021

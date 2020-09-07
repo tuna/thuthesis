@@ -380,7 +380,7 @@ Completed box being shipped out [2]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 346.77338fil
+..\vbox(645.87758+0.0)x421.10089, glue set 362.35098fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{References}{\thepage \ETC.}
 ...\write1{\protect \FN@pp@footnotehinttrue }
@@ -388,10 +388,9 @@ Completed box being shipped out [2]
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
-...\glue 25.09375
+...\glue 28.15 plus -1.0
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 9.04869
 ...\hbox(11.02116+0.22583)x421.10089, glue set 172.32265fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\TU/texgyreheros(0)/m/n/15.05624 References
@@ -401,12 +400,11 @@ Completed box being shipped out [2]
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
-...\glue 20.075
+...\glue 20.075 plus -1.0
 ...\mark{{References}{References}}
 ...\penalty 10000
 ...\glue 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 9.58682
 ...\hbox(7.25108+2.28703)x390.9884, glue set - 0.70021, shifted 30.11249
 ....\hbox(0.0+0.0)x-30.11249
 .....\glue -30.11249

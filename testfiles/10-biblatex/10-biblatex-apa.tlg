@@ -376,7 +376,7 @@ Completed box being shipped out [2]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 297.64366fil
+..\vbox(645.87758+0.0)x421.10089, glue set 310.21036fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\ETC.}
 ...\write1{\protect \FN@pp@footnotehinttrue }
@@ -384,10 +384,9 @@ Completed box being shipped out [2]
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
-...\glue 25.09375
+...\glue 28.15 plus -1.0
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 9.09386
 ...\hbox(10.976+3.28224)x421.10089, glue set 169.31892fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\TU/texgyreheros(0)/m/n/15.05624 Bibliography
@@ -397,12 +396,11 @@ Completed box being shipped out [2]
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
-...\glue 20.075
+...\glue 20.075 plus -1.0
 ...\mark{{Bibliography}{Bibliography}}
 ...\penalty 10000
 ...\glue 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 6.53041
 ...\hbox(7.25108+2.28703)x384.9659, glue set - 0.32268, shifted 36.135
 ....\hbox(0.0+0.0)x-36.135
 .....\glue -36.135

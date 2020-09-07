@@ -69,7 +69,7 @@ Completed box being shipped out [2]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 66.41933fill
+..\vbox(674.33032+0.0)x426.79135, glue set 65.80728fill
 ...\write-{}
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
@@ -84,10 +84,9 @@ Completed box being shipped out [2]
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
-...\glue 9.03374
+...\glue 20.12 plus -1.0
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 4.35226
 ...\hbox(11.70773+0.14453)x426.79135, glue set 180.78586fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\TU/texgyreheros(0)/b/n/16.06 Abstract
@@ -97,11 +96,10 @@ Completed box being shipped out [2]
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
-...\glue 24.09
+...\glue 32.12 plus -1.0
 ...\mark{{Abstract}{Abstract}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 11.70374
 ...\hbox(8.22673+2.6258)x426.79135, glue set 0.02975
 ....\hbox(0.0+0.0)x24.09
 ....\TU/texgyretermes(0)/m/n/12.045 An
