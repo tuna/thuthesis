@@ -4140,6 +4140,7 @@
 % 定义致谢与声明环境。
 %    \begin{macrocode}
 \newenvironment{acknowledgements}{%
+  \@mainmatterfalse
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
@@ -4185,6 +4186,7 @@
   }%
 }
 \newcommand\statement[1][]{%
+  \@mainmatterfalse
   \ifthu@degree@bachelor
     \cleardoublepage
     \def\thu@statement@name{声\hspace{2em}明}%
@@ -4711,6 +4713,12 @@
 % \subsection{附录}
 % \label{sec:appendix}
 %
+%    \begin{macrocode}
+\g@addto@macro\appendix{%
+  \@mainmattertrue
+}
+%    \end{macrocode}
+%
 % 研究生和本科生的写作指南均未规定附录的节标题是否加入目录，
 % 但是从示例来看，目录中只出现附录的 chapter 标题，
 % 不出现附录中的 section 及 subsection 的标题。
@@ -4877,6 +4885,7 @@
 % 个人简历发表文章等。
 %    \begin{macrocode}
 \newenvironment{resume}[1][\thu@resume@name]{%
+  \@mainmatterfalse
   \thu@chapter*{#1}}{}
 %    \end{macrocode}
 % \end{environment}
