@@ -2431,7 +2431,14 @@
   \renewcommand\footrulewidth{0pt}%
   \ifthu@degree@bachelor
     \renewcommand\headrulewidth{0pt}%
-    \fancyfoot[C]{\xiaowu\thepage}%
+    \fancyfoot[C]{
+      \ifthu@main@language@chinese
+        \xiaowu
+      \else
+        \normalsize
+      \fi
+      \thepage
+    }%
     \let\@mkboth\@gobbletwo
     \let\chaptermark\@gobble
   \else
