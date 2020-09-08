@@ -4342,6 +4342,7 @@
 %
 % \BibTeX{} 和 \pkg{natbib} 宏包的配置。
 %    \begin{macrocode}
+\PassOptionsToPackage{compress}{natbib}
 \AtEndOfPackageFile*{natbib}{
 %    \end{macrocode}
 % \begin{macro}{\inlinecite}
@@ -4606,7 +4607,7 @@
     \ifthu@degree@bachelor
       \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
       \setlength{\bibsep}{6bp}%
-      \ifthu@language@chinese
+      \ifthu@main@language@chinese
         \setlength{\bibhang}{21bp}%
       \else
         \setlength{\bibhang}{0.5in}%
@@ -4619,7 +4620,7 @@
   }
   \thu@set@bibliography@format
   \thu@option@hook{degree}{\thu@set@bibliography@format}
-  \thu@option@hook{language}{\thu@set@bibliography@format}
+  \thu@option@hook{main-language}{\thu@set@bibliography@format}
 %    \end{macrocode}
 %
 % 参考文献表的编号居左，宽度 1 cm。
@@ -4649,13 +4650,19 @@
 %
 %    \begin{macrocode}
 \AtEndOfPackageFile*{biblatex}{
+  \AtBeginDocument{
+    \ifthenelse{\equal{\blx@bbxfile}{apa}}{\def\bibname{REFERENCES}}{}
+    \ifthenelse{\equal{\blx@bbxfile}{apa6}}{\def\bibname{REFERENCES}}{}
+    \ifthenelse{\equal{\blx@bbxfile}{mla}}{\def\bibname{WORKS CITED}}{}
+    \ifthenelse{\equal{\blx@bbxfile}{mla-new}}{\def\bibname{WORKS CITED}}{}
+  }
   \DeclareRobustCommand\inlinecite{\parencite}
   \defbibheading{bibliography}[\bibname]{\thu@chapter*{\bibname}}
   \newcommand\thu@set@bibliography@format{%
     \ifthu@degree@bachelor
       \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
       \setlength{\bibitemsep}{6bp}%
-      \ifthu@language@chinese
+      \ifthu@main@language@chinese
         \setlength{\bibhang}{21bp}%
       \else
         \setlength{\bibhang}{0.5in}%
@@ -4669,7 +4676,35 @@
   }
   \thu@set@bibliography@format
   \thu@option@hook{degree}{\thu@set@bibliography@format}
-  \thu@option@hook{language}{\thu@set@bibliography@format}
+  \thu@option@hook{main-language}{\thu@set@bibliography@format}
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{apacite} 宏包}
+%
+% \pkg{apacite} 在 \cs{begindocument} 处载入的 \file{english.apc}
+% 会覆盖掉 \cs{bibname} 的定义，所以需要重新 \cs{thu@set@chapter@names}。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{apacite}{
+  \AtBeginDocument{
+    \thu@set@chapter@names
+  }
+  \renewcommand\bibliographytypesize{\fontsize{10.5bp}{17bp}\selectfont}
+  \setlength{\bibitemsep}{6bp}
+  \ifthu@main@language@chinese
+    \setlength{\bibleftmargin}{21bp}
+    \setlength{\bibindent}{-\bibleftmargin}
+  \else
+    \setlength{\bibleftmargin}{0.5in}
+    \setlength{\bibindent}{-\bibleftmargin}
+  \fi
+  \def\st@rtbibchapter{%
+    \if@numberedbib%
+      \chapter{\bibname}%   e.g.,   6. References
+    \else%
+      \thu@chapter*{\bibname}%   e.g.,   References
+    \fi%
+  }%
 }
 %    \end{macrocode}
 %
