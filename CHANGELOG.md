@@ -5,6 +5,8 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
+## [v7.0.0] - 2020-09-09
 ### Changed
 - 更新 2020 年版目录、插图和附表清单的格式。
 - 更新 2020 年版使用授权说明的内容。
@@ -622,7 +624,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v6.1.3...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.0.0...HEAD
+[v7.0.0]:     https://github.com/tuna/thuthesis/compare/v6.1.3...v7.0.0
 [v6.1.3]:     https://github.com/tuna/thuthesis/compare/v6.1.2...v6.1.3
 [v6.1.2]:     https://github.com/tuna/thuthesis/compare/v6.1.1...v6.1.2
 [v6.1.1]:     https://github.com/tuna/thuthesis/compare/v6.1.0...v6.1.1
