@@ -28,6 +28,8 @@ jobs:
     container: tunathu/thuthesis-test-env
     steps:
     - uses: actions/checkout@v2
+    - name: Install required packages
+      run: bash .github/workflows/install-packages.sh
     - name: Build release zip with l3build
       run: l3build ctan --config build-ctan
     - name: Upload release zip
