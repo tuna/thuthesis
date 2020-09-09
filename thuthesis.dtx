@@ -5063,7 +5063,7 @@
   \@ifpackagelater{hyperref}{2019/04/27}{}{%
     \g@addto@macro\psdmapshortnames{\let\mu\textmu}
   }%
-  \ifthu@language@chinese
+  \ifthu@main@language@chinese
     \hypersetup{
       pdflang = zh-CN,
     }%
@@ -5073,7 +5073,7 @@
     }%
   \fi
   \AtBeginDocument{%
-    \ifthu@language@chinese
+    \ifthu@main@language@chinese
       \hypersetup{
         pdftitle    = \thu@title,
         pdfauthor   = \thu@author,
@@ -5338,7 +5338,7 @@
     }%
   \fi
   \thispagestyle{empty}%
-  \ifthu@language@chinese
+  \ifthu@main@language@chinese
     \thu@pdfbookmark{0}{书脊}%
   \else
     \thu@pdfbookmark{0}{Spine}%
