@@ -46,6 +46,7 @@ tdslocations = {
 
 typesetexe = "xelatex"
 unpackexe = "xetex"
+bibtexexe = "bibtex"
 biberopts = "--quiet"
 
 checkopts = "-file-line-error -halt-on-error -interaction=nonstopmode"
