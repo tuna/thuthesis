@@ -10,7 +10,7 @@
 
 
 % 论文基本配置，加载宏包等全局配置
-\input{thusetup.tex}
+\input{thusetup}
 
 
 \begin{document}
@@ -18,16 +18,24 @@
 % 封面
 \maketitle
 
+% 学位论文指导小组、公开评阅人和答辩委员会名单
+\input{data/committee}
+
 % 使用授权的说明
 \copyrightpage
 % 将签字扫描后授权文件 scan-copyright.pdf 替换原始页面
-% \copyrightpage[scan-copyright.pdf]
+% \copyrightpage[file=scan-copyright.pdf]
 
 \frontmatter
-\input{data/abstract.tex}
+\input{data/abstract}
 
 % 目录
 \tableofcontents
+
+% 插图和附表清单
+\listoffigures           % 插图清单
+% \listoftables            % 附表清单
+% \listoffiguresandtables  % 插图和附表清单
 
 % 符号对照表
 \input{data/denotation}
@@ -39,26 +47,12 @@
 \input{data/chap02}
 
 
-% 其它部分
+% 其他部分
 \backmatter
 
-%% 本科生要求的几个索引。
-% \listoffigures    % 插图索引
-% \listoftables     % 表格索引
-
 % 参考文献
-\bibliographystyle{thuthesis-numeric}      % 顺序编码制
-% \bibliographystyle{thuthesis-author-year}  % 著者-出版年制
-% \bibliographystyle{thuthesis-bachelor}     % 本科生参考文献的著录格式
-\bibliography{ref/refs}
-
-% 致谢
-\input{data/acknowledgements}
-
-% 声明
-\statement
-% 将签字扫描后的声明文件 scan-statement.pdf 替换原始页面
-% \statement[scan-statement.pdf]
+\bibliography{ref/refs}  % 参考文献使用 BibTeX 编译
+% \printbibliography       % 参考文献使用 BibLaTeX 编译
 
 % 附录
 \appendix
@@ -66,10 +60,28 @@
 % \input{data/appendix-survey}       % 本科生：外文资料的调研阅读报告
 % \input{data/appendix-translation}  % 本科生：外文资料的书面翻译
 
-% 个人简历
+% 致谢
+\input{data/acknowledgements}
+
+% 声明
+\statement
+% 生成的声明页是否要插入页眉和页脚（默认 empty）
+% 仅在需要进行电子签名时，才需要打开这一选项
+% 插入的扫描声明页总是会生成页眉（研究生）和页脚，不受这一选项影响
+% \statement[page-style=plain]
+% 将签字扫描后的声明文件 scan-statement.pdf 替换原始页面
+% \statement[file=scan-statement.pdf]
+
+% 个人简历、在学期间完成的相关学术成果
 \input{data/resume}
 
+% 指导教师/指导小组学术评语
+\input{data/comments}
+
+% 答辩委员会决议书
+\input{data/resolution}
+
 % 本科生的综合论文训练记录表（扫描版）
-% \record{scan-record.pdf}
+% \record{file=scan-record.pdf}
 
 \end{document}

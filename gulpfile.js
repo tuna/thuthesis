@@ -20,7 +20,7 @@ const config = {
                 'latexmkrc',
                 'README.md',
                 'thuthesis.pdf'],
-        // generated shold not be included for ctan archive
+        // generated should not be included for ctan archive
         generated: ['thuthesis.cls']
     },
 

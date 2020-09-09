@@ -1,0 +1,27 @@
+\ProvidesFile{thuthesis-numeric.bbx}[2020/08/01 v1.0 ThuThesis biblatex
+  bibliography style]
+
+\RequireBibliographyStyle{gb7714-2015}
+
+\ExecuteBibliographyOptions{
+  gbnamefmt = lowercase,
+  gbpub     = false,
+  gbalign   = left,
+}
+
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelnumberwidth]{%
+        \printfield{labelprefix}%
+        \printfield{labelnumber}}}
+     {\addtolength{\labelnumberwidth}{\biblabelextend}%
+     \setlength{\labelwidth}{0.9cm}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemindent}{\bibitemindent}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endlist}
+  {\item}

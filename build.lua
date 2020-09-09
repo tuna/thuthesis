@@ -2,8 +2,8 @@
 
 module = "thuthesis"
 
-supportdir = "./testfiles/support-main"
-checksuppfiles = {"fontset.tex"}
+supportdir = "./testfiles/support"
+checksuppfiles = {"*.tex"}
 
 demofiles = {"latexmkrc", "Makefile"}
 docfiles = {
@@ -11,20 +11,28 @@ docfiles = {
   "thusetup.tex",
   "data", "figures", "ref",
 }
-installfiles = {"*.cls", "*.bst", "tsinghua-name-bachelor.pdf"}
-sourcefiles = {"*.dtx", "*.ins", "*.bst", "tsinghua-name-bachelor.pdf"}
+installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "tsinghua-name-bachelor.pdf"}
+sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "tsinghua-name-bachelor.pdf"}
 tagfiles = {"*.dtx", "CHANGELOG.md", "package.json"}
 textfiles = {"*.md","LICENSE"}
 typesetdemofiles = {"thuthesis-example.tex", "spine.tex"}
+
+excludetests = {
+  "06-*",
+  "07-*",
+  "09-*",
+}
 
 checkengines = {"xetex"}
 stdengine = "xetex"
 
 checkconfigs = {
   "build",
+  "testfiles/config-crossref",
   "testfiles/config-cover",
   "testfiles/config-nomencl",
-  "testfiles/config-bib",
+  "testfiles/config-bibtex",
+  "testfiles/config-biblatex",
 }
 
 -- include .tds.zip in build output
@@ -38,8 +46,7 @@ tdslocations = {
 
 typesetexe = "xelatex"
 unpackexe = "xetex"
-bibtexexe = "bibtex"
-bibtexopts = ""
+biberopts = "--quiet"
 
 checkopts = "-file-line-error -halt-on-error -interaction=nonstopmode"
 typesetopts = "-shell-escape -file-line-error -halt-on-error -interaction=nonstopmode"

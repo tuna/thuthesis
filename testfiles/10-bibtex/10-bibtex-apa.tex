@@ -1,0 +1,40 @@
+\input{regression-test.tex}
+\documentclass[degree=bachelor,language=english]{thuthesis}
+
+\usepackage{apacite}
+\bibliographystyle{apacite}
+
+
+\begin{document}
+\START
+\showoutput
+
+% (刘宓庆, 2005)
+\cite{liu2005dangdai}
+
+% Chih-Hua Kuo (1999)
+\citeA{kuo1999use}
+
+%(王克非 \& 胡显要, 2010)
+\cite{wang2010hanyu}.
+
+% Harwood (2005)
+\citeA{harwood2005nowhere}
+
+%(Housley et al., 2010)
+\cite{housley2010we}.
+
+% Borthen (2010)
+\citeA{borthen2010we}
+
+% Chen and Wu (2011)
+\citeA{chen2011less}
+
+
+\backmatter
+\bibliography{refs-apa}
+
+
+\clearpage
+\OMIT
+\end{document}

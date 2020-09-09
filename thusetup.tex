@@ -89,12 +89,6 @@
   %
   include-spine = false,
   %
-  % 生成的声明页是否要插入页眉和页脚（默认 empty）
-  % 仅在需要进行电子签名时，才需要打开这一选项
-  % 插入的扫描声明页总是会生成页眉（研究生）和页脚，不受这一选项影响
-  %
-  % statement-page-style = plain,
-  %
   % 密级和年限
   %   秘密, 机密, 绝密
   %
@@ -137,10 +131,32 @@
 % \usepackage{floatflt} % 图文混排用宏包
 % \usepackage{rotating} % 图形和表格的控制旋转
 
+% 量和单位
+\usepackage{siunitx}
+
 % 定理类环境宏包
 \usepackage{amsthm}
 % 也可以使用 ntheorem
 % \usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+
+% 参考文献使用 BibTeX + natbib 宏包
+% 顺序编码制
+\usepackage[sort]{natbib}
+\bibliographystyle{thuthesis-numeric}
+
+% 著者-出版年制
+% \usepackage{natbib}
+% \bibliographystyle{thuthesis-author-year}
+
+% 本科生参考文献的著录格式
+% \usepackage[sort]{natbib}
+% \bibliographystyle{thuthesis-bachelor}
+
+% 参考文献使用 BibLaTeX 宏包
+% \usepackage[backend=biber,style=thuthesis-numeric]{biblatex}
+% \usepackage[backend=biber,style=thuthesis-author-year]{biblatex}
+
+% \addbibresource{ref/refs.bib}  % 声明 BibLaTeX 的数据库
 
 % 给自定义的宏后面自动加空白
 % \usepackage{xspace}
