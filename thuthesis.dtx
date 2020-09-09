@@ -862,49 +862,98 @@
 % \subsubsection{参考文献}
 % \label{sec:bibliography}
 %
-% 模板支持使用 \hologo{BibTeX} 处理生成参考文献表，
-% 用户需要在文中设置参考文献格式并调用 \file{.bib} 数据库：
+% 参考文献通常可以使用 \hologo{BibTeX} 或 biblatex 生成。
+% \hologo{BibTeX} 是 LaTeX 处理参考文献的传统的方式，
+% 需要在使用 \cs{bibliographystyle}\marg{style} 选择样式
+% 并用 \cs{bibliography} 设置 \file{.bib} 的路径。
+% 然后使用 \texttt{bibtex} 对 \file{.aux} 文件进行编译得到 \file{.bbl} 文件。
+% 其中的参考文献表内容会在后续编译时替换到 \cs{bibliography} 的位置。
+% Biblatex 是较新的方式，需要在载入宏包时通过 \option{style} 选择样式，
+% 在导言区使用 \cs{addbibresource} 声明数据库的路径，
+% 并在输出参考文献表的位置使用 \cs{printbibliography} 命令,
+% 而且编译参考文献的命令需要换为 biber。
+% 这两种方式各有优缺点，比如 BibTeX 无法对中文按照拼音排序，一些样式更新不够及时；
+% Biblatex 运行较缓慢，无法对多个参考文献表使用不同样式。
+% 用户需要根据实际选择合适的方式。
+%
+% 研究生要求的参考文献格式基于《信息与文献 参考文献著录规则》（GB/T 7714-2015）
+% 进行了少量改编（如英文姓名不使用全大写），
+% 可以选择“顺序编码制”和“著者-出版年制”。
+% 如果使用 BibTeX 的方式，需要在导言区载入 \pkg{natbib} 宏包并选择样式，如：
 % \begin{latex}
-%   \bibliographystyle{thuthesis-numeric}        % 顺序编码制
-%   % \bibliographystyle{thuthesis-author-year}  % 著者-出版年制
-%   % \bibliographystyle{thuthesis-bachelor}     % 本科生参考文献的著录格式
-%   \bibliography{ref1,ref2}                     % 载入 ref1.bib 和 ref2.bib
+%   % 顺序编码制
+%   \usepackage[sort]{natbib}
+%   \bibliographystyle{thuthesis-numeric}
 % \end{latex}
-%
-% \note[注意：]{\cs{bibliographystyle} 命令只能出现一次。}
-%
-% \hologo{BibTeX} 可以自动识别数据库中每条文献的语言，并自动处理文献类型和载体类
-% 型标识，用户也可以手动指定，如：
-%
+% 或
 % \begin{latex}
-%   @misc{citekey,
-%     language = {japanese},
-%     mark     = {Z},
-%     medium   = {DK},
-%     ...
-%   }
+%   % 著者-出版年制
+%   \usepackage{natbib}
+%   \bibliographystyle{thuthesis-author-year}
 % \end{latex}
+% 其中的 \option{sort} 选项会将同一处引用的多个文献编号严格按照顺序排序，
+% 这并非《写作指南》要求，但是推荐使用。
+% 这里调用的样式由 \href{http://ctan.org/pkg/gbt7714}{\pkg{gbt7714}} 的 \file{.bst} 进行了少量修改。
 %
-% 可选的语言有 \option{english}, \option{chinese}, \option{japanese} 和 \option{russian}。
-%
-% 国标规定参考文献表采用“著者-出版年”制组织时，各篇文献首先按文种集中，然后按著者字
+% 参考文献表采用“著者-出版年”制组织时，各篇文献首先按文种集中，然后按著者字
 % 顺和出版年排列；中文文献可以按著者汉语拼音字顺排列，也可以按著者的笔画笔顺排列。
-% 由于 \hologo{BibTeX} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺，所
-% 以\emph{必须}在 \file{.bib} 数据库中的 |key| 字段手动录入著者姓名的拼音，如：
+% 但由于 \hologo{BibTeX} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺进行正确排序。
+% 一种解放方法是在 \file{.bib} 数据库的中文文献的 |key| 域手动录入著者姓名的拼音，
+% 这比较适合中文文献数量较少的情况，如：
 % \begin{latex}
 %   @book{capital,
 %     author = {马克思 and 恩格斯},
-%     key    = {ma3 ke4 si1   en1 ge2 si1}, % 名字之间用 2 或 3 个空格
+%     key    = {ma3 ke4 si1 & en1 ge2 si1},
 %     ...
 %   }
 % \end{latex}
+% 另一种方式是使用 biblatex，应在在导言区设置
+% \begin{latex}
+%   \usepackage[backend=biber,style=thuthesis-author-year]{biblatex}
+%   \addbibresource{ref/refs.bib}
+% \end{latex}
+% 这里的样式由 \href{https://ctan.org/pkg/biblatex-gb7714-2015}{biblatex-gb7714-2015} 进行了少量改编，
+% 一些额外用法可以参考该宏包的文档。
+% 注意 \pkg{biblatex} 跟 \pkg{natbib} 不兼容，
+% 而且 \cs{addbibresource} 必须在导言区设置。
+% 输出参考文献表应使用 \cs{printbibliography} 命令。
 %
-% \hologo{BibTeX} 对自定义样式的支持比较有限，所以用户只能通过修改 \file{bst} 文
-% 件来修改文献列表的格式。本宏包提供了一些接口供用户更方便地修改，在 \file{bst}
-% 文件开始处的 |load.config| 函数中，有一组配置参数用来控制样式。若变量被设
-% 为 |#1| 则表示该项被启用，设为 |#0| 则不启用。默认的值是严格遵循学校规定的配
-% 置。
+% 本科生要求的中文参考文献格式严格遵从 GB/T 7714-2015，
+% 附录中调研报告的英文参考文献可以自行选择合适的风格。
+% 但是 biblatex 不支持同一文档中使用不同的格式，
+% 所以只能使用 \hologo{BibTeX}：
+% \begin{latex}
+%   % 本科生参考文献的著录格式
+%   \usepackage[sort]{natbib}
+%   \bibliographystyle{thuthesis-bachelor}
+% \end{latex}
+% 调研报告的参考文献需要选择与 \pkg{natbib} 兼容的样式。
 %
+% 本科生外文系要求使用 APA 或 MLA。
+% APA 的 BibTeX 样式由 \pkg{apacite} 宏包提供，需要在导言区调用：
+% \begin{latex}
+%   \usepackage[natbibapa]{apacite}
+%   \bibliographystyle{apacite}
+% \end{latex}
+% 其中 \option{natbibapa} 会调用 \pkg{natbib} 来处理引用，
+% 这也是宏包推荐的用法。
+% 注意目前的 \pkg{apacite} 只支持到 APA 第 6 版。
+% 更推荐使用已经更新到 APA 第 7 版的 \pkg{biblatex-apa}：
+% \begin{latex}
+%   \usepackage[style=apa]{biblatex}
+%   \addbibresource{refs-apa.bib}
+% \end{latex}
+% 注意，如果参考文献中引用了中文文献的话，这两种方法都不能正确调整格式，
+% 需要手动进行修改 \file{.bbl} 文件的内容，
+% 这时 BibTeX 比 biblatex 更简单些。
+%
+% BibTeX 没有用于 MLA 的样式，所以对于 MLA 只能使用 biblatex:
+% \begin{latex}
+%   \usepackage[style=mla-new]{biblatex}
+%   \addbibresource{refs-apa.bib}
+% \end{latex}
+% 注意这里 \option{mla-new} 对应于 MLA 第 8 版的格式，
+% \option{mla} 是第 7 版的。
 %
 % \subsubsection{致谢}
 %
@@ -1577,7 +1626,7 @@
 \AtEndPreamble{
   \@ifpackageloaded{biblatex}{}{
     \@ifpackageloaded{apacite}{}{
-      \RequirePackage[sort&compress]{natbib}
+      \RequirePackage{natbib}
     }
   }
 }
