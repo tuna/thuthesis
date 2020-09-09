@@ -252,9 +252,9 @@
 % \begin{shell}
 %   $ xelatex thuthesis-example.tex
 %   $ bibtex thuthesis-example.aux   # 生成 bbl 文件
-%   $ bibtex main-survey.aux         # 本科生的调研报告的参考文献
-%   $ bibtex main-translation.aux    # 本科生的外文资料翻译的参考文献
-%   $ bibtex main-index.aux          # 本科生的书面翻译对应的原文索引
+%   $ bibtex thuthesis-example-survey.aux         # 本科生的调研报告的参考文献
+%   $ bibtex thuthesis-example-translation.aux    # 本科生的外文资料翻译的参考文献
+%   $ bibtex thuthesis-example-index.aux          # 本科生的书面翻译对应的原文索引
 %   $ xelatex thuthesis-example.tex  # 解决引用
 %   $ xelatex thuthesis-example.tex  # 生成论文 PDF
 %
@@ -1011,8 +1011,8 @@
 % 调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章，
 % 所以模板相应定义了 \env{survey} 和 \env{translation}。在这两个环境内部可以
 % 像论文正文一样使用标题和参考文献的命令，但不会影响外部。
-% 但是需要使用 \hologo{BibTeX} 对 \file{main-survey.aux} 或者
-% \file{main-translation.aux} 进行编译，才能生成参考文献（见 \ref{sec:xelatex} 节）。
+% 但是需要使用 \hologo{BibTeX} 对 \file{*-survey.aux} 或者
+% \file{*-translation.aux} 进行编译，才能生成参考文献（见 \ref{sec:xelatex} 节）。
 % 如果使用 \texttt{latexmk}，则无需额外处理。
 %
 % 同时，阅读报告默认切换书写语言为英语，书面翻译默认切换为中文。
@@ -1030,7 +1030,7 @@
 % \end{latex}
 %
 % “书面翻译对应的原文索引”区别于译文的参考文献，需要使用 \env{translation-index}
-% 环境，另外需要使用 \hologo{BibTeX} 编译 \file{main-index.aux}，\texttt{latexmk} 同样会自动处理。
+% 环境，另外需要使用 \hologo{BibTeX} 编译 \file{*-index.aux}，\texttt{latexmk} 同样会自动处理。
 %
 % \begin{latex}
 %   \begin{translation}
@@ -4831,7 +4831,7 @@
   }%
   \renewcommand\bibname{参考文献}%
   \let\bibsection\thu@appendix@bibsection
-  \renewcommand\@bibunitname{main-survey}%
+  \renewcommand\@bibunitname{\jobname-survey}%
   \let\bibliographystyle\defaultbibliographystyle
   \let\bibliography\thu@appendix@bibliography
   \begin{bibunit}%
@@ -4864,7 +4864,7 @@
       \section{\bibname}%
     \endgroup
   }%
-  \renewcommand\@bibunitname{main-translation}%
+  \renewcommand\@bibunitname{\jobname-translation}%
   \let\bibliographystyle\defaultbibliographystyle
   \let\bibliography\thu@appendix@bibliography
   \begin{bibunit}%
@@ -4882,7 +4882,7 @@
 %    \begin{macrocode}
 \newenvironment{translation-index}{%
   \begin{bibunit}%
-    \renewcommand\@bibunitname{main-index}%
+    \renewcommand\@bibunitname{\jobname-index}%
     \renewcommand\bibname{书面翻译对应的原文索引}%
     \let\bibsection\thu@appendix@bibsection
 }{%
