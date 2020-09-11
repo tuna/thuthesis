@@ -10,16 +10,20 @@ const packageName = 'thuthesis';
 
 const config = {
     template: {
-        files: ['thuthesis.ins',
+        files: [
+                "LICENSE",
+                'README.md',
+                'CHANGELOG.md',
                 'thuthesis.dtx',
+                'thuthesis.ins',
                 'tsinghua-name-bachelor.pdf',
-                'thuthesis-numeric.bst',
-                'thuthesis-author-year.bst',
-                'thuthesis-bachelor.bst',
+                'thuthesis-*.bst',
+                'thuthesis-*.bbx',
+                'thuthesis-*.cbx',
                 'Makefile',
                 'latexmkrc',
-                'README.md',
-                'thuthesis.pdf'],
+                'thuthesis.pdf'
+            ],
         // generated should not be included for ctan archive
         generated: ['thuthesis.cls']
     },
