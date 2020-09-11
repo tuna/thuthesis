@@ -73,7 +73,7 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 80.96951fill
+..\vbox(674.33032+0.0)x426.79135, glue set 384.7315fil
 ...\write-{}
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
@@ -721,12 +721,10 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\rule(0.0+0.0)x*
-...\penalty 10000
-...\glue 0.0 plus 4.0fill
-...\glue 0.0
+...\glue(\baselineskip) 17.75032
+...\hbox(0.0+0.0)x0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 8.4034
+...\glue(\baselineskip) 10.72807
 ...\hbox(9.34692+2.21626)x426.79135, glue set 104.58763fil
 ....\TU/FandolHei(0)/m/n/12.045 关
 ....\glue 0.0 plus 0.52307
@@ -806,10 +804,6 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\rule(0.0+0.0)x*
-...\penalty 10000
-...\glue 0.0 plus 1.0fill
-...\glue 0.0
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.21626
 ...\glue 0.0 plus 1.0fil
