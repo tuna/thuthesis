@@ -5,6 +5,8 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+### Fixed
+- 修正 “keywords” 的拼写。
 
 ## [v7.0.0] - 2020-09-09
 ### Changed

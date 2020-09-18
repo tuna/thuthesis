@@ -4088,18 +4088,14 @@
 % 每个关键词之间空两个汉字符宽度， 且为悬挂缩进。
 %    \begin{macrocode}
   \par
+  \null\par
   \ifthu@degree@graduate
-    \vspace*{\stretch{4}}%
     \noindent
     \textsf{关键词：}%
   \else
-    \null\par
     \textbf{关键词：}%
   \fi
   \thu@clist@use{\thu@keywords}{；}%
-  \ifthu@degree@graduate
-    \vspace*{\stretch{1}}%
-  \fi
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
@@ -4127,14 +4123,11 @@
   \fi
 }{%
   \par
+  \null\par
   \ifthu@degree@graduate
-    \vspace*{\stretch{4}}%
     \noindent
-    \textbf{Key Words:}\space
-  \else
-    \null\par
-    \textbf{Keywords:}\space
   \fi
+  \textbf{Keywords:}\space
   \thu@clist@use{\thu@keywords@en}{; }%
   \ifthu@degree@graduate
     \vspace*{\stretch{1}}%
