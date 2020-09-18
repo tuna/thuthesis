@@ -34,6 +34,7 @@ Scroll down for the English version of README.
   * [CTAN](https://www.ctan.org/pkg/thuthesis)：可能滞后正式发布少许时间。
   * [GitHub Releases](https://github.com/tuna/thuthesis/releases)：最新版的及时发布途径。
   * [TUNA 镜像站](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/)：GitHub Releases 的镜像。
+  * [Overleaf](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)：Overleaf 的模板。
 * 开发版：[GitHub](https://github.com/tuna/thuthesis)
 
 ## 更新日志
@@ -102,6 +103,7 @@ Developer versions contain only source code but no pre-compiled `cls` file and d
   * [CTAN](https://www.ctan.org/pkg/thuthesis)
   * [GitHub Releases](https://github.com/tuna/thuthesis/releases)
   * [TUNA Mirrors](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/): mirror of GitHub Releases
+  * [Overleaf Template](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)
 * Developer versions: [GitHub](https://github.com/tuna/thuthesis)
 
 ## Changelog

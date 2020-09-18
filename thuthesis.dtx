@@ -75,17 +75,14 @@
 % \item 本模板的发布遵守 \href{https://www.latex-project.org/lppl/lppl-1-3c.txt}{\LaTeX{} Project Public License (1.3.c)}，使用前请认真阅读协议内
 %   容。
 % \item 本模板为作者根据
-%   清华大学教务处颁发的
-%   \href{http://www.law.tsinghua.edu.cn/publish/law/7024/2012/20120216153516317135347/20120216153516317135347_.html}{《综合论文训练写作指南》}，
 %   清华大学研究生院颁发的
-%   \href{http://yjsy.cic.tsinghua.edu.cn/docinfo/board/boarddetail.jsp?columnId=001050603&parentColumnId=0010506&itemSeq=5365}{《研究生学位论文写作指南》}，
+%   \href{http://yjsy.cic.tsinghua.edu.cn/docinfo/board/boarddetail.jsp?columnId=001050603&parentColumnId=0010506&itemSeq=5365}{%
+%   《研究生学位论文写作指南》}（仅限校内网络访问）、
+%   清华大学教务处颁发的《综合论文训练写作指南》和
 %   清华大学
 %   \href{http://postdoctor.tsinghua.edu.cn/info/czxz/1283}{%
 %     《编写“清华大学博士后研究报告”参考意见》}
 %   编写而成，旨在供清华大学毕业生撰写学位论文使用。
-% \item 清华大学教务处和研究生院只提供毕业论文写作指南，不提供官方模板，也不会授
-%   权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格式审查老师
-%   不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
 % \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
 %   守 \LaTeX{} Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
 %   本模板作者无关。
@@ -167,9 +164,9 @@
 % thuthesis.ins & \textsc{DocStrip} 驱动文件（开发用） \\
 % thuthesis.dtx & \textsc{DocStrip} 源文件（开发用）\\\midrule
 % thuthesis.cls & 模板类文件\\
-% thuthesis-numeric.bst & 参考文献样式文件\\
-% thuthesis-author-year.bst & 参考文献样式文件\\
-% thuthesis-bachelor.bst & 参考文献样式文件\\
+% thuthesis-*.bst & \hologo{BibTeX} 参考文献表样式文件\\
+% thuthesis-*.bbx & BibLaTeX 参考文献表样式文件\\
+% thuthesis-*.cbx & BibLaTeX 参考文献引用样式文件\\
 % tsinghua-name-bachelor.pdf & 校名 logo，本科生封面使用 \\\midrule
 % thuthesis-example.tex & 示例文档主文件\\
 % spine.tex & 书脊示例文档\\
@@ -245,20 +242,20 @@
 %
 % 首先，更新模板：
 % \begin{shell}
-%   $ xetex thuthesis.ins         # 生成 thuthesis.cls
+%   $ xetex thuthesis.ins                       # 生成 thuthesis.cls
 % \end{shell}
 %
 % 然后，生成论文以及书脊：
 % \begin{shell}
 %   $ xelatex thuthesis-example.tex
-%   $ bibtex thuthesis-example.aux   # 生成 bbl 文件
-%   $ bibtex thuthesis-example-survey.aux         # 本科生的调研报告的参考文献
-%   $ bibtex thuthesis-example-translation.aux    # 本科生的外文资料翻译的参考文献
-%   $ bibtex thuthesis-example-index.aux          # 本科生的书面翻译对应的原文索引
-%   $ xelatex thuthesis-example.tex  # 解决引用
-%   $ xelatex thuthesis-example.tex  # 生成论文 PDF
+%   $ bibtex thuthesis-example.aux              # 生成 bbl 文件
+%   $ bibtex thuthesis-example-survey.aux       # 本科生的调研报告的参考文献
+%   $ bibtex thuthesis-example-translation.aux  # 本科生的外文资料翻译的参考文献
+%   $ bibtex thuthesis-example-index.aux        # 本科生的书面翻译对应的原文索引
+%   $ xelatex thuthesis-example.tex             # 解决引用
+%   $ xelatex thuthesis-example.tex             # 生成论文 PDF
 %
-%   $ xelatex spine.tex           # 生成书脊 PDF
+%   $ xelatex spine.tex                         # 生成书脊 PDF
 % \end{shell}
 %
 % 在调用 \XeLaTeX 时，如果设置了 \option{include-spine} 选项，
@@ -290,19 +287,13 @@
 % \subsection{示例文件}
 % \label{sec:userguide}
 %
-% 模板核心文件
-% 有：\file{thuthesis.cls}，\file{thuthesis-numeric.bst}，
-% \file{thuthesis-author-year.bst} 和 \file{tsinghua-name-bachelor.pdf}，
+% 模板核心文件有：\file{thuthesis.cls}，\file{tsinghua-name-bachelor.pdf},
+% \file{thuthesis-*.bst}（\hologo{BibTeX}），
+% \file{thuthesis-*.bbx} 和 \file{thuthesis-*.cbx}（BibLaTeX），
 % 但如果没有示例文档会较难下手，所以推荐从模板自带的示例文档入手。其中包括了论文
 % 写作用到的所有命令及其使用方法，只需用自己的内容进行相应替换就可以。对于不清
 % 楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文档，
 % 具体内容可以参考模板附带的 \file{thuthesis-example.tex} 和 \file{data/}。
-%
-% \lstinputlisting[style=lstStyleLaTeX]{thuthesis-example.tex}
-%
-% 其中 \file{thusetup.tex} 包括了论文基本信息的配置样例：
-%
-% \lstinputlisting[style=lstStyleLaTeX]{thusetup.tex}
 %
 % \subsection{论文选项}
 % \label{sec:option}
