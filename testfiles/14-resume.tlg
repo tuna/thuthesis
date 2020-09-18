@@ -103,7 +103,7 @@ Completed box being shipped out [116]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set - 0.23315
+..\vbox(674.33032+0.0)x426.79135, glue set >20000.0fil
 ...\write-{}
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
@@ -118,7 +118,7 @@ Completed box being shipped out [116]
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
-...\glue 20.12 plus -1.0
+...\glue 15.10124 plus -1.0
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(12.62315+2.93896)x426.79135, glue set 68.8557fil
@@ -166,7 +166,7 @@ Completed box being shipped out [116]
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
-...\glue 32.12 plus -1.0
+...\glue 27.10124 plus -1.0
 ...\mark{{个人简历、在学期间完成的相关学术成果}{个人简历\ETC.}
 ...\penalty 10000
 ...\glue 24.09

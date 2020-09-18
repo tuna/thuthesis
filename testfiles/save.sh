@@ -44,7 +44,7 @@ save_config ()
 
 
 if [[ $# -eq 0 ]]; then
-    for config in main crossref cover nomencl bib; do
+    for config in main crossref cover nomencl bibtex biblatex; do
         save_config $config;
     done
 else

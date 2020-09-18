@@ -2919,14 +2919,14 @@
 %     段前空 12 磅，段后空 6 磅。
 % \end{itemize}
 %
-% 由于 Word 模板中开启了“对齐到网格”，实际的段前段后距离有所调整。
+% 由于 Word 的行距算法不同，这里进行了一些调整使得视觉上更接近。
 %    \begin{macrocode}
   \else
     \ctexset{%
       chapter = {
         format     = \centering\sffamily\sanhao,
-        beforeskip = 32bp,
-        afterskip  = 32bp,
+        beforeskip = 27bp,
+        afterskip  = 27bp,
       },
       section = {
         format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
