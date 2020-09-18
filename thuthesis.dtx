@@ -3936,52 +3936,19 @@
 % \begin{macro}{\copyrightpage}
 % 授权说明
 %    \begin{macrocode}
-\newcommand{\thu@authorization@title}{关于学位论文使用授权的说明}
-\newcommand{\thu@authorization@content}{%
-\ifthu@degree@bachelor
-    本人完全了解清华大学有关保留、使用学位论文的规定，%
-    即：学校有权保留学位论文的复印件，允许该论文被查阅和借阅；%
-    学校可以公布该论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存该论文。%
-\else
-    本人完全了解清华大学有关保留、使用学位论文的规定，即：\par
-    清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：%
-    （1）已获学位的研究生必须按学校规定提交学位论文，%
-    学校可以采用影印、缩印或其他复制手段保存研究生上交的学位论文；%
-    （2）为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料室等场所供校内师生阅读，%
-    或在校园网上供校内师生浏览部分内容；%
-    \ifthu@degree@doctor
-      （3）根据《中华人民共和国学位条例暂行实施办法》及相关部门具体要求，向国家图书馆报送相应的学位论文。%
-    \else
-      （3）按照相关部门督导、抽查等要求，报送相应的学位论文。%
-    \fi
-    \par
-    本人保证遵守上述规定。%
-  \fi
-}
-\newcommand{\thu@authorization@addon}{%
-  \ifthu@degree@bachelor(涉密的学位论文在解密后应遵守此规定)\else （保密的论文在解密后遵守此规定）\fi}
-\newcommand{\thu@authorization@authorsig}{\ifthu@degree@bachelor 签\hskip1em名：\else 作者签名：\fi}
-\newcommand{\thu@authorization@teachersig}{导师签名：}
-\newcommand{\thu@authorization@frontdate}{%
-  日\ifthu@degree@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
 \newcommand\copyrightpage[1][]{%
   \ifthu@degree@postdoc\relax\else
-    \cleardoublepage
-    \thispagestyle{empty}%
-    \thu@pdfbookmark{0}{\thu@authorization@title}%
     \def\thu@@tmp{#1}
     \ifx\thu@@tmp\@empty
-      \ifthu@degree@bachelor\thu@authorization@mk\else%
-        \begin{list}{}{%
-          \topsep\z@%
-          \listparindent\parindent%
-          \parsep\parskip%
-          \setlength{\leftmargin}{0.9mm}%
-          \setlength{\rightmargin}{0.9mm}}%
-        \item[]\thu@authorization@mk%
-        \end{list}%
-      \fi%
+      \ifthu@degree@bachelor
+        \thu@copyright@page@bachelor
+      \else
+        \thu@copyright@page@graduate
+      \fi
     \else
+      \cleardoublepage
+      \thispagestyle{empty}%
+      \thu@pdfbookmark{0}{\thu@authorization@title}%
       \thu@phantomsection
       \kv@define@key{thu@copyright}{file}{\includepdf{\kv@value}}%
       \kv@set@family@handler{thu@copyright}{%
@@ -3999,25 +3966,84 @@
 %
 % 支持扫描文件替换。
 %    \begin{macrocode}
-\newcommand{\thu@authorization@mk}{%
-  \ifthu@degree@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
-  \begin{center}\erhao\heiti \thu@authorization@title\end{center}
-  \ifthu@degree@bachelor\vskip5pt\else\vskip40pt\sihao[2.03]\fi\par
-  \thu@authorization@content\par
-  \textbf{\thu@authorization@addon}\par
-  \ifthu@degree@bachelor\vskip0.7cm\else\vskip1.0cm\fi
-  \ifthu@degree@bachelor
-    \indent\mbox{\thu@authorization@authorsig\thu@underline\relax%
-    \thu@authorization@teachersig\thu@underline\relax\thu@authorization@frontdate\thu@underline\relax}
-  \else
-    \begingroup
-      \parindent0pt\xiaosi
-      \hspace*{1.5cm}\thu@authorization@authorsig\thu@underline[7em]\relax\hfill%
-                     \thu@authorization@teachersig\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]
-      \hspace*{1.5cm}\thu@authorization@frontdate\thu@underline[7em]\relax\hfill%
-                     \thu@authorization@frontdate\thu@underline[7em]\relax\hspace*{1cm}
-    \endgroup
-  \fi}
+\newcommand{\thu@authorization@frontdate}{%
+  日\ifthu@degree@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
+\newcommand\thu@copyright@page@graduate{%
+  \cleardoublepage
+  \newgeometry{
+    vmargin = 3.8cm,
+    hmargin = 3.2cm,
+  }%
+  \begingroup
+    \ctexset{
+      chapter = {
+        format     = {\centering\sffamily\erhao},
+        beforeskip = 18bp,
+        afterskip  = 6bp,
+      },
+    }%
+    \thu@chapter*[]{关于学位论文使用授权的说明}%
+    \thispagestyle{empty}%
+  \endgroup
+  \vskip 50bp%
+  \begingroup
+    \fontsize{14bp}{26bp}\selectfont
+    本人完全了解清华大学有关保留、使用学位论文的规定，即：\par
+    清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：%
+    （1）已获学位的研究生必须按学校规定提交学位论文，%
+    学校可以采用影印、缩印或其他复制手段保存研究生上交的学位论文；%
+    （2）\nobreak 为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料室等场所供校内师生阅读，%
+    或在校园网上供校内师生浏览部分内容；%
+    \ifthu@degree@doctor
+      （3）根据《中华人民共和国学位条例暂行实施办法》及上级教育主管部门具体要求，向国家图书馆报送相应的学位论文。%
+    \else
+      （3）按照上级教育主管部门督导、抽查等要求，报送相应的学位论文。%
+    \fi
+    \par
+    本人保证遵守上述规定。\par
+    \vskip 6bp%
+    \textbf{（保密的论文在解密后遵守此规定）}\par
+  \endgroup
+  \vskip1.2cm%
+  \begingroup
+    \noindent\xiaosi
+    \hspace*{1.5cm}%
+    作者签名：\thu@underline[7em]\relax\hfill
+    导师签名：\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]%
+    \hspace*{1.5cm}%
+    日\hspace{2em}期：\thu@underline[7em]\relax\hfill
+    日\hspace{2em}期：\thu@underline[7em]\relax\hspace*{1cm}%
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+\newcommand\thu@copyright@page@bachelor{%
+  \cleardoublepage
+  \begingroup
+    \ctexset{
+      chapter = {
+        format     = {\centering\sffamily\erhao[1]},
+        beforeskip = 1bp,
+        afterskip  = 24bp,
+      },
+    }%
+    \thu@chapter*[]{关于学位论文使用授权的说明}%
+    \thispagestyle{empty}%
+  \endgroup
+  \vskip 4bp%
+  本人完全了解清华大学有关保留、使用学位论文的规定，即：%
+  学校有权保留学位论文的复印件，允许该论文被查阅和借阅；%
+  学校可以公布该论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存该论文。\par
+  \textbf{(涉密的学位论文在解密后应遵守此规定)}\par
+  \null\par
+  \begingroup
+    \centering
+    签\quad 名：\thu@underline[6em]{}%
+    导师签名：\thu@underline[6em]{}%
+    日\quad 期\thu@underline[6em]{}%
+    \par
+  \endgroup
+}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -5021,7 +5047,8 @@
     \phantomsection
   }
   \pdfstringdefDisableCommands{
-    \let\\\@empty
+    \let\\\relax
+    \let\quad\relax
     \let\hspace\@gobble
   }%
 %    \end{macrocode}

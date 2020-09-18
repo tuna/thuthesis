@@ -43,33 +43,25 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 448.14014fil
+..\vbox(645.87758+0.0)x421.10089, glue set 446.47516fil
 ...\write-{}
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnote@aux }[2]{}}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
+...\write1{\protect \FN@pp@footnotehinttrue }
+...\write-{}
+...\write1{\protect \FN@pp@footnotehinttrue }
+...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
-...\glue 5.69046
+...\glue 28.15 plus -1.0
 ...\glue 0.0
-...\penalty -51
-...\glue 13.0 plus 7.0 minus 8.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 11.39462
 ...\hbox(17.31267+3.90858)x421.10089, glue set 67.01427fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\hbox(0.0+0.0)x0.0
-.....\glue 0.0
-.....\glue 0.0
-.....\glue -6.0
-.....\hbox(0.0+0.0)x0.0
-......\special{color push gray 0}
-......\special{color pop}
-.....\glue 6.0
-....\penalty 0
 ....\TU/FandolHei(0)/m/n/22.08249 关
 ....\glue 0.0 plus 1.38918
 ....\TU/FandolHei(0)/m/n/22.08249 于
@@ -100,11 +92,12 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\penalty -51
-...\glue 13.0 plus 6.0 minus 8.0
-...\glue 5.0
+...\penalty 10000
+...\glue 24.09 plus -1.0
+...\mark{{关于学位论文使用授权的说明}{关于学位论文使用授\ETC.}
+...\penalty 10000
+...\glue 4.015
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 6.6629
 ...\hbox(9.50351+2.32468)x421.10089, glue set - 0.02623
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 本
@@ -367,90 +360,85 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\glue 19.91684
+...\glue(\baselineskip) 18.00327
+...\hbox(0.0+0.0)x0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 8.68044
-...\hbox(9.32283+3.97446)x421.10089, glue set 11.61595fil
-....\hbox(0.0+0.0)x24.09
-....\hbox(9.32283+3.97446)x385.39494
-.....\TU/FandolSong(0)/m/n/12.045 签
-.....\kern -0.00017
-.....\kern 0.00017
-.....\glue 12.045
-.....\TU/FandolSong(0)/m/n/12.045 名
-.....\penalty 10000
-.....\TU/FandolSong(0)/m/n/12.045 ：
-.....\rule(0.0+0.0)x-8.39537
-.....\kern 0.00052
-.....\kern -0.00052
-.....\kern -0.99649
-.....\kern 0.99649
-.....\glue 8.39537 minus 6.0225
-.....\glue 1.0
-.....\mathon
-.....\vbox(0.0+3.97446)x72.26999
-......\hbox(0.0+0.0)x72.26999
-.......\hbox(0.0+0.0)x72.26999, glue set 36.135fil
-........\glue 0.0 plus 1.0fil minus 1.0fil
-........\glue 0.0 plus 1.0fil minus 1.0fil
-......\kern2.38467
-......\rule(0.79489+0.0)x*
-.....\mathoff
-.....\glue 3.0
-.....\TU/FandolSong(0)/m/n/12.045 导
-.....\glue 0.0 plus 0.73799
-.....\TU/FandolSong(0)/m/n/12.045 师
-.....\glue 0.0 plus 0.73799
-.....\TU/FandolSong(0)/m/n/12.045 签
-.....\glue 0.0 plus 0.73799
-.....\TU/FandolSong(0)/m/n/12.045 名
-.....\penalty 10000
-.....\TU/FandolSong(0)/m/n/12.045 ：
-.....\rule(0.0+0.0)x-8.39537
-.....\kern 0.00052
-.....\kern -0.00052
-.....\kern -0.99649
-.....\kern 0.99649
-.....\glue 8.39537 minus 6.0225
-.....\glue 1.0
-.....\mathon
-.....\vbox(0.0+3.97446)x72.26999
-......\hbox(0.0+0.0)x72.26999
-.......\hbox(0.0+0.0)x72.26999, glue set 36.135fil
-........\glue 0.0 plus 1.0fil minus 1.0fil
-........\glue 0.0 plus 1.0fil minus 1.0fil
-......\kern2.38467
-......\rule(0.79489+0.0)x*
-.....\mathoff
-.....\glue 3.0
-.....\TU/FandolSong(0)/m/n/12.045 日
-.....\kern -0.00017
-.....\kern 0.00017
-.....\glue 12.045
-.....\TU/FandolSong(0)/m/n/12.045 期
-.....\penalty 10000
-.....\TU/FandolSong(0)/m/n/12.045 ：
-.....\rule(0.0+0.0)x-8.39537
-.....\kern 0.00052
-.....\kern -0.00052
-.....\kern -0.99649
-.....\kern 0.99649
-.....\glue 8.39537 minus 6.0225
-.....\glue 1.0
-.....\mathon
-.....\vbox(0.0+3.97446)x72.26999
-......\hbox(0.0+0.0)x72.26999
-.......\hbox(0.0+0.0)x72.26999, glue set 36.135fil
-........\glue 0.0 plus 1.0fil minus 1.0fil
-........\glue 0.0 plus 1.0fil minus 1.0fil
-......\kern2.38467
-......\rule(0.79489+0.0)x*
-.....\mathoff
-.....\glue 3.0
+...\glue(\baselineskip) 10.75217
+...\hbox(9.32283+3.97446)x421.10089, glue set 25.37547fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/FandolSong(0)/m/n/12.045 签
+....\kern -0.00017
+....\kern 0.00017
+....\glue 12.045
+....\TU/FandolSong(0)/m/n/12.045 名
 ....\penalty 10000
-....\glue(\parfillskip) 0.0 plus 1.0fil
-....\glue(\rightskip) 0.0
+....\TU/FandolSong(0)/m/n/12.045 ：
+....\rule(0.0+0.0)x-8.39537
+....\kern 0.00052
+....\kern -0.00052
+....\kern -0.99649
+....\kern 0.99649
+....\glue 8.39537 minus 6.0225
+....\glue 1.0
+....\mathon
+....\vbox(0.0+3.97446)x72.26999
+.....\hbox(0.0+0.0)x72.26999
+......\hbox(0.0+0.0)x72.26999, glue set 36.135fil
+.......\glue 0.0 plus 1.0fil minus 1.0fil
+.......\glue 0.0 plus 1.0fil minus 1.0fil
+.....\kern2.38467
+.....\rule(0.79489+0.0)x*
+....\mathoff
+....\glue 3.0
+....\TU/FandolSong(0)/m/n/12.045 导
+....\glue 0.0 plus 0.73799
+....\TU/FandolSong(0)/m/n/12.045 师
+....\glue 0.0 plus 0.73799
+....\TU/FandolSong(0)/m/n/12.045 签
+....\glue 0.0 plus 0.73799
+....\TU/FandolSong(0)/m/n/12.045 名
+....\penalty 10000
+....\TU/FandolSong(0)/m/n/12.045 ：
+....\rule(0.0+0.0)x-8.39537
+....\kern 0.00052
+....\kern -0.00052
+....\kern -0.99649
+....\kern 0.99649
+....\glue 8.39537 minus 6.0225
+....\glue 1.0
+....\mathon
+....\vbox(0.0+3.97446)x72.26999
+.....\hbox(0.0+0.0)x72.26999
+......\hbox(0.0+0.0)x72.26999, glue set 36.135fil
+.......\glue 0.0 plus 1.0fil minus 1.0fil
+.......\glue 0.0 plus 1.0fil minus 1.0fil
+.....\kern2.38467
+.....\rule(0.79489+0.0)x*
+....\mathoff
+....\glue 3.0
+....\TU/FandolSong(0)/m/n/12.045 日
+....\kern -0.00017
+....\kern 0.00017
+....\glue 12.045
+....\TU/FandolSong(0)/m/n/12.045 期
+....\kern -0.00017
+....\kern 0.00017
+....\glue 1.0
+....\mathon
+....\vbox(0.0+3.97446)x72.26999
+.....\hbox(0.0+0.0)x72.26999
+......\hbox(0.0+0.0)x72.26999, glue set 36.135fil
+.......\glue 0.0 plus 1.0fil minus 1.0fil
+.......\glue 0.0 plus 1.0fil minus 1.0fil
+.....\kern2.38467
+.....\rule(0.79489+0.0)x*
+....\mathoff
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
 ...\write1{\protect \FN@pp@footnotehinttrue }
+...\penalty 10000
 ...\glue -3.97446
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
