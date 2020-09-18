@@ -69,7 +69,7 @@ Completed box being shipped out [2]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 308.96138fill
+..\vbox(674.33032+0.0)x426.79135, glue set 308.86502fill
 ...\write-{}
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
@@ -78,7 +78,7 @@ Completed box being shipped out [2]
 ...\write-{}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \sffamily  \ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{Abstract}{\thepage \ETC.}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
@@ -87,9 +87,9 @@ Completed box being shipped out [2]
 ...\glue 20.12 plus -1.0
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\hbox(11.70773+0.14453)x426.79135, glue set 180.78586fil
+...\hbox(11.70773+0.24089)x426.79135, glue set 183.9818fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/texgyreheros(0)/b/n/16.06 Abstract
+....\TU/texgyreheros(0)/m/n/16.06 Abstract
 ....\kern -0.0002
 ....\kern 0.0002
 ....\penalty 10000
@@ -160,7 +160,7 @@ Completed box being shipped out [2]
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 con-
 ....\glue(\rightskip) 0.0
-...\penalty 250
+...\penalty 10100
 ...\glue(\baselineskip) 9.22247
 ...\hbox(8.22673+2.61375)x426.79135, glue set 0.54044
 ....\TU/texgyretermes(0)/m/n/12.045 tributions.
@@ -824,7 +824,6 @@ Completed box being shipped out [2]
 ...\glue 0.0 plus 1.0fill
 ...\glue 0.0
 ...\write1{\protect \FN@pp@footnotehinttrue }
-...\penalty 10000
 ...\glue -2.6258
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0

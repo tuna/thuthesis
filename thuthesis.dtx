@@ -4105,10 +4105,7 @@
   \fi
   \thusetup{language = english}%
   \ifthu@degree@graduate
-    \begingroup
-      \ctexset{chapter/format+=\bfseries}%
-      \thu@chapter*[\sffamily\bfseries\thu@abstract@name@en]{\thu@abstract@name@en}%
-    \endgroup
+    \thu@chapter*{\thu@abstract@name@en}%
   \else
     \thu@chapter*[]{\thu@abstract@name@en}%
   \fi
