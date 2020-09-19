@@ -1,0 +1,282 @@
+\input{regression-test.tex}
+\documentclass[degree=postdoc]{thuthesis}
+
+\begin{document}
+\START
+\showoutput
+
+\frontmatter
+
+\begin{abstract}
+  本文在分析设计过程、用户需求、典型程序及相应的计算机环境的基础上，以框架简力墙为例，研究了在现代计算机软硬件环境下，房屋结构的计算机模型建造技术提出了新的模型概念和相应的计算机技术，并在此基础上开发了一体化的软件FSWB。
+
+  本文的主要结论是：
+  \begin{enumerate}
+    \item 将一个模型划分成用户模型，核心模型和过程模型是将复杂的框架简力墙结构化为计算机模型的最有效途径。
+    \item 命令结构，程序结构与数据结构的一致性是计算机模拟人工设计过程的最佳方式。
+    \item 面向对象（object-oriented）的数据结构提高了复杂房屋结构在计算机里的建模效率。
+    \item 核心模型的标准化实现了计算机模型的多用户共享。可用于联网条件下的计算机环境，同时也便于用户进行多种方案的分析比较。
+    \item 用户标志、计算机标志的使用，便于用户具有更大的选择性，使他可以采用自己习惯的方式来定义任意部件。
+    \item FSWB服务器的使用，大大简化了应用程序的开发工作量。
+    \item FSWB接口实现了进程之间的通讯。在没有并行计算机的情况下这是一种较好的工作方式。
+  \end{enumerate}
+
+  \thusetup{
+    keywords = {结构, 模型, 用户界面, 对象, 结构分析},
+  }
+\end{abstract}
+
+\begin{abstract*}
+  Based on the analysis of the design process, the user requirements, the standard programs developed on the old computers and the facilities offered by the current hardware and software equipment, new concepts of modelling of Frame-Shear-Wall Buildings on computers are presented in this thesis.
+  To examine the new concepts an integrated modelling package FSWB is implemented.
+  Solutions presented in this thesis can be summarized as follows:
+  \begin{enumerate}
+    \item Seperation of a model into user model, core model and processor model to map a complex Frame-Wall building into the computer.
+    \item Achievement of the arbitrary sequence of solution steps for the user so that the design process is simulated.
+    \item Implementation of an object-oriented data model.
+    \item Management of inputs in a multi-window computer environment.
+    \item Programming of dynamic storage allocation.
+    \item Achievement of identifying of objects in the user preference.
+  \end{enumerate}
+
+  \thusetup{
+    keywords* = {Structure, model, user surface, object, structural analysis},
+  }
+\end{abstract*}
+
+
+\tableofcontents
+
+\begin{denotation}[10em]
+  \item[$A_i$ ($i = n, e, s, w$)] 控制体相应表面的面积
+  \item[$A_{ij}, B_{ij}, C_{ij}, D_{ij}$] 差分方程系数
+  \item[$D_1$] 球床主体直径
+  \item[$D_2$] 球床卸料管直径
+  \item[$D_{ij}$] 速度梯度张量
+  \item[$E_{ij}$] 变形率张量
+  \item[$F_i$ ($i = n, e, s, w$)] 通量
+  \item[$H$] 球床总高度，$H = H_1 + H_2 + H_3$
+  \item[$H_1$] 球床直筒段高度
+  \item[$H_{11}, H_{12}$] 标志球层高度
+  \item[$H_2$] 球床锥形底部高度
+  \item[$H_2$] 卸料管长度
+  \item[$K$] 旋度模型参数
+  \item[$N$] 球流实验中循环总球数
+  \item[$N_0$] 球床装球总数
+  \item[$R$] 旋度或球床的无量纲径向距离
+  \item[$R_{ji}$] $R_{ij} = R'_{ij} - \omega_{ji}$，其中 $R'_{ij}$ 是旋度张量
+  \item[$R_w$] 球床中心轴到壁面的无量纲距离
+  \item[$R_x$] $R$ 对 $x$ 的偏导数
+  \item[$R_y$] $R$ 对 $y$ 的偏导数
+  \item[$S_c$] 差分方程的源项线性化后的常数部分
+  \item[$S_p$] 源项线性化的斜率
+  \item[$V_{wc}$] 循环球数与球床总球数的比值，即球床体积数
+  \item[$W_1$] 球床入口平均速度
+  \item[$\alpha$] 球（或散体颗体）的半径
+  \item[$\alpha_i$ ($i = P, E, S, W, N$)] 差分方程系数
+  \item[$b$] 差分方程源项
+  \item[$d_p$] 颗粒直径
+  \item[$f'$] 质量力矢量
+  \item[$k_i$ ($i = 1, \dots, 4$)] 微极连续介质模型方程引入的中间量
+  \item[$n_0$] 标志球总数
+\end{denotation}
+
+\OMIT
+
+
+\mainmatter
+
+\clearpage
+\setcounter{page}{1}
+\chapter{材料动态断裂研究概述}
+
+\clearpage
+\setcounter{page}{3}
+\section{前言}
+
+\clearpage
+\setcounter{page}{7}
+\section{材料断裂的微观机制}
+\subsection{微损伤的形核}
+
+\clearpage
+\setcounter{page}{12}
+\subsection{微损伤的增长}
+
+\clearpage
+\setcounter{page}{13}
+\subsection{微损伤的聚合}
+
+\clearpage
+\setcounter{page}{14}
+\subsection{材料的微结构和工艺处理对损伤的影响}
+\section{静态损伤理论}
+\subsection{概况}
+
+\clearpage
+\setcounter{page}{17}
+\subsection{延性细观损伤模型}
+
+\clearpage
+\setcounter{page}{20}
+\subsection{脆性细观损伤模型}
+
+\clearpage
+\setcounter{page}{24}
+\subsection{非平衡统计断裂力学}
+
+\clearpage
+\setcounter{page}{25}
+\section{动态损伤理论}
+\subsection{概况}
+
+\clearpage
+\setcounter{page}{27}
+\subsection{Grady层裂模型}
+
+\clearpage
+\setcounter{page}{29}
+\subsection{Perzyna过应力损伤模型}
+
+\clearpage
+\setcounter{page}{30}
+\subsection{NAG统计断裂力学模型}
+
+\clearpage
+\setcounter{page}{33}
+\subsection{微损伤系统演化统计模型}
+
+\clearpage
+\setcounter{page}{36}
+\subsection{延性动态断裂细观分析模型}
+
+\clearpage
+\setcounter{page}{38}
+\subsection{其它模型}
+
+\clearpage
+\setcounter{page}{39}
+\section{本文工作简介}
+\subsection{延性和脆性动态断裂理论模型的建立}
+
+\clearpage
+\setcounter{page}{41}
+\subsection{材料动态断裂实验研究}
+\subsection{层裂破坏数值模型}
+\section{评  述}
+
+\clearpage
+\setcounter{page}{51}
+\chapter{金属材料动态断裂实验研究}
+\section{前言}
+
+\clearpage
+\setcounter{page}{52}
+\section{层裂实验}
+
+\clearpage
+\setcounter{page}{83}
+\section{损伤的显微观察及分析}
+\chapter{延性动态断裂模型}
+\section{前言}
+
+\clearpage
+\setcounter{page}{84}
+\section{孔洞的形核}
+
+\clearpage
+\setcounter{page}{86}
+\section{动态拉伸应力作用下的孔洞演化}
+\subsection{孔洞动态增长和压缩关系}
+
+\clearpage
+\setcounter{page}{93}
+\subsection{孔洞准静态增长和压缩关系}
+
+\clearpage
+\setcounter{page}{94}
+\subsection{关于基体塑性不可压假设}
+
+\clearpage
+\setcounter{page}{96}
+\section{一般应力作用下的孔洞演化}
+
+\clearpage
+\setcounter{page}{98}
+\section{温度效应对孔洞动态演化的影响}
+\subsection{与温度相关的孔洞演化方程}
+
+\clearpage
+\setcounter{page}{100}
+\subsection{模型的数值分析}
+
+\clearpage
+\setcounter{page}{102}
+\section{讨论及结论}
+
+\clearpage
+\setcounter{page}{116}
+\chapter{脆性动态断裂模型}
+\section{前言}
+
+\clearpage
+\setcounter{page}{117}
+\section{含损伤的宏观本构关系}
+
+\clearpage
+\setcounter{page}{121}
+\section{微裂纹的动态演化方程}
+\subsection{微裂纹的动态增长}
+
+\clearpage
+\setcounter{page}{124}
+\subsection{微裂纹的形核及断裂准则}
+
+\clearpage
+\setcounter{page}{125}
+\section{讨论及总结}
+
+\clearpage
+\setcounter{page}{126}
+\chapter{延性材料一维二维层裂数值模拟}
+\section{前言}
+
+\clearpage
+\setcounter{page}{127}
+\section{一维层裂数值模拟}
+
+\clearpage
+\setcounter{page}{129}
+\section{二维层裂数值模拟}
+
+\clearpage
+\setcounter{page}{138}
+\chapter{结论}
+
+
+
+\backmatter
+\setcounter{page}{148}
+\chapter{参考文献}
+\chapter{致谢}
+
+\clearpage
+\setcounter{page}{149}
+\chapter{博士生期间发表的学术论文，专著}
+
+\clearpage
+\setcounter{page}{150}
+\chapter{博士后期间发表的学术论文，专著}
+
+\clearpage
+\setcounter{page}{151}
+\chapter{个人简历}
+
+\clearpage
+\setcounter{page}{152}
+\chapter{永久通信地址}
+
+
+\clearpage
+\OMIT
+\end{document}
