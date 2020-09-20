@@ -2406,6 +2406,12 @@
 \thu@option@hook{language}{\thu@set@names}
 %    \end{macrocode}
 %
+% 带圈数字和星号使用中文字体。
+%    \begin{macrocode}
+\xeCJKDeclareCharClass{CJK}{"2460 -> "2473}
+\xeCJKDeclareCharClass{CJK}{"2605}
+%    \end{macrocode}
+%
 % \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
 % 由于 Unicode 的一些标点符号是中西文混用的：
 % \unicodechar{00B7}、
@@ -2543,7 +2549,7 @@
       Keep footnote less than 10%
     }%
   \fi
-  {\CJKfamily+{}\symbol{\the\numexpr\value{#1}+"245F\relax}}%
+  {\symbol{\the\numexpr\value{#1}+"245F\relax}}%
 }
 \renewcommand{\thefootnote}{\thu@textcircled{footnote}}
 \renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
@@ -3481,7 +3487,7 @@
 %
 %    \begin{macrocode}
 \newcommand\thu@titlepage@secret{%
-  \sffamily\CJKfamily+{}\sanhao
+  \sffamily\sanhao
   \ifx\thu@secret@level\@empty
     \phantom{秘密}%
   \else
@@ -3746,7 +3752,7 @@
     \centering
     \parbox[t][0cm][t]{\textwidth}{%
       \hfill
-      \CJKfamily+{}\xiaosi
+      \xiaosi
       \ifx\thu@secret@level\@empty\else
         \thu@secret@level\space\thu@secret@year 年\par
       \fi

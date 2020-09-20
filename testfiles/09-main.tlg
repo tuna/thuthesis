@@ -13,10 +13,6 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 9.03278pt on input line ....
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 7.22623pt on input line ....
-Missing character: There is no ① in font [texgyretermes-regular.otf]/OT:script=
-latn;language=dflt;mapping=tex-text;!
-Missing character: There is no ⑩ in font [texgyretermes-regular.otf]/OT:script=
-latn;language=dflt;mapping=tex-text;!
 Completed box being shipped out [1]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -763,8 +759,8 @@ Completed box being shipped out [1]
 .....\mathon
 .....\hbox(7.90454+1.52669)x9.53375, shifted -4.81851
 ......\TU/FandolSong(0)/m/n/9.03375 ①
-......\kern -0.0002
-......\kern 0.0002
+......\kern -0.00017
+......\kern 0.00017
 .....\mathoff
 ....\write1{\FN@pp@footnote@aux{1}{\thepage }}
 ....\penalty 10000
@@ -2090,7 +2086,7 @@ Completed box being shipped out [1]
 ...\glue -3.0
 ...\rule(0.4+0.0)x128.0387
 ...\glue 2.6
-...\hbox(8.4+1.7435)x408.72386, glue set - 0.06303, shifted 18.06749
+...\hbox(8.4+1.7435)x408.72386, glue set - 0.01416, shifted 18.06749
 ....\hbox(0.0+0.0)x0.0
 ....\hbox(7.90453+1.52669)x0.0, glue set - 18.06749fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -2098,8 +2094,8 @@ Completed box being shipped out [1]
 ......\hbox(7.90453+1.52669)x18.06749, glue set 9.03375fil
 .......\hbox(7.90453+1.52669)x9.03374
 ........\TU/FandolSong(0)/m/n/9.03374 ①
-........\kern -0.0002
-........\kern 0.0002
+........\kern -0.00017
+........\kern 0.00017
 .......\glue 0.0 plus 1.0fil minus 1.0fil
 ....\hbox(8.4+0.0)x0.0
 .....\rule(8.4+0.0)x0.0
@@ -2115,10 +2111,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 0.26138
 ....\glue 5.28473 minus 4.51686
 ....\rule(0.0+0.0)x-5.28473
-....\TU/FandolSong(0)/m/n/9.03374 “
-....\penalty 10000
-....\glue 0.0
-....\TU/texgyretermes(0)/m/n/9.03374 ①
+....\TU/FandolSong(0)/m/n/9.03374 “①
 ....\penalty 10000
 ....\TU/FandolSong(0)/m/n/9.03374 ，
 ....\rule(0.0+0.0)x-6.25134
@@ -2132,7 +2125,8 @@ Completed box being shipped out [1]
 ....\TU/FandolSong(0)/m/n/9.03374 ，
 ....\rule(0.0+0.0)x-6.25134
 ....\glue 6.25134 minus 4.51686
-....\TU/texgyretermes(0)/m/n/9.03374 ⑩
+....\glue 0.0 plus 0.26138
+....\TU/FandolSong(0)/m/n/9.03374 ⑩
 ....\penalty 10000
 ....\TU/FandolSong(0)/m/n/9.03374 ”
 ....\rule(0.0+0.0)x-5.28473
@@ -2212,13 +2206,12 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\TU/FandolSong(0)/m/n/9.03374 ，
 ....\rule(0.0+0.0)x-6.25134
-....\glue 6.25134 minus 4.51686
-....\glue 0.0 plus 0.26138
-....\TU/FandolSong(0)/m/n/9.03374 脚
 ....\glue(\rightskip) 0.0
 ...\penalty 10100
 ...\glue(\baselineskip) 4.69754
 ...\hbox(7.10956+1.7435)x408.72386, glue set - 0.14453, shifted 18.06749
+....\TU/FandolSong(0)/m/n/9.03374 脚
+....\glue 0.0 plus 0.26138
 ....\TU/FandolSong(0)/m/n/9.03374 注
 ....\glue 0.0 plus 0.26138
 ....\TU/FandolSong(0)/m/n/9.03374 的
@@ -2324,12 +2317,12 @@ Completed box being shipped out [1]
 ....\TU/FandolSong(0)/m/n/9.03374 字
 ....\glue 0.0 plus 0.26138
 ....\TU/FandolSong(0)/m/n/9.03374 用
-....\glue 0.0 plus 0.26138
-....\TU/FandolSong(0)/m/n/9.03374 宋
 ....\glue(\rightskip) 0.0
 ...\penalty 250
 ...\glue(\baselineskip) 4.82402
-...\hbox(6.98308+4.06522)x408.72386, glue set 277.43654fil, shifted 18.06749
+...\hbox(6.98308+4.06522)x408.72386, glue set 268.4028fil, shifted 18.06749
+....\TU/FandolSong(0)/m/n/9.03374 宋
+....\glue 0.0 plus 0.26138
 ....\TU/FandolSong(0)/m/n/9.03374 体
 ....\penalty 10000
 ....\TU/FandolSong(0)/m/n/9.03374 ，
