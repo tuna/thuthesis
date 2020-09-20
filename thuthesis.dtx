@@ -2151,13 +2151,50 @@
 %
 % \begin{macro}{\normalsize}
 % 正文小四号 (12bp) 字，行距为固定值 20 bp。
+% 其他字号的行距按照相同的比例设置。
+%
+% 表达式行的行距为单倍行距，段前空 6 磅，段后空 6 磅。
 %    \begin{macrocode}
 \renewcommand\normalsize{%
   \@setfontsize\normalsize{12bp}{20bp}%
-  \abovedisplayskip=12bp \@plus 2bp \@minus 2bp
-  \abovedisplayshortskip=12bp \@plus 2bp \@minus 2bp
-  \belowdisplayskip=\abovedisplayskip
-  \belowdisplayshortskip=\abovedisplayshortskip}
+  \abovedisplayskip 6bp%
+  \abovedisplayshortskip 6bp%
+  \belowdisplayshortskip 6bp%
+  \belowdisplayskip \abovedisplayskip
+}
+\normalsize
+\ifx\MakeRobust\@undefined \else
+    \MakeRobust\normalsize
+\fi
+\DeclareRobustCommand\small{%
+   \@setfontsize\small{10.5bp}{17.5bp}%
+   \abovedisplayskip 6bp%
+   \abovedisplayshortskip 6bp%
+   \belowdisplayshortskip 6bp%
+   \def\@listi{\leftmargin\leftmargini
+               \topsep \z@skip
+               \parsep \z@skip
+               \itemsep \z@skip}%
+   \belowdisplayskip \abovedisplayskip
+}
+\DeclareRobustCommand\footnotesize{%
+   \@setfontsize\footnotesize{9bp}{15bp}%
+   \abovedisplayskip 6bp%
+   \abovedisplayshortskip 6bp%
+   \belowdisplayshortskip 6bp%
+   \def\@listi{\leftmargin\leftmargini
+               \topsep \z@skip
+               \parsep \z@skip
+               \itemsep \z@skip}%
+   \belowdisplayskip \abovedisplayskip
+}
+\DeclareRobustCommand\scriptsize{\@setfontsize\scriptsize{7.5bp}{12.5bp}}
+\DeclareRobustCommand\tiny{\@setfontsize\tiny{6.5bp}{10.83bp}}
+\DeclareRobustCommand\large{\@setfontsize\large{15bp}{25bp}}
+\DeclareRobustCommand\Large{\@setfontsize\Large{18bp}{30bp}}
+\DeclareRobustCommand\LARGE{\@setfontsize\LARGE{22bp}{36.67bp}}
+\DeclareRobustCommand\huge{\@setfontsize\huge{24bp}{40bp}}
+\DeclareRobustCommand\Huge{\@setfontsize\Huge{26bp}{43.33bp}}
 %    \end{macrocode}
 % \end{macro}
 %
