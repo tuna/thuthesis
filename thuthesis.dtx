@@ -2764,6 +2764,13 @@
 %
 % \subsubsection{浮动对象：插图和表格}
 % \label{sec:float}
+%
+% 图表浮动体的默认位置设为 |h|。
+%    \begin{macrocode}
+\def\fps@figure{h}
+\def\fps@table{h}
+%    \end{macrocode}
+%
 % 设置浮动对象和文字之间的距离
 %    \begin{macrocode}
 \setlength{\floatsep}{6bp}
@@ -2836,16 +2843,11 @@
 \lightrulewidth=1bp
 %    \end{macrocode}
 %
-% \begin{macro}{\hlinewd}
-% 简单的表格使用三线表推荐用 \cs{hlinewd}。如果表格比较复杂还是用 \pkg{booktabs} 的命
-% 令好一些。
 %    \begin{macrocode}
-\def\hlinewd#1{%
-  \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet
-    \reserved@a\@xhline}
+\AtEndOfPackageFile*{threeparttable}{
+  \g@addto@macro\TPT@defaults{\wuhao}
+}
 %    \end{macrocode}
-% \end{macro}
-%
 %
 % \subsubsection{章节标题}
 % \label{sec:theor}
