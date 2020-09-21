@@ -4641,7 +4641,7 @@
   \newcommand\thu@set@bibliography@format{%
     \ifthu@degree@bachelor
       \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
-      \setlength{\bibsep}{6bp}%
+      \setlength{\bibsep}{6bp \@plus 3bp \@minus 3bp}%
       \ifthu@main@language@chinese
         \setlength{\bibhang}{21bp}%
       \else
@@ -4649,13 +4649,32 @@
       \fi
     \else
       \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
-      \setlength{\bibsep}{3bp}%
+      \setlength{\bibsep}{3bp \@plus 3bp \@minus 3bp}%
       \setlength{\bibhang}{21bp}%
     \fi
   }
   \thu@set@bibliography@format
   \thu@option@hook{degree}{\thu@set@bibliography@format}
   \thu@option@hook{main-language}{\thu@set@bibliography@format}
+%    \end{macrocode}
+%
+% 研究生要求每一条文献的内容要尽量写在同一页内。
+% 遇有被迫分页的情况，可通过“留白”或微调本页行距的方式尽量将同一条文献内容放在一页。
+% 所以上述 \cs{bibsep} 的设置允许 1pt 的伸缩，
+% 同时增加同一条文献内分页的惩罚，
+% 这里参考 \href{https://github.com/plk/biblatex/blob/e5d6e69e61613cc33ab1fcc2083a8277eb9cfce5/tex/latex/biblatex/biblatex.def}{BibLaTeX 的设置}。
+%    \begin{macrocode}
+  \patchcmd\thebibliography{%
+    \clubpenalty4000%
+  }{%
+    \interlinepenalty=5000\relax
+    \clubpenalty=10000\relax
+  }{}{\thu@patch@error{\thebibliography}}
+  \patchcmd\thebibliography{%
+    \widowpenalty4000%
+  }{%
+    \widowpenalty=10000\relax
+  }{}{\thu@patch@error{\thebibliography}}
 %    \end{macrocode}
 %
 % 参考文献表的编号居左，宽度 1 cm。
@@ -4696,7 +4715,7 @@
   \newcommand\thu@set@bibliography@format{%
     \ifthu@degree@bachelor
       \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
-      \setlength{\bibitemsep}{6bp}%
+      \setlength{\bibitemsep}{6bp \@plus 3bp \@minus 3bp}%
       \ifthu@main@language@chinese
         \setlength{\bibhang}{21bp}%
       \else
@@ -4704,7 +4723,7 @@
       \fi
     \else
       \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
-      \setlength{\bibitemsep}{3bp}%
+      \setlength{\bibitemsep}{3bp \@plus 3bp \@minus 3bp}%
       \setlength{\biblabelsep}{0.1cm}%
       \setlength{\bibhang}{21bp}%
     \fi
