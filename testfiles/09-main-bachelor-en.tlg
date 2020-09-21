@@ -4510,7 +4510,7 @@ Completed box being shipped out [6]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 527.35632fil
+..\vbox(645.87758+0.0)x421.10089, glue set 501.26161fil
 ...\glue(\topskip) 0.0
 ...\hbox(14.05243+6.02255)x421.10089, glue set 327.80435fill
 ....\hbox(0.0+0.0)x0.0
@@ -4697,6 +4697,39 @@ Completed box being shipped out [6]
 .......\special{color pop}
 ....\kern 0.0
 ....\TU/texgyretermes(0)/m/n/12.045 18
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty 10000
+...\penalty 0
+...\glue 0.0 plus 0.1
+...\penalty 10000
+...\glue 6.02249
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\baselineskip) 0.00002
+...\hbox(14.05243+6.02255)x421.10089, glue set 323.21521fill
+....\hbox(0.0+0.0)x0.0
+....\rule(14.05243+6.02255)x0.0
+....\TU/texgyreheros(0)/m/n/12.045 PUBLICATIONS
+....\kern -0.0002
+....\kern 0.0002
+....\rule(14.05243+6.02255)x0.0
+....\kern 0.0
+....\glue -4.015
+....\glue 3.01125
+....\leaders 0.0 plus 1.0fill
+.....\hbox(1.2045+0.13248)x4.015, glue set 1.00375fil
+......\glue 0.0 plus 1.0fil minus 1.0fil
+......\hbox(1.2045+0.13248)x3.01125
+.......\special{color push gray 0}
+.......\TU/texgyretermes(0)/m/n/12.045 .
+.......\kern -0.0002
+.......\kern 0.0002
+.......\special{color pop}
+....\kern 0.0
+....\TU/texgyretermes(0)/m/n/12.045 19
 ....\kern -0.0002
 ....\kern 0.0002
 ....\penalty 10000
@@ -18329,6 +18362,10 @@ Completed box being shipped out [11]
 ..\glue(\lineskip) 0.0
 ..\vbox(645.87758+0.0)x421.10089, glue set 499.78123fil
 ...\write-{}
+...\write1{\ttl@writefile{toc}{\protect \setcounter {tocdepth}{0}}}
+...\write1{\@writefile{lof}{\let\contentsline\ttl@gobblecontents}}
+...\write1{\@writefile{lot}{\let\contentsline\ttl@gobblecontents}}
+...\write1{\@writefile{loe}{\let\contentsline\ttl@gobblecontents}}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{TABLES}{\thepage }\protected@file@percent \ETC.}
@@ -21104,6 +21141,175 @@ Completed box being shipped out [18]
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
+...\special{color pop}
+.\kern 0.0
+.\kern -729.0071
+.\hbox(0.0+0.0)x0.0
+..\kern -72.27
+..\vbox(0.0+0.0)x421.10089, glue set 72.27fil
+...\kern -72.27
+...\glue(\parskip) 0.0
+...\hbox(0.0+0.0)x421.10089, glue set 421.10089fil
+....\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0
+.....\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+845.04684)x0.0
+.......\hbox(0.0+0.0)x0.0, shifted 845.04684
+........\kern 0.0
+........\glue 0.0 plus 1.0fil minus 1.0fil
+......\glue 0.0 plus 1.0fil minus 1.0fil
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 729.0071
+Completed box being shipped out [19]
+\vbox(722.98454+6.02255)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\kern -72.27
+..\vbox(0.0+0.0)x421.10089, glue set 72.27fil
+...\kern -72.27
+...\glue(\parskip) 0.0
+...\hbox(0.0+0.0)x421.10089, glue set 421.10089fil
+....\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0
+.....\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+845.04684)x0.0
+.......\hbox(0.0+0.0)x0.0, shifted 845.04684
+........\kern 0.0
+........\glue 0.0 plus 1.0fil minus 1.0fil
+......\glue 0.0 plus 1.0fil minus 1.0fil
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -29.59085
+.\vbox(752.5754+6.02255)x421.10089, shifted 18.77873
+..\vbox(14.22636+0.0)x421.10089, glue set 14.22636fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x421.10089
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x421.10089
+.....\hbox(0.0+0.0)x421.10089
+......\vbox(0.0+0.0)x421.10089
+.......\hbox(0.0+0.0)x421.10089
+........\hbox(0.0+0.0)x0.0, glue set - 421.10089fil
+.........\vbox(0.0+0.0)x421.10089
+..........\hbox(0.0+0.0)x421.10089, glue set 210.55045fil
+...........\hbox(0.0+0.0)x0.0
+...........\penalty 10000
+...........\glue(\parfillskip) 0.0 plus 1.0fil
+...........\glue(\rightskip) 0.0 plus 1.0fil
+.........\glue 0.0 plus 1.0fil minus 1.0fil
+........\glue 0.0 plus 1.0fill
+........\vbox(0.0+0.0)x421.10089
+.........\hbox(0.0+0.0)x421.10089, glue set 210.55045fil
+..........\glue(\leftskip) 0.0 plus 1.0fil
+..........\hbox(0.0+0.0)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0
+..........\glue(\rightskip) 0.0 plus 1.0fil
+........\glue 0.0 plus 1.0fill
+........\hbox(0.0+0.0)x0.0, glue set - 421.10089fil
+.........\glue 0.0 plus 1.0fil minus 1.0fil
+.........\vbox(0.0+0.0)x421.10089
+..........\hbox(0.0+0.0)x421.10089, glue set 421.10089fil
+...........\glue(\leftskip) 0.0 plus 1.0fil
+...........\hbox(0.0+0.0)x0.0
+...........\penalty 10000
+...........\glue(\parfillskip) 0.0
+...........\glue(\rightskip) 0.0
+.......\rule(0.0+0.0)x421.10089
+.......\glue 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\special{color pop}
+..\glue 51.21504
+..\glue(\lineskip) 0.0
+..\vbox(645.87758+0.0)x421.10089, glue set 563.09843fil
+...\write-{}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{PUBLICATIONS}{\thepage \ETC.}
+...\write1{\protect \FN@pp@footnotehinttrue }
+...\write-{}
+...\glue(\topskip) 12.0
+...\rule(0.0+0.0)x*
+...\penalty 10000
+...\glue 28.15 plus -1.0
+...\glue 0.0
+...\glue(\parskip) 0.0 plus 1.0
+...\hbox(11.24701+0.271)x421.10089, glue set 156.27269fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\TU/texgyreheros(0)/m/n/15.05624 PUBLICATIONS
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\penalty 10000
+...\glue 20.075 plus -1.0
+...\mark{{PUBLICATIONS}{PUBLICATIONS}}
+...\penalty 10000
+...\glue(\parskip) 0.0 plus 1.0
+...\hbox(10.976+2.21326)x421.10089, glue set 294.847fil
+....\hbox(0.0+0.0)x22.76228
+....\TU/texgyreheros(0)/m/n/15.05624 ,
+....\kern -0.00021
+....\kern 0.00021
+....\glue 4.18564 plus 2.61601 minus 1.11615
+....\glue 4.18564 plus 2.61601 minus 1.11615
+....\TU/texgyreheros(0)/m/n/15.05624 Publications.
+....\kern -0.00021
+....\kern 0.00021
+....\glue 5.58084 plus 6.27846 minus 0.46506
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\write1{\protect \FN@pp@footnotehinttrue }
+...\glue -2.21326
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+...\glue 0.0 plus 0.0001fil
+..\glue(\baselineskip) 21.18143
+..\hbox(20.07498+6.02255)x421.10089
+...\special{color push gray 0}
+...\hbox(20.07498+6.02255)x421.10089
+....\hbox(20.07498+6.02255)x421.10089
+.....\vbox(20.07498+6.02255)x421.10089
+......\rule(0.0+0.0)x421.10089
+......\glue 6.02255
+......\hbox(14.05243+6.02255)x421.10089
+.......\hbox(0.0+0.0)x0.0, glue set - 421.10089fil
+........\vbox(0.0+0.0)x421.10089
+.........\hbox(0.0+0.0)x421.10089, glue set 210.55045fil
+..........\hbox(0.0+0.0)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0 plus 1.0fil
+..........\glue(\rightskip) 0.0 plus 1.0fil
+........\glue 0.0 plus 1.0fil minus 1.0fil
+.......\glue 0.0 plus 1.0fill
+.......\vbox(14.05243+6.02255)x421.10089
+........\hbox(14.05243+6.02255)x421.10089, glue set 204.52795fil
+.........\glue(\leftskip) 0.0 plus 1.0fil
+.........\hbox(0.0+0.0)x0.0
+.........\TU/texgyretermes(0)/m/n/12.045 19
+.........\kern -0.0002
+.........\kern 0.0002
+.........\rule(14.05243+6.02255)x0.0
+.........\penalty 10000
+.........\glue(\parfillskip) 0.0
+.........\glue(\rightskip) 0.0 plus 1.0fil
+.......\glue 0.0 plus 1.0fill
+.......\hbox(0.0+0.0)x0.0, glue set - 421.10089fil
+........\glue 0.0 plus 1.0fil minus 1.0fil
+........\vbox(0.0+0.0)x421.10089
+.........\hbox(0.0+0.0)x421.10089, glue set 421.10089fil
+..........\glue(\leftskip) 0.0 plus 1.0fil
+..........\hbox(0.0+0.0)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0
+..........\glue(\rightskip) 0.0
+....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
 .\kern 0.0
 .\kern -729.0071

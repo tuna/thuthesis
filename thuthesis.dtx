@@ -1036,70 +1036,35 @@
 %   \end{translation}
 % \end{latex}
 %
-% \subsubsection{简历}
+% \subsubsection{个人简历、在学期间完成的相关学术成果}
 % \DescribeEnv{resume}
-% 开启个人简历章节，包括个人简历，发表文章，研究成果列表等。每个子项目请
-% 用以下对应命令开启：\cs{xxxitem}\marg{subtitle}。
-%
-% \DescribeMacro{\resumeitem}
-% 个人简历，用法：\cs{resumeitem}\{个人简历\}。简历内容部分没有格式要求，正常段
-% 落排版。
-%
-% \DescribeMacro{\researchitem}
-% 发表学术论文，用法：\cs{researchitem}\marg{类别}，包括“学术论文”和“研究成果”两
-% 个类别。分别用 \env{publications} 和 \env{achievements} 罗列。
-%
-% \DescribeEnv{publications}
-% \DescribeMacro{\publicationskip}
-% 用 \env{publications} 环境进行罗列发表的论文。按照学校要求，在学期间发表的学术
-% 论文分以下三部分按顺序分别列出，每部分之间空 1 行，序号可连续排列：
-% \begin{enumerate}
-% \item 已经刊载的学术论文（本人是第一作者，或者导师为第一作者本人是第二作者）
-% \item 尚未刊载，但已经接到正式录用函的学术论文（本人为第一作者，或者导师为第一
-%   作者本人是第二作者）。
-% \item 其他学术论文。可列出除上述两种情况以外的其他学术论文，但必须是已经刊载或
-%   者收到正式录用函的论文。
-% \end{enumerate}
-%
-% \env{publications} 环境支持每一部分分别编写，逻辑上更清楚，为了在环境之间支持
-% 空行，需要利用 \cs{publicationskip} 控制。示例：
-% \begin{latex}
-%   \researchitem{发表的学术论文}
-%
-%   % 1. 已经刊载的学术论文
-%   \begin{publications}
-%     \item Yang Y, Ren T L, Zhang L T, et al. Miniature microphone with
-%       silicon-based ferroelectric thin films. Integrated Ferroelectrics,
-%       2003, 52:229-235. (SCI 收录, 检索号:758FZ.)
-%     \item 杨轶, 张宁欣, 任天令, 等. 硅基铁电微声学器件中薄膜残余应力的研究. 中国机
-%       械工程, 2005, 16(14):1289-1291. (EI 收录, 检索号:0534931 2907.)
-%     \item 杨轶, 张宁欣, 任天令, 等. 集成铁电器件中的关键工艺研究. 仪器仪表学报,
-%       2003, 24(S4):192-193. (EI 源刊.)
-%   \end{publications}
-%
-%   % 2. 尚未刊载，但已经接到正式录用函的学术论文
-%   \begin{publications}[before*=\publicationskip,after*=\publicationskip]
-%     \item Yang Y, Ren T L, Zhu Y P, et al. PMUTs for handwriting
-%       recognition. In press. (已被 Integrated Ferroelectrics 录用. SCI 源刊.)
-%   \end{publications}
-%
-%   % 3. 其他学术论文。
-%   \begin{publications}
-%     \item Wu X M, Yang Y, Cai J, et al. Measurements of ferroelectric
-%       MEMS microphones. Integrated Ferroelectrics, 2005, 69:417-429.
-%       (SCI 收录, 检索号:896KM)
-%     \item 贾泽, 杨轶, 陈兢, 等. 用于压电和电容微麦克风的体硅腐蚀相关研究. 压电与声
-%       光, 2006, 28(1):117-119. (EI 收录, 检索号:06129773469)
-%     \item 伍晓明, 杨轶, 张宁欣, 等. 基于MEMS技术的集成铁电硅微麦克风. 中国集成电路,
-%       2003, 53:59-61.
-%   \end{publications}
-% \end{latex}
+% 研究生的标题为为“个人简历、在学期间完成的相关学术成果”，
+% 本科生的标题为“在学期间参加课题的研究成果”或“PUBLICATIONS”。
 %
 % \DescribeEnv{achievements}
-% 研究成果用 \cs{researchitem}\{研究成果\} 开启，随后用 \env{achievements} 环
-% 境罗列。
+% 本章的其他标题同样使用 \cs{section*}，\cs{subsection*} 等命令生成，
+% 研究成果用 \env{achievements} 环境罗列。
 %
-% 具体用法请参看示例文档 \file{data/resume.tex}。
+% \begin{latex}
+%   \begin{resume}
+%     \section*{个人简历}
+%     ……
+%
+%     \section*{在学期间完成的相关学术成果}
+%
+%     \subsection*{学术论文}
+%     \begin{achievements}
+%       \item ……
+%       \item ……
+%     \end{achievements}
+%
+%     \subsection*{专利}
+%     \begin{achievements}
+%       \item ……
+%       \item ……
+%     \end{achievements}
+%   \end{resume}
+% \end{latex}
 %
 % \subsubsection{综合论文训练记录表}
 % \DescribeMacro{\record}
@@ -1183,6 +1148,15 @@
 }
 \newcommand\thu@patch@error[1]{%
   \thu@error{Failed to patch command \protect#1}%
+}
+\newcommand\thu@deprecate[2]{%
+  \def\thu@@tmp{#2}%
+  \thu@warning{%
+    The #1 is deprecated%
+    \ifx\thu@@tmp\@empty\else
+      . Use #2 instead%
+    \fi
+  }%
 }
 %    \end{macrocode}
 %
@@ -1748,6 +1722,7 @@
     \clearpage
   \fi
   \@mainmatterfalse
+  \thusetup{toc-depth = 0}%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -4983,52 +4958,73 @@
 % \begin{environment}{resume}
 % 个人简历发表文章等。
 %    \begin{macrocode}
-\newenvironment{resume}[1][\thu@resume@name]{%
+\newenvironment{resume}{%
   \@mainmatterfalse
-  \thu@chapter*{#1}}{}
+  \thu@chapter*{\thu@resume@name}%
+  \ctexset{
+    section = {
+      format    += \centering,
+      numbering = false,
+    },
+    subsection = {
+      format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+      numbering  = false,
+      aftertitle = \ifthu@language@chinese ：\else :\fi,
+    },
+  }%
+  \ifthu@degree@bachelor
+    \ifthu@language@english
+      \sffamily\fontsize{15bp}{20bp}\selectfont,
+    \fi
+  \fi
+}{}
 %    \end{macrocode}
 % \end{environment}
 %
-% \begin{macro}{\resumeitem}
-% 个人简历部分。每条信息一个段落，故不需要特别处理。
+% 旧的 \cs{resumeitem} 和 \cs{researchitem} 已经过时。
 %    \begin{macrocode}
-\newcommand{\resumeitem}[1]{%
-  \vspace{24bp}{\sihao\heiti\centerline{#1}}\par\vspace{6bp}}
+\newcommand\resumeitem[1]{%
+  \thu@error{The "\protect\resumeitem" is obsolete. Please update to the new format}%
+}
+\newcommand\researchitem[1]{%
+  \thu@error{The "\protect\researchitem" is obsolete. Please update to the new format}%
+}
 %    \end{macrocode}
-% \end{macro}
 %
-% \begin{macro}{\researchitem}
-% 研究成果用 \cs{researchitem}\marg{类别} 开启，包括“学术论文”和“研究成果”两个
-% 列表。
-%    \begin{macrocode}
-\newcommand{\researchitem}[1]{%
-  \vspace{32bp}{\sihao\heiti\centerline{#1}}\par\vspace{14bp}}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{environment}{publications}
 % \begin{environment}{achievements}
-% 二者分别通过两个环境 \env{publications} 和 \env{achievements} 罗
-% 列。
-%
+% 学术成果由 \env{achievements} 环境罗列。
 %    \begin{macrocode}
-\newlist{publications}{enumerate}{1}
-\setlist[publications]{label=[\arabic*],align=left,nosep,itemsep=8bp,
-  leftmargin=10mm,labelsep=!,before=\xiaosi[1.26],resume}
 \newlist{achievements}{enumerate}{1}
-\setlist[achievements]{label=[\arabic*],align=left,nosep,itemsep=8bp,
-  leftmargin=10mm,labelsep=!,before=\xiaosi[1.26]}
+\setlist[achievements]{
+  label      = [\arabic*],
+  align      = left,
+  leftmargin = 10mm,
+  topsep     = 6bp,
+  parsep     = 0bp,
+  partopsep  = 0bp,
+  itemsep    = 6bp,
+  labelsep   = !,
+  before     = {
+    \ifthu@degree@graduate
+      \fontsize{12bp}{16bp}\selectfont
+    \fi
+  },
+  resume     = achievements,
+}
 %    \end{macrocode}
-% \end{environment}
 % \end{environment}
 %
-% \begin{macro}{\publicationskip}
-% \env{publications} 环境可以连续出现多次，第二类论文列表前后要空一行，使
-% 用 \cs{publicationskip}。
 %    \begin{macrocode}
-\def\publicationskip{\bigskip\bigskip}
+\newenvironment{publications}{%
+  \thu@deprecate{"publications" environment}{"achievements"}%
+  \begin{achievements}%
+}{%
+  \end{achievements}%
+}
+\newcommand\publicationskip{%
+  \thu@error{The "\protect\publicationskip" is obsolete. Do not use it}%
+}
 %    \end{macrocode}
-% \end{macro}
 %
 % \subsection{综合论文训练记录表}
 %

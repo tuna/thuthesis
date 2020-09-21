@@ -389,6 +389,10 @@ Completed box being shipped out [2]
 ..\glue(\lineskip) 0.0
 ..\vbox(645.87758+0.0)x421.10089, glue set 312.95029fil
 ...\write-{}
+...\write1{\ttl@writefile{toc}{\protect \setcounter {tocdepth}{0}}}
+...\write1{\@writefile{lof}{\let\contentsline\ttl@gobblecontents}}
+...\write1{\@writefile{lot}{\let\contentsline\ttl@gobblecontents}}
+...\write1{\@writefile{loe}{\let\contentsline\ttl@gobblecontents}}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{REFERENCES}{\thepage \ETC.}
