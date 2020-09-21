@@ -2324,7 +2324,7 @@
     \def\bibname{参考文献}%
     \def\appendixname{附录}%
     \def\indexname{索引}%
-    \def\thu@acknowledgements@name{致\hspace{\ccwd}谢}%
+    \def\thu@acknowledgements@name{致\quad 谢}%
     \ifthu@degree@bachelor
       \def\contentsname{目\quad 录}%
       \def\listfigurename{插图索引}%
@@ -2345,7 +2345,7 @@
         \def\thu@denotation@name{符号和缩略语说明}%
         \def\thu@resume@name{个人简历、在学期间完成的相关学术成果}%
       \else  % degree = postdoc
-        \def\contentsname{目\hspace{2\ccwd}次}%
+        \def\contentsname{目\qquad 次}%
         \def\thu@denotation@name{符号表}%
         \def\thu@resume@name{个人简历、发表的学术论文与科研成果}%
       \fi
@@ -2528,7 +2528,7 @@
     \fancyfoot[C]{\wuhao\thepage}%
     \let\@mkboth\markboth
     \def\chaptermark##1{%
-      \markboth{\CTEXifname{\CTEXthechapter\hskip\ccwd}{}##1}{}%
+      \markboth{\CTEXifname{\CTEXthechapter\quad}{}##1}{}%
     }%
   \fi
   \let\sectionmark\@gobble
@@ -2819,11 +2819,10 @@
 %
 %    \begin{macrocode}
 \DeclareCaptionFont{thu}{\dawu}
-\DeclareCaptionLabelSeparator{thu}{\hspace{\ccwd}}
 \captionsetup{
   format         = hang,
   font           = thu,
-  labelsep       = thu,
+  labelsep       = quad,
   aboveskip      = 6bp,
   belowskip      = 6bp,
   figureposition = bottom,
@@ -2856,7 +2855,7 @@
   \newcommand{\thu@abstract@name}{中文摘要}
   \newcommand{\thu@abstract@name@en}{ABSTRACT}
 \else
-  \newcommand{\thu@abstract@name}{摘\hspace{\ccwd}要}
+  \newcommand{\thu@abstract@name}{摘\quad 要}
   \newcommand{\thu@abstract@name@en}{Abstract}
 \fi
 %    \end{macrocode}
@@ -4356,7 +4355,7 @@
 }
 \titlecontents{figure}
   [\z@]{}
-  {\contentspush{\figurename~\thecontentslabel\hspace{\ccwd}}}{}
+  {\contentspush{\figurename~\thecontentslabel\quad}}{}
   {\nobreak\thu@leaders\nobreak\hfil\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
@@ -4371,7 +4370,7 @@
 }
 \titlecontents{table}
   [\z@]{}
-  {\contentspush{\tablename~\thecontentslabel\hspace{\ccwd}}}{}
+  {\contentspush{\tablename~\thecontentslabel\quad}}{}
   {\thu@leaders\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
@@ -4950,15 +4949,15 @@
 \newcommand\thu@set@partial@toc@format{%
   \titlecontents{section}
     [\z@]{}
-    {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+    {\contentspush{\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}%
   \titlecontents{subsection}
-    [1\ccwd]{}
-    {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+    [1em]{}
+    {\contentspush{\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}%
   \titlecontents{subsubsection}
-    [2\ccwd]{}
-    {\contentspush{\thecontentslabel\hspace{\ccwd}}}{}
+    [2em]{}
+    {\contentspush{\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}%
 }
 %    \end{macrocode}
@@ -5276,7 +5275,7 @@
   \contentsuse{algorithm}{loa}
   \titlecontents{algorithm}
     [\z@]{}
-    {\contentspush{\fname@algorithm~\thecontentslabel\hspace{\ccwd}}}{}
+    {\contentspush{\fname@algorithm~\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}
 }
 %    \end{macrocode}
@@ -5301,7 +5300,7 @@
   \contentsuse{algocf}{loa}
   \titlecontents{algocf}
     [\z@]{}
-    {\contentspush{\algorithmcfname~\thecontentslabel\hspace{\ccwd}}}{}
+    {\contentspush{\algorithmcfname~\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}
 }
 %    \end{macrocode}

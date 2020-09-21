@@ -105,7 +105,7 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\mark{{摘\protect \hspace  {\ccwd }要}{摘\protect \hspace  {\ccwd }要}}
+...\mark{{摘\hskip 1em\relax 要}{摘\hskip 1em\relax 要}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(9.50351+2.32468)x426.79135, glue set - 0.37794
@@ -2338,7 +2338,7 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\mark{{目\protect \hspace  {2\ccwd }次}{目\protect \hspace  {2\ccwd }次\ETC.}
+...\mark{{目\hskip 2em\relax 次}{目\hskip 2em\relax 次}}
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 0.0 plus 0.1

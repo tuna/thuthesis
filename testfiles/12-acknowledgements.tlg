@@ -80,8 +80,8 @@ Completed box being shipped out [115]
 ...\write-{}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\@writefile{toc}{\protect \contentsline {chapter}{致\protect \hspace 
- \ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{致\hskip 1em\relax 
+\ETC.}
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
@@ -104,7 +104,7 @@ Completed box being shipped out [115]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\mark{{致\protect \hspace  {\ccwd }谢}{致\protect \hspace  {\ccwd }谢}}
+...\mark{{致\hskip 1em\relax 谢}{致\hskip 1em\relax 谢}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(9.44328+2.2283)x426.79135, glue set 0.38664
