@@ -2207,25 +2207,7 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\chuhao}
-% \begin{macro}{\xiaochu}
-% \begin{macro}{\yihao}
-% \begin{macro}{\xiaoyi}
-% \begin{macro}{\erhao}
-% \begin{macro}{\xiaoer}
-% \begin{macro}{\sanhao}
-% \begin{macro}{\xiaosan}
-% \begin{macro}{\sihao}
-% \begin{macro}{\banxiaosi}
-% \begin{macro}{\xiaosi}
-% \begin{macro}{\dawu}
-% \begin{macro}{\wuhao}
-% \begin{macro}{\xiaowu}
-% \begin{macro}{\liuhao}
-% \begin{macro}{\xiaoliu}
-% \begin{macro}{\qihao}
-% \begin{macro}{\bahao}
-% 一组字号定义。TODO：用 \cs{zihao} 替代。
+% 一组字号定义。
 %    \begin{macrocode}
 \thu@def@fontsize{chuhao}{42bp}
 \thu@def@fontsize{xiaochu}{36bp}
@@ -2236,9 +2218,7 @@
 \thu@def@fontsize{sanhao}{16bp}
 \thu@def@fontsize{xiaosan}{15bp}
 \thu@def@fontsize{sihao}{14bp}
-\thu@def@fontsize{banxiaosi}{13bp}
 \thu@def@fontsize{xiaosi}{12bp}
-\thu@def@fontsize{dawu}{11bp}
 \thu@def@fontsize{wuhao}{10.5bp}
 \thu@def@fontsize{xiaowu}{9bp}
 \thu@def@fontsize{liuhao}{7.5bp}
@@ -2246,24 +2226,6 @@
 \thu@def@fontsize{qihao}{5.5bp}
 \thu@def@fontsize{bahao}{5bp}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
 %
 %
 % \subsubsection{语言设置}
@@ -2736,12 +2698,13 @@
 %    \end{macrocode}
 %
 % 研究生要求表单元格中的文字采用 11pt 宋体字，单倍行距，段前空 3 磅，段后空 3 磅。
+% $(3 + 3) / (11 \times 1.3) \approx 0.4$
 %    \begin{macrocode}
 \patchcmd\@floatboxreset{%
   \normalsize
 }{%
   \fontsize{11bp}{14.3bp}\selectfont
-  \renewcommand\arraystretch{1.2}%
+  \renewcommand\arraystretch{1.4}%
 }{}{\thu@patch@error{\@floatboxreset}}
 %    \end{macrocode}
 %
@@ -2763,7 +2726,17 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\DeclareCaptionFont{thu}{\dawu}
+\newcommand\thu@caption@font{}
+\newcommand\thu@set@caption@font{%
+  \ifthu@degree@bachelor
+    \renewcommand\thu@caption@font{\fontsize{11bp}{15bp}\selectfont}%
+  \else
+    \renewcommand\thu@caption@font{\fontsize{11bp}{14.3bp}\selectfont}%
+  \fi
+}
+\thu@set@caption@font
+\thu@option@hook{degree}{\thu@set@caption@font}
+\DeclareCaptionFont{thu}{\thu@caption@font}
 \captionsetup{
   format         = hang,
   font           = thu,
@@ -5135,9 +5108,11 @@
 %
 % 我们采用 \pkg{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
 %    \begin{macrocode}
-\AtBeginDocument{%
-  \let\thu@LT@array\LT@array
-  \def\LT@array{\dawu[1.5]\thu@LT@array} % set default font size
+\AtEndOfPackageFile*{longtable}{
+  \pretocmd\LT@array{%
+    \fontsize{11bp}{14.3bp}\selectfont
+    \renewcommand\arraystretch{1.4}%
+  }{}{\thu@patch@error{\LT@array}}
 }
 %    \end{macrocode}
 %
@@ -5272,10 +5247,10 @@
 \PassOptionsToPackage{algochapter}{algorithm2e}
 \AtEndOfPackageFile*{algorithm2e}{
   \renewcommand\algorithmcfname{\thu@algorithm@name}
-  \SetAlgoCaptionLayout{dawu}
+  \SetAlgoCaptionLayout{thu@caption@font}
   \SetAlCapSty{relax}
   \SetAlgoCaptionSeparator{\hspace*{1em}}
-  \SetAlFnt{\dawu}
+  \SetAlFnt{\fontsize{11bp}{14.3bp}\selectfont}
   \renewcommand\listofalgorithms{%
     \thu@listof{algorithmcf}%
   }
