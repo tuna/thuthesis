@@ -9,7 +9,7 @@ demofiles = {"latexmkrc", "Makefile"}
 docfiles = {
   "CHANGELOG.md",
   "thusetup.tex",
-  "data", "figures", "ref",
+  "data", "ref",
 }
 installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "tsinghua-name-bachelor.pdf"}
 sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "tsinghua-name-bachelor.pdf"}

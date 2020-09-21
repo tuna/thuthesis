@@ -105,30 +105,23 @@
   % start-date         = {2011-07-01},        % 研究工作起始时间
 }
 
-%% Put any packages you would like to use here
+% 载入所需的宏包
 
-% 表格中支持跨行
-\usepackage{multirow}
-
-% 跨页表格
-\usepackage{longtable}
-
-% 固定宽度的表格。放在 hyperref 之前的话，tabularx 里的 footnote 显示不出来。
-\usepackage{tabularx}
+% 可以使用 nomencl 生成符号和缩略语说明
+% \usepackage{nomencl}
+% \makenomenclature
 
 % 表格加脚注
 \usepackage{threeparttable}
 
-% 确定浮动对象的位置，可以使用 H，强制将浮动对象放到这里（可能效果很差）
-\usepackage{float}
+% 表格中支持跨行
+\usepackage{multirow}
 
-% 浮动图形控制宏包。
-% 允许上一个 section 的浮动图形出现在下一个 section 的开始部分
-% 该宏包提供处理浮动对象的 \FloatBarrier 命令，使所有未处
-% 理的浮动图形立即被处理。这三个宏包仅供参考，未必使用：
-% \usepackage[below]{placeins}
-% \usepackage{floatflt} % 图文混排用宏包
-% \usepackage{rotating} % 图形和表格的控制旋转
+% 固定宽度的表格。放在 hyperref 之前的话，tabularx 里的 footnote 显示不出来。
+% \usepackage{tabularx}
+
+% 跨页表格
+% \usepackage{longtable}
 
 % 量和单位
 \usepackage{siunitx}
@@ -154,32 +147,16 @@
 % 参考文献使用 BibLaTeX 宏包
 % \usepackage[backend=biber,style=thuthesis-numeric]{biblatex}
 % \usepackage[backend=biber,style=thuthesis-author-year]{biblatex}
-
-% \addbibresource{ref/refs.bib}  % 声明 BibLaTeX 的数据库
-
-% 给自定义的宏后面自动加空白
-% \usepackage{xspace}
+% \usepackage[backend=biber,style=apa]{biblatex}
+% \usepackage[backend=biber,style=mla-new]{biblatex}
+% 声明 BibLaTeX 的数据库
+% \addbibresource{ref/refs.bib}
 
 % 定义所有的图片文件在 figures 子目录下
 \graphicspath{{figures/}}
 
-% 定义自己常用的东西
-% \def\myname{薛瑞尼}
-
 % 数学命令
 \newcommand\dif{\mathop{}\!\mathrm{d}}  % 微分符号
-\newcommand\real{{\mathbf{R}}}  % 实数集
-\newcommand\abs[1]{\lvert#1\rvert}
-\newcommand\VECTOR{\symbf}  % 向量
-\newcommand\MATRIX{\symbf}  % 矩阵
-\newcommand\vn{{\VECTOR{n}}}
-\newcommand\vx{{\VECTOR{x}}}
-\newcommand\mA{{\MATRIX{A}}}
-\newcommand\mK{{\MATRIX{K}}}
-
-% 借用 ltxdoc 里面的几个命令方便写文档。
-\DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
-\providecommand\pkg[1]{{\sffamily#1}}
 
 % hyperref 宏包在最后调用
 \usepackage{hyperref}

@@ -730,9 +730,7 @@
 %
 % \subsubsection{数学符号}
 % \label{sec:math}
-% 数学符号应遵循 GB/T 3102.11-1993《物理科学和技术中使用的数学符号》
-% \footnote{原 GB 3102.11-1993，根据2017年第7号公告和强制性标准整合精简结论，
-%   自2017年3月23日起,该标准转化为推荐性标准。}，
+% 数学符号应遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》
 % 模板中使用 \pkg{unicode-math} 宏包来配置数学符号，
 % 与 \LaTeX{} 默认的英美国家的符号习惯有所差异：
 % \newcommand\dif{\mathop{}\!\mathrm{d}}
@@ -867,7 +865,7 @@
 % Biblatex 运行较缓慢，无法对多个参考文献表使用不同样式。
 % 用户需要根据实际选择合适的方式。
 %
-% 研究生要求的参考文献格式基于《信息与文献 参考文献著录规则》（GB/T 7714-2015）
+% 研究生要求的参考文献格式基于《信息与文献 参考文献著录规则》（GB/T 7714—2015）
 % 进行了少量改编（如英文姓名不使用全大写），
 % 可以选择“顺序编码制”和“著者-出版年制”。
 % 如果使用 BibTeX 的方式，需要在导言区载入 \pkg{natbib} 宏包并选择样式，如：
@@ -909,7 +907,7 @@
 % 而且 \cs{addbibresource} 必须在导言区设置。
 % 输出参考文献表应使用 \cs{printbibliography} 命令。
 %
-% 本科生要求的中文参考文献格式严格遵从 GB/T 7714-2015，
+% 本科生要求的中文参考文献格式严格遵从 GB/T 7714—2015，
 % 附录中调研报告的英文参考文献可以自行选择合适的风格。
 % 但是 biblatex 不支持同一文档中使用不同的格式，
 % 所以只能使用 \hologo{BibTeX}：
@@ -2709,34 +2707,6 @@
 %
 % 公式距前后文的距离由 4 个参数控制，参见 \cs{normalsize} 的定义。
 %
-% 本科的公式编号要求很诡异，不得不修改 \pkg{amsmath} 中很深的一个命令 \cs{tagform@}。
-% 同时为了让 \pkg{amsmath} 的 \cs{tag*} 命令得到正确的格式，我们必须修改这些代
-% 码。\cs{make@df@tag} 是定义 \cs{tag*} 和 \cs{tag} 内部命令的。
-% \cs{make@df@tag@@} 处理 \cs{tag*}，我们就改它！
-% \begin{latex}
-%   \def\make@df@tag{\@ifstar\make@df@tag@@\make@df@tag@@@}
-%   \def\make@df@tag@@#1{%
-%     \gdef\df@tag{\maketag@@@{#1}\def\@currentlabel{#1}}}
-% \end{latex}
-%    \begin{macrocode}
-\def\make@df@tag{\@ifstar\thu@make@df@tag@@\make@df@tag@@@}
-\def\thu@make@df@tag@@#1{\gdef\df@tag{\thu@maketag{#1}\def\@currentlabel{#1}}}
-\iffalse
-\ifthu@degree@bachelor
-  \def\thu@maketag#1{\maketag@@@{%
-    (\ignorespaces\text{\thu@equation@name\hskip0.5em}#1\unskip\@@italiccorr)}}
-  \def\tagform@#1{\maketag@@@{%
-    (\ignorespaces\text{\thu@equation@name\hskip0.5em}#1\unskip\@@italiccorr)\equcaption{#1}}}
-\fi
-\fi
-\def\thu@maketag#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)}}
-\def\tagform@#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)\equcaption{#1}}}
-%    \end{macrocode}
-% 修改 \cs{tagform} 会影响 \cs{eqref}。
-%    \begin{macrocode}
-\renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
-%    \end{macrocode}
-%
 % \subsubsection{浮动对象：插图和表格}
 % \label{sec:float}
 %
@@ -4410,6 +4380,11 @@
   \thu@define@key{
     cite-style = {
       name = cite@style,
+      choices = {
+        super,
+        inline,
+        author-year,
+      }
     }
   }
 %    \end{macrocode}
@@ -4433,14 +4408,25 @@
 % 几种种引用样式，与 \file{bst} 文件名保持一致，
 % 这样在使用 \cs{bibliographystyle} 选择参考文献表的样式时也会设置对应的引用样式。
 %    \begin{macrocode}
-  \expandafter\newcommand\csname bibstyle@thuthesis-numeric\endcsname{%
+  \newcommand\bibstyle@super{%
     \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
-  \expandafter\newcommand\csname bibstyle@thuthesis-author-year\endcsname{%
+  \newcommand\bibstyle@inline{%
+    \bibpunct{[}{]}{,}{n}{,}{,}}
+  \@namedef{bibstyle@author-year}{%
     \bibpunct{(}{)}{;}{a}{,}{,}}
-  \expandafter\newcommand\csname bibstyle@thuthesis-bachelor\endcsname{%
-    \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
-  \@namedef{bibstyle@thuthesis-inline}{\bibpunct{[}{]}{,}{n}{,}{,}}
-  \thu@option@hook{cite-style}{\@nameuse{bibstyle@thuthesis-\thu@cite@style}}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+  \thu@option@hook{cite-style}{\@nameuse{bibstyle@\thu@cite@style}}
+%    \end{macrocode}
+%
+% 几种种引用样式，与 \file{bst} 文件名保持一致，
+% 这样在使用 \cs{bibliographystyle} 选择参考文献表的样式时也会设置对应的引用样式。
+%    \begin{macrocode}
+  \@namedef{bibstyle@thuthesis-numeric}{\citestyle{super}}
+  \@namedef{bibstyle@thuthesis-author-year}{\citestyle{author-year}}
+  \@namedef{bibstyle@thuthesis-bachelor}{\citestyle{super}}
+  \@namedef{bibstyle@thuthesis-inline}{\citestyle{inline}}
 %    \end{macrocode}
 %
 % 修改引用的样式。
@@ -4845,6 +4831,7 @@
     \section*{Contents}%
     \thu@pdfbookmark{1}{Contents}%
     \printcontents[survey]{l}{1}[2]{}%
+    \vskip 20bp%
   }%
   \renewcommand\bibname{参考文献}%
   \let\bibsection\thu@appendix@bibsection
@@ -4874,6 +4861,7 @@
     \section*{目录}%
     \thu@pdfbookmark{1}{目录}%
     \printcontents[translation]{l}{1}[2]{}%
+    \vskip 20bp%
   }%
   \def\bibsection{%
     \begingroup
@@ -5431,9 +5419,17 @@
 % \subsection{其它}
 % \label{sec:other}
 %
-% 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改。
+% 借用 \cls{ltxdoc} 和 \cls{l3doc} 里面的几个命令方便写文档。
 %    \begin{macrocode}
-\AtEndOfClass{\sloppy}
+\DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
+\DeclareRobustCommand\file{\nolinkurl}
+\DeclareRobustCommand\env{\textsf}
+\DeclareRobustCommand\pkg{\textsf}
+\DeclareRobustCommand\cls{\textsf}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\sloppy
 %</cls>
 %    \end{macrocode}
 %
@@ -5609,9 +5605,11 @@
 \DeclareDocumentCommand{\option}{m}{\textsf{#1}}
 \DeclareDocumentCommand{\env}{m}{\texttt{#1}}
 \DeclareDocumentCommand{\pkg}{s m}{%
-  \texttt{#2}\IfBooleanF#1{\thu@special@index{package}{#2}}}
+  \textsf{#2}\IfBooleanF#1{\thu@special@index{package}{#2}}}
+\DeclareDocumentCommand{\cls}{s m}{%
+  \textsf{#2}\IfBooleanF#1{\thu@special@index{package}{#2}}}
 \DeclareDocumentCommand{\file}{s m}{%
-  \texttt{#2}\IfBooleanF#1{\thu@special@index{file}{#2}}}
+  \nolinkurl{#2}\IfBooleanF#1{\thu@special@index{file}{#2}}}
 \newcommand{\myentry}[1]{%
   \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
 \newcommand{\note}[2][Note]{{%

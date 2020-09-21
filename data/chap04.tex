@@ -1,0 +1,73 @@
+% !TeX root = ../thuthesis-example.tex
+
+\chapter{引用文献的标注}
+
+模板支持 BibTeX 和 BibLaTeX 两种方式处理参考文献。
+下文主要介绍 BibTeX 配合 \pkg{natbib} 宏包的主要使用方法。
+
+
+\section{顺序编码制}
+
+在顺序编码制下，默认的 \cs{cite} 命令同 \cs{citep} 一样，序号置于方括号中，
+引文页码会放在括号外。
+统一处引用的连续序号会自动用短横线连接。
+
+\thusetup{
+  cite-style = super,
+}
+\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
+  \verb|\cite{zhangkun1994}|               & \cite{zhangkun1994}               \\
+  \verb|\citet{zhangkun1994}|              & \citet{zhangkun1994}              \\
+  \verb|\citep{zhangkun1994}|              & \citep{zhangkun1994}              \\
+  \verb|\cite[42]{zhangkun1994}|           & \cite[42]{zhangkun1994}           \\
+  \verb|\cite{zhangkun1994,zhukezhen1973}| & \cite{zhangkun1994,zhukezhen1973} \\
+\end{tabular}
+
+
+也可以取消上标格式，将数字序号作为文字的一部分。
+建议全文统一使用相同的格式。
+
+\thusetup{
+  cite-style = inline,
+}
+\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
+  \verb|\cite{zhangkun1994}|               & \cite{zhangkun1994}               \\
+  \verb|\citet{zhangkun1994}|              & \citet{zhangkun1994}              \\
+  \verb|\citep{zhangkun1994}|              & \citep{zhangkun1994}              \\
+  \verb|\cite[42]{zhangkun1994}|           & \cite[42]{zhangkun1994}           \\
+  \verb|\cite{zhangkun1994,zhukezhen1973}| & \cite{zhangkun1994,zhukezhen1973} \\
+\end{tabular}
+
+
+
+\section{著者-出版年制}
+
+著者-出版年制下的 \cs{cite} 跟 \cs{citet} 一样。
+
+\thusetup{
+  cite-style = author-year,
+}
+\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
+  \verb|\cite{zhangkun1994}|                & \cite{zhangkun1994}                \\
+  \verb|\citet{zhangkun1994}|               & \citet{zhangkun1994}               \\
+  \verb|\citep{zhangkun1994}|               & \citep{zhangkun1994}               \\
+  \verb|\cite[42]{zhangkun1994}|            & \cite[42]{zhangkun1994}            \\
+  \verb|\citep{zhangkun1994,zhukezhen1973}| & \citep{zhangkun1994,zhukezhen1973} \\
+\end{tabular}
+
+\vskip 2ex
+\thusetup{
+  cite-style = super,
+}
+注意，引文参考文献的每条都要在正文中标注
+\cite{zhangkun1994,zhukezhen1973,dupont1974bone,zhengkaiqing1987,%
+  jiangxizhou1980,jianduju1994,merkt1995rotational,mellinger1996laser,%
+  bixon1996dynamics,mahui1995,carlson1981two,taylor1983scanning,%
+  taylor1981study,shimizu1983laser,atkinson1982experimental,%
+  kusch1975perturbations,guangxi1993,huosini1989guwu,wangfuzhi1865songlun,%
+  zhaoyaodong1998xinshidai,biaozhunhua2002tushu,chubanzhuanye2004,%
+  who1970factors,peebles2001probability,baishunong1998zhiwu,%
+  weinstein1974pathogenic,hanjiren1985lun,dizhi1936dizhi,%
+  tushuguan1957tushuguanxue,aaas1883science,fugang2000fengsha,%
+  xiaoyu2001chubanye,oclc2000about,scitor2000project%
+}。

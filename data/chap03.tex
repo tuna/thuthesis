@@ -1,0 +1,76 @@
+% !TeX root = ../thuthesis-example.tex
+
+\chapter{数学符号和公式}
+
+\section{数学符号}
+
+研究生《写作指南》要求量及其单位所使用的符号应符合国家标准《国际单位制及其应用》(GB 3100—1993)、《有关量、单位和符号的一般原则》(GB/T 3101—1993) 的规定。
+模板中使用 \pkg{unicode-math} 宏包来配置数学符号，
+与 \LaTeX{} 默认的英美国家的符号习惯有所差异：
+\begin{enumerate}
+  \item 大写希腊字母默认为斜体，如 \cs{Delta}：$\Delta$。
+  \item 有限增量符号 $\increment$（U+2206）应使用 \pkg{unicode-math} 宏包提供的
+    \cs{increment} 命令。
+  \item 向量、矩阵和张量要求粗斜体，应该使用 \pkg{unicode-math} 的 \cs{symbf} 命令，
+    如 \verb|\symbf{A}|、\verb|\symbf{\alpha}|。
+  \item 数学常数和特殊函数要求用正体，应使用 \cs{symup} 命令，
+    如 $\symup{\pi} = 3.14\dots$; $\symup{e} = 2.718\dots$，
+  \item 微分号和积分号使用使用正体，比如 $\int f(x) \dif x$。
+\end{enumerate}
+
+关于数学符号更多的用法，参考
+\href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
+宏包的使用说明，
+全部数学符号命的令参考
+\href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unimath-symbols.pdf}{\pkg{unimath-symbols}}。
+
+关于量和单位推荐使用
+\href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{\pkg{siunitx}}
+宏包，
+可以方便地处理希腊字母以及数字与单位之间的空白，
+比如：
+\SI{6.4e6}{m}，
+\SI{9}{\micro\meter}，
+\si{kg.m.s^{-1}}，
+\SIrange{10}{20}{\degreeCelsius}。
+
+
+
+\section{数学公式}
+
+数学公式可以使用 \env{equation} 和 \env{equation*} 环境。
+注意数学公式的引用应前后带括号，建议使用 \cs{eqref} 命令，比如式 \eqref{eq:example}。
+\begin{equation}
+  \frac{1}{2 \symup{\pi} \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k)
+  \label{eq:example}
+\end{equation}
+注意公式编号的引用应含有圆括号，可以使用 \cs{eqref} 命令。
+
+多行公式尽可能在“=”处对齐，推荐使用 \env{align} 环境。
+\begin{align}
+  a & = b + c + d + e \\
+    & = f + g
+\end{align}
+
+
+
+\section{数学定理}
+
+定理环境的格式可以使用 \pkg{amsthm} 或者 \pkg{ntheorem} 宏包配置。
+用户在导言区载入这两者之一后，模板会自动配置 \env{thoerem}、\env{proof} 等环境。
+
+\begin{theorem}[Lindeberg--Lévy 中心极限定理]
+  设随机变量 $X_1, X_2, \dots, X_n$ 独立同分布， 且具有期望 $\mu$ 和有限的方差 $\sigma^2 \ne 0$，
+  记 $\bar{X}_n = \frac{1}{n} \sum_{i+1}^n X_i$，则
+  \begin{equation}
+    \lim_{n \to \infty} P \left(\frac{\sqrt{n} \left( \bar{X}_n - \mu \right)}{\sigma} \le z \right) = \Phi(z),
+  \end{equation}
+  其中 $\Phi(z)$ 是标准正态分布的分布函数。
+\end{theorem}
+\begin{proof}
+  Trivial.
+\end{proof}
+
+同时模板还提供了 \env{assumption}、\env{definition}、\env{proposition}、
+\env{lemma}、\env{theorem}、\env{axiom}、\env{corollary}、\env{exercise}、
+\env{example}、\env{remar}、\env{problem}、\env{conjecture} 这些相关的环境。
