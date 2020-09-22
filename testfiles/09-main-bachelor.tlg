@@ -8793,8 +8793,8 @@ C.}
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\penalty -51
-...\glue 13.0 plus 6.0 minus 8.0
-...\glue -13.0 plus -6.0 minus -8.0
+...\glue 0.0
+...\glue 0.0
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.29756
 ...\glue 0.0 plus 1.0fil
@@ -9812,7 +9812,7 @@ Completed box being shipped out [13]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 518.63564fil
+..\vbox(645.87758+0.0)x421.10089, glue set 531.63425fil
 ...\write1{\ttl@writefile{toc}{\protect \setcounter {tocdepth}{0}}}
 ...\write1{\@writefile{lof}{\let\contentsline\ttl@gobblecontents}}
 ...\write1{\@writefile{lot}{\let\contentsline\ttl@gobblecontents}}
@@ -9914,7 +9914,7 @@ Completed box being shipped out [13]
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty -51
-...\glue 13.0 plus 6.0 minus 8.0
+...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.47568
 ...\hbox(9.40715+2.26445)x421.10089, glue set 0.13647

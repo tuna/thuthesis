@@ -336,7 +336,8 @@ Completed box being shipped out [1]
 ...\penalty -51
 ...\glue 0.0
 ...\penalty -51
-...\glue 3.0 plus 3.0 minus 2.0
+...\glue 0.0 plus 1.0
+...\glue 0.0 plus -1.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set - 0.2487
@@ -557,11 +558,10 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\penalty -51
-...\glue 3.0 plus 2.0 minus 2.0
-...\glue -5.32468 plus -2.0 minus -2.0
+...\glue 0.0
 ...\penalty -51
-...\glue 2.32468
-...\glue 3.0 plus 2.0 minus 2.0
+...\glue 0.0
+...\glue 0.0 plus -1.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212

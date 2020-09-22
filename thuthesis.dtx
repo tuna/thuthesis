@@ -2502,7 +2502,31 @@
 \thu@option@hook{main-language}{\thu@set@indent}
 %    \end{macrocode}
 %
-% 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
+% 取消列表的间距，以符合中文习惯。
+%    \begin{macrocode}
+\partopsep=\z@skip
+\def\@listi{\leftmargin\leftmargini
+            \parsep \z@skip
+            \topsep \z@skip
+            \itemsep\z@skip}
+\let\@listI\@listi
+\@listi
+\def\@listii {\leftmargin\leftmarginii
+              \labelwidth\leftmarginii
+              \advance\labelwidth-\labelsep
+              \topsep    \z@skip
+              \parsep    \z@skip
+              \itemsep   \z@skip}
+\def\@listiii{\leftmargin\leftmarginiii
+              \labelwidth\leftmarginiii
+              \advance\labelwidth-\labelsep
+              \topsep    \z@skip
+              \parsep    \z@skip
+              \partopsep \z@skip
+              \itemsep   \z@skip}
+%    \end{macrocode}
+%
+% 使用 \pkg{enumitem} 命令调整默认列表环境间的距离，
 %    \begin{macrocode}
 \setlist{nosep}
 %    \end{macrocode}

@@ -4532,7 +4532,7 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 387.31027fil
+..\vbox(674.33032+0.0)x426.79135, glue set 400.30888fil
 ...\glue(\topskip) 3.76875
 ...\hbox(8.23125+1.86545)x398.33861, glue set 1.69102, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
@@ -6622,7 +6622,7 @@ Completed box being shipped out [3]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\penalty -51
-...\glue 13.0 plus 6.0 minus 8.0
+...\glue 0.0
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.29758
 ...\glue 0.0 plus 1.0fil
