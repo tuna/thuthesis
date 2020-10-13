@@ -2534,39 +2534,85 @@
 %
 % \subsubsection{脚注}
 % \label{sec:footnote}
-% 脚注符合中文习惯，数字带圈。
-% \begin{macro}{\thu@textcircled}
+% 脚注内容采用小五号字，中文用宋体，英文和数字用 Times New Roman 体按两端对齐格式书写，
+% 单倍行距，段前段后均空 0 磅。
+% 脚注的序号按页编排，不同页的脚注序号不需要连续。
+%
+% 脚注处序号“1，……，10”的字体是“正文”，不是“上标”，序号与脚注内容文字之间空半个汉字符，
+% 脚注的段落格式为：单倍行距，段前空 0 磅，段后空 0 磅，悬挂缩进 1.5 字符；
+% 字号为小五号字，汉字用宋体，外文用 Times New Roman 体。
+%
+% 脚注序号使用带圈数字。
+% \begin{macro}{\thu@circled}
 % 生成带圈的脚注数字，最多处理到 10。
 %    \begin{macrocode}
-\def\thu@textcircled#1{%
-  \ifnum\value{#1} >10\relax
+\newcommand\thu@circled[1]{%
+  \ifnum#1 >10\relax
     \thu@error{%
       Too many footnotes in this page.
       Keep footnote less than 10%
     }%
   \fi
-  {\symbol{\the\numexpr\value{#1}+"245F\relax}}%
+  {\symbol{\the\numexpr#1+"245F\relax}}%
 }
-\renewcommand{\thefootnote}{\thu@textcircled{footnote}}
-\renewcommand{\thempfootnote}{\thu@textcircled{mpfootnote}}
+\renewcommand{\thefootnote}{\thu@circled{\c@footnote}}
+\renewcommand{\thempfootnote}{\thu@circled{\c@mpfootnote}}
 %    \end{macrocode}
 % \end{macro}
 %
 % 定义脚注分割线，字号（宋体小五），以及悬挂缩进（1.5字符）。
 %    \begin{macrocode}
 \def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@}
-\let\thu@footnotesize\footnotesize
-\renewcommand\footnotesize{\thu@footnotesize\xiaowu[1.5]}
-\footnotemargin1.5em\relax
+\footnotemargin=13.5bp
 %    \end{macrocode}
 %
-% \cs{@makefnmark} 默认是上标样式，而在脚注部分要求为正文大小。利用\cs{patchcmd}
-% 动态调整 \cs{@makefnmark} 的定义。
+% 修改 \pkg{footmisc} 定义的脚注格式。
 %    \begin{macrocode}
-\let\thu@makefnmark\@makefnmark
-\def\thu@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
-\pretocmd{\@makefntext}{\let\@makefnmark\thu@@makefnmark}{}{}
-\apptocmd{\@makefntext}{\let\@makefnmark\thu@makefnmark}{}{}
+\long\def\@makefntext#1{%
+  \begingroup
+    % 序号取消上标
+    \def\@makefnmark{\hbox{\normalfont\@thefnmark}}%
+    \xiaowu
+    \ifFN@hangfoot
+      \bgroup
+      \setbox\@tempboxa\hbox{%
+        \ifdim\footnotemargin>\z@
+          \hb@xt@\footnotemargin{\@makefnmark\hss}%
+        \else
+          \@makefnmark
+        \fi
+      }%
+      \leftmargin\wd\@tempboxa
+      \rightmargin\z@
+      \linewidth \columnwidth
+      \advance \linewidth -\leftmargin
+      \parshape \@ne \leftmargin \linewidth
+      % \footnotesize
+      \xiaowu
+      \@setpar{{\@@par}}%
+      \leavevmode
+      \llap{\box\@tempboxa}%
+      \parskip\hangfootparskip\relax
+      \parindent\hangfootparindent\relax
+    \else
+      \parindent1em%
+      \noindent
+      \ifdim\footnotemargin>\z@
+        \hb@xt@ \footnotemargin{\hss\@makefnmark}%
+      \else
+        \ifdim\footnotemargin=\z@
+          \llap{\@makefnmark}%
+        \else
+          \llap{\hb@xt@ -\footnotemargin{\@makefnmark\hss}}%
+        \fi
+      \fi
+    \fi
+    \footnotelayout#1%
+    \ifFN@hangfoot
+      \par\egroup
+    \fi
+  \endgroup
+}
 %    \end{macrocode}
 %
 % 设置 url 样式，与上下文一致
