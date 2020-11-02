@@ -51,7 +51,7 @@ Scroll down for the English version of README.
 
 下载发布版的的 zip 包，使用其中的 `thuthesis.cls` 等文件覆盖原有的即可，无须额外操作。
 
-#### 开发板
+#### 开发版
 
 从 GitHub clone 项目源码或者下载源码 zip 包，执行命令（Windows 用户在文件夹空白处按 `Shift + 鼠标右键`，点击“在此处打开命令行窗口”）：
 
