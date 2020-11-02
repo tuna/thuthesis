@@ -2471,7 +2471,6 @@ Completed box being shipped out [1]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -714.29128
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -2484,6 +2483,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
+.\kern 0.0
 Completed box being shipped out [2]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -4956,7 +4956,6 @@ Completed box being shipped out [2]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -714.29128
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -4969,6 +4968,7 @@ Completed box being shipped out [2]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
+.\kern 0.0
 Completed box being shipped out [3]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -7352,7 +7352,6 @@ Completed box being shipped out [3]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -714.29128
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -7365,6 +7364,7 @@ Completed box being shipped out [3]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
+.\kern 0.0
 LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line ....
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 11.04242pt on input line ....
@@ -9517,7 +9517,6 @@ Completed box being shipped out [4]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -714.29128
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -9530,6 +9529,7 @@ Completed box being shipped out [4]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
+.\kern 0.0
 Completed box being shipped out [5]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -12035,7 +12035,6 @@ Completed box being shipped out [5]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -714.29128
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -12048,6 +12047,7 @@ Completed box being shipped out [5]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
+.\kern 0.0
 Completed box being shipped out [6]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -14028,7 +14028,6 @@ Completed box being shipped out [6]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -714.29128
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -14041,6 +14040,7 @@ Completed box being shipped out [6]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
+.\kern 0.0
 第4章
 Completed box being shipped out [7]
 \vbox(710.18088+4.1104)x439.87962
@@ -14411,7 +14411,6 @@ Completed box being shipped out [7]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -714.29128
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -14424,3 +14423,4 @@ Completed box being shipped out [7]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
+.\kern 0.0

@@ -490,7 +490,6 @@ Completed box being shipped out [1]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x398.3386
 ...\special{color pop}
-.\kern 0.0
 .\kern -624.82262
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -503,4 +502,5 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 624.82262
+.\kern 0.0
 LaTeX Info: Redefining \mathellipsis on input line ....

@@ -34,7 +34,7 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 74.031fil
+..\vbox(674.33032+0.0)x426.79135, glue set 94.10385fil
 ...\write-{}
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
@@ -45,7 +45,6 @@ Completed box being shipped out [1]
 ...\glue 42.67912
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 20.075
 ...\hbox(0.0+85.35826)x426.79135
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
@@ -557,7 +556,6 @@ Completed box being shipped out [1]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x426.79135
 ...\special{color pop}
-.\kern 0.0
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -570,3 +568,4 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 710.18088
+.\kern 0.0

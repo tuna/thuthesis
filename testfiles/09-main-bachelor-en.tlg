@@ -1392,7 +1392,6 @@ Completed box being shipped out [1]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -1405,6 +1404,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [2]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -1439,7 +1439,6 @@ Completed box being shipped out [2]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -1452,6 +1451,7 @@ Completed box being shipped out [2]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 LaTeX Info: Redefining \mathellipsis on input line ....
 LaTeX Info: Redefining \mathellipsis on input line ....
 Completed box being shipped out [3]
@@ -2729,7 +2729,6 @@ Completed box being shipped out [3]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -2742,6 +2741,7 @@ Completed box being shipped out [3]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [4]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -2776,7 +2776,6 @@ Completed box being shipped out [4]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -2789,6 +2788,7 @@ Completed box being shipped out [4]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 LaTeX Info: Redefining \mathellipsis on input line ....
 (09-main-bachelor-en.toc
 Completed box being shipped out [5]
@@ -4342,7 +4342,6 @@ Completed box being shipped out [5]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -4355,6 +4354,7 @@ Completed box being shipped out [5]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 )
 \tf@toc=\write...
 Completed box being shipped out [6]
@@ -4683,7 +4683,6 @@ Completed box being shipped out [6]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -4696,6 +4695,7 @@ Completed box being shipped out [6]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [7]
 \vbox(722.98454+6.02255)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -5328,7 +5328,6 @@ Completed box being shipped out [7]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -5341,6 +5340,7 @@ Completed box being shipped out [7]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [8]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -5375,7 +5375,6 @@ Completed box being shipped out [8]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -5388,6 +5387,7 @@ Completed box being shipped out [8]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 Chapter One
 Completed box being shipped out [1]
 \vbox(722.98454+6.02255)x439.87962
@@ -7015,7 +7015,6 @@ Completed box being shipped out [1]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -7028,6 +7027,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [2]
 \vbox(722.98454+6.02255)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -7545,7 +7545,6 @@ Completed box being shipped out [2]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -7558,6 +7557,7 @@ Completed box being shipped out [2]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Chapter Two
 Completed box being shipped out [3]
 \vbox(722.98454+6.02255)x439.87962
@@ -8910,7 +8910,6 @@ Completed box being shipped out [3]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -8923,6 +8922,7 @@ Completed box being shipped out [3]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [4]
 \vbox(722.98454+6.02255)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -10023,7 +10023,6 @@ Completed box being shipped out [4]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -10036,6 +10035,7 @@ Completed box being shipped out [4]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Chapter Three
 Completed box being shipped out [5]
 \vbox(722.98454+6.02255)x439.87962
@@ -11161,7 +11161,6 @@ Completed box being shipped out [5]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -11174,6 +11173,7 @@ Completed box being shipped out [5]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Chapter Four
 Completed box being shipped out [6]
 \vbox(722.98454+6.02255)x434.18916
@@ -12546,7 +12546,6 @@ Completed box being shipped out [6]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -12559,6 +12558,7 @@ Completed box being shipped out [6]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 10.54048pt on input line ....
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
@@ -15874,7 +15874,6 @@ Completed box being shipped out [7]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -15887,6 +15886,7 @@ Completed box being shipped out [7]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [8]
 \vbox(722.98454+6.02255)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -17254,7 +17254,6 @@ Completed box being shipped out [8]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -17267,6 +17266,7 @@ Completed box being shipped out [8]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [9]
 \vbox(722.98454+6.02255)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -17817,7 +17817,6 @@ Completed box being shipped out [9]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -17830,6 +17829,7 @@ Completed box being shipped out [9]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Chapter Five
 Completed box being shipped out [10]
 \vbox(722.98454+6.02255)x434.18916
@@ -17958,7 +17958,6 @@ Completed box being shipped out [10]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -17971,6 +17970,7 @@ Completed box being shipped out [10]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 (09-main-bachelor-en.lot)
 \tf@lot=\write...
 Completed box being shipped out [11]
@@ -18344,7 +18344,6 @@ Completed box being shipped out [11]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -18357,6 +18356,7 @@ Completed box being shipped out [11]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [12]
 \vbox(722.98454+6.02255)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -19470,7 +19470,6 @@ Completed box being shipped out [12]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -19483,6 +19482,7 @@ Completed box being shipped out [12]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [13]
 \vbox(722.98454+6.02255)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -19650,7 +19650,6 @@ Completed box being shipped out [13]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -19663,6 +19662,7 @@ Completed box being shipped out [13]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [14]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -19697,7 +19697,6 @@ Completed box being shipped out [14]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -19710,6 +19709,7 @@ Completed box being shipped out [14]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 12.04628pt on input line ....
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
@@ -20127,7 +20127,6 @@ Completed box being shipped out [15]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -20140,6 +20139,7 @@ Completed box being shipped out [15]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 Completed box being shipped out [16]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -20174,7 +20174,6 @@ Completed box being shipped out [16]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -20187,6 +20186,7 @@ Completed box being shipped out [16]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 APPENDIX A
 Completed box being shipped out [17]
 \vbox(722.98454+6.02255)x439.87962
@@ -20431,7 +20431,6 @@ Completed box being shipped out [17]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -20444,6 +20443,7 @@ Completed box being shipped out [17]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 APPENDIX B
 Completed box being shipped out [18]
 \vbox(722.98454+6.02255)x434.18916
@@ -20683,7 +20683,6 @@ Completed box being shipped out [18]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -20696,6 +20695,7 @@ Completed box being shipped out [18]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Completed box being shipped out [19]
 \vbox(722.98454+6.02255)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -20834,7 +20834,6 @@ Completed box being shipped out [19]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -20847,3 +20846,4 @@ Completed box being shipped out [19]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0

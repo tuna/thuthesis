@@ -439,7 +439,6 @@ Completed box being shipped out [1]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -452,6 +451,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 Completed box being shipped out [2]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -486,7 +486,6 @@ Completed box being shipped out [2]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -499,6 +498,7 @@ Completed box being shipped out [2]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 LaTeX Info: Redefining \mathellipsis on input line ....
 Completed box being shipped out [1]
 \vbox(722.98454+3.5232)x439.87962
@@ -1175,7 +1175,6 @@ Completed box being shipped out [1]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -1188,6 +1187,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 Completed box being shipped out [2]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -1222,7 +1222,6 @@ Completed box being shipped out [2]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -1235,6 +1234,7 @@ Completed box being shipped out [2]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 LaTeX Info: Redefining \mathellipsis on input line ....
 LaTeX Info: Redefining \mathellipsis on input line ....
 Completed box being shipped out [3]
@@ -1945,7 +1945,6 @@ Completed box being shipped out [3]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -1958,6 +1957,7 @@ Completed box being shipped out [3]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 Completed box being shipped out [4]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -1992,7 +1992,6 @@ Completed box being shipped out [4]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -2005,6 +2004,7 @@ Completed box being shipped out [4]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 LaTeX Info: Redefining \mathellipsis on input line ....
 (09-main-bachelor.toc)
 \tf@toc=\write...
@@ -2809,7 +2809,6 @@ Completed box being shipped out [5]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -2822,6 +2821,7 @@ Completed box being shipped out [5]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 Completed box being shipped out [6]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -2856,7 +2856,6 @@ Completed box being shipped out [6]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -2869,6 +2868,7 @@ Completed box being shipped out [6]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 第1章
 Package natbib Warning: Citation `xinximeng1994xinxi' on page 1 undefined on input line ....
 Completed box being shipped out [1]
@@ -4835,7 +4835,6 @@ Completed box being shipped out [1]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -4848,6 +4847,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 Completed box being shipped out [2]
 \vbox(722.98454+3.5232)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -5016,7 +5016,6 @@ Completed box being shipped out [2]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -5029,6 +5028,7 @@ Completed box being shipped out [2]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 第2章
 LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line ....
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
@@ -6130,7 +6130,6 @@ Completed box being shipped out [3]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -6143,6 +6142,7 @@ Completed box being shipped out [3]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 File: tsinghua-name-bachelor.pdf Graphic file (type pdf)
 <use tsinghua-name-bachelor.pdf>
 Completed box being shipped out [4]
@@ -7217,7 +7217,6 @@ Completed box being shipped out [4]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -7230,6 +7229,7 @@ Completed box being shipped out [4]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 (09-main-bachelor.lof)
 \tf@lof=\write...
 Completed box being shipped out [5]
@@ -7440,7 +7440,6 @@ C.}
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -7453,6 +7452,7 @@ C.}
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 (09-main-bachelor.lot)
 \tf@lot=\write...
 Completed box being shipped out [6]
@@ -7646,7 +7646,6 @@ C.}
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -7659,6 +7658,7 @@ C.}
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 \bibcite{xinximeng1994xinxi}{{1}{1994}{{辛希孟}}{{}}}
 \bibcite{chenggenwei1998changjiang}{{2}{1999}{{程根伟}}{{}}}
 \bibcite{lixiaodong1999qihou}{{3}{1999}{{李晓东\ 等}}{{李晓东, 张庆红, 叶瑾琳, and 罗云}}}
@@ -8579,7 +8579,6 @@ C.}
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -8592,6 +8591,7 @@ C.}
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 Completed box being shipped out [8]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -8626,7 +8626,6 @@ Completed box being shipped out [8]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -8639,6 +8638,7 @@ Completed box being shipped out [8]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 Completed box being shipped out [9]
 \vbox(722.98454+3.5232)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -8858,7 +8858,6 @@ Completed box being shipped out [9]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -8871,6 +8870,7 @@ Completed box being shipped out [9]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 Completed box being shipped out [10]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -8905,7 +8905,6 @@ Completed box being shipped out [10]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -8918,6 +8917,7 @@ Completed box being shipped out [10]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 Completed box being shipped out [11]
 \vbox(722.98454+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -9323,7 +9323,6 @@ Completed box being shipped out [11]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -9336,6 +9335,7 @@ Completed box being shipped out [11]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 Completed box being shipped out [12]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -9370,7 +9370,6 @@ Completed box being shipped out [12]
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x421.10089
 ...\special{color pop}
-.\kern 0.0
 .\kern -722.98454
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -9383,6 +9382,7 @@ Completed box being shipped out [12]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
+.\kern 0.0
 附录 A
 LaTeX Info: Redefining \mathellipsis on input line ....
 \c@ttl@toc@survey=\count...
@@ -9688,7 +9688,6 @@ Completed box being shipped out [13]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -9701,6 +9700,7 @@ Completed box being shipped out [13]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0
 Completed box being shipped out [14]
 \vbox(722.98454+3.5232)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -9887,7 +9887,6 @@ Completed box being shipped out [14]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -726.50774
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -9900,3 +9899,4 @@ Completed box being shipped out [14]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 726.50774
+.\kern 0.0

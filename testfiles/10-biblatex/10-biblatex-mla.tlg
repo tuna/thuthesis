@@ -235,7 +235,6 @@ Completed box being shipped out [1]
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -248,6 +247,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
 Package biblatex Warning: '\mkdatezeros' is deprecated.
 (biblatex)                Please use '\mkyearzeros', '\mkmonthzeros' or
 (biblatex)                '\mkdayzeros' as appropriate. 
@@ -1268,7 +1268,6 @@ Completed box being shipped out [2]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ...\special{color pop}
-.\kern 0.0
 .\kern -729.0071
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -1281,3 +1280,4 @@ Completed box being shipped out [2]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
+.\kern 0.0
