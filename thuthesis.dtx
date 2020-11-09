@@ -958,22 +958,26 @@
 %
 % \subsubsection{声明}
 % \DescribeMacro{\statement}
-% 如果使用声明扫描页，将可选参数指定为扫描后的 PDF 文件名，例如：
+% 直接使用 \cs{statement} 命令可以编译生成声明页。
+% 如果要插入扫描后的声明页，将可选参数指定为扫描后的 PDF 文件名，例如：
 %
 % \begin{latex}
 %   \statement[file=scan-statement.pdf]
 % \end{latex}
 %
-% 由于打印版和电子版有空白页的差别，声明的页码可能不同。
-% 所以编译声明页时默认不加页眉和页脚（\texttt{page-style=empty}），
-% 在签字后插入扫描页时再补上页眉和页脚，防止页码冲突。
+% 由于本科生打印版和电子版有空白页的差别，声明的页码可能不同。
+% 所以编译声明页时默认不加页脚（\texttt{page-style=empty}），
+% 在签字后插入扫描页时再补上页脚，防止页码冲突。
 %
 % 如果需要编译时也加页码（如直接对电子版进行签名而不是插入扫描页），
 % 可以使用在 \cs{statement} 命令设置
 % \begin{latex}
 %   \statement[page-style=plain]
 % \end{latex}
-% 注意，插入扫描页总是会加页码，不受该选项控制。
+% 注意，本科生插入扫描页时总是会加页码，不受该选项控制。
+%
+% 研究生不存在空白页的问题，所以在编译声明页时总是会加上页眉和页脚，
+% 而在插入扫描页时则不再添加，不受 \option{page-style} 的控制。
 %
 % \subsubsection{附录}
 %
@@ -4293,7 +4297,9 @@
   \kvsetkeys{thu@statement}{#1}%
   \ifx\thu@statement@file\@empty
     \thu@chapter*{\thu@statement@name}%
-    \thispagestyle{\thu@statement@page@style}%
+    \ifthu@degree@bachelor
+      \thispagestyle{\thu@statement@page@style}%
+    \fi
     \thu@statement@text\par
     \ifthu@degree@graduate
       \vskip 2cm%
@@ -4307,6 +4313,9 @@
       \markboth{\thu@statement@name}{}%
       \thu@phantomsection
       \addcontentsline{toc}{chapter}{\thu@statement@name}%
+      \ifthu@degree@bachelor\else
+        \thispagestyle{empty}%
+      \fi
     }]{\thu@statement@file}%
   \fi
   \ifthu@degree@bachelor

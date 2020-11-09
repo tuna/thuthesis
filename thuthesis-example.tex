@@ -67,9 +67,8 @@
 
 % 声明
 \statement
-% 生成的声明页是否要插入页眉和页脚（默认 empty）
-% 仅在需要进行电子签名时，才需要打开这一选项
-% 插入的扫描声明页总是会生成页眉（研究生）和页脚，不受这一选项影响
+% 本科生编译生成的声明页默认不带页码（page-style=empty），而在插入扫描版时补上页码。
+% 如果使用电子签名，可以选择加上页码：
 % \statement[page-style=plain]
 % 将签字扫描后的声明文件 scan-statement.pdf 替换原始页面
 % \statement[file=scan-statement.pdf]
