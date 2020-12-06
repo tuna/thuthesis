@@ -4,25 +4,20 @@
 
 \section{数学符号}
 
-研究生《写作指南》要求量及其单位所使用的符号应符合国家标准《国际单位制及其应用》(GB 3100—1993)、《有关量、单位和符号的一般原则》(GB/T 3101—1993) 的规定。
-模板中使用 \pkg{unicode-math} 宏包来配置数学符号，
-与 \LaTeX{} 默认的英美国家的符号习惯有所差异：
+中文论文的数学符号默认采用 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》。
+该标准参照采纳 ISO 31-11:1992（目前最新版为 ISO 80000-2:2019），
+但是与 \TeX{} 默认的英美国家的符号习惯有许多差异，主要有：
 \begin{enumerate}
-  \item 大写希腊字母默认为斜体，如 \cs{Delta}：$\Delta$。
-  \item 有限增量符号 $\increment$（U+2206）应使用 \pkg{unicode-math} 宏包提供的
-    \cs{increment} 命令。
-  \item 向量、矩阵和张量要求粗斜体，应该使用 \pkg{unicode-math} 的 \cs{symbf} 命令，
-    如 \verb|\symbf{A}|、\verb|\symbf{\alpha}|。
-  \item 数学常数和特殊函数要求用正体，应使用 \cs{symup} 命令，
-    如 $\symup{\pi} = 3.14\dots$; $\symup{e} = 2.718\dots$，
-  \item 微分号和积分号使用使用正体，比如 $\int f(x) \dif x$。
+  \item 大写希腊字母默认为斜体，如 $\Delta$、$\Sigma$，
+    有限增量符号 $\increment$（\cs{increment}）固定使用正体。
+  \item 数学常数和特殊函数名用正体，如 $\symup{\pi} = 3.14\dots$；$\symup{e} = 2.718\dots$。
+  \item 微分号使用正体，比如 $\dif y / \dif x$。
+  \item 向量、矩阵和张量用粗斜体（\cs{symbf}），如 $\symbf{x}$、$\symbf{\Sigma}$。
+  \item 省略号按照中文的习惯固定居中，如 $1, 2, \dots, n$。
 \end{enumerate}
 
-关于数学符号更多的用法，参考
-\href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
-宏包的使用说明，
-全部数学符号命的令参考
-\href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unimath-symbols.pdf}{\pkg{unimath-symbols}}。
+英文论文的数学符号使用 \TeX{} 默认的样式。
+如果有必要，也可以通过设置 \verb|math-style| 选择数学符号样式。
 
 关于量和单位推荐使用
 \href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{\pkg{siunitx}}

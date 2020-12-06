@@ -754,27 +754,34 @@
 %
 % \subsubsection{数学符号}
 % \label{sec:math}
-% 数学符号应遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》
-% 模板中使用 \pkg{unicode-math} 宏包来配置数学符号，
-% 与 \LaTeX{} 默认的英美国家的符号习惯有所差异：
+% 中文论文的数学符号默认遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》。
+% 该标准参照采纳 ISO 31-11:1992，
+% 但是与 \TeX{} 默认的英美国家的符号习惯有许多差异，主要有：
 % \newcommand\dif{\mathop{}\!\mathrm{d}}
 % \begin{enumerate}
-%   \item 大写希腊字母默认为斜体，如 \cs{Delta}：$\Delta$。
-%   \item 有限增量符号 $\increment$（U+2206）应使用 \pkg{unicode-math} 宏包提供的
-%     \cs{increment} 命令。
-%   \item 向量、矩阵和张量要求粗斜体，应使用 \cs{symbf} 命令，
-%     如 \verb|\symbf{A}|、\verb|\symbf{\alpha}|。
-%   \item 数学常数和特殊函数要求用正体，应使用 \cs{symup} 命令，
-%     如 $\symup{\pi} = 3.14\dots$; $\symup{e} = 2.718\dots$，
-%   \item 微分号和积分号使用使用正体，比如 $\int f(x) \dif x$。
+%   \item 大写希腊字母默认为斜体，如 $\Delta$、$\Sigma$，
+%     有限增量符号 $\increment$（\cs{increment}）固定使用正体。
+%   \item 数学常数和特殊函数名用正体，如 $\symup{\pi} = 3.14\dots$；$\symup{e} = 2.718\dots$。
+%   \item 微分号使用正体，比如 $\dif y / \dif x$。
+%   \item 向量、矩阵和张量用粗斜体（\cs{symbf}），如 $\symbf{x}$、$\symbf{\Sigma}$、$\symbfsf{T}$。
+%   \item 省略号按照中文的习惯固定居中，如 $1, 2, \dots, n$。
 % \end{enumerate}
 %
-% 关于数学符号更多的用法，参考
-% \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
-% 宏包的使用说明，
-% 全部数学符号命的令参考
-% \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unimath-symbols.pdf}{\pkg{unimath-symbols}}。
+% \DescribeOption{math-style}
+% 英文论文的数学符号默认使用 \TeX{} 样式。
+% 如果有必要，也可以通过设置 \option{math-style} 选择数学符号样式，
+% 可选：\option{GB}（中文默认），\option{TeX}（英文默认），\option{ISO}。
+% \begin{latex}
+%   \thusetup{
+%     math-style = ISO,
+%   }
+% \end{latex}
 %
+% 模板使用
+% \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
+% 配置数学符号的字体。
+% 全部数学符号的命令参考
+% \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unimath-symbols.pdf}{\pkg{unimath-symbols}}。
 % 注意，\pkg{unicode-math} 宏包与 \pkg{amsfonts}、\pkg{amssymb}、\pkg{bm}、
 % \pkg{mathrsfs}、\pkg{upgreek} 等宏包\emph{不}兼容。
 % 模板作了处理，用户可以直接使用这些宏包的命令，如 \cs{bm}、\cs{mathscr}、
@@ -1462,6 +1469,15 @@
     },
     default = xits,
   },
+  math-style = {
+    name = math@style,
+    choices = {
+      GB,
+      ISO,
+      TeX,
+    },
+    default = GB,
+  },
 %    \end{macrocode}
 %
 % 选择打印版还是用于上传的电子版。
@@ -1978,20 +1994,59 @@
 \thu@option@hook{font}{\thu@load@font}
 %    \end{macrocode}
 %
-% 使用 \pkg{unicode-math} 配置数学字体
+% 使用 \pkg{unicode-math} 配置数学符号格式。
 %    \begin{macrocode}
-\unimathsetup{
-  math-style = ISO,
-  bold-style = ISO,
-  nabla      = upright,
-  partial    = upright,
+\newcommand\thu@stix@stylistic@set{%
+  \ifthu@math@style@TeX\else
+    8
+  \fi
 }
+\newcommand\thu@set@math@style{%
+  \ifthu@math@style@TeX
+    \unimathsetup{
+      math-style = TeX,
+      bold-style = TeX,
+      partial    = italic,
+    }%
+  \else
+    \unimathsetup{
+      math-style = ISO,
+      bold-style = ISO,
+      partial    = upright,
+    }%
+  \fi
+  \ifthu@math@style@GB
+    \protected\def\le{\leqslant}%
+    \protected\def\ge{\geqslant}%
+    \DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}%
+  \else
+    \protected\def\le{\leq}%
+    \protected\def\ge{\geq}%
+    \DeclareRobustCommand\mathellipsis{\mathinner{\unicodeellipsis}}%
+  \fi
+}
+\ifthu@main@language@chinese
+  \thusetup{math-style=GB}%
+\else
+  \thusetup{math-style=TeX}%
+\fi
+\thu@set@math@style
+\thu@option@hook{math-style}{\thu@set@math@style}
+\thu@option@hook{main-language}{%
+  \ifthu@main@language@chinese
+    \thusetup{math-style=GB}%
+  \else
+    \thusetup{math-style=TeX}%
+  \fi
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \newcommand\thu@load@math@font@xits{%
   \thu@set@xits@names
   \setmathfont{\thu@font@name@xits@math@rm}[
     Extension    = .otf,
-    BoldFont     = \thu@font@name@xits@math@bf,
-    StylisticSet = 8,
+    StylisticSet = \thu@stix@stylistic@set,
   ]%
   \setmathfont{\thu@font@name@xits@math@rm}[
     Extension    = .otf,
@@ -2002,7 +2057,7 @@
 \newcommand\thu@load@math@font@stix{%
   \setmathfont{STIX2Math}[
     Extension    = .otf,
-    StylisticSet = 8,
+    StylisticSet = \thu@stix@stylistic@set,
   ]%
   \setmathfont{STIX2Math}[
     Extension    = .otf,
@@ -2022,6 +2077,7 @@
 }
 \thu@load@math@font
 \thu@option@hook{math-font}{\thu@load@math@font}
+\thu@option@hook{math-style}{\thu@load@math@font}
 %    \end{macrocode}
 %
 % 中文字体
@@ -2675,76 +2731,6 @@
 %
 % \subsubsection{数学相关}
 % \label{sec:equation}
-% \begin{macro}{\ldots}
-% 省略号一律居中，所以 \cs{ldots} 不再居于底部。
-%    \begin{macrocode}
-\newcommand\thu@set@math@ellipsis{%
-  \ifthu@language@chinese
-    \DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}%
-  \else
-    \ifthu@language@english
-      \DeclareRobustCommand\mathellipsis{\mathinner{\unicodeellipsis}}%
-    \fi
-  \fi
-}
-\thu@set@math@ellipsis
-\thu@option@hook{language}{\thu@set@math@ellipsis}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\le}
-% \begin{macro}{\ge}
-% \begin{macro}{\leq}
-% \begin{macro}{\geq}
-% 小于等于号要使用倾斜的形式。
-%    \begin{macrocode}
-\protected\def\le{\leqslant}
-\protected\def\ge{\geqslant}
-\AtBeginDocument{%
-  \renewcommand\leq{\leqslant}%
-  \renewcommand\geq{\geqslant}%
-}
-%    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-%
-% \begin{macro}{\int}
-% 积分号 \cs{int} 使用正体，并且上下限默认置于积分号上下两侧。
-%    \begin{macrocode}
-\removenolimits{%
-  \int\iint\iiint\iiiint\oint\oiint\oiiint
-  \intclockwise\varointclockwise\ointctrclockwise\sumint
-  \intbar\intBar\fint\cirfnint\awint\rppolint
-  \scpolint\npolint\pointint\sqint\intlarhk\intx
-  \intcap\intcup\upint\lowint
-}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\Re}
-% \begin{macro}{\Im}
-% 实部、虚部操作符使用罗马体 $\mathrm{Re}$、$\mathrm{Im}$ 而不是 fraktur 体
-% $\Re$、$\Im$。
-%    \begin{macrocode}
-\AtBeginDocument{%
-  \renewcommand{\Re}{\operatorname{Re}}%
-  \renewcommand{\Im}{\operatorname{Im}}%
-}
-%    \end{macrocode}
-% \end{macro}
-% \end{macro}
-%
-% \begin{macro}{\nabla}
-% \cs{nabla} 使用粗正体。
-%    \begin{macrocode}
-\AtBeginDocument{%
-  \renewcommand\nabla{\mbfnabla}%
-}
-%    \end{macrocode}
-% \end{macro}
-%
 % \begin{macro}{\bm}
 % \begin{macro}{\boldsymbol}
 % 兼容旧的粗体命令：\pkg{bm} 的 \cs{bm} 和 \pkg{amsmath} 的 \cs{boldsymbol}。
@@ -5695,6 +5681,7 @@
   math-style=ISO,
   bold-style=ISO,
 }
+\DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}
 \IfFontExistsTF{XITSMath-Regular.otf}{
   \setmathfont[
     Extension    = .otf,
