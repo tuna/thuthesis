@@ -3539,8 +3539,8 @@
 %    \begin{macrocode}
 \newcommand\thu@titlepage@degree{%
   \begingroup
-    \def\CJKglue{\hskip 1bp}%
     \CJKfamily+{}\xiaoer
+    \def\CJKglue{\hskip 1bp}%
     (申请清华大学\thu@degree@name\ifthu@degree@type@professional 专业\fi 学位论文)\par
   \endgroup
 }
@@ -3639,8 +3639,9 @@
 %    \begin{macrocode}
 \newcommand\thu@titlepage@date{%
   \begingroup
+    \sanhao
     \def\CJKglue{\hskip 1bp}%
-    \sanhao\thu@format@date{\thu@date@zh@short}{\thu@date}\par
+    \thu@format@date{\thu@date@zh@short}{\thu@date}\par
   \endgroup
 }
 %    \end{macrocode}
