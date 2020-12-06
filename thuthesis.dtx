@@ -417,6 +417,22 @@
 % 须采用中文封面”，“除留学生外，学位论文一律须用汉语书写”，用户须提前与导师和院系
 % 的审查教师协商使用何种语言书写论文。
 %
+% \subsubsection{开题报告}
+% \DescribeOption{thesis-type}
+% 模板还支持博士生论文开题报告的格式，可以通过设置 \option{thesis-type=proposal} 得到。
+%
+% 开题报告与学位论文有两点不同：
+% \begin{enumerate}
+%   \item 封面的信息和格式有区别，尤其是增加了一行“学号”信息，需要通过 \option{student-id} 填写；
+%   \item 开题报告不含英文标题页。
+% \end{enumerate}
+% \begin{latex}
+%   \thusetup{
+%     thesis-type = proposal,
+%     student-id  = {2000310000},
+%   }
+% \end{latex}
+%
 % \subsection{封面信息}
 % \label{sec:titlepage}
 % 封面信息可以通过统一设置命令 \cs{thusetup} 设置 \emph{key=value} 形式完成；
@@ -492,6 +508,14 @@
 %   \thusetup{
 %     author  = {中文姓名},
 %     author* = {Name in Pinyin},
+%   }
+% \end{latex}
+%
+% \subsubsection{学号}
+% 学号，仅用于博士生论文开题报告。
+% \begin{latex}
+%   \thusetup{
+%     student-id  = {20000310000},
 %   }
 % \end{latex}
 %
@@ -1335,6 +1359,14 @@
 %
 %    \begin{macrocode}
 \thu@define@key{
+  thesis-type = {
+    name = thesis@type,
+    choices = {
+      thesis,
+      proposal,
+    },
+    default = thesis,
+  },
   degree = {
     choices = {
       bachelor,
@@ -3212,6 +3244,9 @@
     default = {Name of author},
     name    = author@en,
   },
+  student-id = {
+    name = student@id,
+  },
   supervisor = {
     default = {导师姓名},
   },
@@ -3411,8 +3446,10 @@
     \thu@spine
   \fi
   \ifthu@degree@graduate
-    \cleardoublepage
-    \thu@titlepage@en
+    \ifthu@thesis@type@thesis
+      \cleardoublepage
+      \thu@titlepage@en
+    \fi
   \fi
   \clearpage
 }
@@ -3428,13 +3465,19 @@
 \newcommand\thu@titlepage{%
   \thusetup{language = chinese}%
   \ifthu@degree@graduate
-    \ifthu@degree@type@academic
-      \thu@titlepage@graduate@academic
-    \else
-      \ifx\thu@discipline\@empty
-        \thu@titlepage@graduate@professional
-      \else
+    \ifthu@thesis@type@thesis
+      \ifthu@degree@type@academic
         \thu@titlepage@graduate@academic
+      \else
+        \ifx\thu@discipline\@empty
+          \thu@titlepage@graduate@professional
+        \else
+          \thu@titlepage@graduate@academic
+        \fi
+      \fi
+    \else
+      \ifthu@thesis@type@proposal
+        \thu@titlepage@proposal
       \fi
     \fi
   \else
@@ -3515,6 +3558,44 @@
 }
 %    \end{macrocode}
 %
+% 选题报告封面
+%    \begin{macrocode}
+\newcommand\thu@titlepage@proposal{%
+  \newgeometry{
+    top     = 5cm,
+    bottom  = 3.25cm,
+    hmargin = 3.17cm,
+  }%
+  \thispagestyle{empty}%
+  \begingroup
+    % \vspace*{0.1cm}%
+    \centering
+    % {\thu@titlepage@title}%
+    \parbox[t][3cm]{\textwidth}{%
+      \vskip 0.1cm%
+      \centering
+      \thu@titlepage@title
+    }%
+    \vskip 0.85cm%
+    \thu@titlepage@degree
+    \vfill
+    \parbox[t][8.5cm][t]{\textwidth}{\centering\CJKfamily+{}\thu@titlepage@info}\par
+    \parbox[t][2.5cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+\newcommand\thu@set@student@id{%
+  \ifthu@thesis@type@proposal
+    \ifx\thu@student@id\@empty
+      \thusetup{student-id=2000310000}%
+    \fi
+  \fi
+}
+\thu@set@student@id
+\thu@option@hook{thesis-type}{\thu@set@student@id}
+%    \end{macrocode}
+%
 %    \begin{macrocode}
 \newcommand\thu@titlepage@secret{%
   \sffamily\sanhao
@@ -3541,7 +3622,26 @@
   \begingroup
     \CJKfamily+{}\xiaoer
     \def\CJKglue{\hskip 1bp}%
-    (申请清华大学\thu@degree@name\ifthu@degree@type@professional 专业\fi 学位论文)\par
+    \ifthu@thesis@type@thesis
+      (申请清华大学\thu@degree@name
+      \ifthu@degree@type@professional
+        专业%
+      \fi
+      学位论文)%
+    \else
+      \ifthu@thesis@type@proposal
+        (清华大学%
+        \ifthu@degree@doctor
+          博士%
+        \else
+          \ifthu@degree@master
+            硕士%
+          \fi
+        \fi
+        学位论文选题报告)%
+      \fi
+    \fi
+    \par
   \endgroup
 }
 %    \end{macrocode}
@@ -3589,6 +3689,7 @@
     \thu@info@item{培养单位}{}{\thu@department}%
     \thu@info@item{学科}{}{\thu@discipline}%
     \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
+    \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
     \thu@info@item{联合导师}{\thu@name@title}{\thu@joint@supervisor}%
@@ -3598,6 +3699,7 @@
   \thu@titlepage@info@tabular{3.03cm}{5em}{1.52cm}{%
     \thu@info@item{培养单位}{}{\thu@department}%
     \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+    \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
     \thu@info@item{联合导师}{\thu@name@title}{\thu@joint@supervisor}%
@@ -3608,6 +3710,7 @@
     \thu@info@item{培养单位}{}{\thu@department}%
     \thu@info@item{学科}{}{\thu@discipline}%
     \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
+    \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
@@ -3618,6 +3721,7 @@
     \thu@info@item{培养单位}{}{\thu@department}%
     \thu@info@item{工程领域}{}{\thu@discipline}%
     \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+    \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
@@ -3627,6 +3731,7 @@
   \thu@titlepage@info@tabular{3.28cm}{5em}{1.52cm}{%
     \thu@info@item{培养单位}{}{\thu@department}%
     \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+    \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
