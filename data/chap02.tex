@@ -83,3 +83,71 @@
     \end{tablenotes}
   \end{threeparttable}
 \end{table}
+
+如某个表需要转页接排，可以使用 \pkg{longtable} 宏包，需要在随后的各页上重复表的编号。
+编号后跟表题（可省略）和“（续）”，置于表上方。续表均应重复表头。
+
+\begin{longtable}{cccc}
+    \caption{跨页长表格的表题} \\
+    \toprule
+    表头 1 & 表头 2 & 表头 3 & 表头 4 \\
+    \midrule
+  \endfirsthead
+    \caption[]{跨页长表格的表题（续）} \\
+    \toprule
+    表头 1 & 表头 2 & 表头 3 & 表头 4 \\
+    \midrule
+  \endhead
+    \bottomrule
+  \endfoot
+  Row 1  & & & \\
+  Row 2  & & & \\
+  Row 3  & & & \\
+  Row 4  & & & \\
+  Row 5  & & & \\
+  Row 6  & & & \\
+  Row 7  & & & \\
+  Row 8  & & & \\
+  Row 9  & & & \\
+  Row 10 & & & \\
+  Row 11 & & & \\
+  Row 12 & & & \\
+  Row 13 & & & \\
+  Row 14 & & & \\
+  Row 15 & & & \\
+  Row 16 & & & \\
+  Row 17 & & & \\
+  Row 18 & & & \\
+  Row 19 & & & \\
+  Row 20 & & & \\
+  Row 21 & & & \\
+  Row 22 & & & \\
+  Row 23 & & & \\
+  Row 24 & & & \\
+  Row 25 & & & \\
+  Row 26 & & & \\
+  Row 27 & & & \\
+  Row 28 & & & \\
+  Row 29 & & & \\
+  Row 30 & & & \\
+  Row 31 & & & \\
+  Row 32 & & & \\
+  Row 33 & & & \\
+  Row 34 & & & \\
+  Row 35 & & & \\
+  Row 36 & & & \\
+  Row 37 & & & \\
+  Row 38 & & & \\
+  Row 39 & & & \\
+  Row 40 & & & \\
+  Row 41 & & & \\
+  Row 42 & & & \\
+  Row 43 & & & \\
+  Row 44 & & & \\
+  Row 45 & & & \\
+  Row 46 & & & \\
+  Row 47 & & & \\
+  Row 48 & & & \\
+  Row 49 & & & \\
+  Row 50 & & & \\
+\end{longtable}

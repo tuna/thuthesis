@@ -2803,15 +2803,34 @@
 \renewcommand{\floatpagefraction}{0.60}
 %    \end{macrocode}
 %
-% 研究生要求表单元格中的文字采用 11pt 宋体字，单倍行距，段前空 3 磅，段后空 3 磅。
-% $(3 + 3) / (11 \times 1.3) \approx 0.4$
+% 研究生要求表单元格中的文字采用 11pt 宋体字，单倍行距。段前空 3 磅，段后空 3 磅。
+% 段前段后的高度直接加到行距上，对于中文，修正后的行距为
+% $11 \times 1.3 + 6 = 20.3$(pt),
+% 而英文版的行距为 $11 \times 1.3 + 6 = 18.65$(pt)。
+% 用户可以手动设置 \cs{arraystretch} 调整表格的行距 。
 %    \begin{macrocode}
 \patchcmd\@floatboxreset{%
   \normalsize
 }{%
-  \fontsize{11bp}{14.3bp}\selectfont
-  \renewcommand\arraystretch{1.4}%
+  \ifthu@language@chinese
+    \fontsize{11bp}{20.3bp}\selectfont
+  \else
+    \fontsize{11bp}{18.65bp}\selectfont
+  \fi
 }{}{\thu@patch@error{\@floatboxreset}}
+%    \end{macrocode}
+%
+% 对 \pkg{longtable} 跨页表格进行相同的设置。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{longtable}{
+  \AtBeginEnvironment{longtable}{%
+    \ifthu@language@chinese
+      \fontsize{11bp}{20.3bp}\selectfont
+    \else
+      \fontsize{11bp}{18.65bp}\selectfont
+    \fi
+  }
+}
 %    \end{macrocode}
 %
 % 定制浮动图形和表格标题样式，以及改变附录中浮动体的编号规则：
@@ -2832,17 +2851,13 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\newcommand\thu@caption@font{}
-\newcommand\thu@set@caption@font{%
+\DeclareCaptionFont{thu}{%
   \ifthu@degree@bachelor
-    \renewcommand\thu@caption@font{\fontsize{11bp}{15bp}\selectfont}%
+    \fontsize{11bp}{15bp}\selectfont
   \else
-    \renewcommand\thu@caption@font{\fontsize{11bp}{14.3bp}\selectfont}%
+    \fontsize{11bp}{14.3bp}\selectfont
   \fi
 }
-\thu@set@caption@font
-\thu@option@hook{degree}{\thu@set@caption@font}
-\DeclareCaptionFont{thu}{\thu@caption@font}
 \captionsetup{
   format         = hang,
   font           = thu,
@@ -3681,6 +3696,7 @@
   }%
   \fangsong\sanhao[1.95]%
   \begin{tabular}{l}%
+    \renewcommand\arraystretch{1}%
     #4%
   \end{tabular}%
 }
@@ -3849,6 +3865,7 @@
 }
 \newcommand\thu@titlepage@en@supervisor{%
   \begin{tabular}{r@{\makebox[0.71cm][l]{:}}l}%
+    \renewcommand\arraystretch{1}%
     \thu@thesis@name@en{} Supervisor & \thu@supervisor@en     \\
     \ifx\thu@associate@supervisor@en\@empty\else
       Associate Supervisor            & \thu@associate@supervisor@en \\
@@ -4017,6 +4034,7 @@
     \vskip 0.4cm%
     {\xiaosi[2.6]%
       \begin{tabular}{l@{\quad}l}%
+        \renewcommand\arraystretch{1}%
         \thu@stretch{11em}{博士后姓名}                  & \thu@author           \\
         \thu@stretch{11em}{流动站（一级学科）名称}      & \thu@discipline@level@i  \\
         \thu@stretch{11em}{专\quad{}业（二级学科）名称} & \thu@discipline@level@ii \\
@@ -5305,18 +5323,6 @@
   \let\nomname\thu@denotation@name
   \def\thenomenclature{\begin{denotation}[\nom@tempdim]}
   \def\endthenomenclature{\end{denotation}}
-}
-%    \end{macrocode}
-%
-% \subsubsection{\pkg{longtable} 宏包}
-%
-% 我们采用 \pkg{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
-%    \begin{macrocode}
-\AtEndOfPackageFile*{longtable}{
-  \pretocmd\LT@array{%
-    \fontsize{11bp}{14.3bp}\selectfont
-    \renewcommand\arraystretch{1.4}%
-  }{}{\thu@patch@error{\LT@array}}
 }
 %    \end{macrocode}
 %
