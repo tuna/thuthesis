@@ -751,6 +751,26 @@
 % 见 \pkg{nomencl} 宏包的文档。
 %
 % \subsection{正文部分}
+% \subsubsection{图表编号}
+% \DescribeOption{figure-number-separator}
+% \DescribeOption{table-number-separator}
+% \DescribeOption{equation-number-separator}
+% 研究生要求图表和公式的编号使用“.”或“-”连接，模板默认使用句点“.”。
+% 用户也可以通过 \option{figure-number-separator}、\option{table-number-separator}
+% 等选项分别设置：
+% \begin{latex}
+%   \thusetup{
+%     figure-number-separator = {-},
+%     table-number-separator = {-},
+%     equation-number-separator = {-},
+%   }
+% \end{latex}
+% \DescribeOption{number-separator}
+% 也可以使用 \option{number-separator} 同时设置图、表、公式三项的编号连接符，
+% 比如 |\thusetup{number-separator = -}|。
+%
+% 本科生要求“附录中图、表、公式的编号，应与正文中的编号区分开”，
+% 应理解为将章号改变为附录对应的大写字母编号，连接符不宜改变。
 %
 % \subsubsection{数学符号}
 % \label{sec:math}
@@ -2760,7 +2780,6 @@
 % 允许太长的公式断行、分页等。
 %    \begin{macrocode}
 \allowdisplaybreaks[4]
-\renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
 %    \end{macrocode}
 %
 % 公式距前后文的距离由 4 个参数控制，参见 \cs{normalsize} 的定义。
@@ -2791,6 +2810,55 @@
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
+%    \end{macrocode}
+%
+% 允许用户设置图表编号的连接符。
+%    \begin{macrocode}
+\thu@define@key{
+  figure-number-separator = {
+    name    = figure@number@separator,
+    default = {.},
+  },
+  table-number-separator = {
+    name    = table@number@separator,
+    default = {.},
+  },
+  equation-number-separator = {
+    name    = equation@number@separator,
+    default = {.},
+  },
+  number-separator = {
+    name    = number@separator,
+    default = {.},
+  },
+}
+\renewcommand\thefigure{%
+  \ifnum\c@chapter>\z@
+    \thechapter
+    \thu@figure@number@separator
+  \fi
+  \@arabic\c@figure
+}
+\renewcommand\thetable{%
+  \ifnum\c@chapter>\z@
+    \thechapter
+    \thu@table@number@separator
+  \fi
+  \@arabic\c@table
+}
+\renewcommand\theequation{%
+  \ifnum\c@chapter>\z@
+    \thechapter
+    \thu@equation@number@separator
+  \fi
+  \@arabic\c@equation
+}
+\newcommand\thu@set@number@separator{%
+  \let\thu@figure@number@separator\thu@number@separator
+  \let\thu@table@number@separator\thu@number@separator
+  \let\thu@equation@number@separator\thu@number@separator
+}
+\thu@option@hook{number-separator}{\thu@set@number@separator}
 %    \end{macrocode}
 %
 % 研究生要求表单元格中的文字采用 11pt 宋体字，单倍行距。段前空 3 磅，段后空 3 磅。
@@ -2825,21 +2893,11 @@
 %
 % 定制浮动图形和表格标题样式，以及改变附录中浮动体的编号规则：
 % \begin{itemize}
-%   \item 图表标题字体为 11pt， 这里写作大五号
+%   \item 图表标题字体为 11pt
 %   \item 去掉图表号后面的冒号，图序与图名文字之间空一个汉字符宽度
-%   \item 本科生附录中的各种浮动体需要编号为类似 A-1 的形式
 %   \item 图：caption 在下，段前空 6 磅，段后空 12 磅
 %   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
 % \end{itemize}
-%    \begin{macrocode}
-\ifthu@degree@bachelor
-  \AtBeginDocument{% delay the check until all packages are loaded
-    \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
-    \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
-  }
-\fi
-%    \end{macrocode}
-%
 %    \begin{macrocode}
 \DeclareCaptionFont{thu}{%
   \ifthu@degree@bachelor
@@ -5425,7 +5483,6 @@
 \PassOptionsToPackage{chapter}{algorithm}
 \AtEndOfPackageFile*{algorithm}{
   \floatname{algorithm}{\thu@algorithm@name}
-  \g@addto@macro\appendix{\renewcommand*{\thealgorithm}{\thechapter-\arabic{algorithm}}}
   \renewcommand\listofalgorithms{%
     \thu@listof{algorithm}%
   }
@@ -5468,7 +5525,6 @@
 %
 %    \begin{macrocode}
 \AtEndOfPackageFile*{minted}{
-  \g@addto@macro\appendix{\renewcommand*{\thelisting}{\thechapter-\arabic{listing}}}%
   \newcommand\thu@set@listing@language{%
     \ifthu@language@chinese
       \floatname{listing}{代码}%
