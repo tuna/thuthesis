@@ -168,7 +168,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 问
 ....\glue(\rightskip) 0.0
-...\penalty 10000
+...\penalty 150
 ...\glue(\baselineskip) 8.4516
 ...\hbox(9.3951+2.32468)x426.79135, glue set 0.31165
 ....\TU/FandolSong(0)/m/n/12.045 题
@@ -794,6 +794,7 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\write1{\protect \FN@pp@footnotehinttrue }
+...\penalty 10000
 ...\glue -2.21626
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0

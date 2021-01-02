@@ -2575,7 +2575,14 @@
     \let\chaptermark\@gobble
   \else
     \renewcommand\headrulewidth{0.75bp}%
-    \fancyhead[C]{\wuhao\leftmark}%
+    \fancyhead[C]{%
+      \wuhao
+      \ifthu@main@language@chinese
+        \leftmark
+      \else
+        \MakeUppercase{\leftmark}%
+      \fi
+      }%
     \fancyfoot[C]{\wuhao\thepage}%
     \let\@mkboth\markboth
     \def\chaptermark##1{%
@@ -2603,14 +2610,14 @@
   space=auto,
 }
 \newcommand\thu@set@indent{%
-  \ifthu@main@language@english
+  \ifthu@main@language@chinese
+    \ctexset{autoindent=2}%
+  \else
     \ifthu@degree@bachelor
       \ctexset{autoindent=0.8cm}%
     \else
-      \ctexset{autoindent=2}%
+      \ctexset{autoindent=0.74cm}%
     \fi
-  \else
-    \ctexset{autoindent=2}%
   \fi
 }
 \thu@set@indent
@@ -2954,22 +2961,18 @@
     nameformat   = {},
     numberformat = {},
     titleformat  = {},
-    aftername    = \quad,
     fixskip      = true,
     afterindent  = true,
     lofskip      = 0pt,
     lotskip      = 0pt,
   },
   section = {
-    aftername    = \quad,
     afterindent  = true,
   },
   subsection = {
-    aftername    = \quad,
     afterindent  = true,
   },
   subsubsection = {
-    aftername    = \quad,
     afterindent  = true,
   },
   paragraph/afterindent = true,
@@ -3000,21 +3003,25 @@
         format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
         beforeskip = 30bp,
         afterskip  = 20bp,
+        aftername  = \quad,
       },
       section = {
         format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
         beforeskip = 25bp,
         afterskip  = 12bp,
+        aftername  = \quad,
       },
       subsection = {
         format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
         beforeskip = 12bp,
         afterskip  = 6bp,
+        aftername  = \quad,
       },
       subsubsection = {
         format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
         beforeskip = 12bp,
         afterskip  = 6bp,
+        aftername  = \quad,
       },
     }%
     \ifthu@main@language@chinese
@@ -3052,24 +3059,63 @@
 % 由于 Word 的行距算法不同，这里进行了一些调整使得视觉上更接近。
 %    \begin{macrocode}
   \else
+    \ifthu@main@language@chinese
+      \ctexset{%
+        chapter = {
+          format      = \centering\sffamily\sanhao,
+          nameformat  = {},
+          titleformat = {},
+          aftername   = \quad,
+        },
+        section = {
+          format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+          aftername   = \quad,
+        },
+        subsection = {
+          format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
+          aftername   = \quad,
+        },
+        subsubsection = {
+          format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
+          aftername   = \quad,
+        },
+      }%
+    \else
+      \ctexset{%
+        chapter = {
+          format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
+          nameformat  = {\MakeUppercase},
+          titleformat = {\MakeUppercase},
+          aftername   = \space,
+        },
+        section = {
+          format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
+          aftername   = \space,
+        },
+        subsection = {
+          format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
+          aftername   = \space,
+        },
+        subsubsection = {
+          format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+          aftername   = \space,
+        },
+      }%
+    \fi
     \ctexset{%
       chapter = {
-        format     = \centering\sffamily\sanhao,
         beforeskip = 27bp,
         afterskip  = 27bp,
       },
       section = {
-        format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
         beforeskip = 24bp,
         afterskip  = 6bp,
       },
       subsection = {
-        format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
         beforeskip = 12bp,
         afterskip  = 6bp,
       },
       subsubsection = {
-        format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
         beforeskip = 12bp,
         afterskip  = 6bp,
       },
@@ -3254,18 +3300,33 @@
 % 但是页码仍然用 \cs{rmfamily}。
 %    \begin{macrocode}
   \else
-    \titlecontents{chapter}
-      [\z@]{\addvspace{6bp}\sffamily}
-      {\contentspush{\thecontentslabel\quad}}{}
-      {\rmfamily\thu@leaders\thecontentspage}%
-    \titlecontents{section}
-      [1em]{}
-      {\contentspush{\thecontentslabel\quad}}{}
-      {\thu@leaders\thecontentspage}%
-    \titlecontents{subsection}
-      [2em]{}
-      {\contentspush{\thecontentslabel\quad}}{}
-      {\thu@leaders\thecontentspage}%
+    \ifthu@main@language@chinese
+      \titlecontents{chapter}
+        [\z@]{\addvspace{6bp}\sffamily}
+        {\contentspush{\thecontentslabel\quad}}{}
+        {\rmfamily\thu@leaders\thecontentspage}%
+      \titlecontents{section}
+        [1em]{}
+        {\contentspush{\thecontentslabel\quad}}{}
+        {\thu@leaders\thecontentspage}%
+      \titlecontents{subsection}
+        [2em]{}
+        {\contentspush{\thecontentslabel\quad}}{}
+        {\thu@leaders\thecontentspage}%
+    \else
+      \titlecontents{chapter}
+        [\z@]{\addvspace{6bp}\heiti}
+        {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
+        {\rmfamily\thu@leaders\thecontentspage}%
+      \titlecontents{section}
+        [1em]{}
+        {\contentspush{\thecontentslabel\space}}{}
+        {\thu@leaders\thecontentspage}%
+      \titlecontents{subsection}
+        [2em]{}
+        {\contentspush{\thecontentslabel\space}}{}
+        {\thu@leaders\thecontentspage}%
+    \fi
   \fi
 }
 \thu@set@toc@format
@@ -4121,7 +4182,12 @@
   }%
   \kvsetkeys{thu@committee}{#1}%
   \ifx\thu@committee@file\@empty
-    \thu@chapter*[]{\thu@committee@name}%
+    \begingroup
+      \ifthu@main@language@english
+        \ctexset{chapter/format=\centering\sffamily\fontsize{16bp}{20bp}\selectfont}
+      \fi
+      \thu@chapter*[]{\thu@committee@name}%
+    \endgroup
   \else
     \thu@pdfbookmark{0}{\thu@committee@name}%
     \includepdf{\thu@committee@file}%
@@ -4134,7 +4200,9 @@
       afterindent = false,
     },
   }%
+  \thusetup{language=chinese}
 }{%
+  \thu@reset@main@language
 }
 %    \end{macrocode}
 % \end{environment}
@@ -4144,16 +4212,18 @@
 % 授权说明
 %    \begin{macrocode}
 \newcommand\copyrightpage[1][]{%
+  \cleardoublepage
   \ifthu@degree@postdoc\relax\else
     \def\thu@@tmp{#1}
     \ifx\thu@@tmp\@empty
+      \thusetup{language=chinese}%
       \ifthu@degree@bachelor
         \thu@copyright@page@bachelor
       \else
         \thu@copyright@page@graduate
       \fi
+      \thu@reset@main@language
     \else
-      \cleardoublepage
       \thispagestyle{empty}%
       \thu@pdfbookmark{0}{关于学位论文使用授权的说明}%
       \thu@phantomsection
@@ -4176,7 +4246,6 @@
 \newcommand{\thu@authorization@frontdate}{%
   日\ifthu@degree@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
 \newcommand\thu@copyright@page@graduate{%
-  \cleardoublepage
   \newgeometry{
     vmargin = 3.8cm,
     hmargin = 3.2cm,
@@ -4225,7 +4294,6 @@
   \restoregeometry
 }
 \newcommand\thu@copyright@page@bachelor{%
-  \cleardoublepage
   \begingroup
     \ctexset{
       chapter = {
@@ -4294,7 +4362,14 @@
   \fi
   \thusetup{language = chinese}%
   \ifthu@degree@graduate
-    \thu@chapter*{\thu@abstract@name}%
+    \begingroup
+      \ifthu@main@language@english
+        \ctexset{%
+          chapter/format = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
+        }%
+      \fi
+      \thu@chapter*{\thu@abstract@name}%
+    \endgroup
   \else
     \thu@chapter*[]{\thu@abstract@name}%
   \fi
@@ -4468,7 +4543,17 @@
   }%
   \kvsetkeys{thu@statement}{#1}%
   \ifx\thu@statement@file\@empty
-    \thu@chapter*{\thu@statement@name}%
+    \thusetup{language=chinese}%
+    \begingroup
+      \ifthu@degree@graduate
+        \ifthu@main@language@english
+          \ctexset{%
+            chapter/format = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
+          }%
+        \fi
+      \fi
+      \thu@chapter*{\thu@statement@name}%
+    \endgroup
     \ifthu@degree@bachelor
       \thispagestyle{\thu@statement@page@style}%
     \fi
@@ -4480,6 +4565,7 @@
     \fi
     {\hfill\thu@signature\thu@underline[2.5cm]\relax
       \thu@backdate\thu@underline[2.5cm]\relax}%
+    \thu@reset@main@language
   \else
     \includepdf[pagecommand={%
       \markboth{\thu@statement@name}{}%
@@ -5256,6 +5342,36 @@
   \thu@error{The "\protect\publicationskip" is obsolete. Do not use it}%
 }
 %    \end{macrocode}
+%
+% \subsection{指导教师/小组学术评语}
+% \begin{environment}{comments}
+%    \begin{macrocode}
+\newenvironment{comments}[1][]{%
+  \@mainmatterfalse
+  \kv@define@key{thu@comments}{name}{\let\thu@comments@name\kv@value}%
+  \kv@set@family@handler{thu@comments}{%
+    \ifx\kv@value\relax
+      \let\thu@comments@name\kv@key
+    \else
+      \kv@handled@false
+    \fi
+  }%
+  \kvsetkeys{thu@comments}{#1}%
+  \chapter{\thu@comments@name}%
+}{%
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \subsection{答辩委员会决议书}
+% \begin{environment}{resolution}
+%    \begin{macrocode}
+\newenvironment{resolution}{%
+  \@mainmatterfalse
+  \chapter{\thu@resolution@name}%
+}{}
+%    \end{macrocode}
+% \end{environment}
 %
 % \subsection{综合论文训练记录表}
 %

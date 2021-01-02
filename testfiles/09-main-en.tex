@@ -1,0 +1,227 @@
+\input{regression-test.tex}
+\documentclass[degree=doctor,language=english]{thuthesis}
+
+\begin{document}
+\START
+\showoutput
+
+\begin{committee}
+\end{committee}
+
+\frontmatter
+
+\begin{abstract}
+  中文摘要。
+  \thusetup{keywords = {关键词 1, 关键词 2, 关键词 3, 关键词 4, 关键词 5}}
+\end{abstract}
+
+\begin{abstract*}
+  English abstract.
+  \thusetup{keywords* = {keyword 1, keyword 2, keyword 3, keyword 4, keyword 5}}
+\end{abstract*}
+
+\tableofcontents
+
+\listoffiguresandtables
+
+\begin{denotation}
+  \item[DFT] Density Functional Theory
+  \item[HPLC] High Performance Liquid Chromatography
+  \item[HPCE] High Performance Capillary Electrophoresis
+  \item[IRC] Intrinsic Reaction Coordinates
+  \item[LC-MS] Liquid Chromatography-Mass Spectrum
+  \item[PES] Potential Energy Surface
+  \item[SCF] Self-Consistent Field
+  \item[SCRF] Self-Consistent Reaction Field
+  \item[TIC] Total Ion Content
+  \item[TS] Transition State
+  \item[TST] Transition State Theory
+  \item[ZPE] Zero Vibration Energy
+  \item[$E_a$] Activation Energy
+  \item[$\kappa$] Transmission Coefficient
+  \item[$\nu_i$] Imaginary Frequency
+  \item[$\increment g^\neq$] Activation Free Energy
+\end{denotation}
+
+\mainmatter
+
+\chapter{Title}
+
+\section{Title}
+
+Main text … Figure~\ref{fig:1.1} illustrates …
+
+\begin{figure}
+  \centering
+  \includegraphics{example-image.pdf}
+  \caption{Caption}
+  \label{fig:1.1}
+\end{figure}
+
+\subsection{Title}
+
+Main text
+
+Main text
+
+\subsection{Title}
+
+Main text … Equation \eqref{eq:1.1} is …
+\begin{equation}
+  f(x) = a_0 + \sum_{n=1}^\infty \left( a_n \cos⁡ \frac{n \pi x}{L}
+    + b_n \sin⁡ \frac{n \pi x}{L} \right)
+  \label{eq:1.1}
+\end{equation}
+
+\subsection{Title}
+
+Main text
+
+Main text
+
+\subsection{Title}
+
+Main text … Table~\ref{tab:1.1} shows …
+
+\begin{table}
+  \centering
+  \caption{Caption}
+  \label{tab:1.1}
+  \begin{tabular}{cccc}
+    \toprule
+    Header 1 & Header 2 & Header 3 & Header 4 \\
+    \midrule
+    Row 1 &  &  & \\
+    Row 2 &  &  & \\
+    Row 3 &  &  & \\
+    Row 4 &  &  & \\
+    Row 5 &  &  & \\
+    Row 6 &  &  & \\
+    Row 7 &  &  & \\
+    Row 8 &  &  & \\
+    Row 9 &  &  & \\
+    Row 10 &  &  & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+\backmatter
+\nocite{*}
+\bibliographystyle{thuthesis-numeric}
+% \bibliography{ref/ref}
+
+\begin{thebibliography}{9}
+  \bibitem{bib1} Lin S D. Water and wastewater calculations manual[M]. New York: McGraw-Hill, 2001.
+
+  \bibitem{bib2} Nath R, Jain R. Insulin chart prediction for diabetic patients using hidden Markov model (HMM) and simulated annealing method[C/OL] // Babu B V, Nagar A K, Deep K, et al. eds. Proceedings of the Second International Conference on Soft Computing for Problem Solving (SocProS 2012), December 28-30, 2012. New Delhi: Springer, 2014: 3-11[2020-11-20]. \url{https://www.springer.com/gp/book/9788132216018}.
+
+  \bibitem{bib3} Gao H, Gallagher K P. World needs stronger financial safety net[N/OL]. China Daily, 2020-11-19[2020-11-20]. \url{http://epaper.chinadaily.com.cn/a/202011/19/WS5fb5a952a31099a234351e21.html}.
+
+  \bibitem{bib4} Jha M, Gassman P W, Secchi S, et al. Effect of watershed subdivision on SWAT flow, sediment, and nutrient predictions[J]. Journal of the American Water Resources Association, 2004, 40(3):811-825.
+
+  \bibitem{bib5} Koechling M T. Assessment and modeling of chlorine reactions with natural organic matter: Impact of source water quality and reaction conditions[D]. Cincinnati: University of Cincinnati, 1998.
+
+  \bibitem{bib6} U.S. Environmental Protection Agency. Guidelines for ecological risk assessment[R/OL]. Washington, DC: U.S. Environmental Protection Agency, 1998[2020-11-20]. \url{https://www.epa.gov/sites/production/files/2014-11/documents/eco_risk_assessment1998.pdf}.
+
+  \bibitem{bib7} U.S. Environmental Protection Agency. 2018 Edition of the drinking water standards and health advisories tables[S/OL]. Washington, DC: U.S. Environmental Protection Agency, 2018[2020-11-20]. \url{https://www.epa.gov/sites/production/files/2018-03/documents/dwtable2018.pdf}.
+
+  \bibitem{bib8} Rowland G, Clinton A. Waste water treatment plant: US, 4526685[P/OL]. 1985-07-02[2020-11-20]. \url{http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&r=1&f=G&l=50&s1=4526685.PN.&OS=PN/4526685&RS=PN/4526685}.
+
+  \bibitem{bib9} U.S. Environmental Protection Agency. ECOTOX Knowledgebase[DB/OL]. Washington, DC: U.S. Environmental Protection Agency, 2020[2020-11-20]. \url{https://cfpub.epa.gov/ecotox/index.cfm}.
+
+  \bibitem{bib10} U.S. Environmental Protection Agency. Environment Fluid Dynamics Code: EPA version 1.01 [CP/OL]. Washington, DC: U.S. Environmental Protection Agency, 2007[2020-11-20]. \url{https://www.epa.gov/ceam/environment-fluid-dynamics-code-efdc-download-page}.
+
+  \bibitem{bib11} Environment Agency, Department for Environment, Food \& Rural Affairs. Discharges to surface water and groundwater: environmental permits [EB/OL]. (2016-02-01)[2020-11-20]. \url{https://www.gov.uk/guidance/discharges-to-surface-water-and-groundwater-environmental-permits}.
+
+\end{thebibliography}
+
+
+\appendix
+
+\chapter{Title}
+
+\section{Title}
+
+Main text … Figure~\ref{fig:A.1} illustrates …
+
+\begin{figure}
+  \centering
+  \includegraphics{example-image.pdf}
+  \caption{Caption}
+  \label{fig:A.1}
+\end{figure}
+
+\subsection{Title}
+
+Main text
+
+Main text
+
+\subsection{Title}
+
+Main text … Equation~\eqref{eq:A.1} is …
+
+\begin{equation}
+  f(x) = a_0 + \sum_{n=1}^\infty \left( a_n \cos⁡ \frac{n \pi x}{L}
+    + b_n \sin⁡ \frac{n \pi x}{L} \right)
+  \label{eq:A.1}
+\end{equation}
+
+\section{Title}
+
+Main text
+
+Main text
+
+\subsection{Title}
+
+Main text …
+
+\subsection{Title}
+
+Main text … Table~\ref{tab:A.1} shows …
+
+\begin{table}
+  \centering
+  \caption{Caption}
+  \label{tab:A.1}
+  \begin{tabular}{cccc}
+    \toprule
+    Header 1 & Header 2 & Header 3 & Header 4 \\
+    \midrule
+    Row 1 &  &  & \\
+    Row 2 &  &  & \\
+    Row 3 &  &  & \\
+    Row 4 &  &  & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+\section{Title}
+
+Main text
+
+
+\begin{acknowledgements}
+  Main text\dots
+\end{acknowledgements}
+
+\statement
+
+\begin{resume}
+  Main text\dots
+\end{resume}
+
+\begin{comments}
+  Main text\dots
+\end{comments}
+
+\begin{resolution}
+  Main text\dots
+\end{resolution}
+
+\clearpage
+\OMIT
+\end{document}
