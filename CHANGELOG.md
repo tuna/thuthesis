@@ -7,6 +7,7 @@
 ## [Unreleased]
 ### Changed
 - 研究生的声明页默认加上页眉和页码，不受 `page-style` 的控制（#574）。
+- 取消图表标题的悬挂缩进（#589）。
 
 ### Fixed
 修正 `longtable` 宏包的配置（#584）。
