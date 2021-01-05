@@ -2588,7 +2588,16 @@
     \fancyfoot[C]{\wuhao\thepage}%
     \let\@mkboth\markboth
     \def\chaptermark##1{%
-      \markboth{\CTEXifname{\CTEXthechapter\quad}{}##1}{}%
+      \markboth{%
+        \CTEXifname{%
+          \CTEXthechapter
+          \ifthu@main@language@chinese
+            \quad
+          \else
+            \space
+          \fi
+        }{}##1%
+      }{}%
     }%
   \fi
   \let\sectionmark\@gobble

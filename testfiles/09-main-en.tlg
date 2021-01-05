@@ -2646,7 +2646,7 @@ Completed box being shipped out [1]
 .........\glue 0.0 plus 1.0fil minus 1.0fil
 ........\glue 0.0 plus 1.0fill
 ........\vbox(9.59079+4.1104)x426.79135
-.........\hbox(9.59079+4.1104)x426.79135, glue set 165.53114fil
+.........\hbox(9.59079+4.1104)x426.79135, glue set 169.4834fil
 ..........\glue(\leftskip) 0.0 plus 1.0fil
 ..........\hbox(0.0+0.0)x0.0
 ..........\TU/texgyretermes(0)/m/n/10.53937 CHAPTER
@@ -2654,9 +2654,9 @@ Completed box being shipped out [1]
 ..........\kern 0.00021
 ..........\glue 2.63484 plus 1.31609 minus 0.87915
 ..........\TU/texgyretermes(0)/m/n/10.53937 1
-..........\kern -0.0002
-..........\kern 0.0002
-..........\glue 10.53937
+..........\kern -0.00021
+..........\kern 0.00021
+..........\glue 2.63484 plus 1.31741 minus 0.87828
 ..........\TU/texgyretermes(0)/m/n/10.53937 TITLE
 ..........\kern -0.0002
 ..........\kern 0.0002
@@ -2685,7 +2685,7 @@ Completed box being shipped out [1]
 ...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
-...\mark{{Chapter 1\hskip 1em\relax Title}{}}
+...\mark{{Chapter 1 Title}{}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
@@ -3191,7 +3191,7 @@ Completed box being shipped out [2]
 .........\glue 0.0 plus 1.0fil minus 1.0fil
 ........\glue 0.0 plus 1.0fill
 ........\vbox(9.59079+4.1104)x426.79135
-.........\hbox(9.59079+4.1104)x426.79135, glue set 165.53114fil
+.........\hbox(9.59079+4.1104)x426.79135, glue set 169.4834fil
 ..........\glue(\leftskip) 0.0 plus 1.0fil
 ..........\hbox(0.0+0.0)x0.0
 ..........\TU/texgyretermes(0)/m/n/10.53937 CHAPTER
@@ -3199,9 +3199,9 @@ Completed box being shipped out [2]
 ..........\kern 0.00021
 ..........\glue 2.63484 plus 1.31609 minus 0.87915
 ..........\TU/texgyretermes(0)/m/n/10.53937 1
-..........\kern -0.0002
-..........\kern 0.0002
-..........\glue 10.53937
+..........\kern -0.00021
+..........\kern 0.00021
+..........\glue 2.63484 plus 1.31741 minus 0.87828
 ..........\TU/texgyretermes(0)/m/n/10.53937 TITLE
 ..........\kern -0.0002
 ..........\kern 0.0002
@@ -6980,7 +6980,7 @@ Completed box being shipped out [4]
 .........\glue 0.0 plus 1.0fil minus 1.0fil
 ........\glue 0.0 plus 1.0fill
 ........\vbox(9.59079+4.1104)x426.79135
-.........\hbox(9.59079+4.1104)x426.79135, glue set 162.31664fil
+.........\hbox(9.59079+4.1104)x426.79135, glue set 166.2689fil
 ..........\glue(\leftskip) 0.0 plus 1.0fil
 ..........\hbox(0.0+0.0)x0.0
 ..........\TU/texgyretermes(0)/m/n/10.53937 APPENDIX
@@ -6988,9 +6988,9 @@ Completed box being shipped out [4]
 ..........\kern 0.00021
 ..........\glue 2.63484 plus 1.31609 minus 0.87915
 ..........\TU/texgyretermes(0)/m/n/10.53937 A
-..........\kern -0.0002
-..........\kern 0.0002
-..........\glue 10.53937
+..........\kern -0.00021
+..........\kern 0.00021
+..........\glue 2.63484 plus 1.31609 minus 0.87915
 ..........\TU/texgyretermes(0)/m/n/10.53937 TITLE
 ..........\kern -0.0002
 ..........\kern 0.0002
@@ -7017,7 +7017,7 @@ Completed box being shipped out [4]
 ..\vbox(674.33032+0.0)x426.79135, glue set >20000.0fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
-...\mark{{Appendix A\hskip 1em\relax Title}{}}
+...\mark{{Appendix A Title}{}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
@@ -7529,7 +7529,7 @@ Completed box being shipped out [5]
 .........\glue 0.0 plus 1.0fil minus 1.0fil
 ........\glue 0.0 plus 1.0fill
 ........\vbox(9.59079+4.1104)x426.79135
-.........\hbox(9.59079+4.1104)x426.79135, glue set 162.31664fil
+.........\hbox(9.59079+4.1104)x426.79135, glue set 166.2689fil
 ..........\glue(\leftskip) 0.0 plus 1.0fil
 ..........\hbox(0.0+0.0)x0.0
 ..........\TU/texgyretermes(0)/m/n/10.53937 APPENDIX
@@ -7537,9 +7537,9 @@ Completed box being shipped out [5]
 ..........\kern 0.00021
 ..........\glue 2.63484 plus 1.31609 minus 0.87915
 ..........\TU/texgyretermes(0)/m/n/10.53937 A
-..........\kern -0.0002
-..........\kern 0.0002
-..........\glue 10.53937
+..........\kern -0.00021
+..........\kern 0.00021
+..........\glue 2.63484 plus 1.31609 minus 0.87915
 ..........\TU/texgyretermes(0)/m/n/10.53937 TITLE
 ..........\kern -0.0002
 ..........\kern 0.0002
