@@ -1692,6 +1692,201 @@
 %    \end{macrocode}
 %
 %
+% \subsubsection{语言设置}
+%
+% 定义 \cs{thu@main@language}，当在导言区修改 \option{language} 时，
+% 保存为论文的主要语言；
+% \cs{thu@reset@main@language} 则用于正文中恢复为主要语言。
+%    \begin{macrocode}
+\thusetup{main-language=\thu@language}%
+\let\thu@main@language\thu@language
+\thu@option@hook{language}{%
+  \ifx\@begindocumenthook\@undefined\else
+    \thusetup{main-language=\thu@language}%
+    \let\thu@main@language\thu@language
+  \fi
+}
+\newcommand\thu@reset@main@language{%
+  \thusetup{language = \thu@main@language}%
+  \let\thu@language\thu@main@language
+}
+%    \end{macrocode}
+%
+% 根据语言设置各章节的名称，只有在导言区设置 \option{degree} 和
+% \option{language} 时会修改，而在正文局部切换语言时则不变。
+%    \begin{macrocode}
+\newcommand\thu@set@chapter@names{%
+  \ifthu@main@language@chinese
+    \ctexset{
+      chapter/name   = {第,章},
+    }%
+    \def\bibname{参考文献}%
+    \def\appendixname{附录}%
+    \def\indexname{索引}%
+    \def\thu@acknowledgements@name{致\quad 谢}%
+    \ifthu@degree@bachelor
+      \def\contentsname{目\quad 录}%
+      \def\listfigurename{插图索引}%
+      \def\listtablename{表格索引}%
+      \def\thu@list@figure@table@name{插图和附表索引}%
+      \def\thu@list@algorithm@name{算法索引}%
+      \def\listequationname{公式索引}%
+      \def\thu@denotation@name{主要符号对照表}%
+      \def\thu@resume@name{在学期间参加课题的研究成果}%
+    \else
+      \def\listfigurename{插图清单}%
+      \def\listtablename{附表清单}%
+      \def\thu@list@figure@table@name{插图和附表清单}%
+      \def\thu@list@algorithm@name{算法清单}%
+      \def\listequationname{公式清单}%
+      \ifthu@degree@graduate
+        \def\contentsname{目\quad 录}%
+        \def\thu@denotation@name{符号和缩略语说明}%
+        \def\thu@resume@name{个人简历、在学期间完成的相关学术成果}%
+        \def\thu@comments@name{指导教师学术评语}%
+        \def\thu@resolution@name{答辩委员会决议书}%
+      \else  % degree = postdoc
+        \def\contentsname{目\qquad 次}%
+        \def\thu@denotation@name{符号表}%
+        \def\thu@resume@name{个人简历、发表的学术论文与科研成果}%
+      \fi
+    \fi
+  \else
+    \ifthu@main@language@english
+      \ctexset{
+        chapter/name   = \chaptername\space,
+      }%
+      \def\indexname{Index}%
+      \ifthu@degree@bachelor
+        \def\contentsname{CONTENTS}%
+        \def\listfigurename{FIGURES}%
+        \def\listtablename{TABLES}%
+        \def\thu@list@figure@table@name{FIGURES AND TABLES}%
+        \def\thu@list@algorithm@name{ALGORITHMS}%
+        \def\listequationname{EQUATIONS}%
+        \def\thu@denotation@name{ABBREVIATIONS}%
+        \def\bibname{REFERENCES}%
+        \def\appendixname{APPENDIX}%
+        \def\thu@acknowledgements@name{ACKNOWLEDGEMENTS}%
+        \def\thu@resume@name{PUBLICATIONS}%
+      \else
+        \def\contentsname{Table of Contents}%
+        \def\listfigurename{List of Figures}%
+        \def\listtablename{List of Tables}%
+        \def\thu@list@figure@table@name{List of Figures and Tables}%
+        \def\thu@list@algorithm@name{List of Algorithms}%
+        \def\listequationname{List of Equations}%
+        \def\thu@denotation@name{List of Symbols and Acronyms}%
+        \def\bibname{References}%
+        \def\appendixname{Appendix}%
+        \def\thu@acknowledgements@name{Acknowledgements}%
+        \def\thu@resume@name{Resume}%
+        \def\thu@comments@name{Comments from Thesis Supervisor}%
+        \def\thu@resolution@name{Resolution of Thesis Defense Committee}%
+      \fi
+    \fi
+  \fi
+}
+\thu@set@chapter@names
+\thu@option@hook{degree}{\thu@set@chapter@names}
+\thu@option@hook{main-language}{\thu@set@chapter@names}
+%    \end{macrocode}
+%
+% 这部分名称在正文中局部地修改语言时会发生变化，比如英文摘要、
+% 本科生附录的阅读报告。
+%    \begin{macrocode}
+\newcommand\thu@set@names{%
+  \ifthu@language@chinese
+    \ctexset{
+      figurename = 图,
+      tablename  = 表,
+    }%
+    \def\thu@algorithm@name{算法}%
+    \def\thu@equation@name{公式}%
+    \def\thu@assumption@name{假设}%
+    \def\thu@definition@name{定义}%
+    \def\thu@proposition@name{命题}%
+    \def\thu@lemma@name{引理}%
+    \def\thu@theorem@name{定理}%
+    \def\thu@axiom@name{公理}%
+    \def\thu@corollary@name{推论}%
+    \def\thu@exercise@name{练习}%
+    \def\thu@example@name{例}%
+    \def\thu@remark@name{注释}%
+    \def\thu@problem@name{问题}%
+    \def\thu@conjecture@name{猜想}%
+    \def\thu@proof@name{证明}%
+    \def\thu@theorem@separator{：}%
+  \else
+    \ifthu@language@english
+      \ctexset{
+        figurename = {Figure},
+        tablename  = {Table},
+      }%
+      \def\thu@algorithm@name{Algorithm}%
+      \def\thu@equation@name{Equation}%
+      \def\thu@assumption@name{Assumption}%
+      \def\thu@definition@name{Definition}%
+      \def\thu@proposition@name{Proposition}%
+      \def\thu@lemma@name{Lemma}%
+      \def\thu@theorem@name{Theorem}%
+      \def\thu@axiom@name{Axiom}%
+      \def\thu@corollary@name{Corollary}%
+      \def\thu@exercise@name{Exercise}%
+      \def\thu@example@name{Example}%
+      \def\thu@remark@name{Remark}%
+      \def\thu@problem@name{Problem}%
+      \def\thu@conjecture@name{Conjecture}%
+      \def\thu@proof@name{Proof}%
+      \def\thu@theorem@separator{: }%
+    \fi
+  \fi
+}
+\thu@set@names
+\thu@option@hook{language}{\thu@set@names}
+%    \end{macrocode}
+%
+% 带圈数字和星号使用中文字体。
+%    \begin{macrocode}
+\xeCJKDeclareCharClass{CJK}{"2460 -> "2473}
+\xeCJKDeclareCharClass{CJK}{"2605}
+%    \end{macrocode}
+%
+% \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
+% 由于 Unicode 的一些标点符号是中西文混用的：
+% \unicodechar{00B7}、
+% \unicodechar{2013}、
+% \unicodechar{2014}、
+% \unicodechar{2018}、
+% \unicodechar{2019}、
+% \unicodechar{201C}、
+% \unicodechar{201D}、
+% \unicodechar{2025}、
+% \unicodechar{2026}、
+% \unicodechar{2E3A}，
+% 所以要根据语言设置正确的字体。
+% \footnote{\url{https://github.com/CTeX-org/ctex-kit/issues/389}}
+% 此外切换语言时，有一部分名称是需要被重新定义的。
+%    \begin{macrocode}
+\newcommand\thu@set@punctuations{%
+  \ifthu@language@chinese
+    \xeCJKDeclareCharClass{FullLeft}{"2018, "201C}%
+    \xeCJKDeclareCharClass{FullRight}{
+      "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
+    }%
+  \else
+    \ifthu@language@english
+      \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
+      \xeCJKDeclareCharClass{HalfRight}{
+        "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
+      }%
+    \fi
+  \fi
+}
+\thu@set@punctuations
+\thu@option@hook{language}{\thu@set@punctuations}
+%    \end{macrocode}
+%
 % \subsection{页面设置}
 % \label{sec:layout}
 %
@@ -2341,201 +2536,6 @@
 \thu@def@fontsize{bahao}{5bp}
 %    \end{macrocode}
 %
-%
-% \subsubsection{语言设置}
-%
-% 定义 \cs{thu@main@language}，当在导言区修改 \option{language} 时，
-% 保存为论文的主要语言；
-% \cs{thu@reset@main@language} 则用于正文中恢复为主要语言。
-%    \begin{macrocode}
-\thusetup{main-language=\thu@language}%
-\let\thu@main@language\thu@language
-\thu@option@hook{language}{%
-  \ifx\@begindocumenthook\@undefined\else
-    \thusetup{main-language=\thu@language}%
-    \let\thu@main@language\thu@language
-  \fi
-}
-\newcommand\thu@reset@main@language{%
-    \thusetup{language = \thu@main@language}%
-    \let\thu@language\thu@main@language
-}
-%    \end{macrocode}
-%
-% 根据语言设置各章节的名称，只有在导言区设置 \option{degree} 和
-% \option{language} 时会修改，而在正文局部切换语言时则不变。
-%    \begin{macrocode}
-\newcommand\thu@set@chapter@names{%
-  \ifthu@main@language@chinese
-    \ctexset{
-      chapter/name   = {第,章},
-    }%
-    \def\bibname{参考文献}%
-    \def\appendixname{附录}%
-    \def\indexname{索引}%
-    \def\thu@acknowledgements@name{致\quad 谢}%
-    \ifthu@degree@bachelor
-      \def\contentsname{目\quad 录}%
-      \def\listfigurename{插图索引}%
-      \def\listtablename{表格索引}%
-      \def\thu@list@figure@table@name{插图和附表索引}%
-      \def\thu@list@algorithm@name{算法索引}%
-      \def\listequationname{公式索引}%
-      \def\thu@denotation@name{主要符号对照表}%
-      \def\thu@resume@name{在学期间参加课题的研究成果}%
-    \else
-      \def\listfigurename{插图清单}%
-      \def\listtablename{附表清单}%
-      \def\thu@list@figure@table@name{插图和附表清单}%
-      \def\thu@list@algorithm@name{算法清单}%
-      \def\listequationname{公式清单}%
-      \ifthu@degree@graduate
-        \def\contentsname{目\quad 录}%
-        \def\thu@denotation@name{符号和缩略语说明}%
-        \def\thu@resume@name{个人简历、在学期间完成的相关学术成果}%
-        \def\thu@comments@name{指导教师学术评语}%
-        \def\thu@resolution@name{答辩委员会决议书}%
-      \else  % degree = postdoc
-        \def\contentsname{目\qquad 次}%
-        \def\thu@denotation@name{符号表}%
-        \def\thu@resume@name{个人简历、发表的学术论文与科研成果}%
-      \fi
-    \fi
-  \else
-    \ifthu@main@language@english
-      \ctexset{
-        chapter/name   = \chaptername\space,
-      }%
-      \def\indexname{Index}%
-      \ifthu@degree@bachelor
-        \def\contentsname{CONTENTS}%
-        \def\listfigurename{FIGURES}%
-        \def\listtablename{TABLES}%
-        \def\thu@list@figure@table@name{FIGURES AND TABLES}%
-        \def\thu@list@algorithm@name{ALGORITHMS}%
-        \def\listequationname{EQUATIONS}%
-        \def\thu@denotation@name{ABBREVIATIONS}%
-        \def\bibname{REFERENCES}%
-        \def\appendixname{APPENDIX}%
-        \def\thu@acknowledgements@name{ACKNOWLEDGEMENTS}%
-        \def\thu@resume@name{PUBLICATIONS}%
-      \else
-        \def\contentsname{Table of Contents}%
-        \def\listfigurename{List of Figures}%
-        \def\listtablename{List of Tables}%
-        \def\thu@list@figure@table@name{List of Figures and Tables}%
-        \def\thu@list@algorithm@name{List of Algorithms}%
-        \def\listequationname{List of Equations}%
-        \def\thu@denotation@name{List of Symbols and Acronyms}%
-        \def\bibname{References}%
-        \def\appendixname{Appendix}%
-        \def\thu@acknowledgements@name{Acknowledgements}%
-        \def\thu@resume@name{Resume}%
-        \def\thu@comments@name{Comments from Thesis Supervisor}%
-        \def\thu@resolution@name{Resolution of Thesis Defense Committee}%
-      \fi
-    \fi
-  \fi
-}
-\thu@set@chapter@names
-\thu@option@hook{degree}{\thu@set@chapter@names}
-\thu@option@hook{main-language}{\thu@set@chapter@names}
-%    \end{macrocode}
-%
-% 这部分名称在正文中局部地修改语言时会发生变化，比如英文摘要、
-% 本科生附录的阅读报告。
-%    \begin{macrocode}
-\newcommand\thu@set@names{%
-  \ifthu@language@chinese
-    \ctexset{
-      figurename = 图,
-      tablename  = 表,
-    }%
-    \def\thu@algorithm@name{算法}%
-    \def\thu@equation@name{公式}%
-    \def\thu@assumption@name{假设}%
-    \def\thu@definition@name{定义}%
-    \def\thu@proposition@name{命题}%
-    \def\thu@lemma@name{引理}%
-    \def\thu@theorem@name{定理}%
-    \def\thu@axiom@name{公理}%
-    \def\thu@corollary@name{推论}%
-    \def\thu@exercise@name{练习}%
-    \def\thu@example@name{例}%
-    \def\thu@remark@name{注释}%
-    \def\thu@problem@name{问题}%
-    \def\thu@conjecture@name{猜想}%
-    \def\thu@proof@name{证明}%
-    \def\thu@theorem@separator{：}%
-  \else
-    \ifthu@language@english
-      \ctexset{
-        figurename = {Figure},
-        tablename  = {Table},
-      }%
-      \def\thu@algorithm@name{Algorithm}%
-      \def\thu@equation@name{Equation}%
-      \def\thu@assumption@name{Assumption}%
-      \def\thu@definition@name{Definition}%
-      \def\thu@proposition@name{Proposition}%
-      \def\thu@lemma@name{Lemma}%
-      \def\thu@theorem@name{Theorem}%
-      \def\thu@axiom@name{Axiom}%
-      \def\thu@corollary@name{Corollary}%
-      \def\thu@exercise@name{Exercise}%
-      \def\thu@example@name{Example}%
-      \def\thu@remark@name{Remark}%
-      \def\thu@problem@name{Problem}%
-      \def\thu@conjecture@name{Conjecture}%
-      \def\thu@proof@name{Proof}%
-      \def\thu@theorem@separator{: }%
-    \fi
-  \fi
-}
-\thu@set@names
-\thu@option@hook{language}{\thu@set@names}
-%    \end{macrocode}
-%
-% 带圈数字和星号使用中文字体。
-%    \begin{macrocode}
-\xeCJKDeclareCharClass{CJK}{"2460 -> "2473}
-\xeCJKDeclareCharClass{CJK}{"2605}
-%    \end{macrocode}
-%
-% \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
-% 由于 Unicode 的一些标点符号是中西文混用的：
-% \unicodechar{00B7}、
-% \unicodechar{2013}、
-% \unicodechar{2014}、
-% \unicodechar{2018}、
-% \unicodechar{2019}、
-% \unicodechar{201C}、
-% \unicodechar{201D}、
-% \unicodechar{2025}、
-% \unicodechar{2026}、
-% \unicodechar{2E3A}，
-% 所以要根据语言设置正确的字体。
-% \footnote{\url{https://github.com/CTeX-org/ctex-kit/issues/389}}
-% 此外切换语言时，有一部分名称是需要被重新定义的。
-%    \begin{macrocode}
-\newcommand\thu@set@punctuations{%
-  \ifthu@language@chinese
-    \xeCJKDeclareCharClass{FullLeft}{"2018, "201C}%
-    \xeCJKDeclareCharClass{FullRight}{
-      "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
-    }%
-  \else
-    \ifthu@language@english
-      \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
-      \xeCJKDeclareCharClass{HalfRight}{
-        "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
-      }%
-    \fi
-  \fi
-}
-\thu@set@punctuations
-\thu@option@hook{language}{\thu@set@punctuations}
-%    \end{macrocode}
 %
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
