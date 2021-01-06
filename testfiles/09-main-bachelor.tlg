@@ -85,8 +85,6 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 24.09 plus -1.0
-...\mark{{关于学位论文使用授权的说明}{关于学位论文使用授\ETC.}
-...\penalty 10000
 ...\glue 4.015
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(9.50351+2.32468)x421.10089, glue set - 0.02623
@@ -547,6 +545,7 @@ Completed box being shipped out [1]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -582,8 +581,6 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{中文摘要}{中文摘要}}
-...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(9.50351+2.32468)x421.10089, glue set - 0.0787
 ....\hbox(0.0+0.0)x24.09
@@ -1282,6 +1279,7 @@ Completed box being shipped out [3]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -1311,8 +1309,6 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{ABSTRACT}{ABSTRACT}}
-...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(8.22673+2.6258)x421.10089, glue set 1.3068
 ....\hbox(0.0+0.0)x24.09
@@ -2052,6 +2048,7 @@ Completed box being shipped out [5]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -2083,8 +2080,6 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{目\hskip 1em\relax 录}{目\hskip 1em\relax 录}}
-...\penalty 10000
 ...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
@@ -2915,6 +2910,7 @@ Completed box being shipped out [1]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -4893,6 +4889,7 @@ Completed box being shipped out [2]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -5087,6 +5084,7 @@ Completed box being shipped out [3]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -6190,6 +6188,7 @@ Completed box being shipped out [4]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -7276,6 +7275,7 @@ Completed box being shipped out [5]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -7316,8 +7316,6 @@ C.}
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{插图索引}{插图索引}}
-...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -7500,6 +7498,7 @@ Completed box being shipped out [6]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -7533,8 +7532,6 @@ C.}
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{表格索引}{表格索引}}
-...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -7721,6 +7718,7 @@ Completed box being shipped out [7]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -7755,9 +7753,6 @@ C.}
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{参考文献}{参考文献}}
-...\penalty 10000
-...\glue 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\hbox(8.2207+1.87599)x392.64815, glue set 0.08702, shifted 28.45274
 ....\hbox(6.97707+1.64412)x0.0
@@ -8683,6 +8678,7 @@ Completed box being shipped out [9]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -8716,8 +8712,6 @@ Completed box being shipped out [9]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{致\hskip 1em\relax 谢}{致\hskip 1em\relax 谢}}
-...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(9.43123+2.32468)x421.10089, glue set - 0.0787
 ....\hbox(0.0+0.0)x24.09
@@ -8965,8 +8959,6 @@ Completed box being shipped out [11]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{声\protect \hspace  {2em}明}{声\protect \hspace  {2em}明}}
-...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(9.45532+2.32468)x421.10089, glue set - 0.02623
 ....\hbox(0.0+0.0)x24.09
@@ -9430,6 +9422,7 @@ Completed box being shipped out [13]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -9744,6 +9737,7 @@ Completed box being shipped out [14]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -9794,8 +9788,6 @@ Completed box being shipped out [14]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{在学期间参加课题的研究成果}{在学期间参加课题的\ETC.}
-...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(9.3951+2.13194)x421.10089, glue set 228.38092fil
 ....\hbox(0.0+0.0)x24.09
