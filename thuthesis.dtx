@@ -2063,16 +2063,14 @@
       \gdef\thu@font@style@xits@bf{Bold}%
       \gdef\thu@font@style@xits@it{Italic}%
       \gdef\thu@font@style@xits@bfit{BoldItalic}%
-      \gdef\thu@font@name@xits@math@rm{XITSMath-Regular}%
-      \gdef\thu@font@name@xits@math@bf{XITSMath-Bold}%
+      \gdef\thu@font@name@xits@math{XITSMath-Regular}%
     }{%
       \gdef\thu@font@family@xits{xits}%
       \gdef\thu@font@style@xits@rm{regular}%
       \gdef\thu@font@style@xits@bf{bold}%
       \gdef\thu@font@style@xits@it{italic}%
       \gdef\thu@font@style@xits@bfit{bolditalic}%
-      \gdef\thu@font@name@xits@math@rm{xits-math}%
-      \gdef\thu@font@name@xits@math@bf{xits-mathbold}%
+      \gdef\thu@font@name@xits@math{xits-math}%
     }%
   \fi
 }
@@ -2111,7 +2109,7 @@
     \thusetup{font=times}
   \fi
 \fi
-\newcommand\thu@load@font@times{%
+\newcommand\thu@set@font@times{%
   \setmainfont{Times New Roman}%
   \setsansfont{Arial}%
   \ifthu@system@mac
@@ -2120,7 +2118,7 @@
     \setmonofont{Courier New}[Scale = MatchLowercase]%
   \fi
 }
-\newcommand\thu@load@font@termes{%
+\newcommand\thu@set@font@termes{%
   \setmainfont{texgyretermes}[
     Extension      = .otf,
     UprightFont    = *-regular,
@@ -2128,9 +2126,9 @@
     ItalicFont     = *-italic,
     BoldItalicFont = *-bolditalic,
   ]%
-  \thu@load@texgyre@sans@mono
+  \thu@set@texgyre@sans@mono
 }
-\newcommand\thu@load@texgyre@sans@mono{%
+\newcommand\thu@set@texgyre@sans@mono{%
   \setsansfont{texgyreheros}[
     Extension      = .otf,
     UprightFont    = *-regular,
@@ -2147,7 +2145,7 @@
     Ligatures      = CommonOff,
   ]%
 }
-\newcommand\thu@load@font@xits{%
+\newcommand\thu@set@font@xits{%
   \thu@set@xits@names
   \setmainfont{\thu@font@family@xits}[
     Extension      = .otf,
@@ -2156,9 +2154,9 @@
     ItalicFont     = *-\thu@font@style@xits@it,
     BoldItalicFont = *-\thu@font@style@xits@bfit,
   ]%
-  \thu@load@texgyre@sans@mono
+  \thu@set@texgyre@sans@mono
 }
-\newcommand\thu@load@font@libertinus{%
+\newcommand\thu@set@font@libertinus{%
   \thu@set@libertinus@names
   \setmainfont{\thu@font@family@libertinus@serif}[
     Extension      = .otf,
@@ -2181,7 +2179,7 @@
     BoldItalicFont = *-boldoblique,
   ]%
 }
-\@namedef{thu@load@font@lm}{%
+\@namedef{thu@set@font@lm}{%
   \setmainfont{lmroman10}[
     Extension      = .otf,
     UprightFont    = *-regular,
@@ -2204,18 +2202,18 @@
     BoldItalicFont = *-boldoblique,
   ]%
 }
-\newcommand\thu@load@font{%
-  \@nameuse{thu@load@font@\thu@font}%
+\newcommand\thu@set@font{%
+  \@nameuse{thu@set@font@\thu@font}%
 }
-\thu@load@font
-\thu@option@hook{font}{\thu@load@font}
+\thu@set@font
+\thu@option@hook{font}{\thu@set@font}
 %    \end{macrocode}
 %
 % 使用 \pkg{unicode-math} 配置数学符号格式。
 %    \begin{macrocode}
-\newcommand\thu@stix@stylistic@set{%
+\newcommand\thu@xits@integral@stylistic@set{%
   \ifthu@math@style@TeX\else
-    8
+    8%
   \fi
 }
 \newcommand\thu@set@math@style{%
@@ -2259,42 +2257,42 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\newcommand\thu@load@math@font@xits{%
+\newcommand\thu@set@math@font@xits{%
   \thu@set@xits@names
-  \setmathfont{\thu@font@name@xits@math@rm}[
+  \setmathfont{\thu@font@name@xits@math}[
     Extension    = .otf,
-    StylisticSet = \thu@stix@stylistic@set,
+    StylisticSet = \thu@xits@integral@stylistic@set,
   ]%
-  \setmathfont{\thu@font@name@xits@math@rm}[
-    Extension    = .otf,
-    StylisticSet = 1,
-    range        = {cal,bfcal},
-  ]%
-}
-\newcommand\thu@load@math@font@stix{%
-  \setmathfont{STIX2Math}[
-    Extension    = .otf,
-    StylisticSet = \thu@stix@stylistic@set,
-  ]%
-  \setmathfont{STIX2Math}[
+  \setmathfont{\thu@font@name@xits@math}[
     Extension    = .otf,
     StylisticSet = 1,
     range        = {cal,bfcal},
   ]%
 }
-\newcommand\thu@load@math@font@libertinus{%
+\newcommand\thu@set@math@font@stix{%
+  \setmathfont{STIX2Math}[
+    Extension    = .otf,
+    StylisticSet = \thu@xits@integral@stylistic@set,
+  ]%
+  \setmathfont{STIX2Math}[
+    Extension    = .otf,
+    StylisticSet = 1,
+    range        = {cal,bfcal},
+  ]%
+}
+\newcommand\thu@set@math@font@libertinus{%
   \thu@set@libertinus@names
   \setmathfont{\thu@font@name@libertinus@math .otf}%
 }
-\newcommand\thu@load@math@font@lm{%
+\newcommand\thu@set@math@font@lm{%
   \setmathfont{latinmodern-math.otf}%
 }
-\newcommand\thu@load@math@font{%
-  \@nameuse{thu@load@math@font@\thu@math@font}
+\newcommand\thu@set@math@font{%
+  \@nameuse{thu@set@math@font@\thu@math@font}%
 }
-\thu@load@math@font
-\thu@option@hook{math-font}{\thu@load@math@font}
-\thu@option@hook{math-style}{\thu@load@math@font}
+\thu@set@math@font
+\thu@option@hook{math-font}{\thu@set@math@font}
+\thu@option@hook{math-style}{\thu@set@math@font}
 %    \end{macrocode}
 %
 % 中文字体
@@ -2314,7 +2312,7 @@
     \fi
   \fi
 \fi
-\newcommand\thu@load@cjk@font@windows{%
+\newcommand\thu@set@cjk@font@windows{%
   \xeCJKsetup{EmboldenFactor=3}%
   \setCJKmainfont{SimSun}[
     AutoFakeBold = true,
@@ -2327,7 +2325,7 @@
   \setCJKfamilyfont{zhkai}{KaiTi}%
   \setCJKfamilyfont{zhfs}{FangSong}%
 }
-\newcommand\thu@load@cjk@font@mac{%
+\newcommand\thu@set@cjk@font@mac{%
   \setCJKmainfont{Songti SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
@@ -2356,7 +2354,7 @@
 %
 % 注意 Noto CJK 的 regular 字重名字不带“Regular”。
 %    \begin{macrocode}
-\newcommand\thu@load@cjk@font@noto{%
+\newcommand\thu@set@cjk@font@noto{%
   \setCJKmainfont{Noto Serif CJK SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
@@ -2383,7 +2381,7 @@
     UprightFont = *-Regular,
   ]%
 }
-\newcommand\thu@load@cjk@font@fandol{%
+\newcommand\thu@set@cjk@font@fandol{%
   \setCJKmainfont{FandolSong}[
     Extension   = .otf,
     UprightFont = *-Regular,
@@ -2424,11 +2422,11 @@
   \providecommand\fangsong{\CJKfamily{zhfs}}
   \providecommand\kaishu{\CJKfamily{zhkai}}
 \fi
-\newcommand\thu@load@cjk@font{%
-  \@nameuse{thu@load@cjk@font@\thu@cjk@font}%
+\newcommand\thu@set@cjk@font{%
+  \@nameuse{thu@set@cjk@font@\thu@cjk@font}%
 }
-\thu@load@cjk@font
-\thu@option@hook{cjk-font}{\thu@load@cjk@font}
+\thu@set@cjk@font
+\thu@option@hook{cjk-font}{\thu@set@cjk@font}
 %    \end{macrocode}
 %
 % \begin{macro}{\normalsize}
@@ -3094,8 +3092,8 @@
       \ctexset{%
         chapter = {
           format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
-          nameformat  = {\MakeUppercase},
-          titleformat = {\MakeUppercase},
+          nameformat  = \MakeUppercase,
+          titleformat = \MakeUppercase,
           aftername   = \space,
         },
         section = {
@@ -3134,6 +3132,7 @@
 }
 \thu@set@section@format
 \thu@option@hook{degree}{\thu@set@section@format}
+\thu@option@hook{main-language}{\thu@set@section@format}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -3341,6 +3340,7 @@
 }
 \thu@set@toc@format
 \thu@option@hook{degree}{\thu@set@toc@format}
+\thu@option@hook{main-language}{\thu@set@toc@format}
 %    \end{macrocode}
 % \end{macro}
 %
