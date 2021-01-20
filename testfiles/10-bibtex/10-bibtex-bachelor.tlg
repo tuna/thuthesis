@@ -382,7 +382,7 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line ....
 Completed box being shipped out [2]
-\vbox(710.18088+4.1104)x439.87962
+\vbox(710.18088+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
@@ -394,46 +394,12 @@ Completed box being shipped out [2]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\glue -9.674
-.\vbox(719.85487+4.1104)x426.79135, shifted 13.08827
-..\vbox(14.22636+0.0)x426.79135, glue set 0.52518fil
+.\vbox(719.85487+0.0)x426.79135, shifted 13.08827
+..\vbox(14.22636+0.0)x426.79135, glue set 14.22636fil
 ...\glue 0.0 plus 1.0fil
-...\hbox(13.70119+0.0)x426.79135
+...\hbox(0.0+0.0)x426.79135
 ....\special{color push gray 0}
-....\hbox(13.70119+0.0)x426.79135
-.....\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(13.70119+0.0)x426.79135
-......\vbox(13.70119+0.0)x426.79135
-.......\hbox(9.59079+4.1104)x426.79135
-........\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
-.........\vbox(0.0+0.0)x426.79135
-..........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
-...........\hbox(0.0+0.0)x0.0
-...........\penalty 10000
-...........\glue(\parfillskip) 0.0 plus 1.0fil
-...........\glue(\rightskip) 0.0 plus 1.0fil
-.........\glue 0.0 plus 1.0fil minus 1.0fil
-........\glue 0.0 plus 1.0fill
-........\vbox(9.59079+4.1104)x426.79135
-.........\hbox(9.59079+4.1104)x426.79135, glue set 213.39568fil
-..........\glue(\leftskip) 0.0 plus 1.0fil
-..........\hbox(0.0+0.0)x0.0
-..........\rule(9.59079+4.1104)x0.0
-..........\penalty 10000
-..........\glue(\parfillskip) 0.0
-..........\glue(\rightskip) 0.0 plus 1.0fil
-........\glue 0.0 plus 1.0fill
-........\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
-.........\glue 0.0 plus 1.0fil minus 1.0fil
-.........\vbox(0.0+0.0)x426.79135
-..........\hbox(0.0+0.0)x426.79135, glue set 426.79135fil
-...........\glue(\leftskip) 0.0 plus 1.0fil
-...........\hbox(0.0+0.0)x0.0
-...........\penalty 10000
-...........\glue(\parfillskip) 0.0
-...........\glue(\rightskip) 0.0
-.......\glue 0.0
-.......\rule(0.7528+0.0)x426.79135
-.......\glue -0.7528
+....\hbox(0.0+0.0)x426.79135
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
@@ -3358,48 +3324,12 @@ C.}
 ....\glue(\rightskip) 0.0
 ...\glue -0.23187
 ...\glue 0.0 plus 0.0001fil
-..\glue(\baselineskip) 7.14894
-..\hbox(15.61334+4.1104)x426.79135
+..\glue(\baselineskip) 22.76228
+..\hbox(0.0+0.0)x426.79135
 ...\special{color push gray 0}
-...\hbox(15.61334+4.1104)x426.79135
-....\glue 0.0 plus 1.0fil minus 1.0fil
-....\hbox(15.61334+4.1104)x426.79135
-.....\vbox(15.61334+4.1104)x426.79135
-......\rule(0.0+0.0)x426.79135
-......\glue 6.02255
-......\hbox(9.59079+4.1104)x426.79135
-.......\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
-........\vbox(0.0+0.0)x426.79135
-.........\hbox(0.0+0.0)x426.79135, glue set 213.39568fil
-..........\hbox(0.0+0.0)x0.0
-..........\penalty 10000
-..........\glue(\parfillskip) 0.0 plus 1.0fil
-..........\glue(\rightskip) 0.0 plus 1.0fil
-........\glue 0.0 plus 1.0fil minus 1.0fil
-.......\glue 0.0 plus 1.0fill
-.......\vbox(9.59079+4.1104)x426.79135
-........\hbox(9.59079+4.1104)x426.79135, glue set 210.76083fil
-.........\glue(\leftskip) 0.0 plus 1.0fil
-.........\hbox(0.0+0.0)x0.0
-.........\TU/texgyretermes(0)/m/n/10.53937 2
-.........\kern -0.0002
-.........\kern 0.0002
-.........\rule(9.59079+4.1104)x0.0
-.........\penalty 10000
-.........\glue(\parfillskip) 0.0
-.........\glue(\rightskip) 0.0 plus 1.0fil
-.......\glue 0.0 plus 1.0fill
-.......\hbox(0.0+0.0)x0.0, glue set - 426.79135fil
-........\glue 0.0 plus 1.0fil minus 1.0fil
-........\vbox(0.0+0.0)x426.79135
-.........\hbox(0.0+0.0)x426.79135, glue set 426.79135fil
-..........\glue(\leftskip) 0.0 plus 1.0fil
-..........\hbox(0.0+0.0)x0.0
-..........\penalty 10000
-..........\glue(\parfillskip) 0.0
-..........\glue(\rightskip) 0.0
+...\hbox(0.0+0.0)x426.79135
 ...\special{color pop}
-.\kern -714.29128
+.\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
@@ -3410,7 +3340,7 @@ C.}
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
-.\kern 714.29128
+.\kern 710.18088
 .\kern 0.0
 Underfull \hbox (badness 2293) in paragraph at lines 143--148
 []\TU/FandolSong(0)/m/n/10.53937 汤 万 金\TU/texgyretermes(0)/m/n/10.53937 , \TU/F

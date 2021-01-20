@@ -2605,7 +2605,8 @@
 %
 % \cs{chapter} 会调用特殊的 page style。
 %    \begin{macrocode}
-\ctexset{chapter/pagestyle = plain}
+\def\ps@chapter{}
+\ctexset{chapter/pagestyle = chapter}
 %    \end{macrocode}
 %
 %
