@@ -544,8 +544,8 @@
 % 硕士生、本科生联合指导教师，博士生联合导师。
 % \begin{latex}
 %   \thusetup{
-%     joint-supervisor  = {联合导师姓名, 教授},
-%     joint-supervisor* = {Professor Join-Supervisor Name},
+%     co-supervisor  = {联合导师姓名, 教授},
+%     co-supervisor* = {Professor Join-Supervisor Name},
 %   }
 % \end{latex}
 %
@@ -3395,11 +3395,18 @@
   associate-supervisor* = {
     name = associate@supervisor@en,
   },
+  co-supervisor = {
+    name = co@supervisor,
+  },
+  co-supervisor* = {
+    name = co@supervisor@en,
+  },
+  % Reserved for compatibility
   joint-supervisor = {
-    name = joint@supervisor,
+    name = co@supervisor,
   },
   joint-supervisor* = {
-    name = joint@supervisor@en,
+    name = co@supervisor@en,
   },
 %    \end{macrocode}
 %
@@ -3828,7 +3835,7 @@
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合导师}{\thu@name@title}{\thu@joint@supervisor}%
+    \thu@info@item{联合导师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
 \newcommand\thu@titlepage@info@doctor@professional{%
@@ -3838,7 +3845,7 @@
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合导师}{\thu@name@title}{\thu@joint@supervisor}%
+    \thu@info@item{联合导师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
 \newcommand\thu@titlepage@info@master@academic{%
@@ -3849,7 +3856,7 @@
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
 \newcommand\thu@titlepage@info@master@engineer{%
@@ -3860,7 +3867,7 @@
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
 \newcommand\thu@titlepage@info@master@other{%
@@ -3870,7 +3877,7 @@
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
 %    \end{macrocode}
@@ -3986,12 +3993,12 @@
 \newcommand\thu@titlepage@en@supervisor{%
   \begin{tabular}{r@{\makebox[0.71cm][l]{:}}l}%
     \renewcommand\arraystretch{1}%
-    \thu@thesis@name@en{} Supervisor & \thu@supervisor@en     \\
+    \thu@thesis@name@en{} Supervisor & \thu@supervisor@en \\
     \ifx\thu@associate@supervisor@en\@empty\else
-      Associate Supervisor            & \thu@associate@supervisor@en \\
+      Associate Supervisor           & \thu@associate@supervisor@en \\
     \fi
-    \ifx\thu@joint@supervisor@en\@empty\else
-      Cooperate Supervisor            & \thu@joint@supervisor@en   \\
+    \ifx\thu@co@supervisor@en\@empty\else
+      Co-supervisor                  & \thu@co@supervisor@en \\
     \fi
   \end{tabular}%
 }
@@ -4066,7 +4073,7 @@
     \def\thu@info@item##1##2##3{%
       \ifx##3\@empty\else
         \thu@fixed@box{%
-          \ifx\thu@joint@supervisor\@empty
+          \ifx\thu@co@supervisor\@empty
             4em%
           \else
             5.5em%
@@ -4082,7 +4089,7 @@
     \thu@info@item{姓名}{\thu@name@title}{\thu@author}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   \endgroup
   \vskip 1.4cm%
   \begingroup
