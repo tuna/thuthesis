@@ -2323,7 +2323,11 @@
   \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold]%
   \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold]%
   \setCJKfamilyfont{zhkai}{KaiTi}%
-  \setCJKfamilyfont{zhfs}{FangSong}%
+  \IfFontExistsTF{FangSong_GB2312}{%
+    \setCJKfamilyfont{zhfs}{FangSong_GB2312}%
+  }{%
+    \setCJKfamilyfont{zhfs}{FangSong}%
+  }%
 }
 \newcommand\thu@set@cjk@font@mac{%
   \setCJKmainfont{Songti SC}[
@@ -3651,19 +3655,33 @@
     hmargin = 3.5cm,
   }%
   \thispagestyle{empty}%
-  \null\vskip 0.2cm%
+  \null\vskip 8.1pt%
   \begingroup
     \centering
     \parbox[t][2cm][t]{\textwidth}{%
-      \hskip -0.69cm%
+      \hskip -21.5pt%
       \thu@titlepage@secret
     }\par
-    \vskip 1.5cm%
-    {\thu@titlepage@title}%
-    \vskip 0.85cm%
+    \vskip 40.5pt%
+    \begingroup
+      \sffamily\fontsize{26bp}{46.8bp}\selectfont
+      \thu@title\par
+    \endgroup
+    \ifthu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \thu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 24.1pt%
     \thu@titlepage@degree
     \vfill
-    \parbox[t][7.25cm][t]{\textwidth}{\centering\thu@titlepage@info}\par
+    \parbox[t][7.25cm][t]{\textwidth}{%
+      \centering\fangsong\fontsize{16bp}{31.2bp}\selectfont
+      \thu@titlepage@info
+    }\par
     \parbox[t][1.03cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
   \endgroup
   \clearpage
@@ -3688,11 +3706,26 @@
       \thu@titlepage@secret
     }\par
     \vskip 1.5cm%
-    {\sffamily\yihao[1.575]\thu@title\par}%
-    \vskip 0.9cm%
+    \begingroup
+      % 1.21 倍行距，无网格
+      \sffamily\fontsize{26bp}{40.9bp}\selectfont
+      \thu@title\par
+    \endgroup
+    \ifthu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \thu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 25.5pt%
     \thu@titlepage@degree
     \vfill
-    \parbox[t][5.28cm][t]{\textwidth}{\centering\thu@titlepage@info}\par
+    \parbox[t][5.24cm][t]{\textwidth}{%
+      \centering\fangsong\fontsize{16bp}{1cm}\selectfont
+      \thu@titlepage@info
+    }\par
     \parbox[t][1.25cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
   \endgroup
   \clearpage
@@ -3716,12 +3749,17 @@
     \parbox[t][3cm]{\textwidth}{%
       \vskip 0.1cm%
       \centering
-      \thu@titlepage@title
+      \sffamily\fontsize{26bp}{46.8bp}\selectfont
+      \thu@title\par
     }%
     \vskip 0.85cm%
     \thu@titlepage@degree
     \vfill
-    \parbox[t][8.5cm][t]{\textwidth}{\centering\CJKfamily+{}\thu@titlepage@info}\par
+    \parbox[t][8.5cm][t]{\textwidth}{%
+      \centering\CJKfamily+{}%
+      \centering\fangsong\sanhao[1.95]%
+      \thu@titlepage@info
+    }\par
     \parbox[t][2.5cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
   \endgroup
   \clearpage
@@ -3746,14 +3784,6 @@
   \else
     \thu@secret@level★\makebox[3em][c]{\thu@secret@year}年%
   \fi\par
-}
-%    \end{macrocode}
-%
-% 题名使用一号黑体字，一行写不下时可分两行写。
-% 由于 Word 模板这里设置了“对齐到网格”，所以实际行距不是 1.25 倍。
-%    \begin{macrocode}
-\newcommand\thu@titlepage@title{%
-  \sffamily\yihao[1.8]\thu@title\par
 }
 %    \end{macrocode}
 %
@@ -3821,7 +3851,6 @@
       ##2{##3}\\
     \fi
   }%
-  \fangsong\sanhao[1.95]%
   \begin{tabular}{l}%
     \renewcommand\arraystretch{1}%
     #4%

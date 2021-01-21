@@ -29,7 +29,6 @@ stdengine = "xetex"
 checkconfigs = {
   "build",
   "testfiles/config-crossref",
-  "testfiles/config-cover",
   "testfiles/config-nomencl",
   "testfiles/config-bibtex",
   "testfiles/config-biblatex",
