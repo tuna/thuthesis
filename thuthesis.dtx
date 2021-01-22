@@ -72,15 +72,17 @@
 % \item 本模板的发布遵守 \href{https://www.latex-project.org/lppl/lppl-1-3c.txt}{\LaTeX{} Project Public License (1.3.c)}，使用前请认真阅读协议内
 %   容。
 % \item 本模板为作者根据
-%   清华大学研究生院颁发的
-%   \href{http://yjsy.cic.tsinghua.edu.cn/docinfo/board/boarddetail.jsp?columnId=001050603&parentColumnId=0010506&itemSeq=5365}{%
-%   《研究生学位论文写作指南》}（仅限校内网络访问）、
+%   清华大学研究生院颁发的《
+%    \href{http://yjsy.cic.tsinghua.edu.cn/docinfo/board/boarddetail.jsp?columnId=001050603&parentColumnId=0010506&itemSeq=5365}{%
+%   研究生学位论文写作指南}》（限校内网络访问）、
 %   英文版《Guide to Thesis Writing for Graduate Students》、
-%   清华大学教务处颁发的《综合论文训练写作指南》、
+%   清华大学教务处颁发的《
+%   \href{https://lib.tsinghua.edu.cn/dra/news/annoucement/7963}{%
+%   综合论文训练写作指南}》、
 %   外文系的《英语专业本科生综合论文训练》和
-%   清华大学
+%   清华大学《
 %   \href{http://postdoctor.tsinghua.edu.cn/info/czxz/1283}{%
-%     《编写“清华大学博士后研究报告”参考意见》}
+%   编写“清华大学博士后研究报告”参考意见}》
 %   编写而成，旨在供清华大学毕业生撰写学位论文使用。
 % \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
 %   守 \LaTeX{} Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
@@ -1714,19 +1716,18 @@
 %    \begin{macrocode}
 \newcommand\thu@set@chapter@names{%
   \ifthu@main@language@chinese
-    \ctexset{
-      chapter/name   = {第,章},
-    }%
+    \def\thu@comments@name{指导教师学术评语}%
     \def\bibname{参考文献}%
     \def\appendixname{附录}%
     \def\indexname{索引}%
-    \def\thu@acknowledgements@name{致\quad 谢}%
+    \def\thu@resolution@name{答辩委员会决议书}%
     \ifthu@degree@bachelor
-      \def\contentsname{目\quad 录}%
+      \def\contentsname{目\qquad 录}%
       \def\listfigurename{插图索引}%
       \def\listtablename{表格索引}%
       \def\thu@list@figure@table@name{插图和附表索引}%
       \def\thu@list@algorithm@name{算法索引}%
+      \def\thu@acknowledgements@name{致\qquad 谢}%
       \def\listequationname{公式索引}%
       \def\thu@denotation@name{主要符号对照表}%
       \def\thu@resume@name{在学期间参加课题的研究成果}%
@@ -1736,12 +1737,11 @@
       \def\thu@list@figure@table@name{插图和附表清单}%
       \def\thu@list@algorithm@name{算法清单}%
       \def\listequationname{公式清单}%
+      \def\thu@acknowledgements@name{致\quad 谢}%
       \ifthu@degree@graduate
         \def\contentsname{目\quad 录}%
         \def\thu@denotation@name{符号和缩略语说明}%
         \def\thu@resume@name{个人简历、在学期间完成的相关学术成果}%
-        \def\thu@comments@name{指导教师学术评语}%
-        \def\thu@resolution@name{答辩委员会决议书}%
       \else  % degree = postdoc
         \def\contentsname{目\qquad 次}%
         \def\thu@denotation@name{符号表}%
@@ -1750,9 +1750,8 @@
     \fi
   \else
     \ifthu@main@language@english
-      \ctexset{
-        chapter/name   = \chaptername\space,
-      }%
+      \def\thu@comments@name{Comments from Thesis Supervisor}%
+      \def\thu@resolution@name{Resolution of Thesis Defense Committee}%
       \def\indexname{Index}%
       \ifthu@degree@bachelor
         \def\contentsname{CONTENTS}%
@@ -1778,8 +1777,6 @@
         \def\appendixname{Appendix}%
         \def\thu@acknowledgements@name{Acknowledgements}%
         \def\thu@resume@name{Resume}%
-        \def\thu@comments@name{Comments from Thesis Supervisor}%
-        \def\thu@resolution@name{Resolution of Thesis Defense Committee}%
       \fi
     \fi
   \fi
@@ -3035,9 +3032,19 @@
       },
     }%
     \ifthu@main@language@chinese
-      \ctexset{chapter/number = \thechapter}%
+      \ctexset{
+        chapter = {
+          name   = {第,章},
+          number = \thechapter,
+        },
+      }%
     \else
-      \ctexset{chapter/number = \thu@english@number{chapter}}%
+      \ctexset{
+        chapter = {
+          name   = \chaptername\space,
+          number = \thu@english@number{chapter},
+        },
+      }%
     \fi
 %    \end{macrocode}
 %
@@ -3075,6 +3082,7 @@
           format      = \centering\sffamily\sanhao,
           nameformat  = {},
           titleformat = {},
+          name        = {第,章},
           aftername   = \quad,
         },
         section = {
@@ -3096,6 +3104,7 @@
           format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
           nameformat  = \MakeUppercase,
           titleformat = \MakeUppercase,
+          name        = \chaptername\space,
           aftername   = \space,
         },
         section = {
@@ -3116,6 +3125,7 @@
       chapter = {
         beforeskip = 27bp,
         afterskip  = 27bp,
+        number     = \thechapter,
       },
       section = {
         beforeskip = 24bp,
