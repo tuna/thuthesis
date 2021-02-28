@@ -1459,6 +1459,7 @@
     choices = {
       times,
       termes,
+      stix,
       xits,
       libertinus,
       newcm,
@@ -2048,12 +2049,30 @@
 \fi
 %    \end{macrocode}
 %
-% XITS 字体于 2018-10-03 更改了字体的文件名，所以需要判断。
-% 原文件名为 \file{xits-regular.otf}、\file{xits-math.otf} 等，
-% 后改为 \file{XITS-Regular.otf}、\file{XITSMath-Regular.otf} 等。
+% STIX 字体的文件名在 v2.10 2020-12-19 从
+% \file{STIXTwoText-Regular.otf}、\file{STIX2Math.otf} 分别改为
+% \file{STIXTwoText-Regular.otf}、\file{STIXTwoMath-Regular.otf}。
+% 需要进行判断。
 %
-% Libertinus 字体同样。
+% XITS 字体的文件名在 v1.109 2018-09-30
+% 从 \file{xits-regular.otf}、\file{xits-math.otf} 分别改为
+% \file{XITS-Regular.otf}、\file{XITSMath-Regular.otf}。
+%
+% Libertinus 的文件名在 v6.7 2019-04-03 从小写改为驼峰式，
+% 在大小写敏感的平台上需要进行判断。
 %    \begin{macrocode}
+\let\thu@font@family@stix\@empty
+\newcommand\thu@set@stix@names{%
+  \ifx\thu@font@family@stix\@empty
+    \IfFontExistsTF{STIXTwoText-Regular.otf}{%
+      \gdef\thu@font@family@stix{STIXTwoText}%
+      \gdef\thu@font@name@stix@math{STIXTwoMath-Regular}%
+    }{%
+      \gdef\thu@font@family@stix{STIX2Text}%
+      \gdef\thu@font@name@stix@math{STIX2Math}%
+    }%
+  \fi
+}
 \let\thu@font@family@xits\@empty
 \newcommand\thu@set@xits@names{%
   \ifx\thu@font@family@xits\@empty
@@ -2144,6 +2163,17 @@
     BoldItalicFont = *-bolditalic,
     Ligatures      = CommonOff,
   ]%
+}
+\newcommand\thu@set@font@stix{%
+  \thu@set@stix@names
+  \setmainfont{\thu@font@family@stix}[
+    Extension      = .otf,
+    UprightFont    = *-Regular,
+    BoldFont       = *-Bold,
+    ItalicFont     = *-Italic,
+    BoldItalicFont = *-BoldItalic,
+  ]%
+  \thu@set@texgyre@sans@mono
 }
 \newcommand\thu@set@font@xits{%
   \thu@set@xits@names
@@ -2293,11 +2323,12 @@
   ]%
 }
 \newcommand\thu@set@math@font@stix{%
-  \setmathfont{STIX2Math}[
+  \thu@set@stix@names
+  \setmathfont{\thu@font@name@stix@math}[
     Extension    = .otf,
     StylisticSet = \thu@xits@integral@stylistic@set,
   ]%
-  \setmathfont{STIX2Math}[
+  \setmathfont{\thu@font@name@stix@math}[
     Extension    = .otf,
     StylisticSet = 1,
     range        = {scr,bfscr},
