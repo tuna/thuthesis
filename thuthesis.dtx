@@ -2283,7 +2283,28 @@
   \setmathfont{\thu@font@name@libertinus@math .otf}%
 }
 \newcommand\thu@set@math@font@lm{%
-  \setmathfont{latinmodern-math.otf}%
+  \setmathfont{latinmodern-math}[Extension=.otf]%
+  \setmathrm{lmroman10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setmathsf{lmsans10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-oblique,
+    BoldItalicFont = *-boldoblique,
+  ]%
+  \setmathtt{lmmonolt10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-oblique,
+    BoldItalicFont = *-boldoblique,
+  ]%
 }
 \newcommand\thu@set@math@font{%
   \@nameuse{thu@set@math@font@\thu@math@font}%
