@@ -1461,6 +1461,7 @@
       termes,
       xits,
       libertinus,
+      newcm,
       lm,
       auto,
       none,
@@ -1485,6 +1486,7 @@
       xits,
       stix,
       libertinus,
+      newcm,
       lm,
       none,
     },
@@ -2177,7 +2179,30 @@
     BoldItalicFont = *-boldoblique,
   ]%
 }
-\@namedef{thu@set@font@lm}{%
+\newcommand\thu@set@font@newcm{%
+  \setmathrm{NewCM10}[
+    Extension      = .otf,
+    UprightFont    = *-Book,
+    BoldFont       = *-Bold,
+    ItalicFont     = *-BookItalic,
+    BoldItalicFont = *-BoldItalic,
+  ]%
+  \setmathsf{NewCMSans10}[
+    Extension         = .otf,
+    UprightFont       = *-Book,
+    BoldFont          = *-Bold,
+    ItalicFont        = *-BookOblique,
+    BoldItalicFont    = *-BoldOblique,
+  ]%
+  \setmathtt{NewCMMono10}[
+    Extension           = .otf,
+    UprightFont         = *-Book,
+    ItalicFont          = *-BookItalic,
+    BoldFont            = *-Bold,
+    BoldItalicFont      = *-BoldOblique,
+  ]%
+}
+\newcommand\thu@set@font@lm{%
   \setmainfont{lmroman10}[
     Extension      = .otf,
     UprightFont    = *-regular,
@@ -2209,11 +2234,6 @@
 %
 % 使用 \pkg{unicode-math} 配置数学符号格式。
 %    \begin{macrocode}
-\newcommand\thu@xits@integral@stylistic@set{%
-  \ifthu@math@style@TeX\else
-    8%
-  \fi
-}
 \newcommand\thu@set@math@style{%
   \ifthu@math@style@TeX
     \unimathsetup{
@@ -2255,6 +2275,11 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
+\newcommand\thu@xits@integral@stylistic@set{%
+  \ifthu@math@style@TeX\else
+    8%
+  \fi
+}
 \newcommand\thu@set@math@font@xits{%
   \thu@set@xits@names
   \setmathfont{\thu@font@name@xits@math}[
@@ -2304,6 +2329,43 @@
     BoldFont       = *-bold,
     ItalicFont     = *-oblique,
     BoldItalicFont = *-boldoblique,
+  ]%
+}
+\newcommand\thu@newcm@integral@stylistic@set{%
+  \ifthu@math@style@TeX\else
+    2%
+  \fi
+}
+\newcommand\thu@set@math@font@newcm{%
+  \setmathfont{NewCMMath-Book}[
+    Extension    = .otf,
+    StylisticSet = \thu@newcm@integral@stylistic@set,
+  ]%
+  \setmathfont{NewCMMath-Book}[
+    Extension    = .otf,
+    StylisticSet = 1,
+    range        = {scr,bfscr},
+  ]%
+  \setmathrm{NewCM10}[
+    Extension      = .otf,
+    UprightFont    = *-Book,
+    BoldFont       = *-Bold,
+    ItalicFont     = *-BookItalic,
+    BoldItalicFont = *-BoldItalic,
+  ]%
+  \setmathsf{NewCMSans10}[
+    Extension         = .otf,
+    UprightFont       = *-Book,
+    BoldFont          = *-Bold,
+    ItalicFont        = *-BookOblique,
+    BoldItalicFont    = *-BoldOblique,
+  ]%
+  \setmathtt{NewCMMono10}[
+    Extension           = .otf,
+    UprightFont         = *-Book,
+    ItalicFont          = *-BookItalic,
+    BoldFont            = *-Bold,
+    BoldItalicFont      = *-BoldOblique,
   ]%
 }
 \newcommand\thu@set@math@font{%
