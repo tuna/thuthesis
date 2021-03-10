@@ -107,6 +107,18 @@
 
 % 载入所需的宏包
 
+% 定理类环境宏包
+\usepackage{amsthm}
+% 也可以使用 ntheorem
+% \usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+
+\thusetup{
+  %
+  % 数学字体
+  % math-style = GB,
+  math-font  = xits,
+}
+
 % 可以使用 nomencl 生成符号和缩略语说明
 % \usepackage{nomencl}
 % \makenomenclature
@@ -125,11 +137,6 @@
 
 % 量和单位
 \usepackage{siunitx}
-
-% 定理类环境宏包
-\usepackage{amsthm}
-% 也可以使用 ntheorem
-% \usepackage[amsmath,thmmarks,hyperref]{ntheorem}
 
 % 参考文献使用 BibTeX + natbib 宏包
 % 顺序编码制
@@ -156,7 +163,16 @@
 \graphicspath{{figures/}}
 
 % 数学命令
-\newcommand\dif{\mathop{}\!\mathrm{d}}  % 微分符号
+\makeatletter
+\newcommand\dif{%  % 微分符号
+  \mathop{}\!%
+  \ifthu@math@style@TeX
+    d%
+  \else
+    \mathrm{d}%
+  \fi
+}
+\makeatother
 
 % hyperref 宏包在最后调用
 \usepackage{hyperref}

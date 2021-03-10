@@ -782,7 +782,7 @@
 % \begin{enumerate}
 %   \item 大写希腊字母默认为斜体，如 $\Delta$、$\Sigma$，
 %     有限增量符号 $\increment$（\cs{increment}）固定使用正体。
-%   \item 数学常数和特殊函数名用正体，如 $\symup{\pi} = 3.14\dots$；$\symup{e} = 2.718\dots$。
+%   \item 数学常数和特殊函数名用正体，如 $\uppi = 3.14\dots$；$\symup{e} = 2.718\dots$。
 %   \item 微分号使用正体，比如 $\dif y / \dif x$。
 %   \item 向量、矩阵和张量用粗斜体（\cs{symbf}），如 $\symbf{x}$、$\symbf{\Sigma}$、$\symbfsf{T}$。
 %   \item 省略号按照中文的习惯固定居中，如 $1, 2, \dots, n$。
@@ -1461,6 +1461,7 @@
   },
   font = {
     choices = {
+      auto,
       times,
       termes,
       stix,
@@ -1468,7 +1469,7 @@
       libertinus,
       newcm,
       lm,
-      auto,
+      newtx,
       none,
     },
     default = auto,
@@ -1476,11 +1477,11 @@
   cjk-font = {
     name = cjk@font,
     choices = {
+      auto,
       windows,
       mac,
       noto,
       fandol,
-      auto,
       none,
     },
     default = auto,
@@ -1488,14 +1489,16 @@
   math-font = {
     name = math@font,
     choices = {
+      auto,
       xits,
       stix,
       libertinus,
       newcm,
       lm,
+      newtx,
       none,
     },
-    default = xits,
+    default = auto,
   },
   math-style = {
     name = math@style,
@@ -1648,11 +1651,6 @@
 \RequirePackage{amsmath}
 %    \end{macrocode}
 %
-% 使用 \pkg{unicode-math} 处理数学字体。
-%    \begin{macrocode}
-\RequirePackage{unicode-math}
-%    \end{macrocode}
-%
 % 图形支持宏包。
 %    \begin{macrocode}
 \RequirePackage{graphicx}
@@ -1726,11 +1724,23 @@
 %
 % 对冲突的宏包报错。
 %    \begin{macrocode}
-\newcommand\thu@package@conflict[2]{
-  \AtBeginOfPackageFile*{#2}{
-    \thu@error{The "#2" package is incompatible with required "#1"}
+\newcommand\thu@package@conflict[2]{%
+  \AtEndOfPackageFile*{#1}{%
+    \AtBeginOfPackageFile*{#2}{%
+      \thu@error{The "#2" package is incompatible with "#1"}%
+    }%
+  }%
   }
-}
+\thu@package@conflict{biblatex}{bibunits}
+\thu@package@conflict{biblatex}{chapterbib}
+\thu@package@conflict{biblatex}{cite}
+\thu@package@conflict{biblatex}{multibib}
+\thu@package@conflict{biblatex}{natbib}
+
+\thu@package@conflict{bibunits}{biblatex}
+\thu@package@conflict{bibunits}{chapterbib}
+\thu@package@conflict{bibunits}{multibib}
+
 \thu@package@conflict{unicode-math}{amscd}
 \thu@package@conflict{unicode-math}{amsfonts}
 \thu@package@conflict{unicode-math}{amssymb}
@@ -1739,6 +1749,16 @@
 \thu@package@conflict{unicode-math}{eucal}
 \thu@package@conflict{unicode-math}{eufrak}
 \thu@package@conflict{unicode-math}{mathrsfs}
+\thu@package@conflict{unicode-math}{newtxmath}
+\thu@package@conflict{unicode-math}{upgreek}
+
+\thu@package@conflict{natbib}{biblatex}
+\thu@package@conflict{natbib}{cite}
+
+\thu@package@conflict{newtxmath}{amsfonts}
+\thu@package@conflict{newtxmath}{amssymb}
+\thu@package@conflict{newtxmath}{unicode-math}
+\thu@package@conflict{newtxmath}{upgreek}
 %    \end{macrocode}
 %
 %
@@ -2299,6 +2319,9 @@
     BoldItalicFont = *-boldoblique,
   ]%
 }
+\newcommand\thu@set@font@newtx{%
+  \RequirePackage{newtxtext}%
+}
 \newcommand\thu@set@font{%
   \@nameuse{thu@set@font@\thu@font}%
 }
@@ -2576,15 +2599,81 @@
     BoldItalicFont      = *-BoldOblique,
   ]%
 }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\thu@set@math@font@newtx{%
+  \ifthu@font@newtx\else
+    \let\thu@save@encodingdefault\encodingdefault
+    \let\thu@save@rmdefault\rmdefault
+    \let\thu@save@sfdefault\sfdefault
+    \let\thu@save@ttdefault\ttdefault
+    \RequirePackage[T1]{fontenc}%
+    \renewcommand{\rmdefault}{ntxtlf}%
+    \renewcommand{\sfdefault}{qhv}%
+    \renewcommand{\ttdefault}{ntxtt}%
+  \fi
+  \ifthu@uppercase@greek@italic
+    \PassOptionsToPackage{slantedGreek}{newtxmath}%
+  \fi
+  \ifthu@integral@upright
+    \PassOptionsToPackage{upint}{newtxmath}%
+  \fi
+  \RequirePackage{newtxmath}
+  \let\thu@save@leq\leq
+  \let\thu@save@geq\geq
+  \ifthu@leq@slanted
+    \let\le\leqslant
+    \let\ge\geqslant
+    \let\leq\leqslant
+    \let\geq\geqslant
+  \fi
+  \ifthu@integral@limits@true
+    \let\ilimits@\displaylimits
+  \fi
+  \let\thu@save@partial\partial
+  \ifthu@partial@upright
+    \let\partial\uppartial
+  \fi
+  \ifthu@math@ellipsis@centered
+    \DeclareRobustCommand\mathellipsis{\mathinner{\cdotp\cdotp\cdotp}}%
+  \else
+    \DeclareRobustCommand\mathellipsis{\mathinner{\ldotp\ldotp\ldotp}}%
+  \fi
+  \RequirePackage{bm}%
+  \ifthu@font@newtx\else
+    \let\encodingdefault\thu@save@encodingdefault
+    \let\rmdefault\thu@save@rmdefault
+    \let\sfdefault\thu@save@sfdefault
+    \let\ttdefault\thu@save@ttdefault
+  \fi
+  \DeclareRobustCommand\symup[1]{{\mathrm{##1}}}%
+  \DeclareRobustCommand\symbf[1]{{\bm{##1}}}%
+  \let\increment\upDelta%
+  \renewcommand\thu@qed{\openbox}%
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \newcommand\thu@set@math@font{%
   \ifthu@math@font@none\else
-    \thu@load@unimath
-    \thu@set@unimath@style
-  \@nameuse{thu@set@math@font@\thu@math@font}%
+    \ifthu@math@font@newtx
+      \thu@set@math@font@newtx
+    \else
+      \thu@load@unimath
+      \thu@set@unimath@style
+      \@nameuse{thu@set@math@font@\thu@math@font}%
+    \fi
   \fi
 }
-\thu@set@math@font
 \thu@option@hook{math-font}{\g@addto@macro\thu@setup@hook{\thu@set@math@font}}
+\newcommand\thu@set@math@font@auto{%
+  \ifthu@math@font@auto
+    \thusetup{math-font=xits}%
+  \fi
+}
+\AtBeginOfPackageFile*{siunitx}{\thu@set@math@font@auto}
+\AtEndPreamble{\thu@set@math@font@auto}
 %    \end{macrocode}
 %
 % 中文字体
@@ -5888,7 +5977,7 @@
   }{%
     \popQED\endtrivlist\@endpefalse
   }
-  \renewcommand\qedsymbol{\ensuremath{\QED}}
+  \renewcommand\qedsymbol{\thu@qed}
 }
 %    \end{macrocode}
 %
@@ -5899,7 +5988,7 @@
 \AtEndOfPackageFile*{ntheorem}{%
   \theorembodyfont{\normalfont}%
   \theoremheaderfont{\normalfont\sffamily}%
-  \theoremsymbol{\ensuremath{\QED}}%
+  \theoremsymbol{\thu@qed}%
   \newtheorem*{proof}{\thu@proof@name}%
   \theoremstyle{plain}%
   \theoremsymbol{}%

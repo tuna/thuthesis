@@ -21,6 +21,7 @@
 - 新增 `figure-number-sepatator` 等选项设置图表编号的连接符。
 - 新增数学符号字体风格选项 `math-style`。
 - 新增选项控制数学字体风格的细节：`uppercase-greek`、`less-than-or-equal`、`integral`、`integral-limits`、`partial` 和 `math-ellipsis`。
+- 新增数学字体试验性选项 `math-font = newtx`。
 
 ### Fixes
 - 修正参考文献的格式，取消页码与前面冒号之间的空格。
