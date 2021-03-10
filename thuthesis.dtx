@@ -1557,9 +1557,13 @@
 \fi
 %    \end{macrocode}
 %
+% \pkg{unicode-math} 和 \pkg{newtx} 都不需要 \pkg{fontspec} 设置数学字体。
+%    \begin{macrocode}
+\PassOptionsToPackage{no-math}{fontspec}
+%    \end{macrocode}
+%
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
 %    \begin{macrocode}
-\PassOptionsToPackage{quiet}{fontspec}
 \LoadClass[a4paper,UTF8,zihao=-4,scheme=plain,fontset=none]{ctexbook}[2017/04/01]
 %    \end{macrocode}
 %
@@ -2320,6 +2324,7 @@
   \setCJKfamilyfont{zhfs}{FangSong}%
 }
 \newcommand\thu@set@cjk@font@mac{%
+  \defaultCJKfontfeatures{}%
   \setCJKmainfont{Songti SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
@@ -2349,33 +2354,41 @@
 % 注意 Noto CJK 的 regular 字重名字不带“Regular”。
 %    \begin{macrocode}
 \newcommand\thu@set@cjk@font@noto{%
+  \defaultCJKfontfeatures{}%
   \setCJKmainfont{Noto Serif CJK SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
     ItalicFont     = FandolKai-Regular,
     ItalicFeatures = {Extension = .otf},
+    Script         = CJK,
   ]%
   \setCJKsansfont{Noto Sans CJK SC}[
-    BoldFont    = * Medium,
+    BoldFont       = * Medium,
+    Script         = CJK,
   ]%
-  \setCJKmonofont{Noto Sans Mono CJK SC}%
+  \setCJKmonofont{Noto Sans Mono CJK SC}[
+    Script         = CJK,
+  ]%
   \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
-    UprightFont = * Light,
-    UprightFont = * Bold,
+    UprightFont    = * Light,
+    UprightFont    = * Bold,
+    Script         = CJK,
   ]%
   \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
-    BoldFont    = * Medium,
+    BoldFont       = * Medium,
+    Script         = CJK,
   ]%
   \setCJKfamilyfont{zhfs}{FandolFang}[
-    Extension   = .otf,
-    UprightFont = *-Regular,
+    Extension      = .otf,
+    UprightFont    = *-Regular,
   ]%
   \setCJKfamilyfont{zhkai}{FandolKai}[
-    Extension   = .otf,
-    UprightFont = *-Regular,
+    Extension      = .otf,
+    UprightFont    = *-Regular,
   ]%
 }
 \newcommand\thu@set@cjk@font@fandol{%
+  \defaultCJKfontfeatures{}%
   \setCJKmainfont{FandolSong}[
     Extension   = .otf,
     UprightFont = *-Regular,
