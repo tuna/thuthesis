@@ -1258,8 +1258,12 @@
 % \begin{macro}{\thusetup}
 % 提供一个 \cs{thusetup} 命令支持 \emph{key-value} 的方式来设置。
 %    \begin{macrocode}
+\let\thu@setup@hook\@empty
 \newcommand\thusetup[1]{%
+  \let\thu@setup@hook\@empty
   \kvsetkeys{thu}{#1}%
+  \thu@setup@hook
+  \thu@setup@hook
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1500,7 +1504,47 @@
       ISO,
       TeX,
     },
-    default = GB,
+  },
+  uppercase-greek = {
+    name = uppercase@greek,
+    choices = {
+      italic,
+      upright,
+    },
+  },
+  less-than-or-equal = {
+    name = leq,
+    choices = {
+      slanted,
+      horizontal,
+    },
+  },
+  integral = {
+    choices = {
+      upright,
+      slanted,
+    },
+  },
+  integral-limits = {
+    name = integral@limits,
+    choices = {
+      true,
+      false,
+    },
+  },
+  partial = {
+    choices = {
+      upright,
+      italic,
+    },
+  },
+  math-ellipsis = {
+    name = math@ellipsis,
+    choices = {
+      centered,
+      lower,
+      AMS,
+    },
   },
 %    \end{macrocode}
 %
@@ -2266,26 +2310,34 @@
 %    \begin{macrocode}
 \newcommand\thu@set@math@style{%
   \ifthu@math@style@TeX
-    \unimathsetup{
-      math-style = TeX,
-      bold-style = TeX,
-      partial    = italic,
+    \thusetup{
+      uppercase-greek = upright,
+      less-than-or-equal   = horizontal,
+      integral        = slanted,
+      integral-limits = false,
+      partial         = italic,
+      math-ellipsis   = AMS,
     }%
   \else
-    \unimathsetup{
-      math-style = ISO,
-      bold-style = ISO,
-      partial    = upright,
+    \thusetup{
+      uppercase-greek = italic,
+      integral        = upright,
+      integral-limits = true,
+      partial         = upright,
+    }%
+    \ifthu@math@style@ISO
+      \thusetup{
+        less-than-or-equal   = horizontal,
+        math-ellipsis   = lower,
+    }%
+  \else
+      \ifthu@math@style@GB
+        \thusetup{
+          less-than-or-equal   = slanted,
+          math-ellipsis   = centered,
     }%
   \fi
-  \ifthu@math@style@GB
-    \protected\def\le{\leqslant}%
-    \protected\def\ge{\geqslant}%
-    \DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}%
-  \else
-    \protected\def\le{\leq}%
-    \protected\def\ge{\geq}%
-    \DeclareRobustCommand\mathellipsis{\mathinner{\unicodeellipsis}}%
+    \fi
   \fi
 }
 \ifthu@main@language@chinese
@@ -2304,9 +2356,129 @@
 }
 %    \end{macrocode}
 %
+% 针对 \pkg{unicode-math} 逐项配置数学符号。
+%    \begin{macrocode}
+\newcommand\thu@set@unimath@leq{%
+  \ifthu@leq@horizontal
+    \ifx\@begindocumenthook\@undefined
+      \let\le\thu@save@leq
+      \let\ge\thu@save@geq
+      \let\leq\thu@save@leq
+      \let\geq\thu@save@geq
+    \else
+      \AtBeginDocument{%
+        \let\le\thu@save@leq
+        \let\ge\thu@save@geq
+        \let\leq\thu@save@leq
+        \let\geq\thu@save@geq
+      }%
+    \fi
+  \else
+    \ifthu@leq@slanted
+      \ifx\@begindocumenthook\@undefined
+        \let\le\leqslant
+        \let\ge\geqslant
+        \let\leq\leqslant
+        \let\geq\geqslant
+      \else
+        \AtBeginDocument{%
+          \let\le\leqslant
+          \let\ge\geqslant
+          \let\leq\leqslant
+          \let\geq\geqslant
+        }%
+      \fi
+    \fi
+  \fi
+}
+\newcommand\thu@set@unimath@integral@limits{%
+  \ifthu@integral@limits@true
+    \removenolimits{%
+      \int\iint\iiint\iiiint\oint\oiint\oiiint
+      \intclockwise\varointclockwise\ointctrclockwise\sumint
+      \intbar\intBar\fint\cirfnint\awint\rppolint
+      \scpolint\npolint\pointint\sqint\intlarhk\intx
+      \intcap\intcup\upint\lowint
+    }%
+  \else
+    \addnolimits{%
+      \int\iint\iiint\iiiint\oint\oiint\oiiint
+      \intclockwise\varointclockwise\ointctrclockwise\sumint
+      \intbar\intBar\fint\cirfnint\awint\rppolint
+      \scpolint\npolint\pointint\sqint\intlarhk\intx
+      \intcap\intcup\upint\lowint
+    }%
+  \fi
+}
+\newcommand\thu@set@unimath@ellipsis{%
+  \ifthu@math@ellipsis@centered
+    \DeclareRobustCommand\mathellipsis{\mathinner{\unicodecdots}}%
+  \else
+    \DeclareRobustCommand\mathellipsis{\mathinner{\unicodeellipsis}}%
+  \fi
+}
+\newcommand\thu@set@unimath@style{%
+  \ifthu@uppercase@greek@upright
+    \unimathsetup{math-style = TeX}%
+  \else
+    \ifthu@uppercase@greek@italic
+      \unimathsetup{math-style = ISO}%
+    \fi
+  \fi
+  \ifthu@math@style@TeX
+    \unimathsetup{bold-style = TeX}%
+  \else
+    \unimathsetup{bold-style = ISO}%
+  \fi
+  \thu@set@unimath@leq
+  \thu@set@unimath@integral@limits
+  \ifthu@partial@upright
+    \unimathsetup{partial = upright}%
+  \else
+    \ifthu@partial@italic
+      \unimathsetup{partial = italic}%
+    \fi
+  \fi
+  \thu@set@unimath@ellipsis
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\thu@qed{\rule{1ex}{1ex}}
+\newcommand\thu@load@unimath{%
+  \@ifpackageloaded{unicode-math}{}{%
+    \RequirePackage{unicode-math}%
+    \AtBeginDocument{%
+      \let\thu@save@leq\leq
+      \let\thu@save@geq\geq
+    }%
+%    \end{macrocode}
+%
+% 兼容旧的粗体命令：\pkg{bm} 的 \cs{bm} 和 \pkg{amsmath} 的 \cs{boldsymbol}。
+%    \begin{macrocode}
+    \DeclareRobustCommand\bm[1]{{\symbfit{##1}}}%
+    \DeclareRobustCommand\boldsymbol[1]{{\symbfit{##1}}}%
+%    \end{macrocode}
+%
+% 兼容 \pkg{amsfonts} 和 \pkg{amssymb} 中的一些命令。
+%    \begin{macrocode}
+    \newcommand\square{\mdlgwhtsquare}%
+    \newcommand\blacksquare{\mdlgblksquare}%
+    \AtBeginDocument{%
+      \renewcommand\checkmark{\ensuremath{✓}}%
+    }%
+%    \end{macrocode}
+%
+% 兼容 \pkg{amsthm} 的 \cs{qedsymbol}。
+%    \begin{macrocode}
+    \renewcommand\thu@qed{\ensuremath{\QED}}%
+  }%
+}
+%    \end{macrocode}
+%
 %    \begin{macrocode}
 \newcommand\thu@xits@integral@stylistic@set{%
-  \ifthu@math@style@TeX\else
+  \ifthu@integral@upright
     8%
   \fi
 }
@@ -2333,6 +2505,11 @@
     StylisticSet = 1,
     range        = {scr,bfscr},
   ]%
+}
+\newcommand\thu@libertinus@integral@stylistic@set{%
+  \ifthu@integral@italic
+    8%
+  \fi
 }
 \newcommand\thu@set@math@font@libertinus{%
   \thu@set@libertinus@names
@@ -2363,7 +2540,7 @@
   ]%
 }
 \newcommand\thu@newcm@integral@stylistic@set{%
-  \ifthu@math@style@TeX\else
+  \ifthu@integral@upright
     2%
   \fi
 }
@@ -2400,11 +2577,14 @@
   ]%
 }
 \newcommand\thu@set@math@font{%
+  \ifthu@math@font@none\else
+    \thu@load@unimath
+    \thu@set@unimath@style
   \@nameuse{thu@set@math@font@\thu@math@font}%
+  \fi
 }
 \thu@set@math@font
-\thu@option@hook{math-font}{\thu@set@math@font}
-\thu@option@hook{math-style}{\thu@set@math@font}
+\thu@option@hook{math-font}{\g@addto@macro\thu@setup@hook{\thu@set@math@font}}
 %    \end{macrocode}
 %
 % 中文字体
@@ -2889,32 +3069,6 @@
 %
 % \subsubsection{数学相关}
 % \label{sec:equation}
-% \begin{macro}{\bm}
-% \begin{macro}{\boldsymbol}
-% 兼容旧的粗体命令：\pkg{bm} 的 \cs{bm} 和 \pkg{amsmath} 的 \cs{boldsymbol}。
-%    \begin{macrocode}
-\DeclareRobustCommand\bm[1]{{\symbf{#1}}}
-\DeclareRobustCommand\boldsymbol[1]{{\symbf{#1}}}
-%    \end{macrocode}
-% \end{macro}
-% \end{macro}
-%
-% \begin{macro}{\square}
-% 兼容 \pkg{amssymb} 中的命令。
-%    \begin{macrocode}
-\newcommand\square{\mdlgwhtsquare}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\checkmark}
-% 允许在文本模式中使用 \cs{checkmark}。
-%    \begin{macrocode}
-\AtBeginDocument{%
-  \renewcommand\checkmark{\ensuremath{✓}}%
-}
-%    \end{macrocode}
-% \end{macro}
-%
 % 允许太长的公式断行、分页等。
 %    \begin{macrocode}
 \allowdisplaybreaks[4]

@@ -16,10 +16,11 @@
 - 修正本科生的“目录”、“声明”和“致谢”等标题中的空白（#591）。
 
 ### Added
-- 新增选题报告的格式（#579）。
-- 新增数学符号格式选项 `math-style`。
-- 新增 `figure-number-sepatator` 等选项设置图表编号的连接符。
 - 新增英文版写作指南要求的格式。
+- 新增选题报告的格式（#579）。
+- 新增 `figure-number-sepatator` 等选项设置图表编号的连接符。
+- 新增数学符号字体风格选项 `math-style`。
+- 新增选项控制数学字体风格的细节：`uppercase-greek`、`less-than-or-equal`、`integral`、`integral-limits`、`partial` 和 `math-ellipsis`。
 
 ### Fixes
 - 修正参考文献的格式，取消页码与前面冒号之间的空格。
