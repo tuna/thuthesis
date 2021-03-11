@@ -3393,17 +3393,21 @@
     numberformat = {},
     titleformat  = {},
     fixskip      = true,
+    aftername    = \quad,
     afterindent  = true,
     lofskip      = 0pt,
     lotskip      = 0pt,
   },
   section = {
+    aftername    = \quad,
     afterindent  = true,
   },
   subsection = {
+    aftername    = \quad,
     afterindent  = true,
   },
   subsubsection = {
+    aftername    = \quad,
     afterindent  = true,
   },
   paragraph/afterindent = true,
@@ -3434,25 +3438,21 @@
         format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
         beforeskip = 30bp,
         afterskip  = 20bp,
-        aftername  = \quad,
       },
       section = {
         format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
         beforeskip = 25bp,
         afterskip  = 12bp,
-        aftername  = \quad,
       },
       subsection = {
         format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
         beforeskip = 12bp,
         afterskip  = 6bp,
-        aftername  = \quad,
       },
       subsubsection = {
         format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
         beforeskip = 12bp,
         afterskip  = 6bp,
-        aftername  = \quad,
       },
     }%
     \ifthu@main@language@chinese
@@ -3507,19 +3507,15 @@
           nameformat  = {},
           titleformat = {},
           name        = {第,章},
-          aftername   = \quad,
         },
         section = {
           format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
-          aftername   = \quad,
         },
         subsection = {
           format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
-          aftername   = \quad,
         },
         subsubsection = {
           format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
-          aftername   = \quad,
         },
       }%
     \else
@@ -3529,19 +3525,15 @@
           nameformat  = \MakeUppercase,
           titleformat = \MakeUppercase,
           name        = \chaptername\space,
-          aftername   = \space,
         },
         section = {
           format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
-          aftername   = \space,
         },
         subsection = {
           format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
-          aftername   = \space,
         },
         subsubsection = {
           format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
-          aftername   = \space,
         },
       }%
     \fi
@@ -3761,7 +3753,7 @@
     \else
       \titlecontents{chapter}
         [\z@]{\addvspace{6bp}\heiti}
-        {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
+        {\contentspush{\MakeUppercase{\thecontentslabel}\quad}\MakeUppercase}{\MakeUppercase}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
         [1em]{}
