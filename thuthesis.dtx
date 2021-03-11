@@ -1440,22 +1440,23 @@
 %
 % 字体
 %    \begin{macrocode}
+  system = {
+    choices = {
+      auto,
+      mac,
+      unix,
+      windows,
+    },
+    default = auto,
+  },
   fontset = {
     choices = {
+      auto,
       windows,
       mac,
       ubuntu,
       fandol,
       none,
-    },
-    default = none,
-  },
-  system = {
-    choices = {
-      mac,
-      unix,
-      windows,
-      auto,
     },
     default = auto,
   },
@@ -1761,8 +1762,61 @@
 \thu@package@conflict{newtxmath}{upgreek}
 %    \end{macrocode}
 %
+% \subsection{页面设置}
+% \label{sec:layout}
 %
-% \subsubsection{语言设置}
+% 研究生《写作指南》：
+% 页边距：上下左右均为 3.0 厘米，装订线 0 厘米；
+% 页眉距边界：2.2 厘米，页脚距边界：2.2 厘米。
+%
+% 本科生《写作指南》：
+% 页边距：上：3.8 厘米，下：3.2 厘米，左右：3 厘米，装订线：左 0.2 厘米。
+% 本科生 Word 模板：
+% 页眉距边界：1.5 厘米，页脚距边界：1.75 厘米。
+%
+%    \begin{macrocode}
+\geometry{
+  paper          = a4paper,  % 210 * 297mm
+  marginparwidth = 2cm,
+  marginparsep   = 0.5cm,
+}
+\newcommand\thu@set@geometry{%
+  \ifthu@degree@bachelor
+    \geometry{
+      top        = 3.8cm,
+      bottom     = 3.2cm,
+      left       = 3.2cm,
+      right      = 3cm,
+      headheight = 0.5cm,
+      headsep    = 1.8cm,
+      footskip   = 1.45cm,
+    }%
+    \ifthu@output@print
+      \geometry{
+        left       = 3.2cm,
+        right      = 3cm,
+      }%
+    \else
+      \geometry{
+        hmargin    = 3cm,
+      }%
+    \fi
+  \else
+    \geometry{
+      margin     = 3cm,
+      headheight = 0.5cm,
+      headsep    = 0.3cm,
+      footskip   = 0.8cm,
+    }%
+  \fi
+}
+\thu@set@geometry
+\thu@option@hook{degree}{\thu@set@geometry}
+\thu@option@hook{output}{\thu@set@geometry}
+%    \end{macrocode}
+%
+%
+% \subsection{语言设置}
 %
 % 定义 \cs{thu@main@language}，当在导言区修改 \option{language} 时，
 % 保存为论文的主要语言；
@@ -1952,149 +2006,9 @@
 \thu@option@hook{language}{\thu@set@punctuations}
 %    \end{macrocode}
 %
-% \subsection{页面设置}
-% \label{sec:layout}
-%
-% 研究生《写作指南》：
-% 页边距：上下左右均为 3.0 厘米，装订线 0 厘米；
-% 页眉距边界：2.2 厘米，页脚距边界：2.2 厘米。
-%
-% 本科生《写作指南》：
-% 页边距：上：3.8 厘米，下：3.2 厘米，左右：3 厘米，装订线：左 0.2 厘米。
-% 本科生 Word 模板：
-% 页眉距边界：1.5 厘米，页脚距边界：1.75 厘米。
-%
-%    \begin{macrocode}
-\geometry{
-  paper          = a4paper,  % 210 * 297mm
-  marginparwidth = 2cm,
-  marginparsep   = 0.5cm,
-}
-\newcommand\thu@set@geometry{%
-  \ifthu@degree@bachelor
-    \geometry{
-      top        = 3.8cm,
-      bottom     = 3.2cm,
-      left       = 3.2cm,
-      right      = 3cm,
-      headheight = 0.5cm,
-      headsep    = 1.8cm,
-      footskip   = 1.45cm,
-    }%
-    \ifthu@output@print
-      \geometry{
-        left       = 3.2cm,
-        right      = 3cm,
-      }%
-    \else
-      \geometry{
-        hmargin    = 3cm,
-      }%
-    \fi
-  \else
-    \geometry{
-      margin     = 3cm,
-      headheight = 0.5cm,
-      headsep    = 0.3cm,
-      footskip   = 0.8cm,
-    }%
-  \fi
-}
-\thu@set@geometry
-\thu@option@hook{degree}{\thu@set@geometry}
-\thu@option@hook{output}{\thu@set@geometry}
-%    \end{macrocode}
-%
-% \subsection{主文档格式}
-% \label{sec:mainbody}
-%
-% \subsubsection{Three matters}
-% \begin{macro}{\cleardoublepage}
-% 对于 \textsl{openright} 选项，必须保证章首页右开，且如果前章末页无内容须
-% 清空其页眉页脚。
-%    \begin{macrocode}
-\def\cleardoublepage{%
-  \clearpage
-  \if@twoside
-    \ifthu@output@print
-      \ifodd\c@page
-      \else
-        \thispagestyle{empty}%
-        \hbox{}%
-        \newpage
-        \if@twocolumn
-          \hbox{}\newpage
-        \fi
-      \fi
-    \fi
-  \fi
-}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\frontmatter}
-% \begin{macro}{\mainmatter}
-% \begin{macro}{\backmatter}
-% 我们的单面和双面模式与常规的不太一样。
-%    \begin{macrocode}
-\renewcommand\frontmatter{%
-  \cleardoublepage
-  \@mainmatterfalse
-  \pagenumbering{Roman}%
-}
-\renewcommand\mainmatter{%
-  \cleardoublepage
-  \@mainmattertrue
-  \pagenumbering{arabic}%
-}
-\renewcommand\backmatter{%
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
-  \@mainmatterfalse
-  \thusetup{toc-depth = 0}%
-}
-%    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-%
-% \subsubsection{字体}
+% \subsection{字体}
 % \label{sec:font}
-% 使用 \pkg{fontspec} 配置字体。
-%    \begin{macrocode}
-\ifthu@fontset@mac
-  \thusetup{
-    font     = times,
-    cjk-font = mac,
-  }
-\else
-  \ifthu@fontset@windows
-    \thusetup{
-      font     = times,
-      cjk-font = windows,
-    }
-  \else
-    \ifthu@fontset@fandol
-      \thusetup{
-        font     = termes,
-        cjk-font = fandol,
-      }
-    \else
-      \ifthu@fontset@ubuntu
-        \thusetup{
-          font     = termes,
-          cjk-font = noto,
-        }
-      \fi
-    \fi
-  \fi
-\fi
-%    \end{macrocode}
-%
-% 检测系统
+% 检测系统。
 %    \begin{macrocode}
 \ifthu@system@auto
   \IfFileExists{/System/Library/Fonts/Menlo.ttc}{
@@ -2110,6 +2024,44 @@
       \thusetup{system = windows}
     }
   }
+\fi
+%    \end{macrocode}
+%
+% 使用 \pkg{fontspec} 配置字体。
+%    \begin{macrocode}
+\ifthu@fontset@auto
+  \ifthu@system@windows
+    \thusetup{fontset = windows}
+  \else
+    \ifthu@system@mac
+      \thusetup{fontset = mac}
+    \else
+      \IfFontExistsTF{Noto Serif CJK SC}{
+        \thusetup{fontset = ubuntu}
+      }{
+        \thusetup{fontset = fandol}
+      }
+    \fi
+  \fi
+\fi
+%    \end{macrocode}
+%
+% \subsubsection{西文字体}
+%
+% 《指南》要求西文字体使用 Times New Roman 和 Arial，
+% 但是在 Linux 下没有这两个字体，所以使用它们的克隆版 TeX Gyre Termes 和
+% TeX Gyre Heros。
+%    \begin{macrocode}
+\ifthu@font@auto
+  \ifthu@fontset@windows
+    \thusetup{font=times}
+  \else
+    \ifthu@fontset@mac
+      \thusetup{font=times}
+    \else
+      \thusetup{font=termes}
+    \fi
+  \fi
 \fi
 %    \end{macrocode}
 %
@@ -2181,17 +2133,7 @@
 }
 %    \end{macrocode}
 %
-% 《撰写手册》要求西文字体使用 Times New Roman 和 Arial，
-% 但是在 Linux 下没有这两个字体，所以使用它们的克隆版 TeX Gyre Termes 和
-% TeX Gyre Heros。
 %    \begin{macrocode}
-\ifthu@font@auto
-  \ifthu@system@unix
-    \thusetup{font=termes}
-  \else
-    \thusetup{font=times}
-  \fi
-\fi
 \newcommand\thu@set@font@times{%
   \setmainfont{Times New Roman}%
   \setsansfont{Arial}%
@@ -2328,6 +2270,153 @@
 \thu@set@font
 \thu@option@hook{font}{\thu@set@font}
 %    \end{macrocode}
+%
+% \subsubsection{中文字体}
+%
+%    \begin{macrocode}
+\ifthu@cjk@font@auto
+  \ifthu@fontset@mac
+    \thusetup{cjk-font = mac}
+  \else
+    \ifthu@fontset@windows
+      \thusetup{cjk-font = windows}
+    \else
+      \ifthu@fontset@ubuntu
+        \thusetup{cjk-font = noto}
+      \else
+        \thusetup{cjk-font = fandol}
+      \fi
+    \fi
+  \fi
+\fi
+\newcommand\thu@set@cjk@font@windows{%
+  \defaultCJKfontfeatures{Script=CJK}%
+  \xeCJKsetup{EmboldenFactor=3}%
+  \setCJKmainfont{SimSun}[
+    AutoFakeBold = true,
+    ItalicFont   = KaiTi,
+  ]%
+  \setCJKsansfont{SimHei}[AutoFakeBold]%
+  \setCJKmonofont{FangSong}%
+  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold]%
+  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold]%
+  \setCJKfamilyfont{zhkai}{KaiTi}%
+  \setCJKfamilyfont{zhfs}{FangSong}%
+}
+\newcommand\thu@set@cjk@font@mac{%
+  \defaultCJKfontfeatures{}%
+  \setCJKmainfont{Songti SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+    ItalicFont     = Kaiti SC,
+    BoldItalicFont = Kaiti SC Bold,
+  ]%
+  \setCJKsansfont{Heiti SC}[BoldFont=* Medium]%
+  \setCJKmonofont{STFangsong}
+  \setCJKfamilyfont{zhsong}{Songti SC}[
+    UprightFont = * Light,
+      BoldFont  = * Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{Heiti SC}[
+    UprightFont = * Light,
+    BoldFont    = * Medium,
+  ]%
+  \setCJKfamilyfont{zhfs}{STFangsong}%
+  \setCJKfamilyfont{zhkai}{Kaiti SC}[BoldFont = * Bold]%
+  \setCJKfamilyfont{zhli}{Baoli SC}%
+  \setCJKfamilyfont{zhyuan}{Yuanyi SC}[
+    UprightFont = * Light,
+    BoldFont    = * Bold,
+  ]%
+}
+%    \end{macrocode}
+%
+% 注意 Noto CJK 的 regular 字重名字不带“Regular”。
+%    \begin{macrocode}
+\newcommand\thu@set@cjk@font@noto{%
+  \defaultCJKfontfeatures{}%
+  \setCJKmainfont{Noto Serif CJK SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+    ItalicFont     = FandolKai-Regular,
+    ItalicFeatures = {Extension = .otf},
+    Script         = CJK,
+  ]%
+  \setCJKsansfont{Noto Sans CJK SC}[
+    BoldFont       = * Medium,
+    Script         = CJK,
+  ]%
+  \setCJKmonofont{Noto Sans Mono CJK SC}[
+    Script         = CJK,
+  ]%
+  \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
+    UprightFont    = * Light,
+    UprightFont    = * Bold,
+    Script         = CJK,
+  ]%
+  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
+    BoldFont       = * Medium,
+    Script         = CJK,
+  ]%
+  \setCJKfamilyfont{zhfs}{FandolFang}[
+    Extension      = .otf,
+    UprightFont    = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhkai}{FandolKai}[
+    Extension      = .otf,
+    UprightFont    = *-Regular,
+  ]%
+}
+\newcommand\thu@set@cjk@font@fandol{%
+  \defaultCJKfontfeatures{}%
+  \setCJKmainfont{FandolSong}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+    ItalicFont  = FandolKai-Regular,
+  ]%
+  \setCJKsansfont{FandolHei}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+  ]%
+  \setCJKmonofont{FandolFang}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhsong}{FandolSong}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{FandolHei}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+  ]%
+  \setCJKfamilyfont{zhfs}{FandolFang}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhkai}{FandolKai}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+  ]%
+}
+\ifthu@cjk@font@none\else
+  \providecommand\songti{\CJKfamily{zhsong}}
+  \providecommand\heiti{\CJKfamily{zhhei}}
+  \providecommand\fangsong{\CJKfamily{zhfs}}
+  \providecommand\kaishu{\CJKfamily{zhkai}}
+\fi
+\newcommand\thu@set@cjk@font{%
+  \@nameuse{thu@set@cjk@font@\thu@cjk@font}%
+}
+\thu@set@cjk@font
+\thu@option@hook{cjk-font}{\thu@set@cjk@font}
+%    \end{macrocode}
+%
+% \subsubsection{数学字体}
 %
 % 使用 \pkg{unicode-math} 配置数学符号格式。
 %    \begin{macrocode}
@@ -2676,148 +2765,7 @@
 \AtEndPreamble{\thu@set@math@font@auto}
 %    \end{macrocode}
 %
-% 中文字体
-%    \begin{macrocode}
-\ifthu@cjk@font@auto
-  \ifthu@system@mac
-    \thusetup{cjk-font = mac}
-  \else
-    \ifthu@system@windows
-      \thusetup{cjk-font = windows}
-    \else
-      \IfFontExistsTF{Noto Serif CJK SC}{
-        \thusetup{cjk-font = noto}
-      }{
-        \thusetup{cjk-font = fandol}
-      }
-    \fi
-  \fi
-\fi
-\newcommand\thu@set@cjk@font@windows{%
-  \xeCJKsetup{EmboldenFactor=3}%
-  \setCJKmainfont{SimSun}[
-    AutoFakeBold = true,
-    ItalicFont   = KaiTi,
-  ]%
-  \setCJKsansfont{SimHei}[AutoFakeBold]%
-  \setCJKmonofont{FangSong}%
-  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold]%
-  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold]%
-  \setCJKfamilyfont{zhkai}{KaiTi}%
-  \setCJKfamilyfont{zhfs}{FangSong}%
-}
-\newcommand\thu@set@cjk@font@mac{%
-  \defaultCJKfontfeatures{}%
-  \setCJKmainfont{Songti SC}[
-    UprightFont    = * Light,
-    BoldFont       = * Bold,
-    ItalicFont     = Kaiti SC,
-    BoldItalicFont = Kaiti SC Bold,
-  ]%
-  \setCJKsansfont{Heiti SC}[BoldFont=* Medium]%
-  \setCJKmonofont{STFangsong}
-  \setCJKfamilyfont{zhsong}{Songti SC}[
-    UprightFont = * Light,
-      BoldFont  = * Bold,
-  ]%
-  \setCJKfamilyfont{zhhei}{Heiti SC}[
-    UprightFont = * Light,
-    BoldFont    = * Medium,
-  ]%
-  \setCJKfamilyfont{zhfs}{STFangsong}%
-  \setCJKfamilyfont{zhkai}{Kaiti SC}[BoldFont = * Bold]%
-  \setCJKfamilyfont{zhli}{Baoli SC}%
-  \setCJKfamilyfont{zhyuan}{Yuanyi SC}[
-    UprightFont = * Light,
-    BoldFont    = * Bold,
-  ]%
-}
-%    \end{macrocode}
-%
-% 注意 Noto CJK 的 regular 字重名字不带“Regular”。
-%    \begin{macrocode}
-\newcommand\thu@set@cjk@font@noto{%
-  \defaultCJKfontfeatures{}%
-  \setCJKmainfont{Noto Serif CJK SC}[
-    UprightFont    = * Light,
-    BoldFont       = * Bold,
-    ItalicFont     = FandolKai-Regular,
-    ItalicFeatures = {Extension = .otf},
-    Script         = CJK,
-  ]%
-  \setCJKsansfont{Noto Sans CJK SC}[
-    BoldFont       = * Medium,
-    Script         = CJK,
-  ]%
-  \setCJKmonofont{Noto Sans Mono CJK SC}[
-    Script         = CJK,
-  ]%
-  \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
-    UprightFont    = * Light,
-    UprightFont    = * Bold,
-    Script         = CJK,
-  ]%
-  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
-    BoldFont       = * Medium,
-    Script         = CJK,
-  ]%
-  \setCJKfamilyfont{zhfs}{FandolFang}[
-    Extension      = .otf,
-    UprightFont    = *-Regular,
-  ]%
-  \setCJKfamilyfont{zhkai}{FandolKai}[
-    Extension      = .otf,
-    UprightFont    = *-Regular,
-  ]%
-}
-\newcommand\thu@set@cjk@font@fandol{%
-  \defaultCJKfontfeatures{}%
-  \setCJKmainfont{FandolSong}[
-    Extension   = .otf,
-    UprightFont = *-Regular,
-    BoldFont    = *-Bold,
-    ItalicFont  = FandolKai-Regular,
-  ]%
-  \setCJKsansfont{FandolHei}[
-    Extension   = .otf,
-    UprightFont = *-Regular,
-    BoldFont    = *-Bold,
-  ]%
-  \setCJKmonofont{FandolFang}[
-    Extension   = .otf,
-    UprightFont = *-Regular,
-  ]%
-  \setCJKfamilyfont{zhsong}{FandolSong}[
-    Extension   = .otf,
-    UprightFont = *-Regular,
-    BoldFont    = *-Bold,
-  ]%
-  \setCJKfamilyfont{zhhei}{FandolHei}[
-    Extension   = .otf,
-    UprightFont = *-Regular,
-    BoldFont    = *-Bold,
-  ]%
-  \setCJKfamilyfont{zhfs}{FandolFang}[
-    Extension   = .otf,
-    UprightFont = *-Regular,
-  ]%
-  \setCJKfamilyfont{zhkai}{FandolKai}[
-    Extension   = .otf,
-    UprightFont = *-Regular,
-  ]%
-}
-\ifthu@cjk@font@none\else
-  \providecommand\songti{\CJKfamily{zhsong}}
-  \providecommand\heiti{\CJKfamily{zhhei}}
-  \providecommand\fangsong{\CJKfamily{zhfs}}
-  \providecommand\kaishu{\CJKfamily{zhkai}}
-\fi
-\newcommand\thu@set@cjk@font{%
-  \@nameuse{thu@set@cjk@font@\thu@cjk@font}%
-}
-\thu@set@cjk@font
-\thu@option@hook{cjk-font}{\thu@set@cjk@font}
-%    \end{macrocode}
+% \subsubsection{字号}
 %
 % \begin{macro}{\normalsize}
 % 正文小四号 (12bp) 字，行距为固定值 20 bp。
@@ -2924,6 +2872,62 @@
 \thu@def@fontsize{bahao}{5bp}
 %    \end{macrocode}
 %
+%
+% \subsection{主文档格式}
+% \label{sec:mainbody}
+%
+% \subsubsection{Three matters}
+% \begin{macro}{\cleardoublepage}
+% 对于 \textsl{openright} 选项，必须保证章首页右开，且如果前章末页无内容须
+% 清空其页眉页脚。
+%    \begin{macrocode}
+\def\cleardoublepage{%
+  \clearpage
+  \if@twoside
+    \ifthu@output@print
+      \ifodd\c@page
+      \else
+        \thispagestyle{empty}%
+        \hbox{}%
+        \newpage
+        \if@twocolumn
+          \hbox{}\newpage
+        \fi
+      \fi
+    \fi
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\frontmatter}
+% \begin{macro}{\mainmatter}
+% \begin{macro}{\backmatter}
+% 我们的单面和双面模式与常规的不太一样。
+%    \begin{macrocode}
+\renewcommand\frontmatter{%
+  \cleardoublepage
+  \@mainmatterfalse
+  \pagenumbering{Roman}%
+}
+\renewcommand\mainmatter{%
+  \cleardoublepage
+  \@mainmattertrue
+  \pagenumbering{arabic}%
+}
+\renewcommand\backmatter{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \@mainmatterfalse
+  \thusetup{toc-depth = 0}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
 %
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
