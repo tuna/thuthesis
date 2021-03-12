@@ -84,7 +84,8 @@ make [{all|thesis|spine|doc|clean|cleanall|distclean}]
 
 ---
 
-# ThuThesis?
+# ThuThesis
+
 **ThuThesis** is an abbreviation of **T**sing**h**ua **U**niversity **Thesis** LaTeX Template.
 
 This package establishes a simple and easy-to-use LaTeX template for Tsinghua dissertations, including general undergraduate research papers, masters theses, doctoral dissertations, and postdoctoral reports. An English translation of this README follows the Chinese below.
