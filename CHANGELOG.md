@@ -5,16 +5,6 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
-### Changed
-- 研究生的声明页默认加上页眉和页码，不受 `page-style` 的控制（#574）。
-- 取消图表标题的悬挂缩进（#589）。
-- 联合导师的 key 改为 `co-supervisor`，同英文版模板一致。
-
-### Fixed
-- 修正 `longtable` 宏包的配置（#584）。
-- 英文封面的联合导师修正为“Co-supervisor”。
-- 修正本科生的“目录”、“声明”和“致谢”等标题中的空白（#591）。
-
 ### Added
 - 新增英文版写作指南要求的格式。
 - 新增选题报告的格式（#579）。
@@ -23,7 +13,15 @@
 - 新增选项控制数学字体风格的细节：`uppercase-greek`、`less-than-or-equal`、`integral`、`integral-limits`、`partial` 和 `math-ellipsis`。
 - 新增数学字体试验性选项 `math-font = newtx`。
 
-### Fixes
+### Changed
+- 研究生的声明页默认加上页眉和页码，不受 `page-style` 的控制（#574）。
+- 取消图表标题的悬挂缩进（#589）。
+- 英文封面的联合导师改为“Co-supervisor”。
+- 联合导师的 key 改为 `co-supervisor`，同英文版模板一致。
+
+### Fixed
+- 修正 `longtable` 宏包的配置（#584）。
+- 修正本科生的“目录”、“声明”和“致谢”等标题中的空白（#591）。
 - 修正参考文献的格式，取消页码与前面冒号之间的空格。
 - 修正中文封面的字距。
 
