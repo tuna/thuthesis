@@ -4,7 +4,7 @@ set -e
 export PATH="/opt/texlive/bin/x86_64-linux:$PATH";
 
 XETEX_PKGS="fontname fontspec l3packages xetex";
-CTEX_PKGS="cjk ctex environ ms trimspaces ulem xecjk zhnumber";
+CTEX_PKGS="cjk ctex environ everysel trimspaces ulem xecjk zhnumber";
 HYPERREF_PKGS="bitset letltxmacro pdfescape pdflscape";
 BIBLATEX_PKGS="biber biblatex biblatex-apa biblatex-gb7714-2015 biblatex-mla xstring";
 NOMENCL_PKGS="nomencl koma-script xkeyval";

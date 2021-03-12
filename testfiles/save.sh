@@ -15,12 +15,6 @@ save_config ()
             fi
         done
 
-    elif [[ "$1" == "cover" ]]; then
-        for testfile in testfiles/01-cover/*.tex; do
-            test="$(basename "$testfile" .tex)";
-            l3build save --quiet --config testfiles/config-cover "$test" || exit 1;
-        done
-
     elif [[ "$1" == "nomencl" ]]; then
         for testfile in testfiles/08-notation-nomencl/*.tex; do
             test="$(basename "$testfile" .tex)";
@@ -44,7 +38,7 @@ save_config ()
 
 
 if [[ $# -eq 0 ]]; then
-    for config in main crossref cover nomencl bibtex biblatex; do
+    for config in main crossref nomencl bibtex biblatex; do
         save_config $config;
     done
 else

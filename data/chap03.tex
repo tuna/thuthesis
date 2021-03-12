@@ -10,7 +10,7 @@
 \begin{enumerate}
   \item 大写希腊字母默认为斜体，如 $\Delta$、$\Sigma$，
     有限增量符号 $\increment$（\cs{increment}）固定使用正体。
-  \item 数学常数和特殊函数名用正体，如 $\symup{\pi} = 3.14\dots$；$\symup{e} = 2.718\dots$。
+  \item 数学常数和特殊函数名用正体，如 $\uppi = 3.14\dots$；$\symup{e} = 2.718\dots$。
   \item 微分号使用正体，比如 $\dif y / \dif x$。
   \item 向量、矩阵和张量用粗斜体（\cs{symbf}），如 $\symbf{x}$、$\symbf{\Sigma}$。
   \item 省略号按照中文的习惯固定居中，如 $1, 2, \dots, n$。
@@ -36,7 +36,7 @@
 数学公式可以使用 \env{equation} 和 \env{equation*} 环境。
 注意数学公式的引用应前后带括号，建议使用 \cs{eqref} 命令，比如式 \eqref{eq:example}。
 \begin{equation}
-  \frac{1}{2 \symup{\pi} \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k)
+  \frac{1}{2 \uppi \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k)
   \label{eq:example}
 \end{equation}
 注意公式编号的引用应含有圆括号，可以使用 \cs{eqref} 命令。

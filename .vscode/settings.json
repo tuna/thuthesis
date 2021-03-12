@@ -1,6 +1,8 @@
 {
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.intellisense.unimathsymbols.enabled": true,
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.build.forceRecipeUsage": true,
     "latex-workshop.latex.recipes": [
         {
             "name": "latexmk for thuthesis",

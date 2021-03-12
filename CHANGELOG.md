@@ -5,20 +5,23 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+### Added
+- 新增英文版写作指南要求的格式。
+- 新增选题报告的格式（#579）。
+- 新增 `figure-number-sepatator` 等选项设置图表编号的连接符。
+- 新增数学符号字体风格选项 `math-style`。
+- 新增选项控制数学字体风格的细节：`uppercase-greek`、`less-than-or-equal`、`integral`、`integral-limits`、`partial` 和 `math-ellipsis`。
+- 新增数学字体试验性选项 `math-font = newtx`。
+
 ### Changed
 - 研究生的声明页默认加上页眉和页码，不受 `page-style` 的控制（#574）。
 - 取消图表标题的悬挂缩进（#589）。
+- 英文封面的联合导师改为“Co-supervisor”。
+- 联合导师的 key 改为 `co-supervisor`，同英文版模板一致。
 
 ### Fixed
-修正 `longtable` 宏包的配置（#584）。
-
-### Added
-- 新增选题报告的格式（#579）。
-- 新增数学符号格式选项 `math-style`。
-- 新增 `figure-number-sepatator` 等选项设置图表编号的连接符。
-- 新增英文版写作指南要求的格式。
-
-### Fixes
+- 修正 `longtable` 宏包的配置（#584）。
+- 修正本科生的“目录”、“声明”和“致谢”等标题中的空白（#591）。
 - 修正参考文献的格式，取消页码与前面冒号之间的空格。
 - 修正中文封面的字距。
 
@@ -134,7 +137,7 @@
 
 ## [v6.0.2] - 2020-02-23
 ### Fixed
-- 修复图表公式目录内容缺失 (#467)。
+- 修复图表公式目录内容缺失（#467）。
 - 修复 Github Actions 执行 l3build check 问题。
 - 文本模式使用 `\checkmark`。
 
@@ -151,8 +154,8 @@
 - 更新 bib 测试用例。
 
 ### Fixed
-- 修复 PDF 目录层级问题 (#457)。
-- 修复 PDF 中章节连接问题 (#453)。
+- 修复 PDF 目录层级问题（#457）。
+- 修复 PDF 中章节连接问题（#453）。
 
 ## [v6.0.0] - 2020-01-06
 ### Added
@@ -287,17 +290,17 @@
 - 不再将页面尺寸写入 dvi，因为已不支持 dvips， 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。
 - 用 `geometry` 简化设置。
 - `\ps@thu@headings`: 利用 `fancyhdr` 设置页眉页脚。
-- 修正定理字样为黑体 (#104)。
+- 修正定理字样为黑体（#104）。
 - 本科附录图表编号用-不用.（如图A-1，表A-2）。
 - 用 `\ctexset` 来设置，替换复杂的 `\@startsection`。
-- 修正章节间距问题(#57)
+- 修正章节间距问题（#57）。
 - 硕士博士论文目录只出现到第 3 级标题即可。其他未明确要求。
-- `\tableofcontents`: 修正学位论文中目录里节前缩进(#103)
-- `\makecover`: 使用 `pdfpages` 宏包支持本硕博论文授权说明扫描版(#36)。
-- `acknowledgement`: 使用 pdfpages 宏包支持本硕博论文声明扫描版(#36)。
+- `\tableofcontents`: 修正学位论文中目录里节前缩进（#103）。
+- `\makecover`: 使用 `pdfpages` 宏包支持本硕博论文授权说明扫描版（#36）。
+- `acknowledgement`: 使用 pdfpages 宏包支持本硕博论文声明扫描版（#36）。
 - `\inlinecite`: 用 `\inlinecite` 替换 `\onlinecite`。为保证兼 容性，`\onlinecite` 会保留。
-- `achievements`: 博士后就不提在学期间了，不合适(#100)
-- `achievements`: 让简历部分更符合格式指南和示例文件(#122)
+- `achievements`: 博士后就不提在学期间了，不合适（#100）。
+- `achievements`: 让简历部分更符合格式指南和示例文件（#122）。
 - `\shuji`: 扩展 `\shuji[<标题>][<作者>]`。
 
 ## [v4.8.1] - 2014-12-09
@@ -390,7 +393,7 @@
 - 调整段前距为 -12bp 而不是原来的 -16bp。
 - `\tableofcontents`: 本科生目录字号改回`\xiaosi[<1.8>]`。
 - `\tableofcontents`: 本科生目录缩进要求不同。
-- `\tableofcontents`: 本科章目录项一直用黑体 (Arial)。
+- `\tableofcontents`: 本科章目录项一直用黑体（Arial）。
 
 ## [v4.3] - 2008-03-11
 ### Changed
@@ -558,7 +561,7 @@
 ### Changed
 - Fill more pdf info. with `\hypersetup`.
 - 自动隐藏密级为内部时后面的五角星。
-- 增加“注释 (Remark)”环境。
+- 增加“注释（Remark）”环境。
 - 压缩 item 之间的距离。
 - `thubib.bst` 文献标题取消自动小写。
 - 中文参考文献取消 In: Proceedings。

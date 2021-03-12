@@ -23,8 +23,8 @@ Scroll down for the English version of README.
 
 推荐下载**发布版**模板，里面包括具体使用说明以及示例文档：
 
-* 模板使用说明 (thuthesis.pdf)
-* 示例文档 (thuthesis-example.pdf)
+* 模板使用说明（thuthesis.pdf）
+* 示例文档（thuthesis-example.pdf）
 
 开发版中不提供预生成的 `cls` 文件和文档，仅包含源码。其仅供开发者与需要尚未发布的功能的有经验的 TeX 用户使用，不提供任何保证。
 

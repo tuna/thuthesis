@@ -1,5 +1,18 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
+Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
+(fontspec)             with options
+(fontspec)             [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 Completed box being shipped out [1]
 \vbox(722.98454+6.02255)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -48,6 +61,7 @@ Completed box being shipped out [1]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -89,8 +103,6 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{中文摘要}{中文摘要}}
-...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(9.3951+2.32468)x421.10089, glue set 0.64734
 ....\hbox(0.0+0.0)x22.76228
@@ -1499,6 +1511,7 @@ Completed box being shipped out [3]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -1528,8 +1541,6 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{ABSTRACT}{ABSTRACT}}
-...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(8.22673+2.6258)x421.10089, glue set 0.38148
 ....\hbox(0.0+0.0)x22.76228
@@ -2835,6 +2846,7 @@ Completed box being shipped out [5]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -2862,8 +2874,6 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{CONTENTS}{CONTENTS}}
-...\penalty 10000
 ...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
@@ -4402,6 +4412,7 @@ Completed box being shipped out [6]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -4740,6 +4751,7 @@ Completed box being shipped out [7]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -4768,8 +4780,6 @@ Completed box being shipped out [7]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{ABBREVIATIONS}{ABBREVIATIONS}}
-...\penalty 10000
 ...\glue -30.11249
 ...\glue 30.11249
 ...\glue 0.0 plus 1.0
@@ -5433,6 +5443,7 @@ Completed box being shipped out [1]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -7073,6 +7084,7 @@ Completed box being shipped out [2]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -7603,6 +7615,7 @@ Completed box being shipped out [3]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -8968,6 +8981,7 @@ Completed box being shipped out [4]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -10081,6 +10095,7 @@ Completed box being shipped out [5]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -11220,6 +11235,7 @@ Completed box being shipped out [6]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -12555,17 +12571,17 @@ Completed box being shipped out [6]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 729.0071
 .\kern 0.0
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(7)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 10.54048pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(7)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 7.00075pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(7)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 5.00053pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(8)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 10.53824pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(8)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 6.99925pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(8)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line ....
 Overfull \hbox (0.80754pt too wide) in paragraph at lines 195--209
  [][] 
@@ -13797,17 +13813,17 @@ Overfull \hbox (0.80754pt too wide) in paragraph at lines 195--209
 .\glue(\parfillskip) 0.0
 .\glue(\rightskip) 0.0 plus 1.0fil
 LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(7)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 11.04242pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(7)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 7.72966pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(7)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 5.5212pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(8)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 11.04005pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(8)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 7.728pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(8)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 5.52002pt on input line ....
 LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -13859,6 +13875,7 @@ Completed box being shipped out [7]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -16040,6 +16057,7 @@ Completed box being shipped out [8]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -17419,6 +17437,7 @@ Completed box being shipped out [9]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -17876,6 +17895,7 @@ Completed box being shipped out [10]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -18017,6 +18037,7 @@ Completed box being shipped out [11]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -18050,8 +18071,6 @@ Completed box being shipped out [11]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{TABLES}{TABLES}}
-...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -18402,6 +18421,7 @@ Completed box being shipped out [12]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -18428,9 +18448,6 @@ Completed box being shipped out [12]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{REFERENCES}{REFERENCES}}
-...\penalty 10000
-...\glue 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\hbox(7.25108+2.28703)x390.9884, glue set - 0.70021, shifted 30.11249
 ....\hbox(0.0+0.0)x-30.11249
@@ -19527,6 +19544,7 @@ Completed box being shipped out [13]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -19556,8 +19574,6 @@ Completed box being shipped out [13]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{ACKNOWLEDGEMENTS}{ACKNOWLEDGEMENTS}}
-...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(8.22673+2.6258)x421.10089, glue set 154.01791fil
 ....\hbox(0.0+0.0)x22.76228
@@ -19706,17 +19722,17 @@ Completed box being shipped out [14]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
 .\kern 0.0
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(7)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 12.04628pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(7)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 9.03471pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(7)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 7.22777pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(8)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 12.0437pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(8)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 9.03278pt on input line ....
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(8)/m/n' will be
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 7.22623pt on input line ....
 Completed box being shipped out [15]
 \vbox(722.98454+0.0)x439.87962
@@ -19769,8 +19785,6 @@ Completed box being shipped out [15]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{声\protect \hspace  {2em}明}{声\protect \hspace  {2em}明}}
-...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(9.45532+2.32468)x421.10089, glue set 0.03989
 ....\hbox(0.0+0.0)x22.76228
@@ -20232,6 +20246,7 @@ Completed box being shipped out [17]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -20490,6 +20505,7 @@ Completed box being shipped out [18]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 ....\special{color pop}
@@ -20740,6 +20756,7 @@ Completed box being shipped out [19]
 ...........\penalty 10000
 ...........\glue(\parfillskip) 0.0
 ...........\glue(\rightskip) 0.0
+.......\glue 0.0
 .......\rule(0.0+0.0)x421.10089
 .......\glue 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
@@ -20767,8 +20784,6 @@ Completed box being shipped out [19]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 20.075 plus -1.0
-...\mark{{PUBLICATIONS}{PUBLICATIONS}}
-...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\hbox(10.976+2.21326)x421.10089, glue set 294.847fil
 ....\hbox(0.0+0.0)x22.76228
