@@ -5,6 +5,8 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
+## [v7.2.0] - 2021-03-12
 ### Added
 - 新增英文版写作指南要求的格式。
 - 新增选题报告的格式（#579）。
@@ -661,7 +663,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.1.0...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.2.0...HEAD
+[v7.2.0]:     https://github.com/tuna/thuthesis/compare/v7.1.0...v7.2.0
 [v7.1.0]:     https://github.com/tuna/thuthesis/compare/v7.0.0...v7.1.0
 [v7.0.0]:     https://github.com/tuna/thuthesis/compare/v6.1.3...v7.0.0
 [v6.1.3]:     https://github.com/tuna/thuthesis/compare/v6.1.2...v6.1.3
