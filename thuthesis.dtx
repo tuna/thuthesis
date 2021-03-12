@@ -2087,15 +2087,19 @@
   \ifthu@system@windows
     \thusetup{fontset = windows}
   \else
-    \ifthu@system@mac
-      \thusetup{fontset = mac}
-    \else
-      \IfFontExistsTF{Noto Serif CJK SC}{
-        \thusetup{fontset = ubuntu}
-      }{
-        \thusetup{fontset = fandol}
-      }
-    \fi
+    \IfFontExistsTF{SimSun}{
+      \thusetup{fontset = windows}
+    }{
+      \ifthu@system@mac
+        \thusetup{fontset = mac}
+      \else
+        \IfFontExistsTF{Noto Serif CJK SC}{
+          \thusetup{fontset = ubuntu}
+        }{
+          \thusetup{fontset = fandol}
+        }
+      \fi
+    }
   \fi
 \fi
 %    \end{macrocode}
