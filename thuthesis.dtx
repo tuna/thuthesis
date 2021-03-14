@@ -1082,8 +1082,7 @@
 % \end{latex}
 % 注意，本科生插入扫描页时总是会加页码，不受该选项控制。
 %
-% 研究生不存在空白页的问题，所以在编译声明页时总是会加上页眉和页脚，
-% 而在插入扫描页时则不再添加，不受 \option{page-style} 的控制。
+% 研究生不存在空白页的问题，但是为了灵活性也允许用户选择是否添加页眉和页脚。
 %
 % \subsubsection{附录}
 %
@@ -4972,10 +4971,11 @@
   statement-page-style = {
     name = statement@page@style,
     choices = {
+      auto,
       empty,
       plain,
     },
-    default = empty,
+    default = auto,
   },
   statement-page-number = {
     name = statement@page@number,
@@ -5016,6 +5016,21 @@
     \fi
   }%
   \kvsetkeys{thu@statement}{#1}%
+  \ifthu@statement@page@style@auto
+    \ifx\thu@statement@file\@empty
+      \ifthu@degree@bachelor
+        \thusetup{statement-page-style = empty}%
+      \else
+        \thusetup{statement-page-style = plain}%
+      \fi
+    \else
+      \ifthu@degree@bachelor
+        \thusetup{statement-page-style = plain}%
+      \else
+        \thusetup{statement-page-style = empty}%
+      \fi
+    \fi
+  \fi
   \ifx\thu@statement@file\@empty
     \thusetup{language=chinese}%
     \begingroup
@@ -5028,9 +5043,7 @@
       \fi
       \thu@chapter*{\thu@statement@name}%
     \endgroup
-    \ifthu@degree@bachelor
-      \thispagestyle{\thu@statement@page@style}%
-    \fi
+    \thispagestyle{\thu@statement@page@style}%
     \thu@statement@text\par
     \ifthu@degree@graduate
       \vskip 2cm%
@@ -5045,9 +5058,7 @@
       \markboth{\thu@statement@name}{}%
       \thu@phantomsection
       \addcontentsline{toc}{chapter}{\thu@statement@name}%
-      \ifthu@degree@bachelor\else
-        \thispagestyle{empty}%
-      \fi
+      \thispagestyle{\thu@statement@page@style}%
     }]{\thu@statement@file}%
   \fi
   \ifthu@degree@bachelor
