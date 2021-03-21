@@ -5104,7 +5104,7 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 157.61093fil
+..\vbox(645.87758+0.0)x421.10089, glue set 151.67903fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\glue(\topskip) 12.0
@@ -5287,13 +5287,13 @@ Completed box being shipped out [3]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\penalty 0
-...\glue 6.02249
-...\vbox(123.52234+0.0)x421.10089
+...\glue 12.0 plus 2.0 minus 2.0
+...\vbox(117.49985+0.0)x421.10089
 ....\special{color push gray 0}
-....\vbox(123.52234+0.0)x421.10089
+....\vbox(117.49985+0.0)x421.10089
 .....\write1{\@writefile{lot}{\protect \contentsline {table}{\protect \numberline \ETC.}
 .....\special{color push gray 0}
-.....\glue 6.02249
+.....\glue 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(10.53932+4.5169)x421.10089
 ......\hbox(0.0+0.0)x0.0
@@ -5589,7 +5589,7 @@ Completed box being shipped out [3]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 6.02249
+...\glue 12.0 plus 2.0 minus 2.0
 ...\glue 0.0 plus -1.0
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -6207,7 +6207,7 @@ Completed box being shipped out [4]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 297.91566fill
+..\vbox(645.87758+0.0)x421.10089, glue set 291.98314fill
 ...\glue(\topskip) 2.6049
 ...\hbox(9.3951+2.32468)x421.10089, glue set - 0.00252
 ....\hbox(0.0+0.0)x24.09
@@ -6415,10 +6415,10 @@ Completed box being shipped out [4]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\penalty 0
-...\glue 6.02249
-...\vbox(45.16866+0.0)x421.10089
+...\glue 12.0 plus 2.0 minus 2.0
+...\vbox(39.14616+0.0)x421.10089
 ....\special{color push gray 0}
-....\vbox(45.16866+0.0)x421.10089
+....\vbox(39.14616+0.0)x421.10089
 .....\hbox(18.06744+0.0)x421.10089, glue set 138.7825fil
 ......\glue(\leftskip) 0.0 plus 1.0fil
 ......\hbox(0.0+0.0)x0.0
@@ -6497,13 +6497,13 @@ Completed box being shipped out [4]
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
-.....\glue 6.02249
+.....\glue 0.0
 .....\special{color pop}
 .....\write1{\newlabel{fig:winter}{{2.1}{\thepage }}}
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 6.02249
+...\glue 12.0 plus 2.0 minus 2.0
 ...\glue 0.0 plus -1.0
 ...\penalty 10000
 ...\penalty -300
