@@ -5,8 +5,17 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
+## [v7.2.1] - 2021-03-21
+### Added
+- 在文档中添加更多关于数学公式样式的说明。
+
+### Changed
+- 允许控制研究生的声明页是否添加页眉页脚。
+
 ### Fixed
 - 调整文字与图表等浮动体之间的距离（#614）。
+- 修复一些字体选择相关的问题。
 
 ## [v7.2.0] - 2021-03-12
 ### Added
@@ -665,7 +674,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.2.0...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.2.1...HEAD
+[v7.2.1]:     https://github.com/tuna/thuthesis/compare/v7.2.0...v7.2.1
 [v7.2.0]:     https://github.com/tuna/thuthesis/compare/v7.1.0...v7.2.0
 [v7.1.0]:     https://github.com/tuna/thuthesis/compare/v7.0.0...v7.1.0
 [v7.0.0]:     https://github.com/tuna/thuthesis/compare/v6.1.3...v7.0.0
