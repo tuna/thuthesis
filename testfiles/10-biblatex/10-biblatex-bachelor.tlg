@@ -353,6 +353,8 @@ Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/m/n' will be
+(Font)              scaled to size 12.99814pt on input line ....
 Package fontspec Info: Font family 'FandolFang(0)' created for font
 (fontspec)             'FandolFang' with options
 (fontspec)             [Extension={.otf},UprightFont={*-Regular}].
@@ -363,6 +365,8 @@ Package fontspec Info: Font family 'FandolFang(0)' created for font
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"[FandolFang-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/m/n' will be
+(Font)              scaled to size 11.37337pt on input line ....
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 10.54048pt on input line ....
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
@@ -774,7 +778,7 @@ Completed box being shipped out [2]
 ...\glue 3.01125 plus 3.01125 minus 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.52065
-...\hbox(8.24179+1.96031)x398.33861, glue set 0.29996, shifted 28.45274
+...\hbox(8.24179+1.96031)x398.33861, glue set 0.23767, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -945,8 +949,8 @@ Completed box being shipped out [2]
 ...\penalty -51
 ...\glue 3.01125 plus 3.01125 minus 3.01125
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 6.94347
-...\hbox(7.25108+2.29756)x398.33861, glue set 1.69107, shifted 28.45274
+...\glue(\baselineskip) 6.59714
+...\hbox(7.59741+2.29756)x398.33861, glue set 1.60674, shifted 28.45274
 ....\hbox(7.25108+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -1668,7 +1672,7 @@ Completed box being shipped out [2]
 ...\glue 3.01125 plus 3.01125 minus 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.52065
-...\hbox(8.24179+1.98138)x398.33861, glue set - 0.29543, shifted 28.45274
+...\hbox(8.24179+1.98138)x398.33861, glue set - 0.32713, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -2255,8 +2259,8 @@ Completed box being shipped out [2]
 ....\TU/texgyretermes(0)/m/n/10.53937 Gran-
 ....\glue(\rightskip) 0.0
 ...\penalty 15100
-...\glue(\baselineskip) 6.51135
-...\hbox(7.25108+2.28705)x398.33861, glue set 0.01569, shifted 28.45274
+...\glue(\baselineskip) 6.16502
+...\hbox(7.59741+2.28705)x398.33861, glue set - 0.04051, shifted 28.45274
 ....\TU/texgyretermes(0)/m/n/10.53937 dis
 ....\kern -0.0002
 ....\kern 0.0002
@@ -2832,8 +2836,8 @@ Completed box being shipped out [2]
 ....\TU/texgyretermes(0)/m/n/10.53937 Sys-
 ....\glue(\rightskip) 0.0
 ...\penalty 15100
-...\glue(\baselineskip) 6.51135
-...\hbox(7.25108+2.29758)x398.33861, glue set 0.09322, shifted 28.45274
+...\glue(\baselineskip) 6.16502
+...\hbox(7.59741+2.29758)x398.33861, glue set 0.0757, shifted 28.45274
 ....\TU/texgyretermes(0)/m/n/10.53937 tem
 ....\kern -0.0002
 ....\kern 0.0002
@@ -3178,7 +3182,7 @@ Completed box being shipped out [2]
 ...\glue 3.01125 plus 3.01125 minus 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.86844
-...\hbox(8.23125+1.87599)x398.33861, glue set 0.34657, shifted 28.45274
+...\hbox(8.23125+1.87599)x398.33861, glue set 0.31375, shifted 28.45274
 ....\hbox(7.25108+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -3804,7 +3808,7 @@ Completed box being shipped out [2]
 ...\glue 3.01125 plus 3.01125 minus 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.9949
-...\hbox(8.28395+1.93922)x398.33861, glue set - 0.49838, shifted 28.45274
+...\hbox(8.28395+1.93922)x398.33861, glue set - 0.64154, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -4320,7 +4324,7 @@ Completed box being shipped out [3]
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 400.30888fil
 ...\glue(\topskip) 3.76875
-...\hbox(8.23125+1.86545)x398.33861, glue set 1.69102, shifted 28.45274
+...\hbox(8.23125+1.86545)x398.33861, glue set 1.65822, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -4849,7 +4853,7 @@ Completed box being shipped out [3]
 ...\glue 3.01125 plus 3.01125 minus 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 7.53366
-...\hbox(8.29448+1.94977)x398.33861, glue set 1.20006, shifted 28.45274
+...\hbox(8.29448+1.94977)x398.33861, glue set 1.16649, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -5399,7 +5403,7 @@ Completed box being shipped out [3]
 ...\glue 3.01125 plus 3.01125 minus 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.83682
-...\hbox(8.24179+1.94977)x398.33861, glue set 0.40277, shifted 28.45274
+...\hbox(8.24179+1.94977)x398.33861, glue set 0.3686, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -5828,7 +5832,7 @@ Completed box being shipped out [3]
 ...\glue 3.01125 plus 3.01125 minus 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.18309
-...\hbox(8.24179+2.28705)x398.33861, glue set 0.17061, shifted 28.45274
+...\hbox(8.24179+2.28705)x398.33861, glue set 0.14845, shifted 28.45274
 ....\hbox(7.25108+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -6140,8 +6144,8 @@ Completed box being shipped out [3]
 ...\penalty -51
 ...\glue 3.01125 plus 3.01125 minus 3.01125
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 8.6192
-...\hbox(7.20892+2.29756)x398.33861, glue set 0.63661, shifted 28.45274
+...\glue(\baselineskip) 8.23071
+...\hbox(7.59741+2.29756)x398.33861, glue set 0.59871, shifted 28.45274
 ....\hbox(7.20892+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073

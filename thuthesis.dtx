@@ -1316,7 +1316,6 @@
   \let\thu@setup@hook\@empty
   \kvsetkeys{thu}{#1}%
   \thu@setup@hook
-  \thu@setup@hook
 }
 %    \end{macrocode}
 % \end{macro}
@@ -1544,8 +1543,8 @@
     name = math@font,
     choices = {
       auto,
-      xits,
       stix,
+      xits,
       libertinus,
       newcm,
       lm,
@@ -1784,7 +1783,7 @@
       \thu@error{The "#2" package is incompatible with "#1"}%
     }%
   }%
-  }
+}
 \thu@package@conflict{biblatex}{bibunits}
 \thu@package@conflict{biblatex}{chapterbib}
 \thu@package@conflict{biblatex}{cite}
@@ -2122,74 +2121,7 @@
 \fi
 %    \end{macrocode}
 %
-% STIX 字体的文件名在 v2.10 2020-12-19 从
-% \file{STIXTwoText-Regular.otf}、\file{STIX2Math.otf} 分别改为
-% \file{STIXTwoText-Regular.otf}、\file{STIXTwoMath-Regular.otf}。
-% 需要进行判断。
-%
-% XITS 字体的文件名在 v1.109 2018-09-30
-% 从 \file{xits-regular.otf}、\file{xits-math.otf} 分别改为
-% \file{XITS-Regular.otf}、\file{XITSMath-Regular.otf}。
-%
-% Libertinus 的文件名在 v6.7 2019-04-03 从小写改为驼峰式，
-% 在大小写敏感的平台上需要进行判断。
-%    \begin{macrocode}
-\let\thu@font@family@stix\@empty
-\newcommand\thu@set@stix@names{%
-  \ifx\thu@font@family@stix\@empty
-    \IfFontExistsTF{STIXTwoText-Regular.otf}{%
-      \gdef\thu@font@family@stix{STIXTwoText}%
-      \gdef\thu@font@name@stix@math{STIXTwoMath-Regular}%
-    }{%
-      \gdef\thu@font@family@stix{STIX2Text}%
-      \gdef\thu@font@name@stix@math{STIX2Math}%
-    }%
-  \fi
-}
-\let\thu@font@family@xits\@empty
-\newcommand\thu@set@xits@names{%
-  \ifx\thu@font@family@xits\@empty
-    \IfFontExistsTF{XITSMath-Regular.otf}{%
-      \gdef\thu@font@family@xits{XITS}%
-      \gdef\thu@font@style@xits@rm{Regular}%
-      \gdef\thu@font@style@xits@bf{Bold}%
-      \gdef\thu@font@style@xits@it{Italic}%
-      \gdef\thu@font@style@xits@bfit{BoldItalic}%
-      \gdef\thu@font@name@xits@math{XITSMath-Regular}%
-    }{%
-      \gdef\thu@font@family@xits{xits}%
-      \gdef\thu@font@style@xits@rm{regular}%
-      \gdef\thu@font@style@xits@bf{bold}%
-      \gdef\thu@font@style@xits@it{italic}%
-      \gdef\thu@font@style@xits@bfit{bolditalic}%
-      \gdef\thu@font@name@xits@math{xits-math}%
-    }%
-  \fi
-}
-\let\thu@font@family@libertinus\@empty
-\newcommand\thu@set@libertinus@names{%
-  \ifx\thu@font@family@libertinus\@empty
-    \IfFontExistsTF{LibertinusSerif-Regular.otf}{%
-      \gdef\thu@font@family@libertinus@serif{LibertinusSerif}%
-      \gdef\thu@font@family@libertinus@sans{LibertinusSans}%
-      \gdef\thu@font@name@libertinus@math{LibertinusMath-Regular}%
-      \gdef\thu@font@style@libertinus@rm{Regular}%
-      \gdef\thu@font@style@libertinus@bf{Bold}%
-      \gdef\thu@font@style@libertinus@it{Italic}%
-      \gdef\thu@font@style@libertinus@bfit{BoldItalic}%
-    }{%
-      \gdef\thu@font@family@libertinus@serif{libertinusserif}%
-      \gdef\thu@font@family@libertinus@sans{libertinussans}%
-      \gdef\thu@font@name@libertinus@math{libertinusmath-regular}%
-      \gdef\thu@font@style@libertinus@rm{regular}%
-      \gdef\thu@font@style@libertinus@bf{bold}%
-      \gdef\thu@font@style@libertinus@it{italic}%
-      \gdef\thu@font@style@libertinus@bfit{bolditalic}%
-    }%
-  \fi
-}
-%    \end{macrocode}
-%
+% Times New Roman + Arial
 %    \begin{macrocode}
 \newcommand\thu@set@font@times{%
   \setmainfont{Times New Roman}%
@@ -2200,6 +2132,10 @@
     \setmonofont{Courier New}[Scale = MatchLowercase]%
   \fi
 }
+%    \end{macrocode}
+%
+% TeX Gyre Termes
+%    \begin{macrocode}
 \newcommand\thu@set@font@termes{%
   \setmainfont{texgyretermes}[
     Extension      = .otf,
@@ -2224,8 +2160,28 @@
     BoldFont       = *-bold,
     ItalicFont     = *-italic,
     BoldItalicFont = *-bolditalic,
+    Scale          = MatchLowercase,
     Ligatures      = CommonOff,
   ]%
+}
+%    \end{macrocode}
+%
+% STIX Two 字体。
+% STIX 文件名在 v2.10 2020-12-19 从
+% \file{STIX2Text-Regular.otf}、\file{STIX2Math.otf} 分别改为
+% \file{STIXTwoText-Regular.otf}、\file{STIXTwoMath-Regular.otf}。
+%    \begin{macrocode}
+\let\thu@font@family@stix\@empty
+\newcommand\thu@set@stix@names{%
+  \ifx\thu@font@family@stix\@empty
+    \IfFontExistsTF{STIXTwoText-Regular.otf}{%
+      \gdef\thu@font@family@stix{STIXTwoText}%
+      \gdef\thu@font@name@stix@math{STIXTwoMath-Regular}%
+    }{%
+      \gdef\thu@font@family@stix{STIX2Text}%
+      \gdef\thu@font@name@stix@math{STIX2Math}%
+    }%
+  \fi
 }
 \newcommand\thu@set@font@stix{%
   \thu@set@stix@names
@@ -2238,6 +2194,33 @@
   ]%
   \thu@set@texgyre@sans@mono
 }
+%    \end{macrocode}
+%
+% XITS 字体。
+% XITS 的文件名在 v1.109 2018-09-30
+% 从 \file{xits-regular.otf}、\file{xits-math.otf} 分别改为
+% \file{XITS-Regular.otf}、\file{XITSMath-Regular.otf}。
+%    \begin{macrocode}
+\let\thu@font@family@xits\@empty
+\newcommand\thu@set@xits@names{%
+  \ifx\thu@font@family@xits\@empty
+    \IfFontExistsTF{XITSMath-Regular.otf}{%
+      \gdef\thu@font@family@xits{XITS}%
+      \gdef\thu@font@style@xits@rm{Regular}%
+      \gdef\thu@font@style@xits@bf{Bold}%
+      \gdef\thu@font@style@xits@it{Italic}%
+      \gdef\thu@font@style@xits@bfit{BoldItalic}%
+      \gdef\thu@font@name@xits@math{XITSMath-Regular}%
+    }{%
+      \gdef\thu@font@family@xits{xits}%
+      \gdef\thu@font@style@xits@rm{regular}%
+      \gdef\thu@font@style@xits@bf{bold}%
+      \gdef\thu@font@style@xits@it{italic}%
+      \gdef\thu@font@style@xits@bfit{bolditalic}%
+      \gdef\thu@font@name@xits@math{xits-math}%
+    }%
+  \fi
+}
 \newcommand\thu@set@font@xits{%
   \thu@set@xits@names
   \setmainfont{\thu@font@family@xits}[
@@ -2248,6 +2231,34 @@
     BoldItalicFont = *-\thu@font@style@xits@bfit,
   ]%
   \thu@set@texgyre@sans@mono
+}
+%    \end{macrocode}
+%
+% Libertinus 字体。
+% Libertinus 的文件名在 v6.7 2019-04-03 从小写改为驼峰式，
+% 在大小写敏感的平台上需要进行判断。
+%    \begin{macrocode}
+\let\thu@font@family@libertinus\@empty
+\newcommand\thu@set@libertinus@names{%
+  \ifx\thu@font@family@libertinus\@empty
+    \IfFontExistsTF{LibertinusSerif-Regular.otf}{%
+      \gdef\thu@font@family@libertinus@serif{LibertinusSerif}%
+      \gdef\thu@font@family@libertinus@sans{LibertinusSans}%
+      \gdef\thu@font@name@libertinus@math{LibertinusMath-Regular}%
+      \gdef\thu@font@style@libertinus@rm{Regular}%
+      \gdef\thu@font@style@libertinus@bf{Bold}%
+      \gdef\thu@font@style@libertinus@it{Italic}%
+      \gdef\thu@font@style@libertinus@bfit{BoldItalic}%
+    }{%
+      \gdef\thu@font@family@libertinus@serif{libertinusserif}%
+      \gdef\thu@font@family@libertinus@sans{libertinussans}%
+      \gdef\thu@font@name@libertinus@math{libertinusmath-regular}%
+      \gdef\thu@font@style@libertinus@rm{regular}%
+      \gdef\thu@font@style@libertinus@bf{bold}%
+      \gdef\thu@font@style@libertinus@it{italic}%
+      \gdef\thu@font@style@libertinus@bfit{bolditalic}%
+    }%
+  \fi
 }
 \newcommand\thu@set@font@libertinus{%
   \thu@set@libertinus@names
@@ -2272,22 +2283,26 @@
     BoldItalicFont = *-boldoblique,
   ]%
 }
+%    \end{macrocode}
+%
+% New Computer Modern
+%    \begin{macrocode}
 \newcommand\thu@set@font@newcm{%
-  \setmathrm{NewCM10}[
+  \setmainfont{NewCM10}[
     Extension      = .otf,
     UprightFont    = *-Book,
     BoldFont       = *-Bold,
     ItalicFont     = *-BookItalic,
     BoldItalicFont = *-BoldItalic,
   ]%
-  \setmathsf{NewCMSans10}[
+  \setsansfont{NewCMSans10}[
     Extension         = .otf,
     UprightFont       = *-Book,
     BoldFont          = *-Bold,
     ItalicFont        = *-BookOblique,
     BoldItalicFont    = *-BoldOblique,
   ]%
-  \setmathtt{NewCMMono10}[
+  \setmonofont{NewCMMono10}[
     Extension           = .otf,
     UprightFont         = *-Book,
     ItalicFont          = *-BookItalic,
@@ -2295,6 +2310,10 @@
     BoldItalicFont      = *-BoldOblique,
   ]%
 }
+%    \end{macrocode}
+%
+% Latin Modern
+%    \begin{macrocode}
 \newcommand\thu@set@font@lm{%
   \setmainfont{lmroman10}[
     Extension      = .otf,
@@ -2346,8 +2365,11 @@
     \fi
   \fi
 \fi
+%    \end{macrocode}
+%
+% Windows 的中易字体。
+%    \begin{macrocode}
 \newcommand\thu@set@cjk@font@windows{%
-  \defaultCJKfontfeatures{Script=CJK}%
   \xeCJKsetup{EmboldenFactor=3}%
   \setCJKmainfont{SimSun}[
     AutoFakeBold = true,
@@ -2360,34 +2382,45 @@
   \setCJKfamilyfont{zhkai}{KaiTi}%
   \setCJKfamilyfont{zhfs}{FangSong}%
 }
+%    \end{macrocode}
+%
+% macOS 的华文字体。
+%    \begin{macrocode}
 \newcommand\thu@set@cjk@font@mac{%
   \defaultCJKfontfeatures{}%
   \setCJKmainfont{Songti SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
-    ItalicFont     = Kaiti SC,
+    ItalicFont     = Kaiti SC Regular,
     BoldItalicFont = Kaiti SC Bold,
   ]%
-  \setCJKsansfont{Heiti SC}[BoldFont=* Medium]%
+  \setCJKsansfont{Heiti SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Medium,
+  ]%
   \setCJKmonofont{STFangsong}
   \setCJKfamilyfont{zhsong}{Songti SC}[
-    UprightFont = * Light,
-      BoldFont  = * Bold,
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
   ]%
   \setCJKfamilyfont{zhhei}{Heiti SC}[
-    UprightFont = * Light,
-    BoldFont    = * Medium,
+    UprightFont    = * Light,
+    BoldFont       = * Medium,
   ]%
   \setCJKfamilyfont{zhfs}{STFangsong}%
-  \setCJKfamilyfont{zhkai}{Kaiti SC}[BoldFont = * Bold]%
+  \setCJKfamilyfont{zhkai}{Kaiti SC}[
+    UprightFont    = * Regular,
+    BoldFont       = * Bold,
+  ]%
   \setCJKfamilyfont{zhli}{Baoli SC}%
   \setCJKfamilyfont{zhyuan}{Yuanyi SC}[
-    UprightFont = * Light,
-    BoldFont    = * Bold,
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
   ]%
 }
 %    \end{macrocode}
 %
+% 思源字体。
 % 注意 Noto CJK 的 regular 字重名字不带“Regular”。
 %    \begin{macrocode}
 \newcommand\thu@set@cjk@font@noto{%
@@ -2424,6 +2457,10 @@
     UprightFont    = *-Regular,
   ]%
 }
+%    \end{macrocode}
+%
+% Fandol 字体。
+%    \begin{macrocode}
 \newcommand\thu@set@cjk@font@fandol{%
   \defaultCJKfontfeatures{}%
   \setCJKmainfont{FandolSong}[
@@ -2431,6 +2468,7 @@
     UprightFont = *-Regular,
     BoldFont    = *-Bold,
     ItalicFont  = FandolKai-Regular,
+    ItalicFeatures = {Extension = .otf},
   ]%
   \setCJKsansfont{FandolHei}[
     Extension   = .otf,
@@ -2498,14 +2536,14 @@
       \thusetup{
         less-than-or-equal = horizontal,
         math-ellipsis      = lower,
-    }%
-  \else
+      }%
+    \else
       \ifthu@math@style@GB
         \thusetup{
           less-than-or-equal = slanted,
           math-ellipsis      = centered,
-    }%
-  \fi
+        }%
+      \fi
     \fi
   \fi
 }
@@ -2645,6 +2683,23 @@
 }
 %    \end{macrocode}
 %
+% STIX Two Math
+%    \begin{macrocode}
+\newcommand\thu@set@math@font@stix{%
+  \thu@set@stix@names
+  \setmathfont{\thu@font@name@stix@math}[
+    Extension    = .otf,
+    StylisticSet = \thu@xits@integral@stylistic@set,
+  ]%
+  \setmathfont{\thu@font@name@stix@math}[
+    Extension    = .otf,
+    StylisticSet = 1,
+    range        = {scr,bfscr},
+  ]%
+}
+%    \end{macrocode}
+%
+% XITS Math
 %    \begin{macrocode}
 \newcommand\thu@xits@integral@stylistic@set{%
   \ifthu@integral@upright
@@ -2663,51 +2718,26 @@
     range        = {cal,bfcal},
   ]%
 }
-\newcommand\thu@set@math@font@stix{%
-  \thu@set@stix@names
-  \setmathfont{\thu@font@name@stix@math}[
-    Extension    = .otf,
-    StylisticSet = \thu@xits@integral@stylistic@set,
-  ]%
-  \setmathfont{\thu@font@name@stix@math}[
-    Extension    = .otf,
-    StylisticSet = 1,
-    range        = {scr,bfscr},
-  ]%
-}
+%    \end{macrocode}
+%
+% Libertinus Math
+%    \begin{macrocode}
 \newcommand\thu@libertinus@integral@stylistic@set{%
-  \ifthu@integral@italic
+  \ifthu@integral@slanted
     8%
   \fi
 }
 \newcommand\thu@set@math@font@libertinus{%
   \thu@set@libertinus@names
-  \setmathfont{\thu@font@name@libertinus@math .otf}%
-}
-\newcommand\thu@set@math@font@lm{%
-  \setmathfont{latinmodern-math}[Extension=.otf]%
-  \setmathrm{lmroman10}[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-italic,
-    BoldItalicFont = *-bolditalic,
-  ]%
-  \setmathsf{lmsans10}[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-oblique,
-    BoldItalicFont = *-boldoblique,
-  ]%
-  \setmathtt{lmmonolt10}[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-oblique,
-    BoldItalicFont = *-boldoblique,
+  \setmathfont{\thu@font@name@libertinus@math}[
+    Extension    = .otf,
+    StylisticSet = \thu@libertinus@integral@stylistic@set,
   ]%
 }
+%    \end{macrocode}
+%
+% New Computer Modern Math
+%    \begin{macrocode}
 \newcommand\thu@newcm@integral@stylistic@set{%
   \ifthu@integral@upright
     2%
@@ -2747,6 +2777,35 @@
 }
 %    \end{macrocode}
 %
+% Latin Modern Math
+%    \begin{macrocode}
+\newcommand\thu@set@math@font@lm{%
+  \setmathfont{latinmodern-math}[Extension=.otf]%
+  \setmathrm{lmroman10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setmathsf{lmsans10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-oblique,
+    BoldItalicFont = *-boldoblique,
+  ]%
+  \setmathtt{lmmonolt10}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-oblique,
+    BoldItalicFont = *-boldoblique,
+  ]%
+}
+%    \end{macrocode}
+%
+% NewTX Math
 %    \begin{macrocode}
 \newcommand\thu@set@math@font@newtx{%
   \ifthu@font@newtx\else
