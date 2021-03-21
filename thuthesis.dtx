@@ -2060,6 +2060,116 @@
 %
 % \subsection{字体}
 % \label{sec:font}
+%
+% \subsubsection{字号}
+%
+% \begin{macro}{\normalsize}
+% 正文小四号（12bp）字，行距为固定值 20 bp。
+% 其他字号的行距按照相同的比例设置。
+%
+% 注意重定义 \cs{normalsize} 应在 \pkg{unicode-math} 的 \cs{setmathfont} 前。
+%
+% 表达式行的行距为单倍行距，段前空 6 磅，段后空 6 磅。
+%    \begin{macrocode}
+\renewcommand\normalsize{%
+  \@setfontsize\normalsize{12bp}{20bp}%
+  \abovedisplayskip 6bp%
+  \abovedisplayshortskip 6bp%
+  \belowdisplayshortskip 6bp%
+  \belowdisplayskip \abovedisplayskip
+}
+\normalsize
+\ifx\MakeRobust\@undefined \else
+    \MakeRobust\normalsize
+\fi
+\DeclareRobustCommand\small{%
+   \@setfontsize\small{10.5bp}{17.5bp}%
+   \abovedisplayskip 6bp%
+   \abovedisplayshortskip 6bp%
+   \belowdisplayshortskip 6bp%
+   \def\@listi{\leftmargin\leftmargini
+               \topsep \z@skip
+               \parsep \z@skip
+               \itemsep \z@skip}%
+   \belowdisplayskip \abovedisplayskip
+}
+\DeclareRobustCommand\footnotesize{%
+   \@setfontsize\footnotesize{9bp}{15bp}%
+   \abovedisplayskip 6bp%
+   \abovedisplayshortskip 6bp%
+   \belowdisplayshortskip 6bp%
+   \def\@listi{\leftmargin\leftmargini
+               \topsep \z@skip
+               \parsep \z@skip
+               \itemsep \z@skip}%
+   \belowdisplayskip \abovedisplayskip
+}
+\DeclareRobustCommand\scriptsize{\@setfontsize\scriptsize{7.5bp}{12.5bp}}
+\DeclareRobustCommand\tiny{\@setfontsize\tiny{6.5bp}{10.83bp}}
+\DeclareRobustCommand\large{\@setfontsize\large{15bp}{25bp}}
+\DeclareRobustCommand\Large{\@setfontsize\Large{18bp}{30bp}}
+\DeclareRobustCommand\LARGE{\@setfontsize\LARGE{22bp}{36.67bp}}
+\DeclareRobustCommand\huge{\@setfontsize\huge{24bp}{40bp}}
+\DeclareRobustCommand\Huge{\@setfontsize\Huge{26bp}{43.33bp}}
+%    \end{macrocode}
+% \end{macro}
+%
+% WORD 中的字号对应该关系如下（1bp = 72.27/72 pt）:
+% \begin{center}
+% \begin{longtable}{llll}
+% \toprule
+% 初号 & 42bp & 14.82mm & 42.1575pt \\
+% 小初 & 36bp & 12.70mm & 36.135 pt \\
+% 一号 & 26bp & 9.17mm & 26.0975pt \\
+% 小一 & 24bp & 8.47mm & 24.09pt \\
+% 二号 & 22bp & 7.76mm & 22.0825pt \\
+% 小二 & 18bp & 6.35mm & 18.0675pt \\
+% 三号 & 16bp & 5.64mm & 16.06pt \\
+% 小三 & 15bp & 5.29mm & 15.05625pt \\
+% 四号 & 14bp & 4.94mm & 14.0525pt \\
+% 小四 & 12bp & 4.23mm & 12.045pt \\
+% 五号 & 10.5bp & 3.70mm & 10.59375pt \\
+% 小五 & 9bp & 3.18mm & 9.03375pt \\
+% 六号 & 7.5bp & 2.56mm & \\
+% 小六 & 6.5bp & 2.29mm & \\
+% 七号 & 5.5bp & 1.94mm & \\
+% 八号 & 5bp & 1.76mm & \\\bottomrule
+% \end{longtable}
+% \end{center}
+%
+% \begin{macro}{\thu@def@fontsize}
+% 根据习惯定义字号。用法：
+%
+% \cs{thu@def@fontsize}\marg{字号名称}\marg{磅数}
+%
+% 避免了字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
+%    \begin{macrocode}
+\def\thu@def@fontsize#1#2{%
+  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
+%    \end{macrocode}
+% \end{macro}
+%
+% 一组字号定义。
+%    \begin{macrocode}
+\thu@def@fontsize{chuhao}{42bp}
+\thu@def@fontsize{xiaochu}{36bp}
+\thu@def@fontsize{yihao}{26bp}
+\thu@def@fontsize{xiaoyi}{24bp}
+\thu@def@fontsize{erhao}{22bp}
+\thu@def@fontsize{xiaoer}{18bp}
+\thu@def@fontsize{sanhao}{16bp}
+\thu@def@fontsize{xiaosan}{15bp}
+\thu@def@fontsize{sihao}{14bp}
+\thu@def@fontsize{xiaosi}{12bp}
+\thu@def@fontsize{wuhao}{10.5bp}
+\thu@def@fontsize{xiaowu}{9bp}
+\thu@def@fontsize{liuhao}{7.5bp}
+\thu@def@fontsize{xiaoliu}{6.5bp}
+\thu@def@fontsize{qihao}{5.5bp}
+\thu@def@fontsize{bahao}{5bp}
+%    \end{macrocode}
+%
 % 检测系统。
 %    \begin{macrocode}
 \ifthu@system@auto
@@ -2879,113 +2989,6 @@
 }
 \AtBeginOfPackageFile*{siunitx}{\thu@set@math@font@auto}
 \AtEndPreamble{\thu@set@math@font@auto}
-%    \end{macrocode}
-%
-% \subsubsection{字号}
-%
-% \begin{macro}{\normalsize}
-% 正文小四号（12bp）字，行距为固定值 20 bp。
-% 其他字号的行距按照相同的比例设置。
-%
-% 表达式行的行距为单倍行距，段前空 6 磅，段后空 6 磅。
-%    \begin{macrocode}
-\renewcommand\normalsize{%
-  \@setfontsize\normalsize{12bp}{20bp}%
-  \abovedisplayskip 6bp%
-  \abovedisplayshortskip 6bp%
-  \belowdisplayshortskip 6bp%
-  \belowdisplayskip \abovedisplayskip
-}
-\normalsize
-\ifx\MakeRobust\@undefined \else
-    \MakeRobust\normalsize
-\fi
-\DeclareRobustCommand\small{%
-   \@setfontsize\small{10.5bp}{17.5bp}%
-   \abovedisplayskip 6bp%
-   \abovedisplayshortskip 6bp%
-   \belowdisplayshortskip 6bp%
-   \def\@listi{\leftmargin\leftmargini
-               \topsep \z@skip
-               \parsep \z@skip
-               \itemsep \z@skip}%
-   \belowdisplayskip \abovedisplayskip
-}
-\DeclareRobustCommand\footnotesize{%
-   \@setfontsize\footnotesize{9bp}{15bp}%
-   \abovedisplayskip 6bp%
-   \abovedisplayshortskip 6bp%
-   \belowdisplayshortskip 6bp%
-   \def\@listi{\leftmargin\leftmargini
-               \topsep \z@skip
-               \parsep \z@skip
-               \itemsep \z@skip}%
-   \belowdisplayskip \abovedisplayskip
-}
-\DeclareRobustCommand\scriptsize{\@setfontsize\scriptsize{7.5bp}{12.5bp}}
-\DeclareRobustCommand\tiny{\@setfontsize\tiny{6.5bp}{10.83bp}}
-\DeclareRobustCommand\large{\@setfontsize\large{15bp}{25bp}}
-\DeclareRobustCommand\Large{\@setfontsize\Large{18bp}{30bp}}
-\DeclareRobustCommand\LARGE{\@setfontsize\LARGE{22bp}{36.67bp}}
-\DeclareRobustCommand\huge{\@setfontsize\huge{24bp}{40bp}}
-\DeclareRobustCommand\Huge{\@setfontsize\Huge{26bp}{43.33bp}}
-%    \end{macrocode}
-% \end{macro}
-%
-% WORD 中的字号对应该关系如下（1bp = 72.27/72 pt）:
-% \begin{center}
-% \begin{longtable}{llll}
-% \toprule
-% 初号 & 42bp & 14.82mm & 42.1575pt \\
-% 小初 & 36bp & 12.70mm & 36.135 pt \\
-% 一号 & 26bp & 9.17mm & 26.0975pt \\
-% 小一 & 24bp & 8.47mm & 24.09pt \\
-% 二号 & 22bp & 7.76mm & 22.0825pt \\
-% 小二 & 18bp & 6.35mm & 18.0675pt \\
-% 三号 & 16bp & 5.64mm & 16.06pt \\
-% 小三 & 15bp & 5.29mm & 15.05625pt \\
-% 四号 & 14bp & 4.94mm & 14.0525pt \\
-% 小四 & 12bp & 4.23mm & 12.045pt \\
-% 五号 & 10.5bp & 3.70mm & 10.59375pt \\
-% 小五 & 9bp & 3.18mm & 9.03375pt \\
-% 六号 & 7.5bp & 2.56mm & \\
-% 小六 & 6.5bp & 2.29mm & \\
-% 七号 & 5.5bp & 1.94mm & \\
-% 八号 & 5bp & 1.76mm & \\\bottomrule
-% \end{longtable}
-% \end{center}
-%
-% \begin{macro}{\thu@def@fontsize}
-% 根据习惯定义字号。用法：
-%
-% \cs{thu@def@fontsize}\marg{字号名称}\marg{磅数}
-%
-% 避免了字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
-%    \begin{macrocode}
-\def\thu@def@fontsize#1#2{%
-  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
-    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
-%    \end{macrocode}
-% \end{macro}
-%
-% 一组字号定义。
-%    \begin{macrocode}
-\thu@def@fontsize{chuhao}{42bp}
-\thu@def@fontsize{xiaochu}{36bp}
-\thu@def@fontsize{yihao}{26bp}
-\thu@def@fontsize{xiaoyi}{24bp}
-\thu@def@fontsize{erhao}{22bp}
-\thu@def@fontsize{xiaoer}{18bp}
-\thu@def@fontsize{sanhao}{16bp}
-\thu@def@fontsize{xiaosan}{15bp}
-\thu@def@fontsize{sihao}{14bp}
-\thu@def@fontsize{xiaosi}{12bp}
-\thu@def@fontsize{wuhao}{10.5bp}
-\thu@def@fontsize{xiaowu}{9bp}
-\thu@def@fontsize{liuhao}{7.5bp}
-\thu@def@fontsize{xiaoliu}{6.5bp}
-\thu@def@fontsize{qihao}{5.5bp}
-\thu@def@fontsize{bahao}{5bp}
 %    \end{macrocode}
 %
 %
