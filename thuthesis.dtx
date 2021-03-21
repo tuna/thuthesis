@@ -773,8 +773,9 @@
 %
 % \subsubsection{数学符号}
 % \label{sec:math}
-% 中文论文的数学符号默认遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》。
-% 该标准参照采纳 ISO 31-11:1992，
+% 中文论文的数学符号默认遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》
+% \footnote{原 GB 3102.11—1993，自 2017 年 3 月 23 日起，该标准转为推荐性标准。}。
+% 该标准参照采纳 ISO 31-11:1992 \footnote{目前已更新为 ISO 80000-2:2019。}，
 % 但是与 \TeX{} 默认的美国数学学会（AMS）的习惯有许多差异。
 % 这将在下文详细论述。
 %
@@ -810,6 +811,8 @@
 %     省略号 \cs{dots} 的样式，可选：\option{centered}（按照中文的习惯固定居中）、
 %     \option{lower} 和 \option{AMS}（取决于前后符号的位置）。
 %     其他的省略号命令如 \cs{lots}、\cs{cdots} 则不受影响。
+%   \item \DescribeOption{real-part}
+%     实部 \cs{Re} 和虚部 \cs{Im} 的字体，可选：\option{roman} 和 \option{fraktur}。
 % \end{enumerate}
 %
 % 如果数学符号选择国标样式 |math-style = GB|，相当于设置了
@@ -821,6 +824,7 @@
 %     integral-limits    = true,
 %     partial            = upright,
 %     math-ellipsis      = centered,
+%     real-part          = roman,
 %   }
 % \end{latex}
 %
@@ -1600,6 +1604,13 @@
       centered,
       lower,
       AMS,
+    },
+  },
+  real-part = {
+    name = real@part,
+    choices = {
+      roman,
+      fraktur,
     },
   },
 %    \end{macrocode}
@@ -2653,6 +2664,7 @@
       integral-limits    = false,
       partial            = italic,
       math-ellipsis      = AMS,
+      real-part          = fraktur,
     }%
   \else
     \thusetup{
@@ -2660,6 +2672,7 @@
       integral        = upright,
       integral-limits = true,
       partial         = upright,
+      real-part       = roman,
     }%
     \ifthu@math@style@ISO
       \thusetup{
@@ -2753,6 +2766,19 @@
     \DeclareRobustCommand\mathellipsis{\mathinner{\unicodeellipsis}}%
   \fi
 }
+\newcommand\thu@set@unimath@real@part{%
+  \ifthu@real@part@roman
+    \AtBeginDocument{%
+      \def\Re{\operatorname{Re}}%
+      \def\Im{\operatorname{Im}}%
+    }%
+  \else
+    \AtBeginDocument{%
+      \let\Re\thu@save@Re
+      \let\Im\thu@save@Im
+    }%
+  \fi
+}
 \newcommand\thu@set@unimath@style{%
   \ifthu@uppercase@greek@upright
     \unimathsetup{math-style = TeX}%
@@ -2776,6 +2802,7 @@
     \fi
   \fi
   \thu@set@unimath@ellipsis
+  \thu@set@unimath@real@part
 }
 %    \end{macrocode}
 %
@@ -2787,6 +2814,8 @@
     \AtBeginDocument{%
       \let\thu@save@leq\leq
       \let\thu@save@geq\geq
+      \let\thu@save@Re\Re
+      \let\thu@save@Im\Im
     }%
 %    \end{macrocode}
 %
@@ -2973,6 +3002,12 @@
     \DeclareRobustCommand\mathellipsis{\mathinner{\cdotp\cdotp\cdotp}}%
   \else
     \DeclareRobustCommand\mathellipsis{\mathinner{\ldotp\ldotp\ldotp}}%
+  \fi
+  \let\thu@save@Re\Re
+  \let\thu@save@Im\Im
+  \ifthu@real@part@roman
+    \def\Re{\operatorname{Re}}%
+    \def\Im{\operatorname{Im}}%
   \fi
   \RequirePackage{bm}%
   \ifthu@font@newtx\else

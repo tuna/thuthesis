@@ -4,17 +4,49 @@
 
 \section{数学符号}
 
-中文论文的数学符号默认采用 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》。
-该标准参照采纳 ISO 31-11:1992（目前最新版为 ISO 80000-2:2019），
-但是与 \TeX{} 默认的英美国家的符号习惯有许多差异，主要有：
+中文论文的数学符号默认遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》
+\footnote{原 GB 3102.11—1993，自 2017 年 3 月 23 日起，该标准转为推荐性标准。}。
+该标准参照采纳 ISO 31-11:1992 \footnote{目前已更新为 ISO 80000-2:2019。}，
+但是与 \TeX{} 默认的美国数学学会（AMS）的符号习惯有所区别。
+具体地来说主要有以下差异：
 \begin{enumerate}
-  \item 大写希腊字母默认为斜体，如 $\Delta$、$\Sigma$，
-    有限增量符号 $\increment$（\cs{increment}）固定使用正体。
-  \item 数学常数和特殊函数名用正体，如 $\uppi = 3.14\dots$；$\symup{e} = 2.718\dots$。
-  \item 微分号使用正体，比如 $\dif y / \dif x$。
-  \item 向量、矩阵和张量用粗斜体（\cs{symbf}），如 $\symbf{x}$、$\symbf{\Sigma}$。
-  \item 省略号按照中文的习惯固定居中，如 $1, 2, \dots, n$。
+  \item 大写希腊字母默认为斜体，如
+    \begin{equation*}
+      \Gamma \Delta \Theta \Lambda \Xi \Pi \Sigma \Upsilon \Phi \Psi \Omega.
+    \end{equation*}
+    注意有限增量符号 $\increment$ 固定使用正体，模板提供了 \cs{increment} 命令。
+  \item 小于等于号和大于等于号使用倾斜的字形 $\le$、$\ge$。
+  \item 积分号使用正体，比如 $\int$、$\oint$。
+  \item 行间公式积分号的上下限位于积分号的上下两端，比如
+    \begin{equation*}
+      \int_a^b f(x) \dif x.
+    \end{equation*}
+    行内公式为了版面的美观，统一居右侧，如 $\int_a^b f(x) \dif x$ 。
+  \item
+    偏微分符号 $\partial$ 使用正体。
+  \item
+    省略号 \cs{dots} 按照中文的习惯固定居中，比如
+    \begin{equation*}
+      1, 2, \dots, n \quad 1 + 2 + \dots + n.
+    \end{equation*}
+  \item
+    实部 $\Re$ 和虚部 $\Im$ 的字体使用罗马体。
 \end{enumerate}
+
+以上数学符号样式的差异可以在模板中统一设置。
+另外国标还有一些与 AMS 不同的符号使用习惯，需要用户在写作时进行处理：
+\begin{enumerate}
+  \item 数学常数和特殊函数名用正体，如
+    \begin{equation*}
+      \uppi = 3.14\dots; \quad
+      \symup{i}^2 = -1; \quad
+      \symup{e} = \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n.
+    \end{equation*}
+  \item 微分号使用正体，比如 $\dif y / \dif x$。
+  \item 向量、矩阵和张量用粗斜体（\cs{symbf}），如 $\symbf{x}$、$\symbf{\Sigma}$、$\symbfsf{T}$。
+  \item 自然对数用 $\ln x$ 不用 $\log x$。
+\end{enumerate}
+
 
 英文论文的数学符号使用 \TeX{} 默认的样式。
 如果有必要，也可以通过设置 \verb|math-style| 选择数学符号样式。
