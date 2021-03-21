@@ -1814,6 +1814,25 @@
 \thu@package@conflict{newtxmath}{upgreek}
 %    \end{macrocode}
 %
+% \pkg{mathtools} 需要在 \pkg{unicode-math} 前载入，
+% 参考 \url{https://tex.stackexchange.com/q/521394/82731}。
+%    \begin{macrocode}
+\AtBeginOfPackageFile*{mathtools}{
+  \@ifpackageloaded{unicode-math}{
+    \thu@error{The "mathtools" package should be loaded before setting "math-font"}
+  }{}
+}%
+%    \end{macrocode}
+%
+% \pkg{amsthm} 需要在 \pkg{newtx} 前载入，参考 \pkg{newtx} 的文档。
+%    \begin{macrocode}
+\AtBeginOfPackageFile*{amsthm}{
+  \@ifpackageloaded{newtxmath}{
+    \thu@error{The "amsthm" package should be loaded before setting "newtxmath"}
+  }{}
+}%
+%    \end{macrocode}
+%
 % \subsection{页面设置}
 % \label{sec:layout}
 %
