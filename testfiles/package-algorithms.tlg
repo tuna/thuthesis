@@ -1,0 +1,783 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 12.04628pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 9.03471pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 7.22777pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 12.0437pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 9.03278pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 7.22623pt on input line ....
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 11.04242pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 7.72966pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 5.5212pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 11.04005pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 7.728pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 5.52002pt on input line ....
+Completed box being shipped out [2]
+\vbox(710.18088+0.0)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -9.674
+.\vbox(719.85487+0.0)x426.79135, shifted 13.08827
+..\vbox(14.22636+0.0)x426.79135, glue set 14.22636fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x426.79135
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x426.79135
+....\special{color pop}
+..\glue 8.5359
+..\glue(\lineskip) 0.0
+..\vbox(674.33032+0.0)x426.79135, glue set 262.38136fil
+...\write-{}
+...\glue(\topskip) 0.0
+...\vbox(399.92093+0.0)x426.79135
+....\rule(0.8+0.0)x*
+....\kern 2.0
+....\special{color push gray 0}
+....\glue(\parskip) 0.0
+....\hbox(9.19034+2.20424)x426.79135
+.....\hbox(0.0+0.0)x0.0
+.....\glue 0.0
+.....\vbox(9.19034+2.20424)x426.79135
+......\hbox(9.19034+2.20424)x426.79135, glue set 300.58539fil
+.......\hbox(0.0+0.0)x0.0
+.......\TU/FandolSong(0)/b/n/12.045 算
+.......\glue 0.0 plus 0.52307
+.......\TU/FandolSong(0)/b/n/12.045 法
+.......\kern -0.00017
+.......\kern 0.00017
+.......\glue 3.01125 plus 1.50562 minus 1.00374
+.......\TU/texgyretermes(0)/b/n/12.045 1.1
+.......\kern -0.0002
+.......\kern 0.0002
+.......\glue 3.01125 plus 1.50562 minus 1.00374
+.......\penalty 10000
+.......\glue 0.0
+.......\TU/texgyretermes(0)/m/n/12.045 Calculate
+.......\kern -0.00021
+.......\kern 0.00021
+.......\glue 3.01125 plus 1.50562 minus 1.00374
+.......\mathon
+.......\TU/XITSMath-Regular(1)/m/n/12.045 glyph#2525
+.......\glue(\thickmuskip) 3.34618 plus 3.34618
+.......\TU/XITSMath-Regular(1)/m/n/12.045 glyph#62
+.......\penalty 500
+.......\glue(\thickmuskip) 3.34618 plus 3.34618
+.......\TU/XITSMath-Regular(1)/m/n/12.045 glyph#2524
+.......\hbox(3.98389+0.07227)x4.98978, shifted -4.81851
+........\TU/XITSMath-Regular(1)/m/n/9.03375 glyph#2514
+.......\mathoff
+.......\penalty 10000
+.......\glue(\parfillskip) 0.0 plus 1.0fil
+.......\glue(\rightskip) 0.0
+.....\penalty 10000
+.....\glue(\parfillskip) 0.0 plus 1.0fil
+.....\glue(\rightskip) 0.0
+....\special{color pop}
+....\kern 2.0
+....\rule(0.4+0.0)x*
+....\kern 2.0
+....\special{color push gray 0}
+....\vbox(378.92636+0.0)x426.79135
+.....\write1{\@writefile{loa}{\protect \contentsline {algorithm}{\protect \numberline \ETC.}
+.....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
+.....\write1{\newlabel{alg1}{{1.1}{\thepage }}}
+.....\penalty -51
+.....\glue 2.2082
+.....\glue(\parskip) 0.0
+.....\hbox(7.58534+2.26344)x415.75012, glue set 318.3143fil, shifted 11.04123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(7.58534+2.26344)x35.68532
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -5.52061
+.......\hbox(7.58534+2.26344)x41.20593
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\TU/texgyretermes(0)/b/n/11.04124 Require:
+........\kern 0.0
+........\kern -0.0002
+........\kern 0.0002
+........\special{color pop}
+.......\glue 5.52061
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2514
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2223
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#49
+......\glue(\medmuskip) 2.45386 plus 1.22693 minus 2.45386
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1177
+......\penalty 700
+......\glue(\medmuskip) 2.45386 plus 1.22693 minus 2.45386
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2524
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1233
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#49
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 10.2873
+.....\hbox(7.82538+2.02055)x415.75012, glue set 354.37411fil, shifted 11.04123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(7.46388+0.15456)x31.78775
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -5.52061
+.......\hbox(7.46388+0.15456)x37.30836
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\TU/texgyretermes(0)/b/n/11.04124 Ensure:
+........\kern 0.0
+........\kern -0.0002
+........\kern 0.0002
+........\special{color pop}
+.......\glue 5.52061
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2525
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#62
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2524
+......\hbox(3.40842+0.06183)x4.34123, shifted -4.41696
+.......\TU/XITSMath-Regular(1)/m/n/7.72884 glyph#2514
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 10.89168
+.....\hbox(7.46388+2.02055)x415.75012, glue set 388.3942fil, shifted 11.04123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -5.52061
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 5.52061
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2525
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1034
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#50
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 10.72606
+.....\hbox(7.6295+0.26498)x415.75012, glue set 354.54172fil, shifted 11.04123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -5.52061
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 5.52061
+......\penalty 0
+......\TU/texgyretermes(0)/b/n/11.04124 if
+......\kern 0.61832
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2514
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#61
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#49
+......\mathoff
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/b/n/11.04124 then
+......\kern 0.0
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 12.64725
+.....\hbox(7.46388+0.15457)x403.70512, glue set 363.29845fil, shifted 23.08623
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -17.56561
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 17.56561
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2499
+......\kern0.66248
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1034
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#50
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#48
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2524
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 13.01161
+.....\hbox(7.20993+0.08833)x403.70512, glue set 363.90572fil, shifted 23.08623
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -17.56561
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 17.56561
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2489
+......\kern0.99371
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1034
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1155
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2514
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 12.8239
+.....\hbox(7.46388+0.15456)x415.75012, glue set 395.82068fil, shifted 11.04123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -5.52061
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 5.52061
+......\penalty 0
+......\TU/texgyretermes(0)/b/n/11.04124 else
+......\kern 0.0
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 13.01163
+.....\hbox(7.20993+0.09937)x403.70512, glue set 371.88855fil, shifted 23.08623
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -17.56561
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 17.56561
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2499
+......\kern0.66248
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1034
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2524
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 13.06682
+.....\hbox(7.20993+0.08833)x403.70512, glue set 371.46896fil, shifted 23.08623
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -17.56561
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 17.56561
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2489
+......\kern0.99371
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1034
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2514
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 12.65828
+.....\hbox(7.6295+0.15456)x415.75012, glue set 388.44511fil, shifted 11.04123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -5.52061
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 5.52061
+......\penalty 0
+......\TU/texgyretermes(0)/b/n/11.04124 end
+......\kern 0.0
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/b/n/11.04124 if
+......\kern 0.61832
+......\kern -0.0002
+......\kern 0.0002
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 12.63622
+.....\hbox(7.58534+1.72243)x415.75012, glue set 341.04932fil, shifted 11.04123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -5.52061
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 5.52061
+......\penalty 0
+......\TU/texgyretermes(0)/b/n/11.04124 while
+......\kern 0.0
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2489
+......\kern0.99371
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1233
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#49
+......\mathoff
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/b/n/11.04124 do
+......\kern 0.0
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 11.02419
+.....\hbox(7.6295+0.15456)x403.70512, glue set 323.74438fil, shifted 23.08623
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -17.56561
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 17.56561
+......\penalty 0
+......\TU/texgyretermes(0)/b/n/11.04124 if
+......\kern 0.61832
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2489
+......\kern0.99371
+......\mathoff
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/m/n/11.04124 is
+......\kern -0.00021
+......\kern 0.00021
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/m/n/11.04124 even
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/b/n/11.04124 then
+......\kern 0.0
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 13.01163
+.....\hbox(7.20993+0.27603)x391.66013, glue set 335.17201fil, shifted 35.13123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -29.61061
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 29.61061
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2499
+......\kern0.66248
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1034
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2499
+......\kern0.66248
+......\glue(\medmuskip) 2.45386 plus 1.22693 minus 2.45386
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#183
+......\penalty 700
+......\glue(\medmuskip) 2.45386 plus 1.22693 minus 2.45386
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2499
+......\kern0.66248
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 12.6362
+.....\hbox(7.46388+0.15457)x391.66013, glue set 345.93155fil, shifted 35.13123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -29.61061
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 29.61061
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2489
+......\kern0.99371
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1034
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2489
+......\kern0.99371
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#48
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#51
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 12.68037
+.....\hbox(7.54117+1.99844)x403.70512, glue set 330.57893fil, shifted 23.08623
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -17.56561
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 17.56561
+......\penalty 0
+......\TU/texgyretermes(0)/b/n/11.04124 else
+......\kern 0.0
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/m/n/11.04124 {
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2489
+......\kern0.99371
+......\mathoff
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/m/n/11.04124 is
+......\kern -0.00021
+......\kern 0.00021
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/m/n/11.04124 odd}
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 11.16774
+.....\hbox(7.20993+2.02055)x391.66013, glue set 342.98921fil, shifted 35.13123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -29.61061
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 29.61061
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2525
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1034
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2525
+......\glue(\medmuskip) 2.45386 plus 1.22693 minus 2.45386
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#183
+......\penalty 700
+......\glue(\medmuskip) 2.45386 plus 1.22693 minus 2.45386
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2499
+......\kern0.66248
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 10.89168
+.....\hbox(7.46388+0.0)x391.66013, glue set 336.53006fil, shifted 35.13123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -29.61061
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 29.61061
+......\penalty 0
+......\mathon
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2489
+......\kern0.99371
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1034
+......\penalty 500
+......\glue(\thickmuskip) 3.06732 plus 3.06732
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2489
+......\kern0.99371
+......\glue(\medmuskip) 2.45386 plus 1.22693 minus 2.45386
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1155
+......\penalty 700
+......\glue(\medmuskip) 2.45386 plus 1.22693 minus 2.45386
+......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#50
+......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 12.74661
+.....\hbox(7.6295+0.15456)x403.70512, glue set 376.40012fil, shifted 23.08623
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -17.56561
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 17.56561
+......\penalty 0
+......\TU/texgyretermes(0)/b/n/11.04124 end
+......\kern 0.0
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/b/n/11.04124 if
+......\kern 0.61832
+......\kern -0.0002
+......\kern 0.0002
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\penalty -51
+.....\glue 0.0
+.....\glue(\parskip) 0.0
+.....\glue(\baselineskip) 12.63622
+.....\hbox(7.58534+0.15456)x415.75012, glue set 370.65767fil, shifted 11.04123
+......\hbox(0.0+0.0)x0.0
+......\glue 0.0
+......\hbox(0.0+0.0)x0.0
+.......\glue 0.0
+.......\glue -5.52061
+.......\glue -5.52061
+.......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
+........\special{color push gray 0}
+........\glue 0.0 plus 1.0fil
+........\special{color pop}
+.......\glue 5.52061
+......\penalty 0
+......\TU/texgyretermes(0)/b/n/11.04124 end
+......\kern 0.0
+......\kern -0.0002
+......\kern 0.0002
+......\glue 2.76031 plus 1.38016 minus 0.9201
+......\TU/texgyretermes(0)/b/n/11.04124 while
+......\kern 0.0
+......\kern -0.0002
+......\kern 0.0002
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\penalty -51
+.....\glue 2.2082
+.....\glue 0.0
+....\special{color pop}
+....\kern 2.0
+....\rule(0.4+0.0)x*
+....\glue 0.0
+...\penalty 0
+...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
+...\write1{\protect \FN@pp@footnotehinttrue }
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+...\glue 0.0 plus 0.0001fil
+..\glue(\baselineskip) 22.76228
+..\hbox(0.0+0.0)x426.79135
+...\special{color push gray 0}
+...\hbox(0.0+0.0)x426.79135
+...\special{color pop}
+.\kern -710.18088
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 710.18088
+.\kern 0.0
