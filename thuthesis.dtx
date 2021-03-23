@@ -2100,6 +2100,10 @@
 % 注意重定义 \cs{normalsize} 应在 \pkg{unicode-math} 的 \cs{setmathfont} 前。
 %
 % 表达式行的行距为单倍行距，段前空 6 磅，段后空 6 磅。
+%
+% \cs{small} 等其他命令通常用于表格等环境中，这部分要求单倍行距，与正文的字号-行距比例不同，
+% 所以保留默认的 1.2 倍字号的行距，作为单倍行距在英文（1.15 倍字号）和中文（1.3倍字号）
+% 两种情况的折衷。
 %    \begin{macrocode}
 \renewcommand\normalsize{%
   \@setfontsize\normalsize{12bp}{20bp}%
@@ -2112,35 +2116,6 @@
 \ifx\MakeRobust\@undefined \else
     \MakeRobust\normalsize
 \fi
-\DeclareRobustCommand\small{%
-   \@setfontsize\small{10.5bp}{17.5bp}%
-   \abovedisplayskip 6bp%
-   \abovedisplayshortskip 6bp%
-   \belowdisplayshortskip 6bp%
-   \def\@listi{\leftmargin\leftmargini
-               \topsep \z@skip
-               \parsep \z@skip
-               \itemsep \z@skip}%
-   \belowdisplayskip \abovedisplayskip
-}
-\DeclareRobustCommand\footnotesize{%
-   \@setfontsize\footnotesize{9bp}{15bp}%
-   \abovedisplayskip 6bp%
-   \abovedisplayshortskip 6bp%
-   \belowdisplayshortskip 6bp%
-   \def\@listi{\leftmargin\leftmargini
-               \topsep \z@skip
-               \parsep \z@skip
-               \itemsep \z@skip}%
-   \belowdisplayskip \abovedisplayskip
-}
-\DeclareRobustCommand\scriptsize{\@setfontsize\scriptsize{7.5bp}{12.5bp}}
-\DeclareRobustCommand\tiny{\@setfontsize\tiny{6.5bp}{10.83bp}}
-\DeclareRobustCommand\large{\@setfontsize\large{15bp}{25bp}}
-\DeclareRobustCommand\Large{\@setfontsize\Large{18bp}{30bp}}
-\DeclareRobustCommand\LARGE{\@setfontsize\LARGE{22bp}{36.67bp}}
-\DeclareRobustCommand\huge{\@setfontsize\huge{24bp}{40bp}}
-\DeclareRobustCommand\Huge{\@setfontsize\Huge{26bp}{43.33bp}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -3452,37 +3427,7 @@
 \thu@option@hook{number-separator}{\thu@set@number@separator}
 %    \end{macrocode}
 %
-% 研究生要求表单元格中的文字采用 11pt 宋体字，单倍行距。段前空 3 磅，段后空 3 磅。
-% 段前段后的高度直接加到行距上，对于中文，修正后的行距为
-% $11 \times 1.3 + 6 = 20.3$(pt),
-% 而英文版的行距为 $11 \times 1.3 + 6 = 18.65$(pt)。
-% 用户可以手动设置 \cs{arraystretch} 调整表格的行距 。
-%    \begin{macrocode}
-\patchcmd\@floatboxreset{%
-  \normalsize
-}{%
-  \ifthu@language@chinese
-    \fontsize{11bp}{20.3bp}\selectfont
-  \else
-    \fontsize{11bp}{18.65bp}\selectfont
-  \fi
-}{}{\thu@patch@error{\@floatboxreset}}
-%    \end{macrocode}
-%
-% 对 \pkg{longtable} 跨页表格进行相同的设置。
-%    \begin{macrocode}
-\AtEndOfPackageFile*{longtable}{
-  \AtBeginEnvironment{longtable}{%
-    \ifthu@language@chinese
-      \fontsize{11bp}{20.3bp}\selectfont
-    \else
-      \fontsize{11bp}{18.65bp}\selectfont
-    \fi
-  }
-}
-%    \end{macrocode}
-%
-% 定制浮动图形和表格标题样式，以及改变附录中浮动体的编号规则：
+% 定制浮动图形和表格标题样式：
 % \begin{itemize}
 %   \item 图表标题字体为 11pt
 %   \item 去掉图表号后面的冒号，图序与图名文字之间空一个汉字符宽度
@@ -3494,7 +3439,11 @@
   \ifthu@degree@bachelor
     \fontsize{11bp}{15bp}\selectfont
   \else
-    \fontsize{11bp}{14.3bp}\selectfont
+    \ifthu@language@chinese
+      \fontsize{11bp}{14.3bp}\selectfont
+    \else
+      \fontsize{11bp}{12.65bp}\selectfont
+    \fi
   \fi
 }
 \captionsetup{
@@ -3508,6 +3457,50 @@
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \renewcommand{\thesubtable}{(\alph{subtable})}
 % \renewcommand{\p@subfigure}{:}
+%    \end{macrocode}
+%
+% 研究生要求表单元格中的文字采用 11pt 宋体字，单倍行距。段前空 3 磅，段后空 3 磅。
+% 对于中文，\cs{arraystretch} 需要调整为 $1 + 6 / (11 \times 1.3) \approx 1.42$。
+% 对于英文，\cs{arraystretch} 需要调整为 $1 + 6 / (11 \times 1.15) \approx 1.47$。
+%
+% 注意不能简单地把行距设为 $\SI{11}{pt} \times 1.3 + \SI{6}{pt} = \SI{20.3}{pt}$，
+% 这会导致含有多行文字的单元格中行距有误。
+%
+% 其他浮动体中（比如 \env{algorithm}）的字号默认同表格一致。
+%    \begin{macrocode}
+\newcommand\thu@set@table@font{
+  \ifthu@language@chinese
+    \def\thu@table@font{%
+      \fontsize{11bp}{14.3bp}\selectfont
+      \renewcommand\arraystretch{1.42}%
+    }%
+  \else
+    \def\thu@table@font{%
+      \fontsize{11bp}{12.65bp}\selectfont
+      \renewcommand\arraystretch{1.47}%
+    }%
+  \fi
+}
+\thu@set@table@font
+\thu@option@hook{language}{\thu@set@table@font}
+\patchcmd\@floatboxreset{%
+  \normalsize
+}{%
+  \thu@table@font
+}{}{\thu@patch@error{\@floatboxreset}}
+%    \end{macrocode}
+%
+% 对 \pkg{longtable} 跨页表格进行相同的设置。
+%
+% 在 Word 模板中按照正确的设置（需要去掉文档网格），
+% 中文模板每页能装下 1 行标题、1 行表头、30 行表身，
+% 英文模板每页能装下 1 行标题、1 行表头、33 行表身。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{longtable}{
+  \AtBeginEnvironment{longtable}{%
+    \thu@table@font
+  }
+}
 %    \end{macrocode}
 %
 % 研究生和本科生都推荐使用三线表，并且要求表的上、下边线为单直线，线粗为 1.5 磅；
@@ -6423,6 +6416,7 @@
 \RequirePackage{fontspec}[2017/01/20]
 \RequirePackage{amsmath}
 \RequirePackage{unicode-math}
+\RequirePackage{siunitx}
 \RequirePackage[UTF8,scheme=chinese]{ctex}
 \RequirePackage[
   top=2.5cm, bottom=2.5cm,
