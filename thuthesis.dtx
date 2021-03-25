@@ -4860,52 +4860,45 @@
 \newcommand{\thu@authorization@frontdate}{%
   日\ifthu@degree@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
 \newcommand\thu@copyright@page@graduate{%
-  \newgeometry{
-    vmargin = 3.8cm,
-    hmargin = 3.2cm,
-  }%
   \begingroup
     \ctexset{
       chapter = {
         format     = {\centering\sffamily\erhao},
-        beforeskip = 18bp,
-        afterskip  = 6bp,
+        beforeskip = 40bp,
+        afterskip  = 36bp,
       },
     }%
     \thu@chapter*[]{关于学位论文使用授权的说明}%
     \thispagestyle{empty}%
   \endgroup
-  \vskip 50bp%
+  \vskip 13bp%
   \begingroup
     \fontsize{14bp}{26bp}\selectfont
     本人完全了解清华大学有关保留、使用学位论文的规定，即：\par
     清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：%
-    （1）已获学位的研究生必须按学校规定提交学位论文，%
-    学校可以采用影印、缩印或其他复制手段保存研究生上交的学位论文；%
+    （1）\nobreak 已获学位的研究生必须按学校规定提交学位论文，%
+    学校可以采用影印、缩印或其他复制手段保存研究生上交的学位论文；\allowbreak
     （2）\nobreak 为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料室等场所供校内师生阅读，%
-    或在校园网上供校内师生浏览部分内容；%
+    或在校园网上供校内师生浏览部分内容；\allowbreak
     \ifthu@degree@doctor
-      （3）根据《中华人民共和国学位条例暂行实施办法》及上级教育主管部门具体要求，向国家图书馆报送相应的学位论文。%
+      （3）\nobreak 根据《中华人民共和国学位条例暂行实施办法》及上级教育主管部门具体要求，向国家图书馆报送相应的学位论文。%
     \else
-      （3）按照上级教育主管部门督导、抽查等要求，报送相应的学位论文。%
+      （3）\nobreak 按照上级教育主管部门督导、抽查等要求，报送相应的学位论文。%
     \fi
     \par
     本人保证遵守上述规定。\par
-    \vskip 6bp%
-    \textbf{（保密的论文在解密后遵守此规定）}\par
   \endgroup
-  \vskip1.2cm%
+  \vskip 33bp%
   \begingroup
-    \noindent\xiaosi
-    \hspace*{1.5cm}%
-    作者签名：\thu@underline[7em]\relax\hfill
-    导师签名：\thu@underline[7em]\relax\hspace*{1cm}\\[3pt]%
-    \hspace*{1.5cm}%
-    日\hspace{2em}期：\thu@underline[7em]\relax\hfill
-    日\hspace{2em}期：\thu@underline[7em]\relax\hspace*{1cm}%
+    \fontsize{12bp}{23.4bp}\selectfont
+    \parindent\z@
+    \leftskip 43bp%
+    作者签名：\hspace{4bp}\thu@underline[7em]{}\hspace{47bp}%
+    导师签名：\hspace{4bp}\thu@underline[7em]{}\par
+    \vskip 6bp%
+    日\hspace{2em}期：\hspace{4bp}\thu@underline[7em]{}\hspace{47bp}%
+    日\hspace{2em}期：\hspace{4bp}\thu@underline[7em]{}\par
   \endgroup
-  \clearpage
-  \restoregeometry
 }
 \newcommand\thu@copyright@page@bachelor{%
   \begingroup
