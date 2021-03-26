@@ -5363,20 +5363,44 @@
 %
 % 将 \cs{citep} super 式引用的页码改为上标。
 %    \begin{macrocode}
-  \renewcommand\NAT@citesuper[3]{\ifNAT@swa
-    \if*#2*\else#2\NAT@spacechar\fi
-    % \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close}%
-    %  \if*#3*\else\NAT@spacechar#3\fi\else #1\fi\endgroup}
-    \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
-    \else #1\fi\endgroup}
+  \renewcommand\NAT@citesuper[3]{%
+    \ifNAT@swa
+      \if*#2*\else
+        #2\NAT@spacechar
+      \fi
+      % \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close}%
+      %  \if*#3*\else\NAT@spacechar#3\fi\else #1\fi\endgroup}
+      \unskip\kern\p@
+      \textsuperscript{%
+        \NAT@@open#1\NAT@@close
+        \if*#3*\else#3\fi
+      }%
+      \kern\p@
+    \else
+      #1%
+    \fi
+    \endgroup
+  }
 %    \end{macrocode}
 %
 % 将 \cs{citep} numbers 式引用的页码改为上标并置于括号外。
 %    \begin{macrocode}
-  \renewcommand\NAT@citenum%
-      [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
-          % #1\if*#3*\else\NAT@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
-          #1\NAT@@close\textsuperscript{\if*#3*\else#3\fi}\else#1\fi\endgroup}
+  \renewcommand\NAT@citenum[3]{%
+    \ifNAT@swa
+      \NAT@@open
+      \if*#2*\else
+        #2\NAT@spacechar
+      \fi
+      % #1\if*#3*\else\NAT@cmt#3\fi\NAT@@close
+      #1\NAT@@close
+      \if*#3*\else
+        \textsuperscript{#3}%
+      \fi
+    \else
+      #1%
+    \fi
+    \endgroup
+  }
 %    \end{macrocode}
 %
 % 修改 \cs{citet} 引用的样式。
@@ -5470,8 +5494,11 @@
           % }{}%
           \NAT@mbox{\NAT@@close}%
           \@ifnum{\NAT@ctype=\z@}{%
-            \if*#2*\else\textsuperscript{#2}\fi
+            \if*#2*\else
+              \textsuperscript{#2}%
+            \fi
           }{}%
+          \NAT@super@kern
         \fi
     }{#1}{#2}%
   }%

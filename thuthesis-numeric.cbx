@@ -2,3 +2,11 @@
   citation style]
 
 \RequireCitationStyle{gb7714-2015}
+
+\renewrobustcmd{\mkbibsuperscript}[1]{%
+  \unspace\allowhyphens\textsuperscript{%
+    \begingroup
+    \protected\long\def\mkbibsuperscript##1{%
+      \blx@warning{Nested superscript}%
+      \mkbibbrackets{##1}}%
+    #1\endgroup}\kern\z@}
