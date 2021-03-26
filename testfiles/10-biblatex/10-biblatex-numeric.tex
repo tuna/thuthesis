@@ -2,7 +2,7 @@
 \documentclass[degree=doctor]{thuthesis}
 
 \usepackage[backend=biber,style=thuthesis-numeric]{biblatex}
-\addbibresource{refs.bib}
+\addbibresource{refs-numeric.bib}
 
 \pagestyle{empty}
 
@@ -12,39 +12,25 @@
 
 \mainmatter
 
-\noindent
-Citations:
-\cite{zhangkun1994}
-\cite{zhukezhen1973,dupont1974bone}
-\cite{zhengkaiqing1987,jiangxizhou1980,jianduju1994}
-\cite[42]{merkt1995rotational}
-\cite{mellinger1996laser}
-\cite{bixon1996dynamics}
-\cite{mahui1995}
-\cite{carlson1981two}
-\cite{taylor1983scanning}
-\cite{taylor1981study}
-\cite{shimizu1983laser}
-\cite{atkinson1982experimental}
-\cite{kusch1975perturbations}
-\cite{guangxi1993} \\
-\cite{huosini1989guwu}
-\cite{wangfuzhi1865songlun}
-\cite{zhaoyaodong1998xinshidai}
-\cite{biaozhunhua2002tushu}
-\cite{chubanzhuanye2004}
-\cite{who1970factors}
-\cite{peebles2001probability}
-\cite{baishunong1998zhiwu}
-\cite{weinstein1974pathogenic}
-\cite{hanjiren1985lun}
-\cite{dizhi1936dizhi}
-\cite{tushuguan1957tushuguanxue}
-\cite{aaas1883science}
-\cite{fugang2000fengsha}
-\cite{xiaoyu2001chubanye}
-\cite{oclc2000about}
-\cite{scitor2000project}
+引用\citet{zhangkun1994}测试\par
+引用\citet[42]{zhangkun1994}测试\par
+引用\citep{zhangkun1994}测试\par
+引用\citep[42]{zhangkun1994}测试\par
+引用\citep[见][]{zhukezhen1973}测试\par
+引用\citep[见][42]{zhukezhen1973}测试\par
+
+Citation \citet{dupont1974bone} test\par
+Citation \citet[42]{dupont1974bone} test\par
+Citation\citep{dupont1974bone} test\par
+Citation\citep[42]{dupont1974bone} test\par
+Citation \citep[see][]{zhengkaiqing1987} test\par
+Citation \citep[see][42]{zhengkaiqing1987} test\par
+
+引用\citep{zhangkun1994}测试\par
+引用\citep{zhukezhen1973,dupont1974bone}测试\par
+引用\citep{zhengkaiqing1987,jiangxizhou1980,jianduju1994}测试\par
+
+\nocite{*}
 
 \printbibliography
 
