@@ -5107,7 +5107,7 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 151.67903fil
+..\vbox(645.87758+0.0)x421.10089, glue set 159.93701fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\glue(\topskip) 12.0
@@ -5291,6 +5291,7 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
+...\glue 0.0 plus 1.0
 ...\vbox(117.49985+0.0)x421.10089
 ....\special{color push gray 0}
 ....\vbox(117.49985+0.0)x421.10089
@@ -5592,11 +5593,9 @@ Completed box being shipped out [3]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 12.0 plus 2.0 minus 2.0
-...\glue 0.0 plus -1.0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 8.25887
 ...\hbox(9.40715+2.2283)x421.10089, glue set - 0.21962
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 气
@@ -6210,7 +6209,7 @@ Completed box being shipped out [4]
 ....\special{color pop}
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set 291.98314fill
+..\vbox(645.87758+0.0)x421.10089, glue set 308.93164fill
 ...\glue(\topskip) 2.6049
 ...\hbox(9.3951+2.32468)x421.10089, glue set - 0.00252
 ....\hbox(0.0+0.0)x24.09
@@ -6419,6 +6418,7 @@ Completed box being shipped out [4]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
+...\glue 0.0 plus 1.0
 ...\vbox(39.14616+0.0)x421.10089
 ....\special{color push gray 0}
 ....\vbox(39.14616+0.0)x421.10089
@@ -6506,13 +6506,14 @@ Completed box being shipped out [4]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 12.0 plus 2.0 minus 2.0
-...\glue 0.0 plus -1.0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\penalty -300
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\glue 25.09375
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 4.9485
 ...\hbox(10.89069+2.48727)x421.10089, glue set 275.09552fil
 ....\hbox(9.96321+0.0)x33.58545
 .....\TU/texgyreheros(0)/m/n/14.05249 2.2

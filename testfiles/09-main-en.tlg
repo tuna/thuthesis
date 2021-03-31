@@ -2781,6 +2781,7 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
+...\glue 0.0 plus 1.0
 ...\vbox(261.2755+0.0)x426.79135
 ....\special{color push gray 0}
 ....\vbox(261.2755+0.0)x426.79135
@@ -2845,13 +2846,14 @@ Completed box being shipped out [1]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 12.0 plus 2.0 minus 2.0
-...\glue 0.0 plus -1.0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\penalty -300
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\glue 12.045
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 7.72789
 ...\hbox(9.72131+0.11742)x426.79135, glue set 357.89403fil
 ....\hbox(9.25156+0.0)x42.06912
 .....\TU/texgyreheros(0)/b/n/13.04874 1.1.1
@@ -3241,7 +3243,7 @@ Completed box being shipped out [2]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 370.98137fil
+..\vbox(674.33032+0.0)x426.79135, glue set 370.81277fil
 ...\glue(\topskip) 2.27869
 ...\hbox(9.72131+0.11742)x426.79135, glue set 357.89403fil
 ....\hbox(9.25156+0.0)x42.06912
@@ -3296,6 +3298,7 @@ Completed box being shipped out [2]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
+...\glue 0.0 plus 1.0
 ...\vbox(241.21184+0.0)x426.79135
 ....\special{color push gray 0}
 ....\vbox(241.21184+0.0)x426.79135
@@ -3778,11 +3781,9 @@ Completed box being shipped out [2]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 12.0 plus 2.0 minus 2.0
-...\glue 0.0 plus -1.0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
 ...\write1{\protect \FN@pp@footnotehinttrue }
-...\glue -0.16861
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -7113,6 +7114,7 @@ Completed box being shipped out [4]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
+...\glue 0.0 plus 1.0
 ...\vbox(261.2755+0.0)x426.79135
 ....\special{color push gray 0}
 ....\vbox(261.2755+0.0)x426.79135
@@ -7176,13 +7178,14 @@ Completed box being shipped out [4]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 12.0 plus 2.0 minus 2.0
-...\glue 0.0 plus -1.0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\penalty -300
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\glue 12.045
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 7.72789
 ...\hbox(9.72131+0.11742)x426.79135, glue set 355.46696fil
 ....\hbox(9.51253+0.0)x44.49619
 .....\TU/texgyreheros(0)/b/n/13.04874 A.1.1
@@ -7580,7 +7583,7 @@ Completed box being shipped out [5]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 354.82259fil
+..\vbox(674.33032+0.0)x426.79135, glue set 376.25758fil
 ...\glue(\topskip) 2.27869
 ...\hbox(9.72131+0.11742)x426.79135, glue set 355.46696fil
 ....\hbox(9.51253+0.0)x44.49619
@@ -7672,6 +7675,7 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
+...\glue 0.0 plus 1.0
 ...\vbox(128.89238+0.0)x426.79135
 ....\special{color push gray 0}
 ....\vbox(128.89238+0.0)x426.79135
@@ -7938,13 +7942,14 @@ Completed box being shipped out [5]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 12.0 plus 2.0 minus 2.0
-...\glue 0.0 plus -1.0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\penalty -300
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\glue 24.09
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 9.43729
 ...\hbox(10.4691+0.12645)x426.79135, glue set 361.70021fil
 ....\hbox(10.24426+0.12645)x36.19922
 .....\TU/texgyreheros(0)/b/n/14.05249 A.3

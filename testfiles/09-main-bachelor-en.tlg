@@ -14552,6 +14552,7 @@ Completed box being shipped out [7]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
+...\glue 0.0 plus 1.0
 ...\vbox(194.08583+0.0)x421.10089
 ....\special{color push gray 0}
 ....\vbox(194.08583+0.0)x421.10089
@@ -15837,11 +15838,14 @@ Completed box being shipped out [7]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 12.0 plus 2.0 minus 2.0
-...\glue 0.0 plus -1.0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
+...\penalty 0
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue 0.0 plus 1.0
 ...\vbox(73.43527+0.0)x421.10089
 ....\special{color push gray 0}
 ....\vbox(73.43527+0.0)x421.10089
@@ -15948,10 +15952,11 @@ Completed box being shipped out [7]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 12.0 plus 2.0 minus 2.0
-...\glue 0.0 plus -1.0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\penalty 0
+...\glue 12.0 plus 2.0 minus 2.0
 ...\penalty 10000
 ...\penalty 0
 ...\penalty 10000

@@ -14551,7 +14551,7 @@ Completed box being shipped out [8]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 439.69344fil
+..\vbox(674.33032+0.0)x426.79135, glue set 448.01164fil
 ...\vbox(63.18246+0.0)x426.79135
 ....\special{color push gray 0}
 ....\vbox(63.18246+0.0)x426.79135
@@ -14891,6 +14891,7 @@ Completed box being shipped out [8]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
+...\glue 0.0 plus 1.0
 ...\vbox(63.18246+0.0)x426.79135
 ....\special{color push gray 0}
 ....\vbox(63.18246+0.0)x426.79135
@@ -15079,11 +15080,9 @@ Completed box being shipped out [8]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 12.0 plus 2.0 minus 2.0
-...\glue 0.0 plus -1.0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 8.31909
 ...\hbox(9.43123+2.61375)x426.79135, glue set - 0.32646
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 图
@@ -15394,7 +15393,7 @@ Completed box being shipped out [9]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 222.2755fil
+..\vbox(674.33032+0.0)x426.79135, glue set 230.5937fil
 ...\vbox(171.90305+0.0)x426.79135
 ....\special{color push gray 0}
 ....\vbox(171.90305+0.0)x426.79135
@@ -15994,6 +15993,7 @@ Completed box being shipped out [9]
 ....\glue(\rightskip) 0.0
 ...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
+...\glue 0.0 plus 1.0
 ...\vbox(171.90305+0.0)x426.79135
 ....\special{color push gray 0}
 ....\vbox(171.90305+0.0)x426.79135
@@ -16442,11 +16442,9 @@ Completed box being shipped out [9]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
-...\glue 12.0 plus 2.0 minus 2.0
-...\glue 0.0 plus -1.0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 8.31909
 ...\hbox(9.43123+2.61375)x426.79135, glue set - 0.32646
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 表
