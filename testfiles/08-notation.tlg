@@ -13,12 +13,12 @@ Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-Missing character: There is no 噁 in font [FandolSong-Regular.otf]/OT:language=d
-flt;!
-Missing character: There is no 噁 in font [FandolSong-Regular.otf]/OT:language=d
-flt;!
-Missing character: There is no 噁 in font [FandolSong-Regular.otf]/OT:language=d
-flt;!
+Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
+anguage=dflt;!
+Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
+anguage=dflt;!
+Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
+anguage=dflt;!
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 12.04628pt on input line ....
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
@@ -33,6 +33,8 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 7.22623pt on input line ....
 Completed box being shipped out [8]
 \vbox(710.18088+4.1104)x439.87962
+.\hbox(0.0+0.0)x0.0
+..\special{pdfcolorstackinit 1 page direct (0 g 0 G)}
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
@@ -1867,6 +1869,7 @@ Completed box being shipped out [8]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
+.\kern 0.0
 .\kern 0.0
 Completed box being shipped out [9]
 \vbox(710.18088+4.1104)x439.87962
