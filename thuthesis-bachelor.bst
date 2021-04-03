@@ -240,6 +240,22 @@ FUNCTION {or}
   if$
 }
 
+STRINGS { x y }
+
+FUNCTION {contains}
+{ 'y :=
+  'x :=
+  y text.length$ 'len :=
+  x text.length$ len - #1 + 'charptr :=
+    { charptr #0 >
+      x charptr len substring$ y = not
+      and
+    }
+    { charptr #1 - 'charptr := }
+  while$
+  charptr #0 >
+}
+
 STRINGS { s t }
 
 FUNCTION {output.nonnull}
@@ -703,17 +719,13 @@ FUNCTION {output.bibitem}
   "\bibitem[" write$
   label ")" *
   make.full.names duplicate$ short.list =
-     { pop$ }
-     { * }
-  if$
-  's :=
-  s text.length$ 'charptr :=
-    { charptr #0 > s charptr #1 substring$ "[" = not and }
-    { charptr #1 - 'charptr := }
-  while$
-  charptr #0 >
-    { "{" s * "}" * }
-    { s }
+    { pop$ }
+    { duplicate$ "]" contains
+        { "{" swap$ * "}" * }
+        'skip$
+      if$
+      *
+    }
   if$
   "]{" * write$
   cite$ write$
@@ -1176,21 +1188,6 @@ FUNCTION {extract.after.dash}
   if$
 }
 
-FUNCTION {contains.dash}
-{ duplicate$ empty$
-    { pop$ #0 }
-    { 's :=
-        { s empty$ not
-          s #1 #1 substring$ "-" = not
-          and
-        }
-        { s #2 global.max$ substring$ 's := }
-      while$
-      s empty$ not
-    }
-  if$
-}
-
 FUNCTION {extract.before.slash}
 { duplicate$ empty$
     { pop$ "" }
@@ -1231,23 +1228,6 @@ FUNCTION {extract.after.slash}
         { charptr #1 + 'charptr := }
       while$
       s charptr global.max$ substring$
-    }
-  if$
-}
-
-FUNCTION {contains.slash}
-{ duplicate$ empty$
-    { pop$ #0 }
-    { 's :=
-        { s empty$ not
-          s #1 #1 substring$ "-" = not
-          and
-          s #1 #1 substring$ "/" = not
-          and
-        }
-        { s #2 global.max$ substring$ 's := }
-      while$
-      s empty$ not
     }
   if$
 }
@@ -2212,13 +2192,20 @@ FUNCTION {calc.short.authors}
 
 FUNCTION {calc.label}
 { calc.short.authors
-  short.list
+  short.list "]" contains
+    { "{" short.list * "}" * }
+    { short.list }
+  if$
   "("
   *
   format.year duplicate$ empty$
   short.list key field.or.null = or
      { pop$ "" }
      'skip$
+  if$
+  duplicate$ "]" contains
+    { "{" swap$ * "}" * }
+    'skip$
   if$
   *
   'label :=
