@@ -2,7 +2,7 @@
 set -e
 
 # download installer
-REMOTE="https://mirrors.rit.edu/CTAN/systems/texlive/tlnet";
+REMOTE="https://mirror.ctan.org/systems/texlive/tlnet";
 INSTALL="/tmp/install-texlive";
 
 # install TeX Live & remove installer
