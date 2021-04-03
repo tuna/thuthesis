@@ -8,7 +8,7 @@
 %% -------------------------------------------------------------------
 %% GB/T 7714—2015 BibTeX Style
 %% https://github.com/CTeX-org/gbt7714-bibtex-style
-%% Version: 2020/12/17 v2.1
+%% Version: 2021/04/03 v2.1.1
 %% -------------------------------------------------------------------
 %% Copyright (C) 2016—2021 by Zeping Lee <zepinglee AT gmail.com>
 %% -------------------------------------------------------------------
@@ -73,7 +73,7 @@ FUNCTION {load.config}
   #0 'italic.journal :=
   #0 'bold.journal.volume :=
   #0 'show.missing.address.publisher :=
-  #0 'space.before.pages :=
+  #1 'space.before.pages :=
   #0 'only.start.page :=
   #1 'show.urldate :=
   #1 'show.url :=
