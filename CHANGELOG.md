@@ -5,6 +5,8 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
+## [v7.2.2] - 2021-04-03
 ### Changed
 - 修改授权说明的内容和格式，同 2020 年 12 月版 Word 模板一致（#625）。
 - 去掉参考文献的页码前与冒号之间的空格，同步 2020 年 3 月版《指南》的格式修改（#629）。
@@ -684,7 +686,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.2.1...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.2.2...HEAD
+[v7.2.2]:     https://github.com/tuna/thuthesis/compare/v7.2.1...v7.2.2
 [v7.2.1]:     https://github.com/tuna/thuthesis/compare/v7.2.0...v7.2.1
 [v7.2.0]:     https://github.com/tuna/thuthesis/compare/v7.1.0...v7.2.0
 [v7.1.0]:     https://github.com/tuna/thuthesis/compare/v7.0.0...v7.1.0
