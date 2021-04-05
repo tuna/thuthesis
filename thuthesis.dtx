@@ -1075,18 +1075,21 @@
 %   \statement[file=scan-statement.pdf]
 % \end{latex}
 %
-% 由于本科生打印版和电子版有空白页的差别，声明的页码可能不同。
-% 所以编译声明页时默认不加页脚（\texttt{page-style=empty}），
-% 在签字后插入扫描页时再补上页脚，防止页码冲突。
+% 由于本科生的打印版和电子版有空白页的差别，声明的页码可能不同。
+% 所以编译生成声明页时默认不加页脚（\option{empty}），
+% 在签字后插入扫描页时再补上页脚（\option{plain}），防止页码冲突。
+% 研究生不存在空白页的问题，在编译生成声明时默认加页眉页脚（\option{plain}），
+% 而插入扫描版时不再重复（\option{empty}）。
 %
-% 如果需要编译时也加页码（如直接对电子版进行签名而不是插入扫描页），
-% 可以使用在 \cs{statement} 命令设置
+% 声明的页眉页脚也可以通过 \option{pagestyle} 参数手动控制，
+% 比如编译生成时固定不加页眉页脚：
 % \begin{latex}
 %   \statement[page-style=plain]
 % \end{latex}
-% 注意，本科生插入扫描页时总是会加页码，不受该选项控制。
-%
-% 研究生不存在空白页的问题，但是为了灵活性也允许用户选择是否添加页眉和页脚。
+% 插入扫面版声明补上页眉页脚：
+% \begin{latex}
+%   \statement[file=scan-statement.pdf, page-style=plain]
+% \end{latex}
 %
 % \subsubsection{附录}
 %
