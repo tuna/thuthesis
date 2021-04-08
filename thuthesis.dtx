@@ -3320,6 +3320,34 @@
 %
 % 公式距前后文的距离由 4 个参数控制，参见 \cs{normalsize} 的定义。
 %
+% 中文模板的公式编号使用中文括号。需要修改 \pkg{amsmath} 的 \cs{tagform@}。
+% 这里中文的 \cs{unskip} 是为了“|式~\eqref|”这样的写法不产生额外的空格。
+%    \begin{macrocode}
+\newcommand\thu@put@parentheses[1]{%
+  \ifthu@language@chinese
+    \unskip
+    （#1）%
+  \else
+    (#1)%
+  \fi
+}
+% \def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip\@@italiccorr)}}
+\def\tagform@#1{\maketag@@@{\thu@put@parentheses{\ignorespaces#1\unskip\@@italiccorr}}}
+%    \end{macrocode}
+%
+% 重定义 \cs{eqref}，去掉原来的的 \cs{tagform@} 中 \cs{maketag@@@} 的 \cs{hbox} 和
+% \cs{m@th}，防止中文左括号与前面文字的距离过窄。
+%    \begin{macrocode}
+% \newcommand{\eqref}[1]{\textup{\tagform@{\ref{#1}}}}
+\renewcommand{\eqref}[1]{%
+  \textup{%
+    \normalfont\thu@put@parentheses{%
+      \ignorespaces\ref{#1}\unskip\@@italiccorr
+    }%
+  }%
+}
+%    \end{macrocode}
+%
 % \subsubsection{浮动对象：插图和表格}
 % \label{sec:float}
 %
