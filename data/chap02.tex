@@ -12,13 +12,14 @@
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.6\linewidth]{example-image-a.pdf}
-  \caption{示例图片}
+  \includegraphics[width=0.5\linewidth]{example-image-a.pdf}
+  \caption*{国外的期刊习惯将图表的标题和说明文字写成一段，需要改写为标题只含图表的名称，其他说明文字以注释方式写在图表下方，或者写在正文中。}
+  \caption{示例图片标题}
   \label{fig:example}
 \end{figure}
 
 若图或表中有附注，采用英文小写字母顺序编号，附注写在图或表的下方。
-% LaTeX 传统上一般将附注的内容同图表的标题写在一起，形成很长的一段文字。
+国外的期刊习惯将图表的标题和说明文字写成一段，需要改写为标题只含图表的名称，其他说明文字以注释方式写在图表下方，或者写在正文中。
 
 如果一个图由两个或两个以上分图组成时，各分图分别以 (a)、(b)、(c)...... 作为图序，并须有分图题。
 推荐使用 \pkg{subcaption} 宏包来处理， 比如图~\ref{fig:subfig-a} 和图~\ref{fig:subfig-b}。
@@ -26,9 +27,9 @@
 \begin{figure}
   \centering
   \subcaptionbox{分图 A\label{fig:subfig-a}}
-    {\includegraphics[width=0.45\linewidth]{example-image-a.pdf}}
+    {\includegraphics[width=0.35\linewidth]{example-image-a.pdf}}
   \subcaptionbox{分图 B\label{fig:subfig-b}}
-    {\includegraphics[width=0.45\linewidth]{example-image-b.pdf}}
+    {\includegraphics[width=0.35\linewidth]{example-image-b.pdf}}
   \caption{多个分图的示例}
   \label{fig:multi-image}
 \end{figure}
@@ -50,8 +51,6 @@
     thuthesis.dtx   & 模板的源文件，包括文档和注释 \\
     thuthesis.cls   & 模板文件                     \\
     thuthesis-*.bst & BibTeX 参考文献表样式文件    \\
-    thuthesis-*.bbx & BibLaTeX 参考文献表样式文件  \\
-    thuthesis-*.cbx & BibLaTeX 引用样式文件        \\
     \bottomrule
   \end{tabular}
   \label{tab:three-line}
@@ -72,8 +71,6 @@
       thuthesis.dtx\tnote{a} & 模板的源文件，包括文档和注释 \\
       thuthesis.cls\tnote{b} & 模板文件                     \\
       thuthesis-*.bst        & BibTeX 参考文献表样式文件    \\
-      thuthesis-*.bbx        & BibLaTeX 参考文献表样式文件  \\
-      thuthesis-*.cbx        & BibLaTeX 引用样式文件        \\
       \bottomrule
     \end{tabular}
     \begin{tablenotes}
@@ -110,36 +107,6 @@
   Row 8  & & & \\
   Row 9  & & & \\
   Row 10 & & & \\
-  Row 11 & & & \\
-  Row 12 & & & \\
-  Row 13 & & & \\
-  Row 14 & & & \\
-  Row 15 & & & \\
-  Row 16 & & & \\
-  Row 17 & & & \\
-  Row 18 & & & \\
-  Row 19 & & & \\
-  Row 20 & & & \\
-  Row 21 & & & \\
-  Row 22 & & & \\
-  Row 23 & & & \\
-  Row 24 & & & \\
-  Row 25 & & & \\
-  Row 26 & & & \\
-  Row 27 & & & \\
-  Row 28 & & & \\
-  Row 29 & & & \\
-  Row 30 & & & \\
-  Row 31 & & & \\
-  Row 32 & & & \\
-  Row 33 & & & \\
-  Row 34 & & & \\
-  Row 35 & & & \\
-  Row 36 & & & \\
-  Row 37 & & & \\
-  Row 38 & & & \\
-  Row 39 & & & \\
-  Row 40 & & & \\
 \end{longtable}
 
 
@@ -156,17 +123,12 @@
   \label{alg1}
   \small
   \begin{algorithmic}
-    \REQUIRE $n \geq 0 \vee x \neq 0$
+    \REQUIRE $n \geq 0$
     \ENSURE $y = x^n$
 
     \STATE $y \leftarrow 1$
-    \IF{$n < 0$}
-       \STATE $X \leftarrow 1 / x$
-       \STATE $N \leftarrow -n$
-    \ELSE
-       \STATE $X \leftarrow x$
-       \STATE $N \leftarrow n$
-    \ENDIF
+    \STATE $X \leftarrow x$
+    \STATE $N \leftarrow n$
 
     \WHILE{$N \neq 0$}
       \IF{$N$ is even}
