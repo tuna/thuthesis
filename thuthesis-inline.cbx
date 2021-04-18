@@ -7,6 +7,15 @@
   autocite = inline ,
 }
 
+\newrobustcmd{\mkbibsuperscriptusp}[1]{%
+  \unspace\allowhyphens\textsuperscript{%
+    \begingroup
+    \protected\long\def\mkbibsuperscriptusp##1{%
+      \blx@warning{Nested superscript}%
+      \mkbibbrackets{##1}}%
+    #1\endgroup}}
+
+% 这里把 gb7714-2015.cbx 中 \parencite 定义借鉴过来
 \DeclareCiteCommand{\cite}%[\mkbibbrackets]
   {[\usebibmacro{cite:init}%]
    \usebibmacro{prenote}}%
@@ -15,4 +24,4 @@
   {}
   {%[
   \usebibmacro{cite:dump}]%
-   \mkbibsuperscript{\printfield{postnote}}}
+   \mkbibsuperscriptusp{\printfield{postnote}}}
