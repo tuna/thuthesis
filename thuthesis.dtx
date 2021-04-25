@@ -1197,7 +1197,7 @@
 % 生成装订的书脊，为竖排格式。内容默认使用论文的标题和作者。
 % 可以设置 \option{spine-title} 和 \option{spine-author} 来修改。
 %
-% 书脊字体默认为三号字，同研究生的示例一致。
+% 博士论文的书脊字体默认为三号字，硕士的为小三号。
 % 本科生要求字体大小根据论文的薄厚而定，可以使用 \option{spine-font} 设置字号。
 % \begin{latex}
 %   \thusetup{
@@ -6340,12 +6340,12 @@
 %   书脊上方写论文题目，下方写本科生姓名，距上下页边均为 3cm。
 %
 % 研究生：
+%   博士论文的书脊使用三号字，硕士的为小三号。
 %   示例中上下页边距为 5.5 cm，左右边距为 1 cm。
 %    \begin{macrocode}
 \thu@define@key{
   spine-font = {
     name = spine@font,
-    default = {\zihao{3}},
   },
   spine-title = {
     name = spine@title,
@@ -6353,6 +6353,13 @@
   spine-author = {
     name = spine@author,
   },
+}
+\renewcommand\thu@spine@font{%
+  \ifthu@degree@doctor
+    \fontsize{16bp}{20.8bp}\selectfont
+  \else
+    \fontsize{15bp}{19.5bp}\selectfont
+  \fi
 }
 \newcommand*\CJKmovesymbol[1]{\raise.3em\hbox{#1}}
 \newcommand*\CJKmove{%
