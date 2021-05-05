@@ -39,7 +39,7 @@ Scroll down for the English version of README.
 
 ## 更新日志
 
-每个版本的详细更新日志，请见 [CHANGELOG.md](blob/master/CHANGELOG.md)。使用文档中也包含了这一内容。
+每个版本的详细更新日志，请见 [CHANGELOG.md](CHANGELOG.md)。使用文档中也包含了这一内容。
 
 ## 升级
 ### 自动更新
@@ -109,7 +109,7 @@ Developer versions contain only source code but no pre-compiled `cls` file and d
 
 ## Changelog
 
-See [CHANGELOG.md](blob/master/CHANGELOG.md) for detailed changes in each release. They are also included in the usage documentation.
+See [CHANGELOG.md](CHANGELOG.md) for detailed changes in each release. They are also included in the usage documentation.
 
 ## Updates
 ### Automatic
