@@ -997,7 +997,7 @@
 % 参考文献表采用“著者-出版年”制组织时，各篇文献首先按文种集中，然后按著者字
 % 顺和出版年排列；中文文献可以按著者汉语拼音字顺排列，也可以按著者的笔画笔顺排列。
 % 但由于 \hologo{BibTeX} 功能的局限性，无法自动获取著者姓名的拼音或笔画笔顺进行正确排序。
-% 一种解放方法是在 \file{.bib} 数据库的中文文献的 |key| 域手动录入著者姓名的拼音，
+% 一种解决方法是在 \file{.bib} 数据库的中文文献的 |key| 域手动录入著者姓名的拼音，
 % 这比较适合中文文献数量较少的情况，如：
 % \begin{latex}
 %   @book{capital,
@@ -1006,7 +1006,7 @@
 %     ...
 %   }
 % \end{latex}
-% 另一种方式是使用 biblatex，应在在导言区设置
+% 另一种方式是使用 biblatex，应在导言区设置
 % \begin{latex}
 %   \usepackage[backend=biber,style=thuthesis-author-year]{biblatex}
 %   \addbibresource{ref/refs.bib}
@@ -1152,7 +1152,7 @@
 %
 % \subsubsection{个人简历、在学期间完成的相关学术成果}
 % \DescribeEnv{resume}
-% 研究生的标题为为“个人简历、在学期间完成的相关学术成果”，
+% 研究生的标题为“个人简历、在学期间完成的相关学术成果”，
 % 本科生的标题为“在学期间参加课题的研究成果”或“PUBLICATIONS”。
 %
 % \DescribeEnv{achievements}
