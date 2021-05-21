@@ -2226,17 +2226,29 @@
 % 但是在 Linux 下没有这两个字体，所以使用它们的克隆版 TeX Gyre Termes 和
 % TeX Gyre Heros。
 %    \begin{macrocode}
-\ifthu@font@auto
-  \ifthu@fontset@windows
-    \thusetup{font=times}
-  \else
-    \ifthu@fontset@mac
-      \thusetup{font=times}
+\newcommand\thu@set@font{%
+  \@nameuse{thu@set@font@\thu@font}%
+}
+\thu@option@hook{font}{\thu@set@font}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\thu@set@font@auto{%
+  \ifthu@font@auto
+    \ifthu@fontset@windows
+      \thusetup{font=times}%
     \else
-      \thusetup{font=termes}
+      \ifthu@fontset@mac
+        \thusetup{font=times}%
+      \else
+        \thusetup{font=termes}%
+      \fi
     \fi
   \fi
-\fi
+}
+\thu@option@hook{math-font}{\g@addto@macro\thu@setup@hook{\thu@set@font@auto}}
+\AtBeginOfPackageFile*{siunitx}{\thu@set@font@auto}
+\AtEndPreamble{\thu@set@font@auto}
 %    \end{macrocode}
 %
 % Times New Roman + Arial
@@ -2455,14 +2467,13 @@
     BoldItalicFont = *-boldoblique,
   ]%
 }
+%    \end{macrocode}
+%
+% NewTX
+%    \begin{macrocode}
 \newcommand\thu@set@font@newtx{%
   \RequirePackage{newtxtext}%
 }
-\newcommand\thu@set@font{%
-  \@nameuse{thu@set@font@\thu@font}%
-}
-\thu@set@font
-\thu@option@hook{font}{\thu@set@font}
 %    \end{macrocode}
 %
 % \subsubsection{中文字体}
@@ -2996,6 +3007,7 @@
   \fi
   \DeclareRobustCommand\symup[1]{{\mathrm{##1}}}%
   \DeclareRobustCommand\symbf[1]{{\bm{##1}}}%
+  \DeclareRobustCommand\symbfsf[1]{{\bm{\mathsf{##1}}}}%
   \let\increment\upDelta%
   \renewcommand\thu@qed{\openbox}%
 }
