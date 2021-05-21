@@ -8,15 +8,15 @@
 \newcommand\test{\par
   \num{12345.67890} \par
   \num{1.234(5)} \par
-  \SI{1.234(5)e-4}{\metre} \par
+  \qty{1.234(5)e-4}{\metre} \par
   % https://github.com/sjtug/SJTUThesis/issues/439
-  \si{\kelvin\per\square\um\degreeCelsius\per\ohm\angstrom} \par
-  $\si{\kelvin\per\square\um\degreeCelsius\per\ohm\angstrom}$ \par
+  \unit{\kelvin\per\square\um\degreeCelsius\per\ohm} \par
+  $\unit{\kelvin\per\square\um\degreeCelsius\per\ohm}$ \par
   \numlist{10;20} \par
   \numlist{10;20;30} \par
-  \SIlist{0.13;0.67;0.80}{\milli\metre} \par
+  \qtylist{0.13;0.67;0.80}{\milli\metre} \par
   \numrange{10}{20} \par
-  \SIrange{10}{20}{\degreeCelsius} \par
+  \qtyrange{10}{20}{\degreeCelsius} \par
 }
 
 
