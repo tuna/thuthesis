@@ -5835,6 +5835,20 @@
 % 所以这里定义 \env{survey} 和 \env{translation} 专门处理这两种情况，
 % 其中参考文献使用了 \pkg{bibunits} 宏包的功能。
 %
+% 注意 \pkg{titletoc} 在 2019/07/14 v2.11.1702 修改了 \cs{printcontents} 接口，
+% 而且 \cs{@ifpackagelater} 只能用在导言区中，所以需要定义辅助宏。
+%    \begin{macrocode}
+\@ifpackagelater{titletoc}{2019/07/14}{
+  \newcommand\thu@print@contents[5]{%
+    \printcontents[#1]{#2}{#3}[#4]{}%
+  }
+}{
+  \newcommand\thu@print@contents[5]{%
+    \printcontents[#1]{#2}{#3}{\setcounter{tocdepth}{#4}#5}%
+  }
+}
+%    \end{macrocode}
+%
 % \begin{environment}{survey}
 % 外文资料的调研阅读报告。
 %    \begin{macrocode}
@@ -5847,7 +5861,7 @@
   \renewcommand\tableofcontents{%
     \section*{Contents}%
     \thu@pdfbookmark{1}{Contents}%
-    \printcontents[survey]{l}{1}[2]{}%
+    \thu@print@contents{survey}{l}{1}{2}{}%
     \vskip 20bp%
   }%
   \renewcommand\bibname{参考文献}%
@@ -5877,7 +5891,7 @@
   \renewcommand\tableofcontents{%
     \section*{目录}%
     \thu@pdfbookmark{1}{目录}%
-    \printcontents[translation]{l}{1}[2]{}%
+    \thu@print@contents{translation}{l}{1}{2}{}%
     \vskip 20bp%
   }%
   \def\bibsection{%
