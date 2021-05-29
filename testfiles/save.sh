@@ -1,40 +1,56 @@
-save_config ()
-    if [[ "$1" == "main" ]]; then
-        for testfile in testfiles/*.tex; do
-            test="$(basename "$testfile" .tex)";
-            if ! [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* ]]; then
-                l3build save --quiet "$test" || exit 1;
-            fi
-        done
-
-    elif [[ "$1" == "crossref" ]]; then
-        for testfile in testfiles/*.tex ; do
-            test="$(basename "$testfile" .tex)";
-            if [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* ]]; then
-                l3build save --quiet --config testfiles/config-crossref "$test" || exit 1;
-            fi
-        done
-
-    elif [[ "$1" == "nomencl" ]]; then
-        for testfile in testfiles/08-notation-nomencl/*.tex; do
-            test="$(basename "$testfile" .tex)";
-            l3build save --quiet --config testfiles/config-nomencl "$test" || exit 1;
-        done
-
-    elif [[ "$1" == "bibtex" ]]; then
-        for testfile in testfiles/10-bibtex/*.tex; do
-            test="$(basename "$testfile" .tex)";
-            l3build save --quiet --config testfiles/config-bibtex "$test" || exit 1;
-        done
-
-    elif [[ "$1" == "biblatex" ]]; then
-        for testfile in testfiles/10-biblatex/*.tex; do
-            test="$(basename "$testfile" .tex)";
-            l3build save --quiet --config testfiles/config-biblatex "$test" || exit 1;
-        done
+save_file () {
+    test="$1";
+    if [[ "$test" == 01-* ]]; then
+        config="cover";
+    elif [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* ]]; then
+        config="crossref";
+    elif [[ "$test" == *-nomencl ]]; then
+        config="nomencl";
+    elif [[ "$test" == 10-bibtex ]]; then
+        config="bibtex";
+    elif [[ "$test" == 10-biblatex ]]; then
+        config="biblatex";
+    else
+        config="main";
     fi
 
+    if [[ "$config" == "main" ]]; then
+        l3build save --quiet "$test" || exit 1;
+    else
+        l3build save --quiet --config "testfiles/config-$config" "$test" || exit 1;
+    fi
+}
 
+
+save_config () {
+    config="$1";
+    if [[ "$config" == "main" ]]; then
+        test_dir="testfiles";
+    elif [[ "$config" == "crossref" ]]; then
+        test_dir="testfiles";
+    elif [[ "$config" == "nomencl" ]]; then
+        test_dir="testfiles/08-notation-nomencl";
+    elif [[ "$config" == "bibtex" ]]; then
+        test_dir="testfiles/10-bibtex";
+    elif [[ "$config" == "biblatex" ]]; then
+        test_dir="testfiles/10-biblatex";
+    fi
+
+    for testfile in "$test_dir"/*.tex; do
+        test="$(basename "$testfile" .tex)";
+        if [[ "$config" == "main" ]]; then
+            if [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* ]]; then
+                continue
+            fi
+            l3build save --quiet "$test" || exit 1;
+        else
+            if [[ "$config" == "crossref" ]] && ! [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* ]]; then
+                continue
+            fi
+            l3build save --quiet --config testfiles/"config-$config" "$test" || exit 1;
+        fi
+    done
+}
 
 
 if [[ $# -eq 0 ]]; then
@@ -42,5 +58,13 @@ if [[ $# -eq 0 ]]; then
         save_config $config;
     done
 else
-    save_config $1;
+    case $1 in
+        main|crossref|nomencl|bibtex|biblatex)
+            save_config "$1";
+            ;;
+
+        *)
+            save_file "$1";
+            ;;
+    esac
 fi
