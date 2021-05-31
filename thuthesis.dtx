@@ -5888,6 +5888,18 @@
   \thusetup{language = chinese}%
   \let\title\thu@appendix@title
   \let\maketitle\thu@appendix@maketitle
+  \renewenvironment{abstract}{%
+    \ctexset{
+      section = {
+        format    += \centering,
+        numbering  = false,
+      },
+    }%
+    \section{摘要}%
+    \quotation
+  }{%
+    \endquotation
+  }%
   \thu@set@partial@toc@format
   \renewcommand\tableofcontents{%
     \section*{目录}%
