@@ -22,21 +22,27 @@ const config = {
                 'thuthesis-*.cbx',
                 'Makefile',
                 'latexmkrc',
-                'thuthesis.pdf'
-            ],
+                'thuthesis.pdf',
+	],
         // generated should not be included for ctan archive
         generated: ['thuthesis.cls']
     },
 
     example: {
-        files: ['thuthesis-example.tex',
+        files: [
+		'thuthesis-example.tex',
                 'spine.tex',
                 'thuthesis-example.pdf',
                 'spine.pdf',
                 'thusetup.tex',
                 'data/*.tex',
                 'figures/*.*',
-                'ref/*.bib']
+                'ref/*.bib',
+	],
+	// preference for vscode
+	pref: [
+		'.vscode/*.*',
+	]
     },
 
     dist: {
@@ -81,7 +87,8 @@ function copy(callback) {
     const dest = path.join(config.dist.root, config.dist.build);
 
     return gulp.src(src, {
-        cwdbase: true
+        cwdbase: true,
+	dot: true
     })
         .pipe(gulp.dest(dest));
 }
@@ -91,14 +98,15 @@ function compress(callback) {
 
     return gulp.src(src, {
         cwd: config.dist.root,
-        cwdbase: true
+        cwdbase: true,
+        dot: true
     })
         .pipe(zip(config.dist.zip))
         .pipe(gulp.dest(config.dist.root));
 }
 
 function init_self(callback) {
-    config.dist.files = [...config.template.files, ...config.example.files, ...config.template.generated];
+    config.dist.files = [...config.template.files, ...config.example.files, ...config.example.pref, ...config.template.generated];
     config.dist.build = `${packageName}-v${argv.version}`;
     config.dist.zip = `${config.dist.build}.zip`;
 
