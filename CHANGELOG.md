@@ -5,6 +5,8 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
+## [v7.2.3] - 2021-05-31
 ### Changed
 - 中文模板的公式编号改为中文括号（#297）。
 
@@ -693,7 +695,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.2.2...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.2.3...HEAD
+[v7.2.3]:     https://github.com/tuna/thuthesis/compare/v7.2.2...v7.2.3
 [v7.2.2]:     https://github.com/tuna/thuthesis/compare/v7.2.1...v7.2.2
 [v7.2.1]:     https://github.com/tuna/thuthesis/compare/v7.2.0...v7.2.1
 [v7.2.0]:     https://github.com/tuna/thuthesis/compare/v7.1.0...v7.2.0
