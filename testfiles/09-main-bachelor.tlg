@@ -368,7 +368,7 @@ Completed box being shipped out [1]
 ...\hbox(0.0+0.0)x0.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 10.75217
-...\hbox(9.32283+3.97446)x421.10089, glue set 25.37547fil
+...\hbox(9.32283+3.97446)x421.10089, glue set 19.35298fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/FandolSong(0)/m/n/12.045 签
@@ -426,8 +426,14 @@ Completed box being shipped out [1]
 ....\kern 0.00017
 ....\glue 12.045
 ....\TU/FandolSong(0)/m/n/12.045 期
-....\kern -0.00017
-....\kern 0.00017
+....\penalty 10000
+....\TU/FandolSong(0)/m/n/12.045 ：
+....\rule(0.0+0.0)x-8.39537
+....\kern 0.00052
+....\kern -0.00052
+....\kern -0.99649
+....\kern 0.99649
+....\glue 8.39537 minus 6.0225
 ....\glue 1.0
 ....\mathon
 ....\vbox(0.0+3.97446)x72.26999
