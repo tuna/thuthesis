@@ -55,6 +55,7 @@ Completed box being shipped out [2]
 ....\kern 2.0
 ....\special{color push gray 0}
 ....\glue(\parskip) 0.0
+....\glue(\parskip) 0.0
 ....\hbox(9.19034+2.20424)x426.79135
 .....\hbox(0.0+0.0)x0.0
 .....\glue 0.0
@@ -87,9 +88,11 @@ Completed box being shipped out [2]
 .......\hbox(3.98389+0.07227)x4.98978, shifted -4.81851
 ........\TU/XITSMath-Regular(1)/m/n/9.03375 glyph#2514
 .......\mathoff
+.......\kern 0.0
 .......\penalty 10000
 .......\glue(\parfillskip) 0.0 plus 1.0fil
 .......\glue(\rightskip) 0.0
+.....\kern 0.0
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
@@ -104,6 +107,7 @@ Completed box being shipped out [2]
 .....\write1{\newlabel{alg1}{{1.1}{\thepage }}}
 .....\penalty -51
 .....\glue 2.2082
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(7.58534+2.26344)x415.75012, glue set 318.3143fil, shifted 11.04123
 ......\hbox(0.0+0.0)x0.0
@@ -140,11 +144,13 @@ Completed box being shipped out [2]
 ......\glue(\thickmuskip) 3.06732 plus 3.06732
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#49
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 4.2648
 .....\hbox(7.82538+2.02055)x415.75012, glue set 354.37411fil, shifted 11.04123
@@ -174,11 +180,13 @@ Completed box being shipped out [2]
 ......\hbox(3.40842+0.06183)x4.34123, shifted -4.41696
 .......\TU/XITSMath-Regular(1)/m/n/7.72884 glyph#2514
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 4.86919
 .....\hbox(7.46388+2.02055)x415.75012, glue set 388.3942fil, shifted 11.04123
@@ -202,11 +210,13 @@ Completed box being shipped out [2]
 ......\glue(\thickmuskip) 3.06732 plus 3.06732
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#50
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 4.70357
 .....\hbox(7.6295+0.26498)x415.75012, glue set 354.54172fil, shifted 11.04123
@@ -241,12 +251,14 @@ Completed box being shipped out [2]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 2.76031 plus 1.38016 minus 0.9201
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.62476
 .....\hbox(7.46388+0.15457)x403.70512, glue set 363.29845fil, shifted 23.08623
@@ -273,11 +285,13 @@ Completed box being shipped out [2]
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#48
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2524
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.98912
 .....\hbox(7.20993+0.08833)x403.70512, glue set 363.90572fil, shifted 23.08623
@@ -303,6 +317,7 @@ Completed box being shipped out [2]
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#1155
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2514
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
@@ -310,6 +325,7 @@ Completed box being shipped out [2]
 .....\glue 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.8014
 .....\hbox(7.46388+0.15456)x415.75012, glue set 395.82068fil, shifted 11.04123
@@ -330,12 +346,14 @@ Completed box being shipped out [2]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 2.76031 plus 1.38016 minus 0.9201
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.98914
 .....\hbox(7.20993+0.09937)x403.70512, glue set 371.88855fil, shifted 23.08623
@@ -360,11 +378,13 @@ Completed box being shipped out [2]
 ......\glue(\thickmuskip) 3.06732 plus 3.06732
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2524
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 7.04433
 .....\hbox(7.20993+0.08833)x403.70512, glue set 371.46896fil, shifted 23.08623
@@ -389,6 +409,7 @@ Completed box being shipped out [2]
 ......\glue(\thickmuskip) 3.06732 plus 3.06732
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2514
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
@@ -396,6 +417,7 @@ Completed box being shipped out [2]
 .....\glue 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.63579
 .....\hbox(7.6295+0.15456)x415.75012, glue set 388.44511fil, shifted 11.04123
@@ -420,11 +442,13 @@ Completed box being shipped out [2]
 ......\kern 0.61832
 ......\kern -0.0002
 ......\kern 0.0002
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.61372
 .....\hbox(7.58534+1.72243)x415.75012, glue set 341.04932fil, shifted 11.04123
@@ -460,12 +484,14 @@ Completed box being shipped out [2]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 2.76031 plus 1.38016 minus 0.9201
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 5.0017
 .....\hbox(7.6295+0.15456)x403.70512, glue set 323.74438fil, shifted 23.08623
@@ -504,12 +530,14 @@ Completed box being shipped out [2]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 2.76031 plus 1.38016 minus 0.9201
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.98914
 .....\hbox(7.20993+0.27603)x391.66013, glue set 335.17201fil, shifted 35.13123
@@ -541,11 +569,13 @@ Completed box being shipped out [2]
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2499
 ......\kern0.66248
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.61371
 .....\hbox(7.46388+0.15457)x391.66013, glue set 345.93155fil, shifted 35.13123
@@ -573,6 +603,7 @@ Completed box being shipped out [2]
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#48
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#51
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
@@ -580,6 +611,7 @@ Completed box being shipped out [2]
 .....\glue 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.65788
 .....\hbox(7.54117+1.99844)x403.70512, glue set 330.57893fil, shifted 23.08623
@@ -614,12 +646,14 @@ Completed box being shipped out [2]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 2.76031 plus 1.38016 minus 0.9201
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 5.14525
 .....\hbox(7.20993+2.02055)x391.66013, glue set 342.98921fil, shifted 35.13123
@@ -649,11 +683,13 @@ Completed box being shipped out [2]
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#2499
 ......\kern0.66248
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 4.86919
 .....\hbox(7.46388+0.0)x391.66013, glue set 336.53006fil, shifted 35.13123
@@ -684,6 +720,7 @@ Completed box being shipped out [2]
 ......\glue(\medmuskip) 2.45386 plus 1.22693 minus 2.45386
 ......\TU/XITSMath-Regular(1)/m/n/11.04124 glyph#50
 ......\mathoff
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
@@ -691,6 +728,7 @@ Completed box being shipped out [2]
 .....\glue 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.72412
 .....\hbox(7.6295+0.15456)x403.70512, glue set 376.40012fil, shifted 23.08623
@@ -715,6 +753,7 @@ Completed box being shipped out [2]
 ......\kern 0.61832
 ......\kern -0.0002
 ......\kern 0.0002
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0
@@ -722,6 +761,7 @@ Completed box being shipped out [2]
 .....\glue 0.0
 .....\penalty -51
 .....\glue 0.0
+.....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\glue(\baselineskip) 6.61372
 .....\hbox(7.58534+0.15456)x415.75012, glue set 370.65767fil, shifted 11.04123
@@ -746,6 +786,7 @@ Completed box being shipped out [2]
 ......\kern 0.0
 ......\kern -0.0002
 ......\kern 0.0002
+......\kern 0.0
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0 plus 1.0fil
 ......\glue(\rightskip) 0.0

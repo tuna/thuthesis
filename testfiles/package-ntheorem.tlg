@@ -65,6 +65,7 @@ Completed box being shipped out [1]
 ...\glue 15.10124 plus -1.0
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\hbox(12.55891+2.8426)x426.79135, glue set 164.31633fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\TU/FandolHei(0)/m/n/16.06 第
@@ -80,6 +81,7 @@ Completed box being shipped out [1]
 ....\TU/FandolHei(0)/m/n/16.06 理
 ....\kern -0.00017
 ....\kern 0.00017
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -88,6 +90,7 @@ Completed box being shipped out [1]
 ...\write1{\@writefile{thm}{\protect \contentsline {theorem}{{\thu@theorem@name \ETC.}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
 ....\hbox(9.19034+1.89105)x62.22606
 .....\glue 0.0
@@ -301,6 +304,7 @@ Completed box being shipped out [1]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -311,6 +315,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {proof}{{\thu@proof@name }{1}\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.51561
 ....\hbox(8.9374+1.95128)x30.09
@@ -515,6 +520,7 @@ Completed box being shipped out [1]
 ....\mathon
 ....\TU/XITSMath-Regular(1)/m/n/12.045 glyph#1151
 ....\mathoff
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -525,6 +531,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {assumption}{{\thu@assumption\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
 ....\hbox(9.25056+2.07173)x62.22606
@@ -739,6 +746,7 @@ Completed box being shipped out [1]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -749,6 +757,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {axiom}{{\thu@axiom@name }{1.\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
 ....\hbox(8.92534+1.95128)x62.22606
@@ -963,6 +972,7 @@ Completed box being shipped out [1]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -973,6 +983,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {conjecture}{{\thu@conjecture\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
 ....\hbox(9.3951+2.13194)x62.22606
@@ -1187,6 +1198,7 @@ Completed box being shipped out [1]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -1197,6 +1209,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {corollary}{{\thu@corollary@n\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
 ....\hbox(9.41919+2.07173)x62.22606
@@ -1411,6 +1424,7 @@ Completed box being shipped out [1]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -1421,6 +1435,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {definition}{{\thu@definition\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
 ....\hbox(9.25056+1.89105)x62.22606
@@ -1635,6 +1650,7 @@ Completed box being shipped out [1]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -1645,6 +1661,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {example}{{\thu@example@name \ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.22766
 ....\hbox(9.20238+2.10786)x50.18106
@@ -1857,6 +1874,7 @@ Completed box being shipped out [1]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -1867,6 +1885,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {exercise}{{\thu@exercise@nam\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
 ....\hbox(9.38306+1.95128)x62.22606
@@ -2081,6 +2100,7 @@ Completed box being shipped out [1]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -2091,6 +2111,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {lemma}{{\thu@lemma@name }{1.\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
 ....\hbox(9.0217+2.03558)x62.22606
@@ -2305,6 +2326,7 @@ Completed box being shipped out [1]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -2572,6 +2594,7 @@ Completed box being shipped out [2]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -2582,6 +2605,7 @@ Completed box being shipped out [2]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {proposition}{{\thu@propositi\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.21068
 ...\hbox(9.53964+2.32468)x426.79135, glue set 0.23642
 ....\hbox(9.53964+2.144)x62.22606
@@ -2796,6 +2820,7 @@ Completed box being shipped out [2]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -2806,6 +2831,7 @@ Completed box being shipped out [2]
 ...\glue 0.0 plus -1.0
 ...\write1{\@writefile{thm}{\protect \contentsline {remark}{{\thu@remark@name }{\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.23642
 ....\hbox(9.33487+2.144)x62.22606
@@ -3020,6 +3046,7 @@ Completed box being shipped out [2]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
+....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
