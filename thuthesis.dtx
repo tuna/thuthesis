@@ -5175,8 +5175,10 @@
     Use "page-style" option of \protect\statement command instead%
   }%
 }
+\newif\ifthu@statement@exists
 \newcommand\statement[1][]{%
   \@mainmatterfalse
+  \thu@statement@existstrue
   \ifthu@degree@bachelor
     \cleardoublepage
     \def\thu@statement@name{声\hspace{2em}明}%
@@ -5794,6 +5796,11 @@
 %    \begin{macrocode}
 \g@addto@macro\appendix{%
   \@mainmattertrue
+  \ifthu@degree@bachelor
+    \ifthu@statement@exists\else
+      \thu@warning{The appendices should be placed after statement}%
+    \fi
+  \fi
 }
 %    \end{macrocode}
 %
@@ -6150,6 +6157,7 @@
   \pdfstringdefDisableCommands{
     \let\\\relax
     \let\quad\relax
+    \let\qquad\relax
     \let\hspace\@gobble
   }%
 %    \end{macrocode}
