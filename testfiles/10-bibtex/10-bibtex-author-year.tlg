@@ -42,8 +42,6 @@ Completed box being shipped out [1]
 ...\special{color push gray 0}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
 ...\write1{\protect \providecommand {\protect \FN@pp@footnote@aux }[2]{}}
-...\write1{\protect \FN@pp@footnotehinttrue }
-...\write-{}
 ...\glue(\topskip) 3.85757
 ...\hbox(8.14243+2.13194)x426.79135, glue set 277.42133fil
 ....\hbox(0.0+0.0)x24.09
@@ -1423,9 +1421,8 @@ C.}
 .....\glue 6.0
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Baker
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
+....\kern -0.00021
+....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 S
 ....\kern -0.0002
@@ -1437,9 +1434,8 @@ C.}
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 Jackson
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
+....\kern -0.00021
+....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 M
 ....\kern -0.0002
@@ -1508,7 +1504,7 @@ C.}
 ...\glue(\parskip) 0.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 6.56404
-...\hbox(7.1984+2.29756)x405.71262, glue set 275.4671fil, shifted 21.07874
+...\hbox(7.1984+2.29756)x405.71262, glue set 125.53052fil, shifted 21.07874
 ....\hbox(0.0+0.0)x-21.07874
 .....\glue -21.07874
 .....\glue -24.0
@@ -1522,9 +1518,8 @@ C.}
 .....\glue 6.0
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Crane
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
+....\kern -0.00021
+....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 D,
 ....\kern -0.00021
@@ -1543,7 +1538,28 @@ C.}
 ....\kern -0.0002
 ....\kern 0.0002
 ....\penalty 0
-....\TU/texgyretermes(0)/m/n/10.53937 [J].
+....\TU/texgyretermes(0)/m/n/10.53937 [M].
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\glue 1.15933 plus 3.478 minus 0.73782
+....\TU/texgyretermes(0)/m/n/10.53937 Chicago:
+....\kern -0.00021
+....\kern 0.00021
+....\glue 3.51312 plus 2.63483 minus 0.43913
+....\TU/texgyretermes(0)/m/n/10.53937 Univ.
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 of
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 Chicago
+....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 Press.
 ....\kern -0.00021
 ....\kern 0.00021
 ....\kern 0.0
@@ -1569,18 +1585,16 @@ C.}
 .....\glue 6.0
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Jha
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
+....\kern -0.00021
+....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 M,
 ....\kern -0.00021
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 Gassman
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
+....\kern -0.00021
+....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 P
 ....\kern -0.0002
@@ -1592,9 +1606,8 @@ C.}
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 Secchi
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
+....\kern -0.00021
+....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 S,
 ....\kern -0.00021
@@ -1734,9 +1747,8 @@ C.}
 .....\glue 6.0
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Kennedy
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
+....\kern -0.00021
+....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 W
 ....\kern -0.0002
@@ -1748,9 +1760,8 @@ C.}
 ....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 Garrison
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
+....\kern -0.00021
+....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 R
 ....\kern -0.0002
@@ -1868,9 +1879,8 @@ C.}
 .....\glue 6.0
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Stieg
-....\kern -0.0002
-....\kern 0.0002
-....\penalty 10000
+....\kern -0.00021
+....\kern 0.00021
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 M
 ....\kern -0.0002

@@ -4,7 +4,7 @@
 %%
 %% The original source files were:
 %%
-%% gbt7714.dtx  (with options: `2015,numerical,noslsn')
+%% gbt7714.dtx  (with options: `2015,numerical')
 %% -------------------------------------------------------------------
 %% GB/T 7714—2015 BibTeX Style
 %% https://github.com/CTeX-org/gbt7714-bibtex-style
@@ -29,6 +29,7 @@ INTEGERS {
   terms.in.macro
   year.after.author
   period.after.author
+  italic.book.title
   sentence.case.title
   link.title
   title.in.journal
@@ -43,12 +44,14 @@ INTEGERS {
   show.missing.address.publisher
   space.before.pages
   only.start.page
+  wave.dash.in.pages
   show.urldate
   show.url
   show.doi
   show.preprint
   show.note
   show.english.translation
+  end.with.period
 }
 
 FUNCTION {load.config}
@@ -61,6 +64,7 @@ FUNCTION {load.config}
   #0 'terms.in.macro :=
   #0 'year.after.author :=
   #1 'period.after.author :=
+  #0 'italic.book.title :=
   #1 'sentence.case.title :=
   #0 'link.title :=
   #1 'title.in.journal :=
@@ -75,12 +79,14 @@ FUNCTION {load.config}
   #0 'show.missing.address.publisher :=
   #1 'space.before.pages :=
   #0 'only.start.page :=
+  #0 'wave.dash.in.pages :=
   #1 'show.urldate :=
   #1 'show.url :=
   #1 'show.doi :=
   #0 'show.preprint :=
   #0 'show.note :=
   #0 'show.english.translation :=
+  #1 'end.with.period :=
 }
 
 ENTRY
@@ -331,7 +337,10 @@ FUNCTION {output.check}
 }
 
 FUNCTION {fin.entry}
-{ add.period$
+{ end.with.period
+    'add.period$
+    'skip$
+  if$
   write$
   show.english.translation entry.lang lang.zh = and
     { ")"
@@ -418,10 +427,18 @@ FUNCTION {field.or.null}
   if$
 }
 
-FUNCTION {italicize}
+FUNCTION {emphasize}
 { duplicate$ empty$
     { pop$ "" }
-    { "\textit{" swap$ * "}" * }
+    { "\emph{" swap$ * "}" * }
+  if$
+}
+
+FUNCTION {format.btitle}
+{ italic.book.title
+  entry.lang lang.en = and
+    'emphasize
+    'skip$
   if$
 }
 
@@ -556,7 +573,7 @@ FUNCTION {format.name}
     { bbl.et.al }
     { t get.str.lang 'name.lang :=
       name.lang lang.en =
-        { t #1 "{vv~}{ll}{~f{~}}" format.name$
+        { t #1 "{vv~}{ll}{ f{~}}" format.name$
           uppercase.name
             { "u" change.case$ }
             'skip$
@@ -907,6 +924,7 @@ FUNCTION {format.series.vol.num.title}
     }
     { format.title.vol.num }
   if$
+  format.btitle
   link.title
     'add.link
     'skip$
@@ -938,6 +956,7 @@ FUNCTION {format.series.vol.num.booktitle}
     }
     { format.booktitle.vol.num }
   if$
+  format.btitle
   in.booktitle
     { duplicate$ empty$ not entry.lang lang.en = and
         { "In: " swap$ * }
@@ -1007,7 +1026,7 @@ FUNCTION {format.journal}
   if$
   duplicate$ empty$ not
     { italic.journal entry.lang lang.en = and
-        'italicize
+        'emphasize
         'skip$
       if$
     }
@@ -1272,11 +1291,16 @@ FUNCTION {format.periodical.year}
 }
 
 FUNCTION {format.date}
-{ type$ "patent" = type$ "newspaper" = or
-  date empty$ not and
-    { date }
-    { year field.or.null
-      extra.label *
+{ date empty$ not
+    { type$ "patent" = type$ "newspaper" = or
+        { date }
+        { format.year }
+      if$
+    }
+    { year empty$ not
+        { format.year }
+        { "" }
+      if$
     }
   if$
 }
@@ -1302,7 +1326,10 @@ FUNCTION {hyphenate}
   ""
     { t empty$ not }
     { t #1 #1 substring$ "-" =
-        { "-" *
+        { wave.dash.in.pages
+            { "～" * }
+            { "-" * }
+          if$
             { t #1 #1 substring$ "-" = }
             { t #2 global.max$ substring$ 't := }
           while$
