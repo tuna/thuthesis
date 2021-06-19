@@ -160,6 +160,8 @@ Completed box being shipped out [2]
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x0.0, glue set 662.25958fil
 ...\write-{}
+...\write1{\protect \FN@pp@footnotehinttrue }
+...\write-{}
 ...\glue(\topskip) 12.0
 ...\hbox(0.0+0.0)x0.0
 ...\glue 0.0 plus 1.0fil
@@ -9246,11 +9248,11 @@ Completed box being shipped out [9]
 ....\kern -0.0002
 ....\kern 0.0002
 ....\TU/texgyretermes(0)/m/n/12.045 …
+....\write1{\protect \FN@pp@footnotehinttrue }
 ....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -0.13248
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
@@ -9392,6 +9394,8 @@ Completed box being shipped out [10]
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 599.99681fil
 ...\write-{}
+...\write1{\protect \FN@pp@footnotehinttrue }
+...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{Resolution of Thesi\ETC.}
 ...\mark{{Resolution of Thesis Defense Committee}{}}
 ...\glue(\topskip) 12.0
@@ -9440,11 +9444,11 @@ Completed box being shipped out [10]
 ....\kern -0.0002
 ....\kern 0.0002
 ....\TU/texgyretermes(0)/m/n/12.045 …
+....\write1{\protect \FN@pp@footnotehinttrue }
 ....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -0.13248
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0

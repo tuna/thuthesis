@@ -4826,41 +4826,43 @@
 % 学位论文指导小组、公开评阅人和答辩委员会名单。
 %    \begin{macrocode}
 \def\thu@committee@name{学位论文指导小组、公开评阅人和答辩委员会名单}
-\newenvironment{committee}[1][]{%
-  \cleardoublepage
-  \let\thu@committee@file\@empty
-  \kv@define@key{thu@committee}{name}{\let\thu@committee@name\kv@value}%
-  \kv@define@key{thu@committee}{file}{\let\thu@committee@file\kv@value}%
-  \kv@set@family@handler{thu@committee}{%
-    \ifx\kv@value\relax
-      \let\thu@committee@file\kv@key
-    \else
-      \kv@handled@false
-    \fi
-  }%
-  \kvsetkeys{thu@committee}{#1}%
-  \ifx\thu@committee@file\@empty
-    \begingroup
-      \ifthu@main@language@english
-        \ctexset{chapter/format=\centering\sffamily\fontsize{16bp}{20bp}\selectfont}
+\NewEnviron{committee}[1][]{%
+  \ifthu@degree@graduate
+    \cleardoublepage
+    \let\thu@committee@file\@empty
+    \kv@define@key{thu@committee}{name}{\let\thu@committee@name\kv@value}%
+    \kv@define@key{thu@committee}{file}{\let\thu@committee@file\kv@value}%
+    \kv@set@family@handler{thu@committee}{%
+      \ifx\kv@value\relax
+        \let\thu@committee@file\kv@key
+      \else
+        \kv@handled@false
       \fi
-      \thu@chapter*[]{\thu@committee@name}%
-    \endgroup
-  \else
-    \thu@pdfbookmark{0}{\thu@committee@name}%
-    \includepdf{\thu@committee@file}%
+    }%
+    \kvsetkeys{thu@committee}{#1}%
+    \ifx\thu@committee@file\@empty
+      \begingroup
+        \ifthu@main@language@english
+          \ctexset{chapter/format=\centering\sffamily\fontsize{16bp}{20bp}\selectfont}
+        \fi
+        \thu@chapter*[]{\thu@committee@name}%
+      \endgroup
+    \else
+      \thu@pdfbookmark{0}{\thu@committee@name}%
+      \includepdf{\thu@committee@file}%
+    \fi
+    \thispagestyle{empty}%
+    \ctexset{
+      section = {
+        format    += {\centering},
+        numbering = false,
+        afterindent = false,
+      },
+    }%
+    \thusetup{language=chinese}
+    \BODY\clearpage
+    \thu@reset@main@language
   \fi
-  \thispagestyle{empty}%
-  \ctexset{
-    section = {
-      format    += {\centering},
-      numbering = false,
-      afterindent = false,
-    },
-  }%
-  \thusetup{language=chinese}
-}{%
-  \thu@reset@main@language
 }
 %    \end{macrocode}
 % \end{environment}
@@ -6068,19 +6070,21 @@
 % \subsection{指导教师/小组学术评语}
 % \begin{environment}{comments}
 %    \begin{macrocode}
-\newenvironment{comments}[1][]{%
-  \@mainmatterfalse
-  \kv@define@key{thu@comments}{name}{\let\thu@comments@name\kv@value}%
-  \kv@set@family@handler{thu@comments}{%
-    \ifx\kv@value\relax
-      \let\thu@comments@name\kv@key
-    \else
-      \kv@handled@false
-    \fi
-  }%
-  \kvsetkeys{thu@comments}{#1}%
-  \chapter{\thu@comments@name}%
-}{%
+\NewEnviron{comments}[1][]{%
+  \ifthu@degree@graduate
+    \@mainmatterfalse
+    \kv@define@key{thu@comments}{name}{\let\thu@comments@name\kv@value}%
+    \kv@set@family@handler{thu@comments}{%
+      \ifx\kv@value\relax
+        \let\thu@comments@name\kv@key
+      \else
+        \kv@handled@false
+      \fi
+    }%
+    \kvsetkeys{thu@comments}{#1}%
+    \chapter{\thu@comments@name}%
+    \BODY\clearpage
+  \fi
 }
 %    \end{macrocode}
 % \end{environment}
@@ -6088,10 +6092,13 @@
 % \subsection{答辩委员会决议书}
 % \begin{environment}{resolution}
 %    \begin{macrocode}
-\newenvironment{resolution}{%
-  \@mainmatterfalse
-  \chapter{\thu@resolution@name}%
-}{}
+\NewEnviron{resolution}{%
+  \ifthu@degree@graduate
+    \@mainmatterfalse
+    \chapter{\thu@resolution@name}%
+    \BODY\clearpage
+  \fi
+}
 %    \end{macrocode}
 % \end{environment}
 %
