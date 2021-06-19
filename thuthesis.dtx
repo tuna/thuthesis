@@ -3079,6 +3079,7 @@
   \@mainmattertrue
   \pagenumbering{arabic}%
 }
+\newif\ifthu@backmatter
 \renewcommand\backmatter{%
   \if@openright
     \cleardoublepage
@@ -3086,6 +3087,7 @@
     \clearpage
   \fi
   \@mainmatterfalse
+  \thu@backmattertrue
   \thusetup{toc-depth = 0}%
 }
 %    \end{macrocode}
@@ -5273,6 +5275,11 @@
 % 插图清单。
 %    \begin{macrocode}
 \renewcommand\listoffigures{%
+  \ifthu@degree@bachelor
+    \ifthu@backmatter\else
+      \thu@warning{The list of figures should be placed in back matter}%
+    \fi
+  \fi
   \thu@listof{figure}%
 }
 \titlecontents{figure}
@@ -5288,6 +5295,11 @@
 % 附表清单。
 %    \begin{macrocode}
 \renewcommand\listoftables{%
+  \ifthu@degree@bachelor
+    \ifthu@backmatter\else
+      \thu@warning{The list of tables should be placed in back matter}%
+    \fi
+  \fi
   \thu@listof{table}%
 }
 \titlecontents{table}
@@ -5302,11 +5314,17 @@
 % 将插图和附表合在一起列出“插图和附表清单”。
 %    \begin{macrocode}
 \newcommand\listoffiguresandtables{%
-  \thu@chapter*{\thu@list@figure@table@name}%
-  \@starttoc{lof}%
-  \par
-  \null\par
-  \@starttoc{lot}%
+  \ifthu@degree@bachelor
+    \thu@warning{The list of figures and tables are for graduates only}%
+    \listoffigures
+    \listoftables
+  \else
+    \thu@chapter*{\thu@list@figure@table@name}%
+    \@starttoc{lof}%
+    \par
+    \null\par
+    \@starttoc{lot}%
+  \fi
 }
 %    \end{macrocode}
 % \end{macro}
