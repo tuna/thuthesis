@@ -213,42 +213,6 @@ Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-Package biblatex Warning: '\mkdatezeros' is deprecated.
-(biblatex)                Please use '\mkyearzeros', '\mkmonthzeros' or
-(biblatex)                '\mkdayzeros' as appropriate. 
-(biblatex)                Falling back to '\mkmonthzeros'.
-Package biblatex Warning: '\mkdatezeros' is deprecated.
-(biblatex)                Please use '\mkyearzeros', '\mkmonthzeros' or
-(biblatex)                '\mkdayzeros' as appropriate. 
-(biblatex)                Falling back to '\mkmonthzeros'.
-Package biblatex Warning: '\mkdatezeros' is deprecated.
-(biblatex)                Please use '\mkyearzeros', '\mkmonthzeros' or
-(biblatex)                '\mkdayzeros' as appropriate. 
-(biblatex)                Falling back to '\mkmonthzeros'.
-Package biblatex Warning: '\mkdatezeros' is deprecated.
-(biblatex)                Please use '\mkyearzeros', '\mkmonthzeros' or
-(biblatex)                '\mkdayzeros' as appropriate. 
-(biblatex)                Falling back to '\mkmonthzeros'.
-Package biblatex Warning: '\mkdatezeros' is deprecated.
-(biblatex)                Please use '\mkyearzeros', '\mkmonthzeros' or
-(biblatex)                '\mkdayzeros' as appropriate. 
-(biblatex)                Falling back to '\mkmonthzeros'.
-Package biblatex Warning: '\mkdatezeros' is deprecated.
-(biblatex)                Please use '\mkyearzeros', '\mkmonthzeros' or
-(biblatex)                '\mkdayzeros' as appropriate. 
-(biblatex)                Falling back to '\mkmonthzeros'.
-Package biblatex Warning: '\mkdatezeros' is deprecated.
-(biblatex)                Please use '\mkyearzeros', '\mkmonthzeros' or
-(biblatex)                '\mkdayzeros' as appropriate. 
-(biblatex)                Falling back to '\mkmonthzeros'.
-Package biblatex Warning: '\mkdatezeros' is deprecated.
-(biblatex)                Please use '\mkyearzeros', '\mkmonthzeros' or
-(biblatex)                '\mkdayzeros' as appropriate. 
-(biblatex)                Falling back to '\mkmonthzeros'.
-Package biblatex Warning: '\mkdatezeros' is deprecated.
-(biblatex)                Please use '\mkyearzeros', '\mkmonthzeros' or
-(biblatex)                '\mkdayzeros' as appropriate. 
-(biblatex)                Falling back to '\mkmonthzeros'.
 Completed box being shipped out [2]
 \vbox(722.98454+0.0)x434.18916
 .\hbox(0.0+0.0)x0.0
@@ -607,7 +571,7 @@ Completed box being shipped out [2]
 ....\glue(\rightskip) 0.0
 ...\penalty 25100
 ...\glue(\baselineskip) 7.65208
-...\hbox(7.12462+1.48604)x384.9659, glue set 265.14444fil, shifted 36.135
+...\hbox(7.12462+2.29756)x384.9659, glue set 221.83817fil, shifted 36.135
 ....\TU/texgyretermes(0)/m/it/10.53937 ems
 ....\kern 0.0
 ....\kern -0.0002
@@ -629,6 +593,10 @@ Completed box being shipped out [2]
 ....\glue 2.63484 plus 1.31741 minus 0.87828
 ....\TU/texgyretermes(0)/m/n/10.53937 &
 ....\kern -0.00021
+....\kern 0.00021
+....\glue 2.63484 plus 1.31741 minus 0.87828
+....\TU/texgyretermes(0)/m/n/10.53937 Company
+....\kern -0.0002
 ....\TU/texgyretermes(0)/m/n/10.53937 ,
 ....\kern -0.00021
 ....\kern 0.00021
@@ -646,7 +614,7 @@ Completed box being shipped out [2]
 ...\glue 6.02249 plus 3.01125 minus 3.01125
 ...\glue(\parskip) 0.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 8.3793
+...\glue(\baselineskip) 7.56778
 ...\hbox(7.1984+2.18164)x384.9659, glue set 0.4162, shifted 36.135
 ....\hbox(0.0+0.0)x-36.135
 .....\glue -36.135
