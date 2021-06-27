@@ -42,7 +42,7 @@
                 "-pv-",
                 "-pvc-",
                 "-outdir=%OUTDIR%",
-                "%DOC%"
+                "%DOCFILE%"
             ],
             "env": {}
         },
