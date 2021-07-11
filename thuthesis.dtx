@@ -1731,9 +1731,20 @@
 %    \end{macrocode}
 %
 % \pkg{pdfpages} 宏包便于我们插入扫描后的授权说明和声明页 PDF 文档。
+%
+% 由于 \pkg{pdfpages} 跟 \pkg{TikZ} 的 \pkg{external} 库冲突，
+% 需要在导言区的结尾进行处理，见
+% \href{https://github.com/tuna/thuthesis/issues/693}{\#693}。
 %    \begin{macrocode}
 \RequirePackage{pdfpages}
 \includepdfset{fitpaper=true}
+\AtEndPreamble{
+  \ifx\tikzifexternalizing\@undefined\else
+    \tikzifexternalizing{
+      \renewcommand*\includepdf[2][]{}
+    }{}
+  \fi
+}
 %    \end{macrocode}
 %
 % 更好的列表环境。
