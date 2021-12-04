@@ -16,7 +16,7 @@ REQUIRED_PKGS="$XECJK_PKGS $CTEX_PKGS bibunits caption enumitem environ \
 FONT_PKGS="fandol tex-gyre xits";
 EXTRA_PKGS="algorithms apacite $BIBLATEX_PKGS booktabs $HYPERREF_PKGS $NOMENCL_PKGS ntheorem siunitx";
 MARKDOWN_PKGS="markdown fancyvrb csvsimple gobble"
-DOC_PKGS="hologo listings xcolor $MARKDOWN_PKGS";
+DOC_PKGS="hologo hypdoc listings xcolor $MARKDOWN_PKGS";
 EXAMPLE_PKGS="float fp metalogo multirow mwe"
 
 tlmgr install $BIN_PKGS $REQUIRED_PKGS $FONT_PKGS $EXTRA_PKGS $DOC_PKGS \
