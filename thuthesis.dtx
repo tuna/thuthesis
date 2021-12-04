@@ -1795,9 +1795,11 @@
   }
 }
 \AtEndOfPackageFile*{natbib}{
-  \@ifpackageloaded{apacite}{}{
-    \RequirePackage{bibunits}
-  }
+  \ifthu@degree@bachelor
+    \@ifpackageloaded{apacite}{}{
+      \RequirePackage{bibunits}
+    }
+  \fi
 }
 %    \end{macrocode}
 %
