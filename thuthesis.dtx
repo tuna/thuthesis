@@ -6255,11 +6255,6 @@
 %
 %    \begin{macrocode}
 \AtEndOfPackageFile*{siunitx}{%
-  \sisetup{
-    group-minimum-digits = 4,
-    separate-uncertainty = true,
-    inter-unit-product   = \ensuremath{{}\cdot{}},
-  }
   \newcommand\thu@set@siunitx@language{%
     \ifthu@language@chinese
       \sisetup{
