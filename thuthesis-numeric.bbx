@@ -25,3 +25,33 @@
       \renewcommand*{\makelabel}[1]{\hss##1}}
   {\endlist}
   {\item}
+
+%
+%   重设专利title的输出，将文献类型标识符输出出去
+%
+\renewbibmacro*{patenttitle}{%原输出来自biblatex.def文件
+  \ifboolexpr{%
+    test{\iffieldundef{title}}%
+    and%
+    test{\iffieldundef{subtitle}}%
+  }%
+    {}%
+    {\printtext[title]{\bibtitlefont%
+       \printfield[titlecase]{title}%
+       \ifboolexpr{test {\iffieldundef{subtitle}}}
+       {}{\setunit{\subtitlepunct}%
+       \printfield[titlecase]{subtitle}}%
+       \iffieldundef{titleaddon}{}
+        {\setunit{\subtitlepunct}\printfield{titleaddon}}%
+       % \setunit{\subtitlepunct}\printfield{number}%写专利号
+       \setunit{\subtitlepunct}%
+       \iflistundef{location}{}
+        {\printlist{location}\setunit{\addcomma\space}}% 专利国别
+       \printfield{number}%写专利号
+       \iftoggle{bbx:gbtype}{\printfield[gbtypeflag]{usera}}{}%
+     %\iffieldundef{booktitle}{\newunit}{}%当title是析出时，不要标点
+     %\newunit
+     }%
+}%
+\clearlist{location}\clearlist{address}%
+}

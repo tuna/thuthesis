@@ -7,8 +7,8 @@
 %% gbt7714.dtx  (with options: `2015,thu,author-year')
 %% -------------------------------------------------------------------
 %% GB/T 7714—2015 BibTeX Style
-%% https://github.com/CTeX-org/gbt7714-bibtex-style
-%% Version: 2021/04/03 v2.1.1
+%% https://github.com/zepinglee/gbt7714-bibtex-style
+%% Version: 2021/12/08 v2.1.3
 %% -------------------------------------------------------------------
 %% Copyright (C) 2016—2021 by Zeping Lee <zepinglee AT gmail.com>
 %% -------------------------------------------------------------------
@@ -33,6 +33,7 @@ INTEGERS {
   sentence.case.title
   link.title
   title.in.journal
+  show.patent.country
   show.mark
   space.before.mark
   show.medium.type
@@ -73,6 +74,7 @@ FUNCTION {load.config}
   #1 'sentence.case.title :=
   #0 'link.title :=
   #1 'title.in.journal :=
+  #1 'show.patent.country :=
   #1 'show.mark :=
   #0 'space.before.mark :=
   #1 'show.medium.type :=
@@ -88,7 +90,7 @@ FUNCTION {load.config}
   #1 'show.urldate :=
   #1 'show.url :=
   #1 'show.doi :=
-  #0 'show.preprint :=
+  #1 'show.preprint :=
   #0 'show.note :=
   #0 'show.english.translation :=
   #1 'end.with.period :=
@@ -773,7 +775,7 @@ FUNCTION {add.link}
 { url empty$ not
     { "\href{" url * "}{" * swap$ * "}" * }
     { doi empty$ not
-        { "\href{http://dx.doi.org/" doi * "}{" * swap$ * "}" * }
+        { "\href{https://doi.org/" doi * "}{" * swap$ * "}" * }
         'skip$
       if$
     }
@@ -789,7 +791,25 @@ FUNCTION {format.title}
         'skip$
       if$
       entry.numbered number empty$ not and
-        { bbl.colon * number * }
+        { bbl.colon *
+          type$ "patent" = show.patent.country and
+            { address empty$ not
+                { address * ", " * }
+                { location empty$ not
+                    { location * ", " * }
+                    { entry.lang lang.zh =
+                        { "中国" * ", " * }
+                        'skip$
+                      if$
+                    }
+                  if$
+                }
+              if$
+            }
+            'skip$
+          if$
+          number *
+        }
         'skip$
       if$
       link.title
@@ -1008,16 +1028,15 @@ FUNCTION {abbreviate}
   if$
 }
 
-FUNCTION {format.journal}
-{ ""
-  short.journal
+FUNCTION {get.journal.title}
+{ short.journal
     { shortjournal empty$ not
-        { shortjournal * }
+        { shortjournal }
         { journal empty$ not
-            { journal * abbreviate }
+            { journal abbreviate }
             { journaltitle empty$ not
-                { journaltitle * abbreviate }
-                'skip$
+                { journaltitle abbreviate }
+                { "" }
               if$
             }
           if$
@@ -1025,15 +1044,30 @@ FUNCTION {format.journal}
       if$
     }
     { journal empty$ not
-        { journal * }
+        { journal }
         { journaltitle empty$ not
-            { journaltitle * }
-            'skip$
+            { journaltitle }
+            { shortjournal empty$ not
+                { shortjournal }
+                { "" }
+              if$
+            }
           if$
         }
       if$
     }
   if$
+}
+
+FUNCTION {check.arxiv.preprint}
+{ #1 #5 substring$ "l" change.case$ "arxiv" =
+    { #1 }
+    { #0 }
+  if$
+}
+
+FUNCTION {format.journal}
+{ get.journal.title
   duplicate$ empty$ not
     { italic.journal entry.lang lang.en = and
         'emphasize
@@ -1111,7 +1145,7 @@ FUNCTION {format.edition}
             { edition change.sentence.case 's :=
               s "Revised" = s "Revised edition" = or
                 { "Rev. ed." }
-                { s " ed." *}
+                { s " ed." * }
               if$
             }
             { edition }
@@ -1323,9 +1357,9 @@ FUNCTION {format.editdate}
 }
 
 FUNCTION {format.urldate}
-{ urldate empty$ not
-  show.urldate show.url and is.pure.electronic or and
-  url empty$ not and
+{ show.urldate show.url and entry.url empty$ not and
+  is.pure.electronic or
+  urldate empty$ not and
     { "\allowbreak[" urldate * "]" * }
     { "" }
   if$
@@ -1459,12 +1493,9 @@ FUNCTION {check.url}
   if$
 }
 
-FUNCTION {format.url}
-{ entry.url
-}
-
 FUNCTION {output.url}
-{ entry.url empty$ not
+{ show.url is.pure.electronic or
+  entry.url empty$ not and
     { new.block
       entry.url output
     }
@@ -1565,9 +1596,9 @@ FUNCTION {check.electronic}
 }
 
 FUNCTION {format.eprint}
-{ eprinttype empty$ not
-    { eprinttype }
-    { archivePrefix empty$ not
+{ archivePrefix empty$ not
+    { archivePrefix }
+    { eprinttype empty$ not
         { archivePrefix }
         { "" }
       if$
@@ -1758,7 +1789,7 @@ FUNCTION {periodical}
   fin.entry
 }
 
-FUNCTION {article}
+FUNCTION {journal.article}
 { output.bibitem
   output.translation
   format.authors output
@@ -1892,7 +1923,7 @@ FUNCTION {preprint}
   new.block
   title.in.journal
     { format.series.vol.num.title "title" output.check
-      "Z" set.entry.mark
+      "A" set.entry.mark
       format.mark "" output.after
       new.block
     }
@@ -1902,13 +1933,18 @@ FUNCTION {preprint}
   new.sentence
   format.edition output
   new.block
-  output.eprint
   year.after.author not
-    { format.year "year" output.check }
+    { date empty$
+        { format.date output }
+        'skip$
+      if$
+    }
     'skip$
   if$
   format.pages bbl.pages.colon output.after
+  format.editdate "" output.after
   format.urldate "" output.after
+  output.eprint
   output.url
   new.block
   format.note output
@@ -1916,13 +1952,19 @@ FUNCTION {preprint}
 }
 
 FUNCTION {misc}
-{ journal empty$ not
-    'article
-    { booktitle empty$ not
+{ get.journal.title
+  duplicate$ empty$ not
+    { check.arxiv.preprint
+        'preprint
+        'journal.article
+      if$
+    }
+    { pop$
+      booktitle empty$ not
         'incollection
         { publisher empty$ not
             'monograph
-            { eprint empty$ not show.preprint and
+            { eprint empty$ not archivePrefix empty$ not or
                 'preprint
                 { entry.is.electronic
                     'electronic
@@ -1946,6 +1988,8 @@ FUNCTION {archive}
 { "A" set.entry.mark
   misc
 }
+
+FUNCTION {article} { misc }
 
 FUNCTION {book} { monograph }
 
@@ -1974,6 +2018,8 @@ FUNCTION {inproceedings}
 }
 
 FUNCTION {conference} { inproceedings }
+
+FUNCTION {legislation} { archive }
 
 FUNCTION {map}
 { "CM" set.entry.mark
@@ -2434,25 +2480,42 @@ FUNCTION {presort}
   'sort.key$ :=
 }
 
-STRINGS { longest.label last.label next.extra }
+STRINGS { longest.label last.label next.extra last.extra.label }
 
-INTEGERS { longest.label.width last.extra.num number.label }
+INTEGERS { longest.label.width number.label }
 
 FUNCTION {initialize.longest.label}
 { "" 'longest.label :=
   #0 int.to.chr$ 'last.label :=
   "" 'next.extra :=
   #0 'longest.label.width :=
-  #0 'last.extra.num :=
   #0 'number.label :=
+  "" 'last.extra.label :=
 }
 
 FUNCTION {forward.pass}
-{ last.label short.label =
-    { last.extra.num #1 + 'last.extra.num :=
-      last.extra.num int.to.chr$ 'extra.label :=
+{
+  last.label short.label =
+    { "" 'extra.label :=
+      last.extra.label text.length$ 'charptr :=
+        { last.extra.label charptr #1 substring$ "z" =
+          charptr #0 > and
+        }
+        { "a" extra.label * 'extra.label :=
+          charptr #1 - 'charptr :=
+        }
+      while$
+      charptr #0 >
+        { last.extra.label charptr #1 substring$ chr.to.int$ #1 + int.to.chr$
+          extra.label * 'extra.label :=
+          last.extra.label #1 charptr #1 - substring$
+          extra.label * 'extra.label :=
+        }
+        { "a" extra.label * 'extra.label := }
+      if$
+      extra.label 'last.extra.label :=
     }
-    { "a" chr.to.int$ 'last.extra.num :=
+    { "a" 'last.extra.label :=
       "" 'extra.label :=
       short.label 'last.label :=
     }
@@ -2461,7 +2524,8 @@ FUNCTION {forward.pass}
 }
 
 FUNCTION {reverse.pass}
-{ next.extra "b" =
+{
+  next.extra "b" =
     { "a" 'extra.label := }
     'skip$
   if$
