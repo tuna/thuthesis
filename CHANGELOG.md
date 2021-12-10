@@ -5,85 +5,107 @@
 点击版本号即可在 GitHub 上查看相邻版本间的代码变动。
 
 ## [Unreleased]
+
 ### Added
-- 增加警告提醒本科生将附录置于声明后（#682）。
+
+- 增加警告提醒本科生将附录置于声明后（[#682](https://github.com/tuna/thuthesis/issues/682)）。
 - 增加警告提醒本科生将插图索引和表格索引置于正文后。
 - 本科生的 `\listoffiguresandtables` 改为分开的插图索引和表格索引。
 
 ### Changed
-- 本科生的“答辩委员会名单”、“指导教师/小组学术评语”和“答辩委员会决议书”改为不输出内容。（#688）
-- 研究生和博后不再默认载入 `bibunits`（#710）。
+
+- 本科生的“答辩委员会名单”、“指导教师/小组学术评语”和“答辩委员会决议书”改为不输出内容（[#688](https://github.com/tuna/thuthesis/issues/688)）。
+- 研究生和博后不再默认载入 `bibunits`（[#710](https://github.com/tuna/thuthesis/issues/710)）。
 - 参考文献表中预印本的文献类型标识改为“A”。
 
 ### Fixed
-- 修复本科生“使用授权说明”中“日期”后缺失的冒号（#679）。
-- 修复 `TikZ` 的 `external` 库与 `pdfpages` 的兼容性问题（#693）。
+
+- 修复本科生“使用授权说明”中“日期”后缺失的冒号（[#679](https://github.com/tuna/thuthesis/issues/679)）。
+- 修复 `TikZ` 的 `external` 库与 `pdfpages` 的兼容性问题（[#693](https://github.com/tuna/thuthesis/issues/693)）。
 - 参考文献表中专利文献使用 `address`/`lcoation` 输出专利国别。
 
 ### Removed
+
 - 去掉了 `siunitx` 的 `inter-unit-product` 设置。
 
 ## [v7.2.3] - 2021-05-31
+
 ### Changed
-- 中文模板的公式编号改为中文括号（#287）。
+
+- 中文模板的公式编号改为中文括号（[#287](https://github.com/tuna/thuthesis/issues/287)）。
 
 ### Fixed
-- 修正硕士论文书脊的字号（#647）。
-- 修正本科生附录（调研和翻译）的目录在 TeX Live 2019 前无法生成的问题（#659）。
-- 修正本科生主要符号表的标题（#661）。
+
+- 修正硕士论文书脊的字号（[#647](https://github.com/tuna/thuthesis/issues/647)）。
+- 修正本科生附录（调研和翻译）的目录在 TeX Live 2019 前无法生成的问题（[#659](https://github.com/tuna/thuthesis/issues/659)）。
+- 修正本科生主要符号表的标题（[#661](https://github.com/tuna/thuthesis/issues/661)）。
 
 ## [v7.2.2] - 2021-04-03
+
 ### Changed
-- 修改授权说明的内容和格式，同 2020 年 12 月版 Word 模板一致（#625）。
-- 参考文献的页码前与冒号之间加上空格，同步 2021 年 3 月版《指南》的格式修改（#629）。
+
+- 修改授权说明的内容和格式，同 2020 年 12 月版 Word 模板一致（[#625](https://github.com/tuna/thuthesis/issues/625)）。
+- 参考文献的页码前与冒号之间加上空格，同步 2021 年 3 月版《指南》的格式修改（[#629](https://github.com/tuna/thuthesis/issues/629)）。
 - 著者-出版年制参考文献表的著者姓名与年份之间改为逗号。
 
 ### Fixed
-- 修正图表等浮动体与文字之间的距离（#614、#617）。
-- 修正表格、算法等浮动体的行距（#619）。
-- 修正了上标式引用后与中文之间多余的空格（#624）。
-- 修正了参考文献的姓名或年份中含有中括号时的引用错误（#630）。
+
+- 修正图表等浮动体与文字之间的距离（[#614](https://github.com/tuna/thuthesis/issues/614)、[#617](https://github.com/tuna/thuthesis/issues/617)）。
+- 修正表格、算法等浮动体的行距（[#619](https://github.com/tuna/thuthesis/issues/619)）。
+- 修正了上标式引用后与中文之间多余的空格（[#624](https://github.com/tuna/thuthesis/issues/624)）。
+- 修正了参考文献的姓名或年份中含有中括号时的引用错误（[#630](https://github.com/tuna/thuthesis/issues/630)）。
 
 ## [v7.2.1] - 2021-03-21
+
 ### Added
+
 - 在文档中添加更多关于数学公式样式的说明。
 
 ### Changed
+
 - 允许控制研究生的声明页是否添加页眉页脚。
 
 ### Fixed
-- 调整文字与图表等浮动体之间的距离（#614）。
+
+- 调整文字与图表等浮动体之间的距离（[#614](https://github.com/tuna/thuthesis/issues/614)）。
 - 修复一些字体选择相关的问题。
 
 ## [v7.2.0] - 2021-03-12
+
 ### Added
+
 - 新增英文版写作指南要求的格式。
-- 新增选题报告的格式（#579）。
+- 新增选题报告的格式（[#579](https://github.com/tuna/thuthesis/issues/579)）。
 - 新增 `figure-number-sepatator` 等选项设置图表编号的连接符。
 - 新增数学符号字体风格选项 `math-style`。
 - 新增选项控制数学字体风格的细节：`uppercase-greek`、`less-than-or-equal`、`integral`、`integral-limits`、`partial` 和 `math-ellipsis`。
 - 新增数学字体试验性选项 `math-font = newtx`。
 
 ### Changed
-- 研究生的声明页默认加上页眉和页码，不受 `page-style` 的控制（#574）。
-- 取消图表标题的悬挂缩进（#589）。
+
+- 研究生的声明页默认加上页眉和页码，不受 `page-style` 的控制（[#574](https://github.com/tuna/thuthesis/issues/574)）。
+- 取消图表标题的悬挂缩进（[#589](https://github.com/tuna/thuthesis/issues/589)）。
 - 英文封面的联合导师改为“Co-supervisor”。
 - 联合导师的 key 改为 `co-supervisor`，同英文版模板一致。
 
 ### Fixed
-- 修正 `longtable` 宏包的配置（#584）。
-- 修正本科生的“目录”、“声明”和“致谢”等标题中的空白（#591）。
+
+- 修正 `longtable` 宏包的配置（[#584](https://github.com/tuna/thuthesis/issues/584)）。
+- 修正本科生的“目录”、“声明”和“致谢”等标题中的空白（[#591](https://github.com/tuna/thuthesis/issues/591)）。
 - 修正参考文献的格式，取消页码与前面冒号之间的空格。
 - 修正中文封面的字距。
 
 ## [v7.1.0] - 2020-10-14
+
 ### Changed
+
 - 更新摘要的标题格式（研究生 2020-09-18 版）。
 - 更新目录的格式（研究生 2020-09-18 版）。
 - 图表浮动体的位置参数默认为 `h`。
 - 更新示例文档。
 
 ### Fixed
+
 - 修正 “keywords” 的拼写。
 - 修正授权使用说明的内容。
 - 修正授伪粗字体的粗度。
@@ -95,17 +117,21 @@
 - 修正脚注的行距和缩进距离。
 
 ## [v7.0.0] - 2020-09-09
+
 ### Changed
+
 - 更新 2020 年版目录、插图和附表清单的格式。
 - 更新 2020 年版使用授权说明的内容。
 - 更新 2020 年版参考文献表的格式。
 
 ### Added
+
 - 新增 2020 年版“答辩委员会名单”页。
 - 新增 biblatex 支持。
 - 新增本科生外文系格式的支持。
 
 ### Fixed
+
 - 修正本科生密级的字体。
 - 修正表格的默认字号。
 - 修正参考文献表的行距和段前段后间距。
@@ -114,72 +140,88 @@
 - 修正封面的语言切换。
 
 ## [v6.1.3] - 2020-07-09
+
 ### Added
+
 - 新增选项 `statement-page-style = empty / plain` 同时控制声明的页眉和页脚。
 
 ### Fixed
+
 - `\record` 命令中，如果 `output` 配置为 `print`，则强制进行 `\cleardoublepage`，保证记录表独立成页。
-- 修正了在导言区设置论文主要语言无效的问题（#560）。
+- 修正了在导言区设置论文主要语言无效的问题（[#560](https://github.com/tuna/thuthesis/issues/560)）。
 - 修正了研究生插入扫描版声明页时的页眉。
 
 ### Deprecated
+
 - 选项 `statement-page-number` 已过时。
 
 ## [v6.1.2] - 2020-06-14
+
 ### Changed
+
 - `\statement` 和 `\copyrightpage` 命令都会在 PDF 中生成相应位置的书签。
 - `\statement` 命令编译生成声明页默认不含页码。
 - `\statement[xxx.pdf]` 插入扫描页时在页脚生成页码，以解决打印版与电子版页码不一致的情况。
 - 使用 `l3build` 编译的版本，在提交到 CTAN 时提供 TDS 结构，以解决编译时 `tsinghua-name-bachelor.pdf` 找不到的问题。
 
 ### Added
+
 - 添加 `\record` 命令用于本科生插入综合论文训练记录表，同时在 PDF 中生成对应书签。
 - 添加选项 `statement-page-number` 控制编译声明页时是否含页码。
 
 ### Fixed
+
 - 修正示例代码中关于 `\statement` 的 typo。
 
 ## [v6.1.1] - 2020-06-12
+
 ### Changed
+
 - 书脊中的西文不再需要调整高度。
 - 修改预生成的隶书版本本科生封面学校名称的文件名为 `tsinghua-name-bachelor.pdf`，不再尝试使用系统字体生成。
 - 将论文示例的文件名更改为 `thuthesis-example.tex / pdf`，以符合 CTAN 的要求。
 
 ### Added
-- 添加选项 `include-spine`，允许在正文中插入书脊页（#551）。
+
+- 添加选项 `include-spine`，允许在正文中插入书脊页（[#551](https://github.com/tuna/thuthesis/issues/551)）。
 - 添加选项 `spine-title`、`spine-author` 控制书脊的内容。
 - 添加选项 `spine-font` 控制书脊的字号。
-- 添加选项 `output` 选择输出格式为打印版或用于提交的电子版（#553）。
+- 添加选项 `output` 选择输出格式为打印版或用于提交的电子版（[#553](https://github.com/tuna/thuthesis/issues/553)）。
 
 ### Fixed
+
 - 修正书脊的格式。
 - 修复文档中 Changelog 的格式问题。
 
 ## [v6.1.0] - 2020-06-08
+
 ### Changed
+
 - 在 `translation` 环境中使用 `\bibliography` 改为生成参考文献，
-  对应的原文索引改为 `translation-index` 环境（#529）。
+  对应的原文索引改为 `translation-index` 环境（[#529](https://github.com/tuna/thuthesis/issues/529)）。
 - 附录的图、表不再加入索引。
 - 使用 `threeparttable` 示例表内脚注。
-- 本科生的目录章标题的西文字母和数字默认使用 Arial（#542）。
+- 本科生的目录章标题的西文字母和数字默认使用 Arial（[#542](https://github.com/tuna/thuthesis/issues/542)）。
 - GitHub repo 所有者更改为清华大学 TUNA 协会。
-- 接管 `ctex` 的 `fontset` 选项，允许更灵活的字体配置（#498）。
+- 接管 `ctex` 的 `fontset` 选项，允许更灵活的字体配置（[#498](https://github.com/tuna/thuthesis/issues/498)）。
 
 ### Fixed
-- 本科生附录的调研报告使用英文（#479）。
+
+- 本科生附录的调研报告使用英文（[#479](https://github.com/tuna/thuthesis/issues/479)）。
 - 修正本科生附录的 `algorithm` 和 `listings` 环境的编号格式。
-- 研究生的“使用授权说明”增加一空白页（#504）。
-- 修正 publication 列表行距问题（#507）。
+- 研究生的“使用授权说明”增加一空白页（[#504](https://github.com/tuna/thuthesis/issues/504)）。
+- 修正 publication 列表行距问题（[#507](https://github.com/tuna/thuthesis/issues/507)）。
 - 修正研究生目录的行距。
-- 调整本科生封面有辅导教师、联合指导教师时的格式（#522, #537）。
-- 修正本科生封面日期的字体（#532）。
+- 调整本科生封面有辅导教师、联合指导教师时的格式（[#522](https://github.com/tuna/thuthesis/issues/522), [#537](https://github.com/tuna/thuthesis/issues/537)）。
+- 修正本科生封面日期的字体（[#532](https://github.com/tuna/thuthesis/issues/532)）。
 - 设置三线表横线的默认粗度。
 - 修正文档中关于本科生学科（专业）名称的说明。
 - 允许用户使用文档类选项 `openright`。
-- 修正本科生的“单设一页”格式（#545）。
+- 修正本科生的“单设一页”格式（[#545](https://github.com/tuna/thuthesis/issues/545)）。
 - 研究生的正文（main matter）起始于奇数页。
 
 ### Added
+
 - 允许使用边注。
 - 新增 `amsthm` 支持。
 - 支持单个关键词设置样式。
@@ -187,37 +229,47 @@
 - 添加选项 `toc-chapter-style` 控制本科生的目录章标题的西文字体。
 
 ## [v6.0.2] - 2020-02-23
+
 ### Fixed
-- 修复图表公式目录内容缺失（#467）。
+
+- 修复图表公式目录内容缺失（[#467](https://github.com/tuna/thuthesis/issues/467)）。
 - 修复 Github Actions 执行 l3build check 问题。
 - 文本模式使用 `\checkmark`。
 
 ### Added
+
 - 补充 PDF 元信息：文档标题，语言。
 
 ### Changed
+
 - 补充“著者-出版年”引用命令使用方法。
 - 使用 `xeCJKfntef` 替换 `CJKfntef`。
 
 ## [v6.0.1] - 2020-02-03
+
 ### Changed
+
 - 更新文档。
 - 更新 bib 测试用例。
 
 ### Fixed
-- 修复 PDF 目录层级问题（#457）。
-- 修复 PDF 中章节连接问题（#453）。
+
+- 修复 PDF 目录层级问题（[#457](https://github.com/tuna/thuthesis/issues/457)）。
+- 修复 PDF 中章节连接问题（[#453](https://github.com/tuna/thuthesis/issues/453)）。
 
 ## [v6.0.0] - 2020-01-06
+
 ### Added
+
 - 新增 `survey`（调研阅读报告）和 `translation`（书面翻译）环境用于本科生的附录，
-  其中的参考文献引用独立于论文正文（#343）。
+  其中的参考文献引用独立于论文正文（[#343](https://github.com/tuna/thuthesis/issues/343)）。
 - 新增论文语言选项。
 - 增加 `l3build` 测试。
 
 ### Changed
+
 - 重新设计 `\thusetup` 的接口。
-- 指导教师的姓名和职称用英文逗号分开（#424）。
+- 指导教师的姓名和职称用英文逗号分开（[#424](https://github.com/tuna/thuthesis/issues/424)）。
 - 重新设计封面（题名页）。
 - `\makecover` 拆分为 `\maketitle`、`\copyrightpage`。
 - 中英文摘分别用 `abstract`、`abstract*` 环境生成。
@@ -229,26 +281,34 @@
 - 整理 Makefile，便于日常使用。
 
 ## Removed
+
 - 移除 `secret` 选项。
 - 移除 `translationbib` 环境。
 - 移除 `tocarialchapter`、`tocarialchapterentry` 和 `tocarialchapterpage` 选项。
 - 只保留 xelatex 编译方式。
 
 ### Fixed
+
 - 修正本科生的文献引用样式。
 - 修正本科生目录章标题的字体。
 - 处理 `hyperref` 与 `unicode-math` 的兼容性问题。
 
 ## [v5.5.2] - 2019-04-21
+
 ### Changed
+
 - 使用 XITS 数学字体。
 
 ## [v5.5.1] - 2019-04-16
+
 ### Changed
+
 - `\thu@textcircled`: 修复 minipage 中 footnote 编号问题。
 
 ## [v5.5.0] - 2019-03-15
+
 ### Changed
+
 - 增加选项使用英文模板。
 - 使用 `unicode-math` 处理数学字体。
 - Windows 的中文字体开启伪粗。
@@ -259,11 +319,15 @@
 - 增加 `nomencl` 宏包的支持。
 
 ## [v5.4.5] - 2018-05-17
+
 ### Changed
+
 - `\normalsize`: 调整公式和正文间距。
 
 ## [v5.4.4] - 2018-04-22
+
 ### Changed
+
 - 删除 `arialtitle`，所有论文格式都一样。
 - 让目录中的引用不影响正文中引用序号。
 - 参考文献列表的页码使用 hyphen 取代 en dash。
@@ -271,40 +335,56 @@
 - 允许连续两个文献引用使用连接号。
 
 ## [v5.4.2] - 2017-12-18
+
 ### Changed
+
 - 删除 `\pozhehao`。
 - 使用 degree 取代 type 选项。
 
 ## [v5.4.1] - 2017-12-04
+
 ### Changed
+
 - bst 在 ctan 上不分路径，故加前缀。
 
 ## [v5.4.0] - 2017-12-3
+
 ### Changed
+
 - 基于 `natbib` 的环境调整距离兼容性更好。
 - `\bibliographystyle{<newbib>}` will cause `\bibstyle@newbib` to be called on THE NEXT LATEX RUN (via the aux file).
 
 ## [v5.3.2] - 2017-05-01
+
 ### Changed
+
 - 定理环境格式设置（环境标题和环境正文字体设置）统一放置到 .cfg 文件中。
 
 ## [v5.3.1] - 2016-03-20
+
 ### Changed
+
 - 使用 CTeX 默认中文字体配置，支持不同引擎。
 - `ctex` 默认加载 `CJKspace`。
 - 几乎没人主动安装 Arial 字体。
 
 ## [v5.3.0] - 2016-03-11
+
 ### Changed
+
 - 更新到研究生院 2016.3 指南。
 
 ## [v5.2.3] - 2016-02-13
+
 ### Changed
+
 - `\thu@def@fontsize`: 改写字体定义命令。
 - 安全注释本科公式部分。
 
 ## [v5.2.2] - 2016-02-01
+
 ### Changed
+
 - 不希望 `newtx` 修改 `\@makefnmark`。
 - 利用 `environ` 的 `\Collect@Body`。
 - 目录中标题和页码都是链接。
@@ -314,26 +394,34 @@
 - 用 `environ` 封装的 `\Collect@Body`。
 
 ## [v5.2.1] - 2016-01-14
+
 ### Changed
+
 - 使用 `newtx` 替换 `txfonts`。
 - 使用 `newtx` 字体。
 - `denotation`: 利用 `enumitem` 改造环境定义，更直观。
 - `acknowledgement`: 用 `acknowledgement` 替换 `ack`。
 
 ## [v5.2.0] - 2016-01-11
+
 ### Changed
+
 - `\title`: 增加 `\title` 排版翻译标题。
 - `translationbib`: 增加翻译文献环境 `translationbib`。
 - `\publicationskip`: 增加 `\publicationskip`。
 
 ## [v5.1.0] - 2015-12-27
+
 ### Changed
+
 - `\thusetup`: 通过 `\thusetup` 统一设置封面信息。
 - `\thu@first@titlepage`: 利用 `CJKfilltwosides` 优化封面排版。
 - `\thu@first@titlepage`: 修改联合指导教师显示问题。
 
 ## [v5.0.0] - 2015-12-21
+
 ### Changed
+
 - 使用 `kvoptions` 简化选项 type。
 - norggedbottom 选项修改为 raggedbottom。
 - 删除 `paralist` 选项。
@@ -341,25 +429,29 @@
 - 不再将页面尺寸写入 dvi，因为已不支持 dvips， 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。
 - 用 `geometry` 简化设置。
 - `\ps@thu@headings`: 利用 `fancyhdr` 设置页眉页脚。
-- 修正定理字样为黑体（#104）。
+- 修正定理字样为黑体（[#104](https://github.com/tuna/thuthesis/issues/104)）。
 - 本科附录图表编号用-不用.（如图A-1，表A-2）。
 - 用 `\ctexset` 来设置，替换复杂的 `\@startsection`。
-- 修正章节间距问题（#57）。
+- 修正章节间距问题（[#57](https://github.com/tuna/thuthesis/issues/57)）。
 - 硕士博士论文目录只出现到第 3 级标题即可。其他未明确要求。
-- `\tableofcontents`: 修正学位论文中目录里节前缩进（#103）。
-- `\makecover`: 使用 `pdfpages` 宏包支持本硕博论文授权说明扫描版（#36）。
-- `acknowledgement`: 使用 pdfpages 宏包支持本硕博论文声明扫描版（#36）。
+- `\tableofcontents`: 修正学位论文中目录里节前缩进（[#103](https://github.com/tuna/thuthesis/issues/103)）。
+- `\makecover`: 使用 `pdfpages` 宏包支持本硕博论文授权说明扫描版（[#36](https://github.com/tuna/thuthesis/issues/36)）。
+- `acknowledgement`: 使用 pdfpages 宏包支持本硕博论文声明扫描版（[#36](https://github.com/tuna/thuthesis/issues/36)）。
 - `\inlinecite`: 用 `\inlinecite` 替换 `\onlinecite`。为保证兼 容性，`\onlinecite` 会保留。
-- `achievements`: 博士后就不提在学期间了，不合适（#100）。
-- `achievements`: 让简历部分更符合格式指南和示例文件（#122）。
+- `achievements`: 博士后就不提在学期间了，不合适（[#100](https://github.com/tuna/thuthesis/issues/100)）。
+- `achievements`: 让简历部分更符合格式指南和示例文件（[#122](https://github.com/tuna/thuthesis/issues/122)）。
 - `\shuji`: 扩展 `\shuji[<标题>][<作者>]`。
 
 ## [v4.8.1] - 2014-12-09
+
 ### Changed
+
 - 按照 CTAN 的要求整理一下文件。
 
 ## [v4.8] - 2014-11-25
+
 ### Changed
+
 - no need to load `indentfirst` directly since we use `ctex`.
 - 内部调用 `ctex` 宏包，自动检测编译引擎。
 - dvips method is deprecated. We ask their users to load it manually.
@@ -372,7 +464,9 @@
 - 在 CJK 模式下用 `CJKspace` 保留中英文间空格。
 
 ## [v4.7] - 2012-06-12
+
 ### Changed
+
 - 去掉 `hypernat` 依赖，`hyperref` 和 `natbib` 可以很好配合了。
 - 修改本科生页脚间距与样例基本一致。
 - `\ps@thu@headings`: 本科页码用小五号字。
@@ -385,7 +479,9 @@
 - `\thu@makeabstract`: Bachelor sample uses Keywords w/o space `-_-`
 
 ## [v4.6] - 2011-10-22
+
 ### Changed
+
 - 增加博士后文档部分。
 - 使用手册更新。
 - 增加 postdoctor 选项。
@@ -396,7 +492,9 @@
 - `resume`: 支持可选参数，自己定义简历章节标题。
 
 ## [v4.5.2] - 2010-09-19
+
 ### Changed
+
 - 研究生页面边距由 3.2cm 改为 3cm。
 - 本科论文日期具体到日。
 - `\makecover`: 本科封面和授权说明之间不要空白页。
@@ -404,28 +502,38 @@
 - `acknowledgement`: 研究生论文的致谢和声明终于分开了。
 
 ## [v4.5.1] - 2009-01-06
+
 ### Changed
+
 - 太好了，不用处理 `longtable` 的 `\caption` 了。
 - `\listoftables*`: 更优雅的插图/表格索引，避免跟 `caption` 包冲 突。`\thu@listof` 相应修改。
 
 ## [v4.5] - 2009-01-04
+
 ### Changed
+
 - 加入 XeTeX 支持，需要 `xeCJK`。
 - 彻底转向 UTF-8，并支持 XeLaTeX。
 - 增加 xetex, pdftex 选项。
 - `\shuji`: 简化代码，同时支持 XeLaTeX。
 
 ## [v4.4.4] - 2008-06-12
+
 ### Changed
+
 - 修复了一个从 v4.3 升级到 v4.4 过程中的丢失公式索引的 bug，原修改代码保留备忘。
 
 ## [v4.4.3] - 2008-06-09
+
 ### Changed
+
 - `\thu@first@titlepage`: 修改本科生论文封面格式以符合新样例。
 - `\thu@first@titlepage`: 修改本科生论文封面日期格式以符合新样例。
 
 ## [v4.4.2] - 2008-06-07
+
 ### Changed
+
 - 本科生格式终于也开始用空格作为关键字分隔符了。
 - 本科生签名之间距离改为 `\hskip1em`。
 - `\thu@authorization@mk`: 修改本科生的授权部分，按照 2008 年的新样例。
@@ -433,7 +541,9 @@
 - `\thu@makeabstract`: Bachelor English abstract format requires indent and no hang-indent.
 
 ## [v4.4] - 2008-06-18
+
 ### Changed
+
 - 修复网址断字。
 - `\backmatter`: 本科正文后的页码延续前面的阿拉伯数字，不再用罗马数 字。
 - `\backmatter`: 本科取消了所有页眉。
@@ -447,23 +557,31 @@
 - `\tableofcontents`: 本科章目录项一直用黑体（Arial）。
 
 ## [v4.3] - 2008-03-11
+
 ### Changed
+
 - 子图引用时加括号。
 
 ## [v4.2] - 2008-03-07
+
 ### Changed
+
 - `\eqref` 加括号。
 - 调整证明环境的编号和结尾的方块。
 - `\thu@doctor@engcover`: 博士英文封面补充联合导师。
 
 ## [v4.0] - 2007-11-08
+
 ### Changed
+
 - `\tableofcontents`: 本科研究生目录字号行距都不同。
 - **内部**密级前面终究还是不要五角星了。
 - `\thu@authorization@mk`: 研究生的授权部分调整了一下，不知道老师为什么总爱修改 那些无关紧要的格式，郁闷。感谢 PMHT@newsmth 的认真比对。
 
 ## [v3.1] - 2007-10-09
+
 ### Changed
+
 - 本科的目录又不要 arial 字体了。
 - replace `mathptmx` with `txfonts`.
 - 英文摘要标题要搞特殊化。
@@ -477,7 +595,9 @@
 - `\thu@makeabstract`: 研究生关键词不再沉底。
 
 ## [v3.0] - 2007-05-13
+
 ### Changed
+
 - 不用专门为本科论文生成“**提交**”版本了。
 - 没有了综合论文训练页面，很多本科论文专用命令就消失了。
 - 删除 submit 选项。
@@ -490,7 +610,9 @@
 - `acknowledgement`: 本科论文声明部分图片扫描取消。
 
 ## [v2.6.4] - 2006-10-23
+
 ### Changed
+
 - 增加 `neverdecrease` 选项。
 - `\thu@makeabstract`: **Keywords** but not **Key words**.
 - `\listoftables*`: 增加 `\listoffigures*`，`\listoftables*`。
@@ -498,12 +620,16 @@
 - 调整参考文献标签宽度，使得条目增多时仍能对齐。
 
 ## [v2.6.3] - 2006-07-01
+
 ### Changed
+
 - `\thu@makeabstract`: 为本科正确设置目录及以后的页码。
 - `acknowledgement`: 重画双虚线，自适应页面宽度。
 
 ## [v2.6.2] - 2006-06-20
+
 ### Changed
+
 - 改正 groupmembers 的拼写错误。
 - 去掉 `paralist` 的 `newitem` 和 `newenum` 选项，因为默认是打开的。
 - `\thu@def@fontsize`: 引入此命令重新定义字号。
@@ -517,11 +643,15 @@
 - `\equcaption`: 此命令配合 `amsmath` 命令基本可以满足所有 公式需要。
 
 ## [v2.6.1] - 2006-06-16
+
 ### Changed
+
 - 取消 `thubib.bst` 中 inbook 类 volume 后的页 码。
 
 ## [v2.6] - 2006-06-09
+
 ### Changed
+
 - 增加 dvipdfm 选项。
 - 增加 `longtable`。
 - 去除 hyperref 选项，等待全局传递。
@@ -530,7 +660,9 @@
 - `\thu@first@titlepage`: 本科生题目加长，最多 24 个字。
 
 ## [v2.5.3] - 2006-06-08
+
 ### Changed
+
 - submit 选项的一个笔误。
 - `\backmatter`: 第一章永远右开。
 - 不管 caption 出现在什么位置，`\aboveskip` 总是出现在标题和浮动体之间的距离。
@@ -539,7 +671,9 @@
 - `\equcaption`: 取消 `\equcaption` 的参数
 
 ## [v2.5.2] - 2006-06-01
+
 ### Changed
+
 - 更改默认列表距离。
 - 上一个版本忘了把研究生的公式编号排除。
 - `\thu@chapter*`: 定义自己的 `\thu@chapter*`。
@@ -551,7 +685,9 @@
 - `resume`: 研究生的个人介绍要右开。
 
 ## [v2.5.1] - 2006-05-28
+
 ### Changed
+
 - 如果选项设置了 dvips，但是用 PDFLaTeX 编译，报错。
 - 根据教务处的新要求调整附录部分。
 - 参考文献中杂志文章如果没有卷号，那么页码直接跟在 年份后面，并用句点分割。在 `thubib.bst` 中增加 output.year 函数。
@@ -577,7 +713,9 @@
 - `resume`: 教务处和研究生院非要搞的不一样！
 
 ## [v2.5] - 2006-05-20
+
 ### Changed
+
 - 对本科论文进行大幅度的重写，因为教务处修改了格式要求。
 - 重新整理代码，使其布局更易读。
 - 增加本科论文的提交选项 submit。
@@ -600,16 +738,22 @@
 - 不用 `\CJKcaption`，在导言区直接引入配置文件。
 
 ## [v2.4.2] - 2006-04-18
+
 ### Changed
+
 - 去掉参考文献第二个作者后面烦人的逗号。
 
 ## [v2.4.1] - 2006-04-17
+
 ### Changed
+
 - 2.4 忘了把关键词的 tabular 改成 thu@tabular。
 - 参考文献最后一个作者前是逗号而不是 and。
 
 ## [v2.4] - 2006-04-15
+
 ### Changed
+
 - Fill more pdf info. with `\hypersetup`.
 - 自动隐藏密级为内部时后面的五角星。
 - 增加“注释（Remark）”环境。
@@ -633,7 +777,9 @@
 - 参考文献间距调小一点，label 长度增加一点，以便让超过 100 的参考文献更好地对齐。
 
 ## [v2.3] - 2006-04-09
+
 ### Changed
+
 - Fix a great bug: `\PassOptionsToClass` and `\LoadClass` rather than `\PassOptionToPackage` and `\LoadPackage`.
 - Reorganize the codes in cover, make the pagestyle more readable.
 - Add gbk2uni into the document.
@@ -646,14 +792,18 @@
 - Change the brace in the cover.
 
 ## [v2.2] - 2006-03-26
+
 ### Changed
+
 - Adjust margins. How bad it is to simulate MS WORD!.
 - Add bachelor training overview details supporting.
 - CJK support in preamble.
 - Adjust hyperref to avoid boxes around links.
 
 ## [v2.1] - 2006-03-03
+
 ### Changed
+
 - Add support to bachelor thesis.
 - Remove `fancyhdr` and `geometry`.
 - Redefine footnote marks.
@@ -668,11 +818,15 @@
 - `\makecover`: 分成几个小模块来搞，不然这个 macro 太大了，看不过来。
 
 ## [v2.0e] - 2005-12-18
+
 ### Changed
+
 - `denotation`: 主要符号表定义为一个 list，用起来方便。
 
 ## [v2.0] - 2005-12-20
+
 ### Changed
+
 - `\ps@thu@headings`: 以前的太乱了，重新整理过清晰多了。
 - `\tableofcontents`: 附录的目录项需要调整一下。以及公式编号方式等等。
 - 增加了封面密级，增加博士封面支持
@@ -681,33 +835,47 @@
 - `resume`: 最后决定将 resume 定义为环境。这样与前面的主要符号 表、致谢等对应。
 
 ## [v1.5] - 2005-12-16
+
 ### Changed
+
 - `acknowledgement`: 在那些不显示编号的章节前面先执行一次 `\cleardoublepage`，使新开章节的页码到达正确的状态。否则会因为 `\addcontentsline` 在 chapter 之前而导致目录页码错误。
 - `resume`: 增加个人简历章节的命令，去掉主文件中需要重新 定义 `\cleardoublepage` 和自己写 `\markboth`，`\addcontentsline` 的部分。
 
 ## [v1.4rc1] - 2005-12-14
+
 ### Changed
+
 - I do not know why `\thu@authorizationaddon` does not work now for v1.3, while it's fine in v1.2. Temporarily, I remove the directive :(. There might be better solution. Other changes: add `config` option to subfig to be compatible with subfigure. add `courier` package for tt font.
 - I have to put all chinese chars into cfg, otherwise they would not appear.
 
 ## [v1.4] - 2005-12-05
+
 ### Changed
+
 - Fix the problem of **chinese**, which is because both CJK and everysel redefine the `\selectfont`. So, a not so good workaround is to merge them up. Add `shuji.tex` example. Add `\pozhehao` command.
 
 ## [v1.3] - 2005-11-14
+
 ### Changed
+
 - Replace `subfigure` with `subfig`, replace `caption2` with `caption`, add details about using figure are in the example.
 
 ## [v1.2] - 2005-11-04
+
 ### Changed
+
 - Remove `fancyref`; Remove `ucite` and implement `\onlinecite`; use package `arial` or `helvet` selectively.
 
 ## [v1.1] - 2005-11-03
+
 ### Changed
+
 - Initial version, migrate from the old ``Bao--Pan'' version. Make the template a class instead of package.
 
 ## [v1.0] - 2005-07-06
+
 ### Changed
+
 - Please refer to ``Bao--Pan'' version.
 
 
