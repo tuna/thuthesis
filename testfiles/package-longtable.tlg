@@ -1286,6 +1286,8 @@ Completed box being shipped out [2]
 .....\glue(\tabskip) 0.0 plus 1.0fill
 ....\glue 0.0
 ...\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus -1.0fil minus -1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
@@ -2598,6 +2600,8 @@ Completed box being shipped out [3]
 .....\glue(\tabskip) 0.0 plus 1.0fill
 ....\glue 0.0
 ...\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus -1.0fil minus -1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
@@ -3552,7 +3556,8 @@ Completed box being shipped out [4]
 ...\penalty 10000
 ...\penalty 0
 ...\glue 12.0 plus 4.0 minus 4.0
-...\write1{\protect \FN@pp@footnotehinttrue }
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -4967,6 +4972,8 @@ Completed box being shipped out [5]
 .....\hbox(0.0+0.0)x52.15703
 .....\glue(\tabskip) 0.0 plus 1.0fill
 ....\glue 0.0
+...\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus -1.0fil minus -1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -6385,6 +6392,8 @@ Completed box being shipped out [6]
 .....\glue(\tabskip) 0.0 plus 1.0fill
 ....\glue 0.0
 ...\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus -1.0fil minus -1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
@@ -7120,7 +7129,8 @@ Completed box being shipped out [7]
 ...\penalty 10000
 ...\penalty 0
 ...\glue 12.0 plus 4.0 minus 4.0
-...\write1{\protect \FN@pp@footnotehinttrue }
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

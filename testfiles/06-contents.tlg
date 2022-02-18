@@ -81,11 +81,9 @@ Completed box being shipped out [4]
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set >20000.0fil
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{目\hskip 1em\relax 
 \ETC.}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -6743,8 +6741,9 @@ Completed box being shipped out [7]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\penalty 10000
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -6.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

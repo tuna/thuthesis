@@ -52,13 +52,8 @@ Completed box being shipped out [1]
 ..\vbox(645.87758+0.0)x421.10089, glue set 446.47516fil
 ...\write-{}
 ...\special{color push gray 0}
-...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
-...\write1{\protect \providecommand {\protect \FN@pp@footnote@aux }[2]{}}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -451,9 +446,9 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\write1{\protect \FN@pp@footnotehinttrue }
-...\penalty 10000
 ...\glue -3.97446
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -502,6 +497,8 @@ Completed box being shipped out [2]
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\hbox(0.0+0.0)x0.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -579,11 +576,8 @@ Completed box being shipped out [1]
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
 ..\vbox(645.87758+0.0)x421.10089, glue set 401.21788fil
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -1152,11 +1146,12 @@ Completed box being shipped out [1]
 ....\TU/texgyretermes(0)/m/n/12.045 CERES-Wheat
 ....\kern -0.0002
 ....\kern 0.0002
-....\write1{\protect \FN@pp@footnotehinttrue }
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue -2.20422
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -1241,6 +1236,8 @@ Completed box being shipped out [2]
 ...\glue(\topskip) 12.0
 ...\hbox(0.0+0.0)x0.0
 ...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
+...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 41.25641
@@ -1317,11 +1314,8 @@ Completed box being shipped out [3]
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
 ..\vbox(645.87758+0.0)x421.10089, glue set 324.97318fil
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -1924,11 +1918,12 @@ Completed box being shipped out [3]
 ....\TU/texgyretermes(0)/m/n/12.045 CERES-Wheat
 ....\kern -0.0002
 ....\kern 0.0002
-....\write1{\protect \FN@pp@footnotehinttrue }
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue -2.6258
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -2013,6 +2008,8 @@ Completed box being shipped out [4]
 ...\glue(\topskip) 12.0
 ...\hbox(0.0+0.0)x0.0
 ...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
+...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 41.25641
@@ -2091,9 +2088,7 @@ Completed box being shipped out [5]
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
 ..\vbox(645.87758+0.0)x421.10089, glue set 242.79356fil
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -2804,8 +2799,9 @@ Completed box being shipped out [5]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\penalty 10000
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -6.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -2890,6 +2886,8 @@ Completed box being shipped out [6]
 ...\glue(\topskip) 12.0
 ...\hbox(0.0+0.0)x0.0
 ...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
+...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 41.25641
@@ -2968,8 +2966,8 @@ Completed box being shipped out [1]
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
 ..\vbox(645.87758+0.0)x421.10089, glue set 3474.42857fil
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
+...\write1{\pp@pagectr{footnote}{1}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -5019,8 +5017,9 @@ Completed box being shipped out [2]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.32468
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -5149,6 +5148,7 @@ Completed box being shipped out [3]
 ..\glue(\lineskip) 0.0
 ..\vbox(645.87758+0.0)x421.10089, glue set 159.91304fil
 ...\write-{}
+...\write1{\pp@pagectr{footnote}{2}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -6175,6 +6175,8 @@ Completed box being shipped out [3]
 ...\glue(\belowdisplayshortskip) 6.02249
 ...\glue -3.11093
 ...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
+...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 27.01318
@@ -6735,6 +6737,8 @@ Completed box being shipped out [4]
 ....\kern -0.18753
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
+....\write1{\pp@pagectr{footnote}{3}{\theabspage }{\thepage }}
+....\penalty 10000
 ....\penalty 10000
 ....\hbox(12.72305+0.0)x9.53375
 .....\mathon
@@ -6743,7 +6747,6 @@ Completed box being shipped out [4]
 ......\kern -0.00017
 ......\kern 0.00017
 .....\mathoff
-....\write1{\FN@pp@footnote@aux{1}{\thepage }}
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 纸
 ....\glue 0.0 plus 0.73799
@@ -6807,6 +6810,8 @@ Completed box being shipped out [4]
 ....\kern -0.18753
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
+....\write1{\pp@pagectr{footnote}{4}{\theabspage }{\thepage }}
+....\penalty 10000
 ....\penalty 10000
 ....\hbox(12.72305+0.0)x9.53375
 .....\mathon
@@ -6815,7 +6820,6 @@ Completed box being shipped out [4]
 ......\kern -0.00017
 ......\kern 0.00017
 .....\mathoff
-....\write1{\FN@pp@footnote@aux{2}{\thepage }}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -7078,9 +7082,9 @@ Completed box being shipped out [4]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.1199
 ...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fill
 ...\glue 10.8 plus 4.0 minus 2.0
 ...\special{color push gray 0}
@@ -7391,11 +7395,9 @@ Completed box being shipped out [5]
 ...\write1{\@writefile{lof}{\let\contentsline\ttl@gobblecontents}}
 ...\write1{\@writefile{lot}{\let\contentsline\ttl@gobblecontents}}
 ...\write1{\@writefile{loe}{\let\contentsline\ttl@gobblecontents}}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{插图索引}{\thepage \ET
 C.}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -7493,8 +7495,9 @@ C.}
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\penalty 10000
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -6.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -7613,7 +7616,6 @@ Completed box being shipped out [6]
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{表格索引}{\thepage \ET
 C.}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -7700,8 +7702,9 @@ C.}
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\penalty 10000
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -6.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -7836,7 +7839,6 @@ Completed box being shipped out [7]
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{参考文献}{\thepage \ET
 C.}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -8638,8 +8640,9 @@ C.}
 ...\penalty -51
 ...\glue 0.0
 ...\glue 0.0
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.29756
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -8724,6 +8727,8 @@ Completed box being shipped out [8]
 ...\glue(\topskip) 12.0
 ...\hbox(0.0+0.0)x0.0
 ...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
+...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 41.25641
@@ -8800,11 +8805,9 @@ Completed box being shipped out [9]
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
 ..\vbox(645.87758+0.0)x421.10089, glue set 541.67969fil
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{致\hskip 2em\relax 
 \ETC.}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -8901,7 +8904,7 @@ Completed box being shipped out [9]
 ....\glue(\rightskip) 0.0
 ...\penalty 10150
 ...\glue(\baselineskip) 8.6443
-...\hbox(9.10602+1.97536)x421.10089, glue set 372.9209fil
+...\hbox(9.10602+1.97536)x421.10089, glue set 380.67787fil
 ....\TU/FandolSong(0)/m/n/12.045 和
 ....\glue 0.0 plus 0.73799
 ....\TU/FandolSong(0)/m/n/12.045 人
@@ -8914,12 +8917,12 @@ Completed box being shipped out [9]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
-....\glue 7.75697 minus 6.02249
-....\write1{\protect \FN@pp@footnotehinttrue }
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue -1.97536
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -9004,6 +9007,8 @@ Completed box being shipped out [10]
 ...\glue(\topskip) 12.0
 ...\hbox(0.0+0.0)x0.0
 ...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
+...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 41.25641
@@ -9047,13 +9052,10 @@ Completed box being shipped out [11]
 ..\glue 51.21504
 ..\glue(\lineskip) 0.0
 ..\vbox(645.87758+0.0)x421.10089, glue set 461.3943fil
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{声\protect \hspace 
  \ETC.}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -9366,7 +9368,7 @@ Completed box being shipped out [11]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 10.75217
-...\hbox(9.32283+3.97446)x421.10089, glue set 147.3759fill
+...\hbox(9.32283+3.97446)x421.10089, glue set 150.38715fill
 ....\hbox(0.0+0.0)x24.09
 ....\glue 0.0 plus 1.0fill
 ....\TU/FandolSong(0)/m/n/12.045 签
@@ -9417,12 +9419,12 @@ Completed box being shipped out [11]
 .....\rule(0.79489+0.0)x*
 ....\mathoff
 ....\glue 3.0
-....\glue 3.01125 plus 1.50562 minus 1.00374
-....\write1{\protect \FN@pp@footnotehinttrue }
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue -3.97446
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -9470,6 +9472,8 @@ Completed box being shipped out [12]
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\hbox(0.0+0.0)x0.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -9554,8 +9558,8 @@ Completed box being shipped out [13]
 ...\write1{\@writefile{lof}{\let\contentsline\ttl@gobblecontents}}
 ...\write1{\@writefile{lot}{\let\contentsline\ttl@gobblecontents}}
 ...\write1{\@writefile{loe}{\let\contentsline\ttl@gobblecontents}}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
+...\write1{\pp@pagectr{footnote}{5}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -9762,8 +9766,9 @@ Completed box being shipped out [13]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\write1{\ttl@writefile{ptc}{\ttl@stoptoc{survey@1}}}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.40898
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -9879,7 +9884,6 @@ Completed box being shipped out [14]
 ..\vbox(645.87758+0.0)x421.10089, glue set 561.5478fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{在学期间参加课\ETC.}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -9962,8 +9966,9 @@ Completed box being shipped out [14]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.13194
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

@@ -136,12 +136,9 @@ Completed box being shipped out [1]
 ..\vbox(674.33032+0.0)x426.79135, glue set 0.61319fill
 ...\write-{}
 ...\special{color push gray 0}
-...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
-...\write1{\protect \providecommand {\protect \FN@pp@footnote@aux }[2]{}}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
+...\write1{\pp@pagectr{footnote}{1}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\mark{{第3章\hskip 1em\relax 对等网络中宽松约束的一般性搜索\ETC.}
 ...\glue(\topskip) 12.0
@@ -765,14 +762,16 @@ Completed box being shipped out [1]
 ...\penalty 150
 ...\glue(\baselineskip) 5.06342
 ...\hbox(12.72305+0.0)x426.79135, glue set 417.2576fil
+....\write1{\pp@pagectr{footnote}{2}{\theabspage }{\thepage }}
+....\penalty 10000
+....\penalty 10000
 ....\hbox(12.72305+0.0)x9.53375
 .....\mathon
 .....\hbox(7.90454+1.52669)x9.53375, shifted -4.81851
-......\TU/FandolSong(0)/m/n/9.03375 ①
+......\TU/FandolSong(0)/m/n/9.03375 ②
 ......\kern -0.00017
 ......\kern 0.00017
 .....\mathoff
-....\write1{\FN@pp@footnote@aux{1}{\thepage }}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -2181,7 +2180,7 @@ Completed box being shipped out [1]
 .....\hbox(7.90453+1.52669)x13.55061
 ......\hbox(7.90453+1.52669)x13.55061, glue set 4.51688fil
 .......\hbox(7.90453+1.52669)x9.03374
-........\TU/FandolSong(0)/m/n/9.03374 ①
+........\TU/FandolSong(0)/m/n/9.03374 ②
 ........\kern -0.00017
 ........\kern 0.00017
 .......\glue 0.0 plus 1.0fil minus 1.0fil
@@ -14080,8 +14079,9 @@ Completed box being shipped out [6]
 ......\glue 7.63654 minus 6.0225
 ...\penalty 0
 ...\glue(\belowdisplayskip) 6.02249
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -6.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -14247,6 +14247,7 @@ Completed box being shipped out [7]
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 575.15465fil
 ...\write-{}
+...\write1{\pp@pagectr{footnote}{3}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\mark{{第4章\hskip 1em\relax 对等网络中宽松约束的一般性搜索\ETC.}
 ...\glue(\topskip) 12.0
@@ -14466,8 +14467,9 @@ Completed box being shipped out [7]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.32468
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -15248,7 +15250,7 @@ Completed box being shipped out [8]
 ....\glue(\rightskip) 0.0
 ...\penalty 300
 ...\glue(\baselineskip) 7.98183
-...\hbox(9.47942+2.32468)x426.79135, glue set 113.6214fil
+...\hbox(9.47942+2.32468)x426.79135, glue set 121.37837fil
 ....\TU/FandolSong(0)/m/n/12.045 行
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 距
@@ -15307,12 +15309,12 @@ Completed box being shipped out [8]
 ....\kern -0.00047
 ....\kern -0.18753
 ....\kern 0.18753
-....\glue 7.75697 minus 6.02249
-....\write1{\protect \FN@pp@footnotehinttrue }
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue -2.32468
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -16677,8 +16679,9 @@ Completed box being shipped out [9]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.32468
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

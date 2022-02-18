@@ -77,14 +77,9 @@ Completed box being shipped out [2]
 ..\vbox(674.33032+0.0)x426.79135, glue set 318.90253fill
 ...\write-{}
 ...\special{color push gray 0}
-...\write1{\protect \providecommand {\protect \FN@pp@footnotehinttrue }{}}
-...\write1{\protect \providecommand {\protect \FN@pp@footnote@aux }[2]{}}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{Abstract}{\thepage \ETC.}
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -834,8 +829,9 @@ Completed box being shipped out [2]
 ...\penalty 10000
 ...\glue 0.0 plus 1.0fill
 ...\glue 0.0
-...\write1{\protect \FN@pp@footnotehinttrue }
 ...\glue -2.6258
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
