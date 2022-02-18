@@ -1,8 +1,4 @@
 {
-    "latex-workshop.intellisense.package.enabled": true,
-    "latex-workshop.intellisense.unimathsymbols.enabled": true,
-    "latex-workshop.latex.autoBuild.run": "onSave",
-    "latex-workshop.latex.build.forceRecipeUsage": true,
     "latex-workshop.latex.recipes": [
         {
             "name": "latexmk for thuthesis",
@@ -39,10 +35,8 @@
                 "-halt-on-error",
                 "-interaction=nonstopmode",
                 "-synctex=1",
-                "-pv-",
-                "-pvc-",
                 "-outdir=%OUTDIR%",
-                "%DOCFILE%"
+                "%DOC%"
             ],
             "env": {}
         },
@@ -52,5 +46,37 @@
             "args": [],
             "env": {}
         }
+    ],
+    "latex-workshop.latex.watch.files.ignore": [
+        "**/thuthesis.cls",
+        "**/*.bbx",
+        "**/*.bbl",
+        "**/*.cbx",
+        "**/*.cfg",
+        "**/*.clo",
+        "**/*.cnf",
+        "**/*.def",
+        "**/*.dfu",
+        "**/*.enc",
+        "**/*.fd",
+        "**/*.fmt",
+        "**/*.lbx",
+        "**/*.map",
+        "**/*.mkii",
+        "**/*.pfb",
+        "**/*.tfm",
+        "**/*.vf",
+        "**/*.code.tex",
+        "**/*.sty",
+        "**/texmf-{dist,var}/**",
+        "**/Local/MiKTeX/**",
+        "**/Local/Programs/MiKTeX/**",
+        "**/Roaming/MiKTeX/**",
+        "**/Program*/MiKTeX*/**",
+        "**/.miktex/texmfs/**",
+        "/var/cache/miktex-texmf/**",
+        "/usr/local/share/miktex-texmf/**",
+        "**/Library/Application Support/MiKTeX/texmfs/**",
+        "/dev/null"
     ]
 }
