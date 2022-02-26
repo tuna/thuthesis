@@ -10,8 +10,8 @@ HYPERREF_PKGS="pdflscape";
 NOMENCL_PKGS="nomencl koma-script xkeyval";
 
 BIN_PKGS="latexmk l3build";
-REQUIRED_PKGS="$XECJK_PKGS $CTEX_PKGS bibunits caption enumitem environ \
-    etoolbox filehook footmisc notoccite pdfpages soul threeparttable \
+REQUIRED_PKGS="$XECJK_PKGS $CTEX_PKGS bibunits bigfoot caption enumitem
+    environ etoolbox filehook footmisc notoccite pdfpages soul threeparttable \
     titlesec trimspaces unicode-math";
 FONT_PKGS="fandol tex-gyre xits";
 EXTRA_PKGS="algorithms apacite $BIBLATEX_PKGS booktabs $HYPERREF_PKGS $NOMENCL_PKGS ntheorem siunitx";
