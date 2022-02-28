@@ -5905,6 +5905,11 @@
     \thu@print@contents{survey}{l}{1}{2}{}%
     \vskip 20bp%
   }%
+  \renewcommand\appendix{%
+    \setcounter{section}{0}%
+    \setcounter{subsection}{0}%
+    \renewcommand\thesection{\thechapter.\@Alph\c@section}%
+  }%
   \renewcommand\bibname{参考文献}%
   \let\bibsection\thu@appendix@bibsection
   \renewcommand\@bibunitname{\jobname-survey}%
@@ -5946,6 +5951,11 @@
     \thu@pdfbookmark{1}{目录}%
     \thu@print@contents{translation}{l}{1}{2}{}%
     \vskip 20bp%
+  }%
+  \renewcommand\appendix{%
+    \setcounter{section}{0}%
+    \setcounter{subsection}{0}%
+    \renewcommand\thesection{\thechapter.\@Alph\c@section}%
   }%
   \def\bibsection{%
     \begingroup
