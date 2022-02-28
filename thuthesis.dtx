@@ -1842,16 +1842,6 @@
 \thu@package@conflict{newtxmath}{upgreek}
 %    \end{macrocode}
 %
-% \pkg{mathtools} 需要在 \pkg{unicode-math} 前载入，
-% 参考 \url{https://tex.stackexchange.com/q/521394/82731}。
-%    \begin{macrocode}
-\AtBeginOfPackageFile*{mathtools}{
-  \@ifpackageloaded{unicode-math}{
-    \thu@error{The "mathtools" package should be loaded before setting "math-font"}
-  }{}
-}%
-%    \end{macrocode}
-%
 % \pkg{amsthm} 需要在 \pkg{newtx} 前载入，参考 \pkg{newtx} 的文档。
 %    \begin{macrocode}
 \AtBeginOfPackageFile*{amsthm}{
@@ -6250,6 +6240,20 @@
     \hypersetup{
       pdfcreator={\thuthesis-v\version}}
   }%
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{mathtools} 宏包}
+%
+% \pkg{mathtools} 会修改 \pkg{unicode-math} 的 \cs{underbrace} 和 \cs{overbrace}，
+% 需要还原为 \cs{LaTeXunderbrace} 和 \cs{LaTeXoverbrace}，
+% 参考 \url{https://tex.stackexchange.com/q/521394/82731}。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{mathtools}{
+  \@ifpackageloaded{unicode-math}{
+    \let\underbrace\LaTeXunderbrace
+    \let\overbrace\LaTeXoverbrace
+  }{}
 }
 %    \end{macrocode}
 %
