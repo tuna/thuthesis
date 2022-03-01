@@ -5897,11 +5897,7 @@
     \thu@print@contents{survey}{l}{1}{2}{}%
     \vskip 20bp%
   }%
-  \renewcommand\appendix{%
-    \setcounter{section}{0}%
-    \setcounter{subsection}{0}%
-    \renewcommand\thesection{\thechapter.\@Alph\c@section}%
-  }%
+  \let\appendix\thu@appendix@appendix
   \renewcommand\bibname{参考文献}%
   \let\bibsection\thu@appendix@bibsection
   \renewcommand\@bibunitname{\jobname-survey}%
@@ -5944,11 +5940,7 @@
     \thu@print@contents{translation}{l}{1}{2}{}%
     \vskip 20bp%
   }%
-  \renewcommand\appendix{%
-    \setcounter{section}{0}%
-    \setcounter{subsection}{0}%
-    \renewcommand\thesection{\thechapter.\@Alph\c@section}%
-  }%
+  \let\appendix\thu@appendix@appendix
   \def\bibsection{%
     \begingroup
       \ctexset{section/numbering=false}%
@@ -6009,6 +6001,16 @@
     {\contentspush{\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}%
 }
+%    \end{macrocode}
+%
+% 书面翻译的附录。
+%    \begin{macrocode}
+\newcommand\thu@appendix@appendix{%
+  \def\theHsection{\Hy@AlphNoErr{section}}%
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \renewcommand\thesection{\thechapter.\@Alph\c@section}%
+}%
 %    \end{macrocode}
 %
 % 调研阅读报告的参考文献（或书面翻译对应的外文资料的原文索引）标题用宋体小四号字，段前 20pt，段后 6pt，行距 20pt。
