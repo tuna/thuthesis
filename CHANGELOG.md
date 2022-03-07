@@ -17,6 +17,7 @@
 - 本科生的“答辩委员会名单”、“指导教师/小组学术评语”和“答辩委员会决议书”改为不输出内容（[#688](https://github.com/tuna/thuthesis/issues/688)）。
 - 研究生和博后不再默认载入 `bibunits`（[#710](https://github.com/tuna/thuthesis/issues/710)）。
 - 参考文献表中预印本的文献类型标识改为“A”。
+- 允许多行页眉（[#735](https://github.com/tuna/thuthesis/issues/735)）。
 
 ### Fixed
 

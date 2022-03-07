@@ -1861,7 +1861,12 @@
 % 本科生《写作指南》：
 % 页边距：上：3.8 厘米，下：3.2 厘米，左右：3 厘米，装订线：左 0.2 厘米。
 % 本科生 Word 模板：
-% 页眉距边界：1.5 厘米，页脚距边界：1.75 厘米。
+% 无页眉，页脚距边界：1.75 厘米。
+%
+% \pkg{fancyhdr} 的页眉是沿底部对齐的，所以只需设置 \cs{headsep}，
+% \cs{headheight} 可以适当增加高度允许多行页眉。
+% 研究生：\cs{headsep} = $\SI{3}{cm} - \SI{2.2}{cm} - \SI{10.5}{bp} \times 1.3
+% \approx \SI{0.3}{cm}$。
 %
 %    \begin{macrocode}
 \geometry{
@@ -1876,8 +1881,8 @@
       bottom     = 3.2cm,
       left       = 3.2cm,
       right      = 3cm,
-      headheight = 0.5cm,
-      headsep    = 1.8cm,
+      headheight = 1.9cm,
+      headsep    = 1.9cm,
       footskip   = 1.45cm,
     }%
     \ifthu@output@print
@@ -1893,7 +1898,7 @@
   \else
     \geometry{
       margin     = 3cm,
-      headheight = 0.5cm,
+      headheight = 2.7cm,
       headsep    = 0.3cm,
       footskip   = 0.8cm,
     }%
