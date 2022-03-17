@@ -24,6 +24,7 @@
 - 修复本科生“使用授权说明”中“日期”后缺失的冒号（[#679](https://github.com/tuna/thuthesis/issues/679)）。
 - 修复 `TikZ` 的 `external` 库与 `pdfpages` 的兼容性问题（[#693](https://github.com/tuna/thuthesis/issues/693)）。
 - 参考文献表中专利文献使用 `address`/`lcoation` 输出专利国别。
+- 修正一章内脚注数量超过 10 个时的报错问题，改为警告（[#742](https://github.com/tuna/thuthesis/issues/742)）。
 
 ### Removed
 
