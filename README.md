@@ -15,10 +15,6 @@ Scroll down for the English version of README.
 
 **由于模板升级频繁，在开始使用和提问前，请确保您已经认真完整地阅读了使用说明文档和示例代码。**
 
-**由于模板升级频繁，在开始使用和提问前，请确保您已经认真完整地阅读了使用说明文档和示例代码。**
-
-**由于模板升级频繁，在开始使用和提问前，请确保您已经认真完整地阅读了使用说明文档和示例代码。**
-
 ## 下载
 
 推荐下载**发布版**模板，里面包括具体使用说明以及示例文档：
@@ -36,6 +32,8 @@ Scroll down for the English version of README.
   * [TUNA 镜像站](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/)：GitHub Releases 的镜像。
   * [Overleaf](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)：Overleaf 的模板。
 * 开发版：[GitHub](https://github.com/tuna/thuthesis)
+
+**任何在其他途径分发的 ThuThesis（包含其变体或衍生物）均不是官方版本，请谨慎使用。**
 
 ## 更新日志
 
@@ -106,6 +104,8 @@ Developer versions contain only source code but no pre-compiled `cls` file and d
   * [TUNA Mirrors](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/): mirror of GitHub Releases
   * [Overleaf Template](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)
 * Developer versions: [GitHub](https://github.com/tuna/thuthesis)
+
+**ThuThesis (including its variants / derivatives) distributed in any other way is NOT an official version. Use at your own risk.**
 
 ## Changelog
 
