@@ -6,6 +6,8 @@
 
 ## [Unreleased]
 
+## [v7.2.4] - 2022-03-19
+
 ### Added
 
 - 增加警告提醒本科生将附录置于声明后（[#682](https://github.com/tuna/thuthesis/issues/682)）。
@@ -882,7 +884,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.2.3...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.2.4...HEAD
+[v7.2.4]:     https://github.com/tuna/thuthesis/compare/v7.2.3...v7.2.4
 [v7.2.3]:     https://github.com/tuna/thuthesis/compare/v7.2.2...v7.2.3
 [v7.2.2]:     https://github.com/tuna/thuthesis/compare/v7.2.1...v7.2.2
 [v7.2.1]:     https://github.com/tuna/thuthesis/compare/v7.2.0...v7.2.1
