@@ -15,6 +15,8 @@ Scroll down for the English version of README.
 
 **由于模板升级频繁，在开始使用和提问前，请确保您已经认真完整地阅读了使用说明文档和示例代码。**
 
+任何违反 [LaTeX项目公共许可证 v1.3c](https://www.latex-project.org/lppl/lppl-1-3c/) 使用 ThuThesis 的行为将被记录在 [耻辱柱](https://github.com/tuna/thuthesis/issues/754) 页面中，以示警告。
+
 ## 下载
 
 推荐下载**发布版**模板，里面包括具体使用说明以及示例文档：
@@ -89,6 +91,8 @@ make [{all|thesis|spine|doc|clean|cleanall|distclean}]
 This package establishes a simple and easy-to-use LaTeX template for Tsinghua dissertations, including general undergraduate research papers, masters theses, doctoral dissertations, and postdoctoral reports. An English translation of this README follows the Chinese below.
 
 **This template is subject to frequent changes. Please make sure you have read the usage documentation and example code completely and carefully before using and asking questions.**
+
+Any use of ThuThesis in violation of [The LaTeX project public license v1.3c](https://www.latex-project.org/lppl/lppl-1-3c/) will be recorded in the [Hall of Shame](https://github.com/tuna/thuthesis/issues/754).
 
 ## Downloads
 
