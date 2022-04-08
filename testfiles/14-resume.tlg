@@ -110,7 +110,7 @@ Completed box being shipped out [116]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 169.91995fil
+..\vbox(674.33032+0.0)x426.79135, glue set 185.97823fil
 ...\write-{}
 ...\special{color push gray 0}
 ...\write-{}
@@ -197,7 +197,7 @@ Completed box being shipped out [116]
 ...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 8.20467
+...\glue(\baselineskip) 4.18967
 ...\hbox(9.29874+2.04764)x426.79135, glue set 203.30847fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/texgyretermes(0)/m/n/12.045 197^^d7
@@ -243,7 +243,7 @@ Completed box being shipped out [116]
 ....\glue(\rightskip) 0.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 8.69249
+...\glue(\baselineskip) 4.67749
 ...\hbox(9.33487+2.32468)x426.79135, glue set - 0.24219
 ....\hbox(0.0+0.0)x24.09
 ....\TU/texgyretermes(0)/m/n/12.045 1992
@@ -316,7 +316,7 @@ Completed box being shipped out [116]
 ....\TU/FandolSong(0)/m/n/12.045 理
 ....\glue(\rightskip) 0.0
 ...\penalty 300
-...\glue(\baselineskip) 8.35522
+...\glue(\baselineskip) 4.34023
 ...\hbox(9.3951+1.99945)x426.79135, glue set 362.27834fil
 ....\TU/FandolSong(0)/m/n/12.045 学
 ....\glue 0.0 plus 0.52307
@@ -339,7 +339,7 @@ Completed box being shipped out [116]
 ....\glue(\rightskip) 0.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 8.68045
+...\glue(\baselineskip) 4.66545
 ...\hbox(9.3951+2.2524)x426.79135, glue set 86.71288fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/texgyretermes(0)/m/n/12.045 1996
@@ -475,9 +475,9 @@ Completed box being shipped out [116]
 ...\hbox(8.22673+2.6258)x398.33861, glue set 0.35081, shifted 28.45274
 ....\hbox(8.14243+1.879)x0.0
 .....\glue 0.0
-.....\glue -24.0
-.....\glue -4.45274
-.....\hbox(8.14243+1.879)x24.0, glue set 9.95554fil
+.....\glue -28.45274
+.....\glue 0.0
+.....\hbox(8.14243+1.879)x28.45274, glue set 14.40828fil
 ......\special{color push gray 0}
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 [1]
@@ -485,7 +485,7 @@ Completed box being shipped out [116]
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
 ......\special{color pop}
-.....\glue 4.45274
+.....\glue 0.0
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/12.045 Yang
 ....\kern -0.00021
@@ -586,9 +586,9 @@ Completed box being shipped out [116]
 ...\hbox(9.41919+2.2283)x398.33861, glue set 0.08723, shifted 28.45274
 ....\hbox(8.14243+1.879)x0.0
 .....\glue 0.0
-.....\glue -24.0
-.....\glue -4.45274
-.....\hbox(8.14243+1.879)x24.0, glue set 9.95554fil
+.....\glue -28.45274
+.....\glue 0.0
+.....\hbox(8.14243+1.879)x28.45274, glue set 14.40828fil
 ......\special{color push gray 0}
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 [2]
@@ -596,7 +596,7 @@ Completed box being shipped out [116]
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
 ......\special{color pop}
-.....\glue 4.45274
+.....\glue 0.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 杨
 ....\glue 0.0 plus 0.52307
@@ -706,9 +706,9 @@ Completed box being shipped out [116]
 ...\hbox(9.41919+2.2283)x398.33861, glue set - 0.17097, shifted 28.45274
 ....\hbox(8.14243+1.879)x0.0
 .....\glue 0.0
-.....\glue -24.0
-.....\glue -4.45274
-.....\hbox(8.14243+1.879)x24.0, glue set 9.95554fil
+.....\glue -28.45274
+.....\glue 0.0
+.....\hbox(8.14243+1.879)x28.45274, glue set 14.40828fil
 ......\special{color push gray 0}
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 [3]
@@ -716,7 +716,7 @@ Completed box being shipped out [116]
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
 ......\special{color pop}
-.....\glue 4.45274
+.....\glue 0.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 杨
 ....\glue 0.0 plus 0.52307
@@ -816,9 +816,9 @@ Completed box being shipped out [116]
 ...\hbox(8.22673+2.6258)x398.33861, glue set 0.1458, shifted 28.45274
 ....\hbox(8.14243+1.879)x0.0
 .....\glue 0.0
-.....\glue -24.0
-.....\glue -4.45274
-.....\hbox(8.14243+1.879)x24.0, glue set 9.95554fil
+.....\glue -28.45274
+.....\glue 0.0
+.....\hbox(8.14243+1.879)x28.45274, glue set 14.40828fil
 ......\special{color push gray 0}
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 [4]
@@ -826,7 +826,7 @@ Completed box being shipped out [116]
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
 ......\special{color pop}
-.....\glue 4.45274
+.....\glue 0.0
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/12.045 Yang
 ....\kern -0.00021
@@ -949,19 +949,19 @@ Completed box being shipped out [116]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 4.05516
 ...\hbox(9.41919+2.26445)x398.33861, glue set - 0.05469, shifted 28.45274
-....\hbox(8.28696+1.879)x0.0
+....\hbox(8.14243+1.879)x0.0
 .....\glue 0.0
-.....\glue -24.0
-.....\glue -4.45274
-.....\hbox(8.28696+1.879)x24.0, glue set 9.95554fil
+.....\glue -28.45274
+.....\glue 0.0
+.....\hbox(8.14243+1.879)x28.45274, glue set 14.40828fil
 ......\special{color push gray 0}
 ......\penalty 10000
-......\TU/texgyretermes(0)/m/n/12.045 [5]
+......\TU/texgyretermes(0)/m/n/12.045 [1]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
 ......\special{color pop}
-.....\glue 4.45274
+.....\glue 0.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 任
 ....\glue 0.0 plus 0.52307
@@ -1070,21 +1070,21 @@ Completed box being shipped out [116]
 ...\glue 6.02249
 ...\glue(\parskip) 0.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 5.70131
-...\hbox(8.23878+2.6258)x398.33861, glue set 0.88791, shifted 28.45274
-....\hbox(8.23878+1.879)x0.0
+...\glue(\baselineskip) 5.71336
+...\hbox(8.22673+2.6258)x398.33861, glue set 0.88791, shifted 28.45274
+....\hbox(8.14243+1.879)x0.0
 .....\glue 0.0
-.....\glue -24.0
-.....\glue -4.45274
-.....\hbox(8.23878+1.879)x24.0, glue set 9.95554fil
+.....\glue -28.45274
+.....\glue 0.0
+.....\hbox(8.14243+1.879)x28.45274, glue set 14.40828fil
 ......\special{color push gray 0}
 ......\penalty 10000
-......\TU/texgyretermes(0)/m/n/12.045 [6]
+......\TU/texgyretermes(0)/m/n/12.045 [2]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
 ......\special{color pop}
-.....\glue 4.45274
+.....\glue 0.0
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/12.045 Ren
 ....\kern -0.00021
