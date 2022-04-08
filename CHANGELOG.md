@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- 目录中的长标题由悬挂缩进改为左对齐（[#759](https://github.com/tuna/thuthesis/discussions/759)）。
+
 ## [v7.2.4] - 2022-03-19
 
 ### Added
