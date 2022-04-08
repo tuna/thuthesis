@@ -12,6 +12,10 @@
 - 研究生英文版目录中的标签分隔符由 `\quad` 改为空格（[#759](https://github.com/tuna/thuthesis/discussions/759)）。
 - 研究生英文版章节标题的标签分隔符由 `\quad` 改为空格（[#759](https://github.com/tuna/thuthesis/discussions/759)）。
 
+### Fixed
+
+- 修正英文版研究成果的格式（[#755](https://github.com/tuna/thuthesis/issues/755)）。
+
 ## [v7.2.4] - 2022-03-19
 
 ### Added

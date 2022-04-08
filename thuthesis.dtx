@@ -6055,16 +6055,49 @@
       format    += \centering,
       numbering = false,
     },
-    subsection = {
-      format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
-      numbering  = false,
-      aftertitle = \ifthu@language@chinese ：\else :\fi,
-    },
   }%
-  \ifthu@degree@bachelor
-    \ifthu@language@english
-      \sffamily\fontsize{15bp}{20bp}\selectfont,
+  \ifthu@language@chinese
+    \ctexset{
+      subsection = {
+        format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+        numbering  = false,
+        aftertitle = ：,
+      },
+    }%
+    \ifthu@degree@graduate
+      \fontsize{12bp}{16bp}\selectfont
     \fi
+    \setlist[achievements]{
+      topsep      = 6bp,
+      itemsep     = 6bp,
+      leftmargin  = 1cm,
+      labelwidth  = 1cm,
+      labelsep    = 0pt,
+      align       = left,
+      label       = [\arabic*],
+    }%
+  \else
+    \ctexset{
+      subsection = {
+        beforeskip = 0pt,
+        afterskip  = 0pt,
+        format     = \bfseries\normalsize,
+        indent     = \parindent,
+        numbering  = false,
+      },
+    }%
+    \ifthu@degree@bachelor
+      % 内容部分用Arial字体，字号15pt，行距采用固定值20pt， 段前后 0pt。
+      \sffamily\fontsize{15bp}{20bp}\selectfont
+    \fi
+    \setlist[achievements]{
+      topsep      = 0bp,
+      itemsep     = 0bp,
+      leftmargin  = 1.75cm,
+      labelsep    = 0.5cm,
+      align       = right,
+      label       = [\arabic*],
+    }%
   \fi
 }{}
 %    \end{macrocode}
@@ -6085,19 +6118,14 @@
 %    \begin{macrocode}
 \newlist{achievements}{enumerate}{1}
 \setlist[achievements]{
-  label      = [\arabic*],
-  align      = left,
-  leftmargin = 10mm,
   topsep     = 6bp,
-  parsep     = 0bp,
   partopsep  = 0bp,
   itemsep    = 6bp,
-  labelsep   = !,
-  before     = {
-    \ifthu@degree@graduate
-      \fontsize{12bp}{16bp}\selectfont
-    \fi
-  },
+  parsep     = 0bp,
+  leftmargin = 10mm,
+  itemindent = 0pt,
+  align      = left,
+  label      = [\arabic*],
   resume     = achievements,
 }
 %    \end{macrocode}
