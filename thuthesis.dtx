@@ -3593,21 +3593,17 @@
     numberformat = {},
     titleformat  = {},
     fixskip      = true,
-    aftername    = \quad,
     afterindent  = true,
     lofskip      = 0pt,
     lotskip      = 0pt,
   },
   section = {
-    aftername    = \quad,
     afterindent  = true,
   },
   subsection = {
-    aftername    = \quad,
     afterindent  = true,
   },
   subsubsection = {
-    aftername    = \quad,
     afterindent  = true,
   },
   paragraph/afterindent = true,
@@ -3636,21 +3632,25 @@
     \ctexset{%
       chapter = {
         format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
+        aftername  = \quad,
         beforeskip = 30bp,
         afterskip  = 20bp,
       },
       section = {
         format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
+        aftername  = \quad,
         beforeskip = 25bp,
         afterskip  = 12bp,
       },
       subsection = {
         format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        aftername  = \quad,
         beforeskip = 12bp,
         afterskip  = 6bp,
       },
       subsubsection = {
         format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        aftername  = \quad,
         beforeskip = 12bp,
         afterskip  = 6bp,
       },
@@ -3700,43 +3700,6 @@
 % 由于 Word 的行距算法不同，这里进行了一些调整使得视觉上更接近。
 %    \begin{macrocode}
   \else
-    \ifthu@main@language@chinese
-      \ctexset{%
-        chapter = {
-          format      = \centering\sffamily\sanhao,
-          nameformat  = {},
-          titleformat = {},
-          name        = {第,章},
-        },
-        section = {
-          format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
-        },
-        subsection = {
-          format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
-        },
-        subsubsection = {
-          format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
-        },
-      }%
-    \else
-      \ctexset{%
-        chapter = {
-          format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
-          nameformat  = \MakeUppercase,
-          titleformat = \MakeUppercase,
-          name        = \chaptername\space,
-        },
-        section = {
-          format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
-        },
-        subsection = {
-          format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
-        },
-        subsubsection = {
-          format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
-        },
-      }%
-    \fi
     \ctexset{%
       chapter = {
         beforeskip = 27bp,
@@ -3756,6 +3719,51 @@
         afterskip  = 6bp,
       },
     }%
+    \ifthu@main@language@chinese
+      \ctexset{%
+        chapter = {
+          format      = \centering\sffamily\sanhao,
+          nameformat  = {},
+          titleformat = {},
+          name        = {第,章},
+          aftername   = \quad,
+        },
+        section = {
+          format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+          aftername  = \quad,
+        },
+        subsection = {
+          format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
+          aftername  = \quad,
+        },
+        subsubsection = {
+          format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
+          aftername  = \quad,
+        },
+      }%
+    \else
+      \ctexset{%
+        chapter = {
+          format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
+          nameformat  = \MakeUppercase,
+          titleformat = \MakeUppercase,
+          name        = \chaptername\space,
+          aftername   = \space,
+        },
+        section = {
+          format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
+          aftername  = \space,
+        },
+        subsection = {
+          format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
+          aftername  = \space,
+        },
+        subsubsection = {
+          format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+          aftername  = \space,
+        },
+      }%
+    \fi
   \fi
 }
 \thu@set@section@format
