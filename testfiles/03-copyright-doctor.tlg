@@ -44,14 +44,14 @@ Completed box being shipped out [1]
 ..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\hbox(0.0+0.0)x426.79135
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 257.75879fil
 ...\write-{}
-...\special{color push gray 0}
+...\special{pdfcolorstack 1 push (0 g 0 G)}
 ...\write-{}
 ...\write-{}
 ...\write-{}
@@ -805,9 +805,9 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
 ..\hbox(0.0+0.0)x426.79135
-...\special{color push gray 0}
+...\special{pdfcolorstack 1 push (0 g 0 G)}
 ...\hbox(0.0+0.0)x426.79135
-...\special{color pop}
+...\special{pdfcolorstack 1 pop}
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999

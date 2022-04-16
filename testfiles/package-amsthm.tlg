@@ -45,14 +45,14 @@ Completed box being shipped out [1]
 ..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\hbox(0.0+0.0)x426.79135
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set >20000.0fil
 ...\write-{}
-...\special{color push gray 0}
+...\special{pdfcolorstack 1 push (0 g 0 G)}
 ...\write-{}
 ...\write1{\pp@pagectr{footnote}{1}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
@@ -87,7 +87,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 定
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 理
@@ -107,7 +107,7 @@ Completed box being shipped out [1]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -307,7 +307,7 @@ Completed box being shipped out [1]
 .....\glue 0.0
 .....\glue -6.0
 .....\hbox(8.9374+1.95128)x42.135
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 6.0
 ......\TU/FandolHei(0)/m/n/12.045 证
 ......\glue 0.0 plus 0.52307
@@ -322,7 +322,7 @@ Completed box being shipped out [1]
 ......\kern -0.99649
 ......\kern 0.99649
 ......\glue 8.52786 minus 6.0225
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 6.0
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 劳
@@ -527,7 +527,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 假
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 设
@@ -547,7 +547,7 @@ Completed box being shipped out [1]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -742,7 +742,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 公
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 理
@@ -762,7 +762,7 @@ Completed box being shipped out [1]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -957,7 +957,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 猜
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 想
@@ -977,7 +977,7 @@ Completed box being shipped out [1]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -1172,7 +1172,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 推
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 论
@@ -1192,7 +1192,7 @@ Completed box being shipped out [1]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -1387,7 +1387,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 定
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 义
@@ -1407,7 +1407,7 @@ Completed box being shipped out [1]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -1602,7 +1602,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 例
 ....\kern -0.00018
 ....\kern 0.00018
@@ -1620,7 +1620,7 @@ Completed box being shipped out [1]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -1815,7 +1815,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 练
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 习
@@ -1835,7 +1835,7 @@ Completed box being shipped out [1]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -2030,7 +2030,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 引
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 理
@@ -2050,7 +2050,7 @@ Completed box being shipped out [1]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -2242,9 +2242,9 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
 ..\hbox(0.0+0.0)x426.79135
-...\special{color push gray 0}
+...\special{pdfcolorstack 1 push (0 g 0 G)}
 ...\hbox(0.0+0.0)x426.79135
-...\special{color pop}
+...\special{pdfcolorstack 1 pop}
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -2276,15 +2276,15 @@ Completed box being shipped out [2]
 ..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\hbox(0.0+0.0)x426.79135
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 501.67676fil
 ...\glue(\topskip) 2.54468
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 问
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 题
@@ -2304,7 +2304,7 @@ Completed box being shipped out [2]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -2499,7 +2499,7 @@ Completed box being shipped out [2]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.21068
 ...\hbox(9.53964+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 命
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 题
@@ -2519,7 +2519,7 @@ Completed box being shipped out [2]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -2714,7 +2714,7 @@ Completed box being shipped out [2]
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.295
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\TU/FandolHei(0)/m/n/12.045 注
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolHei(0)/m/n/12.045 释
@@ -2734,7 +2734,7 @@ Completed box being shipped out [2]
 ....\kern 0.99649
 ....\glue 8.52786 minus 6.0225
 ....\glue 6.02249
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ....\TU/FandolSong(0)/m/n/12.045 劳
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 仑
@@ -2930,9 +2930,9 @@ Completed box being shipped out [2]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
 ..\hbox(0.0+0.0)x426.79135
-...\special{color push gray 0}
+...\special{pdfcolorstack 1 push (0 g 0 G)}
 ...\hbox(0.0+0.0)x426.79135
-...\special{color pop}
+...\special{pdfcolorstack 1 pop}
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999

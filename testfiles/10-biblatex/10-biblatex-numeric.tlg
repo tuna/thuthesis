@@ -31,14 +31,14 @@ Completed box being shipped out [1]
 ..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\hbox(0.0+0.0)x426.79135
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 381.23964fil
 ...\write-{}
-...\special{color push gray 0}
+...\special{pdfcolorstack 1 push (0 g 0 G)}
 ...\glue(\topskip) 1.07468
 ...\hbox(10.92532+2.144)x426.79135, glue set 303.34177fil
 ....\hbox(0.0+0.0)x24.09
@@ -605,9 +605,9 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
 ..\hbox(0.0+0.0)x426.79135
-...\special{color push gray 0}
+...\special{pdfcolorstack 1 push (0 g 0 G)}
 ...\hbox(0.0+0.0)x426.79135
-...\special{color pop}
+...\special{pdfcolorstack 1 pop}
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -678,9 +678,9 @@ Completed box being shipped out [2]
 ..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\hbox(0.0+0.0)x426.79135
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set - 0.07347
@@ -719,7 +719,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 13.31839fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [1
 ......\kern -0.0002
@@ -728,7 +728,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 张
@@ -881,7 +881,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 13.31839fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [2
 ......\kern -0.0002
@@ -890,7 +890,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 竺
@@ -974,7 +974,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 13.31839fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [3
 ......\kern -0.0002
@@ -983,7 +983,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Dupont
@@ -1210,7 +1210,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 13.31839fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [4
 ......\kern -0.0002
@@ -1219,7 +1219,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 郑
@@ -1312,7 +1312,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.25108+1.64412)x25.6073, glue set 13.31839fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [5
 ......\kern -0.0002
@@ -1321,7 +1321,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 姜
@@ -1424,7 +1424,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.20892+1.64412)x25.6073, glue set 13.31839fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [6
 ......\kern -0.0002
@@ -1433,7 +1433,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 中
@@ -1565,7 +1565,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(6.97707+1.64412)x25.6073, glue set 13.31839fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [7
 ......\kern -0.0002
@@ -1574,7 +1574,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Merkt
@@ -1717,7 +1717,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 13.31839fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [8
 ......\kern -0.0002
@@ -1726,7 +1726,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Mellinger
@@ -1912,7 +1912,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 13.31839fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [9
 ......\kern -0.0002
@@ -1921,7 +1921,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Bixon
@@ -2043,7 +2043,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [10
 ......\kern -0.0002
@@ -2052,7 +2052,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 马
@@ -2188,7 +2188,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [11
 ......\kern -0.0002
@@ -2197,7 +2197,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Carlson
@@ -2352,7 +2352,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [12
 ......\kern -0.0002
@@ -2361,7 +2361,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Taylor
@@ -2501,7 +2501,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [13
 ......\kern -0.0002
@@ -2510,7 +2510,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Taylor
@@ -2661,7 +2661,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [14
 ......\kern -0.0002
@@ -2670,7 +2670,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Shimizu
@@ -2830,7 +2830,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.25108+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [15
 ......\kern -0.0002
@@ -2839,7 +2839,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Atkinson
@@ -2984,7 +2984,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.20892+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [16
 ......\kern -0.0002
@@ -2993,7 +2993,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Kusch
@@ -3123,7 +3123,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [17
 ......\kern -0.0002
@@ -3132,7 +3132,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 广
@@ -3233,7 +3233,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [18
 ......\kern -0.0002
@@ -3242,7 +3242,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 霍
@@ -3366,7 +3366,7 @@ C.}
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [19
 ......\kern -0.0002
@@ -3375,7 +3375,7 @@ C.}
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 王
@@ -3459,9 +3459,9 @@ C.}
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
 ..\hbox(0.0+0.0)x426.79135
-...\special{color push gray 0}
+...\special{pdfcolorstack 1 push (0 g 0 G)}
 ...\hbox(0.0+0.0)x426.79135
-...\special{color pop}
+...\special{pdfcolorstack 1 pop}
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -3492,9 +3492,9 @@ Completed box being shipped out [3]
 ..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
-....\special{color push gray 0}
+....\special{pdfcolorstack 1 push (0 g 0 G)}
 ....\hbox(0.0+0.0)x426.79135
-....\special{color pop}
+....\special{pdfcolorstack 1 pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 186.53302fil
@@ -3505,7 +3505,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [20
 ......\kern -0.0002
@@ -3514,7 +3514,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 赵
@@ -3782,7 +3782,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [21
 ......\kern -0.0002
@@ -3791,7 +3791,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 全
@@ -3937,7 +3937,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [22
 ......\kern -0.0002
@@ -3946,7 +3946,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 全
@@ -4120,7 +4120,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [23
 ......\kern -0.0002
@@ -4129,7 +4129,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 World
@@ -4235,7 +4235,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [24
 ......\kern -0.0002
@@ -4244,7 +4244,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Peebles
@@ -4364,7 +4364,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.25108+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [25
 ......\kern -0.0002
@@ -4373,7 +4373,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 白
@@ -4499,7 +4499,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.20892+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [26
 ......\kern -0.0002
@@ -4508,7 +4508,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Weinstein
@@ -4678,7 +4678,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [27
 ......\kern -0.0002
@@ -4687,7 +4687,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 韩
@@ -4832,7 +4832,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [28
 ......\kern -0.0002
@@ -4841,7 +4841,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 中
@@ -4946,7 +4946,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [29
 ......\kern -0.0002
@@ -4955,7 +4955,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 中
@@ -5076,7 +5076,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [30
 ......\kern -0.0002
@@ -5085,7 +5085,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 American
@@ -5219,7 +5219,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [31
 ......\kern -0.0002
@@ -5228,7 +5228,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 傅
@@ -5579,7 +5579,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [32
 ......\kern -0.0002
@@ -5588,7 +5588,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/10.53937 萧
@@ -5882,7 +5882,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [33
 ......\kern -0.0002
@@ -5891,7 +5891,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Online
@@ -6140,7 +6140,7 @@ Completed box being shipped out [3]
 .....\glue -25.6073
 .....\glue -2.84544
 .....\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
-......\special{color push gray 0}
+......\special{pdfcolorstack 1 push (0 g 0 G)}
 ......\glue 0.0 plus 1.0fil minus 1.0fil
 ......\TU/texgyretermes(0)/m/n/10.53937 [34
 ......\kern -0.0002
@@ -6149,7 +6149,7 @@ Completed box being shipped out [3]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fill
-......\special{color pop}
+......\special{pdfcolorstack 1 pop}
 .....\glue 2.84544
 ....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 Scitor
@@ -6224,9 +6224,9 @@ Completed box being shipped out [3]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
 ..\hbox(0.0+0.0)x426.79135
-...\special{color push gray 0}
+...\special{pdfcolorstack 1 push (0 g 0 G)}
 ...\hbox(0.0+0.0)x426.79135
-...\special{color pop}
+...\special{pdfcolorstack 1 pop}
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
