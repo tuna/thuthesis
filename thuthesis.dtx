@@ -1541,6 +1541,7 @@
       auto,
       windows,
       mac,
+      mac-word,
       noto,
       fandol,
       none,
@@ -2208,6 +2209,9 @@
 %
 % 使用 \pkg{fontspec} 配置字体。
 %    \begin{macrocode}
+\newcommand\thu@mac@word@font@path{%
+  /Applications/Microsoft Word.app/Contents/Resources/DFonts/%
+}
 \ifthu@fontset@auto
   \ifthu@system@windows
     \thusetup{fontset = windows}
@@ -2215,15 +2219,19 @@
     \IfFontExistsTF{SimSun}{
       \thusetup{fontset = windows}
     }{
-      \ifthu@system@mac
-        \thusetup{fontset = mac}
-      \else
-        \IfFontExistsTF{Noto Serif CJK SC}{
-          \thusetup{fontset = ubuntu}
-        }{
-          \thusetup{fontset = fandol}
-        }
-      \fi
+      \IfFileExists{\thu@mac@word@font@path/SimSun.ttf}{
+        \thusetup{fontset = windows}
+      }{
+        \ifthu@system@mac
+          \thusetup{fontset = mac}
+        \else
+          \IfFontExistsTF{Noto Serif CJK SC}{
+            \thusetup{fontset = ubuntu}
+          }{
+            \thusetup{fontset = fandol}
+          }
+        \fi
+      }
     }
   \fi
 \fi
@@ -2493,7 +2501,15 @@
     \thusetup{cjk-font = mac}
   \else
     \ifthu@fontset@windows
-      \thusetup{cjk-font = windows}
+      \IfFontExistsTF{SimSun}{
+        \thusetup{cjk-font = windows}
+      }{
+        \IfFileExists{\thu@mac@word@font@path/SimSun.ttf}{
+          \thusetup{cjk-font = mac-word}
+        }{
+          \thu@error{Cannot find "SimSun" font}
+        }
+      }
     \else
       \ifthu@fontset@ubuntu
         \thusetup{cjk-font = noto}
@@ -2519,6 +2535,34 @@
   \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold]%
   \setCJKfamilyfont{zhkai}{KaiTi}%
   \setCJKfamilyfont{zhfs}{FangSong}%
+}
+%    \end{macrocode}
+%
+% macOS 的 Microsoft Word 字体。
+%    \begin{macrocode}
+\@namedef{thu@set@cjk@font@mac-word}{%
+  \xeCJKsetup{EmboldenFactor=3}%
+  \setCJKmainfont{SimSun}[%
+    Path         = \thu@mac@word@font@path,
+    AutoFakeBold = true,
+    ItalicFont   = KaiTi,
+  ]%
+  \setCJKsansfont{SimHei}[%
+    Path         = \thu@mac@word@font@path,
+    AutoFakeBold = true,
+  ]%
+  \setCJKmonofont{FangSong}[Path=\thu@mac@word@font@path]%
+
+  \setCJKfamilyfont{zhsong}{SimSun}[%
+    Path         = \thu@mac@word@font@path,
+    AutoFakeBold = true,
+  ]%
+  \setCJKfamilyfont{zhhei}{SimHei}[%
+    Path         = \thu@mac@word@font@path,
+    AutoFakeBold = true,
+  ]%
+  \setCJKfamilyfont{zhkai}{KaiTi}[Path = \thu@mac@word@font@path]%
+  \setCJKfamilyfont{zhfs}{FangSong}[Path = \thu@mac@word@font@path]%
 }
 %    \end{macrocode}
 %
