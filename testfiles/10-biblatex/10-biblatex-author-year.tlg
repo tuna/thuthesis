@@ -15,8 +15,6 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 Completed box being shipped out [1]
 \vbox(710.18088+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
-..\special{pdfcolorstackinit 1 page direct (0 g 0 G)}
-.\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
 ...\kern -72.26999
@@ -31,14 +29,14 @@ Completed box being shipped out [1]
 ..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
-....\special{pdfcolorstack 1 push (0 g 0 G)}
+....\special{color push gray 0}
 ....\hbox(0.0+0.0)x426.79135
-....\special{pdfcolorstack 1 pop}
+....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 300.94823fil
 ...\write-{}
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\glue(\topskip) 3.85757
 ...\hbox(8.14243+2.13194)x426.79135, glue set 273.91028fil
 ....\hbox(0.0+0.0)x24.09
@@ -859,9 +857,9 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
 ..\hbox(0.0+0.0)x426.79135
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\hbox(0.0+0.0)x426.79135
-...\special{pdfcolorstack 1 pop}
+...\special{color pop}
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -874,7 +872,6 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 710.18088
-.\kern 0.0
 .\kern 0.0
 Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
 (fontspec)             with options
@@ -906,9 +903,9 @@ Completed box being shipped out [2]
 ..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
-....\special{pdfcolorstack 1 push (0 g 0 G)}
+....\special{color push gray 0}
 ....\hbox(0.0+0.0)x426.79135
-....\special{pdfcolorstack 1 pop}
+....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 417.56871fil
@@ -947,9 +944,9 @@ C.}
 .....\glue -24.0
 .....\glue -6.0
 .....\hbox(0.0+0.0)x24.0, glue set 24.0fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
 ....\write1{\abx@aux@page{26}{\the \c@page }}
@@ -992,7 +989,7 @@ C.}
 ....\TU/FandolSong(0)/m/n/10.53937 究
 ....\kern -0.00017
 ....\kern 0.00017
-....\penalty 10000
+....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 [
 ....\penalty 10000
 ....\TU/texgyretermes(0)/m/n/10.53937 M
@@ -1054,9 +1051,9 @@ C.}
 .....\glue -24.0
 .....\glue -6.0
 .....\hbox(0.0+0.0)x24.0, glue set 24.0fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
 ....\write1{\abx@aux@page{27}{\the \c@page }}
@@ -1097,7 +1094,7 @@ C.}
 ....\TU/FandolSong(0)/m/n/10.53937 型
 ....\kern -0.00017
 ....\kern 0.00017
-....\penalty 10000
+....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 [
 ....\penalty 10000
 ....\TU/texgyretermes(0)/m/n/10.53937 J
@@ -1158,9 +1155,9 @@ C.}
 .....\glue -24.0
 .....\glue -6.0
 .....\hbox(0.0+0.0)x24.0, glue set 24.0fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
 ....\write1{\abx@aux@page{28}{\the \c@page }}
@@ -1221,7 +1218,7 @@ C.}
 ....\TU/texgyretermes(0)/m/n/10.53937 Sharing
 ....\kern -0.0002
 ....\kern 0.0002
-....\penalty 10000
+....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 [
 ....\penalty 10000
 ....\TU/texgyretermes(0)/m/n/10.53937 M
@@ -1272,9 +1269,9 @@ C.}
 .....\glue -24.0
 .....\glue -6.0
 .....\hbox(0.0+0.0)x24.0, glue set 24.0fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
 ....\write1{\abx@aux@page{29}{\the \c@page }}
@@ -1302,7 +1299,7 @@ C.}
 ....\TU/texgyretermes(0)/m/n/10.53937 College
 ....\kern -0.0002
 ....\kern 0.0002
-....\penalty 10000
+....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 [
 ....\penalty 10000
 ....\TU/texgyretermes(0)/m/n/10.53937 M
@@ -1353,9 +1350,9 @@ C.}
 .....\glue -24.0
 .....\glue -6.0
 .....\hbox(0.0+0.0)x24.0, glue set 24.0fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
 ....\write1{\abx@aux@page{30}{\the \c@page }}
@@ -1448,7 +1445,7 @@ C.}
 ....\kern -0.00021
 ....\kern 0.0
 ....\glue(\rightskip) 0.0
-...\penalty 15000
+...\penalty 200
 ...\glue(\baselineskip) 7.37556
 ...\hbox(7.1984+1.86545)x405.71262, glue set 0.45746, shifted 21.07874
 ....\TU/texgyretermes(0)/m/n/10.53937 and
@@ -1462,7 +1459,7 @@ C.}
 ....\TU/texgyretermes(0)/m/n/10.53937 Predictions
 ....\kern -0.0002
 ....\kern 0.0002
-....\penalty 10000
+....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 [
 ....\penalty 10000
 ....\TU/texgyretermes(0)/m/n/10.53937 J
@@ -1525,7 +1522,7 @@ C.}
 ....\TU/texgyretermes(0)/m/n/10.53937 811-
 ....\discretionary
 ....\glue(\rightskip) 0.0
-...\penalty 15100
+...\penalty 300
 ...\glue(\baselineskip) 6.94347
 ...\hbox(7.25108+0.14754)x405.71262, glue set 387.26892fil, shifted 21.07874
 ....\TU/texgyretermes(0)/m/n/10.53937 825
@@ -1547,9 +1544,9 @@ C.}
 .....\glue -24.0
 .....\glue -6.0
 .....\hbox(0.0+0.0)x24.0, glue set 24.0fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
 ....\write1{\abx@aux@page{31}{\the \c@page }}
@@ -1627,7 +1624,7 @@ C.}
 ....\kern -0.00021
 ....\kern 0.0
 ....\glue(\rightskip) 0.0
-...\penalty 25000
+...\penalty 300
 ...\glue(\baselineskip) 6.56404
 ...\hbox(7.1984+2.29756)x405.71262, glue set 107.24176fil, shifted 21.07874
 ....\TU/texgyretermes(0)/m/n/10.53937 the
@@ -1653,7 +1650,7 @@ C.}
 ....\TU/texgyretermes(0)/m/n/10.53937 England
 ....\kern -0.0002
 ....\kern 0.0002
-....\penalty 10000
+....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 [
 ....\penalty 10000
 ....\TU/texgyretermes(0)/m/n/10.53937 J
@@ -1698,9 +1695,9 @@ C.}
 .....\glue -24.0
 .....\glue -6.0
 .....\hbox(0.0+0.0)x24.0, glue set 24.0fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
 ....\write1{\abx@aux@page{32}{\the \c@page }}
@@ -1745,7 +1742,7 @@ C.}
 ....\TU/texgyretermes(0)/m/n/10.53937 Historians
 ....\kern -0.0002
 ....\kern 0.0002
-....\penalty 10000
+....\penalty 0
 ....\TU/texgyretermes(0)/m/n/10.53937 [
 ....\penalty 10000
 ....\TU/texgyretermes(0)/m/n/10.53937 J
@@ -1796,7 +1793,7 @@ C.}
 ....\TU/texgyretermes(0)/m/n/10.53937 549-
 ....\discretionary
 ....\glue(\rightskip) 0.0
-...\penalty 25100
+...\penalty 400
 ...\glue(\baselineskip) 6.51135
 ...\hbox(7.25108+0.14754)x405.71262, glue set 387.26892fil, shifted 21.07874
 ....\TU/texgyretermes(0)/m/n/10.53937 560
@@ -1817,9 +1814,9 @@ C.}
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
 ..\hbox(0.0+0.0)x426.79135
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\hbox(0.0+0.0)x426.79135
-...\special{pdfcolorstack 1 pop}
+...\special{color pop}
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999

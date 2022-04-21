@@ -42,9 +42,9 @@ Completed box being shipped out [2]
 ..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
-....\special{pdfcolorstack 1 push (0 g 0 G)}
+....\special{color push gray 0}
 ....\hbox(0.0+0.0)x426.79135
-....\special{pdfcolorstack 1 pop}
+....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 370.77464fil
@@ -53,7 +53,7 @@ Completed box being shipped out [2]
 ...\vbox(291.51608+0.0)x426.79135
 ....\rule(0.8+0.0)x*
 ....\kern 2.0
-....\special{pdfcolorstack 1 push (0 g 0 G)}
+....\special{color push gray 0}
 ....\glue(\parskip) 0.0
 ....\glue(\parskip) 0.0
 ....\hbox(9.19034+2.20424)x426.79135
@@ -94,11 +94,11 @@ Completed box being shipped out [2]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\special{pdfcolorstack 1 pop}
+....\special{color pop}
 ....\kern 2.0
 ....\rule(0.4+0.0)x*
 ....\kern 2.0
-....\special{pdfcolorstack 1 push (0 g 0 G)}
+....\special{color push gray 0}
 ....\vbox(270.52151+0.0)x426.79135
 .....\write1{\@writefile{loa}{\protect \contentsline {algorithm}{\protect \numberline \ETC.}
 .....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
@@ -115,13 +115,13 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -5.52061
 .......\hbox(7.58534+2.26344)x41.20593
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
 ........\TU/texgyretermes(0)/b/n/11.04124 Require:
 ........\kern 0.0
 ........\kern -0.0002
 ........\kern 0.0002
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 5.52061
 ......\penalty 0
 ......\mathon
@@ -158,13 +158,13 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -5.52061
 .......\hbox(7.46388+0.15456)x37.30836
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
 ........\TU/texgyretermes(0)/b/n/11.04124 Ensure:
 ........\kern 0.0
 ........\kern -0.0002
 ........\kern 0.0002
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 5.52061
 ......\penalty 0
 ......\mathon
@@ -193,9 +193,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -5.52061
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 5.52061
 ......\penalty 0
 ......\mathon
@@ -222,9 +222,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -5.52061
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 5.52061
 ......\penalty 0
 ......\TU/texgyretermes(0)/b/n/11.04124 if
@@ -263,9 +263,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -17.56561
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 17.56561
 ......\penalty 0
 ......\mathon
@@ -295,9 +295,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -17.56561
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 17.56561
 ......\penalty 0
 ......\mathon
@@ -328,9 +328,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -5.52061
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 5.52061
 ......\penalty 0
 ......\TU/texgyretermes(0)/b/n/11.04124 else
@@ -355,9 +355,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -17.56561
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 17.56561
 ......\penalty 0
 ......\mathon
@@ -385,9 +385,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -17.56561
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 17.56561
 ......\penalty 0
 ......\mathon
@@ -417,9 +417,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -5.52061
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 5.52061
 ......\penalty 0
 ......\TU/texgyretermes(0)/b/n/11.04124 end
@@ -447,9 +447,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -5.52061
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 5.52061
 ......\penalty 0
 ......\TU/texgyretermes(0)/b/n/11.04124 while
@@ -489,9 +489,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -17.56561
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 17.56561
 ......\penalty 0
 ......\TU/texgyretermes(0)/b/n/11.04124 if
@@ -534,9 +534,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -29.61061
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 29.61061
 ......\penalty 0
 ......\mathon
@@ -571,9 +571,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -29.61061
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 29.61061
 ......\penalty 0
 ......\mathon
@@ -606,9 +606,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -17.56561
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 17.56561
 ......\penalty 0
 ......\TU/texgyretermes(0)/b/n/11.04124 else
@@ -647,9 +647,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -29.61061
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 29.61061
 ......\penalty 0
 ......\mathon
@@ -682,9 +682,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -29.61061
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 29.61061
 ......\penalty 0
 ......\mathon
@@ -720,9 +720,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -17.56561
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 17.56561
 ......\penalty 0
 ......\TU/texgyretermes(0)/b/n/11.04124 end
@@ -752,9 +752,9 @@ Completed box being shipped out [2]
 .......\glue -5.52061
 .......\glue -5.52061
 .......\hbox(0.0+0.0)x5.52061, glue set 5.52061fil
-........\special{pdfcolorstack 1 push (0 g 0 G)}
+........\special{color push gray 0}
 ........\glue 0.0 plus 1.0fil
-........\special{pdfcolorstack 1 pop}
+........\special{color pop}
 .......\glue 5.52061
 ......\penalty 0
 ......\TU/texgyretermes(0)/b/n/11.04124 end
@@ -772,7 +772,7 @@ Completed box being shipped out [2]
 .....\penalty -51
 .....\glue 2.2082
 .....\glue 0.0
-....\special{pdfcolorstack 1 pop}
+....\special{color pop}
 ....\kern 2.0
 ....\rule(0.4+0.0)x*
 ....\glue 0.0
@@ -786,9 +786,9 @@ Completed box being shipped out [2]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
 ..\hbox(0.0+0.0)x426.79135
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\hbox(0.0+0.0)x426.79135
-...\special{pdfcolorstack 1 pop}
+...\special{color pop}
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999

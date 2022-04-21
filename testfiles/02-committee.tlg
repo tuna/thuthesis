@@ -28,8 +28,6 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 Completed box being shipped out [1]
 \vbox(710.18088+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
-..\special{pdfcolorstackinit 1 page direct (0 g 0 G)}
-.\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
 ...\kern -72.26999
@@ -44,14 +42,14 @@ Completed box being shipped out [1]
 ..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
-....\special{pdfcolorstack 1 push (0 g 0 G)}
+....\special{color push gray 0}
 ....\hbox(0.0+0.0)x426.79135
-....\special{pdfcolorstack 1 pop}
+....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 237.1745fil
 ...\write-{}
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\write-{}
 ...\write-{}
 ...\write-{}
@@ -151,8 +149,8 @@ Completed box being shipped out [1]
 .....\glue 0.0
 .....\glue -6.0
 .....\hbox(0.0+0.0)x0.0
-......\special{pdfcolorstack 1 push (0 g 0 G)}
-......\special{pdfcolorstack 1 pop}
+......\special{color push gray 0}
+......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
 ....\hbox(33.12404+27.1009)x426.79132
@@ -393,8 +391,8 @@ Completed box being shipped out [1]
 .....\glue 0.0
 .....\glue -6.0
 .....\hbox(0.0+0.0)x0.0
-......\special{pdfcolorstack 1 push (0 g 0 G)}
-......\special{pdfcolorstack 1 pop}
+......\special{color push gray 0}
+......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
 ....\hbox(33.12404+27.1009)x426.79132
@@ -643,8 +641,8 @@ Completed box being shipped out [1]
 .....\glue 0.0
 .....\glue -6.0
 .....\hbox(0.0+0.0)x0.0
-......\special{pdfcolorstack 1 push (0 g 0 G)}
-......\special{pdfcolorstack 1 pop}
+......\special{color push gray 0}
+......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
 ....\hbox(73.274+67.25087)x426.50693
@@ -1215,9 +1213,9 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
 ..\hbox(0.0+0.0)x426.79135
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\hbox(0.0+0.0)x426.79135
-...\special{pdfcolorstack 1 pop}
+...\special{color pop}
 .\kern -710.18088
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -1230,5 +1228,4 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 710.18088
-.\kern 0.0
 .\kern 0.0

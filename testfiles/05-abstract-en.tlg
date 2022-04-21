@@ -16,8 +16,6 @@ Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
 Completed box being shipped out [2]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
-..\special{pdfcolorstackinit 1 page direct (0 g 0 G)}
-.\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
 ...\kern -72.26999
@@ -32,7 +30,7 @@ Completed box being shipped out [2]
 ..\vbox(76.82234+0.0)x426.79135, glue set 63.12115fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(13.70119+0.0)x426.79135
-....\special{pdfcolorstack 1 push (0 g 0 G)}
+....\special{color push gray 0}
 ....\hbox(13.70119+0.0)x426.79135
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 .....\hbox(13.70119+0.0)x426.79135
@@ -71,12 +69,12 @@ Completed box being shipped out [2]
 .......\glue 0.0
 .......\rule(0.7528+0.0)x426.79135
 .......\glue -0.7528
-....\special{pdfcolorstack 1 pop}
+....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 318.90253fill
 ...\write-{}
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\write-{}
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{Abstract}{\thepage \ETC.}
@@ -837,7 +835,7 @@ Completed box being shipped out [2]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 7.14894
 ..\hbox(15.61334+4.1104)x426.79135
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\hbox(15.61334+4.1104)x426.79135
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\hbox(15.61334+4.1104)x426.79135
@@ -875,7 +873,7 @@ Completed box being shipped out [2]
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
-...\special{pdfcolorstack 1 pop}
+...\special{color pop}
 .\kern -714.29128
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -888,5 +886,4 @@ Completed box being shipped out [2]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
-.\kern 0.0
 .\kern 0.0

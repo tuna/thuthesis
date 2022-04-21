@@ -35,8 +35,6 @@ anguage=dflt;!
 Completed box being shipped out [8]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
-..\special{pdfcolorstackinit 1 page direct (0 g 0 G)}
-.\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
 ...\kern -72.26999
@@ -51,7 +49,7 @@ Completed box being shipped out [8]
 ..\vbox(76.82234+0.0)x426.79135, glue set 63.12115fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(13.70119+0.0)x426.79135
-....\special{pdfcolorstack 1 push (0 g 0 G)}
+....\special{color push gray 0}
 ....\hbox(13.70119+0.0)x426.79135
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 .....\hbox(13.70119+0.0)x426.79135
@@ -104,12 +102,12 @@ Completed box being shipped out [8]
 .......\glue 0.0
 .......\rule(0.7528+0.0)x426.79135
 .......\glue -0.7528
-....\special{pdfcolorstack 1 pop}
+....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set >20000.0fil
 ...\write-{}
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\write-{}
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{符号和缩略语说\ETC.}
@@ -158,7 +156,7 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(10.79886+0.14455)x85.35826, glue set 60.7833fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\mathon
@@ -169,7 +167,7 @@ Completed box being shipped out [8]
 .......\TU/XITSMath-Regular(1)/m/n/9.03375 glyph#1233
 ......\mathoff
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 活
@@ -217,7 +215,7 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(5.31184+0.0)x85.35826, glue set 78.20354fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\mathon
@@ -225,7 +223,7 @@ Completed box being shipped out [8]
 ......\kern0.7227
 ......\mathoff
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 传
@@ -267,7 +265,7 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(5.37207+3.11093)x85.35826, glue set 76.60443fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\mathon
@@ -276,7 +274,7 @@ Completed box being shipped out [8]
 .......\TU/XITSMath-Regular(1)/m/n/9.03375 glyph#2509
 ......\mathoff
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 虚
@@ -314,7 +312,7 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.86539+3.1019)x85.35826, glue set 71.72319fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\mathon
@@ -323,7 +321,7 @@ Completed box being shipped out [8]
 .......\TU/XITSMath-Regular(1)/m/n/9.03375 glyph#2502
 ......\mathoff
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 化
@@ -373,7 +371,7 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.22673+0.13248)x85.35826, glue set 44.86298fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/it/12.045 ab
@@ -385,7 +383,7 @@ Completed box being shipped out [8]
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 基
@@ -449,14 +447,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.11833+0.12044)x85.35826, glue set 47.21175fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 As-PPT
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -490,14 +488,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 62.60526fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 DFT
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 密
@@ -547,14 +545,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.11833+0.12044)x85.35826, glue set 31.81824fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 DMAsPPT
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -625,14 +623,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.11833+0.12044)x85.35826, glue set 31.81824fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 HMAsPPT
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -688,14 +686,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 47.21175fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 HMPBI
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -745,14 +743,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 55.24576fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 HMPI
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -800,14 +798,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+2.144)x85.35826, glue set 43.86324fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 HMPPQ
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -859,14 +857,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 50.56026fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 HMPY
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -912,14 +910,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 38.50322fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 HMSPPT
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -973,14 +971,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 54.57124fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 HPCE
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 高
@@ -1040,14 +1038,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 54.57124fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 HPLC
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 高
@@ -1101,14 +1099,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 65.76105fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 IRC
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 内
@@ -1158,14 +1156,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 48.54874fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 LC-MS
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 液
@@ -1220,14 +1218,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.11833+0.12044)x85.35826, glue set 40.51472fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 MAsPPT
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -1289,14 +1287,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 55.90823fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 MPBI
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -1351,14 +1349,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 63.94226fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 MPI
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -1413,14 +1411,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+2.144)x85.35826, glue set 52.55972fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 MPPQ
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -1479,14 +1477,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 59.25674fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 MPY
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -1520,14 +1518,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 47.1997fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 MSPPT
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -1585,14 +1583,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 44.5498fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 ONIOM
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 分
@@ -1665,14 +1663,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 66.61624fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 PBI
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -1700,14 +1698,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 62.60526fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 PDT
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 热
@@ -1735,14 +1733,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 64.60474fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 PES
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 势
@@ -1786,14 +1784,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 74.65025fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 PI
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -1819,14 +1817,14 @@ Completed box being shipped out [8]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.11833+0.0)x85.35826, glue set 22.98926fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 PMDA-BDA
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 均
@@ -1875,7 +1873,7 @@ Completed box being shipped out [8]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 7.14894
 ..\hbox(15.61334+4.1104)x426.79135
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\hbox(15.61334+4.1104)x426.79135
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\hbox(15.61334+4.1104)x426.79135
@@ -1913,7 +1911,7 @@ Completed box being shipped out [8]
 ..........\penalty 10000
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
-...\special{pdfcolorstack 1 pop}
+...\special{color pop}
 .\kern -714.29128
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
@@ -1926,7 +1924,6 @@ Completed box being shipped out [8]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
-.\kern 0.0
 .\kern 0.0
 )
 Completed box being shipped out [9]
@@ -1946,7 +1943,7 @@ Completed box being shipped out [9]
 ..\vbox(76.82234+0.0)x426.79135, glue set 63.12115fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(13.70119+0.0)x426.79135
-....\special{pdfcolorstack 1 push (0 g 0 G)}
+....\special{color push gray 0}
 ....\hbox(13.70119+0.0)x426.79135
 .....\hbox(13.70119+0.0)x426.79135
 ......\vbox(13.70119+0.0)x426.79135
@@ -1999,7 +1996,7 @@ Completed box being shipped out [9]
 .......\rule(0.7528+0.0)x426.79135
 .......\glue -0.7528
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-....\special{pdfcolorstack 1 pop}
+....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 508.09953fil
@@ -2010,14 +2007,14 @@ Completed box being shipped out [9]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+2.144)x85.35826, glue set 63.26773fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 PPQ
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -2047,14 +2044,14 @@ Completed box being shipped out [9]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 69.96475fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 PY
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -2078,14 +2075,14 @@ Completed box being shipped out [9]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 53.89673fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 S-PPT
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 聚
@@ -2117,14 +2114,14 @@ Completed box being shipped out [9]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 63.9302fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 SCF
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 自
@@ -2164,14 +2161,14 @@ Completed box being shipped out [9]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 55.8962fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 SCRF
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 自
@@ -2219,14 +2216,14 @@ Completed box being shipped out [9]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 65.95377fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 TIC
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 总
@@ -2274,14 +2271,14 @@ Completed box being shipped out [9]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 71.30174fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 TS
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 过
@@ -2321,14 +2318,14 @@ Completed box being shipped out [9]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(8.14243+0.16861)x85.35826, glue set 64.18315fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 TST
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 过
@@ -2376,14 +2373,14 @@ Completed box being shipped out [9]
 .....\glue -85.35826
 .....\glue -14.22636
 .....\hbox(7.97379+0.0)x85.35826, glue set 63.94226fil
-......\special{pdfcolorstack 1 push (0 g 0 G)}
+......\special{color push gray 0}
 ......\glue 0.0
 ......\penalty 10000
 ......\TU/texgyretermes(0)/m/n/12.045 ZPE
 ......\kern -0.0002
 ......\kern 0.0002
 ......\glue 0.0 plus 1.0fil
-......\special{pdfcolorstack 1 pop}
+......\special{color pop}
 .....\glue 14.22636
 ....\penalty 0
 ....\TU/FandolSong(0)/m/n/12.045 零
@@ -2431,7 +2428,7 @@ Completed box being shipped out [9]
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 7.14894
 ..\hbox(15.61334+4.1104)x426.79135
-...\special{pdfcolorstack 1 push (0 g 0 G)}
+...\special{color push gray 0}
 ...\hbox(15.61334+4.1104)x426.79135
 ....\hbox(15.61334+4.1104)x426.79135
 .....\vbox(15.61334+4.1104)x426.79135
@@ -2469,7 +2466,7 @@ Completed box being shipped out [9]
 ..........\glue(\parfillskip) 0.0
 ..........\glue(\rightskip) 0.0
 ....\glue 0.0 plus 1.0fil minus 1.0fil
-...\special{pdfcolorstack 1 pop}
+...\special{color pop}
 .\kern -714.29128
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
