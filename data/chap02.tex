@@ -85,12 +85,13 @@
 编号后跟表题（可省略）和“（续）”，置于表上方。续表均应重复表头。
 
 \begin{longtable}{cccc}
-    \caption{跨页长表格的表题} \\
+    \caption{跨页长表格的表题}
+    \label{tab:longtable} \\
     \toprule
     表头 1 & 表头 2 & 表头 3 & 表头 4 \\
     \midrule
   \endfirsthead
-    \caption[]{跨页长表格的表题（续）} \\
+    \caption*{续表~\thetable\quad 跨页长表格的表题} \\
     \toprule
     表头 1 & 表头 2 & 表头 3 & 表头 4 \\
     \midrule

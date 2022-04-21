@@ -1351,7 +1351,7 @@ Completed box being shipped out [3]
 .........\hbox(0.0+0.0)x0.0
 .........\glue 0.0
 .........\vbox(10.04749+4.30612)x426.79135
-..........\hbox(10.04749+4.30612)x426.79135, glue set 169.97046fil
+..........\hbox(10.04749+4.30612)x426.79135, glue set 158.18945fil
 ...........\glue(\leftskip) 0.0 plus 1.0fil
 ...........\hbox(0.0+0.0)x0.0
 ...........\TU/FandolSong(0)/m/n/11.04124 表
@@ -1366,20 +1366,22 @@ Completed box being shipped out [3]
 ...........\rule(10.04749+*)x0.0
 ...........\penalty 10000
 ...........\glue 0.0
+...........\TU/FandolSong(0)/m/n/11.04124 续
+...........\glue 0.0 plus 0.50737
+...........\TU/FandolSong(0)/m/n/11.04124 表
+...........\kern -0.00017
+...........\kern 0.00017
+...........\penalty 10000
+...........\glue 2.76031 plus 1.38016 minus 0.9201
+...........\TU/texgyretermes(0)/m/n/11.04124 1.1
+...........\kern -0.0002
+...........\kern 0.0002
+...........\glue 11.04124
 ...........\TU/FandolSong(0)/m/n/11.04124 表
 ...........\glue 0.0 plus 0.50737
 ...........\TU/FandolSong(0)/m/n/11.04124 题
-...........\glue 0.0 plus 0.50737
-...........\glue 7.00015 minus 5.52063
-...........\rule(0.0+0.0)x-7.00015
-...........\TU/FandolSong(0)/m/n/11.04124 （续
-...........\penalty 10000
-...........\TU/FandolSong(0)/m/n/11.04124 ）
-...........\rule(0.0+0.0)x-7.00015
-...........\kern 0.00043
-...........\kern -0.00043
-...........\kern -0.99623
-...........\kern 0.99623
+...........\kern -0.00017
+...........\kern 0.00017
 ...........\penalty 10000
 ...........\rule(0.0+4.30612)x0.0
 ...........\penalty 10000
@@ -1394,6 +1396,7 @@ Completed box being shipped out [3]
 .......\glue 0.0 minus 1.0fill
 ......\glue 0.0 plus 1.0fil
 ......\hbox(0.0+0.0)x0.0
+......\write1{\@writefile{lot}{\protect \contentsline {table}{\protect \numberline \ETC.}
 .....\glue(\tabskip) 0.0
 .....\hbox(0.0+0.0)x42.36345
 .....\glue(\tabskip) 0.0
@@ -2665,7 +2668,7 @@ Completed box being shipped out [4]
 .........\hbox(0.0+0.0)x0.0
 .........\glue 0.0
 .........\vbox(10.04749+4.30612)x426.79135
-..........\hbox(10.04749+4.30612)x426.79135, glue set 169.97046fil
+..........\hbox(10.04749+4.30612)x426.79135, glue set 158.18945fil
 ...........\glue(\leftskip) 0.0 plus 1.0fil
 ...........\hbox(0.0+0.0)x0.0
 ...........\TU/FandolSong(0)/m/n/11.04124 表
@@ -2680,20 +2683,22 @@ Completed box being shipped out [4]
 ...........\rule(10.04749+*)x0.0
 ...........\penalty 10000
 ...........\glue 0.0
+...........\TU/FandolSong(0)/m/n/11.04124 续
+...........\glue 0.0 plus 0.50737
+...........\TU/FandolSong(0)/m/n/11.04124 表
+...........\kern -0.00017
+...........\kern 0.00017
+...........\penalty 10000
+...........\glue 2.76031 plus 1.38016 minus 0.9201
+...........\TU/texgyretermes(0)/m/n/11.04124 1.1
+...........\kern -0.0002
+...........\kern 0.0002
+...........\glue 11.04124
 ...........\TU/FandolSong(0)/m/n/11.04124 表
 ...........\glue 0.0 plus 0.50737
 ...........\TU/FandolSong(0)/m/n/11.04124 题
-...........\glue 0.0 plus 0.50737
-...........\glue 7.00015 minus 5.52063
-...........\rule(0.0+0.0)x-7.00015
-...........\TU/FandolSong(0)/m/n/11.04124 （续
-...........\penalty 10000
-...........\TU/FandolSong(0)/m/n/11.04124 ）
-...........\rule(0.0+0.0)x-7.00015
-...........\kern 0.00043
-...........\kern -0.00043
-...........\kern -0.99623
-...........\kern 0.99623
+...........\kern -0.00017
+...........\kern 0.00017
 ...........\penalty 10000
 ...........\rule(0.0+4.30612)x0.0
 ...........\penalty 10000
@@ -2708,6 +2713,7 @@ Completed box being shipped out [4]
 .......\glue 0.0 minus 1.0fill
 ......\glue 0.0 plus 1.0fil
 ......\hbox(0.0+0.0)x0.0
+......\write1{\@writefile{lot}{\protect \contentsline {table}{\protect \numberline \ETC.}
 .....\glue(\tabskip) 0.0
 .....\hbox(0.0+0.0)x42.36345
 .....\glue(\tabskip) 0.0
