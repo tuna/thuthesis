@@ -6,11 +6,11 @@
 %%
 %% gbt7714.dtx  (with options: `2015,numerical')
 %% -------------------------------------------------------------------
-%% GB/T 7714—2015 BibTeX Style
+%% GB/T 7714 BibTeX Style
 %% https://github.com/zepinglee/gbt7714-bibtex-style
-%% Version: 2021/12/08 v2.1.3
+%% Version: 2022/03/21 v2.1.4
 %% -------------------------------------------------------------------
-%% Copyright (C) 2016—2021 by Zeping Lee <zepinglee AT gmail.com>
+%% Copyright (C) 2016--2022 by Zeping Lee <zepinglee AT gmail.com>
 %% -------------------------------------------------------------------
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -37,8 +37,6 @@ INTEGERS {
   show.mark
   space.before.mark
   show.medium.type
-  slash.for.extraction
-  in.booktitle
   short.journal
   italic.journal
   bold.journal.volume
@@ -53,6 +51,10 @@ INTEGERS {
   show.note
   show.english.translation
   end.with.period
+}
+
+STRINGS {
+  component.part.label
 }
 
 FUNCTION {load.config}
@@ -73,8 +75,7 @@ FUNCTION {load.config}
   #1 'show.mark :=
   #0 'space.before.mark :=
   #1 'show.medium.type :=
-  #1 'slash.for.extraction :=
-  #0 'in.booktitle :=
+  "slash" 'component.part.label :=
   #0 'short.journal :=
   #0 'italic.journal :=
   #0 'bold.journal.volume :=
@@ -102,6 +103,7 @@ ENTRY
     editor
     eprint
     eprinttype
+    entrysubtype
     howpublished
     institution
     journal
@@ -382,9 +384,22 @@ FUNCTION {new.sentence}
 FUNCTION {new.slash}
 { output.state before.all =
     'skip$
-    { slash.for.extraction
+    { component.part.label "slash" =
         { after.slash 'output.state := }
-        { after.block 'output.state := }
+        { new.block
+          component.part.label "in" =
+            { entry.lang lang.en =
+                { "In: " output
+                  write$
+                  ""
+                  before.all 'output.state :=
+                }
+                'skip$
+              if$
+            }
+            'skip$
+          if$
+        }
       if$
     }
   if$
@@ -977,14 +992,6 @@ FUNCTION {format.series.vol.num.booktitle}
     { format.booktitle.vol.num }
   if$
   format.btitle
-  in.booktitle
-    { duplicate$ empty$ not entry.lang lang.en = and
-        { "In: " swap$ * }
-        'skip$
-      if$
-    }
-    'skip$
-  if$
 }
 
 FUNCTION {remove.period}
@@ -1126,9 +1133,13 @@ FUNCTION {format.edition}
 { edition empty$
     { "" }
     { edition is.number
-        { entry.lang lang.zh =
-            { edition " 版" * }
-            { edition num.to.ordinal " ed." * }
+        { edition "1" = not
+            { entry.lang lang.zh =
+                { edition " 版" * }
+                { edition num.to.ordinal " ed." * }
+              if$
+            }
+            'skip$
           if$
         }
         { entry.lang lang.en =
@@ -1290,7 +1301,10 @@ FUNCTION {format.year}
     { year extract.before.slash extra.label * }
     { date empty$ not
         { date extract.before.dash extra.label * }
-        { "empty year in " cite$ * warning$
+        { entry.is.electronic not
+            { "empty year in " cite$ * warning$ }
+            'skip$
+          if$
           urldate empty$ not
             { "[" urldate extract.before.dash * extra.label * "]" * }
             { "" }
@@ -1328,7 +1342,15 @@ FUNCTION {format.date}
 { date empty$ not
     { type$ "patent" = type$ "newspaper" = or
         { date }
-        { format.year }
+        { entrysubtype empty$ not
+            { type$ "article" = entrysubtype "newspaper" = and
+                { date }
+                { format.year }
+              if$
+            }
+            { format.year }
+          if$
+        }
       if$
     }
     { year empty$ not
@@ -1796,7 +1818,15 @@ FUNCTION {journal.article}
   new.block
   title.in.journal
     { format.title "title" output.check
-      "J" set.entry.mark
+      entrysubtype empty$ not
+        {
+          entrysubtype "newspaper" =
+            { "N" set.entry.mark }
+            { "J" set.entry.mark }
+          if$
+        }
+        { "J" set.entry.mark }
+      if$
       format.mark "" output.after
       new.block
     }
