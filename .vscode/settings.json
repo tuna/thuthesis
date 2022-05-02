@@ -1,10 +1,17 @@
 {
     "latex-workshop.latex.recipes": [
         {
-            "name": "latexmk for thuthesis",
+            "name": "latexmk (xelatex)",
             "tools": [
-                "xetex-thuthesis",
-                "latexmk-xelatex"
+                "unpack-thuthesis",
+                "xelatexmk"
+            ]
+        },
+        {
+            "name": "latexmk (lualatex)",
+            "tools": [
+                "unpack-thuthesis",
+                "lualatexmk"
             ]
         },
         {
@@ -16,7 +23,7 @@
     ],
     "latex-workshop.latex.tools": [
         {
-            "name": "xetex-thuthesis",
+            "name": "unpack-thuthesis",
             "command": "xetex",
             "args": [
                 "-file-line-error",
@@ -27,10 +34,24 @@
             "env": {}
         },
         {
-            "name": "latexmk-xelatex",
+            "name": "xelatexmk",
             "command": "latexmk",
             "args": [
                 "-xelatex",
+                "-file-line-error",
+                "-halt-on-error",
+                "-interaction=nonstopmode",
+                "-synctex=1",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-lualatex",
                 "-file-line-error",
                 "-halt-on-error",
                 "-interaction=nonstopmode",

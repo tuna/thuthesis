@@ -1288,7 +1288,9 @@
 %    \begin{macrocode}
 \RequirePackage{iftex}
 \ifXeTeX\else
-  \thu@error{XeLaTeX is required to compile this document}
+  \ifLuaTeX\else
+    \thu@error{XeLaTeX or LuaLaTeX is required to compile this document}
+  \fi
 \fi
 %    \end{macrocode}
 %
@@ -1768,8 +1770,11 @@
 % 利用 \pkg{xeCJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
 % \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
 %    \begin{macrocode}
-\RequirePackage{xeCJKfntef}
-\RequirePackage{soul}
+\ifXeTeX
+  \RequirePackage{xeCJKfntef}
+\else
+  \RequirePackage{ulem}
+\fi
 %    \end{macrocode}
 %
 % 表格控制
@@ -2062,8 +2067,20 @@
 %
 % 带圈数字和星号使用中文字体。
 %    \begin{macrocode}
-\xeCJKDeclareCharClass{CJK}{"2460 -> "2473}
-\xeCJKDeclareCharClass{CJK}{"2605}
+\ifLuaTeX
+  % ctex 将带圈数字 U+2460–U+24FF 归入字符范围 3（ALchar），这里改回范围 6（JAchar）
+  \ltjdefcharrange{3}{%
+    "2000-"243F, "2500-"27BF, "2900-"29FF, "2B00-"2BFF}
+  \ltjdefcharrange{6}{%
+    "2460-"24FF, "2E80-"2EFF, "3000-"30FF, "3190-"319F, "31F0-"4DBF,
+    "4E00-"9FFF, "F900-"FAFF, "FE10-"FE1F, "FE30-"FE6F, "FF00-"FFEF,
+    "1B000-"1B16F, "1F100-"1F2FF, "20000-"3FFFF, "E0100-"E01EF}
+\else
+  \ifXeTeX
+    \xeCJKDeclareCharClass{CJK}{"2460 -> "2473}
+    \xeCJKDeclareCharClass{CJK}{"2605}
+  \fi
+\fi
 %    \end{macrocode}
 %
 % \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
@@ -2084,16 +2101,28 @@
 %    \begin{macrocode}
 \newcommand\thu@set@punctuations{%
   \ifthu@language@chinese
-    \xeCJKDeclareCharClass{FullLeft}{"2018, "201C}%
-    \xeCJKDeclareCharClass{FullRight}{
-      "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
-    }%
+    \ifLuaTeX
+      \ltjsetparameter{jacharrange={+9}}
+    \else
+      \ifXeTeX
+        \xeCJKDeclareCharClass{FullLeft}{"2018, "201C}%
+        \xeCJKDeclareCharClass{FullRight}{
+          "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
+        }%
+      \fi
+    \fi
   \else
     \ifthu@language@english
-      \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
-      \xeCJKDeclareCharClass{HalfRight}{
-        "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
-      }%
+      \ifLuaTeX
+        \ltjsetparameter{jacharrange={-9}}
+      \else
+        \ifXeTeX
+          \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
+          \xeCJKDeclareCharClass{HalfRight}{
+            "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
+          }%
+        \fi
+      \fi
     \fi
   \fi
 }
@@ -2524,15 +2553,14 @@
 % Windows 的中易字体。
 %    \begin{macrocode}
 \newcommand\thu@set@cjk@font@windows{%
-  \xeCJKsetup{EmboldenFactor=3}%
   \setCJKmainfont{SimSun}[
-    AutoFakeBold = true,
+    AutoFakeBold = 3,
     ItalicFont   = KaiTi,
   ]%
-  \setCJKsansfont{SimHei}[AutoFakeBold]%
+  \setCJKsansfont{SimHei}[AutoFakeBold = 3]%
   \setCJKmonofont{FangSong}%
-  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold]%
-  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold]%
+  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold = 3]%
+  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold = 3]%
   \setCJKfamilyfont{zhkai}{KaiTi}%
   \setCJKfamilyfont{zhfs}{FangSong}%
 }
@@ -2541,25 +2569,23 @@
 % macOS 的 Microsoft Word 字体。
 %    \begin{macrocode}
 \@namedef{thu@set@cjk@font@mac-word}{%
-  \xeCJKsetup{EmboldenFactor=3}%
   \setCJKmainfont{SimSun}[%
     Path         = \thu@mac@word@font@path,
-    AutoFakeBold = true,
+    AutoFakeBold = 3,
     ItalicFont   = KaiTi,
   ]%
   \setCJKsansfont{SimHei}[%
     Path         = \thu@mac@word@font@path,
-    AutoFakeBold = true,
+    AutoFakeBold = 3,
   ]%
   \setCJKmonofont{FangSong}[Path=\thu@mac@word@font@path]%
-
   \setCJKfamilyfont{zhsong}{SimSun}[%
     Path         = \thu@mac@word@font@path,
-    AutoFakeBold = true,
+    AutoFakeBold = 3,
   ]%
   \setCJKfamilyfont{zhhei}{SimHei}[%
     Path         = \thu@mac@word@font@path,
-    AutoFakeBold = true,
+    AutoFakeBold = 3,
   ]%
   \setCJKfamilyfont{zhkai}{KaiTi}[Path = \thu@mac@word@font@path]%
   \setCJKfamilyfont{zhfs}{FangSong}[Path = \thu@mac@word@font@path]%
@@ -3232,7 +3258,6 @@
 %    \begin{macrocode}
 \ctexset{%
   punct=quanjiao,
-  space=auto,
 }
 \newcommand\thu@set@indent{%
   \ifthu@main@language@chinese
@@ -4193,17 +4218,22 @@
 \newcommand\thu@date@en@short[3]{\thu@date@month{#2}, #1}
 %    \end{macrocode}
 %
-% 下划线命令
+% 下划线命令。
+% \pkg{ulem} 的下划线 \cs{uline} 可以控制粗细和深度。
 %    \begin{macrocode}
 \newcommand\thu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
-\newcommand\thu@CJKunderline[2][6em]{\CJKunderline*{\hb@xt@ #1{\hss#2\hss}}}
+\newcommand\thu@uline[2][6em]{\uline{\hb@xt@ #1{\hss#2\hss}}}
 %    \end{macrocode}
 %
 % 将内容拉伸或压缩到固定宽度。
 %    \begin{macrocode}
 \newcommand\thu@fixed@box[2]{%
   \begingroup
-    \def\CJKglue{\hskip 0pt plus 2filll minus 1filll}%
+    \ifLuaTeX
+      \ltjsetparameter{kanjiskip = {0pt plus 2filll minus 1filll}}%
+    \else
+      \renewcommand\CJKglue{\hspace{0pt plus 2filll minus 1filll}}%
+    \fi
     \makebox[#1][l]{#2}%
   \endgroup
 }
@@ -4216,7 +4246,11 @@
   \sbox\thu@stretch@box{#2}%
   \ifdim \wd\thu@stretch@box < #1\relax
     \begingroup
-      \def\CJKglue{\hskip 0pt plus 2filll}%
+      \ifLuaTeX
+        \ltjsetparameter{kanjiskip = {0pt plus 2filll}}%
+      \else
+        \renewcommand\CJKglue{\hspace{0pt plus 2filll}}%
+      \fi
       \makebox[#1][l]{#2}%
     \endgroup
   \else
@@ -4439,8 +4473,14 @@
     \thu@titlepage@degree
     \vfill
     \parbox[t][8.5cm][t]{\textwidth}{%
-      \centering\CJKfamily+{}%
-      \centering\fangsong\sanhao[1.95]%
+      \centering
+      \fangsong
+      \ifLuaTeX
+        \fontspec{\CJK@family}%
+      \else
+        \CJKfamily+{}%
+      \fi
+      \sanhao[1.95]%
       \thu@titlepage@info
     }\par
     \parbox[t][2.5cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
@@ -4475,8 +4515,14 @@
 %    \begin{macrocode}
 \newcommand\thu@titlepage@degree{%
   \begingroup
-    \CJKfamily+{}\xiaoer
-    \def\CJKglue{\hskip 1bp}%
+    \xiaoer
+    \ifLuaTeX
+      \fontspec{\CJK@family}%
+      \ltjsetparameter{kanjiskip = {1bp}}%
+    \else
+      \CJKfamily+{}%
+      \renewcommand\CJKglue{\hspace{1bp}}%
+    \fi
     \ifthu@thesis@type@thesis
       (申请清华大学\thu@degree@name
       \ifthu@degree@type@professional
@@ -4600,7 +4646,11 @@
 \newcommand\thu@titlepage@date{%
   \begingroup
     \sanhao
-    \def\CJKglue{\hskip 1bp}%
+    \ifLuaTeX
+      \ltjsetparameter{kanjiskip = {1bp}}%
+    \else
+      \renewcommand\CJKglue{\hspace{1bp}}%
+    \fi
     \thu@format@date{\thu@date@zh@short}{\thu@date}\par
   \endgroup
 }
@@ -4760,22 +4810,23 @@
   \vskip 1.8cm%
   \begingroup
     \heiti
-    \ifthu@main@language@chinese
-      \yihao[1.56]%
-    \else
-      \fontsize{26bp}{32bp}\selectfont
-    \fi
-    \parindent=18bp%
-    \hangindent=72bp%
-    \makebox[54bp]{\xiaoer[1.2]题目：}%
-    \CJKunderline*[skip=false, thickness=0.05em, depth=0.12em]{\thu@title}%
-    \ifthu@main@language@english
-      \\
-      \thusetup{language=english}%
-      \ul\thu@title@en
-      \thusetup{language=chinese}%
-    \fi
-    \par
+    % 21.0cm - 0.2cm - 3cm * 2 - 18bp * 4 = 347bp
+    \noindent\hspace{1em}\makebox[54bp]{\xiaoer[1.2]题目：}%
+    \parbox[t]{347bp}{%
+      \ifthu@main@language@chinese
+        \yihao[1.56]%
+      \else
+        \fontsize{26bp}{32bp}\selectfont
+      \fi
+      \renewcommand\ULthickness{0.05em}%
+      \renewcommand\ULdepth{0.17em}%
+      \expandafter\uline\expandafter{\thu@title}\par
+      \ifthu@main@language@english
+        \thusetup{language=english}%
+        \expandafter\uline\expandafter{\thu@title@en}\par
+        \thusetup{language=chinese}%
+      \fi
+    }\par
   \endgroup
   \vskip 1.9cm%
   \begingroup
@@ -4806,7 +4857,12 @@
   \vskip 1.4cm%
   \begingroup
     \centering
-    {\CJKfamily+{}\xiaosi\thu@format@date{\thu@date@zh@digit}{\thu@date}\par}%
+    \ifLuaTeX
+      \fontspec{\CJK@family}%
+    \else
+      \CJKfamily+{}%
+    \fi
+    \xiaosi\thu@format@date{\thu@date@zh@digit}{\thu@date}\par
   \endgroup
   \vfill
   \clearpage
@@ -4834,20 +4890,23 @@
     }%
     \vskip 0.2cm%
     \parbox[t][4.0cm][c]{\textwidth}{%
-      \centering\sihao[3.46]\CJKunderline*[depth=1em]{\thu@title}\par
+      \centering\sihao[3.46]%
+      \renewcommand\ULdepth{1em}%
+      \expandafter\uline\expandafter{\thu@title}\par
     }\par
     \vskip 0.4cm%
     {\xiaosi\thu@author\par}%
     \vskip 1.4cm%
-    {\xiaosi[1.58]\xeCJKsetup{underline/depth=0.9em}%
+    {\xiaosi[1.58]%
+      \renewcommand\ULdepth{0.9em}%
       工作完成日期\quad
-      \thu@CJKunderline[5.9cm]{%
+      \thu@uline[5.9cm]{%
         \thu@format@date{\thu@date@zh@digit@short}{\thu@start@date}—%
         \thu@format@date{\thu@date@zh@digit@short}{\thu@end@date}
       }\par
       \vskip 0.55cm%
       报告提交日期\quad
-      \thu@CJKunderline[5.9cm]{\thu@format@date{\thu@date@zh@digit@short}{\thu@date}}\par
+      \thu@uline[5.9cm]{\thu@format@date{\thu@date@zh@digit@short}{\thu@date}}\par
     }%
     \vskip 0.45cm%
     {\xiaosi[2]{\ziju{1}清华大学}\quad （北京）\par}%

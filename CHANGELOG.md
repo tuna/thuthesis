@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- 新增 LuaTeX 支持（试验性）（[#771](https://github.com/tuna/thuthesis/issues/771)）。
+
 ### Changed
 
 - 目录中的长标题由悬挂缩进改为左对齐（[#759](https://github.com/tuna/thuthesis/discussions/759)）。
