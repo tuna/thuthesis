@@ -822,7 +822,7 @@
 %     uppercase-greek    = italic,
 %     less-than-or-equal = slanted,
 %     integral           = upright,
-%     integral-limits    = true,
+%     integral-limits    = false,
 %     partial            = upright,
 %     math-ellipsis      = centered,
 %     real-part          = roman,
@@ -2712,19 +2712,20 @@
     \thusetup{
       uppercase-greek = italic,
       integral        = upright,
-      integral-limits = true,
       partial         = upright,
       real-part       = roman,
     }%
     \ifthu@math@style@ISO
       \thusetup{
         less-than-or-equal = horizontal,
+        integral-limits    = true,
         math-ellipsis      = lower,
       }%
     \else
       \ifthu@math@style@GB
         \thusetup{
           less-than-or-equal = slanted,
+          integral-limits    = false,
           math-ellipsis      = centered,
         }%
       \fi
