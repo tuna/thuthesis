@@ -17,6 +17,7 @@
 ### Fixed
 
 - 修正英文版研究成果的格式（[#755](https://github.com/tuna/thuthesis/issues/755)）。
+- 修复脚注内容可能跨页的问题（[#778](https://github.com/tuna/thuthesis/issues/778)）。
 
 ## [v7.2.4] - 2022-03-19
 

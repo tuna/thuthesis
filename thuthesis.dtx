@@ -3299,6 +3299,13 @@
 %
 % \subsubsection{脚注}
 % \label{sec:footnote}
+%
+% 严格禁止脚注跨页，参考 \href{https://github.com/tuna/thuthesis/issues/778}{\#778}
+% 和 \url{https://texfaq.org/FAQ-splitfoot}。
+%    \begin{macrocode}
+\interfootnotelinepenalty=10000
+%    \end{macrocode}
+%
 % 脚注内容采用小五号字，中文用宋体，英文和数字用 Times New Roman 体按两端对齐格式书写，
 % 单倍行距，段前段后均空 0 磅。
 % 脚注的序号按页编排，不同页的脚注序号不需要连续。
