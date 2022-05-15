@@ -2524,6 +2524,15 @@
 %
 % \subsubsection{中文字体}
 %
+% 去掉“no requested script”警告。
+%    \begin{macrocode}
+\ExplSyntaxOn
+\@ifpackageloaded { xeCJK }
+  { \msg_redirect_name:nnn { fontspec } { no-script } { info } }
+  { }
+\ExplSyntaxOff
+%    \end{macrocode}
+%
 %    \begin{macrocode}
 \ifthu@cjk@font@auto
   \ifthu@fontset@mac
@@ -2595,7 +2604,6 @@
 % macOS 的华文字体。
 %    \begin{macrocode}
 \newcommand\thu@set@cjk@font@mac{%
-  \defaultCJKfontfeatures{}%
   \setCJKmainfont{Songti SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
@@ -2632,30 +2640,19 @@
 % 注意 Noto CJK 的 regular 字重名字不带“Regular”。
 %    \begin{macrocode}
 \newcommand\thu@set@cjk@font@noto{%
-  \defaultCJKfontfeatures{}%
   \setCJKmainfont{Noto Serif CJK SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
     ItalicFont     = FandolKai-Regular,
     ItalicFeatures = {Extension = .otf},
-    Script         = CJK,
   ]%
-  \setCJKsansfont{Noto Sans CJK SC}[
-    BoldFont       = * Medium,
-    Script         = CJK,
-  ]%
-  \setCJKmonofont{Noto Sans Mono CJK SC}[
-    Script         = CJK,
-  ]%
+  \setCJKsansfont{Noto Sans CJK SC}[BoldFont = * Medium]%
+  \setCJKmonofont{Noto Sans Mono CJK SC}%
   \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
     UprightFont    = * Light,
     UprightFont    = * Bold,
-    Script         = CJK,
   ]%
-  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
-    BoldFont       = * Medium,
-    Script         = CJK,
-  ]%
+  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[BoldFont * Medium]%
   \setCJKfamilyfont{zhfs}{FandolFang}[
     Extension      = .otf,
     UprightFont    = *-Regular,
@@ -2670,7 +2667,6 @@
 % Fandol 字体。
 %    \begin{macrocode}
 \newcommand\thu@set@cjk@font@fandol{%
-  \defaultCJKfontfeatures{}%
   \setCJKmainfont{FandolSong}[
     Extension   = .otf,
     UprightFont = *-Regular,
