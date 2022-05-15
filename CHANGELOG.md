@@ -12,10 +12,9 @@
 
 ### Changed
 
-- 目录中的长标题由悬挂缩进改为左对齐（[#759](https://github.com/tuna/thuthesis/discussions/759)）。
 - 研究生英文版目录中的标签分隔符由 `\quad` 改为空格（[#759](https://github.com/tuna/thuthesis/discussions/759)）。
 - 研究生英文版章节标题的标签分隔符由 `\quad` 改为空格（[#759](https://github.com/tuna/thuthesis/discussions/759)）。
-- 研究生英文封面的“Submitted”改为小写。
+- 研究生英文封面的“Submitted”改为小写，同步《指南》2022 年 5 月版的修改。
 - 更改示例文档中 `longtable` 的“续表”标题格式，同步《指南》2021 年 6 月版的修改（[#766](https://github.com/tuna/thuthesis/issues/766)）。
 
 ### Fixed

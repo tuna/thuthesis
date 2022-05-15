@@ -3973,15 +3973,15 @@
             \heiti
           \fi
         }
-        {\thecontentslabel\quad}{}
+        {\contentspush{\thecontentslabel\quad}}{}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
         [1em]{}
-        {\thecontentslabel\quad}{}
+        {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
       \titlecontents{subsection}
         [1.5em]{}
-        {\thecontentslabel\quad}{}
+        {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
     \else
 %    \end{macrocode}
@@ -3991,15 +3991,15 @@
       \ifthu@main@language@english
         \titlecontents{chapter}
           [\z@]{\addvspace{6bp}\sffamily}
-          {\thecontentslabel\quad}{}
+          {\contentspush{\thecontentslabel\quad}}{}
           {\rmfamily\thu@leaders\thecontentspage}%
         \titlecontents{section}
           [0.5cm]{}
-          {\thecontentslabel\quad}{}
+          {\contentspush{\thecontentslabel\quad}}{}
           {\thu@leaders\thecontentspage}%
         \titlecontents{subsection}
           [1cm]{}
-          {\thecontentslabel\quad}{}
+          {\contentspush{\thecontentslabel\quad}}{}
           {\thu@leaders\thecontentspage}%
       \fi
     \fi
@@ -4021,28 +4021,28 @@
     \ifthu@main@language@chinese
       \titlecontents{chapter}
         [\z@]{\addvspace{6bp}\sffamily}
-        {\thecontentslabel\quad}{}
+        {\contentspush{\thecontentslabel\quad}}{}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
         [1em]{}
-        {\thecontentslabel\quad}{}
+        {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
       \titlecontents{subsection}
         [2em]{}
-        {\thecontentslabel\quad}{}
+        {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
     \else
       \titlecontents{chapter}
         [\z@]{\addvspace{6bp}\heiti}
-        {\MakeUppercase{\thecontentslabel}\space\MakeUppercase}{\MakeUppercase}
+        {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
         [1em]{}
-        {\thecontentslabel\space}{}
+        {\contentspush{\thecontentslabel\space}}{}
         {\thu@leaders\thecontentspage}%
       \titlecontents{subsection}
         [2em]{}
-        {\thecontentslabel\space}{}
+        {\contentspush{\thecontentslabel\space}}{}
         {\thu@leaders\thecontentspage}%
     \fi
   \fi
@@ -5409,7 +5409,7 @@
 }
 \titlecontents{figure}
   [\z@]{}
-  {\figurename~\thecontentslabel\quad}{}
+  {\contentspush{\figurename~\thecontentslabel\quad}}{}
   {\nobreak\thu@leaders\nobreak\hfil\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
@@ -5429,7 +5429,7 @@
 }
 \titlecontents{table}
   [\z@]{}
-  {\tablename~\thecontentslabel\quad}{}
+  {\contentspush{\tablename~\thecontentslabel\quad}}{}
   {\thu@leaders\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
@@ -6110,15 +6110,15 @@
 \newcommand\thu@set@partial@toc@format{%
   \titlecontents{section}
     [\z@]{}
-    {\thecontentslabel\quad}{}
+    {\contentspush{\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}%
   \titlecontents{subsection}
     [1em]{}
-    {\thecontentslabel\quad}{}
+    {\contentspush{\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}%
   \titlecontents{subsubsection}
     [2em]{}
-    {\thecontentslabel\quad}{}
+    {\contentspush{\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}%
 }
 %    \end{macrocode}
@@ -6529,7 +6529,7 @@
   \contentsuse{algorithm}{loa}
   \titlecontents{algorithm}
     [\z@]{}
-    {\fname@algorithm~\thecontentslabel\quad}{}
+    {\contentspush{\fname@algorithm~\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}
 }
 %    \end{macrocode}
@@ -6554,7 +6554,7 @@
   \contentsuse{algocf}{loa}
   \titlecontents{algocf}
     [\z@]{}
-    {\algorithmcfname~\thecontentslabel\quad}{}
+    {\contentspush{\algorithmcfname~\thecontentslabel\quad}}{}
     {\thu@leaders\thecontentspage}
 }
 %    \end{macrocode}
