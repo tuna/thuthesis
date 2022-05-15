@@ -414,9 +414,11 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 710.18088
 .\kern 0.0
+Package fontspec Info: Font "FandolHei-Regular" does not contain requested
+(fontspec)             Script "CJK".
 Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
 (fontspec)             with options
-(fontspec)             [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+(fontspec)             [Script={CJK},Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
@@ -427,11 +429,13 @@ Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+Package fontspec Info: Font "FandolFang-Regular" does not contain requested
+(fontspec)             Script "CJK".
 LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/m/n' will be
 (Font)              scaled to size 12.99814pt on input line ....
 Package fontspec Info: Font family 'FandolFang(0)' created for font
 (fontspec)             'FandolFang' with options
-(fontspec)             [Extension={.otf},UprightFont={*-Regular}].
+(fontspec)             [Script={CJK},Extension={.otf},UprightFont={*-Regular}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
