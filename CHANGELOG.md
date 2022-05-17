@@ -6,6 +6,8 @@
 
 ## [Unreleased]
 
+## [v7.3.0] - 2022-05-17
+
 ### Added
 
 - 新增 LuaTeX 支持（试验性）（[#771](https://github.com/tuna/thuthesis/issues/771)）。
@@ -900,7 +902,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.2.4...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.3.0...HEAD
+[v7.3.0]:     https://github.com/tuna/thuthesis/compare/v7.2.4...v7.3.0
 [v7.2.4]:     https://github.com/tuna/thuthesis/compare/v7.2.3...v7.2.4
 [v7.2.3]:     https://github.com/tuna/thuthesis/compare/v7.2.2...v7.2.3
 [v7.2.2]:     https://github.com/tuna/thuthesis/compare/v7.2.1...v7.2.2
