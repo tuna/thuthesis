@@ -4967,26 +4967,29 @@
     \kvsetkeys{thu@committee}{#1}%
     \ifx\thu@committee@file\@empty
       \begingroup
-        \ifthu@main@language@english
-          \ctexset{chapter/format=\centering\sffamily\fontsize{16bp}{20bp}\selectfont}
-        \fi
+        \ctexset{
+          chapter = {
+            format    = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
+            afterskip = 49bp,
+          },
+          section = {
+            beforeskip  =  26bp,
+            afterskip   =  9.5bp,
+            format      += \centering,
+            numbering   =  false,
+            afterindent =  false,
+          },
+        }%
         \thu@chapter*[]{\thu@committee@name}%
+        \thispagestyle{empty}%
+        \thusetup{language=chinese}%
+        \BODY\clearpage
+        \thu@reset@main@language
       \endgroup
     \else
       \thu@pdfbookmark{0}{\thu@committee@name}%
       \includepdf{\thu@committee@file}%
     \fi
-    \thispagestyle{empty}%
-    \ctexset{
-      section = {
-        format    += {\centering},
-        numbering = false,
-        afterindent = false,
-      },
-    }%
-    \thusetup{language=chinese}
-    \BODY\clearpage
-    \thu@reset@main@language
   \fi
 }
 %    \end{macrocode}
