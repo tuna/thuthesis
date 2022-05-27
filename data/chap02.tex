@@ -81,8 +81,7 @@
   \end{threeparttable}
 \end{table}
 
-如某个表需要转页接排，可以使用 \pkg{longtable} 宏包，需要在随后的各页上重复表的编号。
-编号后跟表题（可省略）和“（续）”，置于表上方。续表均应重复表头。
+如某个表需要转页接排，可以使用 \pkg{longtable} 宏包，需要在随后的各页上重复表的编号。编号后跟表题（可省略）和“（续）”，置于表上方。续表均应重复表头。
 
 \begin{longtable}{cccc}
     \caption{跨页长表格的表题}
@@ -110,7 +109,22 @@
   Row 10 & & & \\
 \end{longtable}
 
+如果表格的内容长度超过了页面长度，可以使用 \pkg{tabularx} 宏包实现表格内容的自动换行，自动换行的列对齐方式使用X表示。
 
+\begin{table}
+  \centering
+  \caption{表格内容自动换行示例}
+  \begin{tabularx}{\textwidth}{lX}
+    \toprule
+    文件名          & 描述                         \\
+    \midrule
+    thuthesis.dtx   & 模板的源文件，包括文档和注释。模板的源文件，包括文档和注释。模板的源文件，包括文档和注释。模板的源文件，包括文档和注释。模板的源文件，包括文档和注释。模板的源文件，包括文档和注释。 \\
+    thuthesis.cls   & 模板文件                     \\
+    thuthesis-*.bst & BibTeX 参考文献表样式文件    \\
+    \bottomrule
+  \end{tabularx}
+  \label{tab:tab-auto-wrap}
+\end{table}
 
 \section{算法}
 
