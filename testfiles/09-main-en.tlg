@@ -104,6 +104,9 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 49.18375 plus -1.0
+...\marks1{学位论文指导小组、公开评阅人和答辩委员会名单}
+...\marks2{学位论文指导小组、公开评阅人和答辩委员会名单}
+...\marks3{学位论文指导小组、公开评阅人和答辩委员会名单}
 ...\mark{{学位论文指导小组、公开评阅人和答辩委员会名单}{\ETC.}
 ...\penalty 10000
 ...\glue 0.0 plus 1.0fil
@@ -268,6 +271,9 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
+...\marks1{摘\hskip 1em\relax 要}
+...\marks2{摘\hskip 1em\relax 要}
+...\marks3{摘\hskip 1em\relax 要}
 ...\mark{{摘\hskip 1em\relax 要}{摘\hskip 1em\relax 要}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -517,6 +523,9 @@ Completed box being shipped out [2]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
+...\marks1{Abstract}
+...\marks2{Abstract}
+...\marks3{Abstract}
 ...\mark{{Abstract}{Abstract}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -765,6 +774,9 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
+...\marks1{Table of Contents}
+...\marks2{Table of Contents}
+...\marks3{Table of Contents}
 ...\mark{{Table of Contents}{Table of Contents}}
 ...\penalty 10000
 ...\penalty 10000
@@ -1703,6 +1715,9 @@ Completed box being shipped out [4]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
+...\marks1{List of Figures and Tables}
+...\marks2{List of Figures and Tables}
+...\marks3{List of Figures and Tables}
 ...\mark{{List of Figures and Tables}{List of Figures and Tables}}
 ...\penalty 10000
 ...\glue 0.0 plus 0.1
@@ -1988,6 +2003,9 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
+...\marks1{List of Symbols and Acronyms}
+...\marks2{List of Symbols and Acronyms}
+...\marks3{List of Symbols and Acronyms}
 ...\mark{{List of Symbols and Acronyms}{List of Symbols and Acronyms}}
 ...\penalty 10000
 ...\glue -30.11249
@@ -2749,6 +2767,8 @@ Completed box being shipped out [1]
 ...\write-{}
 ...\write1{\pp@pagectr{footnote}{1}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
+...\marks1{Chapter 1 Title}
+...\marks2{\prg_do_nothing: }
 ...\mark{{Chapter 1 Title}{}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -4004,6 +4024,9 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
+...\marks1{References}
+...\marks2{References}
+...\marks3{References}
 ...\mark{{References}{References}}
 ...\penalty 10000
 ...\glue 0.0 plus 1.0
@@ -7101,6 +7124,8 @@ Completed box being shipped out [4]
 ...\write-{}
 ...\write1{\pp@pagectr{footnote}{2}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
+...\marks1{Appendix A Title}
+...\marks2{\prg_do_nothing: }
 ...\mark{{Appendix A Title}{}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -8207,6 +8232,9 @@ Completed box being shipped out [6]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
+...\marks1{Acknowledgements}
+...\marks2{Acknowledgements}
+...\marks3{Acknowledgements}
 ...\mark{{Acknowledgements}{Acknowledgements}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -8373,6 +8401,9 @@ Completed box being shipped out [7]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
+...\marks1{声\protect \hspace  {1em}明}
+...\marks2{声\protect \hspace  {1em}明}
+...\marks3{声\protect \hspace  {1em}明}
 ...\mark{{声\protect \hspace  {1em}明}{声\protect \hspace  {1em}明}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -8858,6 +8889,9 @@ Completed box being shipped out [8]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
+...\marks1{Resume}
+...\marks2{Resume}
+...\marks3{Resume}
 ...\mark{{Resume}{Resume}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -9009,6 +9043,8 @@ Completed box being shipped out [9]
 ..\vbox(674.33032+0.0)x426.79135, glue set 599.99681fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{Comments from Thesi\ETC.}
+...\marks1{Comments from Thesis Supervisor}
+...\marks2{\prg_do_nothing: }
 ...\mark{{Comments from Thesis Supervisor}{}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -9193,6 +9229,8 @@ Completed box being shipped out [10]
 ...\write-{}
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{Resolution of Thesi\ETC.}
+...\marks1{Resolution of Thesis Defense Committee}
+...\marks2{\prg_do_nothing: }
 ...\mark{{Resolution of Thesis Defense Committee}{}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
