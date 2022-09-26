@@ -5973,14 +5973,36 @@
       \protect\setcounter{tocdepth}{\thu@toc@depth}%
     }%
   }%
-  \addtocontents{lof}{\string\let\string\contentsline\string\ttl@gobblecontents}
-  \addtocontents{lot}{\string\let\string\contentsline\string\ttl@gobblecontents}
-  \addtocontents{loe}{\string\let\string\contentsline\string\ttl@gobblecontents}
 }
 \g@addto@macro\appendix{%
   \thusetup{
     toc-depth = 0,
   }%
+}
+%    \end{macrocode}
+%
+% 附录中的图、表不列入插图清单/附表清单。
+%    \begin{macrocode}
+\thu@define@key{
+  appendix-figure-in-lof = {
+    name = appendix@figure@in@lof,
+    choices = {
+      true,
+      false,
+    },
+    default = false,
+  },
+}
+\g@addto@macro\appendix{%
+  \ifthu@appendix@figure@in@lof@true
+    \addtocontents{lof}{\string\let\string\contentsline\string\ttl@contentsline}%
+    \addtocontents{lot}{\string\let\string\contentsline\string\ttl@contentsline}%
+    \addtocontents{loe}{\string\let\string\contentsline\string\ttl@contentsline}%
+  \else
+    \addtocontents{lof}{\string\let\string\contentsline\string\ttl@gobblecontents}%
+    \addtocontents{lot}{\string\let\string\contentsline\string\ttl@gobblecontents}%
+    \addtocontents{loe}{\string\let\string\contentsline\string\ttl@gobblecontents}%
+  \fi
 }
 %    \end{macrocode}
 %
