@@ -5968,11 +5968,15 @@
 % 造成 \env{survey} 的子目录中 |tocdepth| 为 0。
 %    \begin{macrocode}
 \thu@option@hook{toc-depth}{%
-  \protected@write\@auxout{}{%
-    \string\ttl@writefile{toc}{%
-      \protect\setcounter{tocdepth}{\thu@toc@depth}%
+  \ifx\@begindocumenthook\@undefined
+    \protected@write\@auxout{}{%
+      \string\ttl@writefile{toc}{%
+        \protect\setcounter{tocdepth}{\thu@toc@depth}%
+      }%
     }%
-  }%
+  \else
+    \setcounter{tocdepth}{\thu@toc@depth}%
+  \fi
 }
 \g@addto@macro\appendix{%
   \thusetup{
@@ -5993,7 +5997,7 @@
     default = false,
   },
 }
-\g@addto@macro\appendix{%
+\thu@option@hook{appendix-figure-in-lof}{%
   \ifthu@appendix@figure@in@lof@true
     \addtocontents{lof}{\string\let\string\contentsline\string\ttl@contentsline}%
     \addtocontents{lot}{\string\let\string\contentsline\string\ttl@contentsline}%
@@ -6003,6 +6007,11 @@
     \addtocontents{lot}{\string\let\string\contentsline\string\ttl@gobblecontents}%
     \addtocontents{loe}{\string\let\string\contentsline\string\ttl@gobblecontents}%
   \fi
+}
+\g@addto@macro\appendix{%
+  \thusetup{
+    appendix-figure-in-lof = false,
+  }%
 }
 %    \end{macrocode}
 %
