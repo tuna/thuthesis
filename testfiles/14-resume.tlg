@@ -115,9 +115,6 @@ Completed box being shipped out [116]
 ...\special{color push gray 0}
 ...\write-{}
 ...\write1{\ttl@writefile{toc}{\protect \setcounter {tocdepth}{0}}}
-...\write1{\@writefile{lof}{\let\contentsline\ttl@gobblecontents}}
-...\write1{\@writefile{lot}{\let\contentsline\ttl@gobblecontents}}
-...\write1{\@writefile{loe}{\let\contentsline\ttl@gobblecontents}}
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{个人简历、在学\ETC.}
 ...\write-{}
