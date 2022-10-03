@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 MAINTAINER Shengqi Chen <shengqi.chen@tuna.tsinghua.edu.cn>
 
 ENV LANG=C.UTF-8
