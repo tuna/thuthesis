@@ -6,6 +6,8 @@
 
 ## [Unreleased]
 
+## [v7.3.1] - 2022-10-05
+
 ### Added
 
 - 增加选项 `appendix-figure-in-lof` 控制附录中的图/表是否列入插图清单/附表清单。
@@ -915,7 +917,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.3.0...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.3.1...HEAD
+[v7.3.1]:     https://github.com/tuna/thuthesis/compare/v7.3.0...v7.3.1
 [v7.3.0]:     https://github.com/tuna/thuthesis/compare/v7.2.4...v7.3.0
 [v7.2.4]:     https://github.com/tuna/thuthesis/compare/v7.2.3...v7.2.4
 [v7.2.3]:     https://github.com/tuna/thuthesis/compare/v7.2.2...v7.2.3
