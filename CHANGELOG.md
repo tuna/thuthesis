@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- 修复学术成果没有连续编号的问题（[#825](https://github.com/tuna/thuthesis/issues/825)）。
+
 ## [v7.3.1] - 2022-10-05
 
 ### Added
