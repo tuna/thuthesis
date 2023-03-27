@@ -54,6 +54,8 @@ typesetopts = "-shell-escape -file-line-error -halt-on-error -interaction=nonsto
 
 lvtext = ".tex"
 
+maxprintline = 79 -- keep compatibility with existing test files
+
 function docinit_hook()
   for _, file in pairs({"dtx-style.sty"}) do
     cp(file, unpackdir, typesetdir)
