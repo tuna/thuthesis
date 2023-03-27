@@ -1,5 +1,5 @@
-FROM debian:bullseye
-MAINTAINER Shengqi Chen <shengqi.chen@tuna.tsinghua.edu.cn>
+FROM debian:stable-slim
+LABEL maintainer="Shengqi Chen <shengqi.chen@tuna.tsinghua.edu.cn>"
 
 ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive

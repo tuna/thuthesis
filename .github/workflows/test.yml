@@ -10,8 +10,6 @@ jobs:
     container: tunathu/thuthesis-test-env
     steps:
     - uses: actions/checkout@v3
-    - name: Install required packages
-      run: bash .github/workflows/install-packages.sh
     - name: Test thesis
       run: make thesis
     - name: Test spine
@@ -20,8 +18,8 @@ jobs:
       run: make doc
     - name: Test with l3build
       run: make test
-    - name: Upload test result if failed
-      uses: actions/checkout@v3
+    - name: Upload test results if failed
+      uses: actions/upload-artifact@v3
       if: failure()
       with:
         name: test-result
