@@ -65,7 +65,8 @@ xetex thuthesis.ins
 按推荐顺序排序：
 
 * 先到 [FAQ](https://github.com/tuna/thuthesis/wiki/FAQ) 看看常见问题
-* [GitHub Issues](https://github.com/tuna/thuthesis/issues)
+* 在 [GitHub Discussions](https://github.com/tuna/thuthesis/discussions) 搜索已有讨论，如果没有则提出新问题
+* 如果认为模板存在问题，可在 Issues 中提出
 
 ## Makefile的用法
 
@@ -139,7 +140,8 @@ You'll get `thuthesis.cls` along with other template files.
 Please follow the procedure below:
 
 * Check the [FAQ](https://github.com/tuna/thuthesis/wiki/FAQ)
-* [GitHub Issues](https://github.com/tuna/thuthesis/issues)
+* Search [GitHub Discussions](https://github.com/tuna/thuthesis/discussions) and create if not existed
+* Create an issue if you believe there is a bug
 
 ## Makefile Usage
 
