@@ -13,7 +13,7 @@
     <category citation-format="note"/>
     <category field="humanities"/>
     <summary>清华大学美术学院研究生学位论文引证规范</summary>
-    <updated>2023-03-29T21:48:10+08:00</updated>
+    <updated>2023-03-31T00:59:13+08:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <!-- 责任者 -->
@@ -197,12 +197,43 @@
       </else>
     </choose>
   </macro>
+  <macro name="type-sort">
+    <choose>
+      <if type="book">
+        <text value="01"/>
+      </if>
+      <else-if type="chapter paper-conference" match="any">
+        <text value="02"/>
+      </else-if>
+      <else-if type="classic">
+        <text value="03"/>
+      </else-if>
+      <else-if type="article-journal article-magazine article-newspaper" match="any">
+        <text value="04"/>
+      </else-if>
+      <else-if type="article manuscript report personal_communication" match="any">
+        <text value="06"/>
+      </else-if>
+      <else-if type="dataset post post-weblog software webpage" match="any">
+        <text value="07"/>
+      </else-if>
+      <else>
+        <text value="06"/>
+      </else>
+    </choose>
+  </macro>
   <citation>
     <layout delimiter="; " suffix=".">
       <text macro="note-layout"/>
     </layout>
   </citation>
   <bibliography entry-spacing="0" second-field-align="flush">
+    <sort>
+      <key macro="type-sort"/>
+      <key macro="author"/>
+      <key macro="date"/>
+      <key variable="title"/>
+    </sort>
     <layout>
       <text variable="citation-number" prefix="[" suffix="]"/>
       <text macro="entry-layout" suffix="."/>
