@@ -1795,7 +1795,9 @@
 \AtEndPreamble{
   \@ifpackageloaded{biblatex}{}{
     \@ifpackageloaded{apacite}{}{
-      \RequirePackage{natbib}
+      \@ifpackageloaded{citation-style-language}{}{
+        \RequirePackage{natbib}
+      }
     }
   }
 }
@@ -5901,6 +5903,42 @@
       \setlength{\bibitemsep}{3bp \@plus 3bp \@minus 3bp}%
       \setlength{\biblabelsep}{0.1cm}%
       \setlength{\bibhang}{21bp}%
+    \fi
+  }
+  \thu@set@bibliography@format
+  \thu@option@hook{degree}{\thu@set@bibliography@format}
+  \thu@option@hook{main-language}{\thu@set@bibliography@format}
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{citation-style-language} 宏包}
+%
+%    \begin{macrocode}
+\AtEndOfPackageFile*{citation-style-language}{
+  \AtBeginDocument{
+    \ifthenelse{\equal{\csl@style}{apa}}{\def\bibname{REFERENCES}}{}
+    \ifthenelse{\equal{\csl@style}{modern-language-association}}{\def\bibname{WORKS CITED}}{}
+  }
+  \renewcommand\bibsection{\thu@chapter*{\bibname}}
+  \newcommand\thu@set@bibliography@format{%
+    \ifthu@degree@bachelor
+      \cslsetup{
+        bib-font     = \fontsize{10.5bp}{17bp}\selectfont,
+        bib-item-sep = 3bp \@plus 3bp \@minus 3bp,
+      }%
+      \ifthu@main@language@chinese
+        \cslsetup{bib-hang = 21bp}%
+      \else
+        \cslsetup{bib-hang = 0.5in}%
+      \fi
+    \else
+      \cslsetup{
+        bib-font     = \fontsize{10.5bp}{16bp}\selectfont,
+        bib-item-sep = 3bp \@plus 3bp \@minus 3bp,
+        bib-entry-page-break = false,
+        % bib-label-sep = 0.1cm,  % TODO
+        bib-hang     = 21bp,
+      }%
     \fi
   }
   \thu@set@bibliography@format

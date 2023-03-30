@@ -6,6 +6,8 @@ $xelatex = "xelatex -shell-escape -file-line-error -halt-on-error -interaction=n
 $lualatex = "lualatex -shell-escape -file-line-error -halt-on-error -interaction=nonstopmode -synctex=1 %O %S";
 $xdvipdfmx = "xdvipdfmx -q -E -o %D %O %S";
 
+$bibtex = "citeproc-lua %S";
+
 $bibtex_use = 1.5;
 
 $clean_ext = "hd loe ptc run.xml synctex.gz thm xdv";

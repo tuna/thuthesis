@@ -160,7 +160,20 @@
 % \usepackage[style=thuthesis-author-year]{biblatex}
 % \usepackage[style=apa]{biblatex}
 % \usepackage[style=mla-new]{biblatex}
+% \usepackage[notes,backend=biber]{biblatex-chicago}
 % 声明 BibLaTeX 的数据库
+% \addbibresource{ref/refs.bib}
+
+% 参考文献使用 citation-style-language 宏包（试验性）
+% 需要 TeX Live 2023+ 以及最新版 citation-style-language 宏包
+% \usepackage{citation-style-language}
+% \cslsetup{style = thuthesis-numeric}
+% \cslsetup{style = thuthesis-author-year}
+% \cslsetup{style = apa}
+% \cslsetup{style = modern-language-association}
+% \cslsetup{style = cell}  % 生物医学
+% \cslsetup{style = tsinghua-university-academy-of-arts-and-design}  % 美术学院
+% 声明 CSL 的数据库
 % \addbibresource{ref/refs.bib}
 
 % 定义所有的图片文件在 figures 子目录下
