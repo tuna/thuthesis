@@ -6,6 +6,8 @@
 
 ## [Unreleased]
 
+## [v7.3.2] - 2023-04-06
+
 ### Fixed
 
 - 修复学术成果没有连续编号的问题（[#825](https://github.com/tuna/thuthesis/issues/825)）。
@@ -926,7 +928,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.3.1...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.3.2...HEAD
+[v7.3.2]:     https://github.com/tuna/thuthesis/compare/v7.3.1...v7.3.2
 [v7.3.1]:     https://github.com/tuna/thuthesis/compare/v7.3.0...v7.3.1
 [v7.3.0]:     https://github.com/tuna/thuthesis/compare/v7.2.4...v7.3.0
 [v7.2.4]:     https://github.com/tuna/thuthesis/compare/v7.2.3...v7.2.4
