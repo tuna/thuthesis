@@ -23,7 +23,9 @@ jobs:
       if: failure()
       with:
         name: test-result
-        path: build/test/**
+        path: |
+          build/test
+          build/test-testfiles
 
 
   build_release:
