@@ -9,6 +9,7 @@
 ### Fixed
 
 - 修复学术成果没有连续编号的问题（[#825](https://github.com/tuna/thuthesis/issues/825)）。
+- 修复研究生个人简历部分行距过窄的问题 （[#850](https://github.com/tuna/thuthesis/issues/850)）
 
 ### Changed
 

@@ -23,7 +23,7 @@ jobs:
       if: failure()
       with:
         name: test-result
-        path: build/test/
+        path: build/test/**
 
 
   build_release:
