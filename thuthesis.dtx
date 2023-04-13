@@ -2894,7 +2894,7 @@
     \newcommand\square{\mdlgwhtsquare}%
     \newcommand\blacksquare{\mdlgblksquare}%
     \AtBeginDocument{%
-      \renewcommand\checkmark{\ensuremath{✓}}%
+      \renewcommand\checkmark{\ensuremath{\symbol{"2713}}}%
     }%
 %    \end{macrocode}
 %
@@ -4500,7 +4500,7 @@
   \ifx\thu@secret@level\@empty
     \phantom{秘密}%
   \else
-    \thu@secret@level★\makebox[3em][c]{\thu@secret@year}年%
+    \thu@secret@level\symbol{"2605}\makebox[3em][c]{\thu@secret@year}年%
   \fi\par
 }
 %    \end{macrocode}
@@ -6787,35 +6787,30 @@
   pdfdisplaydoctitle = true
 }%
 
-\ifthenelse{\equal{\@nameuse{g__ctex_fontset_tl}}{mac}}{
-  \setmainfont{Palatino}
-  \setsansfont[Scale=MatchLowercase]{Helvetica}
-  \setmonofont[Scale=MatchLowercase]{Menlo}
-}{
-  \setmainfont[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-italic,
-    BoldItalicFont = *-bolditalic,
-  ]{texgyrepagella}
-  \setsansfont[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-italic,
-    BoldItalicFont = *-bolditalic,
-  ]{texgyreheros}
-  \setmonofont[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-italic,
-    BoldItalicFont = *-bolditalic,
-    Scale          = MatchLowercase,
-    Ligatures      = CommonOff,
-  ]{texgyrecursor}
-}
+\setmainfont[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+]{texgyrepagella}
+\setsansfont[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+]{texgyreheros}
+\setmonofont[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+  Scale          = MatchLowercase,
+  Ligatures      = CommonOff,
+]{texgyrecursor}
+
 \unimathsetup{
   math-style=ISO,
   bold-style=ISO,
