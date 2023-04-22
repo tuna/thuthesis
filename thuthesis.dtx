@@ -5171,6 +5171,7 @@
     \textbf{关键词：}%
   \fi
   \thu@clist@use{\thu@keywords}{；}%
+  \gdef\thu@keywords{}%
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
@@ -6120,9 +6121,11 @@
       },
     }%
     \section{摘要}%
-    \quotation
   }{%
-    \endquotation
+    \par
+    \ifx\thu@keywords\@empty\else
+      \textbf{关键词：}\thu@clist@use{\thu@keywords}{；}\par
+    \fi
   }%
   \thu@set@partial@toc@format
   \renewcommand\tableofcontents{%

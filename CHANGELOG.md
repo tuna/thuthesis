@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- 允许本科生附录翻译的摘要中使用 `\thusetup{keywords = *}` 设置关键词。
+
 ## [v7.3.2] - 2023-04-06
 
 ### Fixed
