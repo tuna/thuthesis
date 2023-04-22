@@ -2,7 +2,7 @@ save_file () {
     test="$1";
     if [[ "$test" == 01-* ]]; then
         config="cover";
-    elif [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* ]]; then
+    elif [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* || "$test" == *-hyperref ]]; then
         config="crossref";
     elif [[ "$test" == *-nomencl ]]; then
         config="nomencl";
