@@ -1,0 +1,182 @@
+\input{regression-test.tex}
+\documentclass[degree=doctor,language=english]{thuthesis}
+
+\usepackage{hyperref}
+
+\begin{document}
+\START
+\showoutput
+
+\begin{committee}
+\end{committee}
+
+\frontmatter
+
+\begin{abstract}
+  中文摘要。
+  \thusetup{keywords = {关键词 1, 关键词 2, 关键词 3, 关键词 4, 关键词 5}}
+\end{abstract}
+
+\begin{abstract*}
+  English abstract.
+  \thusetup{keywords* = {keyword 1, keyword 2, keyword 3, keyword 4, keyword 5}}
+\end{abstract*}
+
+\tableofcontents
+
+\listoffiguresandtables
+
+\begin{denotation}
+  \item[DFT] Density Functional Theory
+  \item[HPLC] High Performance Liquid Chromatography
+  \item[HPCE] High Performance Capillary Electrophoresis
+\end{denotation}
+
+\mainmatter
+
+\section{本章引论}
+
+本章为 P2P 中宽松约束的一般性搜索建立理论模型，以研究此类搜索的效率和带宽开销。
+根据本章的理论模型可以很好地测算出各种条件下及不同应用中的 P2P 搜索效率和带宽开销，为 P2P 中宽松约束搜索的研究建立了基础。
+通过模型求解可以得到搜索所需的瓶颈资源（即结点带宽）的理论下限，并可算出不同系统参数下最优的搜索性能以及达到此性能时的最优数据索引分布，从而为 P2P 系统搜索算法的设计、性能优化、性能比较以及可行性分析提供了一般性方法。
+后面第四章提出的近似最优的实用搜索算法就是直接应用本章模型和结论而设计的。\footnote{%
+  脚注处序号“①，……，⑩”的字体是“正文”，不是“上标”，序号与脚注内容文字之间空半个汉字符，脚注的段落格式为：单倍行距，段前空 0 磅，段后空 0 磅，悬挂缩进 1.5 字符；字号为小五号字，汉字用宋体，外文用 Times New Roman 体。
+}
+
+\section{Title}
+
+Main text … Figure~\ref{fig:1.1} illustrates …
+
+\begin{figure}
+  \centering
+  \includegraphics{example-image.pdf}
+  \caption{Caption}
+  \label{fig:1.1}
+\end{figure}
+
+\subsection{Title}
+
+Main text … Equation~\eqref{eq:1.1} is …
+\begin{equation}
+  f(x) = a_0 + \sum_{n=1}^\infty \left( a_n \cos⁡ \frac{n \pi x}{L}
+    + b_n \sin⁡ \frac{n \pi x}{L} \right)
+  \label{eq:1.1}
+\end{equation}
+
+\subsection{Title}
+
+Main text … Table~\ref{tab:1.1} shows …
+
+\begin{table}
+  \centering
+  \caption{Caption}
+  \label{tab:1.1}
+  \begin{tabular}{cccc}
+    \toprule
+    Header 1 & Header 2 & Header 3 & Header 4 \\
+    \midrule
+    Row 1 &  &  & \\
+    Row 2 &  &  & \\
+    Row 3 &  &  & \\
+    Row 4 &  &  & \\
+    Row 5 &  &  & \\
+    Row 6 &  &  & \\
+    Row 7 &  &  & \\
+    Row 8 &  &  & \\
+    Row 9 &  &  & \\
+    Row 10 &  &  & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Title}
+
+The reference\cite{bib1} shows that \dots
+
+
+\backmatter
+\bibliographystyle{thuthesis-numeric}
+% \bibliography{ref/ref}
+
+\begin{thebibliography}{9}
+  \bibitem[Lin(2001)]{bib1} Lin S D. Water and wastewater calculations manual[M]. New York: McGraw-Hill, 2001.
+
+\end{thebibliography}
+
+
+\appendix
+
+\chapter{Title}
+
+\section{Title}
+
+Main text … Figure~\ref{fig:A.1} illustrates …
+
+\begin{figure}
+  \centering
+  \includegraphics{example-image.pdf}
+  \caption{Caption}
+  \label{fig:A.1}
+\end{figure}
+
+\subsection{Title}
+
+Main text … Equation~\eqref{eq:A.1} is …
+
+\begin{equation}
+  f(x) = a_0 + \sum_{n=1}^\infty \left( a_n \cos⁡ \frac{n \pi x}{L}
+    + b_n \sin⁡ \frac{n \pi x}{L} \right)
+  \label{eq:A.1}
+\end{equation}
+
+\subsection{Title}
+
+Main text …
+
+\subsection{Title}
+
+Main text … Table~\ref{tab:A.1} shows …
+
+\begin{table}
+  \centering
+  \caption{Caption}
+  \label{tab:A.1}
+  \begin{tabular}{cccc}
+    \toprule
+    Header 1 & Header 2 & Header 3 & Header 4 \\
+    \midrule
+    Row 1 &  &  & \\
+    Row 2 &  &  & \\
+    Row 3 &  &  & \\
+    Row 4 &  &  & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+\section{Title}
+
+Main text
+
+
+\begin{acknowledgements}
+  Main text\dots
+\end{acknowledgements}
+
+\statement
+
+\begin{resume}
+  Main text\dots
+\end{resume}
+
+\begin{comments}
+  Main text\dots
+\end{comments}
+
+\begin{resolution}
+  Main text\dots
+\end{resolution}
+
+\clearpage
+\OMIT
+\end{document}

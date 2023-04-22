@@ -21,6 +21,7 @@ excludetests = {
   "06-*",
   "07-*",
   "09-*",
+  "*-hyperref",
 }
 
 checkengines = {"xetex"}
