@@ -6389,22 +6389,25 @@
 %
 % \subsubsection{\pkg{hyperref} 宏包}
 %
+% 使用 \cs{PassOptionsToPackage} 的方式进行配置，允许用户在 \cs{usepackage} 
+% 覆盖配置（\href{https://github.com/tuna/thuthesis/issues/863}{tuna/thuthesis\#863}）。
+%
 %    \begin{macrocode}
+\PassOptionsToPackage{
+  linktoc            = all,
+  bookmarksdepth     = 2,
+  bookmarksnumbered  = true,
+  bookmarksopen      = true,
+  bookmarksopenlevel = 1,
+  bookmarksdepth     = 3,
+  unicode            = true,
+  psdextra           = true,
+  breaklinks         = true,
+  plainpages         = false,
+  pdfdisplaydoctitle = true,
+  hidelinks,
+}{hyperref}
 \AtEndOfPackageFile*{hyperref}{
-  \hypersetup{
-    linktoc            = all,
-    bookmarksdepth     = 2,
-    bookmarksnumbered  = true,
-    bookmarksopen      = true,
-    bookmarksopenlevel = 1,
-    bookmarksdepth     = 3,
-    unicode            = true,
-    psdextra           = true,
-    breaklinks         = true,
-    plainpages         = false,
-    pdfdisplaydoctitle = true,
-    hidelinks,
-  }%
   \newcounter{thu@bookmark}
   \renewcommand\thu@pdfbookmark[2]{%
     \phantomsection
