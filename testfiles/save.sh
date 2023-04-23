@@ -1,7 +1,9 @@
 save_file () {
     test="$1";
-    if [[ "$test" == 01-* ]]; then
-        config="cover";
+    if [[ "$test" == 01-title-page-academic-* || "$test" == 01-title-page-professional-* || "$test" == 02-title-page-* ]]; then
+        config="title-page-en";
+    elif [[ "$test" == 01-title-page-* ]]; then
+        config="title-page";
     elif [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* || "$test" == *-hyperref ]]; then
         config="crossref";
     elif [[ "$test" == *-nomencl ]]; then
@@ -24,7 +26,11 @@ save_file () {
 
 save_config () {
     config="$1";
-    if [[ "$config" == "main" ]]; then
+    if [[ "$config" == "title-page" ]]; then
+        test_dir="testfiles/01-title-page";
+    elif [[ "$config" == "title-page-en" ]]; then
+        test_dir="testfiles/01-title-page-en";
+    elif [[ "$config" == "main" ]]; then
         test_dir="testfiles";
     elif [[ "$config" == "crossref" ]]; then
         test_dir="testfiles";
@@ -39,14 +45,15 @@ save_config () {
     for testfile in "$test_dir"/*.tex; do
         test="$(basename "$testfile" .tex)";
         if [[ "$config" == "main" ]]; then
-            if [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* ]]; then
+            if [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* || "$test" == *-hyperref ]]; then
                 continue
             fi
             l3build save --quiet "$test" || exit 1;
-        else
-            if [[ "$config" == "crossref" ]] && ! [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* ]]; then
-                continue
+        elif [[ "$config" == "crossref" ]]; then
+            if [[ "$test" == 06-* || "$test" == 07-* || "$test" == 09-* || "$test" == *-hyperref ]]; then
+                l3build save --quiet --config testfiles/"config-$config" "$test" || exit 1;
             fi
+        else
             l3build save --quiet --config testfiles/"config-$config" "$test" || exit 1;
         fi
     done
@@ -54,12 +61,12 @@ save_config () {
 
 
 if [[ $# -eq 0 ]]; then
-    for config in main crossref nomencl bibtex biblatex; do
+    for config in title-page title-page-en main crossref nomencl bibtex biblatex; do
         save_config $config;
     done
 else
     case $1 in
-        main|crossref|nomencl|bibtex|biblatex)
+        title-page|title-page-en|main|crossref|nomencl|bibtex|biblatex)
             save_config "$1";
             ;;
 

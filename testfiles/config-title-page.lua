@@ -1,4 +1,4 @@
-testfiledir = "testfiles/01-cover"
+testfiledir = "testfiles/01-title-page"
 testsuppdir = testfiledir .. "/support"
 
 includetests = {"*"}
