@@ -490,9 +490,9 @@
 %
 % \begin{itemize}
 %   \item 学术型学位：获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称；
+%   \item 设置专业领域的专业学位：专业领域名称；
 %   \item 2019级及之前工程硕士：工程领域名称；
-%   \item 有专业领域的专业型学位：专业领域名称；
-%   \item 无专业领域的专业型学位：无需设置；
+%   \item 其他专业学位：无需此信息；
 %   \item 本科生：专业名称，第二学位论文需标注“（第二学位）”
 % \end{itemize}
 %
@@ -4558,7 +4558,7 @@
       \ifx\thu@discipline\@empty
         \thu@titlepage@info@master@other
       \else
-        \thu@titlepage@info@master@engineer
+        \thu@titlepage@info@master@professional
       \fi
     \fi
   \fi
@@ -4612,10 +4612,10 @@
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
-\newcommand\thu@titlepage@info@master@engineer{%
+\newcommand\thu@titlepage@info@master@professional{%
   \thu@titlepage@info@tabular{2.8cm}{2.8cm}{1.34cm}{%
     \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{工程领域}{}{\thu@discipline}%
+    \thu@info@item{专业领域}{}{\thu@discipline}%
     \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
