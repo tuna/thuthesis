@@ -14,6 +14,10 @@
 
 - 专业学位的“工程领域”改为“专业领域”，同步《指南》2023 年 3 月版的更改（[#862](https://github.com/tuna/thuthesis/issues/862)）。
 
+### Fixed
+
+- 修正封面的布局，同步《指南》2023 年 3 月版的更改（[#861](https://github.com/tuna/thuthesis/issues/861)）。
+
 ## [v7.3.2] - 2023-04-06
 
 ### Fixed

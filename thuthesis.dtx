@@ -4279,8 +4279,19 @@
   \stepcounter{thu@csl@count}%
 }
 \newcommand\thu@name@title@format[2]{%
-  \thu@pad{3cm}{\thu@stretch{4em}{#1}}%
-  \thu@stretch{3em}{#2}%
+  \ifthu@degree@type@professional
+    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
+    \thu@stretch{67.6bp}{#1}%
+    \hspace{9.8bp}%
+    % 字距 6bp
+    \begingroup
+      \renewcommand\CJKglue{\hspace{9.8bp}}%
+      #2%
+    \endgroup
+  \else
+    \thu@pad{3cm}{\thu@stretch{4em}{#1}}%
+    \thu@stretch{3em}{#2}%
+  \fi
 }
 \newcommand\thu@name@title[1]{%
   \setcounter{thu@csl@count}{0}%
@@ -4324,13 +4335,25 @@
   \thusetup{language = chinese}%
   \ifthu@degree@graduate
     \ifthu@thesis@type@thesis
-      \ifthu@degree@type@academic
-        \thu@titlepage@graduate@academic
-      \else
-        \ifx\thu@discipline\@empty
-          \thu@titlepage@graduate@professional
+      \ifthu@degree@doctor
+        \ifthu@degree@type@academic
+          \thu@titlepage@doctor@academic
         \else
-          \thu@titlepage@graduate@academic
+          \thu@titlepage@graduate@professional
+        \fi
+      \else
+        \ifthu@degree@master
+          \ifthu@degree@type@academic
+            \thu@titlepage@master@academic
+          \else
+            \ifx\thu@discipline\@empty
+              \thu@titlepage@master@professional
+            \else
+              % 有专业领域的专硕封面布局跟学硕一样
+              \thu@titlepage@master@professional@with@field
+            \fi
+            
+          \fi
         \fi
       \fi
     \else
@@ -4360,7 +4383,7 @@
 % 然而作为事实标准的 Word 模板的页边距是上下 6.0 厘米，左右 4.0 厘米。
 % 这里缩小上边距以方便排版保密信息。
 %    \begin{macrocode}
-\newcommand\thu@titlepage@graduate@academic{%
+\newcommand\thu@titlepage@doctor@academic{%
   \newgeometry{
     top     = 2cm,
     bottom  = 6cm,
@@ -4388,10 +4411,10 @@
       \vskip -9.2pt%
     \fi
     \vskip 24.1pt%
-    \thu@titlepage@degree
+    \thu@titlepage@degree\par
     \vfill
     \parbox[t][7.25cm][t]{\textwidth}{%
-      \centering\fangsong\fontsize{16bp}{31.2bp}\selectfont
+      \fangsong\fontsize{16bp}{31.2bp}\selectfont
       \thu@titlepage@info
     }\par
     \parbox[t][1.03cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
@@ -4434,11 +4457,171 @@
     \vskip 25.5pt%
     \thu@titlepage@degree
     \vfill
-    \parbox[t][5.24cm][t]{\textwidth}{%
-      \centering\fangsong\fontsize{16bp}{1cm}\selectfont
+    \parbox[b][5.24cm][b]{\textwidth}{%
+      \fangsong\fontsize{16bp}{1cm}\selectfont
       \thu@titlepage@info
     }\par
-    \parbox[t][1.25cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
+    \vskip 2.22cm%
+    \parbox[t][1.0cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+% 学术型硕士
+%    \begin{macrocode}
+\newcommand\thu@titlepage@master@academic{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 10bp%
+  \begingroup
+    \centering
+    \parbox[t][55bp][t]{\textwidth}{%
+      \hskip -23bp%
+      \thu@titlepage@secret
+    }\par
+    \vskip 34pt%
+    \begingroup
+      % 1.21 倍行距
+      \sffamily\fontsize{26bp}{40.898bp}\selectfont
+      \thu@title\par
+    \endgroup
+    \ifthu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \thu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 18pt%
+    \thu@titlepage@degree\par
+    \vfill
+    \parbox[t][7.05cm][t]{\textwidth}{%
+      % 表格行高 1cm = 28.35bp
+      \fangsong\fontsize{16bp}{28.35bp}\selectfont
+      \thu@titlepage@info
+    }\par
+    \parbox[t][37bp][t]{\textwidth}{\centering\thu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+% 专业型硕士
+%    \begin{macrocode}
+\newcommand\thu@titlepage@master@professional{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 15bp%
+  \begingroup
+    \centering
+    \parbox[t][41bp][t]{\textwidth}{%
+      \hskip -23bp%
+      \thu@titlepage@secret
+    }\par
+    \vskip 1.5cm%
+    \begingroup
+      % 1.21 倍行距，无网格
+      \sffamily\fontsize{26bp}{40.9bp}\selectfont
+      \thu@title\par
+    \endgroup
+    \ifthu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \thu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 25.5pt%
+    \thu@titlepage@degree
+    \vfill
+    \parbox[b][5.24cm][b]{\textwidth}{%
+      \fangsong\fontsize{16bp}{1cm}\selectfont
+      \thu@titlepage@info
+    }\par
+    \vskip 2.22cm%
+    \parbox[t][35.5bp][t]{\textwidth}{\centering\thu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+% 专业型硕士（有专业领域）
+%    \begin{macrocode}
+\newcommand\thu@titlepage@master@professional@with@field{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 10bp%
+  \begingroup
+    \centering
+    \parbox[t][46bp][t]{\textwidth}{%
+      \hskip -23bp%
+      \thu@titlepage@secret
+    }\par
+    \vskip 1.5cm%
+    \begingroup
+      % 1.21 倍行距，无网格
+      \sffamily\fontsize{26bp}{40.9bp}\selectfont
+      \thu@title\par
+    \endgroup
+    \ifthu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \thu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 25.5pt%
+    \thu@titlepage@degree
+    \vskip 119bp%
+    \parbox[b][5.24cm][b]{\textwidth}{%
+      \fangsong\fontsize{16bp}{31bp}\selectfont
+      \renewcommand\thu@info@item@format[2]{%
+        \begingroup
+          \renewcommand\CJKglue{\hspace{##1}}%
+          ##2%
+        \endgroup
+      }%
+      \renewcommand\thu@name@title@format[2]{%
+        % 字距 9bp，共 16bp * 3 + 9bp * 2 = 66bp
+        \thu@stretch{66bp}{##1}%
+        \hspace{22bp}%
+        % 字距 6bp
+        \begingroup
+          \renewcommand\CJKglue{\hspace{16bp}}%
+          ##2%
+        \endgroup
+      }%
+      \thu@titlepage@info@tabular{65bp}{86.5bp}{81bp}{30.5bp}{%
+        \thu@info@item{培养单位}{\thu@info@item@format{1bp}}{\thu@department}%
+        \thu@info@item{专业领域}{\thu@info@item@format{2bp}}{\thu@discipline}%
+        \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+        \thu@info@item{学号}{}{\thu@student@id}%
+        \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+        \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+        \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
+      }\par
+    }\par
+    \vfill
+    \parbox[t][33.5bp][t]{\textwidth}{\centering\thu@titlepage@date}\par
   \endgroup
   \clearpage
   \restoregeometry
@@ -4556,9 +4739,9 @@
       \thu@titlepage@info@master@academic
     \else
       \ifx\thu@discipline\@empty
-        \thu@titlepage@info@master@other
+        \thu@titlepage@info@master@professional@without@field
       \else
-        \thu@titlepage@info@master@professional
+        \thu@titlepage@info@master@professional@with@field
       \fi
     \fi
   \fi
@@ -4566,22 +4749,29 @@
 %    \end{macrocode}
 %
 % 标题页作者信息表
+% \texttt{\#1}: 表格左侧至版心的距离；\\
+% \texttt{\#2}: “培养方案”的边框宽度；\\ 
+% \texttt{\#3}: “培养方案”的文字宽度；\\ 
+% \texttt{\#4}: 冒号的边框；\\ 
+% \texttt{\#5}: 表格内容。
 %    \begin{macrocode}
-\newcommand\thu@titlepage@info@tabular[4]{%
+\newcommand\thu@titlepage@info@tabular[5]{%
   \def\thu@info@item##1##2##3{%
     \ifx##3\@empty\else
-      \thu@pad{#1}{\thu@fixed@box{#2}{##1}}%
-      \thu@pad{#3}{：}%
+      \thu@pad{#2}{\thu@fixed@box{#3}{##1}}%
+      \thu@pad{#4}{：}%
       ##2{##3}\\
     \fi
   }%
+  \hspace{#1}%
   \begin{tabular}{l}%
     \renewcommand\arraystretch{1}%
-    #4%
+    #5%
   \end{tabular}%
 }
+\newcommand\thu@info@item@format[1]{#1}
 \newcommand\thu@titlepage@info@doctor@academic{%
-  \thu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
+  \thu@titlepage@info@tabular{2.3cm}{2.85cm}{2.75cm}{0.77cm}{%
     \thu@info@item{培养单位}{}{\thu@department}%
     \thu@info@item{学科}{}{\thu@discipline}%
     \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
@@ -4592,19 +4782,35 @@
   }\par
 }
 \newcommand\thu@titlepage@info@doctor@professional{%
-  \thu@titlepage@info@tabular{3.03cm}{5em}{1.52cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
+  \thu@titlepage@info@tabular{2.3cm}{3.1cm}{5em}{1.42cm}{%
+    \thu@info@item{培养单位}{}{{\thu@department}}%
     \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合导师}{\thu@name@title}{\thu@co@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
 \newcommand\thu@titlepage@info@master@academic{%
-  \thu@titlepage@info@tabular{3.59cm}{5.5em}{0.82cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{学科}{}{\thu@discipline}%
+  \renewcommand\thu@info@item@format[2]{%
+    \begingroup
+      \renewcommand\CJKglue{\hspace{##1}}%
+      ##2%
+    \endgroup
+  }
+  \renewcommand\thu@name@title@format[2]{%
+    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
+    \thu@stretch{67.6bp}{##1}%
+    \hspace{9.8bp}%
+    % 字距 6bp
+    \begingroup
+      \renewcommand\CJKglue{\hspace{6bp}}%
+      ##2%
+    \endgroup
+  }%
+  \thu@titlepage@info@tabular{58bp}{3.59cm}{5.5em}{0.82cm}{%
+    \thu@info@item{培养单位}{\thu@info@item@format{1bp}}{\thu@department}%
+    \thu@info@item{学科}{\thu@info@item@format{2bp}}{\thu@discipline}%
     \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
@@ -4612,10 +4818,26 @@
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
-\newcommand\thu@titlepage@info@master@professional{%
-  \thu@titlepage@info@tabular{2.8cm}{2.8cm}{1.34cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{专业领域}{}{\thu@discipline}%
+% 无专业领域
+\newcommand\thu@titlepage@info@master@professional@without@field{%
+  \renewcommand\thu@info@item@format[2]{%
+    \begingroup
+      \renewcommand\CJKglue{\hspace{##1}}%
+      ##2%
+    \endgroup
+  }
+  \renewcommand\thu@name@title@format[2]{%
+    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
+    \thu@stretch{67.6bp}{##1}%
+    \hspace{9.8bp}%
+    % 字距 6bp
+    \begingroup
+      \renewcommand\CJKglue{\hspace{6bp}}%
+      ##2%
+    \endgroup
+  }%
+  \thu@titlepage@info@tabular{58bp}{3.28cm}{5em}{1.52cm}{%
+    \thu@info@item{培养单位}{\thu@info@item@format{1bp}}{\thu@department}%
     \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
@@ -4623,15 +4845,8 @@
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
-\newcommand\thu@titlepage@info@master@other{%
-  \thu@titlepage@info@tabular{3.28cm}{5em}{1.52cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
-    \thu@info@item{学号}{}{\thu@student@id}%
-    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
-  }\par
+% 有专业领域
+\newcommand\thu@titlepage@info@master@professional@with@field{%
 }
 %    \end{macrocode}
 %
@@ -4658,7 +4873,7 @@
   \newgeometry{
     top     = 5.5cm,
     bottom  = 5cm,
-    hmargin = 3.6cm,
+    hmargin = 3.4cm,
   }%
   \thispagestyle{empty}%
   \thusetup{language = english}%
@@ -4674,37 +4889,39 @@
 \newcommand\thu@titlepage@en@graduate@academic{%
   \begingroup
     \centering
-    \null\vskip -0.7cm%
-    \thu@titlepage@en@title
-    \vfill
+    \null\vskip -0.31cm%
+    \parbox[t][143bp][t]{\textwidth}{%
+      \centering\thu@titlepage@en@title
+    }\par
     \sanhao[1.725]%
     \thu@titlepage@en@degree
-    \vskip 0.13cm%
+    \vskip 3bp%
     in\par
-    \vskip 0.1cm%
+    \vskip 3.5bp%
     {\bfseries\sffamily\thu@discipline@en\par}
-    \vskip 0.7cm%
+    \vfill
     {\sffamily by\par}
     \vskip 0.24cm%
     {\sffamily\bfseries\thu@author@en\par}%
-    \vskip 0.14cm%
-    \parbox[t][3.07cm][t]{\textwidth}{%
-      \centering\xiaosan[2.1]%
+    \vskip 0.18cm%
+    \parbox[t][3.0cm][t]{\textwidth}{%
+      \xiaosan[2.1]%
       \thu@titlepage@en@supervisor
     }\par
     \thu@titlepage@en@date
-    \vskip 0.65cm%
+    \vskip 0.7cm%
   \endgroup
 }
 \newcommand\thu@titlepage@en@graduate@professional{%
   \begingroup
     \centering
-    \null\vskip -0.7cm%
-    \thu@titlepage@en@title
-    \vfill
+    \null\vskip -0.31cm%
+    \parbox[t][143bp][t]{\textwidth}{%
+      \centering\thu@titlepage@en@title
+    }\par
     \sanhao[1.725]%
     \thu@titlepage@en@degree
-    \vskip 1.1cm%
+    \vfill
     {\sffamily by\par}
     \vskip 0.24cm%
     {\sffamily\bfseries\thu@author@en\par}%
@@ -4716,7 +4933,7 @@
       \vskip 1.1cm%
     \fi
     \parbox[t][3.37cm][t]{\textwidth}{%
-      \centering\xiaosan[1.82]%
+      \xiaosan[1.82]%
       \thu@titlepage@en@supervisor
     }\par
     \thu@titlepage@en@date
@@ -4725,7 +4942,8 @@
 }
 \newcommand\thu@titlepage@en@title{%
   \begingroup
-    \sffamily\bfseries\fontsize{20bp}{31bp}\selectfont
+    % 对齐到网格，每行 15.6bp
+    \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
     \thu@title@en\par
   \endgroup
 }
@@ -4748,7 +4966,8 @@
   {\sffamily\bfseries\thu@degree@name@en\par}%
 }
 \newcommand\thu@titlepage@en@supervisor{%
-  \begin{tabular}{r@{\makebox[0.71cm][l]{:}}l}%
+  \hspace{1.27cm}%
+  \begin{tabular}{r@{\makebox[20.5bp][l]{\hspace{2bp}:}}l}%
     \renewcommand\arraystretch{1}%
     \thu@thesis@name@en{} Supervisor & \thu@supervisor@en \\
     \ifx\thu@associate@supervisor@en\@empty\else
