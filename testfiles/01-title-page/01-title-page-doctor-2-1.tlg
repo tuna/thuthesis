@@ -6,14 +6,14 @@ Don't change this file in any respect.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
-* h-part:(L,W,R)=(102.43008pt, 392.6477pt, 102.43008pt)
+* h-part:(L,W,R)=(96.73918pt, 404.02951pt, 96.73918pt)
 * v-part:(T,H,B)=(156.49014pt, 546.29292pt, 142.26378pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=392.6477pt
+* \textwidth=404.02951pt
 * \textheight=546.29292pt
-* \oddsidemargin=30.1601pt
-* \evensidemargin=30.1601pt
+* \oddsidemargin=24.4692pt
+* \evensidemargin=24.4692pt
 * \topmargin=-1.13809pt
 * \headheight=76.82234pt
 * \headsep=8.5359pt
@@ -59,7 +59,7 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 9.03276pt on input line ....
 Completed box being shipped out [1]
-\vbox(653.27536+0.0)x422.8078
+\vbox(653.27536+0.0)x428.4987
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
@@ -71,71 +71,78 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\glue -1.13809
-.\vbox(654.41345+0.0)x392.6477, shifted 30.1601
-..\vbox(76.82234+0.0)x392.6477, glue set 76.82234fil
+.\vbox(654.41345+0.0)x404.02951, shifted 24.4692
+..\vbox(76.82234+0.0)x404.02951, glue set 76.82234fil
 ...\glue 0.0 plus 1.0fil
-...\hbox(0.0+0.0)x392.6477
+...\hbox(0.0+0.0)x404.02951
 ....\special{color push gray 0}
-....\hbox(0.0+0.0)x392.6477
+....\hbox(0.0+0.0)x404.02951
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(546.29292+0.0)x392.6477, glue set 51.20227fill
+..\vbox(546.29292+0.0)x404.02951, glue set 19.90184fill
 ...\write-{}
 ...\special{color push gray 0}
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\hbox(0.0+0.0)x0.0
-...\glue -19.91684
+...\glue -8.82028
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 16.16037
-...\hbox(14.95587+4.39641)x392.6477, glue set 3.64401fil
+...\glue(\baselineskip) 5.11913
+...\hbox(14.95587+128.58037)x404.02951
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
-....\TU/texgyreheros(0)/b/n/20.075 Research
-....\glue 5.58086 plus 2.79042 minus 1.86028
-....\TU/texgyreheros(0)/b/n/20.075 on
-....\glue 5.58086 plus 2.79042 minus 1.86028
-....\TU/texgyreheros(0)/b/n/20.075 the
-....\glue 5.58086 plus 2.79042 minus 1.86028
-....\TU/texgyreheros(0)/b/n/20.075 Theory
-....\glue 5.58086 plus 2.79042 minus 1.86028
-....\TU/texgyreheros(0)/b/n/20.075 and
-....\glue 5.58086 plus 2.79042 minus 1.86028
-....\TU/texgyreheros(0)/b/n/20.075 Application
-....\glue(\rightskip) 0.0 plus 1.0fil
-...\penalty 150
-...\glue(\baselineskip) 11.76396
-...\hbox(14.95587+4.37633)x392.6477, glue set 47.53801fil
-....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/texgyreheros(0)/b/n/20.075 of
-....\glue 5.58086 plus 2.79042 minus 1.86028
-....\TU/texgyreheros(0)/b/n/20.075 Unit
-....\glue 5.58086 plus 2.79042 minus 1.86028
-....\TU/texgyreheros(0)/b/n/20.075 Root,
-....\glue 5.58086 plus 3.48802 minus 1.48822
-....\TU/texgyreheros(0)/b/n/20.075 Cointegration
-....\glue 5.58086 plus 2.79042 minus 1.86028
-....\TU/texgyreheros(0)/b/n/20.075 and
-....\glue(\rightskip) 0.0 plus 1.0fil
-...\penalty 150
-...\glue(\baselineskip) 11.86433
-...\hbox(14.87558+4.37633)x392.6477, glue set 109.16824fil
-....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/texgyreheros(0)/b/n/20.075 Structural
-....\glue 5.58086 plus 2.79042 minus 1.86028
-....\TU/texgyreheros(0)/b/n/20.075 Change
-....\kern -0.0002
-....\kern 0.0002
+....\vbox(14.95587+128.58037)x404.02951, glue set 61.57007fil
+.....\hbox(14.95587+4.39641)x404.02951, glue set 9.33492fil
+......\glue(\leftskip) 0.0 plus 1.0fil
+......\hbox(0.0+0.0)x0.0
+......\TU/texgyreheros(0)/b/n/20.075 Research
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 on
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 the
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Theory
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 and
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Application
+......\glue(\rightskip) 0.0 plus 1.0fil
+.....\penalty 150
+.....\glue(\baselineskip) 11.9647
+.....\hbox(14.95587+4.37633)x404.02951, glue set 2.98119fil
+......\glue(\leftskip) 0.0 plus 1.0fil
+......\TU/texgyreheros(0)/b/n/20.075 of
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Unit
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Root,
+......\glue 5.58086 plus 3.48802 minus 1.48822
+......\TU/texgyreheros(0)/b/n/20.075 Cointegration
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 and
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Structural
+......\glue(\rightskip) 0.0 plus 1.0fil
+.....\penalty 150
+.....\glue(\baselineskip) 12.06508
+.....\hbox(14.87558+4.37633)x404.02951, glue set 165.10687fil
+......\glue(\leftskip) 0.0 plus 1.0fil
+......\TU/texgyreheros(0)/b/n/20.075 Change
+......\kern -0.0002
+......\kern 0.0002
+......\penalty 10000
+......\glue(\parfillskip) 0.0
+......\glue(\rightskip) 0.0 plus 1.0fil
+.....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 0.0 plus 1.0fill
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 12.35828
-...\hbox(10.96898+0.16058)x392.6477, glue set 115.37344fil
+...\glue(\lineskip) 1.0
+...\hbox(10.96898+0.16058)x404.02951, glue set 121.06435fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/texgyretermes(0)/m/n/16.06 Dissertation
@@ -153,7 +160,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 16.50978
-...\hbox(11.03322+3.30835)x392.6477, glue set 127.45859fil
+...\hbox(11.03322+3.30835)x404.02951, glue set 133.14949fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/texgyretermes(0)/b/n/16.06 Tsinghua
@@ -167,7 +174,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 13.42625
-...\hbox(10.96898+3.485)x392.6477, glue set 70.18863fil
+...\hbox(10.96898+3.485)x404.02951, glue set 75.87953fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/texgyretermes(0)/m/n/16.06 in
@@ -189,7 +196,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 13.2496
-...\hbox(10.96898+3.50107)x392.6477, glue set 143.27768fil
+...\hbox(10.96898+3.50107)x404.02951, glue set 148.96858fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/texgyretermes(0)/m/n/16.06 for
@@ -207,7 +214,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 12.23782
-...\hbox(11.96469+3.51712)x392.6477, glue set 115.3654fil
+...\hbox(11.96469+3.51712)x404.02951, glue set 121.0563fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/texgyreheros(0)/b/n/16.06 Doctor
@@ -220,11 +227,11 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 3.69899
+...\glue 3.01125
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 13.892
-...\hbox(10.29446+0.0)x392.6477, glue set 190.07652fil
+...\hbox(10.29446+0.0)x404.02951, glue set 195.76743fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/texgyretermes(0)/m/n/16.06 in
@@ -233,11 +240,11 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 2.84544
+...\glue 3.51312
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 15.73889
-...\hbox(11.96469+3.50107)x392.6477, glue set 121.80547fil
+...\hbox(11.96469+3.50107)x404.02951, glue set 127.49637fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/texgyreheros(0)/b/n/16.06 Applied
@@ -248,11 +255,11 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 19.91684
+...\glue 0.0 plus 1.0fill
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 12.49478
-...\hbox(11.70773+3.50107)x392.6477, glue set 187.96463fil
+...\hbox(11.70773+3.50107)x404.02951, glue set 193.65553fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/texgyreheros(0)/m/n/16.06 by
@@ -265,7 +272,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 12.23782
-...\hbox(11.96469+3.50107)x392.6477, glue set 135.89008fil
+...\hbox(11.96469+3.50107)x404.02951, glue set 141.58098fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/texgyreheros(0)/b/n/16.06 Wang
@@ -276,23 +283,23 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 3.98337
+...\glue 5.12128
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\lineskip) 1.0
-...\hbox(35.38264+51.96751)x392.6477
+...\hbox(35.38264+49.97562)x404.02951
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
-....\vbox(35.38264+51.96751)x392.6477, glue set 24.1138fil
-.....\hbox(35.38264+27.85371)x392.6477, glue set 38.8524fil
-......\glue(\leftskip) 0.0 plus 1.0fil
+....\vbox(35.38264+49.97562)x404.02951, glue set 22.1219fil
+.....\hbox(35.38264+27.85371)x404.02951, glue set 52.57626fil
 ......\hbox(0.0+0.0)x0.0
-......\hbox(35.38264+27.85371)x314.9429
+......\glue 36.13512
+......\hbox(35.38264+27.85371)x315.31813
 .......\mathon
-.......\vbox(35.38264+27.85371)x314.9429
-........\hbox(22.13263+9.48555)x314.9429
+.......\vbox(35.38264+27.85371)x315.31813
+........\hbox(22.13263+9.48555)x315.31813
 .........\glue(\tabskip) 0.0
-.........\hbox(22.13263+9.48555)x168.64879
+.........\hbox(22.13263+9.48555)x169.02402
 ..........\rule(22.13263+9.48555)x0.0
 ..........\glue 6.0
 ..........\glue 0.0 plus 1.0fil
@@ -302,7 +309,8 @@ Completed box being shipped out [1]
 ..........\kern 0.0002
 ..........\glue 3.76407 plus 1.88203 minus 1.25468
 ..........\TU/texgyretermes(0)/m/n/15.05624 Supervisor
-..........\hbox(6.91081+0.1656)x20.20164, glue set 16.016fil
+..........\hbox(6.91081+0.1656)x20.57687, glue set 14.38374fil
+...........\glue 2.00749
 ...........\TU/texgyretermes(0)/m/n/15.05624 :
 ...........\kern -0.0002
 ...........\kern 0.0002
@@ -321,9 +329,9 @@ Completed box being shipped out [1]
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0
 ........\glue(\lineskip) 0.0
-........\hbox(22.13263+9.48555)x314.9429
+........\hbox(22.13263+9.48555)x315.31813
 .........\glue(\tabskip) 0.0
-.........\hbox(22.13263+9.48555)x168.64879, glue set 14.60455fil
+.........\hbox(22.13263+9.48555)x169.02402, glue set 14.60455fil
 ..........\rule(22.13263+9.48555)x0.0
 ..........\glue 6.0
 ..........\glue 0.0 plus 1.0fil
@@ -331,7 +339,8 @@ Completed box being shipped out [1]
 ..........\TU/texgyretermes(0)/m/n/15.05624 Associate
 ..........\glue 3.76407 plus 1.88203 minus 1.25468
 ..........\TU/texgyretermes(0)/m/n/15.05624 Supervisor
-..........\hbox(6.91081+0.1656)x20.20164, glue set 16.016fil
+..........\hbox(6.91081+0.1656)x20.57687, glue set 14.38374fil
+...........\glue 2.00749
 ...........\TU/texgyretermes(0)/m/n/15.05624 :
 ...........\kern -0.0002
 ...........\kern 0.0002
@@ -351,8 +360,8 @@ Completed box being shipped out [1]
 .........\glue(\tabskip) 0.0
 .......\mathoff
 ......\penalty 10000
-......\glue(\parfillskip) 0.0
-......\glue(\rightskip) 0.0 plus 1.0fil
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
@@ -360,7 +369,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\lineskip) 1.0
-...\hbox(11.70773+2.79442)x392.6477, glue set 150.35211fil
+...\hbox(11.70773+2.79442)x404.02951, glue set 156.04301fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\TU/texgyreheros(0)/b/n/16.06 March,
@@ -371,7 +380,7 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
-...\glue 18.49411
+...\glue 19.91684
 ...\glue -2.79442
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0 plus -1.0fil
@@ -379,9 +388,9 @@ Completed box being shipped out [1]
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
-..\hbox(0.0+0.0)x392.6477
+..\hbox(0.0+0.0)x404.02951
 ...\special{color push gray 0}
-...\hbox(0.0+0.0)x392.6477
+...\hbox(0.0+0.0)x404.02951
 ...\special{color pop}
 .\kern -653.27536
 .\hbox(0.0+0.0)x0.0
