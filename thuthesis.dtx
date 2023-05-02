@@ -489,11 +489,8 @@
 % \subsubsection{学科名称}
 %
 % \begin{itemize}
-%   \item 学术型学位：获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称；
-%   \item 设置专业领域的专业学位：专业领域名称；
-%   \item 2019级及之前工程硕士：工程领域名称；
-%   \item 其他专业学位：无需此信息；
-%   \item 本科生：专业名称，第二学位论文需标注“（第二学位）”
+%   \item 研究生学术型学位：获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称；
+%   \item 本科生：专业名称，第二学位论文需标注“（第二学位）”。
 % \end{itemize}
 %
 % \begin{latex}
@@ -502,6 +499,24 @@
 %     discipline* = {Discipline in English},
 %   }
 % \end{latex}
+%
+% \subsubsection{专业领域}
+%
+% 仅用于研究生专业型学位。
+%
+% \begin{itemize}
+%   \item 设置专业领域的专业学位类别，填写相应专业领域名称；
+%   \item 2019 级及之前工程硕士学位论文，在 \option{engineering-field} 填写相应工程领域名称；
+%   \item 其他专业学位类别的学位论文无需此信息。
+% \end{itemize}
+%
+% \begin{latex}
+%   \thusetup{
+%     professional-field  = {专业领域},
+%     professional-field* = {Professional field},
+%   }
+% \end{latex}
+%
 %
 % \subsubsection{作者姓名}
 % 作者姓名。
@@ -4151,7 +4166,7 @@
   },
 %    \end{macrocode}
 %
-% 专业中英文名称。
+% 学科中英文名称。
 %    \begin{macrocode}
   discipline = {
     % default = {计算机科学与技术},
@@ -4159,6 +4174,42 @@
   discipline* = {
     % default = {Computer Science and Technology},
     name    = discipline@en,
+  },
+}
+\thu@option@hook{discipline}{%
+  \ifthu@degree@type@professional
+    \thu@warning{`discipline' for professional degree is deprecated. Use `professional-field' instead.}
+    \let\thu@professional@field\thu@discipline
+    \let\thu@discipline\@empty
+  \fi
+}
+\thu@option@hook{discipline*}{%
+  \ifthu@degree@type@professional
+    \thu@warning{`discipline*' for professional degree is deprecated. Use `professional-field*' instead.}
+    \let\thu@professional@field@en\thu@discipline@en
+    \let\thu@discipline@en\@empty
+  \fi
+}
+%    \end{macrocode}
+%
+% 专业领域。
+%    \begin{macrocode}
+\thu@define@key{
+  professional-field = {
+    name    = professional@field,
+  },
+  professional-field* = {
+    name    = professional@field@en,
+  },
+%    \end{macrocode}
+%
+% 工程领域。
+%    \begin{macrocode}
+  engineering-field = {
+    name    = engineering@field,
+  },
+  engineering-field* = {
+    name    = engineering@field@en,
   },
 %    \end{macrocode}
 %
@@ -4350,24 +4401,24 @@
   \thusetup{language = chinese}%
   \ifthu@degree@graduate
     \ifthu@thesis@type@thesis
-      \ifthu@degree@doctor
-        \ifthu@degree@type@academic
+      \ifthu@degree@type@academic
+        \ifthu@degree@doctor
           \thu@titlepage@doctor@academic
         \else
-          \thu@titlepage@graduate@professional
+          \thu@titlepage@master@academic
         \fi
       \else
-        \ifthu@degree@master
-          \ifthu@degree@type@academic
-            \thu@titlepage@master@academic
-          \else
-            \ifx\thu@discipline\@empty
-              \thu@titlepage@master@professional
+        \ifthu@degree@doctor
+          \thu@titlepage@doctor@professional
+        \else
+          \ifx\thu@professional@field\@empty
+            \ifx\thu@engineering@field\@empty
+              \thu@titlepage@master@professional@without@field
             \else
-              % 有专业领域的专硕封面布局跟学硕一样
               \thu@titlepage@master@professional@with@field
             \fi
-            
+          \else
+            \thu@titlepage@master@professional@with@field
           \fi
         \fi
       \fi
@@ -4441,7 +4492,7 @@
 %
 % 专业型学位论文中文封面
 %    \begin{macrocode}
-\newcommand\thu@titlepage@graduate@professional{%
+\newcommand\thu@titlepage@doctor@professional{%
   \newgeometry{
     top     = 2cm,
     bottom  = 6cm,
@@ -4531,7 +4582,7 @@
 %
 % 专业型硕士
 %    \begin{macrocode}
-\newcommand\thu@titlepage@master@professional{%
+\newcommand\thu@titlepage@master@professional@without@field{%
   \newgeometry{
     top     = 2cm,
     bottom  = 6cm,
@@ -4627,7 +4678,8 @@
       }%
       \thu@titlepage@info@tabular{65bp}{86.5bp}{81bp}{30.5bp}{%
         \thu@info@item{培养单位}{\thu@info@item@format{1bp}}{\thu@department}%
-        \thu@info@item{专业领域}{\thu@info@item@format{2bp}}{\thu@discipline}%
+        \thu@info@item{专业领域}{\thu@info@item@format{2bp}}{\thu@professional@field}%
+        \thu@info@item{工程领域}{\thu@info@item@format{2bp}}{\thu@engineering@field}%
         \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
         \thu@info@item{学号}{}{\thu@student@id}%
         \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
@@ -4753,8 +4805,12 @@
     \ifthu@degree@type@academic
       \thu@titlepage@info@master@academic
     \else
-      \ifx\thu@discipline\@empty
-        \thu@titlepage@info@master@professional@without@field
+      \ifx\thu@professional@field\@empty
+        \ifx\thu@engineering@field\@empty
+          \thu@titlepage@info@master@professional@without@field
+        \else
+          \thu@titlepage@info@master@professional@with@field
+        \fi
       \else
         \thu@titlepage@info@master@professional@with@field
       \fi
@@ -4940,11 +4996,11 @@
     {\sffamily by\par}
     \vskip 0.24cm%
     {\sffamily\bfseries\thu@author@en\par}%
-    \ifx\thu@discipline@en\empty
+    \ifx\thu@professional@field@en\empty
       \vskip 1.95cm%
     \else
       \vskip -0.1cm%
-      {\sffamily\bfseries(\thu@discipline@en)\par}%
+      {\sffamily\bfseries(\thu@professional@field@en)\par}%
       \vskip 1.1cm%
     \fi
     \parbox[t][3.37cm][t]{\textwidth}{%

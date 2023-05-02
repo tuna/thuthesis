@@ -8,8 +8,10 @@
 
 ### Added
 
-- 允许本科生附录翻译的摘要中使用 `\thusetup{keywords = *}` 设置关键词。
-- 添加选项 `degree-category` 和 `degree-category*` 设置学科门类。
+- 允许本科生附录翻译的摘要中使用 `\thusetup{keywords = *}` 设置关键词（[#865](https://github.com/tuna/thuthesis/issues/865)）。
+- 添加选项 `degree-category` 和 `degree-category*` 设置学科门类（[#840](https://github.com/tuna/thuthesis/issues/840)）。
+- 添加选项 `professional-field` 和 `professional-field*` 设置专业领域（[#840](https://github.com/tuna/thuthesis/issues/840)）。
+- 添加选项 `engineering-field` 和 `engineering-field*` 设置专业领域（[#840](https://github.com/tuna/thuthesis/issues/840)）。
 
 ### Changed
 
@@ -17,7 +19,7 @@
 
 ### Deprecated
 
-- 选项 `degree-name` 和 `degree-name*` 已经过时。
+- 选项 `degree-name` 和 `degree-name*` 已经过时（[#840](https://github.com/tuna/thuthesis/issues/840)）。
 
 ### Fixed
 
