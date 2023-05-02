@@ -9,10 +9,15 @@
 ### Added
 
 - 允许本科生附录翻译的摘要中使用 `\thusetup{keywords = *}` 设置关键词。
+- 添加选项 `degree-category` 和 `degree-category*` 设置学科门类。
 
 ### Changed
 
 - 专业学位的“工程领域”改为“专业领域”，同步《指南》2023 年 3 月版的更改（[#862](https://github.com/tuna/thuthesis/issues/862)）。
+
+### Deprecated
+
+- 选项 `degree-name` 和 `degree-name*` 已经过时。
 
 ### Fixed
 

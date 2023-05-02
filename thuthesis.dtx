@@ -444,15 +444,15 @@
 % \end{latex}
 %
 % \subsubsection{申请学位名称}
-% \label{sec:degree-name}
-% 学位名称的设置比较复杂，见表~\ref{tab:degree-name}。
+% \label{sec:degree-category}
+% 学位名称的设置比较复杂，见表~\ref{tab:degree-category}。
 %
 % \begin{table}[h]
 %   \caption{学位名称的要求}
-%   \label{tab:degree-name}
+%   \label{tab:degree-category}
 %   \begin{tabular}{p{2cm}p{6cm}p{6cm}}
 %     \toprule
-%     学位类型 & degree-name & degree-name* \\
+%     学位类型 & degree-category & degree-category* \\
 %     \midrule
 %     学术型博士 & 需注明所属的学科门类，例如：
 %         哲学、经济学、法学、教育学、文学、历史学、理学、工学、农学、医学、
@@ -473,8 +473,8 @@
 %
 % \begin{latex}
 %   \thusetup{
-%     degree-name  = {您要申请什么学位},
-%     degree-name* = {Degree in English},
+%     degree-category  = {您要申请什么学位},
+%     degree-category* = {Degree in English},
 %   }
 % \end{latex}
 %
@@ -4119,18 +4119,33 @@
 %
 % 学位中英文。
 %    \begin{macrocode}
-  degree-name = {
+  degree-category = {
     default = {工学博士},
-    name    = degree@name,
+    name    = degree@category,
+  },
+  degree-category* = {
+    default = {Doctor of Philosophy},
+    name    = degree@category@en,
+  },
+  % 为了向后兼容
+  degree-name = {
+    name    = degree@category,
   },
   degree-name* = {
-    default = {Doctor of Philosophy},
-    name    = degree@name@en,
+    name    = degree@category@en,
   },
+}
+\thu@option@hook{degree-name}{%
+  \thu@warning{`degree-name' is deprecated. Use `degree-category' instead.}
+}
+\thu@option@hook{degree-name*}{%
+  \thu@warning{`degree-name*' is deprecated. Use `degree-category*' instead.}
+}
 %    \end{macrocode}
 %
 % 院系中英文名称。
 %    \begin{macrocode}
+\thu@define@key{
   department = {
     default = {计算机科学与技术系},
   },
@@ -4702,7 +4717,7 @@
       \renewcommand\CJKglue{\hspace{1bp}}%
     \fi
     \ifthu@thesis@type@thesis
-      (申请清华大学\thu@degree@name
+      (申请清华大学\thu@degree@category
       \ifthu@degree@type@professional
         专业%
       \fi
@@ -4963,7 +4978,7 @@
     professional
   \fi
   degree of\par
-  {\sffamily\bfseries\thu@degree@name@en\par}%
+  {\sffamily\bfseries\thu@degree@category@en\par}%
 }
 \newcommand\thu@titlepage@en@supervisor{%
   \hspace{1.27cm}%
@@ -6633,14 +6648,14 @@
       \hypersetup{
         pdftitle    = \thu@title,
         pdfauthor   = \thu@author,
-        pdfsubject  = \thu@degree@name,
+        pdfsubject  = \thu@degree@category,
         pdfkeywords = \thu@keywords,
       }%
     \else
       \hypersetup{
         pdftitle    = \thu@title@en,
         pdfauthor   = \thu@author@en,
-        pdfsubject  = \thu@degree@name@en,
+        pdfsubject  = \thu@degree@category@en,
         pdfkeywords = \thu@keywords@en,
       }%
     \fi
