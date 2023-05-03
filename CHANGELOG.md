@@ -16,6 +16,7 @@
 ### Changed
 
 - 专业学位的“工程领域”改为“专业领域”，同步《指南》2023 年 3 月版的更改（[#862](https://github.com/tuna/thuthesis/issues/862)）。
+- 附录中的参考文献另行编号（[#837](https://github.com/tuna/thuthesis/issues/837)，感谢 [@hushidong](https://github.com/hushidong) 和 [@atxy-blip](https://github.com/atxy-blip)）。
 
 ### Deprecated
 

@@ -1817,11 +1817,9 @@
   }
 }
 \AtEndOfPackageFile*{natbib}{
-  \ifthu@degree@bachelor
-    \@ifpackageloaded{apacite}{}{
-      \RequirePackage{bibunits}
-    }
-  \fi
+  \@ifpackageloaded{apacite}{}{
+    \RequirePackage{bibunits}
+  }
 }
 %    \end{macrocode}
 %
@@ -5554,6 +5552,7 @@
 %    \begin{macrocode}
 \newenvironment{acknowledgements}{%
   \@mainmatterfalse
+  \thu@end@appendix@ref@section
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
@@ -5602,6 +5601,7 @@
 \newif\ifthu@statement@exists
 \newcommand\statement[1][]{%
   \@mainmatterfalse
+  \thu@end@appendix@ref@section
   \thu@statement@existstrue
   \ifthu@degree@bachelor
     \cleardoublepage
@@ -6345,6 +6345,67 @@
 }
 %    \end{macrocode}
 %
+% 附录中的参考文献等另行编序号。
+%    \begin{macrocode}
+\newcommand\thu@end@appendix@ref@section{}
+%    \end{macrocode}
+%
+% 如果正文和附录引用了同一文献，\pkg{bibunits} 会给出无意义的警告，这里消除警告。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{bibunits}{
+  \ifthu@degree@graduate
+    \newcommand\thu@appendix@bib@num@format[1]{[\@Alph\c@chapter.#1]\hfill}
+    \g@addto@macro\appendix{%
+      \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
+      \bibliographyunit[\chapter]%
+      \renewcommand\citenumfont{\@Alph\c@chapter.}%
+      \renewcommand\bibsection{%
+        \ctexset{section/numbering = false}%
+        \section{\bibname}%
+        \ctexset{section/numbering = true}%
+      }%
+      \renewcommand\@extra@binfo{@-\@alph\c@chapter}%
+      \renewcommand\@extra@b@citeb{@-\@alph\c@chapter}%
+      \let\bibnumfmt\thu@appendix@bib@num@format
+      \let\bibliographystyle\defaultbibliographystyle
+      \let\bibliography\thu@appendix@bibliography
+    }
+    \renewcommand\thu@end@appendix@ref@section{%
+      \bibliographyunit\relax
+    }
+    \AtEndDocument{\thu@end@appendix@ref@section}
+%    \end{macrocode}
+%
+% 如果正文和附录引用了同一文献，\pkg{bibunits} 会给出无意义的警告，这里消除警告。
+%    \begin{macrocode}
+    % \let\@xtestdef\@gobbletwo  % This doesn't work
+    \def\bibunits@rerun@warning{\relax}
+  \fi
+}
+\PassOptionsToPackage{defernumbers = true}{biblatex}
+\AtEndOfPackageFile*{biblatex}{
+  \ifthu@degree@graduate
+    \DeclareRefcontext{appendix}{}
+    \g@addto@macro\appendix{%
+      \pretocmd\chapter{%
+        \newrefsection
+        \@tempcnta=\c@chapter
+        \advance\@tempcnta\@ne
+        \newrefcontext[labelprefix = {\@Alph\@tempcnta.}]{appendix}%
+      }{}{\thu@patch@error{\chapter}}%
+      \defbibheading{bibliography}[\bibname]{%
+        \ctexset{section/numbering = false}%
+        \section{#1}%
+        \ctexset{section/numbering = true}%
+      }%
+    }
+    % \renewcommand\thu@end@appendix@ref@section{%
+    %   \endrefsection
+    % }
+  \fi
+}
+%    \end{macrocode}
+%
 % 本科生《写作指南》有独特的要求：附录 A 为外文资料的调研阅读报告或书面翻译，
 % 并且要分别附上独立的参考文献和外文资料的原文索引。
 % 所以这里定义 \env{survey} 和 \env{translation} 专门处理这两种情况，
@@ -6520,6 +6581,7 @@
 %    \begin{macrocode}
 \newenvironment{resume}{%
   \@mainmatterfalse
+  \thu@end@appendix@ref@section
   \thu@chapter*{\thu@resume@name}%
   \ctexset{
     section = {
@@ -6622,6 +6684,7 @@
 % \begin{environment}{comments}
 %    \begin{macrocode}
 \NewEnviron{comments}[1][]{%
+  \thu@end@appendix@ref@section
   \ifthu@degree@graduate
     \@mainmatterfalse
     \kv@define@key{thu@comments}{name}{\let\thu@comments@name\kv@value}%
@@ -6644,6 +6707,7 @@
 % \begin{environment}{resolution}
 %    \begin{macrocode}
 \NewEnviron{resolution}{%
+  \thu@end@appendix@ref@section
   \ifthu@degree@graduate
     \@mainmatterfalse
     \chapter{\thu@resolution@name}%
