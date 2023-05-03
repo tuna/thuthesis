@@ -23,6 +23,7 @@
 
 ### Fixed
 
+- 修正研究生“学术成果”列表的行距（[#850](https://github.com/tuna/thuthesis/issues/850)）。
 - 修正封面的布局，同步《指南》2023 年 3 月版的更改（[#861](https://github.com/tuna/thuthesis/issues/861)）。
 
 ## [v7.3.2] - 2023-04-06

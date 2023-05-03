@@ -6498,13 +6498,18 @@
       },
     }%
     \setlist[achievements]{
-      topsep      = 6bp,
-      itemsep     = 6bp,
-      leftmargin  = 1cm,
-      labelwidth  = 1cm,
-      labelsep    = 0pt,
-      align       = left,
-      label       = [\arabic*],
+      topsep     = 6bp,
+      itemsep    = 6bp,
+      leftmargin = 1cm,
+      labelwidth = 1cm,
+      labelsep   = 0pt,
+      first      = {
+        \ifthu@degree@graduate
+          \fontsize{12bp}{16bp}\selectfont
+        \fi
+      },  
+      align      = left,
+      label      = [\arabic*],
       resume     = achievements,
     }%
   \else
@@ -6522,12 +6527,12 @@
       \sffamily\fontsize{15bp}{20bp}\selectfont
     \fi
     \setlist[achievements]{
-      topsep      = 0bp,
-      itemsep     = 0bp,
-      leftmargin  = 1.75cm,
-      labelsep    = 0.5cm,
-      align       = right,
-      label       = [\arabic*],
+      topsep     = 0bp,
+      itemsep    = 0bp,
+      leftmargin = 1.75cm,
+      labelsep   = 0.5cm,
+      align      = right,
+      label      = [\arabic*],
       resume     = achievements,
     }%
   \fi
