@@ -87,7 +87,7 @@ Completed box being shipped out [1]
 ....\write-{}
 ....\write-{}
 ....\special{pdf:dest (section*.1) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{thuchapter.1.0}{\376\377\133\146\117\115\213\ETC.}
+....\write4{\protect \BOOKMARK [0][]{thuchapter.1.0}{\376\377\133\146\117\115\213\ETC.}
 ....\special{pdf:dest (thuchapter.1.0) [@thispage /XYZ @xpos @ypos null]}
 ....\write-{}
 ....\special{pdf:dest (chapter*.2) [@thispage /XYZ @xpos @ypos null]}
@@ -322,7 +322,7 @@ Completed box being shipped out [1]
 ...\vbox(674.33032+0.0)x426.79135, glue set 555.3869fil
 ....\write-{}
 ....\special{pdf:dest (section*.3) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{section*.3}{\376\377\144\130\211\201}{}% 2}
+....\write4{\protect \BOOKMARK [0][]{section*.3}{\376\377\144\130\211\201}{}% 2}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{摘\hskip 1em\relax
  \ETC.}
 ....\write-{}
@@ -596,7 +596,7 @@ Completed box being shipped out [2]
 ...\vbox(674.33032+0.0)x426.79135, glue set 559.65796fill
 ....\write-{}
 ....\special{pdf:dest (section*.5) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{section*.5}{\376\377\000A\000b\000s\000t\000\ETC.}
+....\write4{\protect \BOOKMARK [0][]{section*.5}{\376\377\000A\000b\000s\000t\000\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{Abstract}{\thepage \ETC.}
 ....\write-{}
 ....\special{pdf:dest (chapter*.6) [@thispage /XYZ @xpos @ypos null]}
@@ -830,7 +830,7 @@ Completed box being shipped out [3]
 ...\vbox(674.33032+0.0)x426.79135, glue set 200.46844fil
 ....\write-{}
 ....\special{pdf:dest (section*.7) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{section*.7}{\376\377\000T\000a\000b\000l\000\ETC.}
+....\write4{\protect \BOOKMARK [0][]{section*.7}{\376\377\000T\000a\000b\000l\000\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{Table of Contents}{\ETC.}
 ....\write-{}
 ....\special{pdf:dest (chapter*.8) [@thispage /XYZ @xpos @ypos null]}
@@ -1748,7 +1748,7 @@ Completed box being shipped out [4]
 ...\vbox(674.33032+0.0)x426.79135, glue set 553.75056fil
 ....\write-{}
 ....\special{pdf:dest (section*.9) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{section*.9}{\376\377\000L\000i\000s\000t\000\ETC.}
+....\write4{\protect \BOOKMARK [0][]{section*.9}{\376\377\000L\000i\000s\000t\000\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{List of Figures and\ETC.}
 ....\write-{}
 ....\special{pdf:dest (chapter*.10) [@thispage /XYZ @xpos @ypos null]}
@@ -2033,7 +2033,7 @@ Completed box being shipped out [5]
 ...\vbox(674.33032+0.0)x426.79135, glue set 561.20389fil
 ....\write-{}
 ....\special{pdf:dest (section*.11) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{section*.11}{\376\377\000L\000i\000s\000t\00\ETC.}
+....\write4{\protect \BOOKMARK [0][]{section*.11}{\376\377\000L\000i\000s\000t\00\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{List of Symbols and\ETC.}
 ....\write-{}
 ....\special{pdf:dest (chapter*.12) [@thispage /XYZ @xpos @ypos null]}
@@ -2416,7 +2416,7 @@ Completed box being shipped out [1]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\write3{\protect \BOOKMARK [1][-]{section.0.1}{\376\377\0000\000.\0001\000\04\ETC.}
+....\write4{\protect \BOOKMARK [1][-]{section.0.1}{\376\377\0000\000.\0001\000\04\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 ....\penalty 10000
 ....\glue 6.02249
@@ -2982,7 +2982,7 @@ Completed box being shipped out [1]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\write3{\protect \BOOKMARK [1][-]{section.0.2}{\376\377\0000\000.\0002\000\04\ETC.}
+....\write4{\protect \BOOKMARK [1][-]{section.0.2}{\376\377\0000\000.\0002\000\04\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 ....\penalty 10000
 ....\glue 6.02249
@@ -3119,7 +3119,7 @@ Completed box being shipped out [1]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\write3{\protect \BOOKMARK [2][-]{subsection.0.2.1}{\376\377\0000\000.\0002\0\ETC.}
+....\write4{\protect \BOOKMARK [2][-]{subsection.0.2.1}{\376\377\0000\000.\0002\0\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {subsection}{\protect \numberline \ETC.}
 ....\penalty 10000
 ....\glue 6.02249
@@ -3597,6 +3597,7 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+Package natbib Warning: Citation `bib1' on page 2 undefined on input line ....
 Completed box being shipped out [2]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -3693,7 +3694,7 @@ Completed box being shipped out [2]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\write3{\protect \BOOKMARK [2][-]{subsection.0.2.2}{\376\377\0000\000.\0002\0\ETC.}
+....\write4{\protect \BOOKMARK [2][-]{subsection.0.2.2}{\376\377\0000\000.\0002\0\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {subsection}{\protect \numberline \ETC.}
 ....\penalty 10000
 ....\glue 6.02249
@@ -4191,14 +4192,14 @@ Completed box being shipped out [2]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\write3{\protect \BOOKMARK [2][-]{subsection.0.2.3}{\376\377\0000\000.\0002\0\ETC.}
+....\write4{\protect \BOOKMARK [2][-]{subsection.0.2.3}{\376\377\0000\000.\0002\0\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {subsection}{\protect \numberline \ETC.}
 ....\penalty 10000
 ....\glue 6.02249
 ....\glue(\parskip) 0.0 plus 1.0
 ....\glue(\parskip) 0.0
-....\glue(\baselineskip) 9.03226
-....\hbox(10.92532+0.16861)x426.79135, glue set 258.05176fil
+....\glue(\baselineskip) 8.91481
+....\hbox(11.04277+0.16861)x426.79135, glue set 255.04051fil
 .....\hbox(0.0+0.0)x21.05519
 .....\TU/texgyretermes(0)/m/n/12.045 The
 .....\glue 3.01125 plus 1.50562 minus 1.00374
@@ -4207,14 +4208,12 @@ Completed box being shipped out [2]
 .....\kern 0.0002
 .....\kern 1.0
 .....\mathon
-.....\hbox(6.10681+1.40926)x11.03336, shifted -4.81851
+.....\hbox(6.22426+1.40926)x14.0446, shifted -4.81851
 ......\TU/texgyretermes(0)/m/n/9.03375 [
-......\hbox(6.10681+0.0)x4.51688
-.......\special{pdf:bann<</Type/Annot/Subtype/Link/Border[0 0 0]/H/I/C[0 1 0]/A<</S/G\ETC.}
-.......\TU/texgyretermes(0)/m/n/9.03375 1
-.......\kern -0.0002
-.......\kern 0.0002
-.......\special{pdf:eann}
+......\TU/texgyretermes(0)/b/n/9.03375 ?
+......\kern -0.0002
+......\kern 0.0002
+......\glue 3.01125 plus 3.38763 minus 0.25093
 ......\TU/texgyretermes(0)/m/n/9.03375 ]
 ......\kern -0.0002
 ......\kern 0.0002
@@ -4289,6 +4288,8 @@ Completed box being shipped out [2]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+\bibcite{bib1}{{1}{2001}{{Lin}}{{}}}
+No file bu.aux.
 Completed box being shipped out [3]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -4367,7 +4368,7 @@ Completed box being shipped out [3]
 ....\write1{\ttl@writefile{toc}{\protect \setcounter {tocdepth}{0}}}
 ....\write-{}
 ....\special{pdf:dest (section*.15) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{section*.15}{\376\377\000R\000e\000f\000e\00\ETC.}
+....\write4{\protect \BOOKMARK [0][]{section*.15}{\376\377\000R\000e\000f\000e\00\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{References}{\thepage \ETC.}
 ....\write-{}
 ....\special{pdf:dest (chapter*.16) [@thispage /XYZ @xpos @ypos null]}
@@ -4397,11 +4398,11 @@ Completed box being shipped out [3]
 ....\glue(\parskip) 0.0
 ....\glue(\parskip) 0.0
 ....\hbox(7.1984+1.64412)x398.33861, glue set 24.76723fil, shifted 28.45274
-.....\hbox(7.12462+1.64412)x0.0
+.....\hbox(6.97707+1.64412)x0.0
 ......\glue 0.0
 ......\glue -25.6073
 ......\glue -2.84544
-......\hbox(7.12462+1.64412)x25.6073, glue set 13.31839fill
+......\hbox(6.97707+1.64412)x25.6073, glue set 18.58807fill
 .......\special{color push gray 0}
 .......\glue 0.0 plus 1.0fil
 .......\glue 0.0 plus 1.0fil
@@ -4410,7 +4411,7 @@ Completed box being shipped out [3]
 ........\hbox(0.0+0.0)x0.0, shifted -16.06
 .........\special{pdf:dest (cite.bib1) [@thispage /XYZ @xpos @ypos null]}
 .........\penalty 10000
-.......\TU/texgyretermes(0)/m/n/10.53937 [1]
+.......\TU/texgyretermes(0)/m/n/10.53937 []
 .......\kern -0.0002
 .......\kern 0.0002
 .......\glue 0.0 plus 1.0fill
@@ -4517,6 +4518,7 @@ Missing character: There is no ⁡ (U+2061) in font [XITSMath-Regular.otf]/OT:sc
 ipt=math;language=dflt;!
 Missing character: There is no ⁡ (U+2061) in font [XITSMath-Regular.otf]/OT:scr
 ipt=math;language=dflt;!
+No file bu.aux.
 Completed box being shipped out [4]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -4598,7 +4600,7 @@ Completed box being shipped out [4]
 ....\write-{}
 ....\write1{\pp@pagectr{footnote}{2}{\theabspage }{\thepage }}
 ....\special{pdf:dest (appendix.A) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{appendix.A}{\376\377\000A\000p\000p\000e\000\ETC.}
+....\write4{\protect \BOOKMARK [0][]{appendix.A}{\376\377\000A\000p\000p\000e\000\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ....\marks1{Appendix A Title}
 ....\marks2{\prg_do_nothing: }
@@ -4644,7 +4646,7 @@ Completed box being shipped out [4]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\write3{\protect \BOOKMARK [1][-]{section.A.1}{\376\377\000A\000.\0001\000\04\ETC.}
+....\write4{\protect \BOOKMARK [1][-]{section.A.1}{\376\377\000A\000.\0001\000\04\ETC.}
 ....\penalty 10000
 ....\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 ....\penalty 10000
@@ -4782,7 +4784,7 @@ Completed box being shipped out [4]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\write3{\protect \BOOKMARK [2][-]{subsection.A.1.1}{\376\377\000A\000.\0001\0\ETC.}
+....\write4{\protect \BOOKMARK [2][-]{subsection.A.1.1}{\376\377\000A\000.\0001\0\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {subsection}{\protect \numberline \ETC.}
 ....\penalty 10000
 ....\glue 6.02249
@@ -4975,7 +4977,7 @@ Completed box being shipped out [4]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\write3{\protect \BOOKMARK [2][-]{subsection.A.1.2}{\376\377\000A\000.\0001\0\ETC.}
+....\write4{\protect \BOOKMARK [2][-]{subsection.A.1.2}{\376\377\000A\000.\0001\0\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {subsection}{\protect \numberline \ETC.}
 ....\penalty 10000
 ....\glue 6.02249
@@ -5013,7 +5015,7 @@ Completed box being shipped out [4]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\write3{\protect \BOOKMARK [2][-]{subsection.A.1.3}{\376\377\000A\000.\0001\0\ETC.}
+....\write4{\protect \BOOKMARK [2][-]{subsection.A.1.3}{\376\377\000A\000.\0001\0\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {subsection}{\protect \numberline \ETC.}
 ....\penalty 10000
 ....\glue 6.02249
@@ -5068,7 +5070,7 @@ Completed box being shipped out [4]
 .....\penalty 10000
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
-....\write3{\protect \BOOKMARK [1][-]{section.A.2}{\376\377\000A\000.\0002\000\04\ETC.}
+....\write4{\protect \BOOKMARK [1][-]{section.A.2}{\376\377\000A\000.\0002\000\04\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {section}{\protect \numberline \ETC.}
 ....\penalty 10000
 ....\glue 6.02249
@@ -5524,6 +5526,7 @@ Completed box being shipped out [5]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+No file bu.aux.
 Completed box being shipped out [6]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -5600,7 +5603,7 @@ Completed box being shipped out [6]
 ...\vbox(674.33032+0.0)x426.79135, glue set 599.99681fil
 ....\write-{}
 ....\special{pdf:dest (section*.19) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{section*.19}{\376\377\000A\000c\000k\000n\00\ETC.}
+....\write4{\protect \BOOKMARK [0][]{section*.19}{\376\377\000A\000c\000k\000n\00\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{Acknowledgements}{\thepage \ETC.}
 ....\write-{}
 ....\special{pdf:dest (appendix*.20) [@thispage /XYZ @xpos @ypos null]}
@@ -5699,6 +5702,7 @@ Completed box being shipped out [6]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+No file bu.aux.
 Completed box being shipped out [7]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -5779,7 +5783,7 @@ Completed box being shipped out [7]
 ...\vbox(674.33032+0.0)x426.79135, glue set 458.08081fil
 ....\write-{}
 ....\special{pdf:dest (section*.21) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{section*.21}{\376\377\130\360\146\016}{}% 20}
+....\write4{\protect \BOOKMARK [0][]{section*.21}{\376\377\130\360\146\016}{}% 20}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{声\protect \hspace
   \ETC.}
 ....\write-{}
@@ -6213,6 +6217,7 @@ Completed box being shipped out [7]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+No file bu.aux.
 Completed box being shipped out [8]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -6289,7 +6294,7 @@ Completed box being shipped out [8]
 ...\vbox(674.33032+0.0)x426.79135, glue set 599.99681fil
 ....\write-{}
 ....\special{pdf:dest (section*.23) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{section*.23}{\376\377\000R\000e\000s\000u\00\ETC.}
+....\write4{\protect \BOOKMARK [0][]{section*.23}{\376\377\000R\000e\000s\000u\00\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{Resume}{\thepage }{\ETC.}
 ....\write-{}
 ....\special{pdf:dest (appendix*.24) [@thispage /XYZ @xpos @ypos null]}
@@ -6470,7 +6475,7 @@ Completed box being shipped out [9]
 ...\vbox(674.33032+0.0)x426.79135, glue set 599.99681fil
 ....\write-{}
 ....\special{pdf:dest (appendix*.25) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{appendix*.25}{\376\377\000C\000o\000m\000m\0\ETC.}
+....\write4{\protect \BOOKMARK [0][]{appendix*.25}{\376\377\000C\000o\000m\000m\0\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{Comments from Thesi\ETC.}
 ....\marks1{Comments from Thesis Supervisor}
 ....\marks2{\prg_do_nothing: }
@@ -6571,6 +6576,7 @@ Completed box being shipped out [9]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+No file bu.aux.
 Completed box being shipped out [10]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -6656,7 +6662,7 @@ Completed box being shipped out [10]
 ....\write-{}
 ....\write-{}
 ....\special{pdf:dest (appendix*.26) [@thispage /XYZ @xpos @ypos null]}
-....\write3{\protect \BOOKMARK [0][]{appendix*.26}{\376\377\000R\000e\000s\000o\0\ETC.}
+....\write4{\protect \BOOKMARK [0][]{appendix*.26}{\376\377\000R\000e\000s\000o\0\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{Resolution of Thesi\ETC.}
 ....\marks1{Resolution of Thesis Defense Committee}
 ....\marks2{\prg_do_nothing: }

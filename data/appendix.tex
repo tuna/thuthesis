@@ -4,12 +4,14 @@
 
 附录是与论文内容密切相关、但编入正文又影响整篇论文编排的条理和逻辑性的资料，例如某些重要的数据表格、计算程序、统计表等，是论文主体的补充内容，可根据需要设置。
 
+附录中的图、表、数学表达式、参考文献等另行编序号，与正文分开，一律用阿拉伯数字编码，
+但在数码前冠以附录的序号，例如“图~\ref{fig:appendix-figure}”，
+“表~\ref{tab:appendix-table}”，“式\eqref{eq:appendix-equation}”等。
 
-\section{图表示例}
 
-\subsection{图}
+\section{插图}
 
-附录中的图片示例（图~\ref{fig:appendix-figure}）。
+% 附录中的插图示例（图~\ref{fig:appendix-figure}）。
 
 \begin{figure}
   \centering
@@ -19,9 +21,9 @@
 \end{figure}
 
 
-\subsection{表格}
+\section{表格}
 
-附录中的表格示例（表~\ref{tab:appendix-table}）。
+% 附录中的表格示例（表~\ref{tab:appendix-table}）。
 
 \begin{table}
   \centering
@@ -41,10 +43,18 @@
 \end{table}
 
 
-\section{数学公式}
+\section{数学表达式}
 
-附录中的数学公式示例（公式\eqref{eq:appendix-equation}）。
+% 附录中的数学表达式示例（式\eqref{eq:appendix-equation}）。
 \begin{equation}
   \frac{1}{2 \uppi \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k)
   \label{eq:appendix-equation}
 \end{equation}
+
+
+\section{参考文献}
+
+附录中的参考文献示例（\cite{carlson1981two} 和 \cite{carlson1981two,taylor1983scanning,taylor1981study}）。
+
+\bibliographystyle{thuthesis-numeric}
+\bibliography{ref/refs}
