@@ -5792,19 +5792,39 @@
 %
 % 设置 \option{cite-style} 的接口，只对 \BibTeX{} 的编译方式有效。
 %    \begin{macrocode}
-  \thu@define@key{
-    cite-style = {
-      name = cite@style,
-      choices = {
-        super,
-        inline,
-        author-year,
-      }
+\thu@define@key{
+  cite-style = {
+    name = cite@style,
+    choices = {
+      super,
+      inline,
+      author-year,
     }
   }
+}
 %    \end{macrocode}
 %
 % \subsubsection{BibTeX + \pkg{natbib} 宏包}
+%
+%    \begin{macrocode}
+\def\bibliographystyle#1{%
+  \gdef\bu@bibstyle{#1}%
+  \ifx\@begindocumenthook\@undefined\else
+    \expandafter\AtBeginDocument
+  \fi
+    {\if@filesw
+       \immediate\write\@auxout{\string\bibstyle{#1}}%
+       \immediate\write\@auxout{\string\gdef\string\bu@bibstyle{#1}}%
+     \fi}%
+}
+\def\bibliography#1{%
+  \if@filesw
+    \immediate\write\@auxout{\string\bibdata{\zap@space#1 \@empty}}%
+    \immediate\write\@auxout{\string\gdef\string\bu@bibdata{#1}}%
+  \fi
+  \gdef\bu@bibdata{#1}%
+  \@input@{\jobname.bbl}}
+%    \end{macrocode}
 %
 % \BibTeX{} 和 \pkg{natbib} 宏包的配置。
 %    \begin{macrocode}
@@ -6373,6 +6393,7 @@
     \renewcommand\thu@end@appendix@ref@section{%
       \bibliographyunit\relax
     }
+    \providecommand\printbibliography{\putbib\relax}%
     \AtEndDocument{\thu@end@appendix@ref@section}
 %    \end{macrocode}
 %
