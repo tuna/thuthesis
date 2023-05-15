@@ -316,7 +316,7 @@ Completed box being shipped out [1]
 ........\glue(\lineskip) 0.0
 ........\hbox(21.78127+9.33496)x265.94873
 .........\glue(\tabskip) 0.0
-.........\hbox(21.78127+9.33496)x265.94873, glue set 70.26248fil
+.........\hbox(21.78127+9.33496)x265.94873
 ..........\rule(21.78127+9.33496)x0.0
 ..........\glue 6.0
 ..........\glue 0.00002
@@ -353,6 +353,9 @@ Completed box being shipped out [1]
 ...........\TU/FandolFang(0)/m/n/16.06 某
 ...........\kern -0.00017
 ...........\kern 0.00017
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\glue 22.08249
+..........\hbox(0.0+0.0)x48.18, glue set 48.18fil
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\glue 0.0 plus 1.0fil
 ..........\glue 6.0
@@ -403,11 +406,13 @@ Completed box being shipped out [1]
 ...........\kern 0.00017
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\glue 22.08249
-..........\TU/FandolFang(0)/m/n/16.06 教
-..........\glue 16.06
-..........\TU/FandolFang(0)/m/n/16.06 授
-..........\kern -0.00017
-..........\kern 0.00017
+..........\hbox(12.73558+2.74625)x48.18, glue set 8.03filll
+...........\TU/FandolFang(0)/m/n/16.06 教
+...........\glue 0.0 plus 2.0filll
+...........\TU/FandolFang(0)/m/n/16.06 授
+...........\kern -0.00017
+...........\kern 0.00017
+...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\glue 0.0 plus 1.0fil
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0
@@ -461,11 +466,13 @@ Completed box being shipped out [1]
 ...........\kern 0.00017
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\glue 22.08249
-..........\TU/FandolFang(0)/m/n/16.06 教
-..........\glue 16.06
-..........\TU/FandolFang(0)/m/n/16.06 授
-..........\kern -0.00017
-..........\kern 0.00017
+..........\hbox(12.73558+2.74625)x48.18, glue set 8.03filll
+...........\TU/FandolFang(0)/m/n/16.06 教
+...........\glue 0.0 plus 2.0filll
+...........\TU/FandolFang(0)/m/n/16.06 授
+...........\kern -0.00017
+...........\kern 0.00017
+...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\glue 0.0 plus 1.0fil
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0
