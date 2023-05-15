@@ -4350,10 +4350,7 @@
     \thu@stretch{67.6bp}{#1}%
     \hspace{9.8bp}%
     % 字距 6bp
-    \begingroup
-      \renewcommand\CJKglue{\hspace{9.8bp}}%
-      #2%
-    \endgroup
+    \thu@stretch{38bp}{#2}%
   \else
     \thu@pad{3cm}{\thu@stretch{4em}{#1}}%
     \thu@stretch{3em}{#2}%
@@ -4670,11 +4667,8 @@
         % 字距 9bp，共 16bp * 3 + 9bp * 2 = 66bp
         \thu@stretch{66bp}{##1}%
         \hspace{22bp}%
-        % 字距 6bp
-        \begingroup
-          \renewcommand\CJKglue{\hspace{16bp}}%
-          ##2%
-        \endgroup
+        % 如果少于 3 字，拉伸至 3 字宽（16bp * 3 = 48bp）
+        \thu@stretch{48bp}{##2}%
       }%
       \thu@titlepage@info@tabular{65bp}{86.5bp}{81bp}{30.5bp}{%
         \thu@info@item{培养单位}{\thu@info@item@format{1bp}}{\thu@department}%
@@ -4821,9 +4815,9 @@
 %
 % 标题页作者信息表
 % \texttt{\#1}: 表格左侧至版心的距离；\\
-% \texttt{\#2}: “培养方案”的边框宽度；\\ 
-% \texttt{\#3}: “培养方案”的文字宽度；\\ 
-% \texttt{\#4}: 冒号的边框；\\ 
+% \texttt{\#2}: “培养方案”的边框宽度；\\
+% \texttt{\#3}: “培养方案”的文字宽度；\\
+% \texttt{\#4}: 冒号的边框；\\
 % \texttt{\#5}: 表格内容。
 %    \begin{macrocode}
 \newcommand\thu@titlepage@info@tabular[5]{%
@@ -4873,11 +4867,8 @@
     % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
     \thu@stretch{67.6bp}{##1}%
     \hspace{9.8bp}%
-    % 字距 6bp
-    \begingroup
-      \renewcommand\CJKglue{\hspace{6bp}}%
-      ##2%
-    \endgroup
+    % 拉伸至 38bp（16bp * 2 + 6bp）
+    \thu@stretch{38bp}{##2}%
   }%
   \thu@titlepage@info@tabular{58bp}{3.59cm}{5.5em}{0.82cm}{%
     \thu@info@item{培养单位}{\thu@info@item@format{1bp}}{\thu@department}%
@@ -4901,11 +4892,8 @@
     % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
     \thu@stretch{67.6bp}{##1}%
     \hspace{9.8bp}%
-    % 字距 6bp
-    \begingroup
-      \renewcommand\CJKglue{\hspace{6bp}}%
-      ##2%
-    \endgroup
+    % 拉伸至 38bp（16bp * 2 + 6bp）
+    \thu@stretch{38bp}{##2}%
   }%
   \thu@titlepage@info@tabular{58bp}{3.28cm}{5em}{1.52cm}{%
     \thu@info@item{培养单位}{\thu@info@item@format{1bp}}{\thu@department}%
@@ -6628,7 +6616,7 @@
         \ifthu@degree@graduate
           \fontsize{12bp}{16bp}\selectfont
         \fi
-      },  
+      },
       align      = left,
       label      = [\arabic*],
       resume     = achievements,
@@ -6772,7 +6760,7 @@
 %
 % \subsubsection{\pkg{hyperref} 宏包}
 %
-% 使用 \cs{PassOptionsToPackage} 的方式进行配置，允许用户在 \cs{usepackage} 
+% 使用 \cs{PassOptionsToPackage} 的方式进行配置，允许用户在 \cs{usepackage}
 % 覆盖配置（\href{https://github.com/tuna/thuthesis/issues/863}{tuna/thuthesis\#863}）。
 %
 %    \begin{macrocode}

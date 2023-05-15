@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- 修正封面的职称字距问题（[#879](https://github.com/tuna/thuthesis/discussions/879)）。
+
 ## [v7.4.0] - 2023-05-15
 
 ### Added
