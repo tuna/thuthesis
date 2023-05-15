@@ -29,11 +29,13 @@ Scroll down for the English version of README.
 下载途径：
 
 * 发布版：
-  * [CTAN](https://www.ctan.org/pkg/thuthesis)：可能滞后正式发布少许时间。
-  * [GitHub Releases](https://github.com/tuna/thuthesis/releases)：最新版的及时发布途径。
-  * [TUNA 镜像站](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/)：GitHub Releases 的镜像。
-  * [TeXPage 模板](https://www.texpage.com/template/72b580ca-51fa-4ecc-82b3-0509bc1d6a07)（提供 Windows 中文字体）
-  * [Overleaf 模板](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)
+  * 仅下载：
+    * [CTAN](https://www.ctan.org/pkg/thuthesis)：可能滞后正式发布少许时间。
+    * [GitHub Releases](https://github.com/tuna/thuthesis/releases)：最新版的及时发布途径。
+    * [TUNA 镜像站](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/)：GitHub Releases 的镜像。
+  * 在线编辑：
+    * [TeXPage 模板](https://www.texpage.com/template/72b580ca-51fa-4ecc-82b3-0509bc1d6a07)（提供 Windows 中文字体）
+    * [Overleaf 模板](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)
 * 开发版：[GitHub](https://github.com/tuna/thuthesis)
 
 **任何在其他途径分发的 ThuThesis（包含其变体或衍生物）均不是官方版本，请谨慎使用。**
@@ -104,12 +106,14 @@ Any use of ThuThesis in violation of [The LaTeX project public license v1.3c](ht
 
 Developer versions contain only source code but no pre-compiled `cls` file and documentations. They are only for the usage of developers and experienced TeX users in need of unpublished features. No warranties are provided.
 
-* Published versions：
-  * [CTAN](https://www.ctan.org/pkg/thuthesis)
-  * [GitHub Releases](https://github.com/tuna/thuthesis/releases)
-  * [TUNA Mirrors](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/): mirror of GitHub Releases
-  * [TeXPage template](https://www.texpage.com/template/72b580ca-51fa-4ecc-82b3-0509bc1d6a07) (providing Chinese fonts of Windows)
-  * [Overleaf template](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)
+* Published versions:
+  * Download only:
+    * [CTAN](https://www.ctan.org/pkg/thuthesis)
+    * [GitHub Releases](https://github.com/tuna/thuthesis/releases)
+    * [TUNA Mirrors](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/): mirror of GitHub Releases
+  * Online editor:
+    * [TeXPage template](https://www.texpage.com/template/72b580ca-51fa-4ecc-82b3-0509bc1d6a07) (providing Chinese fonts of Windows)
+    * [Overleaf template](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)
 * Developer versions: [GitHub](https://github.com/tuna/thuthesis)
 
 **ThuThesis (including its variants / derivatives) distributed in any other way is NOT an official version. Use at your own risk.**
