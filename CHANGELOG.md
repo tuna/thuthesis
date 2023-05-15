@@ -6,6 +6,8 @@
 
 ## [Unreleased]
 
+## [v7.4.0] - 2023-05-15
+
 ### Added
 
 - 允许本科生附录翻译的摘要中使用 `\thusetup{keywords = *}` 设置关键词（[#865](https://github.com/tuna/thuthesis/issues/865)）。
@@ -949,7 +951,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.3.2...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.4.0...HEAD
+[v7.4.0]:     https://github.com/tuna/thuthesis/compare/v7.3.2...v7.4.0
 [v7.3.2]:     https://github.com/tuna/thuthesis/compare/v7.3.1...v7.3.2
 [v7.3.1]:     https://github.com/tuna/thuthesis/compare/v7.3.0...v7.3.1
 [v7.3.0]:     https://github.com/tuna/thuthesis/compare/v7.2.4...v7.3.0
