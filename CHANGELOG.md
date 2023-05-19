@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- 不再插入 PDF 版书脊，改为编译生成（[#551](https://github.com/tuna/thuthesis/issues/551)）。
+
 ### Fixed
 
 - 修正封面的职称字距问题（[#879](https://github.com/tuna/thuthesis/discussions/879)）。
