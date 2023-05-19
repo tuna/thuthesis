@@ -259,9 +259,6 @@
 %   $ xelatex spine.tex                         # 生成书脊 PDF
 % \end{shell}
 %
-% 在调用 \XeLaTeX 时，如果设置了 \option{include-spine} 选项，
-% 则需要在文件名前加上 \texttt{-shell-escape} 的命令行选项。
-%
 % 下面的命令用来生成用户手册：
 % \begin{shell}
 %   $ xelatex -shell-escape thuthesis.dtx
@@ -1234,12 +1231,7 @@
 %   }
 % \end{latex}
 % 打开此选项后，书籍会出现在中文封面后面的第一个空白页。如果有英文封面，则在英文封面之前。
-% 如果需要书籍出现在其他位置，请手工使用 \cs{spine} 生成，不要使用此命令。
-%
-% 在使用 Fandol 仿宋时，如果打开 \option{include-spine} 选项，
-% 模板将使用 \cs{write18} 来生成独立的 \file{spine.tex}，并调用 \XeLaTeX 进行排版后插入论文中。
-% 在这种情况下，请确保编译时打开了 shell escape 功能，或者在论文目录下放置编译完成的 \file{spine.pdf}，
-% 否则编译将因为无法正常生成书脊而失败。
+% 如果需要书籍出现在其他位置，请手工使用 \cs{spine} 生成，不要使用此选项。
 %
 % \section{致谢}
 % \label{sec:thanks}
@@ -4375,7 +4367,7 @@
   \thu@pdfbookmark{-1}{\thu@title}%
   \thu@titlepage
   \ifthu@include@spine@true
-    \thu@spine
+    \spine
   \fi
   \ifthu@degree@graduate
     \ifthu@thesis@type@thesis
@@ -7105,32 +7097,6 @@
   \endgroup
   \clearpage
   \restoregeometry
-}
-%    \end{macrocode}
-%
-% Fandol 仿宋无法同时用于横排和竖排
-%（\href{https://github.com/tuna/thuthesis/issues/551}{\#551}），
-% 所以只能独立编译 \file{spine.pdf}，然后插入封面后。
-%    \begin{macrocode}
-\newcommand\thu@input@spine{%
-  \IfFileExists{spine.pdf}{}{%
-    \immediate\write18{xelatex spine.tex}%
-    \IfFileExists{spine.pdf}{}{%
-      \thu@error{Cannot find file "spine.pdf". Compile "spine.tex" first, or enable shell escape}%
-    }%
-  }%
-  \includepdf[pages=1]{spine.pdf}%
-}
-\newcommand\thu@spine{%
-  \ifthu@cjk@font@fandol
-    \thu@input@spine
-  \else
-    \ifthu@cjk@font@noto
-      \thu@input@spine
-    \else
-      \spine
-    \fi
-  \fi
 }
 %    \end{macrocode}
 % \end{macro}
