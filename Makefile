@@ -8,7 +8,7 @@ SOURCES = $(PACKAGE).ins $(PACKAGE).dtx
 CLSFILE = dtx-style.sty $(PACKAGE).cls
 
 LATEXMK = latexmk
-SHELL  := /bin/bash
+SHELL  := /usr/bin/env bash
 NPM    ?= npm
 
 # make deletion work on Windows
