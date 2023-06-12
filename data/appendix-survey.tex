@@ -60,13 +60,17 @@ An example equation in appendix (Equation~\eqref{eq:appendix-survey-equation}).
 
 \section{Citations}
 
-Example citations in appendix.
-\cite{abrahams99tex}
-\cite{salomon1995advanced}
-\cite{abrahams99tex,salomon1995advanced}
+Example\cite{dupont1974bone} citations\cite{merkt1995rotational} in appendix
+\cite{dupont1974bone,merkt1995rotational}.
 
 
+% 默认使用正文的参考文献样式；
+% 如果使用 BibTeX，可以切换为其他兼容 natbib 的 BibTeX 样式。
 \bibliographystyle{unsrtnat}
-\bibliography{ref/appendix}
+% \bibliographystyle{IEEEtranN}
+
+% 默认使用正文的参考文献 .bib 数据库；
+% 如果使用 BibTeX，可以改为指定数据库，如 \bibliography{ref/refs}。
+\printbibliography
 
 \end{survey}
