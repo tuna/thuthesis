@@ -250,8 +250,8 @@
 % \begin{shell}
 %   $ xelatex thuthesis-example.tex
 %   $ bibtex thuthesis-example.aux              # 生成 bbl 文件
-%   $ bibtex thuthesis-example-survey.aux       # 本科生的调研报告的参考文献
-%   $ bibtex thuthesis-example-translation.aux  # 本科生的外文资料翻译的参考文献
+%   $ bibtex thuthesis-example-appendix-a.aux   # 附录 A 的的参考文献
+%   $ bibtex thuthesis-example-appendix-b.aux   # 附录 B 的的参考文献……
 %   $ bibtex thuthesis-example-index.aux        # 本科生的书面翻译对应的原文索引
 %   $ xelatex thuthesis-example.tex             # 解决引用
 %   $ xelatex thuthesis-example.tex             # 生成论文 PDF
@@ -6350,38 +6350,96 @@
 \newcommand\thu@end@appendix@ref@section{}
 %    \end{macrocode}
 %
-% 如果正文和附录引用了同一文献，\pkg{bibunits} 会给出无意义的警告，这里消除警告。
 %    \begin{macrocode}
+%    \end{macrocode}
+%
+% \pkg{bibunits} 在载入时会保存 \cs{bibliography} 和 \cs{bibliographystyle}，
+% 所以在载入宏包前修改定义。
+%    \begin{macrocode}
+\AtBeginOfPackageFile*{bibunits}{
+  \def\bibliography#1{%
+    \if@filesw
+      \immediate\write\@auxout{\string\bibdata{\zap@space#1 \@empty}}%
+%    \end{macrocode}
+%
+% 正文的 \cs{bibliography} 同时设置附录参考文献的默认 \file{.bib} 数据库。
+%    \begin{macrocode}
+      \immediate\write\@auxout{\string\gdef\string\bu@bibdata{#1}}%
+    \fi
+    \@input@{\jobname.bbl}%
+    \gdef\bu@bibdata{#1}%
+  }
+  \def\bibliographystyle#1{%
+    \ifx\@begindocumenthook\@undefined\else
+      \expandafter\AtBeginDocument
+    \fi
+      {\if@filesw
+        \immediate\write\@auxout{\string\bibstyle{#1}}%
+%    \end{macrocode}
+%
+% 正文的 \cs{bibliographystyle} 同时设置附录参考文献的默认 \file{.bst} 样式。
+%    \begin{macrocode}
+        \immediate\write\@auxout{\string\gdef\string\bu@bibstyle{#1}}%
+      \fi}%
+      \gdef\bu@bibstyle{#1}%
+  }
+}
 \AtEndOfPackageFile*{bibunits}{
-  \ifthu@degree@graduate
-    \newcommand\thu@appendix@bib@num@format[1]{[\@Alph\c@chapter.#1]\hfill}
-    \g@addto@macro\appendix{%
-      \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
-      \bibliographyunit[\chapter]%
+  \def\@startbibunit{%
+    \global\let\@startbibunitorrelax\relax
+    \global\let\@finishbibunit\@finishstartedbibunit
+    \global\advance\@bibunitauxcnt 1
+    \if@filesw
+      {\endlinechar-1
+%    \end{macrocode}
+%
+% 使附录 aux 文件的 \cs{gdef}\cs{@localbibstyle} 能够生效。
+%    \begin{macrocode}
+      \makeatletter
+      \@input{\@bibunitname.aux}}%
+      \immediate\openout\@bibunitaux\@bibunitname.aux
+      \immediate\write\@bibunitaux{\string\bibstyle{\@localbibstyle}}%
+    \fi
+  }
+  \def\bu@bibliography#1{%
+    \putbib[#1]%
+  }
+  \def\bu@bibliographystyle#1{%
+    \if@filesw
+      \immediate\write\@bibunitaux{\string\gdef\string\@localbibstyle{#1}}%
+    \fi
+    \gdef\@localbibstyle{#1}%
+  }
+  \providecommand\printbibliography{\putbib\relax}%
+  \g@addto@macro\appendix{%
+    \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
+    \bibliographyunit[\chapter]%
+    \renewcommand\bibsection{%
+      \ctexset{section/numbering = false}%
+      \section{\bibname}%
+      \ctexset{section/numbering = true}%
+    }%
+%    \end{macrocode}
+%
+% 研究生附录的引用编号加前缀，如附录 A 的引用 [1] 为 [A.1]。
+%    \begin{macrocode}
+    \ifthu@degree@graduate
       \renewcommand\citenumfont{\@Alph\c@chapter.}%
-      \renewcommand\bibsection{%
-        \ctexset{section/numbering = false}%
-        \section{\bibname}%
-        \ctexset{section/numbering = true}%
-      }%
       \renewcommand\@extra@binfo{@-\@alph\c@chapter}%
       \renewcommand\@extra@b@citeb{@-\@alph\c@chapter}%
-      \let\bibnumfmt\thu@appendix@bib@num@format
-      \let\bibliographystyle\defaultbibliographystyle
-      \let\bibliography\thu@appendix@bibliography
-    }
-    \renewcommand\thu@end@appendix@ref@section{%
-      \bibliographyunit\relax
-    }
-    \providecommand\printbibliography{\putbib\relax}%
-    \AtEndDocument{\thu@end@appendix@ref@section}
+      \renewcommand\bibnumfmt[1]{[\@Alph\c@chapter.#1]\hfill}%
+    \fi
+  }
+  \renewcommand\thu@end@appendix@ref@section{%
+    \bibliographyunit\relax
+  }
+  \AtEndDocument{\thu@end@appendix@ref@section}
 %    \end{macrocode}
 %
 % 如果正文和附录引用了同一文献，\pkg{bibunits} 会给出无意义的警告，这里消除警告。
 %    \begin{macrocode}
-    % \let\@xtestdef\@gobbletwo  % This doesn't work
-    \def\bibunits@rerun@warning{\relax}
-  \fi
+  % \let\@xtestdef\@gobbletwo  % This doesn't work
+  \def\bibunits@rerun@warning{\relax}
 }
 \PassOptionsToPackage{defernumbers = true}{biblatex}
 \AtEndOfPackageFile*{biblatex}{
@@ -6404,6 +6462,9 @@
     %   \endrefsection
     % }
   \fi
+  \def\bibliographystyle#1{%
+    \thu@warning{'bibliographystyle' invalid for 'biblatex'.}%
+  }
 }
 %    \end{macrocode}
 %
@@ -6444,14 +6505,9 @@
   \let\appendix\thu@appendix@appendix
   \renewcommand\bibname{参考文献}%
   \let\bibsection\thu@appendix@bibsection
-  \renewcommand\@bibunitname{\jobname-survey}%
-  \let\bibliographystyle\defaultbibliographystyle
-  \let\bibliography\thu@appendix@bibliography
-  \begin{bibunit}%
   \startcontents[survey]%
 }{%
   \stopcontents[survey]%
-  \end{bibunit}%
   \thu@reset@main@language % restore language
 }
 %    \end{macrocode}
@@ -6493,14 +6549,12 @@
       \section{\bibname}%
     \endgroup
   }%
-  \renewcommand\@bibunitname{\jobname-translation}%
-  \let\bibliographystyle\defaultbibliographystyle
-  \let\bibliography\thu@appendix@bibliography
-  \begin{bibunit}%
+  % \renewcommand\@bibunitname{\jobname-translation}%
+  % \let\bibliographystyle\defaultbibliographystyle
+  % \let\bibliography\thu@appendix@bibliography
   \startcontents[translation]%
 }{%
   \stopcontents[translation]%
-  \end{bibunit}%
   \thu@reset@main@language % restore language
 }
 %    \end{macrocode}

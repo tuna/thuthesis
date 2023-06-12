@@ -59,7 +59,8 @@
 
 \section{文献引用}
 
-文献引用示例\cite{abrahams99tex}。
+附录\cite{dupont1974bone}中的参考文献引用\cite{merkt1995rotational}示例
+\cite{dupont1974bone,merkt1995rotational}。
 
 
 \appendix
@@ -70,14 +71,22 @@
 
 
 % 书面翻译的参考文献
+% 默认使用正文的参考文献样式；
+% 如果使用 BibTeX，可以切换为其他兼容 natbib 的 BibTeX 样式。
 \bibliographystyle{unsrtnat}
-\bibliography{ref/appendix}
+% \bibliographystyle{IEEEtranN}
+
+% 默认使用正文的参考文献 .bib 数据库；
+% 如果使用 BibTeX，可以改为指定数据库，如 \bibliography{ref/refs}。
+\printbibliography
 
 % 书面翻译对应的原文索引
 \begin{translation-index}
-  \nocite{salomon1995advanced}
+  \nocite{mellinger1996laser}
+  \nocite{bixon1996dynamics}
+  \nocite{carlson1981two}
   \bibliographystyle{unsrtnat}
-  \bibliography{ref/appendix}
+  \printbibliography
 \end{translation-index}
 
 \end{translation}

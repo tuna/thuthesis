@@ -9,10 +9,12 @@
 ### Changed
 
 - 不再插入 PDF 版书脊，改为编译生成（[#551](https://github.com/tuna/thuthesis/issues/551)）。
+- 本科生附录的参考文献编译方式改为 `bibtex thuthesis-appendix-{a,b,c...}`，同研究生一致。
 
 ### Fixed
 
 - 修正封面的职称字距问题（[#879](https://github.com/tuna/thuthesis/discussions/879)）。
+- 解决了本科生附录的 `\printbibliography` 报错的问题（[#882](https://github.com/tuna/thuthesis/discussions/882)）。
 
 ## [v7.4.0] - 2023-05-15
 
