@@ -6396,6 +6396,18 @@
     \bibliographyunit\relax
   }
   \AtEndDocument{\thu@end@appendix@ref@section}
+  \renewcommand\thu@set@survey@bibheading{%
+    \renewcommand\bibsection{%
+      \par
+      \vskip 20bp%
+      \thu@pdfbookmark{1}{\bibname}%
+      \begingroup
+        \centering
+        \xiaosi[1.667]\bibname\par
+      \endgroup
+      \vskip 6bp%
+    }%
+  }%
 %    \end{macrocode}
 %
 % 如果正文和附录引用了同一文献，\pkg{bibunits} 会给出无意义的警告，这里消除警告。
@@ -6405,25 +6417,34 @@
 }
 \PassOptionsToPackage{defernumbers = true}{biblatex}
 \AtEndOfPackageFile*{biblatex}{
-  \ifthu@degree@graduate
-    \DeclareRefcontext{appendix}{}
-    \g@addto@macro\appendix{%
-      \pretocmd\chapter{%
-        \newrefsection
+  \DeclareRefcontext{appendix}{}
+  \g@addto@macro\appendix{%
+    \pretocmd\chapter{%
+      \newrefsection
+      \ifthu@degree@bachelor\else
         \@tempcnta=\c@chapter
         \advance\@tempcnta\@ne
         \newrefcontext[labelprefix = {\@Alph\@tempcnta.}]{appendix}%
-      }{}{\thu@patch@error{\chapter}}%
-      \defbibheading{bibliography}[\bibname]{%
-        \ctexset{section/numbering = false}%
-        \section{#1}%
-        \ctexset{section/numbering = true}%
-      }%
-    }
-    % \renewcommand\thu@end@appendix@ref@section{%
-    %   \endrefsection
-    % }
-  \fi
+      \fi
+    }{}{\thu@patch@error{\chapter}}%
+    \defbibheading{bibliography}[\bibname]{%
+      \ctexset{section/numbering = false}%
+      \section{#1}%
+      \ctexset{section/numbering = true}%
+    }%
+  }
+  \renewcommand\thu@set@survey@bibheading{%
+    \defbibheading{bibliography}[\bibname]{%
+      \par
+      \vskip 20bp%
+      \thu@pdfbookmark{1}{\bibname}%
+      \begingroup
+        \centering
+        \xiaosi[1.667]##1\par
+      \endgroup
+      \vskip 6bp%
+    }%
+  }%
   \def\bibliographystyle#1{%
     \thu@warning{'bibliographystyle' invalid for 'biblatex'.}%
   }
@@ -6465,13 +6486,14 @@
     \vskip 20bp%
   }%
   \let\appendix\thu@appendix@appendix
+  \thu@set@survey@bibheading
   \renewcommand\bibname{参考文献}%
-  \let\bibsection\thu@appendix@bibsection
   \startcontents[survey]%
 }{%
   \stopcontents[survey]%
   \thu@reset@main@language % restore language
 }
+\newcommand\thu@set@appendix@bib@heading{}
 %    \end{macrocode}
 % \end{environment}
 %
@@ -6511,9 +6533,6 @@
       \section{\bibname}%
     \endgroup
   }%
-  % \renewcommand\@bibunitname{\jobname-translation}%
-  % \let\bibliographystyle\defaultbibliographystyle
-  % \let\bibliography\thu@appendix@bibliography
   \startcontents[translation]%
 }{%
   \stopcontents[translation]%
@@ -6525,13 +6544,26 @@
 % \begin{environment}{translation}
 % 书面翻译对应的原文索引，区别于译文的参考文献。
 %    \begin{macrocode}
-\newenvironment{translation-index}{%
-  \begin{bibunit}%
-    \renewcommand\@bibunitname{\jobname-index}%
-    \renewcommand\bibname{书面翻译对应的原文索引}%
-    \let\bibsection\thu@appendix@bibsection
-}{%
-  \end{bibunit}%
+\newenvironment{translation-index}{}{}
+\AtEndOfPackageFile*{bibunits}{
+  \renewenvironment{translation-index}{%
+    \begin{bibunit}%
+      \renewcommand\@bibunitname{\jobname-index}%
+      \renewcommand\bibname{书面翻译对应的原文索引}%
+      \thu@set@survey@bibheading
+  }{%
+    \end{bibunit}%
+  }
+}
+\AtEndOfPackageFile*{biblatex}{
+  \renewenvironment{translation-index}{%
+    \endrefsection
+    \begin{refsection}%
+      \renewcommand\bibname{书面翻译对应的原文索引}%
+      \thu@set@survey@bibheading
+  }{%
+    \end{refsection}%
+  }
 }
 %    \end{macrocode}
 % \end{environment}
@@ -6577,17 +6609,7 @@
 %
 % 调研阅读报告的参考文献（或书面翻译对应的外文资料的原文索引）标题用宋体小四号字，段前 20pt，段后 6pt，行距 20pt。
 %    \begin{macrocode}
-\newcommand\thu@appendix@bibsection{%
-  \par
-  \vskip 20bp%
-  \thu@pdfbookmark{1}{\bibname}%
-  \begingroup
-    \centering
-    \xiaosi[1.667]\bibname\par
-  \endgroup
-  \vskip 6bp%
-}%
-\newcommand\thu@appendix@bibliography[1]{\putbib[#1]}
+\newcommand\thu@set@survey@bibheading{}
 %    \end{macrocode}
 %
 %
