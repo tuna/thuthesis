@@ -1,5 +1,5 @@
 \input{regression-test.tex}
-\documentclass[degree=doctor]{thuthesis}
+\documentclass[degree=bachelor]{thuthesis}
 
 \usepackage[style=thuthesis-bachelor]{biblatex}
 \addbibresource{refs-bachelor.bib}
@@ -31,6 +31,33 @@ Citation \citep[see][42]{crawford1995future} test\par
 \nocite{*}
 
 \printbibliography
+
+
+\appendix
+
+\begin{survey}
+  \section{引用}
+  附录\cite{crawford1995future}中的参考文献引用\cite{weinstein1974pathogenic}示例
+  \cite{crawford1995future,weinstein1974pathogenic}。
+  \bibliographystyle{unsrtnat}
+  \printbibliography
+\end{survey}
+
+\begin{translation}
+  \section{引用}
+  附录\cite{crawford1995future}中的参考文献引用\cite{weinstein1974pathogenic}示例
+  \cite{crawford1995future,weinstein1974pathogenic}。
+  \bibliographystyle{unsrtnat}
+  \printbibliography
+
+  \begin{translation-index}
+    \nocite{kanamori1998shaking}
+    \nocite{myburg2014genome}
+    \nocite{tachibana2005electronic}
+    \bibliographystyle{unsrtnat}
+    \printbibliography
+  \end{translation-index}
+\end{translation}
 
 \clearpage
 \OMIT

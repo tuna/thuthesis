@@ -8,7 +8,11 @@ checkruns = 3
 
 function runtest_tasks(name, run)
   if run == 1 then
-    return "bibtex -terse " .. name
+    local tasks = {"bibtex -terse " .. name}
+    table.insert(tasks, "bibtex -terse " .. name .. "-appendix-a")
+    table.insert(tasks, "bibtex -terse " .. name .. "-appendix-b")
+    table.insert(tasks, "bibtex -terse " .. name .. "-index")
+    return table.concat(tasks, os_concat)
   else
     return ""
   end

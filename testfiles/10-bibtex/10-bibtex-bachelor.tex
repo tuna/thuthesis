@@ -1,5 +1,5 @@
 \input{regression-test.tex}
-\documentclass[degree=doctor]{thuthesis}
+\documentclass[degree=bachelor]{thuthesis}
 
 \usepackage[sort]{natbib}
 \bibliographystyle{thuthesis-bachelor}
@@ -31,6 +31,35 @@ Citation \citep[see][42]{crawford1995future} test\par
 \nocite{*}
 
 \bibliography{refs-bachelor}
+
+
+\appendix
+
+\begin{survey}
+  \section{引用}
+  \cite{crawford1995future}
+  \cite{weinstein1974pathogenic}
+  \cite{crawford1995future,weinstein1974pathogenic}
+  \bibliographystyle{unsrtnat}
+  \printbibliography
+\end{survey}
+
+\begin{translation}
+  \section{引用}
+  \cite{crawford1995future}
+  \cite{weinstein1974pathogenic}
+  \cite{crawford1995future,weinstein1974pathogenic}
+  \bibliographystyle{unsrtnat}
+  \printbibliography
+
+  \begin{translation-index}
+    \nocite{kanamori1998shaking}
+    \nocite{myburg2014genome}
+    \nocite{tachibana2005electronic}
+    \bibliographystyle{unsrtnat}
+    \printbibliography
+  \end{translation-index}
+\end{translation}
 
 \clearpage
 \OMIT
