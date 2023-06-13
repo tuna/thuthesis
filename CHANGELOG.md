@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- 本科生的附录（调研阅读报告和书面翻译）支持 `biblatex`（[#893](https://github.com/tuna/thuthesis/issues/893)）。
+
 ### Changed
 
 - 不再插入 PDF 版书脊，改为编译生成（[#551](https://github.com/tuna/thuthesis/issues/551)）。
@@ -14,7 +18,7 @@
 ### Fixed
 
 - 修正封面的职称字距问题（[#879](https://github.com/tuna/thuthesis/discussions/879)）。
-- 解决了本科生附录的 `\printbibliography` 报错的问题（[#882](https://github.com/tuna/thuthesis/discussions/882)）。
+- 解决了本科生附录的 `\printbibliography` 报错的问题（[#882](https://github.com/tuna/thuthesis/issues/882)）。
 
 ## [v7.4.0] - 2023-05-15
 
