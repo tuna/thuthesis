@@ -3090,7 +3090,7 @@ Completed box being shipped out [1]
 ......\glue 0.0
 ......\special{color pop}
 ......\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
-......\write1{\newlabel{fig:1.1}{{1}{\thepage }{Caption\relax }{figure.caption.13}{\ETC.}
+......\write1{\newlabel{fig:1.1}{{1}{\thepage }{Caption}{figure.caption.13}{}}}
 ......\glue 0.0
 .....\special{color pop}
 ....\penalty 0
@@ -3780,7 +3780,7 @@ Completed box being shipped out [2]
 ......\glue 6.02249
 ......\rule(0.0+0.0)x*
 ......\special{color pop}
-......\write1{\newlabel{tab:1.1}{{1}{\thepage }{Caption\relax }{table.caption.14}{}\ETC.}
+......\write1{\newlabel{tab:1.1}{{1}{\thepage }{Caption}{table.caption.14}{}}}
 ......\glue(\parskip) 0.0
 ......\glue(\parskip) 0.0
 ......\hbox(112.87744+107.35623)x426.79135, glue set 109.08162fil
@@ -4755,7 +4755,7 @@ Completed box being shipped out [4]
 .......\glue(\rightskip) 0.0
 ......\glue 0.0
 ......\special{color pop}
-......\write1{\newlabel{fig:A.1}{{A.1}{\thepage }{Caption\relax }{figure.caption.17\ETC.}
+......\write1{\newlabel{fig:A.1}{{A.1}{\thepage }{Caption}{figure.caption.17}{}}}
 ......\glue 0.0
 .....\special{color pop}
 ....\penalty 0
@@ -5277,7 +5277,7 @@ Completed box being shipped out [5]
 ......\glue 6.02249
 ......\rule(0.0+0.0)x*
 ......\special{color pop}
-......\write1{\newlabel{tab:A.1}{{A.1}{\thepage }{Caption\relax }{table.caption.18}\ETC.}
+......\write1{\newlabel{tab:A.1}{{A.1}{\thepage }{Caption}{table.caption.18}{}}}
 ......\glue(\parskip) 0.0
 ......\glue(\parskip) 0.0
 ......\hbox(56.88191+51.3607)x426.79135, glue set 109.08162fil
