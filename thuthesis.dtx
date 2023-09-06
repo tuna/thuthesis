@@ -4739,12 +4739,12 @@
 }
 %    \end{macrocode}
 %
-% 申请学位的学科门类: 小二号宋体字，字距延伸 0.5bp，
+% 申请学位的学科门类或专业学位类别: 三号（16bp）宋体字，字距延伸 0.5bp，
 % 所以 \cs{CJKglue} 应该设为 1 bp。
 %    \begin{macrocode}
 \newcommand\thu@titlepage@degree{%
   \begingroup
-    \xiaoer
+    \fontsize{16bp}{22bp}\selectfont
     \ifLuaTeX
       \fontspec{\CJK@family}%
       \ltjsetparameter{kanjiskip = {1bp}}%
