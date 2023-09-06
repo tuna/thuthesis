@@ -14,6 +14,7 @@
 
 - 不再插入 PDF 版书脊，改为编译生成（[#551](https://github.com/tuna/thuthesis/issues/551)）。
 - 本科生附录的参考文献编译方式改为 `bibtex thuthesis-appendix-{a,b,c...}`，同研究生一致。
+- 封面的学科门类的字号改为三号（16bp），同步《指南》2023 年 3 月版的更改（[#899](https://github.com/tuna/thuthesis/issues/899)）。
 
 ### Fixed
 
