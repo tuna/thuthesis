@@ -5060,7 +5060,7 @@ Completed box being shipped out [3]
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
 .....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
-.....\write1{\newlabel{tab:beijing}{{2.1}{\thepage }{北京气象站基本信息\relax \ETC.}
+.....\write1{\newlabel{tab:beijing}{{2.1}{\thepage }{北京气象站基本信息}{\ETC.}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(50.98317+45.46194)x421.10089, glue set 79.07031fil
