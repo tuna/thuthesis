@@ -16,6 +16,7 @@
 - 本科生附录的参考文献编译方式改为 `bibtex thuthesis-appendix-{a,b,c...}`，同研究生一致。
 - 封面的学科门类的字号改为三号（16bp），同步《指南》2023 年 3 月版的更改（[#899](https://github.com/tuna/thuthesis/issues/899)）。
 - 统一并简化封面的布局（[#900](https://github.com/tuna/thuthesis/issues/900)）。
+- 英文封面的导师姓名居中对齐（[#883](https://github.com/tuna/thuthesis/issues/883)）。
 
 ### Fixed
 
