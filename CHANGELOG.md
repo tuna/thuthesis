@@ -22,6 +22,7 @@
 
 - 修正封面的职称字距问题（[#879](https://github.com/tuna/thuthesis/discussions/879)）。
 - 解决了本科生附录的 `\printbibliography` 报错的问题（[#882](https://github.com/tuna/thuthesis/issues/882)）。
+- 修复了同时调用 `glossaries` 和 `hyperref` 时的多余空格（[#901](https://github.com/tuna/thuthesis/issues/901)）。
 
 ## [v7.4.0] - 2023-05-15
 
