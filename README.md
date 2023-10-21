@@ -35,7 +35,7 @@ Scroll down for the English version of README.
     * [TUNA 镜像站](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/)：GitHub Releases 的镜像。
   * 在线编辑：
     * [TeXPage 模板](https://www.texpage.com/template/72b580ca-51fa-4ecc-82b3-0509bc1d6a07)（提供 Windows 中文字体）
-    * [Overleaf 模板](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)
+    * [Overleaf 模板](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/cfwgcxtvkbsx)
 * 开发版：[GitHub](https://github.com/tuna/thuthesis)
 
 **任何在其他途径分发的 ThuThesis（包含其变体或衍生物）均不是官方版本，请谨慎使用。**
@@ -113,7 +113,7 @@ Developer versions contain only source code but no pre-compiled `cls` file and d
     * [TUNA Mirrors](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/): mirror of GitHub Releases
   * Online editor:
     * [TeXPage template](https://www.texpage.com/template/72b580ca-51fa-4ecc-82b3-0509bc1d6a07) (providing Chinese fonts of Windows)
-    * [Overleaf template](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)
+    * [Overleaf template](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/cfwgcxtvkbsx)
 * Developer versions: [GitHub](https://github.com/tuna/thuthesis)
 
 **ThuThesis (including its variants / derivatives) distributed in any other way is NOT an official version. Use at your own risk.**
