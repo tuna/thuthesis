@@ -2008,17 +2008,31 @@
         \def\thu@acknowledgements@name{ACKNOWLEDGEMENTS}%
         \def\thu@resume@name{PUBLICATIONS}%
       \else
-        \def\contentsname{Table of Contents}%
-        \def\listfigurename{List of Figures}%
-        \def\listtablename{List of Tables}%
-        \def\thu@list@figure@table@name{List of Figures and Tables}%
-        \def\thu@list@algorithm@name{List of Algorithms}%
-        \def\listequationname{List of Equations}%
-        \def\thu@denotation@name{List of Symbols and Acronyms}%
-        \def\bibname{References}%
-        \def\appendixname{Appendix}%
-        \def\thu@acknowledgements@name{Acknowledgements}%
-        \def\thu@resume@name{Resume}%
+        \ifthu@format@medical
+          \def\contentsname{目\quad 录}%
+          \def\listfigurename{插图清单}%
+          \def\listtablename{附表清单}%
+          \def\thu@list@figure@table@name{图表清单}%
+          \def\thu@list@algorithm@name{算法清单}%
+          \def\listequationname{公式清单}%
+          \def\thu@denotation@name{符号和缩略语说明}%
+          \def\bibname{References}%
+          \def\appendixname{Appendix}%
+          \def\thu@acknowledgements@name{致\hspace{1em}谢}%
+          \def\thu@resume@name{个人简历、在学期间完成的相关学术成果}%
+        \else
+          \def\contentsname{Table of Contents}%
+          \def\listfigurename{List of Figures}%
+          \def\listtablename{List of Tables}%
+          \def\thu@list@figure@table@name{List of Figures and Tables}%
+          \def\thu@list@algorithm@name{List of Algorithms}%
+          \def\listequationname{List of Equations}%
+          \def\thu@denotation@name{List of Symbols and Acronyms}%
+          \def\bibname{References}%
+          \def\appendixname{Appendix}%
+          \def\thu@acknowledgements@name{Acknowledgements}%
+          \def\thu@resume@name{Resume}%
+        \fi
       \fi
     \fi
   \fi
@@ -4028,7 +4042,11 @@
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
   \ifthu@degree@graduate
-    \thu@chapter*{\contentsname}%
+    \ifthu@format@medical
+      \thu@chapter*{\contentsname}[目录]%
+    \else
+      \thu@chapter*{\contentsname}%
+    \fi
   \else
     \thu@chapter*[]{\contentsname}%
   \fi
@@ -5459,7 +5477,11 @@
           }%
         \fi
       \fi
-      \thu@chapter*{\thu@statement@name}%
+      \ifthu@format@medical
+        \thu@chapter*{\thu@statement@name}[声明]%
+      \else
+        \thu@chapter*{\thu@statement@name}%
+      \fi
     \endgroup
     \thispagestyle{\thu@statement@page@style}%
     \thu@statement@text\par
