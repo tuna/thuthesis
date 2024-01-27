@@ -1,0 +1,47 @@
+\input{regression-test.tex}
+\documentclass[degree=doctor]{thuthesis}
+
+\begin{document}
+\START
+\showoutput
+
+\mainmatter
+
+\chapter{正文}
+
+\section{Format of main text}
+
+This part is the main contents of the whole thesis. The length of results (from “Chapter 3” to “Chapter N-1”) should be no less than 1/3 from “Chapter 1 Introduction” to the end of ``References''.
+
+
+\section{Figures}
+
+\begin{figure}[htb]
+  \centering
+  \rule{1cm}{1cm}
+  \caption{Viral load and CD4+T cells changed over time (Zhang, San)}
+
+  \caption*{Viral load and CD4+T cells changed though time since HAART initiation in INR group (a) and IR group (b); the increase of naïve CD4+T cell count (∆n) was significantly different between INR group and IR group (c); the increase of memory CD4+T cell count (∆m) was similar in INR and IR groups (d). *, significant difference}
+\end{figure}
+
+
+\section{Tables}
+
+\begin{table}[htb]
+  \centering
+  \caption{Antibodies}
+  \begin{tabular}{ccc}
+    \toprule
+    Antigen & Clone    & Manufacturer \\
+    \midrule
+    CD3     & 145-2C11 & eBioscience \\
+    CD4     & GK1.5    & eBioscience \\
+    CD8     & 53-6.7   & eBioscience \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+\clearpage
+\OMIT
+\end{document}
