@@ -1482,6 +1482,13 @@
     },
     name = degree@type,
   },
+  format = {
+    choices = {
+      main,
+      medical,
+    },
+    default = main,
+  },
 %    \end{macrocode}
 %
 % 论文的主要语言。
@@ -3592,26 +3599,58 @@
 %   \item 图：caption 在下，段前空 6 磅，段后空 12 磅
 %   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
 % \end{itemize}
+%
+% 医学院：The name of the figure e.g. “Figure 3.1 xxx” should be in Arial,
+% 10.5pt\dots
+% E.g. “Table 3.1 xxx”, the sequence number and name of the table should be
+% located above the table, in Arial, 11pt, align in center, single line-spacing
 %    \begin{macrocode}
-\DeclareCaptionFont{thu}{%
+\newcommand\thu@figure@caption@font{}
+\newcommand\thu@table@caption@font{}
+\newcommand\thu@caption@label@sep{}
+\newcommand\thu@table@note@font{}
+\newcommand\thu@set@caption@font{%
   \ifthu@degree@bachelor
-    \fontsize{11bp}{15bp}\selectfont
+    \renewcommand\thu@figure@caption@font{\fontsize{11bp}{15bp}\selectfont}%
+    \renewcommand\thu@table@caption@font{\fontsize{11bp}{15bp}\selectfont}%
+    \renewcommand\thu@caption@label@sep{\quad}%
+    \renewcommand\thu@table@note@font{\fontsize{10.5bp}{13.65bp}\selectfont}%
   \else
-    \ifthu@language@chinese
-      \fontsize{11bp}{14.3bp}\selectfont
+    \ifthu@format@medical
+      \renewcommand\thu@figure@caption@font{\sffamily\fontsize{10.5bp}{12.075bp}\selectfont}%
+      \renewcommand\thu@table@caption@font{\sffamily\fontsize{11bp}{12.65bp}\selectfont}%
+      \renewcommand\thu@caption@label@sep{\space}%
+      \renewcommand\thu@table@note@font{\fontsize{10.5bp}{12.075bp}\selectfont}%
     \else
-      \fontsize{11bp}{12.65bp}\selectfont
+      \ifthu@language@chinese
+        \renewcommand\thu@figure@caption@font{\fontsize{11bp}{14.3bp}\selectfont}%
+        \renewcommand\thu@table@caption@font{\fontsize{11bp}{14.3bp}\selectfont}%
+        \renewcommand\thu@table@note@font{\fontsize{10.5bp}{13.65bp}\selectfont}%
+      \else
+        \renewcommand\thu@figure@caption@font{\fontsize{11bp}{12.65bp}\selectfont}%
+        \renewcommand\thu@table@caption@font{\fontsize{11bp}{12.65bp}\selectfont}%
+        \renewcommand\thu@table@note@font{\fontsize{10.5bp}{12.075bp}\selectfont}%
+      \fi
+      \renewcommand\thu@caption@label@sep{\quad}%
     \fi
   \fi
 }
+\thu@set@caption@font
+\thu@option@hook{degree}{\thu@set@caption@font}
+\thu@option@hook{format}{\thu@set@caption@font}
+\thu@option@hook{language}{\thu@set@caption@font}
+\DeclareCaptionFont{thu@figure}{\thu@figure@caption@font}
+\DeclareCaptionFont{thu@table}{\thu@table@caption@font}
+\DeclareCaptionLabelSeparator{space}{\thu@caption@label@sep}
+\captionsetup[figure]{font = thu@figure}
+\captionsetup[table]{font = thu@table}
 \captionsetup{
-  font           = thu,
-  labelsep       = quad,
+  labelsep       = space,
   skip           = 6bp,
   figureposition = bottom,
   tableposition  = top,
 }
-\captionsetup[sub]{font=thu}
+\captionsetup[sub]{font=thu@figure}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \renewcommand{\thesubtable}{(\alph{subtable})}
 % \renewcommand{\p@subfigure}{:}
@@ -3671,7 +3710,33 @@
 %
 %    \begin{macrocode}
 \AtEndOfPackageFile*{threeparttable}{
-  \g@addto@macro\TPT@defaults{\wuhao}
+  \g@addto@macro\TPT@defaults{\thu@table@note@font}
+}
+%    \end{macrocode}
+%
+% 图表的附注：若在表下方注明资料来源，则此部分用五号字，汉字用宋体，英文用 Times New
+% Roman 体，单倍行距，段前空 6 磅，段后空 12 磅。
+%    \begin{macrocode}
+\DeclareCaptionFont{thu@note}{\thu@table@note@font}
+\newcommand\figurenote[1]{%
+  \begingroup
+    \captionsetup{
+      font          = thu@note,
+      position      = bottom,
+      aboveskip     = 12bp,
+    }%
+    \caption*{#1}%
+  \endgroup
+}
+\newcommand\tablenote[1]{%
+  \begingroup
+    \captionsetup{
+      font          = thu@note,
+      position      = bottom,
+      aboveskip     = 6bp,
+    }%
+    \caption*{#1}%
+  \endgroup
 }
 %    \end{macrocode}
 %
@@ -4170,6 +4235,16 @@
 }
 \thu@option@hook{degree-name*}{%
   \thu@warning{`degree-name*' is deprecated. Use `degree-category*' instead.}
+}
+%    \end{macrocode}
+%
+% 用于处理医学院的特殊格式。
+%    \begin{macrocode}
+\thu@option@hook{degree-category}{%
+  \def\tmpa{医学实验班八年制}%
+  \ifx\thu@degree@category\tmpa
+    \thusetup{format = medical}%
+  \fi
 }
 %    \end{macrocode}
 %
