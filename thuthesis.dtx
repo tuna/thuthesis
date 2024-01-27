@@ -5512,20 +5512,20 @@
   \fi
   \ifx\thu@statement@file\@empty
     \thusetup{language=chinese}%
-    \begingroup
-      \ifthu@degree@graduate
-        \ifthu@main@language@english
-          \ctexset{%
-            chapter/format = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
-          }%
+    \ifthu@format@medical
+      \thu@chapter*{\thu@statement@name}[声明]%
+    \else
+      \begingroup
+        \ifthu@degree@graduate
+          \ifthu@main@language@english
+            \ctexset{%
+              chapter/format = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
+            }%
+          \fi
         \fi
-      \fi
-      \ifthu@format@medical
-        \thu@chapter*{\thu@statement@name}[声明]%
-      \else
         \thu@chapter*{\thu@statement@name}%
-      \fi
-    \endgroup
+      \endgroup
+    \fi
     \thispagestyle{\thu@statement@page@style}%
     \thu@statement@text\par
     \ifthu@degree@graduate
