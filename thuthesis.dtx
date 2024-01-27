@@ -3265,12 +3265,16 @@
     \renewcommand\headrulewidth{0.75bp}%
     \fancyhead[C]{%
       \wuhao
-      \ifthu@main@language@chinese
-        \leftmark
+      \ifthu@main@language@english
+        \ifthu@format@medical
+          \leftmark
+        \else
+          \MakeUppercase{\leftmark}%
+        \fi
       \else
-        \MakeUppercase{\leftmark}%
+        \leftmark
       \fi
-      }%
+    }%
     \fancyfoot[C]{\wuhao\thepage}%
     \let\@mkboth\markboth
     \def\chaptermark##1{%
@@ -3923,27 +3927,51 @@
         },
       }%
     \else
-      \ctexset{%
-        chapter = {
-          format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
-          nameformat  = \MakeUppercase,
-          titleformat = \MakeUppercase,
-          name        = \chaptername\space,
-          aftername   = \space,
-        },
-        section = {
-          format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
-          aftername  = \space,
-        },
-        subsection = {
-          format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
-          aftername  = \space,
-        },
-        subsubsection = {
-          format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
-          aftername  = \space,
-        },
-      }%
+      \ifthu@format@medical
+        \ctexset{%
+          chapter = {
+            format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
+            nameformat  = ,
+            titleformat = ,
+            name        = \chaptername\space,
+            aftername   = \quad,
+          },
+          section = {
+            format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
+            aftername  = \quad,
+          },
+          subsection = {
+            format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
+            aftername  = \quad,
+          },
+          subsubsection = {
+            format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+            aftername  = \quad,
+          },
+        }%
+      \else
+        \ctexset{%
+          chapter = {
+            format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
+            nameformat  = \MakeUppercase,
+            titleformat = \MakeUppercase,
+            name        = \chaptername\space,
+            aftername   = \space,
+          },
+          section = {
+            format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
+            aftername  = \space,
+          },
+          subsection = {
+            format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
+            aftername  = \space,
+          },
+          subsubsection = {
+            format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+            aftername  = \space,
+          },
+        }%
+      \fi
     \fi
   \fi
 }
@@ -4144,18 +4172,33 @@
         {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
     \else
-      \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}\heiti}
-        {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
-        {\rmfamily\thu@leaders\thecontentspage}%
-      \titlecontents{section}
-        [1em]{}
-        {\contentspush{\thecontentslabel\space}}{}
-        {\thu@leaders\thecontentspage}%
-      \titlecontents{subsection}
-        [2em]{}
-        {\contentspush{\thecontentslabel\space}}{}
-        {\thu@leaders\thecontentspage}%
+      \ifthu@format@medical
+        \titlecontents{chapter}
+          [\z@]{\addvspace{6bp}\sffamily}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\rmfamily\thu@leaders\thecontentspage}%
+        \titlecontents{section}
+          [1em]{}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\thu@leaders\thecontentspage}%
+        \titlecontents{subsection}
+          [2em]{}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\thu@leaders\thecontentspage}%
+      \else
+        \titlecontents{chapter}
+          [\z@]{\addvspace{6bp}\heiti}
+          {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
+          {\rmfamily\thu@leaders\thecontentspage}%
+        \titlecontents{section}
+          [1em]{}
+          {\contentspush{\thecontentslabel\space}}{}
+          {\thu@leaders\thecontentspage}%
+        \titlecontents{subsection}
+          [2em]{}
+          {\contentspush{\thecontentslabel\space}}{}
+          {\thu@leaders\thecontentspage}%
+      \fi
     \fi
   \fi
 }
