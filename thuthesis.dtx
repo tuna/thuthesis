@@ -5723,7 +5723,9 @@
 % 这样在使用 \cs{bibliographystyle} 选择参考文献表的样式时也会设置对应的引用样式。
 %    \begin{macrocode}
   \newcommand\bibstyle@super{%
-    \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+    \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}%
+    \renewcommand\bibnumfmt[1]{##1.}%
+  }
   \newcommand\bibstyle@inline{%
     \bibpunct{[}{]}{,}{n}{,}{,}}
   \@namedef{bibstyle@author-year}{%
@@ -5998,7 +6000,7 @@
 %    \end{macrocode}
 %
 % 参考文献表的正文部分用五号字。
-% 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
+% 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。医学实验班行距采用固定值 15 磅。
 %
 % 本科生要求宋体五号/Times New Roman 10.5 pt，固定行距 17pt，段前后间距 3pt；
 % 英文专业要求悬挂缩进 0.5inch（1.27 厘米）。
@@ -6016,7 +6018,11 @@
         \setlength{\bibhang}{0.5in}%
       \fi
     \else
-      \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+      \ifthu@format@medical
+        \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+      \else
+        \renewcommand\bibfont{\fontsize{10.5bp}{15bp}\selectfont}%
+      \fi
       \setlength{\bibsep}{3bp \@plus 3bp \@minus 3bp}%
       \setlength{\bibhang}{21bp}%
     \fi
@@ -6049,13 +6055,16 @@
 %    \begin{macrocode}
   \def\@biblabel#1{[#1]\hfill}
   \renewcommand\NAT@bibsetnum[1]{%
-    % \settowidth\labelwidth{\@biblabel{#1}}%
-    % \setlength{\leftmargin}{\labelwidth}%
-    % \addtolength{\leftmargin}{\labelsep}%
-    \setlength{\leftmargin}{1cm}%
+    \ifthu@format@medical
+      \settowidth\labelwidth{\@biblabel{#1}}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \addtolength{\leftmargin}{\labelsep}%
+    \else
+      \setlength{\leftmargin}{1cm}%
+      \setlength{\labelsep}{0.1cm}%
+      \setlength{\labelwidth}{0.9cm}%
+    \fi
     \setlength{\itemindent}{\z@}%
-    \setlength{\labelsep}{0.1cm}%
-    \setlength{\labelwidth}{0.9cm}%
     \setlength{\itemsep}{\bibsep}
     \setlength{\parsep}{\z@}%
     \ifNAT@openbib
