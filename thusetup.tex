@@ -42,20 +42,20 @@
   %      Doctor of Education, Master of Engineering
   %   3. 本科生不需要填写
   %
-  degree-category  = {工学硕士},
-  degree-category* = {Master of Science},
+  degree-category  = {清华大学医学实验班八年制},
+  degree-category* = {Medical Doctor},
   %
   % 培养单位
   %   填写所属院系的全名
   %
-  department = {计算机科学与技术系},
+  department = {清华大学医学院},
   %
   % 学科
   %   1. 研究生学术型学位，获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称
   %   2. 本科生填写专业名称，第二学位论文需标注“（第二学位）”
   %
-  discipline  = {计算机科学与技术},
-  discipline* = {Computer Science and Technology},
+  discipline  = {临床医学专业2015级},
+  discipline* = {Tsinghua M.D. Program},
   %
   % 专业领域
   %   1. 设置专业领域的专业学位类别，填写相应专业领域名称
@@ -67,19 +67,19 @@
   %
   % 姓名
   %
-  author  = {薛瑞尼},
-  author* = {Xue Ruini},
+  author  = {王小五},
+  author* = {Wang, Xiaowu},
   %
   % 指导教师
   %   中文姓名和职称之间以英文逗号“,”分开，下同
   %
-  supervisor  = {郑纬民, 教授},
-  supervisor* = {Professor Zheng Weimin},
+  supervisor  = {张三, 教授},
+  supervisor* = {Professor Zhang, San},
   %
   % 副指导教师
   %
-  associate-supervisor  = {陈文光, 教授},
-  associate-supervisor* = {Professor Chen Wenguang},
+  associate-supervisor  = {李小二, 副教授},
+  associate-supervisor* = {Professor Li, Xiaoer},
   %
   % 联合指导教师
   %
@@ -89,11 +89,14 @@
   % 日期
   %   使用 ISO 格式；默认为当前时间
   %
-  % date = {2019-07-07},
+  date = {2023-04-07},
   %
   % 是否在中文封面后的空白页生成书脊（默认 false）
   %
-  include-spine = false,
+  include-spine = true,
+  % spine-font = {\zihao{3}},
+  % spine-title = {基于xxx},
+  % spine-author = {王小五},
   %
   % 密级和年限
   %   秘密, 机密, 绝密
@@ -150,8 +153,8 @@
 
 % 参考文献使用 BibTeX + natbib 宏包
 % 顺序编码制
-\usepackage[sort]{natbib}
-\bibliographystyle{thuthesis-numeric}
+% \usepackage[sort]{natbib}
+% \bibliographystyle{thuthesis-numeric}
 
 % 著者-出版年制
 % \usepackage{natbib}
@@ -164,6 +167,11 @@
 % 本科生参考文献的著录格式
 % \usepackage[sort]{natbib}
 % \bibliographystyle{thuthesis-bachelor}
+
+% Cell Journals
+\usepackage[sort]{natbib}
+\thusetup{cite-style=super}
+\bibliographystyle{cell}
 
 % 参考文献使用 BibLaTeX 宏包
 % \usepackage[style=thuthesis-numeric]{biblatex}

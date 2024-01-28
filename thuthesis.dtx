@@ -1806,7 +1806,9 @@
 \AtEndPreamble{
   \@ifpackageloaded{biblatex}{}{
     \@ifpackageloaded{apacite}{}{
-      \RequirePackage{natbib}
+      \@ifpackageloaded{cite}{}{
+        \RequirePackage{natbib}
+      }
     }
   }
 }
@@ -6108,11 +6110,13 @@
   \g@addto@macro\appendix{%
     \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
     \bibliographyunit[\chapter]%
-    \renewcommand\bibsection{%
-      \ctexset{section/numbering = false}%
-      \section{\bibname}%
-      \ctexset{section/numbering = true}%
-    }%
+    \ifx\NAT@parse\@undefined\else
+      \renewcommand\bibsection{%
+        \ctexset{section/numbering = false}%
+        \section{\bibname}%
+        \ctexset{section/numbering = true}%
+      }%
+    \fi
 %    \end{macrocode}
 %
 % 研究生附录的引用编号加前缀，如附录 A 的引用 [1] 为 [A.1]。

@@ -2,7 +2,7 @@
 % !TeX program = xelatex
 % !TeX spellcheck = en_US
 
-\documentclass[degree=master]{thuthesis}
+\documentclass[degree=doctor, format=medical, language=english]{thuthesis}
   % 学位 degree:
   %   doctor | master | bachelor | postdoc
   % 学位类型 degree-type:
@@ -16,6 +16,11 @@
 
 % 论文基本配置，加载宏包等全局配置
 \input{thusetup}
+
+\ifx\figurenote\undefined
+  \long\def\figurenote{\caption*}
+  \long\def\tablenote{\caption*}
+\fi
 
 
 \begin{document}
@@ -61,15 +66,17 @@
 \backmatter
 
 % 参考文献
-\bibliography{ref/refs}  % 参考文献使用 BibTeX 编译
+\bibliography{ref/refs-cell}  % 参考文献使用 BibTeX 编译
 % \printbibliography       % 参考文献使用 BibLaTeX 编译
+
+% \include{data/clinical-research}
 
 % 附录
 % 本科生需要将附录放到声明之后，个人简历之前
 \appendix
 % \input{data/appendix-survey}       % 本科生：外文资料的调研阅读报告
 % \input{data/appendix-translation}  % 本科生：外文资料的书面翻译
-\input{data/appendix}
+% \input{data/appendix}
 
 % 致谢
 \input{data/acknowledgements}
@@ -87,7 +94,7 @@
 
 % 个人简历、在学期间完成的相关学术成果
 % 本科生可以附个人简历，也可以不附个人简历
-\input{data/resume}
+% \input{data/resume}
 
 % 指导教师/指导小组评语
 % 本科生不需要
@@ -96,6 +103,8 @@
 % 答辩委员会决议书
 % 本科生不需要
 \input{data/resolution}
+
+\input{data/letter-of-authorization}
 
 % 本科生的综合论文训练记录表（扫描版）
 % \record{file=scan-record.pdf}
