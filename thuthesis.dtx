@@ -6569,11 +6569,24 @@
       subsection = {
         beforeskip = 0pt,
         afterskip  = 0pt,
-        format     = \bfseries\normalsize,
-        indent     = \parindent,
         numbering  = false,
       },
     }%
+    \ifthu@format@medical
+      subsection = {
+        \ctexset{
+          format     = \sffamily\normalsize,
+          indent     = 0pt,
+        },
+      }
+    \else
+      \ctexset{
+        subsection = {
+          format     = \bfseries\normalsize,
+          indent     = \parindent,
+        },%
+      }
+    \fi
     \ifthu@degree@bachelor
       % 内容部分用Arial字体，字号15pt，行距采用固定值20pt， 段前后 0pt。
       \sffamily\fontsize{15bp}{20bp}\selectfont
