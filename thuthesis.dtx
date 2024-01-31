@@ -412,7 +412,7 @@
 %
 % \subsubsection{开题报告}
 % \DescribeOption{thesis-type}
-% 模板还支持博士生论文开题报告的格式，可以通过设置 \option{thesis-type=proposal} 得到。
+% 模板还支持本科生、博士生论文开题报告的格式，可以通过设置 \option{thesis-type=proposal} 得到。
 %
 % 开题报告与学位论文有两点不同：
 % \begin{enumerate}
@@ -4773,7 +4773,11 @@
     \centering
     \includegraphics{tsinghua-name-bachelor.pdf}%
     \vskip 0.94cm%
-    {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
+    \ifthu@thesis@type@proposal
+      {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\\开题报告\par}%
+    \else
+      {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
+    \fi
   \endgroup
   \vskip 1.8cm%
   \begingroup
