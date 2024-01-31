@@ -17,6 +17,7 @@
 - 封面的学科门类的字号改为三号（16bp），同步《指南》2023 年 3 月版的更改（[#899](https://github.com/tuna/thuthesis/issues/899)）。
 - 统一并简化封面的布局（[#900](https://github.com/tuna/thuthesis/issues/900)）。
 - 英文封面的导师姓名居中对齐（[#883](https://github.com/tuna/thuthesis/issues/883)）。
+- 修正 macOS 的 MS Office 字体名（[#913](https://github.com/tuna/thuthesis/issues/913)）。
 
 ### Fixed
 
