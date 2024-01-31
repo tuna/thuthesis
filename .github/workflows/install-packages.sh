@@ -14,7 +14,7 @@ REQUIRED_PKGS="$XECJK_PKGS $CTEX_PKGS bibunits bigfoot caption enumitem
     environ etoolbox filehook footmisc notoccite pdfpages threeparttable \
     titlesec trimspaces unicode-math";
 FONT_PKGS="fandol tex-gyre xits";
-EXTRA_PKGS="algorithms apacite $BIBLATEX_PKGS booktabs $HYPERREF_PKGS $NOMENCL_PKGS ntheorem siunitx";
+EXTRA_PKGS="algorithms apacite $BIBLATEX_PKGS booktabs cell $HYPERREF_PKGS $NOMENCL_PKGS ntheorem siunitx";
 MARKDOWN_PKGS="markdown fancyvrb csvsimple gobble"
 DOC_PKGS="hologo hypdoc listings xcolor $MARKDOWN_PKGS";
 EXAMPLE_PKGS="float fp metalogo multirow mwe"
