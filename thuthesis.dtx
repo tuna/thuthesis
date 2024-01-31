@@ -2253,7 +2253,7 @@
     \IfFontExistsTF{SimSun}{
       \thusetup{fontset = windows}
     }{
-      \IfFileExists{\thu@mac@word@font@path/SimSun.ttf}{
+      \IfFileExists{\thu@mac@word@font@path/SimSun.ttc}{
         \thusetup{fontset = windows}
       }{
         \ifthu@system@mac
@@ -2547,7 +2547,7 @@
       \IfFontExistsTF{SimSun}{
         \thusetup{cjk-font = windows}
       }{
-        \IfFileExists{\thu@mac@word@font@path/SimSun.ttf}{
+        \IfFileExists{\thu@mac@word@font@path/SimSun.ttc}{
           \thusetup{cjk-font = mac-word}
         }{
           \thu@error{Cannot find "SimSun" font}
