@@ -1547,6 +1547,7 @@
     choices = {
       auto,
       windows,
+      windows-local,
       mac,
       mac-word,
       noto,
@@ -1554,6 +1555,10 @@
       none,
     },
     default = auto,
+  },
+  windows-font-dir = {
+    name = windows@font@dir,
+    default = {.},
   },
   math-font = {
     name = math@font,
@@ -2243,8 +2248,8 @@
 %
 % 使用 \pkg{fontspec} 配置字体。
 %    \begin{macrocode}
-\newcommand\thu@mac@word@font@path{%
-  /Applications/Microsoft Word.app/Contents/Resources/DFonts/%
+\newcommand\thu@mac@word@font@dir{%
+  /Applications/Microsoft Word.app/Contents/Resources/DFonts%
 }
 \ifthu@fontset@auto
   \ifthu@system@windows
@@ -2253,18 +2258,22 @@
     \IfFontExistsTF{SimSun}{
       \thusetup{fontset = windows}
     }{
-      \IfFileExists{\thu@mac@word@font@path/Simsun.ttc}{
-        \thusetup{fontset = windows, cjk-font = mac-word}
+      \IfFileExists{\thu@windows@font@dir/Simsun.ttc}{
+        \thusetup{fontset = windows, cjk-font = windows-local}
       }{
-        \ifthu@system@mac
-          \thusetup{fontset = mac}
-        \else
-          \IfFontExistsTF{Noto Serif CJK SC}{
-            \thusetup{fontset = ubuntu}
-          }{
-            \thusetup{fontset = fandol}
-          }
-        \fi
+        \IfFileExists{\thu@mac@word@font@dir/Simsun.ttc}{
+          \thusetup{fontset = windows, cjk-font = mac-word}
+        }{
+          \ifthu@system@mac
+            \thusetup{fontset = mac}
+          \else
+            \IfFontExistsTF{Noto Serif CJK SC}{
+              \thusetup{fontset = ubuntu}
+            }{
+              \thusetup{fontset = fandol}
+            }
+          \fi
+        }
       }
     }
   \fi
@@ -2547,10 +2556,14 @@
       \IfFontExistsTF{SimSun}{
         \thusetup{cjk-font = windows}
       }{
-        \IfFileExists{\thu@mac@word@font@path/Simsun.ttc}{
-          \thusetup{cjk-font = mac-word}
+        \IfFileExists{\thu@windows@font@dir/Simsun.ttc}{
+          \thusetup{cjk-font = windows-local}
         }{
-          \thu@error{Cannot find "SimSun" font}
+          \IfFileExists{\thu@mac@word@font@dir/Simsun.ttc}{
+            \thusetup{cjk-font = mac-word}
+          }{
+            \thu@error{Cannot find "SimSun" font}
+          }
         }
       }
     \else
@@ -2580,29 +2593,37 @@
 }
 %    \end{macrocode}
 %
-% macOS 的 Microsoft Word 字体。
+% 使用的 Windows 字体文件。
 %    \begin{macrocode}
-\@namedef{thu@set@cjk@font@mac-word}{%
+\@namedef{thu@set@cjk@font@windows-local}{%
   \setCJKmainfont{SimSun}[%
-    Path         = \thu@mac@word@font@path,
+    Path         = \thu@windows@font@dir/,
     AutoFakeBold = 3,
     ItalicFont   = KaiTi,
   ]%
   \setCJKsansfont{SimHei}[%
-    Path         = \thu@mac@word@font@path,
+    Path         = \thu@windows@font@dir/,
     AutoFakeBold = 3,
   ]%
-  \setCJKmonofont{FangSong}[Path=\thu@mac@word@font@path]%
+  \setCJKmonofont{FangSong}[Path=\thu@windows@font@dir/]%
   \setCJKfamilyfont{zhsong}{SimSun}[%
-    Path         = \thu@mac@word@font@path,
+    Path         = \thu@windows@font@dir/,
     AutoFakeBold = 3,
   ]%
   \setCJKfamilyfont{zhhei}{SimHei}[%
-    Path         = \thu@mac@word@font@path,
+    Path         = \thu@windows@font@dir/,
     AutoFakeBold = 3,
   ]%
-  \setCJKfamilyfont{zhkai}{KaiTi}[Path = \thu@mac@word@font@path]%
-  \setCJKfamilyfont{zhfs}{FangSong}[Path = \thu@mac@word@font@path]%
+  \setCJKfamilyfont{zhkai}{KaiTi}[Path = \thu@windows@font@dir/]%
+  \setCJKfamilyfont{zhfs}{FangSong}[Path = \thu@windows@font@dir/]%
+}
+%    \end{macrocode}
+%
+% macOS 的 Microsoft Word 字体。
+%    \begin{macrocode}
+\@namedef{thu@set@cjk@font@mac-word}{%
+  \let\thu@windows@font@dir\thu@mac@word@font@dir
+  \@nameuse{thu@set@cjk@font@windows-local}%
 }
 %    \end{macrocode}
 %
