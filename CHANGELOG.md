@@ -18,6 +18,7 @@
 - 统一并简化封面的布局（[#900](https://github.com/tuna/thuthesis/issues/900)）。
 - 英文封面的导师姓名居中对齐（[#883](https://github.com/tuna/thuthesis/issues/883)）。
 - 修正 macOS 的 MS Office 字体名（[#913](https://github.com/tuna/thuthesis/issues/913)）。
+- 检测并使用 Windows 字体文件，默认从当前目录查找（[#747](https://github.com/tuna/thuthesis/discussions/747)）。
 
 ### Fixed
 
