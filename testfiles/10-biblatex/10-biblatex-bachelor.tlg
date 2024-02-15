@@ -642,34 +642,21 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 710.18088
 .\kern 0.0
-Package fontspec Info: Font "FandolHei-Regular" does not contain requested
-(fontspec)             Script "CJK".
-Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
-(fontspec)             with options
-(fontspec)             [Script={CJK},Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei' with options [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
 (fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
+(fontspec)              This font family consists of the following NFSS series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolHei-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-Package fontspec Info: Font "FandolFang-Regular" does not contain requested
-(fontspec)             Script "CJK".
 LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/m/n' will be
 (Font)              scaled to size 12.99814pt on input line ....
-Package fontspec Info: Font family 'FandolFang(0)' created for font
-(fontspec)             'FandolFang' with options
-(fontspec)             [Script={CJK},Extension={.otf},UprightFont={*-Regular}].
+Package fontspec Info: Font family 'FandolFang(0)' created for font 'FandolFang' with options [Extension={.otf},UprightFont={*-Regular}].
 (fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
+(fontspec)              This font family consists of the following NFSS series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolFang-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolFang-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/m/n' will be
 (Font)              scaled to size 11.37337pt on input line ....
@@ -4511,6 +4498,97 @@ C.}
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 710.18088
 .\kern 0.0
+Underfull \hbox (badness 6775) in paragraph at lines 34--34
+[]\TU/FandolSong(0)/m/n/10.53937 汤 万 金\TU/texgyretermes(0)/m/n/10.53937 , \TU/F
+andolSong(0)/m/n/10.53937 杨 跃 翔\TU/texgyretermes(0)/m/n/10.53937 , \TU/FandolSo
+ng(0)/m/n/10.53937 刘 文\TU/texgyretermes(0)/m/n/10.53937 , \TU/FandolSong(0)/m/n
+/10.53937 等\TU/texgyretermes(0)/m/n/10.53937 . \TU/FandolSong(0)/m/n/10.53937 人
+ 体 安 全 重 要 技 术 标 准 研 制 最 终 报 告\TU/texgyretermes(0)/m/n/10.53937 : 7178999X-
+\hbox(8.29448+1.94977)x398.33861, glue set 4.07787
+.\hbox(7.12462+1.64412)x0.0
+..\glue 0.0
+..\glue -25.6073
+..\glue -2.84544
+..\hbox(7.12462+1.64412)x25.6073, glue set 8.0487fill
+...\special{color push gray 0}
+...\glue 0.0 plus 1.0fil minus 1.0fil
+...\hbox(6.97707+1.64412)x3.50961
+....\TU/texgyretermes(0)/m/n/10.53937 [
+...\TU/texgyretermes(0)/m/n/10.53937 21
+...\kern -0.0002
+...\kern 0.0002
+...\hbox(6.97707+1.64412)x3.50961
+....\TU/texgyretermes(0)/m/n/10.53937 ]
+....\kern -0.0002
+....\kern 0.0002
+...\glue 0.0 plus 1.0fill
+...\special{color pop}
+..\glue 2.84544
+.\penalty 0
+.\TU/FandolSong(0)/m/n/10.53937 汤
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 万
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 金
+.\kern -0.00017
+.\TU/texgyretermes(0)/m/n/10.53937 ,
+.\glue 2.63484 plus 1.32137 minus 0.87564
+.\TU/FandolSong(0)/m/n/10.53937 杨
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 跃
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 翔
+.\kern -0.00017
+.\TU/texgyretermes(0)/m/n/10.53937 ,
+.\glue 2.63484 plus 1.32137 minus 0.87564
+.\TU/FandolSong(0)/m/n/10.53937 刘
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 文
+.\kern -0.00017
+.\TU/texgyretermes(0)/m/n/10.53937 ,
+.\glue 2.63484 plus 1.32137 minus 0.87564
+.\TU/FandolSong(0)/m/n/10.53937 等
+.\kern -0.00017
+.\TU/texgyretermes(0)/m/n/10.53937 .
+.\glue 2.63484 plus 1.32532 minus 0.87303
+.\TU/FandolSong(0)/m/n/10.53937 人
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 体
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 安
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 全
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 重
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 要
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 技
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 术
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 标
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 准
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 研
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 制
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 最
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 终
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 报
+.\glue 0.0 plus 0.41463
+.\TU/FandolSong(0)/m/n/10.53937 告
+.\kern -0.00017
+.\kern 0.00017
+.\TU/texgyretermes(0)/m/n/10.53937 :
+.\glue 2.63484 plus 1.32399 minus 0.8739
+.\TU/texgyretermes(0)/m/n/10.53937 7178999X-
+.\discretionary
+.\glue(\rightskip) 0.0
 Completed box being shipped out [3]
 \vbox(710.18088+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -4533,9 +4611,9 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 400.30888fil
+..\vbox(674.33032+0.0)x426.79135, glue set 384.2506fil
 ...\glue(\topskip) 3.76875
-...\hbox(8.23125+1.86545)x398.33861, glue set 1.6582, shifted 28.45274
+...\hbox(8.23125+1.86545)x398.33861, glue set 1.35129, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -4643,6 +4721,9 @@ Completed box being shipped out [3]
 ....\TU/texgyretermes(0)/m/n/10.53937 ,
 ....\glue 2.63484 plus 1.32137 minus 0.87564
 ....\TU/texgyretermes(0)/m/n/10.53937 2003
+....\kern -0.0002
+....\kern 0.0002
+....\TU/texgyretermes(0)/m/n/10.53937 a
 ....\kern -0.0002
 ....\kern 0.0
 ....\glue(\rightskip) 0.0
@@ -5054,7 +5135,7 @@ Completed box being shipped out [3]
 ...\glue(\parskip) 0.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 7.53366
-...\hbox(8.29448+1.94977)x398.33861, glue set 1.16646, shifted 28.45274
+...\hbox(8.29448+1.94977)x398.33861, glue set 4.07787, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
 .....\glue 0.0
 .....\glue -25.6073
@@ -5134,6 +5215,17 @@ Completed box being shipped out [3]
 ....\TU/FandolSong(0)/m/n/10.53937 告
 ....\kern -0.00017
 ....\kern 0.00017
+....\TU/texgyretermes(0)/m/n/10.53937 :
+....\glue 2.63484 plus 1.32399 minus 0.8739
+....\TU/texgyretermes(0)/m/n/10.53937 7178999X-
+....\discretionary
+....\glue(\rightskip) 0.0
+...\penalty 300
+...\glue(\baselineskip) 6.51282
+...\hbox(7.59741+2.29758)x398.33861, glue set 0.60762, shifted 28.45274
+....\TU/texgyretermes(0)/m/n/10.53937 2006BAK04A10/10.2013
+....\kern -0.0002
+....\kern 0.0002
 ....\penalty 0
 ....\hbox(6.97707+1.64412)x3.50961
 .....\TU/texgyretermes(0)/m/n/10.53937 [
@@ -5185,10 +5277,7 @@ Completed box being shipped out [3]
 .....\TU/texgyretermes(0)/m/n/10.53937 )
 .....\kern -0.0002
 .....\kern 0.0002
-....\glue(\rightskip) 0.0
-...\penalty 300
-...\glue(\baselineskip) 6.9013
-...\hbox(7.20892+2.29758)x398.33861, glue set 118.09683fil, shifted 28.45274
+....\glue 1.7566
 ....\hbox(6.97707+1.64412)x3.50961
 .....\TU/texgyretermes(0)/m/n/10.53937 [
 ....\TU/texgyretermes(0)/m/n/10.53937 2014
@@ -5306,6 +5395,10 @@ Completed box being shipped out [3]
 ....\TU/texgyretermes(0)/m/n/10.53937 glyph#29
 ....\glue 0.0
 ....\penalty 100
+....\glue(\rightskip) 0.0
+...\penalty 200
+...\glue(\baselineskip) 6.56403
+...\hbox(7.1984+2.29758)x398.33861, glue set 295.20038fil, shifted 28.45274
 ....\TU/texgyretermes(0)/m/n/10.53937 glyph#78
 ....\glue 0.0
 ....\penalty 100
