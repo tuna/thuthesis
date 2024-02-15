@@ -9,6 +9,7 @@
 ### Added
 
 - 本科生的附录（调研阅读报告和书面翻译）支持 `biblatex`（[#893](https://github.com/tuna/thuthesis/issues/893)）。
+- 适配生命科学学院要求的 Cell 参考文献格式（[#921](https://github.com/tuna/thuthesis/discussions/921)）。
 
 ### Changed
 
