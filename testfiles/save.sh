@@ -8,9 +8,9 @@ save_file () {
         config="crossref";
     elif [[ "$test" == *-nomencl ]]; then
         config="nomencl";
-    elif [[ "$test" == 10-bibtex ]]; then
+    elif [[ "$test" == 10-bibtex-* ]]; then
         config="bibtex";
-    elif [[ "$test" == 10-biblatex ]]; then
+    elif [[ "$test" == 10-biblatex-* ]]; then
         config="biblatex";
     else
         config="main";

@@ -1482,6 +1482,13 @@
     },
     name = degree@type,
   },
+  format = {
+    choices = {
+      main,
+      medical,
+    },
+    default = main,
+  },
 %    \end{macrocode}
 %
 % 论文的主要语言。
@@ -1806,7 +1813,9 @@
 \AtEndPreamble{
   \@ifpackageloaded{biblatex}{}{
     \@ifpackageloaded{apacite}{}{
-      \RequirePackage{natbib}
+      \@ifpackageloaded{cite}{}{
+        \RequirePackage{natbib}
+      }
     }
   }
 }
@@ -1999,17 +2008,31 @@
         \def\thu@acknowledgements@name{ACKNOWLEDGEMENTS}%
         \def\thu@resume@name{PUBLICATIONS}%
       \else
-        \def\contentsname{Table of Contents}%
-        \def\listfigurename{List of Figures}%
-        \def\listtablename{List of Tables}%
-        \def\thu@list@figure@table@name{List of Figures and Tables}%
-        \def\thu@list@algorithm@name{List of Algorithms}%
-        \def\listequationname{List of Equations}%
-        \def\thu@denotation@name{List of Symbols and Acronyms}%
-        \def\bibname{References}%
-        \def\appendixname{Appendix}%
-        \def\thu@acknowledgements@name{Acknowledgements}%
-        \def\thu@resume@name{Resume}%
+        \ifthu@format@medical
+          \def\contentsname{目\quad 录}%
+          \def\listfigurename{插图清单}%
+          \def\listtablename{附表清单}%
+          \def\thu@list@figure@table@name{图表清单}%
+          \def\thu@list@algorithm@name{算法清单}%
+          \def\listequationname{公式清单}%
+          \def\thu@denotation@name{符号和缩略语说明}%
+          \def\bibname{References}%
+          \def\appendixname{Appendix}%
+          \def\thu@acknowledgements@name{致\hspace{1em}谢}%
+          \def\thu@resume@name{个人简历、在学期间完成的相关学术成果}%
+        \else
+          \def\contentsname{Table of Contents}%
+          \def\listfigurename{List of Figures}%
+          \def\listtablename{List of Tables}%
+          \def\thu@list@figure@table@name{List of Figures and Tables}%
+          \def\thu@list@algorithm@name{List of Algorithms}%
+          \def\listequationname{List of Equations}%
+          \def\thu@denotation@name{List of Symbols and Acronyms}%
+          \def\bibname{References}%
+          \def\appendixname{Appendix}%
+          \def\thu@acknowledgements@name{Acknowledgements}%
+          \def\thu@resume@name{Resume}%
+        \fi
       \fi
     \fi
   \fi
@@ -3242,12 +3265,16 @@
     \renewcommand\headrulewidth{0.75bp}%
     \fancyhead[C]{%
       \wuhao
-      \ifthu@main@language@chinese
-        \leftmark
+      \ifthu@main@language@english
+        \ifthu@format@medical
+          \leftmark
+        \else
+          \MakeUppercase{\leftmark}%
+        \fi
       \else
-        \MakeUppercase{\leftmark}%
+        \leftmark
       \fi
-      }%
+    }%
     \fancyfoot[C]{\wuhao\thepage}%
     \let\@mkboth\markboth
     \def\chaptermark##1{%
@@ -3590,26 +3617,58 @@
 %   \item 图：caption 在下，段前空 6 磅，段后空 12 磅
 %   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
 % \end{itemize}
+%
+% 医学院：The name of the figure e.g. “Figure 3.1 xxx” should be in Arial,
+% 10.5pt\dots
+% E.g. “Table 3.1 xxx”, the sequence number and name of the table should be
+% located above the table, in Arial, 11pt, align in center, single line-spacing
 %    \begin{macrocode}
-\DeclareCaptionFont{thu}{%
+\newcommand\thu@figure@caption@font{}
+\newcommand\thu@table@caption@font{}
+\newcommand\thu@caption@label@sep{}
+\newcommand\thu@table@note@font{}
+\newcommand\thu@set@caption@font{%
   \ifthu@degree@bachelor
-    \fontsize{11bp}{15bp}\selectfont
+    \renewcommand\thu@figure@caption@font{\fontsize{11bp}{15bp}\selectfont}%
+    \renewcommand\thu@table@caption@font{\fontsize{11bp}{15bp}\selectfont}%
+    \renewcommand\thu@caption@label@sep{\quad}%
+    \renewcommand\thu@table@note@font{\fontsize{10.5bp}{13.65bp}\selectfont}%
   \else
-    \ifthu@language@chinese
-      \fontsize{11bp}{14.3bp}\selectfont
+    \ifthu@format@medical
+      \renewcommand\thu@figure@caption@font{\sffamily\fontsize{10.5bp}{12.075bp}\selectfont}%
+      \renewcommand\thu@table@caption@font{\sffamily\fontsize{11bp}{12.65bp}\selectfont}%
+      \renewcommand\thu@caption@label@sep{\space}%
+      \renewcommand\thu@table@note@font{\fontsize{10.5bp}{12.075bp}\selectfont}%
     \else
-      \fontsize{11bp}{12.65bp}\selectfont
+      \ifthu@language@chinese
+        \renewcommand\thu@figure@caption@font{\fontsize{11bp}{14.3bp}\selectfont}%
+        \renewcommand\thu@table@caption@font{\fontsize{11bp}{14.3bp}\selectfont}%
+        \renewcommand\thu@table@note@font{\fontsize{10.5bp}{13.65bp}\selectfont}%
+      \else
+        \renewcommand\thu@figure@caption@font{\fontsize{11bp}{12.65bp}\selectfont}%
+        \renewcommand\thu@table@caption@font{\fontsize{11bp}{12.65bp}\selectfont}%
+        \renewcommand\thu@table@note@font{\fontsize{10.5bp}{12.075bp}\selectfont}%
+      \fi
+      \renewcommand\thu@caption@label@sep{\quad}%
     \fi
   \fi
 }
+\thu@set@caption@font
+\thu@option@hook{degree}{\thu@set@caption@font}
+\thu@option@hook{format}{\thu@set@caption@font}
+\thu@option@hook{language}{\thu@set@caption@font}
+\DeclareCaptionFont{thu@figure}{\thu@figure@caption@font}
+\DeclareCaptionFont{thu@table}{\thu@table@caption@font}
+\DeclareCaptionLabelSeparator{space}{\thu@caption@label@sep}
+\captionsetup[figure]{font = thu@figure}
+\captionsetup[table]{font = thu@table}
 \captionsetup{
-  font           = thu,
-  labelsep       = quad,
+  labelsep       = space,
   skip           = 6bp,
   figureposition = bottom,
   tableposition  = top,
 }
-\captionsetup[sub]{font=thu}
+\captionsetup[sub]{font=thu@figure}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \renewcommand{\thesubtable}{(\alph{subtable})}
 % \renewcommand{\p@subfigure}{:}
@@ -3669,7 +3728,33 @@
 %
 %    \begin{macrocode}
 \AtEndOfPackageFile*{threeparttable}{
-  \g@addto@macro\TPT@defaults{\wuhao}
+  \g@addto@macro\TPT@defaults{\thu@table@note@font}
+}
+%    \end{macrocode}
+%
+% 图表的附注：若在表下方注明资料来源，则此部分用五号字，汉字用宋体，英文用 Times New
+% Roman 体，单倍行距，段前空 6 磅，段后空 12 磅。
+%    \begin{macrocode}
+\DeclareCaptionFont{thu@note}{\thu@table@note@font}
+\newcommand\figurenote[1]{%
+  \begingroup
+    \captionsetup{
+      font          = thu@note,
+      position      = bottom,
+      aboveskip     = 12bp,
+    }%
+    \caption*{#1}%
+  \endgroup
+}
+\newcommand\tablenote[1]{%
+  \begingroup
+    \captionsetup{
+      font          = thu@note,
+      position      = bottom,
+      aboveskip     = 6bp,
+    }%
+    \caption*{#1}%
+  \endgroup
 }
 %    \end{macrocode}
 %
@@ -3842,27 +3927,51 @@
         },
       }%
     \else
-      \ctexset{%
-        chapter = {
-          format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
-          nameformat  = \MakeUppercase,
-          titleformat = \MakeUppercase,
-          name        = \chaptername\space,
-          aftername   = \space,
-        },
-        section = {
-          format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
-          aftername  = \space,
-        },
-        subsection = {
-          format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
-          aftername  = \space,
-        },
-        subsubsection = {
-          format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
-          aftername  = \space,
-        },
-      }%
+      \ifthu@format@medical
+        \ctexset{%
+          chapter = {
+            format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
+            nameformat  = ,
+            titleformat = ,
+            name        = \chaptername\space,
+            aftername   = \quad,
+          },
+          section = {
+            format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
+            aftername  = \quad,
+          },
+          subsection = {
+            format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
+            aftername  = \quad,
+          },
+          subsubsection = {
+            format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+            aftername  = \quad,
+          },
+        }%
+      \else
+        \ctexset{%
+          chapter = {
+            format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
+            nameformat  = \MakeUppercase,
+            titleformat = \MakeUppercase,
+            name        = \chaptername\space,
+            aftername   = \space,
+          },
+          section = {
+            format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
+            aftername  = \space,
+          },
+          subsection = {
+            format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
+            aftername  = \space,
+          },
+          subsubsection = {
+            format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+            aftername  = \space,
+          },
+        }%
+      \fi
     \fi
   \fi
 }
@@ -3961,7 +4070,11 @@
 %    \begin{macrocode}
 \renewcommand\tableofcontents{%
   \ifthu@degree@graduate
-    \thu@chapter*{\contentsname}%
+    \ifthu@format@medical
+      \thu@chapter*{\contentsname}[目录]%
+    \else
+      \thu@chapter*{\contentsname}%
+    \fi
   \else
     \thu@chapter*[]{\contentsname}%
   \fi
@@ -4059,18 +4172,33 @@
         {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
     \else
-      \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}\heiti}
-        {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
-        {\rmfamily\thu@leaders\thecontentspage}%
-      \titlecontents{section}
-        [1em]{}
-        {\contentspush{\thecontentslabel\space}}{}
-        {\thu@leaders\thecontentspage}%
-      \titlecontents{subsection}
-        [2em]{}
-        {\contentspush{\thecontentslabel\space}}{}
-        {\thu@leaders\thecontentspage}%
+      \ifthu@format@medical
+        \titlecontents{chapter}
+          [\z@]{\addvspace{6bp}\sffamily}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\rmfamily\thu@leaders\thecontentspage}%
+        \titlecontents{section}
+          [1em]{}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\thu@leaders\thecontentspage}%
+        \titlecontents{subsection}
+          [2em]{}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\thu@leaders\thecontentspage}%
+      \else
+        \titlecontents{chapter}
+          [\z@]{\addvspace{6bp}\heiti}
+          {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
+          {\rmfamily\thu@leaders\thecontentspage}%
+        \titlecontents{section}
+          [1em]{}
+          {\contentspush{\thecontentslabel\space}}{}
+          {\thu@leaders\thecontentspage}%
+        \titlecontents{subsection}
+          [2em]{}
+          {\contentspush{\thecontentslabel\space}}{}
+          {\thu@leaders\thecontentspage}%
+      \fi
     \fi
   \fi
 }
@@ -4168,6 +4296,16 @@
 }
 \thu@option@hook{degree-name*}{%
   \thu@warning{`degree-name*' is deprecated. Use `degree-category*' instead.}
+}
+%    \end{macrocode}
+%
+% 用于处理医学院的特殊格式。
+%    \begin{macrocode}
+\thu@option@hook{degree-category}{%
+  \def\tmpa{医学实验班八年制}%
+  \ifx\thu@degree@category\tmpa
+    \thusetup{format = medical}%
+  \fi
 }
 %    \end{macrocode}
 %
@@ -5048,30 +5186,58 @@
   \vskip 13bp%
   \begingroup
     \fontsize{14bp}{26bp}\selectfont
-    本人完全了解清华大学有关保留、使用学位论文的规定，即：\par
-    清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：%
-    （1）\nobreak 已获学位的研究生必须按学校规定提交学位论文，%
-    学校可以采用影印、缩印或其他复制手段保存研究生上交的学位论文；\allowbreak
-    （2）\nobreak 为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料室等场所供校内师生阅读，%
-    或在校园网上供校内师生浏览部分内容；\allowbreak
-    \ifthu@degree@doctor
-      （3）\nobreak 根据《中华人民共和国学位条例暂行实施办法》及上级教育主管部门具体要求，向国家图书馆报送相应的学位论文。%
+    \ifthu@format@medical
+      本人完全了解清华大学有关保留、使用毕业论文的规定，即：\par
+      清华大学拥有在著作权法规定范围内毕业论文的使用权，其中包括：%
+      （1）\nobreak 已获学位的研究生必须按学校规定提交毕业论文，%
+      学校可以采用影印、缩印或其他复制手段保存研究生上交的毕业论文；\allowbreak
+      （2）\nobreak 为教学和科研目的，学校可以将公开的毕业论文作为资料在图书馆、资料室等场所供师生阅读，%
+      或在校园网上供校内师生浏览部分内容；\allowbreak
+      \ifthu@degree@doctor
+        （3）\nobreak 根据《中华人民共和国学位条例暂行实施办法》及相关部门具体要求，向国家图书馆报送相应的学位论文。%
+      \else
+        （3）\nobreak 按照上级教育主管部门督导、抽查等要求，报送相应的学位论文。%
+      \fi
+      \par
+      本人保证遵守上述规定。\par
+      \vskip 13bp%
+      \textbf{（保密的论文在解密后遵守此规定）}\par
     \else
-      （3）\nobreak 按照上级教育主管部门督导、抽查等要求，报送相应的学位论文。%
+      本人完全了解清华大学有关保留、使用学位论文的规定，即：\par
+      清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：%
+      （1）\nobreak 已获学位的研究生必须按学校规定提交学位论文，%
+      学校可以采用影印、缩印或其他复制手段保存研究生上交的学位论文；\allowbreak
+      （2）\nobreak 为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料室等场所供校内师生阅读，%
+      或在校园网上供校内师生浏览部分内容；\allowbreak
+      \ifthu@degree@doctor
+        （3）\nobreak 根据《中华人民共和国学位条例暂行实施办法》及上级教育主管部门具体要求，向国家图书馆报送相应的学位论文。%
+      \else
+        （3）\nobreak 按照上级教育主管部门督导、抽查等要求，报送相应的学位论文。%
+      \fi
+      \par
+      本人保证遵守上述规定。\par
     \fi
-    \par
-    本人保证遵守上述规定。\par
   \endgroup
   \vskip 33bp%
   \begingroup
     \fontsize{12bp}{23.4bp}\selectfont
     \parindent\z@
-    \leftskip 43bp%
-    作者签名：\hspace{4bp}\thu@underline[7em]{}\hspace{47bp}%
-    导师签名：\hspace{4bp}\thu@underline[7em]{}\par
-    \vskip 6bp%
-    日\hspace{2em}期：\hspace{4bp}\thu@underline[7em]{}\hspace{47bp}%
-    日\hspace{2em}期：\hspace{4bp}\thu@underline[7em]{}\par
+    \ifthu@format@medical
+      签\hspace{1em}名：\hspace{1bp}\thu@underline[7em]{}%
+      基础导师签名：\hspace{1bp}\thu@underline[7em]{}%
+      日\hspace{1em}期：\hspace{1bp}\thu@underline[5em]{}\par
+      \vskip 6bp%
+      \hspace*{137bp}%
+      临床导师签名：\hspace{1bp}\thu@underline[7em]{}%
+      日\hspace{1em}期：\hspace{1bp}\thu@underline[5em]{}\par
+    \else
+      \leftskip 43bp%
+      作者签名：\hspace{4bp}\thu@underline[7em]{}\hspace{47bp}%
+      导师签名：\hspace{4bp}\thu@underline[7em]{}\par
+      \vskip 6bp%
+      日\hspace{2em}期：\hspace{4bp}\thu@underline[7em]{}\hspace{47bp}%
+      日\hspace{2em}期：\hspace{4bp}\thu@underline[7em]{}\par
+    \fi
   \endgroup
 }
 \newcommand\thu@copyright@page@bachelor{%
@@ -5346,16 +5512,20 @@
   \fi
   \ifx\thu@statement@file\@empty
     \thusetup{language=chinese}%
-    \begingroup
-      \ifthu@degree@graduate
-        \ifthu@main@language@english
-          \ctexset{%
-            chapter/format = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
-          }%
+    \ifthu@format@medical
+      \thu@chapter*{\thu@statement@name}[声明]%
+    \else
+      \begingroup
+        \ifthu@degree@graduate
+          \ifthu@main@language@english
+            \ctexset{%
+              chapter/format = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
+            }%
+          \fi
         \fi
-      \fi
-      \thu@chapter*{\thu@statement@name}%
-    \endgroup
+        \thu@chapter*{\thu@statement@name}%
+      \endgroup
+    \fi
     \thispagestyle{\thu@statement@page@style}%
     \thu@statement@text\par
     \ifthu@degree@graduate
@@ -5553,7 +5723,9 @@
 % 这样在使用 \cs{bibliographystyle} 选择参考文献表的样式时也会设置对应的引用样式。
 %    \begin{macrocode}
   \newcommand\bibstyle@super{%
-    \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+    \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}%
+    \renewcommand\bibnumfmt[1]{##1.}%
+  }
   \newcommand\bibstyle@inline{%
     \bibpunct{[}{]}{,}{n}{,}{,}}
   \@namedef{bibstyle@author-year}{%
@@ -5828,7 +6000,7 @@
 %    \end{macrocode}
 %
 % 参考文献表的正文部分用五号字。
-% 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
+% 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。医学实验班行距采用固定值 15 磅。
 %
 % 本科生要求宋体五号/Times New Roman 10.5 pt，固定行距 17pt，段前后间距 3pt；
 % 英文专业要求悬挂缩进 0.5inch（1.27 厘米）。
@@ -5846,7 +6018,11 @@
         \setlength{\bibhang}{0.5in}%
       \fi
     \else
-      \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+      \ifthu@format@medical
+        \renewcommand\bibfont{\fontsize{10.5bp}{15bp}\selectfont}%
+      \else
+        \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+      \fi
       \setlength{\bibsep}{3bp \@plus 3bp \@minus 3bp}%
       \setlength{\bibhang}{21bp}%
     \fi
@@ -5879,13 +6055,16 @@
 %    \begin{macrocode}
   \def\@biblabel#1{[#1]\hfill}
   \renewcommand\NAT@bibsetnum[1]{%
-    % \settowidth\labelwidth{\@biblabel{#1}}%
-    % \setlength{\leftmargin}{\labelwidth}%
-    % \addtolength{\leftmargin}{\labelsep}%
-    \setlength{\leftmargin}{1cm}%
+    \ifthu@format@medical
+      \settowidth\labelwidth{\@biblabel{#1}}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \addtolength{\leftmargin}{\labelsep}%
+    \else
+      \setlength{\leftmargin}{1cm}%
+      \setlength{\labelsep}{0.1cm}%
+      \setlength{\labelwidth}{0.9cm}%
+    \fi
     \setlength{\itemindent}{\z@}%
-    \setlength{\labelsep}{0.1cm}%
-    \setlength{\labelwidth}{0.9cm}%
     \setlength{\itemsep}{\bibsep}
     \setlength{\parsep}{\z@}%
     \ifNAT@openbib
@@ -6108,11 +6287,13 @@
   \g@addto@macro\appendix{%
     \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
     \bibliographyunit[\chapter]%
-    \renewcommand\bibsection{%
-      \ctexset{section/numbering = false}%
-      \section{\bibname}%
-      \ctexset{section/numbering = true}%
-    }%
+    \ifx\NAT@parse\@undefined\else
+      \renewcommand\bibsection{%
+        \ctexset{section/numbering = false}%
+        \section{\bibname}%
+        \ctexset{section/numbering = true}%
+      }%
+    \fi
 %    \end{macrocode}
 %
 % 研究生附录的引用编号加前缀，如附录 A 的引用 [1] 为 [A.1]。
@@ -6388,11 +6569,24 @@
       subsection = {
         beforeskip = 0pt,
         afterskip  = 0pt,
-        format     = \bfseries\normalsize,
-        indent     = \parindent,
         numbering  = false,
       },
     }%
+    \ifthu@format@medical
+      subsection = {
+        \ctexset{
+          format     = \sffamily\normalsize,
+          indent     = 0pt,
+        },
+      }
+    \else
+      \ctexset{
+        subsection = {
+          format     = \bfseries\normalsize,
+          indent     = \parindent,
+        },%
+      }
+    \fi
     \ifthu@degree@bachelor
       % 内容部分用Arial字体，字号15pt，行距采用固定值20pt， 段前后 0pt。
       \sffamily\fontsize{15bp}{20bp}\selectfont

@@ -1,6 +1,9 @@
 name: Test
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
 
@@ -10,6 +13,8 @@ jobs:
     container: ghcr.io/tuna/thuthesis-test-env
     steps:
     - uses: actions/checkout@v4
+    - name: Install required packages
+      run: bash .github/workflows/install-packages.sh
     - name: Test thesis
       run: make thesis
     - name: Test spine

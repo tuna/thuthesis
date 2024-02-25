@@ -1,0 +1,65 @@
+\bibliographyunit[\chapter]
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\chapter*{\mdseries 因素A对因素B的影响}
+
+\addcontentsline{toc}{chapter}{临床研究}
+\markboth{临床研究}{}
+
+\newcommand{\chineseHead}[1]{{\heiti #1}}
+\newcommand{\englishTitle}[1]{{\sffamily\centering\Large #1\par}}
+
+% \vspace{24pt}
+% \chineseTitle{粮食安全对早期肺功能异常的影响}
+% \vspace{24pt} % Space before abstract
+
+% Chinese abstract
+\noindent\chineseHead{【摘要】}
+黑体，小四号字，左右实心凸形括号。摘要内容书写，宋体， 小四号，两端对齐，字符间距为 常规（标准） 。行距为固定值20磅，段前空0磅， 段后空0磅。
+\\ \hspace*{\fill} \\
+\noindent\chineseHead{【关键词】}
+因素A；因素B；关系C
+
+\vspace{18pt} % Space after Chinese part
+
+\englishTitle{Impact of factor A to factor B}
+\vspace{24pt} % Space before abstract
+
+\noindent\textbf{Abstract:} Factor A is xxx
+\\ \hspace*{\fill} \\
+\noindent\textbf{Keywords:} factorA, factorB, relationC
+English abstract
+
+
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{section}{0}
+\newpage
+\section{Introduction}
+
+Factor A is a xxx
+
+\section{Method}
+
+We used xxx
+
+\section{Results}
+
+We found...
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{example-image-a.pdf}
+    \caption{Title and Number of figure in Arial}
+    \caption*{This legend is in Times Roman}
+  \end{figure}
+
+\section{Discussion}
+
+In this research xxx
+
+In summary xxx
+
+\section*{参考文献}
+{\renewcommand{\bibsection}{}
+\putbib
+}
