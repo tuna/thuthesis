@@ -10,6 +10,9 @@ jobs:
     container: ghcr.io/tuna/thuthesis-test-env
     steps:
     - uses: actions/checkout@v4
+    - name: Git describe
+      id: ghd
+      uses: proudust/gh-describe@v2
     - name: Test thesis
       run: make thesis
     - name: Test spine
@@ -18,28 +21,18 @@ jobs:
       run: make doc
     - name: Test with l3build
       run: make test
-    - name: Upload test results if failed
-      uses: actions/upload-artifact@v3
-      if: failure()
-      with:
-        name: test-result
-        path: |
-          build/test
-          build/test-testfiles
-
-
-  build_release:
-    runs-on: ubuntu-latest
-    if: "startsWith(github.ref, 'refs/tags/v') || contains(github.event.head_commit.message, '[zip]')"
-    container: ghcr.io/tuna/thuthesis-test-env
-    steps:
-    - uses: actions/checkout@v4
-    - name: Install required packages
-      run: bash .github/workflows/install-packages.sh
     - name: Build release zip with l3build
       run: l3build ctan --config build-ctan
     - name: Upload release zip
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-         name: thuthesis-ctan
+         name: thuthesis-ctan-${{ steps.ghd.outputs.describe }}
          path: thuthesis-ctan.zip
+    - name: Upload test results if failed
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: test-result-${{ steps.ghd.outputs.describe }}
+        path: |
+          build/test
+          build/test-testfiles
