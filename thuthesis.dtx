@@ -342,6 +342,7 @@
 %     中易宋体         & 华文宋体        & 思源宋体        & Fandol 宋体     \\
 %     中易黑体         & 华文黑体        & 思源黑体        & Fandol 黑体     \\
 %     中易仿宋         & 华文仿宋        & Fandol 仿宋     & Fandol 仿宋     \\
+%     中易楷体         & 华文楷体        & Fandol 楷体     & Fandol 楷体     \\
 %     \bottomrule
 %   \end{tabular}
 % \end{table}
@@ -352,6 +353,20 @@
 % 关于字体的配置，
 % 详见 \pkg{fontspec}、\pkg{xeCJK}、\pkg{ctex} 等宏包的使用说明和代码。
 %
+% \DescribeOption{font}
+% 配置全文使用的西文字体。所有可选项目为 \option{auto}（默认）、\option{times}、\option{termes}、
+% \option{stix}、\option{xits}、\option{libertinus}、\option{newcm}、\option{lm}、
+% \option{newtx}、\option{none}。
+% 通常来说，用户 \textbf{不需要} 调整此选项。
+%
+% \DescribeOption{cjk-font}
+% 配置全文使用的中文字体。所有可选项为 \option{auto}（默认）、\option{windows}、\option{windows-local}、
+% \option{mac}、\option{mac-word}、\option{noto}、\option{fandol} 和 \option{none}。
+% 通常来说，用户 \textbf{不需要} 调整此选项，模板会自动通过 \option{fontset} 选项选择合适的字体。
+%
+% \DescribeOption{windows-font-dir}
+% 配置搜索 Windows 字体的路径，仅适用于 Overleaf 等不方便全局安装字体的环境。如果此目录下能找到中易宋体，
+% 则将自动使用这些字体编译。如有可能，始终建议全局安装相应字体，模板能够自动检测。
 %
 % \subsection{论文设置}
 % 论文的设置可以通过统一命令 \cs{thusetup} 设置 \emph{key=value} 形式完成。
@@ -2582,7 +2597,7 @@
 }
 %    \end{macrocode}
 %
-% 使用的 Windows 字体文件。
+% 使用本地的 Windows 字体文件。
 %    \begin{macrocode}
 \@namedef{thu@set@cjk@font@windows-local}{%
   \setCJKmainfont{SimSun}[%
