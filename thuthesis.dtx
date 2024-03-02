@@ -2600,28 +2600,70 @@
 %    \end{macrocode}
 %
 % 使用本地的 Windows 字体文件。
+%
+% Windows 的中易楷体和仿宋字体文件名分别为 \file{Simkai.ttf} 和
+% \file{Simfang.ttf}（见
+% \url{https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list}），
+% 而 macOS 版 Word 对应的字体名为 \file{Kaiti.ttf} 和 \file{Fangsong.ttf}。
+% 所以需要进行判断。
 %    \begin{macrocode}
 \@namedef{thu@set@cjk@font@windows-local}{%
-  \setCJKmainfont{SimSun}[%
-    Path         = \thu@windows@font@dir/,
-    AutoFakeBold = 3,
-    ItalicFont   = KaiTi,
-  ]%
+  \IfFileExists{\thu@windows@font@dir/Kaiti.ttf}{
+    \setCJKmainfont{SimSun}[%
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttc,
+      AutoFakeBold = 3,
+      ItalicFont   = Kaiti,
+      ItalicFeatures = {Extension = .ttf},
+    ]%
+    \setCJKmonofont{Fangsong}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhkai}{Kaiti}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhfs}{Fangsong}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+  }{
+    \setCJKmainfont{SimSun}[%
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttc,
+      AutoFakeBold = 3,
+      ItalicFont   = Simkai,
+      ItalicFeatures = {Extension = .ttf},
+    ]%
+    \setCJKmonofont{Simfang}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhkai}{Simkai}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhfs}{Simfang}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+  }
   \setCJKsansfont{SimHei}[%
     Path         = \thu@windows@font@dir/,
+    Extension    = .ttf,
     AutoFakeBold = 3,
   ]%
-  \setCJKmonofont{FangSong}[Path=\thu@windows@font@dir/]%
   \setCJKfamilyfont{zhsong}{SimSun}[%
     Path         = \thu@windows@font@dir/,
+    Extension    = .ttc,
     AutoFakeBold = 3,
   ]%
   \setCJKfamilyfont{zhhei}{SimHei}[%
     Path         = \thu@windows@font@dir/,
+    Extension    = .ttf,
     AutoFakeBold = 3,
   ]%
-  \setCJKfamilyfont{zhkai}{KaiTi}[Path = \thu@windows@font@dir/]%
-  \setCJKfamilyfont{zhfs}{FangSong}[Path = \thu@windows@font@dir/]%
 }
 %    \end{macrocode}
 %
