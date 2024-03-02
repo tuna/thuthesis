@@ -20,6 +20,7 @@
 - 英文封面的导师姓名居中对齐（[#883](https://github.com/tuna/thuthesis/issues/883)）。
 - 修正 macOS 的 MS Office 字体名（[#913](https://github.com/tuna/thuthesis/issues/913)）。
 - 检测并使用 Windows 字体文件，默认从当前目录查找（[#747](https://github.com/tuna/thuthesis/discussions/747)）。
+- 修改研究生目录的章标题段前距离（[#926](https://github.com/tuna/thuthesis/issues/926)）。
 
 ### Fixed
 
