@@ -4049,8 +4049,8 @@
 %
 % 研究生：
 % \begin{enumerate}
-%   \item 目录中的章标题行采用黑体小四号字，固定行距 20 磅，段前空 6 磅，
-%     段后 0 磅；其他内容采用宋体小四号字，行距为固定值 20 磅，
+%   \item 目录中的章标题行采用黑体小四号字，固定行距 20 磅，段前段后 0 磅；
+%     其他内容采用宋体小四号字，行距为固定值 20 磅，
 %     段前、段后均为 0 磅。
 %   \item 目录中的章标题行居左书写，一级节标题行缩进 1 个汉字符，
 %     二级节标题行缩进 2 个汉字符。
@@ -4062,7 +4062,7 @@
   \else
     \ifthu@main@language@chinese
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}\sffamily}
+        [\z@]{\sffamily}
         {\contentspush{\thecontentslabel\quad}}{}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
@@ -4075,7 +4075,7 @@
         {\thu@leaders\thecontentspage}%
     \else
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}\heiti}
+        [\z@]{\heiti}
         {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
