@@ -2063,7 +2063,7 @@ FUNCTION {map}
 
 FUNCTION {manual} { monograph }
 
-FUNCTION {mastersthesis}
+FUNCTION {thesis}
 { "D" set.entry.mark
   monograph
 }
@@ -2078,7 +2078,9 @@ FUNCTION {online}
   electronic
 }
 
-FUNCTION {phdthesis} { mastersthesis }
+FUNCTION {mastersthesis} { thesis }
+
+FUNCTION {phdthesis} { thesis }
 
 FUNCTION {proceedings}
 { "C" set.entry.mark
@@ -2095,10 +2097,12 @@ FUNCTION {standard}
   misc
 }
 
-FUNCTION {techreport}
+FUNCTION {report}
 { "R" set.entry.mark
   misc
 }
+
+FUNCTION {techreport} { report }
 
 FUNCTION {unpublished} { misc }
 
