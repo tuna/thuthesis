@@ -22,7 +22,6 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: 'lts/*'
-        cache: 'npm'
     - name: Build release zip with gulp
       run: |
         npm install
