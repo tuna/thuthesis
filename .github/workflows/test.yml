@@ -18,6 +18,14 @@ jobs:
       run: make spine
     - name: Test doc
       run: make doc
+    - name: Upload build results
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-result-${{ steps.vars.outputs.git_describe }}
+        path: |
+          thuthesis.cls
+          thuthesis.pdf
+          thuthesis-example.pdf
     - name: Test with l3build
       run: make test
     - name: Build release zip with l3build
