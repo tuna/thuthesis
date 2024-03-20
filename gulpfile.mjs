@@ -66,7 +66,6 @@ function _default(callback) {
 function bootstrap(callback) {
     if (!argv.hasOwnProperty('version')) {
         usage();
-
         process.exit(1);
     }
 
@@ -104,7 +103,7 @@ function compress(callback) {
 
 function init_self(callback) {
     config.dist.files = [...config.template.files, ...config.example.files, ...config.example.pref, ...config.template.generated];
-    config.dist.build = `${packageName}-v${argv.version}`;
+    config.dist.build = `${packageName}-${argv.version}`;
     config.dist.zip = `${config.dist.build}.zip`;
 
     log(`Removing old ${config.dist.build}...`);

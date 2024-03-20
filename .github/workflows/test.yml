@@ -4,24 +4,45 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
 
+  build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
+    container: ghcr.io/tuna/thuthesis-test-env
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build documentation and example
+      run: make all-dev
+    - name: Upload build results
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-result
+        path: |
+          thuthesis.pdf
+          thuthesis-example.pdf
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 'lts/*'
+        cache: 'yarn'
+    - name: Build release zip with gulp
+      run: |
+        yarn
+        yarn build --version="$(git describe --tags)"
+    - name: Build CTAN release zip with l3build
+      run: l3build ctan --config build-ctan
+    - name: Upload release zip
+      uses: actions/upload-artifact@v4
+      with:
+          name: thuthesis-snapshot-release
+          path: |
+            thuthesis-ctan.zip
+            dist/thuthesis-*.zip
+
   test:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     container: ghcr.io/tuna/thuthesis-test-env
     steps:
     - uses: actions/checkout@v4
-
-    - name: Build documentation and example
-      run: make thesis doc
-    - name: Upload build results
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-result
-        path: |
-          thuthesis.cls
-          thuthesis.pdf
-          thuthesis-example.pdf
-
     - name: Test with l3build
       run: make test
     - name: Upload test results if failed
@@ -32,11 +53,3 @@ jobs:
         path: |
           build/test
           build/test-testfiles
-
-    - name: Build release zip with l3build
-      run: l3build ctan --config build-ctan
-    - name: Upload release zip
-      uses: actions/upload-artifact@v4
-      with:
-          name: thuthesis-ctan
-          path: thuthesis-ctan.zip
