@@ -2373,7 +2373,7 @@ Completed box being shipped out [1]
 .....\special{color pop}
 ...\glue 8.5359
 ...\glue(\lineskip) 0.0
-...\vbox(674.33032+0.0)x426.79135, glue set 19.29466fill
+...\vbox(674.33032+0.0)x426.79135, glue set 11.56677fill
 ....\special{pdf:dest (section.0.1) [@thispage /XYZ @xpos @ypos null]}
 ....\glue(\topskip) 1.17958
 ....\hbox(10.82042+2.43106)x426.79135, glue set 347.14185fil
@@ -3073,11 +3073,7 @@ Completed box being shipped out [1]
 .....\special{color pop}
 ....\penalty 0
 ....\penalty 10000
-....\glue 12.0 plus 2.0 minus 2.0
-....\glue -12.0 plus -2.0 minus -2.0
 ....\penalty -300
-....\glue 12.0 plus 2.0 minus 2.0
-....\glue -12.0 plus -2.0 minus -2.0
 ....\glue 12.045
 ....\special{pdf:dest (subsection.0.2.1) [@thispage /XYZ @xpos @ypos null]}
 ....\penalty 10000
@@ -3085,6 +3081,7 @@ Completed box being shipped out [1]
 ....\glue 12.045
 ....\glue(\parskip) 0.0 plus 1.0
 ....\glue(\parskip) 0.0
+....\glue(\baselineskip) 7.72789
 ....\hbox(9.72131+0.11742)x426.79135, glue set 367.31522fil
 .....\hbox(9.44728+0.11742)x32.64793
 ......\TU/texgyreheros(0)/b/n/13.04874 0.2.1
@@ -3657,7 +3654,7 @@ Completed box being shipped out [2]
 .....\special{color pop}
 ...\glue 8.5359
 ...\glue(\lineskip) 0.0
-...\vbox(674.33032+0.0)x426.79135, glue set 337.21085fil
+...\vbox(674.33032+0.0)x426.79135, glue set 327.02686fil
 ....\special{pdf:dest (subsection.0.2.2) [@thispage /XYZ @xpos @ypos null]}
 ....\glue(\topskip) 2.27869
 ....\hbox(9.72131+0.11742)x426.79135, glue set 367.31522fil
@@ -4146,11 +4143,7 @@ Completed box being shipped out [2]
 .....\special{color pop}
 ....\penalty 0
 ....\penalty 10000
-....\glue 12.0 plus 2.0 minus 2.0
-....\glue -12.0 plus -2.0 minus -2.0
 ....\penalty -300
-....\glue 12.0 plus 2.0 minus 2.0
-....\glue -12.0 plus -2.0 minus -2.0
 ....\glue 12.045
 ....\special{pdf:dest (subsection.0.2.3) [@thispage /XYZ @xpos @ypos null]}
 ....\penalty 10000
@@ -4158,6 +4151,7 @@ Completed box being shipped out [2]
 ....\glue 12.045
 ....\glue(\parskip) 0.0 plus 1.0
 ....\glue(\parskip) 0.0
+....\glue(\baselineskip) 10.18507
 ....\hbox(9.72131+0.11742)x426.79135, glue set 367.31522fil
 .....\hbox(9.44728+0.11742)x32.64793
 ......\TU/texgyreheros(0)/b/n/13.04874 0.2.3
@@ -4574,7 +4568,7 @@ Completed box being shipped out [4]
 .....\special{color pop}
 ...\glue 8.5359
 ...\glue(\lineskip) 0.0
-...\vbox(674.33032+0.0)x426.79135, glue set 7.58475fil
+...\vbox(674.33032+0.0)x426.79135, glue set - 0.07117
 ....\write-{}
 ....\write1{\pp@pagectr{footnote}{2}{\theabspage }{\thepage }}
 ....\special{pdf:dest (appendix.A) [@thispage /XYZ @xpos @ypos null]}
@@ -4738,11 +4732,7 @@ Completed box being shipped out [4]
 .....\special{color pop}
 ....\penalty 0
 ....\penalty 10000
-....\glue 12.0 plus 2.0 minus 2.0
-....\glue -12.0 plus -2.0 minus -2.0
 ....\penalty -300
-....\glue 12.0 plus 2.0 minus 2.0
-....\glue -12.0 plus -2.0 minus -2.0
 ....\glue 12.045
 ....\special{pdf:dest (subsection.A.1.1) [@thispage /XYZ @xpos @ypos null]}
 ....\penalty 10000
@@ -4750,6 +4740,7 @@ Completed box being shipped out [4]
 ....\glue 12.045
 ....\glue(\parskip) 0.0 plus 1.0
 ....\glue(\parskip) 0.0
+....\glue(\baselineskip) 7.72789
 ....\hbox(9.72131+0.11742)x426.79135, glue set 364.88815fil
 .....\hbox(9.51253+0.0)x35.075
 ......\TU/texgyreheros(0)/b/n/13.04874 A.1.1
