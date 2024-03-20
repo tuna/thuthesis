@@ -82,4 +82,4 @@ dist: check all-dev
 	# use l3build for CTAN release (zip with .tds.zip)
 	l3build ctan --config build-ctan
 	# use gulp for GitHub release (zip with generated file)
-	$(NPM) build -- --version=$(version)
+	$(NPM) build --version="v$(version)"
