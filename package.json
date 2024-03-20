@@ -2,7 +2,7 @@
   "name": "thuthesis",
   "version": "7.4.0",
   "description": "Tsinghua University Thesis LaTeX Template",
-  "main": "gulpfile.js",
+  "module": "gulpfile.mjs",
   "scripts": {
     "build": "gulp build"
   },
@@ -22,10 +22,10 @@
   "homepage": "https://github.com/tuna/thuthesis",
   "devDependencies": {
     "ansi-colors": "^4.1.1",
-    "del": "^6.0.0",
-    "fancy-log": "^1.3.3",
+    "del": "^7.1.0",
+    "fancy-log": "^2.0.0",
     "gulp": "^4.0.2",
-    "gulp-zip": "^5.0.1",
+    "gulp-zip": "^6.0.0",
     "minimist": "^1.2.5"
   },
   "dependencies": {}
