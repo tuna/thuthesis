@@ -19,13 +19,8 @@ jobs:
         path: |
           thuthesis.pdf
           thuthesis-example.pdf
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 'lts/*'
-    - name: Build release zip with gulp
-      run: |
-        npm install
-        npm run build -- --version="$(git describe --tags)"
+    - name: Build release zip
+      run: python3 create_release.py --version $(git describe --tags)
     - name: Build CTAN release zip with l3build
       run: l3build ctan --config build-ctan
     - name: Upload release zip
