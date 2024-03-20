@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update &&\
     apt-get install -f -y --no-install-recommends ca-certificates curl fontconfig make perl zip git &&\
-    update-ca-certificates &&\
+    update-ca-certificates python3 &&\
     apt-get clean -y &&\
     rm -rf /var/lib/apt/lists/*
 
