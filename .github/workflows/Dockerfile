@@ -5,8 +5,8 @@ ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update &&\
-    apt-get install -f -y --no-install-recommends ca-certificates curl fontconfig make perl zip git &&\
-    update-ca-certificates python3 &&\
+    apt-get install -f -y --no-install-recommends ca-certificates curl fontconfig make perl zip git python3 &&\
+    update-ca-certificates &&\
     apt-get clean -y &&\
     rm -rf /var/lib/apt/lists/*
 
