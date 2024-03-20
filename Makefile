@@ -18,11 +18,11 @@ else
 	RM = rm -f
 endif
 
-.PHONY: all all-dev clean distclean dist thesis viewthesis spine viewspine doc viewdoc cls check save savepdf test FORCE_MAKE
+.PHONY: all all-dev clean distclean dist thesis viewthesis doc viewdoc cls check save test FORCE_MAKE
 
 thesis: $(THESIS).pdf
 
-all: thesis spine
+all: thesis
 
 all-dev: doc all
 
@@ -33,25 +33,17 @@ $(CLSFILE): $(SOURCES)
 
 doc: $(PACKAGE).pdf
 
-spine: $(SPINE).pdf
-
 $(PACKAGE).pdf: cls FORCE_MAKE
 	$(LATEXMK) $(PACKAGE).dtx
 
 $(THESIS).pdf: cls FORCE_MAKE
 	$(LATEXMK) $(THESIS)
 
-$(SPINE).pdf: cls FORCE_MAKE
-	$(LATEXMK) $(SPINE)
-
 viewdoc: doc
 	$(LATEXMK) -pv $(PACKAGE).dtx
 
 viewthesis: thesis
 	$(LATEXMK) -pv $(THESIS)
-
-viewspine: spine
-	$(LATEXMK) -pv $(SPINE)
 
 save:
 ifeq ($(target),)
@@ -68,11 +60,11 @@ else
 endif
 
 clean:
-	$(LATEXMK) -c $(PACKAGE).dtx $(THESIS) $(SPINE)
+	$(LATEXMK) -c $(PACKAGE).dtx $(THESIS)
 	-@$(RM) -rf *~ main-survey.* main-translation.* _markdown_thuthesis* thuthesis.markdown.*
 
 cleanall: clean
-	-@$(RM) $(PACKAGE).pdf $(THESIS).pdf $(SPINE).pdf
+	-@$(RM) $(PACKAGE).pdf $(THESIS).pdf
 
 distclean: cleanall
 	-@$(RM) $(CLSFILE)

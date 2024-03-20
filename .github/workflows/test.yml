@@ -10,36 +10,33 @@ jobs:
     container: ghcr.io/tuna/thuthesis-test-env
     steps:
     - uses: actions/checkout@v4
-    - id: vars
-      run: echo "git_describe=$(git describe --tags)" >> $GITHUB_OUTPUT
-    - name: Test thesis
-      run: make thesis
-    - name: Test spine
-      run: make spine
-    - name: Test doc
-      run: make doc
+
+    - name: Build documentation and example
+      run: make thesis doc
     - name: Upload build results
       uses: actions/upload-artifact@v4
       with:
-        name: build-result-${{ steps.vars.outputs.git_describe }}
+        name: build-result
         path: |
           thuthesis.cls
           thuthesis.pdf
           thuthesis-example.pdf
+
     - name: Test with l3build
       run: make test
+    - name: Upload test results if failed
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: test-result
+        path: |
+          build/test
+          build/test-testfiles
+
     - name: Build release zip with l3build
       run: l3build ctan --config build-ctan
     - name: Upload release zip
       uses: actions/upload-artifact@v4
       with:
-         name: thuthesis-ctan-${{ steps.vars.outputs.git_describe }}
-         path: thuthesis-ctan.zip
-    - name: Upload test results if failed
-      uses: actions/upload-artifact@v4
-      if: failure()
-      with:
-        name: test-result-${{ steps.vars.outputs.git_describe }}
-        path: |
-          build/test
-          build/test-testfiles
+          name: thuthesis-ctan
+          path: thuthesis-ctan.zip
