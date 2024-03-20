@@ -1,10 +1,12 @@
-const argv = require('minimist')(process.argv.slice(2));
-const path = require('path');
-const gulp = require('gulp');
-const log = require('fancy-log');
-const color = require('ansi-colors');
-const del = require('del');
-const zip = require('gulp-zip');
+import minimist from 'minimist';
+import path from 'path';
+import log from 'fancy-log';
+import color from 'ansi-colors';
+import zip from 'gulp-zip';
+import gulp from 'gulp';
+import { deleteSync } from 'del';
+
+const argv = minimist(process.argv.slice(2));
 
 const packageName = 'thuthesis';
 
@@ -31,13 +33,11 @@ const config = {
     example: {
         files: [
 		'thuthesis-example.tex',
-                'spine.tex',
-                'thuthesis-example.pdf',
-                'spine.pdf',
-                'thusetup.tex',
-                'data/*.tex',
-                'figures/*.*',
-                'ref/*.bib',
+        'thuthesis-example.pdf',
+        'thusetup.tex',
+        'data/*.tex',
+        'figures/*.*',
+        'ref/*.bib',
 	],
 	// preference for vscode
 	pref: [
@@ -60,7 +60,6 @@ function usage() {
 
 function _default(callback) {
     usage();
-
     callback();
 }
 
@@ -75,10 +74,8 @@ function bootstrap(callback) {
 }
 
 function cleanup(callback) {
-    del.sync([path.join(config.dist.root, config.dist.build)]);
-
+    deleteSync([path.join(config.dist.root, config.dist.build)]);
     log(color.green.bold(`🍺 ${config.dist.zip} generated`));
-
     callback();
 }
 
@@ -111,28 +108,14 @@ function init_self(callback) {
     config.dist.zip = `${config.dist.build}.zip`;
 
     log(`Removing old ${config.dist.build}...`);
-    del.sync([path.join(config.dist.root, config.dist.build),
-              path.join(config.dist.root, config.dist.zip)]);
-
-    callback();
-}
-
-function init_ctan(callback) {
-    config.dist.files = [...config.template.files, ...config.example.files];
-    config.dist.build = `${packageName}`;
-    config.dist.zip = `${config.dist.build}.zip`;
-
-    log(`Removing old ${config.dist.build}...`);
-    del.sync([path.join(config.dist.root, config.dist.build),
+    deleteSync([path.join(config.dist.root, config.dist.build),
               path.join(config.dist.root, config.dist.zip)]);
 
     callback();
 }
 
 const build_self = gulp.series(init_self, copy, compress, cleanup);
-const build_ctan = gulp.series(init_ctan, copy, compress, cleanup);
-
 const build = gulp.series(bootstrap, build_self);
 
-exports.default = _default;
-exports.build = build;
+export { build };
+export default _default;
