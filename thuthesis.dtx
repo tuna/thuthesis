@@ -1281,6 +1281,9 @@
 \newcommand\thu@warning[1]{%
   \ClassWarning{thuthesis}{#1}%
 }
+\newcommand\thu@debug[1]{%
+  \typeout{Package thuthesis Info: #1}%
+}
 \newcommand\thu@patch@error[1]{%
   \thu@error{Failed to patch command \protect#1}%
 }
@@ -2256,6 +2259,7 @@
       \thusetup{system = windows}
     }
   }
+  \thu@debug{Detected system: \thu@system}
 \fi
 %    \end{macrocode}
 %
@@ -2290,6 +2294,7 @@
       }
     }
   \fi
+  \thu@debug{Detected fontset: \thu@fontset}
 \fi
 %    \end{macrocode}
 %
@@ -2578,6 +2583,7 @@
       \fi
     \fi
   \fi
+  \thu@debug{Detected CJK font: \thu@cjk@font}
 \fi
 %    \end{macrocode}
 %
