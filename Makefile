@@ -78,6 +78,6 @@ endif
 
 dist: check all-dev
 	# use l3build for CTAN release (zip with .tds.zip)
-	l3build ctan --config build-ctan
+	l3build ctan --config utils/build-ctan
 	# use gulp for GitHub release (zip with generated file)
-	python3 create_release.py --version="v$(version)"
+	python3 utils/create_release.py --version="v$(version)"
