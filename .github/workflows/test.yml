@@ -27,7 +27,7 @@ jobs:
       run: |
         version=$(git describe --tags)
         echo "Current git revision: $version"
-        python3 create_release.py --version $version
+        python3 utils/create_release.py --version $version
     - name: Build CTAN release zip with l3build
       run: l3build ctan --config build-ctan
     - name: Upload release zip
