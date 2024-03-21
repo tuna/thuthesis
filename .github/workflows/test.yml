@@ -66,17 +66,8 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     strategy:
       matrix:
-        include:
-        - runs-on: ubuntu-latest
-          shell: bash
-        - runs-on: macos-14
-          shell: bash
-        - runs-on: windows-latest
-          shell: C:\msys64\usr\bin\bash.exe -e {0}
-    runs-on: ${{ matrix.runs-on }}
-    defaults:
-      run:
-        shell: ${{ matrix.shell }}
+        os: [ubuntu-latest, macos-14, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
     - name: Install TeX Live
@@ -94,7 +85,7 @@ jobs:
       uses: actions/upload-artifact@v4
       if: failure()
       with:
-        name: test-result-${{ matrix.runs-on}}
+        name: test-result-${{ matrix.os }}
         path: |
           build/test
           build/test-testfiles
