@@ -21,12 +21,12 @@ Scroll down for the English version of README.
 
 推荐下载**发布版**模板，里面包括具体使用说明以及示例文档：
 
-* 模板使用说明（thuthesis.pdf）
-* 示例文档（thuthesis-example.pdf）
+* 模板使用说明（`thuthesis.pdf`）
+* 示例文档（`thuthesis-example.pdf`）
 
-开发版中不提供预生成的 `cls` 文件和文档，仅包含源码。其仅供开发者与需要尚未发布的功能的有经验的 TeX 用户使用，不提供任何保证。
+在开始书写前，建议将 `thuthesis-example.tex` 复制或重命名为其他有意义的名称。
 
-下载途径：
+### 下载途径
 
 * 发布版：
   * 仅下载：
@@ -38,14 +38,19 @@ Scroll down for the English version of README.
     * [Overleaf 模板](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/cfwgcxtvkbsx)
 * 开发版：[GitHub](https://github.com/tuna/thuthesis)
 
-**任何在其他途径分发的 ThuThesis（包含其变体或衍生物）均不是官方版本，请谨慎使用。**
+### 注意事项
+
+* GitHub 仓库的开发版仅供开发者与需要尚未发布的功能的有经验的 TeX 用户使用，不提供任何保证。
+* **任何在其他途径分发的 ThuThesis（包含其变体或衍生物）均不是官方版本，请谨慎使用。**
 
 ## 更新日志
 
 每个版本的详细更新日志，请见 [CHANGELOG.md](CHANGELOG.md)。使用文档中也包含了这一内容。
 
 ## 升级
+
 ### 自动更新
+
 通过 TeX 发行版工具（如 `tlmgr`）自动从 [CTAN](https://www.ctan.org/pkg/thuthesis) 更新。
 
 ### 手动更新
@@ -56,34 +61,30 @@ Scroll down for the English version of README.
 
 #### 开发版
 
-从 GitHub clone 项目源码或者下载源码 zip 包，执行命令（Windows 用户在文件夹空白处按 `Shift + 鼠标右键`，点击“在此处打开命令行窗口”）：
+有两种获得开发版编译结果的方式：
 
-```shell
-xetex thuthesis.ins
-```
-
-即可得到 `thuthesis.cls` 等模板文件。
+1. 从 GitHub 上对应 commit 的名为 `Test` 的 workflow 中下载 `thuthesis-snapshot-release` 并解压，其中的 `dist` 文件夹包含了编译后的开发版代码。
+2. 从 GitHub clone 项目源码或者下载源码 zip 包，执行 `xetex thuthesis.ins`。
 
 ## 提问
+
 按推荐顺序排序：
 
-* 先到 [FAQ](https://github.com/tuna/thuthesis/wiki/FAQ) 看看常见问题
-* 在 [GitHub Discussions](https://github.com/tuna/thuthesis/discussions) 搜索已有讨论，如果没有则提出新问题
-* 如果认为模板存在问题，可在 Issues 中提出
+* 先到 [FAQ](https://github.com/tuna/thuthesis/wiki/FAQ) 看看常见问题；
+* 在 [GitHub Discussions](https://github.com/tuna/thuthesis/discussions) 搜索已有讨论，如果没有则提出新问题；
+* 如果认为模板存在问题，可在 Issues 中使用相应的模板提出。
 
 ## Makefile的用法
 
 ```shell
-make [{all|thesis|spine|doc|clean|cleanall|distclean}]
+make [{thesis|doc|clean|cleanall|distclean}]
 ```
 
 ### 目标
-* `make thesis`    生成论文 thuthesis-example.pdf；
-* `make spine`     生成书脊 spine.pdf；
-* `make doc`       生成模板使用说明书 thuthesis.pdf；
-* `make all`       生成论文和书脊，相当于 `make thesis && make spine`；
-* `make clean`     删除示例文件的中间文件（不含 thuthesis-example.pdf）；
-* `make cleanall`  删除示例文件的中间文件和 thuthesis-example.pdf；
+* `make thesis`    生成论文 `thuthesis-example.pdf`；
+* `make doc`       生成模板使用说明书 `thuthesis.pdf`；
+* `make clean`     删除示例文件的中间文件（不含 `thuthesis-example.pdf`）；
+* `make cleanall`  删除示例文件的中间文件和 `thuthesis-example.pdf`；
 * `make distclean` 删除示例文件和模板的所有中间文件和 PDF。
 
 ---
@@ -100,11 +101,14 @@ Any use of ThuThesis in violation of [The LaTeX project public license v1.3c](ht
 
 ## Downloads
 
-**Published versions** are recommended. Specific usage documentation and examples can be found in the archive. At present, these documents are <b>only available in Chinese</b>:
-* Template usage documentation (thuthesis.pdf)
-* Template example (thuthesis-example.pdf)
+**Published versions** are recommended. Specific usage documentation and examples can be found in the archive. At present, these documents are **only available in Chinese**:
 
-Developer versions contain only source code but no pre-compiled `cls` file and documentations. They are only for the usage of developers and experienced TeX users in need of unpublished features. No warranties are provided.
+* Template usage documentation (`thuthesis.pdf`)
+* Template example (`thuthesis-example.pdf`)
+
+Before you start writing, it is recommended to copy or rename `thuthesis-example.tex` to another meaningful name.
+
+### Download Methods
 
 * Published versions:
   * Download only:
@@ -116,14 +120,19 @@ Developer versions contain only source code but no pre-compiled `cls` file and d
     * [Overleaf template](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/cfwgcxtvkbsx)
 * Developer versions: [GitHub](https://github.com/tuna/thuthesis)
 
-**ThuThesis (including its variants / derivatives) distributed in any other way is NOT an official version. Use at your own risk.**
+### Notes
+
+* The development version in the GitHub repository is intended for developers and experienced TeX users who require unreleased features, and no guarantees are provided.
+* **ThuThesis (including its variants / derivatives) distributed in any other way is NOT an official version. Use at your own risk.**
 
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for detailed changes in each release. They are also included in the usage documentation.
 
 ## Updates
+
 ### Automatic
+
 Get the most up-to-date published version with your TeX distribution from [CTAN](https://www.ctan.org/pkg/thuthesis).
 
 ### Manual
@@ -132,34 +141,30 @@ Get the most up-to-date published version with your TeX distribution from [CTAN]
 
 Download the published zip files, extract `thuthesis.cls` and other files (if needed) and override the existing ones in your thesis.
 
-#### Developer versions
+#### Development versions
 
-Download the source code package and unzip to the root directory of your thesis (or clone this project), then execute the command (Windows users `Shift + right click` white area in the file window and click "Open command line window here" from the popup menu):
+There are two ways to obtain the compiled development version:
 
-```shell
-xetex thuthesis.ins
-```
-
-You'll get `thuthesis.cls` along with other template files.
+1. Download the `thuthesis-snapshot-release` from the `Test` workflow of the corresponding commit on GitHub and extract it. The `dist` folder contains the compiled template of development version.
+2. Clone the project source code from GitHub or download the source code tarball, and run `xetex thuthesis.ins`.
 
 ## Reporting Issues
+
 Please follow the procedure below:
 
-* Check the [FAQ](https://github.com/tuna/thuthesis/wiki/FAQ)
-* Search [GitHub Discussions](https://github.com/tuna/thuthesis/discussions) and create if not existed
-* Create an issue if you believe there is a bug
+* Check the [FAQ](https://github.com/tuna/thuthesis/wiki/FAQ).
+* Search [GitHub Discussions](https://github.com/tuna/thuthesis/discussions) and create if not existed.
+* Create an issue (with specified template) if you believe there is a bug.
 
 ## Makefile Usage
 
 ```shell
-make [{all|thesis|spine|doc|clean|cleanall|distclean}]
+make [{all|thesis|doc|clean|cleanall|distclean}]
 ```
 
 ### Targets
-* `make thesis`    generate thesis thuthesis-example.pdf;
-* `make spine`     generate book spine for printing spine.pdf;
+* `make thesis`    generate thesis `thuthesis-example.pdf`;
 * `make doc`       generate template documentation thuthesis.pdf;
-* `make all`       generate thesis and spine, same as `make thesis && make spine`;
 * `make clean`     delete all examples' files (excluding thuthesis-example.pdf);
 * `make cleanall`  delete all examples' files and thuthesis-example.pdf;
 * `make distclean` delete all examples' and templates' files and PDFs.
