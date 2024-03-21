@@ -7,7 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
-    container: ghcr.io/tuna/thuthesis-test-env
+    container: 
+      image: ghcr.io/tuna/thuthesis-test-env
+      options: --user 1001
     steps:
     - uses: actions/checkout@v4
     - name: Build documentation and example
@@ -37,7 +39,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
-    container: ghcr.io/tuna/thuthesis-test-env
+    container: 
+      image: ghcr.io/tuna/thuthesis-test-env
+      options: --user 1001
     steps:
     - uses: actions/checkout@v4
     - name: Test with l3build
