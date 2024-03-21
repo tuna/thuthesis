@@ -10,7 +10,7 @@ env:
   NOMENCL_PKGS: nomencl koma-script xkeyval
   BIN_PKGS: latexmk l3build
   REQUIRED_PKGS: >-
-    bibunits bigfoot caption enumitem
+    scheme-basic bibunits bigfoot caption enumitem
     environ etoolbox filehook footmisc notoccite pdfpages threeparttable
     titlesec trimspaces unicode-math lt3luabridge cell
   FONT_PKGS: fandol tex-gyre xits
@@ -37,7 +37,7 @@ jobs:
           ${{ env.HYPERREF_PKGS }} ${{ env.NOMENCL_PKGS }} ${{ env.BIN_PKGS }}
           ${{ env.REQUIRED_PKGS }} ${{ env.FONT_PKGS }} ${{ env.EXTRA_PKGS }}
           ${{ env.MARKDOWN_PKGS }} ${{ env.DOC_PKGS }} ${{ env.EXAMPLE_PLGS }}
-          update-all-packages: true
+        update-all-packages: true
     - name: Build documentation and example
       run: make all-dev
     - name: Upload build results
@@ -73,7 +73,6 @@ jobs:
           shell: bash
         - runs-on: windows-latest
           shell: C:\msys64\usr\bin\bash.exe -e {0}
-    name: on ${{ matrix.runs-on }}
     runs-on: ${{ matrix.runs-on }}
     defaults:
       run:
@@ -95,7 +94,7 @@ jobs:
       uses: actions/upload-artifact@v4
       if: failure()
       with:
-        name: test-result
+        name: test-result-${{ matrix.runs-on}}
         path: |
           build/test
           build/test-testfiles
