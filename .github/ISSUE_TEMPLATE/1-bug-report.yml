@@ -5,7 +5,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        请确保你已经搜索了已有的 issues 和 discussion，以确保没有重复提交。
+        请确保你已经搜索了已有的 issues 和 discussion，以确保没有重复提交。  
+        请不要在此处询问如何使用模板，而是在 GitHub Discussions 中提出。
 
   - type: input
     id: system
@@ -13,6 +14,8 @@ body:
       label: 系统
       description: 使用的系统
       placeholder: macOS 13.2 / Windows 11 / Ubuntu 24.04 / Overleaf / TeXPage
+    validations:
+      required: true
 
   - type: input
     id: tex-distro
@@ -42,7 +45,7 @@ body:
     validations:
       required: true
 
-  - type: input
+  - type: dropdown
     id: degree-type
     attributes:
       label: 学位类型
