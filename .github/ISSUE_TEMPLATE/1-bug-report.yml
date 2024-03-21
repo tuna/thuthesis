@@ -1,12 +1,19 @@
 name: Bug Report / Feature Request
-description: 报告模板中的问题或者请求实现更多功能
+description: 报告模板中的问题或者请求实现更多功能。
 
 body:
-  - type: markdown
+  - type: checkboxes
+    id: checklist
     attributes:
-      value: |
-        请确保你已经搜索了已有的 issues 和 discussion，以确保没有重复提交。  
-        请不要在此处询问如何使用模板，而是在 GitHub Discussions 中提出。
+      label: 提交前检查
+      description: 请确保你提交的问题符合以下的要求。
+      options:
+        - label: 我已经充分阅读了模板文档。
+          required: true
+        - label: 我的问题并非关于模板的用法（否则请前往 discussions 提出）。
+          required: true
+        - label: 我已经搜索了已有的 issues 和 discussion，确认没有重复提交。
+          required: true
 
   - type: input
     id: system
@@ -41,7 +48,7 @@ body:
     attributes:
       label: 版本
       description: 使用的模板版本（可打开 `thuthesis.cls` 搜索 `\ProvidesClass` 查看）
-      placeholder: v7.4.0
+      placeholder: '7.4.0'
     validations:
       required: true
 
