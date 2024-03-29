@@ -10,17 +10,19 @@
 
 - 本科生的附录（调研阅读报告和书面翻译）支持 `biblatex`（[#893](https://github.com/tuna/thuthesis/issues/893)）。
 - 适配生命科学学院要求的 Cell 参考文献格式（[#921](https://github.com/tuna/thuthesis/discussions/921)）。
+- 增加 GitHub Actions 配置，自动从 master 分支发布预览版本、自动在多平台进行测试。
 
 ### Changed
 
+- 同步《写作指南》对 2023 年 3 月版本的后续修改：
+  - 封面的学科门类的字号改为三号（16bp）（[#899](https://github.com/tuna/thuthesis/issues/899)）。
+  - 修改研究生目录的章标题段前距离（[#926](https://github.com/tuna/thuthesis/issues/926)）。
+  - 统一并简化封面的布局（[#900](https://github.com/tuna/thuthesis/issues/900)）。
 - 不再插入 PDF 版书脊，改为编译生成（[#551](https://github.com/tuna/thuthesis/issues/551)）。
 - 本科生附录的参考文献编译方式改为 `bibtex thuthesis-appendix-{a,b,c...}`，同研究生一致。
-- 封面的学科门类的字号改为三号（16bp），同步《指南》2023 年 3 月版的更改（[#899](https://github.com/tuna/thuthesis/issues/899)）。
-- 统一并简化封面的布局（[#900](https://github.com/tuna/thuthesis/issues/900)）。
 - 英文封面的导师姓名居中对齐（[#883](https://github.com/tuna/thuthesis/issues/883)）。
 - 修正 macOS 的 MS Office 字体名（[#913](https://github.com/tuna/thuthesis/issues/913)）。
 - 自动检测并使用 Windows 字体文件，默认从当前目录查找（[#747](https://github.com/tuna/thuthesis/discussions/747)）。
-- 修改研究生目录的章标题段前距离（[#926](https://github.com/tuna/thuthesis/issues/926)）。
 
 ### Fixed
 
