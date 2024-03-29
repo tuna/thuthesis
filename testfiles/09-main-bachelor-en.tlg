@@ -10294,7 +10294,7 @@ Completed box being shipped out [7]
 ....\special{color pop}
 ..\glue 54.06006
 ..\glue(\lineskip) 0.0
-..\vbox(645.87758+0.0)x421.10089, glue set >20000.0fil
+..\vbox(645.87758+0.0)x421.10089, glue set - 0.52684
 ...\glue(\topskip) 2.64104
 ...\hbox(9.35896+2.32468)x421.10089, glue set 41.75572fil
 ....\TU/FandolSong(0)/m/n/12.045 们
@@ -11817,6 +11817,12 @@ Completed box being shipped out [7]
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
+...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
+...\penalty 0
+...\glue 12.0 plus 2.0 minus 2.0
+...\penalty 0
 ...\glue 12.0 plus 2.0 minus 2.0
 ...\glue 0.0 plus 1.0
 ...\vbox(73.3258+0.0)x421.10089
@@ -11916,7 +11922,10 @@ Completed box being shipped out [7]
 ....\special{color pop}
 ...\penalty 0
 ...\penalty 10000
+...\glue 12.0 plus 2.0 minus 2.0
+...\glue -12.0 plus -2.0 minus -2.0
 ...\penalty 0
+...\glue 12.0 plus 2.0 minus 2.0
 ...\penalty 10000
 ...\penalty 0
 ...\penalty 10000
