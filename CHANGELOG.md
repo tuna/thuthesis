@@ -6,6 +6,8 @@
 
 ## [Unreleased]
 
+## [v7.5.0] - 2024-03-29
+
 ### Added
 
 - 本科生的附录（调研阅读报告和书面翻译）支持 `biblatex`（[#893](https://github.com/tuna/thuthesis/issues/893)）。
@@ -975,7 +977,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.4.0...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.5.0...HEAD
+[v7.5.0]:     https://github.com/tuna/thuthesis/compare/v7.4.0...v7.5.0
 [v7.4.0]:     https://github.com/tuna/thuthesis/compare/v7.3.2...v7.4.0
 [v7.3.2]:     https://github.com/tuna/thuthesis/compare/v7.3.1...v7.3.2
 [v7.3.1]:     https://github.com/tuna/thuthesis/compare/v7.3.0...v7.3.1
