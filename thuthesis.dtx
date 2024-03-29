@@ -6975,12 +6975,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
 \RequirePackage{metalogo}
-
-% Pretending the `amssymb` has been loaded.
-% This should be removed after `markdown` v2.13.0.
-\expandafter\def\csname ver@amssymb.sty\endcsname{0000/00/00}
 \RequirePackage[tightLists=false]{markdown}
-\expandafter\let\csname ver@amssymb.sty\endcsname\relax
 
 \markdownSetup{
   renderers = {
