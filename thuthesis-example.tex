@@ -2,7 +2,7 @@
 % !TeX program = xelatex
 % !TeX spellcheck = en_US
 
-\documentclass[degree=master]{thuthesis}
+\documentclass[degree=bachelor,print-style=oneside]{sudathesis}
   % 学位 degree:
   %   doctor | master | bachelor | postdoc
   % 学位类型 degree-type:
@@ -12,30 +12,50 @@
   % 字体库 fontset
   %   windows | mac | fandol | ubuntu
   % 建议终版使用 Windows 平台的字体编译
+  % 打印设置 print-style
+  %    oneside | twoside
+  % 章节编码设置 sequence-style
+  %   science | liberal 默认science
+  % 默认使用双面打印，根据自己需要设定双面还是单面打印，如果是提交电子版论文建议使用单面打印消除空白页
+
+
+%%% 配置setup.tex 和main。tex后运行，记得自己选择导入生成封面和选择参考文献格式
 
 
 % 论文基本配置，加载宏包等全局配置
-\input{thusetup}
-
+\input{setup}
 
 \begin{document}
 
-% 封面
+% 封面，使用清华原版的封面
 \maketitle
-
+% 插入封面，针对苏大本科生毕业论文
+%\includepdf[pages={1}]{./figures/cover.pdf}
+% 生成封面，针对苏大研究生毕业论文中文版
+\titlech
+% 生成封面，针对苏大研究生毕业论文英文版
+\titleeng
 % 学位论文指导小组、公开评阅人和答辩委员会名单
 % 本科生不需要
-\input{data/committee}
+%\input{data/committee}
 
 % 使用授权的说明
-% 本科生开题报告不需要
-\copyrightpage
+%\copyrightpage
 % 将签字扫描后授权文件 scan-copyright.pdf 替换原始页面
 % \copyrightpage[file=scan-copyright.pdf]
 
-\frontmatter
-\input{data/abstract}
+% 插入独创性声明和使用授权说明（苏大本科生）
+\includepdf[pages={1,2}]{./figures/statement.pdf}
 
+\frontmatter
+%\newpage
+\pagestyle{cnfrontmatter}
+\input{contents/abstract_cn}
+\newpage
+\pagestyle{enfrontmatter}
+\input{contents/abstract_en}
+\newpage
+\pagestyle{plain}
 % 目录
 \tableofcontents
 
@@ -46,36 +66,55 @@
 \listoftables            % 附表清单
 
 % 符号对照表
-\input{data/denotation}
+\input{contents/denotation}
 
-
+%\newpage
 % 正文部分
 \mainmatter
-\input{data/chap01}
-\input{data/chap02}
-\input{data/chap03}
-\input{data/chap04}
-
-
+\input{contents/chap01}
+\input{contents/chap02}
+\input{contents/chap03}
+\input{contents/chap04}
+%\chapter{测试}
 % 其他部分
 \backmatter
-
 % 参考文献
-\bibliography{ref/refs}  % 参考文献使用 BibTeX 编译
-% \printbibliography       % 参考文献使用 BibLaTeX 编译
+\bibliography{reference/refs}  % 参考文献使用 BibTeX 编译(本科生)
 
+% 研究生引入参考文献使用此版本
+%\begin{kai}
+%\bibliography{reference/refs}
+%\end{kai}
+
+%\printbibliography       % 参考文献使用 BibLaTeX 编译
+
+
+%\chapter{附录}
 % 附录
+%\fancypagestyle{input}{%
+%  \fancyhf{}%
+%  \renewcommand\footrulewidth{0pt}%
+%    \renewcommand\headrulewidth{0bp}%
+%    \fancyfoot[C]{
+%        \xiaowu
+%      -\thepage-
+%    }%
+%}% 给下面引入的所有 pdf 标页码
+%\includepdfset{pagecommand={\thispagestyle{input}}} %pdfpages宏包插入文件无页码的解决
+%\setcounter{secnumdepth}{0}
+%\includepdf[addtotoc={1,chapter,1,文献综述,cc,2,section,2,测试,aa},pages={1,2,3}]{./figures/statement.pdf}
+
 % 本科生需要将附录放到声明之后，个人简历之前
 \appendix
-% \input{data/appendix-survey}       % 本科生：外文资料的调研阅读报告
-% \input{data/appendix-translation}  % 本科生：外文资料的书面翻译
-\input{data/appendix}
+% \input{contents/appendix-survey}       % 本科生：外文资料的调研阅读报告
+% \input{contents/appendix-translation}  % 本科生：外文资料的书面翻译
+% TODO！本科生启用appendix请勿启用参考文献section，会出现报错，硕博请自行评估是否需要来启用
+\input{contents/appendix}
 
 % 致谢
-\input{data/acknowledgements}
+\input{contents/acknowledgements}
 
 % 声明
-% 本科生开题报告不需要
 \statement
 % 将签字扫描后的声明文件 scan-statement.pdf 替换原始页面
 % \statement[file=scan-statement.pdf]
@@ -87,15 +126,15 @@
 
 % 个人简历、在学期间完成的相关学术成果
 % 本科生可以附个人简历，也可以不附个人简历
-\input{data/resume}
+\input{contents/resume}
 
 % 指导教师/指导小组评语
 % 本科生不需要
-\input{data/comments}
+\input{contents/comments}
 
 % 答辩委员会决议书
 % 本科生不需要
-\input{data/resolution}
+\input{contents/resolution}
 
 % 本科生的综合论文训练记录表（扫描版）
 % \record{file=scan-record.pdf}

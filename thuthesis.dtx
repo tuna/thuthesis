@@ -1243,8 +1243,8 @@
 %     include-spine = true,
 %   }
 % \end{latex}
-% 打开此选项后，书脊会出现在中文封面后面的第一个空白页。如果有英文封面，则在英文封面之前。
-% 如果需要书脊出现在其他位置，请手工使用 \cs{spine} 生成，不要使用此选项。
+% 打开此选项后，书籍会出现在中文封面后面的第一个空白页。如果有英文封面，则在英文封面之前。
+% 如果需要书籍出现在其他位置，请手工使用 \cs{spine} 生成，不要使用此选项。
 %
 % \section{致谢}
 % \label{sec:thanks}
@@ -1274,15 +1274,17 @@
 %
 % 报错
 %    \begin{macrocode}
+%%% TODO 以下被suda替换
 \newcommand\thu@error[1]{%
-  \ClassError{thuthesis}{#1}{}%
+  \ClassError{sudathesis}{#1}{}%
 }
 \newcommand\thu@warning[1]{%
-  \ClassWarning{thuthesis}{#1}%
+  \ClassWarning{sudathesis}{#1}%
 }
 \newcommand\thu@debug[1]{%
-  \typeout{Package thuthesis Info: #1}%
+  \typeout{Package sudathesis Info: #1}%
 }
+%%% TODO:以上是suda替换更改
 \newcommand\thu@patch@error[1]{%
   \thu@error{Failed to patch command \protect#1}%
 }
@@ -1329,8 +1331,10 @@
 %    \begin{macrocode}
 %<*cls>
 \hyphenation{Thu-Thesis}
-\def\thuthesis{ThuThesis}
-\def\version{7.5.0}
+%%% TODO以下被更改
+\def\sudathesis{ThuThesis}
+\def\version{2.2.0}
+%%%  TODO：以上被更改
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -1658,6 +1662,24 @@
     },
     default = print,
   },
+  %%% TODO以下被更改
+  print-style = {
+    name=book@printstyle,
+    choices = {
+      oneside,
+      twoside,
+    },
+    default = twoside,
+  },
+  sequence-style = {
+    name=book@sequencestyle,
+    choices = {
+      science,
+      liberal,
+    },
+    default = science,
+  },
+  %%% TODO：以上被更改
 }
 \newif\ifthu@degree@graduate
 \newcommand\thu@set@graduate{%
@@ -1703,6 +1725,13 @@
 \else
   \PassOptionsToClass{openany}{book}
 \fi
+%%% TODO：以下被额外添加
+\ifthu@book@printstyle@oneside
+  \PassOptionsToClass{oneside}{book}
+\else
+  \PassOptionsToClass{twoside}{book}
+\fi
+%%% TODO：以上被额外添加
 %    \end{macrocode}
 %
 % \pkg{unicode-math} 和 \pkg{newtx} 都不需要 \pkg{fontspec} 设置数学字体。
@@ -1905,36 +1934,51 @@
   marginparwidth = 2cm,
   marginparsep   = 0.5cm,
 }
+%%% TODO:以下被更改
 \newcommand\thu@set@geometry{%
   \ifthu@degree@bachelor
     \geometry{
-      top        = 3.8cm,
-      bottom     = 3.2cm,
-      left       = 3.2cm,
-      right      = 3cm,
-      headheight = 1.9cm,
-      headsep    = 1.9cm,
-      footskip   = 1.45cm,
+      top        = 3.3cm,
+      bottom     = 2.7cm,
+      left       = 3cm,
+      right      = 2.5cm,
+      headheight = 0.42cm,
+      headsep    = 0.28cm,
+      footskip   = 0.7cm,
     }%
     \ifthu@output@print
       \geometry{
-        left       = 3.2cm,
-        right      = 3cm,
+        left       = 3cm,
+        right      = 2.5cm,
       }%
     \else
       \geometry{
-        hmargin    = 3cm,
+        left       = 3cm,
+        right      = 2.5cm,
       }%
     \fi
   \else
-    \geometry{
-      margin     = 3cm,
-      headheight = 2.7cm,
-      headsep    = 0.3cm,
-      footskip   = 0.8cm,
-    }%
+    \ifthu@degree@graduate
+      \geometry{
+        top        = 3.3cm,
+        bottom     = 2.7cm,
+        left       = 2.75cm,
+        right      = 2.75cm,
+        headheight = 2.6cm,
+        headsep    = 0.4cm,
+        footskip   = 0.7cm,
+      }%
+    \else
+      \geometry{
+        margin     = 3cm,
+        headheight = 2.7cm,
+        headsep    = 0.3cm,
+        footskip   = 0.8cm,
+      }%
+    \fi
   \fi
 }
+%%% TODO 以上被更改（\newcommand)
 \thu@set@geometry
 \thu@option@hook{degree}{\thu@set@geometry}
 \thu@option@hook{output}{\thu@set@geometry}
@@ -2173,7 +2217,7 @@
 % 两种情况的折衷。
 %    \begin{macrocode}
 \renewcommand\normalsize{%
-  \@setfontsize\normalsize{12bp}{20bp}%
+  \@setfontsize\normalsize{12bp}{23.4bp}%% TODO:此处被更改
   \abovedisplayskip 6bp%
   \abovedisplayshortskip 6bp%
   \belowdisplayshortskip 6bp%
@@ -2244,22 +2288,28 @@
 %
 % 检测系统。
 %    \begin{macrocode}
+%%% TODO：以下被更改
 \ifthu@system@auto
-  \IfFileExists{/System/Library/Fonts/Menlo.ttc}{
-    \thusetup{system = mac}
+  \IfFileExists{./fonts/simsun.ttc}{
+    \thusetup{system = windows}
   }{
-    \IfFileExists{/dev/null}{
-      \IfFileExists{null:}{
-        \thusetup{system = windows}
-      }{
-        \thusetup{system = unix}
-      }
+    \IfFileExists{/System/Library/Fonts/Menlo.ttc}{
+      \thusetup{system = mac}
     }{
-      \thusetup{system = windows}
+      \IfFileExists{/dev/null}{
+        \IfFileExists{null:}{
+          \thusetup{system = windows}
+        }{
+          \thusetup{system = unix}
+        }
+      }{
+        \thusetup{system = windows}
+      }
     }
   }
   \thu@debug{Detected system: \thu@system}
 \fi
+%%% TODO 以上被更改
 %    \end{macrocode}
 %
 % 使用 \pkg{fontspec} 配置字体。
@@ -2267,34 +2317,40 @@
 \newcommand\thu@mac@word@font@dir{%
   /Applications/Microsoft Word.app/Contents/Resources/DFonts%
 }
+%%% TODO：以下被更改
 \ifthu@fontset@auto
   \ifthu@system@windows
     \thusetup{fontset = windows}
   \else
-    \IfFontExistsTF{SimSun}{
+    \IfFileExists{./fonts/simsun.ttc}{
       \thusetup{fontset = windows}
     }{
-      \IfFileExists{\thu@windows@font@dir/Simsun.ttc}{
-        \thusetup{fontset = windows, cjk-font = windows-local}
+      \IfFontExistsTF{SimSun}{
+        \thusetup{fontset = windows}
       }{
-        \IfFileExists{\thu@mac@word@font@dir/Simsun.ttc}{
-          \thusetup{fontset = windows, cjk-font = mac-word}
+        \IfFileExists{\thu@windows@font@dir/Simsun.ttc}{
+          \thusetup{fontset = windows, cjk-font = windows-local}
         }{
-          \ifthu@system@mac
-            \thusetup{fontset = mac}
-          \else
-            \IfFontExistsTF{Noto Serif CJK SC}{
-              \thusetup{fontset = ubuntu}
-            }{
-              \thusetup{fontset = fandol}
-            }
-          \fi
+          \IfFileExists{\thu@mac@word@font@dir/Simsun.ttc}{
+            \thusetup{fontset = windows, cjk-font = mac-word}
+          }{
+            \ifthu@system@mac
+              \thusetup{fontset = mac}
+            \else
+              \IfFontExistsTF{Noto Serif CJK SC}{
+                \thusetup{fontset = ubuntu}
+              }{
+                \thusetup{fontset = fandol}
+              }
+            \fi
+          }
         }
       }
     }
   \fi
   \thu@debug{Detected fontset: \thu@fontset}
 \fi
+%%% TODO 以上被更改
 %    \end{macrocode}
 %
 % \subsubsection{西文字体}
@@ -2556,21 +2612,26 @@
 % \subsubsection{中文字体}
 %
 %    \begin{macrocode}
+%%% TODO：以下被更改
 \ifthu@cjk@font@auto
   \ifthu@fontset@mac
     \thusetup{cjk-font = mac}
   \else
     \ifthu@fontset@windows
-      \IfFontExistsTF{SimSun}{
+      \IfFileExists{./fonts/simsun.ttc}{
         \thusetup{cjk-font = windows}
       }{
-        \IfFileExists{\thu@windows@font@dir/Simsun.ttc}{
-          \thusetup{cjk-font = windows-local}
+        \IfFontExistsTF{SimSun}{
+          \thusetup{cjk-font = windows}
         }{
-          \IfFileExists{\thu@mac@word@font@dir/Simsun.ttc}{
-            \thusetup{cjk-font = mac-word}
+          \IfFileExists{\thu@windows@font@dir/Simsun.ttc}{
+            \thusetup{cjk-font = windows-local}
           }{
-            \thu@error{Cannot find "SimSun" font}
+            \IfFileExists{\thu@mac@word@font@dir/Simsun.ttc}{
+              \thusetup{cjk-font = mac-word}
+            }{
+              \thu@error{Cannot find "SimSun" font}
+            }
           }
         }
       }
@@ -2584,10 +2645,13 @@
   \fi
   \thu@debug{Detected CJK font: \thu@cjk@font}
 \fi
+%%% TODO：以上被更改
 %    \end{macrocode}
 %
 % Windows 的中易字体。
 %    \begin{macrocode}
+\newfontfamily\zititime{Times New Roman}%TODO: 主要是标记此处更改，添加Times New Roman的宏语言
+%%%% TODO：以下被更改
 \newcommand\thu@set@cjk@font@windows{%
   \setCJKmainfont{SimSun}[
     AutoFakeBold = 3,
@@ -2600,6 +2664,7 @@
   \setCJKfamilyfont{zhkai}{KaiTi}%
   \setCJKfamilyfont{zhfs}{FangSong}%
 }
+%%% TODO 以上被更改，做了本地化的设置
 %    \end{macrocode}
 %
 % 使用本地的 Windows 字体文件。
@@ -3236,11 +3301,17 @@
 % \begin{macro}{\backmatter}
 % 我们的单面和双面模式与常规的不太一样。
 %    \begin{macrocode}
+%%% TODO：以下被更改
 \renewcommand\frontmatter{%
   \cleardoublepage
   \@mainmatterfalse
-  \pagenumbering{Roman}%
+  \ifthu@degree@bachelor
+    \pagenumbering{roman}%
+  \else
+    \pagenumbering{Roman}%
+  \fi
 }
+%%%% TODO：以上做了更改
 \renewcommand\mainmatter{%
   \cleardoublepage
   \@mainmattertrue
@@ -3255,7 +3326,7 @@
   \fi
   \@mainmatterfalse
   \thu@backmattertrue
-  \thusetup{toc-depth = 0}%
+  \thusetup{toc-depth = 1}%%% TODO：此处被更改
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3285,32 +3356,109 @@
 %
 % 本科外文专业要求页码字号 12pt。
 %    \begin{macrocode}
-\fancypagestyle{plain}{%
-  \fancyhf{}%
+%%% TODO：以下被更改
+\fancypagestyle{cnfrontmatter}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.75bp}%
   \renewcommand\footrulewidth{0pt}%
   \ifthu@degree@bachelor
-    \renewcommand\headrulewidth{0pt}%
+    \fancyhead[C]{%
+      \ifthu@main@language@chinese
+        \xiaowu 苏州大学本科生毕业设计（论文）
+      \else
+        \xiaowu
+      \fi
+      }%
     \fancyfoot[C]{
       \ifthu@main@language@chinese
         \xiaowu
       \else
-        \normalsize
+        \xiaowu
       \fi
-      \thepage
+      -\thepage-
+    }%
+  \else
+    \fancyhead[RO,LE]{\xiaowu\rmfamily{摘要}\vspace{0mm}}
+    \fancyhead[LO,RE]{\xiaowu\rmfamily\thu@title\vspace{0mm}}
+    \fancyfoot[C]{\xiaowu\thepage}
+  \fi
+  \let\@mkboth\markboth
+  \let\sectionmark\@gobble
+}
+\fancypagestyle{enfrontmatter}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.75bp}%
+  \renewcommand\footrulewidth{0pt}%
+  \ifthu@degree@bachelor
+    \fancyhead[C]{%
+      \ifthu@main@language@chinese
+        \xiaowu 苏州大学本科生毕业设计（论文）
+      \else
+        \xiaowu
+      \fi
+    }%
+    \fancyfoot[C]{
+      \ifthu@main@language@chinese
+        \xiaowu
+      \else
+        \xiaowu
+      \fi
+      -\thepage-
+    }%
+  \else
+    \fancyhead[RO,LE]{\xiaowu\rmfamily{Abstract}\vspace{0mm}}
+    \fancyhead[LO,RE]{\xiaowu\rmfamily\thu@title@en\vspace{0mm}}
+    \fancyfoot[C]{\xiaowu\thepage}
+  \fi
+  \let\@mkboth\markboth
+  \let\sectionmark\@gobble
+}
+%%%TODO： 以上被额外添加进系统
+%%% TODO：以下被更改
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \renewcommand\footrulewidth{0pt}%
+  \ifthu@degree@bachelor
+    \renewcommand\headrulewidth{0.75bp}%
+    \fancyhead[C]{%
+      \ifthu@main@language@chinese
+        \xiaowu 苏州大学本科生毕业设计（论文）
+      \else
+        \xiaowu
+      \fi
+      }%
+    \fancyfoot[C]{
+      \ifthu@main@language@chinese
+        \xiaowu
+      \else
+        \xiaowu
+      \fi
+      -\thepage-
     }%
     \let\@mkboth\@gobbletwo
     \let\chaptermark\@gobble
   \else
     \renewcommand\headrulewidth{0.75bp}%
-    \fancyhead[C]{%
-      \wuhao
+    \fancyhead[LE,RO]{
+      \xiaowu
+      \rmfamily
       \ifthu@main@language@chinese
         \leftmark
       \else
         \MakeUppercase{\leftmark}%
       \fi
-      }%
-    \fancyfoot[C]{\wuhao\thepage}%
+      \vspace{0mm}
+      }
+    \fancyhead[LO,RE]{
+      \xiaowu
+      \rmfamily
+      \ifthu@main@language@chinese
+        \thu@title
+      \else
+        \MakeUppercase{\thu@title@en}%
+      \fi
+      \vspace{0mm}}
+    \fancyfoot[C]{\xiaowu\thepage}%
     \let\@mkboth\markboth
     \def\chaptermark##1{%
       \markboth{%
@@ -3327,6 +3475,7 @@
   \fi
   \let\sectionmark\@gobble
 }
+%%% TODO以上被更改
 \pagestyle{plain}
 %    \end{macrocode}
 %
@@ -3738,13 +3887,16 @@
 % \subsubsection{章节标题}
 % \label{sec:theor}
 %    \begin{macrocode}
+%%% TODO：以下被更改
 \ifthu@degree@bachelor
-  \newcommand{\thu@abstract@name}{中文摘要}
-  \newcommand{\thu@abstract@name@en}{ABSTRACT}
+  \newcommand{\thu@abstract@name}{摘\quad 要}
+  \newcommand{\thu@yingyan@name}{引\quad 言}
+  \newcommand{\thu@abstract@name@en}{Abstract}
 \else
   \newcommand{\thu@abstract@name}{摘\quad 要}
   \newcommand{\thu@abstract@name@en}{Abstract}
 \fi
+%%% TODO：以上部分被做了修改
 %    \end{macrocode}
 %
 % 各级标题格式设置。
@@ -3789,41 +3941,63 @@
 %
 % 这里三级节标题的“中文黑体小四号”和“英文 Arial 13pt”不一致，取 13pt。
 %    \begin{macrocode}
+%%% TODO：以下被更改
 \newcommand\thu@set@section@format{%
   \ifthu@degree@bachelor
     \ctexset{%
       chapter = {
-        format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
+        format     = \centering\sffamily\zititime\fontsize{15bp}{29.25bp}\selectfont,
         aftername  = \quad,
-        beforeskip = 30bp,
-        afterskip  = 20bp,
+        beforeskip = 29.25bp,
+        afterskip  = 29.25bp,
       },
       section = {
-        format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
+        format     = \sffamily\zititime\fontsize{14bp}{27.3bp}\selectfont,
         aftername  = \quad,
-        beforeskip = 25bp,
-        afterskip  = 12bp,
+        beforeskip = 18bp,
+        afterskip  = 18bp,
       },
       subsection = {
-        format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        format     = \sffamily\zititime\fontsize{12bp}{23.4bp}\selectfont,
         aftername  = \quad,
         beforeskip = 12bp,
-        afterskip  = 6bp,
+        afterskip  = 12bp,
       },
       subsubsection = {
-        format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        format     = \sffamily\zititime\fontsize{12bp}{23.4bp}\selectfont,
         aftername  = \quad,
         beforeskip = 12bp,
-        afterskip  = 6bp,
+        afterskip  = 12bp,
       },
     }%
     \ifthu@main@language@chinese
-      \ctexset{
-        chapter = {
-          name   = {第,章},
-          number = \thechapter,
-        },
-      }%
+      \ifthu@book@sequencestyle@science
+        \ctexset{
+          chapter = {
+            name   = {第,章},
+            number = \thechapter,
+          },
+        }%
+      \else
+        \ctexset{
+          chapter = {
+            name   = {第,章},
+            number = \chinese{chapter},
+          },
+          section = {
+            name   = {第,节},
+            number = \chinese{section},
+          },
+          subsection = {
+            name   = {,、},
+            number = \chinese{subsection},
+          },
+          subsubsection = {
+            name   = {（,）},
+            number = \chinese{subsubsection},
+          },
+        }%
+      \fi
     \else
       \ctexset{
         chapter = {
@@ -3862,72 +4036,95 @@
 % 由于 Word 的行距算法不同，这里进行了一些调整使得视觉上更接近。
 %    \begin{macrocode}
   \else
-    \ctexset{%
-      chapter = {
-        beforeskip = 27bp,
-        afterskip  = 27bp,
-        number     = \thechapter,
-      },
-      section = {
-        beforeskip = 24bp,
-        afterskip  = 6bp,
-      },
-      subsection = {
-        beforeskip = 12bp,
-        afterskip  = 6bp,
-      },
-      subsubsection = {
-        beforeskip = 12bp,
-        afterskip  = 6bp,
-      },
-    }%
     \ifthu@main@language@chinese
       \ctexset{%
         chapter = {
-          format      = \centering\sffamily\sanhao,
-          nameformat  = {},
-          titleformat = {},
-          name        = {第,章},
-          aftername   = \quad,
+          format     = \centering\sffamily\zititime\fontsize{18bp}{35.1bp}\selectfont,
+          aftername  = \quad,
+          beforeskip = 17.55bp,
+          afterskip  = 17.55bp,
         },
         section = {
-          format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+          format     = \sffamily\zititime\fontsize{14bp}{27.3bp}\selectfont,
           aftername  = \quad,
+          beforeskip = 13.65bp,
+          afterskip  = 13.65bp,
         },
         subsection = {
-          format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
+          format     = \kaiti\zititime\fontsize{12bp}{23.4bp}\selectfont,
           aftername  = \quad,
+          beforeskip = 11.7bp,
+          afterskip  = 11.7bp,
         },
         subsubsection = {
-          format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
+          format     = \sffamily\zititime\fontsize{12bp}{23.4bp}\selectfont,
           aftername  = \quad,
+          beforeskip = 11.7bp,
+          afterskip  = 11.7bp,
         },
       }%
+      \ifthu@book@sequencestyle@science
+        \ctexset{
+          chapter = {
+            name   = {第,章},
+            number = \thechapter,
+          },
+        }%
+      \else
+        \ctexset{
+          chapter = {
+            name   = {第,章},
+            number = \chinese{chapter},
+          },
+          section = {
+            name   = {第,节},
+            number = \chinese{section},
+          },
+          subsection = {
+            name   = {,、},
+            number = \chinese{subsection},
+          },
+          subsubsection = {
+            name   = {（,）},
+            number = \chinese{subsubsection},
+          },
+        }%
+      \fi
     \else
       \ctexset{%
         chapter = {
-          format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
+          format      = \centering\sffamily\bfseries\fontsize{18bp}{35.1bp}\selectfont,
           nameformat  = \MakeUppercase,
           titleformat = \MakeUppercase,
           name        = \chaptername\space,
           aftername   = \space,
+          number     = \thechapter,
+          beforeskip = 17.55bp,
+          afterskip  = 17.55bp,
         },
         section = {
-          format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
+          format     = \sffamily\bfseries\fontsize{14bp}{27.3bp}\selectfont,
           aftername  = \space,
+          beforeskip = 13.65bp,
+          afterskip  = 13.65bp,
         },
         subsection = {
-          format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
+          format     = \sffamily\bfseries\fontsize{12bp}{23.4bp}\selectfont,
           aftername  = \space,
+          beforeskip = 11.7bp,
+          afterskip  = 11.7bp,
         },
         subsubsection = {
-          format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+          format     = \sffamily\bfseries\fontsize{12bp}{23.4bp}\selectfont,
           aftername  = \space,
+          beforeskip = 11.7bp,
+          afterskip  = 11.7bp,
         },
       }%
     \fi
   \fi
 }
+%%% TODO：以上部分被修改
 \thu@set@section@format
 \thu@option@hook{degree}{\thu@set@section@format}
 \thu@option@hook{main-language}{\thu@set@section@format}
@@ -4029,6 +4226,7 @@
   \fi
   \@starttoc{toc}%
 }
+%%% TODO：以下部分被更改
 \thu@define@key{
   toc-chapter-style = {
     name = toc@chapter@style,
@@ -4036,9 +4234,11 @@
       arial,
       times,
     },
-    default = arial,
+    default = times,
   },
 }
+%%% TODO：以上部分被更改
+%%% TODO：以下部分被更改
 \newcommand\thu@leaders{\titlerule*[4bp]{.}}
 \newcommand\thu@set@toc@format{%
   \contentsmargin{\z@}%
@@ -4055,21 +4255,15 @@
   \ifthu@degree@bachelor
     \ifthu@main@language@chinese
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}
-          \ifthu@toc@chapter@style@arial
-            \sffamily
-          \else
-            \heiti
-          \fi
-        }
+        [\z@]{\addvspace{6bp}\sffamily\zititime\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
-        [1em]{}
+        [2em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
       \titlecontents{subsection}
-        [1.5em]{}
+        [4em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
     \else
@@ -4079,15 +4273,15 @@
 %    \begin{macrocode}
       \ifthu@main@language@english
         \titlecontents{chapter}
-          [\z@]{\addvspace{6bp}\sffamily}
+          [\z@]{\addvspace{6bp}\rmfamily}
           {\contentspush{\thecontentslabel\quad}}{}
           {\rmfamily\thu@leaders\thecontentspage}%
         \titlecontents{section}
-          [0.5cm]{}
+          [2em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
           {\contentspush{\thecontentslabel\quad}}{}
           {\thu@leaders\thecontentspage}%
         \titlecontents{subsection}
-          [1cm]{}
+          [4em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
           {\contentspush{\thecontentslabel\quad}}{}
           {\thu@leaders\thecontentspage}%
       \fi
@@ -4109,33 +4303,34 @@
   \else
     \ifthu@main@language@chinese
       \titlecontents{chapter}
-        [\z@]{\sffamily}
+        [\z@]{\addvspace{6bp}\sffamily\zititime\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
-        [1em]{}
+        [2em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
       \titlecontents{subsection}
-        [2em]{}
+        [4em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
     \else
       \titlecontents{chapter}
-        [\z@]{\heiti}
+        [\z@]{\addvspace{6bp}\rmfamily}
         {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
-        [1em]{}
-        {\contentspush{\thecontentslabel\space}}{}
+        [2em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
+        {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
       \titlecontents{subsection}
-        [2em]{}
-        {\contentspush{\thecontentslabel\space}}{}
+        [4em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
+        {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
     \fi
   \fi
 }
+%%% TODO：以上部分被更改
 \thu@set@toc@format
 \thu@option@hook{degree}{\thu@set@toc@format}
 \thu@option@hook{main-language}{\thu@set@toc@format}
@@ -4165,6 +4360,15 @@
     default = {Title},
     name    = title@en,
   },
+  %%% TODO：以下部分被更改
+  subtitle = {
+    default = {副标题},
+  },
+  subtitle* = {
+    default = {SubTitle},
+    name    = subtitle@en,
+  },
+  %%% TODO：以上部分被更改
 %    \end{macrocode}
 %
 % 作者、导师、副导师、联合指导老师。
@@ -4243,6 +4447,12 @@
 %
 % 学科中英文名称。
 %    \begin{macrocode}
+  %%% TODO：以下为更改
+  department* = {
+    default = {Computer Science and Technology Department},
+    name = department@en,
+  },
+  %%% TODO：以上为更改
   discipline = {
     % default = {计算机科学与技术},
   },
@@ -4286,6 +4496,16 @@
   engineering-field* = {
     name    = engineering@field@en,
   },
+  %%% TODO：以下为更改
+  discipline-direct = {
+    % default = {计算机科学与技术},
+    name    = discipline@direct,
+  },
+  discipline-direct* = {
+    % default = {计算机科学与技术},
+    name    = discipline@direct@en,
+  },
+  %%% TODO：以上为更改
 %    \end{macrocode}
 %
 % 论文成文日期。
@@ -4436,6 +4656,105 @@
 % \begin{macro}{\maketitle}
 % 生成封面（题名页）总命令。
 %    \begin{macrocode}
+% 中文首页
+%TODO!! 以下是生成苏大论文封面
+% 单位代码
+% 首页需要的额外代码
+\def\suda@unicode{1006}
+\newcommand{\unicode}[1]{%
+    \def\suda@unicode{#1}
+}
+\newcommand{\ulinecvrtc}[1]{\uline{\makebox[24em][c]{#1}}}
+\newcommand{\ulinecvcbc}[1]{\uline{\makebox[14em][c]{#1}}}
+\newcommand\dlmu[2][4cm]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+%
+\newcommand{\titlech}{
+  %\thispagestyle{empty}%
+  \begin{titlepage}
+  \begin{center}
+    \hfill %居右
+    \raisebox{-.2cm}[0pt][0pt]{
+      \fontsize{10.5bp}{20.48bp}\selectfont\sffamily
+      \begin{tabular}{l}
+        学校代码：\bf\suda@unicode\\[.1ex]
+        学\qquad 号：\bf\thu@student@id\\[.1ex]
+      \end{tabular}
+    }
+    \vskip 20bp
+      \includegraphics[width=200bp]{suda.ps}
+      \vskip 20bp
+      \ifthu@degree@master
+        \centerline{\chuhao\rmfamily{硕士学位论文}}
+      \fi
+      \ifthu@degree@doctor
+        \centerline{\chuhao\rmfamily{博士学位论文}}
+      \fi
+      \vskip 10bp
+      \ifthu@degree@type@academic
+        \centerline{\erhao\rmfamily{（学术学位）}}
+      \fi
+      \ifthu@degree@type@professional
+        \centerline{\erhao\rmfamily{（专业学位）}}
+      \fi
+      \includegraphics[width=130pt]{sudamark.jpg}
+      ~~\\
+      \vskip 20bp
+      \begin{tabular}{l}
+        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@title}} \\ %[.4ex]%\hline
+        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@subtitle}} \\
+        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\rmfamily{\thu@title@en}} \\%[.4ex]
+        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\rmfamily{\thu@subtitle@en}} \\%[.4ex]
+      \end{tabular}
+      \vskip 20bp
+      ~~\\
+      {
+        \fontsize{14bp}{27.3bp}\selectfont\sffamily
+        \begin{tabular}{p{3cm}p{7cm}}
+            研~究~生~姓~名&\ulinecvcbc{\thu@author}\\[.4ex]
+            指导教师姓名&\ulinecvcbc{\thu@supervisor}\\[.4ex]
+            专~~~业~~~名~~称&\ulinecvcbc{\thu@discipline}\\[.4ex]
+            研~~~究~~~方~~向&\ulinecvcbc{\thu@discipline@direct}\\[.4ex]
+            所~~~在~~~院~~部&\ulinecvcbc{\thu@department}\\[.4ex]
+            论文提交日期&\ulinecvcbc{\thu@format@date{\thu@date@zh@digit@short}{\thu@date}}\\[.4ex]
+        \end{tabular}
+      }
+    \end{center}
+  \end{titlepage}
+}
+
+% 英文首页
+\newcommand{\titleeng}{
+  \cleardoublepage
+  \thispagestyle{empty}
+  \vspace*{\stretch{1}}
+  \begin{center}
+  \begin{minipage}[h]{.8\textwidth}
+  %\begin{spacing}[2.0]
+      \centering{\xiaoer\textbf{\thu@title@en}}
+  %\end{spacing}
+  \end{minipage}
+  \vskip 20bp
+  \begin{minipage}[h]{.75\textwidth}
+    \centering{\xiaosan\thu@subtitle@en}
+  \end{minipage}
+  \vspace*{\stretch{1}}
+  ~~\\
+    {\zihao{4}A Dissertation Submitted for the Degree of \thu@degree@category@en}\\
+    \vskip 110bp
+    \begin{center}
+      \xiaosan
+        \begin{tabular}{rl}
+            \textbf{Candidate:\ }&\textbf{\thu@author@en}\\[0.5ex]
+            \textbf{Supervisor:\ }&\textbf{\thu@supervisor@en}\\
+        \end{tabular}
+    \end{center}
+    \vskip 125bp
+    \sanhao{
+    \thu@department@en \\[1.8ex]
+    Soochow University, Soochow, China}
+  \end{center}
+}
+%TODO!! 以上是生成苏大论文封面，但是有错误不启用
 \renewcommand\maketitle{%
   \cleardoublepage
   \pagenumbering{Alph}%
@@ -4795,7 +5114,7 @@
 }
 \newcommand\thu@titlepage@en@degree{%
   \thu@thesis@name@en{} submitted to\par
-  {\bfseries Tsinghua University\par}%
+  {\bfseries Soochow University\par}%%% TODO 此处被更改
   in partial fulfillment of the requirement\par
   for the
   \ifthu@degree@type@professional
@@ -4855,7 +5174,8 @@
   \vfill
   \begingroup
     \centering
-    \includegraphics{tsinghua-name-bachelor.pdf}%
+    \includegraphics{suda.ps}%%% TODO此处被更改
+
     \vskip 0.94cm%
     \ifthu@thesis@type@proposal
       {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\\开题报告\par}%
@@ -5199,6 +5519,23 @@
 % 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用 Times New Roman 体，
 % 标点符号一律用中文输入状态下的标点符号。
 %    \begin{macrocode}
+%%% TODO：以下被额外添加进系统
+\newenvironment{yingyan}{
+  \ifthu@degree@bachelor
+    \cleardoublepage
+  \fi
+  \thusetup{language = chinese}%
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\zititime\fontsize{15bp}{29.25bp}\selectfont,
+        aftername  = \quad,
+        beforeskip = 29.25bp,
+        afterskip  = 29.25bp,
+      },
+      }%
+    \thu@chapter*{\thu@yingyan@name}%
+}{}
+%%% TODO以上被额外添加进系统
 \newenvironment{abstract}{%
   \ifthu@degree@bachelor
     \cleardoublepage
@@ -6656,7 +6993,7 @@
       }%
     \fi
     \hypersetup{
-      pdfcreator={\thuthesis-v\version}}
+      pdfcreator={\sudathesis-v\version}}%%% TODO此处被更改
   }%
 }
 %    \end{macrocode}
