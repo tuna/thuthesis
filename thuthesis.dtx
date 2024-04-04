@@ -2653,16 +2653,30 @@
 \newfontfamily\zititime{Times New Roman}%TODO: 主要是标记此处更改，添加Times New Roman的宏语言
 %%%% TODO：以下被更改
 \newcommand\thu@set@cjk@font@windows{%
-  \setCJKmainfont{SimSun}[
-    AutoFakeBold = 3,
-    ItalicFont   = KaiTi,
-  ]%
-  \setCJKsansfont{SimHei}[AutoFakeBold = 3]%
-  \setCJKmonofont{FangSong}%
-  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold = 3]%
-  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold = 3]%
-  \setCJKfamilyfont{zhkai}{KaiTi}%
-  \setCJKfamilyfont{zhfs}{FangSong}%
+  \IfFileExists{./fonts/simsun.ttc}{
+    \setCJKmainfont[
+      AutoFakeBold = 3,
+      ItalicFont   = simkai.ttf,
+      Path=fonts/
+    ]{simsun.ttc}%
+    \setCJKsansfont[AutoFakeBold = 3,Path=fonts/]{simhei.ttf}%
+    \setCJKmonofont[AutoFakeBold = 3,Path=fonts/]{simfang.ttf}%
+    \setCJKfamilyfont{zhsong}[AutoFakeBold = 3,Path=fonts/]{simsun.ttc}%
+    \setCJKfamilyfont{zhhei}[AutoFakeBold = 3,Path=fonts/]{simhei.ttf}%
+    \setCJKfamilyfont{zhkai}[AutoFakeBold = 3,Path=fonts/]{simkai.ttf}%
+    \setCJKfamilyfont{zhfs}[AutoFakeBold = 3,Path=fonts/]{simfang.ttf}%
+  }{
+    \setCJKmainfont{SimSun}[
+      AutoFakeBold = 3,
+      ItalicFont   = KaiTi,
+    ]%
+    \setCJKsansfont{SimHei}[AutoFakeBold = 3]%
+    \setCJKmonofont{FangSong}%
+    \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold = 3]%
+    \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold = 3]%
+    \setCJKfamilyfont{zhkai}{KaiTi}%
+    \setCJKfamilyfont{zhfs}{FangSong}%
+  }
 }
 %%% TODO 以上被更改，做了本地化的设置
 %    \end{macrocode}
@@ -3453,7 +3467,13 @@
       \xiaowu
       \rmfamily
       \ifthu@main@language@chinese
-        \thu@title
+        \ifthenelse{\equal{\leftmark}{Abstract}}{
+          % 如果章节名称是 Abstract，则设英文
+          \thu@title@en
+        }{
+          % 否则设置中文
+          \thu@title
+        }
       \else
         \MakeUppercase{\thu@title@en}%
       \fi
