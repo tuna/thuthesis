@@ -5571,6 +5571,14 @@
       \thu@chapter*{\thu@abstract@name}%
     \endgroup
   \else
+    %%% TODO:以下为额外添加
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\zititime\fontsize{18bp}{24bp}\selectfont,
+        aftername  = \quad,
+      },
+      }%
+    %%% TODO:以上为额外添加
     \thu@chapter*[]{\thu@abstract@name}%
   \fi
 }{%
@@ -5608,6 +5616,14 @@
   \ifthu@degree@graduate
     \thu@chapter*{\thu@abstract@name@en}%
   \else
+    %%% TODO:以下为额外添加
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\zititime\fontsize{18bp}{23.4bp}\selectfont,
+        aftername  = \quad,
+      },
+      }%
+    %%% TODO以上为额外添加
     \thu@chapter*[]{\thu@abstract@name@en}%
   \fi
 }{%
