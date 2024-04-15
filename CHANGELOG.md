@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- 更新 `student-id` 选项的处理逻辑，非 `proposal` 类型默认忽略，并增加警告（[#945](https://github.com/tuna/thuthesis/issues/945)）
+
 ## [v7.5.0] - 2024-03-29
 
 ### Added

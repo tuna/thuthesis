@@ -4584,14 +4584,15 @@
   \restoregeometry
 }
 \newcommand\thu@set@student@id{%
-  \ifthu@thesis@type@proposal
-    \ifx\thu@student@id\@empty
-      \thusetup{student-id=2000310000}%
+  \ifthu@thesis@type@proposal\else
+    \ifx\thu@student@id\@empty\else
+      \thu@warning{`studen-id' in "\protect\thusetup" would be ignored when `thesis-type' is not proposal.}%
     \fi
   \fi
 }
 \thu@set@student@id
 \thu@option@hook{thesis-type}{\thu@set@student@id}
+\thu@option@hook{student-id}{\thu@set@student@id}
 %    \end{macrocode}
 %
 % 涉密信息
@@ -4656,7 +4657,13 @@
       \thu@info@item{工程领域}{}{\thu@engineering@field}%
       \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
     \fi
-    \thu@info@item{学号}{}{\thu@student@id}%
+    \ifthu@thesis@type@proposal
+      \ifx\thu@student@id\@empty
+        \thu@warning{Missing option `student-id' in "\protect\thusetup", ID will not appear on cover.}
+      \else
+        \thu@info@item{学号}{}{\thu@student@id}%
+      \fi
+    \fi
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
