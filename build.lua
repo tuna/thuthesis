@@ -5,22 +5,25 @@ module = "thuthesis"
 supportdir = "./testfiles/support"
 checksuppfiles = {"*.tex"}
 
-demofiles = {"latexmkrc", "Makefile"}
 docfiles = {
   "CHANGELOG.md",
+  "thuthesis-example.tex",
+  "spine.tex",
   "thusetup.tex",
-  "data", "ref",
+  "data",
+  "ref",
 }
 installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "*.csl", "tsinghua-name-bachelor.pdf"}
 sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "*.csl", "tsinghua-name-bachelor.pdf"}
 tagfiles = {"*.dtx", "CHANGELOG.md", "package.json"}
-textfiles = {"*.md","LICENSE"}
+textfiles = {"*.md"}
 typesetdemofiles = {"thuthesis-example.tex", "spine.tex"}
 
 excludetests = {
   "06-*",
   "07-*",
   "09-*",
+  "*-hyperref",
 }
 
 checkengines = {"xetex"}
@@ -28,6 +31,8 @@ stdengine = "xetex"
 
 checkconfigs = {
   "build",
+  "testfiles/config-title-page",
+  "testfiles/config-title-page-en",
   "testfiles/config-crossref",
   "testfiles/config-nomencl",
   "testfiles/config-bibtex",
@@ -48,6 +53,28 @@ unpackexe = "xetex"
 bibtexexe = "bibtex"
 bibtexopts = ""
 biberopts = "--quiet"
+
+specialtypesetting = specialtypesetting or {
+  ["thuthesis-example.tex"] = {
+    func = function (file)
+      local name = jobname(file)
+      local errorlevel = tex(file)
+      if errorlevel == 0 then
+        -- Return a non-zero errorlevel if anything goes wrong
+        errorlevel =(
+          bibtex(name) +
+          bibtex(name .. "-appendix-a") +
+          tex(file) +
+          bibtex(name) +
+          bibtex(name .. "-appendix-a") +
+          tex(file) +
+          tex(file)
+        )
+      end
+      return errorlevel
+    end
+  }
+}
 
 checkopts = "-file-line-error -halt-on-error -interaction=nonstopmode"
 typesetopts = "-shell-escape -file-line-error -halt-on-error -interaction=nonstopmode"

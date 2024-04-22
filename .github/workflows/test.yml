@@ -1,43 +1,91 @@
 name: Test
 
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
+
+env:
+  XECJK_PKGS: fontspec xecjk ulem xetex
+  CTEX_PKGS: cjk ctex everysel zhnumber
+  BIBLATEX_PKGS: biber biblatex biblatex-apa biblatex-gb7714-2015 biblatex-mla xstring
+  HYPERREF_PKGS: pdflscape
+  NOMENCL_PKGS: nomencl koma-script xkeyval
+  BIN_PKGS: latexmk l3build
+  REQUIRED_PKGS: >-
+    scheme-basic bibunits bigfoot caption enumitem
+    environ etoolbox filehook footmisc notoccite pdfpages threeparttable
+    titlesec trimspaces unicode-math lt3luabridge cell
+  FONT_PKGS: fandol tex-gyre xits
+  EXTRA_PKGS: algorithms apacite booktabs ntheorem siunitx
+  MARKDOWN_PKGS: markdown fancyvrb csvsimple gobble
+  DOC_PKGS: hologo hypdoc listings xcolor
+  EXAMPLE_PLGS: float fp metalogo multirow mwe
+
 
 jobs:
 
-  test:
+  build:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
-    container: ghcr.io/tuna/thuthesis-test-env
     steps:
-    - uses: actions/checkout@v3
-    - name: Test thesis
-      run: make thesis
-    - name: Test spine
-      run: make spine
-    - name: Test doc
-      run: make doc
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install TeX Live
+      uses: teatimeguest/setup-texlive-action@v3
+      with:
+        packages: >-
+          ${{ env.XECJK_PKGS }} ${{ env.CTEX_PKGS }} ${{ env.BIBLATEX_PKGS }}
+          ${{ env.HYPERREF_PKGS }} ${{ env.NOMENCL_PKGS }} ${{ env.BIN_PKGS }}
+          ${{ env.REQUIRED_PKGS }} ${{ env.FONT_PKGS }} ${{ env.EXTRA_PKGS }}
+          ${{ env.MARKDOWN_PKGS }} ${{ env.DOC_PKGS }} ${{ env.EXAMPLE_PLGS }}
+        update-all-packages: true
+    - name: Build documentation and example
+      run: make all-dev
+    - name: Upload build results
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-result
+        path: |
+          thuthesis.pdf
+          thuthesis-example.pdf
+    - name: Build release zip
+      run: |
+        version=$(git describe --tags)
+        echo "Current git revision: $version"
+        python3 utils/create_release.py --version $version
+    - name: Build CTAN release zip with l3build
+      run: l3build ctan --config utils/build-ctan
+    - name: Upload release zip
+      uses: actions/upload-artifact@v4
+      with:
+          name: thuthesis-snapshot-release
+          path: |
+            thuthesis-ctan.zip
+            dist/thuthesis-*.zip
+
+  test:
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-14, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install TeX Live
+      uses: teatimeguest/setup-texlive-action@v3
+      with:
+        packages: >-
+          ${{ env.XECJK_PKGS }} ${{ env.CTEX_PKGS }} ${{ env.BIBLATEX_PKGS }}
+          ${{ env.HYPERREF_PKGS }} ${{ env.NOMENCL_PKGS }} ${{ env.BIN_PKGS }}
+          ${{ env.REQUIRED_PKGS }} ${{ env.FONT_PKGS }} ${{ env.EXTRA_PKGS }}
+          ${{ env.MARKDOWN_PKGS }} ${{ env.DOC_PKGS }} ${{ env.EXAMPLE_PLGS }}
+        update-all-packages: true
     - name: Test with l3build
       run: make test
     - name: Upload test results if failed
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: failure()
       with:
-        name: test-result
-        path: build/test/
-
-
-  build_release:
-    runs-on: ubuntu-latest
-    if: "startsWith(github.ref, 'refs/tags/v') || contains(github.event.head_commit.message, '[zip]')"
-    container: ghcr.io/tuna/thuthesis-test-env
-    steps:
-    - uses: actions/checkout@v3
-    - name: Install required packages
-      run: bash .github/workflows/install-packages.sh
-    - name: Build release zip with l3build
-      run: l3build ctan --config build-ctan
-    - name: Upload release zip
-      uses: actions/upload-artifact@v3
-      with:
-         name: thuthesis-ctan
-         path: thuthesis-ctan.zip
+        name: test-result-${{ matrix.os }}
+        path: |
+          build/test
+          build/test-testfiles

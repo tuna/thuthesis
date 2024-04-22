@@ -1,0 +1,372 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(96.73918pt, 404.02951pt, 96.73918pt)
+* v-part:(T,H,B)=(156.49014pt, 546.29292pt, 142.26378pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=404.02951pt
+* \textheight=546.29292pt
+* \oddsidemargin=24.4692pt
+* \evensidemargin=24.4692pt
+* \topmargin=-1.13809pt
+* \headheight=76.82234pt
+* \headsep=8.5359pt
+* \topskip=12.0pt
+* \footskip=22.76228pt
+* \marginparwidth=56.9055pt
+* \marginparsep=14.22636pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei' with options [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 15.05785pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 12.04628pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 9.0347pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 15.05463pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 12.0437pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 9.03276pt on input line ....
+Completed box being shipped out [1]
+\vbox(653.27536+0.0)x428.4987
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -1.13809
+.\vbox(654.41345+0.0)x404.02951, shifted 24.4692
+..\vbox(76.82234+0.0)x404.02951, glue set 76.82234fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x404.02951
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x404.02951
+....\special{color pop}
+..\glue 8.5359
+..\glue(\lineskip) 0.0
+..\vbox(546.29292+0.0)x404.02951, glue set 35.68198fill
+...\write-{}
+...\special{color push gray 0}
+...\write-{}
+...\glue(\topskip) 12.0
+...\hbox(0.0+0.0)x0.0
+...\glue -8.82028
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 5.11913
+...\hbox(14.95587+128.58037)x404.02951
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\vbox(14.95587+128.58037)x404.02951, glue set 92.88705fil
+.....\hbox(14.95587+4.39641)x404.02951, glue set 21.12897fil
+......\glue(\leftskip) 0.0 plus 1.0fil
+......\hbox(0.0+0.0)x0.0
+......\TU/texgyreheros(0)/b/n/20.075 TType
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 the
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 English
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Title
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 of
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Your
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Thesis
+......\glue(\rightskip) 0.0 plus 1.0fil
+.....\penalty 300
+.....\glue(\baselineskip) 11.9647
+.....\hbox(14.95587+4.37633)x404.02951, glue set 14.94588fil
+......\glue(\leftskip) 0.0 plus 1.0fil
+......\TU/texgyreheros(0)/b/n/20.075 Here
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 and
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Keep
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 it
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Concise
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 and
+......\glue 5.58086 plus 2.79042 minus 1.86028
+......\TU/texgyreheros(0)/b/n/20.075 Accurate
+......\kern -0.0002
+......\kern 0.0002
+......\penalty 10000
+......\glue(\parfillskip) 0.0
+......\glue(\rightskip) 0.0 plus 1.0fil
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\lineskip) 1.0
+...\hbox(10.96898+0.16058)x404.02951, glue set 139.10776fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/texgyretermes(0)/m/n/16.06 Thesis
+....\kern -0.0002
+....\kern 0.0002
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 submitted
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 to
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 16.50978
+...\hbox(11.03322+3.30835)x404.02951, glue set 133.14949fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/texgyretermes(0)/b/n/16.06 Tsinghua
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/b/n/16.06 University
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 13.42625
+...\hbox(10.96898+3.485)x404.02951, glue set 75.87953fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/texgyretermes(0)/m/n/16.06 in
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 partial
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 fulfillment
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 of
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 the
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 requirement
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 13.2496
+...\hbox(10.96898+3.50107)x404.02951, glue set 107.9915fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/texgyretermes(0)/m/n/16.06 for
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 the
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 professional
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 degree
+....\glue 4.015 plus 2.00749 minus 1.33833
+....\TU/texgyretermes(0)/m/n/16.06 of
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 12.23782
+...\hbox(11.96469+0.14453)x404.02951, glue set 81.21948fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/texgyreheros(0)/b/n/16.06 Master
+....\glue 4.46468 plus 2.23233 minus 1.48822
+....\TU/texgyreheros(0)/b/n/16.06 of
+....\glue 4.46468 plus 2.23233 minus 1.48822
+....\TU/texgyreheros(0)/b/n/16.06 Public
+....\glue 4.46468 plus 2.23233 minus 1.48822
+....\TU/texgyreheros(0)/b/n/16.06 Administration
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue 0.0 plus 1.0fill
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 15.85132
+...\hbox(11.70773+3.50107)x404.02951, glue set 193.65553fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/texgyreheros(0)/m/n/16.06 by
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue 6.82881
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 12.49478
+...\hbox(11.70773+0.14453)x404.02951, glue set 160.06604fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/texgyreheros(0)/b/n/16.06 Your
+....\glue 4.46468 plus 2.23233 minus 1.48822
+....\TU/texgyreheros(0)/b/n/16.06 Name
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue 55.48277
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\lineskip) 1.0
+...\hbox(31.16692+64.71872)x404.02951
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\vbox(31.16692+64.71872)x404.02951, glue set 41.08073fil
+.....\hbox(31.16692+23.63799)x404.02951, glue set 66.8723fil
+......\glue(\leftskip) 0.0 plus 1.0fil
+......\hbox(0.0+0.0)x0.0
+......\hbox(31.16692+23.63799)x270.28491
+.......\mathon
+.......\vbox(31.16692+23.63799)x270.28491
+........\hbox(19.18164+8.22081)x270.28491
+.........\glue(\tabskip) 0.0
+.........\hbox(19.18164+8.22081)x135.19264
+..........\rule(19.18164+8.22081)x0.0
+..........\glue 6.0
+..........\glue 0.0 plus 1.0fil
+..........\glue 0.00002
+..........\TU/texgyretermes(0)/m/n/15.05624 Thesis
+..........\kern -0.0002
+..........\kern 0.0002
+..........\glue 3.76407 plus 1.88203 minus 1.25468
+..........\TU/texgyretermes(0)/m/n/15.05624 Supervisor
+..........\hbox(6.91081+0.1656)x20.57687, glue set 14.38374fil
+...........\glue 2.00749
+...........\TU/texgyretermes(0)/m/n/15.05624 :
+...........\kern -0.0002
+...........\kern 0.0002
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+.........\glue(\tabskip) 0.0
+.........\hbox(19.18164+8.22081)x135.09227
+..........\glue 0.00002
+..........\TU/texgyretermes(0)/m/n/15.05624 Professor
+..........\glue 3.76407 plus 1.88203 minus 1.25468
+..........\TU/texgyretermes(0)/m/n/15.05624 XX
+..........\glue 3.76407 plus 1.88014 minus 1.25594
+..........\TU/texgyretermes(0)/m/n/15.05624 XXXX
+..........\kern -0.0002
+..........\kern 0.0002
+..........\glue 0.0 plus 1.0fil
+..........\glue 6.0
+.........\glue(\tabskip) 0.0
+........\glue(\lineskip) 0.0
+........\hbox(19.18164+8.22081)x270.28491
+.........\glue(\tabskip) 0.0
+.........\hbox(19.18164+8.22081)x135.19264, glue set 23.00595fil
+..........\rule(19.18164+8.22081)x0.0
+..........\glue 6.0
+..........\glue 0.0 plus 1.0fil
+..........\glue 0.00002
+..........\TU/texgyretermes(0)/m/n/15.05624 Co-supervisor
+..........\hbox(6.91081+0.1656)x20.57687, glue set 14.38374fil
+...........\glue 2.00749
+...........\TU/texgyretermes(0)/m/n/15.05624 :
+...........\kern -0.0002
+...........\kern 0.0002
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+.........\glue(\tabskip) 0.0
+.........\hbox(19.18164+8.22081)x135.09227
+..........\glue 0.00002
+..........\TU/texgyretermes(0)/m/n/15.05624 Professor
+..........\glue 3.76407 plus 1.88203 minus 1.25468
+..........\TU/texgyretermes(0)/m/n/15.05624 XX
+..........\glue 3.76407 plus 1.88014 minus 1.25594
+..........\TU/texgyretermes(0)/m/n/15.05624 XXXX
+..........\kern -0.0002
+..........\kern 0.0002
+..........\glue 0.0 plus 1.0fil
+..........\glue 6.0
+.........\glue(\tabskip) 0.0
+.......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0
+......\glue(\rightskip) 0.0 plus 1.0fil
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\lineskip) 1.0
+...\hbox(11.70773+2.79442)x404.02951, glue set 141.10722fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/texgyreheros(0)/b/n/16.06 November,
+....\glue 4.46468 plus 2.7904 minus 1.19057
+....\TU/texgyreheros(0)/b/n/16.06 2020
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue 8.5359
+...\glue -2.79442
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+...\glue 0.0 plus 0.0001fil
+..\glue(\baselineskip) 22.76228
+..\hbox(0.0+0.0)x404.02951
+...\special{color push gray 0}
+...\hbox(0.0+0.0)x404.02951
+...\special{color pop}
+.\kern -653.27536
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 653.27536
+.\kern 0.0

@@ -1,20 +1,13 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
 第3章
-Package fontspec Info: Font "FandolHei-Regular" does not contain requested
-(fontspec)             Script "CJK".
-Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
-(fontspec)             with options
-(fontspec)             [Script={CJK},Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei' with options [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
 (fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
+(fontspec)              This font family consists of the following NFSS series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolHei-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 12.04628pt on input line ....
@@ -9656,7 +9649,7 @@ Completed box being shipped out [5]
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
 .....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
-.....\write1{\newlabel{tab:notations}{{3.1}{\thepage }}}
+.....\write1{\newlabel{tab:notations}{{3.1}{\thepage }{}{}{}}}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(268.44019+262.91896)x426.79135, glue set 9.47826fil

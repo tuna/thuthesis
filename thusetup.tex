@@ -14,6 +14,9 @@
   %   选择打印版（print）或用于提交的电子版（electronic），前者会插入空白页以便直接双面打印
   %
   output = print,
+  % 格式类型
+  %   默认为论文（thesis），也可以设置为开题报告（proposal）
+  % thesis-type = proposal,
   %
   % 标题
   %   可使用“\\”命令手动控制换行
@@ -22,7 +25,7 @@
   title* = {An Introduction to \LaTeX{} Thesis Template of Tsinghua
             University v\version},
   %
-  % 学位
+  % 学科门类
   %   1. 学术型
   %      - 中文
   %        需注明所属的学科门类，例如：
@@ -39,8 +42,8 @@
   %      Doctor of Education, Master of Engineering
   %   3. 本科生不需要填写
   %
-  degree-name  = {工学硕士},
-  degree-name* = {Master of Science},
+  degree-category  = {工学硕士},
+  degree-category* = {Master of Science},
   %
   % 培养单位
   %   填写所属院系的全名
@@ -48,21 +51,29 @@
   department = {计算机科学与技术系},
   %
   % 学科
-  %   1. 学术型学位
-  %      获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称
-  %   2. 工程硕士
-  %      工程领域名称
-  %   3. 其他专业型学位
-  %      不填写此项
-  %   4. 本科生填写专业名称，第二学位论文需标注“（第二学位）”
+  %   1. 研究生学术型学位，获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称
+  %   2. 本科生填写专业名称，第二学位论文需标注“（第二学位）”
   %
   discipline  = {计算机科学与技术},
   discipline* = {Computer Science and Technology},
+  %
+  % 专业领域
+  %   1. 设置专业领域的专业学位类别，填写相应专业领域名称
+  %   2. 2019 级及之前工程硕士学位论文，在 `engineering-field` 填写相应工程领域名称
+  %   3. 其他专业学位类别的学位论文无需此信息
+  %
+  % professional-field  = {计算机技术},
+  % professional-field* = {Computer Technology},
   %
   % 姓名
   %
   author  = {薛瑞尼},
   author* = {Xue Ruini},
+  %
+  % 学号
+  % 仅当书写开题报告时需要（同时设置 `thesis-type = proposal'）
+  %
+  % student-id = {2000310000},
   %
   % 指导教师
   %   中文姓名和职称之间以英文逗号“,”分开，下同
@@ -151,6 +162,10 @@
 % \usepackage{natbib}
 % \bibliographystyle{thuthesis-author-year}
 
+% 生命科学学院要求使用 Cell 参考文献格式（2023 年以前使用 author-date 格式）
+% \usepackage{natbib}
+% \bibliographystyle{cell}
+
 % 本科生参考文献的著录格式
 % \usepackage[sort]{natbib}
 % \bibliographystyle{thuthesis-bachelor}
@@ -158,6 +173,7 @@
 % 参考文献使用 BibLaTeX 宏包
 % \usepackage[style=thuthesis-numeric]{biblatex}
 % \usepackage[style=thuthesis-author-year]{biblatex}
+% \usepackage[style=gb7714-2015]{biblatex}
 % \usepackage[style=apa]{biblatex}
 % \usepackage[style=mla-new]{biblatex}
 % \usepackage[notes,backend=biber]{biblatex-chicago}

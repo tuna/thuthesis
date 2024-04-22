@@ -1,19 +1,12 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-Package fontspec Info: Font "FandolHei-Regular" does not contain requested
-(fontspec)             Script "CJK".
-Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
-(fontspec)             with options
-(fontspec)             [Script={CJK},Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei' with options [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
 (fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
+(fontspec)              This font family consists of the following NFSS series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolHei-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 Completed box being shipped out [1]
 \vbox(710.18088+0.0)x439.87962
@@ -651,10 +644,7 @@ Completed box being shipped out [2]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
-(09-main-en.toc
-Package fontspec Info: Font "FandolHei-Regular" does not contain requested
-(fontspec)             Script "CJK".
-)
+(09-main-en.toc)
 \tf@toc=\write...
 Completed box being shipped out [3]
 \vbox(710.18088+4.1104)x439.87962
@@ -719,7 +709,7 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 174.37373fil
+..\vbox(674.33032+0.0)x426.79135, glue set 252.65776fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{Table of Contents}{\ETC.}
 ...\write-{}
@@ -752,7 +742,6 @@ Completed box being shipped out [3]
 ...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\hbox(14.05243+6.02255)x426.79135, glue set 387.64912fill
@@ -789,7 +778,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -823,7 +811,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -861,7 +848,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -903,7 +889,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -945,7 +930,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -1196,7 +1180,6 @@ Completed box being shipped out [3]
 ...\penalty -300
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -1230,7 +1213,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -1276,7 +1258,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -1310,7 +1291,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -1348,7 +1328,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -1382,7 +1361,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -1422,7 +1400,6 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -2698,7 +2675,7 @@ Completed box being shipped out [1]
 .....\glue 0.0
 .....\special{color pop}
 .....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
-.....\write1{\newlabel{fig:1.1}{{1.1}{\thepage }}}
+.....\write1{\newlabel{fig:1.1}{{1.1}{\thepage }{}{}{}}}
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
@@ -2911,7 +2888,7 @@ Completed box being shipped out [1]
 ......\TU/texgyretermes(0)/m/n/12.045 )
 ......\kern -0.0002
 ......\kern 0.0002
-.....\write1{\newlabel{eq:1.1}{{1.1}{\thepage }}}
+.....\write1{\newlabel{eq:1.1}{{1.1}{\thepage }{}{}{}}}
 ...\penalty 0
 ...\glue(\belowdisplayskip) 6.02249
 ...\glue -12.02249
@@ -3167,7 +3144,7 @@ Completed box being shipped out [2]
 .....\glue 6.02249
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
-.....\write1{\newlabel{tab:1.1}{{1.1}{\thepage }}}
+.....\write1{\newlabel{tab:1.1}{{1.1}{\thepage }{}{}{}}}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(112.87744+107.35623)x426.79135, glue set 109.08162fil
@@ -3615,6 +3592,8 @@ Completed box being shipped out [2]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+\bibcite{bib1}{{1}{}{{}}{{}}}
+\bibcite{bib2}{{2}{}{{}}{{}}}
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 10.54048pt on input line ....
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
@@ -3627,6 +3606,16 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 6.99925pt on input line ....
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line ....
+\bibcite{bib3}{{3}{}{{}}{{}}}
+\bibcite{bib4}{{4}{}{{}}{{}}}
+\bibcite{bib5}{{5}{}{{}}{{}}}
+\bibcite{bib6}{{6}{}{{}}{{}}}
+\bibcite{bib7}{{7}{}{{}}{{}}}
+\bibcite{bib8}{{8}{}{{}}{{}}}
+\bibcite{bib9}{{9}{}{{}}{{}}}
+\bibcite{bib10}{{10}{}{{}}{{}}}
+\bibcite{bib11}{{11}{}{{}}{{}}}
+No file bu.aux.
 Completed box being shipped out [3]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -6455,7 +6444,7 @@ Completed box being shipped out [4]
 ......\glue(\rightskip) 0.0
 .....\glue 0.0
 .....\special{color pop}
-.....\write1{\newlabel{fig:A.1}{{A.1}{\thepage }}}
+.....\write1{\newlabel{fig:A.1}{{A.1}{\thepage }{}{}{}}}
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
@@ -6676,7 +6665,7 @@ Completed box being shipped out [4]
 ......\TU/texgyretermes(0)/m/n/12.045 )
 ......\kern -0.0002
 ......\kern 0.0002
-.....\write1{\newlabel{eq:A.1}{{A.1}{\thepage }}}
+.....\write1{\newlabel{eq:A.1}{{A.1}{\thepage }{}{}{}}}
 ...\penalty 0
 ...\glue(\belowdisplayshortskip) 6.02249
 ...\glue -12.02249
@@ -6781,6 +6770,7 @@ Completed box being shipped out [4]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+No file bu.aux.
 Completed box being shipped out [5]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -6965,7 +6955,7 @@ Completed box being shipped out [5]
 .....\glue 6.02249
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
-.....\write1{\newlabel{tab:A.1}{{A.1}{\thepage }}}
+.....\write1{\newlabel{tab:A.1}{{A.1}{\thepage }{}{}{}}}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(56.88191+51.3607)x426.79135, glue set 109.08162fil
@@ -7255,6 +7245,7 @@ Completed box being shipped out [5]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+No file bu.aux.
 Completed box being shipped out [6]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -7413,6 +7404,7 @@ Completed box being shipped out [6]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+No file bu.aux.
 Completed box being shipped out [7]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -7910,6 +7902,7 @@ Completed box being shipped out [7]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+No file bu.aux.
 Completed box being shipped out [8]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -8235,6 +8228,7 @@ Completed box being shipped out [9]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 714.29128
 .\kern 0.0
+No file bu.aux.
 Completed box being shipped out [10]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0

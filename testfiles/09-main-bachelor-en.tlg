@@ -1,19 +1,12 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-Package fontspec Info: Font "FandolHei-Regular" does not contain requested
-(fontspec)             Script "CJK".
-Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
-(fontspec)             with options
-(fontspec)             [Script={CJK},Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei' with options [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
 (fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
+(fontspec)              This font family consists of the following NFSS series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolHei-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 Completed box being shipped out [1]
 \vbox(722.98454+6.02255)x439.87962
@@ -10827,7 +10820,7 @@ Completed box being shipped out [7]
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
 .....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
-.....\write1{\newlabel{tab:frequencies-e-c}{{4.1}{\thepage }}}
+.....\write1{\newlabel{tab:frequencies-e-c}{{4.1}{\thepage }{}{}{}}}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(94.21227+88.69106)x421.10089
@@ -11881,7 +11874,7 @@ Completed box being shipped out [7]
 .....\glue 6.02249
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
-.....\write1{\newlabel{tab:percentages-e-c}{{4.2}{\thepage }}}
+.....\write1{\newlabel{tab:percentages-e-c}{{4.2}{\thepage }{}{}{}}}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(28.88416+23.36293)x421.10089, glue set 186.1502fil
@@ -12095,7 +12088,7 @@ Completed box being shipped out [8]
 .....\glue 6.02249
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
-.....\write1{\newlabel{tab:frequencies-c-e}{{4.3}{\thepage }}}
+.....\write1{\newlabel{tab:frequencies-c-e}{{4.3}{\thepage }{}{}{}}}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(28.88416+23.36293)x421.10089, glue set 186.1502fil
@@ -12191,7 +12184,7 @@ Completed box being shipped out [8]
 .....\glue 6.02249
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
-.....\write1{\newlabel{tab:percentages-c-e}{{4.4}{\thepage }}}
+.....\write1{\newlabel{tab:percentages-c-e}{{4.4}{\thepage }{}{}{}}}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(28.88416+23.36293)x421.10089, glue set 186.1502fil

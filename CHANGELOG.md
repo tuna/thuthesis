@@ -6,9 +6,65 @@
 
 ## [Unreleased]
 
+### Changed
+
+- 更新 `student-id` 选项的处理逻辑，非 `proposal` 类型默认忽略，并增加警告（[#945](https://github.com/tuna/thuthesis/issues/945)）
+
+## [v7.5.0] - 2024-03-29
+
+### Added
+
+- 本科生的附录（调研阅读报告和书面翻译）支持 `biblatex`（[#893](https://github.com/tuna/thuthesis/issues/893)）。
+- 适配生命科学学院要求的 Cell 参考文献格式（[#921](https://github.com/tuna/thuthesis/discussions/921)）。
+- 增加 GitHub Actions 配置，自动从 master 分支发布预览版本、自动在多平台进行测试。
+
+### Changed
+
+- 同步《写作指南》对 2023 年 3 月版本的后续修改：
+  - 封面的学科门类的字号改为三号（16bp）（[#899](https://github.com/tuna/thuthesis/issues/899)）。
+  - 修改研究生目录的章标题段前距离（[#926](https://github.com/tuna/thuthesis/issues/926)）。
+  - 统一并简化封面的布局（[#900](https://github.com/tuna/thuthesis/issues/900)）。
+- 不再插入 PDF 版书脊，改为编译生成（[#551](https://github.com/tuna/thuthesis/issues/551)）。
+- 本科生附录的参考文献编译方式改为 `bibtex thuthesis-appendix-{a,b,c...}`，同研究生一致。
+- 英文封面的导师姓名居中对齐（[#883](https://github.com/tuna/thuthesis/issues/883)）。
+- 修正 macOS 的 MS Office 字体名（[#913](https://github.com/tuna/thuthesis/issues/913)）。
+- 自动检测并使用 Windows 字体文件，默认从当前目录查找（[#747](https://github.com/tuna/thuthesis/discussions/747)）。
+
+### Fixed
+
+- 修正封面的职称字距问题（[#879](https://github.com/tuna/thuthesis/discussions/879)）。
+- 解决了本科生附录的 `\printbibliography` 报错的问题（[#882](https://github.com/tuna/thuthesis/issues/882)）。
+- 修复了同时调用 `glossaries` 和 `hyperref` 时的多余空格（[#901](https://github.com/tuna/thuthesis/issues/901)）。
+
+## [v7.4.0] - 2023-05-15
+
+### Added
+
+- 允许本科生附录翻译的摘要中使用 `\thusetup{keywords = *}` 设置关键词（[#865](https://github.com/tuna/thuthesis/issues/865)）。
+- 添加选项 `degree-category` 和 `degree-category*` 设置学科门类（[#840](https://github.com/tuna/thuthesis/issues/840)）。
+- 添加选项 `professional-field` 和 `professional-field*` 设置专业领域（[#840](https://github.com/tuna/thuthesis/issues/840)）。
+- 添加选项 `engineering-field` 和 `engineering-field*` 设置工业领域（[#840](https://github.com/tuna/thuthesis/issues/840)）。
+
+### Changed
+
+- 专业学位的“工程领域”改为“专业领域”，同步《指南》2023 年 3 月版的更改（[#862](https://github.com/tuna/thuthesis/issues/862)）。
+- 附录中的参考文献另行编号（[#837](https://github.com/tuna/thuthesis/issues/837)，感谢 [@hushidong](https://github.com/hushidong) 和 [@atxy-blip](https://github.com/atxy-blip)）。
+
+### Deprecated
+
+- 选项 `degree-name` 和 `degree-name*` 已经过时（[#840](https://github.com/tuna/thuthesis/issues/840)）。
+
+### Fixed
+
+- 修正研究生“学术成果”列表的行距（[#850](https://github.com/tuna/thuthesis/issues/850)）。
+- 修正封面的布局，同步《指南》2023 年 3 月版的更改（[#861](https://github.com/tuna/thuthesis/issues/861)）。
+
+## [v7.3.2] - 2023-04-06
+
 ### Fixed
 
 - 修复学术成果没有连续编号的问题（[#825](https://github.com/tuna/thuthesis/issues/825)）。
+- 修复研究生个人简历部分行距过窄的问题 （[#850](https://github.com/tuna/thuthesis/issues/850)）
 
 ### Changed
 
@@ -925,7 +981,10 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.3.1...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.5.0...HEAD
+[v7.5.0]:     https://github.com/tuna/thuthesis/compare/v7.4.0...v7.5.0
+[v7.4.0]:     https://github.com/tuna/thuthesis/compare/v7.3.2...v7.4.0
+[v7.3.2]:     https://github.com/tuna/thuthesis/compare/v7.3.1...v7.3.2
 [v7.3.1]:     https://github.com/tuna/thuthesis/compare/v7.3.0...v7.3.1
 [v7.3.0]:     https://github.com/tuna/thuthesis/compare/v7.2.4...v7.3.0
 [v7.2.4]:     https://github.com/tuna/thuthesis/compare/v7.2.3...v7.2.4

@@ -1,0 +1,557 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(99.58464pt, 398.3386pt, 99.58464pt)
+* v-part:(T,H,B)=(56.9055pt, 617.42482pt, 170.71652pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=398.3386pt
+* \textheight=617.42482pt
+* \oddsidemargin=27.31465pt
+* \evensidemargin=27.31465pt
+* \topmargin=-100.72273pt
+* \headheight=76.82234pt
+* \headsep=8.5359pt
+* \topskip=12.0pt
+* \footskip=22.76228pt
+* \marginparwidth=56.9055pt
+* \marginparsep=14.22636pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei' with options [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+Package fontspec Info: Font family 'FandolFang(0)' created for font 'FandolFang' with options [Extension={.otf},UprightFont={*-Regular}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolFang-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 16.0617pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 14.05399pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 10.54048pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 16.05827pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 14.05098pt on input line ....
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 10.53824pt on input line ....
+Completed box being shipped out [1]
+\vbox(624.82262+0.0)x425.65324
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue -100.72273
+.\vbox(725.54535+0.0)x398.3386, shifted 27.31465
+..\vbox(76.82234+0.0)x398.3386, glue set 76.82234fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x398.3386
+....\special{color push gray 0}
+....\hbox(0.0+0.0)x398.3386
+....\special{color pop}
+..\glue 8.5359
+..\glue(\lineskip) 0.0
+..\vbox(617.42482+0.0)x398.3386, glue set 94.69293fill
+...\write-{}
+...\special{color push gray 0}
+...\write-{}
+...\glue(\topskip) 12.0
+...\hbox(0.0+0.0)x0.0
+...\glue 8.1
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 7.5482
+...\hbox(12.5268+44.37871)x398.3386
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\vbox(12.5268+44.37871)x398.3386, glue set 41.58429fil
+.....\hbox(12.5268+2.79442)x398.3386, glue set 307.41861fil
+......\hbox(0.0+0.0)x0.0
+......\glue -21.5
+......\TU/FandolHei(0)/m/n/16.06 秘
+......\glue 0.0 plus 1.3163
+......\TU/FandolHei(0)/m/n/16.06 密
+......\glue 0.0 plus 1.3163
+......\TU/FandolHei(0)/m/n/16.06 ★
+......\kern -0.00017
+......\kern 0.00017
+......\hbox(0.0+0.0)x48.18, glue set 24.09fil
+.......\glue 0.0 plus 1.0fil minus 1.0fil
+.......\glue 0.0 plus 1.0fil minus 1.0fil
+......\TU/FandolHei(0)/m/n/16.06 年
+......\kern -0.00017
+......\kern 0.00017
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue 40.5
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\lineskip) 1.0
+...\hbox(20.46043+4.48875)x398.3386, glue set 29.53563fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/FandolHei(0)/m/n/26.09749 透
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 水
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 性
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 混
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 凝
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 土
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 路
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 面
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 材
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 料
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 的
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 研
+....\glue 0.0 plus 2.53644
+....\TU/FandolHei(0)/m/n/26.09749 究
+....\kern -0.00017
+....\kern 0.00017
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue 24.1
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 5.06694
+...\hbox(12.5268+4.01498)x398.3386, glue set 56.93001fil
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\TU/FandolSong(0)/m/n/16.06 (申
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 请
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 清
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 华
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 大
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 学
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 工
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 程
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 硕
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 士
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 专
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 业
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 学
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 位
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 论
+....\glue 1.00374
+....\TU/FandolSong(0)/m/n/16.06 文)
+....\kern -0.0002
+....\kern 0.0002
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue 0.0 plus 1.0fill
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 16.06001
+...\hbox(0.0+223.65396)x398.3386
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\vbox(0.0+223.65396)x398.3386, glue set 67.0691fil
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+.....\hbox(82.30786+74.277)x398.3386, glue set 84.35965fil
+......\hbox(0.0+0.0)x0.0
+......\glue 65.44142
+......\hbox(82.30786+74.277)x248.53752
+.......\mathon
+.......\vbox(82.30786+74.277)x248.53752
+........\hbox(21.92178+9.39519)x248.53752
+.........\glue(\tabskip) 0.0
+.........\hbox(21.92178+9.39519)x248.53752, glue set 53.23827fil
+..........\rule(21.92178+9.39519)x0.0
+..........\glue 6.0
+..........\glue 0.00002
+..........\hbox(12.73558+2.87473)x81.09052, glue set 2.84544fil
+...........\hbox(12.73558+2.87473)x78.24507
+............\special{color push gray 0}
+............\hbox(12.73558+2.87473)x78.24507, glue set 2.33418filll
+.............\TU/FandolFang(0)/m/n/16.06 培
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 养
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 单
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 位
+.............\kern -0.00017
+.............\kern 0.00017
+.............\glue 0.0 plus 1.0fil minus 1.0fil
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(8.47968+0.0)x21.90874, glue set 5.84874fil
+...........\hbox(8.47968+0.0)x16.06
+............\special{color push gray 0}
+............\penalty 10000
+............\TU/FandolFang(0)/m/n/16.06 ：
+............\rule(0.0+0.0)x-11.19382
+............\kern 0.00069
+............\kern -0.00069
+............\kern -0.99649
+............\kern 0.99649
+............\glue 11.19382 minus 8.03
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\TU/FandolFang(0)/m/n/16.06 土
+..........\glue 0.0 plus 1.3163
+..........\TU/FandolFang(0)/m/n/16.06 木
+..........\glue 0.0 plus 1.3163
+..........\TU/FandolFang(0)/m/n/16.06 工
+..........\glue 0.0 plus 1.3163
+..........\TU/FandolFang(0)/m/n/16.06 程
+..........\glue 0.0 plus 1.3163
+..........\TU/FandolFang(0)/m/n/16.06 系
+..........\kern -0.00017
+..........\kern 0.00017
+..........\glue 0.0 plus 1.0fil
+..........\glue 6.0
+.........\glue(\tabskip) 0.0
+........\glue(\lineskip) 0.0
+........\hbox(21.92178+9.39519)x248.53752
+.........\glue(\tabskip) 0.0
+.........\hbox(21.92178+9.39519)x248.53752, glue set 21.11827fil
+..........\rule(21.92178+9.39519)x0.0
+..........\glue 6.0
+..........\glue 0.00002
+..........\hbox(12.51074+2.8426)x81.09052, glue set 2.84544fil
+...........\hbox(12.51074+2.8426)x78.24507
+............\special{color push gray 0}
+............\hbox(12.51074+2.8426)x78.24507, glue set 2.33418filll
+.............\TU/FandolFang(0)/m/n/16.06 工
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 程
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 领
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 域
+.............\kern -0.00017
+.............\kern 0.00017
+.............\glue 0.0 plus 1.0fil minus 1.0fil
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(8.47968+0.0)x21.90874, glue set 5.84874fil
+...........\hbox(8.47968+0.0)x16.06
+............\special{color push gray 0}
+............\penalty 10000
+............\TU/FandolFang(0)/m/n/16.06 ：
+............\rule(0.0+0.0)x-11.19382
+............\kern 0.00069
+............\kern -0.00069
+............\kern -0.99649
+............\kern 0.99649
+............\glue 11.19382 minus 8.03
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\TU/FandolFang(0)/m/n/16.06 建
+..........\glue 0.0 plus 1.3163
+..........\TU/FandolFang(0)/m/n/16.06 筑
+..........\glue 0.0 plus 1.3163
+..........\TU/FandolFang(0)/m/n/16.06 与
+..........\glue 0.0 plus 1.3163
+..........\TU/FandolFang(0)/m/n/16.06 土
+..........\glue 0.0 plus 1.3163
+..........\TU/FandolFang(0)/m/n/16.06 木
+..........\glue 0.0 plus 1.3163
+..........\TU/FandolFang(0)/m/n/16.06 工
+..........\glue 0.0 plus 1.3163
+..........\TU/FandolFang(0)/m/n/16.06 程
+..........\kern -0.00017
+..........\kern 0.00017
+..........\glue 0.0 plus 1.0fil
+..........\glue 6.0
+.........\glue(\tabskip) 0.0
+........\glue(\lineskip) 0.0
+........\hbox(21.92178+9.39519)x248.53752
+.........\glue(\tabskip) 0.0
+.........\hbox(21.92178+9.39519)x248.53752
+..........\rule(21.92178+9.39519)x0.0
+..........\glue 6.0
+..........\glue 0.00002
+..........\hbox(12.70346+2.95502)x81.09052, glue set 2.84544fil
+...........\hbox(12.70346+2.95502)x78.24507
+............\special{color push gray 0}
+............\hbox(12.70346+2.95502)x78.24507, glue set 7.51627filll
+.............\TU/FandolFang(0)/m/n/16.06 申
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 请
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 人
+.............\kern -0.00017
+.............\kern 0.00017
+.............\glue 0.0 plus 1.0fil minus 1.0fil
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(8.47968+0.0)x21.90874, glue set 5.84874fil
+...........\hbox(8.47968+0.0)x16.06
+............\special{color push gray 0}
+............\penalty 10000
+............\TU/FandolFang(0)/m/n/16.06 ：
+............\rule(0.0+0.0)x-11.19382
+............\kern 0.00069
+............\kern -0.00069
+............\kern -0.99649
+............\kern 0.99649
+............\glue 11.19382 minus 8.03
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(12.67134+2.82654)x85.35826, glue set 21.11827fil
+...........\hbox(12.67134+2.82654)x64.23999
+............\special{color push gray 0}
+............\hbox(12.67134+2.82654)x64.23999, glue set 4.015filll
+.............\TU/FandolFang(0)/m/n/16.06 吕
+.............\glue 0.0 plus 2.0filll
+.............\TU/FandolFang(0)/m/n/16.06 某
+.............\glue 0.0 plus 2.0filll
+.............\TU/FandolFang(0)/m/n/16.06 某
+.............\kern -0.00017
+.............\kern 0.00017
+.............\glue 0.0 plus 1.0fil minus 1.0fil
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(0.0+0.0)x48.18, glue set 48.18fil
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\glue 0.0 plus 1.0fil
+..........\glue 6.0
+.........\glue(\tabskip) 0.0
+........\glue(\lineskip) 0.0
+........\hbox(21.92178+9.39519)x248.53752
+.........\glue(\tabskip) 0.0
+.........\hbox(21.92178+9.39519)x248.53752
+..........\rule(21.92178+9.39519)x0.0
+..........\glue 6.0
+..........\glue 0.00002
+..........\hbox(12.81587+3.05139)x81.09052, glue set 2.84544fil
+...........\hbox(12.81587+3.05139)x78.24507
+............\special{color push gray 0}
+............\hbox(12.81587+3.05139)x78.24507, glue set 2.33418filll
+.............\TU/FandolFang(0)/m/n/16.06 指
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 导
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 教
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 师
+.............\kern -0.00017
+.............\kern 0.00017
+.............\glue 0.0 plus 1.0fil minus 1.0fil
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(8.47968+0.0)x21.90874, glue set 5.84874fil
+...........\hbox(8.47968+0.0)x16.06
+............\special{color push gray 0}
+............\penalty 10000
+............\TU/FandolFang(0)/m/n/16.06 ：
+............\rule(0.0+0.0)x-11.19382
+............\kern 0.00069
+............\kern -0.00069
+............\kern -0.99649
+............\kern 0.99649
+............\glue 11.19382 minus 8.03
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(12.67134+2.82654)x85.35826, glue set 21.11827fil
+...........\hbox(12.67134+2.82654)x64.23999
+............\special{color push gray 0}
+............\hbox(12.67134+2.82654)x64.23999, glue set 4.015filll
+.............\TU/FandolFang(0)/m/n/16.06 某
+.............\glue 0.0 plus 2.0filll
+.............\TU/FandolFang(0)/m/n/16.06 某
+.............\glue 0.0 plus 2.0filll
+.............\TU/FandolFang(0)/m/n/16.06 某
+.............\kern -0.00017
+.............\kern 0.00017
+.............\glue 0.0 plus 1.0fil minus 1.0fil
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(12.73558+2.74625)x48.18, glue set 8.03filll
+...........\TU/FandolFang(0)/m/n/16.06 教
+...........\glue 0.0 plus 2.0filll
+...........\TU/FandolFang(0)/m/n/16.06 授
+...........\kern -0.00017
+...........\kern 0.00017
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\glue 0.0 plus 1.0fil
+..........\glue 6.0
+.........\glue(\tabskip) 0.0
+........\glue(\lineskip) 0.0
+........\hbox(21.92178+9.39519)x248.53752
+.........\glue(\tabskip) 0.0
+.........\hbox(21.92178+9.39519)x248.53752
+..........\rule(21.92178+9.39519)x0.0
+..........\glue 6.0
+..........\glue 0.00002
+..........\hbox(12.81587+3.05139)x81.09052, glue set 2.84544fil
+...........\hbox(12.81587+3.05139)x78.24507
+............\special{color push gray 0}
+............\hbox(12.81587+3.05139)x78.24507, glue set - 3.62299filll
+.............\TU/FandolFang(0)/m/n/16.06 联
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 合
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 指
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 导
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 教
+.............\glue 0.0 plus 2.0filll minus 1.0filll
+.............\TU/FandolFang(0)/m/n/16.06 师
+.............\kern -0.00017
+.............\kern 0.00017
+.............\glue 0.0 plus 1.0fil minus 1.0fil
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(8.47968+0.0)x21.90874, glue set 5.84874fil
+...........\hbox(8.47968+0.0)x16.06
+............\special{color push gray 0}
+............\penalty 10000
+............\TU/FandolFang(0)/m/n/16.06 ：
+............\rule(0.0+0.0)x-11.19382
+............\kern 0.00069
+............\kern -0.00069
+............\kern -0.99649
+............\kern 0.99649
+............\glue 11.19382 minus 8.03
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(12.67134+2.82654)x85.35826, glue set 21.11827fil
+...........\hbox(12.67134+2.82654)x64.23999
+............\special{color push gray 0}
+............\hbox(12.67134+2.82654)x64.23999, glue set 4.015filll
+.............\TU/FandolFang(0)/m/n/16.06 某
+.............\glue 0.0 plus 2.0filll
+.............\TU/FandolFang(0)/m/n/16.06 某
+.............\glue 0.0 plus 2.0filll
+.............\TU/FandolFang(0)/m/n/16.06 某
+.............\kern -0.00017
+.............\kern 0.00017
+.............\glue 0.0 plus 1.0fil minus 1.0fil
+............\special{color pop}
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\hbox(12.73558+2.74625)x48.18, glue set 8.03filll
+...........\TU/FandolFang(0)/m/n/16.06 教
+...........\glue 0.0 plus 2.0filll
+...........\TU/FandolFang(0)/m/n/16.06 授
+...........\kern -0.00017
+...........\kern 0.00017
+...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\glue 0.0 plus 1.0fil
+..........\glue 6.0
+.........\glue(\tabskip) 0.0
+.......\mathoff
+......\penalty 10000
+......\glue(\parfillskip) 0.0 plus 1.0fil
+......\glue(\rightskip) 0.0
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue 62.0
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\lineskip) 1.0
+...\hbox(12.39832+16.90797)x398.3386
+....\glue(\leftskip) 0.0 plus 1.0fil
+....\hbox(0.0+0.0)x0.0
+....\vbox(12.39832+16.90797)x398.3386, glue set 14.1778fil
+.....\hbox(12.39832+2.73018)x398.3386, glue set 139.94809fil
+......\glue(\leftskip) 0.0 plus 1.0fil
+......\hbox(0.0+0.0)x0.0
+......\TU/FandolSong(0)/m/n/16.06 二
+......\glue 1.00374
+......\TU/FandolSong(0)/m/n/16.06 〇
+......\glue 1.00374
+......\TU/FandolSong(0)/m/n/16.06 〇
+......\glue 1.00374
+......\TU/FandolSong(0)/m/n/16.06 二
+......\glue 1.00374
+......\TU/FandolSong(0)/m/n/16.06 年
+......\glue 1.00374
+......\TU/FandolSong(0)/m/n/16.06 五
+......\glue 1.00374
+......\TU/FandolSong(0)/m/n/16.06 月
+......\kern -0.00017
+......\kern 0.00017
+......\penalty 10000
+......\glue(\parfillskip) 0.0
+......\glue(\rightskip) 0.0 plus 1.0fil
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\penalty 10000
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
+...\glue -6.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0 plus -1.0fil
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+...\glue 0.0 plus 0.0001fil
+..\glue(\baselineskip) 22.76228
+..\hbox(0.0+0.0)x398.3386
+...\special{color push gray 0}
+...\hbox(0.0+0.0)x398.3386
+...\special{color pop}
+.\kern -624.82262
+.\hbox(0.0+0.0)x0.0
+..\kern -72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
+...\kern -72.26999
+...\hbox(0.0+0.0)x0.0
+....\hbox(0.0+0.0)x0.0, shifted 845.04684
+.....\kern 0.0
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+.\kern 624.82262
+.\kern 0.0

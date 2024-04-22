@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2005-2021 by Tsinghua University TUNA Association <tuna@tsinghua.edu.cn>
+% Copyright (C) 2005-2024 by Tsinghua University TUNA Association <tuna@tsinghua.edu.cn>
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
@@ -14,7 +14,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{thuthesis.dtx}[2022/10/05 7.3.1 Tsinghua University Thesis Template]
+\ProvidesFile{thuthesis.dtx}[2024/03/29 7.5.0 Tsinghua University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -73,7 +73,7 @@
 %   容。
 % \item 本模板为作者根据
 %   清华大学研究生院颁发的《
-%    \href{http://yjsy.cic.tsinghua.edu.cn/docinfo/board/boarddetail.jsp?columnId=001050603&parentColumnId=0010506&itemSeq=5365}{%
+%    \href{https://info2021.tsinghua.edu.cn/f/info/xxfb_fg/xnzx/template/detail?xxid=fa880bdf60102a29fbe3c31f36b76c7e}{%
 %   研究生学位论文写作指南}》（更新到2023年3月版本，限校内网络访问）、
 %   英文版《Guide to Thesis Writing for Graduate Students》、
 %   清华大学教务处颁发的《
@@ -105,7 +105,7 @@
 % \textbf{Thesis} Template）是为了帮助清华大学毕业生撰写毕业论文而编写
 % 的 \LaTeX{} 论文模板。
 %
-% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处，或者想提出改进建议，
+% 本文档将尽量完整地介绍模板的使用方法，如有不清楚之处，或者想提出改进建议，
 % 可以在 \href{https://github.com/tuna/thuthesis/issues/}{GitHub Issues}
 % 参与讨论或提问。
 % 有兴趣者都可以参与完善此手册，也非常欢迎对代码的贡献。
@@ -170,7 +170,6 @@
 % thuthesis-*.cbx & BibLaTeX 参考文献引用样式文件\\
 % tsinghua-name-bachelor.pdf & 校名 logo，本科生封面使用 \\\midrule
 % thuthesis-example.tex & 示例文档主文件\\
-% spine.tex & 书脊示例文档\\
 % ref/ & 示例文档参考文献目录\\
 % data/ & 示例文档章节具体内容\\
 % figures/ & 示例文档图片路径\\
@@ -250,17 +249,14 @@
 % \begin{shell}
 %   $ xelatex thuthesis-example.tex
 %   $ bibtex thuthesis-example.aux              # 生成 bbl 文件
-%   $ bibtex thuthesis-example-survey.aux       # 本科生的调研报告的参考文献
-%   $ bibtex thuthesis-example-translation.aux  # 本科生的外文资料翻译的参考文献
+%   $ bibtex thuthesis-example-appendix-a.aux   # 附录 A 的的参考文献
+%   $ bibtex thuthesis-example-appendix-b.aux   # 附录 B 的的参考文献……
 %   $ bibtex thuthesis-example-index.aux        # 本科生的书面翻译对应的原文索引
 %   $ xelatex thuthesis-example.tex             # 解决引用
 %   $ xelatex thuthesis-example.tex             # 生成论文 PDF
 %
 %   $ xelatex spine.tex                         # 生成书脊 PDF
 % \end{shell}
-%
-% 在调用 \XeLaTeX 时，如果设置了 \option{include-spine} 选项，
-% 则需要在文件名前加上 \texttt{-shell-escape} 的命令行选项。
 %
 % 下面的命令用来生成用户手册：
 % \begin{shell}
@@ -345,6 +341,7 @@
 %     中易宋体         & 华文宋体        & 思源宋体        & Fandol 宋体     \\
 %     中易黑体         & 华文黑体        & 思源黑体        & Fandol 黑体     \\
 %     中易仿宋         & 华文仿宋        & Fandol 仿宋     & Fandol 仿宋     \\
+%     中易楷体         & 华文楷体        & Fandol 楷体     & Fandol 楷体     \\
 %     \bottomrule
 %   \end{tabular}
 % \end{table}
@@ -355,6 +352,20 @@
 % 关于字体的配置，
 % 详见 \pkg{fontspec}、\pkg{xeCJK}、\pkg{ctex} 等宏包的使用说明和代码。
 %
+% \DescribeOption{font}
+% 配置全文使用的西文字体。所有可选项目为 \option{auto}（默认）、\option{times}、\option{termes}、
+% \option{stix}、\option{xits}、\option{libertinus}、\option{newcm}、\option{lm}、
+% \option{newtx}、\option{none}。
+% 通常来说，用户\textbf{不需要}调整此选项。
+%
+% \DescribeOption{cjk-font}
+% 配置全文使用的中文字体。所有可选项为 \option{auto}（默认）、\option{windows}、\option{windows-local}、
+% \option{mac}、\option{mac-word}、\option{noto}、\option{fandol} 和 \option{none}。
+% 通常来说，用户\textbf{不需要}调整此选项，模板会自动通过 \option{fontset} 选项选择合适的字体。
+%
+% \DescribeOption{windows-font-dir}
+% 配置搜索 Windows 字体的路径，仅适用于 Overleaf 等不方便全局安装字体的环境。如果此目录下能找到中易宋体，
+% 则将自动使用这些字体编译。如有可能，始终建议全局安装相应字体，模板能够自动检测。
 %
 % \subsection{论文设置}
 % 论文的设置可以通过统一命令 \cs{thusetup} 设置 \emph{key=value} 形式完成。
@@ -415,7 +426,7 @@
 %
 % \subsubsection{开题报告}
 % \DescribeOption{thesis-type}
-% 模板还支持博士生论文开题报告的格式，可以通过设置 \option{thesis-type=proposal} 得到。
+% 模板还支持本科生、研究生论文开题报告的格式，可以通过设置 \option{thesis-type=proposal} 得到。
 %
 % 开题报告与学位论文有两点不同：
 % \begin{enumerate}
@@ -444,15 +455,15 @@
 % \end{latex}
 %
 % \subsubsection{申请学位名称}
-% \label{sec:degree-name}
-% 学位名称的设置比较复杂，见表~\ref{tab:degree-name}。
+% \label{sec:degree-category}
+% 学位名称的设置比较复杂，见表~\ref{tab:degree-category}。
 %
 % \begin{table}[h]
 %   \caption{学位名称的要求}
-%   \label{tab:degree-name}
+%   \label{tab:degree-category}
 %   \begin{tabular}{p{2cm}p{6cm}p{6cm}}
 %     \toprule
-%     学位类型 & degree-name & degree-name* \\
+%     学位类型 & degree-category & degree-category* \\
 %     \midrule
 %     学术型博士 & 需注明所属的学科门类，例如：
 %         哲学、经济学、法学、教育学、文学、历史学、理学、工学、农学、医学、
@@ -473,8 +484,8 @@
 %
 % \begin{latex}
 %   \thusetup{
-%     degree-name  = {您要申请什么学位},
-%     degree-name* = {Degree in English},
+%     degree-category  = {您要申请什么学位},
+%     degree-category* = {Degree in English},
 %   }
 % \end{latex}
 %
@@ -489,11 +500,8 @@
 % \subsubsection{学科名称}
 %
 % \begin{itemize}
-%   \item 学术型学位：获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称；
-%   \item 2019级及之前工程硕士：工程领域名称；
-%   \item 有专业领域的专业型学位：专业领域名称；
-%   \item 无专业领域的专业型学位：无需设置；
-%   \item 本科生：专业名称，第二学位论文需标注“（第二学位）”
+%   \item 研究生学术型学位：获得一级学科授权的学科填写一级学科名称，其他填写二级学科名称；
+%   \item 本科生：专业名称，第二学位论文需标注“（第二学位）”。
 % \end{itemize}
 %
 % \begin{latex}
@@ -502,6 +510,24 @@
 %     discipline* = {Discipline in English},
 %   }
 % \end{latex}
+%
+% \subsubsection{专业领域}
+%
+% 仅用于研究生专业型学位。
+%
+% \begin{itemize}
+%   \item 设置专业领域的专业学位类别，填写相应专业领域名称；
+%   \item 2019 级及之前工程硕士学位论文，在 \option{engineering-field} 填写相应工程领域名称；
+%   \item 其他专业学位类别的学位论文无需此信息。
+% \end{itemize}
+%
+% \begin{latex}
+%   \thusetup{
+%     professional-field  = {专业领域},
+%     professional-field* = {Professional field},
+%   }
+% \end{latex}
+%
 %
 % \subsubsection{作者姓名}
 % 作者姓名。
@@ -513,7 +539,7 @@
 % \end{latex}
 %
 % \subsubsection{学号}
-% 学号，仅用于博士生论文开题报告。
+% 学号，仅用于本、研论文开题报告。
 % \begin{latex}
 %   \thusetup{
 %     student-id  = {20000310000},
@@ -539,11 +565,10 @@
 %   }
 % \end{latex}
 %
-% \myentry{联合导师}
-% 硕士生、本科生联合指导教师，博士生联合导师。
+% \myentry{联合指导教师}
 % \begin{latex}
 %   \thusetup{
-%     co-supervisor  = {联合导师姓名, 教授},
+%     co-supervisor  = {联合指导教师姓名, 教授},
 %     co-supervisor* = {Professor Join-Supervisor Name},
 %   }
 % \end{latex}
@@ -1218,13 +1243,8 @@
 %     include-spine = true,
 %   }
 % \end{latex}
-% 打开此选项后，书籍会出现在中文封面后面的第一个空白页。如果有英文封面，则在英文封面之前。
-% 如果需要书籍出现在其他位置，请手工使用 \cs{spine} 生成，不要使用此命令。
-%
-% 在使用 Fandol 仿宋时，如果打开 \option{include-spine} 选项，
-% 模板将使用 \cs{write18} 来生成独立的 \file{spine.tex}，并调用 \XeLaTeX 进行排版后插入论文中。
-% 在这种情况下，请确保编译时打开了 shell escape 功能，或者在论文目录下放置编译完成的 \file{spine.pdf}，
-% 否则编译将因为无法正常生成书脊而失败。
+% 打开此选项后，书脊会出现在中文封面后面的第一个空白页。如果有英文封面，则在英文封面之前。
+% 如果需要书脊出现在其他位置，请手工使用 \cs{spine} 生成，不要使用此选项。
 %
 % \section{致谢}
 % \label{sec:thanks}
@@ -1249,7 +1269,7 @@
 %    \begin{macrocode}
 %<cls>\NeedsTeXFormat{LaTeX2e}[2017/04/15]
 %<cls>\ProvidesClass{thuthesis}
-%<cls>[2022/10/05 7.3.1 Tsinghua University Thesis Template]
+%<cls>[2024/03/29 7.5.0 Tsinghua University Thesis Template]
 %    \end{macrocode}
 %
 % 报错
@@ -1259,6 +1279,9 @@
 }
 \newcommand\thu@warning[1]{%
   \ClassWarning{thuthesis}{#1}%
+}
+\newcommand\thu@debug[1]{%
+  \typeout{Package thuthesis Info: #1}%
 }
 \newcommand\thu@patch@error[1]{%
   \thu@error{Failed to patch command \protect#1}%
@@ -1307,7 +1330,7 @@
 %<*cls>
 \hyphenation{Thu-Thesis}
 \def\thuthesis{ThuThesis}
-\def\version{7.3.1}
+\def\version{7.5.0}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -1541,6 +1564,7 @@
     choices = {
       auto,
       windows,
+      windows-local,
       mac,
       mac-word,
       noto,
@@ -1548,6 +1572,10 @@
       none,
     },
     default = auto,
+  },
+  windows-font-dir = {
+    name = windows@font@dir,
+    default = {.},
   },
   math-font = {
     name = math@font,
@@ -1802,11 +1830,9 @@
   }
 }
 \AtEndOfPackageFile*{natbib}{
-  \ifthu@degree@bachelor
-    \@ifpackageloaded{apacite}{}{
-      \RequirePackage{bibunits}
-    }
-  \fi
+  \@ifpackageloaded{apacite}{}{
+    \RequirePackage{bibunits}
+  }
 }
 %    \end{macrocode}
 %
@@ -2234,13 +2260,14 @@
       \thusetup{system = windows}
     }
   }
+  \thu@debug{Detected system: \thu@system}
 \fi
 %    \end{macrocode}
 %
 % 使用 \pkg{fontspec} 配置字体。
 %    \begin{macrocode}
-\newcommand\thu@mac@word@font@path{%
-  /Applications/Microsoft Word.app/Contents/Resources/DFonts/%
+\newcommand\thu@mac@word@font@dir{%
+  /Applications/Microsoft Word.app/Contents/Resources/DFonts%
 }
 \ifthu@fontset@auto
   \ifthu@system@windows
@@ -2249,21 +2276,26 @@
     \IfFontExistsTF{SimSun}{
       \thusetup{fontset = windows}
     }{
-      \IfFileExists{\thu@mac@word@font@path/SimSun.ttf}{
-        \thusetup{fontset = windows}
+      \IfFileExists{\thu@windows@font@dir/Simsun.ttc}{
+        \thusetup{fontset = windows, cjk-font = windows-local}
       }{
-        \ifthu@system@mac
-          \thusetup{fontset = mac}
-        \else
-          \IfFontExistsTF{Noto Serif CJK SC}{
-            \thusetup{fontset = ubuntu}
-          }{
-            \thusetup{fontset = fandol}
-          }
-        \fi
+        \IfFileExists{\thu@mac@word@font@dir/Simsun.ttc}{
+          \thusetup{fontset = windows, cjk-font = mac-word}
+        }{
+          \ifthu@system@mac
+            \thusetup{fontset = mac}
+          \else
+            \IfFontExistsTF{Noto Serif CJK SC}{
+              \thusetup{fontset = ubuntu}
+            }{
+              \thusetup{fontset = fandol}
+            }
+          \fi
+        }
       }
     }
   \fi
+  \thu@debug{Detected fontset: \thu@fontset}
 \fi
 %    \end{macrocode}
 %
@@ -2303,7 +2335,7 @@
 \newcommand\thu@set@font@times{%
   \setmainfont{Times New Roman}%
   \setsansfont{Arial}%
-  \ifthu@system@mac
+  \ifthu@fontset@mac
     \setmonofont{Menlo}[Scale = MatchLowercase]%
   \else
     \setmonofont{Courier New}[Scale = MatchLowercase]%
@@ -2525,15 +2557,6 @@
 %
 % \subsubsection{中文字体}
 %
-% 去掉“no requested script”警告。
-%    \begin{macrocode}
-\ExplSyntaxOn
-\@ifpackageloaded { xeCJK }
-  { \msg_redirect_name:nnn { fontspec } { no-script } { info } }
-  { }
-\ExplSyntaxOff
-%    \end{macrocode}
-%
 %    \begin{macrocode}
 \ifthu@cjk@font@auto
   \ifthu@fontset@mac
@@ -2543,10 +2566,14 @@
       \IfFontExistsTF{SimSun}{
         \thusetup{cjk-font = windows}
       }{
-        \IfFileExists{\thu@mac@word@font@path/SimSun.ttf}{
-          \thusetup{cjk-font = mac-word}
+        \IfFileExists{\thu@windows@font@dir/Simsun.ttc}{
+          \thusetup{cjk-font = windows-local}
         }{
-          \thu@error{Cannot find "SimSun" font}
+          \IfFileExists{\thu@mac@word@font@dir/Simsun.ttc}{
+            \thusetup{cjk-font = mac-word}
+          }{
+            \thu@error{Cannot find "SimSun" font}
+          }
         }
       }
     \else
@@ -2557,6 +2584,7 @@
       \fi
     \fi
   \fi
+  \thu@debug{Detected CJK font: \thu@cjk@font}
 \fi
 %    \end{macrocode}
 %
@@ -2576,35 +2604,86 @@
 }
 %    \end{macrocode}
 %
-% macOS 的 Microsoft Word 字体。
+% 使用本地的 Windows 字体文件。
+%
+% Windows 的中易楷体和仿宋字体文件名分别为 \file{Simkai.ttf} 和
+% \file{Simfang.ttf}（见
+% \url{https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list}），
+% 而 macOS 版 Word 对应的字体名为 \file{Kaiti.ttf} 和 \file{Fangsong.ttf}。
+% 所以需要进行判断。
 %    \begin{macrocode}
-\@namedef{thu@set@cjk@font@mac-word}{%
-  \setCJKmainfont{SimSun}[%
-    Path         = \thu@mac@word@font@path,
-    AutoFakeBold = 3,
-    ItalicFont   = KaiTi,
-  ]%
+\@namedef{thu@set@cjk@font@windows-local}{%
+  \IfFileExists{\thu@windows@font@dir/Kaiti.ttf}{
+    \setCJKmainfont{SimSun}[%
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttc,
+      AutoFakeBold = 3,
+      ItalicFont   = Kaiti,
+      ItalicFeatures = {Extension = .ttf},
+    ]%
+    \setCJKmonofont{Fangsong}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhkai}{Kaiti}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhfs}{Fangsong}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+  }{
+    \setCJKmainfont{SimSun}[%
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttc,
+      AutoFakeBold = 3,
+      ItalicFont   = Simkai,
+      ItalicFeatures = {Extension = .ttf},
+    ]%
+    \setCJKmonofont{Simfang}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhkai}{Simkai}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhfs}{Simfang}[
+      Path         = \thu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+  }
   \setCJKsansfont{SimHei}[%
-    Path         = \thu@mac@word@font@path,
+    Path         = \thu@windows@font@dir/,
+    Extension    = .ttf,
     AutoFakeBold = 3,
   ]%
-  \setCJKmonofont{FangSong}[Path=\thu@mac@word@font@path]%
   \setCJKfamilyfont{zhsong}{SimSun}[%
-    Path         = \thu@mac@word@font@path,
+    Path         = \thu@windows@font@dir/,
+    Extension    = .ttc,
     AutoFakeBold = 3,
   ]%
   \setCJKfamilyfont{zhhei}{SimHei}[%
-    Path         = \thu@mac@word@font@path,
+    Path         = \thu@windows@font@dir/,
+    Extension    = .ttf,
     AutoFakeBold = 3,
   ]%
-  \setCJKfamilyfont{zhkai}{KaiTi}[Path = \thu@mac@word@font@path]%
-  \setCJKfamilyfont{zhfs}{FangSong}[Path = \thu@mac@word@font@path]%
+}
+%    \end{macrocode}
+%
+% macOS 的 Microsoft Word 字体。
+%    \begin{macrocode}
+\@namedef{thu@set@cjk@font@mac-word}{%
+  \let\thu@windows@font@dir\thu@mac@word@font@dir
+  \@nameuse{thu@set@cjk@font@windows-local}%
 }
 %    \end{macrocode}
 %
 % macOS 的华文字体。
 %    \begin{macrocode}
 \newcommand\thu@set@cjk@font@mac{%
+  \defaultCJKfontfeatures{}%
   \setCJKmainfont{Songti SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
@@ -2641,19 +2720,30 @@
 % 注意 Noto CJK 的 regular 字重名字不带“Regular”。
 %    \begin{macrocode}
 \newcommand\thu@set@cjk@font@noto{%
+  \defaultCJKfontfeatures{}%
   \setCJKmainfont{Noto Serif CJK SC}[
     UprightFont    = * Light,
     BoldFont       = * Bold,
     ItalicFont     = FandolKai-Regular,
     ItalicFeatures = {Extension = .otf},
+    Script         = CJK,
   ]%
-  \setCJKsansfont{Noto Sans CJK SC}[BoldFont = * Medium]%
-  \setCJKmonofont{Noto Sans Mono CJK SC}%
+  \setCJKsansfont{Noto Sans CJK SC}[
+    BoldFont       = * Medium,
+    Script         = CJK,
+  ]%
+  \setCJKmonofont{Noto Sans Mono CJK SC}[
+    Script         = CJK,
+  ]%
   \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
     UprightFont    = * Light,
     UprightFont    = * Bold,
+    Script         = CJK,
   ]%
-  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[BoldFont = * Medium]%
+  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
+    BoldFont       = * Medium,
+    Script         = CJK,
+  ]%
   \setCJKfamilyfont{zhfs}{FandolFang}[
     Extension      = .otf,
     UprightFont    = *-Regular,
@@ -2668,6 +2758,7 @@
 % Fandol 字体。
 %    \begin{macrocode}
 \newcommand\thu@set@cjk@font@fandol{%
+  \defaultCJKfontfeatures{}%
   \setCJKmainfont{FandolSong}[
     Extension   = .otf,
     UprightFont = *-Regular,
@@ -2896,7 +2987,7 @@
     \newcommand\square{\mdlgwhtsquare}%
     \newcommand\blacksquare{\mdlgblksquare}%
     \AtBeginDocument{%
-      \renewcommand\checkmark{\ensuremath{✓}}%
+      \renewcommand\checkmark{\ensuremath{\symbol{"2713}}}%
     }%
 %    \end{macrocode}
 %
@@ -3499,8 +3590,7 @@
   {}{\thu@patch@error{\@getpen}}
 %    \end{macrocode}
 %
-% 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面，
-% 也可以防止在很大空白的浮动页上放置很小的图形。
+% 将浮动参数设为较宽松的值。
 %    \begin{macrocode}
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\topfraction}{0.85}
@@ -4008,8 +4098,8 @@
 %
 % 研究生：
 % \begin{enumerate}
-%   \item 目录中的章标题行采用黑体小四号字，固定行距 20 磅，段前空 6 磅，
-%     段后 0 磅；其他内容采用宋体小四号字，行距为固定值 20 磅，
+%   \item 目录中的章标题行采用黑体小四号字，固定行距 20 磅，段前段后 0 磅；
+%     其他内容采用宋体小四号字，行距为固定值 20 磅，
 %     段前、段后均为 0 磅。
 %   \item 目录中的章标题行居左书写，一级节标题行缩进 1 个汉字符，
 %     二级节标题行缩进 2 个汉字符。
@@ -4021,7 +4111,7 @@
   \else
     \ifthu@main@language@chinese
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}\sffamily}
+        [\z@]{\sffamily}
         {\contentspush{\thecontentslabel\quad}}{}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
@@ -4034,7 +4124,7 @@
         {\thu@leaders\thecontentspage}%
     \else
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}\heiti}
+        [\z@]{\heiti}
         {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
@@ -4121,24 +4211,39 @@
 %
 % 学位中英文。
 %    \begin{macrocode}
-  degree-name = {
+  degree-category = {
     default = {工学博士},
-    name    = degree@name,
+    name    = degree@category,
+  },
+  degree-category* = {
+    default = {Doctor of Philosophy},
+    name    = degree@category@en,
+  },
+  % 为了向后兼容
+  degree-name = {
+    name    = degree@category,
   },
   degree-name* = {
-    default = {Doctor of Philosophy},
-    name    = degree@name@en,
+    name    = degree@category@en,
   },
+}
+\thu@option@hook{degree-name}{%
+  \thu@warning{`degree-name' is deprecated. Use `degree-category' instead.}
+}
+\thu@option@hook{degree-name*}{%
+  \thu@warning{`degree-name*' is deprecated. Use `degree-category*' instead.}
+}
 %    \end{macrocode}
 %
 % 院系中英文名称。
 %    \begin{macrocode}
+\thu@define@key{
   department = {
     default = {计算机科学与技术系},
   },
 %    \end{macrocode}
 %
-% 专业中英文名称。
+% 学科中英文名称。
 %    \begin{macrocode}
   discipline = {
     % default = {计算机科学与技术},
@@ -4146,6 +4251,42 @@
   discipline* = {
     % default = {Computer Science and Technology},
     name    = discipline@en,
+  },
+}
+\thu@option@hook{discipline}{%
+  \ifthu@degree@type@professional
+    \thu@warning{`discipline' for professional degree is deprecated. Use `professional-field' instead.}
+    \let\thu@professional@field\thu@discipline
+    \let\thu@discipline\@empty
+  \fi
+}
+\thu@option@hook{discipline*}{%
+  \ifthu@degree@type@professional
+    \thu@warning{`discipline*' for professional degree is deprecated. Use `professional-field*' instead.}
+    \let\thu@professional@field@en\thu@discipline@en
+    \let\thu@discipline@en\@empty
+  \fi
+}
+%    \end{macrocode}
+%
+% 专业领域。
+%    \begin{macrocode}
+\thu@define@key{
+  professional-field = {
+    name    = professional@field,
+  },
+  professional-field* = {
+    name    = professional@field@en,
+  },
+%    \end{macrocode}
+%
+% 工程领域。
+%    \begin{macrocode}
+  engineering-field = {
+    name    = engineering@field,
+  },
+  engineering-field* = {
+    name    = engineering@field@en,
   },
 %    \end{macrocode}
 %
@@ -4303,7 +4444,7 @@
   \thu@pdfbookmark{-1}{\thu@title}%
   \thu@titlepage
   \ifthu@include@spine@true
-    \thu@spine
+    \spine
   \fi
   \ifthu@degree@graduate
     \ifthu@thesis@type@thesis
@@ -4319,32 +4460,27 @@
 % \begin{macro}{\thu@titlepage}
 % 中文封面（题名页）
 %
-% 研究生的中文封面分“学术型”和“专业型”两种 layout，但是“工程硕士”跟“学术型” 的
-% layout 一样，所以按照 \cs{thu@discipline}（工程领域）是否为空来区分“工程硕士”。
 %    \begin{macrocode}
 \newcommand\thu@titlepage{%
   \thusetup{language = chinese}%
   \ifthu@degree@graduate
+    % 研究生
     \ifthu@thesis@type@thesis
-      \ifthu@degree@type@academic
-        \thu@titlepage@graduate@academic
-      \else
-        \ifx\thu@discipline\@empty
-          \thu@titlepage@graduate@professional
-        \else
-          \thu@titlepage@graduate@academic
-        \fi
-      \fi
+      % 学位论文
+      \thu@titlepage@thesis
     \else
       \ifthu@thesis@type@proposal
+        % 选题报告
         \thu@titlepage@proposal
       \fi
     \fi
   \else
     \ifthu@degree@bachelor
+      % 本科生
       \thu@titlepage@bachelor
     \else
       \ifthu@degree@postdoc
+        % 博后
         \thu@cover@postdoc
         \cleardoublepage
         \thu@titlepage@postdoc
@@ -4362,7 +4498,7 @@
 % 然而作为事实标准的 Word 模板的页边距是上下 6.0 厘米，左右 4.0 厘米。
 % 这里缩小上边距以方便排版保密信息。
 %    \begin{macrocode}
-\newcommand\thu@titlepage@graduate@academic{%
+\newcommand\thu@titlepage@thesis{%
   \newgeometry{
     top     = 2cm,
     bottom  = 6cm,
@@ -4390,57 +4526,21 @@
       \vskip -9.2pt%
     \fi
     \vskip 24.1pt%
-    \thu@titlepage@degree
+    \thu@title@page@degree@category\par
     \vfill
-    \parbox[t][7.25cm][t]{\textwidth}{%
-      \centering\fangsong\fontsize{16bp}{31.2bp}\selectfont
-      \thu@titlepage@info
-    }\par
-    \parbox[t][1.03cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
-  \endgroup
-  \clearpage
-  \restoregeometry
-}
-%    \end{macrocode}
-%
-% 专业型学位论文中文封面
-%    \begin{macrocode}
-\newcommand\thu@titlepage@graduate@professional{%
-  \newgeometry{
-    top     = 2cm,
-    bottom  = 6cm,
-    hmargin = 3.5cm,
-  }%
-  \thispagestyle{empty}%
-  \null\vskip 0.45cm%
-  \begingroup
-    \centering
-    \parbox[t][1.52cm][t]{\textwidth}{%
-      \hskip -0.69cm%
-      \thu@titlepage@secret
-    }\par
-    \vskip 1.5cm%
-    \begingroup
-      % 1.21 倍行距，无网格
-      \sffamily\fontsize{26bp}{40.9bp}\selectfont
-      \thu@title\par
-    \endgroup
-    \ifthu@main@language@english
-      \vskip 5.4pt%
-      \begingroup
-        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
-        \thu@title@en\par
-      \endgroup
-      \vskip -9.2pt%
+    \ifthu@degree@type@academic
+      \parbox[t][7.25cm][t]{\textwidth}{%
+        \fangsong\fontsize{16bp}{31.2bp}\selectfont
+        \thu@titlepage@info
+      }\par
+    \else
+      \parbox[t][5.25cm][b]{\textwidth}{%
+        \fangsong\fontsize{16bp}{31.2bp}\selectfont
+        \thu@titlepage@info
+      }\par
+      \vskip 62pt%
     \fi
-    \vskip 25.5pt%
-    \thu@titlepage@degree
-    \vfill
-    \parbox[t][5.24cm][t]{\textwidth}{%
-      \centering\fangsong\fontsize{16bp}{1cm}\selectfont
-      \thu@titlepage@info
-    }\par
-    \parbox[t][1.25cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
+    \parbox[t][1.03cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
   \endgroup
   \clearpage
   \restoregeometry
@@ -4467,7 +4567,7 @@
       \thu@title\par
     }%
     \vskip 0.85cm%
-    \thu@titlepage@degree
+    \thu@title@page@degree@category
     \vfill
     \parbox[t][8.5cm][t]{\textwidth}{%
       \centering
@@ -4486,33 +4586,35 @@
   \restoregeometry
 }
 \newcommand\thu@set@student@id{%
-  \ifthu@thesis@type@proposal
-    \ifx\thu@student@id\@empty
-      \thusetup{student-id=2000310000}%
+  \ifthu@thesis@type@proposal\else
+    \ifx\thu@student@id\@empty\else
+      \thu@warning{`student-id' in "\protect\thusetup" would be ignored when `thesis-type' is not proposal.}%
     \fi
   \fi
 }
 \thu@set@student@id
 \thu@option@hook{thesis-type}{\thu@set@student@id}
+\thu@option@hook{student-id}{\thu@set@student@id}
 %    \end{macrocode}
 %
+% 涉密信息
 %    \begin{macrocode}
 \newcommand\thu@titlepage@secret{%
   \sffamily\sanhao
   \ifx\thu@secret@level\@empty
     \phantom{秘密}%
   \else
-    \thu@secret@level★\makebox[3em][c]{\thu@secret@year}年%
+    \thu@secret@level\symbol{"2605}\makebox[3em][c]{\thu@secret@year}年%
   \fi\par
 }
 %    \end{macrocode}
 %
-% 申请学位的学科门类: 小二号宋体字，字距延伸 0.5bp，
+% 申请学位的学科门类或专业学位类别: 三号（16bp）宋体字，字距延伸 0.5bp，
 % 所以 \cs{CJKglue} 应该设为 1 bp。
 %    \begin{macrocode}
-\newcommand\thu@titlepage@degree{%
+\newcommand\thu@title@page@degree@category{%
   \begingroup
-    \xiaoer
+    \fontsize{16bp}{22bp}\selectfont
     \ifLuaTeX
       \fontspec{\CJK@family}%
       \ltjsetparameter{kanjiskip = {1bp}}%
@@ -4521,7 +4623,7 @@
       \renewcommand\CJKglue{\hspace{1bp}}%
     \fi
     \ifthu@thesis@type@thesis
-      (申请清华大学\thu@degree@name
+      (申请清华大学\thu@degree@category
       \ifthu@degree@type@professional
         专业%
       \fi
@@ -4544,96 +4646,53 @@
 }
 %    \end{macrocode}
 %
-% 作者及导师信息部分使用三号仿宋字
+% 作者及指导教师信息
 %    \begin{macrocode}
 \newcommand\thu@titlepage@info{%
-  \ifthu@degree@doctor
+  \thu@titlepage@info@tabular{2.3cm}{2.85cm}{2.75cm}{0.77cm}{%
+    \thu@info@item{培养单位}{}{\thu@department}%
     \ifthu@degree@type@academic
-      \thu@titlepage@info@doctor@academic
+      \thu@info@item{学科}{}{\thu@discipline}%
+      \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
     \else
-      \thu@titlepage@info@doctor@professional
+      \thu@info@item{专业领域}{}{\thu@professional@field}%
+      \thu@info@item{工程领域}{}{\thu@engineering@field}%
+      \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
     \fi
-  \else
-    \ifthu@degree@type@academic
-      \thu@titlepage@info@master@academic
-    \else
-      \ifx\thu@discipline\@empty
-        \thu@titlepage@info@master@other
+    \ifthu@thesis@type@proposal
+      \ifx\thu@student@id\@empty
+        \thu@warning{Missing option `student-id' in "\protect\thusetup", ID will not appear on cover.}
       \else
-        \thu@titlepage@info@master@engineer
+        \thu@info@item{学号}{}{\thu@student@id}%
       \fi
     \fi
-  \fi
+    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
+  }\par
 }
 %    \end{macrocode}
 %
 % 标题页作者信息表
+% \texttt{\#1}: 表格左侧至版心的距离；\\
+% \texttt{\#2}: “培养单位”的边框宽度；\\
+% \texttt{\#3}: “培养单位”的文字宽度；\\
+% \texttt{\#4}: 冒号的边框；\\
+% \texttt{\#5}: 表格内容。
 %    \begin{macrocode}
-\newcommand\thu@titlepage@info@tabular[4]{%
+\newcommand\thu@titlepage@info@tabular[5]{%
   \def\thu@info@item##1##2##3{%
     \ifx##3\@empty\else
-      \thu@pad{#1}{\thu@fixed@box{#2}{##1}}%
-      \thu@pad{#3}{：}%
+      \thu@pad{#2}{\thu@fixed@box{#3}{##1}}%
+      \thu@pad{#4}{：}%
       ##2{##3}\\
     \fi
   }%
+  \hspace{#1}%
   \begin{tabular}{l}%
     \renewcommand\arraystretch{1}%
-    #4%
+    #5%
   \end{tabular}%
-}
-\newcommand\thu@titlepage@info@doctor@academic{%
-  \thu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{学科}{}{\thu@discipline}%
-    \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
-    \thu@info@item{学号}{}{\thu@student@id}%
-    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合导师}{\thu@name@title}{\thu@co@supervisor}%
-  }\par
-}
-\newcommand\thu@titlepage@info@doctor@professional{%
-  \thu@titlepage@info@tabular{3.03cm}{5em}{1.52cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
-    \thu@info@item{学号}{}{\thu@student@id}%
-    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合导师}{\thu@name@title}{\thu@co@supervisor}%
-  }\par
-}
-\newcommand\thu@titlepage@info@master@academic{%
-  \thu@titlepage@info@tabular{3.59cm}{5.5em}{0.82cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{学科}{}{\thu@discipline}%
-    \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
-    \thu@info@item{学号}{}{\thu@student@id}%
-    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
-  }\par
-}
-\newcommand\thu@titlepage@info@master@engineer{%
-  \thu@titlepage@info@tabular{2.8cm}{2.8cm}{1.34cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{工程领域}{}{\thu@discipline}%
-    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
-    \thu@info@item{学号}{}{\thu@student@id}%
-    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
-  }\par
-}
-\newcommand\thu@titlepage@info@master@other{%
-  \thu@titlepage@info@tabular{3.28cm}{5em}{1.52cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
-    \thu@info@item{学号}{}{\thu@student@id}%
-    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
-  }\par
 }
 %    \end{macrocode}
 %
@@ -4660,7 +4719,7 @@
   \newgeometry{
     top     = 5.5cm,
     bottom  = 5cm,
-    hmargin = 3.6cm,
+    hmargin = 3.4cm,
   }%
   \thispagestyle{empty}%
   \thusetup{language = english}%
@@ -4676,49 +4735,53 @@
 \newcommand\thu@titlepage@en@graduate@academic{%
   \begingroup
     \centering
-    \null\vskip -0.7cm%
-    \thu@titlepage@en@title
-    \vfill
+    \null\vskip -0.31cm%
+    \parbox[t][143bp][t]{\textwidth}{%
+      \centering\thu@titlepage@en@title
+    }\par
     \sanhao[1.725]%
     \thu@titlepage@en@degree
-    \vskip 0.13cm%
+    \vskip 3bp%
     in\par
-    \vskip 0.1cm%
+    \vskip 3.5bp%
     {\bfseries\sffamily\thu@discipline@en\par}
-    \vskip 0.7cm%
+    \vfill
     {\sffamily by\par}
     \vskip 0.24cm%
     {\sffamily\bfseries\thu@author@en\par}%
-    \vskip 0.14cm%
-    \parbox[t][3.07cm][t]{\textwidth}{%
-      \centering\xiaosan[2.1]%
+    \vskip 0.18cm%
+    \parbox[t][3.0cm][t]{\textwidth}{%
+      \centering
+      \xiaosan[2.1]%
       \thu@titlepage@en@supervisor
     }\par
     \thu@titlepage@en@date
-    \vskip 0.65cm%
+    \vskip 0.7cm%
   \endgroup
 }
 \newcommand\thu@titlepage@en@graduate@professional{%
   \begingroup
     \centering
-    \null\vskip -0.7cm%
-    \thu@titlepage@en@title
-    \vfill
+    \null\vskip -0.31cm%
+    \parbox[t][143bp][t]{\textwidth}{%
+      \centering\thu@titlepage@en@title
+    }\par
     \sanhao[1.725]%
     \thu@titlepage@en@degree
-    \vskip 1.1cm%
+    \vfill
     {\sffamily by\par}
     \vskip 0.24cm%
     {\sffamily\bfseries\thu@author@en\par}%
-    \ifx\thu@discipline@en\empty
+    \ifx\thu@professional@field@en\empty
       \vskip 1.95cm%
     \else
       \vskip -0.1cm%
-      {\sffamily\bfseries(\thu@discipline@en)\par}%
+      {\sffamily\bfseries(\thu@professional@field@en)\par}%
       \vskip 1.1cm%
     \fi
     \parbox[t][3.37cm][t]{\textwidth}{%
-      \centering\xiaosan[1.82]%
+      \centering
+      \xiaosan[1.82]%
       \thu@titlepage@en@supervisor
     }\par
     \thu@titlepage@en@date
@@ -4727,7 +4790,8 @@
 }
 \newcommand\thu@titlepage@en@title{%
   \begingroup
-    \sffamily\bfseries\fontsize{20bp}{31bp}\selectfont
+    % 对齐到网格，每行 15.6bp
+    \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
     \thu@title@en\par
   \endgroup
 }
@@ -4747,10 +4811,10 @@
     professional
   \fi
   degree of\par
-  {\sffamily\bfseries\thu@degree@name@en\par}%
+  {\sffamily\bfseries\thu@degree@category@en\par}%
 }
 \newcommand\thu@titlepage@en@supervisor{%
-  \begin{tabular}{r@{\makebox[0.71cm][l]{:}}l}%
+  \begin{tabular}{r@{\makebox[20.5bp][l]{\hspace{2bp}:}}l}%
     \renewcommand\arraystretch{1}%
     \thu@thesis@name@en{} Supervisor & \thu@supervisor@en \\
     \ifx\thu@associate@supervisor@en\@empty\else
@@ -4802,7 +4866,11 @@
     \centering
     \includegraphics{tsinghua-name-bachelor.pdf}%
     \vskip 0.94cm%
-    {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
+    \ifthu@thesis@type@proposal
+      {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\\开题报告\par}%
+    \else
+      {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
+    \fi
   \endgroup
   \vskip 1.8cm%
   \begingroup
@@ -5171,6 +5239,7 @@
     \textbf{关键词：}%
   \fi
   \thu@clist@use{\thu@keywords}{；}%
+  \gdef\thu@keywords{}%
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
@@ -5263,6 +5332,7 @@
 %    \begin{macrocode}
 \newenvironment{acknowledgements}{%
   \@mainmatterfalse
+  \thu@end@appendix@ref@section
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
@@ -5311,6 +5381,7 @@
 \newif\ifthu@statement@exists
 \newcommand\statement[1][]{%
   \@mainmatterfalse
+  \thu@end@appendix@ref@section
   \thu@statement@existstrue
   \ifthu@degree@bachelor
     \cleardoublepage
@@ -5501,19 +5572,39 @@
 %
 % 设置 \option{cite-style} 的接口，只对 \BibTeX{} 的编译方式有效。
 %    \begin{macrocode}
-  \thu@define@key{
-    cite-style = {
-      name = cite@style,
-      choices = {
-        super,
-        inline,
-        author-year,
-      }
+\thu@define@key{
+  cite-style = {
+    name = cite@style,
+    choices = {
+      super,
+      inline,
+      author-year,
     }
   }
+}
 %    \end{macrocode}
 %
 % \subsubsection{BibTeX + \pkg{natbib} 宏包}
+%
+%    \begin{macrocode}
+\def\bibliographystyle#1{%
+  \gdef\bu@bibstyle{#1}%
+  \ifx\@begindocumenthook\@undefined\else
+    \expandafter\AtBeginDocument
+  \fi
+    {\if@filesw
+       \immediate\write\@auxout{\string\bibstyle{#1}}%
+       \immediate\write\@auxout{\string\gdef\string\bu@bibstyle{#1}}%
+     \fi}%
+}
+\def\bibliography#1{%
+  \if@filesw
+    \immediate\write\@auxout{\string\bibdata{\zap@space#1 \@empty}}%
+    \immediate\write\@auxout{\string\gdef\string\bu@bibdata{#1}}%
+  \fi
+  \gdef\bu@bibdata{#1}%
+  \@input@{\jobname.bbl}}
+%    \end{macrocode}
 %
 % \BibTeX{} 和 \pkg{natbib} 宏包的配置。
 %    \begin{macrocode}
@@ -5549,6 +5640,7 @@
 %    \begin{macrocode}
   \@namedef{bibstyle@thuthesis-numeric}{\citestyle{super}}
   \@namedef{bibstyle@thuthesis-author-year}{\citestyle{author-year}}
+  \@namedef{bibstyle@cell}{\citestyle{author-year}}
   \@namedef{bibstyle@thuthesis-bachelor}{\citestyle{super}}
 %    \end{macrocode}
 %
@@ -6054,6 +6146,150 @@
 }
 %    \end{macrocode}
 %
+% 附录中的参考文献等另行编序号。
+%    \begin{macrocode}
+\newcommand\thu@end@appendix@ref@section{}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+%    \end{macrocode}
+%
+% \pkg{bibunits} 在载入时会保存 \cs{bibliography} 和 \cs{bibliographystyle}，
+% 所以在载入宏包前修改定义。
+%    \begin{macrocode}
+\AtBeginOfPackageFile*{bibunits}{
+  \def\bibliography#1{%
+    \if@filesw
+      \immediate\write\@auxout{\string\bibdata{\zap@space#1 \@empty}}%
+%    \end{macrocode}
+%
+% 正文的 \cs{bibliography} 同时设置附录参考文献的默认 \file{.bib} 数据库。
+%    \begin{macrocode}
+      \immediate\write\@auxout{\string\gdef\string\bu@bibdata{#1}}%
+    \fi
+    \@input@{\jobname.bbl}%
+    \gdef\bu@bibdata{#1}%
+  }
+  \def\bibliographystyle#1{%
+    \ifx\@begindocumenthook\@undefined\else
+      \expandafter\AtBeginDocument
+    \fi
+      {\if@filesw
+        \immediate\write\@auxout{\string\bibstyle{#1}}%
+%    \end{macrocode}
+%
+% 正文的 \cs{bibliographystyle} 同时设置附录参考文献的默认 \file{.bst} 样式。
+%    \begin{macrocode}
+        \immediate\write\@auxout{\string\gdef\string\bu@bibstyle{#1}}%
+      \fi}%
+      \gdef\bu@bibstyle{#1}%
+  }
+}
+\AtEndOfPackageFile*{bibunits}{
+  \def\@startbibunit{%
+    \global\let\@startbibunitorrelax\relax
+    \global\let\@finishbibunit\@finishstartedbibunit
+    \global\advance\@bibunitauxcnt 1
+    \if@filesw
+      {\endlinechar-1
+%    \end{macrocode}
+%
+% 使附录 aux 文件的 \cs{gdef}\cs{@localbibstyle} 能够生效。
+%    \begin{macrocode}
+      \makeatletter
+      \@input{\@bibunitname.aux}}%
+      \immediate\openout\@bibunitaux\@bibunitname.aux
+      \immediate\write\@bibunitaux{\string\bibstyle{\@localbibstyle}}%
+    \fi
+  }
+  \def\bu@bibliography#1{%
+    \putbib[#1]%
+  }
+  \def\bu@bibliographystyle#1{%
+    \if@filesw
+      \immediate\write\@bibunitaux{\string\gdef\string\@localbibstyle{#1}}%
+    \fi
+    \gdef\@localbibstyle{#1}%
+  }
+  \providecommand\printbibliography{\putbib\relax}%
+  \g@addto@macro\appendix{%
+    \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
+    \bibliographyunit[\chapter]%
+    \renewcommand\bibsection{%
+      \ctexset{section/numbering = false}%
+      \section{\bibname}%
+      \ctexset{section/numbering = true}%
+    }%
+%    \end{macrocode}
+%
+% 研究生附录的引用编号加前缀，如附录 A 的引用 [1] 为 [A.1]。
+%    \begin{macrocode}
+    \ifthu@degree@graduate
+      \renewcommand\citenumfont{\@Alph\c@chapter.}%
+      \renewcommand\@extra@binfo{@-\@alph\c@chapter}%
+      \renewcommand\@extra@b@citeb{@-\@alph\c@chapter}%
+      \renewcommand\bibnumfmt[1]{[\@Alph\c@chapter.#1]\hfill}%
+    \fi
+  }
+  \renewcommand\thu@end@appendix@ref@section{%
+    \bibliographyunit\relax
+  }
+  \AtEndDocument{\thu@end@appendix@ref@section}
+  \renewcommand\thu@set@survey@bibheading{%
+    \renewcommand\bibsection{%
+      \par
+      \vskip 20bp%
+      \thu@pdfbookmark{1}{\bibname}%
+      \begingroup
+        \centering
+        \xiaosi[1.667]\bibname\par
+      \endgroup
+      \vskip 6bp%
+    }%
+  }%
+%    \end{macrocode}
+%
+% 如果正文和附录引用了同一文献，\pkg{bibunits} 会给出无意义的警告，这里消除警告。
+%    \begin{macrocode}
+  % \let\@xtestdef\@gobbletwo  % This doesn't work
+  \def\bibunits@rerun@warning{\relax}
+}
+\PassOptionsToPackage{defernumbers = true}{biblatex}
+\AtEndOfPackageFile*{biblatex}{
+  \DeclareRefcontext{appendix}{}
+  \g@addto@macro\appendix{%
+    \pretocmd\chapter{%
+      \newrefsection
+      \ifthu@degree@bachelor\else
+        \@tempcnta=\c@chapter
+        \advance\@tempcnta\@ne
+        \newrefcontext[labelprefix = {\@Alph\@tempcnta.}]{appendix}%
+      \fi
+    }{}{\thu@patch@error{\chapter}}%
+    \defbibheading{bibliography}[\bibname]{%
+      \ctexset{section/numbering = false}%
+      \section{#1}%
+      \ctexset{section/numbering = true}%
+    }%
+  }
+  \renewcommand\thu@set@survey@bibheading{%
+    \defbibheading{bibliography}[\bibname]{%
+      \par
+      \vskip 20bp%
+      \thu@pdfbookmark{1}{\bibname}%
+      \begingroup
+        \centering
+        \xiaosi[1.667]##1\par
+      \endgroup
+      \vskip 6bp%
+    }%
+  }%
+  \def\bibliographystyle#1{%
+    \thu@warning{'bibliographystyle' invalid for 'biblatex'.}%
+  }
+}
+%    \end{macrocode}
+%
 % 本科生《写作指南》有独特的要求：附录 A 为外文资料的调研阅读报告或书面翻译，
 % 并且要分别附上独立的参考文献和外文资料的原文索引。
 % 所以这里定义 \env{survey} 和 \env{translation} 专门处理这两种情况，
@@ -6089,18 +6325,14 @@
     \vskip 20bp%
   }%
   \let\appendix\thu@appendix@appendix
+  \thu@set@survey@bibheading
   \renewcommand\bibname{参考文献}%
-  \let\bibsection\thu@appendix@bibsection
-  \renewcommand\@bibunitname{\jobname-survey}%
-  \let\bibliographystyle\defaultbibliographystyle
-  \let\bibliography\thu@appendix@bibliography
-  \begin{bibunit}%
   \startcontents[survey]%
 }{%
   \stopcontents[survey]%
-  \end{bibunit}%
   \thu@reset@main@language % restore language
 }
+\newcommand\thu@set@appendix@bib@heading{}
 %    \end{macrocode}
 % \end{environment}
 %
@@ -6120,9 +6352,11 @@
       },
     }%
     \section{摘要}%
-    \quotation
   }{%
-    \endquotation
+    \par
+    \ifx\thu@keywords\@empty\else
+      \textbf{关键词：}\thu@clist@use{\thu@keywords}{；}\par
+    \fi
   }%
   \thu@set@partial@toc@format
   \renewcommand\tableofcontents{%
@@ -6138,14 +6372,9 @@
       \section{\bibname}%
     \endgroup
   }%
-  \renewcommand\@bibunitname{\jobname-translation}%
-  \let\bibliographystyle\defaultbibliographystyle
-  \let\bibliography\thu@appendix@bibliography
-  \begin{bibunit}%
   \startcontents[translation]%
 }{%
   \stopcontents[translation]%
-  \end{bibunit}%
   \thu@reset@main@language % restore language
 }
 %    \end{macrocode}
@@ -6154,13 +6383,26 @@
 % \begin{environment}{translation}
 % 书面翻译对应的原文索引，区别于译文的参考文献。
 %    \begin{macrocode}
-\newenvironment{translation-index}{%
-  \begin{bibunit}%
-    \renewcommand\@bibunitname{\jobname-index}%
-    \renewcommand\bibname{书面翻译对应的原文索引}%
-    \let\bibsection\thu@appendix@bibsection
-}{%
-  \end{bibunit}%
+\newenvironment{translation-index}{}{}
+\AtEndOfPackageFile*{bibunits}{
+  \renewenvironment{translation-index}{%
+    \begin{bibunit}%
+      \renewcommand\@bibunitname{\jobname-index}%
+      \renewcommand\bibname{书面翻译对应的原文索引}%
+      \thu@set@survey@bibheading
+  }{%
+    \end{bibunit}%
+  }
+}
+\AtEndOfPackageFile*{biblatex}{
+  \renewenvironment{translation-index}{%
+    \endrefsection
+    \begin{refsection}%
+      \renewcommand\bibname{书面翻译对应的原文索引}%
+      \thu@set@survey@bibheading
+  }{%
+    \end{refsection}%
+  }
 }
 %    \end{macrocode}
 % \end{environment}
@@ -6206,17 +6448,7 @@
 %
 % 调研阅读报告的参考文献（或书面翻译对应的外文资料的原文索引）标题用宋体小四号字，段前 20pt，段后 6pt，行距 20pt。
 %    \begin{macrocode}
-\newcommand\thu@appendix@bibsection{%
-  \par
-  \vskip 20bp%
-  \thu@pdfbookmark{1}{\bibname}%
-  \begingroup
-    \centering
-    \xiaosi[1.667]\bibname\par
-  \endgroup
-  \vskip 6bp%
-}%
-\newcommand\thu@appendix@bibliography[1]{\putbib[#1]}
+\newcommand\thu@set@survey@bibheading{}
 %    \end{macrocode}
 %
 %
@@ -6227,6 +6459,7 @@
 %    \begin{macrocode}
 \newenvironment{resume}{%
   \@mainmatterfalse
+  \thu@end@appendix@ref@section
   \thu@chapter*{\thu@resume@name}%
   \ctexset{
     section = {
@@ -6242,17 +6475,19 @@
         aftertitle = ：,
       },
     }%
-    \ifthu@degree@graduate
-      \fontsize{12bp}{16bp}\selectfont
-    \fi
     \setlist[achievements]{
-      topsep      = 6bp,
-      itemsep     = 6bp,
-      leftmargin  = 1cm,
-      labelwidth  = 1cm,
-      labelsep    = 0pt,
-      align       = left,
-      label       = [\arabic*],
+      topsep     = 6bp,
+      itemsep    = 6bp,
+      leftmargin = 1cm,
+      labelwidth = 1cm,
+      labelsep   = 0pt,
+      first      = {
+        \ifthu@degree@graduate
+          \fontsize{12bp}{16bp}\selectfont
+        \fi
+      },
+      align      = left,
+      label      = [\arabic*],
       resume     = achievements,
     }%
   \else
@@ -6270,12 +6505,12 @@
       \sffamily\fontsize{15bp}{20bp}\selectfont
     \fi
     \setlist[achievements]{
-      topsep      = 0bp,
-      itemsep     = 0bp,
-      leftmargin  = 1.75cm,
-      labelsep    = 0.5cm,
-      align       = right,
-      label       = [\arabic*],
+      topsep     = 0bp,
+      itemsep    = 0bp,
+      leftmargin = 1.75cm,
+      labelsep   = 0.5cm,
+      align      = right,
+      label      = [\arabic*],
       resume     = achievements,
     }%
   \fi
@@ -6327,6 +6562,7 @@
 % \begin{environment}{comments}
 %    \begin{macrocode}
 \NewEnviron{comments}[1][]{%
+  \thu@end@appendix@ref@section
   \ifthu@degree@graduate
     \@mainmatterfalse
     \kv@define@key{thu@comments}{name}{\let\thu@comments@name\kv@value}%
@@ -6349,6 +6585,7 @@
 % \begin{environment}{resolution}
 %    \begin{macrocode}
 \NewEnviron{resolution}{%
+  \thu@end@appendix@ref@section
   \ifthu@degree@graduate
     \@mainmatterfalse
     \chapter{\thu@resolution@name}%
@@ -6392,22 +6629,25 @@
 %
 % \subsubsection{\pkg{hyperref} 宏包}
 %
+% 使用 \cs{PassOptionsToPackage} 的方式进行配置，允许用户在 \cs{usepackage}
+% 覆盖配置（\href{https://github.com/tuna/thuthesis/issues/863}{tuna/thuthesis\#863}）。
+%
 %    \begin{macrocode}
+\PassOptionsToPackage{
+  linktoc            = all,
+  bookmarksdepth     = 2,
+  bookmarksnumbered  = true,
+  bookmarksopen      = true,
+  bookmarksopenlevel = 1,
+  bookmarksdepth     = 3,
+  unicode            = true,
+  psdextra           = true,
+  breaklinks         = true,
+  plainpages         = false,
+  pdfdisplaydoctitle = true,
+  hidelinks,
+}{hyperref}
 \AtEndOfPackageFile*{hyperref}{
-  \hypersetup{
-    linktoc            = all,
-    bookmarksdepth     = 2,
-    bookmarksnumbered  = true,
-    bookmarksopen      = true,
-    bookmarksopenlevel = 1,
-    bookmarksdepth     = 3,
-    unicode            = true,
-    psdextra           = true,
-    breaklinks         = true,
-    plainpages         = false,
-    pdfdisplaydoctitle = true,
-    hidelinks,
-  }%
   \newcounter{thu@bookmark}
   \renewcommand\thu@pdfbookmark[2]{%
     \phantomsection
@@ -6417,7 +6657,7 @@
   \renewcommand\thu@phantomsection{%
     \phantomsection
   }
-  \pdfstringdefDisableCommands{
+  \pdfstringdefDisableCommands{%
     \let\\\relax
     \let\quad\relax
     \let\qquad\relax
@@ -6449,14 +6689,14 @@
       \hypersetup{
         pdftitle    = \thu@title,
         pdfauthor   = \thu@author,
-        pdfsubject  = \thu@degree@name,
+        pdfsubject  = \thu@degree@category,
         pdfkeywords = \thu@keywords,
       }%
     \else
       \hypersetup{
         pdftitle    = \thu@title@en,
         pdfauthor   = \thu@author@en,
-        pdfsubject  = \thu@degree@name@en,
+        pdfsubject  = \thu@degree@category@en,
         pdfkeywords = \thu@keywords@en,
       }%
     \fi
@@ -6736,32 +6976,6 @@
   \restoregeometry
 }
 %    \end{macrocode}
-%
-% Fandol 仿宋无法同时用于横排和竖排
-%（\href{https://github.com/tuna/thuthesis/issues/551}{\#551}），
-% 所以只能独立编译 \file{spine.pdf}，然后插入封面后。
-%    \begin{macrocode}
-\newcommand\thu@input@spine{%
-  \IfFileExists{spine.pdf}{}{%
-    \immediate\write18{xelatex spine.tex}%
-    \IfFileExists{spine.pdf}{}{%
-      \thu@error{Cannot find file "spine.pdf". Compile "spine.tex" first, or enable shell escape}%
-    }%
-  }%
-  \includepdf[pages=1]{spine.pdf}%
-}
-\newcommand\thu@spine{%
-  \ifthu@cjk@font@fandol
-    \thu@input@spine
-  \else
-    \ifthu@cjk@font@noto
-      \thu@input@spine
-    \else
-      \spine
-    \fi
-  \fi
-}
-%    \end{macrocode}
 % \end{macro}
 %
 %
@@ -6806,12 +7020,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
 \RequirePackage{metalogo}
-
-% Pretending the `amssymb` has been loaded.
-% This should be removed after `markdown` v2.13.0.
-\expandafter\def\csname ver@amssymb.sty\endcsname{0000/00/00}
 \RequirePackage[tightLists=false]{markdown}
-\expandafter\let\csname ver@amssymb.sty\endcsname\relax
 
 \markdownSetup{
   renderers = {
@@ -6828,35 +7037,30 @@
   pdfdisplaydoctitle = true
 }%
 
-\ifthenelse{\equal{\@nameuse{g__ctex_fontset_tl}}{mac}}{
-  \setmainfont{Palatino}
-  \setsansfont[Scale=MatchLowercase]{Helvetica}
-  \setmonofont[Scale=MatchLowercase]{Menlo}
-}{
-  \setmainfont[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-italic,
-    BoldItalicFont = *-bolditalic,
-  ]{texgyrepagella}
-  \setsansfont[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-italic,
-    BoldItalicFont = *-bolditalic,
-  ]{texgyreheros}
-  \setmonofont[
-    Extension      = .otf,
-    UprightFont    = *-regular,
-    BoldFont       = *-bold,
-    ItalicFont     = *-italic,
-    BoldItalicFont = *-bolditalic,
-    Scale          = MatchLowercase,
-    Ligatures      = CommonOff,
-  ]{texgyrecursor}
-}
+\setmainfont[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+]{texgyrepagella}
+\setsansfont[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+]{texgyreheros}
+\setmonofont[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+  Scale          = MatchLowercase,
+  Ligatures      = CommonOff,
+]{texgyrecursor}
+
 \unimathsetup{
   math-style=ISO,
   bold-style=ISO,

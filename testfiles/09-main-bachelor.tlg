@@ -1,19 +1,12 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-Package fontspec Info: Font "FandolHei-Regular" does not contain requested
-(fontspec)             Script "CJK".
-Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
-(fontspec)             with options
-(fontspec)             [Script={CJK},Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei' with options [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
 (fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
+(fontspec)              This font family consists of the following NFSS series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolHei-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
 (Font)              scaled to size 12.04628pt on input line ....
@@ -5060,7 +5053,7 @@ Completed box being shipped out [3]
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
 .....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
-.....\write1{\newlabel{tab:beijing}{{2.1}{\thepage }}}
+.....\write1{\newlabel{tab:beijing}{{2.1}{\thepage }{}{}{}}}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(50.98317+45.46194)x421.10089, glue set 79.07031fil
@@ -6209,7 +6202,7 @@ Completed box being shipped out [4]
 ......\glue(\rightskip) 0.0
 .....\glue 0.0
 .....\special{color pop}
-.....\write1{\newlabel{fig:winter}{{2.1}{\thepage }}}
+.....\write1{\newlabel{fig:winter}{{2.1}{\thepage }{}{}{}}}
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
@@ -7386,6 +7379,7 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line ....
 \bibcite{dubeck1990science}{{6}{1990}{{Dubeck}}{{}}}
+No file bu.aux.
 Completed box being shipped out [7]
 \vbox(722.98454+3.5232)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -8525,6 +8519,7 @@ Completed box being shipped out [10]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
 .\kern 0.0
+No file bu.aux.
 Completed box being shipped out [11]
 \vbox(722.98454+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -8991,6 +8986,7 @@ Completed box being shipped out [12]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 722.98454
 .\kern 0.0
+No file bu.aux.
 附录 A
 \c@ttl@toc@survey=\count...
 No file bu.aux.

@@ -1,19 +1,12 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-Package fontspec Info: Font "FandolHei-Regular" does not contain requested
-(fontspec)             Script "CJK".
-Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei'
-(fontspec)             with options
-(fontspec)             [Script={CJK},Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
+Package fontspec Info: Font family 'FandolHei(0)' created for font 'FandolHei' with options [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
 (fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
+(fontspec)              This font family consists of the following NFSS series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"[FandolHei-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 Completed box being shipped out [1]
 \vbox(710.18088+4.1104)x439.87962
@@ -1598,7 +1591,7 @@ Completed box being shipped out [2]
 ......\special{color pop}
 .....\glue 6.0
 ....\penalty 0
-....\TU/texgyretermes(0)/m/n/12.045 Seperation
+....\TU/texgyretermes(0)/m/n/12.045 Separation
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 of
 ....\glue 3.01125 plus 1.50562 minus 1.00374
@@ -2061,7 +2054,6 @@ Completed box being shipped out [3]
 ...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\hbox(14.05243+6.02255)x426.79135, glue set 251.79358fill
@@ -3466,7 +3458,6 @@ Completed box being shipped out [3]
 ...\penalty -300
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -3809,7 +3800,7 @@ Completed box being shipped out [4]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 23.87546fil
+..\vbox(674.33032+0.0)x426.79135, glue set 78.07208fil
 ...\glue(\topskip) 0.0
 ...\hbox(14.05243+6.02255)x426.79135, glue set 269.86108fill
 ....\glue(\leftskip) 49.52904
@@ -4530,7 +4521,6 @@ Completed box being shipped out [4]
 ...\penalty -300
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -4930,7 +4920,6 @@ Completed box being shipped out [4]
 ...\penalty -300
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -5163,7 +5152,6 @@ Completed box being shipped out [4]
 ...\penalty -300
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -5213,7 +5201,6 @@ Completed box being shipped out [4]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -5253,7 +5240,6 @@ Completed box being shipped out [4]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -5289,7 +5275,6 @@ Completed box being shipped out [4]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -5353,7 +5338,6 @@ Completed box being shipped out [4]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -5417,7 +5401,6 @@ Completed box being shipped out [4]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
@@ -5457,7 +5440,6 @@ Completed box being shipped out [4]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002

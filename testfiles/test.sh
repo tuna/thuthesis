@@ -7,6 +7,10 @@ fi
 test_name="$1";
 test_file="$1.tex";
 
+baseline_dir="testfiles/baseline"
+diff_dir="testfiles/diff"
+
+
 file_path="testfiles/$test_file";
 support_dir="testfiles/support";
 pdf_test_fontset_file="testfiles/support-pdf/thuthesis-pdf-test-config.tex";
@@ -25,8 +29,10 @@ do_test () {
     cp "$file_path" "$build_dir"/;
     cp "$support_dir"/* "$build_dir"/;
     cp "$pdf_test_fontset_file" "$build_dir"/;
-    latexmk -xelatex -cd -pv "$build_dir/$test_file";
-    cp "$build_dir/$test_name.pdf" "${file_path%.tex}.pdf";
+    latexmk -xelatex -cd "$build_dir/$test_file";
+    mv "$build_dir/$test_name.pdf" "${file_path%.tex}.pdf";
+    diff-pdf --output-diff="$diff_dir/$test_name.pdf" "$baseline_dir/$test_name.pdf" "${file_path%.tex}.pdf";
+    open "$diff_dir/$test_name.pdf";
 }
 
 
