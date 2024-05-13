@@ -592,12 +592,17 @@ FUNCTION {format.name}
     { bbl.et.al }
     { t get.str.lang 'name.lang :=
       name.lang lang.en =
-        { t #1 "{vv~}{ll}{ f{~}}" format.name$
+        { t #1 "{vv~}{ll}" format.name$
           uppercase.name
-            { "u" change.case$ }
+            { t #1 #1 substring$ "{" =
+              t #1 "{ff}" format.name$ empty$ not and
+                { "\MakeUppercase{" swap$ * "}" * }
+                { "u" change.case$ }
+              if$
+            }
             'skip$
           if$
-          t #1 "{, jj}" format.name$ *
+          t #1 "{ f{~}}{, jj}" format.name$ *
         }
         { t #1 "{ll}{ff}" format.name$ }
       if$
@@ -1304,7 +1309,7 @@ FUNCTION {extract.after.slash}
 
 FUNCTION {format.year}
 { year empty$ not
-    { year extract.before.slash extra.label * }
+    { year extra.label * }
     { date empty$ not
         { date extract.before.dash extra.label * }
         { entry.is.electronic not
@@ -1534,9 +1539,10 @@ FUNCTION {is.in.url}
     { #1 }
     { entry.url empty$
         { #0 }
-        { s text.length$ 'len :=
-          entry.url text.length$ 'charptr :=
-            { entry.url charptr len substring$ s = not
+        { s "l" change.case$ 's :=
+          s text.length$ 'len :=
+          entry.url "l" change.case$ text.length$ 'charptr :=
+            { entry.url "l" change.case$ charptr len substring$ s = not
               charptr #0 >
               and
             }
@@ -2063,7 +2069,7 @@ FUNCTION {map}
 
 FUNCTION {manual} { monograph }
 
-FUNCTION {thesis}
+FUNCTION {mastersthesis}
 { "D" set.entry.mark
   monograph
 }
@@ -2078,9 +2084,7 @@ FUNCTION {online}
   electronic
 }
 
-FUNCTION {mastersthesis} { thesis }
-
-FUNCTION {phdthesis} { thesis }
+FUNCTION {phdthesis} { mastersthesis }
 
 FUNCTION {proceedings}
 { "C" set.entry.mark
@@ -2097,12 +2101,10 @@ FUNCTION {standard}
   misc
 }
 
-FUNCTION {report}
+FUNCTION {techreport}
 { "R" set.entry.mark
   misc
 }
-
-FUNCTION {techreport} { report }
 
 FUNCTION {unpublished} { misc }
 
