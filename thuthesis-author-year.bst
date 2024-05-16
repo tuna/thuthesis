@@ -602,17 +602,12 @@ FUNCTION {format.name}
     { bbl.et.al }
     { t get.str.lang 'name.lang :=
       name.lang lang.en =
-        { t #1 "{vv~}{ll}" format.name$
+        { t #1 "{vv~}{ll}{ f{~}}" format.name$
           uppercase.name
-            { t #1 #1 substring$ "{" =
-              t #1 "{ff}" format.name$ empty$ not and
-                { "\MakeUppercase{" swap$ * "}" * }
-                { "u" change.case$ }
-              if$
-            }
+            { "u" change.case$ }
             'skip$
           if$
-          t #1 "{ f{~}}{, jj}" format.name$ *
+          t #1 "{, jj}" format.name$ *
         }
         { t #1 "{ll}{ff}" format.name$ }
       if$
@@ -1530,7 +1525,7 @@ FUNCTION {output.url}
 { show.url is.pure.electronic or
   entry.url empty$ not and
     { new.block
-      entry.url #1 #4 substring$ "\url{" =
+      entry.url #1 #5 substring$ "\url{" =
         { entry.url }
         { "\url{" entry.url * "}" * }
       if$
