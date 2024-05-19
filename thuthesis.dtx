@@ -1333,7 +1333,7 @@
 \hyphenation{Thu-Thesis}
 %%% TODO以下被更改
 \def\sudathesis{ThuThesis}
-\def\version{2.2.0}
+\def\version{2.3.1}
 %%%  TODO：以上被更改
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
@@ -4118,16 +4118,19 @@
             number = \chinese{chapter},
           },
           section = {
+            format     = \centering\sffamily\zititime\fontsize{14bp}{27.3bp}\selectfont,
             name   = {第,节},
             number = \chinese{section},
           },
           subsection = {
             name   = {,、},
             number = \chinese{subsection},
+            aftername  = {},
           },
           subsubsection = {
             name   = {（,）},
             number = \chinese{subsubsection},
+            aftername  = {},
           },
         }%
       \fi
@@ -4745,7 +4748,7 @@
       \end{tabular}
     }
     \vskip 20bp
-    \includegraphics[width=200bp]{suda.ps}
+    \includegraphics[width=200bp]{sudafull.png}
     \vskip 20bp
     \ifthu@degree@master
       \centerline{\chuhao\rmfamily{硕士学位论文}}
@@ -5308,7 +5311,7 @@
   \vfill
   \begingroup
     \centering
-    \includegraphics{suda.ps}%%% TODO此处被更改
+    \includegraphics{sudafull.png}%%% TODO此处被更改
 
     \vskip 0.94cm%
     \ifthu@thesis@type@proposal
