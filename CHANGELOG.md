@@ -6,9 +6,16 @@
 
 ## [Unreleased]
 
+## [v7.5.1] - 2024-05-20
+
 ### Changed
 
-- 更新 `student-id` 选项的处理逻辑，非 `proposal` 类型默认忽略，并增加警告（[#945](https://github.com/tuna/thuthesis/issues/945)）
+- 更新 `student-id` 选项的处理逻辑，非 `proposal` 类型默认忽略，并增加警告（[#945](https://github.com/tuna/thuthesis/issues/945)）。
+
+### Fixed
+
+- 修复参考文献 URL 中带有 DOI 时，重复打印 DOI 的问题（[#952](https://github.com/tuna/thuthesis/discussions/952)）。
+- 修复文档中的部分错别字。
 
 ## [v7.5.0] - 2024-03-29
 
@@ -981,7 +988,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.5.0...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.5.1...HEAD
+[v7.5.1]:     https://github.com/tuna/thuthesis/compare/v7.5.0...v7.5.1
 [v7.5.0]:     https://github.com/tuna/thuthesis/compare/v7.4.0...v7.5.0
 [v7.4.0]:     https://github.com/tuna/thuthesis/compare/v7.3.2...v7.4.0
 [v7.3.2]:     https://github.com/tuna/thuthesis/compare/v7.3.1...v7.3.2
