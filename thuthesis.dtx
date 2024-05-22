@@ -251,7 +251,7 @@
 %   $ bibtex thuthesis-example.aux              # 生成 bbl 文件
 %   $ bibtex thuthesis-example-appendix-a.aux   # 附录 A 的的参考文献
 %   $ bibtex thuthesis-example-appendix-b.aux   # 附录 B 的的参考文献……
-%   $ bibtex thuthesis-example-index.aux        # 本科生的书面翻译对应的原文索引
+%   $ bibtex thuthesis-example-index-1.aux      # 本科生的书面翻译对应的原文索引
 %   $ xelatex thuthesis-example.tex             # 解决引用
 %   $ xelatex thuthesis-example.tex             # 生成论文 PDF
 %
@@ -6347,9 +6347,11 @@
 %    \begin{macrocode}
 \newenvironment{translation-index}{}{}
 \AtEndOfPackageFile*{bibunits}{
+  \newcounter{thu@translation@index}%
   \renewenvironment{translation-index}{%
+    \global\advance\c@thu@translation@index\@ne
     \begin{bibunit}%
-      \renewcommand\@bibunitname{\jobname-index}%
+      \renewcommand\@bibunitname{\jobname-index-\arabic{thu@translation@index}}%
       \renewcommand\bibname{书面翻译对应的原文索引}%
       \thu@set@survey@bibheading
   }{%

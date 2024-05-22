@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- 解决本科生的多篇“书面翻译对应的原文索引”（[#956](https://github.com/tuna/thuthesis/issues/956)）。
+
 ## [v7.5.1] - 2024-05-20
 
 ### Changed
