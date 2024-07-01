@@ -6,6 +6,8 @@
 
 ## [Unreleased]
 
+## [v7.5.2] - 2024-07-01
+
 ### Added
 
 - 增加选项 `eqn-paren-style` 控制公式编号的括号样式（[#959](https://github.com/tuna/thuthesis/pull/959)）。
@@ -13,6 +15,7 @@
 ### Fixed
 
 - 解决本科生的多篇“书面翻译对应的原文索引”（[#956](https://github.com/tuna/thuthesis/issues/956)）。
+- 修复 GitHub 发布的 Release 压缩包缺少部分文件的问题（[#965](https://github.com/tuna/thuthesis/issues/965)）。
 
 ## [v7.5.1] - 2024-05-20
 
@@ -996,7 +999,8 @@
 
 
 
-[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.5.1...HEAD
+[Unreleased]: https://github.com/tuna/thuthesis/compare/v7.5.2...HEAD
+[v7.5.2]:     https://github.com/tuna/thuthesis/compare/v7.5.1...v7.5.2
 [v7.5.1]:     https://github.com/tuna/thuthesis/compare/v7.5.0...v7.5.1
 [v7.5.0]:     https://github.com/tuna/thuthesis/compare/v7.4.0...v7.5.0
 [v7.4.0]:     https://github.com/tuna/thuthesis/compare/v7.3.2...v7.4.0
