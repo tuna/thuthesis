@@ -48,8 +48,8 @@ Completed box being shipped out [1]
 ...\write-{}
 ...\write1{\pp@pagectr{footnote}{1}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
-...\marks1{第1章\hskip 1em\relax 定理}
-...\marks2{\prg_do_nothing: }
+...\marks1{\__mark_id:n {1}第1章\hskip 1em\relax 定理}
+...\marks2{\__mark_id:n {2}}
 ...\mark{{第1章\hskip 1em\relax 定理}{}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*

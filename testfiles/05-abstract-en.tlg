@@ -90,9 +90,9 @@ Completed box being shipped out [2]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{Abstract}
-...\marks2{Abstract}
-...\marks3{Abstract}
+...\marks1{\__mark_id:n {1}Abstract}
+...\marks2{\__mark_id:n {2}Abstract}
+...\marks3{\__mark_id:n {3}Abstract}
 ...\mark{{Abstract}{Abstract}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0

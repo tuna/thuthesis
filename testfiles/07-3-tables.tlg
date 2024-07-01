@@ -104,9 +104,9 @@ C.}
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{附表清单}
-...\marks2{附表清单}
-...\marks3{附表清单}
+...\marks1{\__mark_id:n {1}附表清单}
+...\marks2{\__mark_id:n {2}附表清单}
+...\marks3{\__mark_id:n {3}附表清单}
 ...\mark{{附表清单}{附表清单}}
 ...\penalty 10000
 ...\glue 0.0 plus 0.1

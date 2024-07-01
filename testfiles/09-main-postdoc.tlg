@@ -97,9 +97,9 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{摘\hskip 1em\relax 要}
-...\marks2{摘\hskip 1em\relax 要}
-...\marks3{摘\hskip 1em\relax 要}
+...\marks1{\__mark_id:n {1}摘\hskip 1em\relax 要}
+...\marks2{\__mark_id:n {2}摘\hskip 1em\relax 要}
+...\marks3{\__mark_id:n {3}摘\hskip 1em\relax 要}
 ...\mark{{摘\hskip 1em\relax 要}{摘\hskip 1em\relax 要}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -1405,9 +1405,9 @@ Completed box being shipped out [2]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{Abstract}
-...\marks2{Abstract}
-...\marks3{Abstract}
+...\marks1{\__mark_id:n {4}Abstract}
+...\marks2{\__mark_id:n {5}Abstract}
+...\marks3{\__mark_id:n {6}Abstract}
 ...\mark{{Abstract}{Abstract}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
@@ -2045,9 +2045,9 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{目\hskip 2em\relax 次}
-...\marks2{目\hskip 2em\relax 次}
-...\marks3{目\hskip 2em\relax 次}
+...\marks1{\__mark_id:n {7}目\hskip 2em\relax 次}
+...\marks2{\__mark_id:n {8}目\hskip 2em\relax 次}
+...\marks3{\__mark_id:n {9}目\hskip 2em\relax 次}
 ...\mark{{目\hskip 2em\relax 次}{目\hskip 2em\relax 次}}
 ...\penalty 10000
 ...\penalty 10000

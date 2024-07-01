@@ -137,9 +137,9 @@ Completed box being shipped out [8]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{符号和缩略语说明}
-...\marks2{符号和缩略语说明}
-...\marks3{符号和缩略语说明}
+...\marks1{\__mark_id:n {1}符号和缩略语说明}
+...\marks2{\__mark_id:n {2}符号和缩略语说明}
+...\marks3{\__mark_id:n {3}符号和缩略语说明}
 ...\mark{{符号和缩略语说明}{符号和缩略语说明}}
 ...\penalty 10000
 ...\glue -30.11249
