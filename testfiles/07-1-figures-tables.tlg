@@ -118,9 +118,9 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{插图和附表清单}
-...\marks2{插图和附表清单}
-...\marks3{插图和附表清单}
+...\marks1{\__mark_id:n {1}插图和附表清单}
+...\marks2{\__mark_id:n {2}插图和附表清单}
+...\marks3{\__mark_id:n {3}插图和附表清单}
 ...\mark{{插图和附表清单}{插图和附表清单}}
 ...\penalty 10000
 ...\glue 0.0 plus 0.1

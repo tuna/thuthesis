@@ -99,9 +99,9 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{摘\hskip 1em\relax 要}
-...\marks2{摘\hskip 1em\relax 要}
-...\marks3{摘\hskip 1em\relax 要}
+...\marks1{\__mark_id:n {1}摘\hskip 1em\relax 要}
+...\marks2{\__mark_id:n {2}摘\hskip 1em\relax 要}
+...\marks3{\__mark_id:n {3}摘\hskip 1em\relax 要}
 ...\mark{{摘\hskip 1em\relax 要}{摘\hskip 1em\relax 要}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0

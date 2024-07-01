@@ -113,9 +113,9 @@ Completed box being shipped out [116]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{声\protect \hspace  {1em}明}
-...\marks2{声\protect \hspace  {1em}明}
-...\marks3{声\protect \hspace  {1em}明}
+...\marks1{\__mark_id:n {1}声\protect \hspace  {1em}明}
+...\marks2{\__mark_id:n {2}声\protect \hspace  {1em}明}
+...\marks3{\__mark_id:n {3}声\protect \hspace  {1em}明}
 ...\mark{{声\protect \hspace  {1em}明}{声\protect \hspace  {1em}明}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0

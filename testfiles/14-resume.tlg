@@ -164,9 +164,9 @@ Completed box being shipped out [116]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{个人简历、在学期间完成的相关学术成果}
-...\marks2{个人简历、在学期间完成的相关学术成果}
-...\marks3{个人简历、在学期间完成的相关学术成果}
+...\marks1{\__mark_id:n {1}个人简历、在学期间完成的相关学术成果}
+...\marks2{\__mark_id:n {2}个人简历、在学期间完成的相关学术成果}
+...\marks3{\__mark_id:n {3}个人简历、在学期间完成的相关学术成果}
 ...\mark{{个人简历、在学期间完成的相关学术成果}{个人简历\ETC.}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0

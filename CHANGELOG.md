@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- 增加选项 `eqn-paren-style` 控制公式编号的括号样式（[#959](https://github.com/tuna/thuthesis/pull/959)）。
+
 ### Fixed
 
 - 解决本科生的多篇“书面翻译对应的原文索引”（[#956](https://github.com/tuna/thuthesis/issues/956)）。
