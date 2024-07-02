@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- 修正目录中顶格标题的断行问题（[#963](https://github.com/tuna/thuthesis/issues/963)）。
+
 ## [v7.5.2] - 2024-07-01
 
 ### Added
