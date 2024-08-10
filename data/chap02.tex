@@ -1,144 +1,48 @@
 % !TeX root = ../thuthesis-example.tex
+\chapter{国内外研究现状}
 
-\chapter{图表示例}
+\section{开放式创新概述}
 
-\section{插图}
+开放式创新是指企业在创新过程中不仅依赖内部资源，还广泛利用外部资源，通过合作、技术引进和用户参与等方式提升创新能力。
+这一概念由Henry Chesbrough在2003年提出，并迅速成为学术界和企业界关注的热点\citep{chesbrough_beyond_2006}.
+ 开放式创新的核心在于通过开放的方式获取外部知识和技术，从而加速创新过程，降低成本并提高创新成功率。
 
-图片通常在 \env{figure} 环境中使用 \cs{includegraphics} 插入，如图~\ref{fig:example} 的源代码。
-建议矢量图片使用 PDF 格式，比如数据可视化的绘图；
-照片应使用 JPG 格式；
-其他的栅格图应使用无损的 PNG 格式。
-注意，LaTeX 不支持 TIFF 格式；EPS 格式已经过时。
+\section{国外研究现状}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.5\linewidth]{example-image-a.pdf}
-  \caption*{国外的期刊习惯将图表的标题和说明文字写成一段，需要改写为标题只含图表的名称，其他说明文字以注释方式写在图表下方，或者写在正文中。}
-  \caption{示例图片标题}
-  \label{fig:example}
-\end{figure}
+在国外，开放式创新的研究已经非常广泛，涵盖了多个行业和应用场景。
+例如，Chesbrough和Crowther（2006）探讨了高科技行业之外的早期开放式创新采用者，
+揭示了开放式创新在不同行业中的普遍性\citep{chesbrough_beyond_2006}. Dahlander和Gann（2010）则研究了开放式创新的广度和深度，
+讨论了不同企业在开放式创新中的实践和挑战\citep{dahlander_how_2010}.
 
-若图或表中有附注，采用英文小写字母顺序编号，附注写在图或表的下方。
-国外的期刊习惯将图表的标题和说明文字写成一段，需要改写为标题只含图表的名称，其他说明文字以注释方式写在图表下方，或者写在正文中。
+关于苹果公司，Davidson（2023）评估了苹果公司在支持差异化创新举措方面的价值链收购策略，
+揭示了苹果通过开放式创新获取外部技术和资源的过程\citep{davidson_assessing_2023}. 
+此外，Gehani（2016）研究了从身份识别到创新能力的企业品牌价值转变，以苹果公司为例，
+说明了开放式创新如何增强企业的创新能力和市场竞争力\citep{gehani2016corporate}.
 
-如果一个图由两个或两个以上分图组成时，各分图分别以 (a)、(b)、(c)...... 作为图序，并须有分图题。
-推荐使用 \pkg{subcaption} 宏包来处理， 比如图~\ref{fig:subfig-a} 和图~\ref{fig:subfig-b}。
+\section{国内研究现状}
 
-\begin{figure}
-  \centering
-  \subcaptionbox{分图 A\label{fig:subfig-a}}
-    {\includegraphics[width=0.35\linewidth]{example-image-a.pdf}}
-  \subcaptionbox{分图 B\label{fig:subfig-b}}
-    {\includegraphics[width=0.35\linewidth]{example-image-b.pdf}}
-  \caption{多个分图的示例}
-  \label{fig:multi-image}
-\end{figure}
+在国内，开放式创新的研究起步较晚，但近年来也取得了一些进展。例如，唐兴通和王崇锋（2022）翻译的《开放式创新》
+一书详细介绍了开放式创新的理论框架和实践案例，为国内企业提供了理论指导和实践参考\citep{chesbrough2022}. 此外，
+复旦大学出版社出版的《开放式创新：创新方法论之新语境》一书则进一步探讨了开放式创新在中小企业和低科技企业中的应用，
+扩展了开放式创新的研究范围\citep{chesbrough2016}.
 
+\section{Apple Watch 开发中的开放式创新研究现状}
 
+Apple Watch作为苹果公司推出的首款智能手表，自2015年发布以来一直受到广泛关注。其成功的背后离不开开放式创新的应用。
+Apple通过与外部医疗技术公司合作，引入先进的健康监测技术，并通过开放平台鼓励第三方开发者为Apple Watch开发应用，
+从而丰富其生态系统\citep{apple2024}.
 
-\section{表格}
+然而，目前关于Apple Watch开发过程中开放式创新的系统性研究相对较少。现有研究主要集中在苹果公司的整体创新策略上，而缺乏针对具体产品如Apple Watch的深入分析。因此，本研究将系统探讨Apple Watch开发过程中的开放式创新应用，填补这一领域的研究空白。
 
-表应具有自明性。为使表格简洁易读，尽可能采用三线表，如表~\ref{tab:three-line}。
-三条线可以使用 \pkg{booktabs} 宏包提供的命令生成。
+\section{研究不足与空白}
 
-\begin{table}
-  \centering
-  \caption{三线表示例}
-  \begin{tabular}{ll}
-    \toprule
-    文件名          & 描述                         \\
-    \midrule
-    thuthesis.dtx   & 模板的源文件，包括文档和注释 \\
-    thuthesis.cls   & 模板文件                     \\
-    thuthesis-*.bst & BibTeX 参考文献表样式文件    \\
-    \bottomrule
-  \end{tabular}
-  \label{tab:three-line}
-\end{table}
+虽然国内外关于开放式创新的研究已经取得了许多成果，但在以下几个方面仍存在不足和研究空白：
 
-表格如果有附注，尤其是需要在表格中进行标注时，可以使用 \pkg{threeparttable} 宏包。
-研究生要求使用英文小写字母 a、b、c……顺序编号，本科生使用圈码 ①、②、③……编号。
+\begin{itemize}
+    \item \textbf{缺乏具体案例分析}：现有研究多集中于理论探讨和总体策略，缺乏对具体产品（如Apple Watch）开发过程中的开放式创新应用的详细分析。
+    \item \textbf{应用效果评估不足}：关于开放式创新对产品成功的具体影响研究较少，尤其是定量评估方面。
+    \item \textbf{跨行业对比研究不足}：不同企业和行业在开放式创新应用上的差异和共性研究较少，无法提供普遍适用的最佳实践。
+\end{itemize}
 
-\begin{table}
-  \centering
-  \begin{threeparttable}[c]
-    \caption{带附注的表格示例}
-    \label{tab:three-part-table}
-    \begin{tabular}{ll}
-      \toprule
-      文件名                 & 描述                         \\
-      \midrule
-      thuthesis.dtx\tnote{a} & 模板的源文件，包括文档和注释 \\
-      thuthesis.cls\tnote{b} & 模板文件                     \\
-      thuthesis-*.bst        & BibTeX 参考文献表样式文件    \\
-      \bottomrule
-    \end{tabular}
-    \begin{tablenotes}
-      \item [a] 可以通过 xelatex 编译生成模板的使用说明文档；
-        使用 xetex 编译 \file{thuthesis.ins} 时则会从 \file{.dtx} 中去除掉文档和注释，得到精简的 \file{.cls} 文件。
-      \item [b] 更新模板时，一定要记得编译生成 \file{.cls} 文件，否则编译论文时载入的依然是旧版的模板。
-    \end{tablenotes}
-  \end{threeparttable}
-\end{table}
-
-如某个表需要转页接排，可以使用 \pkg{longtable} 宏包，需要在随后的各页上重复表的编号。
-编号后跟表题（可省略）和“（续）”，置于表上方。续表均应重复表头。
-
-\begin{longtable}{cccc}
-    \caption{跨页长表格的表题}
-    \label{tab:longtable} \\
-    \toprule
-    表头 1 & 表头 2 & 表头 3 & 表头 4 \\
-    \midrule
-  \endfirsthead
-    \caption*{续表~\thetable\quad 跨页长表格的表题} \\
-    \toprule
-    表头 1 & 表头 2 & 表头 3 & 表头 4 \\
-    \midrule
-  \endhead
-    \bottomrule
-  \endfoot
-  Row 1  & & & \\
-  Row 2  & & & \\
-  Row 3  & & & \\
-  Row 4  & & & \\
-  Row 5  & & & \\
-  Row 6  & & & \\
-  Row 7  & & & \\
-  Row 8  & & & \\
-  Row 9  & & & \\
-  Row 10 & & & \\
-\end{longtable}
-
-
-
-\section{算法}
-
-算法环境可以使用 \pkg{algorithms} 或者 \pkg{algorithm2e} 宏包。
-
-\renewcommand{\algorithmicrequire}{\textbf{输入：}\unskip}
-\renewcommand{\algorithmicensure}{\textbf{输出：}\unskip}
-
-\begin{algorithm}
-  \caption{Calculate $y = x^n$}
-  \label{alg1}
-  \small
-  \begin{algorithmic}
-    \REQUIRE $n \geq 0$
-    \ENSURE $y = x^n$
-
-    \STATE $y \leftarrow 1$
-    \STATE $X \leftarrow x$
-    \STATE $N \leftarrow n$
-
-    \WHILE{$N \neq 0$}
-      \IF{$N$ is even}
-        \STATE $X \leftarrow X \times X$
-        \STATE $N \leftarrow N / 2$
-      \ELSE[$N$ is odd]
-        \STATE $y \leftarrow y \times X$
-        \STATE $N \leftarrow N - 1$
-      \ENDIF
-    \ENDWHILE
-  \end{algorithmic}
-\end{algorithm}
+本研究将通过详细分析Apple Watch的开发过程，探讨苹果公司在其中采用的开放式创新策略，评估其对产品成功的影响，
+并与其他可穿戴设备进行对比分析，填补上述研究空白。

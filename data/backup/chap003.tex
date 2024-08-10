@@ -1,0 +1,97 @@
+% !TeX root = ../thuthesis-example.tex
+
+\chapter{数学符号和公式}
+
+\section{数学符号}
+
+中文论文的数学符号默认遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》
+\footnote{原 GB 3102.11—1993，自 2017 年 3 月 23 日起，该标准转为推荐性标准。}。
+该标准参照采纳 ISO 31-11:1992 \footnote{目前已更新为 ISO 80000-2:2019。}，
+但是与 \TeX{} 默认的美国数学学会（AMS）的符号习惯有所区别。
+具体地来说主要有以下差异：
+\begin{enumerate}
+  \item 大写希腊字母默认为斜体，如
+    \begin{equation*}
+      \Gamma \Delta \Theta \Lambda \Xi \Pi \Sigma \Upsilon \Phi \Psi \Omega.
+    \end{equation*}
+    注意有限增量符号 $\increment$ 固定使用正体，模板提供了 \cs{increment} 命令。
+  \item 小于等于号和大于等于号使用倾斜的字形 $\le$、$\ge$。
+  \item 积分号使用正体，比如 $\int$、$\oint$。
+  \item
+    偏微分符号 $\partial$ 使用正体。
+  \item
+    省略号 \cs{dots} 按照中文的习惯固定居中，比如
+    \begin{equation*}
+      1, 2, \dots, n \quad 1 + 2 + \dots + n.
+    \end{equation*}
+  \item
+    实部 $\Re$ 和虚部 $\Im$ 的字体使用罗马体。
+\end{enumerate}
+
+以上数学符号样式的差异可以在模板中统一设置。
+另外国标还有一些与 AMS 不同的符号使用习惯，需要用户在写作时进行处理：
+\begin{enumerate}
+  \item 数学常数和特殊函数名用正体，如
+    \begin{equation*}
+      \uppi = 3.14\dots; \quad
+      \symup{i}^2 = -1; \quad
+      \symup{e} = \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n.
+    \end{equation*}
+  \item 微分号使用正体，比如 $\dif y / \dif x$。
+  \item 向量、矩阵和张量用粗斜体（\cs{symbf}），如 $\symbf{x}$、$\symbf{\Sigma}$、$\symbfsf{T}$。
+  \item 自然对数用 $\ln x$ 不用 $\log x$。
+\end{enumerate}
+
+
+英文论文的数学符号使用 \TeX{} 默认的样式。
+如果有必要，也可以通过设置 \verb|math-style| 选择数学符号样式。
+
+关于量和单位推荐使用
+\href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{\pkg{siunitx}}
+宏包，
+可以方便地处理希腊字母以及数字与单位之间的空白，
+比如：
+\SI{6.4e6}{m}，
+\SI{9}{\micro\meter}，
+\si{kg.m.s^{-1}}，
+\SIrange{10}{20}{\degreeCelsius}。
+
+
+
+\section{数学公式}
+
+数学公式可以使用 \env{equation} 和 \env{equation*} 环境。
+注意数学公式的引用应前后带括号，通常使用 \cs{eqref} 命令，比如式\eqref{eq:example}。
+\begin{equation}
+  \frac{1}{2 \uppi \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k).
+  \label{eq:example}
+\end{equation}
+
+多行公式尽可能在“=”处对齐，推荐使用 \env{align} 环境。
+\begin{align}
+  a & = b + c + d + e \\
+    & = f + g
+\end{align}
+
+
+
+\section{数学定理}
+
+定理环境的格式可以使用 \pkg{amsthm} 或者 \pkg{ntheorem} 宏包配置。
+用户在导言区载入这两者之一后，模板会自动配置 \env{theorem}、\env{proof} 等环境。
+
+\begin{theorem}[Lindeberg--Lévy 中心极限定理]
+  设随机变量 $X_1, X_2, \dots, X_n$ 独立同分布， 且具有期望 $\mu$ 和有限的方差 $\sigma^2 \ne 0$，
+  记 $\bar{X}_n = \frac{1}{n} \sum_{i+1}^n X_i$，则
+  \begin{equation}
+    \lim_{n \to \infty} P \left(\frac{\sqrt{n} \left( \bar{X}_n - \mu \right)}{\sigma} \le z \right) = \Phi(z),
+  \end{equation}
+  其中 $\Phi(z)$ 是标准正态分布的分布函数。
+\end{theorem}
+\begin{proof}
+  Trivial.
+\end{proof}
+
+同时模板还提供了 \env{assumption}、\env{definition}、\env{proposition}、
+\env{lemma}、\env{theorem}、\env{axiom}、\env{corollary}、\env{exercise}、
+\env{example}、\env{remar}、\env{problem}、\env{conjecture} 这些相关的环境。

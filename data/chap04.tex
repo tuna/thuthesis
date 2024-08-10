@@ -1,76 +1,53 @@
 % !TeX root = ../thuthesis-example.tex
 
-\chapter{引用文献的标注}
+\chapter{研究方案}
 
-模板支持 BibTeX 和 BibLaTeX 两种方式处理参考文献。
-下文主要介绍 BibTeX 配合 \pkg{natbib} 宏包的主要使用方法。
+\section{研究方法}
 
+本研究将采用以下研究方法和步骤，以系统性地分析和探讨Apple Watch开发过程中的开放式创新应用。
 
-\section{顺序编码制}
+\subsection{文献研究}
 
-在顺序编码制下，默认的 \cs{cite} 命令同 \cs{citep} 一样，序号置于方括号中，
-引文页码会放在括号外。
-统一处引用的连续序号会自动用短横线连接。
+首先，通过学术数据库（如Scopus、Google Scholar）和行业报告收集与开放式创新和Apple Watch相关的文献。具体步骤包括：
+\begin{itemize}
+    \item 确定关键词，如“开放式创新”、“Apple Watch”、“产品开发”等。
+    \item 筛选近十年内的相关文献，以确保研究的时效性。
+    \item 对筛选出的文献进行分类和综述，梳理现有研究成果和理论框架。
+\end{itemize}
 
-\thusetup{
-  cite-style = super,
-}
-\noindent
-\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
-  \verb|\cite{zhangkun1994}|               & \cite{zhangkun1994}               \\
-  \verb|\citet{zhangkun1994}|              & \citet{zhangkun1994}              \\
-  \verb|\citep{zhangkun1994}|              & \citep{zhangkun1994}              \\
-  \verb|\cite[42]{zhangkun1994}|           & \cite[42]{zhangkun1994}           \\
-  \verb|\cite{zhangkun1994,zhukezhen1973}| & \cite{zhangkun1994,zhukezhen1973} \\
-\end{tabular}
+\subsection{案例分析}
 
+通过对Apple Watch开发过程中的关键案例进行深入分析，揭示其开放式创新策略。具体步骤包括：
+\begin{itemize}
+    \item 选择具有代表性的案例，如Apple Watch与外部医疗技术公司的合作、与Nike的联合开发等\citep{apple2024,davidson_assessing_2023}。
+    \item 分析每个案例中的开放式创新策略及其实施过程。
+    \item 总结案例中的成功经验和面临的挑战，为其他企业提供借鉴\citep{chesbrough_beyond_2006, gehani2016corporate}。
+\end{itemize}
 
-也可以取消上标格式，将数字序号作为文字的一部分。
-建议全文统一使用相同的格式。
+\subsection{数据收集}
 
-\thusetup{
-  cite-style = inline,
-}
-\noindent
-\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
-  \verb|\cite{zhangkun1994}|               & \cite{zhangkun1994}               \\
-  \verb|\citet{zhangkun1994}|              & \citet{zhangkun1994}              \\
-  \verb|\citep{zhangkun1994}|              & \citep{zhangkun1994}              \\
-  \verb|\cite[42]{zhangkun1994}|           & \cite[42]{zhangkun1994}           \\
-  \verb|\cite{zhangkun1994,zhukezhen1973}| & \cite{zhangkun1994,zhukezhen1973} \\
-\end{tabular}
+收集与Apple Watch开放式创新相关的具体数据，包括合作公告、专利信息和用户反馈等。具体步骤包括：
+\begin{itemize}
+    \item 查找和收集苹果公司发布的官方合作公告和新闻稿\citep{apple2024}。
+    \item 利用专利数据库，收集与Apple Watch相关的专利信息，以了解其技术创新点\citep{dahlander_how_2010}。
+    \item 通过用户评论和反馈，分析用户对Apple Watch功能和创新的评价，了解市场需求和满意度\citep{davidson_assessing_2023}。
+\end{itemize}
 
+\subsection{数据分析}
 
+采用定性和定量分析方法，评估开放式创新对Apple Watch成功的影响。具体步骤包括：
+\begin{itemize}
+    \item 对收集到的案例和数据进行定性分析，总结开放式创新策略的实施效果和经验教训\citep{chesbrough2016}。
+    \item 利用统计方法，对用户反馈和市场数据进行定量分析，评估开放式创新对产品技术创新、市场表现和用户满意度的具体影响\citep{gehani2016corporate,apple2024}。
+\end{itemize}
 
-\section{著者-出版年制}
+\section{研究框架}
 
-著者-出版年制下的 \cs{cite} 跟 \cs{citet} 一样。
-
-\thusetup{
-  cite-style = author-year,
-}
-\noindent
-\begin{tabular}{@{}l@{$\Rightarrow$}l@{}}
-  \verb|\cite{zhangkun1994}|                & \cite{zhangkun1994}                \\
-  \verb|\citet{zhangkun1994}|               & \citet{zhangkun1994}               \\
-  \verb|\citep{zhangkun1994}|               & \citep{zhangkun1994}               \\
-  \verb|\cite[42]{zhangkun1994}|            & \cite[42]{zhangkun1994}            \\
-  \verb|\citep{zhangkun1994,zhukezhen1973}| & \citep{zhangkun1994,zhukezhen1973} \\
-\end{tabular}
-
-\vskip 2ex
-\thusetup{
-  cite-style = super,
-}
-注意，引文参考文献的每条都要在正文中标注
-\cite{zhangkun1994,zhukezhen1973,dupont1974bone,zhengkaiqing1987,%
-  jiangxizhou1980,jianduju1994,merkt1995rotational,mellinger1996laser,%
-  bixon1996dynamics,mahui1995,carlson1981two,taylor1983scanning,%
-  taylor1981study,shimizu1983laser,atkinson1982experimental,%
-  kusch1975perturbations,guangxi1993,huosini1989guwu,wangfuzhi1865songlun,%
-  zhaoyaodong1998xinshidai,biaozhunhua2002tushu,chubanzhuanye2004,%
-  who1970factors,peebles2001probability,baishunong1998zhiwu,%
-  weinstein1974pathogenic,hanjiren1985lun,dizhi1936dizhi,%
-  tushuguan1957tushuguanxue,aaas1883science,fugang2000fengsha,%
-  xiaoyu2001chubanye,oclc2000about,scitor2000project%
-}。
+本研究将按照以下框架进行：
+\begin{itemize}
+    \item \textbf{第一章：引言}：介绍研究背景、研究问题和研究目的。
+    \item \textbf{第二章：国内外研究现状}：综述开放式创新和Apple Watch产品开发的现有研究，指出研究不足和空白。
+    \item \textbf{第三章：研究内容}：详细描述研究问题、研究目标、研究方法和预期成果。
+    \item \textbf{第四章：Apple Watch开发中的开放式创新应用}：具体分析Apple Watch开发过程中的开放式创新策略和应用案例。
+    \item \textbf{第五章：研究结论与建议}：总结研究发现，提出对苹果公司及其他企业的建议。
+\end{itemize}
