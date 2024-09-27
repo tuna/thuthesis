@@ -65,7 +65,7 @@ STRINGS {
 
 FUNCTION {load.config}
 {
-  #2 'citation.et.al.min :=
+  #3 'citation.et.al.min :=
   #1 'citation.et.al.use.first :=
   #4 'bibliography.et.al.min :=
   #3 'bibliography.et.al.use.first :=
@@ -199,7 +199,11 @@ FUNCTION {bbl.et.al}
 FUNCTION {citation.and}
 { terms.in.macro
     { "{\biband}" }
-    'bbl.and
+     { entry.lang lang.zh =
+   { "和" }
+   { " and " }
+   if$
+   }
   if$
 }
 

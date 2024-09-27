@@ -1,0 +1,52 @@
+\begin{thebibliography}{6}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
+
+\bibitem[谢平\ 等(2006)谢平, 徐忠, and 沈明高]{xp2006}
+谢平, 徐忠, 沈明高, 2006.
+\newblock 农村信用社改革绩效评价\allowbreak[J].
+\newblock 金融研究\allowbreak (1): 23-39.
+
+\bibitem[张瑞怀\ 等(2020)张瑞怀, 孙涌, 李家鸽, 任丹妮, and
+  郑六江]{zrh2020}
+张瑞怀, 孙涌, 李家鸽, 等, 2020.
+\newblock
+  省联社管理及其对农信社效率提升的影响:理论与实证研究\allowbreak[J].
+\newblock 金融研究\allowbreak (10): 178-184.
+
+\bibitem[周素彦和周文平(2007)周素彦 and 周文平]{zsyandzwp2007}
+周素彦, 周文平, 2007.
+\newblock
+  论农村信用社"省联社"模式——理论依据,缺陷及实施建议\allowbreak[J].
+\newblock 金融教学与研究\allowbreak (5): 10-14.
+
+\bibitem[Adams and Mehran(2003)]{Adams2003}
+Adams R~B, Mehran H, 2003.
+\newblock Is corporate governance different for bank holding
+  companies?\allowbreak[J].
+\newblock Economic Policy Review, 9\allowbreak (Apr): 123-142.
+
+\bibitem[Adu et~al.(2023)Adu, Abedin, and Hasan]{ADU2023102736}
+Adu D~A, Abedin M~Z, Hasan M, 2023.
+\newblock Bank ownership structures and sustainable banking initiatives: The
+  moderating effect of governance mechanism\allowbreak[J].
+\newblock International Review of Financial Analysis, 89: 102736.
+
+\bibitem[DeYoung et~al.(2013)DeYoung, Robert, Peng, Emma, Y., Yan, and
+  Meng]{DeYoung2013Executive}
+DeYoung, Robert, Peng, et~al., 2013.
+\newblock Executive compensation and business policy choices at u.s. commercial
+  banks.\allowbreak[J].
+\newblock Journal of Financial and Quantitative Analysis, 46\allowbreak (1):
+  165-196.
+
+\end{thebibliography}
