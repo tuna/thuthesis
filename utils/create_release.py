@@ -73,7 +73,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if not args.version:
         version = (
-            subprocess.check_output(["git", "describe", "--tags"])
+            subprocess.check_output(["git", "describe", "--tags", "--always"])
             .strip()
             .decode("utf-8")
         )
