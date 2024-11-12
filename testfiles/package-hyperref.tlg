@@ -3184,7 +3184,7 @@ Completed box being shipped out [1]
 ......\hbox(0.0+0.0)x0.0
 .......\mathon
 .......\hbox(0.0+0.0)x0.0, shifted -20.075
-........\special{pdf:dest (equation.0.2.1) [@thispage /XYZ @xpos @ypos null]}
+........\special{pdf:dest (equation.0.1) [@thispage /XYZ @xpos @ypos null]}
 ........\penalty 10000
 .......\mathoff
 ......\hbox(0.0+0.0)x0.0
@@ -3294,7 +3294,7 @@ Completed box being shipped out [1]
 .......\TU/texgyretermes(0)/m/n/12.045 )
 .......\kern -0.0002
 .......\kern 0.0002
-......\write1{\newlabel{eq:1.1}{{1}{\thepage }{Title}{equation.0.2.1}{}}}
+......\write1{\newlabel{eq:1.1}{{1}{\thepage }{Title}{equation.0.1}{}}}
 ....\penalty 0
 ....\glue(\belowdisplayskip) 6.02249
 ....\glue -12.02249
@@ -4857,7 +4857,7 @@ Completed box being shipped out [4]
 ......\hbox(0.0+0.0)x0.0
 .......\mathon
 .......\hbox(0.0+0.0)x0.0, shifted -20.075
-........\special{pdf:dest (equation.A.1.1) [@thispage /XYZ @xpos @ypos null]}
+........\special{pdf:dest (equation.A.1) [@thispage /XYZ @xpos @ypos null]}
 ........\penalty 10000
 .......\mathoff
 ......\hbox(0.0+0.0)x0.0
@@ -4967,7 +4967,7 @@ Completed box being shipped out [4]
 .......\TU/texgyretermes(0)/m/n/12.045 )
 .......\kern -0.0002
 .......\kern 0.0002
-......\write1{\newlabel{eq:A.1}{{A.1}{\thepage }{Title}{equation.A.1.1}{}}}
+......\write1{\newlabel{eq:A.1}{{A.1}{\thepage }{Title}{equation.A.1}{}}}
 ....\penalty 0
 ....\glue(\belowdisplayshortskip) 6.02249
 ....\glue -12.02249

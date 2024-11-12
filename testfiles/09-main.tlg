@@ -9648,7 +9648,7 @@ Completed box being shipped out [5]
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
 .....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
-.....\write1{\newlabel{tab:notations}{{3.1}{\thepage }{}{}{}}}
+.....\write1{\newlabel{tab:notations}{{3.1}{\thepage }{}{table.3.1}{}}}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(268.44019+262.91896)x426.79135, glue set 9.47826fil

@@ -5080,7 +5080,7 @@ Completed box being shipped out [3]
 .....\rule(0.0+0.0)x*
 .....\special{color pop}
 .....\write1{\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}}
-.....\write1{\newlabel{tab:beijing}{{2.1}{\thepage }{}{}{}}}
+.....\write1{\newlabel{tab:beijing}{{2.1}{\thepage }{}{table.2.1}{}}}
 .....\glue(\parskip) 0.0
 .....\glue(\parskip) 0.0
 .....\hbox(50.98317+45.46194)x421.10089, glue set 79.07031fil
@@ -6229,7 +6229,7 @@ Completed box being shipped out [4]
 ......\glue(\rightskip) 0.0
 .....\glue 0.0
 .....\special{color pop}
-.....\write1{\newlabel{fig:winter}{{2.1}{\thepage }{}{}{}}}
+.....\write1{\newlabel{fig:winter}{{2.1}{\thepage }{}{figure.2.1}{}}}
 .....\glue 0.0
 ....\special{color pop}
 ...\penalty 0
