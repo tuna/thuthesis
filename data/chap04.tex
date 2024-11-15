@@ -1,56 +1,140 @@
-\chapter{研究方案}
-\section{研究设计}
+\chapter{研究方法}
 
-\subsection{总体研究设计}
-本研究采用实证研究与案例分析相结合的方法，旨在通过网络分析优化新产品导入（NPI）流程中的任务依赖、资源分配和风险管理。首先，将通过文献综述和理论分析明确研究框架，进而通过实际案例的深入分析，验证网络分析方法在NPI流程中的有效性。最后，将提出具体的优化策略，并通过模拟或实地验证来检验这些策略的实际应用效果。
+本研究旨在探索基于复杂系统理论和网络分析方法的新产品导入（NPI）过程优化策略。为此，本文将采用理论分析、模型构建、实证研究和案例验证相结合的研究方法。具体方法如下：
 
-\subsection{研究对象选择}
-本研究的研究对象将选取在高科技制造业中的一个或多个新产品导入项目。选择这些项目的原因在于高科技制造业中产品更新换代速度快，NPI过程复杂，涉及多部门、多任务的协同工作。这种复杂的项目环境为网络分析方法的应用提供了良好的研究基础。此外，高科技制造业企业通常拥有较为成熟的项目管理体系和丰富的数据资源，有助于网络分析模型的构建与验证。
+\section{总体研究思路}
 
-\section{研究方法}
+本研究将按照以下步骤开展：
 
-\subsection{文献综述与理论框架构建}
-首先，通过对国内外相关文献的系统梳理，明确网络分析在NPI流程管理中的应用现状与挑战，并结合复杂性管理理论，构建本研究的理论框架。这一过程包括以下步骤：
 \begin{enumerate}
-    \item 系统检索和收集网络分析、复杂性管理、NPI流程管理等领域的相关文献。
-    \item 对收集到的文献进行分类和分析，识别关键理论和方法。
-    \item 基于文献分析结果，构建本研究的理论框架，明确研究假设和问题。
+  \item \textbf{理论基础研究}：
+
+  深入研究复杂系统理论和网络分析方法，理解其基本原理和适用范围，为 NPI 过程的网络建模提供理论支持。
+
+  \item \textbf{NPI 过程分析与建模}：
+
+  基于对 NPI 过程深入剖析，识别关键要素和相互关系，构建 NPI 过程的网络模型。
+
+  \item \textbf{网络特征分析}：
+
+  利用网络分析工具，计算网络的结构特征指标，如度分布、聚类系数、中心性等，揭示 NPI 过程中的关键节点和关键路径。
+
+  \item \textbf{优化策略制定}：
+
+  根据网络特征分析的结果，提出针对性的 NPI 过程优化策略，旨在提高协作效率、信息共享和资源配置。
+
+  \item \textbf{案例研究与验证}：
+
+  选取典型企业或项目作为案例，应用所提出的模型和方法，对 NPI 过程进行分析和优化验证，评估方法的有效性和可行性。
+
 \end{enumerate}
 
-\subsection{案例研究与数据收集}
-案例研究是本研究的核心部分，通过对一个或多个实际NPI项目的详细分析，收集所需的数据，以支持网络分析模型的构建。具体方法包括：
+\section{研究方法的具体内容}
+
+\subsubsection{理论研究方法}
+
+通过文献研究，系统梳理复杂系统理论和网络分析方法的核心概念、理论框架和应用现状。重点关注以下方面：
+
 \begin{itemize}
-    \item \textbf{数据收集}：通过企业内部访谈、项目文档分析和实地调研等方式，收集与NPI项目相关的任务依赖关系、资源分配情况和项目进度数据。这些数据将用于构建任务依赖网络。
-    \item \textbf{案例分析}：对收集到的数据进行初步分析，识别项目中的关键任务、瓶颈问题和资源分配不均等现象，为后续的网络建模和分析奠定基础。
+  \item 复杂系统的特征和分类\citep{mitchell2009complexity}。
+  \item 网络科学的基本原理和分析方法\citep{newman2010networks, barabasiNetworkScience2013}。
+  \item 复杂网络在工程管理和项目管理中的应用\citep{wang2015complex}。
 \end{itemize}
 
-\subsection{网络建模与分析}
-基于所收集的数据，利用网络分析工具（如Gephi、Pajek等）构建NPI流程的任务依赖网络。具体步骤如下：
-\begin{enumerate}
-    \item \textbf{网络构建}：将NPI项目中的任务视为节点，任务之间的依赖关系视为边，构建任务依赖网络图。
-    \item \textbf{关键路径分析}：利用网络分析方法（如度中心性、介数中心性等）识别网络中的关键路径和瓶颈任务。
-    \item \textbf{资源分配分析}：通过分析资源节点在网络中的位置和作用，评估现有资源分配的合理性，并提出优化建议。
-    \item \textbf{风险识别与管理}：识别网络中存在的潜在风险点，并基于网络结构提出相应的风险管理策略。
-\end{enumerate}
+\subsubsection{网络建模方法}
 
-\subsection{模拟验证与优化策略}
-在网络分析完成后，本研究将通过模拟或实际应用来验证提出的优化策略。具体步骤包括：
+根据 NPI 过程的特点，选择适当的网络建模方法，将 NPI 过程中的关键要素映射为网络的节点和边。可能的建模思路包括：
+
 \begin{itemize}
-    \item \textbf{模拟实验}：使用模拟工具（如AnyLogic、Simul8等）模拟不同优化方案在NPI流程中的效果，比较其对项目进度、资源利用率和风险管理的影响。
-    \item \textbf{实际验证}：在合作企业中选择一个实际的NPI项目应用优化策略，观察其在真实环境中的表现，收集反馈数据进行进一步分析。
-    \item \textbf{优化策略调整}：根据模拟和实际验证的结果，进一步调整和完善优化策略，确保其在不同项目环境中的适用性和有效性。
+  \item \textbf{任务依赖网络}：将 NPI 过程中的各项任务作为节点，任务之间的依赖关系作为边\citep{browning2001applying}。
+  \item \textbf{组织关系网络}：将参与 NPI 过程的部门或团队作为节点，协作关系作为边\citep{reagans2001networks}。
+  \item \textbf{信息流动网络}：将信息源和信息接收者作为节点，信息传递路径作为边\citep{sosa2004misalignment}。
+\end{itemize}
+
+
+在建模过程中，需要明确：
+
+\begin{itemize}
+  \item 节点和边的定义与类型。
+  \item 网络的边权重和方向性。
+  \item 动态网络特征的考虑（如网络的演化）。
+\end{itemize}
+
+\subsubsection{网络分析方法}
+
+采用复杂网络分析的常用指标和方法，对所构建的 NPI 网络模型进行分析，包括但不限于：
+
+\begin{itemize}
+  \item \textbf{度分布}：分析节点的连接数量，识别高连接度的关键节点\citep{albert2002statistical}。
+  \item \textbf{中心性分析}：计算节点的度中心性、介数中心性、接近中心性等，评估节点在网络中的重要程度\citep{freeman1978centrality}。
+  \item \textbf{社群划分}：通过社群检测算法，识别网络中的模块化结构，了解网络的协作子群\citep{girvan2002community}。
+  \item \textbf{网络效率和稳健性}：评估网络的整体效率和对节点或边故障的容忍度\citep{latora2001efficient}。
+\end{itemize}
+
+\subsubsection{优化策略制定方法}
+
+基于网络分析的结果，制定优化 NPI 过程的策略，主要包括：
+
+\begin{itemize}
+  \item \textbf{关键节点优化}：针对关键节点，采取措施加强其能力或减少其负担，以防止瓶颈\citep{guimera2005worldwide}。
+  \item \textbf{网络结构优化}：调整网络结构，促进信息的高效流动和资源的合理分配\citep{cross2004hidden}。
+  \item \textbf{协作机制优化}：建立有效的协作机制，增强团队之间的互动和信任\citep{reagans2003network}。
+\end{itemize}
+
+\subsubsection{案例研究方法}
+
+采用案例研究法，对实际企业的 NPI 过程进行分析和验证：
+
+\begin{itemize}
+  \item \textbf{案例选择}：选取具有代表性的企业或项目，确保案例的典型性和数据的可获得性。
+  \item \textbf{数据收集}：通过访谈、问卷调查和文档分析等方法，获取 NPI 过程的相关数据。
+  \item \textbf{模型应用}：将所构建的网络模型和分析方法应用于案例，得到具体的分析结果。
+  \item \textbf{结果验证}：与企业的实际绩效和反馈进行比较，验证优化策略的有效性。
 \end{itemize}
 
 \section{技术路线}
-为了更好地描述研究过程，本研究的技术路线可以通过以下图示表示：
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{tech_route.png}
-%     \caption{研究技术路线图}
-%     \label{fig:tech_route}
-% \end{figure}
 
-该技术路线图展示了从文献综述、理论分析，到案例研究、数据收集，再到网络建模、分析及优化验证的整个研究过程。各个步骤之间相互关联，确保研究的系统性和严谨性。
+基于上述研究方法，本文的技术路线如图\ref{fig:tech_route} 所示。
 
-\section{本章小结}
-本章详细介绍了本研究的总体设计、研究方法及技术路线。通过文献综述、案例研究、网络分析和模拟验证的综合应用，本研究旨在优化NPI流程中的任务依赖关系和资源分配，提出切实可行的优化策略，为企业的新产品导入过程提供理论指导和实践参考。
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2.2cm, auto, >=latex]
+  
+      % 定义流程图的样式
+      \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=4cm, minimum height=1cm,text centered, draw=black, fill=gray!10]
+      \tikzstyle{process} = [rectangle, minimum width=4cm, minimum height=1cm, text centered, draw=black, fill=gray!10]
+      \tikzstyle{arrow} = [thick,->,>=stealth]
+  
+      % 定义节点
+      \node [startstop] (start) {理论基础研究};
+      \node [process, below of=start] (analysis) {NPI 过程分析与建模};
+      \node [process, below of=analysis] (network) {网络特征分析};
+      \node [process, below of=network] (strategy) {优化策略制定};
+      \node [process, below of=strategy] (case) {案例研究与验证};
+      \node [startstop, below of=case] (end) {结论与展望};
+  
+      % 连接节点
+      \draw [arrow] (start) -- (analysis);
+      \draw [arrow] (analysis) -- (network);
+      \draw [arrow] (network) -- (strategy);
+      \draw [arrow] (strategy) -- (case);
+      \draw [arrow] (case) -- (end);
+  
+    \end{tikzpicture}
+    \caption{研究技术路线图}
+    \label{fig:tech_route}
+  \end{figure}
+
+\section{研究方法的可行性与创新性}
+
+本研究方法具有以下可行性和创新性：
+
+\begin{itemize}
+  \item \textbf{可行性}：
+
+  复杂系统理论和网络分析方法已经在多个领域得到成功应用，为本研究提供了成熟的理论和方法支持。案例研究能够结合实际情况，确保研究成果的实践价值。
+
+  \item \textbf{创新性}：
+
+  将复杂系统理论和网络分析方法系统地应用于 NPI 过程优化，构建综合性的网络模型，考虑了 NPI 过程的动态特征，填补了现有研究的空白。
+\end{itemize}
