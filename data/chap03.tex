@@ -1,97 +1,76 @@
-% !TeX root = ../thuthesis-example.tex
+\chapter{文献综述}
 
-\chapter{数学符号和公式}
+\section*{简介}
 
-\section{数学符号}
+新产品导入（NPI）涉及产品从概念到市场投放的完整流程，通常需要跨部门协调和复杂系统管理。本文综述了相关领域的研究，特别是关于复杂系统与网络分析工具在 NPI 中的应用。
 
-中文论文的数学符号默认遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》
-\footnote{原 GB 3102.11—1993，自 2017 年 3 月 23 日起，该标准转为推荐性标准。}。
-该标准参照采纳 ISO 31-11:1992 \footnote{目前已更新为 ISO 80000-2:2019。}，
-但是与 \TeX{} 默认的美国数学学会（AMS）的符号习惯有所区别。
-具体地来说主要有以下差异：
-\begin{enumerate}
-  \item 大写希腊字母默认为斜体，如
-    \begin{equation*}
-      \Gamma \Delta \Theta \Lambda \Xi \Pi \Sigma \Upsilon \Phi \Psi \Omega.
-    \end{equation*}
-    注意有限增量符号 $\increment$ 固定使用正体，模板提供了 \cs{increment} 命令。
-  \item 小于等于号和大于等于号使用倾斜的字形 $\le$、$\ge$。
-  \item 积分号使用正体，比如 $\int$、$\oint$。
-  \item
-    偏微分符号 $\partial$ 使用正体。
-  \item
-    省略号 \cs{dots} 按照中文的习惯固定居中，比如
-    \begin{equation*}
-      1, 2, \dots, n \quad 1 + 2 + \dots + n.
-    \end{equation*}
-  \item
-    实部 $\Re$ 和虚部 $\Im$ 的字体使用罗马体。
-\end{enumerate}
+\section{NPI 过程管理的研究现状}
 
-以上数学符号样式的差异可以在模板中统一设置。
-另外国标还有一些与 AMS 不同的符号使用习惯，需要用户在写作时进行处理：
-\begin{enumerate}
-  \item 数学常数和特殊函数名用正体，如
-    \begin{equation*}
-      \uppi = 3.14\dots; \quad
-      \symup{i}^2 = -1; \quad
-      \symup{e} = \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n.
-    \end{equation*}
-  \item 微分号使用正体，比如 $\dif y / \dif x$。
-  \item 向量、矩阵和张量用粗斜体（\cs{symbf}），如 $\symbf{x}$、$\symbf{\Sigma}$、$\symbfsf{T}$。
-  \item 自然对数用 $\ln x$ 不用 $\log x$。
-\end{enumerate}
+新产品导入（NPI）过程是产品生命周期管理中至关重要的环节，对企业的市场竞争力和创新能力具有直接影响\citep{kusumanoKimCLARKTakahiro1992}。
+传统的 NPI 管理方法主要关注流程的标准化和阶段性控制，如 Stage-Gate 模型\citep{cooper1990stage}，强调在每个阶段进行评估和决策。
+然而，随着市场环境的复杂化和技术进步的加速，NPI 过程面临的不确定性和复杂性显著增加\citep{kim2002managing}。
 
+近年来，学者们开始关注如何提高 NPI 过程的敏捷性和适应性。例如，\citet{takeuchi1986new} 提出了敏捷型产品开发模式，强调跨职能团队的协作和同步开发。
+另一方面，一些研究探讨了供应链管理对 NPI 过程的影响，指出供应链的协同和整合是成功的新产品导入的关键因素\citep{vanechteltManagingSupplierInvolvement2008}。
 
-英文论文的数学符号使用 \TeX{} 默认的样式。
-如果有必要，也可以通过设置 \verb|math-style| 选择数学符号样式。
+尽管上述研究为 NPI 管理提供了重要的理论和实践指导，但在应对复杂系统特性和多元参与者的相互作用方面仍存在不足。
 
-关于量和单位推荐使用
-\href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{\pkg{siunitx}}
-宏包，
-可以方便地处理希腊字母以及数字与单位之间的空白，
-比如：
-\SI{6.4e6}{m}，
-\SI{9}{\micro\meter}，
-\si{kg.m.s^{-1}}，
-\SIrange{10}{20}{\degreeCelsius}。
+\section{复杂系统理论的发展与应用}
 
+复杂系统理论起源于对自然和社会系统中复杂现象的研究，强调系统整体行为的涌现性和不可预测性\citep{anderson1972more}。
+在工程管理领域，复杂系统理论被用于解释和管理复杂项目、组织和供应链等\citep{maylor2008managing}。
 
+\citet{holland2006studying} 指出，复杂系统具有适应性和自组织性，传统的线性管理方法难以有效控制。为此，\citet{cilliers1998complexity} 
+提出了在管理复杂系统时应关注系统的网络结构和信息流动。
 
-\section{数学公式}
+\section{网络分析方法的理论与工具}
 
-数学公式可以使用 \env{equation} 和 \env{equation*} 环境。
-注意数学公式的引用应前后带括号，通常使用 \cs{eqref} 命令，比如式\eqref{eq:example}。
-\begin{equation}
-  \frac{1}{2 \uppi \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k).
-  \label{eq:example}
-\end{equation}
+网络分析作为研究复杂系统的重要方法，已在社会学、生物学、物理学等领域得到广泛应用\citep{newman2010networks}。网络分析通过描述节点和边的关系，
+揭示系统的结构特征和动态行为\citep{barabasiNetworkScience2013}。
 
-多行公式尽可能在“=”处对齐，推荐使用 \env{align} 环境。
-\begin{align}
-  a & = b + c + d + e \\
-    & = f + g
-\end{align}
+在管理学领域，\citet{borgatti2009network} 总结了网络分析在组织行为、创新扩散和供应链管理等方面的应用。网络分析工具包括度中心性、介数中心性、聚类系数等指标，
+用于评估节点的重要性和网络的整体特征\citep{freeman1978centrality}。
 
+\section{复杂系统与网络分析在 NPI 中的应用研究}
 
+将复杂系统理论和网络分析方法应用于 NPI 过程管理的研究尚处于起步阶段。一些学者开始探索这一领域的可能性。
 
-\section{数学定理}
+\citet{browning2001applying} 将设计结构矩阵（Design Structure Matrix, DSM）方法应用于新产品开发项目，构建了任务依赖网络，分析了项目的复杂性和风险。
+结果表明，网络结构特征对项目绩效有显著影响。
 
-定理环境的格式可以使用 \pkg{amsthm} 或者 \pkg{ntheorem} 宏包配置。
-用户在导言区载入这两者之一后，模板会自动配置 \env{theorem}、\env{proof} 等环境。
+\citet{sosa2004misalignment} 研究了复杂产品开发过程中的信息流，发现信息传递的效率和准确性受到产品架构与组织结构匹配程度的影响。通过优化两者的匹配，
+可以提高 NPI 过程的效率和成功率。
 
-\begin{theorem}[Lindeberg--Lévy 中心极限定理]
-  设随机变量 $X_1, X_2, \dots, X_n$ 独立同分布， 且具有期望 $\mu$ 和有限的方差 $\sigma^2 \ne 0$，
-  记 $\bar{X}_n = \frac{1}{n} \sum_{i+1}^n X_i$，则
-  \begin{equation}
-    \lim_{n \to \infty} P \left(\frac{\sqrt{n} \left( \bar{X}_n - \mu \right)}{\sigma} \le z \right) = \Phi(z),
-  \end{equation}
-  其中 $\Phi(z)$ 是标准正态分布的分布函数。
-\end{theorem}
-\begin{proof}
-  Trivial.
-\end{proof}
+此外，\citet{reagans2001networks} 采用社会网络分析方法，研究了研发团队的沟通网络对创新绩效的影响。结果显示，团队内部的网络密度和多样性与生产力和创新绩效正相关。
 
-同时模板还提供了 \env{assumption}、\env{definition}、\env{proposition}、
-\env{lemma}、\env{theorem}、\env{axiom}、\env{corollary}、\env{exercise}、
-\env{example}、\env{remar}、\env{problem}、\env{conjecture} 这些相关的环境。
+\section{研究评述与展望}
+
+综上所述，复杂系统理论和网络分析方法为理解和优化 NPI 过程提供了新的视角，然而现有研究主要集中在：
+
+\begin{itemize}
+  \item \textbf{局部应用}：多侧重于 NPI 过程的某一方面，如任务依赖或信息流动，缺乏对整个 NPI 系统的全面分析。
+  \item \textbf{方法单一}：多数研究采用静态的网络分析，未充分考虑 NPI 过程的动态演化特征。
+  \item \textbf{实践验证不足}：缺乏在真实企业环境中的应用和验证，影响了研究成果的实用性。
+\end{itemize}
+
+因此，本研究将针对以上不足，结合复杂系统理论和动态网络分析方法，构建 NPI 过程的综合网络模型，并通过实证研究验证优化策略的有效性，为 NPI 管理提供系统性的解决方案。
+
+\section{证据}
+
+\begin{itemize}
+    \item \textbf{复杂系统与 NPI 的关系}：复杂适应系统（CAS）框架被应用于 NPI 研究，认为 NPI 不仅是线性过程，而是受多层次决策影响的复杂系统，
+    这种系统包含非线性、自组织和涌现特性，能够适应不同市场需求\citep{mccarthy2006}。社会-技术网络可以通过网络分析来评估，帮助理解复杂的系统行为和关键变量，
+    以提升工程性能\citep{pflaum2017}。
+
+    \item \textbf{网络分析工具的应用}：网络分析在新产品开发过程中被用于评估成功因素，这些因素包括项目的组织、技术和社会因素。通过网络分析可以识别系统行为模式，
+    从而指导研发管理者优化开发过程\citep{kallenborn2014}。网络分析还用于多个案例研究中，通过评估因果网络来分析新产品开发的成功因素，
+    显示出这些因素在不同项目中的相互关联性\citep{pflaum2017}。
+
+    \item \textbf{管理和评估工具的创新}：在 NPI 过程中引入自评估工具，如 Hoshin Kanri（方针管理），以实现实时组织学习和持续改进。
+    这种工具在汽车行业中成功应用，提高了项目绩效\citep{tennant2003}。通过重新设计和持续评估 NPI 系统，改进了传统的审计模式，
+    使其能够提供持续的反馈和改进建议\citep{gardiner1996}。
+\end{itemize}
+
+\section{结论}
+
+复杂系统和网络分析工具在新产品导入过程中提供了新的视角和方法，有助于更好地理解和管理复杂性，提高项目成功率和组织绩效。
