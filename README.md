@@ -7,7 +7,7 @@
 
 # ThuThesis
 
-Scroll down for the English version of README.
+> Scroll down for the English version of README.
 
 **ThuThesis** 是 **T**sing**h**ua **U**niversity **Thesis** LaTeX Template 的缩写。
 
@@ -35,7 +35,7 @@ Scroll down for the English version of README.
     * [TUNA 镜像站](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/)：GitHub Releases 的镜像。
   * 在线编辑：
     * [TeXPage 模板](https://www.texpage.com/template/72b580ca-51fa-4ecc-82b3-0509bc1d6a07)（提供 Windows 中文字体）
-    * [Overleaf 模板](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/cfwgcxtvkbsx)
+    * [Overleaf 模板](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/cfwgcxtvkbsx) （[Overleaf 降低了免费账户的编译时间](https://www.overleaf.com/blog/changes-to-free-compile-timeouts-and-servers)， 使用本模板的项目会因为规模较大[容易超时](https://github.com/tuna/thuthesis/issues/984)）
 * 开发版：[GitHub](https://github.com/tuna/thuthesis)
 
 ### 注意事项
@@ -73,6 +73,7 @@ Scroll down for the English version of README.
 * 先到 [FAQ](https://github.com/tuna/thuthesis/wiki/FAQ) 看看常见问题；
 * 在 [GitHub Discussions](https://github.com/tuna/thuthesis/discussions) 搜索已有讨论，如果没有则提出新问题；
 * 如果认为模板存在问题，可在 Issues 中使用相应的模板提出。
+* 入门问题可以参考[wiki/新手指南](https://github.com/tuna/thuthesis/wiki/新手指南)学习
 
 ## Makefile的用法
 
@@ -117,7 +118,7 @@ Before you start writing, it is recommended to copy or rename `thuthesis-example
     * [TUNA Mirrors](https://mirrors.tuna.tsinghua.edu.cn/github-release/tuna/thuthesis/): mirror of GitHub Releases
   * Online editor:
     * [TeXPage template](https://www.texpage.com/template/72b580ca-51fa-4ecc-82b3-0509bc1d6a07) (providing Chinese fonts of Windows)
-    * [Overleaf template](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/cfwgcxtvkbsx)
+    * [Overleaf template](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/cfwgcxtvkbsx) ([free compile time was reduced](https://www.overleaf.com/blog/changes-to-free-compile-timeouts-and-servers); projects using this template will be relatively large, and thus [likely to time-out](https://github.com/tuna/thuthesis/issues/984))
 * Developer versions: [GitHub](https://github.com/tuna/thuthesis)
 
 ### Notes
@@ -155,6 +156,7 @@ Please follow the procedure below:
 * Check the [FAQ](https://github.com/tuna/thuthesis/wiki/FAQ).
 * Search [GitHub Discussions](https://github.com/tuna/thuthesis/discussions) and create if not existed.
 * Create an issue (with specified template) if you believe there is a bug.
+* Beginners may go to [wiki/新手指南](https://github.com/tuna/thuthesis/wiki/新手指南) for basic information.
 
 ## Makefile Usage
 
