@@ -4491,15 +4491,7 @@
   \thusetup{language = chinese}%
   \ifthu@degree@graduate
     % 研究生
-    \ifthu@thesis@type@thesis
-      % 学位论文
-      \thu@titlepage@thesis
-    \else
-      \ifthu@thesis@type@proposal
-        % 选题报告
-        \thu@titlepage@proposal
-      \fi
-    \fi
+    \thu@titlepage@thesis
   \else
     \ifthu@degree@bachelor
       % 本科生
@@ -4573,44 +4565,8 @@
 }
 %    \end{macrocode}
 %
-% 选题报告封面
+% 选题报告封面需要提供学号
 %    \begin{macrocode}
-\newcommand\thu@titlepage@proposal{%
-  \newgeometry{
-    top     = 5cm,
-    bottom  = 3.25cm,
-    hmargin = 3.17cm,
-  }%
-  \thispagestyle{empty}%
-  \begingroup
-    % \vspace*{0.1cm}%
-    \centering
-    % {\thu@titlepage@title}%
-    \parbox[t][3cm]{\textwidth}{%
-      \vskip 0.1cm%
-      \centering
-      \sffamily\fontsize{26bp}{46.8bp}\selectfont
-      \thu@title\par
-    }%
-    \vskip 0.85cm%
-    \thu@title@page@degree@category
-    \vfill
-    \parbox[t][8.5cm][t]{\textwidth}{%
-      \centering
-      \fangsong
-      \ifLuaTeX
-        \fontspec{\CJK@family}%
-      \else
-        \CJKfamily+{}%
-      \fi
-      \sanhao[1.95]%
-      \thu@titlepage@info
-    }\par
-    \parbox[t][2.5cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
-  \endgroup
-  \clearpage
-  \restoregeometry
-}
 \newcommand\thu@set@student@id{%
   \ifthu@thesis@type@proposal\else
     \ifx\thu@student@id\@empty\else
