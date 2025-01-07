@@ -9,6 +9,7 @@
 ### Fixed
 
 - 修正目录中顶格标题的断行问题（[#963](https://github.com/tuna/thuthesis/issues/963)）。
+- 统一选题报告与学位论文的封面格式，修复信息偏移问题（[#977](https://github.com/tuna/thuthesis/issues/977)）。
 
 ## [v7.5.2] - 2024-07-01
 
