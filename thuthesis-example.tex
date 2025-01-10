@@ -1,5 +1,103 @@
-\documentclass[degree=doctor]{thuthesis}
-\usepackage{siunitx}
+% !TeX encoding = UTF-8
+% !TeX program = xelatex
+% !TeX spellcheck = en_US
+
+\documentclass[degree=master]{thuthesis}
+  % 学位 degree:
+  %   doctor | master | bachelor | postdoc
+  % 学位类型 degree-type:
+  %   academic（默认）| professional
+  % 语言 language
+  %   chinese（默认）| english
+  % 字体库 fontset
+  %   windows | mac | fandol | ubuntu
+  % 建议终版使用 Windows 平台的字体编译
+
+
+% 论文基本配置，加载宏包等全局配置
+\input{thusetup}
+
+
 \begin{document}
-$\SIlist{1;2}{\meter},\SIlist{1;2;3}{\meter}$
+
+% 封面
+\maketitle
+
+% 学位论文指导小组、公开评阅人和答辩委员会名单
+% 本科生不需要
+\input{data/committee}
+
+% 使用授权的说明
+% 本科生开题报告不需要
+\copyrightpage
+% 将签字扫描后授权文件 scan-copyright.pdf 替换原始页面
+% \copyrightpage[file=scan-copyright.pdf]
+
+\frontmatter
+\input{data/abstract}
+
+% 目录
+\tableofcontents
+
+% 插图和附表清单
+% 本科生的插图索引和表格索引需要移至正文之后、参考文献前
+% \listoffiguresandtables  % 插图和附表清单（仅限研究生）
+\listoffigures           % 插图清单
+\listoftables            % 附表清单
+
+% 符号对照表
+\input{data/denotation}
+
+
+% 正文部分
+\mainmatter
+\input{data/chap01}
+\input{data/chap02}
+\input{data/chap03}
+\input{data/chap04}
+
+
+% 其他部分
+\backmatter
+
+% 参考文献
+\bibliography{ref/refs}  % 参考文献使用 BibTeX 编译
+% \printbibliography       % 参考文献使用 BibLaTeX 编译
+
+% 附录
+% 本科生需要将附录放到声明之后，个人简历之前
+\appendix
+% \input{data/appendix-survey}       % 本科生：外文资料的调研阅读报告
+% \input{data/appendix-translation}  % 本科生：外文资料的书面翻译
+\input{data/appendix}
+
+% 致谢
+\input{data/acknowledgements}
+
+% 声明
+% 本科生开题报告不需要
+\statement
+% 将签字扫描后的声明文件 scan-statement.pdf 替换原始页面
+% \statement[file=scan-statement.pdf]
+% 本科生编译生成的声明页默认不加页脚，插入扫描版时再补上；
+% 研究生编译生成时有页眉页脚，插入扫描版时不再重复。
+% 也可以手动控制是否加页眉页脚
+% \statement[page-style=empty]
+% \statement[file=scan-statement.pdf, page-style=plain]
+
+% 个人简历、在学期间完成的相关学术成果
+% 本科生可以附个人简历，也可以不附个人简历
+\input{data/resume}
+
+% 指导教师/指导小组评语
+% 本科生不需要
+\input{data/comments}
+
+% 答辩委员会决议书
+% 本科生不需要
+\input{data/resolution}
+
+% 本科生的综合论文训练记录表（扫描版）
+% \record{file=scan-record.pdf}
+
 \end{document}
