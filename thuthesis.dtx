@@ -6685,16 +6685,16 @@
   \newcommand\thu@set@siunitx@language{%
     \ifthu@language@chinese
       \sisetup{
-        list-final-separator = { 和 },
-        list-pair-separator  = { 和 },
-        range-phrase         = {～},
+        list-final-separator = {\TextOrMath{\space}{\ }\text{和}\TextOrMath{\space}{\ }},
+        list-pair-separator  = {\TextOrMath{\space}{\ }\text{和}\TextOrMath{\space}{\ }},
+        range-phrase         = {\text{～}},
       }%
     \else
       \ifthu@language@english
         \sisetup{
-          list-final-separator = {, and },
-          list-pair-separator  = { and },
-          range-phrase         = { to },
+          list-final-separator = {\TextOrMath{\space}{\ }\text{and}\TextOrMath{\space}{\ }},
+          list-pair-separator  = {\TextOrMath{\space}{\ }\text{and}\TextOrMath{\space}{\ }},
+          range-phrase         = {\TextOrMath{\space}{\ }\text{to}\TextOrMath{\space}{\ }},
         }%
       \fi
     \fi
