@@ -94,6 +94,8 @@ function update_tag(file, content, tagname, tagdate)
   local url = "https://github.com/tuna/thuthesis"
   local date = string.gsub(tagdate, "%-", "/")
   if string.match(file, "%.dtx$") then
+    content = string.gsub(content, "Copyright %(C%) (%d%d%d%d%-+)%d%d%d%d", "Copyright (C) %1" .. os.date("%Y"))
+
     if string.match(content, "%d%d%d%d/%d%d/%d%d [0-9.]+") then
       content = string.gsub(content, "%d%d%d%d/%d%d/%d%d [0-9.]+",
         date .. " " .. tagname)
