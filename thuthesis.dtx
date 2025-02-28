@@ -4278,6 +4278,15 @@
     % default = {Computer Science and Technology},
     name    = discipline@en,
   },
+  % 大学名称
+  university-name = {
+    default = {Beijing University of Posts and Telecommunications},
+    name    = university@name,
+  },
+  university-name* = {
+    default = {Beijing University of Posts and Telecommunications},
+    name    = university@name@en,
+  },
 }
 \thu@option@hook{discipline}{%
   \ifthu@degree@type@professional
@@ -4605,14 +4614,14 @@
       \renewcommand\CJKglue{\hspace{1bp}}%
     \fi
     \ifthu@thesis@type@thesis
-      (申请清华大学\thu@degree@category
+      (申请\thu@university@name\thu@degree@category
       \ifthu@degree@type@professional
         专业%
       \fi
       学位论文)%
     \else
       \ifthu@thesis@type@proposal
-        (清华大学%
+        (\thu@university@name%
         \ifthu@degree@doctor
           博士%
         \else
@@ -4932,7 +4941,7 @@
     }%
     \vskip 3.15cm%
     {\sffamily\bfseries\xiaoer[2.6]%
-      {\ziju{1.5}清华大学\par}%
+      {\ziju{1.5}\thu@university@name\par}%
       {\ziju{0.5}博士后研究工作报告\par}%
     }%
     \vskip 0.2cm%
@@ -4956,7 +4965,7 @@
       \thu@uline[5.9cm]{\thu@format@date{\thu@date@zh@digit@short}{\thu@date}}\par
     }%
     \vskip 0.45cm%
-    {\xiaosi[2]{\ziju{1}清华大学}\quad （北京）\par}%
+    {\xiaosi[2]{\ziju{1}\thu@university@name}\quad （北京）\par}%
     \vskip 0.25cm%
     {\xiaosi[2]\thu@format@date{\thu@date@zh@digit@short}{\thu@date}\par}%
   \end{center}%
