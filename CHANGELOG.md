@@ -6,6 +6,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- 同步研究生论文《写作指南》对 2025 年 3 月版本的修改：
+  - 非涉密论文的声明页中增加“不包含涉及国家秘密的内容”字样（[#1000](https://github.com/tuna/thuthesis/issues/1000)）
+
 ### Fixed
 
 - 修正目录中顶格标题的断行问题（[#963](https://github.com/tuna/thuthesis/issues/963)）。

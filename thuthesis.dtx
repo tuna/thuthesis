@@ -583,7 +583,8 @@
 %
 % \subsubsection{密级}
 % \label{sec:setup-secret}
-% 定义秘密级别和年限。
+% 定义秘密级别和年限。如果定义了 \option{secret-level}，
+% 则会在封面上显示对应密级，并且从声明页中将移除“不包含涉及国家秘密的内容”字样（2025年3月写作指南更新有此要求）。
 % \begin{latex}
 %   \thusetup{
 %     secret-year  = 10,
@@ -5303,7 +5304,13 @@
 % 定义致谢环境
 %    \begin{macrocode}
 \newcommand{\thu@statement@text}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
-  ，独立进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容外，本学位论
+  ，独立进行研究工作所取得的成果%
+  \ifthu@degree@bachelor\else% no such statement for bachelor
+  \ifx\thu@secret@level\@empty%
+  ，不包含涉及国家秘密的内容%
+  \fi%
+  \fi%
+  。尽我所知，除文中已经注明引用的内容外，本学位论
   文的研究成果不包含任何他人享有著作权的内容。对本论文所涉及的研究工作做出贡献的
   其他个人和集体，均已在文中以明确方式标明。}
 \newcommand{\thu@signature}{签\hspace{1em}名：}
