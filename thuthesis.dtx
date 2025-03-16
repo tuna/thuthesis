@@ -1901,9 +1901,9 @@
 % 页眉距边界：2.2 厘米，页脚距边界：2.2 厘米。
 %
 % 本科生《写作指南》：
-% 页边距：上：3.8 厘米，下：3.2 厘米，左右：3 厘米，装订线：左 0.2 厘米。
+% 页边距：3 厘米，装订线：0 厘米。
 % 本科生 Word 模板：
-% 无页眉，页脚距边界：1.75 厘米。
+% 无页眉，页脚距边界：1.5 厘米。
 %
 % \pkg{fancyhdr} 的页眉是沿底部对齐的，所以只需设置 \cs{headsep}，
 % \cs{headheight} 可以适当增加高度允许多行页眉。
@@ -1919,24 +1919,9 @@
 \newcommand\thu@set@geometry{%
   \ifthu@degree@bachelor
     \geometry{
-      top        = 3.8cm,
-      bottom     = 3.2cm,
-      left       = 3.2cm,
-      right      = 3cm,
-      headheight = 1.9cm,
-      headsep    = 1.9cm,
-      footskip   = 1.45cm,
+      margin     = 3cm,
+      footskip   = 1.5cm,
     }%
-    \ifthu@output@print
-      \geometry{
-        left       = 3.2cm,
-        right      = 3cm,
-      }%
-    \else
-      \geometry{
-        hmargin    = 3cm,
-      }%
-    \fi
   \else
     \geometry{
       margin     = 3cm,
