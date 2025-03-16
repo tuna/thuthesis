@@ -4810,8 +4810,10 @@
 %    \begin{macrocode}
 \newcommand\thu@titlepage@bachelor{%
   \newgeometry{
-    vmargin = 2.54cm,
-    hmargin = 3.17cm,
+    top    = 3.8cm,
+    bottom = 3.2cm,
+    left   = 3.2cm,  % 装订线靠左 0.2 cm
+    right  = 3cm,
   }%
   \thispagestyle{empty}%
   \begingroup
@@ -4822,77 +4824,63 @@
       \ifx\thu@secret@level\@empty\else
         \thu@secret@level\space\thu@secret@year 年\par
       \fi
-    }%
+    }\par
   \endgroup
-  \vfill
+  \vspace{19bp}%
   \begingroup
     \centering
-    \includegraphics{tsinghua-name-bachelor.pdf}%
-    \vskip 0.94cm%
-    \ifthu@thesis@type@proposal
-      {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\\开题报告\par}%
-    \else
-      {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
-    \fi
-  \endgroup
-  \vskip 1.8cm%
-  \begingroup
-    \heiti
-    % 21.0cm - 0.2cm - 3cm * 2 - 18bp * 4 = 347bp
-    \noindent\hspace{1em}\makebox[54bp]{\xiaoer[1.2]题目：}%
-    \parbox[t]{347bp}{%
-      \ifthu@main@language@chinese
-        \yihao[1.56]%
-      \else
-        \fontsize{26bp}{32bp}\selectfont
+    \hspace*{-5bp}%
+    \includegraphics[width=50.4bp]{thu-fig-logo.pdf}%
+    \hspace{10bp}%
+    \raisebox{7bp}{\includegraphics[width=117bp]{thu-text-logo.pdf}}%
+    \par
+    \vspace{17bp}%
+    \begingroup
+      \sffamily\bfseries\xiaochu\ziju{0.3}%
+      综合论文训练%
+      \ifthu@thesis@type@proposal
+        \\开题报告
       \fi
-      \renewcommand\ULthickness{0.05em}%
-      \renewcommand\ULdepth{0.17em}%
-      \expandafter\uline\expandafter{\thu@title}\par
+      \par
+    \endgroup
+    \vspace{48bp}%
+    \parbox[t][136bp]{\linewidth}{%
+      \centering
+      \heiti\fontsize{26bp}{32.5bp}\selectfont
+      \thu@title\par
       \ifthu@main@language@english
         \thusetup{language=english}%
-        \expandafter\uline\expandafter{\thu@title@en}\par
+        \thu@title@en\par
         \thusetup{language=chinese}%
       \fi
     }\par
   \endgroup
-  \vskip 1.9cm%
   \begingroup
-    \fangsong\sanhao[2.32]%
-    \leftskip=2.5cm%
-    \parindent=\z@
-    \def\thu@info@item##1##2##3{%
-      \ifx##3\@empty\else
-        \thu@fixed@box{%
-          \ifx\thu@co@supervisor\@empty
-            4em%
-          \else
-            5.5em%
-          \fi
-        }{##1}：##2{##3}\par
-      \fi
-    }%
+    \fangsong
+    \fontsize{16bp}{30.96bp}\selectfont
+    \noindent
     \def\thu@name@title@format##1##2{%
-      \thu@stretch{3em}{##1}\quad ##2%
+      \thu@stretch{4em}{##1}%
+      \hspace{1.5em}%
+      \thu@stretch{2.5em}{##2}%
     }%
-    \thu@info@item{系别}{}{\thu@department}%
-    \thu@info@item{专业}{}{\thu@discipline}%
-    \thu@info@item{姓名}{\thu@name@title}{\thu@author}%
-    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@info@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
-  \endgroup
-  \vskip 1.4cm%
-  \begingroup
-    \centering
-    \ifLuaTeX
-      \fontspec{\CJK@family}%
-    \else
-      \CJKfamily+{}%
-    \fi
-    \xiaosi\thu@format@date{\thu@date@zh@digit}{\thu@date}\par
+    \thu@titlepage@info@tabular{81bp}{2.5cm}{4em}{0.82cm}{%
+      \thu@info@item{系别}{}{\thu@department}%
+      \thu@info@item{专业}{}{\thu@discipline}%
+      \thu@info@item{姓名}{\thu@name@title}{\thu@author}%
+      \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+      \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+      \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
+    }\par
   \endgroup
   \vfill
+  \begingroup
+    \centering
+    \fontsize{16bp}{24bp}\selectfont
+    \ziju{0.03}%
+    \thu@format@date{\thu@date@zh@short}{\thu@date}\par
+  \endgroup
+  \vspace*{60bp}%
   \clearpage
   \restoregeometry
 }
