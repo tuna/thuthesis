@@ -5020,8 +5020,8 @@
 % 授权说明
 %    \begin{macrocode}
 \newcommand\copyrightpage[1][]{%
-  \cleardoublepage
   \ifthu@degree@postdoc\relax\else
+    \cleardoublepage
     \def\thu@@tmp{#1}
     \ifx\thu@@tmp\@empty
       \thusetup{language=chinese}%
@@ -5030,6 +5030,7 @@
       \else
         \thu@copyright@page@graduate
       \fi
+      \clearpage
       \thu@reset@main@language
     \else
       \thispagestyle{empty}%
@@ -5063,8 +5064,8 @@
       },
     }%
     \thu@chapter*[]{关于学位论文使用授权的说明}%
-    \thispagestyle{empty}%
   \endgroup
+  \thispagestyle{empty}%
   \vskip 13bp%
   \begingroup
     \fontsize{14bp}{26bp}\selectfont
@@ -5098,26 +5099,28 @@
   \begingroup
     \ctexset{
       chapter = {
-        format     = {\centering\sffamily\erhao[1]},
-        beforeskip = 1bp,
-        afterskip  = 24bp,
+        format     = {\centering\sffamily\erhao},
+        beforeskip = 40bp,
+        afterskip  = 37bp,
       },
     }%
-    \thu@chapter*[]{关于学位论文使用授权的说明}%
-    \thispagestyle{empty}%
+    \thu@chapter*[]{关于论文使用授权的说明}%
   \endgroup
-  \vskip 4bp%
-  本人完全了解清华大学有关保留、使用学位论文的规定，即：%
-  学校有权保留学位论文的复印件，允许该论文被查阅和借阅；%
-  学校可以公布该论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存该论文。\par
-  \textbf{(涉密的学位论文在解密后应遵守此规定)}\par
-  \null\par
+  \thispagestyle{empty}%
+  \vspace*{13bp}%
   \begingroup
-    \centering
-    签\quad 名：\thu@underline[6em]{}%
-    导师签名：\thu@underline[6em]{}%
-    日\quad 期：\thu@underline[6em]{}%
-    \par
+    \fontsize{14bp}{26bp}\selectfont
+    本人完全了解清华大学有关保留、使用综合论文训练论文的规定，即：%
+    学校有权保留论文的复印件，允许论文被查阅和借阅；%
+    学校可以公布论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存论文。\par
+  \endgroup
+  \vspace{71bp}%
+  \begingroup
+    \setlength{\parindent}{0pt}%
+    \fontsize{12bp}{18bp}\selectfont
+    \hspace*{42bp}作者签名：\hspace{118bp}导师签名：\par
+    \vspace{11bp}%
+    \hspace*{42bp}日\hspace{2em}期：\hspace{118bp}日\hspace{2em}期：\par
   \endgroup
 }
 %    \end{macrocode}
