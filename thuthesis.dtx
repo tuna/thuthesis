@@ -3788,10 +3788,10 @@
 %     \toprule
 %     标题        & 中文       & 英文       & 段前/后间距 & 行距 \\
 %     \midrule
-%     一级节标题  & 黑体小三号 & Arial 15pt & 30/20 pt    & 20pt \\
-%     二级节标题  & 黑体四号   & Arial 14pt & 25/12 pt    & 18pt \\
-%     三级节标题  & 黑体小四号 & Arial 13pt & 12/6 pt     & 15pt \\
-%     四级节标题  & 黑体小四号 & Arial 12pt & 12/6 pt     &      \\
+%     章标题      & 黑体三号   & Arial 16pt & 24/18 pt    & 单倍 \\
+%     一级节标题  & 黑体四号   & Arial 14pt & 24/6 pt    & 20pt \\
+%     二级节标题  & 黑体 13pt & Arial 13pt & 12/6 pt    & 20pt \\
+%     三级节标题  & 黑体小四号 & Arial 12pt & 12/6 pt     & 20pt \\
 %     \bottomrule
 %   \end{tabular}
 % \end{center}
@@ -3802,25 +3802,25 @@
   \ifthu@degree@bachelor
     \ctexset{%
       chapter = {
-        format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
+        format     = \centering\sffamily\fontsize{16bp}{20.8bp}\selectfont,
         aftername  = \quad,
-        beforeskip = 30bp,
-        afterskip  = 20bp,
+        beforeskip = 27bp,
+        afterskip  = 27bp,
       },
       section = {
-        format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
+        format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
         aftername  = \quad,
-        beforeskip = 25bp,
-        afterskip  = 12bp,
+        beforeskip = 24bp,
+        afterskip  = 6bp,
       },
       subsection = {
-        format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
         aftername  = \quad,
         beforeskip = 12bp,
         afterskip  = 6bp,
       },
       subsubsection = {
-        format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
         aftername  = \quad,
         beforeskip = 12bp,
         afterskip  = 6bp,
@@ -4001,9 +4001,7 @@
     \thu@phantomsection
     \addcontentsline{toc}{chapter}{#3}%
   }%
-  \ifthu@degree@bachelor\ctexset{chapter/beforeskip=40bp}\fi
   \chapter*{#3}%
-  \ifthu@degree@bachelor\ctexset{chapter/beforeskip=30bp}\fi
   \IfValueTF{#4}{%
     \ifthenelse{\equal{#4}{}}{%
       \@mkboth{}{}%
