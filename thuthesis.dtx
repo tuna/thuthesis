@@ -3747,13 +3747,8 @@
 % \subsubsection{章节标题}
 % \label{sec:theor}
 %    \begin{macrocode}
-\ifthu@degree@bachelor
-  \newcommand{\thu@abstract@name}{中文摘要}
-  \newcommand{\thu@abstract@name@en}{ABSTRACT}
-\else
-  \newcommand{\thu@abstract@name}{摘\quad 要}
-  \newcommand{\thu@abstract@name@en}{Abstract}
-\fi
+\newcommand{\thu@abstract@name}{摘\quad 要}
+\newcommand{\thu@abstract@name@en}{Abstract}
 %    \end{macrocode}
 %
 % 各级标题格式设置。
@@ -5161,9 +5156,6 @@
 % 标点符号一律用中文输入状态下的标点符号。
 %    \begin{macrocode}
 \newenvironment{abstract}{%
-  \ifthu@degree@bachelor
-    \cleardoublepage
-  \fi
   \thusetup{language = chinese}%
   \ifthu@degree@graduate
     \begingroup
@@ -5178,23 +5170,16 @@
     \thu@chapter*[]{\thu@abstract@name}%
   \fi
 }{%
-%    \end{macrocode}
-%
-% 每个关键词之间空两个汉字符宽度， 且为悬挂缩进。
-%    \begin{macrocode}
   \par
   \null\par
-  \ifthu@degree@graduate
+  \ifthu@degree@postdoc
+    \textbf{关键词：}%
+  \else
     \noindent
     \textsf{关键词：}%
-  \else
-    \textbf{关键词：}%
   \fi
-  \thu@clist@use{\thu@keywords}{；}%
+  \thu@clist@use{\thu@keywords}{；}\par
   \gdef\thu@keywords{}%
-  \ifthu@degree@bachelor
-    \cleardoublepage
-  \fi
   \thu@reset@main@language % switch back to main language
 }
 %    \end{macrocode}
@@ -5205,29 +5190,26 @@
 % 摘要内容用小四号 Times New Roman。
 %    \begin{macrocode}
 \newenvironment{abstract*}{%
-  \ifthu@degree@bachelor
-    \cleardoublepage
-  \fi
   \thusetup{language = english}%
-  \ifthu@degree@graduate
-    \thu@chapter*{\thu@abstract@name@en}%
+  \ifthu@degree@bachelor
+    \begingroup
+      \ctexset{chapter/afterskip = 30bp}%
+      \thu@chapter*[]{\thu@abstract@name@en}%
+    \endgroup
   \else
-    \thu@chapter*[]{\thu@abstract@name@en}%
+    \ifthu@degree@graduate
+      \thu@chapter*{\thu@abstract@name@en}%
+    \else
+      \thu@chapter*[]{\thu@abstract@name@en}%
+    \fi
   \fi
 }{%
   \par
   \null\par
-  \ifthu@degree@graduate
+  \ifthu@degree@postdoc\else
     \noindent
   \fi
-  \textbf{Keywords:}\space
-  \thu@clist@use{\thu@keywords@en}{; }%
-  \ifthu@degree@graduate
-    \vspace*{\stretch{1}}%
-  \fi
-  \ifthu@degree@bachelor
-    \cleardoublepage
-  \fi
+  \textbf{Keywords:} \thu@clist@use{\thu@keywords@en}{; }\par
   \thu@reset@main@language % switch back to main language
 }
 %    \end{macrocode}
