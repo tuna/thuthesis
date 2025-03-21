@@ -1961,6 +1961,11 @@
 % \option{language} 时会修改，而在正文局部切换语言时则不变。
 %    \begin{macrocode}
 \newcommand\thu@set@chapter@names{%
+  \ifthu@degree@bachelor
+    \def\thu@statement@name{声明}%
+  \else
+    \def\thu@statement@name{声\hspace{1em}明}%
+  \fi
   \ifthu@main@language@chinese
     \def\listfigurename{插图清单}%
     \def\listtablename{附表清单}%
@@ -3239,11 +3244,7 @@
   \pagenumbering{arabic}%
 }
 \renewcommand\backmatter{%
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
+  \clearpage
   \@mainmatterfalse
   \thusetup{toc-depth = 0}%
 }
@@ -5266,12 +5267,15 @@
 % \begin{environment}{acknowledgements}
 % 定义致谢环境
 %    \begin{macrocode}
-\newcommand{\thu@statement@text}{%
+\newcommand{\thu@statement@text@bachelor}{%
+  本人郑重声明：所呈交的综合论文训练论文，是本人在导师指导下，独立进行研究工作所取得的成果。%
+  尽我所知，除文中已经注明引用的内容外，本论文的研究成果不包含任何他人享有著作权的内容。%
+  对本论文所涉及的研究工作做出贡献的其他个人和集体，均已在文中以明确方式标明。%
+}
+\newcommand{\thu@statement@text@graduate}{%
   本人郑重声明：所呈交的学位论文，是本人在导师指导下，独立进行研究工作所取得的成果%
-  \ifthu@degree@bachelor\else% no such statement for bachelor
-    \ifx\thu@secret@level\@empty
-      ，不包含涉及国家秘密的内容%
-    \fi%
+  \ifx\thu@secret@level\@empty
+    ，不包含涉及国家秘密的内容%
   \fi%
   。尽我所知，除文中已经注明引用的内容外，本学位论文的研究成果不包含任何他人享有著作权的内容。%
   对本论文所涉及的研究工作做出贡献的其他个人和集体，均已在文中以明确方式标明。%
@@ -5327,12 +5331,6 @@
 \newcommand\statement[1][]{%
   \@mainmatterfalse
   \thu@end@appendix@ref@section
-  \ifthu@degree@bachelor
-    \cleardoublepage
-    \def\thu@statement@name{声明}%
-  \else
-    \def\thu@statement@name{声\hspace{1em}明}%
-  \fi
   \let\thu@statement@file\@empty
   \kv@define@key{thu@statement}{page-style}{\thusetup{statement-page-style=##1}}%
   \kv@define@key{thu@statement}{file}{\let\thu@statement@file\kv@value}%
@@ -5364,14 +5362,10 @@
       \thu@chapter*{\thu@statement@name}%
     \endgroup
     \thispagestyle{\thu@statement@page@style}%
-    \begingroup
-      \ifthu@degree@graduate
-        \vspace{12bp}%
-        \fontsize{12bp}{21bp}\selectfont
-      \fi
-      \thu@statement@text\par
-    \endgroup
     \ifthu@degree@graduate
+      \vspace{12bp}%
+      \fontsize{12bp}{21bp}\selectfont
+      \thu@statement@text@graduate\par
       \vspace{79bp}%
       \begingroup
         \noindent\hspace{5.4cm}\fontsize{13bp}{18bp}\selectfont
@@ -5379,9 +5373,15 @@
         \thu@backdate\thu@underline[2.3cm]{}\par
       \endgroup
     \else
-      \null\par
-      {\hfill\thu@signature\thu@underline[2.5cm]\relax
-        \thu@backdate\thu@underline[2.5cm]\relax}%
+      \ifthu@degree@bachelor
+        \begingroup
+          \renewcommand\CJKglue{\hspace{.1bp}}%
+          \thu@statement@text@bachelor\par
+        \endgroup
+        \vspace{40bp}%
+        \hfill 签\hspace{.5em}名：\thu@underline[2.75cm]{}\hspace{.5em}%
+        日\hspace{.5em}期：\thu@underline[2.75cm]{}\par
+      \fi
     \fi
     \thu@reset@main@language
   \else
@@ -5391,9 +5391,6 @@
       \addcontentsline{toc}{chapter}{\thu@statement@name}%
       \thispagestyle{\thu@statement@page@style}%
     }]{\thu@statement@file}%
-  \fi
-  \ifthu@degree@bachelor
-    \cleardoublepage
   \fi
 }
 %    \end{macrocode}
