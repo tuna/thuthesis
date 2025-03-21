@@ -572,29 +572,32 @@ Completed box being shipped out [3]
 ...\glue(\parskip) 0.0
 ...\hbox(17.31267+3.84233)x426.79135, glue set 91.94199fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/22.08249 关
-....\glue 0.0 plus 1.7239
-....\TU/FandolHei(0)/m/n/22.08249 于
-....\glue 0.0 plus 1.7239
-....\TU/FandolHei(0)/m/n/22.08249 论
-....\glue 0.0 plus 1.7239
-....\TU/FandolHei(0)/m/n/22.08249 文
-....\glue 0.0 plus 1.7239
-....\TU/FandolHei(0)/m/n/22.08249 使
-....\glue 0.0 plus 1.7239
-....\TU/FandolHei(0)/m/n/22.08249 用
-....\glue 0.0 plus 1.7239
-....\TU/FandolHei(0)/m/n/22.08249 授
-....\glue 0.0 plus 1.7239
-....\TU/FandolHei(0)/m/n/22.08249 权
-....\glue 0.0 plus 1.7239
-....\TU/FandolHei(0)/m/n/22.08249 的
-....\glue 0.0 plus 1.7239
-....\TU/FandolHei(0)/m/n/22.08249 说
-....\glue 0.0 plus 1.7239
-....\TU/FandolHei(0)/m/n/22.08249 明
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(17.31267+3.84233)x242.90738
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/22.08249 关
+.....\glue 0.0 plus 1.7239
+.....\TU/FandolHei(0)/m/n/22.08249 于
+.....\glue 0.0 plus 1.7239
+.....\TU/FandolHei(0)/m/n/22.08249 论
+.....\glue 0.0 plus 1.7239
+.....\TU/FandolHei(0)/m/n/22.08249 文
+.....\glue 0.0 plus 1.7239
+.....\TU/FandolHei(0)/m/n/22.08249 使
+.....\glue 0.0 plus 1.7239
+.....\TU/FandolHei(0)/m/n/22.08249 用
+.....\glue 0.0 plus 1.7239
+.....\TU/FandolHei(0)/m/n/22.08249 授
+.....\glue 0.0 plus 1.7239
+.....\TU/FandolHei(0)/m/n/22.08249 权
+.....\glue 0.0 plus 1.7239
+.....\TU/FandolHei(0)/m/n/22.08249 的
+.....\glue 0.0 plus 1.7239
+.....\TU/FandolHei(0)/m/n/22.08249 说
+.....\glue 0.0 plus 1.7239
+.....\TU/FandolHei(0)/m/n/22.08249 明
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -1047,13 +1050,16 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0
 ...\hbox(12.3662+2.79442)x426.79135, glue set 189.30568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 摘
-....\kern -0.00017
-....\kern 0.00017
-....\glue 16.06
-....\TU/FandolHei(0)/m/n/16.06 要
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.3662+2.79442)x48.18
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/16.06 摘
+.....\kern -0.00017
+.....\kern 0.00017
+.....\glue 16.06
+.....\TU/FandolHei(0)/m/n/16.06 要
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -1895,9 +1901,12 @@ Completed box being shipped out [2]
 ...\glue(\parskip) 0.0
 ...\hbox(11.70773+0.24089)x426.79135, glue set 183.9818fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/texgyreheros(0)/m/n/16.06 Abstract
-....\kern -0.0002
-....\kern 0.0002
+....\hbox(11.70773+0.24089)x58.82777
+.....\special{color push gray 0}
+.....\TU/texgyreheros(0)/m/n/16.06 Abstract
+.....\kern -0.0002
+.....\kern 0.0002
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -2427,7 +2436,7 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 19.8738
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 256.287fil
+..\vbox(674.33032+0.0)x426.79135, glue set 310.48364fil
 ...\write-{}
 ...\write-{}
 ...\glue(\topskip) 12.0
@@ -2437,15 +2446,15 @@ Completed box being shipped out [3]
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\hbox(11.7238+2.7623)x426.79135, glue set 181.27568fil
+...\hbox(11.7238+2.7623)x426.79135, glue set 193.32068fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 目
-....\kern -0.00017
-....\kern 0.00017
-....\glue 32.12
-....\TU/FandolHei(0)/m/n/16.06 录
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(11.7238+2.7623)x40.15, glue set 4.015filll
+.....\TU/FandolHei(0)/m/n/16.06 目
+.....\glue 0.0 plus 2.0filll
+.....\TU/FandolHei(0)/m/n/16.06 录
+.....\kern -0.00017
+.....\kern 0.00017
+.....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -2454,21 +2463,23 @@ Completed box being shipped out [3]
 ...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\hbox(14.05243+6.02255)x426.79135, glue set 366.90764fill
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\TU/FandolHei(0)/m/n/12.045 插
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 图
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 索
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 引
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(9.19034+2.03558)x48.18
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/12.045 插
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 图
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 索
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 引
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\rule(14.05243+6.02255)x0.0
 ....\kern 0.0
 ....\penalty 10000
@@ -2495,22 +2506,24 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
 ...\hbox(14.05243+6.02255)x426.79135, glue set 370.91862fill
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\TU/FandolHei(0)/m/n/12.045 表
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 格
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 索
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 引
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(9.35896+2.16809)x48.18
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/12.045 表
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 格
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 索
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 引
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\rule(14.05243+6.02255)x0.0
 ....\kern 0.0
 ....\penalty 10000
@@ -2537,32 +2550,33 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 348.15356fill
-....\glue(\leftskip) 49.52904
+...\hbox(14.05243+6.02255)x426.79135, glue set 344.80505fill
+....\glue(\leftskip) 40.83255
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\hbox(9.41919+2.13194)x0.0, glue set - 49.52904fil
+....\hbox(9.41919+2.13194)x0.0, glue set - 40.83255fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(9.41919+2.13194)x49.52904
+.....\hbox(9.41919+2.13194)x40.83255
 ......\special{color push gray 0}
 ......\TU/FandolHei(0)/m/n/12.045 第
 ......\glue 3.34851 plus 1.67426 minus 1.11617
 ......\TU/texgyreheros(0)/m/n/12.045 1
 ......\glue 3.34851 plus 1.67426 minus 1.11617
 ......\TU/FandolHei(0)/m/n/12.045 章
-......\kern -0.00017
-......\kern 0.00017
-......\glue 12.045
+......\kern -0.00018
+......\kern 0.00018
+......\glue 3.34851 plus 1.67426 minus 1.11617
 ......\special{color pop}
-....\TU/FandolHei(0)/m/n/12.045 引
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 言
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(9.21443+2.03558)x36.135, glue set 6.0225filll
+.....\TU/FandolHei(0)/m/n/12.045 引
+.....\glue 0.0 plus 2.0filll
+.....\TU/FandolHei(0)/m/n/12.045 言
+.....\kern -0.00017
+.....\kern 0.00017
+.....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\rule(14.05243+6.02255)x0.0
 ....\kern 0.0
 ....\penalty 10000
@@ -2592,18 +2606,16 @@ Completed box being shipped out [3]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 286.26637fill
-....\glue(\leftskip) 39.14624
+...\hbox(14.05243+6.02255)x426.79135, glue set 295.30013fill
+....\glue(\leftskip) 30.11249
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\hbox(8.14243+0.13248)x0.0, glue set - 27.10124fil
+....\hbox(8.14243+0.13248)x0.0, glue set - 18.06749fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(8.14243+0.13248)x27.10124
+.....\hbox(8.14243+0.13248)x18.06749
 ......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/12.045 1.1
-......\kern -0.0002
-......\kern 0.0002
-......\glue 12.045
+......\glue 3.01125 plus 1.50562 minus 1.00374
 ......\special{color pop}
 ....\TU/FandolSong(0)/m/n/12.045 一
 ....\glue 0.0 plus 0.52307
@@ -2651,18 +2663,16 @@ Completed box being shipped out [3]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 271.21013fill
-....\glue(\leftskip) 54.20248
+...\hbox(14.05243+6.02255)x426.79135, glue set 274.22137fill
+....\glue(\leftskip) 51.19124
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\hbox(8.14243+0.13248)x0.0, glue set - 36.135fil
+....\hbox(8.14243+0.13248)x0.0, glue set - 27.10124fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(8.14243+0.13248)x36.135
+.....\hbox(8.14243+0.13248)x27.10124
 ......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/12.045 1.1.1
-......\kern -0.0002
-......\kern 0.0002
-......\glue 12.045
+......\glue 3.01125 plus 1.50562 minus 1.00374
 ......\special{color pop}
 ....\TU/FandolSong(0)/m/n/12.045 二
 ....\glue 0.0 plus 0.52307
@@ -2710,18 +2720,16 @@ Completed box being shipped out [3]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 271.21013fill
-....\glue(\leftskip) 54.20248
+...\hbox(14.05243+6.02255)x426.79135, glue set 274.22137fill
+....\glue(\leftskip) 51.19124
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\hbox(8.14243+0.13248)x0.0, glue set - 36.135fil
+....\hbox(8.14243+0.13248)x0.0, glue set - 27.10124fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(8.14243+0.13248)x36.135
+.....\hbox(8.14243+0.13248)x27.10124
 ......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/12.045 1.1.2
-......\kern -0.0002
-......\kern 0.0002
-......\glue 12.045
+......\glue 3.01125 plus 1.50562 minus 1.00374
 ......\special{color pop}
 ....\TU/FandolSong(0)/m/n/12.045 二
 ....\glue 0.0 plus 0.52307
@@ -2766,48 +2774,50 @@ Completed box being shipped out [3]
 ...\penalty -300
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 263.83858fill
-....\glue(\leftskip) 49.52904
+...\hbox(14.05243+6.02255)x426.79135, glue set 272.53506fill
+....\glue(\leftskip) 40.83255
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\hbox(9.41919+2.13194)x0.0, glue set - 49.52904fil
+....\hbox(9.41919+2.13194)x0.0, glue set - 40.83255fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(9.41919+2.13194)x49.52904
+.....\hbox(9.41919+2.13194)x40.83255
 ......\special{color push gray 0}
 ......\TU/FandolHei(0)/m/n/12.045 第
 ......\glue 3.34851 plus 1.67426 minus 1.11617
 ......\TU/texgyreheros(0)/m/n/12.045 2
 ......\glue 3.34851 plus 1.67426 minus 1.11617
 ......\TU/FandolHei(0)/m/n/12.045 章
-......\kern -0.00017
-......\kern 0.00017
-......\glue 12.045
+......\kern -0.00018
+......\kern 0.00018
+......\glue 3.34851 plus 1.67426 minus 1.11617
 ......\special{color pop}
-....\TU/FandolHei(0)/m/n/12.045 图
-....\penalty 10000
-....\TU/FandolHei(0)/m/n/12.045 、
-....\rule(0.0+0.0)x-7.85333
-....\glue 7.85333 minus 6.02249
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 表
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 及
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 表
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 达
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 式
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 示
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 例
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(9.29874+2.16809)x108.40498
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/12.045 图
+.....\penalty 10000
+.....\TU/FandolHei(0)/m/n/12.045 、
+.....\rule(0.0+0.0)x-7.85333
+.....\glue 7.85333 minus 6.02249
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 表
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 及
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 表
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 达
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 式
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 示
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 例
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\rule(14.05243+6.02255)x0.0
 ....\kern 0.0
 ....\penalty 10000
@@ -2837,18 +2847,16 @@ Completed box being shipped out [3]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 298.31137fill
-....\glue(\leftskip) 39.14624
+...\hbox(14.05243+6.02255)x426.79135, glue set 307.34512fill
+....\glue(\leftskip) 30.11249
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\hbox(8.14243+0.13248)x0.0, glue set - 27.10124fil
+....\hbox(8.14243+0.13248)x0.0, glue set - 18.06749fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(8.14243+0.13248)x27.10124
+.....\hbox(8.14243+0.13248)x18.06749
 ......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/12.045 2.1
-......\kern -0.0002
-......\kern 0.0002
-......\glue 12.045
+......\glue 3.01125 plus 1.50562 minus 1.00374
 ......\special{color pop}
 ....\TU/FandolSong(0)/m/n/12.045 论
 ....\glue 0.0 plus 0.52307
@@ -2894,18 +2902,16 @@ Completed box being shipped out [3]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 298.31137fill
-....\glue(\leftskip) 39.14624
+...\hbox(14.05243+6.02255)x426.79135, glue set 307.34512fill
+....\glue(\leftskip) 30.11249
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\hbox(8.14243+0.13248)x0.0, glue set - 27.10124fil
+....\hbox(8.14243+0.13248)x0.0, glue set - 18.06749fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(8.14243+0.13248)x27.10124
+.....\hbox(8.14243+0.13248)x18.06749
 ......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/12.045 2.2
-......\kern -0.0002
-......\kern 0.0002
-......\glue 12.045
+......\glue 3.01125 plus 1.50562 minus 1.00374
 ......\special{color pop}
 ....\TU/FandolSong(0)/m/n/12.045 论
 ....\glue 0.0 plus 0.52307
@@ -2951,18 +2957,16 @@ Completed box being shipped out [3]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 274.22137fill
-....\glue(\leftskip) 39.14624
+...\hbox(14.05243+6.02255)x426.79135, glue set 283.25513fill
+....\glue(\leftskip) 30.11249
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\hbox(8.14243+0.16861)x0.0, glue set - 27.10124fil
+....\hbox(8.14243+0.16861)x0.0, glue set - 18.06749fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(8.14243+0.16861)x27.10124
+.....\hbox(8.14243+0.16861)x18.06749
 ......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/12.045 2.3
-......\kern -0.0002
-......\kern 0.0002
-......\glue 12.045
+......\glue 3.01125 plus 1.50562 minus 1.00374
 ......\special{color pop}
 ....\TU/FandolSong(0)/m/n/12.045 论
 ....\glue 0.0 plus 0.52307
@@ -3009,22 +3013,24 @@ Completed box being shipped out [3]
 ...\penalty -300
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
 ...\hbox(14.05243+6.02255)x426.79135, glue set 373.5926fill
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\TU/FandolHei(0)/m/n/12.045 参
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 考
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 文
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 献
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(9.45532+2.26445)x48.18
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/12.045 参
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 考
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 文
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 献
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\rule(14.05243+6.02255)x0.0
 ....\kern 0.0
 ....\penalty 10000
@@ -3051,46 +3057,46 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 265.8501fill
-....\glue(\leftskip) 47.51752
+...\hbox(14.05243+6.02255)x426.79135, glue set 274.54659fill
+....\glue(\leftskip) 38.82103
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\hbox(9.10602+2.07173)x0.0, glue set - 47.51752fil
+....\hbox(9.10602+2.07173)x0.0, glue set - 38.82103fil
 .....\glue 0.0 plus 1.0fil minus 1.0fil
-.....\hbox(9.10602+2.07173)x47.51752
+.....\hbox(9.10602+2.07173)x38.82103
 ......\special{color push gray 0}
 ......\TU/FandolHei(0)/m/n/12.045 附
 ......\glue 0.0 plus 0.52307
 ......\TU/FandolHei(0)/m/n/12.045 录
 ......\glue 3.34851 plus 1.67258 minus 1.11728
 ......\TU/texgyreheros(0)/m/n/12.045 A
-......\kern -0.0002
-......\kern 0.0002
-......\glue 12.045
+......\glue 3.34851 plus 1.67258 minus 1.11728
 ......\special{color pop}
-....\TU/FandolHei(0)/m/n/12.045 外
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 文
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 资
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 料
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 的
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 书
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 面
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 翻
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 译
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(9.44328+2.16809)x108.40498
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/12.045 外
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 文
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 资
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 料
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 的
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 书
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 面
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 翻
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 译
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\rule(14.05243+6.02255)x0.0
 ....\kern 0.0
 ....\penalty 10000
@@ -3117,20 +3123,19 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 373.5926fill
+...\hbox(14.05243+6.02255)x426.79135, glue set 385.6376fill
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\TU/FandolHei(0)/m/n/12.045 致
-....\kern -0.00017
-....\kern 0.00017
-....\glue 24.09
-....\TU/FandolHei(0)/m/n/12.045 谢
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(9.32283+2.20422)x36.135, glue set 6.0225filll
+.....\TU/FandolHei(0)/m/n/12.045 致
+.....\glue 0.0 plus 2.0filll
+.....\TU/FandolHei(0)/m/n/12.045 谢
+.....\kern -0.00017
+.....\kern 0.00017
+.....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\rule(14.05243+6.02255)x0.0
 ....\kern 0.0
 ....\penalty 10000
@@ -3157,20 +3162,19 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
-...\hbox(14.05243+6.02255)x426.79135, glue set 373.5926fill
+...\hbox(14.05243+6.02255)x426.79135, glue set 385.6376fill
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\TU/FandolHei(0)/m/n/12.045 声
-....\kern -0.00017
-....\kern 0.00017
-....\glue 24.09
-....\TU/FandolHei(0)/m/n/12.045 明
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(9.34692+2.15604)x36.135, glue set 6.0225filll
+.....\TU/FandolHei(0)/m/n/12.045 声
+.....\glue 0.0 plus 2.0filll
+.....\TU/FandolHei(0)/m/n/12.045 明
+.....\kern -0.00017
+.....\kern 0.00017
+.....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\rule(14.05243+6.02255)x0.0
 ....\kern 0.0
 ....\penalty 10000
@@ -3197,40 +3201,42 @@ Completed box being shipped out [3]
 ...\penalty 0
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
-...\glue 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 0.00002
 ...\hbox(14.05243+6.02255)x426.79135, glue set 259.16513fill
 ....\hbox(0.0+0.0)x0.0
 ....\rule(14.05243+6.02255)x0.0
-....\TU/FandolHei(0)/m/n/12.045 在
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 学
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 期
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 间
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 参
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 加
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 课
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 题
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 的
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 研
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 究
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 成
-....\glue 0.0 plus 0.52307
-....\TU/FandolHei(0)/m/n/12.045 果
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(9.45532+2.26445)x156.58498
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/12.045 在
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 学
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 期
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 间
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 参
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 加
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 课
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 题
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 的
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 研
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 究
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 成
+.....\glue 0.0 plus 0.52307
+.....\TU/FandolHei(0)/m/n/12.045 果
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\rule(14.05243+6.02255)x0.0
 ....\kern 0.0
 ....\penalty 10000
@@ -3386,15 +3392,18 @@ C.}
 ...\glue(\parskip) 0.0
 ...\hbox(12.25378+2.71413)x426.79135, glue set 181.27568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 插
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 图
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 索
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 引
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.25378+2.71413)x64.23999
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/16.06 插
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 图
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 索
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 引
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -3632,15 +3641,18 @@ C.}
 ...\glue(\parskip) 0.0
 ...\hbox(12.47862+2.89078)x426.79135, glue set 181.27568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 表
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 格
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 索
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 引
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.47862+2.89078)x64.23999
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/16.06 表
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 格
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 索
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 引
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -3914,17 +3926,20 @@ Completed box being shipped out [7]
 ...\glue(\parskip) 0.0
 ...\hbox(12.43044+2.89078)x426.79135, glue set 173.24568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 主
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 要
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 符
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 号
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 表
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.43044+2.89078)x80.29999
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/16.06 主
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 要
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 符
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 号
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 表
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -4876,7 +4891,7 @@ Completed box being shipped out [1]
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\hbox(12.55891+2.8426)x426.79135, glue set 164.31633fil
+...\hbox(12.55891+2.8426)x426.79135, glue set 156.28633fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\TU/FandolHei(0)/m/n/16.06 第
 ....\glue 4.46468 plus 2.23233 minus 1.48822
@@ -4886,11 +4901,13 @@ Completed box being shipped out [1]
 ....\kern -0.00017
 ....\kern 0.00017
 ....\glue 16.06
-....\TU/FandolHei(0)/m/n/16.06 引
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 言
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.2859+2.71413)x48.18, glue set 8.03filll
+.....\TU/FandolHei(0)/m/n/16.06 引
+.....\glue 0.0 plus 2.0filll
+.....\TU/FandolHei(0)/m/n/16.06 言
+.....\kern -0.00017
+.....\kern 0.00017
+.....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -6453,27 +6470,30 @@ Completed box being shipped out [2]
 ....\kern -0.00017
 ....\kern 0.00017
 ....\glue 16.06
-....\TU/FandolHei(0)/m/n/16.06 图
-....\penalty 10000
-....\TU/FandolHei(0)/m/n/16.06 、
-....\rule(0.0+0.0)x-10.47112
-....\glue 10.47112 minus 8.03
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 表
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 及
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 表
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 达
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 式
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 示
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 例
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.39832+2.89078)x144.53998
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/16.06 图
+.....\penalty 10000
+.....\TU/FandolHei(0)/m/n/16.06 、
+.....\rule(0.0+0.0)x-10.47112
+.....\glue 10.47112 minus 8.03
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 表
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 及
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 表
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 达
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 式
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 示
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 例
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -7791,15 +7811,18 @@ C.}
 ...\glue(\parskip) 0.0
 ...\hbox(12.6071+3.01927)x426.79135, glue set 181.27568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 参
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 考
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 文
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 献
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.6071+3.01927)x64.23999
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/16.06 参
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 考
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 文
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 献
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -8893,25 +8916,28 @@ Completed box being shipped out [5]
 ....\kern -0.0002
 ....\kern 0.0002
 ....\glue 16.06
-....\TU/FandolHei(0)/m/n/16.06 外
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 文
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 资
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 料
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 的
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 书
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 面
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 翻
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 译
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.59103+2.89078)x144.53998
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/16.06 外
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 文
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 资
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 料
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 的
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 书
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 面
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 翻
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 译
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -9381,8 +9407,8 @@ Completed box being shipped out [7]
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 494.82709fil
 ...\write-{}
-...\write1{\@writefile{toc}{\protect \contentsline {chapter}{致\hskip 2em\relax 
-\ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{致谢}{\thepage }{\ET
+C.}
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -9391,15 +9417,15 @@ Completed box being shipped out [7]
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\hbox(12.43044+2.93896)x426.79135, glue set 181.27568fil
+...\hbox(12.43044+2.93896)x426.79135, glue set 189.30568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 致
-....\kern -0.00017
-....\kern 0.00017
-....\glue 32.12
-....\TU/FandolHei(0)/m/n/16.06 谢
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.43044+2.93896)x48.18, glue set 8.03filll
+.....\TU/FandolHei(0)/m/n/16.06 致
+.....\glue 0.0 plus 2.0filll
+.....\TU/FandolHei(0)/m/n/16.06 谢
+.....\kern -0.00017
+.....\kern 0.00017
+.....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -9765,8 +9791,8 @@ Completed box being shipped out [9]
 ..\vbox(674.33032+0.0)x426.79135, glue set 494.9074fil
 ...\write-{}
 ...\write-{}
-...\write1{\@writefile{toc}{\protect \contentsline {chapter}{声\protect \hspace 
- \ETC.}
+...\write1{\@writefile{toc}{\protect \contentsline {chapter}{声明}{\thepage }{\ET
+C.}
 ...\write-{}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
@@ -9775,15 +9801,15 @@ Completed box being shipped out [9]
 ...\glue 0.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\hbox(12.46255+2.87473)x426.79135, glue set 181.27568fil
+...\hbox(12.46255+2.87473)x426.79135, glue set 189.30568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 声
-....\kern -0.00017
-....\kern 0.00017
-....\glue 32.12
-....\TU/FandolHei(0)/m/n/16.06 明
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.46255+2.87473)x48.18, glue set 8.03filll
+.....\TU/FandolHei(0)/m/n/16.06 声
+.....\glue 0.0 plus 2.0filll
+.....\TU/FandolHei(0)/m/n/16.06 明
+.....\kern -0.00017
+.....\kern 0.00017
+.....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -10273,33 +10299,36 @@ Completed box being shipped out [11]
 ...\glue(\parskip) 0.0
 ...\hbox(12.6071+3.01927)x426.79135, glue set 109.00569fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 在
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 学
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 期
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 间
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 参
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 加
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 课
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 题
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 的
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 研
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 究
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 成
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 果
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.6071+3.01927)x208.77997
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/16.06 在
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 学
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 期
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 间
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 参
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 加
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 课
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 题
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 的
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 研
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 究
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 成
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 果
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil

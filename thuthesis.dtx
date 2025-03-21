@@ -1968,12 +1968,12 @@
     \def\indexname{索引}%
     \def\thu@resolution@name{答辩委员会决议书}%
     \ifthu@degree@bachelor
-      \def\contentsname{目\qquad 录}%
+      \def\contentsname{目录}%
       \def\listfigurename{插图索引}%
       \def\listtablename{表格索引}%
       \def\thu@list@figure@table@name{插图和附表索引}%
       \def\thu@list@algorithm@name{算法索引}%
-      \def\thu@acknowledgements@name{致\qquad 谢}%
+      \def\thu@acknowledgements@name{致谢}%
       \def\listequationname{公式索引}%
       \def\thu@denotation@name{主要符号表}%
       \def\thu@resume@name{在学期间参加课题的研究成果}%
@@ -3798,6 +3798,7 @@
     \ctexset{%
       chapter = {
         format     = \centering\sffamily\fontsize{16bp}{20.8bp}\selectfont,
+        titleformat = \thu@stretch{3em},
         aftername  = \quad,
         beforeskip = 27bp,
         afterskip  = 27bp,
@@ -3868,6 +3869,7 @@
   \else
     \ctexset{%
       chapter = {
+        titleformat = {},
         beforeskip = 27bp,
         afterskip  = 27bp,
         number     = \thechapter,
@@ -4027,7 +4029,13 @@
   \ifthu@degree@graduate
     \thu@chapter*{\contentsname}%
   \else
-    \thu@chapter*[]{\contentsname}%
+    \ifthu@degree@bachelor
+      \ctexset{chapter/titleformat = \thu@stretch{2.5em}}%
+      \thu@chapter*[]{\contentsname}%
+      \ctexset{chapter/titleformat = \thu@stretch{3em}}%
+    \else
+      \thu@chapter*[]{\contentsname}%
+    \fi
   \fi
   \@starttoc{toc}%
 }
@@ -4057,22 +4065,16 @@
   \ifthu@degree@bachelor
     \ifthu@main@language@chinese
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}
-          \ifthu@toc@chapter@style@arial
-            \sffamily
-          \else
-            \heiti
-          \fi
-        }
-        {\contentspush{\thecontentslabel\quad}}{}
+        [0pt]{\sffamily}
+        {\contentspush{\thecontentslabel\space}\thu@stretch{3em}}{\thu@stretch{3em}}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
         [1em]{}
-        {\contentspush{\thecontentslabel\quad}}{}
+        {\contentspush{\thecontentslabel\space}}{}
         {\thu@leaders\thecontentspage}%
       \titlecontents{subsection}
-        [1.5em]{}
-        {\contentspush{\thecontentslabel\quad}}{}
+        [2em]{}
+        {\contentspush{\thecontentslabel\space}}{}
         {\thu@leaders\thecontentspage}%
     \else
 %    \end{macrocode}
@@ -5325,7 +5327,7 @@
   \thu@statement@existstrue
   \ifthu@degree@bachelor
     \cleardoublepage
-    \def\thu@statement@name{声\hspace{2em}明}%
+    \def\thu@statement@name{声明}%
   \else
     \def\thu@statement@name{声\hspace{1em}明}%
   \fi
