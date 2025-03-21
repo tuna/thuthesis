@@ -682,9 +682,9 @@
 % \toprule
 %   {\heiti 用途} & {\heiti 命令} \\\midrule
 % 目录     & \cs{tableofcontents} \\\midrule
-% 插图索引 & \cs{listoffigures}   \\
+% 插图清单 & \cs{listoffigures}   \\
 %          & \cs{listoffigures*}  \\\midrule
-% 表格索引 & \cs{listoftables}    \\
+% 附表清单 & \cs{listoftables}    \\
 %          & \cs{listoftables*}   \\\midrule
 % 公式索引 & \cs{listofequations} \\
 %          & \cs{listofequations*}\\\midrule
@@ -1962,6 +1962,9 @@
 %    \begin{macrocode}
 \newcommand\thu@set@chapter@names{%
   \ifthu@main@language@chinese
+    \def\listfigurename{插图清单}%
+    \def\listtablename{附表清单}%
+    \def\thu@list@figure@table@name{插图和附表清单}%
     \def\thu@comments@name{指导教师评语}%
     \def\bibname{参考文献}%
     \def\appendixname{附录}%
@@ -1969,18 +1972,12 @@
     \def\thu@resolution@name{答辩委员会决议书}%
     \ifthu@degree@bachelor
       \def\contentsname{目录}%
-      \def\listfigurename{插图索引}%
-      \def\listtablename{表格索引}%
-      \def\thu@list@figure@table@name{插图和附表索引}%
       \def\thu@list@algorithm@name{算法索引}%
       \def\thu@acknowledgements@name{致谢}%
       \def\listequationname{公式索引}%
       \def\thu@denotation@name{主要符号表}%
       \def\thu@resume@name{在学期间参加课题的研究成果}%
     \else
-      \def\listfigurename{插图清单}%
-      \def\listtablename{附表清单}%
-      \def\thu@list@figure@table@name{插图和附表清单}%
       \def\thu@list@algorithm@name{算法清单}%
       \def\listequationname{公式清单}%
       \def\thu@acknowledgements@name{致\quad 谢}%
@@ -3242,7 +3239,6 @@
   \@mainmattertrue
   \pagenumbering{arabic}%
 }
-\newif\ifthu@backmatter
 \renewcommand\backmatter{%
   \if@openright
     \cleardoublepage
@@ -3250,7 +3246,6 @@
     \clearpage
   \fi
   \@mainmatterfalse
-  \thu@backmattertrue
   \thusetup{toc-depth = 0}%
 }
 %    \end{macrocode}
@@ -4048,6 +4043,17 @@
     },
     default = arial,
   },
+}
+\newcommand\thu@contents@label@delimiter{%
+  \ifthu@degree@bachelor
+    \ifthu@main@language@chinese
+      \space
+    \else
+      \quad
+    \fi
+  \else
+    \quad
+  \fi
 }
 \newcommand\thu@leaders{\nobreak\titlerule*[4bp]{.}\nobreak}
 \newcommand\thu@set@toc@format{%
@@ -5408,10 +5414,25 @@
 % 定义图表以及公式目录样式。
 %    \begin{macrocode}
 \def\thu@listof#1{% #1: float type
-  \setcounter{tocdepth}{2} % restore tocdepth in case being modified
+  \setcounter{tocdepth}{2}%  restore tocdepth in case being modified
   \@ifstar
-    {\thu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}
-    {\thu@chapter*{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
+    {\thu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
+    {%
+      \ifthu@degree@bachelor
+        \ifthu@main@language@chinese
+          \thu@chapter*[]{\csname list#1name\endcsname}%
+        \else
+          \thu@chapter*{\csname list#1name\endcsname}%
+        \fi
+      \else
+        \ifthu@degree@graduate
+          \thu@chapter*{\csname list#1name\endcsname}%
+        \else
+          \thu@chapter*[]{\csname list#1name\endcsname}%
+        \fi
+      \fi
+      \@starttoc{\csname ext@#1\endcsname}%
+    }%
 }
 %    \end{macrocode}
 %
@@ -5420,17 +5441,12 @@
 % 插图清单。
 %    \begin{macrocode}
 \renewcommand\listoffigures{%
-  \ifthu@degree@bachelor
-    \ifthu@backmatter\else
-      \thu@warning{The list of figures should be placed in back matter}%
-    \fi
-  \fi
   \thu@listof{figure}%
 }
 \titlecontents{figure}
   [\z@]{}
-  {\contentspush{\figurename~\thecontentslabel\quad}}{}
-  {\nobreak\thu@leaders\nobreak\hfil\thecontentspage}
+  {\contentspush{\figurename~\thecontentslabel\thu@contents@label@delimiter}}{}
+  {\thu@leaders\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -5440,16 +5456,11 @@
 % 附表清单。
 %    \begin{macrocode}
 \renewcommand\listoftables{%
-  \ifthu@degree@bachelor
-    \ifthu@backmatter\else
-      \thu@warning{The list of tables should be placed in back matter}%
-    \fi
-  \fi
   \thu@listof{table}%
 }
 \titlecontents{table}
   [\z@]{}
-  {\contentspush{\tablename~\thecontentslabel\quad}}{}
+  {\contentspush{\tablename~\thecontentslabel\thu@contents@label@delimiter}}{}
   {\thu@leaders\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
@@ -5460,16 +5471,22 @@
 %    \begin{macrocode}
 \newcommand\listoffiguresandtables{%
   \ifthu@degree@bachelor
-    \thu@warning{The list of figures and tables are for graduates only}%
-    \listoffigures
-    \listoftables
+    \ifthu@main@language@chinese
+      \thu@chapter*[]{\thu@list@figure@table@name}%
+    \else
+      \thu@chapter*{\thu@list@figure@table@name}%
+    \fi
   \else
-    \thu@chapter*{\thu@list@figure@table@name}%
-    \@starttoc{lof}%
-    \par
-    \null\par
-    \@starttoc{lot}%
+    \ifthu@degree@graduate
+      \thu@chapter*{\thu@list@figure@table@name}%
+    \else
+      \thu@chapter*[]{\thu@list@figure@table@name}%
+    \fi
   \fi
+  \@starttoc{lof}%
+  \par
+  \null\par
+  \@starttoc{lot}%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -5501,8 +5518,8 @@
 \newcommand\listofequations{\thu@listof{equation}}
 \titlecontents{equation}
   [0pt]{\addvspace{6bp}}
-  {\thu@equation@name~\thecontentslabel}{}
-  {\nobreak\thu@leaders\nobreak\thecontentspage}
+  {\contentspush{\thu@equation@name~\thecontentslabel\thu@contents@label@delimiter}}{}
+  {\thu@leaders\thecontentspage}
 \contentsuse{equation}{loe}
 %    \end{macrocode}
 % \end{macro}
@@ -6753,7 +6770,7 @@
   \contentsuse{algorithm}{loa}
   \titlecontents{algorithm}
     [\z@]{}
-    {\contentspush{\fname@algorithm~\thecontentslabel\quad}}{}
+    {\contentspush{\fname@algorithm~\thecontentslabel\thu@contents@label@delimiter}}{}
     {\thu@leaders\thecontentspage}
 }
 %    \end{macrocode}
@@ -6778,7 +6795,7 @@
   \contentsuse{algocf}{loa}
   \titlecontents{algocf}
     [\z@]{}
-    {\contentspush{\algorithmcfname~\thecontentslabel\quad}}{}
+    {\contentspush{\algorithmcfname~\thecontentslabel\thu@contents@label@delimiter}}{}
     {\thu@leaders\thecontentspage}
 }
 %    \end{macrocode}
