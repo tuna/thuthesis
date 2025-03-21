@@ -1965,6 +1965,7 @@
     \def\listfigurename{插图清单}%
     \def\listtablename{附表清单}%
     \def\thu@list@figure@table@name{插图和附表清单}%
+    \def\thu@denotation@name{符号和缩略语说明}%
     \def\thu@comments@name{指导教师评语}%
     \def\bibname{参考文献}%
     \def\appendixname{附录}%
@@ -1975,7 +1976,6 @@
       \def\thu@list@algorithm@name{算法索引}%
       \def\thu@acknowledgements@name{致谢}%
       \def\listequationname{公式索引}%
-      \def\thu@denotation@name{主要符号表}%
       \def\thu@resume@name{在学期间参加课题的研究成果}%
     \else
       \def\thu@list@algorithm@name{算法清单}%
@@ -1983,7 +1983,6 @@
       \def\thu@acknowledgements@name{致\quad 谢}%
       \ifthu@degree@graduate
         \def\contentsname{目\quad 录}%
-        \def\thu@denotation@name{符号和缩略语说明}%
         \def\thu@resume@name{个人简历、在学期间完成的相关学术成果}%
       \else  % degree = postdoc
         \def\contentsname{目\qquad 次}%
@@ -5223,23 +5222,28 @@
 %    \end{macrocode}
 % \end{environment}
 %
-% \subsubsection{主要符号表}
+% \subsubsection{符号和缩略语说明}
 % \label{sec:denotationfmt}
 % \begin{environment}{denotation}
-% 主要符号表。
+% 符号和缩略语说明。
 %    \begin{macrocode}
 \newenvironment{denotation}[1][2.5cm]{%
   \ifthu@degree@bachelor
-    \cleardoublepage
-  \fi
-  \ifthu@degree@graduate
-    \thu@chapter*{\thu@denotation@name}%
+    \ifthu@main@language@chinese
+      \thu@chapter*[]{\thu@denotation@name}%
+    \else
+      \thu@chapter*{\thu@denotation@name}%
+    \fi
   \else
-    \thu@chapter*[]{\thu@denotation@name}%
+    \ifthu@degree@graduate
+      \thu@chapter*{\thu@denotation@name}%
+    \else
+      \thu@chapter*[]{\thu@denotation@name}%
+    \fi
   \fi
-  \vskip-30bp\xiaosi[1.6]\begin{thu@denotation}[labelwidth=#1]
+  \begin{thu@denotation}[labelwidth=#1]%
 }{%
-  \end{thu@denotation}
+  \end{thu@denotation}%
 }
 \newlist{thu@denotation}{description}{1}
 \setlist[thu@denotation]{%
