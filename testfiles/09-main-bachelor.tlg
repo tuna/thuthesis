@@ -7545,7 +7545,6 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 \bibcite{huchuxiong2024zhixian}{{6}{1987}{{胡楚雄}}{{}}}
 \bibcite{zhonghua1994}{{7}{1987}{{中华人民共和国国家技术监督局}}{{}}}
 \bibcite{fugang2000fengsha}{{8}{2000}{{傅刚\ 等}}{{傅刚, 赵承, and 李佳路}}}
-Class thuthesis Warning: The appendices should be placed after statement on input line ....
 No file bu.aux.
 Completed box being shipped out [4]
 \vbox(730.09772+3.63611)x439.87962
@@ -8698,7 +8697,7 @@ Completed box being shipped out [5]
 ....\special{color pop}
 ..\glue 19.8738
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 452.73033fil
+..\vbox(674.33032+0.0)x426.79135, glue set 458.84216fil
 ...\write-{}
 ...\write1{\pp@pagectr{footnote}{4}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
@@ -8902,31 +8901,32 @@ Completed box being shipped out [5]
 ...\glue 20.075
 ...\glue 0.0
 ...\penalty -300
-...\glue 24.09
+...\glue 20.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 6.63481
-...\hbox(11.0312+2.64185)x426.79135, glue set 370.58139fil
+...\glue(\baselineskip) 8.33115
+...\hbox(9.33487+2.1199)x426.79135, glue set 189.30568fil
+....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
-....\TU/FandolHei(0)/m/n/14.05249 参
-....\glue 0.0 plus 0.68819
-....\TU/FandolHei(0)/m/n/14.05249 考
-....\glue 0.0 plus 0.68819
-....\TU/FandolHei(0)/m/n/14.05249 文
-....\glue 0.0 plus 0.68819
-....\TU/FandolHei(0)/m/n/14.05249 献
+....\TU/FandolSong(0)/m/n/12.045 参
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 考
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 文
+....\glue 0.0 plus 0.52307
+....\TU/FandolSong(0)/m/n/12.045 献
 ....\kern -0.00017
 ....\kern 0.00017
 ....\penalty 10000
-....\glue(\parfillskip) 0.0 plus 1.0fil
-....\glue(\rightskip) 0.0
+....\glue(\parfillskip) 0.0
+....\glue(\rightskip) 0.0 plus 1.0fil
 ...\write1{\@writefile{toc}{\protect \contentsline {section}{参考文献}{\thepage \ET
 C.}
 ...\penalty 10000
-...\glue 6.02249
+...\glue 4.0
 ...\glue(\parskip) 0.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 4.98666
+...\glue(\baselineskip) 5.5086
 ...\hbox(8.43149+2.10786)x398.33861, glue set 0.13617, shifted 28.45274
 ....\hbox(6.97707+1.64412)x0.0
 .....\glue 0.0

@@ -5330,11 +5330,9 @@
     Use "page-style" option of \protect\statement command instead%
   }%
 }
-\newif\ifthu@statement@exists
 \newcommand\statement[1][]{%
   \@mainmatterfalse
   \thu@end@appendix@ref@section
-  \thu@statement@existstrue
   \ifthu@degree@bachelor
     \cleardoublepage
     \def\thu@statement@name{声明}%
@@ -6011,11 +6009,6 @@
 %    \begin{macrocode}
 \g@addto@macro\appendix{%
   \@mainmattertrue
-  \ifthu@degree@bachelor
-    \ifthu@statement@exists\else
-      \thu@warning{The appendices should be placed after statement}%
-    \fi
-  \fi
 }
 %    \end{macrocode}
 %
@@ -6175,15 +6168,18 @@
   \AtEndDocument{\thu@end@appendix@ref@section}
   \renewcommand\thu@set@survey@bibheading{%
     \renewcommand\bibsection{%
-      \par
-      \vskip 20bp%
-      \thu@pdfbookmark{1}{\bibname}%
       \begingroup
-        \centering
-        \xiaosi[1.667]\bibname\par
+        \ctexset{
+          section = {
+            numbering = false,
+            format = \centering\normalsize,
+            beforeskip = 20pt,
+            afterskip = 4pt,
+          },
+        }%
+        \section{\bibname}%
       \endgroup
-      \vskip 6bp%
-    }%
+    }
   }%
 %    \end{macrocode}
 %
@@ -6212,14 +6208,18 @@
   }
   \renewcommand\thu@set@survey@bibheading{%
     \defbibheading{bibliography}[\bibname]{%
-      \par
-      \vskip 20bp%
-      \thu@pdfbookmark{1}{\bibname}%
+      \vspace{20bp}%
       \begingroup
-        \centering
-        \xiaosi[1.667]##1\par
+        \ctexset{
+          section = {
+            numbering = false,
+            format = \centering\normalsize,
+            beforeskip = 0pt,
+            afterskip = 0pt,
+          },
+        }%
+        \section{\bibname}%
       \endgroup
-      \vskip 6bp%
     }%
   }%
   \def\bibliographystyle#1{%
@@ -6304,12 +6304,7 @@
     \vskip 20bp%
   }%
   \let\appendix\thu@appendix@appendix
-  \def\bibsection{%
-    \begingroup
-      \ctexset{section/numbering=false}%
-      \section{\bibname}%
-    \endgroup
-  }%
+  \thu@set@survey@bibheading
   \startcontents[translation]%
 }{%
   \stopcontents[translation]%
@@ -6318,7 +6313,7 @@
 %    \end{macrocode}
 % \end{environment}
 %
-% \begin{environment}{translation}
+% \begin{environment}{translation-index}
 % 书面翻译对应的原文索引，区别于译文的参考文献。
 %    \begin{macrocode}
 \newenvironment{translation-index}{}{}
