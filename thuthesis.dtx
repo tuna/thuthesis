@@ -3087,7 +3087,7 @@
   \ifthu@integral@upright
     \PassOptionsToPackage{upint}{newtxmath}%
   \fi
-  \RequirePackage{newtxmath}
+  \RequirePackage{newtxmath}%
   \let\thu@save@leq\leq
   \let\thu@save@geq\geq
   \ifthu@leq@slanted
@@ -4202,14 +4202,14 @@
 }
 \thu@option@hook{discipline}{%
   \ifthu@degree@type@professional
-    \thu@warning{`discipline' for professional degree is deprecated. Use `professional-field' instead.}
+    \thu@warning{`discipline' for professional degree is deprecated. Use `professional-field' instead.}%
     \let\thu@professional@field\thu@discipline
     \let\thu@discipline\@empty
   \fi
 }
 \thu@option@hook{discipline*}{%
   \ifthu@degree@type@professional
-    \thu@warning{`discipline*' for professional degree is deprecated. Use `professional-field*' instead.}
+    \thu@warning{`discipline*' for professional degree is deprecated. Use `professional-field*' instead.}%
     \let\thu@professional@field@en\thu@discipline@en
     \let\thu@discipline@en\@empty
   \fi
@@ -4647,9 +4647,9 @@
     \vskip 3bp%
     in\par
     \vskip 3.5bp%
-    {\bfseries\sffamily\thu@discipline@en\par}
+    {\bfseries\sffamily\thu@discipline@en\par}%
     \vfill
-    {\sffamily by\par}
+    {\sffamily by\par}%
     \vskip 0.24cm%
     {\sffamily\bfseries\thu@author@en\par}%
     \vskip 0.18cm%
@@ -4672,7 +4672,7 @@
     \sanhao[1.725]%
     \thu@titlepage@en@degree
     \vfill
-    {\sffamily by\par}
+    {\sffamily by\par}%
     \vskip 0.24cm%
     {\sffamily\bfseries\thu@author@en\par}%
     \ifx\thu@professional@field@en\empty
@@ -4867,7 +4867,7 @@
       工作完成日期\quad
       \thu@uline[5.9cm]{%
         \thu@format@date{\thu@date@zh@digit@short}{\thu@start@date}—%
-        \thu@format@date{\thu@date@zh@digit@short}{\thu@end@date}
+        \thu@format@date{\thu@date@zh@digit@short}{\thu@end@date}%
       }\par
       \vskip 0.55cm%
       报告提交日期\quad
@@ -4973,7 +4973,7 @@
 \newcommand\copyrightpage[1][]{%
   \ifthu@degree@postdoc\relax\else
     \cleardoublepage
-    \def\thu@@tmp{#1}
+    \def\thu@@tmp{#1}%
     \ifx\thu@@tmp\@empty
       \thusetup{language=chinese}%
       \ifthu@degree@bachelor
@@ -5824,7 +5824,7 @@
     \setlength{\itemindent}{\z@}%
     \setlength{\labelsep}{0.1cm}%
     \setlength{\labelwidth}{0.9cm}%
-    \setlength{\itemsep}{\bibsep}
+    \setlength{\itemsep}{\bibsep}%
     \setlength{\parsep}{\z@}%
     \ifNAT@openbib
       \addtolength{\leftmargin}{\bibindent}%
