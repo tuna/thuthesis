@@ -6387,18 +6387,18 @@
   \@mainmatterfalse
   \thu@end@appendix@ref@section
   \thu@chapter*{\thu@resume@name}%
-  \ctexset{
-    section = {
-      format    += \centering,
-      numbering = false,
-    },
-  }%
+  \ctexset{section/numbering = false}%
+  \ifthu@degree@bachelor
+    \ctexset{section/aftertitle = {：\@@par}}%
+  \else
+    \ctexset{section/format += \centering}%
+  \fi
   \ifthu@language@chinese
     \ctexset{
       subsection = {
         format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
         numbering  = false,
-        aftertitle = ：,
+        aftertitle = {：\@@par},
       },
     }%
     \setlist[achievements]{
