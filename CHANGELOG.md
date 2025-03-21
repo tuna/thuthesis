@@ -22,6 +22,7 @@
 - 统一选题报告与学位论文的封面格式，修复信息偏移问题（[#977](https://github.com/tuna/thuthesis/issues/977)）。
 - 修正 `siunitx` 的连接符设置（[#990](https://github.com/tuna/thuthesis/issues/990)）。
 - 修正“符号和缩略语说明”的行距。
+- 修正参考文献表内容的第一项段前距离。
 
 ## [v7.5.2] - 2024-07-01
 

@@ -5867,25 +5867,27 @@
 % 参考文献表的正文部分用五号字。
 % 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
 %
-% 本科生要求宋体五号/Times New Roman 10.5 pt，固定行距 17pt，段前后间距 3pt；
-% 英文专业要求悬挂缩进 0.5inch（1.27 厘米）。
+% 本科生要求用五号字，行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
+% 采用悬挂格式，悬挂缩进 2 个汉字符或 1 厘米。
+%
+% 英文专业要求字号 10.5pt，行距用固定值 17pt，段前后 3pt，悬挂缩进 0.5inch（1.27 厘米）。
 %
 % 复用 \pkg{natbib} 的 \texttt{thebibliography} 环境，调整距离。
 %    \begin{macrocode}
   \renewcommand\bibsection{\thu@chapter*{\bibname}}
   \newcommand\thu@set@bibliography@format{%
+    \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+    \setlength{\bibsep}{3bp \@plus 3bp \@minus 3bp}%
     \ifthu@degree@bachelor
-      \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
-      \setlength{\bibsep}{6bp \@plus 3bp \@minus 3bp}%
       \ifthu@main@language@chinese
-        \setlength{\bibhang}{21bp}%
+        \setlength{\bibhang}{1cm}%
       \else
+        \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
+        \setlength{\bibsep}{6bp \@plus 3bp \@minus 3bp}%
         \setlength{\bibhang}{0.5in}%
       \fi
     \else
-      \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
-      \setlength{\bibsep}{3bp \@plus 3bp \@minus 3bp}%
-      \setlength{\bibhang}{21bp}%
+      \setlength{\bibhang}{1cm}%
     \fi
   }
   \thu@set@bibliography@format
@@ -5895,7 +5897,7 @@
 %
 % 研究生要求每一条文献的内容要尽量写在同一页内。
 % 遇有被迫分页的情况，可通过“留白”或微调本页行距的方式尽量将同一条文献内容放在一页。
-% 所以上述 \cs{bibsep} 的设置允许 1pt 的伸缩，
+% 所以上述 \cs{bibsep} 的设置允许 3pt 的伸缩，
 % 同时增加同一条文献内分页的惩罚，
 % 这里参考 \href{https://github.com/plk/biblatex/blob/e5d6e69e61613cc33ab1fcc2083a8277eb9cfce5/tex/latex/biblatex/biblatex.def}{BibLaTeX 的设置}。
 %    \begin{macrocode}
@@ -5948,19 +5950,19 @@
   \DeclareRobustCommand\inlinecite{\parencite}
   \defbibheading{bibliography}[\bibname]{\thu@chapter*{\bibname}}
   \newcommand\thu@set@bibliography@format{%
+    \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+    \setlength{\bibitemsep}{3bp \@plus 3bp \@minus 3bp}%
     \ifthu@degree@bachelor
-      \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
-      \setlength{\bibitemsep}{6bp \@plus 3bp \@minus 3bp}%
       \ifthu@main@language@chinese
-        \setlength{\bibhang}{21bp}%
+        \setlength{\bibhang}{1cm}%
       \else
+        \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
+        \setlength{\bibitemsep}{6bp \@plus 3bp \@minus 3bp}%
         \setlength{\bibhang}{0.5in}%
       \fi
     \else
-      \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
-      \setlength{\bibitemsep}{3bp \@plus 3bp \@minus 3bp}%
       \setlength{\biblabelsep}{0.1cm}%
-      \setlength{\bibhang}{21bp}%
+      \setlength{\bibhang}{1cm}%
     \fi
   }
   \thu@set@bibliography@format
@@ -5978,10 +5980,16 @@
   \AtBeginDocument{
     \thu@set@chapter@names
   }
-  \renewcommand\bibliographytypesize{\fontsize{10.5bp}{17bp}\selectfont}
-  \setlength{\bibitemsep}{6bp}
+  \renewcommand\bibliographytypesize{\fontsize{10.5bp}{16bp}\selectfont}
+  \setlength{\bibitemsep}{3bp \@plus 3bp \@minus 3bp}%
+  \ifthu@degree@bachelor
+    \ifthu@main@language@english
+      \renewcommand\bibliographytypesize{\fontsize{10.5bp}{17bp}\selectfont}%
+      \setlength{\bibitemsep}{6bp \@plus 3bp \@minus 3bp}%
+    \fi
+  \fi
   \ifthu@main@language@chinese
-    \setlength{\bibleftmargin}{21bp}
+    \setlength{\bibleftmargin}{1cm}
     \setlength{\bibindent}{-\bibleftmargin}
   \else
     \setlength{\bibleftmargin}{0.5in}
