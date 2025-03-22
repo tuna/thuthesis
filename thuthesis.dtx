@@ -683,7 +683,7 @@
 % 附表清单 & \cs{listoftables}    \\
 % 插图和附表清单 & \cs{listoffiguresandtables} \\
 % 公式索引 & \cs{listofequations} \\
-% 算法索引 & \cs{listofalgorithms} \\
+% 算法清单 & \cs{listofalgorithms} \\
 % \bottomrule
 % \end{longtable}
 %
@@ -1965,6 +1965,7 @@
     \def\listfigurename{插图清单}%
     \def\listtablename{附表清单}%
     \def\thu@list@figure@table@name{插图和附表清单}%
+    \def\thu@list@algorithm@name{算法清单}%
     \def\thu@denotation@name{符号和缩略语说明}%
     \def\thu@comments@name{指导教师评语}%
     \def\bibname{参考文献}%
@@ -1973,12 +1974,10 @@
     \def\thu@resolution@name{答辩委员会决议书}%
     \ifthu@degree@bachelor
       \def\contentsname{目录}%
-      \def\thu@list@algorithm@name{算法索引}%
       \def\thu@acknowledgements@name{致谢}%
       \def\listequationname{公式索引}%
       \def\thu@resume@name{在学期间参加课题的研究成果}%
     \else
-      \def\thu@list@algorithm@name{算法清单}%
       \def\listequationname{公式清单}%
       \def\thu@acknowledgements@name{致\quad 谢}%
       \ifthu@degree@graduate
