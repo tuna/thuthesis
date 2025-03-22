@@ -76,9 +76,7 @@
 %    \href{https://info2021.tsinghua.edu.cn/f/info/xxfb_fg/xnzx/template/detail?xxid=fa880bdf60102a29fbe3c31f36b76c7e}{%
 %   研究生学位论文写作指南}》（更新到 2025 年 3 月版本，限校内网络访问）、
 %   英文版 \emph{Guide to Thesis Writing for Graduate Students}、
-%   清华大学教务处颁发的《
-%   \href{https://lib.tsinghua.edu.cn/info/1073/1978.htm}{%
-%   综合论文训练写作指南}》、
+%   清华大学教务处颁发的《清华大学综合论文训练写作规范（试行）》、
 %   外文系的《英语专业本科生综合论文训练》和
 %   清华大学《
 %   \href{http://postdoctor.tsinghua.edu.cn/info/czxz/1283}{%
@@ -417,7 +415,7 @@
 % 论文的一些部分（如英文摘要、本科生的外文调研报告）要求使用特定的语言，
 % 模板已经进行配置，并在这些部分结束后自动恢复为主要语言。
 %
-% 注意，本科生《写作指南》要求“本科生（含国外来华留学本科生）非外语专业论文统一要求
+% 注意，本科生《写作规范》要求“本科生（含国外来华留学本科生）非外语专业论文统一要求
 % 用中文书写。”研究生《写作指南》要求“外国人来华留学生可以用英文撰写学位论文，但
 % 须采用中文封面”，“除留学生外，学位论文一律须用汉语书写”，用户须提前与导师和院系
 % 的审查教师协商使用何种语言书写论文。
@@ -482,8 +480,8 @@
 %
 % \begin{latex}
 %   \thusetup{
-%     degree-category  = {您要申请什么学位},
-%     degree-category* = {Degree in English},
+%     degree-category  = {工学硕士},
+%     degree-category* = {Master of Science},
 %   }
 % \end{latex}
 %
@@ -491,7 +489,7 @@
 % 院系名称。
 % \begin{latex}
 %   \thusetup{
-%     department = {系名全称},
+%     department = {计算机科学与技术系},
 %   }
 % \end{latex}
 %
@@ -521,8 +519,8 @@
 %
 % \begin{latex}
 %   \thusetup{
-%     professional-field  = {专业领域},
-%     professional-field* = {Professional field},
+%     professional-field  = {计算机技术},
+%     professional-field* = {Computer Technology},
 %   }
 % \end{latex}
 %
@@ -766,7 +764,7 @@
 % \option{GB}（中文默认），\option{TeX}（英文默认）和 \option{ISO}），比如：
 % \begin{latex}
 %   \thusetup{
-%     math-style = ISO,
+%     math-style = TeX,
 %   }
 % \end{latex}
 %
@@ -1095,7 +1093,7 @@
 %
 % \DescribeEnv{survey}
 % \DescribeEnv{translation}
-% 本科生《写作指南》要求附录 A 为外文资料的调研阅读报告或书面翻译，二者择一。
+% 本科生《写作规范》要求附录 A 为外文资料的调研阅读报告或书面翻译，二者择一。
 % 调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章，
 % 所以模板相应定义了 \env{survey} 和 \env{translation}。在这两个环境内部可以
 % 像论文正文一样使用标题和参考文献的命令，但不会影响外部。
@@ -1858,7 +1856,7 @@
 % 页边距：上下左右均为 3.0 厘米，装订线 0 厘米；
 % 页眉距边界：2.2 厘米，页脚距边界：2.2 厘米。
 %
-% 本科生《写作指南》：
+% 本科生《写作规范》：
 % 页边距：3 厘米，装订线：0 厘米。
 % 本科生 Word 模板：
 % 无页眉，页脚距边界：1.5 厘米。
@@ -6158,7 +6156,7 @@
 }
 %    \end{macrocode}
 %
-% 本科生《写作指南》有独特的要求：附录 A 为外文资料的调研阅读报告或书面翻译，
+% 本科生《写作规范》有独特的要求：附录 A 为外文资料的调研阅读报告或书面翻译，
 % 并且要分别附上独立的参考文献和外文资料的原文索引。
 % 所以这里定义 \env{survey} 和 \env{translation} 专门处理这两种情况，
 % 其中参考文献使用了 \pkg{bibunits} 宏包的功能。
