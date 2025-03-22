@@ -671,25 +671,20 @@
 %
 % \DescribeMacro{\tableofcontents}
 % \DescribeMacro{\listoffigures}
-% \DescribeMacro{\listoffigures*}
 % \DescribeMacro{\listoftables}
-% \DescribeMacro{\listoftables*}
+% \DescribeMacro{\listoffiguresandtables}
 % \DescribeMacro{\listofequations}
-% \DescribeMacro{\listofequations*}
 % \DescribeMacro{\listofalgorithms}
-% \DescribeMacro{\listofalgorithms*}
 % \begin{longtable}{ll}
 % \toprule
 %   {\heiti 用途} & {\heiti 命令} \\\midrule
-% 目录     & \cs{tableofcontents} \\\midrule
+% 目录     & \cs{tableofcontents} \\
 % 插图清单 & \cs{listoffigures}   \\
-%          & \cs{listoffigures*}  \\\midrule
 % 附表清单 & \cs{listoftables}    \\
-%          & \cs{listoftables*}   \\\midrule
+% 插图和附表清单 & \cs{listoffiguresandtables} \\
 % 公式索引 & \cs{listofequations} \\
-%          & \cs{listofequations*}\\\midrule
 % 算法索引 & \cs{listofalgorithms} \\
-%          & \cs{listofalgorithms*}\\\bottomrule
+% \bottomrule
 % \end{longtable}
 %
 % \DescribeOption{toc-chapter-style}
@@ -5408,29 +5403,25 @@
 %    \begin{macrocode}
 \def\thu@listof#1{% #1: float type
   \setcounter{tocdepth}{2}%  restore tocdepth in case being modified
-  \@ifstar
-    {\thu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
-    {%
-      \ifthu@degree@bachelor
-        \ifthu@main@language@chinese
-          \thu@chapter*[]{\csname list#1name\endcsname}%
-        \else
-          \thu@chapter*{\csname list#1name\endcsname}%
-        \fi
-      \else
-        \ifthu@degree@graduate
-          \thu@chapter*{\csname list#1name\endcsname}%
-        \else
-          \thu@chapter*[]{\csname list#1name\endcsname}%
-        \fi
-      \fi
-      \@starttoc{\csname ext@#1\endcsname}%
-    }%
+  \@ifstar{\thu@deprecate{starred form of \protect\listof... command}{}}{}%
+  \ifthu@degree@bachelor
+    \ifthu@main@language@chinese
+      \thu@chapter*[]{\csname list#1name\endcsname}%
+    \else
+      \thu@chapter*{\csname list#1name\endcsname}%
+    \fi
+  \else
+    \ifthu@degree@graduate
+      \thu@chapter*{\csname list#1name\endcsname}%
+    \else
+      \thu@chapter*[]{\csname list#1name\endcsname}%
+    \fi
+  \fi
+  \@starttoc{\csname ext@#1\endcsname}%
 }
 %    \end{macrocode}
 %
 % \begin{macro}{\listoffigures}
-% \begin{macro}{\listoffigures*}
 % 插图清单。
 %    \begin{macrocode}
 \renewcommand\listoffigures{%
@@ -5442,10 +5433,8 @@
   {\thu@leaders\thecontentspage}
 %    \end{macrocode}
 % \end{macro}
-% \end{macro}
 %
 % \begin{macro}{\listoftables}
-% \begin{macro}{\listoftables*}
 % 附表清单。
 %    \begin{macrocode}
 \renewcommand\listoftables{%
@@ -5456,7 +5445,6 @@
   {\contentspush{\tablename~\thecontentslabel\thu@contents@label@delimiter}}{}
   {\thu@leaders\thecontentspage}
 %    \end{macrocode}
-% \end{macro}
 % \end{macro}
 %
 % \begin{macro}{\listoffiguresandtables}

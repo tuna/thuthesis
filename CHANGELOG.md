@@ -16,6 +16,10 @@
 
 - 研究生的声明页改为编译时默认不含页眉页脚、插入扫描页时加上页眉页脚（[#999](https://github.com/tuna/thuthesis/issues/999)）。
 
+### Deprecated
+
+- 带星号版本的 `\listoffigures*` 等命令已过时。
+
 ### Fixed
 
 - 修正目录中顶格标题的断行问题（[#963](https://github.com/tuna/thuthesis/issues/963)）。
