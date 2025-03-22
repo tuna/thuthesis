@@ -5303,16 +5303,16 @@
 % \begin{environment}{acknowledgements}
 % 定义致谢环境
 %    \begin{macrocode}
-\newcommand{\thu@statement@text}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
-  ，独立进行研究工作所取得的成果%
+\newcommand{\thu@statement@text}{%
+  本人郑重声明：所呈交的学位论文，是本人在导师指导下，独立进行研究工作所取得的成果%
   \ifthu@degree@bachelor\else% no such statement for bachelor
-  \ifx\thu@secret@level\@empty%
-  ，不包含涉及国家秘密的内容%
+    \ifx\thu@secret@level\@empty
+      ，不包含涉及国家秘密的内容%
+    \fi%
   \fi%
-  \fi%
-  。尽我所知，除文中已经注明引用的内容外，本学位论
-  文的研究成果不包含任何他人享有著作权的内容。对本论文所涉及的研究工作做出贡献的
-  其他个人和集体，均已在文中以明确方式标明。}
+  。尽我所知，除文中已经注明引用的内容外，本学位论文的研究成果不包含任何他人享有著作权的内容。%
+  对本论文所涉及的研究工作做出贡献的其他个人和集体，均已在文中以明确方式标明。%
+}
 \newcommand{\thu@signature}{签\hspace{1em}名：}
 \newcommand{\thu@backdate}{日\hspace{1em}期：}
 %    \end{macrocode}
@@ -5417,14 +5417,25 @@
       \thu@chapter*{\thu@statement@name}%
     \endgroup
     \thispagestyle{\thu@statement@page@style}%
-    \thu@statement@text\par
+    \begingroup
+      \ifthu@degree@graduate
+        \vspace{12bp}%
+        \fontsize{12bp}{21bp}\selectfont
+      \fi
+      \thu@statement@text\par
+    \endgroup
     \ifthu@degree@graduate
-      \vskip 2cm%
+      \vspace{79bp}%
+      \begingroup
+        \noindent\hspace{5.4cm}\fontsize{13bp}{18bp}\selectfont
+        \thu@signature\thu@underline[2.8cm]{}\hspace{-6bp}%
+        \thu@backdate\thu@underline[2.3cm]{}\par
+      \endgroup
     \else
       \null\par
+      {\hfill\thu@signature\thu@underline[2.5cm]\relax
+        \thu@backdate\thu@underline[2.5cm]\relax}%
     \fi
-    {\hfill\thu@signature\thu@underline[2.5cm]\relax
-      \thu@backdate\thu@underline[2.5cm]\relax}%
     \thu@reset@main@language
   \else
     \includepdf[pagecommand={%
