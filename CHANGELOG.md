@@ -20,6 +20,7 @@
 
 - 带星号版本的 `\listoffigures*` 等命令已过时。
 - 公式索引 `\listofequations` 和相关的 `\equcaption` 命令已过时。
+- `toc-chapter-style` 选项已过时。
 
 ### Fixed
 

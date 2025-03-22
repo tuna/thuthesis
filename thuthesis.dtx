@@ -685,18 +685,6 @@
 % \bottomrule
 % \end{longtable}
 %
-% \DescribeOption{toc-chapter-style}
-% 本科生《写作指南》关于目录章标题要求“目录从第 1 章开始，每章标题用黑体小四号字”，
-% 所以其中的西文和数字默认使用 Arial 字体，跟正文的章标题一致。
-% 但是论文样例\footnote{此前发布在法学院网站，目前已经无公开可获得的链接。}的目录章标题的西文和数字却使用了 Times。
-% 如果审查老师这样要求，需要在生成目录前设置
-% \begin{latex}
-%   \thusetup{
-%     toc-chapter-style = times,
-%   }
-% \end{latex}
-% 该选项只对本科生有效。
-%
 % \LaTeX{} 默认支持插图和表格索引，是通过 \cs{caption} 命令完成的，因此它们必须出
 % 现在浮动环境中，否则不被计数。
 %
@@ -4013,6 +4001,7 @@
     default = arial,
   },
 }
+\thu@option@hook{toc-chapter-style}{\thu@deprecate{"toc-chapter-style" option}{}}
 \newcommand\thu@contents@label@delimiter{%
   \ifthu@degree@bachelor
     \ifthu@main@language@chinese
