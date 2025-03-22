@@ -392,8 +392,6 @@
 % 选择输出的格式是打印版还是电子版（用于提交），可选：\option{print}（默认）、\option{electronic}。
 % 打印版 \option{print} 自动在单面打印的部分插入空白页（比如封面），并且保证正文第 1 页在右侧。
 % 电子版 \option{electronic} 选项会去掉空白页，这是因为一些院系要求提交的电子版不含空白页。
-% 注意在不同选项下，生成的声明页码很可能不同。为了避免页码错误，
-% \thuthesis{}将会在插入扫描的 PDF 文件时自动生成页码，因此\textbf{扫描声明页时请移除底部的页码}，以防重叠。
 %
 % \begin{latex}
 %   \thusetup{
@@ -1099,24 +1097,21 @@
 % \subsubsection{声明}
 % \DescribeMacro{\statement}
 % 直接使用 \cs{statement} 命令可以编译生成声明页。
-% 如果要插入扫描后的声明页，将可选参数指定为扫描后的 PDF 文件名，例如：
-%
+% 在打印、签字、扫描后如果要插入扫描页，将可选参数 \option{file} 指定为 PDF 文件名，例如：
 % \begin{latex}
 %   \statement[file=scan-statement.pdf]
 % \end{latex}
 %
-% 由于本科生的打印版和电子版有空白页的差别，声明的页码可能不同。
-% 所以编译生成声明页时默认不加页脚（\option{empty}），
-% 在签字后插入扫描页时再补上页脚（\option{plain}），防止页码冲突。
-% 研究生不存在空白页的问题，在编译生成声明时默认加页眉页脚（\option{plain}），
-% 而插入扫描版时不再重复（\option{empty}）。
+% 由于正文篇幅可能有变化，以及电子版和打印版和有空白页的差别，声明的页码可能不同。
+% 所以为了避免重复打印扫描，编译生成声明页时默认\textsf{不含}页眉页脚，
+% 插入扫描页时默认加上页眉页脚。
 %
-% 声明的页眉页脚也可以通过 \option{page-style} 参数手动控制，
-% 比如编译生成时固定不加页眉页脚：
+% 用户也可以通过 \option{page-style} 参数手动控制声明页是否含页眉页脚。
+% 例如编译生成声明页时要求包含页眉页脚：
 % \begin{latex}
-%   \statement[page-style=empty]
+%   \statement[page-style=plain]
 % \end{latex}
-% 插入扫描版声明补上页眉页脚：
+% 插入扫描页时不加页眉页脚：
 % \begin{latex}
 %   \statement[file=scan-statement.pdf, page-style=plain]
 % \end{latex}
@@ -5391,17 +5386,9 @@
   \kvsetkeys{thu@statement}{#1}%
   \ifthu@statement@page@style@auto
     \ifx\thu@statement@file\@empty
-      \ifthu@degree@bachelor
-        \thusetup{statement-page-style = empty}%
-      \else
-        \thusetup{statement-page-style = plain}%
-      \fi
+      \thusetup{statement-page-style = empty}%
     \else
-      \ifthu@degree@bachelor
-        \thusetup{statement-page-style = plain}%
-      \else
-        \thusetup{statement-page-style = empty}%
-      \fi
+      \thusetup{statement-page-style = plain}%
     \fi
   \fi
   \ifx\thu@statement@file\@empty
