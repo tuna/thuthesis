@@ -10,6 +10,7 @@
 
 - 同步研究生论文《写作指南》对 2025 年 3 月版本的修改：
   - 非涉密论文的声明页中增加“不包含涉及国家秘密的内容”字样（[#1000](https://github.com/tuna/thuthesis/issues/1000)）
+  - 授权页的“《中华人民共和国学位条例暂行实施办法》”更新为“《中华人民共和国学位法》”（[#1003](https://github.com/tuna/thuthesis/issues/1003)）。
 
 ### Changed
 
