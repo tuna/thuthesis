@@ -6528,22 +6528,24 @@
 %
 %    \begin{macrocode}
 \newcommand{\record}[1]{%
-  \let\thu@record@file\@empty
-  \kv@define@key{thu@record}{file}{\let\thu@record@file\kv@value}%
-  \kv@set@family@handler{thu@record}{%
-    \ifx\kv@value\relax
-      \let\thu@record@file\kv@key
-    \else
-      \kv@handled@false
+  \ifthu@degree@bachelor
+    \let\thu@record@file\@empty
+    \kv@define@key{thu@record}{file}{\let\thu@record@file\kv@value}%
+    \kv@set@family@handler{thu@record}{%
+      \ifx\kv@value\relax
+        \let\thu@record@file\kv@key
+      \else
+        \kv@handled@false
+      \fi
+    }%
+    \kvsetkeys{thu@record}{#1}%
+    \ifx\thu@record@file\@empty
+      \thu@error{File path of \protect\record\space is required}
     \fi
-  }%
-  \kvsetkeys{thu@record}{#1}%
-  \ifx\thu@record@file\@empty
-    \thu@error{File path of \protect\record\space is required}
+    \clearpage
+    \thu@pdfbookmark{0}{综合论文训练记录表}%
+    \includepdf[pages=-]{\thu@record@file}%
   \fi
-  \cleardoublepage
-  \thu@pdfbookmark{0}{综合论文训练记录表}%
-  \includepdf[pages=-]{\thu@record@file}%
 }
 %    \end{macrocode}
 %
