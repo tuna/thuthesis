@@ -673,7 +673,6 @@
 % \DescribeMacro{\listoffigures}
 % \DescribeMacro{\listoftables}
 % \DescribeMacro{\listoffiguresandtables}
-% \DescribeMacro{\listofequations}
 % \DescribeMacro{\listofalgorithms}
 % \begin{longtable}{ll}
 % \toprule
@@ -682,7 +681,6 @@
 % 插图清单 & \cs{listoffigures}   \\
 % 附表清单 & \cs{listoftables}    \\
 % 插图和附表清单 & \cs{listoffiguresandtables} \\
-% 公式索引 & \cs{listofequations} \\
 % 算法清单 & \cs{listofalgorithms} \\
 % \bottomrule
 % \end{longtable}
@@ -707,29 +705,6 @@
 % 索引里面序号不连续就显得不伦不类，这也是 \LaTeX{} 里星号命令默认的规则。
 %
 % 如果的确想让其编号，但又不想出现在索引中的话，目前模板暂不支持。
-%
-% 公式索引为本模板扩展，模板扩展了 \pkg{amsmath} 几个内部命令，使得公式编号样式和
-% 自动索引功能非常方便。一般来说，你用到的所有数学环境编号都没问题了，这个可以参
-% 看示例文档。如果你有个非常特殊的数学环境需要加入公式索引，那么请使
-% 用 \cs{equcaption}\marg{编号}。此命令表示 equation caption，带一个参数，即显示
-% 在索引中的编号。因为公式与图表不同，我们很少给一个公式附加一个标题，之所以起这
-% 么个名字是因为图表就是通过 \cs{caption} 加入索引的，\cs{equcaption} 完全就是为
-% 了生成公式列表，不产生什么标题。
-%
-% 使用方法如下。假如有一个非 equation 数学环境 \texttt{mymath}，只要在其中写一
-% 句 \cs{equcaption} 就可以将它加入公式列表。
-% \begin{latex}
-%   \begin{mymath}
-%     \label{eq:emc2}\equcaption{\ref{eq:emc2}}
-%     E=mc^2
-%   \end{mymath}
-% \end{latex}
-%
-% \texttt{mymath} 中公式的编号需要自己来做。
-%
-% 同图表一样，附录中的公式有时也不希望它跟全文统一编号，而且不希望它出现在公式
-% 索引中。目前的办法是利用 \cs{tag*}\marg{公式编号} 来解决。用法比较简单，此
-% 处不再罗嗦，实例请参看示例文档附录 A 的前两个公式。
 %
 % \subsubsection{符号对照表}
 % \DescribeEnv{denotation}
@@ -5471,39 +5446,27 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\equcaption}
-% 本命令只是为了生成公式列表，所以这个 caption 是假的。如果要编号最好用
-% \env{equation} 环境，如果是其它编号环境，请手动添加 \cs{equcaption}。
-% 用法如下：
-%
-% \cs{equcaption}\marg{counter}
-%
-% \marg{counter} 指定出现在索引中的编号，一般取 \cs{theequation}，如果你是用
-% \pkg{amsmath} 的 \cs{tag}，那么默认是 \cs{tag} 的参数；除此之外可能需要你
-% 手工指定。
-%
+% 公式的 caption 已过时。
 %    \begin{macrocode}
 \def\ext@equation{loe}
 \def\equcaption#1{%
+  \thu@deprecate{"\protect\equcaption" command}{}%
   \addcontentsline{\ext@equation}{equation}%
                   {\protect\numberline{#1}}}
 %    \end{macrocode}
-% \end{macro}
 %
-% \begin{macro}{\listofequations}
-% \begin{macro}{\listofequations*}
-% \LaTeX{} 默认没有公式索引，此处定义自己的 \cs{listofequations}。
-% 公式索引没有名称，所以不设置固定的 label 宽度。
+% 公式索引 \cs{listofequations} 已过时。
 %    \begin{macrocode}
-\newcommand\listofequations{\thu@listof{equation}}
+\newcommand\listofequations{%
+  \thu@deprecate{"\protect\listofequations" command}{}%
+  \thu@listof{equation}%
+}
 \titlecontents{equation}
   [0pt]{\addvspace{6bp}}
   {\contentspush{\thu@equation@name~\thecontentslabel\thu@contents@label@delimiter}}{}
   {\thu@leaders\thecontentspage}
 \contentsuse{equation}{loe}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
 %
 %
 % \subsection{参考文献}
