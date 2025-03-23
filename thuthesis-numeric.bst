@@ -163,7 +163,7 @@ FUNCTION {bbl.anonymous}
 
 FUNCTION {bbl.space}
 { entry.lang lang.zh =
-    { "\ " }
+    { "" }
     { " " }
   if$
 }
