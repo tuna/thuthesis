@@ -38,13 +38,17 @@
 
 \section{表格}
 
-表应具有自明性。为使表格简洁易读，尽可能采用三线表，如表~\ref{tab:three-line}。
-三条线可以使用 \pkg{booktabs} 宏包提供的命令生成。
+表应具有自明性。表中参数应标明量和单位的符号。
+为使表格简洁易读，均采用三线表（例如表~\ref{tab:three-line}）。
+必要时可加辅助线，三线表无法清晰表达时可采用其他格式。
+
+表序与表题置于表的上方。表单元格中的文字一般应居中书写（上下居中，左右居中），
+不宜左右居中书写的，可采取两端对齐的方式书写。
 
 \begin{table}
   \centering
   \caption{三线表示例}
-  \begin{tabular}{ll}
+  \begin{tabular}{cc}
     \toprule
     文件名          & 描述                         \\
     \midrule
@@ -56,15 +60,15 @@
   \label{tab:three-line}
 \end{table}
 
-表格如果有附注，尤其是需要在表格中进行标注时，可以使用 \pkg{threeparttable} 宏包。
-研究生要求使用英文小写字母 a、b、c……顺序编号，本科生使用圈码 ①、②、③……编号。
+若表中有附注，采用英文小写字母顺序编号，附注写在表的下方。
+推荐使用 \pkg{threeparttable} 宏包。
 
 \begin{table}
   \centering
   \begin{threeparttable}[c]
     \caption{带附注的表格示例}
     \label{tab:three-part-table}
-    \begin{tabular}{ll}
+    \begin{tabular}{cc}
       \toprule
       文件名                 & 描述                         \\
       \midrule
@@ -81,8 +85,9 @@
   \end{threeparttable}
 \end{table}
 
-如某个表需要转页接排，可以使用 \pkg{longtable} 宏包，需要在随后的各页上重复表的编号。
-编号后跟表题（可省略）和“（续）”，置于表上方。续表均应重复表头。
+如某个表需要转页接排，可以“续表”的形式另页打印，格式同前，只需在每页表序前加“续”字即可。
+续表均应重复表头。
+推荐使用 \pkg{longtable} 宏包。
 
 \begin{longtable}{cccc}
     \caption{跨页长表格的表题}
