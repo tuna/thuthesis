@@ -4383,8 +4383,6 @@ Completed box being shipped out [3]
 ...\glue(\lineskip) 0.0
 ...\vbox(674.33032+0.0)x426.79135, glue set 600.77213fil
 ....\write-{}
-....\write1{\ttl@writefile{toc}{\protect \setcounter {tocdepth}{0}}}
-....\write-{}
 ....\special{pdf:dest (section*.15) [@thispage /XYZ @xpos @ypos null]}
 ....\write4{\protect \BOOKMARK [0][]{section*.15}{\376\377\000R\000e\000f\000e\00\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{References}{\thepage \ETC.}
@@ -4536,7 +4534,6 @@ Missing character: There is no ⁡ (U+2061) in font [XITSMath-Regular.otf]/OT:sc
 ipt=math;language=dflt;!
 Missing character: There is no ⁡ (U+2061) in font [XITSMath-Regular.otf]/OT:scr
 ipt=math;language=dflt;!
-No file bu.aux.
 Completed box being shipped out [4]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -5545,6 +5542,7 @@ Completed box being shipped out [5]
 .\kern 714.29128
 .\kern 0.0
 No file bu.aux.
+No file bu.aux.
 Completed box being shipped out [6]
 \vbox(710.18088+4.1104)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -5619,6 +5617,8 @@ Completed box being shipped out [6]
 ...\glue 8.5359
 ...\glue(\lineskip) 0.0
 ...\vbox(674.33032+0.0)x426.79135, glue set 599.99681fil
+....\write-{}
+....\write1{\ttl@writefile{toc}{\protect \setcounter {tocdepth}{0}}}
 ....\write-{}
 ....\special{pdf:dest (section*.19) [@thispage /XYZ @xpos @ypos null]}
 ....\write4{\protect \BOOKMARK [0][]{section*.19}{\376\377\000A\000c\000k\000n\00\ETC.}

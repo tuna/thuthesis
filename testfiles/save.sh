@@ -1,5 +1,5 @@
 save_file () {
-    test="$1";
+    test="$(basename $1 .tex)";
     if [[ "$test" == 01-title-page-academic-* || "$test" == 01-title-page-professional-* || "$test" == 02-title-page-* ]]; then
         config="title-page-en";
     elif [[ "$test" == 01-title-page-* ]]; then
@@ -8,9 +8,9 @@ save_file () {
         config="crossref";
     elif [[ "$test" == *-nomencl ]]; then
         config="nomencl";
-    elif [[ "$test" == 10-bibtex ]]; then
+    elif [[ "$test" == 10-bibtex-* ]]; then
         config="bibtex";
-    elif [[ "$test" == 10-biblatex ]]; then
+    elif [[ "$test" == 10-biblatex-* ]]; then
         config="biblatex";
     else
         config="main";
