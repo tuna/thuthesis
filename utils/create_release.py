@@ -21,6 +21,7 @@ FILE_GLOB_LIST = [
     "CHANGELOG.md",
     "thuthesis.dtx",
     "thuthesis.ins",
+    "thuthesis-*.bst",
     "thu-fig-logo.pdf",
     "thu-text-logo.pdf",
     "thuthesis-*.bbx",
