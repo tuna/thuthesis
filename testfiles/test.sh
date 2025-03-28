@@ -30,9 +30,19 @@ do_test () {
     cp "$support_dir"/* "$build_dir"/;
     cp "$pdf_test_fontset_file" "$build_dir"/;
     latexmk -xelatex -cd "$build_dir/$test_file";
-    mv "$build_dir/$test_name.pdf" "${file_path%.tex}.pdf";
-    diff-pdf --output-diff="$diff_dir/$test_name.pdf" "$baseline_dir/$test_name.pdf" "${file_path%.tex}.pdf";
-    open "$diff_dir/$test_name.pdf";
+    output_path="${file_path%.tex}.pdf";
+    mv "$build_dir/$test_name.pdf" "$output_path";
+    baseline_path="$baseline_dir/$test_name.pdf";
+    if [ -f "$baseline_path" ]; then
+        if [ ! -d "$diff_dir" ]; then
+            mkdir -p "$diff_dir";
+        fi
+        diff_path="$diff_dir/$test_name.pdf";
+        diff-pdf --output-diff="$diff_path" "$baseline_path" "$output_path";
+        open "$diff_path";
+    else
+        open "$output_path";
+    fi
 }
 
 

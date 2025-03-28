@@ -1,207 +1,301 @@
 \input{regression-test.tex}
 \documentclass[degree=bachelor]{thuthesis}
 
+\thusetup{
+  title      = {本科生综合论文训练标题},
+  department = {计算机科学与技术系},
+  discipline = {计算机科学与技术},
+  author     = {某某某},
+  supervisor = {某某某, 教授},
+  date       = {2024-11-01},
+}
+
+\usepackage[sort]{natbib}
+
+
 \begin{document}
 \START
 \showoutput
 
-% \maketitle
+\maketitle
 
 \copyrightpage
 
 \frontmatter
 
 \begin{abstract}
-  以全球变暖为标志的气候变化引起世界范围内的广泛关注，气候变化对粮食生产的影响是关系粮食安全的重大问题。
-  开展气候变化对冬小麦产量影响的数值模拟研究对科学制定农业政策以应对气候变化具有重要意义。
+  论文的摘要是对论文研究内容和成果的高度概括。摘要应对论文所研究的问题及其研究目的进行描述，
+  对研究方法和过程进行简单介绍，对研究成果和所得结论进行概括。
+  摘要应具有独立性和自明性，其内容应包含与论文全文同等量的主要信息。使读者即使不阅读全文，
+  通过摘要就能了解论文的总体内容和主要成果。
 
-  在采用 1999 年～2001 年北京市永乐店冬小麦田间试验资料进行 ThuSPAC-Wheat 和 CERES-Wheat 模型参数率定的基础上，模拟和分析了 1951～2006 年气候变化条件对冬小麦产量的影响。
-  进一步设置 7 种气候变化情景，应用 CERES-Wheat 模型进行产量模拟，分析不同气候变化情景下产量的变化。
+  论文摘要的书写应力求精确、简明。切忌写成对论文书写内容进行提要的形式，尤其要避免“第1章……；
+  第2章……；……”这种或类似的陈述方式。
+
+  关键词是为了文献标引工作、用以表示全文主要内容信息的单词或术语。
+  每篇论文应选取3～5个关键词，每个关键词中间用分号分隔。
 
   \thusetup{
-    keywords = {气候变化, 产量, 冬小麦, ThuSPAC-Wheat, CERES-Wheat},
+    keywords = {关键词1, 关键词2, 关键词3, 关键词4, 关键词5},
   }
 \end{abstract}
 
 
 \begin{abstract*}
-  Climate change has raised attention worldwide, whose impact on crop yield is closely concerning to food security.
-  So it is vital to assess its impact by numerical simulation.
+  An abstract of a dissertation is a summary and extraction of research work and con-tributions.
+  Included in an abstract should be description of research topic and research ob-jective, brief introduction to methodology and research process, and summarization of conclusion and contributions of the research.
+  An abstract should be characterized by inde-pendence and clarity and carry identical information with the dissertation.
+  It should be such that the general idea and major contributions of the dissertation are conveyed without reading the dissertation.
 
-  Based on the calibration of ThuSPAC-Wheat and CERES-Wheat models, using the field experiment data of Yongledian Winter Wheat Station from 1999 to 2001, and the meteorological data from Beijing Weather Station from 1951 to 2006, the climate change impact on the potential wheat yield is studied.
-  In addition, yields in different climate change scenarios are simulated.
+  An abstract should be concise and to the point.
+  It is a misunderstanding to make an abstract an outline of the dissertation and words “the first chapter”, “the second chapter” and the like should be avoided in the abstract.
 
-  Model simulation using genetic parameters of Jingdong No.~8 shows that in ThuSPAC-Wheat Model, the wheat yield, the top weight and the LAI are well simulated, and in CERES-Wheat Model, the growth period and yield are well simulated.
+  Keywords are terms used in a dissertation for indexing, reflecting core information of the dissertation.
+  The number of keywords should be between 3 and 5, with semi-colons used in between to separate one another.
 
   \thusetup{
-    keywords* = {Climate change, yield, winter wheat, ThuSPAC-Wheat, CERES-Wheat},
+    keywords* = {word 1, keyword 2, keyword 3, keyword 4, keyword 5},
   }
 \end{abstract*}
 
 
 \tableofcontents
 
+\listoffigures
+
+\listoftables
+
+\begin{denotation}[6.8em]
+  \item[$a$, $c_1$, $c_2$] 临时替换变量
+  \item[$D_{\text{m}}$] 预混通道外径 (mm)
+  \item[Ga] 空气质量流量 (kg/s)
+  \item[Ma] 进口空气马赫数，$\text{Ma} = \nu_2 / \gamma R T_2$
+  \item[$\gamma$] 比热比=1.4
+  \item[$\delta$] 总压损失系数，$\delta = \increment p_{2-3} / p_2$ (\%)
+  \item[$\varphi_{\text{LLO}}$] 贫燃着火极限
+  \item[CFD] 计算流体力学 (Computational Fluid Dynamics)
+  \item[DFT] 密度泛函理论 (Density Functional Theory)
+  \item[LBO] 贫燃熄火极限 (Lean Blowout Value)
+  \item[ONIOM] 分层算法 (Our own N-layered Integrated molecular Orbital and molecular Mechanics)
+  \item[PES] 势能面 (Potential Energy Surface)
+  \item[PIV] 颗粒图像速度仪 (Particle Image Velocimetry)
+  \item[SCF] 自洽场 (Self-Consistent Field)
+  \item[SCRF] 自洽反应场 (Self-Consistent Reaction Field)
+  \item[TS] 过渡态 (Transition State)
+  \item[TST] 过渡态理论 (Transition State Theory)
+  \item[ZPE] 零点振动能 (Zero Vibration Energy)
+\end{denotation}
 
 
 \mainmatter
 
 \chapter{引言}
 
-\section{研究背景}
+\section{一级节标题第一条}
 
-2007 年初，政府间气候变化专门委员会（IPCC）第一工作组发布第四次主报告，《气候变化 2007：自然科学基础》，提出全球气候变暖并引发全球范围内气候要素变化已经成为不容置疑的事实\cite{xinximeng1994xinxi}。
-全球温室气体浓度已远超出工业化前几千 年来的浓度值，其中 CO2 浓度值从工业化前的约 280ppm 增加到 2005 年的 379ppm；全球气候呈现以变暖为主要特征的显著变化，最近 12 年中有 11 年位于 1850 年以来最暖的 12 个年份之列，最近 50 年的线性增温速率为每 10 年 0.13°C，几乎是近 100 年的 2 倍；至少从 1980 年以来，陆地和海洋上空以及对流层上层的平均大气水汽含量已有所增加；已在许多大的地区观测到降水量在 1901～2005 年间存在显著增加或减少的长期趋势。
-中国是全球气候变暖特征最为显著的国家之一，近 100 年来，中国年平均气温升高 0.65±0.15°C，略高于全球平均增温幅度，尤其是华北、内蒙古东部及东北地区升温显著。
+此部分是论文主体部分的文字格式示例。
 
+\subsection{二级节标题第一条}
 
-\section{研究现状}
+主体部分一般从引言（绪论）开始，以结论结束。
 
-\subsection{作物模型发展概述}
+引言（绪论）应包括论文的研究目的、流程和方法等。
 
-作物模型从定性的概念模型发展为定量的模拟模型，已成为农业生产与研究领域最有力的工具之一。
-20 世纪 60 年代中后期，美国和荷兰率先开始研究作物生长模拟模型。
-荷兰的作物模型研究主要强调作物的机理性、研究性、数学性，从生理生化的角度深入研究基本生理过程，适用于不同种类的作物，较为深入地进行了评价农业生态系统生产力和农场决策方面的研究工作。
-1965 年，de Wit 发表“叶冠层的光合作用”，奠定了作物生长动态模拟模型的基础。
-1970 年，在光合作用模型的基础上引入呼吸作用，提出了早期完整的作物模拟模型 ELCROS，1978 年在其基础上做出碳平衡和蒸腾方面的机理性阐述，提出BACROS 模型， 后来进一步建立了 PHOTO 模型。
-由于这些综合模型将许多过程描述过细，需要大量数据，不适合 1980 年～1990 年阶段的农业生态规划、定量土地评价和产量预报等研究。
-实际生产的需要促进了面向应用的 SUCROS 概要模型的出现。
-值得一提的是，模拟潜在生产情形的 SUCROS1 与土壤水平衡模块 SAHEL 联结而成的 SUCROS2 可用于模拟水分限制生产情形。
-此后 SUCROS 成为面向特定目标模型 进一步简化和发展的前导模型，导出了 WOFOST，之后又开发出 MACROS。
+论文研究领域的历史回顾，文献回溯，理论分析等内容，应独立成章，用足够的文字叙述。
+
+主体部分由于涉及的学科、选题、研究方法、结果表达方式等有很大的差异，不能作统一的规定。
+但是，必须实事求是、客观真切、准确完备、合乎逻辑、层次分明、简练可读。
 
 
+\subsection{二级节标题第二条}
 
-\chapter{资料与试验}
+论文中应引用与研究主题密切相关的参考文献。
+参考文献的写法应遵循国家标准《信息与文献 参考文献著录规则》（GB/T 7714—2015）；
+符合特定学科的通用范式，可使用APA或《清华大学学报（哲学社会科学版）》格式，
+且应全文统一，不能混用。此处是正文中引用参考文献的上标标注示例[1]。
 
-\section{气象资料}
+当论文中的字、词或短语，需要进一步加以说明，而又没有具体的文献来源时，用注释。
+注释一般在社会科学中用得较多。应控制论文中的注释数量，不宜过多。
+由于论文篇幅较长，建议采用文中编号加“脚注”的方式。此处是脚注格式规范示例
+\footnote{%
+  脚注处序号“①，……，⑩”的字体是“正文”，不是“上标”，
+  序号与脚注内容文字之间空半个汉字符，脚注的段落格式为：单倍行距，段前空0磅，段后空0磅，
+  悬挂缩进1.5字符；字号为小五号字，汉字用宋体，外文用Times New Roman体。
+}。
 
-在对气候变化下过去 55 年冬小麦生长趋势进行分析时，采用的气象数据取自北京气象站（No.~54511）（表~\ref{tab:beijing}）。
 
-\begin{table}[htb]
+
+\chapter{图、表及表达式示例}
+
+\section{论文中图的示例}
+
+图应具有“自明性”，即只看图、图题和图例，不阅读正文，就可理解图意。示例如下：
+
+\begin{figure}[h]
   \centering
-  \caption{北京气象站基本信息}
-  \label{tab:beijing}
-  \begin{tabular}{ccccc}
-    \toprule
-    站点 & 站号 & 纬度 & 经度 & 高度 \\
-    Station & No. & Latitude & Longitude & Altitude \\
-    && (°) & (°) & (m) \\
-    \midrule
-    北京 Beijing & 54511 & 39.8 & 116.5 & 31.3 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-气象资料包括:日期、气压、日平均气温、日最高气温、日最低气温、相对湿度、降水、日平均风速、日照时数。
-
-因缺少辐射监测资料，由纬度、儒略日、日照时数，依世界粮农组织 FAO（Food and Agriculture Organization）提供的方法，进行日平均净辐射和净短波辐射的推算。
-
-1. 太阳的磁偏角
-\begin{equation}
-  \delta = 0.409 \sin \left( \frac{2\uppi}{365} J - 1.39 \right)
-\end{equation}
-其中，$J$——在年内的天数。
-
-2. 日落时角度
-\begin{equation}
-  \omega_s =\arccos\left( -\tan\varphi \tan\delta \right)
-\end{equation}
-
-\newpage
-
-在该模型的研究中，依据 CERES 模型与 WheatGrow 模型的基本原理，分别建立了生理发育时间与干物质积累的模拟模型，并根据田间观测资料建立了冬小麦各部分干物质分配的子模型。
-模型的基本框架如图~\ref{fig:winter} 所示:
-
-\begin{figure}[htb]
-  \centering
-  \includegraphics{tsinghua-name-bachelor.pdf}
-  \caption{冬小麦生长发育模型基本结构}
-  \label{fig:winter}
+  \includegraphics[height=6.7cm]{example-image-a.pdf}
+  \caption{不同光源照射30分钟后测定的紫菌样品紫外－可见吸收光谱}
+  \label{fig:example-1}
 \end{figure}
 
 
-\section{原料结构变化趋势}
+\section{论文中表的示例}
 
-随着我国工业化程度提高、社会经济高速稳定发展，我国对纸及纸制品的消费量近年来呈现增速上升趋势。
-\footnote{本节各类纸浆及纸制品产量、进口数量数据如无特殊说明均来源与《中国造纸年鉴 2002》及《中国造纸年鉴 2006》}
-纸制品消费大幅增加，推动我国制浆造纸业产能快速扩张。
-\footnote{本节各类纸浆及纸制品产量、进口数量数据}
+表应具有“自明性”。表的编排，一般是内容和测试项目由左至右横读，数据依序竖读。示例如下：
 
-1995 年至 2001 年间，纸浆消费总量平均年增长 4.9\%，2001 年为 2980 万吨；此后纸浆消费增速大幅提高（实际反映的是全社会作为最终产品的纸及纸板消费量剧增），2001 年至 2004 年间，年均增幅高达 14.3\%，2004 年总消费量为 4455 万吨。
-造纸工业加速发展势头明显。
+\begin{table}[h]
+  \centering
+  \caption{字体、字型、字号及段落格式要求}
+  \label{tab:example-1}
+  \begin{tabular}{cccc}
+    & 文字举例 & 中文字体、字号要求 & 英文及数字字体、字号要求 \\
+    章标题 & 第1章 引言 & 黑体三号字 & Arial三号 \\
+    一级节标题 & 4.1 标题示例 & 黑体四号字 & Arial 14pt \\
+    二级节标题 & 3.2.2 标题示例 & 黑体13pt字 & Arial 13pt \\
+    三级节标题 & 5.3.3.2 标题示例 & 黑体小四号字 & Arial 12pt \\
+  \end{tabular}
+\end{table}
+
+\clearpage
+
+
+\section{论文中表达式的示例}
+
+表达式主要是指数字表达式，例如数学表达式，也包括文字表达式。示例如下：
+\begin{equation}
+  \mathrm{NH}_4^+ + 2\mathrm{O}_2 \rightarrow \mathrm{NO}_2^- + \mathrm{H}_2 \mathrm{O} + 2 \mathrm{H}^+
+\end{equation}
 
 
 
-
-\backmatter
-
-\listoffigures
-\listoftables
-
+\nocite{*}
 \citestyle{thuthesis-bachelor}
-\begin{thebibliography}{6}
 
-\bibitem[辛希孟(1994)]{xinximeng1994xinxi}
-辛希孟.
-\newblock 信息技术与信息服务国际研讨会论文集: A
-  集\allowbreak[C].
-\newblock 北京: 中国社会科学出版社, 1994.
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
 
-\bibitem[程根伟(1999)]{chenggenwei1998changjiang}
-程根伟.
-\newblock 1998
-  年长江洪水的成因与减灾对策\allowbreak[M]//\allowbreak
-许厚泽, 赵其国.
-\newblock 长江流域洪涝灾害与科技对策.
-\newblock 北京: 科学出版社, 1999: 32-36.
+\bibitem[竺可桢(1973)]{zhukezhen1973}
+竺可桢.
+\newblock 物理学\allowbreak[M].
+\newblock 北京: 科学出版社, 1973: 56-60.
 
-\bibitem[李晓东\ 等(1999)李晓东, 张庆红, 叶瑾琳, and
-  罗云]{lixiaodong1999qihou}
-李晓东, 张庆红, 叶瑾琳, 等.
-\newblock 气候学研究的若干理论问题\allowbreak[J].
-\newblock 北京大学学报: 自然科学版, 1999, 35\penalty0 (1):\penalty0
-  101-106.
+\bibitem[胡楚雄(2024)]{huchuxiong2024jicheng}
+胡楚雄, 周冉, 付宏, 等.
+\newblock 集成电路装备光刻机发展前沿与未来挑战\allowbreak[J].
+\newblock 中国科学: 信息科学, 2024, 54(1): 130-143.
+\newblock DOI: \doi{10.1360/SSI-2023-0378}.
 
-\bibitem[张志祥(1998)]{zhangzhixiang1998jianduan}
-张志祥.
-\newblock
-  间断动力系统的随机扰动及其在守恒律方程中的应用\allowbreak[D].
-\newblock 北京: 北京大学数学学院, 1998: 5-10.
+\bibitem[Hu et~al.(2020)]{hu2020}
+HU C, OU T, CHANG H, et al.
+\newblock Deep GRU Neural Network Prediction and Feedfor-ward Compensation for Precision Multiaxis Motion Control Systems\allowbreak[J].
+\newblock IEEE-ASME Transactions on Mechatronics, 2020, 25(3): 1377-1388.
 
-\bibitem[198(1989)]{1989pacsl}
-{PACS-L}: the public-access computer systems forum\allowbreak[EB/OL].
-\newblock Houston, Tex: University of Houston Libraries,
-  1989\allowbreak[1995-05-17].
-\newblock \url{http://info.lib.uh.edu/pacsl.html}.
+\bibitem[Weinstein et~al.(1974)Weinstein and Swertz]{weinstein1974pathogenic}
+WEINSTEIN L, SWERTZ M~N.
+\newblock Pathogenic properties of invading
+  microorganism\allowbreak[M]//\allowbreak
+SODEMAN W~A, Jr, SODEMAN W~A.
+\newblock Pathologic physiology: mechanisms of disease.
+\newblock Philadelphia: Saunders, 1974: 745-772.
 
-\bibitem[Dubeck(1990)]{dubeck1990science}
-DUBECK~L.
-\newblock Science fiction aids science teaching\allowbreak[J].
-\newblock Physics Teacher, 1990, 28:\penalty0 316-318.
+\bibitem[郑开青(1987)]{zhengkaiqing1987}
+郑开青.
+\newblock 通讯系统模拟及软件\allowbreak[D].
+\newblock 北京: 清华大学无线电系, 1987.
+
+\bibitem[胡楚雄(1987)]{huchuxiong2024zhixian}
+胡楚雄, 汪泽, 付宏.
+\newblock 直线电机装置及其重力补偿组件: ZL202210922042.5\allowbreak[P].
+\newblock 2024-06-04.
+
+\bibitem[中华人民共和国国家技术监督局(1987)]{zhonghua1994}
+中华人民共和国国家技术监督局.
+\newblock GB3100-3102. 中华人民共和国国家标准－量与单位\allowbreak[S].
+\newblock 北京: 中国标准出版社, 1994.
+
+\bibitem[傅刚\ 等(2000)傅刚, 赵承, and 李佳路]{fugang2000fengsha}
+傅刚, 赵承, 李佳路.
+\newblock 大风沙过后的思考\allowbreak[N/OL].
+\newblock 北京青年报, 2000-04-12\allowbreak (14)\allowbreak[2002-03-06].
+\newblock \url{http://www.bjyouth.com.cn/Bqb/20000412/B/4216%5ED0412B1401.htm}.
 
 \end{thebibliography}
 
 
-\begin{acknowledgements}
-  致谢对象，原则上仅限于在学术方面对学位论文的完成有较重要帮助的团体和人士。
-\end{acknowledgements}
-
-
-\statement
-
-
 \appendix
-\begin{survey}
+\begin{translation}
 
 \title{调研阅读报告题目}
 \maketitle
 
 写出至少 5000 外文印刷字符的调研阅读报告或者书面翻译 1～2 篇（不少于 2 万外文印刷符）。
 
-\end{survey}
+\vspace{20bp}%
+
+\citestyle{thuthesis-bachelor}
+\begin{thebibliography}{1}
+\bibitem[某某某(1994)]{mou1994}
+某某某.
+\newblock 信息技术与信息服务国际研讨会论文集: A 集［C］.
+\newblock 北京：中国社会科学出版社，1994.
+\end{thebibliography}
+
+\end{translation}
+
+
+\backmatter
+
+\begin{acknowledgements}
+  衷心感谢指导教师××教授对本人的精心指导。他的言传身教将使我终生受益。
+
+  感谢×××××实验室××教授，以及×××××全体老师和同窗们的热情帮助和支持！
+
+  ……
+
+  本课题承蒙×××××基金资助，特此致谢。
+\end{acknowledgements}
+
+
+\statement
 
 
 \begin{resume}
-  在学期间参加课题的研究成果。
+  \section*{学术论文}
+
+  \begin{achievements}
+    \item ZHOU R, HU C, OU T, et al. Intelligent GRU-RIC Position-Loop
+      Feedforward Compensation Control Method with Application to an
+      Ultraprecision Motion Stage[J], IEEE Transactions on Industrial
+      Informatics, 2024, 20(4): 5609-5621.
+
+    \item 杨轶, 张宁欣, 任天令, 等. 硅基铁电微声学器件中薄膜残余应力的研究[J].
+      中国机械工程, 2005, 16(14):1289-1291.
+
+    \item YANG Y, REN T L, ZHU Y P, et al. PMUTs for handwriting recognition.
+      In press[J]. (已被Integrated Ferroelectrics录用)
+
+  \end{achievements}
+
+
+  \section*{专利}
+
+  \begin{achievements}
+    \item 胡楚雄, 付宏, 朱煜, 等. 一种磁悬浮平面电机: ZL202011322520.6[P]. 2022-04-01.
+
+    \item REN T L, YANG Y, ZHU Y P, et al. Piezoelectric micro acoustic sensor
+      based on ferroelectric materials: No.11/215, 102[P]. (美国发明专利申请号.)
+
+  \end{achievements}
 \end{resume}
 
 

@@ -13,8 +13,8 @@ docfiles = {
   "data",
   "ref",
 }
-installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "tsinghua-name-bachelor.pdf"}
-sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "tsinghua-name-bachelor.pdf"}
+installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "thu-*-logo.pdf"}
+sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "thu-*-logo.pdf"}
 tagfiles = {"*.dtx", "CHANGELOG.md", "package.json"}
 textfiles = {"*.md"}
 typesetdemofiles = {"thuthesis-example.tex", "spine.tex"}
@@ -45,7 +45,7 @@ packtdszip = true
 -- specify some files of their correct TDS locations
 tdslocations = {
   "bibtex/bst/thuthesis/*.bst",
-  "tex/latex/thuthesis/tsinghua-name-bachelor.pdf",
+  "tex/latex/thuthesis/thu-*-logo.pdf",
 }
 
 typesetexe = "xelatex"

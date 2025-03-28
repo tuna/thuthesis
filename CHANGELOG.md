@@ -16,11 +16,19 @@
 
 - 研究生的声明页改为编译时默认不含页眉页脚、插入扫描页时加上页眉页脚（[#999](https://github.com/tuna/thuthesis/issues/999)）。
 
+### Deprecated
+
+- 带星号版本的 `\listoffigures*` 等命令已过时。
+- 公式索引 `\listofequations` 和相关的 `\equcaption` 命令已过时。
+- `toc-chapter-style` 选项已过时。
+
 ### Fixed
 
 - 修正目录中顶格标题的断行问题（[#963](https://github.com/tuna/thuthesis/issues/963)）。
 - 统一选题报告与学位论文的封面格式，修复信息偏移问题（[#977](https://github.com/tuna/thuthesis/issues/977)）。
 - 修正 `siunitx` 的连接符设置（[#990](https://github.com/tuna/thuthesis/issues/990)）。
+- 修正“符号和缩略语说明”的行距。
+- 修正参考文献表内容的第一项段前距离。
 
 ## [v7.5.2] - 2024-07-01
 
