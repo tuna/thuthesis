@@ -11,6 +11,8 @@
 - 同步研究生论文《写作指南》对 2025 年 3 月版本的修改：
   - 非涉密论文的声明页中增加“不包含涉及国家秘密的内容”字样（[#1000](https://github.com/tuna/thuthesis/issues/1000)）
   - 授权页的“《中华人民共和国学位条例暂行实施办法》”更新为“《中华人民共和国学位法》”（[#1003](https://github.com/tuna/thuthesis/issues/1003)）。
+- 根据 2025 年 1 月教务处发布的《清华大学综合论文训练写作规范（试行）》更新本科生格式。
+  - 本次格式修改幅度较大，不再一一列出。具体请参见 [#987](https://github.com/tuna/thuthesis/issues/987)、[#1002](https://github.com/tuna/thuthesis/issues/1002)。尤其感谢 @lrf21 的整理！
 
 ### Changed
 
@@ -21,6 +23,11 @@
 - 带星号版本的 `\listoffigures*` 等命令已过时。
 - 公式索引 `\listofequations` 和相关的 `\equcaption` 命令已过时。
 - `toc-chapter-style` 选项已过时。
+
+### Removed
+
+- 移除 `statement-page-numer` 选项，请使用 `\statement` 命令的 `page-style` 参数控制行为（可参见样例文档）。
+- 移除 `degree-name` 选项，请改为 `degree-category`（包括带星号的版本）。
 
 ### Fixed
 
