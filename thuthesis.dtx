@@ -4185,19 +4185,6 @@
     default = {Doctor of Philosophy},
     name    = degree@category@en,
   },
-  % 为了向后兼容
-  degree-name = {
-    name    = degree@category,
-  },
-  degree-name* = {
-    name    = degree@category@en,
-  },
-}
-\thu@option@hook{degree-name}{%
-  \thu@warning{`degree-name' is deprecated. Use `degree-category' instead.}
-}
-\thu@option@hook{degree-name*}{%
-  \thu@warning{`degree-name*' is deprecated. Use `degree-category*' instead.}
 }
 %    \end{macrocode}
 %
@@ -5254,7 +5241,7 @@
 % \end{environment}
 %
 % \begin{macro}{statement}
-% 声明部分（支持扫描文件替换）
+% 声明页面样式和插入声明页（支持扫描文件替换）。
 %    \begin{macrocode}
 \thu@define@key{
   statement-page-style = {
@@ -5265,26 +5252,7 @@
       plain,
     },
     default = auto,
-  },
-  statement-page-number = {
-    name = statement@page@number,
-    choices = {
-      false,
-      true,
-    },
-    default = false,
-  },
-}
-\thu@option@hook{statement-page-number}{%
-  \ifthu@statement@page@number@false
-    \thusetup{statement-page-style=empty}%
-  \else
-    \thusetup{statement-page-style=plain}%
-  \fi
-  \thu@warning{%
-    The "statement-page-number" option is deprecated.
-    Use "page-style" option of \protect\statement command instead%
-  }%
+  }
 }
 \newcommand\statement[1][]{%
   \@mainmatterfalse
