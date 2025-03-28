@@ -15,7 +15,12 @@
 
 **由于模板升级频繁，在开始使用和提问前，请确保您已经认真完整地阅读了使用说明文档和示例代码。**
 
-任何违反 [LaTeX项目公共许可证 v1.3c](https://www.latex-project.org/lppl/lppl-1-3c/) 使用 ThuThesis 的行为将被记录在 [耻辱柱](https://github.com/tuna/thuthesis/issues/754) 页面中，以示警告。
+## 版权
+
+本项目采用 [LaTeX项目公共许可证 v1.3c](https://www.latex-project.org/lppl/lppl-1-3c/) 授权，任何违反该许可证使用 ThuThesis 的行为将被记录在 [耻辱柱](https://github.com/tuna/thuthesis/issues/754) 页面中，以示警告。
+
+本项目分发的 `thu-fig-logo.pdf` 与 `thu-text-logo.pdf` 为载有清华大学校徽与校名的图形文件，用于制作制作本科生综合论文训练封面。这些图形从 [清华大学视觉形象系统](https://vi.tsinghua.edu.cn/) 获取，除裁剪周边空白外，项目维护者未进行任何其他修改。
+请注意：相关图形与文字都是清华大学的注册商标，除此模板外，请勿用于任何其他用途。
 
 ## 下载
 
@@ -98,7 +103,13 @@ This package establishes a simple and easy-to-use LaTeX template for Tsinghua di
 
 **This template is subject to frequent changes. Please make sure you have read the usage documentation and example code completely and carefully before using and asking questions.**
 
-Any use of ThuThesis in violation of [The LaTeX project public license v1.3c](https://www.latex-project.org/lppl/lppl-1-3c/) will be recorded in the [Hall of Shame](https://github.com/tuna/thuthesis/issues/754).
+## Copyright
+
+This project is licensed under the [The LaTeX project public license v1.3c](https://www.latex-project.org/lppl/lppl-1-3c/). Any use of ThuThesis that violates this license will be recorded in the [Hall of Shame](https://github.com/tuna/thuthesis/issues/754).
+
+The distributed `thu-fig-logo.pdf` and `thu-text-logo.pdf` files in this project contain the graphical emblem and name of Tsinghua University, and are used for creating undergraduate thesis covers only.
+These graphics were obtained from the [Tsinghua University Visual Identity System](https://vi.tsinghua.edu.cn). No modifications were made by the project maintainers except cropping the white space. 
+Note: Both the relevant graphics and text are registered trademarks of Tsinghua University. You must not use them for any other purposes except within this template.
 
 ## Downloads
 
