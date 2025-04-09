@@ -11,7 +11,9 @@
       \mkbibbrackets{##1}}%
     #1\endgroup}\kern\z@}
 
-\DefineBibliographyStrings{english}{
-  andothersincitecn={\unspace 等},%
-  andothersincite = {等}
-}
+\ifthu@main@language@chinese
+  \DefineBibliographyStrings{english}{
+    andothersincitecn={\unspace 等},%
+    andothersincite = {等}
+  }
+\fi
