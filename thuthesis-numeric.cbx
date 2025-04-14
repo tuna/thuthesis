@@ -10,3 +10,10 @@
       \blx@warning{Nested superscript}%
       \mkbibbrackets{##1}}%
     #1\endgroup}\kern\z@}
+
+\ifthu@main@language@chinese
+  \DefineBibliographyStrings{english}{
+    andothersincitecn={\unspace 等},%
+    andothersincite = {等}
+  }
+\fi
