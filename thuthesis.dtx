@@ -5292,14 +5292,17 @@
     \endgroup
     \thispagestyle{\thu@statement@page@style}%
     \ifthu@degree@graduate
-      \vspace{12bp}%
+      \vspace{13bp}%
       \fontsize{12bp}{21bp}\selectfont
-      \thu@statement@text@graduate\par
-      \vspace{79bp}%
       \begingroup
-        \noindent\hspace{5.4cm}\fontsize{13bp}{18bp}\selectfont
-        \thu@signature\thu@underline[2.8cm]{}\hspace{-6bp}%
-        \thu@backdate\thu@underline[2.3cm]{}\par
+        \renewcommand\CJKglue{\hspace{.15bp plus .1bp}}%
+        \thu@statement@text@graduate\par
+      \endgroup
+      \vspace{78.5bp}%
+      \begingroup
+        \noindent\hspace{153.5bp}\fontsize{13bp}{18bp}\selectfont
+        \thu@signature\thu@underline[76bp]{}\hspace{-3bp}%
+        \thu@backdate\thu@underline[65bp]{}\par
       \endgroup
     \else
       \ifthu@degree@bachelor
