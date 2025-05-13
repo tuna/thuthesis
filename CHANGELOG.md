@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- `Biblatex` 的斜线不再默认使用等宽字体（[#1018](https://github.com/tuna/thuthesis/discussions/1018)）。
+
 ## [v7.6.0] - 2025-03-28
 
 ### Added
