@@ -10,6 +10,10 @@
 
 - `Biblatex` 的斜线不再默认使用等宽字体（[#1018](https://github.com/tuna/thuthesis/discussions/1018)）。
 
+### Fixed
+
+- 修正 LuaTeX 部分符号错误地使用西文字体（[#1022](https://github.com/tuna/thuthesis/issues/1022)）。
+
 ## [v7.6.0] - 2025-03-28
 
 ### Added

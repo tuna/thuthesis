@@ -2047,17 +2047,11 @@
 % 带圈数字和星号使用中文字体。
 %    \begin{macrocode}
 \ifLuaTeX
-  % ctex 将带圈数字 U+2460–U+24FF 归入字符范围 3（ALchar），这里改回范围 6（JAchar）
-  \ltjdefcharrange{3}{%
-    "2000-"243F, "2500-"27BF, "2900-"29FF, "2B00-"2BFF}
-  \ltjdefcharrange{6}{%
-    "2460-"24FF, "2E80-"2EFF, "3000-"30FF, "3190-"319F, "31F0-"4DBF,
-    "4E00-"9FFF, "F900-"FAFF, "FE10-"FE1F, "FE30-"FE6F, "FF00-"FFEF,
-    "1B000-"1B16F, "1F100-"1F2FF, "20000-"3FFFF, "E0100-"E01EF}
+  % ctex 将带圈数字 U+2460–U+2473 归入字符范围 3（ALchar），这里改回范围 6（JAchar）
+  \ltjdefcharrange{6}{"2460-"2473, "2605}
 \else
   \ifXeTeX
-    \xeCJKDeclareCharClass{CJK}{"2460 -> "2473}
-    \xeCJKDeclareCharClass{CJK}{"2605}
+    \xeCJKDeclareCharClass{CJK}{"2460 -> "2473, "2605}
   \fi
 \fi
 %    \end{macrocode}
