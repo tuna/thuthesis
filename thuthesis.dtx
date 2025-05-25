@@ -4748,6 +4748,8 @@
 %
 % 外文系英语专业要求题目先写中文标题，再写英文标题，字号 26pt，32 磅行距。
 %    \begin{macrocode}
+\newlength\thu@info@label@width
+\newlength\thu@info@label@text@width
 \newcommand\thu@titlepage@bachelor{%
   \newgeometry{
     top    = 3.8cm,
@@ -4804,7 +4806,14 @@
       \hspace{1.5em}%
       \thu@stretch{2.5em}{##2}%
     }%
-    \thu@titlepage@info@tabular{81bp}{2.5cm}{4em}{0.82cm}{%
+    \ifx\thu@co@supervisor\@empty
+      \setlength\thu@info@label@width{2.5cm}%
+      \setlength\thu@info@label@text@width{4em}%
+    \else
+      \setlength\thu@info@label@width{86bp}%
+      \setlength\thu@info@label@text@width{5em}%
+    \fi
+    \thu@titlepage@info@tabular{81bp}{\thu@info@label@width}{\thu@info@label@text@width}{0.82cm}{%
       \thu@info@item{系别}{}{\thu@department}%
       \thu@info@item{专业}{}{\thu@discipline}%
       \thu@info@item{姓名}{\thu@name@title}{\thu@author}%

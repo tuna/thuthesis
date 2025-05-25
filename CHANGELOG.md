@@ -13,6 +13,7 @@
 ### Fixed
 
 - 修正 LuaTeX 部分符号错误地使用西文字体（[#1022](https://github.com/tuna/thuthesis/issues/1022)）。
+- 修正本科生封面“联合指导教师”过窄的问题（[#1017](https://github.com/tuna/thuthesis/issues/1017)）。
 
 ## [v7.6.0] - 2025-03-28
 
