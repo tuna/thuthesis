@@ -5600,14 +5600,24 @@
 %    \end{macrocode}
 %
 % 在顺序编码制下，\pkg{natbib} 只有在三个以上连续文献引用才会使用连接号，
-% 这里修改为允许两个引用使用连接号。
+% 本科生的示例仅将连接号改为短横线。
+% 研究生与国标一致，连续两个序号也使用连接号，
+% 参考 \url{https://tex.stackexchange.com/a/86991/82731}。
 %    \begin{macrocode}
               % \ifx\NAT@last@yr\relax
               %   \def@NAT@last@yr{\@citea}%
               % \else
               %   \def@NAT@last@yr{--\NAT@penalty}%
               % \fi
-              \def@NAT@last@yr{-\NAT@penalty}%
+              \ifthu@degree@bachelor
+                \ifx\NAT@last@yr\relax
+                  \def@NAT@last@yr{\@citea}%
+                \else
+                  \def@NAT@last@yr{-\NAT@penalty}%
+                \fi
+              \else
+                \def@NAT@last@yr{-\NAT@penalty}%
+              \fi
             }{%
               \NAT@last@yr@mbox
             }%
