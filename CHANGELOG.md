@@ -9,6 +9,7 @@
 ### Changed
 
 - `Biblatex` 的斜线不再默认使用等宽字体（[#1018](https://github.com/tuna/thuthesis/discussions/1018)）。
+- 使用“学科”作为 PDF 文档属性的“主题”（[#1025](https://github.com/tuna/thuthesis/issues/1025)）。
 
 ### Fixed
 
