@@ -6296,12 +6296,15 @@
 \newenvironment{resume}{%
   \@mainmatterfalse
   \thu@end@appendix@ref@section
-  \thu@chapter*{\thu@resume@name}%
   \ctexset{section/numbering = false}%
   \ifthu@degree@bachelor
     \ctexset{section/aftertitle = {：\@@par}}%
   \else
-    \ctexset{section/format += \centering}%
+    \ctexset{
+      chapter / afterskip = 49bp,
+      section / format += \centering,
+      subsection / beforeskip = 89bp,
+    }%
   \fi
   \ifthu@language@chinese
     \ctexset{
@@ -6350,6 +6353,7 @@
       resume     = achievements,
     }%
   \fi
+  \thu@chapter*{\thu@resume@name}%
 }{}
 %    \end{macrocode}
 % \end{environment}
