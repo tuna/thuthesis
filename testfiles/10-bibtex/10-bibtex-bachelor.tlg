@@ -14,7 +14,7 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 7.22623pt on input line ....
 (10-bibtex-bachelor.bbl
 Completed box being shipped out [1]
-\vbox(710.18088+0.0)x439.87962
+\vbox(730.09772+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
@@ -25,15 +25,15 @@ Completed box being shipped out [1]
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
-.\glue -72.26997
-.\vbox(782.45085+0.0)x426.79135, shifted 13.08827
-..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
+.\glue -18.78552
+.\vbox(748.88324+0.0)x426.79135, shifted 13.08827
+..\vbox(12.0+0.0)x426.79135, glue set 12.0fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
 ....\special{color push gray 0}
 ....\hbox(0.0+0.0)x426.79135
 ....\special{color pop}
-..\glue 8.5359
+..\glue 19.8738
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 381.23964fil
 ...\write-{}
@@ -585,12 +585,12 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
-..\glue(\baselineskip) 22.76228
+..\glue(\baselineskip) 42.67912
 ..\hbox(0.0+0.0)x426.79135
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x426.79135
 ...\special{color pop}
-.\kern -710.18088
+.\kern -730.09772
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
@@ -601,7 +601,7 @@ Completed box being shipped out [1]
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
-.\kern 710.18088
+.\kern 730.09772
 .\kern 0.0
 Package fontspec Info: 
 (fontspec)             Font family 'FandolHei(0)' created for font 'FandolHei' with options [Extension={.otf},UprightFont={*-Regular},BoldFont={*-Bold}].
@@ -623,7 +623,7 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line ....
 Completed box being shipped out [2]
-\vbox(710.18088+0.0)x439.87962
+\vbox(730.09772+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
@@ -634,15 +634,15 @@ Completed box being shipped out [2]
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
-.\glue -72.26997
-.\vbox(782.45085+0.0)x426.79135, shifted 13.08827
-..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
+.\glue -18.78552
+.\vbox(748.88324+0.0)x426.79135, shifted 13.08827
+..\vbox(12.0+0.0)x426.79135, glue set 12.0fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
 ....\special{color push gray 0}
 ....\hbox(0.0+0.0)x426.79135
 ....\special{color pop}
-..\glue 8.5359
+..\glue 19.8738
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 19492.14285fil
 ...\write-{}
@@ -658,15 +658,18 @@ C.}
 ...\glue(\parskip) 0.0
 ...\hbox(12.6071+3.01927)x426.79135, glue set 181.27568fil
 ....\glue(\leftskip) 0.0 plus 1.0fil
-....\TU/FandolHei(0)/m/n/16.06 参
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 考
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 文
-....\glue 0.0 plus 1.0538
-....\TU/FandolHei(0)/m/n/16.06 献
-....\kern -0.00017
-....\kern 0.00017
+....\hbox(12.6071+3.01927)x64.23999
+.....\special{color push gray 0}
+.....\TU/FandolHei(0)/m/n/16.06 参
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 考
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 文
+.....\glue 0.0 plus 1.0538
+.....\TU/FandolHei(0)/m/n/16.06 献
+.....\kern -0.00017
+.....\kern 0.00017
+.....\special{color pop}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -3244,12 +3247,12 @@ C.}
 ....\glue(\rightskip) 0.0
 ...\glue -0.23187
 ...\glue 0.0 plus 0.0001fil
-..\glue(\baselineskip) 22.76228
+..\glue(\baselineskip) 42.67912
 ..\hbox(0.0+0.0)x426.79135
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x426.79135
 ...\special{color pop}
-.\kern -710.18088
+.\kern -730.09772
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
@@ -3260,7 +3263,7 @@ C.}
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
-.\kern 710.18088
+.\kern 730.09772
 .\kern 0.0
 Underfull \hbox (badness 2293) in paragraph at lines ...
 []\TU/FandolSong(0)/m/n/10.53937 汤 万 金\TU/texgyretermes(0)/m/n/10.53937 , \TU/F
@@ -3345,7 +3348,7 @@ ng(0)/m/n/10.53937 刘 文\TU/texgyretermes(0)/m/n/10.53937 , \TU/FandolSong(0)/
 .\glue(\rightskip) 0.0
 )
 Completed box being shipped out [3]
-\vbox(710.18088+0.0)x439.87962
+\vbox(730.09772+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
@@ -3356,15 +3359,15 @@ Completed box being shipped out [3]
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
-.\glue -72.26997
-.\vbox(782.45085+0.0)x426.79135, shifted 13.08827
-..\vbox(76.82234+0.0)x426.79135, glue set 76.82234fil
+.\glue -18.78552
+.\vbox(748.88324+0.0)x426.79135, shifted 13.08827
+..\vbox(12.0+0.0)x426.79135, glue set 12.0fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x426.79135
 ....\special{color push gray 0}
 ....\hbox(0.0+0.0)x426.79135
 ....\special{color pop}
-..\glue 8.5359
+..\glue 19.8738
 ..\glue(\lineskip) 0.0
 ..\vbox(674.33032+0.0)x426.79135, glue set 346.82578fil
 ...\glue(\topskip) 3.74768
@@ -4899,12 +4902,12 @@ Completed box being shipped out [3]
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
-..\glue(\baselineskip) 22.76228
+..\glue(\baselineskip) 42.67912
 ..\hbox(0.0+0.0)x426.79135
 ...\special{color push gray 0}
 ...\hbox(0.0+0.0)x426.79135
 ...\special{color pop}
-.\kern -710.18088
+.\kern -730.09772
 .\hbox(0.0+0.0)x0.0
 ..\kern -72.26999
 ..\vbox(0.0+0.0)x0.0, glue set 72.26999fil
@@ -4915,5 +4918,5 @@ Completed box being shipped out [3]
 .....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
-.\kern 710.18088
+.\kern 730.09772
 .\kern 0.0
