@@ -620,8 +620,6 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0
 ...\glue -2.144
 ...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
-...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
@@ -4599,7 +4597,7 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 384.2506fil
+..\vbox(674.33032+0.0)x426.79135, glue set 381.95326fil
 ...\glue(\topskip) 3.76875
 ...\hbox(8.23125+1.86545)x398.33861, glue set - 0.19398, shifted 28.45274
 ....\hbox(7.12462+1.64412)x0.0
@@ -6674,9 +6672,6 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0
 ...\penalty -51
 ...\glue 0.0
-...\glue -2.29758
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

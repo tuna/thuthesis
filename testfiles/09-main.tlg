@@ -125,16 +125,15 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 0.61319fill
+..\vbox(674.33032+0.0)x426.79135, glue set 0.61313fil
 ...\write-{}
 ...\special{color push gray 0}
 ...\write-{}
 ...\write-{}
 ...\write1{\pp@pagectr{footnote}{1}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
-...\marks1{\__mark_id:n {1}第3章\hskip 1em\relax 对等网络中宽松约束的\ETC.}
-...\marks2{\__mark_id:n {2}}
-...\mark{{第3章\hskip 1em\relax 对等网络中宽松约束的一般性搜索\ETC.}
+...\marks1{\__mark_value:nn {1}{第3章\hskip 1em\relax 对等网络中宽松约\ETC.}
+...\marks2{\__mark_value:nn {2}{}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
@@ -2139,7 +2138,7 @@ Completed box being shipped out [1]
 ....\TU/FandolSong(0)/m/n/12.045 ，
 ....\rule(0.0+0.0)x-8.33514
 ....\glue(\rightskip) 0.0
-...\glue 0.0 plus 1.0fill
+...\glue 0.0 plus 1.0fil
 ...\glue 10.8 plus 4.0 minus 2.0
 ...\special{color push gray 0}
 ...\glue -3.0
@@ -12035,7 +12034,7 @@ Completed box being shipped out [6]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 120.57372fil
+..\vbox(674.33032+0.0)x426.79135, glue set 114.57436fil
 ...\glue(\topskip) 2.50854
 ...\hbox(9.49146+2.32468)x426.79135, glue set 0.31165
 ....\TU/FandolSong(0)/m/n/12.045 均
@@ -13968,9 +13967,6 @@ Completed box being shipped out [6]
 ......\glue 7.63654 minus 6.0225
 ...\penalty 0
 ...\glue(\belowdisplayskip) 6.02249
-...\glue -6.0
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -14138,9 +14134,8 @@ Completed box being shipped out [7]
 ...\write-{}
 ...\write1{\pp@pagectr{footnote}{3}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
-...\marks1{\__mark_id:n {3}第4章\hskip 1em\relax 对等网络中宽松约束的\ETC.}
-...\marks2{\__mark_id:n {4}}
-...\mark{{第4章\hskip 1em\relax 对等网络中宽松约束的一般性搜索\ETC.}
+...\marks1{\__mark_value:nn {3}{第4章\hskip 1em\relax 对等网络中宽松约\ETC.}
+...\marks2{\__mark_value:nn {4}{}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
@@ -14351,8 +14346,6 @@ Completed box being shipped out [7]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue -2.32468
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -15172,8 +15165,6 @@ Completed box being shipped out [8]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue -2.32468
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
@@ -16479,8 +16470,6 @@ Completed box being shipped out [9]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue -2.32468
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

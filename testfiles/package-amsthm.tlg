@@ -48,9 +48,8 @@ Completed box being shipped out [1]
 ...\write-{}
 ...\write1{\pp@pagectr{footnote}{1}{\theabspage }{\thepage }}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
-...\marks1{\__mark_id:n {1}第1章\hskip 1em\relax 定理}
-...\marks2{\__mark_id:n {2}}
-...\mark{{第1章\hskip 1em\relax 定理}{}}
+...\marks1{\__mark_value:nn {1}{第1章\hskip 1em\relax 定理}}
+...\marks2{\__mark_value:nn {2}{}}
 ...\glue(\topskip) 12.0
 ...\rule(0.0+0.0)x*
 ...\penalty 10000
@@ -2266,7 +2265,7 @@ Completed box being shipped out [2]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 501.67676fil
+..\vbox(674.33032+0.0)x426.79135, glue set 499.35234fil
 ...\glue(\topskip) 2.54468
 ...\hbox(9.45532+2.32468)x426.79135, glue set 0.20212
 ....\special{color push gray 0}
@@ -2907,9 +2906,6 @@ Completed box being shipped out [2]
 ....\glue(\rightskip) 0.0
 ...\penalty -51
 ...\glue 0.0
-...\glue -2.32468
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

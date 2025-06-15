@@ -104,10 +104,11 @@ C.}
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{\__mark_id:n {1}插图清单}
-...\marks2{\__mark_id:n {2}插图清单}
-...\marks3{\__mark_id:n {3}插图清单}
-...\mark{{插图清单}{插图清单}}
+...\marks1{\__mark_value:nn {1}{插图清单}}
+...\penalty 10000
+...\marks2{\__mark_value:nn {2}{插图清单}}
+...\penalty 10000
+...\marks3{\__mark_value:nn {3}{插图清单}}
 ...\penalty 10000
 ...\glue 0.0 plus 0.1
 ...\penalty 10000
@@ -7554,8 +7555,6 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0
 ...\penalty 10000
 ...\glue -6.0
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

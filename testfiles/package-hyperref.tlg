@@ -144,13 +144,12 @@ Completed box being shipped out [1]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\penalty 10000
 ....\glue 49.18375 plus -1.0
-....\marks1{\__mark_id:n {1}学位论文指导小组、公开评阅人和答辩委\ETC.}
-....\marks2{\__mark_id:n {2}学位论文指导小组、公开评阅人和答辩委\ETC.}
-....\marks3{\__mark_id:n {3}学位论文指导小组、公开评阅人和答辩委\ETC.}
-....\mark{{学位论文指导小组、公开评阅人和答辩委员会名单}{\ETC.}
+....\marks1{\__mark_value:nn {1}{学位论文指导小组、公开评阅人和答\ETC.}
 ....\penalty 10000
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
+....\marks2{\__mark_value:nn {2}{学位论文指导小组、公开评阅人和答\ETC.}
+....\penalty 10000
+....\marks3{\__mark_value:nn {3}{学位论文指导小组、公开评阅人和答\ETC.}
+....\penalty 10000
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -214,8 +213,6 @@ Completed box being shipped out [2]
 ....\write-{}
 ....\glue(\topskip) 12.0
 ....\hbox(0.0+0.0)x0.0
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -343,10 +340,11 @@ Completed box being shipped out [1]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\penalty 10000
 ....\glue 27.10124 plus -1.0
-....\marks1{\__mark_id:n {4}摘\hskip 1em\relax 要}
-....\marks2{\__mark_id:n {5}摘\hskip 1em\relax 要}
-....\marks3{\__mark_id:n {6}摘\hskip 1em\relax 要}
-....\mark{{摘\hskip 1em\relax 要}{摘\hskip 1em\relax 要}}
+....\marks1{\__mark_value:nn {4}{摘\hskip 1em\relax 要}}
+....\penalty 10000
+....\marks2{\__mark_value:nn {5}{摘\hskip 1em\relax 要}}
+....\penalty 10000
+....\marks3{\__mark_value:nn {6}{摘\hskip 1em\relax 要}}
 ....\penalty 10000
 ....\glue(\parskip) 0.0 plus 1.0
 ....\glue(\parskip) 0.0
@@ -455,8 +453,6 @@ Completed box being shipped out [1]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue -2.21626
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -611,10 +607,11 @@ Completed box being shipped out [2]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\penalty 10000
 ....\glue 27.10124 plus -1.0
-....\marks1{\__mark_id:n {7}Abstract}
-....\marks2{\__mark_id:n {8}Abstract}
-....\marks3{\__mark_id:n {9}Abstract}
-....\mark{{Abstract}{Abstract}}
+....\marks1{\__mark_value:nn {7}{Abstract}}
+....\penalty 10000
+....\marks2{\__mark_value:nn {8}{Abstract}}
+....\penalty 10000
+....\marks3{\__mark_value:nn {9}{Abstract}}
 ....\penalty 10000
 ....\glue(\parskip) 0.0 plus 1.0
 ....\glue(\parskip) 0.0
@@ -675,8 +672,6 @@ Completed box being shipped out [2]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue -2.6258
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -841,10 +836,11 @@ Completed box being shipped out [3]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\penalty 10000
 ....\glue 27.10124 plus -1.0
-....\marks1{\__mark_id:n {10}Table of Contents}
-....\marks2{\__mark_id:n {11}Table of Contents}
-....\marks3{\__mark_id:n {12}Table of Contents}
-....\mark{{Table of Contents}{Table of Contents}}
+....\marks1{\__mark_value:nn {10}{Table of Contents}}
+....\penalty 10000
+....\marks2{\__mark_value:nn {11}{Table of Contents}}
+....\penalty 10000
+....\marks3{\__mark_value:nn {12}{Table of Contents}}
 ....\penalty 10000
 ....\penalty 10000
 ....\glue 0.0 plus 0.1
@@ -1610,8 +1606,6 @@ Completed box being shipped out [3]
 ....\penalty 10000
 ....\glue -6.0
 ....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
-....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
 ...\glue(\baselineskip) 7.14894
@@ -1785,10 +1779,11 @@ Completed box being shipped out [4]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\penalty 10000
 ....\glue 27.10124 plus -1.0
-....\marks1{\__mark_id:n {13}List of Figures and Tables}
-....\marks2{\__mark_id:n {14}List of Figures and Tables}
-....\marks3{\__mark_id:n {15}List of Figures and Tables}
-....\mark{{List of Figures and Tables}{List of Figures and Tables}}
+....\marks1{\__mark_value:nn {13}{List of Figures and Tables}}
+....\penalty 10000
+....\marks2{\__mark_value:nn {14}{List of Figures and Tables}}
+....\penalty 10000
+....\marks3{\__mark_value:nn {15}{List of Figures and Tables}}
 ....\penalty 10000
 ....\glue 0.0 plus 0.1
 ....\penalty 10000
@@ -1899,8 +1894,6 @@ Completed box being shipped out [4]
 .....\glue(\rightskip) 0.0
 ....\penalty 10000
 ....\glue -6.0
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -2039,7 +2032,7 @@ Completed box being shipped out [5]
 .....\special{color pop}
 ...\glue 8.5359
 ...\glue(\lineskip) 0.0
-...\vbox(674.33032+0.0)x426.79135, glue set 559.59819fil
+...\vbox(674.33032+0.0)x426.79135, glue set 556.97267fil
 ....\write-{}
 ....\special{pdf:dest (section*.11) [@thispage /XYZ @xpos @ypos null]}
 ....\write4{\protect \BOOKMARK [0][]{section*.11}{\376\377\000L\000i\000s\000t\00\ETC.}
@@ -2071,10 +2064,11 @@ Completed box being shipped out [5]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\penalty 10000
 ....\glue 27.10124 plus -1.0
-....\marks1{\__mark_id:n {16}List of Symbols and Acronyms}
-....\marks2{\__mark_id:n {17}List of Symbols and Acronyms}
-....\marks3{\__mark_id:n {18}List of Symbols and Acronyms}
-....\mark{{List of Symbols and Acronyms}{List of Symbols and Acronyms}}
+....\marks1{\__mark_value:nn {16}{List of Symbols and Acronyms}}
+....\penalty 10000
+....\marks2{\__mark_value:nn {17}{List of Symbols and Acronyms}}
+....\penalty 10000
+....\marks3{\__mark_value:nn {18}{List of Symbols and Acronyms}}
 ....\penalty 10000
 ....\glue 0.0 plus 1.0
 ....\glue(\parskip) 0.0
@@ -2167,9 +2161,6 @@ Completed box being shipped out [5]
 .....\glue(\rightskip) 0.0
 ....\penalty -51
 ....\glue 0.0
-....\glue -2.6258
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -2267,8 +2258,6 @@ Completed box being shipped out [6]
 ....\write-{}
 ....\glue(\topskip) 12.0
 ....\hbox(0.0+0.0)x0.0
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -2402,7 +2391,7 @@ Completed box being shipped out [1]
 .....\special{color pop}
 ...\glue 8.5359
 ...\glue(\lineskip) 0.0
-...\vbox(674.33032+0.0)x426.79135, glue set 19.29466fill
+...\vbox(674.33032+0.0)x426.79135, glue set 19.2926fil
 ....\special{pdf:dest (section.0.1) [@thispage /XYZ @xpos @ypos null]}
 ....\glue(\topskip) 1.17958
 ....\hbox(10.82042+2.43106)x426.79135, glue set 347.14185fil
@@ -3287,7 +3276,7 @@ Completed box being shipped out [1]
 ....\penalty 0
 ....\glue(\belowdisplayskip) 6.02249
 ....\glue -12.02249
-....\glue 0.0 plus 1.0fill
+....\glue 0.0 plus 1.0fil
 ....\glue 10.8 plus 4.0 minus 2.0
 ....\special{color push gray 0}
 ....\glue -3.0
@@ -4237,8 +4226,6 @@ Completed box being shipped out [2]
 .....\glue(\rightskip) 0.0
 ....\glue -0.16861
 ....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
-....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
 ...\glue(\baselineskip) 7.14894
@@ -4370,7 +4357,7 @@ Completed box being shipped out [3]
 .....\special{color pop}
 ...\glue 8.5359
 ...\glue(\lineskip) 0.0
-...\vbox(674.33032+0.0)x426.79135, glue set 600.77213fil
+...\vbox(674.33032+0.0)x426.79135, glue set 599.12817fil
 ....\write-{}
 ....\special{pdf:dest (section*.15) [@thispage /XYZ @xpos @ypos null]}
 ....\write4{\protect \BOOKMARK [0][]{section*.15}{\376\377\000R\000e\000f\000e\00\ETC.}
@@ -4394,10 +4381,11 @@ Completed box being shipped out [3]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\penalty 10000
 ....\glue 27.10124 plus -1.0
-....\marks1{\__mark_id:n {19}References}
-....\marks2{\__mark_id:n {20}References}
-....\marks3{\__mark_id:n {21}References}
-....\mark{{References}{References}}
+....\marks1{\__mark_value:nn {19}{References}}
+....\penalty 10000
+....\marks2{\__mark_value:nn {20}{References}}
+....\penalty 10000
+....\marks3{\__mark_value:nn {21}{References}}
 ....\penalty 10000
 ....\glue 0.0 plus 1.0
 ....\glue(\parskip) 0.0
@@ -4456,9 +4444,6 @@ Completed box being shipped out [3]
 ....\write1{\@writefile{lof}{\let\contentsline\ttl@gobblecontents}}
 ....\write1{\@writefile{lot}{\let\contentsline\ttl@gobblecontents}}
 ....\write1{\@writefile{loe}{\let\contentsline\ttl@gobblecontents}}
-....\glue -1.64412
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -4606,9 +4591,8 @@ Completed box being shipped out [4]
 ....\special{pdf:dest (appendix.A) [@thispage /XYZ @xpos @ypos null]}
 ....\write4{\protect \BOOKMARK [0][]{appendix.A}{\376\377\000A\000p\000p\000e\000\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
-....\marks1{\__mark_id:n {22}Appendix A Title}
-....\marks2{\__mark_id:n {23}}
-....\mark{{Appendix A Title}{}}
+....\marks1{\__mark_value:nn {22}{Appendix A Title}}
+....\marks2{\__mark_value:nn {23}{}}
 ....\glue(\topskip) 12.0
 ....\rule(0.0+0.0)x*
 ....\penalty 10000
@@ -5090,8 +5074,6 @@ Completed box being shipped out [4]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue -0.12044
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -5631,10 +5613,11 @@ Completed box being shipped out [6]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\penalty 10000
 ....\glue 27.10124 plus -1.0
-....\marks1{\__mark_id:n {24}Acknowledgements}
-....\marks2{\__mark_id:n {25}Acknowledgements}
-....\marks3{\__mark_id:n {26}Acknowledgements}
-....\mark{{Acknowledgements}{Acknowledgements}}
+....\marks1{\__mark_value:nn {24}{Acknowledgements}}
+....\penalty 10000
+....\marks2{\__mark_value:nn {25}{Acknowledgements}}
+....\penalty 10000
+....\marks3{\__mark_value:nn {26}{Acknowledgements}}
 ....\penalty 10000
 ....\glue(\parskip) 0.0 plus 1.0
 ....\glue(\parskip) 0.0
@@ -5650,8 +5633,6 @@ Completed box being shipped out [6]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue -0.13248
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -5788,10 +5769,11 @@ Completed box being shipped out [7]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\penalty 10000
 ....\glue 27.10124 plus -1.0
-....\marks1{\__mark_id:n {27}声\protect \hspace  {1em}明}
-....\marks2{\__mark_id:n {28}声\protect \hspace  {1em}明}
-....\marks3{\__mark_id:n {29}声\protect \hspace  {1em}明}
-....\mark{{声\protect \hspace  {1em}明}{声\protect \hspace  {1em}明}}
+....\marks1{\__mark_value:nn {27}{声\protect \hspace  {1em}明}}
+....\penalty 10000
+....\marks2{\__mark_value:nn {28}{声\protect \hspace  {1em}明}}
+....\penalty 10000
+....\marks3{\__mark_value:nn {29}{声\protect \hspace  {1em}明}}
 ....\penalty 10000
 ....\glue 12.045
 ....\glue 0.0
@@ -6166,8 +6148,6 @@ Completed box being shipped out [7]
 .....\glue(\rightskip) 0.0
 ....\glue -4.30565
 ....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
-....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
 ...\glue(\baselineskip) 22.76228
@@ -6286,10 +6266,11 @@ Completed box being shipped out [8]
 .....\glue(\rightskip) 0.0 plus 1.0fil
 ....\penalty 10000
 ....\glue 27.10124 plus -1.0
-....\marks1{\__mark_id:n {30}Resume}
-....\marks2{\__mark_id:n {31}Resume}
-....\marks3{\__mark_id:n {32}Resume}
-....\mark{{Resume}{Resume}}
+....\marks1{\__mark_value:nn {30}{Resume}}
+....\penalty 10000
+....\marks2{\__mark_value:nn {31}{Resume}}
+....\penalty 10000
+....\marks3{\__mark_value:nn {32}{Resume}}
 ....\penalty 10000
 ....\glue(\parskip) 0.0 plus 1.0
 ....\glue(\parskip) 0.0
@@ -6305,8 +6286,6 @@ Completed box being shipped out [8]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue -0.13248
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -6448,9 +6427,8 @@ Completed box being shipped out [9]
 ....\special{pdf:dest (appendix*.25) [@thispage /XYZ @xpos @ypos null]}
 ....\write4{\protect \BOOKMARK [0][]{appendix*.25}{\376\377\000C\000o\000m\000m\0\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{Comments from Thesi\ETC.}
-....\marks1{\__mark_id:n {33}Comments from Thesis Supervisor}
-....\marks2{\__mark_id:n {34}}
-....\mark{{Comments from Thesis Supervisor}{}}
+....\marks1{\__mark_value:nn {33}{Comments from Thesis Supervisor}}
+....\marks2{\__mark_value:nn {34}{}}
 ....\glue(\topskip) 12.0
 ....\rule(0.0+0.0)x*
 ....\penalty 10000
@@ -6488,8 +6466,6 @@ Completed box being shipped out [9]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue -0.13248
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil
@@ -6635,9 +6611,8 @@ Completed box being shipped out [10]
 ....\special{pdf:dest (appendix*.26) [@thispage /XYZ @xpos @ypos null]}
 ....\write4{\protect \BOOKMARK [0][]{appendix*.26}{\376\377\000R\000e\000s\000o\0\ETC.}
 ....\write1{\@writefile{toc}{\protect \contentsline {chapter}{Resolution of Thesi\ETC.}
-....\marks1{\__mark_id:n {35}Resolution of Thesis Defense Committee}
-....\marks2{\__mark_id:n {36}}
-....\mark{{Resolution of Thesis Defense Committee}{}}
+....\marks1{\__mark_value:nn {35}{Resolution of Thesis Defense Committee}}
+....\marks2{\__mark_value:nn {36}{}}
 ....\glue(\topskip) 12.0
 ....\rule(0.0+0.0)x*
 ....\penalty 10000
@@ -6677,8 +6652,6 @@ Completed box being shipped out [10]
 .....\glue(\parfillskip) 0.0 plus 1.0fil
 .....\glue(\rightskip) 0.0
 ....\glue -0.13248
-....\glue 0.0 plus 1.0fil
-....\glue 0.0 plus -1.0fil
 ....\glue 0.0 plus 1.0fil
 ....\glue 0.0
 ....\glue 0.0 plus 0.0001fil

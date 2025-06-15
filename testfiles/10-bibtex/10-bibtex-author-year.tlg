@@ -1002,8 +1002,6 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0
 ...\glue -2.13194
 ...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
-...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 22.76228
@@ -1054,7 +1052,7 @@ Completed box being shipped out [2]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 417.56871fil
+..\vbox(674.33032+0.0)x426.79135, glue set 417.33688fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{参考文献}{\thepage \ET
 C.}
@@ -1608,9 +1606,6 @@ C.}
 ...\penalty -51
 ...\glue 0.0
 ...\glue 0.0
-...\glue -0.23186
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

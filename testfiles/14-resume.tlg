@@ -103,7 +103,7 @@ Completed box being shipped out [116]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 169.91995fil
+..\vbox(674.33032+0.0)x426.79135, glue set 167.74005fil
 ...\write-{}
 ...\special{color push gray 0}
 ...\write-{}
@@ -164,10 +164,11 @@ Completed box being shipped out [116]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{\__mark_id:n {1}个人简历、在学期间完成的相关学术成果}
-...\marks2{\__mark_id:n {2}个人简历、在学期间完成的相关学术成果}
-...\marks3{\__mark_id:n {3}个人简历、在学期间完成的相关学术成果}
-...\mark{{个人简历、在学期间完成的相关学术成果}{个人简历\ETC.}
+...\marks1{\__mark_value:nn {1}{个人简历、在学期间完成的相关学术\ETC.}
+...\penalty 10000
+...\marks2{\__mark_value:nn {2}{个人简历、在学期间完成的相关学术\ETC.}
+...\penalty 10000
+...\marks3{\__mark_value:nn {3}{个人简历、在学期间完成的相关学术\ETC.}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
@@ -1004,9 +1005,6 @@ Completed box being shipped out [116]
 ....\glue(\rightskip) 0.0
 ...\penalty -51
 ...\glue 6.02249
-...\glue -2.18013
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

@@ -90,10 +90,11 @@ Completed box being shipped out [2]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{\__mark_id:n {1}Abstract}
-...\marks2{\__mark_id:n {2}Abstract}
-...\marks3{\__mark_id:n {3}Abstract}
-...\mark{{Abstract}{Abstract}}
+...\marks1{\__mark_value:nn {1}{Abstract}}
+...\penalty 10000
+...\marks2{\__mark_value:nn {2}{Abstract}}
+...\penalty 10000
+...\marks3{\__mark_value:nn {3}{Abstract}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
@@ -498,8 +499,6 @@ Completed box being shipped out [2]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue -2.6258
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

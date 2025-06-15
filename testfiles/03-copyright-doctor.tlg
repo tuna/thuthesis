@@ -88,10 +88,11 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 36.135 plus -1.0
-...\marks1{\__mark_id:n {1}关于学位论文使用授权的说明}
-...\marks2{\__mark_id:n {2}关于学位论文使用授权的说明}
-...\marks3{\__mark_id:n {3}关于学位论文使用授权的说明}
-...\mark{{关于学位论文使用授权的说明}{关于学位论文使用授\ETC.}
+...\marks1{\__mark_value:nn {1}{关于学位论文使用授权的说明}}
+...\penalty 10000
+...\marks2{\__mark_value:nn {2}{关于学位论文使用授权的说明}}
+...\penalty 10000
+...\marks3{\__mark_value:nn {3}{关于学位论文使用授权的说明}}
 ...\penalty 10000
 ...\glue 13.04874
 ...\glue(\parskip) 0.0 plus 1.0
@@ -779,8 +780,6 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue -3.97446
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

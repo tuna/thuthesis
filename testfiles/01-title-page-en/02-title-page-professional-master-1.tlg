@@ -72,7 +72,7 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(546.29292+0.0)x404.02951, glue set 26.58862fill
+..\vbox(546.29292+0.0)x404.02951, glue set 23.7942fill
 ...\write-{}
 ...\special{color push gray 0}
 ...\write-{}
@@ -317,9 +317,6 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\glue 8.5359
-...\glue -2.79442
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

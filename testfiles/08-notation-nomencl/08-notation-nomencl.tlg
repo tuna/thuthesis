@@ -135,10 +135,11 @@ Completed box being shipped out [8]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{\__mark_id:n {1}符号和缩略语说明}
-...\marks2{\__mark_id:n {2}符号和缩略语说明}
-...\marks3{\__mark_id:n {3}符号和缩略语说明}
-...\mark{{符号和缩略语说明}{符号和缩略语说明}}
+...\marks1{\__mark_value:nn {1}{符号和缩略语说明}}
+...\penalty 10000
+...\marks2{\__mark_value:nn {2}{符号和缩略语说明}}
+...\penalty 10000
+...\marks3{\__mark_value:nn {3}{符号和缩略语说明}}
 ...\penalty 10000
 ...\glue 0.0 plus 1.0
 ...\glue(\parskip) 0.0
@@ -1875,7 +1876,7 @@ Completed box being shipped out [9]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 481.60391fil
+..\vbox(674.33032+0.0)x426.79135, glue set 478.9784fil
 ...\glue(\topskip) 2.61694
 ...\hbox(9.38306+2.144)x327.20673, glue set 98.35176fil, shifted 99.58463
 ....\hbox(8.11833+0.0)x0.0
@@ -2339,9 +2340,6 @@ Completed box being shipped out [9]
 ....\glue(\rightskip) 0.0
 ...\penalty -51
 ...\glue 0.0
-...\glue -2.6258
-...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

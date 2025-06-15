@@ -97,10 +97,11 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{\__mark_id:n {1}摘\hskip 1em\relax 要}
-...\marks2{\__mark_id:n {2}摘\hskip 1em\relax 要}
-...\marks3{\__mark_id:n {3}摘\hskip 1em\relax 要}
-...\mark{{摘\hskip 1em\relax 要}{摘\hskip 1em\relax 要}}
+...\marks1{\__mark_value:nn {1}{摘\hskip 1em\relax 要}}
+...\penalty 10000
+...\marks2{\__mark_value:nn {2}{摘\hskip 1em\relax 要}}
+...\penalty 10000
+...\marks3{\__mark_value:nn {3}{摘\hskip 1em\relax 要}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
@@ -1267,8 +1268,6 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0
 ...\glue -2.2283
 ...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
-...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 7.14894
@@ -1404,10 +1403,11 @@ Completed box being shipped out [2]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{\__mark_id:n {4}Abstract}
-...\marks2{\__mark_id:n {5}Abstract}
-...\marks3{\__mark_id:n {6}Abstract}
-...\mark{{Abstract}{Abstract}}
+...\marks1{\__mark_value:nn {4}{Abstract}}
+...\penalty 10000
+...\marks2{\__mark_value:nn {5}{Abstract}}
+...\penalty 10000
+...\marks3{\__mark_value:nn {6}{Abstract}}
 ...\penalty 10000
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
@@ -1897,8 +1897,6 @@ Completed box being shipped out [2]
 ....\glue(\rightskip) 0.0
 ...\glue -2.6258
 ...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
-...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 7.14894
@@ -2043,10 +2041,11 @@ Completed box being shipped out [3]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{\__mark_id:n {7}目\hskip 2em\relax 次}
-...\marks2{\__mark_id:n {8}目\hskip 2em\relax 次}
-...\marks3{\__mark_id:n {9}目\hskip 2em\relax 次}
-...\mark{{目\hskip 2em\relax 次}{目\hskip 2em\relax 次}}
+...\marks1{\__mark_value:nn {7}{目\hskip 2em\relax 次}}
+...\penalty 10000
+...\marks2{\__mark_value:nn {8}{目\hskip 2em\relax 次}}
+...\penalty 10000
+...\marks3{\__mark_value:nn {9}{目\hskip 2em\relax 次}}
 ...\penalty 10000
 ...\penalty 10000
 ...\glue 0.0 plus 0.1
@@ -5597,8 +5596,6 @@ Completed box being shipped out [4]
 ...\penalty 10000
 ...\glue -6.0
 ...\glue 0.0 plus 1.0fil
-...\glue 0.0 plus -1.0fil
-...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 7.14894
@@ -5754,10 +5751,11 @@ Completed box being shipped out [5]
 ....\glue(\rightskip) 0.0 plus 1.0fil
 ...\penalty 10000
 ...\glue 27.10124 plus -1.0
-...\marks1{\__mark_id:n {10}符号表}
-...\marks2{\__mark_id:n {11}符号表}
-...\marks3{\__mark_id:n {12}符号表}
-...\mark{{符号表}{符号表}}
+...\marks1{\__mark_value:nn {10}{符号表}}
+...\penalty 10000
+...\marks2{\__mark_value:nn {11}{符号表}}
+...\penalty 10000
+...\marks3{\__mark_value:nn {12}{符号表}}
 ...\penalty 10000
 ...\glue 0.0 plus 1.0
 ...\glue(\parskip) 0.0
