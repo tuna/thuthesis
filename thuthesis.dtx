@@ -3385,6 +3385,45 @@
 % 脚注的段落格式为：单倍行距，段前空 0 磅，段后空 0 磅，悬挂缩进 1.5 字符；
 % 字号为小五号字，汉字用宋体，外文用 Times New Roman 体。
 %
+% 苏世民学院的格式与学校不同，全文的脚注都连续编号（包括到附录中），并且不使用带圈数字。
+%    \begin{macrocode}
+\thu@define@key{
+  footnote-numbering = {
+    name    = footnote@numbering,
+    choices = {
+      page,
+      chapter,
+      global,
+    },
+  },
+  footnote-style = {
+    name    = footnote@style,
+    choices = {
+      circled,
+      plain,
+    },
+  },
+}
+\newcommand\thu@set@footnote@numbering{%
+  % \ifthu@footnote@numbering@page
+  %   \@removefromreset{footnote}{chapter}%
+  %   \@addtoreset{pchk@footnot}{footnote}%
+  % \else
+  %   \ifthu@footnote@numbering@chapter
+  %     \@removefromreset{pchk@footnote}{footnote}%
+  %     \@addtoreset{chapter}{footnote}%
+  %   \else
+  %     \ifthu@footnote@numbering@global
+  %       \@removefromreset{footnote}{chapter}%
+  %       \@removefromreset{pchk@footnote}{footnote}%
+  %     \fi
+  %   \fi
+  % \fi
+}
+\thu@set@footnote@numbering
+\thu@option@hook{footnote-numbering}{\thu@set@footnote@numbering}
+%    \end{macrocode}
+%
 % 脚注序号使用带圈数字。
 % \begin{macro}{\thu@circled}
 % 生成带圈的脚注数字，最多处理到 10。
@@ -3398,8 +3437,17 @@
   \fi
   {\symbol{\the\numexpr#1+"245F\relax}}%
 }
-\renewcommand{\thefootnote}{\thu@circled{\c@footnote}}
-\renewcommand{\thempfootnote}{\thu@circled{\c@mpfootnote}}
+\newcommand\thu@set@footnote@style{%
+  \ifthu@footnote@style@circled
+    \renewcommand{\thefootnote}{\thu@circled{\c@footnote}}%
+    \renewcommand{\thempfootnote}{\thu@circled{\c@mpfootnote}}%
+  \else
+    \renewcommand{\thefootnote}{\arabic{footnote}}%
+    \renewcommand{\thempfootnote}{\arabic{mpfootnote}}%
+  \fi
+}
+\thu@set@footnote@style
+\thu@option@hook{footnote-style}{\thu@set@footnote@style}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -3567,16 +3615,39 @@
 \renewcommand{\floatpagefraction}{0.60}
 %    \end{macrocode}
 %
-% 允许用户设置图表编号的连接符。
+% 允许用户设置图表编号和连接符。
+%
+% 苏世民学院的格式与学校不同，全文的脚注都连续编号（包括到附录中），并且不使用带圈数字。
 %    \begin{macrocode}
 \thu@define@key{
+  figure-numbering = {
+    name    = figure@numbering,
+    choices = {
+      chapter,
+      global,
+    },
+  },
   figure-number-separator = {
     name    = figure@number@separator,
     default = {.},
   },
+  table-numbering = {
+    name    = table@numbering,
+    choices = {
+      chapter,
+      global,
+    },
+  },
   table-number-separator = {
     name    = table@number@separator,
     default = {.},
+  },
+  equation-numbering = {
+    name    = equation@numbering,
+    choices = {
+      chapter,
+      global,
+    },
   },
   equation-number-separator = {
     name    = equation@number@separator,
@@ -3587,24 +3658,57 @@
     default = {.},
   },
 }
+\newcommand\thu@set@figure@numbering{%
+  \ifthu@figure@numbering@chapter
+    \@addtoreset{figure}{chapter}%
+  \else
+    \@removefromreset{figure}{chapter}%
+  \fi
+}
+\thu@set@figure@numbering
+\thu@option@hook{figure-numbering}{\thu@set@figure@numbering}
 \renewcommand\thefigure{%
-  \ifnum\c@chapter>\z@
-    \thechapter
-    \thu@figure@number@separator
+  \ifthu@figure@numbering@chapter
+    \ifnum\c@chapter>\z@
+      \thechapter
+      \thu@figure@number@separator
+    \fi
   \fi
   \@arabic\c@figure
 }
+\newcommand\thu@set@table@numbering{%
+  \ifthu@table@numbering@chapter
+    \@addtoreset{table}{chapter}%
+  \else
+    \@removefromreset{table}{chapter}%
+  \fi
+}
+\thu@set@table@numbering
+\thu@option@hook{table-numbering}{\thu@set@table@numbering}
 \renewcommand\thetable{%
-  \ifnum\c@chapter>\z@
-    \thechapter
-    \thu@table@number@separator
+  \ifthu@table@numbering@chapter
+    \ifnum\c@chapter>\z@
+      \thechapter
+      \thu@table@number@separator
+    \fi
   \fi
   \@arabic\c@table
 }
+\newcommand\thu@set@equation@numbering{%
+  \ifthu@equation@numbering@chapter
+    \@addtoreset{equation}{chapter}%
+  \else
+    \@removefromreset{equation}{chapter}%
+  \fi
+}
+\thu@set@equation@numbering
+\thu@option@hook{equation-numbering}{\thu@set@equation@numbering}
 \renewcommand\theequation{%
-  \ifnum\c@chapter>\z@
-    \thechapter
-    \thu@equation@number@separator
+  \ifthu@equation@numbering@chapter
+    \ifnum\c@chapter>\z@
+      \thechapter
+      \thu@equation@number@separator
+    \fi
   \fi
   \@arabic\c@equation
 }
