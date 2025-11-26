@@ -638,6 +638,8 @@
 %   \copyrightpage[file=scan-copyright.pdf]
 % \end{latex}
 %
+% \textbf{注意：}此命令只能使用一次。如果多次使用将会报错。
+%
 % \subsubsection{摘要}
 % \myentry{摘要正文}
 % \DescribeEnv{abstract}
@@ -1074,6 +1076,8 @@
 %   \statement[file=scan-statement.pdf, page-style=plain]
 % \end{latex}
 %
+% \textbf{注意：}此命令只能使用一次。如果多次使用将会报错。
+%
 % \subsubsection{附录}
 %
 % 附录由 \cs{appendix} 命令开启，然后像正文一样书写。
@@ -1171,6 +1175,8 @@
 %   \record{file=scan-record.pdf}
 % \end{latex}
 %
+% \textbf{注意：}此命令只能使用一次。如果多次使用将会报错。
+%
 %
 % \subsection{书脊}
 % \DescribeMacro{\spine}
@@ -1251,6 +1257,20 @@
     \ifx\thu@@tmp\@empty\else
       . Use #2 instead%
     \fi
+  }%
+}
+%    \end{macrocode}
+%
+% 将某个宏的定义替换为报错信息，用于只应该使用一次的命令。
+% 如：\cs{statement}、\cs{copyrightpage}, \cs{record} 等。
+%    \begin{macrocode}
+\newcommand\thu@replace@with@error[1]{%
+  \expandafter\def\csname #1\endcsname{%
+    \thu@error{%
+      \expandafter\protect\csname #1\endcsname\space can only be used once.
+      \MessageBreak
+      Please remove the duplicate call%
+    }%
   }%
 }
 %    \end{macrocode}
@@ -4998,6 +5018,7 @@
       \kvsetkeys{thu@copyright}{#1}%
     \fi
   \fi
+  \thu@replace@with@error{copyrightpage}
 }
 %    \end{macrocode}
 %
@@ -5324,6 +5345,7 @@
       \thispagestyle{\thu@statement@page@style}%
     }]{\thu@statement@file}%
   \fi
+  \thu@replace@with@error{statement}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -6469,6 +6491,7 @@
     \thu@pdfbookmark{0}{综合论文训练记录表}%
     \includepdf[pages=-]{\thu@record@file}%
   \fi
+  \thu@replace@with@error{record}
 }
 %    \end{macrocode}
 %
