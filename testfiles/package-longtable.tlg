@@ -2,6 +2,7 @@ This is a generated file for the l3build validation system.
 Don't change this file in any respect.
 Package longtable Warning: Column widths have changed
 (longtable)                in table 1.1 on input line ....
+./package-longtable.tex:114: ignored error: Infinite glue shrinkage found in box being split
 Completed box being shipped out [2]
 \vbox(710.18088+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -1179,6 +1180,7 @@ Completed box being shipped out [2]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 710.18088
 .\kern 0.0
+./package-longtable.tex:114: ignored error: Infinite glue shrinkage found in box being split
 Completed box being shipped out [3]
 \vbox(710.18088+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -3236,6 +3238,7 @@ Completed box being shipped out [4]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 710.18088
 .\kern 0.0
+./package-longtable.tex:133: ignored error: Infinite glue shrinkage found in box being split
 Completed box being shipped out [5]
 \vbox(710.18088+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
@@ -4501,6 +4504,7 @@ Completed box being shipped out [5]
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 .\kern 710.18088
 .\kern 0.0
+./package-longtable.tex:133: ignored error: Infinite glue shrinkage found in box being split
 Completed box being shipped out [6]
 \vbox(710.18088+0.0)x439.87962
 .\hbox(0.0+0.0)x0.0
