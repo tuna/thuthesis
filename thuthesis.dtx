@@ -3471,43 +3471,41 @@
 % 公式距前后文的距离由 4 个参数控制，参见 \cs{normalsize} 的定义。
 %
 % 中文模板的公式编号使用中文括号。需要修改 \pkg{amsmath} 的 \cs{tagform@}。
-% 这里中文的 \cs{unskip} 是为了“|式~\eqref|”这样的写法不产生额外的空格。
+% 其中 |\kern 0pt| 防止中文左括号与前面文字的距离过窄。
 %    \begin{macrocode}
-\newcommand\thu@eqn@left@paren{（}
-\newcommand\thu@eqn@right@paren{）}
-\newcommand\thu@set@eqn@paren@style{%
-  \ifthu@eqn@paren@style@full
-    \renewcommand\thu@eqn@left@paren{（}%
-    \renewcommand\thu@eqn@right@paren{）}%
-  \else
-    \renewcommand\thu@eqn@left@paren{(}%
-    \renewcommand\thu@eqn@right@paren{)}%
-  \fi
-}
-\thu@set@eqn@paren@style
-\thu@option@hook{eqn-paren-style}{\thu@set@eqn@paren@style}
 \newcommand\thu@put@parentheses[1]{%
   \ifthu@language@chinese
-    \unskip
-    \thu@eqn@left@paren#1\thu@eqn@right@paren
+    \ifthu@eqn@paren@style@full
+      \kern 0pt\relax
+      （#1）%
+    \else
+      (#1)%
+    \fi
   \else
     (#1)%
   \fi
 }
 % \def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip\@@italiccorr)}}
-\def\tagform@#1{\maketag@@@{\thu@put@parentheses{\ignorespaces#1\unskip\@@italiccorr}}}
+\def\tagform@#1{%
+  \maketag@@@{\thu@put@parentheses{\ignorespaces#1\unskip\@@italiccorr}}%
+}
 %    \end{macrocode}
 %
-% 重定义 \cs{eqref}，去掉原来的的 \cs{tagform@} 中 \cs{maketag@@@} 的 \cs{hbox} 和
-% \cs{m@th}，防止中文左括号与前面文字的距离过窄。
+% 重定义 \cs{eqref}，其中 \cs{unskip} 是为了“|式~\eqref|”这样的写法不产生额外的空格。
 %    \begin{macrocode}
-% \newcommand{\eqref}[1]{\textup{\tagform@{\ref{#1}}}}
-\renewcommand{\eqref}[1]{%
-  \textup{%
-    \normalfont\thu@put@parentheses{%
-      \ignorespaces\ref{#1}\unskip\@@italiccorr
-    }%
-  }%
+% \DeclareRobustCommand{\eqref}[1]{\textup{\tagform@{\ref{#1}}}}
+\DeclareRobustCommand{\eqref}[1]{%
+  \ifthu@language@chinese
+    \ifthu@eqn@paren@style@full
+      \unskip
+    \fi
+  \fi
+  \textup{\tagform@{\ref{#1}}}%
+  \ifthu@language@chinese
+    \ifthu@eqn@paren@style@full
+      \ignorespaces
+    \fi
+  \fi
 }
 %    \end{macrocode}
 %

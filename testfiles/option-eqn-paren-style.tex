@@ -1,0 +1,33 @@
+\input{regression-test.tex}
+\documentclass{thuthesis}
+
+\pagestyle{empty}
+
+\begin{document}
+\START
+\showoutput
+
+\chapter{Foo}
+
+\begin{equation}
+  E = m c^2 \label{eq:einstein}
+\end{equation}
+
+式\eqref{eq:einstein}无空格。\par
+式~\eqref{eq:einstein} 使用不可断行空格。\par
+式 \eqref{eq:einstein} 使用普通空格。\par
+
+\thusetup{eqn-paren-style=half}
+式\eqref{eq:einstein}无空格。\par
+式~\eqref{eq:einstein} 使用不可断行空格。\par
+式 \eqref{eq:einstein} 使用普通空格。\par
+
+\thusetup{language=english}
+A non-breaking space is used in equation~\eqref{eq:einstein}.\par
+A normal space is used in equation \eqref{eq:einstein}.\par
+No space is used in equation\eqref{eq:einstein}.\par
+
+
+\clearpage
+\OMIT
+\end{document}

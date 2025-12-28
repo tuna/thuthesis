@@ -17,7 +17,8 @@ env:
   EXTRA_PKGS: algorithms apacite booktabs ntheorem siunitx
   MARKDOWN_PKGS: markdown fancyvrb csvsimple gobble
   DOC_PKGS: hologo hypdoc listings xcolor
-  EXAMPLE_PLGS: float fp metalogo multirow mwe
+  EXAMPLE_PKGS: float fp metalogo multirow mwe
+  TEST_PKGS: mathtools
 
 
 jobs:
@@ -36,7 +37,8 @@ jobs:
           ${{ env.XECJK_PKGS }} ${{ env.CTEX_PKGS }} ${{ env.BIBLATEX_PKGS }}
           ${{ env.HYPERREF_PKGS }} ${{ env.NOMENCL_PKGS }} ${{ env.BIN_PKGS }}
           ${{ env.REQUIRED_PKGS }} ${{ env.FONT_PKGS }} ${{ env.EXTRA_PKGS }}
-          ${{ env.MARKDOWN_PKGS }} ${{ env.DOC_PKGS }} ${{ env.EXAMPLE_PLGS }}
+          ${{ env.MARKDOWN_PKGS }} ${{ env.DOC_PKGS }} ${{ env.EXAMPLE_PKGS }}
+          ${{ env.TEST_PKGS }}
         update-all-packages: true
     - name: Build documentation and example
       run: make all-dev
@@ -77,7 +79,8 @@ jobs:
           ${{ env.XECJK_PKGS }} ${{ env.CTEX_PKGS }} ${{ env.BIBLATEX_PKGS }}
           ${{ env.HYPERREF_PKGS }} ${{ env.NOMENCL_PKGS }} ${{ env.BIN_PKGS }}
           ${{ env.REQUIRED_PKGS }} ${{ env.FONT_PKGS }} ${{ env.EXTRA_PKGS }}
-          ${{ env.MARKDOWN_PKGS }} ${{ env.DOC_PKGS }} ${{ env.EXAMPLE_PLGS }}
+          ${{ env.MARKDOWN_PKGS }} ${{ env.DOC_PKGS }} ${{ env.EXAMPLE_PKGS }}
+          ${{ env.TEST_PKGS }}
         update-all-packages: true
     - name: Test with l3build
       run: make test
