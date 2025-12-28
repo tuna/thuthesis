@@ -6597,6 +6597,7 @@
 % \subsubsection{\pkg{nomencl} 宏包}
 %
 %    \begin{macrocode}
+\PassOptionsToPackage{notocbasic}{nomencl}
 \AtEndOfPackageFile*{nomencl}{
   \let\nomname\thu@denotation@name
   \def\thenomenclature{\begin{denotation}[\nom@tempdim]}
