@@ -94,7 +94,7 @@ Completed box being shipped out [1]
 ...\penalty 10000
 ...\glue(\abovedisplayshortskip) 6.02249
 ...\glue(\baselineskip) 9.14967
-...\hbox(10.92532+2.40898)x235.11356, shifted 191.6778
+...\hbox(10.92532+0.13249)x235.11356, shifted 191.6778
 ....\hbox(10.92532+0.13249)x43.43576, display
 .....\hbox(0.0+0.0)x0.0
 .....\TU/XITSMath-Regular(1)/m/n/12.045 glyph#2480
@@ -107,42 +107,21 @@ Completed box being shipped out [1]
 .....\kern0.60225
 .....\hbox(6.10681+0.0)x5.01688, shifted -4.81851
 ......\TU/XITSMath-Regular(1)/m/n/9.03375 glyph#51
-....\kern152.53156
-....\hbox(9.636+2.40898)x39.14624, display
-.....\hbox(9.636+2.40898)x39.14624
-......\kern 0.0
-......\glue 7.63654 minus 6.0225
-......\rule(0.0+0.0)x-7.63654
-......\TU/FandolSong(0)/m/n/12.045 （
-......\kern 0.00009
-......\kern -0.00009
-......\kern -0.99622
-......\kern 0.99622
-......\penalty 10000
-......\glue 0.0
-......\TU/texgyretermes(0)/m/n/12.045 1.1
-......\kern -0.0002
-......\kern 0.0002
-......\penalty 10000
-......\TU/FandolSong(0)/m/n/12.045 ）
-......\rule(0.0+0.0)x-7.63654
-......\kern 0.00047
-......\kern -0.00047
-......\kern -0.99623
-......\kern 0.99623
-......\glue 7.63654 minus 6.0225
-.....\write1{\newlabel{eq:einstein}{{1.1}{\thepage }{}{equation.1.1}{}}}
+....\kern191.67778
+....\hbox(0.0+0.0)x0.00002, display
+.....\kern 0.00002
+.....\write1{\newlabel{eq:einstein}{{1}{\thepage }{}{chapter.1}{}}}
 ...\penalty 0
 ...\glue(\belowdisplayshortskip) 6.02249
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 8.03001
+...\glue(\baselineskip) 10.3065
 ...\hbox(9.636+2.40898)x426.79135, glue set 314.09834fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 式
-....\kern 0.0
 ....\kern -0.00017
 ....\kern 0.00017
+....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(9.636+2.40898)x36.135
 .....\kern 0.0
 .....\glue 7.63654 minus 6.0225
@@ -190,6 +169,7 @@ Completed box being shipped out [1]
 ....\kern -0.00017
 ....\kern 0.00017
 ....\penalty 10000
+....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(9.636+2.40898)x36.135
 .....\kern 0.0
 .....\glue 7.63654 minus 6.0225
@@ -244,9 +224,9 @@ Completed box being shipped out [1]
 ...\hbox(9.636+2.40898)x426.79135, glue set 277.96335fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 式
-....\kern 0.0
 ....\kern -0.00018
 ....\kern 0.00018
+....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(9.636+2.40898)x36.135
 .....\kern 0.0
 .....\glue 7.63654 minus 6.0225
@@ -297,9 +277,9 @@ Completed box being shipped out [1]
 ...\hbox(9.34692+2.13194)x426.79135, glue set 330.16637fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 式
-....\kern 0.0
 ....\kern -0.00017
 ....\kern 0.00017
+....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(8.29901+2.13194)x20.06697
 .....\TU/texgyretermes(0)/m/n/12.045 (
 .....\hbox(8.29901+0.15657)x12.045
@@ -334,6 +314,7 @@ Completed box being shipped out [1]
 ....\kern 0.00017
 ....\penalty 10000
 ....\glue 3.01125 plus 1.50562 minus 1.00374
+....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(8.29901+2.13194)x20.06697
 .....\TU/texgyretermes(0)/m/n/12.045 (
 .....\hbox(8.29901+0.15657)x12.045
@@ -378,6 +359,7 @@ Completed box being shipped out [1]
 ....\kern -0.00018
 ....\kern 0.00018
 ....\glue 3.01125 plus 1.50562 minus 1.00374
+....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(8.29901+2.13194)x20.06697
 .....\TU/texgyretermes(0)/m/n/12.045 (
 .....\hbox(8.29901+0.15657)x12.045
@@ -431,6 +413,7 @@ Completed box being shipped out [1]
 ....\kern 0.0002
 ....\penalty 10000
 ....\glue 3.01125 plus 1.50562 minus 1.00374
+....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(8.29901+2.13194)x20.06697
 .....\TU/texgyretermes(0)/m/n/12.045 (
 .....\hbox(8.29901+0.15657)x12.045
@@ -464,8 +447,8 @@ Completed box being shipped out [1]
 ....\TU/texgyretermes(0)/m/n/12.045 in
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 equation
-....\kern 0.0
 ....\glue 3.01125 plus 1.50562 minus 1.00374
+....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(8.29901+2.13194)x20.06697
 .....\TU/texgyretermes(0)/m/n/12.045 (
 .....\hbox(8.29901+0.15657)x12.045
@@ -497,9 +480,9 @@ Completed box being shipped out [1]
 ....\TU/texgyretermes(0)/m/n/12.045 in
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 equation
-....\kern 0.0
 ....\kern -0.0002
 ....\kern 0.0002
+....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(8.29901+2.13194)x20.06697
 .....\TU/texgyretermes(0)/m/n/12.045 (
 .....\hbox(8.29901+0.15657)x12.045

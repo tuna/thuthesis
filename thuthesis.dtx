@@ -6589,6 +6589,22 @@
     \let\underbrace\LaTeXunderbrace
     \let\overbrace\LaTeXoverbrace
   }{}
+  \expandafter\def\csname MT_extended_eqref:n\endcsname#1{%
+    \ifthu@language@chinese
+      \ifthu@eqn@paren@style@full
+        \unskip
+      \fi
+    \fi
+    \protected@write\@auxout{}
+      {\string\MT@newlabel{#1}}%
+    \textup{\let\df@label\@empty\csname MT_prev_tagform:n\endcsname{\ref{#1}}}%
+    \ifthu@language@chinese
+      \ifthu@eqn@paren@style@full
+        \ignorespaces
+      \fi
+    \fi
+  }
+  \expandafter\MakeRobust\csname MT_extended_eqref:n\endcsname
 }
 %    \end{macrocode}
 %
