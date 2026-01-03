@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- 添加苏世民学院格式（[#1037](https://github.com/tuna/thuthesis/discussions/1037)）。。
+
 ### Changed
 
 - `Biblatex` 的斜线不再默认使用等宽字体（[#1018](https://github.com/tuna/thuthesis/discussions/1018)）。
