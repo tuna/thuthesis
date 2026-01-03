@@ -8,7 +8,6 @@ checksuppfiles = {"*.tex"}
 docfiles = {
   "CHANGELOG.md",
   "thuthesis-example.tex",
-  "spine.tex",
   "thusetup.tex",
   "data",
   "ref",
@@ -17,7 +16,7 @@ installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "thu-*-logo.pdf"}
 sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "thu-*-logo.pdf"}
 tagfiles = {"*.dtx", "CHANGELOG.md", "package.json"}
 textfiles = {"*.md"}
-typesetdemofiles = {"thuthesis-example.tex", "spine.tex"}
+typesetdemofiles = {"thuthesis-example.tex"}
 
 excludetests = {
   "06-*",
@@ -56,12 +55,12 @@ biberopts = "--quiet"
 
 specialtypesetting = specialtypesetting or {
   ["thuthesis-example.tex"] = {
-    func = function (file)
+    func = function(file)
       local name = jobname(file)
       local errorlevel = tex(file)
       if errorlevel == 0 then
         -- Return a non-zero errorlevel if anything goes wrong
-        errorlevel =(
+        errorlevel = (
           bibtex(name) +
           bibtex(name .. "-appendix-a") +
           tex(file) +
@@ -72,8 +71,8 @@ specialtypesetting = specialtypesetting or {
         )
       end
       return errorlevel
-    end
-  }
+    end,
+  },
 }
 
 checkopts = "-file-line-error -halt-on-error -interaction=nonstopmode"
@@ -81,7 +80,7 @@ typesetopts = "-shell-escape -file-line-error -halt-on-error -interaction=nonsto
 
 lvtext = ".tex"
 
-maxprintline = 79 -- keep compatibility with existing test files
+maxprintline = 79  -- keep compatibility with existing test files
 
 function docinit_hook()
   for _, file in pairs({"dtx-style.sty"}) do
@@ -107,17 +106,17 @@ function update_tag(file, content, tagname, tagdate)
 
   elseif string.match(file, "CHANGELOG.md") then
     local previous = string.match(content, "/compare/(.*)%.%.%.HEAD")
-    local gittag = 'v' .. tagname
+    local gittag = "v" .. tagname
 
     if gittag == previous then return content end
     content = string.gsub(content,
       "## %[Unreleased%]",
-      "## [Unreleased]\n\n## [" .. gittag .."] - " .. tagdate)
+      "## [Unreleased]\n\n## [" .. gittag .. "] - " .. tagdate)
     content = string.gsub(content,
       previous .. "%.%.%.HEAD",
       gittag .. "...HEAD\n" ..
       string.format("%-14s", "[" .. gittag .. "]:") .. url .. "/compare/"
-        .. previous .. "..." .. gittag)
+      .. previous .. "..." .. gittag)
 
   elseif string.match(file, "package.json") then
     content = string.gsub(content,

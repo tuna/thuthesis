@@ -216,7 +216,6 @@
 % 所以 \thuthesis{} 提供了 \file{Makefile}：
 % \begin{shell}
 %   $ make thesis    # 生成论文示例 thuthesis-example.pdf
-%   $ make spine     # 生成书脊 spine.pdf
 %   $ make doc       # 生成说明文档 thuthesis.pdf
 %   $ make clean     # 清理编译生成的辅助文件
 % \end{shell}
@@ -229,7 +228,6 @@
 % 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。
 % \begin{shell}
 %   $ latexmk thuthesis-example.tex  # 生成示例论文 thuthesis-example.pdf
-%   $ latexmk spine.tex              # 生成书脊 spine.pdf
 %   $ latexmk thuthesis.dtx          # 生成说明文档 thuthesis.pdf
 %   $ latexmk -c                     # 清理编译生成的辅助文件
 % \end{shell}

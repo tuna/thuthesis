@@ -11,7 +11,6 @@ dtx-style.sty
 thuthesis.cls
 thuthesis.pdf
 thuthesis-example.pdf
-spine.pdf
 *.hd
 
 ## test files:
@@ -298,4 +297,3 @@ TSWLatexianTemp*
 yarn.lock
 
 *.luabridge.lua
-
