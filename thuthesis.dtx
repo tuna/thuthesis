@@ -313,6 +313,14 @@
 %   \documentclass[degree=master, degree-type=professional]{thuthesis}
 % \end{latex}
 %
+% \subsubsection{学院特殊格式}
+% \label{sec:style-override}
+% \DescribeOption{style-override}
+% 选择苏世民学院的特殊格式，可选：\option{none}（默认）、\option{schwarzman}。
+% \begin{latex}
+%   \documentclass[degree=master, style-override=schwarzman]{thuthesis}
+% \end{latex}
+%
 % \subsubsection{字体配置}
 % \label{sec:font-config}
 % \DescribeOption{fontset}
@@ -1645,6 +1653,54 @@
       half,
     }
   },
+%    \end{macrocode}
+%
+% 苏世民学院的格式相比学校有如下变动：全文的脚注都连续编号（包括到附录中），不使用带圈数字；
+% 全文图、表、公式连续编号。
+%    \begin{macrocode}
+  style-override = {
+    name    = style@override,
+    choices = {
+      none,
+      schwarzman,
+    },
+  },
+  footnote-numbering = {
+    name    = footnote@numbering,
+    choices = {
+      page,
+      chapter,
+      global,
+    },
+  },
+  footnote-style = {
+    name    = footnote@style,
+    choices = {
+      circled,
+      plain,
+    },
+  },
+  figure-numbering = {
+    name    = figure@numbering,
+    choices = {
+      chapter,
+      global,
+    },
+  },
+  table-numbering = {
+    name    = table@numbering,
+    choices = {
+      chapter,
+      global,
+    },
+  },
+  equation-numbering = {
+    name    = equation@numbering,
+    choices = {
+      chapter,
+      global,
+    },
+  },
 }
 \newif\ifthu@degree@graduate
 \newcommand\thu@set@graduate{%
@@ -1695,6 +1751,28 @@
 % \pkg{unicode-math} 和 \pkg{newtx} 都不需要 \pkg{fontspec} 设置数学字体。
 %    \begin{macrocode}
 \PassOptionsToPackage{no-math}{fontspec}
+%    \end{macrocode}
+%
+% 处理苏世民学院的格式。
+%    \begin{macrocode}
+\ifthu@style@override@schwarzman
+  \thusetup{
+    footnote-numbering = global,
+    footnote-style     = plain,
+    figure-numbering   = global,
+    table-numbering    = global,
+    equation-numbering = global,
+  }
+\fi
+\thu@option@hook{style-override}{\thu@error{%
+  The 'style-override' option is only valid in class options.%
+}}%
+\thu@option@hook{footnote-numbering}{\thu@error{%
+  The 'footnote-numbering' option is only valid in class options.%
+}}%
+\ifthu@footnote@numbering@page
+  \PassOptionsToPackage{perpage}{footmisc}%
+\fi
 %    \end{macrocode}
 %
 % 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
@@ -1774,10 +1852,10 @@
 % 脚注按页编号。
 %    \begin{macrocode}
 \ifthu@raggedbottom
-  \RequirePackage[bottom,perpage,hang]{footmisc}
+  \RequirePackage[bottom,hang]{footmisc}
   \raggedbottom
 \else
-  \RequirePackage[perpage,hang]{footmisc}
+  \RequirePackage[hang]{footmisc}
 \fi
 %    \end{macrocode}
 %
@@ -3385,6 +3463,13 @@
 % 脚注的段落格式为：单倍行距，段前空 0 磅，段后空 0 磅，悬挂缩进 1.5 字符；
 % 字号为小五号字，汉字用宋体，外文用 Times New Roman 体。
 %
+% 苏世民学院的格式与学校不同，全文的脚注都连续编号（包括到附录中），并且不使用带圈数字。
+%    \begin{macrocode}
+\ifthu@footnote@numbering@global
+  \@removefromreset{footnote}{chapter}%
+\fi
+%    \end{macrocode}
+%
 % 脚注序号使用带圈数字。
 % \begin{macro}{\thu@circled}
 % 生成带圈的脚注数字，最多处理到 10。
@@ -3398,8 +3483,13 @@
   \fi
   {\symbol{\the\numexpr#1+"245F\relax}}%
 }
-\renewcommand{\thefootnote}{\thu@circled{\c@footnote}}
-\renewcommand{\thempfootnote}{\thu@circled{\c@mpfootnote}}
+\ifthu@footnote@style@circled
+  \renewcommand{\thefootnote}{\thu@circled{\c@footnote}}%
+  \renewcommand{\thempfootnote}{\thu@circled{\c@mpfootnote}}%
+\else
+  \renewcommand{\thefootnote}{\arabic{footnote}}%
+  \renewcommand{\thempfootnote}{\arabic{mpfootnote}}%
+\fi
 %    \end{macrocode}
 % \end{macro}
 %
@@ -3567,7 +3657,7 @@
 \renewcommand{\floatpagefraction}{0.60}
 %    \end{macrocode}
 %
-% 允许用户设置图表编号的连接符。
+% 允许用户设置图表编号和连接符。
 %    \begin{macrocode}
 \thu@define@key{
   figure-number-separator = {
@@ -3587,24 +3677,57 @@
     default = {.},
   },
 }
+\newcommand\thu@set@figure@numbering{%
+  \ifthu@figure@numbering@chapter
+    \@addtoreset{figure}{chapter}%
+  \else
+    \@removefromreset{figure}{chapter}%
+  \fi
+}
+\thu@set@figure@numbering
+\thu@option@hook{figure-numbering}{\thu@set@figure@numbering}
 \renewcommand\thefigure{%
-  \ifnum\c@chapter>\z@
-    \thechapter
-    \thu@figure@number@separator
+  \ifthu@figure@numbering@chapter
+    \ifnum\c@chapter>\z@
+      \thechapter
+      \thu@figure@number@separator
+    \fi
   \fi
   \@arabic\c@figure
 }
+\newcommand\thu@set@table@numbering{%
+  \ifthu@table@numbering@chapter
+    \@addtoreset{table}{chapter}%
+  \else
+    \@removefromreset{table}{chapter}%
+  \fi
+}
+\thu@set@table@numbering
+\thu@option@hook{table-numbering}{\thu@set@table@numbering}
 \renewcommand\thetable{%
-  \ifnum\c@chapter>\z@
-    \thechapter
-    \thu@table@number@separator
+  \ifthu@table@numbering@chapter
+    \ifnum\c@chapter>\z@
+      \thechapter
+      \thu@table@number@separator
+    \fi
   \fi
   \@arabic\c@table
 }
+\newcommand\thu@set@equation@numbering{%
+  \ifthu@equation@numbering@chapter
+    \@addtoreset{equation}{chapter}%
+  \else
+    \@removefromreset{equation}{chapter}%
+  \fi
+}
+\thu@set@equation@numbering
+\thu@option@hook{equation-numbering}{\thu@set@equation@numbering}
 \renewcommand\theequation{%
-  \ifnum\c@chapter>\z@
-    \thechapter
-    \thu@equation@number@separator
+  \ifthu@equation@numbering@chapter
+    \ifnum\c@chapter>\z@
+      \thechapter
+      \thu@equation@number@separator
+    \fi
   \fi
   \@arabic\c@equation
 }
