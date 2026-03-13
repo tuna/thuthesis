@@ -31,7 +31,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Install TeX Live
-      uses: TeX-Live/setup-texlive-action@v3
+      uses: TeX-Live/setup-texlive-action@v4
       with:
         packages: >-
           ${{ env.XECJK_PKGS }} ${{ env.CTEX_PKGS }} ${{ env.BIBLATEX_PKGS }}
@@ -73,7 +73,7 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - name: Install TeX Live
-      uses: TeX-Live/setup-texlive-action@v3
+      uses: TeX-Live/setup-texlive-action@v4
       with:
         packages: >-
           ${{ env.XECJK_PKGS }} ${{ env.CTEX_PKGS }} ${{ env.BIBLATEX_PKGS }}
