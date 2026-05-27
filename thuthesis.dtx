@@ -4853,10 +4853,10 @@
 \newlength\thu@info@label@text@width
 \newcommand\thu@titlepage@bachelor{%
   \newgeometry{
-    top    = 3.8cm,
+    top = 3.8cm,
     bottom = 3.2cm,
-    left   = 3.2cm,  % 装订线靠左 0.2 cm
-    right  = 3cm,
+    hmargin = 3cm,
+    bindingoffset = 0.2cm,  % 装订线靠左 0.2 cm
   }%
   \thispagestyle{empty}%
   \begingroup
@@ -4869,15 +4869,15 @@
       \fi
     }\par
   \endgroup
-  \vspace{19bp}%
+  \vspace{21bp}%
   \begingroup
     \centering
-    \hspace*{-5bp}%
-    \includegraphics[width=50.4bp]{thu-fig-logo.pdf}%
+    % \hspace{5bp}%
+    \includegraphics[width=49bp]{thu-fig-logo.pdf}%
     \hspace{10bp}%
-    \raisebox{7bp}{\includegraphics[width=117bp]{thu-text-logo.pdf}}%
+    \raisebox{4.5bp}{\includegraphics[width=112bp, height=41bp]{thu-text-logo.pdf}}%
     \par
-    \vspace{17bp}%
+    \vspace{21.5bp}%
     \begingroup
       \sffamily\bfseries\xiaochu\ziju{0.3}%
       综合论文训练%
@@ -4899,29 +4899,48 @@
     }\par
   \endgroup
   \begingroup
+    \centering
     \fangsong
-    \fontsize{16bp}{30.96bp}\selectfont
+    \fontsize{16bp}{20bp}\selectfont
+    \renewcommand\arraystretch{1.548}%
     \noindent
-    \def\thu@name@title@format##1##2{%
-      \thu@stretch{4em}{##1}%
-      \hspace{1.5em}%
-      \thu@stretch{2.5em}{##2}%
-    }%
     \ifx\thu@co@supervisor\@empty
-      \setlength\thu@info@label@width{2.5cm}%
+      \setlength\thu@info@label@width{79.35bp}%
       \setlength\thu@info@label@text@width{4em}%
     \else
       \setlength\thu@info@label@width{86bp}%
       \setlength\thu@info@label@text@width{5em}%
     \fi
-    \thu@titlepage@info@tabular{81bp}{\thu@info@label@width}{\thu@info@label@text@width}{0.82cm}{%
+    \def\thu@info@item##1##2##3{%
+      \ifx##3\@empty\else
+        \makebox[\thu@info@label@width][c]{\centering\thu@fixed@box{\thu@info@label@text@width}{##1}}%
+        \makebox[23.25bp][c]{：}%
+        \makebox[159.4bp][l]{##2{##3}}\\
+      \fi
+    }%
+    \def\thu@name@title@format##1##2{%
+      \thu@stretch{4em}{##1}%
+      \edef\thu@tmp{##2}%
+      \ifx\thu@tmp\@empty\else
+        \hspace{1.5em}%
+        \thu@stretch{2.5em}{##2}%
+      \fi
+    }%
+    \begin{tabular}{l}%
       \thu@info@item{系别}{}{\thu@department}%
-      \thu@info@item{专业}{}{\thu@discipline}%
+      \sbox\thu@pad@box{\thu@discipline}%
+      \ifdim \wd\thu@pad@box < 159.4bp\relax
+        \thu@info@item{专业}{}{\thu@discipline}%
+      \else
+        \thu@info@item{专业}{}{%
+          \parbox[c]{159.4bp}{%
+            \vspace{4bp}\thu@discipline\strut}}%
+      \fi
       \thu@info@item{姓名}{\thu@name@title}{\thu@author}%
       \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
       \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
       \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
-    }\par
+    \end{tabular}\par
   \endgroup
   \vfill
   \begingroup
@@ -4930,7 +4949,7 @@
     \ziju{0.03}%
     \thu@format@date{\thu@date@zh@short}{\thu@date}\par
   \endgroup
-  \vspace*{60bp}%
+  \vspace*{53bp}%
   \clearpage
   \restoregeometry
 }

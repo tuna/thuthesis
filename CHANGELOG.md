@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- 修正本科生封面的布局（[#1063](https://github.com/tuna/thuthesis/discussions/1063)）。
+
 ## [v7.7.1] - 2026-05-26
 
 ### Added
