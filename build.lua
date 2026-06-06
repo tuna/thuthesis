@@ -12,8 +12,8 @@ docfiles = {
   "data",
   "ref",
 }
-installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "thu-*-logo.pdf"}
-sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "thu-*-logo.pdf"}
+installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "*.csl", "thu-*-logo.pdf"}
+sourcefiles = {"*.dtx", "*.ins", "*.bst", "*.bbx", "*.cbx", "*.csl", "thu-*-logo.pdf"}
 tagfiles = {"*.dtx", "CHANGELOG.md", "package.json"}
 textfiles = {"*.md"}
 typesetdemofiles = {"thuthesis-example.tex"}

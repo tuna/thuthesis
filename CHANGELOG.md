@@ -6,6 +6,15 @@
 
 ## [Unreleased]
 
+### Added
+
+- 支持使用 `citation-style-language`（`citeproc-lua`）作为参考文献后端，并内置
+  美术学院的脚注引证样式 `thuthesis-arts`，适配《清华大学美术学院研究生学位论文
+  引证规范》的注释式（note）格式（[#844](https://github.com/tuna/thuthesis/issues/844)）。
+  该样式在 Zeping Lee 的原始 CSL 及 `csl` 分支（[#948](https://github.com/tuna/thuthesis/pull/948)）
+  的基础上增加了中英文双语支持。使用 `latexmk` 编译时会自动调用 `citeproc-lua`，
+  默认的 BibTeX / BibLaTeX 流程不受影响。
+
 ## [v7.7.1] - 2026-05-26
 
 ### Added
