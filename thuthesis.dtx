@@ -1850,7 +1850,9 @@
 \AtEndPreamble{
   \@ifpackageloaded{biblatex}{}{
     \@ifpackageloaded{apacite}{}{
-      \RequirePackage{natbib}
+      \@ifpackageloaded{citation-style-language}{}{
+        \RequirePackage{natbib}
+      }
     }
   }
 }
@@ -5967,6 +5969,43 @@
       \fi
     \else
       \setlength{\bibhang}{21bp}%  2em
+    \fi
+  }
+  \thu@set@bibliography@format
+  \thu@option@hook{degree}{\thu@set@bibliography@format}
+  \thu@option@hook{main-language}{\thu@set@bibliography@format}
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{citation-style-language} 宏包}
+%
+% 使用 \pkg{citation-style-language}（\pkg{citeproc-lua}）作为参考文献后端，
+% 可支持注释（note）样式，如美术学院要求的脚注引证格式。
+%    \begin{macrocode}
+\AtEndOfPackageFile*{citation-style-language}{
+  \AtBeginDocument{
+    \ifthenelse{\equal{\csl@style}{apa}}{\def\bibname{REFERENCES}}{}
+    \ifthenelse{\equal{\csl@style}{modern-language-association}}{\def\bibname{WORKS CITED}}{}
+  }
+  \renewcommand\bibsection{\thu@chapter*{\bibname}}
+  \newcommand\thu@set@bibliography@format{%
+    \ifthu@degree@bachelor
+      \cslsetup{
+        bib-font     = \fontsize{10.5bp}{17bp}\selectfont,
+        bib-item-sep = 3bp \@plus 3bp \@minus 3bp,
+      }%
+      \ifthu@main@language@chinese
+        \cslsetup{bib-hang = 21bp}%
+      \else
+        \cslsetup{bib-hang = 0.5in}%
+      \fi
+    \else
+      \cslsetup{
+        bib-font     = \fontsize{10.5bp}{16bp}\selectfont,
+        bib-item-sep = 3bp \@plus 3bp \@minus 3bp,
+        bib-entry-page-break = false,
+        bib-hang     = 21bp,
+      }%
     \fi
   }
   \thu@set@bibliography@format

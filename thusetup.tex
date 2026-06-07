@@ -180,6 +180,20 @@
 % 声明 BibLaTeX 的数据库
 % \addbibresource{ref/refs.bib}
 
+% 参考文献使用 citation-style-language（citeproc-lua）宏包
+% 需要 TeX Live 2023 及以上版本（citeproc-lua 已随 TeX Live 发行，无需另装）。
+% 直接用 latexmk 编译即可，会自动调用 citeproc-lua，无需额外配置。
+% 可支持注释（note）样式，如美术学院要求的脚注引证格式。
+% \usepackage{citation-style-language}
+% \cslsetup{style = thuthesis-numeric}
+% \cslsetup{style = thuthesis-author-year}
+% \cslsetup{style = apa}
+% \cslsetup{style = modern-language-association}
+% \cslsetup{style = cell}  % 生命科学学院
+% \cslsetup{style = thuthesis-arts}  % 美术学院（脚注引证）
+% 声明 CSL 的数据库
+% \addbibresource{ref/refs.bib}
+
 % 定义所有的图片文件在 figures 子目录下
 \graphicspath{{figures/}}
 
