@@ -91,7 +91,7 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 258.6048fil
+..\vbox(674.33032+0.0)x426.79135, glue set 258.60532fil
 ...\write-{}
 ...\special{color push gray 0}
 ...\write-{}
@@ -130,7 +130,7 @@ Completed box being shipped out [1]
 ...\glue 27.10124 plus -1.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\hbox(10.92532+2.10786)x426.79135, glue set 273.22325fil
+...\hbox(10.9248+2.10786)x426.79135, glue set 273.22325fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 文
 ....\glue 0.0 plus 0.52307
@@ -144,13 +144,16 @@ Completed box being shipped out [1]
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
 ....\penalty 10000
-....\hbox(10.92532+0.0)x5.01688
-.....\mathon
-.....\hbox(6.10681+0.0)x5.01688, shifted -4.81851
+....\hbox(10.9248+0.0)x5.01688
+.....\hbox(6.10681+0.0)x4.51688, shifted -4.818
+......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/9.03375 1
 ......\kern -0.0002
 ......\kern 0.0002
-.....\mathoff
+......\special{color pop}
+.....\penalty 10000
+.....\glue 0.5
+.....\kern 0.0
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 文
 ....\glue 0.0 plus 0.52307
@@ -164,13 +167,16 @@ Completed box being shipped out [1]
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
 ....\penalty 10000
-....\hbox(10.92532+0.0)x5.01688
-.....\mathon
-.....\hbox(6.10681+0.0)x5.01688, shifted -4.81851
+....\hbox(10.9248+0.0)x5.01688
+.....\hbox(6.10681+0.0)x4.51688, shifted -4.818
+......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/9.03375 2
 ......\kern -0.0002
 ......\kern 0.0002
-.....\mathoff
+......\special{color pop}
+.....\penalty 10000
+.....\glue 0.5
+.....\kern 0.0
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 文
 ....\glue 0.0 plus 0.52307
@@ -184,13 +190,16 @@ Completed box being shipped out [1]
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
 ....\penalty 10000
-....\hbox(10.92532+0.0)x5.01688
-.....\mathon
-.....\hbox(6.10681+0.12646)x5.01688, shifted -4.81851
+....\hbox(10.9248+0.0)x5.01688
+.....\hbox(6.10681+0.12646)x4.51688, shifted -4.818
+......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/9.03375 3
 ......\kern -0.0002
 ......\kern 0.0002
-.....\mathoff
+......\special{color pop}
+.....\penalty 10000
+.....\glue 0.5
+.....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -1020,7 +1029,7 @@ Completed box being shipped out [3]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 258.4964fil
+..\vbox(674.33032+0.0)x426.79135, glue set 258.49692fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\marks1{\__mark_value:nn {3}{第2章\hskip 1em\relax 章标题}}
@@ -1056,7 +1065,7 @@ Completed box being shipped out [3]
 ...\glue 27.10124 plus -1.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\hbox(11.03374+2.10786)x426.79135, glue set 273.22325fil
+...\hbox(11.03322+2.10786)x426.79135, glue set 273.22325fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 文
 ....\glue 0.0 plus 0.52307
@@ -1070,13 +1079,16 @@ Completed box being shipped out [3]
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
 ....\penalty 10000
-....\hbox(10.92532+0.0)x5.01688
-.....\mathon
-.....\hbox(6.10681+0.0)x5.01688, shifted -4.81851
+....\hbox(10.9248+0.0)x5.01688
+.....\hbox(6.10681+0.0)x4.51688, shifted -4.818
+......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/9.03375 4
 ......\kern -0.0002
 ......\kern 0.0002
-.....\mathoff
+......\special{color pop}
+.....\penalty 10000
+.....\glue 0.5
+.....\kern 0.0
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 文
 ....\glue 0.0 plus 0.52307
@@ -1090,13 +1102,16 @@ Completed box being shipped out [3]
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
 ....\penalty 10000
-....\hbox(11.03374+0.0)x5.01688
-.....\mathon
-.....\hbox(6.21523+0.12646)x5.01688, shifted -4.81851
+....\hbox(11.03322+0.0)x5.01688
+.....\hbox(6.21523+0.12646)x4.51688, shifted -4.818
+......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/9.03375 5
 ......\kern -0.0002
 ......\kern 0.0002
-.....\mathoff
+......\special{color pop}
+.....\penalty 10000
+.....\glue 0.5
+.....\kern 0.0
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 文
 ....\glue 0.0 plus 0.52307
@@ -1110,13 +1125,16 @@ Completed box being shipped out [3]
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
 ....\penalty 10000
-....\hbox(10.9976+0.0)x5.01688
-.....\mathon
-.....\hbox(6.1791+0.12646)x5.01688, shifted -4.81851
+....\hbox(10.99709+0.0)x5.01688
+.....\hbox(6.1791+0.12646)x4.51688, shifted -4.818
+......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/9.03375 6
 ......\kern -0.0002
 ......\kern 0.0002
-.....\mathoff
+......\special{color pop}
+.....\penalty 10000
+.....\glue 0.5
+.....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -1949,7 +1967,7 @@ Completed box being shipped out [5]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(674.33032+0.0)x426.79135, glue set 258.79749fil
+..\vbox(674.33032+0.0)x426.79135, glue set 258.798fil
 ...\write-{}
 ...\write1{\@writefile{toc}{\protect \contentsline {chapter}{\protect \numberline \ETC.}
 ...\marks1{\__mark_value:nn {5}{附录 A\hskip 1em\relax 章标题}}
@@ -1987,7 +2005,7 @@ Completed box being shipped out [5]
 ...\glue 27.10124 plus -1.0
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\hbox(10.92532+2.10786)x426.79135, glue set 273.22325fil
+...\hbox(10.9248+2.10786)x426.79135, glue set 273.22325fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 文
 ....\glue 0.0 plus 0.52307
@@ -2001,13 +2019,16 @@ Completed box being shipped out [5]
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
 ....\penalty 10000
-....\hbox(10.79886+0.0)x5.01688
-.....\mathon
-.....\hbox(5.98035+0.07225)x5.01688, shifted -4.81851
+....\hbox(10.79834+0.0)x5.01688
+.....\hbox(5.98035+0.07225)x4.51688, shifted -4.818
+......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/9.03375 7
 ......\kern -0.0002
 ......\kern 0.0002
-.....\mathoff
+......\special{color pop}
+.....\penalty 10000
+.....\glue 0.5
+.....\kern 0.0
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 文
 ....\glue 0.0 plus 0.52307
@@ -2021,13 +2042,16 @@ Completed box being shipped out [5]
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
 ....\penalty 10000
-....\hbox(10.92532+0.0)x5.01688
-.....\mathon
-.....\hbox(6.10681+0.12646)x5.01688, shifted -4.81851
+....\hbox(10.9248+0.0)x5.01688
+.....\hbox(6.10681+0.12646)x4.51688, shifted -4.818
+......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/9.03375 8
 ......\kern -0.0002
 ......\kern 0.0002
-.....\mathoff
+......\special{color pop}
+.....\penalty 10000
+.....\glue 0.5
+.....\kern 0.0
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 文
 ....\glue 0.0 plus 0.52307
@@ -2041,13 +2065,16 @@ Completed box being shipped out [5]
 ....\kern 0.18753
 ....\glue 7.75697 minus 6.02249
 ....\penalty 10000
-....\hbox(10.92532+0.0)x5.01688
-.....\mathon
-.....\hbox(6.10681+0.19873)x5.01688, shifted -4.81851
+....\hbox(10.9248+0.0)x5.01688
+.....\hbox(6.10681+0.19873)x4.51688, shifted -4.818
+......\special{color push gray 0}
 ......\TU/texgyretermes(0)/m/n/9.03375 9
 ......\kern -0.0002
 ......\kern 0.0002
-.....\mathoff
+......\special{color pop}
+.....\penalty 10000
+.....\glue 0.5
+.....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0

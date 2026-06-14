@@ -72,7 +72,7 @@ Completed box being shipped out [1]
 ....\special{color pop}
 ..\glue 8.5359
 ..\glue(\lineskip) 0.0
-..\vbox(546.29292+0.0)x404.02951, glue set 23.12064fill
+..\vbox(546.29292+0.0)x404.02951, glue set 22.36742fill
 ...\write-{}
 ...\special{color push gray 0}
 ...\write-{}
@@ -265,17 +265,16 @@ Completed box being shipped out [1]
 ...\glue 31.2982
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 6.73682
-...\hbox(17.4657+78.41994)x404.02951
+...\glue(\baselineskip) 7.49004
+...\hbox(16.71248+79.17316)x404.02951
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
-....\vbox(17.4657+78.41994)x404.02951, glue set 68.48318fil
-.....\hbox(17.4657+9.93675)x404.02951, glue set 66.8723fil
+....\vbox(16.71248+79.17316)x404.02951, glue set 68.48318fil
+.....\hbox(16.71248+10.68997)x404.02951, glue set 66.8723fil
 ......\glue(\leftskip) 0.0 plus 1.0fil
 ......\hbox(0.0+0.0)x0.0
-......\hbox(17.4657+9.93675)x270.28491
-.......\mathon
-.......\vbox(17.4657+9.93675)x270.28491
+......\hbox(16.71248+10.68997)x270.28491
+.......\vbox(16.71248+10.68997)x270.28491
 ........\hbox(19.18164+8.22081)x270.28491
 .........\glue(\tabskip) 0.0
 .........\hbox(19.18164+8.22081)x135.19264
@@ -307,7 +306,6 @@ Completed box being shipped out [1]
 ..........\glue 0.0 plus 1.0fil
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0
-.......\mathoff
 ......\penalty 10000
 ......\glue(\parfillskip) 0.0
 ......\glue(\rightskip) 0.0 plus 1.0fil
