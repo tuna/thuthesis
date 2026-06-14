@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- 恢复本科生的外文资料的调研阅读报告（`survey`）和书面翻译（`translation`），以满足部分院系的要求（[#1069](https://github.com/tuna/thuthesis/issues/1069)）。
+
 ### Fixed
 
 - 修正本科生封面的布局（[#1063](https://github.com/tuna/thuthesis/discussions/1063)）。

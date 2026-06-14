@@ -249,6 +249,7 @@
 %   $ bibtex thuthesis-example.aux              # 生成 bbl 文件
 %   $ bibtex thuthesis-example-appendix-a.aux   # 附录 A 的的参考文献
 %   $ bibtex thuthesis-example-appendix-b.aux   # 附录 B 的的参考文献……
+%   $ bibtex thuthesis-example-index-1.aux      # 本科生的书面翻译对应的原文索引
 %   $ xelatex thuthesis-example.tex             # 解决引用
 %   $ xelatex thuthesis-example.tex             # 生成论文 PDF
 %
@@ -1103,6 +1104,46 @@
 % \begin{latex}
 %   \appendix
 %   \thusetup{toc-depth=0}  % 目录只出现章标题
+% \end{latex}
+%
+% \DescribeEnv{survey}
+% \DescribeEnv{translation}
+% 本科生《写作规范》要求附录 A 为外文资料的调研阅读报告或书面翻译，二者择一。
+% 调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章，
+% 所以模板相应定义了 \env{survey} 和 \env{translation}。在这两个环境内部可以
+% 像论文正文一样使用标题和参考文献的命令，但不会影响外部。
+% 但是需要使用 \hologo{BibTeX} 对 \file{*-survey.aux} 或者
+% \file{*-translation.aux} 进行编译，才能生成参考文献（见 \ref{sec:xelatex} 节）。
+% 如果使用 \texttt{latexmk}，则无需额外处理。
+%
+% 同时，阅读报告默认切换书写语言为英语，书面翻译默认切换为中文。
+% 如有需要，可以通过 \cs{thusetup} 的 \option{language} 参数再次更改。
+%
+% \begin{latex}
+%   \begin{survey}
+%     \title{...}
+%     \maketitle
+%     \tableofcontents
+%     ... \cite{...} % 报告内容及其引用
+%     \bibliographystyle{...}
+%     \bibliography{...} % 报告的参考文献
+%   \end{survey}
+% \end{latex}
+%
+% “书面翻译对应的原文索引”区别于译文的参考文献，需要使用 \env{translation-index}
+% 环境，另外需要使用 \hologo{BibTeX} 编译 \file{*-index.aux}，\texttt{latexmk} 同样会自动处理。
+%
+% \begin{latex}
+%   \begin{translation}
+%     ... \cite{...} % 书面翻译内容及其引用
+%     \bibliographystyle{...}
+%     \bibliography{...}  % 书面翻译的参考文献
+%     \begin{translation-index}
+%       \nocite{...}
+%       \bibliographystyle{...}
+%       \bibliography{...}  % 书面翻译对应的原文索引
+%     \end{translation-index}
+%   \end{translation}
 % \end{latex}
 %
 % \subsubsection{个人简历、在学期间完成的相关学术成果}
@@ -6199,6 +6240,21 @@
     \bibliographyunit\relax
   }
   \AtEndDocument{\thu@end@appendix@ref@section}
+  \renewcommand\thu@set@survey@bibheading{%
+    \renewcommand\bibsection{%
+      \begingroup
+        \ctexset{
+          section = {
+            numbering = false,
+            format = \centering\normalsize,
+            beforeskip = 20pt,
+            afterskip = 4pt,
+          },
+        }%
+        \section{\bibname}%
+      \endgroup
+    }
+  }%
 %    \end{macrocode}
 %
 % 如果正文和附录引用了同一文献，\pkg{bibunits} 会给出无意义的警告，这里消除警告。
@@ -6225,11 +6281,35 @@
       \fi
     }{}{\thu@patch@error{\@makeschapterhead}}%
   }
+  \renewcommand\thu@set@survey@bibheading{%
+    \defbibheading{bibliography}[\bibname]{%
+      \vspace{20bp}%
+      \begingroup
+        \ctexset{
+          section = {
+            numbering = false,
+            format = \centering\normalsize,
+            beforeskip = 0pt,
+            afterskip = 0pt,
+          },
+        }%
+        \section{\bibname}%
+      \endgroup
+    }%
+  }%
   \def\bibliographystyle#1{%
     \thu@warning{'bibliographystyle' invalid for 'biblatex'.}%
   }
 }
 %    \end{macrocode}
+%
+% 本科生《写作规范》有独特的要求：附录 A 为外文资料的调研阅读报告或书面翻译，
+% 并且要分别附上独立的参考文献和外文资料的原文索引。
+% 所以这里定义 \env{survey} 和 \env{translation} 专门处理这两种情况，
+% 其中参考文献使用了 \pkg{bibunits} 宏包的功能。
+%
+% 2026 版本科生《写作规范》移除了相关内容，
+% 但是部分院系仍然要求。
 %
 % 注意 \pkg{titletoc} 在 2019/07/14 v2.11.1702 修改了 \cs{printcontents} 接口，
 % 而且 \cs{@ifpackagelater} 只能用在导言区中，所以需要定义辅助宏。
@@ -6245,30 +6325,41 @@
 }
 %    \end{macrocode}
 %
+% \begin{environment}{survey}
 % 外文资料的调研阅读报告（已过时）。
 %    \begin{macrocode}
 \newenvironment{survey}{%
-  \thu@deprecate{"survey" environment}{}%
   \chapter{外文资料的调研阅读报告}%
   \thusetup{language = english}%
-  \let\title\@gobble
-  \let\maketitle\relax
-  \let\tableofcontents\relax
-  \let\appendix\relax
+  \let\title\thu@appendix@title
+  \let\maketitle\thu@appendix@maketitle
+  \thu@set@partial@toc@format
+  \renewcommand\tableofcontents{%
+    \section*{Contents}%
+    \thu@pdfbookmark{1}{Contents}%
+    \thu@print@contents{survey}{l}{1}{2}{}%
+    \vskip 20bp%
+  }%
+  \let\appendix\thu@appendix@appendix
+  \thu@set@survey@bibheading
   \renewcommand\bibname{参考文献}%
+  \startcontents[survey]%
 }{%
+  \stopcontents[survey]%
   \thu@reset@main@language % restore language
 }
+\newcommand\thu@set@appendix@bib@heading{}
 %    \end{macrocode}
+% \end{environment}
 %
+% \begin{environment}{translation}
 % 外文资料的书面翻译（已过时）。
 %    \begin{macrocode}
 \newenvironment{translation}{%
-  \thu@deprecate{"translation" environment}{}%
   \chapter{外文资料的书面翻译}%
   \thusetup{language = chinese}%
-  \let\title\@gobble
-  \let\maketitle\relax
+  \let\title\thu@appendix@title
+  \let\maketitle\thu@appendix@maketitle
   \renewenvironment{abstract}{%
     \ctexset{
       section = {
@@ -6283,18 +6374,94 @@
       \textbf{关键词：}\thu@clist@use{\thu@keywords}{；}\par
     \fi
   }%
-  \let\tableofcontents\relax
-  \let\appendix\relax
+  \thu@set@partial@toc@format
+  \renewcommand\tableofcontents{%
+    \section*{目录}%
+    \thu@pdfbookmark{1}{目录}%
+    \thu@print@contents{translation}{l}{1}{2}{}%
+    \vskip 20bp%
+  }%
+  \let\appendix\thu@appendix@appendix
+  \thu@set@survey@bibheading
+  \startcontents[translation]%
 }{%
+  \stopcontents[translation]%
   \thu@reset@main@language % restore language
 }
 %    \end{macrocode}
+% \end{environment}
 %
+% \begin{environment}{translation-index}
 % 书面翻译对应的原文索引，区别于译文的参考文献。
 %    \begin{macrocode}
-\NewEnviron{translation-index}{%
-  \thu@deprecate{"translation-index" environment}{}%
-}{}
+\newenvironment{translation-index}{}{}
+\AtEndOfPackageFile*{bibunits}{
+  \newcounter{thu@translation@index}%
+  \renewenvironment{translation-index}{%
+    \global\advance\c@thu@translation@index\@ne
+    \begin{bibunit}%
+      \renewcommand\@bibunitname{\jobname-index-\arabic{thu@translation@index}}%
+      \renewcommand\bibname{书面翻译对应的原文索引}%
+      \thu@set@survey@bibheading
+  }{%
+    \end{bibunit}%
+  }
+}
+\AtEndOfPackageFile*{biblatex}{
+  \renewenvironment{translation-index}{%
+    \endrefsection
+    \begin{refsection}%
+      \renewcommand\bibname{书面翻译对应的原文索引}%
+      \thu@set@survey@bibheading
+  }{%
+    \end{refsection}%
+  }
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% 调研阅读报告需要独立的标题，这里仿照了标准文档类的用法 \cs{title}, \cs{maketitle}。
+%    \begin{macrocode}
+\DeclareRobustCommand\thu@appendix@title[1]{\gdef\thu@appendix@@title{#1}}
+\newcommand\thu@appendix@maketitle{%
+  \par
+  \begin{center}%
+    \xiaosi[1.667]\thu@appendix@@title
+  \end{center}%
+  \par
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\thu@set@partial@toc@format{%
+  \titlecontents{section}
+    [\z@]{}
+    {\contentspush{\thecontentslabel\quad}}{}
+    {\thu@leaders\thecontentspage}%
+  \titlecontents{subsection}
+    [1em]{}
+    {\contentspush{\thecontentslabel\quad}}{}
+    {\thu@leaders\thecontentspage}%
+  \titlecontents{subsubsection}
+    [2em]{}
+    {\contentspush{\thecontentslabel\quad}}{}
+    {\thu@leaders\thecontentspage}%
+}
+%    \end{macrocode}
+%
+% 书面翻译的附录。
+%    \begin{macrocode}
+\newcommand\thu@appendix@appendix{%
+  \def\theHsection{\Hy@AlphNoErr{section}}%
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \renewcommand\thesection{\thechapter.\@Alph\c@section}%
+}%
+%    \end{macrocode}
+%
+% 调研阅读报告的参考文献（或书面翻译对应的外文资料的原文索引）标题用宋体小四号字，段前 20pt，段后 6pt，行距 20pt。
+%    \begin{macrocode}
+\newcommand\thu@set@survey@bibheading{}
 %    \end{macrocode}
 %
 %
