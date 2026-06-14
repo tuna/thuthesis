@@ -1,0 +1,76 @@
+% !TEX root = ../thuthesis-example.tex
+
+\begin{survey}
+\label{cha:survey}
+
+\title{Title of the Survey}
+\maketitle
+
+
+\tableofcontents
+
+
+本科生的外文资料调研阅读报告。
+
+
+\section{Figures and Tables}
+
+\subsection{Figures}
+
+An example figure in appendix (Figure~\ref{fig:appendix-survey-figure}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\linewidth]{example-image-a.pdf}
+  \caption{Example figure in appendix}
+  \label{fig:appendix-survey-figure}
+\end{figure}
+
+
+\subsection{Tables}
+
+An example table in appendix (Table~\ref{tab:appendix-survey-table}).
+
+\begin{table}
+  \centering
+  \caption{Example table in appendix}
+  \begin{tabular}{ll}
+    \toprule
+    File name       & Description                                         \\
+    \midrule
+    thuthesis.dtx   & The source file including documentation and comments \\
+    thuthesis.cls   & The template file                                   \\
+    thuthesis-*.bst & BibTeX styles                                       \\
+    thuthesis-*.bbx & BibLaTeX styles for bibliographies                  \\
+    thuthesis-*.cbx & BibLaTeX styles for citations                       \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:appendix-survey-table}
+\end{table}
+
+
+\section{Equations}
+
+An example equation in appendix (Equation~\eqref{eq:appendix-survey-equation}).
+\begin{equation}
+  \frac{1}{2 \uppi \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k)
+  \label{eq:appendix-survey-equation}
+\end{equation}
+
+
+\section{Citations}
+
+Example\cite{dupont1974bone} citations\cite{merkt1995rotational} in appendix
+\cite{dupont1974bone,merkt1995rotational}.
+
+
+% 默认使用正文的参考文献样式；
+% 如果使用 BibTeX，可以切换为其他兼容 natbib 的 BibTeX 样式。
+\bibliographystyle{unsrtnat}
+% \bibliographystyle{IEEEtranN}
+
+% 默认使用正文的参考文献 .bib 数据库；
+% 如果使用 BibTeX，可以改为指定数据库，如 \bibliography{ref/refs}。
+\printbibliography
+
+\end{survey}

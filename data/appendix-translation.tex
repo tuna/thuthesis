@@ -1,0 +1,92 @@
+% !TEX root = ../thuthesis-example.tex
+
+\begin{translation}
+\label{cha:translation}
+
+\title{书面翻译题目}
+\maketitle
+
+\tableofcontents
+
+
+本科生的外文资料书面翻译。
+
+
+\section{图表示例}
+
+\subsection{图}
+
+附录中的图片示例（图~\ref{fig:appendix-translation-figure}）。
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\linewidth]{example-image-a.pdf}
+  \caption{附录中的图片示例}
+  \label{fig:appendix-translation-figure}
+\end{figure}
+
+
+\subsection{表格}
+
+附录中的表格示例（表~\ref{tab:appendix-translation-table}）。
+
+\begin{table}
+  \centering
+  \caption{附录中的表格示例}
+  \begin{tabular}{ll}
+    \toprule
+    文件名          & 描述                         \\
+    \midrule
+    thuthesis.dtx   & 模板的源文件，包括文档和注释 \\
+    thuthesis.cls   & 模板文件                     \\
+    thuthesis-*.bst & BibTeX 参考文献表样式文件    \\
+    thuthesis-*.bbx & BibLaTeX 参考文献表样式文件  \\
+    thuthesis-*.cbx & BibLaTeX 引用样式文件        \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:appendix-translation-table}
+\end{table}
+
+
+\section{数学公式}
+
+附录中的数学公式示例（公式\eqref{eq:appendix-translation-equation}）。
+\begin{equation}
+  \frac{1}{2 \uppi \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k)
+  \label{eq:appendix-translation-equation}
+\end{equation}
+
+
+\section{文献引用}
+
+附录\cite{dupont1974bone}中的参考文献引用\cite{merkt1995rotational}示例
+\cite{dupont1974bone,merkt1995rotational}。
+
+
+\appendix
+
+\section{附录}
+
+附录的内容。
+
+
+% 书面翻译的参考文献
+% 默认使用正文的参考文献样式；
+% 如果使用 BibTeX，可以切换为其他兼容 natbib 的 BibTeX 样式。
+\bibliographystyle{unsrtnat}
+% \bibliographystyle{IEEEtranN}
+
+% 默认使用正文的参考文献 .bib 数据库；
+% 如果使用 BibTeX，可以改为指定数据库，如 \bibliography{ref/refs}。
+\printbibliography
+
+% 书面翻译对应的原文索引
+\begin{translation-index}
+  \nocite{mellinger1996laser}
+  \nocite{bixon1996dynamics}
+  \nocite{carlson1981two}
+  \bibliographystyle{unsrtnat}
+  \printbibliography
+\end{translation-index}
+
+\end{translation}
