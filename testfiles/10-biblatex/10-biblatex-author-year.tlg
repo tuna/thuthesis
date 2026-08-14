@@ -333,9 +333,9 @@ Completed box being shipped out [1]
 ....\TU/texgyretermes(0)/m/n/12.045 Citation
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 (see
+....\write1{\abx@aux@page{10}{\the \c@page }}
 ....\kern -0.0002
 ....\kern 0.0002
-....\write1{\abx@aux@page{10}{\the \c@page }}
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 Baker
 ....\kern -0.0002
@@ -378,9 +378,9 @@ Completed box being shipped out [1]
 ....\TU/texgyretermes(0)/m/n/12.045 Citation
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 (see
+....\write1{\abx@aux@page{11}{\the \c@page }}
 ....\kern -0.0002
 ....\kern 0.0002
-....\write1{\abx@aux@page{11}{\the \c@page }}
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 Baker
 ....\kern -0.0002
@@ -509,9 +509,8 @@ Completed box being shipped out [1]
 ....\TU/FandolSong(0)/m/n/12.045 引
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 用
-....\kern -0.00017
-....\kern 0.00017
 ....\write1{\abx@aux@page{16}{\the \c@page }}
+....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 汪
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 冰
@@ -561,9 +560,8 @@ Completed box being shipped out [1]
 ....\TU/FandolSong(0)/m/n/12.045 引
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 用
-....\kern -0.00017
-....\kern 0.00017
 ....\write1{\abx@aux@page{18}{\the \c@page }}
+....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 汪
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 冰
@@ -716,7 +714,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.03001
-...\hbox(9.636+2.40898)x426.79135, glue set 268.30934fil
+...\hbox(9.636+2.40898)x426.79135, glue set 271.32059fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 引
 ....\glue 0.0 plus 0.52307
@@ -728,10 +726,8 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue 0.0
 ....\TU/FandolSong(0)/m/n/12.045 见
-....\kern -0.00017
-....\kern 0.00017
 ....\write1{\abx@aux@page{21}{\the \c@page }}
-....\glue 3.01125 plus 1.50562 minus 1.00374
+....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 汪
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 冰
@@ -767,7 +763,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 6.74121
-...\hbox(10.9248+2.40898)x426.79135, glue set 259.27559fil
+...\hbox(10.9248+2.40898)x426.79135, glue set 262.28683fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 引
 ....\glue 0.0 plus 0.52307
@@ -779,10 +775,8 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue 0.0
 ....\TU/FandolSong(0)/m/n/12.045 见
-....\kern -0.00017
-....\kern 0.00017
 ....\write1{\abx@aux@page{22}{\the \c@page }}
-....\glue 3.01125 plus 1.50562 minus 1.00374
+....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 汪
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 冰
@@ -826,9 +820,8 @@ Completed box being shipped out [1]
 ....\TU/FandolSong(0)/m/n/12.045 引
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 用
-....\kern -0.00017
-....\kern 0.00017
 ....\write1{\abx@aux@page{24}{\the \c@page }}
+....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 汪
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 冰
@@ -1828,8 +1821,6 @@ Completed box being shipped out [3]
 ....\TU/FandolHei(0)/m/n/16.06 附
 ....\glue 0.0 plus 1.0538
 ....\TU/FandolHei(0)/m/n/16.06 录
-....\kern -0.00018
-....\kern 0.00018
 ....\glue 4.46468 plus 2.23233 minus 1.48822
 ....\TU/texgyreheros(0)/m/n/16.06 A
 ....\kern -0.0002
@@ -1904,9 +1895,9 @@ Completed box being shipped out [3]
 ....\TU/texgyretermes(0)/m/n/12.045 ,
 ....\glue 3.01125 plus 1.88202 minus 0.80298
 ....\TU/texgyretermes(0)/m/n/12.045 1995
+....\write1{\abx@aux@page{34}{\the \c@page }}
 ....\kern -0.0002
 ....\kern 0.0002
-....\write1{\abx@aux@page{34}{\the \c@page }}
 ....\penalty 10000
 ....\TU/FandolSong(0)/m/n/12.045 ；
 ....\rule(0.0+0.0)x-8.32309

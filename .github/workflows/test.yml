@@ -4,7 +4,9 @@ on: [push, pull_request, workflow_dispatch]
 
 env:
   XECJK_PKGS: fontspec xecjk ulem xetex
-  CTEX_PKGS: cjk ctex everysel zhnumber
+  # thuthesis loads xeCJKfntef, which requires l3draw from l3experimental;
+  # xecjk's TeX Live metadata does not declare this dependency.
+  CTEX_PKGS: cjk ctex everysel l3experimental zhnumber
   BIBLATEX_PKGS: biber biblatex biblatex-apa biblatex-gb7714-2015 biblatex-mla xstring
   HYPERREF_PKGS: pdflscape
   NOMENCL_PKGS: nomencl koma-script xkeyval
@@ -53,7 +55,7 @@ jobs:
       run: |
         version=$(git describe --tags --always)
         echo "Current git revision: $version"
-        python3 utils/create_release.py --version $version
+        python3 utils/create_release.py --version "$version"
     - name: Build CTAN release zip with l3build
       run: l3build ctan --config utils/build-ctan
     - name: Upload release zip
@@ -89,6 +91,24 @@ jobs:
       if: failure()
       with:
         name: test-result-${{ matrix.os }}
+        path: |
+          build/test
+          build/test-testfiles
+
+  test-container:
+    if: ${{ !contains(github.event.head_commit.message, 'ci skip') }}
+    runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest
+    steps:
+    - uses: actions/checkout@v6
+    - name: Test with l3build
+      run: make test
+    - name: Upload test results if failed
+      uses: actions/upload-artifact@v7
+      if: failure()
+      with:
+        name: test-result-docker
         path: |
           build/test
           build/test-testfiles
