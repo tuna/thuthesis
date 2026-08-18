@@ -92,7 +92,7 @@ Completed box being shipped out [1]
 ....\glue(\leftskip) 0.0 plus 1.0fil
 ....\hbox(0.0+0.0)x0.0
 ....\vbox(12.5268+44.37871)x398.3386, glue set 41.58429fil
-.....\hbox(12.5268+2.79442)x398.3386, glue set 307.41861fil
+.....\hbox(12.5268+2.79442)x398.3386, glue set 298.48926fil
 ......\hbox(0.0+0.0)x0.0
 ......\glue -21.5
 ......\TU/FandolHei(0)/m/n/16.06 秘
@@ -100,14 +100,14 @@ Completed box being shipped out [1]
 ......\TU/FandolHei(0)/m/n/16.06 密
 ......\glue 0.0 plus 1.3163
 ......\TU/FandolHei(0)/m/n/16.06 ★
-......\kern -0.00017
-......\kern 0.00017
+......\glue 4.46468 plus 2.23233 minus 1.48822
 ......\hbox(11.38654+0.24089)x48.18, glue set 15.16064fil
 .......\glue 0.0 plus 1.0fil minus 1.0fil
 .......\TU/texgyreheros(0)/m/n/16.06 10
 .......\kern -0.0002
 .......\kern 0.0002
 .......\glue 0.0 plus 1.0fil minus 1.0fil
+......\glue 4.46468 plus 2.23233 minus 1.48822
 ......\TU/FandolHei(0)/m/n/16.06 年
 ......\kern -0.00017
 ......\kern 0.00017
@@ -265,6 +265,7 @@ Completed box being shipped out [1]
 ............\kern -0.99649
 ............\kern 0.99649
 ............\glue 11.19382 minus 8.03
+............\penalty 0
 ............\special{color pop}
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\TU/FandolFang(0)/m/n/16.06 工
@@ -311,6 +312,7 @@ Completed box being shipped out [1]
 ............\kern -0.99649
 ............\kern 0.99649
 ............\glue 11.19382 minus 8.03
+............\penalty 0
 ............\special{color pop}
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\TU/FandolFang(0)/m/n/16.06 管
@@ -363,6 +365,7 @@ Completed box being shipped out [1]
 ............\kern -0.99649
 ............\kern 0.99649
 ............\glue 11.19382 minus 8.03
+............\penalty 0
 ............\special{color pop}
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\hbox(12.67134+2.82654)x85.35826, glue set 21.11827fil
@@ -418,6 +421,7 @@ Completed box being shipped out [1]
 ............\kern -0.99649
 ............\kern 0.99649
 ............\glue 11.19382 minus 8.03
+............\penalty 0
 ............\special{color pop}
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\hbox(12.67134+2.82654)x85.35826, glue set 21.11827fil
@@ -441,6 +445,8 @@ Completed box being shipped out [1]
 ...........\kern -0.00017
 ...........\kern 0.00017
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\kern -0.00017
+..........\kern 0.00017
 ..........\glue 0.0 plus 1.0fil
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0
@@ -482,6 +488,7 @@ Completed box being shipped out [1]
 ............\kern -0.99649
 ............\kern 0.99649
 ............\glue 11.19382 minus 8.03
+............\penalty 0
 ............\special{color pop}
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\hbox(12.67134+2.82654)x85.35826, glue set 21.11827fil
@@ -505,6 +512,8 @@ Completed box being shipped out [1]
 ...........\kern -0.00017
 ...........\kern 0.00017
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\kern -0.00017
+..........\kern 0.00017
 ..........\glue 0.0 plus 1.0fil
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0

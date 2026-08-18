@@ -521,13 +521,13 @@ Completed box being shipped out [1]
 ....\TU/texgyretermes(0)/m/n/12.045 1
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 章
-....\penalty 0
+....\penalty 10000
 ....\TU/FandolSong(0)/m/n/12.045 …
 ....\penalty 10000
 ....\glue 0.0
 ....\TU/FandolSong(0)/m/n/12.045 …
-....\rule(0.0+0.0)x-2.04765
-....\glue 2.04765 minus 2.04765
+....\penalty 10000
+....\glue 0.0 minus 2.04765
 ....\TU/FandolSong(0)/m/n/12.045 ；
 ....\rule(0.0+0.0)x-8.32309
 ....\glue 8.32309 minus 6.02249
@@ -537,22 +537,22 @@ Completed box being shipped out [1]
 ....\TU/texgyretermes(0)/m/n/12.045 2
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 章
-....\penalty 0
+....\penalty 10000
 ....\TU/FandolSong(0)/m/n/12.045 …
 ....\penalty 10000
 ....\glue 0.0
 ....\TU/FandolSong(0)/m/n/12.045 …
-....\rule(0.0+0.0)x-2.04765
-....\glue 2.04765 minus 2.04765
+....\penalty 10000
+....\glue 0.0 minus 2.04765
 ....\TU/FandolSong(0)/m/n/12.045 ；
-....\rule(0.0+0.0)x-8.32309
-....\glue 8.32309 minus 8.07014
+....\penalty 10000
+....\glue 0.0 minus 8.07014
 ....\TU/FandolSong(0)/m/n/12.045 …
 ....\penalty 10000
 ....\glue 0.0
 ....\TU/FandolSong(0)/m/n/12.045 …
-....\rule(0.0+0.0)x-2.04765
-....\glue 2.04765 minus 1.02382
+....\penalty 10000
+....\glue 0.0 minus 1.02382
 ....\TU/FandolSong(0)/m/n/12.045 ”
 ....\rule(0.0+0.0)x-7.04633
 ....\glue 7.04633 minus 6.0225

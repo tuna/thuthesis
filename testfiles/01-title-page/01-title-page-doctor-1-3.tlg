@@ -225,6 +225,7 @@ Completed box being shipped out [1]
 ............\kern -0.99649
 ............\kern 0.99649
 ............\glue 11.19382 minus 8.03
+............\penalty 0
 ............\special{color pop}
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\TU/FandolFang(0)/m/n/16.06 航
@@ -273,6 +274,7 @@ Completed box being shipped out [1]
 ............\kern -0.99649
 ............\kern 0.99649
 ............\glue 11.19382 minus 8.03
+............\penalty 0
 ............\special{color pop}
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\TU/FandolFang(0)/m/n/16.06 力
@@ -315,6 +317,7 @@ Completed box being shipped out [1]
 ............\kern -0.99649
 ............\kern 0.99649
 ............\glue 11.19382 minus 8.03
+............\penalty 0
 ............\special{color pop}
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\hbox(12.57498+2.81049)x85.35826, glue set 21.11827fil
@@ -368,6 +371,7 @@ Completed box being shipped out [1]
 ............\kern -0.99649
 ............\kern 0.99649
 ............\glue 11.19382 minus 8.03
+............\penalty 0
 ............\special{color pop}
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
 ..........\hbox(12.91223+2.77837)x85.35826, glue set 21.11827fil
@@ -391,6 +395,8 @@ Completed box being shipped out [1]
 ...........\kern -0.00017
 ...........\kern 0.00017
 ...........\glue 0.0 plus 1.0fil minus 1.0fil
+..........\kern -0.00017
+..........\kern 0.00017
 ..........\glue 0.0 plus 1.0fil
 ..........\glue 6.0
 .........\glue(\tabskip) 0.0
