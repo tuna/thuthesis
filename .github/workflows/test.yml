@@ -3,7 +3,7 @@ name: Test
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  XECJK_PKGS: fontspec xecjk ulem xetex
+  XECJK_PKGS: accsupp fontspec l3experimental ulem xecjk xetex
   CTEX_PKGS: cjk ctex everysel zhnumber
   BIBLATEX_PKGS: biber biblatex biblatex-apa biblatex-gb7714-2015 biblatex-mla xstring
   HYPERREF_PKGS: pdflscape
