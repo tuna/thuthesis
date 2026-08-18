@@ -4,9 +4,9 @@ on: [push, pull_request, workflow_dispatch]
 
 env:
   XECJK_PKGS: fontspec xecjk ulem xetex
-  # thuthesis loads xeCJKfntef, which requires l3draw from l3experimental;
-  # xecjk's TeX Live metadata does not declare this dependency.
-  CTEX_PKGS: cjk ctex everysel l3experimental zhnumber
+  # thuthesis loads xeCJKfntef, which requires l3draw and accsupp;
+  # xecjk's TeX Live metadata declares neither l3experimental nor accsupp.
+  CTEX_PKGS: accsupp cjk ctex everysel l3experimental zhnumber
   BIBLATEX_PKGS: biber biblatex biblatex-apa biblatex-gb7714-2015 biblatex-mla xstring
   HYPERREF_PKGS: pdflscape
   NOMENCL_PKGS: nomencl koma-script xkeyval
