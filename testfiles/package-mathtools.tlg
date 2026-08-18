@@ -116,11 +116,9 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 10.3065
-...\hbox(9.636+2.40898)x426.79135, glue set 314.09834fil
+...\hbox(9.636+2.40898)x426.79135, glue set 311.0871fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 式
-....\kern -0.00017
-....\kern 0.00017
 ....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(9.636+2.40898)x36.135
 .....\kern 0.0
@@ -137,6 +135,8 @@ Completed box being shipped out [1]
 ......\TU/texgyretermes(0)/b/n/12.045 ??
 ......\kern -0.0002
 ......\kern 0.0002
+.....\kern -0.0002
+.....\kern 0.0002
 .....\penalty 10000
 .....\TU/FandolSong(0)/m/n/12.045 ）
 .....\rule(0.0+0.0)x-7.63654
@@ -145,6 +145,8 @@ Completed box being shipped out [1]
 .....\kern -0.99623
 .....\kern 0.99623
 .....\glue 7.63654 minus 6.0225
+.....\penalty 0
+....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 无
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 空
@@ -163,7 +165,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.03001
-...\hbox(9.636+2.40898)x426.79135, glue set 253.87335fil
+...\hbox(9.636+2.40898)x426.79135, glue set 250.8621fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 式
 ....\kern -0.00017
@@ -185,6 +187,8 @@ Completed box being shipped out [1]
 ......\TU/texgyretermes(0)/b/n/12.045 ??
 ......\kern -0.0002
 ......\kern 0.0002
+.....\kern -0.0002
+.....\kern 0.0002
 .....\penalty 10000
 .....\TU/FandolSong(0)/m/n/12.045 ）
 .....\rule(0.0+0.0)x-7.63654
@@ -193,6 +197,10 @@ Completed box being shipped out [1]
 .....\kern -0.99623
 .....\kern 0.99623
 .....\glue 7.63654 minus 6.0225
+.....\penalty 0
+....\kern -0.0002
+....\kern 0.0002
+....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 使
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 用
@@ -221,11 +229,9 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.03001
-...\hbox(9.636+2.40898)x426.79135, glue set 277.96335fil
+...\hbox(9.636+2.40898)x426.79135, glue set 274.9521fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 式
-....\kern -0.00018
-....\kern 0.00018
 ....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(9.636+2.40898)x36.135
 .....\kern 0.0
@@ -242,6 +248,8 @@ Completed box being shipped out [1]
 ......\TU/texgyretermes(0)/b/n/12.045 ??
 ......\kern -0.0002
 ......\kern 0.0002
+.....\kern -0.0002
+.....\kern 0.0002
 .....\penalty 10000
 .....\TU/FandolSong(0)/m/n/12.045 ）
 .....\rule(0.0+0.0)x-7.63654
@@ -250,6 +258,10 @@ Completed box being shipped out [1]
 .....\kern -0.99623
 .....\kern 0.99623
 .....\glue 7.63654 minus 6.0225
+.....\penalty 0
+....\kern -0.0002
+....\kern 0.0002
+....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 使
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 用
@@ -274,11 +286,10 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 8.31909
-...\hbox(9.34692+2.13194)x426.79135, glue set 330.16637fil
+...\hbox(9.34692+2.13194)x426.79135, glue set 324.14388fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 式
-....\kern -0.00017
-....\kern 0.00017
+....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(8.29901+2.13194)x20.06697
 .....\TU/texgyretermes(0)/m/n/12.045 (
@@ -286,9 +297,12 @@ Completed box being shipped out [1]
 ......\TU/texgyretermes(0)/b/n/12.045 ??
 ......\kern -0.0002
 ......\kern 0.0002
+.....\kern -0.0002
+.....\kern 0.0002
 .....\TU/texgyretermes(0)/m/n/12.045 )
 .....\kern -0.0002
 .....\kern 0.0002
+....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 无
 ....\glue 0.0 plus 0.52307
 ....\TU/FandolSong(0)/m/n/12.045 空
@@ -321,9 +335,13 @@ Completed box being shipped out [1]
 ......\TU/texgyretermes(0)/b/n/12.045 ??
 ......\kern -0.0002
 ......\kern 0.0002
+.....\kern -0.0002
+.....\kern 0.0002
 .....\TU/texgyretermes(0)/m/n/12.045 )
 .....\kern -0.0002
 .....\kern 0.0002
+....\kern -0.0002
+....\kern 0.0002
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 使
 ....\glue 0.0 plus 0.52307
@@ -356,8 +374,6 @@ Completed box being shipped out [1]
 ...\hbox(9.50351+2.28853)x426.79135, glue set 288.00888fil
 ....\hbox(0.0+0.0)x24.09
 ....\TU/FandolSong(0)/m/n/12.045 式
-....\kern -0.00018
-....\kern 0.00018
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(8.29901+2.13194)x20.06697
@@ -366,9 +382,13 @@ Completed box being shipped out [1]
 ......\TU/texgyretermes(0)/b/n/12.045 ??
 ......\kern -0.0002
 ......\kern 0.0002
+.....\kern -0.0002
+.....\kern 0.0002
 .....\TU/texgyretermes(0)/m/n/12.045 )
 .....\kern -0.0002
 .....\kern 0.0002
+....\kern -0.0002
+....\kern 0.0002
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/FandolSong(0)/m/n/12.045 使
 ....\glue 0.0 plus 0.52307
@@ -420,9 +440,13 @@ Completed box being shipped out [1]
 ......\TU/texgyretermes(0)/b/n/12.045 ??
 ......\kern -0.0002
 ......\kern 0.0002
+.....\kern -0.0002
+.....\kern 0.0002
 .....\TU/texgyretermes(0)/m/n/12.045 )
 .....\kern -0.0002
 .....\kern 0.0002
+....\kern -0.0002
+....\kern 0.0002
 ....\TU/texgyretermes(0)/m/n/12.045 .
 ....\kern -0.0002
 ....\kern 0.0002
@@ -455,9 +479,13 @@ Completed box being shipped out [1]
 ......\TU/texgyretermes(0)/b/n/12.045 ??
 ......\kern -0.0002
 ......\kern 0.0002
+.....\kern -0.0002
+.....\kern 0.0002
 .....\TU/texgyretermes(0)/m/n/12.045 )
 .....\kern -0.0002
 .....\kern 0.0002
+....\kern -0.0002
+....\kern 0.0002
 ....\TU/texgyretermes(0)/m/n/12.045 .
 ....\kern -0.0002
 ....\kern 0.0002
@@ -480,8 +508,6 @@ Completed box being shipped out [1]
 ....\TU/texgyretermes(0)/m/n/12.045 in
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 equation
-....\kern -0.0002
-....\kern 0.0002
 ....\write1{\MT@newlabel{eq:einstein}}
 ....\hbox(8.29901+2.13194)x20.06697
 .....\TU/texgyretermes(0)/m/n/12.045 (
@@ -489,9 +515,13 @@ Completed box being shipped out [1]
 ......\TU/texgyretermes(0)/b/n/12.045 ??
 ......\kern -0.0002
 ......\kern 0.0002
+.....\kern -0.0002
+.....\kern 0.0002
 .....\TU/texgyretermes(0)/m/n/12.045 )
 .....\kern -0.0002
 .....\kern 0.0002
+....\kern -0.0002
+....\kern 0.0002
 ....\TU/texgyretermes(0)/m/n/12.045 .
 ....\kern -0.0002
 ....\kern 0.0002

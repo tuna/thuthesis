@@ -10725,9 +10725,9 @@ Completed box being shipped out [7]
 ....\TU/texgyretermes(0)/m/n/12.045 (Table
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 4.1
+....\hbox(0.0+0.0)x0.0
 ....\kern -0.0002
 ....\kern 0.0002
-....\hbox(0.0+0.0)x0.0
 ....\TU/texgyretermes(0)/m/n/12.045 –4.4)
 ....\glue 3.01125 plus 1.50562 minus 1.00374
 ....\TU/texgyretermes(0)/m/n/12.045 below
@@ -15113,6 +15113,8 @@ C.}
 .....\kern -0.00017
 .....\kern 0.00017
 .....\glue 0.0 plus 1.0fil minus 1.0fil
+....\kern -0.00017
+....\kern 0.00017
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -15610,6 +15612,8 @@ Completed box being shipped out [15]
 .....\kern -0.0002
 .....\kern 0.0002
 .....\glue 0.0 plus 1.0fil minus 1.0fil
+....\kern -0.0002
+....\kern 0.0002
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
@@ -15819,6 +15823,8 @@ Completed box being shipped out [16]
 .....\kern -0.0002
 .....\kern 0.0002
 .....\glue 0.0 plus 1.0fil minus 1.0fil
+....\kern -0.0002
+....\kern 0.0002
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
